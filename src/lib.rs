@@ -35,42 +35,56 @@ pub struct arcdps_exports {
 }
 
 impl arcdps_exports {
-    pub fn new(
-        sig: usize,
-        name: &'static str,
-        build: &'static str,
-        wnd_nofilter: Option<WndprocCallback>,
-        combat: Option<CombatCallback>,
-        imgui: Option<ImguiCallback>,
-        options_end: Option<OptionsCallback>,
-        combat_local: Option<CombatCallback>,
-        wnd_filter: Option<WndprocCallback>,
-        options_windows: Option<OptionsWindowsCallback>,
-    ) -> arcdps_exports {
+    pub fn new(sig: usize, name: &'static str, build: &'static str) -> arcdps_exports {
         arcdps_exports {
             size: std::mem::size_of::<arcdps_exports>(),
             sig,
             out_name: CString::new(name).unwrap().as_ptr() as PCCHAR,
             out_build: CString::new(build).unwrap().as_ptr() as PCCHAR,
-            wnd_nofilter: unpack!(wnd_nofilter),
-            combat: unpack!(combat),
-            imgui: unpack!(imgui),
-            options_end: unpack!(options_end),
-            combat_local: unpack!(combat_local),
-            wnd_filter: unpack!(wnd_filter),
-            options_windows: unpack!(options_windows),
+            wnd_nofilter: null::<isize>() as LPVOID,
+            combat: null::<isize>() as LPVOID,
+            imgui: null::<isize>() as LPVOID,
+            options_end: null::<isize>() as LPVOID,
+            combat_local: null::<isize>() as LPVOID,
+            wnd_filter: null::<isize>() as LPVOID,
+            options_windows: null::<isize>() as LPVOID,
         }
     }
-}
 
-#[macro_export]
-macro_rules! unpack {
-    ( $x:expr ) => {{
-        match $x {
-            Some(func) => func as LPVOID,
-            None => null::<isize>() as LPVOID,
-        }
-    }};
+    pub fn wnd_nofilter(mut self, func: WndprocCallback) -> Self {
+        self.wnd_nofilter = func as LPVOID;
+        self
+    }
+
+    pub fn combat(mut self, func: CombatCallback) -> Self {
+        self.combat = func as LPVOID;
+        self
+    }
+
+    pub fn imgui(mut self, func: ImguiCallback) -> Self {
+        self.imgui = func as LPVOID;
+        self
+    }
+
+    pub fn options_end(mut self, func: OptionsCallback) -> Self {
+        self.options_end = func as LPVOID;
+        self
+    }
+
+    pub fn combat_local(mut self, func: CombatCallback) -> Self {
+        self.combat_local = func as LPVOID;
+        self
+    }
+
+    pub fn wnd_filter(mut self, func: WndprocCallback) -> Self {
+        self.wnd_filter = func as LPVOID;
+        self
+    }
+
+    pub fn options_windows(mut self, func: OptionsWindowsCallback) -> Self {
+        self.options_windows = func as LPVOID;
+        self
+    }
 }
 
 #[repr(C)]
