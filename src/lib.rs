@@ -1,4 +1,3 @@
-
 use std::{
     ffi::{CStr, CString},
     os::raw::c_char,
@@ -11,6 +10,7 @@ use winapi::shared::{
 };
 
 static mut FUNCTIONS: Option<ArcdpsFunctions> = None;
+static mut INFO: Option<(CString, CString)> = None;
 
 pub type WndprocCallback = fn(hWnd: HWND, uMsg: UINT, wParam: WPARAM, lParam: LPARAM) -> usize;
 /*
@@ -111,14 +111,7 @@ fn cbt_wrapper_local(
 }
 
 fn cbt_wrapper(
-    func: fn(
-        ev: Option<&cbtevent>,
-        src: Option<&Ag>,
-        dst: Option<&Ag>,
-        skillname: Option<&str>,
-        id: u64,
-        revision: u64,
-    ),
+    func: SafeCombatCallback,
     ev: *mut cbtevent,
     src: *mut u_ag,
     dst: *mut u_ag,
@@ -191,7 +184,7 @@ fn get_str_from_pcchar<'a>(src: PCCHAR) -> Option<&'a str> {
 
 impl arcdps_exports {
     pub fn new(sig: usize, name: &'static str, build: &'static str) -> arcdps_exports {
-        unsafe {
+        let (name, build) = unsafe {
             FUNCTIONS = Some(ArcdpsFunctions {
                 combat: std::mem::uninitialized(),
                 imgui: std::mem::uninitialized(),
@@ -199,12 +192,18 @@ impl arcdps_exports {
                 combat_local: std::mem::uninitialized(),
                 options_windows: std::mem::uninitialized(),
             });
-        }
+            INFO = Some((CString::new(name).unwrap(), CString::new(build).unwrap()));
+            if let Some(infos) = &INFO {
+                infos
+            } else {
+                unreachable!();
+            }
+        };
         arcdps_exports {
             size: std::mem::size_of::<arcdps_exports>(),
             sig,
-            out_name: CString::new(name).unwrap().as_ptr() as PCCHAR,
-            out_build: CString::new(build).unwrap().as_ptr() as PCCHAR,
+            out_name: name.as_ptr() as PCCHAR,
+            out_build: build.as_ptr() as PCCHAR,
             wnd_nofilter: null::<isize>() as LPVOID,
             combat: null::<isize>() as LPVOID,
             imgui: null::<isize>() as LPVOID,
