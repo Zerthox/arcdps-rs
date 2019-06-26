@@ -42,18 +42,18 @@ pub type SafeOptionsWindowsCallback = fn(windowname: Option<&str>);
 
 struct ArcdpsFunctions {
     // pub wnd_nofilter: SafeWndprocCallback,
-    pub combat: SafeCombatCallback,
-    pub imgui: SafeImguiCallback,
-    pub options_end: SafeOptionsCallback,
-    pub combat_local: SafeCombatCallback,
+    pub combat: Option<SafeCombatCallback>,
+    pub imgui: Option<SafeImguiCallback>,
+    pub options_end: Option<SafeOptionsCallback>,
+    pub combat_local: Option<SafeCombatCallback>,
     // pub wnd_filter: SafeWndprocCallback,
-    pub options_windows: SafeOptionsWindowsCallback,
+    pub options_windows: Option<SafeOptionsWindowsCallback>,
 }
 
 fn options_wrapper() -> usize {
     let func = unsafe {
         if let Some(funcs) = &FUNCTIONS {
-            funcs.options_end
+            funcs.options_end.unwrap()
         } else {
             return 0;
         }
@@ -65,7 +65,7 @@ fn options_wrapper() -> usize {
 fn options_windows_wrapper(windowname: PCCHAR) -> usize {
     let func = unsafe {
         if let Some(funcs) = &FUNCTIONS {
-            funcs.options_windows
+            funcs.options_windows.unwrap()
         } else {
             return 0;
         }
@@ -84,7 +84,7 @@ fn cbt_wrapper_area(
 ) -> usize {
     let func = unsafe {
         if let Some(funcs) = &FUNCTIONS {
-            funcs.combat
+            funcs.combat.unwrap()
         } else {
             return 0;
         }
@@ -102,7 +102,7 @@ fn cbt_wrapper_local(
 ) -> usize {
     let func = unsafe {
         if let Some(funcs) = &FUNCTIONS {
-            funcs.combat_local
+            funcs.combat_local.unwrap()
         } else {
             return 0;
         }
@@ -149,7 +149,7 @@ fn cbt_wrapper(
 fn imgui_wrapper(not_charsel_or_loading: u32) -> usize {
     let func = unsafe {
         if let Some(funcs) = &FUNCTIONS {
-            funcs.imgui
+            funcs.imgui.unwrap()
         } else {
             return 0;
         }
@@ -186,11 +186,11 @@ impl arcdps_exports {
     pub fn new(sig: usize, name: &'static str, build: &'static str) -> arcdps_exports {
         let (name, build) = unsafe {
             FUNCTIONS = Some(ArcdpsFunctions {
-                combat: std::mem::uninitialized(),
-                imgui: std::mem::uninitialized(),
-                options_end: std::mem::uninitialized(),
-                combat_local: std::mem::uninitialized(),
-                options_windows: std::mem::uninitialized(),
+                combat: None,
+                imgui: None,
+                options_end: None,
+                combat_local: None,
+                options_windows: None,
             });
             INFO = Some((CString::new(name).unwrap(), CString::new(build).unwrap()));
             if let Some(infos) = &INFO {
@@ -223,7 +223,7 @@ impl arcdps_exports {
         self.combat = cbt_wrapper_area as LPVOID;
         unsafe {
             if let Some(funcs) = &mut FUNCTIONS {
-                funcs.combat = func;
+                funcs.combat = Some(func);
             };
         }
         self
@@ -233,7 +233,7 @@ impl arcdps_exports {
         self.imgui = imgui_wrapper as LPVOID;
         unsafe {
             if let Some(funcs) = &mut FUNCTIONS {
-                funcs.imgui = func;
+                funcs.imgui = Some(func);
             };
         }
         self
@@ -243,7 +243,7 @@ impl arcdps_exports {
         self.options_end = options_wrapper as LPVOID;
         unsafe {
             if let Some(funcs) = &mut FUNCTIONS {
-                funcs.options_end = func;
+                funcs.options_end = Some(func);
             };
         }
         self
@@ -253,7 +253,7 @@ impl arcdps_exports {
         self.combat_local = cbt_wrapper_local as LPVOID;
         unsafe {
             if let Some(funcs) = &mut FUNCTIONS {
-                funcs.combat_local = func;
+                funcs.combat_local = Some(func);
             };
         }
         self
@@ -268,7 +268,7 @@ impl arcdps_exports {
         self.options_windows = options_windows_wrapper as LPVOID;
         unsafe {
             if let Some(funcs) = &mut FUNCTIONS {
-                funcs.options_windows = func;
+                funcs.options_windows = Some(func);
             };
         }
         self
