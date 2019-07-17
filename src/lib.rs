@@ -4,7 +4,7 @@ use std::{
     ffi::{CStr, CString},
     os::raw::c_char,
     ptr::null,
-    sync::RwLock,
+    sync::{Mutex, RwLock},
 };
 use winapi::shared::{
     minwindef::{LPARAM, LPVOID, UINT, WPARAM},
@@ -23,6 +23,7 @@ lazy_static! {
         })
     };
     static ref INFO: RwLock<Option<(CString, CString)>> = { RwLock::new(None) };
+    static ref EXPORTED: Mutex<Option<arcdps_exports>> = { Mutex::new(None) };
 }
 
 pub type WndprocCallback = fn(hWnd: HWND, uMsg: UINT, wParam: WPARAM, lParam: LPARAM) -> usize;
@@ -52,6 +53,88 @@ pub type SafeCombatCallback = fn(
 pub type SafeImguiCallback = fn(not_charsel_or_loading: bool);
 pub type SafeOptionsCallback = fn();
 pub type SafeOptionsWindowsCallback = fn(windowname: Option<&str>);
+
+impl arcdps_exports {
+    pub fn new(sig: usize, name: &'static str, build: &'static str) -> arcdps_exports {
+        let (out_name, out_build) = {
+            let mut info = INFO.write().unwrap();
+            *info = Some((CString::new(name).unwrap(), CString::new(build).unwrap()));
+            if let Some((name, build)) = &*info {
+                (name.as_ptr() as PCCHAR, build.as_ptr() as PCCHAR)
+            } else {
+                unreachable!()
+            }
+        };
+        arcdps_exports {
+            size: std::mem::size_of::<arcdps_exports>(),
+            sig,
+            out_name,
+            out_build,
+            wnd_nofilter: null::<isize>() as LPVOID,
+            combat: null::<isize>() as LPVOID,
+            imgui: null::<isize>() as LPVOID,
+            options_end: null::<isize>() as LPVOID,
+            combat_local: null::<isize>() as LPVOID,
+            wnd_filter: null::<isize>() as LPVOID,
+            options_windows: null::<isize>() as LPVOID,
+        }
+    }
+
+    pub fn wnd_nofilter(mut self, func: WndprocCallback) -> Self {
+        self.wnd_nofilter = func as LPVOID;
+        self
+    }
+
+    pub fn combat(mut self, func: SafeCombatCallback) -> Self {
+        self.combat = cbt_wrapper_area as LPVOID;
+        let mut funcs = FUNCTIONS.write().unwrap();
+        funcs.combat = Some(func);
+        self
+    }
+
+    pub fn imgui(mut self, func: SafeImguiCallback) -> Self {
+        self.imgui = imgui_wrapper as LPVOID;
+        let mut funcs = FUNCTIONS.write().unwrap();
+        funcs.imgui = Some(func);
+        self
+    }
+
+    pub fn options_end(mut self, func: SafeOptionsCallback) -> Self {
+        self.options_end = options_wrapper as LPVOID;
+        let mut funcs = FUNCTIONS.write().unwrap();
+        funcs.options_end = Some(func);
+        self
+    }
+
+    pub fn combat_local(mut self, func: SafeCombatCallback) -> Self {
+        self.combat_local = cbt_wrapper_local as LPVOID;
+        let mut funcs = FUNCTIONS.write().unwrap();
+        funcs.combat_local = Some(func);
+        self
+    }
+
+    pub fn wnd_filter(mut self, func: WndprocCallback) -> Self {
+        self.wnd_filter = func as LPVOID;
+        self
+    }
+
+    pub fn options_windows(mut self, func: SafeOptionsWindowsCallback) -> Self {
+        self.options_windows = options_windows_wrapper as LPVOID;
+        let mut funcs = FUNCTIONS.write().unwrap();
+        funcs.options_windows = Some(func);
+        self
+    }
+
+    pub fn save(self) -> LPVOID {
+        let mut exported = EXPORTED.lock().unwrap();
+        *exported = Some(self);
+        if let Some(exp) = &*exported {
+            exp as *const arcdps_exports as LPVOID
+        } else {
+            unreachable!()
+        }
+    }
+}
 
 struct ArcdpsFunctions {
     // pub wnd_nofilter: SafeWndprocCallback,
@@ -169,78 +252,6 @@ unsafe fn get_str_from_pcchar<'a>(src: PCCHAR) -> Option<&'a str> {
     }
 }
 
-impl arcdps_exports {
-    pub fn new(sig: usize, name: &'static str, build: &'static str) -> arcdps_exports {
-        let (out_name, out_build) = {
-            let mut info = INFO.write().unwrap();
-            *info = Some((CString::new(name).unwrap(), CString::new(build).unwrap()));
-            if let Some((name, build)) = &*info {
-                (name.as_ptr() as PCCHAR, build.as_ptr() as PCCHAR)
-            } else {
-                unreachable!()
-            }
-        };
-        arcdps_exports {
-            size: std::mem::size_of::<arcdps_exports>(),
-            sig,
-            out_name,
-            out_build,
-            wnd_nofilter: null::<isize>() as LPVOID,
-            combat: null::<isize>() as LPVOID,
-            imgui: null::<isize>() as LPVOID,
-            options_end: null::<isize>() as LPVOID,
-            combat_local: null::<isize>() as LPVOID,
-            wnd_filter: null::<isize>() as LPVOID,
-            options_windows: null::<isize>() as LPVOID,
-        }
-    }
-
-    pub fn wnd_nofilter(mut self, func: WndprocCallback) -> Self {
-        self.wnd_nofilter = func as LPVOID;
-        self
-    }
-
-    pub fn combat(mut self, func: SafeCombatCallback) -> Self {
-        self.combat = cbt_wrapper_area as LPVOID;
-        let mut funcs = FUNCTIONS.write().unwrap();
-        funcs.combat = Some(func);
-        self
-    }
-
-    pub fn imgui(mut self, func: SafeImguiCallback) -> Self {
-        self.imgui = imgui_wrapper as LPVOID;
-        let mut funcs = FUNCTIONS.write().unwrap();
-        funcs.imgui = Some(func);
-        self
-    }
-
-    pub fn options_end(mut self, func: SafeOptionsCallback) -> Self {
-        self.options_end = options_wrapper as LPVOID;
-        let mut funcs = FUNCTIONS.write().unwrap();
-        funcs.options_end = Some(func);
-        self
-    }
-
-    pub fn combat_local(mut self, func: SafeCombatCallback) -> Self {
-        self.combat_local = cbt_wrapper_local as LPVOID;
-        let mut funcs = FUNCTIONS.write().unwrap();
-        funcs.combat_local = Some(func);
-        self
-    }
-
-    pub fn wnd_filter(mut self, func: WndprocCallback) -> Self {
-        self.wnd_filter = func as LPVOID;
-        self
-    }
-
-    pub fn options_windows(mut self, func: SafeOptionsWindowsCallback) -> Self {
-        self.options_windows = options_windows_wrapper as LPVOID;
-        let mut funcs = FUNCTIONS.write().unwrap();
-        funcs.options_windows = Some(func);
-        self
-    }
-}
-
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct arcdps_exports {
@@ -256,6 +267,8 @@ pub struct arcdps_exports {
     pub wnd_filter: LPVOID,
     pub options_windows: LPVOID,
 }
+
+unsafe impl Send for arcdps_exports {}
 
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
