@@ -1,10 +1,8 @@
-#[macro_use]
-extern crate lazy_static;
+use once_cell::sync::OnceCell;
 use std::{
     ffi::{CStr, CString},
     os::raw::c_char,
     ptr::null,
-    sync::{Mutex, RwLock},
 };
 use winapi::shared::{
     minwindef::{LPARAM, LPVOID, UINT, WPARAM},
@@ -12,19 +10,9 @@ use winapi::shared::{
     windef::HWND,
 };
 
-lazy_static! {
-    static ref FUNCTIONS: RwLock<ArcdpsFunctions> = {
-        RwLock::new(ArcdpsFunctions {
-            combat: None,
-            imgui: None,
-            options_end: None,
-            combat_local: None,
-            options_windows: None,
-        })
-    };
-    static ref INFO: RwLock<Option<(CString, CString)>> = { RwLock::new(None) };
-    static ref EXPORTED: Mutex<Option<arcdps_exports>> = { Mutex::new(None) };
-}
+static FUNCTIONS: OnceCell<ArcdpsFunctions> = OnceCell::new();
+static INFO: OnceCell<(CString, CString)> = OnceCell::new();
+static EXPORTED: OnceCell<arcdps_exports> = OnceCell::new();
 
 pub type WndprocCallback = fn(hWnd: HWND, uMsg: UINT, wParam: WPARAM, lParam: LPARAM) -> usize;
 /*
@@ -55,85 +43,89 @@ pub type SafeOptionsCallback = fn();
 pub type SafeOptionsWindowsCallback = fn(windowname: Option<&str>);
 
 impl arcdps_exports {
-    pub fn new(sig: usize, name: &'static str, build: &'static str) -> arcdps_exports {
+    pub fn new(sig: usize, name: &'static str, build: &'static str) -> ArcdpsExportsBuilder {
         let (out_name, out_build) = {
-            let mut info = INFO.write().unwrap();
-            *info = Some((CString::new(name).unwrap(), CString::new(build).unwrap()));
-            if let Some((name, build)) = &*info {
-                (name.as_ptr() as PCCHAR, build.as_ptr() as PCCHAR)
-            } else {
-                unreachable!()
-            }
+            let info =
+                INFO.get_or_init(|| (CString::new(name).unwrap(), CString::new(build).unwrap()));
+            let (name, build) = &info;
+            (name.as_ptr() as PCCHAR, build.as_ptr() as PCCHAR)
         };
-        arcdps_exports {
-            size: std::mem::size_of::<arcdps_exports>(),
-            sig,
-            out_name,
-            out_build,
-            wnd_nofilter: null::<isize>() as LPVOID,
-            combat: null::<isize>() as LPVOID,
-            imgui: null::<isize>() as LPVOID,
-            options_end: null::<isize>() as LPVOID,
-            combat_local: null::<isize>() as LPVOID,
-            wnd_filter: null::<isize>() as LPVOID,
-            options_windows: null::<isize>() as LPVOID,
+        ArcdpsExportsBuilder {
+            arcdps: arcdps_exports {
+                size: std::mem::size_of::<arcdps_exports>(),
+                sig,
+                out_name,
+                out_build,
+                wnd_nofilter: null::<isize>() as LPVOID,
+                combat: null::<isize>() as LPVOID,
+                imgui: null::<isize>() as LPVOID,
+                options_end: null::<isize>() as LPVOID,
+                combat_local: null::<isize>() as LPVOID,
+                wnd_filter: null::<isize>() as LPVOID,
+                options_windows: null::<isize>() as LPVOID,
+            },
+            funcs: ArcdpsFunctions {
+                combat: None,
+                imgui: None,
+                options_end: None,
+                combat_local: None,
+                options_windows: None,
+            },
         }
     }
+}
 
+impl ArcdpsExportsBuilder {
     pub fn wnd_nofilter(mut self, func: WndprocCallback) -> Self {
-        self.wnd_nofilter = func as LPVOID;
+        self.arcdps.wnd_nofilter = func as LPVOID;
         self
     }
 
     pub fn combat(mut self, func: SafeCombatCallback) -> Self {
-        self.combat = cbt_wrapper_area as LPVOID;
-        let mut funcs = FUNCTIONS.write().unwrap();
-        funcs.combat = Some(func);
+        self.arcdps.combat = cbt_wrapper_area as LPVOID;
+        self.funcs.combat = Some(func);
         self
     }
 
     pub fn imgui(mut self, func: SafeImguiCallback) -> Self {
-        self.imgui = imgui_wrapper as LPVOID;
-        let mut funcs = FUNCTIONS.write().unwrap();
-        funcs.imgui = Some(func);
+        self.arcdps.imgui = imgui_wrapper as LPVOID;
+        self.funcs.imgui = Some(func);
         self
     }
 
     pub fn options_end(mut self, func: SafeOptionsCallback) -> Self {
-        self.options_end = options_wrapper as LPVOID;
-        let mut funcs = FUNCTIONS.write().unwrap();
-        funcs.options_end = Some(func);
+        self.arcdps.options_end = options_wrapper as LPVOID;
+        self.funcs.options_end = Some(func);
         self
     }
 
     pub fn combat_local(mut self, func: SafeCombatCallback) -> Self {
-        self.combat_local = cbt_wrapper_local as LPVOID;
-        let mut funcs = FUNCTIONS.write().unwrap();
-        funcs.combat_local = Some(func);
+        self.arcdps.combat_local = cbt_wrapper_local as LPVOID;
+        self.funcs.combat_local = Some(func);
         self
     }
 
     pub fn wnd_filter(mut self, func: WndprocCallback) -> Self {
-        self.wnd_filter = func as LPVOID;
+        self.arcdps.wnd_filter = func as LPVOID;
         self
     }
 
     pub fn options_windows(mut self, func: SafeOptionsWindowsCallback) -> Self {
-        self.options_windows = options_windows_wrapper as LPVOID;
-        let mut funcs = FUNCTIONS.write().unwrap();
-        funcs.options_windows = Some(func);
+        self.arcdps.options_windows = options_windows_wrapper as LPVOID;
+        self.funcs.options_windows = Some(func);
         self
     }
 
     pub fn save(self) -> LPVOID {
-        let mut exported = EXPORTED.lock().unwrap();
-        *exported = Some(self);
-        if let Some(exp) = &*exported {
-            exp as *const arcdps_exports as LPVOID
-        } else {
-            unreachable!()
-        }
+        let exported = EXPORTED.get_or_init(|| self.arcdps);
+        FUNCTIONS.get_or_init(|| self.funcs);
+        exported as *const arcdps_exports as LPVOID
     }
+}
+
+pub struct ArcdpsExportsBuilder {
+    arcdps: arcdps_exports,
+    funcs: ArcdpsFunctions,
 }
 
 struct ArcdpsFunctions {
@@ -147,14 +139,14 @@ struct ArcdpsFunctions {
 }
 
 unsafe fn options_wrapper() -> usize {
-    let funcs = FUNCTIONS.read().unwrap();
+    let funcs = FUNCTIONS.get().unwrap();
     let func = funcs.options_end.unwrap();
     func();
     0
 }
 
 unsafe fn options_windows_wrapper(windowname: PCCHAR) -> usize {
-    let funcs = FUNCTIONS.read().unwrap();
+    let funcs = FUNCTIONS.get().unwrap();
     let func = funcs.options_windows.unwrap();
     func(get_str_from_pcchar(windowname));
     0
@@ -168,7 +160,7 @@ unsafe fn cbt_wrapper_area(
     id: u64,
     revision: u64,
 ) -> usize {
-    let funcs = FUNCTIONS.read().unwrap();
+    let funcs = FUNCTIONS.get().unwrap();
     let func = funcs.combat.unwrap();
     cbt_wrapper(func, ev, src, dst, skillname, id, revision)
 }
@@ -181,7 +173,7 @@ unsafe fn cbt_wrapper_local(
     id: u64,
     revision: u64,
 ) -> usize {
-    let funcs = FUNCTIONS.read().unwrap();
+    let funcs = FUNCTIONS.get().unwrap();
     let func = funcs.combat_local.unwrap();
     cbt_wrapper(func, ev, src, dst, skillname, id, revision)
 }
@@ -222,7 +214,7 @@ unsafe fn cbt_wrapper(
 }
 
 unsafe fn imgui_wrapper(not_charsel_or_loading: u32) -> usize {
-    let funcs = FUNCTIONS.read().unwrap();
+    let funcs = FUNCTIONS.get().unwrap();
     let func = funcs.imgui.unwrap();
     func(not_charsel_or_loading != 0);
     0
@@ -269,6 +261,7 @@ pub struct arcdps_exports {
 }
 
 unsafe impl Send for arcdps_exports {}
+unsafe impl Sync for arcdps_exports {}
 
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
