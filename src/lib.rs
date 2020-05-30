@@ -35,7 +35,7 @@ pub type SafeCombatCallback = fn(
     ev: Option<&cbtevent>,
     src: Option<&Ag>,
     dst: Option<&Ag>,
-    skillname: Option<&str>,
+    skillname: Option<&'static str>,
     id: u64,
     revision: u64,
 );
