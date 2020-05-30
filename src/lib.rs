@@ -9,6 +9,7 @@ use winapi::shared::{
     ntdef::PCCHAR,
     windef::HWND,
 };
+use core::convert::From;
 
 static FUNCTIONS: OnceCell<ArcdpsFunctions> = OnceCell::new();
 static INFO: OnceCell<(CString, CString)> = OnceCell::new();
@@ -190,7 +191,7 @@ unsafe fn cbt_wrapper(
     let s_ev: Option<&cbtevent>;
     let s_src: Option<&Ag>;
     let s_dst: Option<&Ag>;
-    let s_skillname: Option<&str>;
+    let s_skillname: Option<&'static str>;
     let p_src;
     let p_dst;
 
@@ -232,7 +233,10 @@ unsafe fn get_safe_ag(ag: &u_ag) -> Ag {
     }
 }
 
-unsafe fn get_str_from_pcchar<'a>(src: PCCHAR) -> Option<&'a str> {
+// it is not necessarily static
+// delta confirmed that skillnames are available for the whole lifetime of the plugin
+// reduce the lifetime in the ongoing process as needed!
+unsafe fn get_str_from_pcchar(src: PCCHAR) -> Option<&'static str> {
     if src.is_null() {
         None
     } else {
@@ -314,4 +318,27 @@ pub struct Ag<'a> {
     pub elite: u32,
     pub self_: u32,
     pub team: u16,
+}
+
+#[derive(Debug, Clone)]
+pub struct AgOwned {
+    pub name: Option<String>,
+    pub id: usize,
+    pub prof: u32,
+    pub elite: u32,
+    pub self_: u32,
+    pub team: u16,
+}
+
+impl From<Ag<'_>> for AgOwned {
+    fn from(ag: Ag<'_>) -> Self {
+        AgOwned {
+            name: ag.name.map(|x| x.to_string()),
+            id: ag.id,
+            prof: ag.prof,
+            elite: ag.elite,
+            self_: ag.self_,
+            team: ag.team,
+        }
+    }
 }
