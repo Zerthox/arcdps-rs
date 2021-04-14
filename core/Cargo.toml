@@ -1,0 +1,15 @@
+[package]
+name = "arcdps"
+version = "0.1.8"
+authors = ["Greaka <mrgreaka@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+once_cell = "1.4"
+
+[dependencies.arcdps_codegen]
+path = "../codegen"
+
+[dependencies.imgui]
+git = "https://github.com/greaka/imgui-rs"
+#path = "../../imgui-rs/imgui"

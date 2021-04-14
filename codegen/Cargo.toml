@@ -1,0 +1,17 @@
+[package]
+name = "arcdps_codegen"
+version = "0.1.0"
+authors = ["greaka <git@greaka.de>"]
+edition = "2018"
+
+[lib]
+proc-macro = true
+
+[dependencies]
+quote = "1.0"
+proc-macro2 = "1.0"
+
+
+[dependencies.syn]
+version = "1.0"
+features = ["full"]
