@@ -1,5 +1,6 @@
-use std::os::raw::{c_char, c_void};
+#![allow(clippy::upper_case_acronyms)]
 use crate::helpers::get_str_from_pc_char;
+use std::os::raw::{c_char, c_void};
 
 pub type LPARAM = isize;
 pub type LPVOID = *mut c_void;
@@ -8,7 +9,6 @@ pub type WPARAM = usize;
 // noinspection SpellCheckingInspection
 pub type PCCHAR = *mut c_char;
 pub type HWND = *mut c_void;
-
 
 pub type RawWndprocCallback =
     unsafe fn(h_wnd: HWND, u_msg: UINT, w_param: WPARAM, l_param: LPARAM) -> usize;
@@ -47,9 +47,8 @@ pub type CombatCallback = fn(
     revision: u64,
 );
 
-impl From<*mut RawAgent> for Agent<'_> {
-    fn from(ag: *mut RawAgent) -> Self {
-        let ag = unsafe { *ag };
+impl From<&RawAgent> for Agent<'_> {
+    fn from(ag: &RawAgent) -> Self {
         let name = unsafe { get_str_from_pc_char(ag.name) };
         Agent {
             name,

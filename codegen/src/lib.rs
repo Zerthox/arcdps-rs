@@ -15,10 +15,13 @@ pub fn arcdps_export(item: proc_macro::TokenStream) -> proc_macro::TokenStream {
     let name = syn::LitStr::new(name.as_str(), input.name.span());
 
     let (abstract_combat, cb_combat) = build_combat(input.raw_combat, input.combat);
-    let (abstract_combat_local, cb_combat_local) = build_combat_local(input.raw_combat_local, input.combat_local);
+    let (abstract_combat_local, cb_combat_local) =
+        build_combat_local(input.raw_combat_local, input.combat_local);
     let (abstract_imgui, cb_imgui) = build_imgui(input.raw_imgui, input.imgui);
-    let (abstract_options_end, cb_options_end) = build_options_end(input.raw_options_end, input.options_end);
-    let (abstract_options_windows, cb_options_windows) = build_options_windows(input.raw_options_windows, input.options_windows);
+    let (abstract_options_end, cb_options_end) =
+        build_options_end(input.raw_options_end, input.options_end);
+    let (abstract_options_windows, cb_options_windows) =
+        build_options_windows(input.raw_options_windows, input.options_windows);
 
     let cb_wnd_filter = match (input.raw_wnd_filter, input.wnd_filter) {
         (Some(raw), _) => {
@@ -134,7 +137,10 @@ pub fn arcdps_export(item: proc_macro::TokenStream) -> proc_macro::TokenStream {
     res.into()
 }
 
-fn build_options_windows(raw_options_windows: Option<Expr>, options_windows: Option<Expr>) -> (TokenStream, TokenStream) {
+fn build_options_windows(
+    raw_options_windows: Option<Expr>,
+    options_windows: Option<Expr>,
+) -> (TokenStream, TokenStream) {
     let mut abstract_options_windows = quote! {};
     let cb_options_windows = match (raw_options_windows, options_windows) {
         (Some(raw), _) => {
@@ -148,13 +154,16 @@ fn build_options_windows(raw_options_windows: Option<Expr>, options_windows: Opt
                     #safe(helpers::get_str_from_pc_char(window_name))
             });
             quote_spanned!(span => Some(__arcdps_gen_export::abstract_options_windows as _) )
-        },
+        }
         _ => quote! { None },
     };
     (abstract_options_windows, cb_options_windows)
 }
 
-fn build_options_end(raw_options_end: Option<Expr>, options_end: Option<Expr>) -> (TokenStream, TokenStream) {
+fn build_options_end(
+    raw_options_end: Option<Expr>,
+    options_end: Option<Expr>,
+) -> (TokenStream, TokenStream) {
     let mut abstract_options_end = quote! {};
     let cb_options_end = match (raw_options_end, options_end) {
         (Some(raw), _) => {
@@ -196,7 +205,10 @@ fn build_imgui(raw_imgui: Option<Expr>, imgui: Option<Expr>) -> (TokenStream, To
     (abstract_imgui, cb_imgui)
 }
 
-fn build_combat_local(raw_combat_local: Option<Expr>, combat_local: Option<Expr>) -> (TokenStream, TokenStream) {
+fn build_combat_local(
+    raw_combat_local: Option<Expr>,
+    combat_local: Option<Expr>,
+) -> (TokenStream, TokenStream) {
     let mut abstract_combat_local = quote! {};
     let cb_combat_local = match (raw_combat_local, combat_local) {
         (Some(raw), _) => {

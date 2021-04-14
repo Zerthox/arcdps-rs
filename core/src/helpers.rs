@@ -2,6 +2,7 @@ use crate::*;
 use std::ffi::CStr;
 
 /// A helper function to convert raw arguments to safe abstractions
+#[allow(clippy::not_unsafe_ptr_arg_deref)]
 pub fn get_combat_args_from_raw<'a>(
     raw_ev: *mut CombatEvent,
     raw_src: *mut RawAgent,
@@ -20,10 +21,10 @@ pub fn get_combat_args_from_raw<'a>(
             args.ev = Some(&*raw_ev)
         }
         if !raw_src.is_null() {
-            args.src = Some(raw_src.into());
+            args.src = Some((&*raw_src).into());
         }
         if !raw_dst.is_null() {
-            args.dst = Some(raw_dst.into());
+            args.dst = Some((&*raw_dst).into());
         }
         args.skill_name = get_str_from_pc_char(raw_skill_name);
     };
