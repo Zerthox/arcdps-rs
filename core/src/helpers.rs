@@ -10,9 +10,9 @@ pub fn get_combat_args_from_raw<'a>(
     raw_skill_name: PCCHAR,
 ) -> CombatEventArgs<'a> {
     let mut args = CombatEventArgs {
-        ev: None,
-        src: None,
-        dst: None,
+        ev:         None,
+        src:        None,
+        dst:        None,
         skill_name: None,
     };
 
@@ -50,8 +50,8 @@ pub(crate) unsafe fn get_str_from_pc_char(src: PCCHAR) -> Option<&'static str> {
 }
 
 pub struct CombatEventArgs<'a> {
-    pub ev: Option<&'a CombatEvent>,
-    pub src: Option<Agent<'a>>,
-    pub dst: Option<Agent<'a>>,
+    pub ev:         Option<&'a CombatEvent>,
+    pub src:        Option<Agent<'a>>,
+    pub dst:        Option<Agent<'a>>,
     pub skill_name: Option<&'static str>,
 }

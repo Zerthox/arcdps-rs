@@ -4,24 +4,24 @@ use syn::{
 };
 
 pub(crate) struct ArcDpsGen {
-    pub name: LitStr,
-    pub sig: Expr,
-    pub init: Option<Expr>,
-    pub release: Option<Expr>,
-    pub raw_wnd_nofilter: Option<Expr>,
-    pub raw_imgui: Option<Expr>,
-    pub raw_options_end: Option<Expr>,
-    pub raw_combat: Option<Expr>,
-    pub raw_wnd_filter: Option<Expr>,
+    pub name:                LitStr,
+    pub sig:                 Expr,
+    pub init:                Option<Expr>,
+    pub release:             Option<Expr>,
+    pub raw_wnd_nofilter:    Option<Expr>,
+    pub raw_imgui:           Option<Expr>,
+    pub raw_options_end:     Option<Expr>,
+    pub raw_combat:          Option<Expr>,
+    pub raw_wnd_filter:      Option<Expr>,
     pub raw_options_windows: Option<Expr>,
-    pub raw_combat_local: Option<Expr>,
-    pub wnd_nofilter: Option<Expr>,
-    pub combat: Option<Expr>,
-    pub imgui: Option<Expr>,
-    pub options_end: Option<Expr>,
-    pub combat_local: Option<Expr>,
-    pub wnd_filter: Option<Expr>,
-    pub options_windows: Option<Expr>,
+    pub raw_combat_local:    Option<Expr>,
+    pub wnd_nofilter:        Option<Expr>,
+    pub combat:              Option<Expr>,
+    pub imgui:               Option<Expr>,
+    pub options_end:         Option<Expr>,
+    pub combat_local:        Option<Expr>,
+    pub wnd_filter:          Option<Expr>,
+    pub options_windows:     Option<Expr>,
 }
 
 impl syn::parse::Parse for ArcDpsGen {
@@ -30,26 +30,26 @@ impl syn::parse::Parse for ArcDpsGen {
 
         let mut gen: ArcDpsGen = Self {
             name: LitStr::new("", Span::call_site()),
-            sig: Expr::Verbatim(TokenStream::new()),
+            sig:  Expr::Verbatim(TokenStream::new()),
 
-            init: None,
+            init:    None,
             release: None,
 
-            combat: None,
-            combat_local: None,
-            imgui: None,
-            options_end: None,
+            combat:          None,
+            combat_local:    None,
+            imgui:           None,
+            options_end:     None,
             options_windows: None,
-            wnd_filter: None,
-            wnd_nofilter: None,
+            wnd_filter:      None,
+            wnd_nofilter:    None,
 
-            raw_combat: None,
-            raw_combat_local: None,
-            raw_imgui: None,
-            raw_options_end: None,
+            raw_combat:          None,
+            raw_combat_local:    None,
+            raw_imgui:           None,
+            raw_options_end:     None,
             raw_options_windows: None,
-            raw_wnd_filter: None,
-            raw_wnd_nofilter: None,
+            raw_wnd_filter:      None,
+            raw_wnd_nofilter:    None,
         };
 
         let mut name_done = false;
