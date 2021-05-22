@@ -37,7 +37,7 @@ pub fn get_combat_args_from_raw<'a>(
 /// delta confirmed that skill names are available for the whole lifetime of the
 /// plugin, but agent names are only available for the duration of the fight.
 /// Reduce the lifetime in the ongoing process as needed!
-pub(crate) unsafe fn get_str_from_pc_char(src: PCCHAR) -> Option<&'static str> {
+pub unsafe fn get_str_from_pc_char(src: PCCHAR) -> Option<&'static str> {
     if src.is_null() {
         None
     } else {
