@@ -141,6 +141,7 @@ fn build_wnd_filter(
             unsafe fn abstract_wnd_filter (h_wnd: HWND, u_msg: UINT,
                     w_param: WPARAM, l_param: LPARAM
                 ) -> UINT {
+                use ::arcdps::{WM_KEYDOWN, WM_KEYUP, WM_SYSKEYDOWN, WM_SYSKEYUP};
                 match u_msg {
                     WM_KEYDOWN | WM_KEYUP | WM_SYSKEYDOWN | WM_SYSKEYUP => {
                         let key_down = u_msg & 1 == 0;
@@ -179,6 +180,7 @@ fn build_wnd_nofilter(
             unsafe fn abstract_wnd_nofilter (h_wnd: HWND, u_msg: UINT,
                     w_param: WPARAM, l_param: LPARAM
                 ) -> UINT {
+                use ::arcdps::{WM_KEYDOWN, WM_KEYUP, WM_SYSKEYDOWN, WM_SYSKEYUP};
                 match u_msg {
                     WM_KEYDOWN | WM_KEYUP | WM_SYSKEYDOWN | WM_SYSKEYUP => {
                         let key_down = u_msg & 1 == 0;
