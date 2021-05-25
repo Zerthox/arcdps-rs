@@ -125,9 +125,18 @@ pub fn arcdps_export(item: proc_macro::TokenStream) -> proc_macro::TokenStream {
     res.into()
 }
 
-fn build_wnd_filter(
+fn build_wnd_filter(raw_wnd: Option<Expr>, wnd: Option<Expr>) -> (TokenStream, TokenStream) {
+    build_wnd(raw_wnd, wnd, quote! { abstract_wnd_filter })
+}
+
+fn build_wnd_nofilter(raw_wnd: Option<Expr>, wnd: Option<Expr>) -> (TokenStream, TokenStream) {
+    build_wnd(raw_wnd, wnd, quote! { abstract_wnd_nofilter })
+}
+
+fn build_wnd(
     raw_wnd_filter: Option<Expr>,
     wnd_filter: Option<Expr>,
+    func_name: TokenStream,
 ) -> (TokenStream, TokenStream) {
     let mut abstract_wnd_filter = quote! {};
     let cb_wnd_filter = match (raw_wnd_filter, wnd_filter) {
@@ -138,7 +147,7 @@ fn build_wnd_filter(
         (_, Some(safe)) => {
             let span = syn::Error::new_spanned(&safe, "").span();
             abstract_wnd_filter = quote_spanned!(span =>
-            unsafe fn abstract_wnd_filter (h_wnd: HWND, u_msg: UINT,
+            unsafe fn #func_name (_h_wnd: HWND, u_msg: UINT,
                     w_param: WPARAM, l_param: LPARAM
                 ) -> UINT {
                 use ::arcdps::{WM_KEYDOWN, WM_KEYUP, WM_SYSKEYDOWN, WM_SYSKEYUP};
@@ -157,50 +166,11 @@ fn build_wnd_filter(
                     _ => u_msg,
                 }
             });
-            quote_spanned!(span => Some(__arcdps_gen_export::abstract_wnd_filter as _) )
+            quote_spanned!(span => Some(__arcdps_gen_export::#func_name as _) )
         }
         _ => quote! { None },
     };
     (abstract_wnd_filter, cb_wnd_filter)
-}
-
-fn build_wnd_nofilter(
-    raw_wnd_nofilter: Option<Expr>,
-    wnd_nofilter: Option<Expr>,
-) -> (TokenStream, TokenStream) {
-    let mut abstract_wnd_nofilter = quote! {};
-    let cb_wnd_nofilter = match (raw_wnd_nofilter, wnd_nofilter) {
-        (Some(raw), _) => {
-            let span = syn::Error::new_spanned(&raw, "").span();
-            quote_spanned!(span => Some(#raw as _) )
-        }
-        (_, Some(safe)) => {
-            let span = syn::Error::new_spanned(&safe, "").span();
-            abstract_wnd_nofilter = quote_spanned!(span =>
-            unsafe fn abstract_wnd_nofilter (h_wnd: HWND, u_msg: UINT,
-                    w_param: WPARAM, l_param: LPARAM
-                ) -> UINT {
-                use ::arcdps::{WM_KEYDOWN, WM_KEYUP, WM_SYSKEYDOWN, WM_SYSKEYUP};
-                match u_msg {
-                    WM_KEYDOWN | WM_KEYUP | WM_SYSKEYDOWN | WM_SYSKEYUP => {
-                        let key_down = u_msg & 1 == 0;
-                        let prev_key_down = (l_param >> 30) & 1 == 1;
-
-                        if #safe(w_param, key_down, prev_key_down)
-                        {
-                            u_msg
-                        } else {
-                            0
-                        }
-                    },
-                    _ => u_msg,
-                }
-            });
-            quote_spanned!(span => Some(__arcdps_gen_export::abstract_wnd_nofilter as _) )
-        }
-        _ => quote! { None },
-    };
-    (abstract_wnd_nofilter, cb_wnd_nofilter)
 }
 
 fn build_options_windows(
