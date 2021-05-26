@@ -150,6 +150,7 @@ fn build_wnd(
             unsafe fn #func_name (_h_wnd: HWND, u_msg: UINT,
                     w_param: WPARAM, l_param: LPARAM
                 ) -> UINT {
+                let _ = #safe as ::arcdps::WndProcCallback;
                 use ::arcdps::{WM_KEYDOWN, WM_KEYUP, WM_SYSKEYDOWN, WM_SYSKEYUP};
                 match u_msg {
                     WM_KEYDOWN | WM_KEYUP | WM_SYSKEYDOWN | WM_SYSKEYUP => {
@@ -187,6 +188,7 @@ fn build_options_windows(
             let span = syn::Error::new_spanned(&safe, "").span();
             abstract_options_windows = quote_spanned!(span =>
             unsafe fn abstract_options_windows(window_name: PCCHAR) -> bool {
+                let _ = #safe as ::arcdps::OptionsWindowsCallback;
                 let ui = UI.as_ref().unwrap();
                 #safe(ui, helpers::get_str_from_pc_char(window_name))
             });
@@ -211,6 +213,7 @@ fn build_options_end(
             let span = syn::Error::new_spanned(&safe, "").span();
             abstract_options_end = quote_spanned!(span =>
             unsafe fn abstract_options_end() {
+                let _ = #safe as ::arcdps::OptionsCallback;
                 let ui = UI.as_ref().unwrap();
                 #safe(ui)
             });
@@ -232,6 +235,7 @@ fn build_imgui(raw_imgui: Option<Expr>, imgui: Option<Expr>) -> (TokenStream, To
             let span = syn::Error::new_spanned(&safe, "").span();
             abstract_imgui = quote_spanned!(span =>
             unsafe fn abstract_imgui(loading: u32) {
+                let _ = #safe as ::arcdps::ImguiCallback;
                 let ui = UI.as_ref().unwrap();
                 #safe(ui, loading != 0)
             });
@@ -243,37 +247,21 @@ fn build_imgui(raw_imgui: Option<Expr>, imgui: Option<Expr>) -> (TokenStream, To
 }
 
 fn build_combat_local(
-    raw_combat_local: Option<Expr>,
-    combat_local: Option<Expr>,
+    raw_combat: Option<Expr>,
+    combat: Option<Expr>,
 ) -> (TokenStream, TokenStream) {
-    let mut abstract_combat_local = quote! {};
-    let cb_combat_local = match (raw_combat_local, combat_local) {
-        (Some(raw), _) => {
-            let span = syn::Error::new_spanned(&raw, "").span();
-            quote_spanned!(span => Some(#raw as _) )
-        }
-        (_, Some(safe)) => {
-            let span = syn::Error::new_spanned(&safe, "").span();
-            abstract_combat_local = quote_spanned!(span =>
-            unsafe fn abstract_combat_local(
-                    ev: *mut CombatEvent,
-                    src: *mut RawAgent,
-                    dst: *mut RawAgent,
-                    skill_name: PCCHAR,
-                    id: u64,
-                    revision: u64,
-                ) {
-                    let args = helpers::get_combat_args_from_raw(ev, src, dst, skill_name);
-                    #safe(args.ev, args.src, args.dst, args.skill_name, id, revision)
-            });
-            quote_spanned!(span => Some(__arcdps_gen_export::abstract_combat_local as _) )
-        }
-        _ => quote! { None },
-    };
-    (abstract_combat_local, cb_combat_local)
+    build_cbt(raw_combat, combat, quote! { abstract_combat_local })
 }
 
 fn build_combat(raw_combat: Option<Expr>, combat: Option<Expr>) -> (TokenStream, TokenStream) {
+    build_cbt(raw_combat, combat, quote! { abstract_combat })
+}
+
+fn build_cbt(
+    raw_combat: Option<Expr>,
+    combat: Option<Expr>,
+    func_name: TokenStream,
+) -> (TokenStream, TokenStream) {
     let mut abstract_combat = quote! {};
     let cb_combat = match (raw_combat, combat) {
         (Some(raw), _) => {
@@ -283,18 +271,19 @@ fn build_combat(raw_combat: Option<Expr>, combat: Option<Expr>) -> (TokenStream,
         (_, Some(safe)) => {
             let span = syn::Error::new_spanned(&safe, "").span();
             abstract_combat = quote_spanned!(span =>
-            unsafe fn abstract_combat(
-                    ev: *mut CombatEvent,
-                    src: *mut RawAgent,
-                    dst: *mut RawAgent,
+            unsafe fn #func_name(
+                    ev: *mut ::arcdps::CombatEvent,
+                    src: *mut ::arcdps::RawAgent,
+                    dst: *mut ::arcdps::RawAgent,
                     skill_name: PCCHAR,
                     id: u64,
                     revision: u64,
                 ) {
+                    let _ = #safe as ::arcdps::CombatCallback;
                     let args = helpers::get_combat_args_from_raw(ev, src, dst, skill_name);
                     #safe(args.ev, args.src, args.dst, args.skill_name, id, revision)
             });
-            quote_spanned!(span => Some(__arcdps_gen_export::abstract_combat as _) )
+            quote_spanned!(span => Some(__arcdps_gen_export::#func_name as _) )
         }
         _ => quote! { None },
     };
