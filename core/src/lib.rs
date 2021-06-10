@@ -1,13 +1,25 @@
 //! # Heavy WIP
 //! To see which fields are supported, have a look at [SupportedFields]
 
+mod exported_functions;
 pub mod helpers;
+#[cfg(feature = "log")]
+mod logging;
 mod raw_structs;
 
+pub use exported_functions::*;
 pub use raw_structs::*;
 
 pub use arcdps_codegen::*;
 pub use imgui;
+
+#[doc(hidden)]
+#[inline(always)]
+pub unsafe fn __init(arcdps: raw_structs::HANDLE) {
+    __set_handle(arcdps);
+    #[cfg(feature = "log")]
+    let _ = log::set_logger(&logging::LOGGER).map(|()| log::set_max_level(log::LevelFilter::Trace));
+}
 
 /// This struct isn't used anywhere. It is a reference on what fields are
 /// currently supported by the [arcdps_export!] macro.

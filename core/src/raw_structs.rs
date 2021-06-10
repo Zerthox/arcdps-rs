@@ -8,12 +8,19 @@ pub type UINT = u32;
 pub type WPARAM = usize;
 // noinspection SpellCheckingInspection
 pub type PCCHAR = *mut c_char;
+pub type LPCSTR = *const c_char;
 pub type HWND = *mut c_void;
+pub type HMODULE = *mut c_void;
+pub type HANDLE = *mut std::os::raw::c_void;
 
 pub const WM_KEYDOWN: u32 = 0x100;
 pub const WM_KEYUP: u32 = 0x101;
 pub const WM_SYSKEYDOWN: u32 = 0x104;
 pub const WM_SYSKEYUP: u32 = 0x105;
+
+extern "system" {
+    pub fn GetProcAddress(module: HMODULE, proc_name: LPCSTR) -> *mut c_void;
+}
 
 pub type RawWndprocCallback =
     unsafe fn(h_wnd: HWND, u_msg: UINT, w_param: WPARAM, l_param: LPARAM) -> UINT;
@@ -61,6 +68,13 @@ pub type CombatCallback = fn(
     revision: u64,
 );
 
+pub type Export0 = fn() -> *mut u16;
+pub type Export3 = fn(*mut u8);
+pub type Export5 = fn(*mut [*mut [[f32; 4]]; 5]);
+pub type Export6 = fn() -> u64;
+pub type Export7 = fn() -> u64;
+pub type Export8 = Export3;
+
 impl From<&RawAgent> for Agent<'_> {
     fn from(ag: &RawAgent) -> Self {
         let name = unsafe { get_str_from_pc_char(ag.name) };
@@ -80,7 +94,8 @@ impl From<&RawAgent> for Agent<'_> {
 /// Names are available for the duration of the fight.
 /// Due to this, this struct is not usable for longer than the function call.
 /// If you need it for longer than that, consider converting it to
-/// [`AgentOwned`]. ```
+/// [`AgentOwned`].
+/// ```
 /// use arcdps::*;
 /// let agent: AgentOwned = agent.into();
 /// ```

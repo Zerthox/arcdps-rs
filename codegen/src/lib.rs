@@ -101,7 +101,7 @@ pub fn arcdps_export(item: proc_macro::TokenStream) -> proc_macro::TokenStream {
                 _arcversion: PCCHAR,
                 imguictx: *mut imgui::sys::ImGuiContext,
                 _id3dd9: LPVOID,
-                _arcdll: HANDLE,
+                arcdll: HANDLE,
                 mallocfn: Option<unsafe extern "C" fn(sz: usize, user_data: *mut c_void) -> *mut c_void>,
                 freefn: Option<unsafe extern "C" fn(ptr: *mut c_void, user_data: *mut c_void)>,
             ) -> fn() -> &'static ArcDpsExport {
@@ -109,6 +109,7 @@ pub fn arcdps_export(item: proc_macro::TokenStream) -> proc_macro::TokenStream {
                 imgui::sys::igSetAllocatorFunctions(mallocfn, freefn, ::core::ptr::null_mut());
                 CTX = Some(imgui::Context::current());
                 UI = Some(imgui::Ui::from_ctx(CTX.as_ref().unwrap()));
+                ::arcdps::__init(arcdll);
                 load
             }
 

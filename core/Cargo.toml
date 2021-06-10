@@ -1,6 +1,6 @@
 [package]
 name = "arcdps"
-version = "0.5.0"
+version = "0.5.1"
 authors = ["Greaka <mrgreaka@gmail.com>"]
 edition = "2018"
 
@@ -13,3 +13,10 @@ path = "../codegen"
 [dependencies.imgui]
 git = "https://github.com/greaka/imgui-rs"
 #path = "../../imgui-rs/imgui"
+
+[dependencies.log]
+version = "0.4"
+optional = true
+
+[features]
+default = ["log"]
