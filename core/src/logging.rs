@@ -1,9 +1,15 @@
 use crate::{e3, e8};
 use log::{Metadata, Record};
 
-pub(crate) static LOGGER: ArcdpsLogger = ArcdpsLogger;
+pub(crate) struct ArcdpsLogger {
+    name: &'static str,
+}
 
-pub(crate) struct ArcdpsLogger;
+impl ArcdpsLogger {
+    pub(crate) fn new(name: &'static str) -> Self {
+        Self { name }
+    }
+}
 
 impl log::Log for ArcdpsLogger {
     fn enabled(&self, _metadata: &Metadata<'_>) -> bool {
@@ -11,14 +17,16 @@ impl log::Log for ArcdpsLogger {
     }
 
     fn log(&self, record: &Record<'_>) {
-        ArcdpsFileLogger::log(&ArcdpsFileLogger, record);
-        ArcdpsWindowLogger::log(&ArcdpsWindowLogger, record);
+        ArcdpsFileLogger::log(&ArcdpsFileLogger { name: self.name }, record);
+        ArcdpsWindowLogger::log(&ArcdpsWindowLogger { name: self.name }, record);
     }
 
     fn flush(&self) {}
 }
 
-struct ArcdpsFileLogger;
+struct ArcdpsFileLogger {
+    name: &'static str,
+}
 
 impl log::Log for ArcdpsFileLogger {
     fn enabled(&self, _metadata: &Metadata<'_>) -> bool {
@@ -27,7 +35,8 @@ impl log::Log for ArcdpsFileLogger {
 
     fn log(&self, record: &Record<'_>) {
         let body = format!(
-            "{}:{} {}: {}\0",
+            "{} - {}:{} {}: {}\0",
+            self.name,
             record.file().unwrap_or_default(),
             record.line().unwrap_or_default(),
             record.level(),
@@ -39,7 +48,9 @@ impl log::Log for ArcdpsFileLogger {
     fn flush(&self) {}
 }
 
-struct ArcdpsWindowLogger;
+struct ArcdpsWindowLogger {
+    name: &'static str,
+}
 
 impl log::Log for ArcdpsWindowLogger {
     fn enabled(&self, metadata: &Metadata<'_>) -> bool {
@@ -52,7 +63,8 @@ impl log::Log for ArcdpsWindowLogger {
         }
 
         let body = format!(
-            "{}:{} {}: {}\0",
+            "{} - {}:{} {}: {}\0",
+            self.name,
             record.file().unwrap_or_default(),
             record.line().unwrap_or_default(),
             record.level(),
