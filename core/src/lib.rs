@@ -15,10 +15,13 @@ pub use imgui;
 
 #[doc(hidden)]
 #[inline(always)]
-pub unsafe fn __init(arcdps: raw_structs::HANDLE) {
+pub unsafe fn __init(arcdps: raw_structs::HANDLE, name: &'static str) {
     __set_handle(arcdps);
     #[cfg(feature = "log")]
-    let _ = log::set_logger(&logging::LOGGER).map(|()| log::set_max_level(log::LevelFilter::Trace));
+    let _ = log::set_boxed_logger(Box::new(logging::ArcdpsLogger::new(name)))
+        .map(|()| log::set_max_level(log::LevelFilter::Trace));
+    #[cfg(not(feature="log"))]
+    let _ = name;   // only used for logging
 }
 
 /// This struct isn't used anywhere. It is a reference on what fields are
