@@ -70,7 +70,7 @@ pub type CombatCallback = fn(
 
 pub type Export0 = fn() -> *mut u16;
 pub type Export3 = fn(*mut u8);
-pub type Export5 = fn(*mut [*mut [[f32; 4]]; 5]);
+pub type Export5 = fn(*mut [*mut [f32; 4]; 5]);
 pub type Export6 = fn() -> u64;
 pub type Export7 = fn() -> u64;
 pub type Export8 = Export3;
