@@ -23,20 +23,20 @@ extern "system" {
 }
 
 pub type RawWndprocCallback =
-    unsafe fn(h_wnd: HWND, u_msg: UINT, w_param: WPARAM, l_param: LPARAM) -> UINT;
-pub type RawCombatCallback = unsafe fn(
-    ev: *mut CombatEvent,
-    src: *mut RawAgent,
-    dst: *mut RawAgent,
+    unsafe extern "C" fn(h_wnd: HWND, u_msg: UINT, w_param: WPARAM, l_param: LPARAM) -> UINT;
+pub type RawCombatCallback = unsafe extern "C" fn(
+    ev: Option<&CombatEvent>,
+    src: Option<&RawAgent>,
+    dst: Option<&RawAgent>,
     skill_name: PCCHAR,
     id: u64,
     revision: u64,
 );
-pub type RawImguiCallback = unsafe fn(not_character_select_or_loading: u32);
-pub type RawOptionsCallback = unsafe fn();
+pub type RawImguiCallback = unsafe extern "C" fn(not_character_select_or_loading: u32);
+pub type RawOptionsCallback = unsafe extern "C" fn();
 /// called once per 'window' option checkbox, with null at the end, non-zero
 /// return disables arcdps drawing that checkbox
-pub type RawOptionsWindowsCallback = unsafe fn(window_name: PCCHAR) -> bool;
+pub type RawOptionsWindowsCallback = unsafe extern "C" fn(window_name: PCCHAR) -> bool;
 
 /// Gets called on `get_init_address`.
 pub type InitFunc = fn();
@@ -44,7 +44,7 @@ pub type InitFunc = fn();
 pub type ReleaseFunc = fn();
 
 /// Gets called for each key pressed. Returning true will allow arcdps and Gw2
-/// to receive the key press. first parameter indicates the virtual key code (https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes)
+/// to receive the key press. first parameter indicates the virtual key code (<https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes>)
 /// second parameter is true if the key was pressed and false when released
 /// third parameter is true if the key was down before this event occured, for
 /// example by holding it down
@@ -68,12 +68,13 @@ pub type CombatCallback = fn(
     revision: u64,
 );
 
-pub type Export0 = fn() -> *mut u16;
-pub type Export3 = fn(*mut u8);
-pub type Export5 = fn(*mut [*mut imgui::sys::ImVec4; 5]);
-pub type Export6 = fn() -> u64;
-pub type Export7 = fn() -> u64;
+pub type Export0 = unsafe extern "C" fn() -> *mut u16;
+pub type Export3 = unsafe extern "C" fn(*mut u8);
+pub type Export5 = unsafe extern "C" fn(*mut [*mut imgui::sys::ImVec4; 5]);
+pub type Export6 = unsafe extern "C" fn() -> u64;
+pub type Export7 = unsafe extern "C" fn() -> u64;
 pub type Export8 = Export3;
+pub type Export9 = unsafe extern "C" fn(&CombatEvent, u32);
 
 impl From<&RawAgent> for Agent<'_> {
     fn from(ag: &RawAgent) -> Self {
@@ -179,7 +180,6 @@ pub struct RawAgent {
 
 // noinspection SpellCheckingInspection
 #[repr(C)]
-#[derive(Debug, Copy, Clone)]
 pub struct ArcDpsExport {
     pub size:            usize,
     pub sig:             u32,
@@ -195,5 +195,4 @@ pub struct ArcDpsExport {
     pub options_windows: Option<RawOptionsWindowsCallback>,
 }
 
-unsafe impl Send for ArcDpsExport {}
 unsafe impl Sync for ArcDpsExport {}

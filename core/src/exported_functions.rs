@@ -45,3 +45,8 @@ static mut E8: Option<Export8> = None;
 pub unsafe fn e8(s: *mut u8) {
     E8.get_or_insert_with(|| transmute(get_func("e8")))(s)
 }
+
+static mut E9: Option<Export9> = None;
+pub unsafe fn e9(ev: &CombatEvent, sig: u32) {
+    E9.get_or_insert_with(|| transmute(get_func("e9")))(ev, sig)
+}

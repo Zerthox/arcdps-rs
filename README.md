@@ -9,10 +9,11 @@ Current features include:
 - A simple interface for all callbacks
 - Optional opt out of safe abstractions to directly access the arcdps C interface
 - Imgui interfacing via `imgui-rs`
+- Logging to arcdps via the `log` crate
+- [unofficial extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases) bindings
 
 Still in development:
 - Exposing settings from arcdps
-- Logging to arcdps via the `log` crate
 
 Still exploring technical boundaries:
 - Arcdps-like snapping of imgui windows

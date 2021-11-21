@@ -2,34 +2,19 @@ use crate::*;
 use std::ffi::CStr;
 
 /// A helper function to convert raw arguments to safe abstractions
-#[allow(clippy::not_unsafe_ptr_arg_deref)]
 #[inline(always)]
 pub fn get_combat_args_from_raw<'a>(
-    raw_ev: *mut CombatEvent,
-    raw_src: *mut RawAgent,
-    raw_dst: *mut RawAgent,
+    raw_ev: Option<&'a CombatEvent>,
+    raw_src: Option<&'a RawAgent>,
+    raw_dst: Option<&'a RawAgent>,
     raw_skill_name: PCCHAR,
 ) -> CombatEventArgs<'a> {
-    let mut args = CombatEventArgs {
-        ev:         None,
-        src:        None,
-        dst:        None,
-        skill_name: None,
-    };
-
-    unsafe {
-        if !raw_ev.is_null() {
-            args.ev = Some(&*raw_ev)
-        }
-        if !raw_src.is_null() {
-            args.src = Some((&*raw_src).into());
-        }
-        if !raw_dst.is_null() {
-            args.dst = Some((&*raw_dst).into());
-        }
-        args.skill_name = get_str_from_pc_char(raw_skill_name);
-    };
-    args
+    CombatEventArgs {
+        ev:         raw_ev,
+        src:        raw_src.map(Into::into),
+        dst:        raw_dst.map(Into::into),
+        skill_name: unsafe { get_str_from_pc_char(raw_skill_name) },
+    }
 }
 
 /// A helper function to convert arcdps strings to [`&str`].
@@ -48,6 +33,19 @@ pub unsafe fn get_str_from_pc_char(src: PCCHAR) -> Option<&'static str> {
                 .to_str()
                 .unwrap_or_default(),
         )
+    }
+}
+
+/// A helper function to convert raw arguments to safe abstractions
+#[inline(always)]
+pub fn convert_extras_user(user: &RawUserInfo) -> UserInfo {
+    let name = unsafe { get_str_from_pc_char(user.account_name as _) };
+    UserInfo {
+        account_name: name.map(|n| n.trim_start_matches(':')),
+        join_time:    user.join_time,
+        role:         user.role,
+        subgroup:     user.subgroup,
+        ready_status: user.ready_status,
     }
 }
 
