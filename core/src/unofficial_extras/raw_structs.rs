@@ -1,5 +1,5 @@
 #[repr(u8)]
-#[derive(Copy, Clone)]
+#[derive(Copy, Clone, Debug)]
 pub enum UserRole {
     SquadLeader = 0,
     Lieutenant  = 1,
@@ -11,6 +11,7 @@ pub enum UserRole {
     Invalid     = 6,
 }
 
+#[derive(Debug)]
 pub struct UserInfoOwned {
     /// Account name, without leading ':'.
     pub account_name: Option<String>,
@@ -51,6 +52,7 @@ impl From<UserInfo<'_>> for UserInfoOwned {
     }
 }
 
+#[derive(Debug)]
 pub struct UserInfo<'a> {
     /// Account name, without leading ':'.
     pub account_name: Option<&'a str>,

@@ -197,7 +197,7 @@ fn build_extras_init(
 
                 let _ = #safe as ::arcdps::ExtrasInitFunc;
                 use ::arcdps::helpers::get_str_from_pc_char as pc;
-                let user = pc(addon.self_account_name as _);
+                let user = pc(addon.self_account_name as _).map(|n| n.trim_start_matches(':'));
                 let version = pc(addon.string_version as _);
 
                 #safe(user, version)
