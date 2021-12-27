@@ -1,5 +1,5 @@
 #[repr(u8)]
-#[derive(Copy, Clone, Debug)]
+#[derive(Copy, Clone, Debug, PartialEq)]
 pub enum UserRole {
     SquadLeader = 0,
     Lieutenant  = 1,
