@@ -1,6 +1,8 @@
-# Arcdps Rust Wrapper
+# Arcdps Plugin Bindings
 
-This is a WIP arcdps Rust Wrapper featuring safe abstractions where possible and sane.
+This provides arcdps plugin bindings featuring safe, zero-cost abstractions.
+
+Easily integrate into arcdps with just a few lines of code.
 
 ### Features
 
@@ -18,8 +20,29 @@ Still in development:
 Still exploring technical boundaries:
 - Arcdps-like snapping of imgui windows
 
-### Documentation
+### How to use
+A small example showcasing 2 of the many functions provided.
+If `init` returns an error, arcdps won't consider the plugin as loaded and will display the error.
+No other function, except for unofficial-extras functions, will be called afterwards.
+```rs
+use std::error::Error;
 
-You can build the documentation by invoking `cargo docs --open` for now.
+use arcdps::UserInfoIter;
 
-If you have any questions, please contact me or create a PR to improve it.
+arcdps::arcdps_export! {
+    name: "example addon",
+    sig: 123, // change this to a random number
+    unofficial_extras_squad_update: squad_update,
+    init: init,
+}
+
+fn squad_update(_users: UserInfoIter) {
+    for user in users.into_iter() {
+        println!("{:?}", user);
+    }
+}
+
+fn init() -> Result<(), Box<dyn Error>> {
+    Ok(())
+}
+```

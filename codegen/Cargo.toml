@@ -1,17 +1,20 @@
 [package]
 name = "arcdps_codegen"
-version = "0.1.1"
-authors = ["greaka <git@greaka.de>"]
+version = "0.7.0"
+authors = ["greaka <crates@greaka.de>"]
 edition = "2018"
+description = "Macros for arcdps"
+repository = "https://github.com/greaka/arcdps_bindings"
+license = "MIT/Apache-2.0"
 
 [lib]
 proc-macro = true
 
 [dependencies]
-quote = "1.0"
-proc-macro2 = "1.0"
-paste = "1.0"
+quote = "1.0.15"
+proc-macro2 = "1.0.36"
+paste = "1.0.6"
 
 [dependencies.syn]
-version = "1.0"
+version = "1.0.86"
 features = ["full"]
