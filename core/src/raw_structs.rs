@@ -1,6 +1,7 @@
 #![allow(clippy::upper_case_acronyms)]
-use crate::helpers::get_str_from_pc_char;
 use std::os::raw::{c_char, c_void};
+
+use crate::helpers::get_str_from_pc_char;
 
 pub type LPARAM = isize;
 pub type LPVOID = *mut c_void;
@@ -38,9 +39,9 @@ pub type RawOptionsCallback = unsafe extern "C" fn();
 /// return disables arcdps drawing that checkbox
 pub type RawOptionsWindowsCallback = unsafe extern "C" fn(window_name: PCCHAR) -> bool;
 
-/// Gets called on `get_init_address`.
-pub type InitFunc = fn();
-/// Gets called on `unload`.
+/// Gets called on load.
+pub type InitFunc = fn() -> Result<(), Box<dyn std::error::Error>>;
+/// Gets called on unload.
 pub type ReleaseFunc = fn();
 
 /// Gets called for each key pressed. Returning true will allow arcdps and Gw2

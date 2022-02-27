@@ -1,8 +1,9 @@
-use crate::raw_structs::*;
 use std::{
     ffi::{c_void, CString},
     mem::transmute,
 };
+
+use crate::raw_structs::*;
 
 static mut ARCDPS: HANDLE = 0 as _;
 
