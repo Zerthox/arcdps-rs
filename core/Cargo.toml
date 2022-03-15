@@ -20,6 +20,7 @@ version = "0.7.0"
 [dependencies.imgui]
 package = "arcdps-imgui"
 version = "0.8.0"
+features = ["tables-api"]
 #git = "https://github.com/gw2scratch/imgui-rs"
 #path = "../../imgui-rs/imgui"
 
