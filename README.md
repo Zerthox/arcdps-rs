@@ -36,7 +36,7 @@ arcdps::arcdps_export! {
     init: init,
 }
 
-fn squad_update(_users: UserInfoIter) {
+fn squad_update(users: UserInfoIter) {
     for user in users.into_iter() {
         println!("{:?}", user);
     }
