@@ -1,4 +1,4 @@
-//! # Heavy WIP
+//! # Macro usage
 //! To see which fields are supported, have a look at [SupportedFields]
 
 mod exported_functions;

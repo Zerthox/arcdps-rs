@@ -1,4 +1,4 @@
-use proc_macro2::{Span, TokenStream};
+use proc_macro2::TokenStream;
 use syn::{
     parse::ParseStream, punctuated::Punctuated, Error, Expr, FieldValue, Lit, LitStr, Member, Token,
 };
@@ -40,7 +40,7 @@ macro_rules! match_parse {
 }
 
 pub(crate) struct ArcDpsGen {
-    pub name: LitStr,
+    pub name: Option<LitStr>,
     pub sig: Expr,
     pub init: Option<Expr>,
     pub release: Option<Expr>,
@@ -69,8 +69,8 @@ impl syn::parse::Parse for ArcDpsGen {
         let fields: Punctuated<FieldValue, Token![,]> = Punctuated::parse_terminated(input)?;
 
         let mut gen: ArcDpsGen = Self {
-            name: LitStr::new("", Span::call_site()),
-            sig:  Expr::Verbatim(TokenStream::new()),
+            name: None,
+            sig: Expr::Verbatim(TokenStream::new()),
 
             init:    None,
             release: None,
@@ -96,17 +96,15 @@ impl syn::parse::Parse for ArcDpsGen {
             raw_unofficial_extras_squad_update: None,
         };
 
-        let mut name_done = false;
         let mut sig_done = false;
 
         for field in fields.into_iter() {
             if let Member::Named(name) = &field.member {
                 match name.to_string().as_str() {
                     "name" => {
-                        name_done = true;
                         gen.name = if let Expr::Lit(expr) = field.expr {
                             if let Lit::Str(lit) = expr.lit {
-                                lit
+                                Some(lit)
                             } else {
                                 return Err(Error::new_spanned(
                                     expr,
@@ -155,9 +153,6 @@ impl syn::parse::Parse for ArcDpsGen {
             }
         }
 
-        if !name_done {
-            return Err(Error::new(input.span(), "name field is required"));
-        }
         if !sig_done {
             return Err(Error::new(input.span(), "sig field is required"));
         }

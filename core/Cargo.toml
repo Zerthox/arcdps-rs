@@ -1,6 +1,6 @@
 [package]
 name = "arcdps"
-version = "0.7.0"
+version = "0.7.1"
 authors = ["Greaka <crates@greaka.de>"]
 edition = "2018"
 description = "Rust bindings for the Guild Wars 2 dps-meter with focus on ease-of-use and performance."
@@ -14,7 +14,7 @@ license = "MIT/Apache-2.0"
 once_cell = "1.4.1"
 
 [dependencies.arcdps_codegen]
-version = "0.7.0"
+version = "0.7.1"
 #path = "../codegen"
 
 [dependencies.imgui]

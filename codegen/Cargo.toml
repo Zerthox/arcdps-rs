@@ -1,6 +1,6 @@
 [package]
 name = "arcdps_codegen"
-version = "0.7.0"
+version = "0.7.1"
 authors = ["greaka <crates@greaka.de>"]
 edition = "2018"
 description = "Macros for arcdps"

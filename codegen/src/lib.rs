@@ -14,10 +14,16 @@ pub fn arcdps_export(item: proc_macro::TokenStream) -> proc_macro::TokenStream {
     let sig = input.sig;
     let build = std::env::var("CARGO_PKG_VERSION").expect("CARGO_PKG_VERSION is not set") + "\0";
     let build = syn::LitStr::new(build.as_str(), Span::call_site());
-    let name = input.name.value();
-    let name = syn::LitStr::new(name.as_str(), input.name.span());
-    let out_name = input.name.value() + "\0";
-    let out_name = syn::LitStr::new(out_name.as_str(), input.name.span());
+    let (raw_name, span) = if let Some(input_name) = input.name {
+        let name = input_name.value();
+        (name, input_name.span())
+    } else {
+        let name = std::env::var("CARGO_PKG_NAME").expect("CARGO_PKG_NAME is not set");
+        (name, Span::call_site())
+    };
+    let name = syn::LitStr::new(raw_name.as_str(), span.clone());
+    let out_name = raw_name + "\0";
+    let out_name = syn::LitStr::new(out_name.as_str(), span);
 
     let (abstract_combat, cb_combat) = build_combat(input.raw_combat, input.combat);
     let (abstract_combat_local, cb_combat_local) =
