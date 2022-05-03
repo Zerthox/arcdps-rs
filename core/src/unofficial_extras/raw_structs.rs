@@ -44,9 +44,9 @@ impl From<UserInfo<'_>> for UserInfoOwned {
     fn from(user: UserInfo<'_>) -> Self {
         Self {
             account_name: user.account_name.map(|x| x.to_string()),
-            join_time:    user.join_time,
-            role:         user.role,
-            subgroup:     user.subgroup,
+            join_time: user.join_time,
+            role: user.role,
+            subgroup: user.subgroup,
             ready_status: user.ready_status,
         }
     }

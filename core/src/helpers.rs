@@ -11,9 +11,9 @@ pub fn get_combat_args_from_raw<'a>(
     raw_skill_name: PCCHAR,
 ) -> CombatEventArgs<'a> {
     CombatEventArgs {
-        ev:         raw_ev,
-        src:        raw_src.map(Into::into),
-        dst:        raw_dst.map(Into::into),
+        ev: raw_ev,
+        src: raw_src.map(Into::into),
+        dst: raw_dst.map(Into::into),
         skill_name: unsafe { get_str_from_pc_char(raw_skill_name) },
     }
 }
@@ -43,16 +43,16 @@ pub fn convert_extras_user(user: &RawUserInfo) -> UserInfo {
     let name = unsafe { get_str_from_pc_char(user.account_name as _) };
     UserInfo {
         account_name: name.map(|n| n.trim_start_matches(':')),
-        join_time:    user.join_time,
-        role:         user.role,
-        subgroup:     user.subgroup,
+        join_time: user.join_time,
+        role: user.role,
+        subgroup: user.subgroup,
         ready_status: user.ready_status,
     }
 }
 
 pub struct CombatEventArgs<'a> {
-    pub ev:         Option<&'a CombatEvent>,
-    pub src:        Option<Agent<'a>>,
-    pub dst:        Option<Agent<'a>>,
+    pub ev: Option<&'a CombatEvent>,
+    pub src: Option<Agent<'a>>,
+    pub dst: Option<Agent<'a>>,
     pub skill_name: Option<&'static str>,
 }

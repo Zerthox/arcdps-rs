@@ -103,35 +103,35 @@ impl From<&RawAgent> for Agent<'_> {
 /// ```
 #[derive(Debug, Copy, Clone)]
 pub struct Agent<'a> {
-    pub name:  Option<&'a str>,
-    pub id:    usize,
-    pub prof:  u32,
+    pub name: Option<&'a str>,
+    pub id: usize,
+    pub prof: u32,
     pub elite: u32,
     pub self_: u32,
-    pub team:  u16,
+    pub team: u16,
 }
 
 /// An [`Agent`] with an owned [`String`].
 /// For more info see [`Agent`].
 #[derive(Debug, Clone)]
 pub struct AgentOwned {
-    pub name:  Option<String>,
-    pub id:    usize,
-    pub prof:  u32,
+    pub name: Option<String>,
+    pub id: usize,
+    pub prof: u32,
     pub elite: u32,
     pub self_: u32,
-    pub team:  u16,
+    pub team: u16,
 }
 
 impl From<Agent<'_>> for AgentOwned {
     fn from(ag: Agent<'_>) -> Self {
         AgentOwned {
-            name:  ag.name.map(|x| x.to_string()),
-            id:    ag.id,
-            prof:  ag.prof,
+            name: ag.name.map(|x| x.to_string()),
+            id: ag.id,
+            prof: ag.prof,
             elite: ag.elite,
             self_: ag.self_,
-            team:  ag.team,
+            team: ag.team,
         }
     }
 }
@@ -139,60 +139,60 @@ impl From<Agent<'_>> for AgentOwned {
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct CombatEvent {
-    pub time:                   u64,
-    pub src_agent:              usize,
-    pub dst_agent:              usize,
-    pub value:                  i32,
-    pub buff_dmg:               i32,
-    pub overstack_value:        u32,
-    pub skill_id:               u32,
-    pub src_instance_id:        u16,
-    pub dst_instance_id:        u16,
+    pub time: u64,
+    pub src_agent: usize,
+    pub dst_agent: usize,
+    pub value: i32,
+    pub buff_dmg: i32,
+    pub overstack_value: u32,
+    pub skill_id: u32,
+    pub src_instance_id: u16,
+    pub dst_instance_id: u16,
     pub src_master_instance_id: u16,
     pub dst_master_instance_id: u16,
-    pub iff:                    u8,
-    pub buff:                   u8,
-    pub result:                 u8,
-    pub is_activation:          u8,
-    pub is_buff_remove:         u8,
-    pub is_ninety:              u8,
-    pub is_fifty:               u8,
-    pub is_moving:              u8,
-    pub is_statechange:         u8,
-    pub is_flanking:            u8,
-    pub is_shields:             u8,
-    pub is_off_cycle:           u8,
-    pub pad61:                  u8,
-    pub pad62:                  u8,
-    pub pad63:                  u8,
-    pub pad64:                  u8,
+    pub iff: u8,
+    pub buff: u8,
+    pub result: u8,
+    pub is_activation: u8,
+    pub is_buff_remove: u8,
+    pub is_ninety: u8,
+    pub is_fifty: u8,
+    pub is_moving: u8,
+    pub is_statechange: u8,
+    pub is_flanking: u8,
+    pub is_shields: u8,
+    pub is_off_cycle: u8,
+    pub pad61: u8,
+    pub pad62: u8,
+    pub pad63: u8,
+    pub pad64: u8,
 }
 
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct RawAgent {
-    pub name:  PCCHAR,
-    pub id:    usize,
-    pub prof:  u32,
+    pub name: PCCHAR,
+    pub id: usize,
+    pub prof: u32,
     pub elite: u32,
     pub self_: u32,
-    pub team:  u16,
+    pub team: u16,
 }
 
 // noinspection SpellCheckingInspection
 #[repr(C)]
 pub struct ArcDpsExport {
-    pub size:            usize,
-    pub sig:             u32,
-    pub imgui_version:   u32,
-    pub out_name:        *const u8,
-    pub out_build:       *const u8,
-    pub wnd_nofilter:    Option<RawWndprocCallback>,
-    pub combat:          Option<RawCombatCallback>,
-    pub imgui:           Option<RawImguiCallback>,
-    pub options_end:     Option<RawOptionsCallback>,
-    pub combat_local:    Option<RawCombatCallback>,
-    pub wnd_filter:      Option<RawWndprocCallback>,
+    pub size: usize,
+    pub sig: u32,
+    pub imgui_version: u32,
+    pub out_name: *const u8,
+    pub out_build: *const u8,
+    pub wnd_nofilter: Option<RawWndprocCallback>,
+    pub combat: Option<RawCombatCallback>,
+    pub imgui: Option<RawImguiCallback>,
+    pub options_end: Option<RawOptionsCallback>,
+    pub combat_local: Option<RawCombatCallback>,
+    pub wnd_filter: Option<RawWndprocCallback>,
     pub options_windows: Option<RawOptionsWindowsCallback>,
 }
 
