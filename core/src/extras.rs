@@ -1,5 +1,7 @@
-#[repr(u8)]
+use std::{iter::Map, slice::Iter};
+
 #[derive(Copy, Clone, Debug, PartialEq)]
+#[repr(u8)]
 pub enum UserRole {
     SquadLeader = 0,
     Lieutenant = 1,
@@ -143,7 +145,6 @@ pub struct RawExtrasAddonInfo {
 // uint64_t pUpdatedUsersCount);
 pub type RawSquadUpdateCallbackSignature = unsafe extern "C" fn(*const RawUserInfo, u64);
 
-use std::{iter::Map, slice::Iter};
 pub type ExtrasSquadUpdateCallback = fn(UserInfoIter);
 pub type UserInfoIter<'a> = Map<Iter<'a, RawUserInfo>, UserConvert>;
 pub type UserConvert = for<'r> fn(&'r RawUserInfo) -> UserInfo;

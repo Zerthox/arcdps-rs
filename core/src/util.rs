@@ -1,5 +1,8 @@
-use crate::*;
-use std::ffi::CStr;
+use crate::{
+    api::{Agent, CombatEvent, RawAgent},
+    extras::{RawUserInfo, UserInfo},
+};
+use std::{ffi::CStr, os::raw::c_char};
 
 /// A helper function to convert raw arguments to safe abstractions
 #[inline(always)]
@@ -7,7 +10,7 @@ pub fn get_combat_args_from_raw<'a>(
     raw_ev: Option<&'a CombatEvent>,
     raw_src: Option<&'a RawAgent>,
     raw_dst: Option<&'a RawAgent>,
-    raw_skill_name: PCCHAR,
+    raw_skill_name: *const c_char,
 ) -> CombatEventArgs<'a> {
     CombatEventArgs {
         ev: raw_ev,
@@ -25,15 +28,11 @@ pub fn get_combat_args_from_raw<'a>(
 /// plugin, but agent names are only available for the duration of the fight.
 /// Reduce the lifetime in the ongoing process as needed!
 #[inline(always)]
-pub unsafe fn get_str_from_pc_char(src: PCCHAR) -> Option<&'static str> {
+pub unsafe fn get_str_from_pc_char(src: *const c_char) -> Option<&'static str> {
     if src.is_null() {
         None
     } else {
-        Some(
-            CStr::from_ptr(src as *const std::os::raw::c_char)
-                .to_str()
-                .unwrap_or_default(),
-        )
+        Some(CStr::from_ptr(src).to_str().unwrap_or_default())
     }
 }
 
