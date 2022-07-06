@@ -2,13 +2,13 @@
 #[derive(Copy, Clone, Debug, PartialEq)]
 pub enum UserRole {
     SquadLeader = 0,
-    Lieutenant  = 1,
-    Member      = 2,
-    Invited     = 3,
-    Applied     = 4,
-    None        = 5,
+    Lieutenant = 1,
+    Member = 2,
+    Invited = 3,
+    Applied = 4,
+    None = 5,
     /// Internal only
-    Invalid     = 6,
+    Invalid = 6,
 }
 
 #[derive(Debug)]

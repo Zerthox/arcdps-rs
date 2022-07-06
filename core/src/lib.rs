@@ -9,8 +9,8 @@ mod raw_structs;
 mod unofficial_extras;
 
 pub use arcdps_codegen::*;
+pub use arcdps_imgui as imgui;
 pub use exported_functions::*;
-pub use imgui;
 pub use raw_structs::*;
 pub use unofficial_extras::raw_structs::*;
 

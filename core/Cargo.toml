@@ -1,33 +1,19 @@
 [package]
 name = "arcdps"
-version = "0.7.1"
-authors = ["Greaka <crates@greaka.de>"]
+version = "0.8.0"
+authors = ["Zerthox", "Greaka"]
 edition = "2018"
-description = "Rust bindings for the Guild Wars 2 dps-meter with focus on ease-of-use and performance."
-repository = "https://github.com/greaka/arcdps_bindings"
+description = "Rust bindings for the Guild Wars 2 DPS-meter."
+repository = "https://github.com/zerthox/arcdps-bindings"
 categories = ["api-bindings"]
 keywords = ["arcdps", "guild-wars-2", "ffi", "addon", "framework"]
-readme = "../README.md"
 license = "MIT/Apache-2.0"
 
 [dependencies]
-once_cell = "1.4.1"
-
-[dependencies.arcdps_codegen]
-version = "0.7.1"
-#path = "../codegen"
-
-[dependencies.imgui]
-package = "arcdps-imgui"
-version = "0.8.0"
-features = ["tables-api"]
-#git = "https://github.com/gw2scratch/imgui-rs"
-#path = "../../imgui-rs/imgui"
-
-[dependencies.log]
-version = "0.4.14"
-optional = true
-features = ["std"]
+once_cell = "1.4"
+arcdps-codegen = { path = "../codegen" }
+arcdps-imgui = { version = "0.8", features = ["tables-api"] }
+log = { version = "0.4", optional = true, features = ["std"] }
 
 [features]
 default = ["log"]

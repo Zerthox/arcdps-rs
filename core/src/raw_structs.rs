@@ -1,13 +1,12 @@
 #![allow(clippy::upper_case_acronyms)]
-use std::os::raw::{c_char, c_void};
 
-use crate::helpers::get_str_from_pc_char;
+use crate::{helpers::get_str_from_pc_char, imgui};
+use std::os::raw::{c_char, c_void};
 
 pub type LPARAM = isize;
 pub type LPVOID = *mut c_void;
 pub type UINT = u32;
 pub type WPARAM = usize;
-// noinspection SpellCheckingInspection
 pub type PCCHAR = *mut c_char;
 pub type LPCSTR = *const c_char;
 pub type HWND = *mut c_void;

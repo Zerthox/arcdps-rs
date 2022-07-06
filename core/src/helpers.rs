@@ -1,6 +1,5 @@
-use std::ffi::CStr;
-
 use crate::*;
+use std::ffi::CStr;
 
 /// A helper function to convert raw arguments to safe abstractions
 #[inline(always)]

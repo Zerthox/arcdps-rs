@@ -1,6 +1,5 @@
-use log::{Metadata, Record};
-
 use crate::{e3, e8};
+use log::{Metadata, Record};
 
 pub(crate) struct ArcdpsLogger {
     name: &'static str,
