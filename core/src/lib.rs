@@ -1,31 +1,36 @@
 //! # Macro usage
 //! To see which fields are supported, have a look at [SupportedFields]
 
-mod exported_functions;
-pub mod helpers;
-#[cfg(feature = "log")]
-mod logging;
+pub mod api;
+pub mod exports;
 mod raw_structs;
 mod unofficial_extras;
+pub mod util;
+
+// #[cfg(feature = "log")]
+// mod logging;
 
 pub use arcdps_codegen::*;
 pub use arcdps_imgui as imgui;
-pub use exported_functions::*;
 pub use raw_structs::*;
 pub use unofficial_extras::raw_structs::*;
+
+use std::os::raw::c_char;
+use windows::Win32::Foundation::HINSTANCE;
 
 #[doc(hidden)]
 #[inline(always)]
 pub unsafe fn __init(
-    arc_version: PCCHAR,
-    arcdps: raw_structs::HANDLE,
+    arc_version: *mut c_char,
+    arcdps: HINSTANCE,
     #[allow(unused)] name: &'static str,
 ) {
     __set_handle(arcdps);
-    ARC_VERSION = helpers::get_str_from_pc_char(arc_version);
-    #[cfg(feature = "log")]
-    let _ = log::set_boxed_logger(Box::new(logging::ArcdpsLogger::new(name)))
-        .map(|()| log::set_max_level(log::LevelFilter::Trace));
+    ARC_VERSION = util::get_str_from_pc_char(arc_version);
+
+    // #[cfg(feature = "log")]
+    // let _ = log::set_boxed_logger(Box::new(logging::ArcdpsLogger::new(name)))
+    //     .map(|()| log::set_max_level(log::LevelFilter::Trace));
 }
 
 static mut ARC_VERSION: Option<&'static str> = None;
@@ -36,7 +41,7 @@ pub fn arcdps_version() -> &'static str {
 }
 
 /// This struct isn't used anywhere. It is a reference on what fields are
-/// currently supported by the [arcdps_export!] macro.
+/// currently supported by the [`arcdps_export`] macro.
 pub struct SupportedFields {
     pub name: &'static str,
     pub sig: u32,
