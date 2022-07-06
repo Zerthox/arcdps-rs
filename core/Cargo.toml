@@ -2,7 +2,7 @@
 name = "arcdps"
 version = "0.8.0"
 authors = ["Zerthox", "Greaka"]
-edition = "2018"
+edition = "2021"
 description = "Rust bindings for the Guild Wars 2 DPS-meter."
 repository = "https://github.com/zerthox/arcdps-bindings"
 categories = ["api-bindings"]
