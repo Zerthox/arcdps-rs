@@ -7,6 +7,7 @@ pub enum UserRole {
     Invited = 3,
     Applied = 4,
     None = 5,
+
     /// Internal only
     Invalid = 6,
 }
@@ -29,6 +30,7 @@ pub struct UserInfoOwned {
     pub subgroup: u8,
 
     /// Whether this player is ready or not (in a squad ready check).
+    ///
     /// ### Remarks
     /// `role == `[`UserRole::SquadLeader`] and `ready_status == true` implies
     /// that a ready check was just started. Similarly, `role ==
@@ -70,6 +72,7 @@ pub struct UserInfo<'a> {
     pub subgroup: u8,
 
     /// Whether this player is ready or not (in a squad ready check).
+    ///
     /// ### Remarks
     /// `role == `[`UserRole::SquadLeader`] and `ready_status == true` implies
     /// that a ready check was just started. Similarly, `role ==
@@ -100,6 +103,7 @@ pub struct RawUserInfo {
     pub subgroup: u8,
 
     /// Whether this player is ready or not (in a squad ready check).
+    ///
     /// ### Remarks
     /// `role == `[`UserRole::SquadLeader`] and `ready_status == true` implies
     /// that a ready check was just started. Similarly, `role ==

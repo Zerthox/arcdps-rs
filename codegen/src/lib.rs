@@ -4,7 +4,6 @@ use proc_macro2::{Span, TokenStream};
 use quote::{quote, quote_spanned};
 use syn::{Expr, LitStr};
 
-// noinspection SpellCheckingInspection
 /// For documentation on how to use this, visit [`SupportedFields`]
 ///
 /// [`SupportedFields`]: ./struct.SupportedFields.html

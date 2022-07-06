@@ -24,6 +24,7 @@ extern "system" {
 
 pub type RawWndprocCallback =
     unsafe extern "C" fn(h_wnd: HWND, u_msg: UINT, w_param: WPARAM, l_param: LPARAM) -> UINT;
+
 pub type RawCombatCallback = unsafe extern "C" fn(
     ev: Option<&CombatEvent>,
     src: Option<&RawAgent>,
@@ -32,8 +33,11 @@ pub type RawCombatCallback = unsafe extern "C" fn(
     id: u64,
     revision: u64,
 );
+
 pub type RawImguiCallback = unsafe extern "C" fn(not_character_select_or_loading: u32);
+
 pub type RawOptionsCallback = unsafe extern "C" fn();
+
 /// called once per 'window' option checkbox, with null at the end, non-zero
 /// return disables arcdps drawing that checkbox
 pub type RawOptionsWindowsCallback = unsafe extern "C" fn(window_name: PCCHAR) -> bool;
@@ -49,15 +53,19 @@ pub type ReleaseFunc = fn();
 /// third parameter is true if the key was down before this event occured, for
 /// example by holding it down
 pub type WndProcCallback = fn(key: usize, key_down: bool, prev_key_down: bool) -> bool;
+
 /// Provides a [imgui::Ui] object that is needed to draw anything.
 /// The second parameter is true whenever the player is __not__ in character
 /// select, loading screens or forced cameras.
 pub type ImguiCallback = fn(ui: &imgui::Ui, not_character_select_or_loading: bool);
+
 /// Provides a [imgui::Ui] object that is needed to draw anything.
 pub type OptionsCallback = fn(ui: &imgui::Ui);
+
 /// Called per window option checkbox. Does not draw the checkbox if returned
 /// true.
 pub type OptionsWindowsCallback = fn(ui: &imgui::Ui, window_name: Option<&str>) -> bool;
+
 /// Provides safe abstractions for the combat event.
 pub type CombatCallback = fn(
     ev: Option<&CombatEvent>,
@@ -73,7 +81,7 @@ pub type Export3 = unsafe extern "C" fn(*mut u8);
 pub type Export5 = unsafe extern "C" fn(*mut [*mut imgui::sys::ImVec4; 5]);
 pub type Export6 = unsafe extern "C" fn() -> u64;
 pub type Export7 = unsafe extern "C" fn() -> u64;
-pub type Export8 = Export3;
+pub type Export8 = unsafe extern "C" fn(*mut u8);
 pub type Export9 = unsafe extern "C" fn(&CombatEvent, u32);
 
 impl From<&RawAgent> for Agent<'_> {
@@ -91,11 +99,13 @@ impl From<&RawAgent> for Agent<'_> {
 }
 
 /// Represents an agent in a combat event.
+///
 /// ### Remarks
 /// Names are available for the duration of the fight.
 /// Due to this, this struct is not usable for longer than the function call.
 /// If you need it for longer than that, consider converting it to
 /// [`AgentOwned`].
+///
 /// ```
 /// use arcdps::*;
 /// let agent: AgentOwned = agent.into();
@@ -178,7 +188,6 @@ pub struct RawAgent {
     pub team: u16,
 }
 
-// noinspection SpellCheckingInspection
 #[repr(C)]
 pub struct ArcDpsExport {
     pub size: usize,

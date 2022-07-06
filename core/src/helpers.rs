@@ -18,6 +18,7 @@ pub fn get_combat_args_from_raw<'a>(
 }
 
 /// A helper function to convert arcdps strings to [`&str`].
+///
 /// ### Remarks
 /// The result is not necessarily static.
 /// delta confirmed that skill names are available for the whole lifetime of the
