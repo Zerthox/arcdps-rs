@@ -8,8 +8,5 @@ pub mod extras;
 pub mod instance;
 pub mod util;
 
-// #[cfg(feature = "log")]
-// mod logging;
-
 pub use arcdps_codegen::*;
 pub use arcdps_imgui as imgui;
