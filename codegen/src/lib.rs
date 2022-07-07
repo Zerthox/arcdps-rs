@@ -56,14 +56,14 @@ pub fn arcdps_export(item: proc_macro::TokenStream) -> proc_macro::TokenStream {
 
     let init = if let Some(init) = input.init {
         let span = syn::Error::new_spanned(&init, "").span();
-        quote_spanned!(span=> (#init as InitFunc)())
+        quote_spanned!(span=> (#init as ::arcdps::callbacks::InitFunc)())
     } else {
         quote! { Ok(()) }
     };
 
     let release = if let Some(release) = input.release {
         let span = syn::Error::new_spanned(&release, "").span();
-        quote_spanned!(span=> (#release as ReleaseFunc)();)
+        quote_spanned!(span=> (#release as ::arcdps::callbacks::ReleaseFunc)();)
     } else {
         quote! {}
     };
@@ -190,8 +190,8 @@ fn build_wnd(
         (_, Some(safe)) => {
             let span = syn::Error::new_spanned(&safe, "").span();
             abstract_wnd_filter = quote_spanned! {span=>
-                unsafe extern "C" fn #func_name (_h_wnd: *mut c_void, u_msg: u32, w_param: WPARAM, l_param: LPARAM) -> u32 {
-                    let _ = #safe as ::arcdps::WndProcCallback;
+                unsafe extern "C" fn #func_name(_h_wnd: *mut c_void, u_msg: u32, w_param: WPARAM, l_param: LPARAM) -> u32 {
+                    let _ = #safe as ::arcdps::callbacks::WndProcCallback;
                     match u_msg {
                         WM_KEYDOWN | WM_KEYUP | WM_SYSKEYDOWN | WM_SYSKEYUP => {
                             let key_down = u_msg & 1 == 0;
@@ -229,7 +229,7 @@ fn build_options_windows(
             let span = syn::Error::new_spanned(&safe, "").span();
             abstract_options_windows = quote_spanned! {span =>
                 unsafe extern "C" fn abstract_options_windows(window_name: *mut c_char) -> bool {
-                    let _ = #safe as ::arcdps::OptionsWindowsCallback;
+                    let _ = #safe as ::arcdps::callbacks::OptionsWindowsCallback;
                     let ui = UI.as_ref().unwrap();
                     #safe(ui, str_from_cstr(window_name))
                 }
@@ -256,7 +256,7 @@ fn build_options_end(
             let span = syn::Error::new_spanned(&safe, "").span();
             abstract_options_end = quote_spanned! {span =>
                 unsafe extern "C" fn abstract_options_end() {
-                    let _ = #safe as ::arcdps::OptionsCallback;
+                    let _ = #safe as ::arcdps::callbacks::OptionsCallback;
                     let ui = UI.as_ref().unwrap();
                     #safe(ui)
                 }
@@ -280,7 +280,7 @@ fn build_imgui(raw_imgui: Option<Expr>, imgui: Option<Expr>) -> (TokenStream, To
             let span = syn::Error::new_spanned(&safe, "").span();
             abstract_imgui = quote_spanned! {span =>
                 unsafe extern "C" fn abstract_imgui(loading: u32) {
-                    let _ = #safe as ::arcdps::ImguiCallback;
+                    let _ = #safe as ::arcdps::callbacks::ImguiCallback;
                     let ui = UI.as_ref().unwrap();
                     #safe(ui, loading != 0)
                 }
@@ -319,16 +319,15 @@ fn build_combat_helper(
             let span = syn::Error::new_spanned(&safe, "").span();
             abstract_combat = quote_spanned! {span =>
                 unsafe extern "C" fn #func_name(
-                        ev: Option<&::arcdps::RawCombatEvent>,
-                        src: Option<&::arcdps::RawAgent>,
-                        dst: Option<&::arcdps::RawAgent>,
+                        event: Option<&::arcdps:api:::RawCombatEvent>,
+                        src: Option<&::arcdps::api::RawAgent>,
+                        dst: Option<&::arcdps::api::RawAgent>,
                         skill_name: *mut c_char,
                         id: u64,
                         revision: u64,
                     ) {
-                        let _ = #safe as ::arcdps::CombatCallback;
-                        let args = ::arcdps::helpers::get_combat_args_from_raw(ev, src, dst, skill_name);
-                        #safe(args.ev, args.src, args.dst, args.skill_name, id, revision)
+                        let _ = #safe as ::arcdps::callbacks::CombatCallback;
+                        #safe(event.into(), src.into(), dst.into(), str_from_cstr(skill_name), id, revision)
                 }
             };
             quote_spanned!(span=> Some(__arcdps_gen_export::#func_name as _) )
@@ -352,10 +351,10 @@ fn build_extras_squad_update(
         (_, Some(safe)) => {
             let span = syn::Error::new_spanned(&safe, "").span();
             abstract_wrapper = quote_spanned! {span=>
-                unsafe extern "C" fn abstract_extras_squad_update(users: *const ::arcdps::RawUserInfo, count: u64) {
-                    let _ = #safe as ::arcdps::ExtrasSquadUpdateCallback;
+                unsafe extern "C" fn abstract_extras_squad_update(users: *const ::arcdps::extras::RawUserInfo, count: u64) {
+                    let _ = #safe as ::arcdps::extras::ExtrasSquadUpdateCallback;
                     let users = ::std::slice::from_raw_parts(users, count as _);
-                    let users = users.iter().map(::arcdps::helpers::convert_extras_user as ::arcdps::UserConvert);
+                    let users = users.iter().map(::arcdps::util::convert_extras_user);
                     #safe(users)
                 }
             };
@@ -381,7 +380,7 @@ fn build_extras_init(
         (Some(raw), _) => {
             let span = syn::Error::new_spanned(&raw, "").span();
             quote_spanned! {span=>
-                let _ = #raw as ::arcdps::RawExtrasSubscriberInitSignature;
+                let _ = #raw as ::arcdps::extras:::RawExtrasSubscriberInitSignature;
 
                 #raw(addon, sub)
             }
@@ -392,7 +391,7 @@ fn build_extras_init(
                 sub.subscriber_name = #name.as_ptr();
                 sub.squad_update_callback = #squad_cb;
 
-                let _ = #safe as ::arcdps::ExtrasInitFunc;
+                let _ = #safe as ::arcdps::extras::ExtrasInitFunc;
                 let user = str_from_cstr(addon.self_account_name as _).map(|n| n.trim_start_matches(':'));
                 let version = str_from_cstr(addon.string_version as _);
 
@@ -409,7 +408,7 @@ fn build_extras_init(
     quote_spanned! {abstract_wrapper.span()=>
         #[no_mangle]
         unsafe extern "system" fn arcdps_unofficial_extras_subscriber_init(
-            addon: &::arcdps::RawExtrasAddonInfo, sub: &mut ::arcdps::RawExtrasSubscriberInfo) {
+            addon: &::arcdps::extras::RawExtrasAddonInfo, sub: &mut ::arcdps::extras::RawExtrasSubscriberInfo) {
 
             #abstract_wrapper
         }
