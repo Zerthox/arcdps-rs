@@ -10,7 +10,8 @@ pub mod extras;
 pub mod instance;
 pub mod util;
 
-pub use arcdps_codegen::*;
+pub use api::{evtc::*, game::*, Agent, AgentOwned, CombatEvent};
+pub use arcdps_codegen::arcdps_export;
 pub use arcdps_imgui as imgui;
 
 use crate::instance::ArcInstance;
