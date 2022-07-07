@@ -2,7 +2,7 @@ mod parse;
 
 use proc_macro2::{Span, TokenStream};
 use quote::{quote, quote_spanned};
-use syn::{Expr, LitStr};
+use syn::{spanned::Spanned, Expr, LitStr};
 
 /// For documentation on how to use this, visit [`SupportedFields`]
 ///
@@ -12,7 +12,7 @@ pub fn arcdps_export(item: proc_macro::TokenStream) -> proc_macro::TokenStream {
     let input = syn::parse_macro_input!(item as parse::ArcDpsGen);
     let sig = input.sig;
     let build = std::env::var("CARGO_PKG_VERSION").expect("CARGO_PKG_VERSION is not set") + "\0";
-    let build = syn::LitStr::new(build.as_str(), Span::call_site());
+    let build = LitStr::new(build.as_str(), Span::call_site());
     let (raw_name, span) = if let Some(input_name) = input.name {
         let name = input_name.value();
         (name, input_name.span())
@@ -20,11 +20,11 @@ pub fn arcdps_export(item: proc_macro::TokenStream) -> proc_macro::TokenStream {
         let name = std::env::var("CARGO_PKG_NAME").expect("CARGO_PKG_NAME is not set");
         (name, Span::call_site())
     };
-    let name = syn::LitStr::new(raw_name.as_str(), span.clone());
+    let name = LitStr::new(raw_name.as_str(), span.clone());
     let out_name = raw_name + "\0";
-    let out_name = syn::LitStr::new(out_name.as_str(), span);
+    let out_name = LitStr::new(out_name.as_str(), span);
 
-    let (abstract_combat, cb_combat) = build_combat(input.raw_combat, input.combat);
+    let (abstract_combat, cb_combat) = build_combat_area(input.raw_combat, input.combat);
     let (abstract_combat_local, cb_combat_local) =
         build_combat_local(input.raw_combat_local, input.combat_local);
     let (abstract_imgui, cb_imgui) = build_imgui(input.raw_imgui, input.imgui);
@@ -56,14 +56,14 @@ pub fn arcdps_export(item: proc_macro::TokenStream) -> proc_macro::TokenStream {
 
     let init = if let Some(init) = input.init {
         let span = syn::Error::new_spanned(&init, "").span();
-        quote_spanned! (span => (#init as InitFunc)())
+        quote_spanned!(span=> (#init as InitFunc)())
     } else {
-        quote! {Ok(())}
+        quote! { Ok(()) }
     };
 
     let release = if let Some(release) = input.release {
         let span = syn::Error::new_spanned(&release, "").span();
-        quote_spanned! (span => (#release as ReleaseFunc)();)
+        quote_spanned!(span=> (#release as ReleaseFunc)();)
     } else {
         quote! {}
     };
@@ -142,8 +142,8 @@ pub fn arcdps_export(item: proc_macro::TokenStream) -> proc_macro::TokenStream {
             }
 
             #[no_mangle]
-            // export -- arcdps looks for this exported function and calls the address it returns on client load
-            // if you need any of the ignored values, create an issue with your use case
+            /// ArcDPS looks for this exported function and calls the address it returns on client load.
+            /// If you need any of the ignored values, create an issue with your use case.
             pub unsafe extern "system" fn get_init_addr(
                 arc_version: PCCHAR,
                 imguictx: *mut imgui::sys::ImGuiContext,
@@ -164,89 +164,14 @@ pub fn arcdps_export(item: proc_macro::TokenStream) -> proc_macro::TokenStream {
             static mut UI: Option<imgui::Ui> = None;
 
             #[no_mangle]
-            /* export -- arcdps looks for this exported function and calls the address it returns on client exit */
+            /// ArcDPS looks for this exported function and calls the address it returns on client exit.
             pub extern "system" fn get_release_addr() -> LPVOID {
                 unload as LPVOID
             }
         }
     };
+
     res.into()
-}
-
-fn build_extras_squad_update(
-    raw: Option<Expr>,
-    safe: Option<Expr>,
-) -> (TokenStream, Option<TokenStream>) {
-    let mut abstract_wrapper = quote! {};
-    let cb_safe = match (raw, safe) {
-        (Some(raw), _) => {
-            let span = syn::Error::new_spanned(&raw, "").span();
-            Some(quote_spanned!(span => Some(#raw as _) ))
-        }
-        (_, Some(safe)) => {
-            let span = syn::Error::new_spanned(&safe, "").span();
-            abstract_wrapper = quote_spanned!(span =>
-            unsafe extern "C" fn abstract_extras_squad_update(users: *const ::arcdps::RawUserInfo, count: u64) {
-                let _ = #safe as ::arcdps::ExtrasSquadUpdateCallback;
-                let users = ::std::slice::from_raw_parts(users, count as _);
-                let users = users.iter().map(::arcdps::helpers::convert_extras_user as ::arcdps::UserConvert);
-                #safe(users)
-            });
-            Some(
-                quote_spanned!(span => Some(__arcdps_gen_export::abstract_extras_squad_update as _) ),
-            )
-        }
-        _ => None,
-    };
-    (abstract_wrapper, cb_safe)
-}
-
-fn build_extras_init(
-    raw: Option<Expr>,
-    safe: Option<Expr>,
-    squad_update: Option<TokenStream>,
-    name: &LitStr,
-) -> TokenStream {
-    let has_update = squad_update.is_some();
-    let squad_cb = squad_update.unwrap_or(quote! { None });
-    let abstract_wrapper = match (raw, safe) {
-        (Some(raw), _) => {
-            let span = syn::Error::new_spanned(&raw, "").span();
-            quote_spanned!(span =>
-                let _ = #raw as ::arcdps::RawExtrasSubscriberInitSignature;
-
-                #raw(addon, sub)
-            )
-        }
-        (_, Some(safe)) => {
-            let span = syn::Error::new_spanned(&safe, "").span();
-            quote_spanned!(span =>
-                sub.subscriber_name = #name.as_ptr();
-                sub.squad_update_callback = #squad_cb;
-
-                let _ = #safe as ::arcdps::ExtrasInitFunc;
-                use ::arcdps::helpers::get_str_from_pc_char as pc;
-                let user = pc(addon.self_account_name as _).map(|n| n.trim_start_matches(':'));
-                let version = pc(addon.string_version as _);
-
-                #safe(user, version)
-            )
-        }
-        _ if has_update => quote! {
-                sub.subscriber_name = #name.as_ptr();
-                sub.squad_update_callback = #squad_cb;
-        },
-        _ => return quote! {},
-    };
-    use syn::spanned::Spanned;
-    quote_spanned!(abstract_wrapper.span() =>
-        #[no_mangle]
-        unsafe extern "system" fn arcdps_unofficial_extras_subscriber_init(
-            addon: &::arcdps::RawExtrasAddonInfo, sub: &mut ::arcdps::RawExtrasSubscriberInfo) {
-
-            #abstract_wrapper
-        }
-    )
 }
 
 fn build_wnd_filter(raw_wnd: Option<Expr>, wnd: Option<Expr>) -> (TokenStream, TokenStream) {
@@ -270,31 +195,30 @@ fn build_wnd(
         }
         (_, Some(safe)) => {
             let span = syn::Error::new_spanned(&safe, "").span();
-            abstract_wnd_filter = quote_spanned!(span =>
-            unsafe extern "C" fn #func_name (_h_wnd: HWND, u_msg: UINT,
-                    w_param: WPARAM, l_param: LPARAM
-                ) -> UINT {
-                let _ = #safe as ::arcdps::WndProcCallback;
-                use ::arcdps::{WM_KEYDOWN, WM_KEYUP, WM_SYSKEYDOWN, WM_SYSKEYUP};
-                match u_msg {
-                    WM_KEYDOWN | WM_KEYUP | WM_SYSKEYDOWN | WM_SYSKEYUP => {
-                        let key_down = u_msg & 1 == 0;
-                        let prev_key_down = (l_param >> 30) & 1 == 1;
+            abstract_wnd_filter = quote_spanned! {span=>
+                unsafe extern "C" fn #func_name (_h_wnd: HWND, u_msg: UINT, w_param: WPARAM, l_param: LPARAM) -> UINT {
+                    let _ = #safe as ::arcdps::WndProcCallback;
+                    use ::arcdps::{WM_KEYDOWN, WM_KEYUP, WM_SYSKEYDOWN, WM_SYSKEYUP};
+                    match u_msg {
+                        WM_KEYDOWN | WM_KEYUP | WM_SYSKEYDOWN | WM_SYSKEYUP => {
+                            let key_down = u_msg & 1 == 0;
+                            let prev_key_down = (l_param >> 30) & 1 == 1;
 
-                        if #safe(w_param, key_down, prev_key_down)
-                        {
-                            u_msg
-                        } else {
-                            0
-                        }
-                    },
-                    _ => u_msg,
+                            if #safe(w_param, key_down, prev_key_down) {
+                                u_msg
+                            } else {
+                                0
+                            }
+                        },
+                        _ => u_msg,
+                    }
                 }
-            });
-            quote_spanned!(span => Some(__arcdps_gen_export::#func_name as _) )
+            };
+            quote_spanned!(span=> Some(__arcdps_gen_export::#func_name as _) )
         }
         _ => quote! { None },
     };
+
     (abstract_wnd_filter, cb_wnd_filter)
 }
 
@@ -306,20 +230,22 @@ fn build_options_windows(
     let cb_options_windows = match (raw_options_windows, options_windows) {
         (Some(raw), _) => {
             let span = syn::Error::new_spanned(&raw, "").span();
-            quote_spanned!(span => Some(#raw as _) )
+            quote_spanned!(span=> Some(#raw as _) )
         }
         (_, Some(safe)) => {
             let span = syn::Error::new_spanned(&safe, "").span();
-            abstract_options_windows = quote_spanned!(span =>
-            unsafe extern "C" fn abstract_options_windows(window_name: PCCHAR) -> bool {
-                let _ = #safe as ::arcdps::OptionsWindowsCallback;
-                let ui = UI.as_ref().unwrap();
-                #safe(ui, helpers::get_str_from_pc_char(window_name))
-            });
-            quote_spanned!(span => Some(__arcdps_gen_export::abstract_options_windows as _) )
+            abstract_options_windows = quote_spanned! {span =>
+                unsafe extern "C" fn abstract_options_windows(window_name: PCCHAR) -> bool {
+                    let _ = #safe as ::arcdps::OptionsWindowsCallback;
+                    let ui = UI.as_ref().unwrap();
+                    #safe(ui, helpers::get_str_from_pc_char(window_name))
+                }
+            };
+            quote_spanned!(span=> Some(__arcdps_gen_export::abstract_options_windows as _) )
         }
         _ => quote! { None },
     };
+
     (abstract_options_windows, cb_options_windows)
 }
 
@@ -331,20 +257,22 @@ fn build_options_end(
     let cb_options_end = match (raw_options_end, options_end) {
         (Some(raw), _) => {
             let span = syn::Error::new_spanned(&raw, "").span();
-            quote_spanned!(span => Some(#raw as _) )
+            quote_spanned!(span=> Some(#raw as _) )
         }
         (_, Some(safe)) => {
             let span = syn::Error::new_spanned(&safe, "").span();
-            abstract_options_end = quote_spanned!(span =>
-            unsafe extern "C" fn abstract_options_end() {
-                let _ = #safe as ::arcdps::OptionsCallback;
-                let ui = UI.as_ref().unwrap();
-                #safe(ui)
-            });
-            quote_spanned!(span => Some(__arcdps_gen_export::abstract_options_end as _) )
+            abstract_options_end = quote_spanned! {span =>
+                unsafe extern "C" fn abstract_options_end() {
+                    let _ = #safe as ::arcdps::OptionsCallback;
+                    let ui = UI.as_ref().unwrap();
+                    #safe(ui)
+                }
+            };
+            quote_spanned!(span=> Some(__arcdps_gen_export::abstract_options_end as _) )
         }
         _ => quote! { None },
     };
+
     (abstract_options_end, cb_options_end)
 }
 
@@ -353,20 +281,22 @@ fn build_imgui(raw_imgui: Option<Expr>, imgui: Option<Expr>) -> (TokenStream, To
     let cb_imgui = match (raw_imgui, imgui) {
         (Some(raw), _) => {
             let span = syn::Error::new_spanned(&raw, "").span();
-            quote_spanned!(span => Some(#raw as _) )
+            quote_spanned!(span=> Some(#raw as _) )
         }
         (_, Some(safe)) => {
             let span = syn::Error::new_spanned(&safe, "").span();
-            abstract_imgui = quote_spanned!(span =>
-            unsafe extern "C" fn abstract_imgui(loading: u32) {
-                let _ = #safe as ::arcdps::ImguiCallback;
-                let ui = UI.as_ref().unwrap();
-                #safe(ui, loading != 0)
-            });
-            quote_spanned!(span => Some(__arcdps_gen_export::abstract_imgui as _) )
+            abstract_imgui = quote_spanned! {span =>
+                unsafe extern "C" fn abstract_imgui(loading: u32) {
+                    let _ = #safe as ::arcdps::ImguiCallback;
+                    let ui = UI.as_ref().unwrap();
+                    #safe(ui, loading != 0)
+                }
+            };
+            quote_spanned!(span=> Some(__arcdps_gen_export::abstract_imgui as _) )
         }
         _ => quote! { None },
     };
+
     (abstract_imgui, cb_imgui)
 }
 
@@ -374,14 +304,14 @@ fn build_combat_local(
     raw_combat: Option<Expr>,
     combat: Option<Expr>,
 ) -> (TokenStream, TokenStream) {
-    build_cbt(raw_combat, combat, quote! { abstract_combat_local })
+    build_combat_helper(raw_combat, combat, quote! { abstract_combat_local })
 }
 
-fn build_combat(raw_combat: Option<Expr>, combat: Option<Expr>) -> (TokenStream, TokenStream) {
-    build_cbt(raw_combat, combat, quote! { abstract_combat })
+fn build_combat_area(raw_combat: Option<Expr>, combat: Option<Expr>) -> (TokenStream, TokenStream) {
+    build_combat_helper(raw_combat, combat, quote! { abstract_combat })
 }
 
-fn build_cbt(
+fn build_combat_helper(
     raw_combat: Option<Expr>,
     combat: Option<Expr>,
     func_name: TokenStream,
@@ -390,26 +320,106 @@ fn build_cbt(
     let cb_combat = match (raw_combat, combat) {
         (Some(raw), _) => {
             let span = syn::Error::new_spanned(&raw, "").span();
-            quote_spanned!(span => Some(#raw as _) )
+            quote_spanned!(span=> Some(#raw as _) )
         }
         (_, Some(safe)) => {
             let span = syn::Error::new_spanned(&safe, "").span();
-            abstract_combat = quote_spanned!(span =>
-            unsafe extern "C" fn #func_name(
-                    ev: Option<&::arcdps::CombatEvent>,
-                    src: Option<&::arcdps::RawAgent>,
-                    dst: Option<&::arcdps::RawAgent>,
-                    skill_name: PCCHAR,
-                    id: u64,
-                    revision: u64,
-                ) {
-                    let _ = #safe as ::arcdps::CombatCallback;
-                    let args = ::arcdps::helpers::get_combat_args_from_raw(ev, src, dst, skill_name);
-                    #safe(args.ev, args.src, args.dst, args.skill_name, id, revision)
-            });
-            quote_spanned!(span => Some(__arcdps_gen_export::#func_name as _) )
+            abstract_combat = quote_spanned! {span =>
+                unsafe extern "C" fn #func_name(
+                        ev: Option<&::arcdps::CombatEvent>,
+                        src: Option<&::arcdps::RawAgent>,
+                        dst: Option<&::arcdps::RawAgent>,
+                        skill_name: PCCHAR,
+                        id: u64,
+                        revision: u64,
+                    ) {
+                        let _ = #safe as ::arcdps::CombatCallback;
+                        let args = ::arcdps::helpers::get_combat_args_from_raw(ev, src, dst, skill_name);
+                        #safe(args.ev, args.src, args.dst, args.skill_name, id, revision)
+                }
+            };
+            quote_spanned!(span=> Some(__arcdps_gen_export::#func_name as _) )
         }
         _ => quote! { None },
     };
+
     (abstract_combat, cb_combat)
+}
+
+fn build_extras_squad_update(
+    raw: Option<Expr>,
+    safe: Option<Expr>,
+) -> (TokenStream, Option<TokenStream>) {
+    let mut abstract_wrapper = quote! {};
+    let cb_safe = match (raw, safe) {
+        (Some(raw), _) => {
+            let span = syn::Error::new_spanned(&raw, "").span();
+            Some(quote_spanned!(span => Some(#raw as _) ))
+        }
+        (_, Some(safe)) => {
+            let span = syn::Error::new_spanned(&safe, "").span();
+            abstract_wrapper = quote_spanned! {span=>
+                unsafe extern "C" fn abstract_extras_squad_update(users: *const ::arcdps::RawUserInfo, count: u64) {
+                    let _ = #safe as ::arcdps::ExtrasSquadUpdateCallback;
+                    let users = ::std::slice::from_raw_parts(users, count as _);
+                    let users = users.iter().map(::arcdps::helpers::convert_extras_user as ::arcdps::UserConvert);
+                    #safe(users)
+                }
+            };
+            Some(
+                quote_spanned!(span=> Some(__arcdps_gen_export::abstract_extras_squad_update as _) ),
+            )
+        }
+        _ => None,
+    };
+
+    (abstract_wrapper, cb_safe)
+}
+
+fn build_extras_init(
+    raw: Option<Expr>,
+    safe: Option<Expr>,
+    squad_update: Option<TokenStream>,
+    name: &LitStr,
+) -> TokenStream {
+    let has_update = squad_update.is_some();
+    let squad_cb = squad_update.unwrap_or(quote! { None });
+    let abstract_wrapper = match (raw, safe) {
+        (Some(raw), _) => {
+            let span = syn::Error::new_spanned(&raw, "").span();
+            quote_spanned! {span=>
+                let _ = #raw as ::arcdps::RawExtrasSubscriberInitSignature;
+
+                #raw(addon, sub)
+            }
+        }
+        (_, Some(safe)) => {
+            let span = syn::Error::new_spanned(&safe, "").span();
+            quote_spanned! {span=>
+                sub.subscriber_name = #name.as_ptr();
+                sub.squad_update_callback = #squad_cb;
+
+                let _ = #safe as ::arcdps::ExtrasInitFunc;
+                use ::arcdps::helpers::get_str_from_pc_char as pc;
+                let user = pc(addon.self_account_name as _).map(|n| n.trim_start_matches(':'));
+                let version = pc(addon.string_version as _);
+
+                #safe(user, version)
+            }
+        }
+        _ if has_update => quote! {
+                sub.subscriber_name = #name.as_ptr();
+                sub.squad_update_callback = #squad_cb;
+        },
+        _ => return quote! {},
+    };
+
+    quote_spanned! {abstract_wrapper.span()=>
+        #[no_mangle]
+        unsafe extern "system" fn arcdps_unofficial_extras_subscriber_init(
+            addon: &::arcdps::RawExtrasAddonInfo, sub: &mut ::arcdps::RawExtrasSubscriberInfo) {
+
+            #abstract_wrapper
+        }
+    }
 }
