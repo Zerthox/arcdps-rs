@@ -1,4 +1,4 @@
-use crate::{api::CombatEvent, imgui::sys::ImVec4};
+use crate::{api::RawCombatEvent, imgui::sys::ImVec4};
 use std::{ffi::CStr, mem::transmute};
 use windows::{
     core::PCSTR,
@@ -22,7 +22,7 @@ pub struct ArcInstance {
     pub e6: unsafe extern "C" fn() -> u64,
     pub e7: unsafe extern "C" fn() -> u64,
     pub e8: unsafe extern "C" fn(*mut u8),
-    pub e9: unsafe extern "C" fn(*mut CombatEvent, u32),
+    pub e9: unsafe extern "C" fn(*mut RawCombatEvent, u32),
 }
 
 impl ArcInstance {
