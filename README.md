@@ -1,6 +1,6 @@
 # ArcDPS bindings
 
-Rust bindings for plugins for [ArcDPS](https://www.deltaconnected.com/arcdps/).
+Rust bindings for [ArcDPS](https://www.deltaconnected.com/arcdps/) plugins.
 ArcDPS is an addon for [Guild Wars 2](https://guildwars2.com).
 
 This project is originally a fork of [greaka/arcdps_bindings](https://github.com/greaka/arcdps_bindings).
