@@ -1,9 +1,14 @@
 //! ArcDPS exports.
 pub mod raw;
 
-use crate::{api::game::Profession, imgui::sys::ImVec4};
+use crate::{api::game::Profession, imgui::sys::ImVec4, instance::ARC_INSTANCE};
 use raw::{e0_config_path, e5_colors, e6_ui_settings, e7_modifiers};
 use std::{ffi::OsString, mem::MaybeUninit, os::windows::prelude::*, path::PathBuf, slice};
+
+/// Retrieves the ArcDPS version as string.
+pub fn version() -> &'static str {
+    unsafe { ARC_INSTANCE.as_ref().unwrap().version }
+}
 
 /// Retrieves the config path from ArcDPS.
 pub fn config_path() -> Option<PathBuf> {
