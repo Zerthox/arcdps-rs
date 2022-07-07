@@ -99,3 +99,37 @@ pub struct RawCombatEvent {
     pub pad63: u8,
     pub pad64: u8,
 }
+
+impl From<&CombatEvent> for RawCombatEvent {
+    fn from(event: &CombatEvent) -> Self {
+        Self {
+            time: event.time,
+            src_agent: event.src_agent,
+            dst_agent: event.dst_agent,
+            value: event.value,
+            buff_dmg: event.buff_dmg,
+            overstack_value: event.overstack_value,
+            skill_id: event.skill_id,
+            src_instance_id: event.src_instance_id,
+            dst_instance_id: event.dst_instance_id,
+            src_master_instance_id: event.src_master_instance_id,
+            dst_master_instance_id: event.dst_master_instance_id,
+            iff: event.iff as u8,
+            buff: event.buff,
+            result: event.result,
+            is_activation: event.is_activation as u8,
+            is_buff_remove: event.is_buff_remove as u8,
+            is_ninety: event.is_ninety,
+            is_fifty: event.is_fifty,
+            is_moving: event.is_moving,
+            is_statechange: event.is_statechange as u8,
+            is_flanking: event.is_flanking,
+            is_shields: event.is_shields,
+            is_off_cycle: event.is_off_cycle,
+            pad61: event.pad61,
+            pad62: event.pad62,
+            pad63: event.pad63,
+            pad64: event.pad64,
+        }
+    }
+}
