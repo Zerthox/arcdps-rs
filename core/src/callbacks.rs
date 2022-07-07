@@ -79,6 +79,7 @@ pub type RawOptionsCallback = unsafe extern "C" fn();
 pub type RawOptionsWindowsCallback = unsafe extern "C" fn(window_name: *mut c_char) -> bool;
 
 /// Gets called on load.
+// TODO: can we avoid dyn dispatch with impl return here?
 pub type InitFunc = fn() -> Result<(), Box<dyn std::error::Error>>;
 
 /// Gets called on unload.
