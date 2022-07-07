@@ -2,7 +2,7 @@ use crate::{api::CombatEvent, imgui::sys::ImVec4, instance::ARC_INSTANCE};
 use std::os::raw::c_char;
 
 /// Retrieves path to Arc ini config file as wide char string.
-pub unsafe fn e0_config_path() -> *mut u16 {
+pub unsafe fn e0_config_path() -> *const u16 {
     (ARC_INSTANCE.as_ref().unwrap().e0)()
 }
 

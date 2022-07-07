@@ -19,7 +19,7 @@ pub static mut ARC_INSTANCE: Option<ArcInstance> = None;
 pub struct ArcInstance {
     pub handle: HINSTANCE,
     pub version: Option<&'static str>,
-    pub e0: unsafe extern "C" fn() -> *mut u16,
+    pub e0: unsafe extern "C" fn() -> *const u16,
     pub e3: unsafe extern "C" fn(*mut c_char),
     pub e5: unsafe extern "C" fn(*mut [*mut ImVec4; 5]),
     pub e6: unsafe extern "C" fn() -> u64,
