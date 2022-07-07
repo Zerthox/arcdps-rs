@@ -3,7 +3,7 @@ name = "arcdps-codegen"
 version = "0.8.0"
 authors = ["Zerthox", "Greaka"]
 edition = "2021"
-description = "Macros helpers to generate code for ArcDPS plugins."
+description = "Macros to generate code for ArcDPS plugins."
 repository = "https://github.com/zerthox/arcdps-bindings"
 license = "MIT/Apache-2.0"
 
