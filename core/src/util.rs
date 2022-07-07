@@ -4,6 +4,13 @@ use crate::{
 };
 use std::{ffi::CStr, os::raw::c_char};
 
+pub struct CombatEventArgs<'a> {
+    pub ev: Option<&'a CombatEvent>,
+    pub src: Option<Agent<'a>>,
+    pub dst: Option<Agent<'a>>,
+    pub skill_name: Option<&'static str>,
+}
+
 /// A helper function to convert raw arguments to safe abstractions
 #[inline(always)]
 pub fn get_combat_args_from_raw<'a>(
@@ -47,11 +54,4 @@ pub fn convert_extras_user(user: &RawUserInfo) -> UserInfo {
         subgroup: user.subgroup,
         ready_status: user.ready_status,
     }
-}
-
-pub struct CombatEventArgs<'a> {
-    pub ev: Option<&'a CombatEvent>,
-    pub src: Option<Agent<'a>>,
-    pub dst: Option<Agent<'a>>,
-    pub skill_name: Option<&'static str>,
 }
