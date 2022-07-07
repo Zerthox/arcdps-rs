@@ -7,7 +7,7 @@ use raw::{e0_config_path, e5_colors, e6_ui_settings, e7_modifiers};
 use std::{ffi::OsString, mem::MaybeUninit, os::windows::prelude::*, path::PathBuf, slice};
 
 /// Retrieves the ArcDPS version as string.
-pub fn version() -> &'static str {
+pub fn version() -> Option<&'static str> {
     unsafe { ARC_INSTANCE.as_ref().unwrap().version }
 }
 

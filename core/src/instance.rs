@@ -1,7 +1,7 @@
 //! Global instance with ArcDPS information.
 
 use crate::{api::CombatEvent, imgui::sys::ImVec4};
-use std::{ffi::CStr, mem::transmute, os::raw::c_char};
+use std::{mem::transmute, os::raw::c_char};
 use windows::{
     core::PCSTR,
     Win32::{
@@ -18,7 +18,7 @@ pub static mut ARC_INSTANCE: Option<ArcInstance> = None;
 #[derive(Debug)]
 pub struct ArcInstance {
     pub handle: HINSTANCE,
-    pub version: &'static str,
+    pub version: Option<&'static str>,
     pub e0: unsafe extern "C" fn() -> *mut u16,
     pub e3: unsafe extern "C" fn(*mut c_char),
     pub e5: unsafe extern "C" fn(*mut [*mut ImVec4; 5]),
@@ -32,16 +32,16 @@ impl ArcInstance {
     /// Initializes the Arc instance with a handle.
     ///
     /// Returns `true` if initialization was successful.
-    pub unsafe fn init(handle: HINSTANCE, version: &'static CStr) -> bool {
+    pub unsafe fn init(handle: HINSTANCE, version: Option<&'static str>) -> bool {
         ARC_INSTANCE = Self::new(handle, version);
         ARC_INSTANCE.is_some()
     }
 
     /// Creates a new Arc handle & exports instance.
-    unsafe fn new(handle: HINSTANCE, version: &'static CStr) -> Option<Self> {
+    unsafe fn new(handle: HINSTANCE, version: Option<&'static str>) -> Option<Self> {
         Some(Self {
             handle,
-            version: version.to_str().ok()?,
+            version,
             e0: transmute(get_func(handle, "e0\0")?),
             e3: transmute(get_func(handle, "e3\0")?),
             e5: transmute(get_func(handle, "e5\0")?),
