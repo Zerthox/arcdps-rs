@@ -4,6 +4,24 @@ use crate::{
 };
 use std::{ffi::CStr, os::raw::c_char};
 
+// TODO: can we move any of this to somewhere better?
+
+/// A helper function to convert arcdps strings to [`&str`].
+///
+/// ### Remarks
+/// The result is not necessarily static.
+/// delta confirmed that skill names are available for the whole lifetime of the plugin, but agent names are only available for the duration of the fight.
+/// Reduce the lifetime in the ongoing process as needed!
+// TODO: adjust usage
+#[inline(always)]
+pub unsafe fn get_str_from_pc_char(src: *const c_char) -> Option<&'static str> {
+    if src.is_null() {
+        None
+    } else {
+        Some(CStr::from_ptr(src).to_str().unwrap_or_default())
+    }
+}
+
 pub struct CombatEventArgs<'a> {
     pub ev: Option<&'a CombatEvent>,
     pub src: Option<Agent<'a>>,
@@ -24,22 +42,6 @@ pub fn get_combat_args_from_raw<'a>(
         src: raw_src.map(Into::into),
         dst: raw_dst.map(Into::into),
         skill_name: unsafe { get_str_from_pc_char(raw_skill_name) },
-    }
-}
-
-/// A helper function to convert arcdps strings to [`&str`].
-///
-/// ### Remarks
-/// The result is not necessarily static.
-/// delta confirmed that skill names are available for the whole lifetime of the
-/// plugin, but agent names are only available for the duration of the fight.
-/// Reduce the lifetime in the ongoing process as needed!
-#[inline(always)]
-pub unsafe fn get_str_from_pc_char(src: *const c_char) -> Option<&'static str> {
-    if src.is_null() {
-        None
-    } else {
-        Some(CStr::from_ptr(src).to_str().unwrap_or_default())
     }
 }
 
