@@ -135,9 +135,9 @@ impl RawExtrasSubscriberInfo {
     /// Writes subscriber information into the struct.
     ///
     /// Name needs to be null-terminated.
-    pub fn subscribe(&mut self, name: *const c_char, squad_update: Option<RawSquadUpdateCallback>) {
+    pub fn subscribe(&mut self, name: &'static str, squad_update: Option<RawSquadUpdateCallback>) {
         self.header.info_version = SUB_INFO_VERSION;
-        self.subscriber_name = name;
+        self.subscriber_name = name.as_ptr() as *const c_char;
         self.squad_update_callback = squad_update;
     }
 }

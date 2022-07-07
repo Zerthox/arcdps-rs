@@ -1,7 +1,7 @@
-use super::callbacks::UserInfoIter;
 use crate::util::str_from_cstr;
 use num_enum::{IntoPrimitive, TryFromPrimitive};
 use std::os::raw::c_char;
+use std::{iter::Map, slice};
 
 #[cfg(feature = "strum")]
 use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
@@ -119,6 +119,10 @@ pub struct RawUserInfo {
     pub _unused1: u8,
     pub _unused2: u32,
 }
+
+pub type UserInfoIter<'a> = Map<slice::Iter<'a, RawUserInfo>, UserConvert>;
+
+pub type UserConvert = for<'r> fn(&'r RawUserInfo) -> UserInfo<'r>;
 
 /// Helper to convert a [`RawUserInfo`] pointer and a length to an iterator over [`UserInfo`].
 pub unsafe fn to_user_info_iter<'a>(ptr: *const RawUserInfo, len: u64) -> UserInfoIter<'a> {

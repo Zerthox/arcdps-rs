@@ -8,6 +8,7 @@ use crate::{
     imgui,
 };
 use std::os::raw::{c_char, c_void};
+use windows::Win32::Foundation::{LPARAM, WPARAM};
 
 // TODO: should any of this be moved somewhere else?
 
@@ -57,7 +58,7 @@ pub struct ArcDpsExport {
 unsafe impl Sync for ArcDpsExport {}
 
 pub type RawWndprocCallback =
-    unsafe extern "C" fn(h_wnd: *mut c_void, u_msg: u32, w_param: usize, l_param: isize) -> u32;
+    unsafe extern "C" fn(h_wnd: *mut c_void, u_msg: u32, w_param: WPARAM, l_param: LPARAM) -> u32;
 
 // TODO: should these be pointers?
 pub type RawCombatCallback = unsafe extern "C" fn(
@@ -101,7 +102,7 @@ pub type OptionsWindowsCallback = fn(ui: &imgui::Ui, window_name: Option<&str>) 
 
 /// Provides safe abstractions for the combat event.
 pub type CombatCallback = fn(
-    ev: Option<CombatEvent>,
+    ev: Option<&CombatEvent>,
     src: Option<Agent>,
     dst: Option<Agent>,
     skill_name: Option<&'static str>,

@@ -42,8 +42,8 @@ pub fn arcdps_export(item: proc_macro::TokenStream) -> proc_macro::TokenStream {
             size: ::std::mem::size_of::<ArcDpsExport>(),
             sig: #sig,
             imgui_version: 18000,
-            out_build: #build.as_ptr(),
-            out_name: #out_name.as_ptr(),
+            out_build: #build.as_ptr() as _,
+            out_name: #out_name.as_ptr() as _,
             combat: #cb_combat,
             combat_local: #cb_combat_local,
             imgui: #cb_imgui,
@@ -81,9 +81,11 @@ pub fn arcdps_export(item: proc_macro::TokenStream) -> proc_macro::TokenStream {
 
     let result = quote! {
         mod __arcdps_gen_export {
+            use super::*;
             use ::arcdps::{
                 imgui,
-                callbacks::{ArcDpsExport, InitFunc, ReleaseFunc},
+                callbacks::*,
+                extras::callbacks::*,
                 util::{str_from_cstr, __macro::*},
             };
 
@@ -105,8 +107,8 @@ pub fn arcdps_export(item: proc_macro::TokenStream) -> proc_macro::TokenStream {
                 size: 0,
                 sig: 0,
                 imgui_version: 18000,
-                out_build: #build.as_ptr(),
-                out_name: #out_name.as_ptr(),
+                out_build: #build.as_ptr() as _,
+                out_name: #out_name.as_ptr() as _,
                 combat: None,
                 combat_local: None,
                 imgui: None,
@@ -191,14 +193,14 @@ fn build_wnd(
             let span = syn::Error::new_spanned(&safe, "").span();
             abstract_wnd_filter = quote_spanned! {span=>
                 unsafe extern "C" fn #func_name(_h_wnd: *mut c_void, u_msg: u32, w_param: WPARAM, l_param: LPARAM) -> u32 {
-                    let _ = #safe as ::arcdps::callbacks::WndProcCallback;
+                    let _ = #safe as WndProcCallback;
 
                     match u_msg {
                         WM_KEYDOWN | WM_KEYUP | WM_SYSKEYDOWN | WM_SYSKEYUP => {
                             let key_down = u_msg & 1 == 0;
-                            let prev_key_down = (l_param >> 30) & 1 == 1;
+                            let prev_key_down = (l_param.0 >> 30) & 1 == 1;
 
-                            if #safe(w_param, key_down, prev_key_down) {
+                            if #safe(w_param.0, key_down, prev_key_down) {
                                 u_msg
                             } else {
                                 0
@@ -230,7 +232,7 @@ fn build_options_windows(
             let span = syn::Error::new_spanned(&safe, "").span();
             abstract_options_windows = quote_spanned! {span =>
                 unsafe extern "C" fn abstract_options_windows(window_name: *mut c_char) -> bool {
-                    let _ = #safe as ::arcdps::callbacks::OptionsWindowsCallback;
+                    let _ = #safe as OptionsWindowsCallback;
 
                     let ui = UI.as_ref().unwrap();
                     #safe(ui, str_from_cstr(window_name))
@@ -283,7 +285,7 @@ fn build_imgui(raw_imgui: Option<Expr>, imgui: Option<Expr>) -> (TokenStream, To
             let span = syn::Error::new_spanned(&safe, "").span();
             abstract_imgui = quote_spanned! {span =>
                 unsafe extern "C" fn abstract_imgui(loading: u32) {
-                    let _ = #safe as ::arcdps::callbacks::ImguiCallback;
+                    let _ = #safe as ImguiCallback;
 
                     let ui = UI.as_ref().unwrap();
                     #safe(ui, loading != 0)
@@ -323,16 +325,23 @@ fn build_combat_helper(
             let span = syn::Error::new_spanned(&safe, "").span();
             abstract_combat = quote_spanned! {span =>
                 unsafe extern "C" fn #func_name(
-                        event: Option<&::arcdps:api:::RawCombatEvent>,
+                        event: Option<&::arcdps::api::CombatEvent>,
                         src: Option<&::arcdps::api::RawAgent>,
                         dst: Option<&::arcdps::api::RawAgent>,
                         skill_name: *mut c_char,
                         id: u64,
                         revision: u64,
                     ) {
-                        let _ = #safe as ::arcdps::callbacks::CombatCallback;
+                        let _ = #safe as CombatCallback;
 
-                        #safe(event.into(), src.into(), dst.into(), str_from_cstr(skill_name), id, revision)
+                        #safe(
+                            event,
+                            src.map(Into::into),
+                            dst.map(Into::into),
+                            str_from_cstr(skill_name),
+                            id,
+                            revision
+                        )
                 }
             };
             quote_spanned!(span=> Some(__arcdps_gen_export::#func_name as _) )
@@ -356,7 +365,7 @@ fn build_extras_init(
     // info may still be read for safe version
     let subscribe = quote! {
         if addon.check_compat() {
-            sub.subscribe(#name.as_ptr(), #squad_cb);
+            sub.subscribe(#name, #squad_cb);
         }
     };
 
@@ -364,7 +373,7 @@ fn build_extras_init(
         (Some(raw), _) => {
             let span = syn::Error::new_spanned(&raw, "").span();
             quote_spanned! {span=>
-                let _ = #raw as ::arcdps::extras:::RawExtrasSubscriberInitSignature;
+                let _ = #raw as RawExtrasSubscriberInit;
 
                 #raw(addon, sub)
             }
@@ -372,7 +381,7 @@ fn build_extras_init(
         (_, Some(safe)) => {
             let span = syn::Error::new_spanned(&safe, "").span();
             quote_spanned! {span=>
-                let _ = #safe as ::arcdps::extras::ExtrasInitFunc;
+                let _ = #safe as ExtrasInitFunc;
 
                 #subscribe
 
@@ -411,7 +420,7 @@ fn build_extras_squad_update(
             let span = syn::Error::new_spanned(&safe, "").span();
             abstract_wrapper = quote_spanned! {span=>
                 unsafe extern "C" fn abstract_extras_squad_update(users: *const ::arcdps::extras::RawUserInfo, count: u64) {
-                    let _ = #safe as ::arcdps::extras::ExtrasSquadUpdateCallback;
+                    let _ = #safe as ExtrasSquadUpdateCallback;
 
                     #safe(::arcdps::extras::to_user_info_iter(users, count))
                 }

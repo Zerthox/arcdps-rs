@@ -1,10 +1,8 @@
-use crate::Language;
-
 use super::{
     keybinds::KeybindChange, ExtrasAddonInfo, RawExtrasAddonInfo, RawExtrasSubscriberInfo,
-    RawUserInfo, UserInfo,
+    RawUserInfo, UserInfoIter,
 };
-use std::{iter::Map, slice};
+use crate::Language;
 
 /// This function must be exported by subscriber addons as `arcdps_unofficial_extras_subscriber_init`.
 /// It's called once at startup.
@@ -22,10 +20,6 @@ pub type ExtrasInitFunc = fn(ExtrasAddonInfo, Option<&'static str>);
 pub type RawSquadUpdateCallback = unsafe extern "C" fn(*const RawUserInfo, u64);
 
 pub type ExtrasSquadUpdateCallback = fn(UserInfoIter);
-
-pub type UserInfoIter<'a> = Map<slice::Iter<'a, RawUserInfo>, UserConvert>;
-
-pub type UserConvert = for<'r> fn(&'r RawUserInfo) -> UserInfo<'r>;
 
 pub type RawLanguageChangedCallback = unsafe extern "C" fn(Language);
 
