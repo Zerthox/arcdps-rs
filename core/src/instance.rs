@@ -26,7 +26,7 @@ pub struct ArcInstance {
 }
 
 impl ArcInstance {
-    /// Initialize the Arc instance with a handle.
+    /// Initializes the Arc instance with a handle.
     ///
     /// Returns `true` if initialization was successful.
     pub unsafe fn init(handle: HINSTANCE, version: &'static CStr) -> bool {
@@ -34,7 +34,7 @@ impl ArcInstance {
         ARC_INSTANCE.is_some()
     }
 
-    /// Create a new Arc handle & exports instance.
+    /// Creates a new Arc handle & exports instance.
     unsafe fn new(handle: HINSTANCE, version: &'static CStr) -> Option<Self> {
         Some(Self {
             handle,

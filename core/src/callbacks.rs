@@ -9,7 +9,7 @@ use crate::{
 use std::os::raw::{c_char, c_void};
 
 /// Reference on what fields are currently supported by the [`arcdps_export`](arcdps_codegen::arcdps_export) macro.
-/// This struct isn't used anywhere.
+/// This struct is not used anywhere.
 pub struct SupportedFields {
     pub name: &'static str,
     pub sig: u32,
