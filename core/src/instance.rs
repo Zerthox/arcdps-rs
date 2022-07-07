@@ -1,7 +1,7 @@
 //! Global instance with ArcDPS information.
 
 use crate::{api::CombatEvent, imgui::sys::ImVec4};
-use std::{ffi::CStr, mem::transmute};
+use std::{ffi::CStr, mem::transmute, os::raw::c_char};
 use windows::{
     core::PCSTR,
     Win32::{
@@ -20,11 +20,11 @@ pub struct ArcInstance {
     pub handle: HINSTANCE,
     pub version: &'static str,
     pub e0: unsafe extern "C" fn() -> *mut u16,
-    pub e3: unsafe extern "C" fn(*mut u8),
+    pub e3: unsafe extern "C" fn(*mut c_char),
     pub e5: unsafe extern "C" fn(*mut [*mut ImVec4; 5]),
     pub e6: unsafe extern "C" fn() -> u64,
     pub e7: unsafe extern "C" fn() -> u64,
-    pub e8: unsafe extern "C" fn(*mut u8),
+    pub e8: unsafe extern "C" fn(*mut c_char),
     pub e9: unsafe extern "C" fn(*mut CombatEvent, u32),
 }
 

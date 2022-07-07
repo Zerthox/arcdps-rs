@@ -1,4 +1,5 @@
 use crate::{api::CombatEvent, imgui::sys::ImVec4, instance::ARC_INSTANCE};
+use std::os::raw::c_char;
 
 /// Retrieves path to Arc ini config file as wide char string.
 pub unsafe fn e0_config_path() -> *mut u16 {
@@ -6,7 +7,7 @@ pub unsafe fn e0_config_path() -> *mut u16 {
 }
 
 /// Logs a string to `arcdps.log` file.
-pub unsafe fn e3_log(string: *mut u8) {
+pub unsafe fn e3_log(string: *mut c_char) {
     (ARC_INSTANCE.as_ref().unwrap().e3)(string)
 }
 
@@ -28,7 +29,7 @@ pub unsafe fn e7_modifiers() -> u64 {
 /// Logs a string to the logger window.
 ///
 /// Colors are HTML-like: `<c=#aaaaaa>colored text</c>`.
-pub unsafe fn e8_log_window(string: *mut u8) {
+pub unsafe fn e8_log_window(string: *mut c_char) {
     (ARC_INSTANCE.as_ref().unwrap().e8)(string)
 }
 
