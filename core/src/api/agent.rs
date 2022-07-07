@@ -17,20 +17,19 @@ pub struct Agent<'a> {
     pub id: usize,
     pub prof: u32,
     pub elite: u32,
-    pub self_: u32,
+    pub is_self: u32,
     pub team: u16,
 }
 
 impl From<&RawAgent> for Agent<'_> {
-    fn from(ag: &RawAgent) -> Self {
-        let name = unsafe { get_str_from_pc_char(ag.name) };
-        Agent {
-            name,
-            id: ag.id,
-            prof: ag.prof,
-            elite: ag.elite,
-            self_: ag.self_,
-            team: ag.team,
+    fn from(agent: &RawAgent) -> Self {
+        Self {
+            name: unsafe { get_str_from_pc_char(agent.name) },
+            id: agent.id,
+            prof: agent.prof,
+            elite: agent.elite,
+            is_self: agent.is_self,
+            team: agent.team,
         }
     }
 }
@@ -43,19 +42,19 @@ pub struct AgentOwned {
     pub id: usize,
     pub prof: u32,
     pub elite: u32,
-    pub self_: u32,
+    pub is_self: u32,
     pub team: u16,
 }
 
 impl From<Agent<'_>> for AgentOwned {
-    fn from(ag: Agent<'_>) -> Self {
-        AgentOwned {
-            name: ag.name.map(|x| x.to_string()),
-            id: ag.id,
-            prof: ag.prof,
-            elite: ag.elite,
-            self_: ag.self_,
-            team: ag.team,
+    fn from(agent: Agent<'_>) -> Self {
+        Self {
+            name: agent.name.map(|x| x.to_string()),
+            id: agent.id,
+            prof: agent.prof,
+            elite: agent.elite,
+            is_self: agent.is_self,
+            team: agent.team,
         }
     }
 }
@@ -67,6 +66,6 @@ pub struct RawAgent {
     pub id: usize,
     pub prof: u32,
     pub elite: u32,
-    pub self_: u32,
+    pub is_self: u32,
     pub team: u16,
 }
