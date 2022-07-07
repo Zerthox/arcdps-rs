@@ -2,9 +2,8 @@
 
 use crate::{
     api::{Agent, CombatEvent, RawAgent},
-    extras::{
-        ExtrasInitFunc, ExtrasSquadUpdateCallback, RawExtrasSubscriberInitSignature,
-        RawSquadUpdateCallbackSignature,
+    extras::callbacks::{
+        ExtrasInitFunc, ExtrasSquadUpdateCallback, RawExtrasSubscriberInit, RawSquadUpdateCallback,
     },
     imgui,
 };
@@ -26,8 +25,8 @@ pub struct SupportedFields {
     pub raw_wnd_filter: Option<RawWndprocCallback>,
     pub raw_options_windows: Option<RawOptionsWindowsCallback>,
     pub raw_combat_local: Option<RawCombatCallback>,
-    pub raw_unofficial_extras_init: Option<RawExtrasSubscriberInitSignature>,
-    pub raw_unofficial_extras_squad_update: Option<RawSquadUpdateCallbackSignature>,
+    pub raw_unofficial_extras_init: Option<RawExtrasSubscriberInit>,
+    pub raw_unofficial_extras_squad_update: Option<RawSquadUpdateCallback>,
     pub wnd_nofilter: Option<WndProcCallback>,
     pub combat: Option<CombatCallback>,
     pub imgui: Option<ImguiCallback>,

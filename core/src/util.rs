@@ -1,6 +1,5 @@
 //! Miscellaneous utilities.
 
-use crate::extras::{RawUserInfo, UserInfo};
 use std::{ffi::CStr, os::raw::c_char};
 
 // TODO: can we move any of this to somewhere better?
@@ -22,18 +21,5 @@ pub fn str_from_cstr<'a>(ptr: *const c_char) -> Option<&'a str> {
         None
     } else {
         unsafe { CStr::from_ptr(ptr) }.to_str().ok()
-    }
-}
-
-/// Helper to convert raw arguments to safe abstractions
-#[inline(always)]
-pub fn convert_extras_user(user: &RawUserInfo) -> UserInfo {
-    let name = str_from_cstr(user.account_name as _);
-    UserInfo {
-        account_name: name.map(|n| n.trim_start_matches(':')),
-        join_time: user.join_time,
-        role: user.role,
-        subgroup: user.subgroup,
-        ready_status: user.ready_status,
     }
 }

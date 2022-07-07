@@ -3,7 +3,6 @@ use std::os::raw::c_char;
 
 /// Represents an agent in a combat event.
 ///
-/// ### Remarks
 /// Names are available for the duration of the fight.
 /// Due to this, this struct is not usable for longer than the function call.
 /// If you need it for longer than that, consider converting it to [`AgentOwned`].
@@ -11,7 +10,7 @@ use std::os::raw::c_char;
 /// ```
 /// let agent: AgentOwned = agent.into();
 /// ```
-#[derive(Debug, Copy, Clone)]
+#[derive(Debug, Clone)]
 pub struct Agent<'a> {
     pub name: Option<&'a str>,
     pub id: usize,
@@ -46,8 +45,8 @@ pub struct AgentOwned {
     pub team: u16,
 }
 
-impl From<Agent<'_>> for AgentOwned {
-    fn from(agent: Agent<'_>) -> Self {
+impl From<&Agent<'_>> for AgentOwned {
+    fn from(agent: &Agent<'_>) -> Self {
         Self {
             name: agent.name.map(|x| x.to_string()),
             id: agent.id,

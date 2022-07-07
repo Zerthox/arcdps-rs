@@ -141,7 +141,7 @@ pub enum Specialization {
     feature = "strum",
     derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames,)
 )]
-#[repr(u8)]
+#[repr(u32)]
 pub enum Language {
     English = 0,
     French = 2,
