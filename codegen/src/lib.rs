@@ -338,6 +338,60 @@ fn build_combat_helper(
     (abstract_combat, cb_combat)
 }
 
+fn build_extras_init(
+    raw: Option<Expr>,
+    safe: Option<Expr>,
+    squad_update: Option<TokenStream>,
+    name: &LitStr,
+) -> TokenStream {
+    let has_update = squad_update.is_some();
+    let squad_cb = squad_update.unwrap_or(quote! { None });
+
+    // we only subscribe if compat check passes
+    // info may still be read for safe version
+    let subscribe = quote! {
+        if addon.check_compat() {
+            sub.subscribe(#name.as_ptr(), #squad_cb);
+        }
+    };
+
+    let abstract_wrapper = match (raw, safe) {
+        (Some(raw), _) => {
+            let span = syn::Error::new_spanned(&raw, "").span();
+            quote_spanned! {span=>
+                let _ = #raw as ::arcdps::extras:::RawExtrasSubscriberInitSignature;
+
+                #raw(addon, sub)
+            }
+        }
+        (_, Some(safe)) => {
+            let span = syn::Error::new_spanned(&safe, "").span();
+            quote_spanned! {span=>
+                let _ = #safe as ::arcdps::extras::ExtrasInitFunc;
+
+                #subscribe
+
+                let user = str_from_cstr(addon.self_account_name as _).map(|n| n.trim_start_matches(':'));
+                #safe(addon.into(), user)
+            }
+        }
+        _ if has_update => quote! {
+                #subscribe
+        },
+        _ => return quote! {},
+    };
+
+    quote_spanned! {abstract_wrapper.span()=>
+        #[no_mangle]
+        unsafe extern "system" fn arcdps_unofficial_extras_subscriber_init(
+            addon: &::arcdps::extras::RawExtrasAddonInfo,
+            sub: &mut ::arcdps::extras::RawExtrasSubscriberInfo
+        ) {
+            #abstract_wrapper
+        }
+    }
+}
+
 fn build_extras_squad_update(
     raw: Option<Expr>,
     safe: Option<Expr>,
@@ -366,51 +420,4 @@ fn build_extras_squad_update(
     };
 
     (abstract_wrapper, cb_safe)
-}
-
-fn build_extras_init(
-    raw: Option<Expr>,
-    safe: Option<Expr>,
-    squad_update: Option<TokenStream>,
-    name: &LitStr,
-) -> TokenStream {
-    let has_update = squad_update.is_some();
-    let squad_cb = squad_update.unwrap_or(quote! { None });
-    let abstract_wrapper = match (raw, safe) {
-        (Some(raw), _) => {
-            let span = syn::Error::new_spanned(&raw, "").span();
-            quote_spanned! {span=>
-                let _ = #raw as ::arcdps::extras:::RawExtrasSubscriberInitSignature;
-
-                #raw(addon, sub)
-            }
-        }
-        (_, Some(safe)) => {
-            let span = syn::Error::new_spanned(&safe, "").span();
-            quote_spanned! {span=>
-                sub.subscriber_name = #name.as_ptr();
-                sub.squad_update_callback = #squad_cb;
-
-                let _ = #safe as ::arcdps::extras::ExtrasInitFunc;
-                let user = str_from_cstr(addon.self_account_name as _).map(|n| n.trim_start_matches(':'));
-                let version = str_from_cstr(addon.string_version as _);
-
-                #safe(user, version)
-            }
-        }
-        _ if has_update => quote! {
-                sub.subscriber_name = #name.as_ptr();
-                sub.squad_update_callback = #squad_cb;
-        },
-        _ => return quote! {},
-    };
-
-    quote_spanned! {abstract_wrapper.span()=>
-        #[no_mangle]
-        unsafe extern "system" fn arcdps_unofficial_extras_subscriber_init(
-            addon: &::arcdps::extras::RawExtrasAddonInfo, sub: &mut ::arcdps::extras::RawExtrasSubscriberInfo) {
-
-            #abstract_wrapper
-        }
-    }
 }

@@ -8,11 +8,21 @@ mod user;
 
 pub use user::*;
 
+use crate::util::str_from_cstr;
 use callbacks::{RawKeyBindChangedCallback, RawLanguageChangedCallback, RawSquadUpdateCallback};
 use std::os::raw::c_char;
 use windows::Win32::Foundation::HINSTANCE;
 
-use crate::util::str_from_cstr;
+/// Supported extras API version.
+const API_VERSION: u32 = 2;
+
+/// Supported [`RawExtrasSubscriberInfo`] version.
+const SUB_INFO_VERSION: u32 = 1;
+
+/// Helper to check compatibility.
+fn check_compat(api_version: u32, sub_info_version: u32) -> bool {
+    api_version == API_VERSION && sub_info_version >= SUB_INFO_VERSION
+}
 
 #[derive(Debug)]
 pub struct ExtrasAddonInfo {
@@ -28,6 +38,13 @@ pub struct ExtrasAddonInfo {
     /// String version of unofficial_extras addon, gets changed on every release.
     /// The string is valid for the lifetime of the unofficial_extras dll.
     pub string_version: Option<&'static str>,
+}
+
+impl ExtrasAddonInfo {
+    // Checks compatibility with the extras addon.
+    pub fn check_compat(&self) -> bool {
+        check_compat(self.api_version, self.max_info_version)
+    }
 }
 
 impl From<&RawExtrasAddonInfo> for ExtrasAddonInfo {
@@ -65,6 +82,14 @@ pub struct RawExtrasAddonInfo {
     pub extras_handle: HINSTANCE,
 }
 
+impl RawExtrasAddonInfo {
+    /// Checks compatibility with the extras addon.
+    pub fn check_compat(&self) -> bool {
+        check_compat(self.api_version, self.max_info_version)
+    }
+}
+
+#[derive(Debug)]
 #[repr(C)]
 pub struct RawExtrasSubscriberInfoHeader {
     /// The version of the following info struct
@@ -75,6 +100,7 @@ pub struct RawExtrasSubscriberInfoHeader {
     pub _unused1: u32,
 }
 
+#[derive(Debug)]
 #[repr(C)]
 pub struct RawExtrasSubscriberInfo {
     /// Header shared across different versions.
@@ -83,7 +109,7 @@ pub struct RawExtrasSubscriberInfo {
     /// Name of the addon subscribing to the changes.
     /// Must be valid for the lifetime of the subscribing addon.
     /// Set to `nullptr` if initialization fails.
-    pub subscriber_name: *const u8,
+    pub subscriber_name: *const c_char,
 
     /// Called whenever anything in the squad changes.
     /// Only the users that changed are sent.
@@ -103,4 +129,15 @@ pub struct RawExtrasSubscriberInfo {
     /// If you want to get a single keybind, at any time you want, call the exported function.
     // TODO: expose exported function
     pub key_bind_changed_callback: Option<RawKeyBindChangedCallback>,
+}
+
+impl RawExtrasSubscriberInfo {
+    /// Writes subscriber information into the struct.
+    ///
+    /// Name needs to be null-terminated.
+    pub fn subscribe(&mut self, name: *const c_char, squad_update: Option<RawSquadUpdateCallback>) {
+        self.header.info_version = SUB_INFO_VERSION;
+        self.subscriber_name = name;
+        self.squad_update_callback = squad_update;
+    }
 }

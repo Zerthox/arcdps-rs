@@ -1,7 +1,8 @@
 use crate::Language;
 
 use super::{
-    keybinds::KeybindChange, RawExtrasAddonInfo, RawExtrasSubscriberInfo, RawUserInfo, UserInfo,
+    keybinds::KeybindChange, ExtrasAddonInfo, RawExtrasAddonInfo, RawExtrasSubscriberInfo,
+    RawUserInfo, UserInfo,
 };
 use std::{iter::Map, slice};
 
@@ -13,9 +14,10 @@ pub type RawExtrasSubscriberInit =
     unsafe extern "C" fn(&RawExtrasAddonInfo, &mut RawExtrasSubscriberInfo);
 
 /// Called at startup of unofficial extras.
+///
 /// Can be called before or after ArcDPS init func.
-/// Provides the account name and the version of the unofficial extras addon as parameters.
-pub type ExtrasInitFunc = fn(Option<&str>, Option<&'static str>);
+/// Receives information about the unofficial extras addon and the current player account name as parameters.
+pub type ExtrasInitFunc = fn(ExtrasAddonInfo, Option<&'static str>);
 
 pub type RawSquadUpdateCallback = unsafe extern "C" fn(*const RawUserInfo, u64);
 
