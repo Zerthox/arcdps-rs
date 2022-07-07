@@ -25,7 +25,7 @@ pub type ExtrasSquadUpdateCallback = fn(UserInfoIter);
 
 pub type UserInfoIter<'a> = Map<slice::Iter<'a, RawUserInfo>, UserConvert>;
 
-pub type UserConvert = for<'r> fn(&'r RawUserInfo) -> UserInfo;
+pub type UserConvert = for<'r> fn(&'r RawUserInfo) -> UserInfo<'r>;
 
 pub type RawLanguageChangedCallback = unsafe extern "C" fn(Language);
 

@@ -1,3 +1,4 @@
+use super::callbacks::UserInfoIter;
 use crate::util::str_from_cstr;
 use num_enum::{IntoPrimitive, TryFromPrimitive};
 use std::os::raw::c_char;
@@ -54,8 +55,8 @@ pub struct UserInfo<'a> {
     pub ready_status: bool,
 }
 
-impl From<RawUserInfo> for UserInfo<'_> {
-    fn from(raw: RawUserInfo) -> Self {
+impl From<&RawUserInfo> for UserInfo<'_> {
+    fn from(raw: &RawUserInfo) -> Self {
         Self {
             account_name: str_from_cstr(raw.account_name),
             join_time: raw.join_time,
@@ -117,4 +118,11 @@ pub struct RawUserInfo {
     pub ready_status: bool,
     pub _unused1: u8,
     pub _unused2: u32,
+}
+
+/// Helper to convert a [`RawUserInfo`] pointer and a length to an iterator over [`UserInfo`].
+pub unsafe fn to_user_info_iter<'a>(ptr: *const RawUserInfo, len: u64) -> UserInfoIter<'a> {
+    std::slice::from_raw_parts(ptr, len as usize)
+        .iter()
+        .map(|raw| raw.into())
 }

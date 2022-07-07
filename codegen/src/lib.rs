@@ -192,6 +192,7 @@ fn build_wnd(
             abstract_wnd_filter = quote_spanned! {span=>
                 unsafe extern "C" fn #func_name(_h_wnd: *mut c_void, u_msg: u32, w_param: WPARAM, l_param: LPARAM) -> u32 {
                     let _ = #safe as ::arcdps::callbacks::WndProcCallback;
+
                     match u_msg {
                         WM_KEYDOWN | WM_KEYUP | WM_SYSKEYDOWN | WM_SYSKEYUP => {
                             let key_down = u_msg & 1 == 0;
@@ -230,6 +231,7 @@ fn build_options_windows(
             abstract_options_windows = quote_spanned! {span =>
                 unsafe extern "C" fn abstract_options_windows(window_name: *mut c_char) -> bool {
                     let _ = #safe as ::arcdps::callbacks::OptionsWindowsCallback;
+
                     let ui = UI.as_ref().unwrap();
                     #safe(ui, str_from_cstr(window_name))
                 }
@@ -257,6 +259,7 @@ fn build_options_end(
             abstract_options_end = quote_spanned! {span =>
                 unsafe extern "C" fn abstract_options_end() {
                     let _ = #safe as ::arcdps::callbacks::OptionsCallback;
+
                     let ui = UI.as_ref().unwrap();
                     #safe(ui)
                 }
@@ -281,6 +284,7 @@ fn build_imgui(raw_imgui: Option<Expr>, imgui: Option<Expr>) -> (TokenStream, To
             abstract_imgui = quote_spanned! {span =>
                 unsafe extern "C" fn abstract_imgui(loading: u32) {
                     let _ = #safe as ::arcdps::callbacks::ImguiCallback;
+
                     let ui = UI.as_ref().unwrap();
                     #safe(ui, loading != 0)
                 }
@@ -327,6 +331,7 @@ fn build_combat_helper(
                         revision: u64,
                     ) {
                         let _ = #safe as ::arcdps::callbacks::CombatCallback;
+
                         #safe(event.into(), src.into(), dst.into(), str_from_cstr(skill_name), id, revision)
                 }
             };
@@ -407,9 +412,8 @@ fn build_extras_squad_update(
             abstract_wrapper = quote_spanned! {span=>
                 unsafe extern "C" fn abstract_extras_squad_update(users: *const ::arcdps::extras::RawUserInfo, count: u64) {
                     let _ = #safe as ::arcdps::extras::ExtrasSquadUpdateCallback;
-                    let users = ::std::slice::from_raw_parts(users, count as _);
-                    let users = users.iter().map(::arcdps::util::convert_extras_user);
-                    #safe(users)
+
+                    #safe(::arcdps::extras::to_user_info_iter(users, count))
                 }
             };
             Some(
