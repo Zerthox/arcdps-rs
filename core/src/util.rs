@@ -1,54 +1,32 @@
-use crate::{
-    api::{Agent, CombatEvent, RawAgent, RawCombatEvent},
-    extras::{RawUserInfo, UserInfo},
-};
+use crate::extras::{RawUserInfo, UserInfo};
 use std::{ffi::CStr, os::raw::c_char};
 
 // TODO: can we move any of this to somewhere better?
 
-/// Helper to convert arcdps strings to [`&str`].
-///
-/// ### Remarks
-/// The result is not necessarily static.
-/// delta confirmed that skill names are available for the whole lifetime of the plugin, but agent names are only available for the duration of the fight.
-/// Reduce the lifetime in the ongoing process as needed!
-// TODO: adjust usage
+/// Reexports for usage in macros.
+#[doc(hidden)]
+pub mod __macro {
+    pub use std::os::raw::{c_char, c_void};
+    pub use windows::Win32::{
+        Foundation::{HINSTANCE, LPARAM, WPARAM},
+        UI::WindowsAndMessaging::{WM_KEYDOWN, WM_KEYUP, WM_SYSKEYDOWN, WM_SYSKEYUP},
+    };
+}
+
+/// Helper to convert ArcDPS strings to [`str`].
 #[inline(always)]
-pub unsafe fn get_str_from_pc_char(src: *const c_char) -> Option<&'static str> {
-    if src.is_null() {
+pub fn str_from_cstr<'a>(ptr: *const c_char) -> Option<&'a str> {
+    if ptr.is_null() {
         None
     } else {
-        Some(CStr::from_ptr(src).to_str().unwrap_or_default())
-    }
-}
-
-pub struct CombatEventArgs<'a> {
-    pub ev: Option<CombatEvent>,
-    pub src: Option<Agent<'a>>,
-    pub dst: Option<Agent<'a>>,
-    pub skill_name: Option<&'static str>,
-}
-
-/// Helper to convert raw arguments to safe abstractions
-#[inline(always)]
-pub fn get_combat_args_from_raw<'a>(
-    raw_ev: Option<&'a RawCombatEvent>,
-    raw_src: Option<&'a RawAgent>,
-    raw_dst: Option<&'a RawAgent>,
-    raw_skill_name: *const c_char,
-) -> CombatEventArgs<'a> {
-    CombatEventArgs {
-        ev: raw_ev.map(Into::into),
-        src: raw_src.map(Into::into),
-        dst: raw_dst.map(Into::into),
-        skill_name: unsafe { get_str_from_pc_char(raw_skill_name) },
+        unsafe { CStr::from_ptr(ptr) }.to_str().ok()
     }
 }
 
 /// Helper to convert raw arguments to safe abstractions
 #[inline(always)]
 pub fn convert_extras_user(user: &RawUserInfo) -> UserInfo {
-    let name = unsafe { get_str_from_pc_char(user.account_name as _) };
+    let name = str_from_cstr(user.account_name as _);
     UserInfo {
         account_name: name.map(|n| n.trim_start_matches(':')),
         join_time: user.join_time,

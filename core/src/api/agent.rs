@@ -1,4 +1,4 @@
-use crate::util::get_str_from_pc_char;
+use crate::util::str_from_cstr;
 use std::os::raw::c_char;
 
 /// Represents an agent in a combat event.
@@ -24,7 +24,7 @@ pub struct Agent<'a> {
 impl From<&RawAgent> for Agent<'_> {
     fn from(agent: &RawAgent) -> Self {
         Self {
-            name: unsafe { get_str_from_pc_char(agent.name) },
+            name: str_from_cstr(agent.name),
             id: agent.id,
             prof: agent.prof,
             elite: agent.elite,

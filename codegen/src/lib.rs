@@ -4,7 +4,7 @@ use proc_macro2::{Span, TokenStream};
 use quote::{quote, quote_spanned};
 use syn::{spanned::Spanned, Expr, LitStr};
 
-/// For documentation on how to use this, visit [`SupportedFields`]
+/// For documentation on how to use this, visit [`SupportedFields`].
 ///
 /// [`SupportedFields`]: ./struct.SupportedFields.html
 #[proc_macro]
@@ -79,22 +79,16 @@ pub fn arcdps_export(item: proc_macro::TokenStream) -> proc_macro::TokenStream {
         &out_name,
     );
 
-    let res = quote! {
+    let result = quote! {
         mod __arcdps_gen_export {
-            use super::*;
-            use ::std::os::raw::{c_char, c_void};
-            use ::arcdps::imgui;
-            use ::arcdps::helpers;
-            use ::arcdps::ArcDpsExport;
-            use ::arcdps::{InitFunc, ReleaseFunc};
+            use ::arcdps::{
+                imgui,
+                callbacks::{ArcDpsExport, InitFunc, ReleaseFunc},
+                util::{str_from_cstr, __macro::*},
+            };
 
-            type LPARAM = isize;
-            type LPVOID = *mut c_void;
-            type UINT = u32;
-            type WPARAM = usize;
-            type PCCHAR = *mut c_char;
-            type HWND = *mut c_void;
-            type HANDLE = *mut c_void;
+            type MallocFn = unsafe extern "C" fn(size: usize, user_data: *mut c_void) -> *mut c_void;
+            type FreeFn = unsafe extern "C" fn(ptr: *mut c_void, user_data: *mut c_void);
 
             #abstract_combat
             #abstract_combat_local
@@ -122,6 +116,8 @@ pub fn arcdps_export(item: proc_macro::TokenStream) -> proc_macro::TokenStream {
                     wnd_nofilter: None,
                 };
             static mut ERROR_STRING: String = String::new();
+            static mut CTX: Option<imgui::Context> = None;
+            static mut UI: Option<imgui::Ui> = None;
 
             fn load() -> &'static ArcDpsExport {
                 let mut export = &EXPORT;
@@ -141,16 +137,16 @@ pub fn arcdps_export(item: proc_macro::TokenStream) -> proc_macro::TokenStream {
                 #release
             }
 
-            #[no_mangle]
             /// ArcDPS looks for this exported function and calls the address it returns on client load.
             /// If you need any of the ignored values, create an issue with your use case.
+            #[no_mangle]
             pub unsafe extern "system" fn get_init_addr(
-                arc_version: PCCHAR,
+                arc_version: *mut c_char,
                 imguictx: *mut imgui::sys::ImGuiContext,
-                _id3dd9: LPVOID,
-                arc_dll: HANDLE,
-                mallocfn: Option<unsafe extern "C" fn(sz: usize, user_data: *mut c_void) -> *mut c_void>,
-                freefn: Option<unsafe extern "C" fn(ptr: *mut c_void, user_data: *mut c_void)>,
+                _id3dd9: *mut c_void,
+                arc_dll: HINSTANCE,
+                mallocfn: Option<MallocFn>,
+                freefn: Option<FreeFn>,
             ) -> fn() -> &'static ArcDpsExport {
                 imgui::sys::igSetCurrentContext(imguictx);
                 imgui::sys::igSetAllocatorFunctions(mallocfn, freefn, ::core::ptr::null_mut());
@@ -160,18 +156,16 @@ pub fn arcdps_export(item: proc_macro::TokenStream) -> proc_macro::TokenStream {
                 load
             }
 
-            static mut CTX: Option<imgui::Context> = None;
-            static mut UI: Option<imgui::Ui> = None;
 
-            #[no_mangle]
             /// ArcDPS looks for this exported function and calls the address it returns on client exit.
-            pub extern "system" fn get_release_addr() -> LPVOID {
-                unload as LPVOID
+            #[no_mangle]
+            pub extern "system" fn get_release_addr() -> *mut c_void {
+                unload as *mut c_void
             }
         }
     };
 
-    res.into()
+    result.into()
 }
 
 fn build_wnd_filter(raw_wnd: Option<Expr>, wnd: Option<Expr>) -> (TokenStream, TokenStream) {
@@ -196,9 +190,8 @@ fn build_wnd(
         (_, Some(safe)) => {
             let span = syn::Error::new_spanned(&safe, "").span();
             abstract_wnd_filter = quote_spanned! {span=>
-                unsafe extern "C" fn #func_name (_h_wnd: HWND, u_msg: UINT, w_param: WPARAM, l_param: LPARAM) -> UINT {
+                unsafe extern "C" fn #func_name (_h_wnd: *mut c_void, u_msg: u32, w_param: WPARAM, l_param: LPARAM) -> u32 {
                     let _ = #safe as ::arcdps::WndProcCallback;
-                    use ::arcdps::{WM_KEYDOWN, WM_KEYUP, WM_SYSKEYDOWN, WM_SYSKEYUP};
                     match u_msg {
                         WM_KEYDOWN | WM_KEYUP | WM_SYSKEYDOWN | WM_SYSKEYUP => {
                             let key_down = u_msg & 1 == 0;
@@ -235,10 +228,10 @@ fn build_options_windows(
         (_, Some(safe)) => {
             let span = syn::Error::new_spanned(&safe, "").span();
             abstract_options_windows = quote_spanned! {span =>
-                unsafe extern "C" fn abstract_options_windows(window_name: PCCHAR) -> bool {
+                unsafe extern "C" fn abstract_options_windows(window_name: *mut c_char) -> bool {
                     let _ = #safe as ::arcdps::OptionsWindowsCallback;
                     let ui = UI.as_ref().unwrap();
-                    #safe(ui, helpers::get_str_from_pc_char(window_name))
+                    #safe(ui, str_from_cstr(window_name))
                 }
             };
             quote_spanned!(span=> Some(__arcdps_gen_export::abstract_options_windows as _) )
@@ -326,10 +319,10 @@ fn build_combat_helper(
             let span = syn::Error::new_spanned(&safe, "").span();
             abstract_combat = quote_spanned! {span =>
                 unsafe extern "C" fn #func_name(
-                        ev: Option<&::arcdps::CombatEvent>,
+                        ev: Option<&::arcdps::RawCombatEvent>,
                         src: Option<&::arcdps::RawAgent>,
                         dst: Option<&::arcdps::RawAgent>,
-                        skill_name: PCCHAR,
+                        skill_name: *mut c_char,
                         id: u64,
                         revision: u64,
                     ) {
@@ -400,9 +393,8 @@ fn build_extras_init(
                 sub.squad_update_callback = #squad_cb;
 
                 let _ = #safe as ::arcdps::ExtrasInitFunc;
-                use ::arcdps::helpers::get_str_from_pc_char as pc;
-                let user = pc(addon.self_account_name as _).map(|n| n.trim_start_matches(':'));
-                let version = pc(addon.string_version as _);
+                let user = str_from_cstr(addon.self_account_name as _).map(|n| n.trim_start_matches(':'));
+                let version = str_from_cstr(addon.string_version as _);
 
                 #safe(user, version)
             }
