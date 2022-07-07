@@ -1,7 +1,11 @@
 use super::{Activation, BuffRemove, StateChange, Team};
 
+#[cfg(feature = "serde")]
+use serde::{Deserialize, Serialize};
+
 /// ArcDPS Combat event.
 #[derive(Debug, Clone)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[repr(C)]
 pub struct CombatEvent {
     pub time: u64,

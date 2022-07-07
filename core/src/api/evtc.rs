@@ -1,5 +1,8 @@
 use num_enum::{FromPrimitive, IntoPrimitive, TryFromPrimitive};
 
+#[cfg(feature = "serde")]
+use serde::{Deserialize, Serialize};
+
 #[cfg(feature = "strum")]
 use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
 
@@ -7,6 +10,7 @@ use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
 ///
 /// *Arc calls this "iff" for if friend/foe.*
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, FromPrimitive)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[repr(u8)]
 pub enum Team {
     /// Allied agent.
@@ -24,6 +28,7 @@ pub enum Team {
 ///
 /// *Arc calls this "combat result".*
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, FromPrimitive)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[repr(u8)]
 pub enum Strike {
     /// Normal damage strike.
@@ -91,6 +96,7 @@ pub enum Strike {
 ///
 /// *Arc calls this "combat activation".*
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, FromPrimitive)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[repr(u8)]
 pub enum Activation {
     /// Not used, different kind of event.
@@ -118,6 +124,7 @@ pub enum Activation {
 
 /// Combat state change.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, FromPrimitive)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[repr(u8)]
 pub enum StateChange {
     /// Not used, different kind of event.
@@ -407,6 +414,7 @@ pub enum StateChange {
 
 /// Combat buff remove.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, FromPrimitive)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[repr(u8)]
 pub enum BuffRemove {
     /// Not used, different kind of event.
@@ -438,6 +446,7 @@ pub enum BuffRemove {
 
 /// Combat buff cycle.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, FromPrimitive)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[repr(u8)]
 pub enum BuffCycle {
     /// Damage happened on tick timer.
@@ -464,6 +473,7 @@ pub enum BuffCycle {
 
 /// ArcDPS custom skill ids.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, TryFromPrimitive)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[repr(u16)]
 pub enum CustomSkill {
     /// Resurrect skill.
@@ -484,6 +494,7 @@ pub enum CustomSkill {
 
 /// Buff info category.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, TryFromPrimitive)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[repr(u8)]
 pub enum BuffCategory {
     Boon = 0,
@@ -502,6 +513,7 @@ pub enum BuffCategory {
 #[derive(
     Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
 )]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[cfg_attr(
     feature = "strum",
     derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames,)

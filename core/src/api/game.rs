@@ -1,5 +1,8 @@
 use num_enum::{FromPrimitive, IntoPrimitive, TryFromPrimitive};
 
+#[cfg(feature = "serde")]
+use serde::{Deserialize, Serialize};
+
 #[cfg(feature = "strum")]
 use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
 
@@ -7,6 +10,7 @@ use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
 #[derive(
     Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
 )]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[cfg_attr(
     feature = "strum",
     derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames,)
@@ -32,6 +36,7 @@ pub enum Profession {
 #[derive(
     Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
 )]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[cfg_attr(
     feature = "strum",
     derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames,)
@@ -137,6 +142,7 @@ pub enum Specialization {
 #[derive(
     Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, TryFromPrimitive,
 )]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[cfg_attr(
     feature = "strum",
     derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames,)

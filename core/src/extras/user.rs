@@ -3,15 +3,19 @@ use num_enum::{IntoPrimitive, TryFromPrimitive};
 use std::os::raw::c_char;
 use std::{iter::Map, slice};
 
+#[cfg(feature = "serde")]
+use serde::{Deserialize, Serialize};
+
 #[cfg(feature = "strum")]
 use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
 
 #[derive(
     Debug, Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, TryFromPrimitive,
 )]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[cfg_attr(
     feature = "strum",
-    derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames,)
+    derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames)
 )]
 #[repr(u8)]
 pub enum UserRole {
@@ -69,6 +73,7 @@ impl From<&RawUserInfo> for UserInfo<'_> {
 
 /// Information about a user with owned [`String`].
 #[derive(Debug, Clone)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct UserInfoOwned {
     /// Account name, without leading ':'.
     pub account_name: Option<String>,

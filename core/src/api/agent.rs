@@ -1,6 +1,9 @@
 use crate::util::str_from_cstr;
 use std::os::raw::c_char;
 
+#[cfg(feature = "serde")]
+use serde::{Deserialize, Serialize};
+
 /// Represents an agent in a combat event.
 ///
 /// Names are available for the duration of the fight.
@@ -36,6 +39,7 @@ impl From<&RawAgent> for Agent<'_> {
 /// An [`Agent`] with an owned [`String`].
 /// For more info see [`Agent`].
 #[derive(Debug, Clone)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct AgentOwned {
     pub name: Option<String>,
     pub id: usize,
