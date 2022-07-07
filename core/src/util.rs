@@ -16,6 +16,7 @@ pub mod __macro {
 
 /// Helper to convert ArcDPS strings to [`str`].
 #[inline(always)]
+#[allow(clippy::not_unsafe_ptr_arg_deref)]
 pub fn str_from_cstr<'a>(ptr: *const c_char) -> Option<&'a str> {
     if ptr.is_null() {
         None

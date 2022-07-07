@@ -20,7 +20,7 @@ pub fn arcdps_export(item: proc_macro::TokenStream) -> proc_macro::TokenStream {
         let name = std::env::var("CARGO_PKG_NAME").expect("CARGO_PKG_NAME is not set");
         (name, Span::call_site())
     };
-    let name = LitStr::new(raw_name.as_str(), span.clone());
+    let name = LitStr::new(raw_name.as_str(), span);
     let out_name = raw_name + "\0";
     let out_name = LitStr::new(out_name.as_str(), span);
 

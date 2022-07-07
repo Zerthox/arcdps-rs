@@ -3,6 +3,8 @@
 //! # Macro usage
 //! To see which fields are supported, have a look at [SupportedFields].
 
+#![allow(clippy::missing_safety_doc)]
+
 pub mod api;
 pub mod callbacks;
 pub mod exports;
