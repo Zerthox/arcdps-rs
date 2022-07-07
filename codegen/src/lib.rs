@@ -102,19 +102,19 @@ pub fn arcdps_export(item: proc_macro::TokenStream) -> proc_macro::TokenStream {
 
             static EXPORT: ArcDpsExport = #export;
             static mut EXPORT_ERROR: ArcDpsExport = ArcDpsExport {
-                    size: 0,
-                    sig: 0,
-                    imgui_version: 18000,
-                    out_build: #build.as_ptr(),
-                    out_name: #out_name.as_ptr(),
-                    combat: None,
-                    combat_local: None,
-                    imgui: None,
-                    options_end: None,
-                    options_windows: None,
-                    wnd_filter: None,
-                    wnd_nofilter: None,
-                };
+                size: 0,
+                sig: 0,
+                imgui_version: 18000,
+                out_build: #build.as_ptr(),
+                out_name: #out_name.as_ptr(),
+                combat: None,
+                combat_local: None,
+                imgui: None,
+                options_end: None,
+                options_windows: None,
+                wnd_filter: None,
+                wnd_nofilter: None,
+            };
             static mut ERROR_STRING: String = String::new();
             static mut CTX: Option<imgui::Context> = None;
             static mut UI: Option<imgui::Ui> = None;

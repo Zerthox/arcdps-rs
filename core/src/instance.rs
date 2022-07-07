@@ -12,6 +12,7 @@ use windows::{
 pub static mut ARC_INSTANCE: Option<ArcInstance> = None;
 
 /// Arc handle & exported functions.
+// TODO: should we move other globals from codegen here? or move this to codegen?
 #[derive(Debug)]
 pub struct ArcInstance {
     pub handle: HINSTANCE,
