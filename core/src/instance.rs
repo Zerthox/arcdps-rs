@@ -1,3 +1,5 @@
+//! Global instance with ArcDPS information.
+
 use crate::{api::RawCombatEvent, imgui::sys::ImVec4};
 use std::{ffi::CStr, mem::transmute};
 use windows::{

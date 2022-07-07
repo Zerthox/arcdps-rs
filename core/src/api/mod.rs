@@ -1,9 +1,9 @@
-//! ArcDPS API utilities.
+//! ArcDPS API structs.
 
-pub mod agent;
-pub mod event;
-pub mod evtc;
-pub mod game;
+mod agent;
+mod event;
+mod evtc;
+mod game;
 
 pub use agent::*;
 pub use event::*;

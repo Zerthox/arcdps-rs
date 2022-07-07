@@ -1,3 +1,5 @@
+//! Callback types.
+
 use crate::{
     api::{Agent, CombatEvent, RawAgent},
     extras::{
@@ -58,6 +60,7 @@ unsafe impl Sync for ArcDpsExport {}
 pub type RawWndprocCallback =
     unsafe extern "C" fn(h_wnd: *mut c_void, u_msg: u32, w_param: usize, l_param: isize) -> u32;
 
+// TODO: should these be pointers?
 pub type RawCombatCallback = unsafe extern "C" fn(
     ev: Option<&CombatEvent>,
     src: Option<&RawAgent>,
@@ -99,7 +102,7 @@ pub type OptionsWindowsCallback = fn(ui: &imgui::Ui, window_name: Option<&str>) 
 
 /// Provides safe abstractions for the combat event.
 pub type CombatCallback = fn(
-    ev: Option<&CombatEvent>,
+    ev: Option<CombatEvent>,
     src: Option<Agent>,
     dst: Option<Agent>,
     skill_name: Option<&'static str>,

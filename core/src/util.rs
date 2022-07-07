@@ -1,3 +1,5 @@
+//! Miscellaneous utilities.
+
 use crate::extras::{RawUserInfo, UserInfo};
 use std::{ffi::CStr, os::raw::c_char};
 

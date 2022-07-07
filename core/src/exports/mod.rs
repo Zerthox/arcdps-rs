@@ -1,7 +1,8 @@
 //! ArcDPS exports.
+
 pub mod raw;
 
-use crate::{api::game::Profession, imgui::sys::ImVec4, instance::ARC_INSTANCE};
+use crate::{api::Profession, imgui::sys::ImVec4, instance::ARC_INSTANCE};
 use raw::{e0_config_path, e5_colors, e6_ui_settings, e7_modifiers};
 use std::{ffi::OsString, mem::MaybeUninit, os::windows::prelude::*, path::PathBuf, slice};
 
