@@ -3,15 +3,10 @@
 use crate::{
     api::CombatEvent,
     imgui::{self, sys::ImVec4, Context, Ui},
+    util::exported_proc,
 };
 use std::{ffi::c_void, mem::transmute, os::raw::c_char, ptr};
-use windows::{
-    core::PCSTR,
-    Win32::{
-        Foundation::{FARPROC, HINSTANCE},
-        System::LibraryLoader::GetProcAddress,
-    },
-};
+use windows::Win32::Foundation::HINSTANCE;
 
 /// Global instance of Arc handle & exported functions.
 pub static mut ARC_INSTANCE: ArcInstance = ArcInstance::empty();
@@ -61,14 +56,14 @@ impl ArcInstance {
         Self {
             handle,
             version,
-            ui: IG_CONTEXT.as_ref().map(|ctx| Ui::from_ctx(ctx)),
-            e0: transmute(get_func(handle, "e0\0")),
-            e3: transmute(get_func(handle, "e3\0")),
-            e5: transmute(get_func(handle, "e5\0")),
-            e6: transmute(get_func(handle, "e6\0")),
-            e7: transmute(get_func(handle, "e7\0")),
-            e8: transmute(get_func(handle, "e8\0")),
-            e9: transmute(get_func(handle, "e9\0")),
+            ui: IG_CONTEXT.as_ref().map(Ui::from_ctx),
+            e0: transmute(exported_proc(handle, "e0\0")),
+            e3: transmute(exported_proc(handle, "e3\0")),
+            e5: transmute(exported_proc(handle, "e5\0")),
+            e6: transmute(exported_proc(handle, "e6\0")),
+            e7: transmute(exported_proc(handle, "e7\0")),
+            e8: transmute(exported_proc(handle, "e8\0")),
+            e9: transmute(exported_proc(handle, "e9\0")),
         }
     }
 
@@ -76,12 +71,6 @@ impl ArcInstance {
     pub unsafe fn init(&mut self, handle: HINSTANCE, version: Option<&'static str>) {
         *self = Self::new(handle, version);
     }
-}
-
-/// Helper to retrieve an exported function.
-/// Name needs to be null-terminated.
-unsafe fn get_func(handle: HINSTANCE, name: &'static str) -> FARPROC {
-    GetProcAddress(handle, PCSTR(name.as_ptr()))
 }
 
 pub type MallocFn = unsafe extern "C" fn(size: usize, user_data: *mut c_void) -> *mut c_void;
