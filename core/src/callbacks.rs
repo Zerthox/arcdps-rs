@@ -1,7 +1,7 @@
 //! Callback types.
 
 use crate::{
-    api::{Agent, CombatEvent, RawAgent},
+    api::{Agent, CombatEvent, RawAgent, RawCombatEvent},
     imgui,
 };
 use std::{
@@ -48,7 +48,7 @@ pub type WndProcCallback = fn(key: usize, key_down: bool, prev_key_down: bool) -
 
 // TODO: should these be pointers?
 pub type RawCombatCallback = unsafe extern "C" fn(
-    ev: Option<&CombatEvent>,
+    ev: Option<&RawCombatEvent>,
     src: Option<&RawAgent>,
     dst: Option<&RawAgent>,
     skill_name: *mut c_char,
@@ -60,7 +60,7 @@ pub type RawCombatCallback = unsafe extern "C" fn(
 ///
 /// This is the same signature for both area as well as local events.
 pub type CombatCallback = fn(
-    ev: Option<&CombatEvent>,
+    ev: Option<CombatEvent>,
     src: Option<Agent>,
     dst: Option<Agent>,
     skill_name: Option<&'static str>,

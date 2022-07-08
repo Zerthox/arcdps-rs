@@ -1,7 +1,7 @@
 //! Global instance with ArcDPS information.
 
 use crate::{
-    api::CombatEvent,
+    api::RawCombatEvent,
     imgui::{self, sys::ImVec4, Context, Ui},
     util::exported_proc,
 };
@@ -17,7 +17,7 @@ type Export5 = unsafe extern "C" fn(*mut [*mut ImVec4; 5]);
 type Export6 = unsafe extern "C" fn() -> u64;
 type Export7 = unsafe extern "C" fn() -> u64;
 type Export8 = unsafe extern "C" fn(*mut c_char);
-type Export9 = unsafe extern "C" fn(*mut CombatEvent, u32);
+type Export9 = unsafe extern "C" fn(*mut RawCombatEvent, u32);
 
 /// Arc handle & exported functions.
 // TODO: should we move other globals from codegen here? or move this to codegen?
