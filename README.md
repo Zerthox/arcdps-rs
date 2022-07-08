@@ -9,9 +9,9 @@ This project is originally a fork of [greaka/arcdps_bindings](https://github.com
 - Versioning via `Cargo.toml`
 - Rust-like abstractions for callbacks and ArcDPS types
 - Optional [serde](https://serde.rs/) or [strum](https://docs.rs/strum/latest/strum/) integration
-- Imgui interfacing via `imgui-rs`
+- Imgui interfacing via [imgui-rs](https://github.com/imgui-rs/imgui-rs)
 - [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases) support
-- Optional raw access to ArcDPS C interface
+- Optional access to raw C interface of ArcDPS
 
 ### How to use
 ```rs
@@ -37,7 +37,7 @@ fn init() -> Result<(), Box<dyn Error>> {
 fn combat(
     event: Option<&CombatEvent>,
     src: Option<Agent>,
-    dest: Option<Agent>,
+    dst: Option<Agent>,
     skill_name: Option<&str>,
     id: u64,
     revision: u64,
