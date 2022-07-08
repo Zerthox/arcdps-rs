@@ -14,7 +14,7 @@ pub type RawExtrasSubscriberInit =
 /// Callback for subscriber initialization.
 ///
 /// Can be called before or after ArcDPS init function.
-/// Receives information about the unofficial extras addon and the current player account name as parameters.
+/// Receives information about the Unofficial Extras addon and the current player account name as parameters.
 pub type ExtrasInitFunc = fn(ExtrasAddonInfo, Option<&'static str>);
 
 pub type RawSquadUpdateCallback = unsafe extern "C" fn(*const RawUserInfo, u64);

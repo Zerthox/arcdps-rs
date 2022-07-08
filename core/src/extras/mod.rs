@@ -1,4 +1,4 @@
-//! Unofficial extras support.
+//! Unofficial Extras support.
 
 // TODO: hide this behind feature flag?
 

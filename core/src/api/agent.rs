@@ -10,7 +10,7 @@ use serde::{Deserialize, Serialize};
 /// Due to this, this struct is not usable for longer than the function call.
 /// If you need it for longer than that, consider converting it to [`AgentOwned`].
 ///
-/// ```
+/// ```ignore
 /// let agent: AgentOwned = agent.into();
 /// ```
 #[derive(Debug, Clone)]
