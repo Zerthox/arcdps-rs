@@ -33,7 +33,7 @@ pub unsafe fn e8_log_window(string: *mut c_char) {
     (ARC_INSTANCE.e8.unwrap())(string)
 }
 
-/// Adds a [`CombatEvent`] to Arc's event processing.
+/// Adds a [`RawCombatEvent`] to Arc's event processing.
 ///
 /// `is_statechange` will be set to extension, pad61-64 will be set to `sig`.
 /// Event will end up processed like ArcDPS events and logged to EVTC.
