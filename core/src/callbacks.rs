@@ -2,9 +2,6 @@
 
 use crate::{
     api::{Agent, CombatEvent, RawAgent},
-    extras::callbacks::{
-        ExtrasInitFunc, ExtrasSquadUpdateCallback, RawExtrasSubscriberInit, RawSquadUpdateCallback,
-    },
     imgui,
 };
 use std::{
@@ -12,35 +9,6 @@ use std::{
     os::raw::{c_char, c_void},
 };
 use windows::Win32::Foundation::{LPARAM, WPARAM};
-
-// TODO: should any of this be moved somewhere else?
-
-/// Reference on what fields are currently supported by the [`arcdps_export!`](arcdps_codegen::arcdps_export) macro.
-/// This struct is not used anywhere.
-pub struct SupportedFields {
-    pub name: &'static str,
-    pub sig: u32,
-    pub init: Option<InitFunc>,
-    pub release: Option<ReleaseFunc>,
-    pub raw_wnd_nofilter: Option<RawWndprocCallback>,
-    pub raw_imgui: Option<RawImguiCallback>,
-    pub raw_options_end: Option<RawOptionsCallback>,
-    pub raw_combat: Option<RawCombatCallback>,
-    pub raw_wnd_filter: Option<RawWndprocCallback>,
-    pub raw_options_windows: Option<RawOptionsWindowsCallback>,
-    pub raw_combat_local: Option<RawCombatCallback>,
-    pub raw_unofficial_extras_init: Option<RawExtrasSubscriberInit>,
-    pub raw_unofficial_extras_squad_update: Option<RawSquadUpdateCallback>,
-    pub wnd_nofilter: Option<WndProcCallback>,
-    pub combat: Option<CombatCallback>,
-    pub imgui: Option<ImguiCallback>,
-    pub options_end: Option<OptionsCallback>,
-    pub combat_local: Option<CombatCallback>,
-    pub wnd_filter: Option<WndProcCallback>,
-    pub options_windows: Option<OptionsWindowsCallback>,
-    pub unofficial_extras_init: Option<ExtrasInitFunc>,
-    pub unofficial_extras_squad_update: Option<ExtrasSquadUpdateCallback>,
-}
 
 /// Exported struct for ArcDPS plugins.
 #[repr(C)]
