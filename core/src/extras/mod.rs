@@ -16,7 +16,7 @@ use windows::Win32::Foundation::HINSTANCE;
 /// Supported extras API version.
 const API_VERSION: u32 = 2;
 
-/// Supported [`RawExtrasSubscriberInfo`] version.
+/// Supported [`ExtrasSubscriberInfo`] version.
 const SUB_INFO_VERSION: u32 = 1;
 
 /// Helper to check compatibility.
@@ -24,19 +24,28 @@ fn check_compat(api_version: u32, sub_info_version: u32) -> bool {
     api_version == API_VERSION && sub_info_version >= SUB_INFO_VERSION
 }
 
-#[derive(Debug)]
+/// Information about the Unofficial Extras addon.
+#[derive(Debug, Clone)]
 pub struct ExtrasAddonInfo {
-    /// Version of the api, gets incremented whenever a function signature or behavior changes in a breaking way.
-    /// Current version is 2.
+    /// Version of the API.
+    ///
+    /// Gets incremented whenever a function signature or behavior changes in a breaking way.
+    ///
+    /// Current version is `2`.
     pub api_version: u32,
 
-    /// Highest known version of the ExtrasSubscriberInfo struct.
-    /// Also determines the size of the pSubscriberInfo buffer in the init call (the buffer is only guaranteed to have enough space for known ExtrasSubscriberInfo versions).
-    /// Current version is 1.
+    /// Highest known version of the [`ExtrasSubscriberInfo`] struct.
+    ///
+    /// Also determines the size of the pSubscriberInfo buffer in the init call.
+    /// The buffer is only guaranteed to have enough space for known ExtrasSubscriberInfo versions.
+    ///
+    /// Current version is `1`.
     pub max_info_version: u32,
 
-    /// String version of unofficial_extras addon, gets changed on every release.
-    /// The string is valid for the lifetime of the unofficial_extras dll.
+    /// String version of unofficial_extras addon.
+    ///
+    /// Gets changed on every release.
+    /// The string is valid for the entire lifetime of the unofficial_extras DLL.
     pub string_version: Option<&'static str>,
 }
 
@@ -60,25 +69,10 @@ impl From<&RawExtrasAddonInfo> for ExtrasAddonInfo {
 #[derive(Debug)]
 #[repr(C)]
 pub struct RawExtrasAddonInfo {
-    /// Version of the api, gets incremented whenever a function signature or behavior changes in a breaking way.
-    /// Current version is 2.
     pub api_version: u32,
-
-    /// Highest known version of the ExtrasSubscriberInfo struct.
-    /// Also determines the size of the pSubscriberInfo buffer in the init call (the buffer is only guaranteed to have enough space for known ExtrasSubscriberInfo versions).
-    /// Current version is 1.
     pub max_info_version: u32,
-
-    /// String version of unofficial_extras addon, gets changed on every release.
-    /// The string is valid for the lifetime of the unofficial_extras dll.
     pub string_version: *const c_char,
-
-    /// The account name of the logged in player, including leading `:`.
-    /// The string is only valid for the duration of the init call.
     pub self_account_name: *const c_char,
-
-    /// The handle to the unofficial_extras module.
-    /// Use this to call the exports of the DLL.
     pub extras_handle: HINSTANCE,
 }
 
@@ -89,9 +83,10 @@ impl RawExtrasAddonInfo {
     }
 }
 
+/// Subscriber header shared across different versions.
 #[derive(Debug)]
 #[repr(C)]
-pub struct RawExtrasSubscriberInfoHeader {
+pub struct ExtrasSubscriberInfoHeader {
     /// The version of the following info struct
     /// This has to be set to the version you want to use.
     pub info_version: u32,
@@ -100,28 +95,33 @@ pub struct RawExtrasSubscriberInfoHeader {
     pub _unused1: u32,
 }
 
+/// Information about a subscriber to updates from Unofficial Extras.
 #[derive(Debug)]
 #[repr(C)]
-pub struct RawExtrasSubscriberInfo {
+pub struct ExtrasSubscriberInfo {
     /// Header shared across different versions.
-    pub header: RawExtrasSubscriberInfoHeader,
+    pub header: ExtrasSubscriberInfoHeader,
 
     /// Name of the addon subscribing to the changes.
+    ///
     /// Must be valid for the lifetime of the subscribing addon.
     /// Set to `nullptr` if initialization fails.
     pub subscriber_name: *const c_char,
 
     /// Called whenever anything in the squad changes.
+    ///
     /// Only the users that changed are sent.
     /// If a user is removed from the squad, it will be sent with `role` set to [`UserRole::None`]
     pub squad_update_callback: Option<RawSquadUpdateCallback>,
 
     /// Called whenever the language is changed.
+    ///
     /// Either by Changing it in the UI or by pressing the Right Ctrl (default) key.
     /// Will also be called directly after initialization, with the current language, to get the startup language.
     pub language_changed_callback: Option<RawLanguageChangedCallback>,
 
     /// Called whenever a KeyBind is changed.
+    ///
     /// By changing it in the ingame UI, by pressing the translation shortcut or with the Presets feature of this plugin.
     /// It is called for every keyBind separately.
     ///
@@ -131,11 +131,15 @@ pub struct RawExtrasSubscriberInfo {
     pub key_bind_changed_callback: Option<RawKeyBindChangedCallback>,
 }
 
-impl RawExtrasSubscriberInfo {
+impl ExtrasSubscriberInfo {
     /// Writes subscriber information into the struct.
     ///
     /// Name needs to be null-terminated.
-    pub fn subscribe(&mut self, name: &'static str, squad_update: Option<RawSquadUpdateCallback>) {
+    pub unsafe fn subscribe(
+        &mut self,
+        name: &'static str,
+        squad_update: Option<RawSquadUpdateCallback>,
+    ) {
         self.header.info_version = SUB_INFO_VERSION;
         self.subscriber_name = name.as_ptr() as *const c_char;
         self.squad_update_callback = squad_update;

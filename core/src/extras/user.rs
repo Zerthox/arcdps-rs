@@ -9,6 +9,7 @@ use serde::{Deserialize, Serialize};
 #[cfg(feature = "strum")]
 use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
 
+/// Role of a user in the squad.
 #[derive(
     Debug, Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, TryFromPrimitive,
 )]
@@ -19,11 +20,22 @@ use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
 )]
 #[repr(u8)]
 pub enum UserRole {
+    /// User is leader (commander tag).
     SquadLeader = 0,
+
+    /// User is lieutenant.
     Lieutenant = 1,
+
+    /// User is regular member.
     Member = 2,
+
+    /// User is invited.
     Invited = 3,
+
+    /// User has requested to join.
     Applied = 4,
+
+    /// User has left.
     None = 5,
 
     /// Internal only.
@@ -125,6 +137,7 @@ pub struct RawUserInfo {
     pub _unused2: u32,
 }
 
+/// Iterator over changed users.
 pub type UserInfoIter<'a> = Map<slice::Iter<'a, RawUserInfo>, UserConvert>;
 
 pub type UserConvert = for<'r> fn(&'r RawUserInfo) -> UserInfo<'r>;
