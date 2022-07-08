@@ -403,9 +403,27 @@ pub enum StateChange {
 
     /// Last 90% before down.
     ///
-    /// `src_agent` is enemy agent that went down, `dst_agent` agent is time in ms since last 90%.
+    /// `src_agent` is enemy agent that went down, `dst_agent` is time in ms since last 90%.
     /// For downs contribution.
     Last90BeforeDown,
+
+    /// Effect created.
+    ///
+    /// `src_agent` is owner.
+    /// `dst_agent` if at agent, else `&value = float[3] xyz`, `&iff = float[2] xy` orient, `&pad61 = float[1] z` orient, `skillid = effectid`.
+    /// If `is_flanking`: `duration = trackingid`.
+    /// `&is_shields = uint16` duration.
+    /// If `effectid == 0`, end `&is_shields = trackingid`.
+    ///
+    /// *Not used in realtime API.*
+    Effect,
+
+    /// Id to GUID.
+    ///
+    /// `&src_agent = 16byte` persistent content guid, `overstack_value` is of contentlocal enum, `skillid` is content id.
+    ///
+    /// *Not used in realtime API.*
+    IdToGUID,
 
     /// Unknown or invalid.
     #[num_enum(default)]
