@@ -1,0 +1,128 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\winapi-0.3.9\src\um\reason.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>reason.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script src="../../../crates.js"></script><script defer src="../../../main.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script>
+    <noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../winapi/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div>
+        </a><h2 class="location"></h2>
+    </nav>
+    <nav class="sidebar"><a class="sidebar-logo" href="../../../winapi/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div>
+        </a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../winapi/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><div class="theme-picker hidden"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="22" height="22" alt="Pick another theme!" src="../../../brush.svg"></button><div id="theme-choices" role="menu"></div></div><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<span id="2">2</span>
+<span id="3">3</span>
+<span id="4">4</span>
+<span id="5">5</span>
+<span id="6">6</span>
+<span id="7">7</span>
+<span id="8">8</span>
+<span id="9">9</span>
+<span id="10">10</span>
+<span id="11">11</span>
+<span id="12">12</span>
+<span id="13">13</span>
+<span id="14">14</span>
+<span id="15">15</span>
+<span id="16">16</span>
+<span id="17">17</span>
+<span id="18">18</span>
+<span id="19">19</span>
+<span id="20">20</span>
+<span id="21">21</span>
+<span id="22">22</span>
+<span id="23">23</span>
+<span id="24">24</span>
+<span id="25">25</span>
+<span id="26">26</span>
+<span id="27">27</span>
+<span id="28">28</span>
+<span id="29">29</span>
+<span id="30">30</span>
+<span id="31">31</span>
+<span id="32">32</span>
+<span id="33">33</span>
+<span id="34">34</span>
+<span id="35">35</span>
+<span id="36">36</span>
+<span id="37">37</span>
+<span id="38">38</span>
+<span id="39">39</span>
+<span id="40">40</span>
+<span id="41">41</span>
+<span id="42">42</span>
+<span id="43">43</span>
+<span id="44">44</span>
+<span id="45">45</span>
+<span id="46">46</span>
+<span id="47">47</span>
+<span id="48">48</span>
+<span id="49">49</span>
+<span id="50">50</span>
+<span id="51">51</span>
+<span id="52">52</span>
+<span id="53">53</span>
+<span id="54">54</span>
+<span id="55">55</span>
+<span id="56">56</span>
+<span id="57">57</span>
+<span id="58">58</span>
+<span id="59">59</span>
+<span id="60">60</span>
+</pre><pre class="rust"><code><span class="comment">// Licensed under the Apache License, Version 2.0</span>
+<span class="comment">// &lt;LICENSE-APACHE or http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license</span>
+<span class="comment">// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your option.</span>
+<span class="comment">// All files in the project carrying such notice may not be copied, modified, or distributed</span>
+<span class="comment">// except according to those terms.</span>
+<span class="kw">use</span> <span class="ident">shared::minwindef::DWORD</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHTDN_REASON_FLAG_COMMENT_REQUIRED</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x01000000</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHTDN_REASON_FLAG_DIRTY_PROBLEM_ID_REQUIRED</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x02000000</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHTDN_REASON_FLAG_CLEAN_UI</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x04000000</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHTDN_REASON_FLAG_DIRTY_UI</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x08000000</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHTDN_REASON_FLAG_USER_DEFINED</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x40000000</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHTDN_REASON_FLAG_PLANNED</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x80000000</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHTDN_REASON_MAJOR_OTHER</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000000</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHTDN_REASON_MAJOR_NONE</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000000</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHTDN_REASON_MAJOR_HARDWARE</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00010000</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHTDN_REASON_MAJOR_OPERATINGSYSTEM</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00020000</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHTDN_REASON_MAJOR_SOFTWARE</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00030000</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHTDN_REASON_MAJOR_APPLICATION</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00040000</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHTDN_REASON_MAJOR_SYSTEM</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00050000</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHTDN_REASON_MAJOR_POWER</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00060000</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHTDN_REASON_MAJOR_LEGACY_API</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00070000</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHTDN_REASON_MINOR_OTHER</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000000</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHTDN_REASON_MINOR_NONE</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x000000ff</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHTDN_REASON_MINOR_MAINTENANCE</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000001</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHTDN_REASON_MINOR_INSTALLATION</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000002</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHTDN_REASON_MINOR_UPGRADE</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000003</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHTDN_REASON_MINOR_RECONFIG</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000004</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHTDN_REASON_MINOR_HUNG</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000005</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHTDN_REASON_MINOR_UNSTABLE</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000006</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHTDN_REASON_MINOR_DISK</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000007</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHTDN_REASON_MINOR_PROCESSOR</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000008</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHTDN_REASON_MINOR_NETWORKCARD</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000009</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHTDN_REASON_MINOR_POWER_SUPPLY</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0000000a</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHTDN_REASON_MINOR_CORDUNPLUGGED</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0000000b</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHTDN_REASON_MINOR_ENVIRONMENT</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0000000c</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHTDN_REASON_MINOR_HARDWARE_DRIVER</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0000000d</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHTDN_REASON_MINOR_OTHERDRIVER</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0000000e</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHTDN_REASON_MINOR_BLUESCREEN</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0000000F</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHTDN_REASON_MINOR_SERVICEPACK</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000010</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHTDN_REASON_MINOR_HOTFIX</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000011</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHTDN_REASON_MINOR_SECURITYFIX</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000012</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHTDN_REASON_MINOR_SECURITY</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000013</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHTDN_REASON_MINOR_NETWORK_CONNECTIVITY</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000014</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHTDN_REASON_MINOR_WMI</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000015</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHTDN_REASON_MINOR_SERVICEPACK_UNINSTALL</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000016</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHTDN_REASON_MINOR_HOTFIX_UNINSTALL</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000017</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHTDN_REASON_MINOR_SECURITYFIX_UNINSTALL</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000018</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHTDN_REASON_MINOR_MMC</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000019</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHTDN_REASON_MINOR_SYSTEMRESTORE</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0000001a</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHTDN_REASON_MINOR_TERMSRV</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000020</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHTDN_REASON_MINOR_DC_PROMOTION</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000021</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHTDN_REASON_MINOR_DC_DEMOTION</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000022</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHTDN_REASON_UNKNOWN</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="ident">SHTDN_REASON_MINOR_NONE</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHTDN_REASON_LEGACY_API</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="ident">SHTDN_REASON_MAJOR_LEGACY_API</span>
+    <span class="op">|</span> <span class="ident">SHTDN_REASON_FLAG_PLANNED</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHTDN_REASON_VALID_BIT_MASK</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0xc0ffffff</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">PCLEANUI</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="ident">SHTDN_REASON_FLAG_PLANNED</span> <span class="op">|</span> <span class="ident">SHTDN_REASON_FLAG_CLEAN_UI</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">UCLEANUI</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="ident">SHTDN_REASON_FLAG_CLEAN_UI</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">PDIRTYUI</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="ident">SHTDN_REASON_FLAG_PLANNED</span> <span class="op">|</span> <span class="ident">SHTDN_REASON_FLAG_DIRTY_UI</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">UDIRTYUI</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="ident">SHTDN_REASON_FLAG_DIRTY_UI</span>;
+</code></pre></div>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="winapi" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.62.0 (a8314ef7d 2022-06-27)" ></div>
+</body></html>

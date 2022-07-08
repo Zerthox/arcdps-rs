@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["Language","GW2 client language."],["Profession","Player profession."],["Specialization","Player specialization."]],"struct":[["LanguageIter","An iterator over the variants of [Self]"],["ProfessionIter","An iterator over the variants of [Self]"],["SpecializationIter","An iterator over the variants of [Self]"]]});
