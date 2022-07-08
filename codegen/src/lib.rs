@@ -140,7 +140,7 @@ pub fn arcdps_export(item: proc_macro::TokenStream) -> proc_macro::TokenStream {
                 malloc: Option<MallocFn>,
                 free: Option<FreeFn>,
             ) -> fn() -> &'static ArcDpsExport {
-                __init(arc_version, arc_dll, imgui_ctx, malloc, free, id32, #name);
+                __init(arc_version, arc_dll, imgui_ctx, malloc, free, id3d, #name);
                 load
             }
 
