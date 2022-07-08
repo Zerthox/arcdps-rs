@@ -5,7 +5,7 @@ on:
     branches:
       - master
     paths:
-      - src/**
+      - "**/src/**"
       - Cargo.toml
 
 jobs:

@@ -5,11 +5,11 @@ on:
     branches:
       - master
     paths:
-      - src/**
+      - "**/src/**"
       - Cargo.toml
   pull_request:
     paths:
-      - src/**
+      - "**/src/**"
       - Cargo.toml
 
 jobs:
