@@ -8,7 +8,7 @@ use std::{ffi::OsString, mem::MaybeUninit, os::windows::prelude::*, path::PathBu
 
 /// Retrieves the ArcDPS version as string.
 pub fn version() -> Option<&'static str> {
-    unsafe { ARC_INSTANCE.as_ref().unwrap().version }
+    unsafe { ARC_INSTANCE.version }
 }
 
 /// Retrieves the config path from ArcDPS.

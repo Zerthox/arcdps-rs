@@ -82,15 +82,7 @@ pub fn arcdps_export(item: proc_macro::TokenStream) -> proc_macro::TokenStream {
     let result = quote! {
         mod __arcdps_gen_export {
             use super::*;
-            use ::arcdps::{
-                imgui,
-                callbacks::*,
-                extras::callbacks::*,
-                util::{str_from_cstr, __macro::*},
-            };
-
-            type MallocFn = unsafe extern "C" fn(size: usize, user_data: *mut c_void) -> *mut c_void;
-            type FreeFn = unsafe extern "C" fn(ptr: *mut c_void, user_data: *mut c_void);
+            use ::arcdps::__macro::*;
 
             #abstract_combat
             #abstract_combat_local
@@ -118,8 +110,6 @@ pub fn arcdps_export(item: proc_macro::TokenStream) -> proc_macro::TokenStream {
                 wnd_nofilter: None,
             };
             static mut ERROR_STRING: String = String::new();
-            static mut CTX: Option<imgui::Context> = None;
-            static mut UI: Option<imgui::Ui> = None;
 
             fn load() -> &'static ArcDpsExport {
                 let mut export = &EXPORT;
@@ -144,20 +134,15 @@ pub fn arcdps_export(item: proc_macro::TokenStream) -> proc_macro::TokenStream {
             #[no_mangle]
             pub unsafe extern "system" fn get_init_addr(
                 arc_version: *mut c_char,
-                imguictx: *mut imgui::sys::ImGuiContext,
-                _id3dd9: *mut c_void,
+                imgui_ctx: *mut imgui::sys::ImGuiContext,
+                id3d: *mut c_void,
                 arc_dll: HINSTANCE,
-                mallocfn: Option<MallocFn>,
-                freefn: Option<FreeFn>,
+                malloc: Option<MallocFn>,
+                free: Option<FreeFn>,
             ) -> fn() -> &'static ArcDpsExport {
-                imgui::sys::igSetCurrentContext(imguictx);
-                imgui::sys::igSetAllocatorFunctions(mallocfn, freefn, ::core::ptr::null_mut());
-                CTX = Some(imgui::Context::current());
-                UI = Some(imgui::Ui::from_ctx(CTX.as_ref().unwrap()));
-                ::arcdps::__init(arc_version, arc_dll, #name);
+                __init(arc_version, arc_dll, imgui_ctx, malloc, free, id32, #name);
                 load
             }
-
 
             /// ArcDPS looks for this exported function and calls the address it returns on client exit.
             #[no_mangle]
@@ -234,8 +219,7 @@ fn build_options_windows(
                 unsafe extern "C" fn abstract_options_windows(window_name: *mut c_char) -> bool {
                     let _ = #safe as OptionsWindowsCallback;
 
-                    let ui = UI.as_ref().unwrap();
-                    #safe(ui, str_from_cstr(window_name))
+                    #safe(__ui(), str_from_cstr(window_name))
                 }
             };
             quote_spanned!(span=> Some(__arcdps_gen_export::abstract_options_windows as _) )
@@ -260,10 +244,9 @@ fn build_options_end(
             let span = syn::Error::new_spanned(&safe, "").span();
             abstract_options_end = quote_spanned! {span =>
                 unsafe extern "C" fn abstract_options_end() {
-                    let _ = #safe as ::arcdps::callbacks::OptionsCallback;
+                    let _ = #safe as OptionsCallback;
 
-                    let ui = UI.as_ref().unwrap();
-                    #safe(ui)
+                    #safe(__ui())
                 }
             };
             quote_spanned!(span=> Some(__arcdps_gen_export::abstract_options_end as _) )
@@ -287,8 +270,7 @@ fn build_imgui(raw_imgui: Option<Expr>, imgui: Option<Expr>) -> (TokenStream, To
                 unsafe extern "C" fn abstract_imgui(loading: u32) {
                     let _ = #safe as ImguiCallback;
 
-                    let ui = UI.as_ref().unwrap();
-                    #safe(ui, loading != 0)
+                    #safe(__ui(), loading != 0)
                 }
             };
             quote_spanned!(span=> Some(__arcdps_gen_export::abstract_imgui as _) )
