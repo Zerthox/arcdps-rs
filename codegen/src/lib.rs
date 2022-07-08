@@ -307,7 +307,7 @@ fn build_combat_helper(
             let span = syn::Error::new_spanned(&safe, "").span();
             abstract_combat = quote_spanned! {span =>
                 unsafe extern "C" fn #func_name(
-                        event: Option<&::arcdps::api::CombatEvent>,
+                        event: Option<&::arcdps::api::RawCombatEvent>,
                         src: Option<&::arcdps::api::RawAgent>,
                         dst: Option<&::arcdps::api::RawAgent>,
                         skill_name: *mut c_char,
@@ -317,7 +317,7 @@ fn build_combat_helper(
                         let _ = #safe as CombatCallback;
 
                         #safe(
-                            event,
+                            event.map(Into::into),
                             src.map(Into::into),
                             dst.map(Into::into),
                             str_from_cstr(skill_name),
@@ -367,7 +367,8 @@ fn build_extras_init(
 
                 #subscribe
 
-                let user = str_from_cstr(addon.self_account_name as _).map(|n| n.trim_start_matches(':'));
+                let user = str_from_cstr(addon.self_account_name as _)
+                    .map(|n| n.trim_start_matches(':'));
                 #safe(addon.into(), user)
             }
         }
@@ -381,7 +382,7 @@ fn build_extras_init(
         #[no_mangle]
         unsafe extern "system" fn arcdps_unofficial_extras_subscriber_init(
             addon: &::arcdps::extras::RawExtrasAddonInfo,
-            sub: &mut ::arcdps::extras::RawExtrasSubscriberInfo
+            sub: &mut ::arcdps::extras::ExtrasSubscriberInfo
         ) {
             #abstract_wrapper
         }
