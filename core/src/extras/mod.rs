@@ -42,10 +42,10 @@ pub struct ExtrasAddonInfo {
     /// Current version is `1`.
     pub max_info_version: u32,
 
-    /// String version of unofficial_extras addon.
+    /// String version of the Unofficial Extras addon.
     ///
     /// Gets changed on every release.
-    /// The string is valid for the entire lifetime of the unofficial_extras DLL.
+    /// The string is valid for the entire lifetime of the Unofficial Extras DLL.
     pub string_version: Option<&'static str>,
 }
 

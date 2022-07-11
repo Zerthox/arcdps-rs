@@ -28,3 +28,4 @@ features = [
 
 [features]
 default = []
+extras = ["arcdps-codegen/extras"]
