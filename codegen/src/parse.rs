@@ -1,106 +1,83 @@
-use proc_macro2::TokenStream;
+use crate::ArcDpsGen;
 use syn::{
-    parse::ParseStream, punctuated::Punctuated, Error, Expr, FieldValue, Lit, LitStr, Member, Token,
+    parse::{Parse, ParseStream},
+    punctuated::Punctuated,
+    Error, Expr, FieldValue, Lit, Member, Token,
 };
 
+/// Helper to generate parsing.
 macro_rules! match_parse {
-    ($test:expr, $gen:expr, $field:expr, $($name:expr),+) => {
+    ($ident:expr, $gen:expr, $field:expr, $($name:ident),+; extras: { $($extras:ident),+ }) => {
         paste::paste! {
-            match $test.to_string().as_str() {
+            match $ident.to_string().as_str() {
                 $(
-                stringify!([<raw_ $name>]) => {
-                    $gen.[<raw_ $name>] = Some($field.expr);
-                    if $gen.$name.is_some() {
+                    stringify!([<raw_ $name>]) => {
+                        $gen.[<raw_ $name>] = Some($field.expr);
+                        if $gen.$name.is_some() {
+                            return Err(Error::new_spanned(
+                                $ident,
+                                stringify!([<raw_ $name>] and $name are exclusive),
+                            ));
+                        }
+                    }
+                    stringify!($name) => {
+                        $gen.$name = Some($field.expr);
+                        if $gen.[<raw_ $name>].is_some() {
+                            return Err(Error::new_spanned(
+                                $ident,
+                                stringify!($name and [<raw_ $name>] are exclusive),
+                            ));
+                        }
+                    }
+                )+
+                $(
+                    #[cfg(feature = "extras")]
+                    stringify!([<raw_ $extras>]) => {
+                        $gen.[<raw_ $extras>] = Some($field.expr);
+                        if $gen.$extras.is_some() {
+                            return Err(Error::new_spanned(
+                                $ident,
+                                stringify!([<raw_ $extras>] and $extras are exclusive),
+                            ));
+                        }
+                    }
+                    #[cfg(feature = "extras")]
+                    stringify!($extras) => {
+                        $gen.$extras = Some($field.expr);
+                        if $gen.[<raw_ $extras>].is_some() {
+                            return Err(Error::new_spanned(
+                                $ident,
+                                stringify!($extras and [<raw_ $extras>] are exclusive),
+                            ));
+                        }
+                    }
+                    #[cfg(not(feature = "extras"))]
+                    stringify!([<raw_ $extras>]) | stringify!($extras) => {
                         return Err(Error::new_spanned(
-                            $test,
-                            stringify!([<raw_ $name>] and $name are exclusive),
+                            $ident,
+                            format!("field {} requires the extras feature", $ident),
                         ));
                     }
-                }
-                stringify!($name) => {
-                    $gen.$name = Some($field.expr);
-                    if $gen.[<raw_ $name>].is_some() {
-                        return Err(Error::new_spanned(
-                            $test,
-                            stringify!($name and [<raw_ $name>] are exclusive),
-                        ));
-                    }
-                }
-                ),+
-
-                _ => {
-                    return Err(Error::new_spanned(
-                        $test,
-                        format!("no field named {} exists", $test),
-                    ))
-                }
+                )+
+                _ => return Err(Error::new_spanned(
+                    $ident,
+                    format!("no field named {} exists", $ident),
+                )),
             }
         }
     }
 }
 
-pub(crate) struct ArcDpsGen {
-    pub name: Option<LitStr>,
-    pub sig: Expr,
-    pub init: Option<Expr>,
-    pub release: Option<Expr>,
-    pub raw_wnd_nofilter: Option<Expr>,
-    pub raw_imgui: Option<Expr>,
-    pub raw_options_end: Option<Expr>,
-    pub raw_combat: Option<Expr>,
-    pub raw_wnd_filter: Option<Expr>,
-    pub raw_options_windows: Option<Expr>,
-    pub raw_combat_local: Option<Expr>,
-    pub raw_unofficial_extras_init: Option<Expr>,
-    pub raw_unofficial_extras_squad_update: Option<Expr>,
-    pub wnd_nofilter: Option<Expr>,
-    pub combat: Option<Expr>,
-    pub imgui: Option<Expr>,
-    pub options_end: Option<Expr>,
-    pub combat_local: Option<Expr>,
-    pub wnd_filter: Option<Expr>,
-    pub options_windows: Option<Expr>,
-    pub unofficial_extras_init: Option<Expr>,
-    pub unofficial_extras_squad_update: Option<Expr>,
-}
-
-impl syn::parse::Parse for ArcDpsGen {
+impl Parse for ArcDpsGen {
     fn parse(input: ParseStream) -> syn::Result<Self> {
         let fields: Punctuated<FieldValue, Token![,]> = Punctuated::parse_terminated(input)?;
 
-        let mut gen: ArcDpsGen = Self {
-            name: None,
-            sig: Expr::Verbatim(TokenStream::new()),
-
-            init: None,
-            release: None,
-
-            combat: None,
-            combat_local: None,
-            imgui: None,
-            options_end: None,
-            options_windows: None,
-            wnd_filter: None,
-            wnd_nofilter: None,
-            unofficial_extras_init: None,
-            unofficial_extras_squad_update: None,
-
-            raw_combat: None,
-            raw_combat_local: None,
-            raw_imgui: None,
-            raw_options_end: None,
-            raw_options_windows: None,
-            raw_wnd_filter: None,
-            raw_wnd_nofilter: None,
-            raw_unofficial_extras_init: None,
-            raw_unofficial_extras_squad_update: None,
-        };
-
+        let mut gen = Self::default();
         let mut sig_done = false;
 
         for field in fields.into_iter() {
-            if let Member::Named(name) = &field.member {
-                match name.to_string().as_str() {
+            if let Member::Named(ident) = &field.member {
+                match ident.to_string().as_str() {
                     "name" => {
                         gen.name = if let Expr::Lit(expr) = field.expr {
                             if let Lit::Str(lit) = expr.lit {
@@ -123,17 +100,12 @@ impl syn::parse::Parse for ArcDpsGen {
                         gen.sig = field.expr;
                     }
 
-                    "init" => {
-                        gen.init = Some(field.expr);
-                    }
-
-                    "release" => {
-                        gen.release = Some(field.expr);
-                    }
+                    "init" => gen.init = Some(field.expr),
+                    "release" => gen.release = Some(field.expr),
 
                     _ => {
                         match_parse!(
-                            name,
+                            ident,
                             gen,
                             field,
                             combat,
@@ -142,9 +114,11 @@ impl syn::parse::Parse for ArcDpsGen {
                             options_end,
                             options_windows,
                             wnd_filter,
-                            wnd_nofilter,
-                            unofficial_extras_init,
-                            unofficial_extras_squad_update
+                            wnd_nofilter;
+                            extras: {
+                                extras_init,
+                                extras_squad_update
+                            }
                         )
                     }
                 };
