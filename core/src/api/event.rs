@@ -7,29 +7,92 @@ use serde::{Deserialize, Serialize};
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct CombatEvent {
+    /// `TimeGetTime()` at time of registering the event.
     pub time: u64,
+
+    /// Agent that caused the event.
     pub src_agent: usize,
+
+    /// Agent the event happened to.
     pub dst_agent: usize,
+
+    /// Value, if relevant to the event.
     pub value: i32,
+
+    /// Buff damage, if relevant to the event.
     pub buff_dmg: i32,
+
+    /// Overstack value, if relevant to the event.
     pub overstack_value: u32,
+
+    /// Skill id of the relevant skill (can be zero).
     pub skill_id: u32,
+
+    /// Id of source agent as appears in game at time of event.
     pub src_instance_id: u16,
+
+    /// Id of destination agent as appears in game at time of event.
     pub dst_instance_id: u16,
+
+    /// If `src_agent` has a master (e.g. is minion), will be equal to instance id of master, zero otherwise.
     pub src_master_instance_id: u16,
+
+    /// If `dst_agent` has a master (e.g. is minion), will be equal to instance id of master, zero otherwise.
     pub dst_master_instance_id: u16,
+
+    /// Current affinity of `src_agent` and `dst_agent`.
     pub iff: Team,
+
+    /// Buff, if relevant to the event.
     pub buff: u8,
+
+    /// Combat result.
+    ///
+    /// For direct damage events this is a variant of [`Strike`](crate::Strike).
     pub result: u8,
+
+    /// Whether event is a kind of [`Activation`].
+    ///
+    /// For [`Activation::CancelFire`] and [`Activation::CancelCancel`] `value` will be the ms duration of the time spent in animation.
+    /// `buff_dmg` will be the ms duration of the scaled (as if not affected) time spent.
+    ///
+    /// For Normal or Quickness, `value` will be the ms duration at which all significant effects have happened.
+    /// `buff_dmg` will be the ms duration at which control is expected to be returned to character.
+    ///
+    /// `dst_agent` will be x/y of target of skill effect.
+    /// `overstack_value` will be z of target of skill effect.
     pub is_activation: Activation,
+
+    /// Whether event is a kind of [`BuffRemove`].
+    ///
+    /// `src_agent` is agent that had buff removed, `dst_agent` is the agent that removed it.
+    /// `value` will be the remaining time removed calculated as duration.
+    /// `buff_dmg` will be the remaining time removed calculated as intensity.
+    ///
+    /// For [`BuffRemove::All`] `result` will be the number of stacks removed.
+    /// For [`BuffRemove::Single`] pad61-64 (uint32) will be buff instance id of buff removed.
     pub is_buff_remove: BuffRemove,
+
+    /// Whether `src_agent` is above 90% Health.
     pub is_ninety: u8,
+
+    /// Whether `dst_agent` is below 50% Health.
     pub is_fifty: u8,
+
+    /// Whether `src_agent` is moving at time of event.
     pub is_moving: u8,
+
+    /// Whether event is a kind of [`StateChange`].
     pub is_statechange: StateChange,
+
+    /// Whether `src_agent` is flanking at time of event.
     pub is_flanking: u8,
+
     pub is_shields: u8,
+
+    /// For relevant Events, this may be a variant of [`BuffCycle`](crate::BuffCycle).
     pub is_off_cycle: u8,
+
     pub pad61: u8,
     pub pad62: u8,
     pub pad63: u8,

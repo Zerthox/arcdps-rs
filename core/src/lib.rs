@@ -23,7 +23,7 @@ use callbacks::*;
 #[cfg(feature = "extras")]
 use extras::callbacks::*;
 
-/// Reference on what fields are currently supported by the [`arcdps_export!`](arcdps_codegen::arcdps_export) macro.
+/// Reference on what fields are currently supported by the [`export!`] macro.
 /// This struct is not used anywhere.
 pub struct SupportedFields {
     pub name: &'static str,
