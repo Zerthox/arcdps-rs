@@ -1,6 +1,6 @@
 var sourcesIndex = {};
 sourcesIndex["arcdps"] = {"name":"","dirs":[{"name":"api","files":["agent.rs","event.rs","evtc.rs","game.rs","mod.rs"]},{"name":"exports","files":["mod.rs","raw.rs"]},{"name":"extras","files":["callbacks.rs","keybinds.rs","mod.rs","user.rs"]}],"files":["callbacks.rs","instance.rs","lib.rs","util.rs"]};
-sourcesIndex["arcdps_codegen"] = {"name":"","files":["lib.rs","parse.rs"]};
+sourcesIndex["arcdps_codegen"] = {"name":"","files":["callbacks.rs","export.rs","extras.rs","lib.rs","parse.rs"]};
 sourcesIndex["arcdps_imgui"] = {"name":"","dirs":[{"name":"fonts","files":["atlas.rs","font.rs","glyph.rs","glyph_ranges.rs","mod.rs"]},{"name":"input","files":["keyboard.rs","mod.rs","mouse.rs"]},{"name":"render","files":["draw_data.rs","mod.rs","renderer.rs"]},{"name":"widget","files":["color_editors.rs","combo_box.rs","drag.rs","image.rs","list_box.rs","menu.rs","misc.rs","mod.rs","progress_bar.rs","selectable.rs","slider.rs","tab.rs","text.rs","tree.rs"]},{"name":"window","files":["child_window.rs","content_region.rs","mod.rs","scroll.rs"]}],"files":["clipboard.rs","color.rs","columns.rs","context.rs","drag_drop.rs","draw_list.rs","input_widget.rs","internal.rs","io.rs","layout.rs","lib.rs","list_clipper.rs","plothistogram.rs","plotlines.rs","popups.rs","stacks.rs","string.rs","style.rs","tables.rs","tokens.rs","utils.rs"]};
 sourcesIndex["arcdps_imgui_sys"] = {"name":"","files":["bindings.rs","lib.rs"]};
 sourcesIndex["bitflags"] = {"name":"","files":["lib.rs"]};

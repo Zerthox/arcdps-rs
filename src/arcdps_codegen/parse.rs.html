@@ -139,135 +139,86 @@
 <span id="134">134</span>
 <span id="135">135</span>
 <span id="136">136</span>
-<span id="137">137</span>
-<span id="138">138</span>
-<span id="139">139</span>
-<span id="140">140</span>
-<span id="141">141</span>
-<span id="142">142</span>
-<span id="143">143</span>
-<span id="144">144</span>
-<span id="145">145</span>
-<span id="146">146</span>
-<span id="147">147</span>
-<span id="148">148</span>
-<span id="149">149</span>
-<span id="150">150</span>
-<span id="151">151</span>
-<span id="152">152</span>
-<span id="153">153</span>
-<span id="154">154</span>
-<span id="155">155</span>
-<span id="156">156</span>
-<span id="157">157</span>
-<span id="158">158</span>
-<span id="159">159</span>
-<span id="160">160</span>
-<span id="161">161</span>
-<span id="162">162</span>
-</pre><pre class="rust"><code><span class="kw">use</span> <span class="ident">proc_macro2::TokenStream</span>;
+</pre><pre class="rust"><code><span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::ArcDpsGen</span>;
 <span class="kw">use</span> <span class="ident">syn</span>::{
-    <span class="ident">parse::ParseStream</span>, <span class="ident">punctuated::Punctuated</span>, <span class="ident">Error</span>, <span class="ident">Expr</span>, <span class="ident">FieldValue</span>, <span class="ident">Lit</span>, <span class="ident">LitStr</span>, <span class="ident">Member</span>, <span class="ident">Token</span>,
+    <span class="ident">parse</span>::{<span class="ident">Parse</span>, <span class="ident">ParseStream</span>},
+    <span class="ident">punctuated::Punctuated</span>,
+    <span class="ident">Error</span>, <span class="ident">Expr</span>, <span class="ident">FieldValue</span>, <span class="ident">Lit</span>, <span class="ident">Member</span>, <span class="ident">Token</span>,
 };
 
+<span class="doccomment">/// Helper to generate parsing.</span>
 <span class="macro">macro_rules!</span> <span class="ident">match_parse</span> {
-    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">test</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">gen</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">field</span>:<span class="ident">expr</span>, $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">expr</span>),<span class="op">+</span>) =&gt; {
+    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">ident</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">gen</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">field</span>:<span class="ident">expr</span>, $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">ident</span>),<span class="op">+</span>; <span class="ident">extras</span>: { $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">extras</span>:<span class="ident">ident</span>),<span class="op">+</span> }) =&gt; {
         <span class="macro">paste::paste!</span> {
-            <span class="kw">match</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">test</span>.<span class="ident">to_string</span>().<span class="ident">as_str</span>() {
+            <span class="kw">match</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ident</span>.<span class="ident">to_string</span>().<span class="ident">as_str</span>() {
                 $(
-                <span class="macro">stringify!</span>([<span class="op">&lt;</span><span class="ident">raw_</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span><span class="op">&gt;</span>]) =&gt; {
-                    <span class="macro-nonterminal">$</span><span class="macro-nonterminal">gen</span>.[<span class="op">&lt;</span><span class="ident">raw_</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span><span class="op">&gt;</span>] <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">field</span>.<span class="ident">expr</span>);
-                    <span class="kw">if</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">gen</span>.<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>.<span class="ident">is_some</span>() {
+                    <span class="macro">stringify!</span>([<span class="op">&lt;</span><span class="ident">raw_</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span><span class="op">&gt;</span>]) =&gt; {
+                        <span class="macro-nonterminal">$</span><span class="macro-nonterminal">gen</span>.[<span class="op">&lt;</span><span class="ident">raw_</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span><span class="op">&gt;</span>] <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">field</span>.<span class="ident">expr</span>);
+                        <span class="kw">if</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">gen</span>.<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>.<span class="ident">is_some</span>() {
+                            <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">Error::new_spanned</span>(
+                                <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ident</span>,
+                                <span class="macro">stringify!</span>([<span class="op">&lt;</span><span class="ident">raw_</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span><span class="op">&gt;</span>] <span class="ident">and</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> <span class="ident">are</span> <span class="ident">exclusive</span>),
+                            ));
+                        }
+                    }
+                    <span class="macro">stringify!</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>) =&gt; {
+                        <span class="macro-nonterminal">$</span><span class="macro-nonterminal">gen</span>.<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">field</span>.<span class="ident">expr</span>);
+                        <span class="kw">if</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">gen</span>.[<span class="op">&lt;</span><span class="ident">raw_</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span><span class="op">&gt;</span>].<span class="ident">is_some</span>() {
+                            <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">Error::new_spanned</span>(
+                                <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ident</span>,
+                                <span class="macro">stringify!</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> <span class="ident">and</span> [<span class="op">&lt;</span><span class="ident">raw_</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span><span class="op">&gt;</span>] <span class="ident">are</span> <span class="ident">exclusive</span>),
+                            ));
+                        }
+                    }
+                )<span class="op">+</span>
+                $(
+                    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;extras&quot;</span>)]</span>
+                    <span class="macro">stringify!</span>([<span class="op">&lt;</span><span class="ident">raw_</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">extras</span><span class="op">&gt;</span>]) =&gt; {
+                        <span class="macro-nonterminal">$</span><span class="macro-nonterminal">gen</span>.[<span class="op">&lt;</span><span class="ident">raw_</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">extras</span><span class="op">&gt;</span>] <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">field</span>.<span class="ident">expr</span>);
+                        <span class="kw">if</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">gen</span>.<span class="macro-nonterminal">$</span><span class="macro-nonterminal">extras</span>.<span class="ident">is_some</span>() {
+                            <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">Error::new_spanned</span>(
+                                <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ident</span>,
+                                <span class="macro">stringify!</span>([<span class="op">&lt;</span><span class="ident">raw_</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">extras</span><span class="op">&gt;</span>] <span class="ident">and</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">extras</span> <span class="ident">are</span> <span class="ident">exclusive</span>),
+                            ));
+                        }
+                    }
+                    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;extras&quot;</span>)]</span>
+                    <span class="macro">stringify!</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">extras</span>) =&gt; {
+                        <span class="macro-nonterminal">$</span><span class="macro-nonterminal">gen</span>.<span class="macro-nonterminal">$</span><span class="macro-nonterminal">extras</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">field</span>.<span class="ident">expr</span>);
+                        <span class="kw">if</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">gen</span>.[<span class="op">&lt;</span><span class="ident">raw_</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">extras</span><span class="op">&gt;</span>].<span class="ident">is_some</span>() {
+                            <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">Error::new_spanned</span>(
+                                <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ident</span>,
+                                <span class="macro">stringify!</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">extras</span> <span class="ident">and</span> [<span class="op">&lt;</span><span class="ident">raw_</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">extras</span><span class="op">&gt;</span>] <span class="ident">are</span> <span class="ident">exclusive</span>),
+                            ));
+                        }
+                    }
+                    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;extras&quot;</span>))]</span>
+                    <span class="macro">stringify!</span>([<span class="op">&lt;</span><span class="ident">raw_</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">extras</span><span class="op">&gt;</span>]) <span class="op">|</span> <span class="macro">stringify!</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">extras</span>) =&gt; {
                         <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">Error::new_spanned</span>(
-                            <span class="macro-nonterminal">$</span><span class="macro-nonterminal">test</span>,
-                            <span class="macro">stringify!</span>([<span class="op">&lt;</span><span class="ident">raw_</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span><span class="op">&gt;</span>] <span class="ident">and</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> <span class="ident">are</span> <span class="ident">exclusive</span>),
+                            <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ident</span>,
+                            <span class="macro">format!</span>(<span class="string">&quot;field {} requires the extras feature&quot;</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ident</span>),
                         ));
                     }
-                }
-                <span class="macro">stringify!</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>) =&gt; {
-                    <span class="macro-nonterminal">$</span><span class="macro-nonterminal">gen</span>.<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">field</span>.<span class="ident">expr</span>);
-                    <span class="kw">if</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">gen</span>.[<span class="op">&lt;</span><span class="ident">raw_</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span><span class="op">&gt;</span>].<span class="ident">is_some</span>() {
-                        <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">Error::new_spanned</span>(
-                            <span class="macro-nonterminal">$</span><span class="macro-nonterminal">test</span>,
-                            <span class="macro">stringify!</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> <span class="ident">and</span> [<span class="op">&lt;</span><span class="ident">raw_</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span><span class="op">&gt;</span>] <span class="ident">are</span> <span class="ident">exclusive</span>),
-                        ));
-                    }
-                }
-                ),<span class="op">+</span>
-
-                <span class="kw">_</span> =&gt; {
-                    <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">Error::new_spanned</span>(
-                        <span class="macro-nonterminal">$</span><span class="macro-nonterminal">test</span>,
-                        <span class="macro">format!</span>(<span class="string">&quot;no field named {} exists&quot;</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">test</span>),
-                    ))
-                }
+                )<span class="op">+</span>
+                <span class="kw">_</span> =&gt; <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">Error::new_spanned</span>(
+                    <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ident</span>,
+                    <span class="macro">format!</span>(<span class="string">&quot;no field named {} exists&quot;</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ident</span>),
+                )),
             }
         }
     }
 }
 
-<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">struct</span> <span class="ident">ArcDpsGen</span> {
-    <span class="kw">pub</span> <span class="ident">name</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">LitStr</span><span class="op">&gt;</span>,
-    <span class="kw">pub</span> <span class="ident">sig</span>: <span class="ident">Expr</span>,
-    <span class="kw">pub</span> <span class="ident">init</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
-    <span class="kw">pub</span> <span class="ident">release</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
-    <span class="kw">pub</span> <span class="ident">raw_wnd_nofilter</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
-    <span class="kw">pub</span> <span class="ident">raw_imgui</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
-    <span class="kw">pub</span> <span class="ident">raw_options_end</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
-    <span class="kw">pub</span> <span class="ident">raw_combat</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
-    <span class="kw">pub</span> <span class="ident">raw_wnd_filter</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
-    <span class="kw">pub</span> <span class="ident">raw_options_windows</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
-    <span class="kw">pub</span> <span class="ident">raw_combat_local</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
-    <span class="kw">pub</span> <span class="ident">raw_unofficial_extras_init</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
-    <span class="kw">pub</span> <span class="ident">raw_unofficial_extras_squad_update</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
-    <span class="kw">pub</span> <span class="ident">wnd_nofilter</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
-    <span class="kw">pub</span> <span class="ident">combat</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
-    <span class="kw">pub</span> <span class="ident">imgui</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
-    <span class="kw">pub</span> <span class="ident">options_end</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
-    <span class="kw">pub</span> <span class="ident">combat_local</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
-    <span class="kw">pub</span> <span class="ident">wnd_filter</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
-    <span class="kw">pub</span> <span class="ident">options_windows</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
-    <span class="kw">pub</span> <span class="ident">unofficial_extras_init</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
-    <span class="kw">pub</span> <span class="ident">unofficial_extras_squad_update</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
-}
-
-<span class="kw">impl</span> <span class="ident">syn::parse::Parse</span> <span class="kw">for</span> <span class="ident">ArcDpsGen</span> {
+<span class="kw">impl</span> <span class="ident">Parse</span> <span class="kw">for</span> <span class="ident">ArcDpsGen</span> {
     <span class="kw">fn</span> <span class="ident">parse</span>(<span class="ident">input</span>: <span class="ident">ParseStream</span>) -&gt; <span class="ident">syn::Result</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">fields</span>: <span class="ident">Punctuated</span><span class="op">&lt;</span><span class="ident">FieldValue</span>, <span class="macro">Token!</span>[,]<span class="op">&gt;</span> <span class="op">=</span> <span class="ident">Punctuated::parse_terminated</span>(<span class="ident">input</span>)<span class="question-mark">?</span>;
 
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">gen</span>: <span class="ident">ArcDpsGen</span> <span class="op">=</span> <span class="self">Self</span> {
-            <span class="ident">name</span>: <span class="prelude-val">None</span>,
-            <span class="ident">sig</span>: <span class="ident">Expr::Verbatim</span>(<span class="ident">TokenStream::new</span>()),
-
-            <span class="ident">init</span>: <span class="prelude-val">None</span>,
-            <span class="ident">release</span>: <span class="prelude-val">None</span>,
-
-            <span class="ident">combat</span>: <span class="prelude-val">None</span>,
-            <span class="ident">combat_local</span>: <span class="prelude-val">None</span>,
-            <span class="ident">imgui</span>: <span class="prelude-val">None</span>,
-            <span class="ident">options_end</span>: <span class="prelude-val">None</span>,
-            <span class="ident">options_windows</span>: <span class="prelude-val">None</span>,
-            <span class="ident">wnd_filter</span>: <span class="prelude-val">None</span>,
-            <span class="ident">wnd_nofilter</span>: <span class="prelude-val">None</span>,
-            <span class="ident">unofficial_extras_init</span>: <span class="prelude-val">None</span>,
-            <span class="ident">unofficial_extras_squad_update</span>: <span class="prelude-val">None</span>,
-
-            <span class="ident">raw_combat</span>: <span class="prelude-val">None</span>,
-            <span class="ident">raw_combat_local</span>: <span class="prelude-val">None</span>,
-            <span class="ident">raw_imgui</span>: <span class="prelude-val">None</span>,
-            <span class="ident">raw_options_end</span>: <span class="prelude-val">None</span>,
-            <span class="ident">raw_options_windows</span>: <span class="prelude-val">None</span>,
-            <span class="ident">raw_wnd_filter</span>: <span class="prelude-val">None</span>,
-            <span class="ident">raw_wnd_nofilter</span>: <span class="prelude-val">None</span>,
-            <span class="ident">raw_unofficial_extras_init</span>: <span class="prelude-val">None</span>,
-            <span class="ident">raw_unofficial_extras_squad_update</span>: <span class="prelude-val">None</span>,
-        };
-
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">gen</span> <span class="op">=</span> <span class="ident"><span class="self">Self</span>::default</span>();
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">sig_done</span> <span class="op">=</span> <span class="bool-val">false</span>;
 
         <span class="kw">for</span> <span class="ident">field</span> <span class="kw">in</span> <span class="ident">fields</span>.<span class="ident">into_iter</span>() {
-            <span class="kw">if</span> <span class="kw">let</span> <span class="ident">Member::Named</span>(<span class="ident">name</span>) <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">field</span>.<span class="ident">member</span> {
-                <span class="kw">match</span> <span class="ident">name</span>.<span class="ident">to_string</span>().<span class="ident">as_str</span>() {
+            <span class="kw">if</span> <span class="kw">let</span> <span class="ident">Member::Named</span>(<span class="ident">ident</span>) <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">field</span>.<span class="ident">member</span> {
+                <span class="kw">match</span> <span class="ident">ident</span>.<span class="ident">to_string</span>().<span class="ident">as_str</span>() {
                     <span class="string">&quot;name&quot;</span> =&gt; {
                         <span class="ident">gen</span>.<span class="ident">name</span> <span class="op">=</span> <span class="kw">if</span> <span class="kw">let</span> <span class="ident">Expr::Lit</span>(<span class="ident">expr</span>) <span class="op">=</span> <span class="ident">field</span>.<span class="ident">expr</span> {
                             <span class="kw">if</span> <span class="kw">let</span> <span class="ident">Lit::Str</span>(<span class="ident">lit</span>) <span class="op">=</span> <span class="ident">expr</span>.<span class="ident">lit</span> {
@@ -290,17 +241,12 @@
                         <span class="ident">gen</span>.<span class="ident">sig</span> <span class="op">=</span> <span class="ident">field</span>.<span class="ident">expr</span>;
                     }
 
-                    <span class="string">&quot;init&quot;</span> =&gt; {
-                        <span class="ident">gen</span>.<span class="ident">init</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">field</span>.<span class="ident">expr</span>);
-                    }
-
-                    <span class="string">&quot;release&quot;</span> =&gt; {
-                        <span class="ident">gen</span>.<span class="ident">release</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">field</span>.<span class="ident">expr</span>);
-                    }
+                    <span class="string">&quot;init&quot;</span> =&gt; <span class="ident">gen</span>.<span class="ident">init</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">field</span>.<span class="ident">expr</span>),
+                    <span class="string">&quot;release&quot;</span> =&gt; <span class="ident">gen</span>.<span class="ident">release</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">field</span>.<span class="ident">expr</span>),
 
                     <span class="kw">_</span> =&gt; {
                         <span class="macro">match_parse!</span>(
-                            <span class="ident">name</span>,
+                            <span class="ident">ident</span>,
                             <span class="ident">gen</span>,
                             <span class="ident">field</span>,
                             <span class="ident">combat</span>,
@@ -309,9 +255,11 @@
                             <span class="ident">options_end</span>,
                             <span class="ident">options_windows</span>,
                             <span class="ident">wnd_filter</span>,
-                            <span class="ident">wnd_nofilter</span>,
-                            <span class="ident">unofficial_extras_init</span>,
-                            <span class="ident">unofficial_extras_squad_update</span>
+                            <span class="ident">wnd_nofilter</span>;
+                            <span class="ident">extras</span>: {
+                                <span class="ident">extras_init</span>,
+                                <span class="ident">extras_squad_update</span>
+                            }
                         )
                     }
                 };
