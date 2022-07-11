@@ -12,12 +12,12 @@ use windows::Win32::Foundation::HINSTANCE;
 pub static mut ARC_INSTANCE: ArcInstance = ArcInstance::empty();
 
 type Export0 = unsafe extern "C" fn() -> *const u16;
-type Export3 = unsafe extern "C" fn(*mut c_char);
+type Export3 = unsafe extern "C" fn(*const c_char);
 type Export5 = unsafe extern "C" fn(*mut [*mut ImVec4; 5]);
 type Export6 = unsafe extern "C" fn() -> u64;
 type Export7 = unsafe extern "C" fn() -> u64;
-type Export8 = unsafe extern "C" fn(*mut c_char);
-type Export9 = unsafe extern "C" fn(*mut RawCombatEvent, u32);
+type Export8 = unsafe extern "C" fn(*const c_char);
+type Export9 = unsafe extern "C" fn(*const RawCombatEvent, u32);
 
 /// Arc handle & exported functions.
 // TODO: should we move other globals from codegen here? or move this to codegen?

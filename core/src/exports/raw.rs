@@ -7,7 +7,7 @@ pub unsafe fn e0_config_path() -> *const u16 {
 }
 
 /// Logs a string to `arcdps.log` file.
-pub unsafe fn e3_log(string: *mut c_char) {
+pub unsafe fn e3_log_file(string: *const c_char) {
     (ARC_INSTANCE.e3.unwrap())(string)
 }
 
@@ -29,14 +29,14 @@ pub unsafe fn e7_modifiers() -> u64 {
 /// Logs a string to the ArcDPS logger window.
 ///
 /// Colors are HTML-like: `<c=#aaaaaa>colored text</c>`.
-pub unsafe fn e8_log_window(string: *mut c_char) {
+pub unsafe fn e8_log_window(string: *const c_char) {
     (ARC_INSTANCE.e8.unwrap())(string)
 }
 
-/// Adds a [`RawCombatEvent`] to Arc's event processing.
+/// Adds a [`RawCombatEvent`] to ArcDPS' event processing.
 ///
 /// `is_statechange` will be set to extension, pad61-64 will be set to `sig`.
 /// Event will end up processed like ArcDPS events and logged to EVTC.
-pub unsafe fn e9_add_event(event: *mut RawCombatEvent, sig: u32) {
+pub unsafe fn e9_add_event(event: *const RawCombatEvent, sig: u32) {
     (ARC_INSTANCE.e9.unwrap())(event, sig)
 }

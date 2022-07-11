@@ -2,9 +2,18 @@
 
 pub mod raw;
 
-use crate::{api::Profession, imgui::sys::ImVec4, instance::ARC_INSTANCE};
-use raw::{e0_config_path, e5_colors, e6_ui_settings, e7_modifiers};
-use std::{ffi::OsString, mem::MaybeUninit, os::windows::prelude::*, path::PathBuf, slice};
+use crate::{api::Profession, imgui::sys::ImVec4, instance::ARC_INSTANCE, CombatEvent};
+use raw::{
+    e0_config_path, e3_log_file, e5_colors, e6_ui_settings, e7_modifiers, e8_log_window,
+    e9_add_event,
+};
+use std::{
+    ffi::{CString, NulError, OsString},
+    mem::MaybeUninit,
+    os::windows::prelude::*,
+    path::PathBuf,
+    slice,
+};
 
 /// Retrieves the ArcDPS version as string.
 pub fn version() -> Option<&'static str> {
@@ -30,6 +39,15 @@ pub fn config_path() -> Option<PathBuf> {
     }
 }
 
+/// Logs a message to ArcDPS' log file `arcdps.log`.
+///
+/// Returns an error if the passed message could not be converted to a C-compatible string.
+pub fn log_to_file(message: impl Into<String>) -> Result<(), NulError> {
+    let string = CString::new(message.into())?;
+    unsafe { e3_log_file(string.as_ptr()) };
+    Ok(())
+}
+
 /// ArcDPS core UI color.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 #[repr(C)]
@@ -47,6 +65,9 @@ pub enum CoreColor {
     Num,
 }
 
+/// ArcDPS color type.
+pub type Color = [f32; 4];
+
 /// Current ArcDPS color settings.
 ///
 /// Use the associated functions to access individual colors.
@@ -56,9 +77,6 @@ pub enum CoreColor {
 pub struct Colors {
     raw: [*mut ImVec4; 5],
 }
-
-/// ArcDPS color type.
-pub type Color = [f32; 4];
 
 impl Colors {
     /// Reads a color from the raw color array.
@@ -193,4 +211,22 @@ pub fn modifiers() -> Modifiers {
         modifier2: (raw >> 16) as u16,
         modifier_multi: (raw >> 32) as u16,
     }
+}
+/// Logs a message to ArcDPS' logger window.
+///
+/// Text can be colored in a HTML-like way: `<c=#aaaaaa>colored text</c>`.
+///
+/// Returns an error if the passed message could not be converted to a C-compatible string.
+pub fn log_to_window(message: impl Into<String>) -> Result<(), NulError> {
+    let string = CString::new(message.into())?;
+    unsafe { e8_log_window(string.as_ptr()) };
+    Ok(())
+}
+
+/// Adds a [`CombatEvent`] to ArcDPS' event processing.
+///
+/// `is_statechange` will be set to [`StateChange::Extension`](crate::StateChange::Extension), padding will be set to contain `sig`.
+/// Event will end up processed like ArcDPS events and logged to EVTC.
+pub fn add_event(event: CombatEvent, sig: u32) {
+    unsafe { e9_add_event(&event.into(), sig) }
 }
