@@ -6,7 +6,7 @@ ArcDPS is an addon for [Guild Wars 2](https://guildwars2.com).
 Documentation can be found at [zerthox.github.io/arcdps-bindings/arcdps/](https://zerthox.github.io/arcdps-bindings/arcdps/).
 
 This project is originally a fork of [greaka/arcdps_bindings](https://github.com/greaka/arcdps_bindings).
-If you are looking to migrate, see [Migrating from Graka's bindings](../docs/migrating-from-greaka.md).
+If you are looking to migrate, see [Migrating from Greaka's bindings](./docs/migrating-from-greaka.md).
 
 ## Features
 - Rust abstractions for ArcDPS callbacks, types and exports
