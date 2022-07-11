@@ -5,28 +5,29 @@ ArcDPS is an addon for [Guild Wars 2](https://guildwars2.com).
 
 This project is originally a fork of [greaka/arcdps_bindings](https://github.com/greaka/arcdps_bindings).
 
-### Features
-- Versioning via `Cargo.toml`
-- Rust-like abstractions for callbacks and ArcDPS types
-- Optional [serde](https://serde.rs/) or [strum](https://docs.rs/strum/latest/strum/) integration
+## Features
+- Rust-like abstractions for ArcDPS callbacks, types and exports
 - Imgui interfacing via [imgui-rs](https://github.com/imgui-rs/imgui-rs)
-- [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases) support
+- Versioning via `Cargo.toml`
+- Optional [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases) support
+- Optional [serde](https://serde.rs/) and [strum](https://docs.rs/strum/latest/strum/) integration
 - Optional access to raw C interface of ArcDPS
 
-### How to use
+## Usage
+```toml
+[dependencies]
+arcdps = { version = "0.8", git = "https://github.com/zerthox/arcdps-bindings" }
+```
+
 ```rs
 use std::error::Error;
-use arcdps::{
-    arcdps_export, Agent, CombatEvent, StateChange,
-    extras::{UserInfoIter, UserRole},
-};
+use arcdps::{Agent, CombatEvent, StateChange};
 
-arcdps_export! {
+arcdps::export! {
     name: "Example Plugin",
     sig: 123, // change this to a random number
     init,
-    combat,
-    unofficial_extras_squad_update: squad_update,
+    combat: custom_combat_name,
 }
 
 fn init() -> Result<(), Box<dyn Error>> {
@@ -34,7 +35,7 @@ fn init() -> Result<(), Box<dyn Error>> {
     Ok(())
 }
 
-fn combat(
+fn custom_combat_name(
     event: Option<&CombatEvent>,
     src: Option<Agent>,
     dst: Option<Agent>,
@@ -46,8 +47,28 @@ fn combat(
         // source agent has entered combat
     }
 }
+```
 
-fn squad_update(users: UserInfoIter) {
+## Unofficial Extras
+[Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases) support is hidden behind the `extras` feature flag.
+
+```toml
+[dependencies.arcdps]
+version = "0.8"
+git = "https://github.com/zerthox/arcdps-bindings"
+features = ["extras"]
+```
+
+```rs
+use arcdps::extras::{UserInfoIter, UserRole};
+
+arcdps::export! {
+    name: "Example Plugin",
+    sig: 123,
+    extras_squad_update,
+}
+
+fn extras_squad_update(users: UserInfoIter) {
     for user in users {
         if let UserRole::SquadLeader | UserRole::Lieutenant = user.role {
             // user can place markers
