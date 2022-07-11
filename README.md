@@ -3,10 +3,13 @@
 Rust bindings for [ArcDPS](https://www.deltaconnected.com/arcdps/) plugins.
 ArcDPS is an addon for [Guild Wars 2](https://guildwars2.com).
 
+Documentation can be found at [zerthox.github.io/arcdps-bindings/arcdps/](https://zerthox.github.io/arcdps-bindings/arcdps/).
+
 This project is originally a fork of [greaka/arcdps_bindings](https://github.com/greaka/arcdps_bindings).
+If you are looking to migrate, see [Migrating from Graka's bindings](../docs/migrating-from-greaka.md).
 
 ## Features
-- Rust-like abstractions for ArcDPS callbacks, types and exports
+- Rust abstractions for ArcDPS callbacks, types and exports
 - Imgui interfacing via [imgui-rs](https://github.com/imgui-rs/imgui-rs)
 - Versioning via `Cargo.toml`
 - Optional [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases) support
