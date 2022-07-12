@@ -235,11 +235,19 @@
 <span id="230">230</span>
 <span id="231">231</span>
 <span id="232">232</span>
+<span id="233">233</span>
+<span id="234">234</span>
+<span id="235">235</span>
+<span id="236">236</span>
 </pre><pre class="rust"><code><span class="doccomment">//! ArcDPS exports.</span>
 
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">raw</span>;
 
-<span class="kw">use</span> <span class="kw">crate</span>::{<span class="ident">api::Profession</span>, <span class="ident">imgui::sys::ImVec4</span>, <span class="ident">instance::ARC_INSTANCE</span>, <span class="ident">CombatEvent</span>};
+<span class="kw">use</span> <span class="kw">crate</span>::{
+    <span class="ident">api</span>::{<span class="ident">CombatEvent</span>, <span class="ident">Profession</span>},
+    <span class="ident">imgui::sys::ImVec4</span>,
+    <span class="ident">instance::ARC_INSTANCE</span>,
+};
 <span class="kw">use</span> <span class="ident">raw</span>::{
     <span class="ident">e0_config_path</span>, <span class="ident">e3_log_file</span>, <span class="ident">e5_colors</span>, <span class="ident">e6_ui_settings</span>, <span class="ident">e7_modifiers</span>, <span class="ident">e8_log_window</span>,
     <span class="ident">e9_add_event</span>,

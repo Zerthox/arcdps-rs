@@ -204,6 +204,22 @@
 <span id="199">199</span>
 <span id="200">200</span>
 <span id="201">201</span>
+<span id="202">202</span>
+<span id="203">203</span>
+<span id="204">204</span>
+<span id="205">205</span>
+<span id="206">206</span>
+<span id="207">207</span>
+<span id="208">208</span>
+<span id="209">209</span>
+<span id="210">210</span>
+<span id="211">211</span>
+<span id="212">212</span>
+<span id="213">213</span>
+<span id="214">214</span>
+<span id="215">215</span>
+<span id="216">216</span>
+<span id="217">217</span>
 </pre><pre class="rust"><code><span class="kw">use</span> <span class="kw">super</span>::{<span class="ident">Activation</span>, <span class="ident">BuffRemove</span>, <span class="ident">StateChange</span>, <span class="ident">Team</span>};
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>)]</span>
@@ -294,14 +310,30 @@
     <span class="doccomment">/// Whether `src_agent` is flanking at time of event.</span>
     <span class="kw">pub</span> <span class="ident">is_flanking</span>: <span class="ident">u8</span>,
 
+    <span class="doccomment">/// Shields, if relevant to the event.</span>
     <span class="kw">pub</span> <span class="ident">is_shields</span>: <span class="ident">u8</span>,
 
-    <span class="doccomment">/// For relevant Events, this may be a variant of [`BuffCycle`](crate::BuffCycle).</span>
+    <span class="doccomment">/// For relevant Events this may be a variant of [`BuffCycle`](crate::BuffCycle).</span>
     <span class="kw">pub</span> <span class="ident">is_off_cycle</span>: <span class="ident">u8</span>,
 
+    <span class="doccomment">/// Padding.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// May contain information depending on the kind of event.</span>
     <span class="kw">pub</span> <span class="ident">pad61</span>: <span class="ident">u8</span>,
+
+    <span class="doccomment">/// Padding.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// May contain information depending on the kind of event.</span>
     <span class="kw">pub</span> <span class="ident">pad62</span>: <span class="ident">u8</span>,
+
+    <span class="doccomment">/// Padding.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// May contain information depending on the kind of event.</span>
     <span class="kw">pub</span> <span class="ident">pad63</span>: <span class="ident">u8</span>,
+
+    <span class="doccomment">/// Padding.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// May contain information depending on the kind of event.</span>
     <span class="kw">pub</span> <span class="ident">pad64</span>: <span class="ident">u8</span>,
 }
 
