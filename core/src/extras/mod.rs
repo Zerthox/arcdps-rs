@@ -1,6 +1,6 @@
 //! Unofficial Extras support.
-
-// TODO: hide this behind feature flag?
+//!
+//! *Requires the `"extras"` feature.*
 
 pub mod callbacks;
 pub mod keybinds;
