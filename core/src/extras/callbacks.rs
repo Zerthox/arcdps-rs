@@ -2,7 +2,7 @@ use super::{
     keybinds::KeybindChange, ExtrasAddonInfo, ExtrasSubscriberInfo, RawExtrasAddonInfo,
     RawUserInfo, UserInfoIter,
 };
-use crate::Language;
+use crate::api::Language;
 
 /// This function must be exported by subscriber addons as `arcdps_unofficial_extras_subscriber_init`.
 /// It's called once at startup.

@@ -2,7 +2,11 @@
 
 pub mod raw;
 
-use crate::{api::Profession, imgui::sys::ImVec4, instance::ARC_INSTANCE, CombatEvent};
+use crate::{
+    api::{CombatEvent, Profession},
+    imgui::sys::ImVec4,
+    instance::ARC_INSTANCE,
+};
 use raw::{
     e0_config_path, e3_log_file, e5_colors, e6_ui_settings, e7_modifiers, e8_log_window,
     e9_add_event,
