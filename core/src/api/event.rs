@@ -88,14 +88,30 @@ pub struct CombatEvent {
     /// Whether `src_agent` is flanking at time of event.
     pub is_flanking: u8,
 
+    /// Shields, if relevant to the event.
     pub is_shields: u8,
 
-    /// For relevant Events, this may be a variant of [`BuffCycle`](crate::BuffCycle).
+    /// For relevant Events this may be a variant of [`BuffCycle`](crate::BuffCycle).
     pub is_off_cycle: u8,
 
+    /// Padding.
+    ///
+    /// May contain information depending on the kind of event.
     pub pad61: u8,
+
+    /// Padding.
+    ///
+    /// May contain information depending on the kind of event.
     pub pad62: u8,
+
+    /// Padding.
+    ///
+    /// May contain information depending on the kind of event.
     pub pad63: u8,
+
+    /// Padding.
+    ///
+    /// May contain information depending on the kind of event.
     pub pad64: u8,
 }
 
