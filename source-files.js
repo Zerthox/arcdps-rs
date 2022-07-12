@@ -11,7 +11,6 @@ sourcesIndex["instant"] = {"name":"","files":["lib.rs","native.rs"]};
 sourcesIndex["lock_api"] = {"name":"","files":["lib.rs","mutex.rs","remutex.rs","rwlock.rs"]};
 sourcesIndex["num_enum"] = {"name":"","files":["lib.rs"]};
 sourcesIndex["num_enum_derive"] = {"name":"","files":["lib.rs"]};
-sourcesIndex["once_cell"] = {"name":"","files":["imp_std.rs","lib.rs","race.rs"]};
 sourcesIndex["parking_lot"] = {"name":"","files":["condvar.rs","deadlock.rs","elision.rs","fair_mutex.rs","lib.rs","mutex.rs","once.rs","raw_fair_mutex.rs","raw_mutex.rs","raw_rwlock.rs","remutex.rs","rwlock.rs","util.rs"]};
 sourcesIndex["parking_lot_core"] = {"name":"","dirs":[{"name":"thread_parker","dirs":[{"name":"windows","files":["keyed_event.rs","mod.rs","waitaddress.rs"]}],"files":["mod.rs"]}],"files":["lib.rs","parking_lot.rs","spinwait.rs","util.rs","word_lock.rs"]};
 sourcesIndex["paste"] = {"name":"","files":["attr.rs","error.rs","lib.rs","segment.rs"]};
