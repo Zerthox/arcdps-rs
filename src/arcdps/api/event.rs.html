@@ -220,7 +220,7 @@
 <span id="215">215</span>
 <span id="216">216</span>
 <span id="217">217</span>
-</pre><pre class="rust"><code><span class="kw">use</span> <span class="kw">super</span>::{<span class="ident">Activation</span>, <span class="ident">BuffRemove</span>, <span class="ident">StateChange</span>, <span class="ident">Team</span>};
+</pre><pre class="rust"><code><span class="kw">use</span> <span class="kw">super</span>::{<span class="ident">Activation</span>, <span class="ident">Affinity</span>, <span class="ident">BuffRemove</span>, <span class="ident">StateChange</span>};
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>)]</span>
 <span class="kw">use</span> <span class="ident">serde</span>::{<span class="ident">Deserialize</span>, <span class="ident">Serialize</span>};
@@ -263,7 +263,7 @@
     <span class="kw">pub</span> <span class="ident">dst_master_instance_id</span>: <span class="ident">u16</span>,
 
     <span class="doccomment">/// Current affinity of `src_agent` and `dst_agent`.</span>
-    <span class="kw">pub</span> <span class="ident">iff</span>: <span class="ident">Team</span>,
+    <span class="kw">pub</span> <span class="ident">iff</span>: <span class="ident">Affinity</span>,
 
     <span class="doccomment">/// Buff, if relevant to the event.</span>
     <span class="kw">pub</span> <span class="ident">buff</span>: <span class="ident">u8</span>,
