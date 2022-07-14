@@ -1,4 +1,4 @@
-use super::{Activation, BuffRemove, StateChange, Team};
+use super::{Activation, Affinity, BuffRemove, StateChange};
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
@@ -41,7 +41,7 @@ pub struct CombatEvent {
     pub dst_master_instance_id: u16,
 
     /// Current affinity of `src_agent` and `dst_agent`.
-    pub iff: Team,
+    pub iff: Affinity,
 
     /// Buff, if relevant to the event.
     pub buff: u8,

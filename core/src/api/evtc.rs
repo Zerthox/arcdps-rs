@@ -14,7 +14,7 @@ use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
 )]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[repr(u8)]
-pub enum Team {
+pub enum Affinity {
     /// Allied agent.
     Friend,
 

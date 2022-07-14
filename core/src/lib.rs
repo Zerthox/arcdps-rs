@@ -25,6 +25,8 @@ use extras::callbacks::*;
 
 /// Reference on what fields are currently supported by the [`export!`] macro.
 /// This struct is not used anywhere.
+// TODO: document fields?
+// TODO: add note for extras fields
 pub struct SupportedFields {
     pub name: &'static str,
     pub sig: u32,
