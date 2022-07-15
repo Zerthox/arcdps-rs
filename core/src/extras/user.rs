@@ -74,7 +74,7 @@ pub struct UserInfo<'a> {
 impl From<&RawUserInfo> for UserInfo<'_> {
     fn from(raw: &RawUserInfo) -> Self {
         Self {
-            account_name: str_from_cstr(raw.account_name),
+            account_name: unsafe { str_from_cstr(raw.account_name) },
             join_time: raw.join_time,
             role: raw.role,
             subgroup: raw.subgroup,

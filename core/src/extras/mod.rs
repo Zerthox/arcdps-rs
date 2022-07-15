@@ -61,7 +61,7 @@ impl From<&RawExtrasAddonInfo> for ExtrasAddonInfo {
         Self {
             api_version: raw.api_version,
             max_info_version: raw.max_info_version,
-            string_version: str_from_cstr(raw.string_version),
+            string_version: unsafe { str_from_cstr(raw.string_version) },
         }
     }
 }

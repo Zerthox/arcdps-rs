@@ -26,7 +26,7 @@ pub struct Agent<'a> {
 impl From<&RawAgent> for Agent<'_> {
     fn from(agent: &RawAgent) -> Self {
         Self {
-            name: str_from_cstr(agent.name),
+            name: unsafe { str_from_cstr(agent.name) },
             id: agent.id,
             prof: agent.prof,
             elite: agent.elite,
