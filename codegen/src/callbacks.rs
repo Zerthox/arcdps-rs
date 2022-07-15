@@ -7,7 +7,7 @@ impl ArcDpsGen {
     pub fn build_init(&self) -> TokenStream {
         if let Some(init) = &self.init {
             let span = syn::Error::new_spanned(&init, "").span();
-            quote_spanned!(span=> (#init as ::arcdps::callbacks::InitFunc)())
+            quote_spanned!(span=> (super::#init as InitFunc)())
         } else {
             quote! { Ok(()) }
         }
@@ -16,7 +16,7 @@ impl ArcDpsGen {
     pub fn build_release(&self) -> TokenStream {
         if let Some(release) = &self.release {
             let span = syn::Error::new_spanned(&release, "").span();
-            quote_spanned!(span=> (#release as ::arcdps::callbacks::ReleaseFunc)();)
+            quote_spanned!(span=> (super::#release as ReleaseFunc)();)
         } else {
             quote! {}
         }
@@ -46,7 +46,7 @@ impl ArcDpsGen {
         match (raw_wnd_filter, wnd_filter) {
             (Some(raw), _) => {
                 let span = syn::Error::new_spanned(&raw, "").span();
-                let name = quote_spanned!(span => Some(#raw as _) );
+                let name = quote_spanned!(span=> Some(super::#raw as _) );
 
                 (quote! {}, name)
             }
@@ -54,14 +54,14 @@ impl ArcDpsGen {
                 let span = syn::Error::new_spanned(&safe, "").span();
                 let wrapper = quote_spanned! {span=>
                     unsafe extern "C" fn #func_name(_h_wnd: *mut c_void, u_msg: u32, w_param: WPARAM, l_param: LPARAM) -> u32 {
-                        let _ = #safe as WndProcCallback;
+                        let _ = super::#safe as WndProcCallback;
 
                         match u_msg {
                             WM_KEYDOWN | WM_KEYUP | WM_SYSKEYDOWN | WM_SYSKEYUP => {
                                 let key_down = u_msg & 1 == 0;
                                 let prev_key_down = (l_param.0 >> 30) & 1 == 1;
 
-                                if #safe(w_param.0, key_down, prev_key_down) {
+                                if super::#safe(w_param.0, key_down, prev_key_down) {
                                     u_msg
                                 } else {
                                     0
@@ -71,7 +71,7 @@ impl ArcDpsGen {
                         }
                     }
                 };
-                let name = quote_spanned!(span=> Some(__arcdps_gen_export::#func_name as _) );
+                let name = quote_spanned!(span=> Some(self::#func_name as _) );
 
                 (wrapper, name)
             }
@@ -83,7 +83,7 @@ impl ArcDpsGen {
         match (&self.raw_options_windows, &self.options_windows) {
             (Some(raw), _) => {
                 let span = syn::Error::new_spanned(&raw, "").span();
-                let name = quote_spanned!(span=> Some(#raw as _) );
+                let name = quote_spanned!(span=> Some(super::#raw as _) );
 
                 (quote! {}, name)
             }
@@ -91,12 +91,12 @@ impl ArcDpsGen {
                 let span = syn::Error::new_spanned(&safe, "").span();
                 let wrapper = quote_spanned! {span =>
                     unsafe extern "C" fn abstract_options_windows(window_name: *mut c_char) -> bool {
-                        let _ = #safe as OptionsWindowsCallback;
+                        let _ = super::#safe as OptionsWindowsCallback;
 
-                        #safe(__ui(), str_from_cstr(window_name))
+                        super::#safe(__ui(), str_from_cstr(window_name))
                     }
                 };
-                let name = quote_spanned!(span=> Some(__arcdps_gen_export::abstract_options_windows as _) );
+                let name = quote_spanned!(span=> Some(self::abstract_options_windows as _) );
 
                 (wrapper, name)
             }
@@ -108,7 +108,7 @@ impl ArcDpsGen {
         match (&self.raw_options_end, &self.options_end) {
             (Some(raw), _) => {
                 let span = syn::Error::new_spanned(&raw, "").span();
-                let name = quote_spanned!(span=> Some(#raw as _) );
+                let name = quote_spanned!(span=> Some(super::#raw as _) );
 
                 (quote! {}, name)
             }
@@ -116,13 +116,12 @@ impl ArcDpsGen {
                 let span = syn::Error::new_spanned(&safe, "").span();
                 let wrapper = quote_spanned! {span =>
                     unsafe extern "C" fn abstract_options_end() {
-                        let _ = #safe as OptionsCallback;
+                        let _ = super::#safe as OptionsCallback;
 
-                        #safe(__ui())
+                        super::#safe(__ui())
                     }
                 };
-                let name =
-                    quote_spanned!(span=> Some(__arcdps_gen_export::abstract_options_end as _) );
+                let name = quote_spanned!(span=> Some(self::abstract_options_end as _) );
 
                 (wrapper, name)
             }
@@ -134,7 +133,7 @@ impl ArcDpsGen {
         match (&self.raw_imgui, &self.imgui) {
             (Some(raw), _) => {
                 let span = syn::Error::new_spanned(&raw, "").span();
-                let name = quote_spanned!(span=> Some(#raw as _) );
+                let name = quote_spanned!(span=> Some(super::#raw as _) );
 
                 (quote! {}, name)
             }
@@ -142,12 +141,12 @@ impl ArcDpsGen {
                 let span = syn::Error::new_spanned(&safe, "").span();
                 let wrapper = quote_spanned! {span =>
                     unsafe extern "C" fn abstract_imgui(loading: u32) {
-                        let _ = #safe as ImguiCallback;
+                        let _ = super::#safe as ImguiCallback;
 
-                        #safe(__ui(), loading != 0)
+                        super::#safe(__ui(), loading != 0)
                     }
                 };
-                let name = quote_spanned!(span=> Some(__arcdps_gen_export::abstract_imgui as _) );
+                let name = quote_spanned!(span=> Some(self::abstract_imgui as _) );
 
                 (wrapper, name)
             }
@@ -179,7 +178,7 @@ impl ArcDpsGen {
         match (raw_combat, combat) {
             (Some(raw), _) => {
                 let span = syn::Error::new_spanned(&raw, "").span();
-                let name = quote_spanned!(span=> Some(#raw as _) );
+                let name = quote_spanned!(span=> Some(super::#raw as _) );
 
                 (quote! {}, name)
             }
@@ -194,9 +193,9 @@ impl ArcDpsGen {
                             id: u64,
                             revision: u64,
                         ) {
-                            let _ = #safe as CombatCallback;
+                            let _ = super::#safe as CombatCallback;
 
-                            #safe(
+                            super::#safe(
                                 event.map(Into::into),
                                 src.map(Into::into),
                                 dst.map(Into::into),
@@ -206,7 +205,7 @@ impl ArcDpsGen {
                             )
                     }
                 };
-                let name = quote_spanned!(span=> Some(__arcdps_gen_export::#func_name as _) );
+                let name = quote_spanned!(span=> Some(self::#func_name as _) );
 
                 (wrapper, name)
             }

@@ -48,14 +48,6 @@ impl ArcDpsGen {
         let (wnd_nofilter_func, wnd_nofilter_name) = self.build_wnd_nofilter();
 
         quote! {
-            #combat_func
-            #combat_local_func
-            #imgui_func
-            #options_end_func
-            #options_windows_func
-            #wnd_filter_func
-            #wnd_nofilter_func
-
             /// ArcDPS export struct with plugin information.
             static EXPORT: ArcDpsExport = ArcDpsExport {
                 size: ::std::mem::size_of::<ArcDpsExport>(),
@@ -126,6 +118,14 @@ impl ArcDpsGen {
             pub extern "system" fn get_release_addr() -> *mut c_void {
                 unload as _
             }
+
+            #combat_func
+            #combat_local_func
+            #imgui_func
+            #options_end_func
+            #options_windows_func
+            #wnd_filter_func
+            #wnd_nofilter_func
         }
     }
 }

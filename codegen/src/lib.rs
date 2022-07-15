@@ -29,7 +29,6 @@ pub fn export(item: proc_macro::TokenStream) -> proc_macro::TokenStream {
 
     let result = quote! {
         mod __arcdps_gen_export {
-            use super::*;
             use ::arcdps::__macro::*;
 
             #export
