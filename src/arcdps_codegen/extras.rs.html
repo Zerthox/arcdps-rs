@@ -100,6 +100,9 @@
 <span id="95">95</span>
 <span id="96">96</span>
 <span id="97">97</span>
+<span id="98">98</span>
+<span id="99">99</span>
+<span id="100">100</span>
 </pre><pre class="rust"><code><span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::ArcDpsGen</span>;
 <span class="kw">use</span> <span class="ident">proc_macro2::TokenStream</span>;
 <span class="kw">use</span> <span class="ident">quote</span>::{<span class="ident">quote</span>, <span class="ident">quote_spanned</span>};
@@ -138,21 +141,22 @@
             (<span class="prelude-val">Some</span>(<span class="ident">raw</span>), <span class="kw">_</span>) =&gt; {
                 <span class="kw">let</span> <span class="ident">span</span> <span class="op">=</span> <span class="ident">syn::Error::new_spanned</span>(<span class="kw-2">&amp;</span><span class="ident">raw</span>, <span class="string">&quot;&quot;</span>).<span class="ident">span</span>();
                 <span class="macro">quote_spanned!</span> {<span class="ident">span</span>=&gt;
-                    <span class="kw">let</span> <span class="kw">_</span> <span class="op">=</span> (#<span class="ident">raw</span>) <span class="kw">as</span> <span class="ident">RawExtrasSubscriberInit</span>;
+                    <span class="kw">let</span> <span class="ident">raw</span> <span class="op">=</span> (#<span class="ident">raw</span>) <span class="kw">as</span> <span class="ident">RawExtrasSubscriberInit</span>;
 
-                    (#<span class="ident">raw</span>)(<span class="ident">addon</span>, <span class="ident">sub</span>)
+                    <span class="ident">raw</span>(<span class="ident">addon</span>, <span class="ident">sub</span>)
                 }
             }
             (<span class="kw">_</span>, <span class="prelude-val">Some</span>(<span class="ident">safe</span>)) =&gt; {
                 <span class="kw">let</span> <span class="ident">span</span> <span class="op">=</span> <span class="ident">syn::Error::new_spanned</span>(<span class="kw-2">&amp;</span><span class="ident">safe</span>, <span class="string">&quot;&quot;</span>).<span class="ident">span</span>();
                 <span class="macro">quote_spanned!</span> {<span class="ident">span</span>=&gt;
-                    <span class="kw">let</span> <span class="kw">_</span> <span class="op">=</span> (#<span class="ident">safe</span>) <span class="kw">as</span> <span class="ident">ExtrasInitFunc</span>;
+                    <span class="kw">let</span> <span class="ident">safe</span> <span class="op">=</span> (#<span class="ident">safe</span>) <span class="kw">as</span> <span class="ident">ExtrasInitFunc</span>;
 
                     #<span class="ident">subscribe</span>
 
                     <span class="kw">let</span> <span class="ident">user</span> <span class="op">=</span> <span class="ident">::arcdps::__macro::str_from_cstr</span>(<span class="ident">addon</span>.<span class="ident">self_account_name</span> <span class="kw">as</span> <span class="kw">_</span>)
                         .<span class="ident">map</span>(<span class="op">|</span><span class="ident">n</span><span class="op">|</span> <span class="ident">n</span>.<span class="ident">trim_start_matches</span>(<span class="string">&#39;:&#39;</span>));
-                        (#<span class="ident">safe</span>)(<span class="ident">addon</span>.<span class="ident">into</span>(), <span class="ident">user</span>)
+
+                    <span class="ident">safe</span>(<span class="ident">addon</span>.<span class="ident">into</span>(), <span class="ident">user</span>);
                 }
             }
             <span class="kw">_</span> <span class="kw">if</span> <span class="ident">has_update</span> =&gt; <span class="macro">quote!</span> {
@@ -183,10 +187,12 @@
             (<span class="kw">_</span>, <span class="prelude-val">Some</span>(<span class="ident">safe</span>)) =&gt; {
                 <span class="kw">let</span> <span class="ident">span</span> <span class="op">=</span> <span class="ident">syn::Error::new_spanned</span>(<span class="kw-2">&amp;</span><span class="ident">safe</span>, <span class="string">&quot;&quot;</span>).<span class="ident">span</span>();
                 <span class="kw">let</span> <span class="ident">wrapper</span> <span class="op">=</span> <span class="macro">quote_spanned!</span> {<span class="ident">span</span>=&gt;
-                    <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span> <span class="ident">abstract_extras_squad_update</span>(<span class="ident">users</span>: <span class="kw-2">*const</span> <span class="ident">::arcdps::extras::RawUserInfo</span>, <span class="ident">count</span>: <span class="ident">u64</span>) {
-                        <span class="kw">let</span> <span class="kw">_</span> <span class="op">=</span> (#<span class="ident">safe</span>) <span class="kw">as</span> <span class="ident">ExtrasSquadUpdateCallback</span>;
-
-                        (#<span class="ident">safe</span>)(<span class="ident">::arcdps::extras::to_user_info_iter</span>(<span class="ident">users</span>, <span class="ident">count</span>))
+                    <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span> <span class="ident">abstract_extras_squad_update</span>(
+                        <span class="ident">users</span>: <span class="kw-2">*const</span> <span class="ident">::arcdps::extras::RawUserInfo</span>,
+                        <span class="ident">count</span>: <span class="ident">u64</span>
+                    ) {
+                        <span class="kw">let</span> <span class="ident">safe</span> <span class="op">=</span> (#<span class="ident">safe</span>) <span class="kw">as</span> <span class="ident">ExtrasSquadUpdateCallback</span>;
+                        <span class="ident">safe</span>(<span class="ident">::arcdps::extras::to_user_info_iter</span>(<span class="ident">users</span>, <span class="ident">count</span>))
                     }
                 };
                 <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="macro">quote_spanned!</span>(<span class="ident">span</span>=&gt; <span class="prelude-val">Some</span>(<span class="ident"><span class="self">self</span>::abstract_extras_squad_update</span> <span class="kw">as</span> <span class="kw">_</span>) );
