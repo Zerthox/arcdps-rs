@@ -118,6 +118,7 @@
 <span id="113">113</span>
 <span id="114">114</span>
 <span id="115">115</span>
+<span id="116">116</span>
 </pre><pre class="rust"><code><span class="kw">mod</span> <span class="ident">callbacks</span>;
 <span class="kw">mod</span> <span class="ident">export</span>;
 <span class="kw">mod</span> <span class="ident">parse</span>;
@@ -160,6 +161,7 @@
     <span class="ident">result</span>.<span class="ident">into</span>()
 }
 
+<span class="comment">// TODO: absolute paths like `crate::init`? closures?</span>
 <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">struct</span> <span class="ident">ArcDpsGen</span> {
     <span class="ident">name</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">LitStr</span><span class="op">&gt;</span>,
     <span class="ident">sig</span>: <span class="ident">Expr</span>,

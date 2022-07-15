@@ -127,7 +127,7 @@ Should not appear anywhere.</p>
 <p><code>value</code> is the duration to reset to (also marks inactive).
 <code>pad61</code> contains the stack id.</p>
 </div><h3 id="variant.Guild" class="variant small-section-header"><a href="#variant.Guild" class="anchor field"></a><code>Guild</code></h3><div class="docblock"><p>Source agent is in guild.</p>
-<p><code>dst_agent</code> until ´buff_dmg´ is 16 byte (<code>u8</code>) guid.</p>
+<p><code>dst_agent</code> until <code>buff_dmg</code> is 16 byte (<code>u8</code>) guid.</p>
 <p>Given in client form, needs minor rearrange for API form.</p>
 </div><h3 id="variant.BuffInfo" class="variant small-section-header"><a href="#variant.BuffInfo" class="anchor field"></a><code>BuffInfo</code></h3><div class="docblock"><p>Buff information.</p>
 <p>If <code>is_flanking</code> probably invulnerable.
@@ -156,7 +156,7 @@ If <code>is_offcycle</code> break.</p>
 <p>One per timing.</p>
 <p><em>Not used in realtime API.</em></p>
 </div><h3 id="variant.BreakbarState" class="variant small-section-header"><a href="#variant.BreakbarState" class="anchor field"></a><code>BreakbarState</code></h3><div class="docblock"><p>Source agent breakbar state change.</p>
-<p>Value is <code>u16</code> game enum (active, recover, immune, none).</p>
+<p>Value is <a href="https://doc.rust-lang.org/1.62.0/std/primitive.u16.html" title="u16"><code>u16</code></a> game enum (active, recover, immune, none).</p>
 <p><em>Not used in realtime API.</em></p>
 </div><h3 id="variant.BreakbarPercent" class="variant small-section-header"><a href="#variant.BreakbarPercent" class="anchor field"></a><code>BreakbarPercent</code></h3><div class="docblock"><p>Breakbar percentage.</p>
 <p><code>value</code> contains percentage as float.</p>
@@ -180,7 +180,7 @@ For example 99.5% will be <code>9950</code>.</p>
 <p><code>src_agent</code> contains the time in ms at which the instance was likely started.</p>
 </div><h3 id="variant.Tickrate" class="variant small-section-header"><a href="#variant.Tickrate" class="anchor field"></a><code>Tickrate</code></h3><div class="docblock"><p>Tick rate.</p>
 <p>Every 500ms.
-<code>src_agent</code> is <code>+= 25 - tickrate</code> (when <code>tickrate &lt; 21</code>).</p>
+<code>src_agent</code> is <code>25 - tickrate</code> (when <code>tickrate &lt; 21</code>).</p>
 </div><h3 id="variant.Last90BeforeDown" class="variant small-section-header"><a href="#variant.Last90BeforeDown" class="anchor field"></a><code>Last90BeforeDown</code></h3><div class="docblock"><p>Last 90% before down.</p>
 <p><code>src_agent</code> is enemy agent that went down, <code>dst_agent</code> is time in ms since last 90%.
 For downs contribution.</p>

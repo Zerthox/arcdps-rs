@@ -887,7 +887,7 @@
 
     <span class="doccomment">/// Source agent is in guild.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// `dst_agent` until ´buff_dmg´ is 16 byte (`u8`) guid.</span>
+    <span class="doccomment">/// `dst_agent` until `buff_dmg` is 16 byte (`u8`) guid.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Given in client form, needs minor rearrange for API form.</span>
     <span class="ident">Guild</span>,
@@ -941,7 +941,7 @@
 
     <span class="doccomment">/// Source agent breakbar state change.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// Value is `u16` game enum (active, recover, immune, none).</span>
+    <span class="doccomment">/// Value is [`u16`] game enum (active, recover, immune, none).</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// *Not used in realtime API.*</span>
     <span class="ident">BreakbarState</span>,
@@ -995,7 +995,7 @@
     <span class="doccomment">/// Tick rate.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Every 500ms.</span>
-    <span class="doccomment">/// `src_agent` is `+= 25 - tickrate` (when `tickrate &lt; 21`).</span>
+    <span class="doccomment">/// `src_agent` is `25 - tickrate` (when `tickrate &lt; 21`).</span>
     <span class="ident">Tickrate</span>,
 
     <span class="doccomment">/// Last 90% before down.</span>
