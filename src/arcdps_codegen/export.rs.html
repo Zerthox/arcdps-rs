@@ -239,13 +239,13 @@
             <span class="attribute">#[<span class="ident">no_mangle</span>]</span>
             <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;system&quot;</span> <span class="kw">fn</span> <span class="ident">get_init_addr</span>(
                 <span class="ident">arc_version</span>: <span class="kw-2">*mut</span> <span class="ident">c_char</span>,
-                <span class="ident">imgui_ctx</span>: <span class="kw-2">*mut</span> <span class="ident">imgui::sys::ImGuiContext</span>,
+                <span class="ident">imgui_ctx</span>: <span class="kw-2">*mut</span> <span class="ident">::arcdps::imgui::sys::ImGuiContext</span>,
                 <span class="ident">id3d</span>: <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
                 <span class="ident">arc_dll</span>: <span class="ident">HINSTANCE</span>,
                 <span class="ident">malloc</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">MallocFn</span><span class="op">&gt;</span>,
                 <span class="ident">free</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">FreeFn</span><span class="op">&gt;</span>,
             ) -&gt; <span class="kw">fn</span>() -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">ArcDpsExport</span> {
-                <span class="ident">__init</span>(<span class="ident">arc_version</span>, <span class="ident">arc_dll</span>, <span class="ident">imgui_ctx</span>, <span class="ident">malloc</span>, <span class="ident">free</span>, <span class="ident">id3d</span>, #<span class="ident">name</span>);
+                <span class="ident">::arcdps::__macro::init</span>(<span class="ident">arc_version</span>, <span class="ident">arc_dll</span>, <span class="ident">imgui_ctx</span>, <span class="ident">malloc</span>, <span class="ident">free</span>, <span class="ident">id3d</span>, #<span class="ident">name</span>);
                 <span class="ident">load</span>
             }
 

@@ -205,6 +205,10 @@
 <span id="200">200</span>
 <span id="201">201</span>
 <span id="202">202</span>
+<span id="203">203</span>
+<span id="204">204</span>
+<span id="205">205</span>
+<span id="206">206</span>
 </pre><pre class="rust"><code><span class="doccomment">//! ArcDPS bindings for Rust.</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! # Macro usage</span>
@@ -365,29 +369,33 @@
 <span class="doccomment">/// Exports for usage in macros.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">__macro</span> {
-    <span class="kw">pub</span> <span class="kw">use</span> <span class="kw">crate</span>::{
-        <span class="ident">callbacks</span>::<span class="kw-2">*</span>,
-        <span class="ident">imgui</span>,
-        <span class="ident">instance</span>::{<span class="ident">FreeFn</span>, <span class="ident">MallocFn</span>},
-        <span class="ident">util::str_from_cstr</span>,
-    };
-    <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">std::os::raw</span>::{<span class="ident">c_char</span>, <span class="ident">c_void</span>};
-    <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">windows::Win32</span>::{
-        <span class="ident">Foundation</span>::{<span class="ident">HINSTANCE</span>, <span class="ident">LPARAM</span>, <span class="ident">WPARAM</span>},
-        <span class="ident">UI::WindowsAndMessaging</span>::{<span class="ident">WM_KEYDOWN</span>, <span class="ident">WM_KEYUP</span>, <span class="ident">WM_SYSKEYDOWN</span>, <span class="ident">WM_SYSKEYUP</span>},
-    };
+    <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">prelude</span> {
+        <span class="kw">pub</span> <span class="kw">use</span> <span class="kw">crate</span>::{
+            <span class="ident">callbacks</span>::<span class="kw-2">*</span>,
+            <span class="ident">instance</span>::{<span class="ident">FreeFn</span>, <span class="ident">MallocFn</span>},
+        };
+        <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">std::os::raw</span>::{<span class="ident">c_char</span>, <span class="ident">c_void</span>};
+        <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">windows::Win32</span>::{
+            <span class="ident">Foundation</span>::{<span class="ident">HINSTANCE</span>, <span class="ident">LPARAM</span>, <span class="ident">WPARAM</span>},
+            <span class="ident">UI::WindowsAndMessaging</span>::{<span class="ident">WM_KEYDOWN</span>, <span class="ident">WM_KEYUP</span>, <span class="ident">WM_SYSKEYDOWN</span>, <span class="ident">WM_SYSKEYUP</span>},
+        };
 
-    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;extras&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::extras::callbacks</span>::<span class="kw-2">*</span>;
+        <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;extras&quot;</span>)]</span>
+        <span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::extras::callbacks</span>::<span class="kw-2">*</span>;
+    }
+
+    <span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::util::str_from_cstr</span>;
 
     <span class="kw">use</span> <span class="kw">crate</span>::{
+        <span class="ident">imgui</span>,
         <span class="ident">instance</span>::{<span class="ident">init_imgui</span>, <span class="ident">ARC_INSTANCE</span>},
         <span class="ident">panic::init_panic_hook</span>,
     };
+    <span class="kw">use</span> <span class="ident">prelude</span>::<span class="kw-2">*</span>;
 
     <span class="doccomment">/// Internally used function to initialize with information received from Arc.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">__init</span>(
+    <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">init</span>(
         <span class="ident">arc_version</span>: <span class="kw-2">*const</span> <span class="ident">c_char</span>,
         <span class="ident">arc_handle</span>: <span class="ident">HINSTANCE</span>,
         <span class="ident">imgui_ctx</span>: <span class="kw-2">*mut</span> <span class="ident">imgui::sys::ImGuiContext</span>,
@@ -403,7 +411,7 @@
 
     <span class="doccomment">/// Internally used function to retrieve the [`imgui::Ui`].</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">__ui</span>() -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">imgui::Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">ui</span>() -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">imgui::Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span><span class="op">&gt;</span> {
         <span class="ident">ARC_INSTANCE</span>.<span class="ident">ui</span>.<span class="ident">as_ref</span>().<span class="ident">unwrap</span>()
     }
 }

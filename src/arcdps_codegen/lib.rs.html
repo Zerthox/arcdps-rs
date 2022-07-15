@@ -150,7 +150,8 @@
 
     <span class="kw">let</span> <span class="ident">result</span> <span class="op">=</span> <span class="macro">quote!</span> {
         <span class="kw">mod</span> <span class="ident">__arcdps_gen_export</span> {
-            <span class="kw">use</span> <span class="ident">::arcdps::__macro</span>::<span class="kw-2">*</span>;
+            <span class="kw">use</span> <span class="kw">super</span>::<span class="kw-2">*</span>;
+            <span class="kw">use</span> <span class="ident">::arcdps::__macro::prelude</span>::<span class="kw-2">*</span>;
 
             #<span class="ident">export</span>
 
@@ -161,7 +162,6 @@
     <span class="ident">result</span>.<span class="ident">into</span>()
 }
 
-<span class="comment">// TODO: absolute paths like `crate::init`? closures?</span>
 <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">struct</span> <span class="ident">ArcDpsGen</span> {
     <span class="ident">name</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">LitStr</span><span class="op">&gt;</span>,
     <span class="ident">sig</span>: <span class="ident">Expr</span>,
