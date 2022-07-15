@@ -53,15 +53,20 @@ impl ArcDpsGen {
             (_, Some(safe)) => {
                 let span = syn::Error::new_spanned(&safe, "").span();
                 let wrapper = quote_spanned! {span=>
-                    unsafe extern "C" fn #func_name(_h_wnd: *mut c_void, u_msg: u32, w_param: WPARAM, l_param: LPARAM) -> u32 {
-                        let _ = (#safe) as WndProcCallback;
+                    unsafe extern "C" fn #func_name(
+                        _h_wnd: *mut c_void,
+                        u_msg: u32,
+                        w_param: WPARAM,
+                        l_param: LPARAM,
+                    ) -> u32 {
+                        let safe = (#safe) as WndProcCallback;
 
                         match u_msg {
                             WM_KEYDOWN | WM_KEYUP | WM_SYSKEYDOWN | WM_SYSKEYUP => {
                                 let key_down = u_msg & 1 == 0;
                                 let prev_key_down = (l_param.0 >> 30) & 1 == 1;
 
-                                if (#safe)(w_param.0, key_down, prev_key_down) {
+                                if safe(w_param.0, key_down, prev_key_down) {
                                     u_msg
                                 } else {
                                     0
@@ -92,7 +97,6 @@ impl ArcDpsGen {
                 let wrapper = quote_spanned! {span =>
                     unsafe extern "C" fn abstract_options_windows(window_name: *mut c_char) -> bool {
                         let safe = (#safe) as OptionsWindowsCallback;
-
                         safe(::arcdps::__macro::ui(), ::arcdps::__macro::str_from_cstr(window_name))
                     }
                 };
@@ -116,9 +120,8 @@ impl ArcDpsGen {
                 let span = syn::Error::new_spanned(&safe, "").span();
                 let wrapper = quote_spanned! {span =>
                     unsafe extern "C" fn abstract_options_end() {
-                        let _ = (#safe) as OptionsCallback;
-
-                        (#safe)(arcdps::__macro::ui())
+                        let safe = (#safe) as OptionsCallback;
+                        safe(arcdps::__macro::ui())
                     }
                 };
                 let name = quote_spanned!(span=> Some(self::abstract_options_end as _) );
@@ -141,9 +144,8 @@ impl ArcDpsGen {
                 let span = syn::Error::new_spanned(&safe, "").span();
                 let wrapper = quote_spanned! {span =>
                     unsafe extern "C" fn abstract_imgui(loading: u32) {
-                        let _ = (#safe) as ImguiCallback;
-
-                        (#safe)(arcdps::__macro::ui(), loading != 0)
+                        let safe = (#safe) as ImguiCallback;
+                        safe(arcdps::__macro::ui(), loading != 0)
                     }
                 };
                 let name = quote_spanned!(span=> Some(self::abstract_imgui as _) );
@@ -186,23 +188,23 @@ impl ArcDpsGen {
                 let span = syn::Error::new_spanned(&safe, "").span();
                 let wrapper = quote_spanned! {span =>
                     unsafe extern "C" fn #func_name(
-                            event: Option<&::arcdps::api::RawCombatEvent>,
-                            src: Option<&::arcdps::api::RawAgent>,
-                            dst: Option<&::arcdps::api::RawAgent>,
-                            skill_name: *mut c_char,
-                            id: u64,
-                            revision: u64,
-                        ) {
-                            let _ = (#safe) as CombatCallback;
+                        event: Option<&::arcdps::api::RawCombatEvent>,
+                        src: Option<&::arcdps::api::RawAgent>,
+                        dst: Option<&::arcdps::api::RawAgent>,
+                        skill_name: *mut c_char,
+                        id: u64,
+                        revision: u64,
+                    ) {
+                        let safe = (#safe) as CombatCallback;
 
-                            (#safe)(
-                                event.map(Into::into),
-                                src.map(Into::into),
-                                dst.map(Into::into),
-                                ::arcdps::__macro::str_from_cstr(skill_name),
-                                id,
-                                revision
-                            )
+                        safe(
+                            event.map(Into::into),
+                            src.map(Into::into),
+                            dst.map(Into::into),
+                            ::arcdps::__macro::str_from_cstr(skill_name),
+                            id,
+                            revision
+                        )
                     }
                 };
                 let name = quote_spanned!(span=> Some(self::#func_name as _) );

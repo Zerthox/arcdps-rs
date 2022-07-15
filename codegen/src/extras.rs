@@ -36,21 +36,22 @@ impl ArcDpsGen {
             (Some(raw), _) => {
                 let span = syn::Error::new_spanned(&raw, "").span();
                 quote_spanned! {span=>
-                    let _ = (#raw) as RawExtrasSubscriberInit;
+                    let raw = (#raw) as RawExtrasSubscriberInit;
 
-                    (#raw)(addon, sub)
+                    raw(addon, sub)
                 }
             }
             (_, Some(safe)) => {
                 let span = syn::Error::new_spanned(&safe, "").span();
                 quote_spanned! {span=>
-                    let _ = (#safe) as ExtrasInitFunc;
+                    let safe = (#safe) as ExtrasInitFunc;
 
                     #subscribe
 
                     let user = ::arcdps::__macro::str_from_cstr(addon.self_account_name as _)
                         .map(|n| n.trim_start_matches(':'));
-                        (#safe)(addon.into(), user)
+
+                    safe(addon.into(), user);
                 }
             }
             _ if has_update => quote! {
@@ -81,10 +82,12 @@ impl ArcDpsGen {
             (_, Some(safe)) => {
                 let span = syn::Error::new_spanned(&safe, "").span();
                 let wrapper = quote_spanned! {span=>
-                    unsafe extern "C" fn abstract_extras_squad_update(users: *const ::arcdps::extras::RawUserInfo, count: u64) {
-                        let _ = (#safe) as ExtrasSquadUpdateCallback;
-
-                        (#safe)(::arcdps::extras::to_user_info_iter(users, count))
+                    unsafe extern "C" fn abstract_extras_squad_update(
+                        users: *const ::arcdps::extras::RawUserInfo,
+                        count: u64
+                    ) {
+                        let safe = (#safe) as ExtrasSquadUpdateCallback;
+                        safe(::arcdps::extras::to_user_info_iter(users, count))
                     }
                 };
                 let name = quote_spanned!(span=> Some(self::abstract_extras_squad_update as _) );
