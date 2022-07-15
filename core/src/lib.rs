@@ -158,29 +158,33 @@ pub struct SupportedFields {
 /// Exports for usage in macros.
 #[doc(hidden)]
 pub mod __macro {
-    pub use crate::{
-        callbacks::*,
-        imgui,
-        instance::{FreeFn, MallocFn},
-        util::str_from_cstr,
-    };
-    pub use std::os::raw::{c_char, c_void};
-    pub use windows::Win32::{
-        Foundation::{HINSTANCE, LPARAM, WPARAM},
-        UI::WindowsAndMessaging::{WM_KEYDOWN, WM_KEYUP, WM_SYSKEYDOWN, WM_SYSKEYUP},
-    };
+    pub mod prelude {
+        pub use crate::{
+            callbacks::*,
+            instance::{FreeFn, MallocFn},
+        };
+        pub use std::os::raw::{c_char, c_void};
+        pub use windows::Win32::{
+            Foundation::{HINSTANCE, LPARAM, WPARAM},
+            UI::WindowsAndMessaging::{WM_KEYDOWN, WM_KEYUP, WM_SYSKEYDOWN, WM_SYSKEYUP},
+        };
 
-    #[cfg(feature = "extras")]
-    pub use crate::extras::callbacks::*;
+        #[cfg(feature = "extras")]
+        pub use crate::extras::callbacks::*;
+    }
+
+    pub use crate::util::str_from_cstr;
 
     use crate::{
+        imgui,
         instance::{init_imgui, ARC_INSTANCE},
         panic::init_panic_hook,
     };
+    use prelude::*;
 
     /// Internally used function to initialize with information received from Arc.
     #[inline]
-    pub unsafe fn __init(
+    pub unsafe fn init(
         arc_version: *const c_char,
         arc_handle: HINSTANCE,
         imgui_ctx: *mut imgui::sys::ImGuiContext,
@@ -196,7 +200,7 @@ pub mod __macro {
 
     /// Internally used function to retrieve the [`imgui::Ui`].
     #[inline]
-    pub unsafe fn __ui() -> &'static imgui::Ui<'static> {
+    pub unsafe fn ui() -> &'static imgui::Ui<'static> {
         ARC_INSTANCE.ui.as_ref().unwrap()
     }
 }

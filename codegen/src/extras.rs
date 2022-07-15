@@ -36,21 +36,21 @@ impl ArcDpsGen {
             (Some(raw), _) => {
                 let span = syn::Error::new_spanned(&raw, "").span();
                 quote_spanned! {span=>
-                    let _ = super::#raw as RawExtrasSubscriberInit;
+                    let _ = (#raw) as RawExtrasSubscriberInit;
 
-                    super::#raw(addon, sub)
+                    (#raw)(addon, sub)
                 }
             }
             (_, Some(safe)) => {
                 let span = syn::Error::new_spanned(&safe, "").span();
                 quote_spanned! {span=>
-                    let _ = super::#safe as ExtrasInitFunc;
+                    let _ = (#safe) as ExtrasInitFunc;
 
                     #subscribe
 
-                    let user = str_from_cstr(addon.self_account_name as _)
+                    let user = ::arcdps::__macro::str_from_cstr(addon.self_account_name as _)
                         .map(|n| n.trim_start_matches(':'));
-                        super::#safe(addon.into(), user)
+                        (#safe)(addon.into(), user)
                 }
             }
             _ if has_update => quote! {
@@ -74,7 +74,7 @@ impl ArcDpsGen {
         match (&self.raw_extras_squad_update, &self.extras_squad_update) {
             (Some(raw), _) => {
                 let span = syn::Error::new_spanned(&raw, "").span();
-                let name = quote_spanned!(span=> Some(super::#raw as _) );
+                let name = quote_spanned!(span=> Some((#raw) as _) );
 
                 (quote! {}, Some(name))
             }
@@ -82,9 +82,9 @@ impl ArcDpsGen {
                 let span = syn::Error::new_spanned(&safe, "").span();
                 let wrapper = quote_spanned! {span=>
                     unsafe extern "C" fn abstract_extras_squad_update(users: *const ::arcdps::extras::RawUserInfo, count: u64) {
-                        let _ = super::#safe as ExtrasSquadUpdateCallback;
+                        let _ = (#safe) as ExtrasSquadUpdateCallback;
 
-                        super::#safe(::arcdps::extras::to_user_info_iter(users, count))
+                        (#safe)(::arcdps::extras::to_user_info_iter(users, count))
                     }
                 };
                 let name = quote_spanned!(span=> Some(self::abstract_extras_squad_update as _) );

@@ -103,13 +103,13 @@ impl ArcDpsGen {
             #[no_mangle]
             pub unsafe extern "system" fn get_init_addr(
                 arc_version: *mut c_char,
-                imgui_ctx: *mut imgui::sys::ImGuiContext,
+                imgui_ctx: *mut ::arcdps::imgui::sys::ImGuiContext,
                 id3d: *mut c_void,
                 arc_dll: HINSTANCE,
                 malloc: Option<MallocFn>,
                 free: Option<FreeFn>,
             ) -> fn() -> &'static ArcDpsExport {
-                __init(arc_version, arc_dll, imgui_ctx, malloc, free, id3d, #name);
+                ::arcdps::__macro::init(arc_version, arc_dll, imgui_ctx, malloc, free, id3d, #name);
                 load
             }
 
