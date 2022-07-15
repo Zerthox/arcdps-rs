@@ -186,6 +186,19 @@
 <span id="181">181</span>
 <span id="182">182</span>
 <span id="183">183</span>
+<span id="184">184</span>
+<span id="185">185</span>
+<span id="186">186</span>
+<span id="187">187</span>
+<span id="188">188</span>
+<span id="189">189</span>
+<span id="190">190</span>
+<span id="191">191</span>
+<span id="192">192</span>
+<span id="193">193</span>
+<span id="194">194</span>
+<span id="195">195</span>
+<span id="196">196</span>
 </pre><pre class="rust"><code><span class="doccomment">//! ArcDPS bindings for Rust.</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! # Macro usage</span>
@@ -267,6 +280,19 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// At least one participant will be a party/squad member or minion of, or a buff applied by squad in the case of buff remove.</span>
     <span class="doccomment">/// Not all statechanges are present in the realtime API, see [`StateChange`](crate::StateChange) for details.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// No `event` and `src.elite == 0` indicates a tracking change.</span>
+    <span class="doccomment">/// Player was added when `src.prof != 0`, otherwise removed.</span>
+    <span class="doccomment">/// When added `dst.name` is the account name,</span>
+    <span class="doccomment">/// `dst.id` is the instance id,</span>
+    <span class="doccomment">/// `dst.prof` is the [`Profession`](crate::Profession),</span>
+    <span class="doccomment">/// `dst.elite` is the elite [`Specialization`](crate::Specialization),</span>
+    <span class="doccomment">/// `dst.is_self` is whether the added player is self (local player),</span>
+    <span class="doccomment">/// `src.team` is the team,</span>
+    <span class="doccomment">/// `dst.team` is the subgroup.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// No `event` and `src.elite != 0` indicates a target change.</span>
+    <span class="doccomment">/// `src.id` will contain the new target.</span>
     <span class="kw">pub</span> <span class="ident">combat</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">CombatCallback</span><span class="op">&gt;</span>,
 
     <span class="doccomment">/// Callback for standalone UI creation.</span>
