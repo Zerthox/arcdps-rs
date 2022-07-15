@@ -82,13 +82,13 @@ pub struct SupportedFields {
     ///
     /// No `event` and `src.elite == 0` indicates a tracking change.
     /// Player was added when `src.prof != 0`, otherwise removed.
-    /// When added `dst.name` is the account name,
-    /// `dst.id` is the instance id,
-    /// `dst.prof` is the [`Profession`](crate::Profession),
-    /// `dst.elite` is the elite [`Specialization`](crate::Specialization),
-    /// `dst.is_self` is whether the added player is self (local player),
-    /// `src.team` is the team,
-    /// `dst.team` is the subgroup.
+    /// When added `dst.name` contains the account name,
+    /// `dst.id` the instance id,
+    /// `dst.prof` the [`Profession`](crate::Profession),
+    /// `dst.elite` the elite [`Specialization`](crate::Specialization),
+    /// `dst.is_self` whether the added player is self (local player),
+    /// `src.team` the team,
+    /// `dst.team` the subgroup.
     ///
     /// No `event` and `src.elite != 0` indicates a target change.
     /// `src.id` will contain the new target.
