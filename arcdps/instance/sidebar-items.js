@@ -1,1 +1,0 @@
-initSidebarItems({"static":[["ARC_INSTANCE","Global instance of Arc handle & exported functions."],["IG_CONTEXT","Imgui context."]],"struct":[["ArcInstance","Arc handle & exported functions."]],"type":[["FreeFn",""],["MallocFn",""]]});

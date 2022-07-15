@@ -199,6 +199,12 @@
 <span id="194">194</span>
 <span id="195">195</span>
 <span id="196">196</span>
+<span id="197">197</span>
+<span id="198">198</span>
+<span id="199">199</span>
+<span id="200">200</span>
+<span id="201">201</span>
+<span id="202">202</span>
 </pre><pre class="rust"><code><span class="doccomment">//! ArcDPS bindings for Rust.</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! # Macro usage</span>
@@ -209,11 +215,13 @@
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">api</span>;
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">callbacks</span>;
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">exports</span>;
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">instance</span>;
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">util</span>;
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;extras&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">extras</span>;
+
+<span class="kw">mod</span> <span class="ident">instance</span>;
+<span class="kw">mod</span> <span class="ident">panic</span>;
+<span class="kw">mod</span> <span class="ident">util</span>;
 
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">api</span>::{<span class="ident">evtc</span>::<span class="kw-2">*</span>, <span class="ident">game</span>::<span class="kw-2">*</span>, <span class="ident">Agent</span>, <span class="ident">AgentOwned</span>, <span class="ident">CombatEvent</span>};
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">arcdps_codegen::export</span>;
@@ -372,7 +380,10 @@
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;extras&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::extras::callbacks</span>::<span class="kw-2">*</span>;
 
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::instance</span>::{<span class="ident">init_imgui</span>, <span class="ident">ARC_INSTANCE</span>};
+    <span class="kw">use</span> <span class="kw">crate</span>::{
+        <span class="ident">instance</span>::{<span class="ident">init_imgui</span>, <span class="ident">ARC_INSTANCE</span>},
+        <span class="ident">panic::init_panic_hook</span>,
+    };
 
     <span class="doccomment">/// Internally used function to initialize with information received from Arc.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
@@ -383,10 +394,11 @@
         <span class="ident">malloc</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">MallocFn</span><span class="op">&gt;</span>,
         <span class="ident">free</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">FreeFn</span><span class="op">&gt;</span>,
         <span class="ident">_id3d</span>: <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-        <span class="ident">_name</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>,
+        <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>,
     ) {
         <span class="ident">init_imgui</span>(<span class="ident">imgui_ctx</span>, <span class="ident">malloc</span>, <span class="ident">free</span>);
         <span class="ident">ARC_INSTANCE</span>.<span class="ident">init</span>(<span class="ident">arc_handle</span>, <span class="ident">str_from_cstr</span>(<span class="ident">arc_version</span>));
+        <span class="ident">init_panic_hook</span>(<span class="ident">name</span>);
     }
 
     <span class="doccomment">/// Internally used function to retrieve the [`imgui::Ui`].</span>
