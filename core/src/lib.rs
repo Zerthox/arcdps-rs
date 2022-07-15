@@ -8,11 +8,13 @@
 pub mod api;
 pub mod callbacks;
 pub mod exports;
-pub mod instance;
-pub mod util;
 
 #[cfg(feature = "extras")]
 pub mod extras;
+
+mod instance;
+mod panic;
+mod util;
 
 pub use api::{evtc::*, game::*, Agent, AgentOwned, CombatEvent};
 pub use arcdps_codegen::export;
@@ -171,7 +173,10 @@ pub mod __macro {
     #[cfg(feature = "extras")]
     pub use crate::extras::callbacks::*;
 
-    use crate::instance::{init_imgui, ARC_INSTANCE};
+    use crate::{
+        instance::{init_imgui, ARC_INSTANCE},
+        panic::init_panic_hook,
+    };
 
     /// Internally used function to initialize with information received from Arc.
     #[inline]
@@ -182,10 +187,11 @@ pub mod __macro {
         malloc: Option<MallocFn>,
         free: Option<FreeFn>,
         _id3d: *mut c_void,
-        _name: &'static str,
+        name: &'static str,
     ) {
         init_imgui(imgui_ctx, malloc, free);
         ARC_INSTANCE.init(arc_handle, str_from_cstr(arc_version));
+        init_panic_hook(name);
     }
 
     /// Internally used function to retrieve the [`imgui::Ui`].
