@@ -213,7 +213,7 @@
         <span class="self">Self</span> {
             <span class="ident">api_version</span>: <span class="ident">raw</span>.<span class="ident">api_version</span>,
             <span class="ident">max_info_version</span>: <span class="ident">raw</span>.<span class="ident">max_info_version</span>,
-            <span class="ident">string_version</span>: <span class="ident">str_from_cstr</span>(<span class="ident">raw</span>.<span class="ident">string_version</span>),
+            <span class="ident">string_version</span>: <span class="kw">unsafe</span> { <span class="ident">str_from_cstr</span>(<span class="ident">raw</span>.<span class="ident">string_version</span>) },
         }
     }
 }
