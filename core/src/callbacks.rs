@@ -13,37 +13,70 @@ use windows::Win32::Foundation::{LPARAM, WPARAM};
 /// Exported struct for ArcDPS plugins.
 #[repr(C)]
 pub struct ArcDpsExport {
+    /// Size of exports table.
     pub size: usize,
+
+    /// Unique plugin signature.
+    ///
+    /// Pick a random number that is not used by other modules.
     pub sig: u32,
+
+    /// Imgui version number.
+    ///
+    /// Set to `18000` if you do not use Imgui (as of 2021-02-02).
     pub imgui_version: u32,
+
+    /// Plugin name string.
     pub out_name: *const c_char,
+
+    /// Plugin build (version) string.
     pub out_build: *const c_char,
+
+    /// WndProc callback.
+    ///
+    /// Return is assigned to uMsg (return zero to not be processed by ArcDPS or game).
     pub wnd_nofilter: Option<RawWndprocCallback>,
+
+    /// Combat callback.
+    ///
+    /// May be called asynchronously, use `id` to keep track of order.
+    /// First event id will be `2`.
+    /// Return is ignored.
     pub combat: Option<RawCombatCallback>,
+
+    /// Imgui callback.
     pub imgui: Option<RawImguiCallback>,
+
+    /// Options callback.
+    ///
+    /// For a plugin options tab.
     pub options_end: Option<RawOptionsCallback>,
+
+    /// Local combat callback.
+    ///
+    /// Like `combat` (area) but from chat log.
     pub combat_local: Option<RawCombatCallback>,
+
+    /// Filtered WndProc callback.
+    ///
+    /// Like `wnd_nofilter` but input fitlered using modifiers.
     pub wnd_filter: Option<RawWndprocCallback>,
+
+    /// Options windows callback.
+    ///
+    /// Called once per window option checkbox in settings, with null at the end.
+    /// Non-zero return disables ArcDPS drawing that checkbox.
     pub options_windows: Option<RawOptionsWindowsCallback>,
 }
 
 unsafe impl Sync for ArcDpsExport {}
 
-/// Callback for plugin load.
 pub type InitFunc = fn() -> Result<(), Box<dyn Error>>;
 
-/// Callback for plugin unload.
 pub type ReleaseFunc = fn();
 
 pub type RawWndprocCallback =
     unsafe extern "C" fn(h_wnd: *mut c_void, u_msg: u32, w_param: WPARAM, l_param: LPARAM) -> u32;
-
-/// Callback for key presses.
-///
-/// Returning `true` will allow ArcDPS and GW2 to receive the key press.
-/// First parameter indicates the virtual key code (<https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes>),
-/// second parameter is `true` if the key was pressed and `false` when released,
-/// third parameter is `true` if the key was down before this event occurred, for example by holding it down.
 pub type WndProcCallback = fn(key: usize, key_down: bool, prev_key_down: bool) -> bool;
 
 // TODO: should these be pointers?
@@ -55,10 +88,6 @@ pub type RawCombatCallback = unsafe extern "C" fn(
     id: u64,
     revision: u64,
 );
-
-/// Callback for combat events.
-///
-/// This is the same signature for both area as well as local events.
 pub type CombatCallback = fn(
     ev: Option<CombatEvent>,
     src: Option<Agent>,
@@ -69,25 +98,10 @@ pub type CombatCallback = fn(
 );
 
 pub type RawImguiCallback = unsafe extern "C" fn(not_character_select_or_loading: u32);
-
-/// Callback for standalone UI creation.
-///
-/// Provides a [imgui::Ui] object that is needed to draw anything.
-/// The second parameter is `true` whenever the player is **not** in character select, loading screens or forced cameras.
 pub type ImguiCallback = fn(ui: &imgui::Ui, not_character_select_or_loading: bool);
 
 pub type RawOptionsCallback = unsafe extern "C" fn();
-
-/// Callback for plugin settings UI creation.
-///
-/// Provides a [imgui::Ui] object that is needed to draw anything.
 pub type OptionsCallback = fn(ui: &imgui::Ui);
 
 pub type RawOptionsWindowsCallback = unsafe extern "C" fn(window_name: *mut c_char) -> bool;
-
-/// Callback for window options.
-///
-/// Called for each window checkbox in ArcDPS settings.
-/// Last call will always be with [`None`].
-/// Does not draw the checkbox if returning `true`.
 pub type OptionsWindowsCallback = fn(ui: &imgui::Ui, window_name: Option<&str>) -> bool;

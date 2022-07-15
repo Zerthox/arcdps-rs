@@ -1,4 +1,4 @@
-//! Unofficial Extras support.
+//! [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases) support.
 //!
 //! *Requires the `"extras"` feature.*
 
@@ -24,7 +24,7 @@ fn check_compat(api_version: u32, sub_info_version: u32) -> bool {
     api_version == API_VERSION && sub_info_version >= SUB_INFO_VERSION
 }
 
-/// Information about the Unofficial Extras addon.
+/// Information about the [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases) addon.
 #[derive(Debug, Clone)]
 pub struct ExtrasAddonInfo {
     /// Version of the API.
