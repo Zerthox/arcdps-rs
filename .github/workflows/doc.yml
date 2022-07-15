@@ -7,6 +7,7 @@ on:
     paths:
       - "**/src/**"
       - Cargo.toml
+  workflow_dispatch:
 
 jobs:
   docs:
@@ -22,8 +23,6 @@ jobs:
         with:
           command: doc
           args: --all-features
-      - uses: peaceiris/actions-gh-pages@v3
+      - uses: JamesIves/github-pages-deploy-action@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./target/doc
-          publish_branch: gh-pages
+          folder: ./target/doc
