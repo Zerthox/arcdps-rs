@@ -23,6 +23,8 @@ jobs:
         with:
           command: doc
           args: --all-features
-      - uses: JamesIves/github-pages-deploy-action@v4
+      - uses: peaceiris/actions-gh-pages@v3
         with:
-          folder: ./target/doc
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./target/doc
+          publish_branch: gh-pages
