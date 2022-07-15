@@ -79,6 +79,19 @@ pub struct SupportedFields {
     ///
     /// At least one participant will be a party/squad member or minion of, or a buff applied by squad in the case of buff remove.
     /// Not all statechanges are present in the realtime API, see [`StateChange`](crate::StateChange) for details.
+    ///
+    /// No `event` and `src.elite == 0` indicates a tracking change.
+    /// Player was added when `src.prof != 0`, otherwise removed.
+    /// When added `dst.name` is the account name,
+    /// `dst.id` is the instance id,
+    /// `dst.prof` is the [`Profession`](crate::Profession),
+    /// `dst.elite` is the elite [`Specialization`](crate::Specialization),
+    /// `dst.is_self` is whether the added player is self (local player),
+    /// `src.team` is the team,
+    /// `dst.team` is the subgroup.
+    ///
+    /// No `event` and `src.elite != 0` indicates a target change.
+    /// `src.id` will contain the new target.
     pub combat: Option<CombatCallback>,
 
     /// Callback for standalone UI creation.
