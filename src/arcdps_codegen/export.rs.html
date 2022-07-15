@@ -184,14 +184,6 @@
         <span class="kw">let</span> (<span class="ident">wnd_nofilter_func</span>, <span class="ident">wnd_nofilter_name</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">build_wnd_nofilter</span>();
 
         <span class="macro">quote!</span> {
-            #<span class="ident">combat_func</span>
-            #<span class="ident">combat_local_func</span>
-            #<span class="ident">imgui_func</span>
-            #<span class="ident">options_end_func</span>
-            #<span class="ident">options_windows_func</span>
-            #<span class="ident">wnd_filter_func</span>
-            #<span class="ident">wnd_nofilter_func</span>
-
             <span class="doccomment">/// ArcDPS export struct with plugin information.</span>
             <span class="kw">static</span> <span class="ident">EXPORT</span>: <span class="ident">ArcDpsExport</span> <span class="op">=</span> <span class="ident">ArcDpsExport</span> {
                 <span class="ident">size</span>: <span class="ident">::std::mem::size_of</span>::<span class="op">&lt;</span><span class="ident">ArcDpsExport</span><span class="op">&gt;</span>(),
@@ -262,6 +254,14 @@
             <span class="kw">pub</span> <span class="kw">extern</span> <span class="string">&quot;system&quot;</span> <span class="kw">fn</span> <span class="ident">get_release_addr</span>() -&gt; <span class="kw-2">*mut</span> <span class="ident">c_void</span> {
                 <span class="ident">unload</span> <span class="kw">as</span> <span class="kw">_</span>
             }
+
+            #<span class="ident">combat_func</span>
+            #<span class="ident">combat_local_func</span>
+            #<span class="ident">imgui_func</span>
+            #<span class="ident">options_end_func</span>
+            #<span class="ident">options_windows_func</span>
+            #<span class="ident">wnd_filter_func</span>
+            #<span class="ident">wnd_nofilter_func</span>
         }
     }
 }

@@ -118,7 +118,6 @@
 <span id="113">113</span>
 <span id="114">114</span>
 <span id="115">115</span>
-<span id="116">116</span>
 </pre><pre class="rust"><code><span class="kw">mod</span> <span class="ident">callbacks</span>;
 <span class="kw">mod</span> <span class="ident">export</span>;
 <span class="kw">mod</span> <span class="ident">parse</span>;
@@ -150,7 +149,6 @@
 
     <span class="kw">let</span> <span class="ident">result</span> <span class="op">=</span> <span class="macro">quote!</span> {
         <span class="kw">mod</span> <span class="ident">__arcdps_gen_export</span> {
-            <span class="kw">use</span> <span class="kw">super</span>::<span class="kw-2">*</span>;
             <span class="kw">use</span> <span class="ident">::arcdps::__macro</span>::<span class="kw-2">*</span>;
 
             #<span class="ident">export</span>
