@@ -283,13 +283,12 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// No `event` and `src.elite == 0` indicates a tracking change.</span>
     <span class="doccomment">/// Player was added when `src.prof != 0`, otherwise removed.</span>
-    <span class="doccomment">/// When added `dst.name` is the account name,</span>
-    <span class="doccomment">/// `dst.id` is the instance id,</span>
-    <span class="doccomment">/// `dst.prof` is the [`Profession`](crate::Profession),</span>
-    <span class="doccomment">/// `dst.elite` is the elite [`Specialization`](crate::Specialization),</span>
-    <span class="doccomment">/// `dst.is_self` is whether the added player is self (local player),</span>
-    <span class="doccomment">/// `src.team` is the team,</span>
-    <span class="doccomment">/// `dst.team` is the subgroup.</span>
+    <span class="doccomment">/// When added `dst.name` contains the account name,</span>
+    <span class="doccomment">/// `dst.id` the instance id,</span>
+    <span class="doccomment">/// `dst.prof` the [`Profession`](crate::Profession),</span>
+    <span class="doccomment">/// `dst.elite` the elite [`Specialization`](crate::Specialization),</span>
+    <span class="doccomment">/// `dst.is_self` whether the added player is self (local player),</span>
+    <span class="doccomment">/// `src.team` the team and `dst.team` the subgroup.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// No `event` and `src.elite != 0` indicates a target change.</span>
     <span class="doccomment">/// `src.id` will contain the new target.</span>
@@ -297,13 +296,13 @@
 
     <span class="doccomment">/// Callback for standalone UI creation.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// Provides a [`imgui::Ui`] object that is needed to draw anything.</span>
+    <span class="doccomment">/// Provides an [`imgui::Ui`] for drawing.</span>
     <span class="doccomment">/// The second parameter is `true` whenever the player is **not** in character select, loading screens or forced cameras.</span>
     <span class="kw">pub</span> <span class="ident">imgui</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ImguiCallback</span><span class="op">&gt;</span>,
 
     <span class="doccomment">/// Callback for plugin settings UI creation.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// Provides a [`imgui::Ui`] object that is needed to draw anything.</span>
+    <span class="doccomment">/// Provides an [`imgui::Ui`] for drawing.</span>
     <span class="kw">pub</span> <span class="ident">options_end</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">OptionsCallback</span><span class="op">&gt;</span>,
 
     <span class="doccomment">/// Callback for local combat events.</span>
@@ -348,7 +347,8 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// Called whenever anything in the squad changes.</span>
     <span class="doccomment">/// Only the users that changed are sent.</span>
-    <span class="doccomment">/// If a user is removed, their `role` will be set to [`UserRole::None`](crate::extras::UserRole::None).</span>
+    <span class="doccomment">/// If a user was removed from the squad, their `role` will be set to [`UserRole::None`](crate::extras::UserRole::None).</span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// *Requires the `&quot;extras&quot;` feature.*</span>
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;extras&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="ident">extras_squad_update</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ExtrasSquadUpdateCallback</span><span class="op">&gt;</span>,
