@@ -298,7 +298,7 @@ pub enum StateChange {
 
     /// Source agent is in guild.
     ///
-    /// `dst_agent` until ´buff_dmg´ is 16 byte (`u8`) guid.
+    /// `dst_agent` until `buff_dmg` is 16 byte (`u8`) guid.
     ///
     /// Given in client form, needs minor rearrange for API form.
     Guild,
@@ -352,7 +352,7 @@ pub enum StateChange {
 
     /// Source agent breakbar state change.
     ///
-    /// Value is `u16` game enum (active, recover, immune, none).
+    /// Value is [`u16`] game enum (active, recover, immune, none).
     ///
     /// *Not used in realtime API.*
     BreakbarState,
@@ -406,7 +406,7 @@ pub enum StateChange {
     /// Tick rate.
     ///
     /// Every 500ms.
-    /// `src_agent` is `+= 25 - tickrate` (when `tickrate < 21`).
+    /// `src_agent` is `25 - tickrate` (when `tickrate < 21`).
     Tickrate,
 
     /// Last 90% before down.

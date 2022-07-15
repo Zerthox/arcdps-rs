@@ -40,6 +40,7 @@ pub fn export(item: proc_macro::TokenStream) -> proc_macro::TokenStream {
     result.into()
 }
 
+// TODO: absolute paths like `crate::init`? closures?
 pub(crate) struct ArcDpsGen {
     name: Option<LitStr>,
     sig: Expr,
