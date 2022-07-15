@@ -87,8 +87,7 @@ pub struct SupportedFields {
     /// `dst.prof` the [`Profession`](crate::Profession),
     /// `dst.elite` the elite [`Specialization`](crate::Specialization),
     /// `dst.is_self` whether the added player is self (local player),
-    /// `src.team` the team,
-    /// `dst.team` the subgroup.
+    /// `src.team` the team and `dst.team` the subgroup.
     ///
     /// No `event` and `src.elite != 0` indicates a target change.
     /// `src.id` will contain the new target.
@@ -96,13 +95,13 @@ pub struct SupportedFields {
 
     /// Callback for standalone UI creation.
     ///
-    /// Provides a [`imgui::Ui`] object that is needed to draw anything.
+    /// Provides an [`imgui::Ui`] for drawing.
     /// The second parameter is `true` whenever the player is **not** in character select, loading screens or forced cameras.
     pub imgui: Option<ImguiCallback>,
 
     /// Callback for plugin settings UI creation.
     ///
-    /// Provides a [`imgui::Ui`] object that is needed to draw anything.
+    /// Provides an [`imgui::Ui`] for drawing.
     pub options_end: Option<OptionsCallback>,
 
     /// Callback for local combat events.
@@ -147,7 +146,8 @@ pub struct SupportedFields {
     ///
     /// Called whenever anything in the squad changes.
     /// Only the users that changed are sent.
-    /// If a user is removed, their `role` will be set to [`UserRole::None`](crate::extras::UserRole::None).
+    /// If a user was removed from the squad, their `role` will be set to [`UserRole::None`](crate::extras::UserRole::None).
+    ///
     /// *Requires the `"extras"` feature.*
     #[cfg(feature = "extras")]
     pub extras_squad_update: Option<ExtrasSquadUpdateCallback>,
