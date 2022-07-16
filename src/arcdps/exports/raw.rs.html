@@ -45,8 +45,24 @@
 <span id="40">40</span>
 <span id="41">41</span>
 <span id="42">42</span>
+<span id="43">43</span>
+<span id="44">44</span>
+<span id="45">45</span>
+<span id="46">46</span>
+<span id="47">47</span>
+<span id="48">48</span>
+<span id="49">49</span>
+<span id="50">50</span>
 </pre><pre class="rust"><code><span class="kw">use</span> <span class="kw">crate</span>::{<span class="ident">api::RawCombatEvent</span>, <span class="ident">imgui::sys::ImVec4</span>, <span class="ident">instance::ARC_INSTANCE</span>};
 <span class="kw">use</span> <span class="ident">std::os::raw::c_char</span>;
+
+<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">Export0</span> <span class="op">=</span> <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span>() -&gt; <span class="kw-2">*const</span> <span class="ident">u16</span>;
+<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">Export3</span> <span class="op">=</span> <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span>(<span class="ident">string</span>: <span class="kw-2">*const</span> <span class="ident">c_char</span>);
+<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">Export5</span> <span class="op">=</span> <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span>(<span class="ident">out</span>: <span class="kw-2">*mut</span> [<span class="kw-2">*mut</span> <span class="ident">ImVec4</span>; <span class="number">5</span>]);
+<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">Export6</span> <span class="op">=</span> <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span>() -&gt; <span class="ident">u64</span>;
+<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">Export7</span> <span class="op">=</span> <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span>() -&gt; <span class="ident">u64</span>;
+<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">Export8</span> <span class="op">=</span> <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span>(<span class="ident">string</span>: <span class="kw-2">*const</span> <span class="ident">c_char</span>);
+<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">Export9</span> <span class="op">=</span> <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span>(<span class="ident">event</span>: <span class="kw-2">*const</span> <span class="ident">RawCombatEvent</span>, <span class="ident">sig</span>: <span class="ident">u32</span>);
 
 <span class="doccomment">/// Retrieves path to ArcDPS ini config file as wide char string.</span>
 <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">e0_config_path</span>() -&gt; <span class="kw-2">*const</span> <span class="ident">u16</span> {
@@ -58,7 +74,7 @@
     (<span class="ident">ARC_INSTANCE</span>.<span class="ident">e3</span>.<span class="ident">expect</span>(<span class="string">&quot;failed to find arc export e3&quot;</span>))(<span class="ident">string</span>)
 }
 
-<span class="doccomment">/// Retrieves color pointers as array. Writes to buffer.</span>
+<span class="doccomment">/// Writes color array pointers to buffer.</span>
 <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">e5_colors</span>(<span class="ident">buffer</span>: <span class="kw-2">*mut</span> [<span class="kw-2">*mut</span> <span class="ident">ImVec4</span>; <span class="number">5</span>]) {
     (<span class="ident">ARC_INSTANCE</span>.<span class="ident">e5</span>.<span class="ident">expect</span>(<span class="string">&quot;failed to find arc export e5&quot;</span>))(<span class="ident">buffer</span>)
 }
