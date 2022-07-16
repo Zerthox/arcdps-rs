@@ -81,7 +81,7 @@ pub type WndProcCallback = fn(key: usize, key_down: bool, prev_key_down: bool) -
 
 // TODO: should these be pointers?
 pub type RawCombatCallback = unsafe extern "C" fn(
-    ev: Option<&RawCombatEvent>,
+    event: Option<&RawCombatEvent>,
     src: Option<&RawAgent>,
     dst: Option<&RawAgent>,
     skill_name: *mut c_char,
@@ -89,7 +89,7 @@ pub type RawCombatCallback = unsafe extern "C" fn(
     revision: u64,
 );
 pub type CombatCallback = fn(
-    ev: Option<CombatEvent>,
+    event: Option<CombatEvent>,
     src: Option<Agent>,
     dst: Option<Agent>,
     skill_name: Option<&'static str>,

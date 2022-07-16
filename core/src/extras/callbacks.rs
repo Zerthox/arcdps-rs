@@ -4,18 +4,21 @@ use super::{
 };
 use crate::api::Language;
 
-pub type RawExtrasSubscriberInit =
-    unsafe extern "C" fn(&RawExtrasAddonInfo, &mut ExtrasSubscriberInfo);
+pub type RawExtrasSubscriberInit = unsafe extern "C" fn(
+    extras_info: &RawExtrasAddonInfo,
+    subscriber_info: &mut ExtrasSubscriberInfo,
+);
 
-pub type ExtrasInitFunc = fn(ExtrasAddonInfo, Option<&'static str>);
+pub type ExtrasInitFunc = fn(extras_info: ExtrasAddonInfo, account_name: Option<&'static str>);
 
-pub type RawExtrasSquadUpdateCallback = unsafe extern "C" fn(*const RawUserInfo, u64);
-pub type ExtrasSquadUpdateCallback = fn(UserInfoIter);
+pub type RawExtrasSquadUpdateCallback =
+    unsafe extern "C" fn(updated_users: *const RawUserInfo, updated_users_count: u64);
+pub type ExtrasSquadUpdateCallback = fn(updated_users: UserInfoIter);
 
-pub type RawExtrasLanguageChangedCallback = unsafe extern "C" fn(Language);
-pub type ExtrasLanguageChangedCallback = fn(Language);
+pub type RawExtrasLanguageChangedCallback = unsafe extern "C" fn(new_language: Language);
+pub type ExtrasLanguageChangedCallback = fn(new_language: Language);
 
 // TODO: support other callbacks
-pub type RawKeyBindChangedCallback = unsafe extern "C" fn(KeybindChange);
+pub type RawKeyBindChangedCallback = unsafe extern "C" fn(changed_key_bind: KeybindChange);
 
-pub type RawChatMessageCallback = unsafe extern "C" fn(*const ChatMessageInfo);
+pub type RawChatMessageCallback = unsafe extern "C" fn(chat_message: *const ChatMessageInfo);
