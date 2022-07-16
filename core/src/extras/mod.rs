@@ -3,6 +3,7 @@
 //! *Requires the `"extras"` feature.*
 
 pub mod callbacks;
+pub mod exports;
 
 mod keybinds;
 mod message;
