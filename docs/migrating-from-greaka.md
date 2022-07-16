@@ -10,8 +10,9 @@ All of them implement a variety of useful traits, for example to convert between
 [`Agent`](https://zerthox.github.io/arcdps-bindings/arcdps/api/agent/struct.Agent.html) and [`CombatEvent`](https://zerthox.github.io/arcdps-bindings/arcdps/api/event/struct.CombatEvent.html) no longer implement [`Copy`](https://doc.rust-lang.org/std/marker/trait.Copy.html) in order to be in line with other structs and avoid accidental implicit duplication.
 You can still use [`Clone`](https://doc.rust-lang.org/std/clone/trait.Clone.html) as an explicit way to duplicate.
 
-[`CombatEvent`](https://zerthox.github.io/arcdps-bindings/arcdps/api/event/struct.CombatEvent.html) now holds enums in its `iff`, `is_activation`, `is_buff_remove` and `is_statechange` fields rather than primitive numeric values.
-[`RawCombatEvent`](https://zerthox.github.io/arcdps-bindings/arcdps/api/event/struct.RawCombatEvent.html) has been added for the raw API and still has the numeric values.
+[`CombatEvent`](https://zerthox.github.io/arcdps-bindings/arcdps/api/event/struct.CombatEvent.html) now holds enums in its `affinity`, `is_activation`, `is_buff_remove` and `is_statechange` fields rather than primitive numeric values.
+The `iff` (if friend/foe) field used in ArcDPS' API has been renamed to `affinity` in order to avoid confusion with the commonly used term iff meaning "if and only if".
+[`RawCombatEvent`](https://zerthox.github.io/arcdps-bindings/arcdps/api/event/struct.RawCombatEvent.html) has been added for the raw API and still has the old numeric values.
 
 [`Agent`](https://zerthox.github.io/arcdps-bindings/arcdps/api/agent/struct.Agent.html) & [`AgentOwned`](https://zerthox.github.io/arcdps-bindings/arcdps/api/agent/struct.AgentOwned.html) have their `_self` field renamed to `is_self` as a more appropriate name.
 

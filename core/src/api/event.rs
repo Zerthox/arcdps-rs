@@ -41,7 +41,9 @@ pub struct CombatEvent {
     pub dst_master_instance_id: u16,
 
     /// Current affinity of `src_agent` and `dst_agent`.
-    pub iff: Affinity,
+    ///
+    /// *Arc calls this "iff" for if friend/foe.*
+    pub affinity: Affinity,
 
     /// Buff, if relevant to the event.
     pub buff: u8,
@@ -129,7 +131,7 @@ impl From<&RawCombatEvent> for CombatEvent {
             dst_instance_id: raw.dst_instance_id,
             src_master_instance_id: raw.src_master_instance_id,
             dst_master_instance_id: raw.dst_master_instance_id,
-            iff: raw.iff.into(),
+            affinity: raw.affinity.into(),
             buff: raw.buff,
             result: raw.result,
             is_activation: raw.is_activation.into(),
@@ -164,7 +166,7 @@ pub struct RawCombatEvent {
     pub dst_instance_id: u16,
     pub src_master_instance_id: u16,
     pub dst_master_instance_id: u16,
-    pub iff: u8,
+    pub affinity: u8,
     pub buff: u8,
     pub result: u8,
     pub is_activation: u8,
@@ -196,7 +198,7 @@ impl From<CombatEvent> for RawCombatEvent {
             dst_instance_id: event.dst_instance_id,
             src_master_instance_id: event.src_master_instance_id,
             dst_master_instance_id: event.dst_master_instance_id,
-            iff: event.iff as u8,
+            affinity: event.affinity as u8,
             buff: event.buff,
             result: event.result,
             is_activation: event.is_activation as u8,
