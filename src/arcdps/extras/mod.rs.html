@@ -150,18 +150,28 @@
 <span id="145">145</span>
 <span id="146">146</span>
 <span id="147">147</span>
+<span id="148">148</span>
+<span id="149">149</span>
+<span id="150">150</span>
+<span id="151">151</span>
+<span id="152">152</span>
+<span id="153">153</span>
 </pre><pre class="rust"><code><span class="doccomment">//! [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases) support.</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! *Requires the `&quot;extras&quot;` feature.*</span>
 
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">callbacks</span>;
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">keybinds</span>;
+
+<span class="kw">mod</span> <span class="ident">keybinds</span>;
+<span class="kw">mod</span> <span class="ident">message</span>;
 <span class="kw">mod</span> <span class="ident">user</span>;
 
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">user</span>::<span class="kw-2">*</span>;
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::util::str_from_cstr</span>;
-<span class="kw">use</span> <span class="ident">callbacks</span>::{<span class="ident">RawKeyBindChangedCallback</span>, <span class="ident">RawLanguageChangedCallback</span>, <span class="ident">RawSquadUpdateCallback</span>};
+<span class="kw">use</span> <span class="ident">callbacks</span>::{
+    <span class="ident">RawExtrasLanguageChangedCallback</span>, <span class="ident">RawExtrasSquadUpdateCallback</span>, <span class="ident">RawKeyBindChangedCallback</span>,
+};
 <span class="kw">use</span> <span class="ident">std::os::raw::c_char</span>;
 <span class="kw">use</span> <span class="ident">windows::Win32::Foundation::HINSTANCE</span>;
 
@@ -218,7 +228,7 @@
     }
 }
 
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>)]</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>)]</span>
 <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">RawExtrasAddonInfo</span> {
     <span class="kw">pub</span> <span class="ident">api_version</span>: <span class="ident">u32</span>,
@@ -244,7 +254,7 @@
     <span class="kw">pub</span> <span class="ident">info_version</span>: <span class="ident">u32</span>,
 
     <span class="doccomment">/// Unused padding.</span>
-    <span class="kw">pub</span> <span class="ident">_unused1</span>: <span class="ident">u32</span>,
+    <span class="kw">pub</span> <span class="ident">unused1</span>: <span class="ident">u32</span>,
 }
 
 <span class="doccomment">/// Information about a subscriber to updates from Unofficial Extras.</span>
@@ -264,13 +274,13 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// Only the users that changed are sent.</span>
     <span class="doccomment">/// If a user is removed from the squad, it will be sent with `role` set to [`UserRole::None`]</span>
-    <span class="kw">pub</span> <span class="ident">squad_update_callback</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RawSquadUpdateCallback</span><span class="op">&gt;</span>,
+    <span class="kw">pub</span> <span class="ident">squad_update_callback</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RawExtrasSquadUpdateCallback</span><span class="op">&gt;</span>,
 
     <span class="doccomment">/// Called whenever the language is changed.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Either by Changing it in the UI or by pressing the Right Ctrl (default) key.</span>
     <span class="doccomment">/// Will also be called directly after initialization, with the current language, to get the startup language.</span>
-    <span class="kw">pub</span> <span class="ident">language_changed_callback</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RawLanguageChangedCallback</span><span class="op">&gt;</span>,
+    <span class="kw">pub</span> <span class="ident">language_changed_callback</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RawExtrasLanguageChangedCallback</span><span class="op">&gt;</span>,
 
     <span class="doccomment">/// Called whenever a KeyBind is changed.</span>
     <span class="doccomment">///</span>
@@ -290,11 +300,13 @@
     <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">subscribe</span>(
         <span class="kw-2">&amp;mut</span> <span class="self">self</span>,
         <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>,
-        <span class="ident">squad_update</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RawSquadUpdateCallback</span><span class="op">&gt;</span>,
+        <span class="ident">squad_update</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RawExtrasSquadUpdateCallback</span><span class="op">&gt;</span>,
+        <span class="ident">language_changed</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RawExtrasLanguageChangedCallback</span><span class="op">&gt;</span>,
     ) {
         <span class="self">self</span>.<span class="ident">header</span>.<span class="ident">info_version</span> <span class="op">=</span> <span class="ident">SUB_INFO_VERSION</span>;
         <span class="self">self</span>.<span class="ident">subscriber_name</span> <span class="op">=</span> <span class="ident">name</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">c_char</span>;
         <span class="self">self</span>.<span class="ident">squad_update_callback</span> <span class="op">=</span> <span class="ident">squad_update</span>;
+        <span class="self">self</span>.<span class="ident">language_changed_callback</span> <span class="op">=</span> <span class="ident">language_changed</span>;
     }
 }
 </code></pre></div>

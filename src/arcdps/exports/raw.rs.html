@@ -50,34 +50,34 @@
 
 <span class="doccomment">/// Retrieves path to ArcDPS ini config file as wide char string.</span>
 <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">e0_config_path</span>() -&gt; <span class="kw-2">*const</span> <span class="ident">u16</span> {
-    (<span class="ident">ARC_INSTANCE</span>.<span class="ident">e0</span>.<span class="ident">unwrap</span>())()
+    (<span class="ident">ARC_INSTANCE</span>.<span class="ident">e0</span>.<span class="ident">expect</span>(<span class="string">&quot;failed to find arc export e0&quot;</span>))()
 }
 
 <span class="doccomment">/// Logs a string to `arcdps.log` file.</span>
 <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">e3_log_file</span>(<span class="ident">string</span>: <span class="kw-2">*const</span> <span class="ident">c_char</span>) {
-    (<span class="ident">ARC_INSTANCE</span>.<span class="ident">e3</span>.<span class="ident">unwrap</span>())(<span class="ident">string</span>)
+    (<span class="ident">ARC_INSTANCE</span>.<span class="ident">e3</span>.<span class="ident">expect</span>(<span class="string">&quot;failed to find arc export e3&quot;</span>))(<span class="ident">string</span>)
 }
 
 <span class="doccomment">/// Retrieves color pointers as array. Writes to buffer.</span>
 <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">e5_colors</span>(<span class="ident">buffer</span>: <span class="kw-2">*mut</span> [<span class="kw-2">*mut</span> <span class="ident">ImVec4</span>; <span class="number">5</span>]) {
-    (<span class="ident">ARC_INSTANCE</span>.<span class="ident">e5</span>.<span class="ident">unwrap</span>())(<span class="ident">buffer</span>)
+    (<span class="ident">ARC_INSTANCE</span>.<span class="ident">e5</span>.<span class="ident">expect</span>(<span class="string">&quot;failed to find arc export e5&quot;</span>))(<span class="ident">buffer</span>)
 }
 
 <span class="doccomment">/// Retrieves bit mask of current ArcDPS UI settings.</span>
 <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">e6_ui_settings</span>() -&gt; <span class="ident">u64</span> {
-    (<span class="ident">ARC_INSTANCE</span>.<span class="ident">e6</span>.<span class="ident">unwrap</span>())()
+    (<span class="ident">ARC_INSTANCE</span>.<span class="ident">e6</span>.<span class="ident">expect</span>(<span class="string">&quot;failed to find arc export e6&quot;</span>))()
 }
 
 <span class="doccomment">/// Retrieves modifier keys as virtual key codes.</span>
 <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">e7_modifiers</span>() -&gt; <span class="ident">u64</span> {
-    (<span class="ident">ARC_INSTANCE</span>.<span class="ident">e7</span>.<span class="ident">unwrap</span>())()
+    (<span class="ident">ARC_INSTANCE</span>.<span class="ident">e7</span>.<span class="ident">expect</span>(<span class="string">&quot;failed to find arc export e7&quot;</span>))()
 }
 
 <span class="doccomment">/// Logs a string to the ArcDPS logger window.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// Colors are HTML-like: `&lt;c=#aaaaaa&gt;colored text&lt;/c&gt;`.</span>
 <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">e8_log_window</span>(<span class="ident">string</span>: <span class="kw-2">*const</span> <span class="ident">c_char</span>) {
-    (<span class="ident">ARC_INSTANCE</span>.<span class="ident">e8</span>.<span class="ident">unwrap</span>())(<span class="ident">string</span>)
+    (<span class="ident">ARC_INSTANCE</span>.<span class="ident">e8</span>.<span class="ident">expect</span>(<span class="string">&quot;failed to find arc export e8&quot;</span>))(<span class="ident">string</span>)
 }
 
 <span class="doccomment">/// Adds a [`RawCombatEvent`] to ArcDPS&#39; event processing.</span>
@@ -85,7 +85,7 @@
 <span class="doccomment">/// `is_statechange` will be set to extension, pad61-64 will be set to `sig`.</span>
 <span class="doccomment">/// Event will end up processed like ArcDPS events and logged to EVTC.</span>
 <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">e9_add_event</span>(<span class="ident">event</span>: <span class="kw-2">*const</span> <span class="ident">RawCombatEvent</span>, <span class="ident">sig</span>: <span class="ident">u32</span>) {
-    (<span class="ident">ARC_INSTANCE</span>.<span class="ident">e9</span>.<span class="ident">unwrap</span>())(<span class="ident">event</span>, <span class="ident">sig</span>)
+    (<span class="ident">ARC_INSTANCE</span>.<span class="ident">e9</span>.<span class="ident">expect</span>(<span class="string">&quot;failed to find arc export e9&quot;</span>))(<span class="ident">event</span>, <span class="ident">sig</span>)
 }
 </code></pre></div>
 </section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="arcdps" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.62.0 (a8314ef7d 2022-06-27)" ></div>

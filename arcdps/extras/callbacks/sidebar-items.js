@@ -1,1 +1,1 @@
-initSidebarItems({"type":[["ExtrasInitFunc",""],["ExtrasSquadUpdateCallback",""],["RawExtrasSubscriberInit",""],["RawKeyBindChangedCallback",""],["RawLanguageChangedCallback",""],["RawSquadUpdateCallback",""]]});
+initSidebarItems({"type":[["ExtrasInitFunc",""],["ExtrasLanguageChangedCallback",""],["ExtrasSquadUpdateCallback",""],["RawChatMessageCallback",""],["RawExtrasLanguageChangedCallback",""],["RawExtrasSquadUpdateCallback",""],["RawExtrasSubscriberInit",""],["RawKeyBindChangedCallback",""]]});

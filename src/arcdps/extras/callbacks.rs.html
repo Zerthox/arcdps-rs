@@ -22,9 +22,11 @@
 <span id="17">17</span>
 <span id="18">18</span>
 <span id="19">19</span>
+<span id="20">20</span>
+<span id="21">21</span>
 </pre><pre class="rust"><code><span class="kw">use</span> <span class="kw">super</span>::{
-    <span class="ident">keybinds::KeybindChange</span>, <span class="ident">ExtrasAddonInfo</span>, <span class="ident">ExtrasSubscriberInfo</span>, <span class="ident">RawExtrasAddonInfo</span>,
-    <span class="ident">RawUserInfo</span>, <span class="ident">UserInfoIter</span>,
+    <span class="ident">keybinds::KeybindChange</span>, <span class="ident">message::ChatMessageInfo</span>, <span class="ident">ExtrasAddonInfo</span>, <span class="ident">ExtrasSubscriberInfo</span>,
+    <span class="ident">RawExtrasAddonInfo</span>, <span class="ident">RawUserInfo</span>, <span class="ident">UserInfoIter</span>,
 };
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::api::Language</span>;
 
@@ -33,14 +35,16 @@
 
 <span class="kw">pub</span> <span class="kw">type</span> <span class="ident">ExtrasInitFunc</span> <span class="op">=</span> <span class="kw">fn</span>(<span class="ident">ExtrasAddonInfo</span>, <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span><span class="op">&gt;</span>);
 
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">RawSquadUpdateCallback</span> <span class="op">=</span> <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span>(<span class="kw-2">*const</span> <span class="ident">RawUserInfo</span>, <span class="ident">u64</span>);
+<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">RawExtrasSquadUpdateCallback</span> <span class="op">=</span> <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span>(<span class="kw-2">*const</span> <span class="ident">RawUserInfo</span>, <span class="ident">u64</span>);
 <span class="kw">pub</span> <span class="kw">type</span> <span class="ident">ExtrasSquadUpdateCallback</span> <span class="op">=</span> <span class="kw">fn</span>(<span class="ident">UserInfoIter</span>);
 
+<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">RawExtrasLanguageChangedCallback</span> <span class="op">=</span> <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span>(<span class="ident">Language</span>);
+<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">ExtrasLanguageChangedCallback</span> <span class="op">=</span> <span class="kw">fn</span>(<span class="ident">Language</span>);
+
 <span class="comment">// TODO: support other callbacks</span>
-
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">RawLanguageChangedCallback</span> <span class="op">=</span> <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span>(<span class="ident">Language</span>);
-
 <span class="kw">pub</span> <span class="kw">type</span> <span class="ident">RawKeyBindChangedCallback</span> <span class="op">=</span> <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span>(<span class="ident">KeybindChange</span>);
+
+<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">RawChatMessageCallback</span> <span class="op">=</span> <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span>(<span class="kw-2">*const</span> <span class="ident">ChatMessageInfo</span>);
 </code></pre></div>
 </section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="arcdps" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.62.0 (a8314ef7d 2022-06-27)" ></div>
 </body></html>

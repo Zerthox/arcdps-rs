@@ -209,6 +209,22 @@
 <span id="204">204</span>
 <span id="205">205</span>
 <span id="206">206</span>
+<span id="207">207</span>
+<span id="208">208</span>
+<span id="209">209</span>
+<span id="210">210</span>
+<span id="211">211</span>
+<span id="212">212</span>
+<span id="213">213</span>
+<span id="214">214</span>
+<span id="215">215</span>
+<span id="216">216</span>
+<span id="217">217</span>
+<span id="218">218</span>
+<span id="219">219</span>
+<span id="220">220</span>
+<span id="221">221</span>
+<span id="222">222</span>
 </pre><pre class="rust"><code><span class="doccomment">//! ArcDPS bindings for Rust.</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! # Macro usage</span>
@@ -344,7 +360,13 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// *Requires the `&quot;extras&quot;` feature.*</span>
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;extras&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="ident">raw_extras_squad_update</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RawSquadUpdateCallback</span><span class="op">&gt;</span>,
+    <span class="kw">pub</span> <span class="ident">raw_extras_squad_update</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RawExtrasSquadUpdateCallback</span><span class="op">&gt;</span>,
+
+    <span class="doccomment">/// Raw extras language changed callback.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// *Requires the `&quot;extras&quot;` feature.*</span>
+    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;extras&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="ident">raw_extras_language_changed</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RawExtrasLanguageChangedCallback</span><span class="op">&gt;</span>,
 
     <span class="doccomment">/// Initialization callback for [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases).</span>
     <span class="doccomment">///</span>
@@ -364,6 +386,16 @@
     <span class="doccomment">/// *Requires the `&quot;extras&quot;` feature.*</span>
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;extras&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="ident">extras_squad_update</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ExtrasSquadUpdateCallback</span><span class="op">&gt;</span>,
+
+    <span class="doccomment">/// Language changed callback for [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases).</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Called whenever the language is changed.</span>
+    <span class="doccomment">/// Either by Changing it in the UI or by pressing the Right Ctrl (default) key.</span>
+    <span class="doccomment">/// Will also be called directly after initialization, with the current language, to get the startup language.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// *Requires the `&quot;extras&quot;` feature.*</span>
+    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;extras&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="ident">extras_language_changed</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ExtrasLanguageChangedCallback</span><span class="op">&gt;</span>,
 }
 
 <span class="doccomment">/// Exports for usage in macros.</span>

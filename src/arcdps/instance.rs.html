@@ -176,7 +176,7 @@
 <span class="kw">pub</span> <span class="kw">static</span> <span class="kw-2">mut</span> <span class="ident">IG_CONTEXT</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Context</span><span class="op">&gt;</span> <span class="op">=</span> <span class="prelude-val">None</span>;
 
 <span class="doccomment">/// Helper to initialize Imgui.</span>
-<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">init_imgui</span>(
+<span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">init_imgui</span>(
     <span class="ident">ctx</span>: <span class="kw-2">*mut</span> <span class="ident">imgui::sys::ImGuiContext</span>,
     <span class="ident">malloc</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">MallocFn</span><span class="op">&gt;</span>,
     <span class="ident">free</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">FreeFn</span><span class="op">&gt;</span>,
