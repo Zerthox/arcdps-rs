@@ -6,8 +6,8 @@ mod parse;
 mod extras;
 
 use cfg_if::cfg_if;
-use proc_macro2::TokenStream;
-use quote::quote;
+use proc_macro2::{Span, TokenStream};
+use quote::{quote, quote_spanned};
 use syn::{Expr, LitStr};
 
 /// Creates exports for ArcDPS.
@@ -41,6 +41,9 @@ pub fn export(item: proc_macro::TokenStream) -> proc_macro::TokenStream {
     result.into()
 }
 
+/// Helper to generate code.
+///
+/// Holds information about macro input.
 pub(crate) struct ArcDpsGen {
     name: Option<LitStr>,
     sig: Expr,
@@ -124,5 +127,64 @@ impl Default for ArcDpsGen {
             #[cfg(feature = "extras")]
             extras_language_changed: None,
         }
+    }
+}
+
+/// Helper to represent callback information.
+pub(crate) struct CallbackInfo {
+    pub function: TokenStream,
+    pub value: TokenStream,
+}
+
+impl CallbackInfo {
+    /// Creates a new callback info from token streams.
+    pub fn new(function: TokenStream, value: TokenStream) -> Self {
+        Self { function, value }
+    }
+
+    /// Helper to build a callback.
+    ///
+    /// `raw` is the value of the raw callback if passed to the macro.
+    /// `safe` is the value of the safe callback if passed to the macro.
+    /// `name` is the name of the abstract wrapper function for the safe version.
+    /// `wrapper` generates the abstract wrapper if needed.
+    pub fn build(
+        raw: Option<&Expr>,
+        safe: Option<&Expr>,
+        name: TokenStream,
+        wrapper: impl FnOnce(&Expr, Span) -> TokenStream,
+    ) -> CallbackInfo {
+        Self::build_optional(raw, safe, name, wrapper)
+            .unwrap_or_else(|| CallbackInfo::new(quote! {}, quote! { None }))
+    }
+
+    /// Helper to build an optional callback.
+    ///
+    /// See `build` for more info.
+    pub fn build_optional(
+        raw: Option<&Expr>,
+        safe: Option<&Expr>,
+        name: TokenStream,
+        wrapper: impl FnOnce(&Expr, Span) -> TokenStream,
+    ) -> Option<CallbackInfo> {
+        if let Some(raw) = raw {
+            let span = syn::Error::new_spanned(&raw, "").span();
+            let value = quote_spanned!(span=> Some((#raw) as _) );
+
+            Some(CallbackInfo::new(quote! {}, value))
+        } else if let Some(safe) = safe {
+            let span = syn::Error::new_spanned(&safe, "").span();
+            let func = wrapper(safe, span);
+            let value = quote_spanned!(span=> Some(self::#name as _) );
+
+            Some(CallbackInfo::new(func, value))
+        } else {
+            None
+        }
+    }
+
+    /// Returns the callback info as tuple.
+    pub fn as_tuple(self) -> (TokenStream, TokenStream) {
+        (self.function, self.value)
     }
 }

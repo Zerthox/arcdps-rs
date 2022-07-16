@@ -1,9 +1,10 @@
-use crate::ArcDpsGen;
-use proc_macro2::TokenStream;
+use crate::{ArcDpsGen, CallbackInfo};
+use proc_macro2::{Span, TokenStream};
 use quote::{quote, quote_spanned};
 use syn::Expr;
 
 impl ArcDpsGen {
+    /// Generates the init function.
     pub fn build_init(&self) -> TokenStream {
         if let Some(init) = &self.init {
             let span = syn::Error::new_spanned(&init, "").span();
@@ -13,6 +14,7 @@ impl ArcDpsGen {
         }
     }
 
+    /// Generates the release function.
     pub fn build_release(&self) -> TokenStream {
         if let Some(release) = &self.release {
             let span = syn::Error::new_spanned(&release, "").span();
@@ -22,196 +24,151 @@ impl ArcDpsGen {
         }
     }
 
-    pub fn build_wnd_filter(&self) -> (TokenStream, TokenStream) {
-        Self::build_wnd(
+    /// Generates the wnd filter callback.
+    pub fn build_wnd_filter(&self) -> CallbackInfo {
+        let name = quote! { abstract_wnd_filter };
+        CallbackInfo::build(
             self.raw_wnd_filter.as_ref(),
             self.wnd_filter.as_ref(),
-            quote! { abstract_wnd_filter },
+            name.clone(),
+            |safe, span| Self::wnd_wrapper(name, safe, span),
         )
     }
 
-    pub fn build_wnd_nofilter(&self) -> (TokenStream, TokenStream) {
-        Self::build_wnd(
+    /// Generates the wnd nofilter callback.
+    pub fn build_wnd_nofilter(&self) -> CallbackInfo {
+        let name = quote! { abstract_wnd_nofilter };
+        CallbackInfo::build(
             self.raw_wnd_nofilter.as_ref(),
             self.wnd_nofilter.as_ref(),
-            quote! { abstract_wnd_nofilter },
+            name.clone(),
+            |safe, span| Self::wnd_wrapper(name, safe, span),
         )
     }
 
-    fn build_wnd(
-        raw_wnd_filter: Option<&Expr>,
-        wnd_filter: Option<&Expr>,
-        func_name: TokenStream,
-    ) -> (TokenStream, TokenStream) {
-        match (raw_wnd_filter, wnd_filter) {
-            (Some(raw), _) => {
-                let span = syn::Error::new_spanned(&raw, "").span();
-                let name = quote_spanned!(span=> Some((#raw) as _) );
+    /// Helper to generate a wnd callback wrapper.
+    fn wnd_wrapper(name: TokenStream, safe: &Expr, span: Span) -> TokenStream {
+        quote_spanned! {span=>
+            unsafe extern "C" fn #name(
+                _h_wnd: *mut c_void,
+                u_msg: u32,
+                w_param: WPARAM,
+                l_param: LPARAM,
+            ) -> u32 {
+                let safe = (#safe) as WndProcCallback;
 
-                (quote! {}, name)
-            }
-            (_, Some(safe)) => {
-                let span = syn::Error::new_spanned(&safe, "").span();
-                let wrapper = quote_spanned! {span=>
-                    unsafe extern "C" fn #func_name(
-                        _h_wnd: *mut c_void,
-                        u_msg: u32,
-                        w_param: WPARAM,
-                        l_param: LPARAM,
-                    ) -> u32 {
-                        let safe = (#safe) as WndProcCallback;
+                match u_msg {
+                    WM_KEYDOWN | WM_KEYUP | WM_SYSKEYDOWN | WM_SYSKEYUP => {
+                        let key_down = u_msg & 1 == 0;
+                        let prev_key_down = (l_param.0 >> 30) & 1 == 1;
 
-                        match u_msg {
-                            WM_KEYDOWN | WM_KEYUP | WM_SYSKEYDOWN | WM_SYSKEYUP => {
-                                let key_down = u_msg & 1 == 0;
-                                let prev_key_down = (l_param.0 >> 30) & 1 == 1;
-
-                                if safe(w_param.0, key_down, prev_key_down) {
-                                    u_msg
-                                } else {
-                                    0
-                                }
-                            },
-                            _ => u_msg,
+                        if safe(w_param.0, key_down, prev_key_down) {
+                            u_msg
+                        } else {
+                            0
                         }
-                    }
-                };
-                let name = quote_spanned!(span=> Some(self::#func_name as _) );
-
-                (wrapper, name)
+                    },
+                    _ => u_msg,
+                }
             }
-            _ => (quote! {}, quote! { None }),
         }
     }
 
-    pub fn build_options_windows(&self) -> (TokenStream, TokenStream) {
-        match (&self.raw_options_windows, &self.options_windows) {
-            (Some(raw), _) => {
-                let span = syn::Error::new_spanned(&raw, "").span();
-                let name = quote_spanned!(span=> Some((#raw) as _) );
-
-                (quote! {}, name)
-            }
-            (_, Some(safe)) => {
-                let span = syn::Error::new_spanned(&safe, "").span();
-                let wrapper = quote_spanned! {span =>
+    /// Generates the options windows callback.
+    pub fn build_options_windows(&self) -> CallbackInfo {
+        CallbackInfo::build(
+            self.raw_options_windows.as_ref(),
+            self.options_windows.as_ref(),
+            quote! { abstract_options_windows },
+            |safe, span| {
+                quote_spanned! {span=>
                     unsafe extern "C" fn abstract_options_windows(window_name: *mut c_char) -> bool {
                         let safe = (#safe) as OptionsWindowsCallback;
                         safe(::arcdps::__macro::ui(), ::arcdps::__macro::str_from_cstr(window_name))
                     }
-                };
-                let name = quote_spanned!(span=> Some(self::abstract_options_windows as _) );
-
-                (wrapper, name)
-            }
-            _ => (quote! {}, quote! { None }),
-        }
+                }
+            },
+        )
     }
 
-    pub fn build_options_end(&self) -> (TokenStream, TokenStream) {
-        match (&self.raw_options_end, &self.options_end) {
-            (Some(raw), _) => {
-                let span = syn::Error::new_spanned(&raw, "").span();
-                let name = quote_spanned!(span=> Some((#raw) as _) );
-
-                (quote! {}, name)
-            }
-            (_, Some(safe)) => {
-                let span = syn::Error::new_spanned(&safe, "").span();
-                let wrapper = quote_spanned! {span =>
+    /// Generates the options end callback.
+    pub fn build_options_end(&self) -> CallbackInfo {
+        CallbackInfo::build(
+            self.raw_options_end.as_ref(),
+            self.options_end.as_ref(),
+            quote! { abstract_options_end },
+            |safe, span| {
+                quote_spanned! {span=>
                     unsafe extern "C" fn abstract_options_end() {
                         let safe = (#safe) as OptionsCallback;
                         safe(arcdps::__macro::ui())
                     }
-                };
-                let name = quote_spanned!(span=> Some(self::abstract_options_end as _) );
-
-                (wrapper, name)
-            }
-            _ => (quote! {}, quote! { None }),
-        }
+                }
+            },
+        )
     }
 
-    pub fn build_imgui(&self) -> (TokenStream, TokenStream) {
-        match (&self.raw_imgui, &self.imgui) {
-            (Some(raw), _) => {
-                let span = syn::Error::new_spanned(&raw, "").span();
-                let name = quote_spanned!(span=> Some((#raw) as _) );
-
-                (quote! {}, name)
-            }
-            (_, Some(safe)) => {
-                let span = syn::Error::new_spanned(&safe, "").span();
-                let wrapper = quote_spanned! {span =>
+    /// Generates the imgui callback.
+    pub fn build_imgui(&self) -> CallbackInfo {
+        CallbackInfo::build(
+            self.raw_imgui.as_ref(),
+            self.imgui.as_ref(),
+            quote! { abstract_imgui },
+            |safe, span| {
+                quote_spanned! {span=>
                     unsafe extern "C" fn abstract_imgui(loading: u32) {
                         let safe = (#safe) as ImguiCallback;
                         safe(arcdps::__macro::ui(), loading != 0)
                     }
-                };
-                let name = quote_spanned!(span=> Some(self::abstract_imgui as _) );
-
-                (wrapper, name)
-            }
-            _ => (quote! {}, quote! { None }),
-        }
+                }
+            },
+        )
     }
 
-    pub fn build_combat(&self) -> (TokenStream, TokenStream) {
-        Self::build_combat_helper(
+    /// Generates the combat callback.
+    pub fn build_combat(&self) -> CallbackInfo {
+        let name = quote! { abstract_combat };
+        CallbackInfo::build(
             self.raw_combat.as_ref(),
             self.combat.as_ref(),
-            quote! { abstract_combat },
+            name.clone(),
+            |safe, span| Self::combat_wrapper(name, safe, span),
         )
     }
 
-    pub fn build_combat_local(&self) -> (TokenStream, TokenStream) {
-        Self::build_combat_helper(
+    /// Generates the combat local callback.
+    pub fn build_combat_local(&self) -> CallbackInfo {
+        let name = quote! { abstract_combat_local };
+        CallbackInfo::build(
             self.raw_combat_local.as_ref(),
             self.combat_local.as_ref(),
-            quote! { abstract_combat_local },
+            name.clone(),
+            |safe, span| Self::combat_wrapper(name, safe, span),
         )
     }
 
-    fn build_combat_helper(
-        raw_combat: Option<&Expr>,
-        combat: Option<&Expr>,
-        func_name: TokenStream,
-    ) -> (TokenStream, TokenStream) {
-        match (raw_combat, combat) {
-            (Some(raw), _) => {
-                let span = syn::Error::new_spanned(&raw, "").span();
-                let name = quote_spanned!(span=> Some((#raw) as _) );
+    /// Helper to generate a combat callback wrapper.
+    fn combat_wrapper(name: TokenStream, safe: &Expr, span: Span) -> TokenStream {
+        quote_spanned! {span=>
+            unsafe extern "C" fn #name(
+                event: Option<&::arcdps::api::RawCombatEvent>,
+                src: Option<&::arcdps::api::RawAgent>,
+                dst: Option<&::arcdps::api::RawAgent>,
+                skill_name: *mut c_char,
+                id: u64,
+                revision: u64,
+            ) {
+                let safe = (#safe) as CombatCallback;
 
-                (quote! {}, name)
+                safe(
+                    event.map(Into::into),
+                    src.map(Into::into),
+                    dst.map(Into::into),
+                    ::arcdps::__macro::str_from_cstr(skill_name),
+                    id,
+                    revision
+                )
             }
-            (_, Some(safe)) => {
-                let span = syn::Error::new_spanned(&safe, "").span();
-                let wrapper = quote_spanned! {span =>
-                    unsafe extern "C" fn #func_name(
-                        event: Option<&::arcdps::api::RawCombatEvent>,
-                        src: Option<&::arcdps::api::RawAgent>,
-                        dst: Option<&::arcdps::api::RawAgent>,
-                        skill_name: *mut c_char,
-                        id: u64,
-                        revision: u64,
-                    ) {
-                        let safe = (#safe) as CombatCallback;
-
-                        safe(
-                            event.map(Into::into),
-                            src.map(Into::into),
-                            dst.map(Into::into),
-                            ::arcdps::__macro::str_from_cstr(skill_name),
-                            id,
-                            revision
-                        )
-                    }
-                };
-                let name = quote_spanned!(span=> Some(self::#func_name as _) );
-
-                (wrapper, name)
-            }
-            _ => (quote! {}, quote! { None }),
         }
     }
 }

@@ -132,7 +132,6 @@ pub struct ExtrasSubscriberInfo {
     ///
     /// After initialization this is called for every current keybind that exists.
     /// If you want to get a single keybind, at any time you want, call the exported function.
-    // TODO: expose exported function
     pub key_bind_changed_callback: Option<RawKeyBindChangedCallback>,
 }
 

@@ -30,6 +30,7 @@ impl ArcDpsGen {
         LitStr::new(build.as_str(), Span::call_site())
     }
 
+    /// Generates the plugin's exports.
     pub fn build_export(&self) -> TokenStream {
         let name = self.gen_name();
         let name_c = self.gen_name_cstr();
@@ -39,13 +40,13 @@ impl ArcDpsGen {
         let init = self.build_init();
         let release = self.build_release();
 
-        let (combat_func, combat_name) = self.build_combat();
-        let (combat_local_func, combat_local_name) = self.build_combat_local();
-        let (imgui_func, imgui_name) = self.build_imgui();
-        let (options_end_func, options_end_name) = self.build_options_end();
-        let (options_windows_func, options_windows_name) = self.build_options_windows();
-        let (wnd_filter_func, wnd_filter_name) = self.build_wnd_filter();
-        let (wnd_nofilter_func, wnd_nofilter_name) = self.build_wnd_nofilter();
+        let (combat_func, combat_value) = self.build_combat().as_tuple();
+        let (combat_local_func, combat_local_value) = self.build_combat_local().as_tuple();
+        let (imgui_func, imgui_value) = self.build_imgui().as_tuple();
+        let (options_end_func, options_end_value) = self.build_options_end().as_tuple();
+        let (options_windows_func, options_windows_value) = self.build_options_windows().as_tuple();
+        let (wnd_filter_func, wnd_filter_value) = self.build_wnd_filter().as_tuple();
+        let (wnd_nofilter_func, wnd_nofilter_value) = self.build_wnd_nofilter().as_tuple();
 
         quote! {
             /// ArcDPS export struct with plugin information.
@@ -55,13 +56,13 @@ impl ArcDpsGen {
                 imgui_version: 18000,
                 out_build: #build.as_ptr() as _,
                 out_name: #name_c.as_ptr() as _,
-                combat: #combat_name,
-                combat_local: #combat_local_name,
-                imgui: #imgui_name,
-                options_end: #options_end_name,
-                options_windows: #options_windows_name,
-                wnd_filter: #wnd_filter_name,
-                wnd_nofilter: #wnd_nofilter_name,
+                combat: #combat_value,
+                combat_local: #combat_local_value,
+                imgui: #imgui_value,
+                options_end: #options_end_value,
+                options_windows: #options_windows_value,
+                wnd_filter: #wnd_filter_value,
+                wnd_nofilter: #wnd_nofilter_value,
             };
 
             /// ArcDPS export struct with error information.
