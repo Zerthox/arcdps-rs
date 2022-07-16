@@ -22,7 +22,7 @@
 <span id="17">17</span>
 </pre><pre class="rust"><code><span class="comment">// TODO: add enums</span>
 
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>)]</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>)]</span>
 <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">KeybindChange</span> {
     <span class="ident">key_control</span>: <span class="ident">i32</span>,
@@ -30,7 +30,7 @@
     <span class="ident">single_key</span>: <span class="ident">Key</span>,
 }
 
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>)]</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>)]</span>
 <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Key</span> {
     <span class="kw">pub</span> <span class="ident">device_type</span>: <span class="ident">i32</span>,

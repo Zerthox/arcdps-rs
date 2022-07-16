@@ -587,6 +587,30 @@
 <span id="582">582</span>
 <span id="583">583</span>
 <span id="584">584</span>
+<span id="585">585</span>
+<span id="586">586</span>
+<span id="587">587</span>
+<span id="588">588</span>
+<span id="589">589</span>
+<span id="590">590</span>
+<span id="591">591</span>
+<span id="592">592</span>
+<span id="593">593</span>
+<span id="594">594</span>
+<span id="595">595</span>
+<span id="596">596</span>
+<span id="597">597</span>
+<span id="598">598</span>
+<span id="599">599</span>
+<span id="600">600</span>
+<span id="601">601</span>
+<span id="602">602</span>
+<span id="603">603</span>
+<span id="604">604</span>
+<span id="605">605</span>
+<span id="606">606</span>
+<span id="607">607</span>
+<span id="608">608</span>
 </pre><pre class="rust"><code><span class="kw">use</span> <span class="ident">num_enum</span>::{<span class="ident">FromPrimitive</span>, <span class="ident">IntoPrimitive</span>, <span class="ident">TryFromPrimitive</span>};
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>)]</span>
@@ -602,6 +626,10 @@
     <span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>, <span class="ident">Hash</span>, <span class="ident">IntoPrimitive</span>, <span class="ident">FromPrimitive</span>,
 )]</span>
 <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>, <span class="ident">derive</span>(<span class="ident">Serialize</span>, <span class="ident">Deserialize</span>))]</span>
+<span class="attribute">#[<span class="ident">cfg_attr</span>(
+    <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;strum&quot;</span>,
+    <span class="ident">derive</span>(<span class="ident">Display</span>, <span class="ident">EnumCount</span>, <span class="ident">EnumIter</span>, <span class="ident">IntoStaticStr</span>, <span class="ident">EnumVariantNames</span>)
+)]</span>
 <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">u8</span>)]</span>
 <span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">Affinity</span> {
     <span class="doccomment">/// Allied agent.</span>
@@ -622,6 +650,10 @@
     <span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>, <span class="ident">Hash</span>, <span class="ident">IntoPrimitive</span>, <span class="ident">FromPrimitive</span>,
 )]</span>
 <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>, <span class="ident">derive</span>(<span class="ident">Serialize</span>, <span class="ident">Deserialize</span>))]</span>
+<span class="attribute">#[<span class="ident">cfg_attr</span>(
+    <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;strum&quot;</span>,
+    <span class="ident">derive</span>(<span class="ident">Display</span>, <span class="ident">EnumCount</span>, <span class="ident">EnumIter</span>, <span class="ident">IntoStaticStr</span>, <span class="ident">EnumVariantNames</span>)
+)]</span>
 <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">u8</span>)]</span>
 <span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">Strike</span> {
     <span class="doccomment">/// Normal damage strike.</span>
@@ -722,6 +754,10 @@
     <span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>, <span class="ident">Hash</span>, <span class="ident">IntoPrimitive</span>, <span class="ident">FromPrimitive</span>,
 )]</span>
 <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>, <span class="ident">derive</span>(<span class="ident">Serialize</span>, <span class="ident">Deserialize</span>))]</span>
+<span class="attribute">#[<span class="ident">cfg_attr</span>(
+    <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;strum&quot;</span>,
+    <span class="ident">derive</span>(<span class="ident">Display</span>, <span class="ident">EnumCount</span>, <span class="ident">EnumIter</span>, <span class="ident">IntoStaticStr</span>, <span class="ident">EnumVariantNames</span>)
+)]</span>
 <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">u8</span>)]</span>
 <span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">StateChange</span> {
     <span class="doccomment">/// Not used, different kind of event.</span>
@@ -1032,6 +1068,10 @@
     <span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>, <span class="ident">Hash</span>, <span class="ident">IntoPrimitive</span>, <span class="ident">FromPrimitive</span>,
 )]</span>
 <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>, <span class="ident">derive</span>(<span class="ident">Serialize</span>, <span class="ident">Deserialize</span>))]</span>
+<span class="attribute">#[<span class="ident">cfg_attr</span>(
+    <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;strum&quot;</span>,
+    <span class="ident">derive</span>(<span class="ident">Display</span>, <span class="ident">EnumCount</span>, <span class="ident">EnumIter</span>, <span class="ident">IntoStaticStr</span>, <span class="ident">EnumVariantNames</span>)
+)]</span>
 <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">u8</span>)]</span>
 <span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">BuffRemove</span> {
     <span class="doccomment">/// Not used, different kind of event.</span>
@@ -1066,6 +1106,10 @@
     <span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>, <span class="ident">Hash</span>, <span class="ident">IntoPrimitive</span>, <span class="ident">FromPrimitive</span>,
 )]</span>
 <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>, <span class="ident">derive</span>(<span class="ident">Serialize</span>, <span class="ident">Deserialize</span>))]</span>
+<span class="attribute">#[<span class="ident">cfg_attr</span>(
+    <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;strum&quot;</span>,
+    <span class="ident">derive</span>(<span class="ident">Display</span>, <span class="ident">EnumCount</span>, <span class="ident">EnumIter</span>, <span class="ident">IntoStaticStr</span>, <span class="ident">EnumVariantNames</span>)
+)]</span>
 <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">u8</span>)]</span>
 <span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">BuffCycle</span> {
     <span class="doccomment">/// Damage happened on tick timer.</span>
@@ -1095,6 +1139,10 @@
     <span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>, <span class="ident">Hash</span>, <span class="ident">IntoPrimitive</span>, <span class="ident">TryFromPrimitive</span>,
 )]</span>
 <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>, <span class="ident">derive</span>(<span class="ident">Serialize</span>, <span class="ident">Deserialize</span>))]</span>
+<span class="attribute">#[<span class="ident">cfg_attr</span>(
+    <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;strum&quot;</span>,
+    <span class="ident">derive</span>(<span class="ident">Display</span>, <span class="ident">EnumCount</span>, <span class="ident">EnumIter</span>, <span class="ident">IntoStaticStr</span>, <span class="ident">EnumVariantNames</span>)
+)]</span>
 <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">u16</span>)]</span>
 <span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">CustomSkill</span> {
     <span class="doccomment">/// Resurrect skill.</span>
@@ -1139,7 +1187,7 @@
 <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>, <span class="ident">derive</span>(<span class="ident">Serialize</span>, <span class="ident">Deserialize</span>))]</span>
 <span class="attribute">#[<span class="ident">cfg_attr</span>(
     <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;strum&quot;</span>,
-    <span class="ident">derive</span>(<span class="ident">Display</span>, <span class="ident">EnumCount</span>, <span class="ident">EnumIter</span>, <span class="ident">IntoStaticStr</span>, <span class="ident">EnumVariantNames</span>,)
+    <span class="ident">derive</span>(<span class="ident">Display</span>, <span class="ident">EnumCount</span>, <span class="ident">EnumIter</span>, <span class="ident">IntoStaticStr</span>, <span class="ident">EnumVariantNames</span>)
 )]</span>
 <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">u16</span>)]</span>
 <span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">Attribute</span> {
