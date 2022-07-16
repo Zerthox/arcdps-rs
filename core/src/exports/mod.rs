@@ -1,4 +1,6 @@
 //! ArcDPS exports.
+//!
+//! Calling an export before ArcDPS calls `init` will cause a panic.
 
 pub mod raw;
 
