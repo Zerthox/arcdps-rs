@@ -134,6 +134,7 @@
 <span id="129">129</span>
 <span id="130">130</span>
 <span id="131">131</span>
+<span id="132">132</span>
 </pre><pre class="rust"><code><span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::ArcDpsGen</span>;
 <span class="kw">use</span> <span class="ident">proc_macro2</span>::{<span class="ident">Span</span>, <span class="ident">TokenStream</span>};
 <span class="kw">use</span> <span class="ident">quote::quote</span>;
@@ -166,6 +167,7 @@
         <span class="ident">LitStr::new</span>(<span class="ident">build</span>.<span class="ident">as_str</span>(), <span class="ident">Span::call_site</span>())
     }
 
+    <span class="doccomment">/// Generates the plugin&#39;s exports.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build_export</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">TokenStream</span> {
         <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">gen_name</span>();
         <span class="kw">let</span> <span class="ident">name_c</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">gen_name_cstr</span>();
@@ -175,13 +177,13 @@
         <span class="kw">let</span> <span class="ident">init</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">build_init</span>();
         <span class="kw">let</span> <span class="ident">release</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">build_release</span>();
 
-        <span class="kw">let</span> (<span class="ident">combat_func</span>, <span class="ident">combat_name</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">build_combat</span>();
-        <span class="kw">let</span> (<span class="ident">combat_local_func</span>, <span class="ident">combat_local_name</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">build_combat_local</span>();
-        <span class="kw">let</span> (<span class="ident">imgui_func</span>, <span class="ident">imgui_name</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">build_imgui</span>();
-        <span class="kw">let</span> (<span class="ident">options_end_func</span>, <span class="ident">options_end_name</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">build_options_end</span>();
-        <span class="kw">let</span> (<span class="ident">options_windows_func</span>, <span class="ident">options_windows_name</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">build_options_windows</span>();
-        <span class="kw">let</span> (<span class="ident">wnd_filter_func</span>, <span class="ident">wnd_filter_name</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">build_wnd_filter</span>();
-        <span class="kw">let</span> (<span class="ident">wnd_nofilter_func</span>, <span class="ident">wnd_nofilter_name</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">build_wnd_nofilter</span>();
+        <span class="kw">let</span> (<span class="ident">combat_func</span>, <span class="ident">combat_value</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">build_combat</span>().<span class="ident">as_tuple</span>();
+        <span class="kw">let</span> (<span class="ident">combat_local_func</span>, <span class="ident">combat_local_value</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">build_combat_local</span>().<span class="ident">as_tuple</span>();
+        <span class="kw">let</span> (<span class="ident">imgui_func</span>, <span class="ident">imgui_value</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">build_imgui</span>().<span class="ident">as_tuple</span>();
+        <span class="kw">let</span> (<span class="ident">options_end_func</span>, <span class="ident">options_end_value</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">build_options_end</span>().<span class="ident">as_tuple</span>();
+        <span class="kw">let</span> (<span class="ident">options_windows_func</span>, <span class="ident">options_windows_value</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">build_options_windows</span>().<span class="ident">as_tuple</span>();
+        <span class="kw">let</span> (<span class="ident">wnd_filter_func</span>, <span class="ident">wnd_filter_value</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">build_wnd_filter</span>().<span class="ident">as_tuple</span>();
+        <span class="kw">let</span> (<span class="ident">wnd_nofilter_func</span>, <span class="ident">wnd_nofilter_value</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">build_wnd_nofilter</span>().<span class="ident">as_tuple</span>();
 
         <span class="macro">quote!</span> {
             <span class="doccomment">/// ArcDPS export struct with plugin information.</span>
@@ -191,13 +193,13 @@
                 <span class="ident">imgui_version</span>: <span class="number">18000</span>,
                 <span class="ident">out_build</span>: #<span class="ident">build</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw">_</span>,
                 <span class="ident">out_name</span>: #<span class="ident">name_c</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw">_</span>,
-                <span class="ident">combat</span>: #<span class="ident">combat_name</span>,
-                <span class="ident">combat_local</span>: #<span class="ident">combat_local_name</span>,
-                <span class="ident">imgui</span>: #<span class="ident">imgui_name</span>,
-                <span class="ident">options_end</span>: #<span class="ident">options_end_name</span>,
-                <span class="ident">options_windows</span>: #<span class="ident">options_windows_name</span>,
-                <span class="ident">wnd_filter</span>: #<span class="ident">wnd_filter_name</span>,
-                <span class="ident">wnd_nofilter</span>: #<span class="ident">wnd_nofilter_name</span>,
+                <span class="ident">combat</span>: #<span class="ident">combat_value</span>,
+                <span class="ident">combat_local</span>: #<span class="ident">combat_local_value</span>,
+                <span class="ident">imgui</span>: #<span class="ident">imgui_value</span>,
+                <span class="ident">options_end</span>: #<span class="ident">options_end_value</span>,
+                <span class="ident">options_windows</span>: #<span class="ident">options_windows_value</span>,
+                <span class="ident">wnd_filter</span>: #<span class="ident">wnd_filter_value</span>,
+                <span class="ident">wnd_nofilter</span>: #<span class="ident">wnd_nofilter_value</span>,
             };
 
             <span class="doccomment">/// ArcDPS export struct with error information.</span>

@@ -177,55 +177,13 @@
 <span id="172">172</span>
 <span id="173">173</span>
 <span id="174">174</span>
-<span id="175">175</span>
-<span id="176">176</span>
-<span id="177">177</span>
-<span id="178">178</span>
-<span id="179">179</span>
-<span id="180">180</span>
-<span id="181">181</span>
-<span id="182">182</span>
-<span id="183">183</span>
-<span id="184">184</span>
-<span id="185">185</span>
-<span id="186">186</span>
-<span id="187">187</span>
-<span id="188">188</span>
-<span id="189">189</span>
-<span id="190">190</span>
-<span id="191">191</span>
-<span id="192">192</span>
-<span id="193">193</span>
-<span id="194">194</span>
-<span id="195">195</span>
-<span id="196">196</span>
-<span id="197">197</span>
-<span id="198">198</span>
-<span id="199">199</span>
-<span id="200">200</span>
-<span id="201">201</span>
-<span id="202">202</span>
-<span id="203">203</span>
-<span id="204">204</span>
-<span id="205">205</span>
-<span id="206">206</span>
-<span id="207">207</span>
-<span id="208">208</span>
-<span id="209">209</span>
-<span id="210">210</span>
-<span id="211">211</span>
-<span id="212">212</span>
-<span id="213">213</span>
-<span id="214">214</span>
-<span id="215">215</span>
-<span id="216">216</span>
-<span id="217">217</span>
-</pre><pre class="rust"><code><span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::ArcDpsGen</span>;
-<span class="kw">use</span> <span class="ident">proc_macro2::TokenStream</span>;
+</pre><pre class="rust"><code><span class="kw">use</span> <span class="kw">crate</span>::{<span class="ident">ArcDpsGen</span>, <span class="ident">CallbackInfo</span>};
+<span class="kw">use</span> <span class="ident">proc_macro2</span>::{<span class="ident">Span</span>, <span class="ident">TokenStream</span>};
 <span class="kw">use</span> <span class="ident">quote</span>::{<span class="ident">quote</span>, <span class="ident">quote_spanned</span>};
 <span class="kw">use</span> <span class="ident">syn::Expr</span>;
 
 <span class="kw">impl</span> <span class="ident">ArcDpsGen</span> {
+    <span class="doccomment">/// Generates the init function.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build_init</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">TokenStream</span> {
         <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">init</span>) <span class="op">=</span> <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">init</span> {
             <span class="kw">let</span> <span class="ident">span</span> <span class="op">=</span> <span class="ident">syn::Error::new_spanned</span>(<span class="kw-2">&amp;</span><span class="ident">init</span>, <span class="string">&quot;&quot;</span>).<span class="ident">span</span>();
@@ -235,6 +193,7 @@
         }
     }
 
+    <span class="doccomment">/// Generates the release function.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build_release</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">TokenStream</span> {
         <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">release</span>) <span class="op">=</span> <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">release</span> {
             <span class="kw">let</span> <span class="ident">span</span> <span class="op">=</span> <span class="ident">syn::Error::new_spanned</span>(<span class="kw-2">&amp;</span><span class="ident">release</span>, <span class="string">&quot;&quot;</span>).<span class="ident">span</span>();
@@ -244,196 +203,151 @@
         }
     }
 
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build_wnd_filter</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; (<span class="ident">TokenStream</span>, <span class="ident">TokenStream</span>) {
-        <span class="ident"><span class="self">Self</span>::build_wnd</span>(
+    <span class="doccomment">/// Generates the wnd filter callback.</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build_wnd_filter</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">CallbackInfo</span> {
+        <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="macro">quote!</span> { <span class="ident">abstract_wnd_filter</span> };
+        <span class="ident">CallbackInfo::build</span>(
             <span class="self">self</span>.<span class="ident">raw_wnd_filter</span>.<span class="ident">as_ref</span>(),
             <span class="self">self</span>.<span class="ident">wnd_filter</span>.<span class="ident">as_ref</span>(),
-            <span class="macro">quote!</span> { <span class="ident">abstract_wnd_filter</span> },
+            <span class="ident">name</span>.<span class="ident">clone</span>(),
+            <span class="op">|</span><span class="ident">safe</span>, <span class="ident">span</span><span class="op">|</span> <span class="ident"><span class="self">Self</span>::wnd_wrapper</span>(<span class="ident">name</span>, <span class="ident">safe</span>, <span class="ident">span</span>),
         )
     }
 
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build_wnd_nofilter</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; (<span class="ident">TokenStream</span>, <span class="ident">TokenStream</span>) {
-        <span class="ident"><span class="self">Self</span>::build_wnd</span>(
+    <span class="doccomment">/// Generates the wnd nofilter callback.</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build_wnd_nofilter</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">CallbackInfo</span> {
+        <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="macro">quote!</span> { <span class="ident">abstract_wnd_nofilter</span> };
+        <span class="ident">CallbackInfo::build</span>(
             <span class="self">self</span>.<span class="ident">raw_wnd_nofilter</span>.<span class="ident">as_ref</span>(),
             <span class="self">self</span>.<span class="ident">wnd_nofilter</span>.<span class="ident">as_ref</span>(),
-            <span class="macro">quote!</span> { <span class="ident">abstract_wnd_nofilter</span> },
+            <span class="ident">name</span>.<span class="ident">clone</span>(),
+            <span class="op">|</span><span class="ident">safe</span>, <span class="ident">span</span><span class="op">|</span> <span class="ident"><span class="self">Self</span>::wnd_wrapper</span>(<span class="ident">name</span>, <span class="ident">safe</span>, <span class="ident">span</span>),
         )
     }
 
-    <span class="kw">fn</span> <span class="ident">build_wnd</span>(
-        <span class="ident">raw_wnd_filter</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
-        <span class="ident">wnd_filter</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
-        <span class="ident">func_name</span>: <span class="ident">TokenStream</span>,
-    ) -&gt; (<span class="ident">TokenStream</span>, <span class="ident">TokenStream</span>) {
-        <span class="kw">match</span> (<span class="ident">raw_wnd_filter</span>, <span class="ident">wnd_filter</span>) {
-            (<span class="prelude-val">Some</span>(<span class="ident">raw</span>), <span class="kw">_</span>) =&gt; {
-                <span class="kw">let</span> <span class="ident">span</span> <span class="op">=</span> <span class="ident">syn::Error::new_spanned</span>(<span class="kw-2">&amp;</span><span class="ident">raw</span>, <span class="string">&quot;&quot;</span>).<span class="ident">span</span>();
-                <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="macro">quote_spanned!</span>(<span class="ident">span</span>=&gt; <span class="prelude-val">Some</span>((#<span class="ident">raw</span>) <span class="kw">as</span> <span class="kw">_</span>) );
+    <span class="doccomment">/// Helper to generate a wnd callback wrapper.</span>
+    <span class="kw">fn</span> <span class="ident">wnd_wrapper</span>(<span class="ident">name</span>: <span class="ident">TokenStream</span>, <span class="ident">safe</span>: <span class="kw-2">&amp;</span><span class="ident">Expr</span>, <span class="ident">span</span>: <span class="ident">Span</span>) -&gt; <span class="ident">TokenStream</span> {
+        <span class="macro">quote_spanned!</span> {<span class="ident">span</span>=&gt;
+            <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span> #<span class="ident">name</span>(
+                <span class="ident">_h_wnd</span>: <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
+                <span class="ident">u_msg</span>: <span class="ident">u32</span>,
+                <span class="ident">w_param</span>: <span class="ident">WPARAM</span>,
+                <span class="ident">l_param</span>: <span class="ident">LPARAM</span>,
+            ) -&gt; <span class="ident">u32</span> {
+                <span class="kw">let</span> <span class="ident">safe</span> <span class="op">=</span> (#<span class="ident">safe</span>) <span class="kw">as</span> <span class="ident">WndProcCallback</span>;
 
-                (<span class="macro">quote!</span> {}, <span class="ident">name</span>)
-            }
-            (<span class="kw">_</span>, <span class="prelude-val">Some</span>(<span class="ident">safe</span>)) =&gt; {
-                <span class="kw">let</span> <span class="ident">span</span> <span class="op">=</span> <span class="ident">syn::Error::new_spanned</span>(<span class="kw-2">&amp;</span><span class="ident">safe</span>, <span class="string">&quot;&quot;</span>).<span class="ident">span</span>();
-                <span class="kw">let</span> <span class="ident">wrapper</span> <span class="op">=</span> <span class="macro">quote_spanned!</span> {<span class="ident">span</span>=&gt;
-                    <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span> #<span class="ident">func_name</span>(
-                        <span class="ident">_h_wnd</span>: <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-                        <span class="ident">u_msg</span>: <span class="ident">u32</span>,
-                        <span class="ident">w_param</span>: <span class="ident">WPARAM</span>,
-                        <span class="ident">l_param</span>: <span class="ident">LPARAM</span>,
-                    ) -&gt; <span class="ident">u32</span> {
-                        <span class="kw">let</span> <span class="ident">safe</span> <span class="op">=</span> (#<span class="ident">safe</span>) <span class="kw">as</span> <span class="ident">WndProcCallback</span>;
+                <span class="kw">match</span> <span class="ident">u_msg</span> {
+                    <span class="ident">WM_KEYDOWN</span> <span class="op">|</span> <span class="ident">WM_KEYUP</span> <span class="op">|</span> <span class="ident">WM_SYSKEYDOWN</span> <span class="op">|</span> <span class="ident">WM_SYSKEYUP</span> =&gt; {
+                        <span class="kw">let</span> <span class="ident">key_down</span> <span class="op">=</span> <span class="ident">u_msg</span> <span class="op">&amp;</span> <span class="number">1</span> <span class="op">==</span> <span class="number">0</span>;
+                        <span class="kw">let</span> <span class="ident">prev_key_down</span> <span class="op">=</span> (<span class="ident">l_param</span>.<span class="number">0</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">30</span>) <span class="op">&amp;</span> <span class="number">1</span> <span class="op">==</span> <span class="number">1</span>;
 
-                        <span class="kw">match</span> <span class="ident">u_msg</span> {
-                            <span class="ident">WM_KEYDOWN</span> <span class="op">|</span> <span class="ident">WM_KEYUP</span> <span class="op">|</span> <span class="ident">WM_SYSKEYDOWN</span> <span class="op">|</span> <span class="ident">WM_SYSKEYUP</span> =&gt; {
-                                <span class="kw">let</span> <span class="ident">key_down</span> <span class="op">=</span> <span class="ident">u_msg</span> <span class="op">&amp;</span> <span class="number">1</span> <span class="op">==</span> <span class="number">0</span>;
-                                <span class="kw">let</span> <span class="ident">prev_key_down</span> <span class="op">=</span> (<span class="ident">l_param</span>.<span class="number">0</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">30</span>) <span class="op">&amp;</span> <span class="number">1</span> <span class="op">==</span> <span class="number">1</span>;
-
-                                <span class="kw">if</span> <span class="ident">safe</span>(<span class="ident">w_param</span>.<span class="number">0</span>, <span class="ident">key_down</span>, <span class="ident">prev_key_down</span>) {
-                                    <span class="ident">u_msg</span>
-                                } <span class="kw">else</span> {
-                                    <span class="number">0</span>
-                                }
-                            },
-                            <span class="kw">_</span> =&gt; <span class="ident">u_msg</span>,
+                        <span class="kw">if</span> <span class="ident">safe</span>(<span class="ident">w_param</span>.<span class="number">0</span>, <span class="ident">key_down</span>, <span class="ident">prev_key_down</span>) {
+                            <span class="ident">u_msg</span>
+                        } <span class="kw">else</span> {
+                            <span class="number">0</span>
                         }
-                    }
-                };
-                <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="macro">quote_spanned!</span>(<span class="ident">span</span>=&gt; <span class="prelude-val">Some</span>(<span class="self">self</span>::#<span class="ident">func_name</span> <span class="kw">as</span> <span class="kw">_</span>) );
-
-                (<span class="ident">wrapper</span>, <span class="ident">name</span>)
+                    },
+                    <span class="kw">_</span> =&gt; <span class="ident">u_msg</span>,
+                }
             }
-            <span class="kw">_</span> =&gt; (<span class="macro">quote!</span> {}, <span class="macro">quote!</span> { <span class="prelude-val">None</span> }),
         }
     }
 
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build_options_windows</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; (<span class="ident">TokenStream</span>, <span class="ident">TokenStream</span>) {
-        <span class="kw">match</span> (<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">raw_options_windows</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">options_windows</span>) {
-            (<span class="prelude-val">Some</span>(<span class="ident">raw</span>), <span class="kw">_</span>) =&gt; {
-                <span class="kw">let</span> <span class="ident">span</span> <span class="op">=</span> <span class="ident">syn::Error::new_spanned</span>(<span class="kw-2">&amp;</span><span class="ident">raw</span>, <span class="string">&quot;&quot;</span>).<span class="ident">span</span>();
-                <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="macro">quote_spanned!</span>(<span class="ident">span</span>=&gt; <span class="prelude-val">Some</span>((#<span class="ident">raw</span>) <span class="kw">as</span> <span class="kw">_</span>) );
-
-                (<span class="macro">quote!</span> {}, <span class="ident">name</span>)
-            }
-            (<span class="kw">_</span>, <span class="prelude-val">Some</span>(<span class="ident">safe</span>)) =&gt; {
-                <span class="kw">let</span> <span class="ident">span</span> <span class="op">=</span> <span class="ident">syn::Error::new_spanned</span>(<span class="kw-2">&amp;</span><span class="ident">safe</span>, <span class="string">&quot;&quot;</span>).<span class="ident">span</span>();
-                <span class="kw">let</span> <span class="ident">wrapper</span> <span class="op">=</span> <span class="macro">quote_spanned!</span> {<span class="ident">span</span> =&gt;
+    <span class="doccomment">/// Generates the options windows callback.</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build_options_windows</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">CallbackInfo</span> {
+        <span class="ident">CallbackInfo::build</span>(
+            <span class="self">self</span>.<span class="ident">raw_options_windows</span>.<span class="ident">as_ref</span>(),
+            <span class="self">self</span>.<span class="ident">options_windows</span>.<span class="ident">as_ref</span>(),
+            <span class="macro">quote!</span> { <span class="ident">abstract_options_windows</span> },
+            <span class="op">|</span><span class="ident">safe</span>, <span class="ident">span</span><span class="op">|</span> {
+                <span class="macro">quote_spanned!</span> {<span class="ident">span</span>=&gt;
                     <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span> <span class="ident">abstract_options_windows</span>(<span class="ident">window_name</span>: <span class="kw-2">*mut</span> <span class="ident">c_char</span>) -&gt; <span class="ident">bool</span> {
                         <span class="kw">let</span> <span class="ident">safe</span> <span class="op">=</span> (#<span class="ident">safe</span>) <span class="kw">as</span> <span class="ident">OptionsWindowsCallback</span>;
                         <span class="ident">safe</span>(<span class="ident">::arcdps::__macro::ui</span>(), <span class="ident">::arcdps::__macro::str_from_cstr</span>(<span class="ident">window_name</span>))
                     }
-                };
-                <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="macro">quote_spanned!</span>(<span class="ident">span</span>=&gt; <span class="prelude-val">Some</span>(<span class="ident"><span class="self">self</span>::abstract_options_windows</span> <span class="kw">as</span> <span class="kw">_</span>) );
-
-                (<span class="ident">wrapper</span>, <span class="ident">name</span>)
-            }
-            <span class="kw">_</span> =&gt; (<span class="macro">quote!</span> {}, <span class="macro">quote!</span> { <span class="prelude-val">None</span> }),
-        }
+                }
+            },
+        )
     }
 
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build_options_end</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; (<span class="ident">TokenStream</span>, <span class="ident">TokenStream</span>) {
-        <span class="kw">match</span> (<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">raw_options_end</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">options_end</span>) {
-            (<span class="prelude-val">Some</span>(<span class="ident">raw</span>), <span class="kw">_</span>) =&gt; {
-                <span class="kw">let</span> <span class="ident">span</span> <span class="op">=</span> <span class="ident">syn::Error::new_spanned</span>(<span class="kw-2">&amp;</span><span class="ident">raw</span>, <span class="string">&quot;&quot;</span>).<span class="ident">span</span>();
-                <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="macro">quote_spanned!</span>(<span class="ident">span</span>=&gt; <span class="prelude-val">Some</span>((#<span class="ident">raw</span>) <span class="kw">as</span> <span class="kw">_</span>) );
-
-                (<span class="macro">quote!</span> {}, <span class="ident">name</span>)
-            }
-            (<span class="kw">_</span>, <span class="prelude-val">Some</span>(<span class="ident">safe</span>)) =&gt; {
-                <span class="kw">let</span> <span class="ident">span</span> <span class="op">=</span> <span class="ident">syn::Error::new_spanned</span>(<span class="kw-2">&amp;</span><span class="ident">safe</span>, <span class="string">&quot;&quot;</span>).<span class="ident">span</span>();
-                <span class="kw">let</span> <span class="ident">wrapper</span> <span class="op">=</span> <span class="macro">quote_spanned!</span> {<span class="ident">span</span> =&gt;
+    <span class="doccomment">/// Generates the options end callback.</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build_options_end</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">CallbackInfo</span> {
+        <span class="ident">CallbackInfo::build</span>(
+            <span class="self">self</span>.<span class="ident">raw_options_end</span>.<span class="ident">as_ref</span>(),
+            <span class="self">self</span>.<span class="ident">options_end</span>.<span class="ident">as_ref</span>(),
+            <span class="macro">quote!</span> { <span class="ident">abstract_options_end</span> },
+            <span class="op">|</span><span class="ident">safe</span>, <span class="ident">span</span><span class="op">|</span> {
+                <span class="macro">quote_spanned!</span> {<span class="ident">span</span>=&gt;
                     <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span> <span class="ident">abstract_options_end</span>() {
                         <span class="kw">let</span> <span class="ident">safe</span> <span class="op">=</span> (#<span class="ident">safe</span>) <span class="kw">as</span> <span class="ident">OptionsCallback</span>;
                         <span class="ident">safe</span>(<span class="ident">arcdps::__macro::ui</span>())
                     }
-                };
-                <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="macro">quote_spanned!</span>(<span class="ident">span</span>=&gt; <span class="prelude-val">Some</span>(<span class="ident"><span class="self">self</span>::abstract_options_end</span> <span class="kw">as</span> <span class="kw">_</span>) );
-
-                (<span class="ident">wrapper</span>, <span class="ident">name</span>)
-            }
-            <span class="kw">_</span> =&gt; (<span class="macro">quote!</span> {}, <span class="macro">quote!</span> { <span class="prelude-val">None</span> }),
-        }
+                }
+            },
+        )
     }
 
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build_imgui</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; (<span class="ident">TokenStream</span>, <span class="ident">TokenStream</span>) {
-        <span class="kw">match</span> (<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">raw_imgui</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">imgui</span>) {
-            (<span class="prelude-val">Some</span>(<span class="ident">raw</span>), <span class="kw">_</span>) =&gt; {
-                <span class="kw">let</span> <span class="ident">span</span> <span class="op">=</span> <span class="ident">syn::Error::new_spanned</span>(<span class="kw-2">&amp;</span><span class="ident">raw</span>, <span class="string">&quot;&quot;</span>).<span class="ident">span</span>();
-                <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="macro">quote_spanned!</span>(<span class="ident">span</span>=&gt; <span class="prelude-val">Some</span>((#<span class="ident">raw</span>) <span class="kw">as</span> <span class="kw">_</span>) );
-
-                (<span class="macro">quote!</span> {}, <span class="ident">name</span>)
-            }
-            (<span class="kw">_</span>, <span class="prelude-val">Some</span>(<span class="ident">safe</span>)) =&gt; {
-                <span class="kw">let</span> <span class="ident">span</span> <span class="op">=</span> <span class="ident">syn::Error::new_spanned</span>(<span class="kw-2">&amp;</span><span class="ident">safe</span>, <span class="string">&quot;&quot;</span>).<span class="ident">span</span>();
-                <span class="kw">let</span> <span class="ident">wrapper</span> <span class="op">=</span> <span class="macro">quote_spanned!</span> {<span class="ident">span</span> =&gt;
+    <span class="doccomment">/// Generates the imgui callback.</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build_imgui</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">CallbackInfo</span> {
+        <span class="ident">CallbackInfo::build</span>(
+            <span class="self">self</span>.<span class="ident">raw_imgui</span>.<span class="ident">as_ref</span>(),
+            <span class="self">self</span>.<span class="ident">imgui</span>.<span class="ident">as_ref</span>(),
+            <span class="macro">quote!</span> { <span class="ident">abstract_imgui</span> },
+            <span class="op">|</span><span class="ident">safe</span>, <span class="ident">span</span><span class="op">|</span> {
+                <span class="macro">quote_spanned!</span> {<span class="ident">span</span>=&gt;
                     <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span> <span class="ident">abstract_imgui</span>(<span class="ident">loading</span>: <span class="ident">u32</span>) {
                         <span class="kw">let</span> <span class="ident">safe</span> <span class="op">=</span> (#<span class="ident">safe</span>) <span class="kw">as</span> <span class="ident">ImguiCallback</span>;
                         <span class="ident">safe</span>(<span class="ident">arcdps::__macro::ui</span>(), <span class="ident">loading</span> <span class="op">!</span><span class="op">=</span> <span class="number">0</span>)
                     }
-                };
-                <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="macro">quote_spanned!</span>(<span class="ident">span</span>=&gt; <span class="prelude-val">Some</span>(<span class="ident"><span class="self">self</span>::abstract_imgui</span> <span class="kw">as</span> <span class="kw">_</span>) );
-
-                (<span class="ident">wrapper</span>, <span class="ident">name</span>)
-            }
-            <span class="kw">_</span> =&gt; (<span class="macro">quote!</span> {}, <span class="macro">quote!</span> { <span class="prelude-val">None</span> }),
-        }
+                }
+            },
+        )
     }
 
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build_combat</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; (<span class="ident">TokenStream</span>, <span class="ident">TokenStream</span>) {
-        <span class="ident"><span class="self">Self</span>::build_combat_helper</span>(
+    <span class="doccomment">/// Generates the combat callback.</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build_combat</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">CallbackInfo</span> {
+        <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="macro">quote!</span> { <span class="ident">abstract_combat</span> };
+        <span class="ident">CallbackInfo::build</span>(
             <span class="self">self</span>.<span class="ident">raw_combat</span>.<span class="ident">as_ref</span>(),
             <span class="self">self</span>.<span class="ident">combat</span>.<span class="ident">as_ref</span>(),
-            <span class="macro">quote!</span> { <span class="ident">abstract_combat</span> },
+            <span class="ident">name</span>.<span class="ident">clone</span>(),
+            <span class="op">|</span><span class="ident">safe</span>, <span class="ident">span</span><span class="op">|</span> <span class="ident"><span class="self">Self</span>::combat_wrapper</span>(<span class="ident">name</span>, <span class="ident">safe</span>, <span class="ident">span</span>),
         )
     }
 
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build_combat_local</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; (<span class="ident">TokenStream</span>, <span class="ident">TokenStream</span>) {
-        <span class="ident"><span class="self">Self</span>::build_combat_helper</span>(
+    <span class="doccomment">/// Generates the combat local callback.</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build_combat_local</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">CallbackInfo</span> {
+        <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="macro">quote!</span> { <span class="ident">abstract_combat_local</span> };
+        <span class="ident">CallbackInfo::build</span>(
             <span class="self">self</span>.<span class="ident">raw_combat_local</span>.<span class="ident">as_ref</span>(),
             <span class="self">self</span>.<span class="ident">combat_local</span>.<span class="ident">as_ref</span>(),
-            <span class="macro">quote!</span> { <span class="ident">abstract_combat_local</span> },
+            <span class="ident">name</span>.<span class="ident">clone</span>(),
+            <span class="op">|</span><span class="ident">safe</span>, <span class="ident">span</span><span class="op">|</span> <span class="ident"><span class="self">Self</span>::combat_wrapper</span>(<span class="ident">name</span>, <span class="ident">safe</span>, <span class="ident">span</span>),
         )
     }
 
-    <span class="kw">fn</span> <span class="ident">build_combat_helper</span>(
-        <span class="ident">raw_combat</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
-        <span class="ident">combat</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
-        <span class="ident">func_name</span>: <span class="ident">TokenStream</span>,
-    ) -&gt; (<span class="ident">TokenStream</span>, <span class="ident">TokenStream</span>) {
-        <span class="kw">match</span> (<span class="ident">raw_combat</span>, <span class="ident">combat</span>) {
-            (<span class="prelude-val">Some</span>(<span class="ident">raw</span>), <span class="kw">_</span>) =&gt; {
-                <span class="kw">let</span> <span class="ident">span</span> <span class="op">=</span> <span class="ident">syn::Error::new_spanned</span>(<span class="kw-2">&amp;</span><span class="ident">raw</span>, <span class="string">&quot;&quot;</span>).<span class="ident">span</span>();
-                <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="macro">quote_spanned!</span>(<span class="ident">span</span>=&gt; <span class="prelude-val">Some</span>((#<span class="ident">raw</span>) <span class="kw">as</span> <span class="kw">_</span>) );
+    <span class="doccomment">/// Helper to generate a combat callback wrapper.</span>
+    <span class="kw">fn</span> <span class="ident">combat_wrapper</span>(<span class="ident">name</span>: <span class="ident">TokenStream</span>, <span class="ident">safe</span>: <span class="kw-2">&amp;</span><span class="ident">Expr</span>, <span class="ident">span</span>: <span class="ident">Span</span>) -&gt; <span class="ident">TokenStream</span> {
+        <span class="macro">quote_spanned!</span> {<span class="ident">span</span>=&gt;
+            <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span> #<span class="ident">name</span>(
+                <span class="ident">event</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">::arcdps::api::RawCombatEvent</span><span class="op">&gt;</span>,
+                <span class="ident">src</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">::arcdps::api::RawAgent</span><span class="op">&gt;</span>,
+                <span class="ident">dst</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">::arcdps::api::RawAgent</span><span class="op">&gt;</span>,
+                <span class="ident">skill_name</span>: <span class="kw-2">*mut</span> <span class="ident">c_char</span>,
+                <span class="ident">id</span>: <span class="ident">u64</span>,
+                <span class="ident">revision</span>: <span class="ident">u64</span>,
+            ) {
+                <span class="kw">let</span> <span class="ident">safe</span> <span class="op">=</span> (#<span class="ident">safe</span>) <span class="kw">as</span> <span class="ident">CombatCallback</span>;
 
-                (<span class="macro">quote!</span> {}, <span class="ident">name</span>)
+                <span class="ident">safe</span>(
+                    <span class="ident">event</span>.<span class="ident">map</span>(<span class="ident">Into::into</span>),
+                    <span class="ident">src</span>.<span class="ident">map</span>(<span class="ident">Into::into</span>),
+                    <span class="ident">dst</span>.<span class="ident">map</span>(<span class="ident">Into::into</span>),
+                    <span class="ident">::arcdps::__macro::str_from_cstr</span>(<span class="ident">skill_name</span>),
+                    <span class="ident">id</span>,
+                    <span class="ident">revision</span>
+                )
             }
-            (<span class="kw">_</span>, <span class="prelude-val">Some</span>(<span class="ident">safe</span>)) =&gt; {
-                <span class="kw">let</span> <span class="ident">span</span> <span class="op">=</span> <span class="ident">syn::Error::new_spanned</span>(<span class="kw-2">&amp;</span><span class="ident">safe</span>, <span class="string">&quot;&quot;</span>).<span class="ident">span</span>();
-                <span class="kw">let</span> <span class="ident">wrapper</span> <span class="op">=</span> <span class="macro">quote_spanned!</span> {<span class="ident">span</span> =&gt;
-                    <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span> #<span class="ident">func_name</span>(
-                        <span class="ident">event</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">::arcdps::api::RawCombatEvent</span><span class="op">&gt;</span>,
-                        <span class="ident">src</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">::arcdps::api::RawAgent</span><span class="op">&gt;</span>,
-                        <span class="ident">dst</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">::arcdps::api::RawAgent</span><span class="op">&gt;</span>,
-                        <span class="ident">skill_name</span>: <span class="kw-2">*mut</span> <span class="ident">c_char</span>,
-                        <span class="ident">id</span>: <span class="ident">u64</span>,
-                        <span class="ident">revision</span>: <span class="ident">u64</span>,
-                    ) {
-                        <span class="kw">let</span> <span class="ident">safe</span> <span class="op">=</span> (#<span class="ident">safe</span>) <span class="kw">as</span> <span class="ident">CombatCallback</span>;
-
-                        <span class="ident">safe</span>(
-                            <span class="ident">event</span>.<span class="ident">map</span>(<span class="ident">Into::into</span>),
-                            <span class="ident">src</span>.<span class="ident">map</span>(<span class="ident">Into::into</span>),
-                            <span class="ident">dst</span>.<span class="ident">map</span>(<span class="ident">Into::into</span>),
-                            <span class="ident">::arcdps::__macro::str_from_cstr</span>(<span class="ident">skill_name</span>),
-                            <span class="ident">id</span>,
-                            <span class="ident">revision</span>
-                        )
-                    }
-                };
-                <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="macro">quote_spanned!</span>(<span class="ident">span</span>=&gt; <span class="prelude-val">Some</span>(<span class="self">self</span>::#<span class="ident">func_name</span> <span class="kw">as</span> <span class="kw">_</span>) );
-
-                (<span class="ident">wrapper</span>, <span class="ident">name</span>)
-            }
-            <span class="kw">_</span> =&gt; (<span class="macro">quote!</span> {}, <span class="macro">quote!</span> { <span class="prelude-val">None</span> }),
         }
     }
 }
