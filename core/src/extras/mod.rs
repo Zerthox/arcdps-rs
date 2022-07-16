@@ -40,8 +40,8 @@ pub struct ExtrasAddonInfo {
 
     /// Highest known version of the [`ExtrasSubscriberInfo`] struct.
     ///
-    /// Also determines the size of the pSubscriberInfo buffer in the init call.
-    /// The buffer is only guaranteed to have enough space for known ExtrasSubscriberInfo versions.
+    /// Also determines the size of the subscriber info buffer in the init call.
+    /// The buffer is only guaranteed to have enough space for known [`ExtrasSubscriberInfo`] versions.
     ///
     /// Current version is `1`.
     pub max_info_version: u32,

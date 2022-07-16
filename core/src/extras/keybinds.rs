@@ -1,6 +1,6 @@
 // TODO: add enums
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 #[repr(C)]
 pub struct KeybindChange {
     key_control: i32,
@@ -8,7 +8,7 @@ pub struct KeybindChange {
     single_key: Key,
 }
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 #[repr(C)]
 pub struct Key {
     pub device_type: i32,

@@ -31,3 +31,5 @@ The names of the callbacks have been shortened from for example `unofficial_extr
 The `extras_init` function has had its signature changed.
 It now receives [`ExtrasAddonInfo`](https://zerthox.github.io/arcdps-bindings/arcdps/extras/struct.ExtrasAddonInfo.html) as a rough equivalent of the struct used in the raw Unofficial Extras API.
 The account name of the current player is passed separately as second parameter.
+
+The bindings are updated to support more recent versions of Unofficial Extras and the added callbacks.
