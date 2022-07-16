@@ -1,6 +1,14 @@
 use crate::{api::RawCombatEvent, imgui::sys::ImVec4, instance::ARC_INSTANCE};
 use std::os::raw::c_char;
 
+pub type Export0 = unsafe extern "C" fn() -> *const u16;
+pub type Export3 = unsafe extern "C" fn(*const c_char);
+pub type Export5 = unsafe extern "C" fn(*mut [*mut ImVec4; 5]);
+pub type Export6 = unsafe extern "C" fn() -> u64;
+pub type Export7 = unsafe extern "C" fn() -> u64;
+pub type Export8 = unsafe extern "C" fn(*const c_char);
+pub type Export9 = unsafe extern "C" fn(*const RawCombatEvent, u32);
+
 /// Retrieves path to ArcDPS ini config file as wide char string.
 pub unsafe fn e0_config_path() -> *const u16 {
     (ARC_INSTANCE.e0.expect("failed to find arc export e0"))()

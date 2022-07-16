@@ -1,23 +1,15 @@
 //! Global instance with ArcDPS information.
 
 use crate::{
-    api::RawCombatEvent,
-    imgui::{self, sys::ImVec4, Context, Ui},
+    exports::raw::{Export0, Export3, Export5, Export6, Export7, Export8, Export9},
+    imgui,
     util::exported_proc,
 };
-use std::{ffi::c_void, mem::transmute, os::raw::c_char, ptr};
+use std::{ffi::c_void, mem::transmute, ptr};
 use windows::Win32::Foundation::HINSTANCE;
 
 /// Global instance of Arc handle & exported functions.
 pub static mut ARC_INSTANCE: ArcInstance = ArcInstance::empty();
-
-type Export0 = unsafe extern "C" fn() -> *const u16;
-type Export3 = unsafe extern "C" fn(*const c_char);
-type Export5 = unsafe extern "C" fn(*mut [*mut ImVec4; 5]);
-type Export6 = unsafe extern "C" fn() -> u64;
-type Export7 = unsafe extern "C" fn() -> u64;
-type Export8 = unsafe extern "C" fn(*const c_char);
-type Export9 = unsafe extern "C" fn(*const RawCombatEvent, u32);
 
 /// Arc handle & exported functions.
 // TODO: should we move other globals from codegen here? or move this to codegen?
@@ -25,7 +17,7 @@ type Export9 = unsafe extern "C" fn(*const RawCombatEvent, u32);
 pub struct ArcInstance {
     pub handle: HINSTANCE,
     pub version: Option<&'static str>,
-    pub ui: Option<Ui<'static>>,
+    pub ui: Option<imgui::Ui<'static>>,
     pub e0: Option<Export0>,
     pub e3: Option<Export3>,
     pub e5: Option<Export5>,
@@ -56,7 +48,7 @@ impl ArcInstance {
         Self {
             handle,
             version,
-            ui: IG_CONTEXT.as_ref().map(Ui::from_ctx),
+            ui: IG_CONTEXT.as_ref().map(imgui::Ui::from_ctx),
             e0: transmute(exported_proc(handle, "e0\0")),
             e3: transmute(exported_proc(handle, "e3\0")),
             e5: transmute(exported_proc(handle, "e5\0")),
@@ -77,7 +69,7 @@ pub type MallocFn = unsafe extern "C" fn(size: usize, user_data: *mut c_void) ->
 pub type FreeFn = unsafe extern "C" fn(ptr: *mut c_void, user_data: *mut c_void);
 
 /// Imgui context.
-pub static mut IG_CONTEXT: Option<Context> = None;
+pub static mut IG_CONTEXT: Option<imgui::Context> = None;
 
 /// Helper to initialize Imgui.
 pub unsafe fn init_imgui(
@@ -87,5 +79,5 @@ pub unsafe fn init_imgui(
 ) {
     imgui::sys::igSetCurrentContext(ctx);
     imgui::sys::igSetAllocatorFunctions(malloc, free, ptr::null_mut());
-    IG_CONTEXT = Some(Context::current());
+    IG_CONTEXT = Some(imgui::Context::current());
 }
