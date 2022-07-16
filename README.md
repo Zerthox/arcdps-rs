@@ -39,7 +39,7 @@ fn init() -> Result<(), Box<dyn Error>> {
 }
 
 fn custom_combat_name(
-    event: Option<&CombatEvent>,
+    event: Option<CombatEvent>,
     src: Option<Agent>,
     dst: Option<Agent>,
     skill_name: Option<&str>,
