@@ -13,7 +13,7 @@ use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[cfg_attr(
     feature = "strum",
-    derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames,)
+    derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames)
 )]
 #[repr(u32)]
 pub enum Profession {
@@ -39,7 +39,7 @@ pub enum Profession {
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[cfg_attr(
     feature = "strum",
-    derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames,)
+    derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames)
 )]
 #[repr(u32)]
 pub enum Specialization {
@@ -145,7 +145,7 @@ pub enum Specialization {
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[cfg_attr(
     feature = "strum",
-    derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames,)
+    derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames)
 )]
 #[repr(u32)]
 pub enum Language {

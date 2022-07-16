@@ -13,6 +13,10 @@ use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
     Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
 )]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
+#[cfg_attr(
+    feature = "strum",
+    derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames)
+)]
 #[repr(u8)]
 pub enum Affinity {
     /// Allied agent.
@@ -33,6 +37,10 @@ pub enum Affinity {
     Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
 )]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
+#[cfg_attr(
+    feature = "strum",
+    derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames)
+)]
 #[repr(u8)]
 pub enum Strike {
     /// Normal damage strike.
@@ -133,6 +141,10 @@ pub enum Activation {
     Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
 )]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
+#[cfg_attr(
+    feature = "strum",
+    derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames)
+)]
 #[repr(u8)]
 pub enum StateChange {
     /// Not used, different kind of event.
@@ -443,6 +455,10 @@ pub enum StateChange {
     Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
 )]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
+#[cfg_attr(
+    feature = "strum",
+    derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames)
+)]
 #[repr(u8)]
 pub enum BuffRemove {
     /// Not used, different kind of event.
@@ -477,6 +493,10 @@ pub enum BuffRemove {
     Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
 )]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
+#[cfg_attr(
+    feature = "strum",
+    derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames)
+)]
 #[repr(u8)]
 pub enum BuffCycle {
     /// Damage happened on tick timer.
@@ -506,6 +526,10 @@ pub enum BuffCycle {
     Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, TryFromPrimitive,
 )]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
+#[cfg_attr(
+    feature = "strum",
+    derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames)
+)]
 #[repr(u16)]
 pub enum CustomSkill {
     /// Resurrect skill.
@@ -550,7 +574,7 @@ pub enum BuffCategory {
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[cfg_attr(
     feature = "strum",
-    derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames,)
+    derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames)
 )]
 #[repr(u16)]
 pub enum Attribute {

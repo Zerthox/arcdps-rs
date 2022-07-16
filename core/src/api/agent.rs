@@ -62,7 +62,7 @@ impl From<&Agent<'_>> for AgentOwned {
     }
 }
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 #[repr(C)]
 pub struct RawAgent {
     pub name: *const c_char,
