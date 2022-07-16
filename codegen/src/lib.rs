@@ -184,7 +184,7 @@ impl CallbackInfo {
     }
 
     /// Returns the callback info as tuple.
-    pub fn to_tuple(self) -> (TokenStream, TokenStream) {
+    pub fn into_tuple(self) -> (TokenStream, TokenStream) {
         (self.function, self.value)
     }
 }
