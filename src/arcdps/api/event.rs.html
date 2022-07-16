@@ -220,6 +220,8 @@
 <span id="215">215</span>
 <span id="216">216</span>
 <span id="217">217</span>
+<span id="218">218</span>
+<span id="219">219</span>
 </pre><pre class="rust"><code><span class="kw">use</span> <span class="kw">super</span>::{<span class="ident">Activation</span>, <span class="ident">Affinity</span>, <span class="ident">BuffRemove</span>, <span class="ident">StateChange</span>};
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>)]</span>
@@ -263,7 +265,9 @@
     <span class="kw">pub</span> <span class="ident">dst_master_instance_id</span>: <span class="ident">u16</span>,
 
     <span class="doccomment">/// Current affinity of `src_agent` and `dst_agent`.</span>
-    <span class="kw">pub</span> <span class="ident">iff</span>: <span class="ident">Affinity</span>,
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// *Arc calls this &quot;iff&quot; for if friend/foe.*</span>
+    <span class="kw">pub</span> <span class="ident">affinity</span>: <span class="ident">Affinity</span>,
 
     <span class="doccomment">/// Buff, if relevant to the event.</span>
     <span class="kw">pub</span> <span class="ident">buff</span>: <span class="ident">u8</span>,
@@ -351,7 +355,7 @@
             <span class="ident">dst_instance_id</span>: <span class="ident">raw</span>.<span class="ident">dst_instance_id</span>,
             <span class="ident">src_master_instance_id</span>: <span class="ident">raw</span>.<span class="ident">src_master_instance_id</span>,
             <span class="ident">dst_master_instance_id</span>: <span class="ident">raw</span>.<span class="ident">dst_master_instance_id</span>,
-            <span class="ident">iff</span>: <span class="ident">raw</span>.<span class="ident">iff</span>.<span class="ident">into</span>(),
+            <span class="ident">affinity</span>: <span class="ident">raw</span>.<span class="ident">affinity</span>.<span class="ident">into</span>(),
             <span class="ident">buff</span>: <span class="ident">raw</span>.<span class="ident">buff</span>,
             <span class="ident">result</span>: <span class="ident">raw</span>.<span class="ident">result</span>,
             <span class="ident">is_activation</span>: <span class="ident">raw</span>.<span class="ident">is_activation</span>.<span class="ident">into</span>(),
@@ -386,7 +390,7 @@
     <span class="kw">pub</span> <span class="ident">dst_instance_id</span>: <span class="ident">u16</span>,
     <span class="kw">pub</span> <span class="ident">src_master_instance_id</span>: <span class="ident">u16</span>,
     <span class="kw">pub</span> <span class="ident">dst_master_instance_id</span>: <span class="ident">u16</span>,
-    <span class="kw">pub</span> <span class="ident">iff</span>: <span class="ident">u8</span>,
+    <span class="kw">pub</span> <span class="ident">affinity</span>: <span class="ident">u8</span>,
     <span class="kw">pub</span> <span class="ident">buff</span>: <span class="ident">u8</span>,
     <span class="kw">pub</span> <span class="ident">result</span>: <span class="ident">u8</span>,
     <span class="kw">pub</span> <span class="ident">is_activation</span>: <span class="ident">u8</span>,
@@ -418,7 +422,7 @@
             <span class="ident">dst_instance_id</span>: <span class="ident">event</span>.<span class="ident">dst_instance_id</span>,
             <span class="ident">src_master_instance_id</span>: <span class="ident">event</span>.<span class="ident">src_master_instance_id</span>,
             <span class="ident">dst_master_instance_id</span>: <span class="ident">event</span>.<span class="ident">dst_master_instance_id</span>,
-            <span class="ident">iff</span>: <span class="ident">event</span>.<span class="ident">iff</span> <span class="kw">as</span> <span class="ident">u8</span>,
+            <span class="ident">affinity</span>: <span class="ident">event</span>.<span class="ident">affinity</span> <span class="kw">as</span> <span class="ident">u8</span>,
             <span class="ident">buff</span>: <span class="ident">event</span>.<span class="ident">buff</span>,
             <span class="ident">result</span>: <span class="ident">event</span>.<span class="ident">result</span>,
             <span class="ident">is_activation</span>: <span class="ident">event</span>.<span class="ident">is_activation</span> <span class="kw">as</span> <span class="ident">u8</span>,
