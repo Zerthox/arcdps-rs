@@ -40,13 +40,13 @@ impl ArcDpsGen {
         let init = self.build_init();
         let release = self.build_release();
 
-        let (combat_func, combat_value) = self.build_combat().as_tuple();
-        let (combat_local_func, combat_local_value) = self.build_combat_local().as_tuple();
-        let (imgui_func, imgui_value) = self.build_imgui().as_tuple();
-        let (options_end_func, options_end_value) = self.build_options_end().as_tuple();
-        let (options_windows_func, options_windows_value) = self.build_options_windows().as_tuple();
-        let (wnd_filter_func, wnd_filter_value) = self.build_wnd_filter().as_tuple();
-        let (wnd_nofilter_func, wnd_nofilter_value) = self.build_wnd_nofilter().as_tuple();
+        let (combat_func, combat_value) = self.build_combat().to_tuple();
+        let (combat_local_func, combat_local_value) = self.build_combat_local().to_tuple();
+        let (imgui_func, imgui_value) = self.build_imgui().to_tuple();
+        let (options_end_func, options_end_value) = self.build_options_end().to_tuple();
+        let (options_windows_func, options_windows_value) = self.build_options_windows().to_tuple();
+        let (wnd_filter_func, wnd_filter_value) = self.build_wnd_filter().to_tuple();
+        let (wnd_nofilter_func, wnd_nofilter_value) = self.build_wnd_nofilter().to_tuple();
 
         quote! {
             /// ArcDPS export struct with plugin information.
