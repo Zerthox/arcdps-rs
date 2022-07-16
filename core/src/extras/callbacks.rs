@@ -1,6 +1,6 @@
 use super::{
-    keybinds::KeybindChange, ExtrasAddonInfo, ExtrasSubscriberInfo, RawExtrasAddonInfo,
-    RawUserInfo, UserInfoIter,
+    keybinds::KeybindChange, message::ChatMessageInfo, ExtrasAddonInfo, ExtrasSubscriberInfo,
+    RawExtrasAddonInfo, RawUserInfo, UserInfoIter,
 };
 use crate::api::Language;
 
@@ -9,11 +9,13 @@ pub type RawExtrasSubscriberInit =
 
 pub type ExtrasInitFunc = fn(ExtrasAddonInfo, Option<&'static str>);
 
-pub type RawSquadUpdateCallback = unsafe extern "C" fn(*const RawUserInfo, u64);
+pub type RawExtrasSquadUpdateCallback = unsafe extern "C" fn(*const RawUserInfo, u64);
 pub type ExtrasSquadUpdateCallback = fn(UserInfoIter);
 
+pub type RawExtrasLanguageChangedCallback = unsafe extern "C" fn(Language);
+pub type ExtrasLanguageChangedCallback = fn(Language);
+
 // TODO: support other callbacks
-
-pub type RawLanguageChangedCallback = unsafe extern "C" fn(Language);
-
 pub type RawKeyBindChangedCallback = unsafe extern "C" fn(KeybindChange);
+
+pub type RawChatMessageCallback = unsafe extern "C" fn(*const ChatMessageInfo);

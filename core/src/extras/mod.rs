@@ -3,13 +3,17 @@
 //! *Requires the `"extras"` feature.*
 
 pub mod callbacks;
-pub mod keybinds;
+
+mod keybinds;
+mod message;
 mod user;
 
 pub use user::*;
 
 use crate::util::str_from_cstr;
-use callbacks::{RawKeyBindChangedCallback, RawLanguageChangedCallback, RawSquadUpdateCallback};
+use callbacks::{
+    RawExtrasLanguageChangedCallback, RawExtrasSquadUpdateCallback, RawKeyBindChangedCallback,
+};
 use std::os::raw::c_char;
 use windows::Win32::Foundation::HINSTANCE;
 
@@ -66,7 +70,7 @@ impl From<&RawExtrasAddonInfo> for ExtrasAddonInfo {
     }
 }
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 #[repr(C)]
 pub struct RawExtrasAddonInfo {
     pub api_version: u32,
@@ -92,7 +96,7 @@ pub struct ExtrasSubscriberInfoHeader {
     pub info_version: u32,
 
     /// Unused padding.
-    pub _unused1: u32,
+    pub unused1: u32,
 }
 
 /// Information about a subscriber to updates from Unofficial Extras.
@@ -112,13 +116,13 @@ pub struct ExtrasSubscriberInfo {
     ///
     /// Only the users that changed are sent.
     /// If a user is removed from the squad, it will be sent with `role` set to [`UserRole::None`]
-    pub squad_update_callback: Option<RawSquadUpdateCallback>,
+    pub squad_update_callback: Option<RawExtrasSquadUpdateCallback>,
 
     /// Called whenever the language is changed.
     ///
     /// Either by Changing it in the UI or by pressing the Right Ctrl (default) key.
     /// Will also be called directly after initialization, with the current language, to get the startup language.
-    pub language_changed_callback: Option<RawLanguageChangedCallback>,
+    pub language_changed_callback: Option<RawExtrasLanguageChangedCallback>,
 
     /// Called whenever a KeyBind is changed.
     ///
@@ -138,10 +142,12 @@ impl ExtrasSubscriberInfo {
     pub unsafe fn subscribe(
         &mut self,
         name: &'static str,
-        squad_update: Option<RawSquadUpdateCallback>,
+        squad_update: Option<RawExtrasSquadUpdateCallback>,
+        language_changed: Option<RawExtrasLanguageChangedCallback>,
     ) {
         self.header.info_version = SUB_INFO_VERSION;
         self.subscriber_name = name.as_ptr() as *const c_char;
         self.squad_update_callback = squad_update;
+        self.language_changed_callback = language_changed;
     }
 }

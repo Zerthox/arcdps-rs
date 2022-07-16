@@ -8,27 +8,31 @@ impl ArcDpsGen {
         let name = self.gen_name();
 
         let (squad_update_func, squad_update_name) = self.build_extras_squad_update();
-        let init_func = self.build_extras_init(&name, squad_update_name);
+        let (language_changed_func, language_changed_name) = self.build_extras_language_changed();
+        let init_func = self.build_extras_init(&name, squad_update_name, language_changed_name);
 
         quote! {
             #init_func
             #squad_update_func
+            #language_changed_func
         }
     }
 
-    pub fn build_extras_init(
+    fn build_extras_init(
         &self,
         name: &LitStr,
         squad_update: Option<TokenStream>,
+        language_changed: Option<TokenStream>,
     ) -> TokenStream {
-        let has_update = squad_update.is_some();
-        let squad_cb = squad_update.unwrap_or(quote! { None });
+        let has_callback = squad_update.is_some() || language_changed.is_some();
+        let squad_callback = squad_update.unwrap_or(quote! { None });
+        let lang_callback = language_changed.unwrap_or(quote! { None });
 
         // we only subscribe if compat check passes
         // info may still be read for safe version
         let subscribe = quote! {
             if addon.check_compat() {
-                sub.subscribe(#name, #squad_cb);
+                sub.subscribe(#name, #squad_callback, #lang_callback);
             }
         };
 
@@ -54,7 +58,7 @@ impl ArcDpsGen {
                     safe(addon.into(), user);
                 }
             }
-            _ if has_update => quote! {
+            _ if has_callback => quote! {
                     #subscribe
             },
             _ => return quote! {},
@@ -71,7 +75,7 @@ impl ArcDpsGen {
         }
     }
 
-    pub fn build_extras_squad_update(&self) -> (TokenStream, Option<TokenStream>) {
+    fn build_extras_squad_update(&self) -> (TokenStream, Option<TokenStream>) {
         match (&self.raw_extras_squad_update, &self.extras_squad_update) {
             (Some(raw), _) => {
                 let span = syn::Error::new_spanned(&raw, "").span();
@@ -91,6 +95,34 @@ impl ArcDpsGen {
                     }
                 };
                 let name = quote_spanned!(span=> Some(self::abstract_extras_squad_update as _) );
+
+                (wrapper, Some(name))
+            }
+            _ => (quote! {}, None),
+        }
+    }
+
+    fn build_extras_language_changed(&self) -> (TokenStream, Option<TokenStream>) {
+        match (
+            &self.raw_extras_language_changed,
+            &self.extras_language_changed,
+        ) {
+            (Some(raw), _) => {
+                let span = syn::Error::new_spanned(&raw, "").span();
+                let name = quote_spanned!(span=> Some((#raw) as _) );
+
+                (quote! {}, Some(name))
+            }
+            (_, Some(safe)) => {
+                let span = syn::Error::new_spanned(&safe, "").span();
+                let wrapper = quote_spanned! {span=>
+                    unsafe extern "C" fn abstract_extras_language_changed(language: ::arcdps::api::Language) {
+                        let safe = (#safe) as ExtrasLanguageChangedCallback;
+                        safe(language)
+                    }
+                };
+                let name =
+                    quote_spanned!(span=> Some(self::abstract_extras_language_changed as _) );
 
                 (wrapper, Some(name))
             }

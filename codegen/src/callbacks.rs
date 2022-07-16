@@ -38,7 +38,7 @@ impl ArcDpsGen {
         )
     }
 
-    pub fn build_wnd(
+    fn build_wnd(
         raw_wnd_filter: Option<&Expr>,
         wnd_filter: Option<&Expr>,
         func_name: TokenStream,
@@ -172,7 +172,7 @@ impl ArcDpsGen {
         )
     }
 
-    pub fn build_combat_helper(
+    fn build_combat_helper(
         raw_combat: Option<&Expr>,
         combat: Option<&Expr>,
         func_name: TokenStream,

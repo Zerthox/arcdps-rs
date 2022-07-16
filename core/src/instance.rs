@@ -80,7 +80,7 @@ pub type FreeFn = unsafe extern "C" fn(ptr: *mut c_void, user_data: *mut c_void)
 pub static mut IG_CONTEXT: Option<Context> = None;
 
 /// Helper to initialize Imgui.
-pub(crate) unsafe fn init_imgui(
+pub unsafe fn init_imgui(
     ctx: *mut imgui::sys::ImGuiContext,
     malloc: Option<MallocFn>,
     free: Option<FreeFn>,

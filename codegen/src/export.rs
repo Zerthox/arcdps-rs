@@ -24,7 +24,7 @@ impl ArcDpsGen {
         LitStr::new((name.value() + "\0").as_str(), name.span())
     }
 
-    /// Generates the build/version of the plugin.
+    /// Generates the build/version of the plugin as null-terminated literal.
     pub fn gen_build(&self) -> LitStr {
         let build = env::var("CARGO_PKG_VERSION").expect("CARGO_PKG_VERSION is not set") + "\0";
         LitStr::new(build.as_str(), Span::call_site())

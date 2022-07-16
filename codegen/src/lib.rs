@@ -70,10 +70,16 @@ pub(crate) struct ArcDpsGen {
     raw_extras_squad_update: Option<Expr>,
 
     #[cfg(feature = "extras")]
+    raw_extras_language_changed: Option<Expr>,
+
+    #[cfg(feature = "extras")]
     extras_init: Option<Expr>,
 
     #[cfg(feature = "extras")]
     extras_squad_update: Option<Expr>,
+
+    #[cfg(feature = "extras")]
+    extras_language_changed: Option<Expr>,
 }
 
 impl Default for ArcDpsGen {
@@ -107,10 +113,16 @@ impl Default for ArcDpsGen {
             raw_extras_squad_update: None,
 
             #[cfg(feature = "extras")]
+            raw_extras_language_changed: None,
+
+            #[cfg(feature = "extras")]
             extras_init: None,
 
             #[cfg(feature = "extras")]
             extras_squad_update: None,
+
+            #[cfg(feature = "extras")]
+            extras_language_changed: None,
         }
     }
 }

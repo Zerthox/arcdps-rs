@@ -133,7 +133,13 @@ pub struct SupportedFields {
     ///
     /// *Requires the `"extras"` feature.*
     #[cfg(feature = "extras")]
-    pub raw_extras_squad_update: Option<RawSquadUpdateCallback>,
+    pub raw_extras_squad_update: Option<RawExtrasSquadUpdateCallback>,
+
+    /// Raw extras language changed callback.
+    ///
+    /// *Requires the `"extras"` feature.*
+    #[cfg(feature = "extras")]
+    pub raw_extras_language_changed: Option<RawExtrasLanguageChangedCallback>,
 
     /// Initialization callback for [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases).
     ///
@@ -153,6 +159,16 @@ pub struct SupportedFields {
     /// *Requires the `"extras"` feature.*
     #[cfg(feature = "extras")]
     pub extras_squad_update: Option<ExtrasSquadUpdateCallback>,
+
+    /// Language changed callback for [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases).
+    ///
+    /// Called whenever the language is changed.
+    /// Either by Changing it in the UI or by pressing the Right Ctrl (default) key.
+    /// Will also be called directly after initialization, with the current language, to get the startup language.
+    ///
+    /// *Requires the `"extras"` feature.*
+    #[cfg(feature = "extras")]
+    pub extras_language_changed: Option<ExtrasLanguageChangedCallback>,
 }
 
 /// Exports for usage in macros.

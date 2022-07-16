@@ -125,7 +125,7 @@ impl From<&UserInfo<'_>> for UserInfoOwned {
     }
 }
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 #[repr(C)]
 pub struct RawUserInfo {
     pub account_name: *const c_char,
