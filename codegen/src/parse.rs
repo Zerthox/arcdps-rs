@@ -117,7 +117,8 @@ impl Parse for ArcDpsGen {
                             wnd_nofilter;
                             extras: {
                                 extras_init,
-                                extras_squad_update
+                                extras_squad_update,
+                                extras_language_changed
                             }
                         )
                     }
