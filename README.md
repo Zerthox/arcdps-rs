@@ -46,8 +46,10 @@ fn custom_combat_name(
     id: u64,
     revision: u64,
 ) {
-    if let StateChange::EnterCombat = event.is_statechange {
-        // source agent has entered combat
+    if let Some(event) = event {
+        if let StateChange::EnterCombat = event.is_statechange {
+            // source agent has entered combat
+        }
     }
 }
 ```

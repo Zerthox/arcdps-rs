@@ -4,7 +4,7 @@
 //! Plugins export information for ArcDPS via the [`export!`] macro.
 //! To see which fields are supported by it, have a look at [`SupportedFields`].
 //!
-//! ```
+//! ```ignore
 //! use std::error::Error;
 //! use arcdps::{Agent, CombatEvent, StateChange};
 //!
@@ -28,8 +28,10 @@
 //!     id: u64,
 //!     revision: u64,
 //! ) {
-//!     if let StateChange::EnterCombat = event.is_statechange {
-//!         // source agent has entered combat
+//!     if let Some(event) = event {
+//!         if let StateChange::EnterCombat = event.is_statechange {
+//!             // source agent has entered combat
+//!         }
 //!     }
 //! }
 //! ```
@@ -37,7 +39,7 @@
 //! # Unofficial Extras
 //! [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases) support is hidden behind the `extras` feature flag.
 //!
-//! ```
+//! ```ignore
 //! use arcdps::extras::{UserInfoIter, UserRole};
 //!
 //! arcdps::export! {

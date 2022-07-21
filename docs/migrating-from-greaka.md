@@ -16,8 +16,9 @@ The `iff` (if friend/foe) field used in ArcDPS' API has been renamed to `affinit
 
 [`Agent`](https://zerthox.github.io/arcdps-bindings/arcdps/api/agent/struct.Agent.html) & [`AgentOwned`](https://zerthox.github.io/arcdps-bindings/arcdps/api/agent/struct.AgentOwned.html) have their `_self` field renamed to `is_self` as a more appropriate name.
 
-
 Raw structs & types are no longer exported from the root of the crate. You may access them under [`arcdps::api`](https://zerthox.github.io/arcdps-bindings/arcdps/api/) alongside the other structs.
+
+Raw callbacks have been adjusted to use types from the [windows](https://github.com/microsoft/windows-rs) crate.
 
 ArcDPS' exports now have proper safe abstractions and are available under [`arcdps::exports`](https://zerthox.github.io/arcdps-bindings/arcdps/exports/).
 You can find raw versions of them in [`arcdps::exports::raw`](https://zerthox.github.io/arcdps-bindings/arcdps/exports/raw/).
