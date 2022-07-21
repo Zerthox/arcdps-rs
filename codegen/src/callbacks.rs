@@ -161,9 +161,9 @@ impl ArcDpsGen {
                 let safe = (#safe) as CombatCallback;
 
                 safe(
-                    event.clone().map(Into::into),
-                    src.clone().map(Into::into),
-                    dst.clone().map(Into::into),
+                    event.cloned().map(Into::into),
+                    src.cloned().map(Into::into),
+                    dst.cloned().map(Into::into),
                     ::arcdps::__macro::str_from_cstr(skill_name),
                     id,
                     revision

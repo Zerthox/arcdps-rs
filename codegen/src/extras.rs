@@ -58,15 +58,17 @@ impl ExtrasGen {
         language_changed: Option<TokenStream>,
         keybind_changed: Option<TokenStream>,
     ) -> TokenStream {
-        let has_callback = squad_update.is_some() || language_changed.is_some();
+        let has_callback =
+            squad_update.is_some() || language_changed.is_some() || keybind_changed.is_some();
         let squad_callback = squad_update.unwrap_or(quote! { None });
         let lang_callback = language_changed.unwrap_or(quote! { None });
+        let keybind_callback = keybind_changed.unwrap_or(quote! { None });
 
         // we only subscribe if compat check passes
         // extras info may still be read afterwards
         let subscribe = quote! {
             if addon.check_compat() {
-                sub.subscribe(#name, #squad_callback, #lang_callback, #keybind_changed);
+                sub.subscribe(#name, #squad_callback, #lang_callback, #keybind_callback);
             }
         };
 
@@ -86,7 +88,7 @@ impl ExtrasGen {
                 let user = ::arcdps::__macro::str_from_cstr(addon.self_account_name as _)
                     .map(|n| n.trim_start_matches(':'));
 
-                safe(addon.into(), user);
+                safe(addon.clone().into(), user);
             }
         } else if has_callback {
             quote! {

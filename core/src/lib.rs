@@ -252,7 +252,7 @@ pub mod __macro {
         };
         pub use std::os::raw::{c_char, c_void};
         pub use windows::Win32::{
-            Foundation::{HINSTANCE, LPARAM, WPARAM},
+            Foundation::{HINSTANCE, HWND, LPARAM, WPARAM},
             UI::WindowsAndMessaging::{WM_KEYDOWN, WM_KEYUP, WM_SYSKEYDOWN, WM_SYSKEYUP},
         };
 
