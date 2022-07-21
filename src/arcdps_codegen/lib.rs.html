@@ -175,6 +175,8 @@
 <span id="170">170</span>
 <span id="171">171</span>
 <span id="172">172</span>
+<span id="173">173</span>
+<span id="174">174</span>
 </pre><pre class="rust"><code><span class="kw">mod</span> <span class="ident">callbacks</span>;
 <span class="kw">mod</span> <span class="ident">export</span>;
 <span class="kw">mod</span> <span class="ident">parse</span>;
@@ -182,8 +184,10 @@
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;extras&quot;</span>)]</span>
 <span class="kw">mod</span> <span class="ident">extras</span>;
 
-<span class="kw">use</span> <span class="ident">cfg_if::cfg_if</span>;
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;extras&quot;</span>)]</span>
 <span class="kw">use</span> <span class="ident">extras::ExtrasGen</span>;
+
+<span class="kw">use</span> <span class="ident">cfg_if::cfg_if</span>;
 <span class="kw">use</span> <span class="ident">proc_macro2</span>::{<span class="ident">Span</span>, <span class="ident">TokenStream</span>};
 <span class="kw">use</span> <span class="ident">quote</span>::{<span class="ident">quote</span>, <span class="ident">quote_spanned</span>};
 <span class="kw">use</span> <span class="ident">syn</span>::{<span class="ident">Expr</span>, <span class="ident">LitStr</span>};
