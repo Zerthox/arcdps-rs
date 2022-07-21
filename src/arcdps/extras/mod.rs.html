@@ -159,6 +159,10 @@
 <span id="154">154</span>
 <span id="155">155</span>
 <span id="156">156</span>
+<span id="157">157</span>
+<span id="158">158</span>
+<span id="159">159</span>
+<span id="160">160</span>
 </pre><pre class="rust"><code><span class="doccomment">//! [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases) support.</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! *Requires the `&quot;extras&quot;` feature.*</span>
@@ -180,6 +184,9 @@
 <span class="kw">use</span> <span class="ident">std::os::raw::c_char</span>;
 <span class="kw">use</span> <span class="ident">windows::Win32::Foundation::HINSTANCE</span>;
 
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>)]</span>
+<span class="kw">use</span> <span class="ident">serde</span>::{<span class="ident">Deserialize</span>, <span class="ident">Serialize</span>};
+
 <span class="doccomment">/// Supported extras API version.</span>
 <span class="kw">const</span> <span class="ident">API_VERSION</span>: <span class="ident">u32</span> <span class="op">=</span> <span class="number">2</span>;
 
@@ -193,6 +200,7 @@
 
 <span class="doccomment">/// Information about the [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases) addon.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>)]</span>
+<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>, <span class="ident">derive</span>(<span class="ident">Serialize</span>, <span class="ident">Deserialize</span>))]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">ExtrasAddonInfo</span> {
     <span class="doccomment">/// Version of the API.</span>
     <span class="doccomment">///</span>

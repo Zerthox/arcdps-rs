@@ -1,1 +1,1 @@
-initSidebarItems({"mod":[["System",""],["Win32",""],["core",""]]});
+initSidebarItems({"macro":[["s","Simply terminates the literal UTF-8 string."],["w","A literal UTF-16 wide string."]],"mod":[["System",""],["Win32",""],["core",""]]});

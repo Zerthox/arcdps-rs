@@ -296,13 +296,15 @@
 <span id="291">291</span>
 <span id="292">292</span>
 <span id="293">293</span>
+<span id="294">294</span>
+<span id="295">295</span>
 </pre><pre class="rust"><code><span class="doccomment">//! [ArcDPS](https://www.deltaconnected.com/arcdps/) bindings for Rust plugins.</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! # Usage</span>
 <span class="doccomment">//! Plugins export information for ArcDPS via the [`export!`] macro.</span>
 <span class="doccomment">//! To see which fields are supported by it, have a look at [`SupportedFields`].</span>
 <span class="doccomment">//!</span>
-<span class="doccomment">//! ```</span>
+<span class="doccomment">//! ```ignore</span>
 <span class="doccomment">//! use std::error::Error;</span>
 <span class="doccomment">//! use arcdps::{Agent, CombatEvent, StateChange};</span>
 <span class="doccomment">//!</span>
@@ -326,8 +328,10 @@
 <span class="doccomment">//!     id: u64,</span>
 <span class="doccomment">//!     revision: u64,</span>
 <span class="doccomment">//! ) {</span>
-<span class="doccomment">//!     if let StateChange::EnterCombat = event.is_statechange {</span>
-<span class="doccomment">//!         // source agent has entered combat</span>
+<span class="doccomment">//!     if let Some(event) = event {</span>
+<span class="doccomment">//!         if let StateChange::EnterCombat = event.is_statechange {</span>
+<span class="doccomment">//!             // source agent has entered combat</span>
+<span class="doccomment">//!         }</span>
 <span class="doccomment">//!     }</span>
 <span class="doccomment">//! }</span>
 <span class="doccomment">//! ```</span>
@@ -335,7 +339,7 @@
 <span class="doccomment">//! # Unofficial Extras</span>
 <span class="doccomment">//! [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases) support is hidden behind the `extras` feature flag.</span>
 <span class="doccomment">//!</span>
-<span class="doccomment">//! ```</span>
+<span class="doccomment">//! ```ignore</span>
 <span class="doccomment">//! use arcdps::extras::{UserInfoIter, UserRole};</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! arcdps::export! {</span>
