@@ -19,6 +19,9 @@ use callbacks::{
 use std::os::raw::c_char;
 use windows::Win32::Foundation::HINSTANCE;
 
+#[cfg(feature = "serde")]
+use serde::{Deserialize, Serialize};
+
 /// Supported extras API version.
 const API_VERSION: u32 = 2;
 
@@ -32,6 +35,7 @@ fn check_compat(api_version: u32, sub_info_version: u32) -> bool {
 
 /// Information about the [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases) addon.
 #[derive(Debug, Clone)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct ExtrasAddonInfo {
     /// Version of the API.
     ///
