@@ -4,11 +4,8 @@ use crate::{
     api::{Agent, CombatEvent, RawAgent, RawCombatEvent},
     imgui,
 };
-use std::{
-    error::Error,
-    os::raw::{c_char, c_void},
-};
-use windows::Win32::Foundation::{LPARAM, WPARAM};
+use std::{error::Error, os::raw::c_char};
+use windows::Win32::Foundation::{HWND, LPARAM, WPARAM};
 
 /// Exported struct for ArcDPS plugins.
 #[repr(C)]
@@ -71,15 +68,16 @@ pub struct ArcDpsExport {
 
 unsafe impl Sync for ArcDpsExport {}
 
+// TODO: should references in raw callbacks be pointers instead?
+
 pub type InitFunc = fn() -> Result<(), Box<dyn Error>>;
 
 pub type ReleaseFunc = fn();
 
 pub type RawWndProcCallback =
-    unsafe extern "C" fn(h_wnd: *mut c_void, u_msg: u32, w_param: WPARAM, l_param: LPARAM) -> u32;
+    unsafe extern "C" fn(h_wnd: HWND, u_msg: u32, w_param: WPARAM, l_param: LPARAM) -> u32;
 pub type WndProcCallback = fn(key: usize, key_down: bool, prev_key_down: bool) -> bool;
 
-// TODO: should these be pointers?
 pub type RawCombatCallback = unsafe extern "C" fn(
     event: Option<&RawCombatEvent>,
     src: Option<&RawAgent>,

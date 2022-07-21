@@ -50,7 +50,7 @@ impl ArcDpsGen {
     fn wnd_wrapper(name: TokenStream, safe: &Expr, span: Span) -> TokenStream {
         quote_spanned! {span=>
             unsafe extern "C" fn #name(
-                _h_wnd: *mut c_void,
+                _h_wnd: HWND,
                 u_msg: u32,
                 w_param: WPARAM,
                 l_param: LPARAM,
@@ -101,7 +101,7 @@ impl ArcDpsGen {
                 quote_spanned! {span=>
                     unsafe extern "C" fn abstract_options_end() {
                         let safe = (#safe) as OptionsCallback;
-                        safe(arcdps::__macro::ui())
+                        safe(::arcdps::__macro::ui())
                     }
                 }
             },
@@ -118,7 +118,7 @@ impl ArcDpsGen {
                 quote_spanned! {span=>
                     unsafe extern "C" fn abstract_imgui(loading: u32) {
                         let safe = (#safe) as ImguiCallback;
-                        safe(arcdps::__macro::ui(), loading != 0)
+                        safe(::arcdps::__macro::ui(), loading != 0)
                     }
                 }
             },
@@ -161,9 +161,9 @@ impl ArcDpsGen {
                 let safe = (#safe) as CombatCallback;
 
                 safe(
-                    event.map(Into::into),
-                    src.map(Into::into),
-                    dst.map(Into::into),
+                    event.clone().map(Into::into),
+                    src.clone().map(Into::into),
+                    dst.clone().map(Into::into),
                     ::arcdps::__macro::str_from_cstr(skill_name),
                     id,
                     revision

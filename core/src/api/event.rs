@@ -3,11 +3,11 @@ use super::{Activation, Affinity, BuffRemove, StateChange};
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
 
-/// ArcDPS Combat event.
+/// ArcDPS combat event.
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct CombatEvent {
-    /// `TimeGetTime()` at time of registering the event.
+    /// `timeGetTime()` at time of registering the event.
     pub time: u64,
 
     /// Agent that caused the event.
@@ -117,8 +117,8 @@ pub struct CombatEvent {
     pub pad64: u8,
 }
 
-impl From<&RawCombatEvent> for CombatEvent {
-    fn from(raw: &RawCombatEvent) -> Self {
+impl From<RawCombatEvent> for CombatEvent {
+    fn from(raw: RawCombatEvent) -> Self {
         Self {
             time: raw.time,
             src_agent: raw.src_agent,
