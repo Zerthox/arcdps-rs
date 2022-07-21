@@ -157,6 +157,8 @@
 <span id="152">152</span>
 <span id="153">153</span>
 <span id="154">154</span>
+<span id="155">155</span>
+<span id="156">156</span>
 </pre><pre class="rust"><code><span class="doccomment">//! [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases) support.</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! *Requires the `&quot;extras&quot;` feature.*</span>
@@ -173,7 +175,7 @@
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::util::str_from_cstr</span>;
 <span class="kw">use</span> <span class="ident">callbacks</span>::{
-    <span class="ident">RawExtrasKeyBindChangedCallback</span>, <span class="ident">RawExtrasLanguageChangedCallback</span>, <span class="ident">RawExtrasSquadUpdateCallback</span>,
+    <span class="ident">RawExtrasKeybindChangedCallback</span>, <span class="ident">RawExtrasLanguageChangedCallback</span>, <span class="ident">RawExtrasSquadUpdateCallback</span>,
 };
 <span class="kw">use</span> <span class="ident">std::os::raw::c_char</span>;
 <span class="kw">use</span> <span class="ident">windows::Win32::Foundation::HINSTANCE</span>;
@@ -285,14 +287,14 @@
     <span class="doccomment">/// Will also be called directly after initialization, with the current language, to get the startup language.</span>
     <span class="kw">pub</span> <span class="ident">language_changed_callback</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RawExtrasLanguageChangedCallback</span><span class="op">&gt;</span>,
 
-    <span class="doccomment">/// Called whenever a KeyBind is changed.</span>
+    <span class="doccomment">/// Called whenever a keybind is changed.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// By changing it in the ingame UI, by pressing the translation shortcut or with the Presets feature of this plugin.</span>
-    <span class="doccomment">/// It is called for every keyBind separately.</span>
+    <span class="doccomment">/// It is called for every keybind separately.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// After initialization this is called for every current keybind that exists.</span>
     <span class="doccomment">/// If you want to get a single keybind, at any time you want, call the exported function.</span>
-    <span class="kw">pub</span> <span class="ident">key_bind_changed_callback</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RawExtrasKeyBindChangedCallback</span><span class="op">&gt;</span>,
+    <span class="kw">pub</span> <span class="ident">keybind_changed_callback</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RawExtrasKeybindChangedCallback</span><span class="op">&gt;</span>,
 }
 
 <span class="kw">impl</span> <span class="ident">ExtrasSubscriberInfo</span> {
@@ -304,11 +306,13 @@
         <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>,
         <span class="ident">squad_update</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RawExtrasSquadUpdateCallback</span><span class="op">&gt;</span>,
         <span class="ident">language_changed</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RawExtrasLanguageChangedCallback</span><span class="op">&gt;</span>,
+        <span class="ident">keybind_changed</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RawExtrasKeybindChangedCallback</span><span class="op">&gt;</span>,
     ) {
         <span class="self">self</span>.<span class="ident">header</span>.<span class="ident">info_version</span> <span class="op">=</span> <span class="ident">SUB_INFO_VERSION</span>;
         <span class="self">self</span>.<span class="ident">subscriber_name</span> <span class="op">=</span> <span class="ident">name</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">c_char</span>;
         <span class="self">self</span>.<span class="ident">squad_update_callback</span> <span class="op">=</span> <span class="ident">squad_update</span>;
         <span class="self">self</span>.<span class="ident">language_changed_callback</span> <span class="op">=</span> <span class="ident">language_changed</span>;
+        <span class="self">self</span>.<span class="ident">keybind_changed_callback</span> <span class="op">=</span> <span class="ident">keybind_changed</span>;
     }
 }
 </code></pre></div>

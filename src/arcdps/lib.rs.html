@@ -278,6 +278,24 @@
 <span id="273">273</span>
 <span id="274">274</span>
 <span id="275">275</span>
+<span id="276">276</span>
+<span id="277">277</span>
+<span id="278">278</span>
+<span id="279">279</span>
+<span id="280">280</span>
+<span id="281">281</span>
+<span id="282">282</span>
+<span id="283">283</span>
+<span id="284">284</span>
+<span id="285">285</span>
+<span id="286">286</span>
+<span id="287">287</span>
+<span id="288">288</span>
+<span id="289">289</span>
+<span id="290">290</span>
+<span id="291">291</span>
+<span id="292">292</span>
+<span id="293">293</span>
 </pre><pre class="rust"><code><span class="doccomment">//! [ArcDPS](https://www.deltaconnected.com/arcdps/) bindings for Rust plugins.</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! # Usage</span>
@@ -474,6 +492,12 @@
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;extras&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="ident">raw_extras_language_changed</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RawExtrasLanguageChangedCallback</span><span class="op">&gt;</span>,
 
+    <span class="doccomment">/// Raw extras keybind changed callback.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// *Requires the `&quot;extras&quot;` feature.*</span>
+    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;extras&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="ident">raw_extras_keybind_changed</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RawExtrasKeybindChangedCallback</span><span class="op">&gt;</span>,
+
     <span class="doccomment">/// Initialization callback for [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases).</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Can be called before or after ArcDPS [`init`](Self::init).</span>
@@ -495,13 +519,25 @@
 
     <span class="doccomment">/// Language changed callback for [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases).</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// Called whenever the language is changed.</span>
-    <span class="doccomment">/// Either by Changing it in the UI or by pressing the Right Ctrl (default) key.</span>
-    <span class="doccomment">/// Will also be called directly after initialization, with the current language, to get the startup language.</span>
+    <span class="doccomment">/// Called whenever the language is changed, either by changing it in the UI or by pressing the translation key (Right Ctrl by default).</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Will be called directly after initialization, with the current language, to get the startup language.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// *Requires the `&quot;extras&quot;` feature.*</span>
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;extras&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="ident">extras_language_changed</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ExtrasLanguageChangedCallback</span><span class="op">&gt;</span>,
+
+    <span class="doccomment">/// Keybind changed callback for [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases).</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Called whenever a keybind is changed, either by changing it in the ingame UI or with the presets feature of Unofficial Extras.</span>
+    <span class="doccomment">/// It is called for every keybind separately.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// After initialization this is called for every current keybind that exists.</span>
+    <span class="doccomment">/// If you want to get a single keybind, at any time you want, call the exported function.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// *Requires the `&quot;extras&quot;` feature.*</span>
+    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;extras&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="ident">extras_keybind_changed</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ExtrasKeybindChangedCallback</span><span class="op">&gt;</span>,
 }
 
 <span class="doccomment">/// Exports for usage in macros.</span>

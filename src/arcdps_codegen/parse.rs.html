@@ -140,6 +140,7 @@
 <span id="135">135</span>
 <span id="136">136</span>
 <span id="137">137</span>
+<span id="138">138</span>
 </pre><pre class="rust"><code><span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::ArcDpsGen</span>;
 <span class="kw">use</span> <span class="ident">syn</span>::{
     <span class="ident">parse</span>::{<span class="ident">Parse</span>, <span class="ident">ParseStream</span>},
@@ -175,8 +176,8 @@
                 $(
                     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;extras&quot;</span>)]</span>
                     <span class="macro">stringify!</span>([<span class="op">&lt;</span><span class="ident">raw_</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">extras</span><span class="op">&gt;</span>]) =&gt; {
-                        <span class="macro-nonterminal">$</span><span class="macro-nonterminal">gen</span>.[<span class="op">&lt;</span><span class="ident">raw_</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">extras</span><span class="op">&gt;</span>] <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">field</span>.<span class="ident">expr</span>);
-                        <span class="kw">if</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">gen</span>.<span class="macro-nonterminal">$</span><span class="macro-nonterminal">extras</span>.<span class="ident">is_some</span>() {
+                        <span class="macro-nonterminal">$</span><span class="macro-nonterminal">gen</span>.<span class="ident">extras</span>.[<span class="op">&lt;</span><span class="ident">raw_</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">extras</span><span class="op">&gt;</span>] <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">field</span>.<span class="ident">expr</span>);
+                        <span class="kw">if</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">gen</span>.<span class="ident">extras</span>.<span class="macro-nonterminal">$</span><span class="macro-nonterminal">extras</span>.<span class="ident">is_some</span>() {
                             <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">Error::new_spanned</span>(
                                 <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ident</span>,
                                 <span class="macro">stringify!</span>([<span class="op">&lt;</span><span class="ident">raw_</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">extras</span><span class="op">&gt;</span>] <span class="ident">and</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">extras</span> <span class="ident">are</span> <span class="ident">exclusive</span>),
@@ -185,8 +186,8 @@
                     }
                     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;extras&quot;</span>)]</span>
                     <span class="macro">stringify!</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">extras</span>) =&gt; {
-                        <span class="macro-nonterminal">$</span><span class="macro-nonterminal">gen</span>.<span class="macro-nonterminal">$</span><span class="macro-nonterminal">extras</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">field</span>.<span class="ident">expr</span>);
-                        <span class="kw">if</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">gen</span>.[<span class="op">&lt;</span><span class="ident">raw_</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">extras</span><span class="op">&gt;</span>].<span class="ident">is_some</span>() {
+                        <span class="macro-nonterminal">$</span><span class="macro-nonterminal">gen</span>.<span class="ident">extras</span>.<span class="macro-nonterminal">$</span><span class="macro-nonterminal">extras</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">field</span>.<span class="ident">expr</span>);
+                        <span class="kw">if</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">gen</span>.<span class="ident">extras</span>.[<span class="op">&lt;</span><span class="ident">raw_</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">extras</span><span class="op">&gt;</span>].<span class="ident">is_some</span>() {
                             <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">Error::new_spanned</span>(
                                 <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ident</span>,
                                 <span class="macro">stringify!</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">extras</span> <span class="ident">and</span> [<span class="op">&lt;</span><span class="ident">raw_</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">extras</span><span class="op">&gt;</span>] <span class="ident">are</span> <span class="ident">exclusive</span>),
@@ -260,7 +261,8 @@
                             <span class="ident">extras</span>: {
                                 <span class="ident">extras_init</span>,
                                 <span class="ident">extras_squad_update</span>,
-                                <span class="ident">extras_language_changed</span>
+                                <span class="ident">extras_language_changed</span>,
+                                <span class="ident">extras_keybind_changed</span>
                             }
                         )
                     }
