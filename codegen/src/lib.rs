@@ -10,7 +10,7 @@ use proc_macro2::{Span, TokenStream};
 use quote::{quote, quote_spanned};
 use syn::{Expr, LitStr};
 
-/// Creates exports for ArcDPS.
+/// Creates plugin exports for ArcDPS.
 #[proc_macro]
 pub fn export(item: proc_macro::TokenStream) -> proc_macro::TokenStream {
     let input = syn::parse_macro_input!(item as ArcDpsGen);

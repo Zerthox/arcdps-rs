@@ -1,7 +1,59 @@
-//! ArcDPS bindings for Rust.
+//! [ArcDPS](https://www.deltaconnected.com/arcdps/) bindings for Rust plugins.
 //!
-//! # Macro usage
-//! To see which fields are supported, have a look at [SupportedFields].
+//! # Usage
+//! Plugins export information for ArcDPS via the [`export!`] macro.
+//! To see which fields are supported by it, have a look at [`SupportedFields`].
+//!
+//! ```
+//! use std::error::Error;
+//! use arcdps::{Agent, CombatEvent, StateChange};
+//!
+//! arcdps::export! {
+//!     name: "Example Plugin",
+//!     sig: 123, // change this to a random number
+//!     init,
+//!     combat: custom_combat_name,
+//! }
+//!
+//! fn init() -> Result<(), Box<dyn Error>> {
+//!     // may return an error to indicate load failure
+//!     Ok(())
+//! }
+//!
+//! fn custom_combat_name(
+//!     event: Option<CombatEvent>,
+//!     src: Option<Agent>,
+//!     dst: Option<Agent>,
+//!     skill_name: Option<&str>,
+//!     id: u64,
+//!     revision: u64,
+//! ) {
+//!     if let StateChange::EnterCombat = event.is_statechange {
+//!         // source agent has entered combat
+//!     }
+//! }
+//! ```
+//!
+//! # Unofficial Extras
+//! [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases) support is hidden behind the `extras` feature flag.
+//!
+//! ```
+//! use arcdps::extras::{UserInfoIter, UserRole};
+//!
+//! arcdps::export! {
+//!     name: "Example Plugin",
+//!     sig: 123,
+//!     extras_squad_update,
+//! }
+//!
+//! fn extras_squad_update(users: UserInfoIter) {
+//!     for user in users {
+//!         if let UserRole::SquadLeader | UserRole::Lieutenant = user.role {
+//!             // user can place markers
+//!         }
+//!     }
+//! }
+//! ```
 
 #![allow(clippy::missing_safety_doc)]
 
@@ -16,7 +68,10 @@ mod instance;
 mod panic;
 mod util;
 
-pub use api::{evtc::*, game::*, Agent, AgentOwned, CombatEvent};
+pub use api::{
+    Activation, Affinity, Agent, AgentOwned, Attribute, BuffCategory, BuffCycle, BuffRemove,
+    CombatEvent, CustomSkill, Language, Profession, Specialization, StateChange, Strike,
+};
 pub use arcdps_codegen::export;
 pub use arcdps_imgui as imgui;
 
