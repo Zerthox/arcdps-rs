@@ -44,7 +44,7 @@ pub struct SupportedFields {
     pub release: Option<ReleaseFunc>,
 
     /// Raw WndProc callback.
-    pub raw_wnd_nofilter: Option<RawWndprocCallback>,
+    pub raw_wnd_nofilter: Option<RawWndProcCallback>,
 
     /// Raw Imgui callback.
     pub raw_imgui: Option<RawImguiCallback>,
@@ -56,7 +56,7 @@ pub struct SupportedFields {
     pub raw_combat: Option<RawCombatCallback>,
 
     /// Raw filtered WndProc callback.
-    pub raw_wnd_filter: Option<RawWndprocCallback>,
+    pub raw_wnd_filter: Option<RawWndProcCallback>,
 
     /// Raw options windows callback.
     pub raw_options_windows: Option<RawOptionsWindowsCallback>,

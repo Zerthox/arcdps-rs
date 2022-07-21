@@ -35,7 +35,7 @@ pub struct ArcDpsExport {
     /// WndProc callback.
     ///
     /// Return is assigned to uMsg (return zero to not be processed by ArcDPS or game).
-    pub wnd_nofilter: Option<RawWndprocCallback>,
+    pub wnd_nofilter: Option<RawWndProcCallback>,
 
     /// Combat callback.
     ///
@@ -60,7 +60,7 @@ pub struct ArcDpsExport {
     /// Filtered WndProc callback.
     ///
     /// Like `wnd_nofilter` but input fitlered using modifiers.
-    pub wnd_filter: Option<RawWndprocCallback>,
+    pub wnd_filter: Option<RawWndProcCallback>,
 
     /// Options windows callback.
     ///
@@ -75,7 +75,7 @@ pub type InitFunc = fn() -> Result<(), Box<dyn Error>>;
 
 pub type ReleaseFunc = fn();
 
-pub type RawWndprocCallback =
+pub type RawWndProcCallback =
     unsafe extern "C" fn(h_wnd: *mut c_void, u_msg: u32, w_param: WPARAM, l_param: LPARAM) -> u32;
 pub type WndProcCallback = fn(key: usize, key_down: bool, prev_key_down: bool) -> bool;
 
