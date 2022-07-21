@@ -5,8 +5,10 @@ mod parse;
 #[cfg(feature = "extras")]
 mod extras;
 
-use cfg_if::cfg_if;
+#[cfg(feature = "extras")]
 use extras::ExtrasGen;
+
+use cfg_if::cfg_if;
 use proc_macro2::{Span, TokenStream};
 use quote::{quote, quote_spanned};
 use syn::{Expr, LitStr};
