@@ -166,6 +166,8 @@
 <span id="161">161</span>
 <span id="162">162</span>
 <span id="163">163</span>
+<span id="164">164</span>
+<span id="165">165</span>
 </pre><pre class="rust"><code><span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::CallbackInfo</span>;
 <span class="kw">use</span> <span class="ident">proc_macro2::TokenStream</span>;
 <span class="kw">use</span> <span class="ident">quote</span>::{<span class="ident">quote</span>, <span class="ident">quote_spanned</span>};
@@ -226,15 +228,17 @@
         <span class="ident">language_changed</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">TokenStream</span><span class="op">&gt;</span>,
         <span class="ident">keybind_changed</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">TokenStream</span><span class="op">&gt;</span>,
     ) -&gt; <span class="ident">TokenStream</span> {
-        <span class="kw">let</span> <span class="ident">has_callback</span> <span class="op">=</span> <span class="ident">squad_update</span>.<span class="ident">is_some</span>() <span class="op">|</span><span class="op">|</span> <span class="ident">language_changed</span>.<span class="ident">is_some</span>();
+        <span class="kw">let</span> <span class="ident">has_callback</span> <span class="op">=</span>
+            <span class="ident">squad_update</span>.<span class="ident">is_some</span>() <span class="op">|</span><span class="op">|</span> <span class="ident">language_changed</span>.<span class="ident">is_some</span>() <span class="op">|</span><span class="op">|</span> <span class="ident">keybind_changed</span>.<span class="ident">is_some</span>();
         <span class="kw">let</span> <span class="ident">squad_callback</span> <span class="op">=</span> <span class="ident">squad_update</span>.<span class="ident">unwrap_or</span>(<span class="macro">quote!</span> { <span class="prelude-val">None</span> });
         <span class="kw">let</span> <span class="ident">lang_callback</span> <span class="op">=</span> <span class="ident">language_changed</span>.<span class="ident">unwrap_or</span>(<span class="macro">quote!</span> { <span class="prelude-val">None</span> });
+        <span class="kw">let</span> <span class="ident">keybind_callback</span> <span class="op">=</span> <span class="ident">keybind_changed</span>.<span class="ident">unwrap_or</span>(<span class="macro">quote!</span> { <span class="prelude-val">None</span> });
 
         <span class="comment">// we only subscribe if compat check passes</span>
         <span class="comment">// extras info may still be read afterwards</span>
         <span class="kw">let</span> <span class="ident">subscribe</span> <span class="op">=</span> <span class="macro">quote!</span> {
             <span class="kw">if</span> <span class="ident">addon</span>.<span class="ident">check_compat</span>() {
-                <span class="ident">sub</span>.<span class="ident">subscribe</span>(#<span class="ident">name</span>, #<span class="ident">squad_callback</span>, #<span class="ident">lang_callback</span>, #<span class="ident">keybind_changed</span>);
+                <span class="ident">sub</span>.<span class="ident">subscribe</span>(#<span class="ident">name</span>, #<span class="ident">squad_callback</span>, #<span class="ident">lang_callback</span>, #<span class="ident">keybind_callback</span>);
             }
         };
 
@@ -254,7 +258,7 @@
                 <span class="kw">let</span> <span class="ident">user</span> <span class="op">=</span> <span class="ident">::arcdps::__macro::str_from_cstr</span>(<span class="ident">addon</span>.<span class="ident">self_account_name</span> <span class="kw">as</span> <span class="kw">_</span>)
                     .<span class="ident">map</span>(<span class="op">|</span><span class="ident">n</span><span class="op">|</span> <span class="ident">n</span>.<span class="ident">trim_start_matches</span>(<span class="string">&#39;:&#39;</span>));
 
-                <span class="ident">safe</span>(<span class="ident">addon</span>.<span class="ident">into</span>(), <span class="ident">user</span>);
+                <span class="ident">safe</span>(<span class="ident">addon</span>.<span class="ident">clone</span>().<span class="ident">into</span>(), <span class="ident">user</span>);
             }
         } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">has_callback</span> {
             <span class="macro">quote!</span> {
@@ -320,9 +324,9 @@
             <span class="macro">quote!</span> { <span class="ident">abstract_extras_keybind_changed</span> },
             <span class="op">|</span><span class="ident">safe</span>, <span class="ident">span</span><span class="op">|</span> {
                 <span class="macro">quote_spanned!</span> {<span class="ident">span</span>=&gt;
-                    <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span> <span class="ident">abstract_extras_keybind_changed</span>(<span class="ident">changed</span>: <span class="ident">::arcdps::extras::keybinds::RawKeybindChanged</span>) {
+                    <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span> <span class="ident">abstract_extras_keybind_changed</span>(<span class="ident">changed</span>: <span class="ident">::arcdps::extras::keybinds::RawKeybindChange</span>) {
                         <span class="kw">let</span> <span class="ident">safe</span> <span class="op">=</span> (#<span class="ident">safe</span>) <span class="kw">as</span> <span class="ident">ExtrasKeybindChangedCallback</span>;
-                        <span class="ident">safe</span>(<span class="ident">language</span>)
+                        <span class="ident">safe</span>(<span class="ident">changed</span>)
                     }
                 }
             },
