@@ -4,16 +4,17 @@
 
 pub mod callbacks;
 pub mod exports;
+pub mod keybinds;
 
-mod keybinds;
 mod message;
 mod user;
 
+pub use keybinds::{Control, Key, KeyCode, KeybindChange, MouseCode};
 pub use user::*;
 
 use crate::util::str_from_cstr;
 use callbacks::{
-    RawExtrasLanguageChangedCallback, RawExtrasSquadUpdateCallback, RawKeyBindChangedCallback,
+    RawExtrasKeyBindChangedCallback, RawExtrasLanguageChangedCallback, RawExtrasSquadUpdateCallback,
 };
 use std::os::raw::c_char;
 use windows::Win32::Foundation::HINSTANCE;
@@ -61,8 +62,8 @@ impl ExtrasAddonInfo {
     }
 }
 
-impl From<&RawExtrasAddonInfo> for ExtrasAddonInfo {
-    fn from(raw: &RawExtrasAddonInfo) -> Self {
+impl From<RawExtrasAddonInfo> for ExtrasAddonInfo {
+    fn from(raw: RawExtrasAddonInfo) -> Self {
         Self {
             api_version: raw.api_version,
             max_info_version: raw.max_info_version,
@@ -132,7 +133,7 @@ pub struct ExtrasSubscriberInfo {
     ///
     /// After initialization this is called for every current keybind that exists.
     /// If you want to get a single keybind, at any time you want, call the exported function.
-    pub key_bind_changed_callback: Option<RawKeyBindChangedCallback>,
+    pub key_bind_changed_callback: Option<RawExtrasKeyBindChangedCallback>,
 }
 
 impl ExtrasSubscriberInfo {

@@ -71,8 +71,8 @@ pub struct UserInfo<'a> {
     pub ready_status: bool,
 }
 
-impl From<&RawUserInfo> for UserInfo<'_> {
-    fn from(raw: &RawUserInfo) -> Self {
+impl From<RawUserInfo> for UserInfo<'_> {
+    fn from(raw: RawUserInfo) -> Self {
         Self {
             account_name: unsafe { str_from_cstr(raw.account_name) },
             join_time: raw.join_time,
@@ -113,8 +113,8 @@ pub struct UserInfoOwned {
     pub ready_status: bool,
 }
 
-impl From<&UserInfo<'_>> for UserInfoOwned {
-    fn from(user: &UserInfo<'_>) -> Self {
+impl From<UserInfo<'_>> for UserInfoOwned {
+    fn from(user: UserInfo<'_>) -> Self {
         Self {
             account_name: user.account_name.map(|x| x.to_string()),
             join_time: user.join_time,
@@ -146,5 +146,5 @@ pub type UserConvert = for<'r> fn(&'r RawUserInfo) -> UserInfo<'r>;
 pub unsafe fn to_user_info_iter<'a>(ptr: *const RawUserInfo, len: u64) -> UserInfoIter<'a> {
     std::slice::from_raw_parts(ptr, len as usize)
         .iter()
-        .map(|raw| raw.into())
+        .map(|raw| raw.clone().into())
 }
