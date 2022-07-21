@@ -14,7 +14,7 @@ pub use user::*;
 
 use crate::util::str_from_cstr;
 use callbacks::{
-    RawExtrasKeyBindChangedCallback, RawExtrasLanguageChangedCallback, RawExtrasSquadUpdateCallback,
+    RawExtrasKeybindChangedCallback, RawExtrasLanguageChangedCallback, RawExtrasSquadUpdateCallback,
 };
 use std::os::raw::c_char;
 use windows::Win32::Foundation::HINSTANCE;
@@ -126,14 +126,14 @@ pub struct ExtrasSubscriberInfo {
     /// Will also be called directly after initialization, with the current language, to get the startup language.
     pub language_changed_callback: Option<RawExtrasLanguageChangedCallback>,
 
-    /// Called whenever a KeyBind is changed.
+    /// Called whenever a keybind is changed.
     ///
     /// By changing it in the ingame UI, by pressing the translation shortcut or with the Presets feature of this plugin.
-    /// It is called for every keyBind separately.
+    /// It is called for every keybind separately.
     ///
     /// After initialization this is called for every current keybind that exists.
     /// If you want to get a single keybind, at any time you want, call the exported function.
-    pub key_bind_changed_callback: Option<RawExtrasKeyBindChangedCallback>,
+    pub keybind_changed_callback: Option<RawExtrasKeybindChangedCallback>,
 }
 
 impl ExtrasSubscriberInfo {
@@ -145,10 +145,12 @@ impl ExtrasSubscriberInfo {
         name: &'static str,
         squad_update: Option<RawExtrasSquadUpdateCallback>,
         language_changed: Option<RawExtrasLanguageChangedCallback>,
+        keybind_changed: Option<RawExtrasKeybindChangedCallback>,
     ) {
         self.header.info_version = SUB_INFO_VERSION;
         self.subscriber_name = name.as_ptr() as *const c_char;
         self.squad_update_callback = squad_update;
         self.language_changed_callback = language_changed;
+        self.keybind_changed_callback = keybind_changed;
     }
 }

@@ -19,8 +19,7 @@ pub type ExtrasSquadUpdateCallback = fn(updated_users: UserInfoIter);
 pub type RawExtrasLanguageChangedCallback = unsafe extern "C" fn(new_language: Language);
 pub type ExtrasLanguageChangedCallback = fn(new_language: Language);
 
-// TODO: support other callbacks
-pub type RawExtrasKeyBindChangedCallback = unsafe extern "C" fn(changed: RawKeybindChange);
-pub type ExtrasKeyBindChangedCallback = fn(changed: KeybindChange);
+pub type RawExtrasKeybindChangedCallback = unsafe extern "C" fn(changed: RawKeybindChange);
+pub type ExtrasKeybindChangedCallback = fn(changed: KeybindChange);
 
 pub type RawExtrasChatMessageCallback = unsafe extern "C" fn(chat_message: *const ChatMessageInfo);

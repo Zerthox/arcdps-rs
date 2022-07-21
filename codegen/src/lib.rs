@@ -6,6 +6,7 @@ mod parse;
 mod extras;
 
 use cfg_if::cfg_if;
+use extras::ExtrasGen;
 use proc_macro2::{Span, TokenStream};
 use quote::{quote, quote_spanned};
 use syn::{Expr, LitStr};
@@ -20,7 +21,8 @@ pub fn export(item: proc_macro::TokenStream) -> proc_macro::TokenStream {
     let extras_funcs = {
         cfg_if! {
             if #[cfg(feature = "extras")] {
-                input.build_extras()
+                let name = input.gen_name_cstr();
+                input.extras.build(name)
             } else {
                 quote! {}
             }
@@ -51,38 +53,28 @@ pub(crate) struct ArcDpsGen {
     release: Option<Expr>,
 
     raw_combat: Option<Expr>,
-    raw_combat_local: Option<Expr>,
-    raw_imgui: Option<Expr>,
-    raw_options_end: Option<Expr>,
-    raw_options_windows: Option<Expr>,
-    raw_wnd_filter: Option<Expr>,
-    raw_wnd_nofilter: Option<Expr>,
-
     combat: Option<Expr>,
+
+    raw_combat_local: Option<Expr>,
     combat_local: Option<Expr>,
+
+    raw_imgui: Option<Expr>,
     imgui: Option<Expr>,
+
+    raw_options_end: Option<Expr>,
     options_end: Option<Expr>,
+
+    raw_options_windows: Option<Expr>,
     options_windows: Option<Expr>,
+
+    raw_wnd_filter: Option<Expr>,
     wnd_filter: Option<Expr>,
+
+    raw_wnd_nofilter: Option<Expr>,
     wnd_nofilter: Option<Expr>,
 
     #[cfg(feature = "extras")]
-    raw_extras_init: Option<Expr>,
-
-    #[cfg(feature = "extras")]
-    raw_extras_squad_update: Option<Expr>,
-
-    #[cfg(feature = "extras")]
-    raw_extras_language_changed: Option<Expr>,
-
-    #[cfg(feature = "extras")]
-    extras_init: Option<Expr>,
-
-    #[cfg(feature = "extras")]
-    extras_squad_update: Option<Expr>,
-
-    #[cfg(feature = "extras")]
-    extras_language_changed: Option<Expr>,
+    extras: ExtrasGen,
 }
 
 impl Default for ArcDpsGen {
@@ -94,38 +86,28 @@ impl Default for ArcDpsGen {
             release: None,
 
             raw_combat: None,
-            raw_combat_local: None,
-            raw_imgui: None,
-            raw_options_end: None,
-            raw_options_windows: None,
-            raw_wnd_filter: None,
-            raw_wnd_nofilter: None,
-
             combat: None,
+
+            raw_combat_local: None,
             combat_local: None,
+
+            raw_imgui: None,
             imgui: None,
+
+            raw_options_end: None,
             options_end: None,
+
+            raw_options_windows: None,
             options_windows: None,
+
+            raw_wnd_filter: None,
             wnd_filter: None,
+
+            raw_wnd_nofilter: None,
             wnd_nofilter: None,
 
             #[cfg(feature = "extras")]
-            raw_extras_init: None,
-
-            #[cfg(feature = "extras")]
-            raw_extras_squad_update: None,
-
-            #[cfg(feature = "extras")]
-            raw_extras_language_changed: None,
-
-            #[cfg(feature = "extras")]
-            extras_init: None,
-
-            #[cfg(feature = "extras")]
-            extras_squad_update: None,
-
-            #[cfg(feature = "extras")]
-            extras_language_changed: None,
+            extras: ExtrasGen::default(),
         }
     }
 }

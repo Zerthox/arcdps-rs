@@ -33,8 +33,8 @@ macro_rules! match_parse {
                 $(
                     #[cfg(feature = "extras")]
                     stringify!([<raw_ $extras>]) => {
-                        $gen.[<raw_ $extras>] = Some($field.expr);
-                        if $gen.$extras.is_some() {
+                        $gen.extras.[<raw_ $extras>] = Some($field.expr);
+                        if $gen.extras.$extras.is_some() {
                             return Err(Error::new_spanned(
                                 $ident,
                                 stringify!([<raw_ $extras>] and $extras are exclusive),
@@ -43,8 +43,8 @@ macro_rules! match_parse {
                     }
                     #[cfg(feature = "extras")]
                     stringify!($extras) => {
-                        $gen.$extras = Some($field.expr);
-                        if $gen.[<raw_ $extras>].is_some() {
+                        $gen.extras.$extras = Some($field.expr);
+                        if $gen.extras.[<raw_ $extras>].is_some() {
                             return Err(Error::new_spanned(
                                 $ident,
                                 stringify!($extras and [<raw_ $extras>] are exclusive),
@@ -118,7 +118,8 @@ impl Parse for ArcDpsGen {
                             extras: {
                                 extras_init,
                                 extras_squad_update,
-                                extras_language_changed
+                                extras_language_changed,
+                                extras_keybind_changed
                             }
                         )
                     }

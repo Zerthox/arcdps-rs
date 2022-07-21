@@ -194,6 +194,12 @@ pub struct SupportedFields {
     #[cfg(feature = "extras")]
     pub raw_extras_language_changed: Option<RawExtrasLanguageChangedCallback>,
 
+    /// Raw extras keybind changed callback.
+    ///
+    /// *Requires the `"extras"` feature.*
+    #[cfg(feature = "extras")]
+    pub raw_extras_keybind_changed: Option<RawExtrasKeybindChangedCallback>,
+
     /// Initialization callback for [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases).
     ///
     /// Can be called before or after ArcDPS [`init`](Self::init).
@@ -215,13 +221,25 @@ pub struct SupportedFields {
 
     /// Language changed callback for [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases).
     ///
-    /// Called whenever the language is changed.
-    /// Either by Changing it in the UI or by pressing the Right Ctrl (default) key.
-    /// Will also be called directly after initialization, with the current language, to get the startup language.
+    /// Called whenever the language is changed, either by changing it in the UI or by pressing the translation key (Right Ctrl by default).
+    ///
+    /// Will be called directly after initialization, with the current language, to get the startup language.
     ///
     /// *Requires the `"extras"` feature.*
     #[cfg(feature = "extras")]
     pub extras_language_changed: Option<ExtrasLanguageChangedCallback>,
+
+    /// Keybind changed callback for [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases).
+    ///
+    /// Called whenever a keybind is changed, either by changing it in the ingame UI or with the presets feature of Unofficial Extras.
+    /// It is called for every keybind separately.
+    ///
+    /// After initialization this is called for every current keybind that exists.
+    /// If you want to get a single keybind, at any time you want, call the exported function.
+    ///
+    /// *Requires the `"extras"` feature.*
+    #[cfg(feature = "extras")]
+    pub extras_keybind_changed: Option<ExtrasKeybindChangedCallback>,
 }
 
 /// Exports for usage in macros.

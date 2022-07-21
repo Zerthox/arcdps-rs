@@ -1,7 +1,22 @@
-use crate::{ArcDpsGen, CallbackInfo};
+use crate::CallbackInfo;
 use proc_macro2::TokenStream;
 use quote::{quote, quote_spanned};
-use syn::{spanned::Spanned, LitStr};
+use syn::{spanned::Spanned, Expr, LitStr};
+
+#[derive(Default)]
+pub(crate) struct ExtrasGen {
+    pub raw_extras_init: Option<Expr>,
+    pub extras_init: Option<Expr>,
+
+    pub raw_extras_squad_update: Option<Expr>,
+    pub extras_squad_update: Option<Expr>,
+
+    pub raw_extras_language_changed: Option<Expr>,
+    pub extras_language_changed: Option<Expr>,
+
+    pub raw_extras_keybind_changed: Option<Expr>,
+    pub extras_keybind_changed: Option<Expr>,
+}
 
 /// Helper to unwrap an optional callback.
 fn unwrap(option: Option<CallbackInfo>) -> (TokenStream, Option<TokenStream>) {
@@ -12,29 +27,36 @@ fn unwrap(option: Option<CallbackInfo>) -> (TokenStream, Option<TokenStream>) {
     }
 }
 
-impl ArcDpsGen {
+impl ExtrasGen {
     /// Generates Unofficial Extras exports.
-    pub fn build_extras(&self) -> TokenStream {
-        let name = self.gen_name();
-
+    pub fn build(&self, name: LitStr) -> TokenStream {
         let (squad_update_func, squad_update_value) = unwrap(self.build_extras_squad_update());
         let (language_changed_func, language_changed_value) =
             unwrap(self.build_extras_language_changed());
-        let init_func = self.build_extras_init(&name, squad_update_value, language_changed_value);
+        let (keybind_changed_func, keybind_changed_value) =
+            unwrap(self.build_extras_keybind_changed());
+        let init_func = self.build_extras_init(
+            name,
+            squad_update_value,
+            language_changed_value,
+            keybind_changed_value,
+        );
 
         quote! {
             #init_func
             #squad_update_func
             #language_changed_func
+            #keybind_changed_func
         }
     }
 
     /// Generates the extras init function.
     fn build_extras_init(
         &self,
-        name: &LitStr,
+        name: LitStr,
         squad_update: Option<TokenStream>,
         language_changed: Option<TokenStream>,
+        keybind_changed: Option<TokenStream>,
     ) -> TokenStream {
         let has_callback = squad_update.is_some() || language_changed.is_some();
         let squad_callback = squad_update.unwrap_or(quote! { None });
@@ -44,7 +66,7 @@ impl ArcDpsGen {
         // extras info may still be read afterwards
         let subscribe = quote! {
             if addon.check_compat() {
-                sub.subscribe(#name, #squad_callback, #lang_callback);
+                sub.subscribe(#name, #squad_callback, #lang_callback, #keybind_changed);
             }
         };
 
@@ -52,7 +74,6 @@ impl ArcDpsGen {
             let span = syn::Error::new_spanned(&raw, "").span();
             quote_spanned! {span=>
                 let raw = (#raw) as RawExtrasSubscriberInit;
-
                 raw(addon, sub)
             }
         } else if let Some(safe) = &self.extras_init {
@@ -116,6 +137,23 @@ impl ArcDpsGen {
                 quote_spanned! {span=>
                     unsafe extern "C" fn abstract_extras_language_changed(language: ::arcdps::api::Language) {
                         let safe = (#safe) as ExtrasLanguageChangedCallback;
+                        safe(language)
+                    }
+                }
+            },
+        )
+    }
+
+    /// Generates the extras keybind changed callback.
+    fn build_extras_keybind_changed(&self) -> Option<CallbackInfo> {
+        CallbackInfo::build_optional(
+            self.raw_extras_keybind_changed.as_ref(),
+            self.extras_keybind_changed.as_ref(),
+            quote! { abstract_extras_keybind_changed },
+            |safe, span| {
+                quote_spanned! {span=>
+                    unsafe extern "C" fn abstract_extras_keybind_changed(changed: ::arcdps::extras::keybinds::RawKeybindChanged) {
+                        let safe = (#safe) as ExtrasKeybindChangedCallback;
                         safe(language)
                     }
                 }
