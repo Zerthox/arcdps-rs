@@ -1,1 +1,0 @@
-initSidebarItems({"struct":[["Agent","Represents an agent in a combat event."],["AgentOwned","An [`Agent`] with an owned [`String`]. For more info see [`Agent`]."],["RawAgent",""]]});

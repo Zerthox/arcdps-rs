@@ -1,1 +1,1 @@
-initSidebarItems({"macro":[["export","Creates exports for ArcDPS."]]});
+initSidebarItems({"macro":[["export","Creates plugin exports for ArcDPS."]]});

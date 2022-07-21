@@ -229,7 +229,7 @@
     <span class="kw">fn</span> <span class="ident">wnd_wrapper</span>(<span class="ident">name</span>: <span class="ident">TokenStream</span>, <span class="ident">safe</span>: <span class="kw-2">&amp;</span><span class="ident">Expr</span>, <span class="ident">span</span>: <span class="ident">Span</span>) -&gt; <span class="ident">TokenStream</span> {
         <span class="macro">quote_spanned!</span> {<span class="ident">span</span>=&gt;
             <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span> #<span class="ident">name</span>(
-                <span class="ident">_h_wnd</span>: <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
+                <span class="ident">_h_wnd</span>: <span class="ident">HWND</span>,
                 <span class="ident">u_msg</span>: <span class="ident">u32</span>,
                 <span class="ident">w_param</span>: <span class="ident">WPARAM</span>,
                 <span class="ident">l_param</span>: <span class="ident">LPARAM</span>,
@@ -280,7 +280,7 @@
                 <span class="macro">quote_spanned!</span> {<span class="ident">span</span>=&gt;
                     <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span> <span class="ident">abstract_options_end</span>() {
                         <span class="kw">let</span> <span class="ident">safe</span> <span class="op">=</span> (#<span class="ident">safe</span>) <span class="kw">as</span> <span class="ident">OptionsCallback</span>;
-                        <span class="ident">safe</span>(<span class="ident">arcdps::__macro::ui</span>())
+                        <span class="ident">safe</span>(<span class="ident">::arcdps::__macro::ui</span>())
                     }
                 }
             },
@@ -297,7 +297,7 @@
                 <span class="macro">quote_spanned!</span> {<span class="ident">span</span>=&gt;
                     <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span> <span class="ident">abstract_imgui</span>(<span class="ident">loading</span>: <span class="ident">u32</span>) {
                         <span class="kw">let</span> <span class="ident">safe</span> <span class="op">=</span> (#<span class="ident">safe</span>) <span class="kw">as</span> <span class="ident">ImguiCallback</span>;
-                        <span class="ident">safe</span>(<span class="ident">arcdps::__macro::ui</span>(), <span class="ident">loading</span> <span class="op">!</span><span class="op">=</span> <span class="number">0</span>)
+                        <span class="ident">safe</span>(<span class="ident">::arcdps::__macro::ui</span>(), <span class="ident">loading</span> <span class="op">!</span><span class="op">=</span> <span class="number">0</span>)
                     }
                 }
             },
@@ -340,9 +340,9 @@
                 <span class="kw">let</span> <span class="ident">safe</span> <span class="op">=</span> (#<span class="ident">safe</span>) <span class="kw">as</span> <span class="ident">CombatCallback</span>;
 
                 <span class="ident">safe</span>(
-                    <span class="ident">event</span>.<span class="ident">map</span>(<span class="ident">Into::into</span>),
-                    <span class="ident">src</span>.<span class="ident">map</span>(<span class="ident">Into::into</span>),
-                    <span class="ident">dst</span>.<span class="ident">map</span>(<span class="ident">Into::into</span>),
+                    <span class="ident">event</span>.<span class="ident">clone</span>().<span class="ident">map</span>(<span class="ident">Into::into</span>),
+                    <span class="ident">src</span>.<span class="ident">clone</span>().<span class="ident">map</span>(<span class="ident">Into::into</span>),
+                    <span class="ident">dst</span>.<span class="ident">clone</span>().<span class="ident">map</span>(<span class="ident">Into::into</span>),
                     <span class="ident">::arcdps::__macro::str_from_cstr</span>(<span class="ident">skill_name</span>),
                     <span class="ident">id</span>,
                     <span class="ident">revision</span>
@@ -352,5 +352,5 @@
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="arcdps_codegen" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.62.0 (a8314ef7d 2022-06-27)" ></div>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="arcdps_codegen" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.62.1 (e092d0b6b 2022-07-16)" ></div>
 </body></html>

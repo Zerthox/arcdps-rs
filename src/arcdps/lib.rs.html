@@ -223,10 +223,117 @@
 <span id="218">218</span>
 <span id="219">219</span>
 <span id="220">220</span>
-</pre><pre class="rust"><code><span class="doccomment">//! ArcDPS bindings for Rust.</span>
+<span id="221">221</span>
+<span id="222">222</span>
+<span id="223">223</span>
+<span id="224">224</span>
+<span id="225">225</span>
+<span id="226">226</span>
+<span id="227">227</span>
+<span id="228">228</span>
+<span id="229">229</span>
+<span id="230">230</span>
+<span id="231">231</span>
+<span id="232">232</span>
+<span id="233">233</span>
+<span id="234">234</span>
+<span id="235">235</span>
+<span id="236">236</span>
+<span id="237">237</span>
+<span id="238">238</span>
+<span id="239">239</span>
+<span id="240">240</span>
+<span id="241">241</span>
+<span id="242">242</span>
+<span id="243">243</span>
+<span id="244">244</span>
+<span id="245">245</span>
+<span id="246">246</span>
+<span id="247">247</span>
+<span id="248">248</span>
+<span id="249">249</span>
+<span id="250">250</span>
+<span id="251">251</span>
+<span id="252">252</span>
+<span id="253">253</span>
+<span id="254">254</span>
+<span id="255">255</span>
+<span id="256">256</span>
+<span id="257">257</span>
+<span id="258">258</span>
+<span id="259">259</span>
+<span id="260">260</span>
+<span id="261">261</span>
+<span id="262">262</span>
+<span id="263">263</span>
+<span id="264">264</span>
+<span id="265">265</span>
+<span id="266">266</span>
+<span id="267">267</span>
+<span id="268">268</span>
+<span id="269">269</span>
+<span id="270">270</span>
+<span id="271">271</span>
+<span id="272">272</span>
+<span id="273">273</span>
+<span id="274">274</span>
+<span id="275">275</span>
+</pre><pre class="rust"><code><span class="doccomment">//! [ArcDPS](https://www.deltaconnected.com/arcdps/) bindings for Rust plugins.</span>
 <span class="doccomment">//!</span>
-<span class="doccomment">//! # Macro usage</span>
-<span class="doccomment">//! To see which fields are supported, have a look at [SupportedFields].</span>
+<span class="doccomment">//! # Usage</span>
+<span class="doccomment">//! Plugins export information for ArcDPS via the [`export!`] macro.</span>
+<span class="doccomment">//! To see which fields are supported by it, have a look at [`SupportedFields`].</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! ```</span>
+<span class="doccomment">//! use std::error::Error;</span>
+<span class="doccomment">//! use arcdps::{Agent, CombatEvent, StateChange};</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! arcdps::export! {</span>
+<span class="doccomment">//!     name: &quot;Example Plugin&quot;,</span>
+<span class="doccomment">//!     sig: 123, // change this to a random number</span>
+<span class="doccomment">//!     init,</span>
+<span class="doccomment">//!     combat: custom_combat_name,</span>
+<span class="doccomment">//! }</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! fn init() -&gt; Result&lt;(), Box&lt;dyn Error&gt;&gt; {</span>
+<span class="doccomment">//!     // may return an error to indicate load failure</span>
+<span class="doccomment">//!     Ok(())</span>
+<span class="doccomment">//! }</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! fn custom_combat_name(</span>
+<span class="doccomment">//!     event: Option&lt;CombatEvent&gt;,</span>
+<span class="doccomment">//!     src: Option&lt;Agent&gt;,</span>
+<span class="doccomment">//!     dst: Option&lt;Agent&gt;,</span>
+<span class="doccomment">//!     skill_name: Option&lt;&amp;str&gt;,</span>
+<span class="doccomment">//!     id: u64,</span>
+<span class="doccomment">//!     revision: u64,</span>
+<span class="doccomment">//! ) {</span>
+<span class="doccomment">//!     if let StateChange::EnterCombat = event.is_statechange {</span>
+<span class="doccomment">//!         // source agent has entered combat</span>
+<span class="doccomment">//!     }</span>
+<span class="doccomment">//! }</span>
+<span class="doccomment">//! ```</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! # Unofficial Extras</span>
+<span class="doccomment">//! [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases) support is hidden behind the `extras` feature flag.</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! ```</span>
+<span class="doccomment">//! use arcdps::extras::{UserInfoIter, UserRole};</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! arcdps::export! {</span>
+<span class="doccomment">//!     name: &quot;Example Plugin&quot;,</span>
+<span class="doccomment">//!     sig: 123,</span>
+<span class="doccomment">//!     extras_squad_update,</span>
+<span class="doccomment">//! }</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! fn extras_squad_update(users: UserInfoIter) {</span>
+<span class="doccomment">//!     for user in users {</span>
+<span class="doccomment">//!         if let UserRole::SquadLeader | UserRole::Lieutenant = user.role {</span>
+<span class="doccomment">//!             // user can place markers</span>
+<span class="doccomment">//!         }</span>
+<span class="doccomment">//!     }</span>
+<span class="doccomment">//! }</span>
+<span class="doccomment">//! ```</span>
 
 <span class="attribute">#![<span class="ident">allow</span>(<span class="ident">clippy::missing_safety_doc</span>)]</span>
 
@@ -241,7 +348,10 @@
 <span class="kw">mod</span> <span class="ident">panic</span>;
 <span class="kw">mod</span> <span class="ident">util</span>;
 
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">api</span>::{<span class="ident">evtc</span>::<span class="kw-2">*</span>, <span class="ident">game</span>::<span class="kw-2">*</span>, <span class="ident">Agent</span>, <span class="ident">AgentOwned</span>, <span class="ident">CombatEvent</span>};
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">api</span>::{
+    <span class="ident">Activation</span>, <span class="ident">Affinity</span>, <span class="ident">Agent</span>, <span class="ident">AgentOwned</span>, <span class="ident">Attribute</span>, <span class="ident">BuffCategory</span>, <span class="ident">BuffCycle</span>, <span class="ident">BuffRemove</span>,
+    <span class="ident">CombatEvent</span>, <span class="ident">CustomSkill</span>, <span class="ident">Language</span>, <span class="ident">Profession</span>, <span class="ident">Specialization</span>, <span class="ident">StateChange</span>, <span class="ident">Strike</span>,
+};
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">arcdps_codegen::export</span>;
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">arcdps_imgui</span> <span class="kw">as</span> <span class="ident">imgui</span>;
 
@@ -269,7 +379,7 @@
     <span class="kw">pub</span> <span class="ident">release</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ReleaseFunc</span><span class="op">&gt;</span>,
 
     <span class="doccomment">/// Raw WndProc callback.</span>
-    <span class="kw">pub</span> <span class="ident">raw_wnd_nofilter</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RawWndprocCallback</span><span class="op">&gt;</span>,
+    <span class="kw">pub</span> <span class="ident">raw_wnd_nofilter</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RawWndProcCallback</span><span class="op">&gt;</span>,
 
     <span class="doccomment">/// Raw Imgui callback.</span>
     <span class="kw">pub</span> <span class="ident">raw_imgui</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RawImguiCallback</span><span class="op">&gt;</span>,
@@ -281,7 +391,7 @@
     <span class="kw">pub</span> <span class="ident">raw_combat</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RawCombatCallback</span><span class="op">&gt;</span>,
 
     <span class="doccomment">/// Raw filtered WndProc callback.</span>
-    <span class="kw">pub</span> <span class="ident">raw_wnd_filter</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RawWndprocCallback</span><span class="op">&gt;</span>,
+    <span class="kw">pub</span> <span class="ident">raw_wnd_filter</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RawWndProcCallback</span><span class="op">&gt;</span>,
 
     <span class="doccomment">/// Raw options windows callback.</span>
     <span class="kw">pub</span> <span class="ident">raw_options_windows</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RawOptionsWindowsCallback</span><span class="op">&gt;</span>,
@@ -444,5 +554,5 @@
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="arcdps" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.62.0 (a8314ef7d 2022-06-27)" ></div>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="arcdps" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.62.1 (e092d0b6b 2022-07-16)" ></div>
 </body></html>

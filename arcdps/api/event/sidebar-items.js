@@ -1,1 +1,0 @@
-initSidebarItems({"struct":[["CombatEvent","ArcDPS Combat event."],["RawCombatEvent",""]]});
