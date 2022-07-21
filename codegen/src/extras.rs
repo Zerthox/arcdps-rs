@@ -154,7 +154,7 @@ impl ExtrasGen {
             quote! { abstract_extras_keybind_changed },
             |safe, span| {
                 quote_spanned! {span=>
-                    unsafe extern "C" fn abstract_extras_keybind_changed(changed: ::arcdps::extras::keybinds::RawKeybindChanged) {
+                    unsafe extern "C" fn abstract_extras_keybind_changed(changed: ::arcdps::extras::keybinds::RawKeybindChange) {
                         let safe = (#safe) as ExtrasKeybindChangedCallback;
                         safe(language)
                     }
