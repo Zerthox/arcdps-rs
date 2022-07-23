@@ -24,7 +24,12 @@ impl Log for WindowLogger {
 
     fn log(&self, record: &Record) {
         // TODO: coloring
-        let message = format!("{} {}: {}", self.name, record.level(), record.args());
+        let message = format!(
+            "{} {}: {}",
+            self.name,
+            record.level().to_string().to_lowercase(),
+            record.args()
+        );
         let _ = log_to_window(message);
     }
 

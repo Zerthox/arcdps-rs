@@ -300,7 +300,10 @@ pub mod __macro {
         // only set logger if export e8 was found
         #[cfg(feature = "log")]
         if ARC_INSTANCE.e8.is_some() {
-            let _ = log::set_boxed_logger(Box::new(WindowLogger::new(name)));
+            let result = log::set_boxed_logger(Box::new(WindowLogger::new(name)));
+            if result.is_ok() {
+                log::set_max_level(log::LevelFilter::Trace);
+            }
         }
     }
 
