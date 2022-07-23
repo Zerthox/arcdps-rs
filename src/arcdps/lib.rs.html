@@ -315,6 +315,9 @@
 <span id="310">310</span>
 <span id="311">311</span>
 <span id="312">312</span>
+<span id="313">313</span>
+<span id="314">314</span>
+<span id="315">315</span>
 </pre><pre class="rust"><code><span class="doccomment">//! [ArcDPS](https://www.deltaconnected.com/arcdps/) bindings for Rust plugins.</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! # Usage</span>
@@ -617,7 +620,10 @@
         <span class="comment">// only set logger if export e8 was found</span>
         <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;log&quot;</span>)]</span>
         <span class="kw">if</span> <span class="ident">ARC_INSTANCE</span>.<span class="ident">e8</span>.<span class="ident">is_some</span>() {
-            <span class="kw">let</span> <span class="kw">_</span> <span class="op">=</span> <span class="ident">log::set_boxed_logger</span>(<span class="ident">Box::new</span>(<span class="ident">WindowLogger::new</span>(<span class="ident">name</span>)));
+            <span class="kw">let</span> <span class="ident">result</span> <span class="op">=</span> <span class="ident">log::set_boxed_logger</span>(<span class="ident">Box::new</span>(<span class="ident">WindowLogger::new</span>(<span class="ident">name</span>)));
+            <span class="kw">if</span> <span class="ident">result</span>.<span class="ident">is_ok</span>() {
+                <span class="ident">log::set_max_level</span>(<span class="ident">log::LevelFilter::Trace</span>);
+            }
         }
     }
 
