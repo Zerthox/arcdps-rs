@@ -13,6 +13,7 @@ If you are looking to migrate, see [Migrating from Greaka's bindings](./docs/mig
 - ImGui interfacing via [imgui-rs](https://github.com/imgui-rs/imgui-rs)
 - Versioning via `Cargo.toml`
 - Optional [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases) support
+- Optional logging via [log](https://github.com/rust-lang/log)
 - Optional [serde](https://serde.rs/) and [strum](https://docs.rs/strum/latest/strum/) integration
 - Optional access to raw C interface of ArcDPS
 

@@ -66,6 +66,9 @@ pub mod exports;
 #[cfg(feature = "extras")]
 pub mod extras;
 
+#[cfg(feature = "log")]
+pub mod log;
+
 mod instance;
 mod panic;
 mod util;
@@ -271,6 +274,9 @@ pub mod __macro {
     };
     use prelude::*;
 
+    #[cfg(feature = "log")]
+    use crate::log::WindowLogger;
+
     /// Internally used function to initialize with information received from Arc.
     #[inline]
     pub unsafe fn init(
@@ -282,9 +288,20 @@ pub mod __macro {
         _id3d: *mut c_void,
         name: &'static str,
     ) {
+        // arc exports have to be retrieved before panic hook & logging
         init_imgui(imgui_ctx, malloc, free);
         ARC_INSTANCE.init(arc_handle, str_from_cstr(arc_version));
-        init_panic_hook(name);
+
+        // only set panic hook if export e3 was found
+        if ARC_INSTANCE.e3.is_some() {
+            init_panic_hook(name);
+        }
+
+        // only set logger if export e8 was found
+        #[cfg(feature = "log")]
+        if ARC_INSTANCE.e8.is_some() {
+            let _ = log::set_boxed_logger(Box::new(WindowLogger::new(name)));
+        }
     }
 
     /// Internally used function to retrieve the [`imgui::Ui`].
