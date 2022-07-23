@@ -1,5 +1,5 @@
 var sourcesIndex = {};
-sourcesIndex["arcdps"] = {"name":"","dirs":[{"name":"api","files":["agent.rs","event.rs","evtc.rs","game.rs","mod.rs"]},{"name":"exports","files":["mod.rs","raw.rs"]},{"name":"extras","files":["callbacks.rs","exports.rs","keybinds.rs","message.rs","mod.rs","user.rs"]}],"files":["callbacks.rs","instance.rs","lib.rs","panic.rs","util.rs"]};
+sourcesIndex["arcdps"] = {"name":"","dirs":[{"name":"api","files":["agent.rs","event.rs","evtc.rs","game.rs","mod.rs"]},{"name":"exports","files":["mod.rs","raw.rs"]},{"name":"extras","files":["callbacks.rs","exports.rs","keybinds.rs","message.rs","mod.rs","user.rs"]}],"files":["callbacks.rs","instance.rs","lib.rs","log.rs","panic.rs","util.rs"]};
 sourcesIndex["arcdps_codegen"] = {"name":"","files":["callbacks.rs","export.rs","extras.rs","lib.rs","parse.rs"]};
 sourcesIndex["arcdps_imgui"] = {"name":"","dirs":[{"name":"fonts","files":["atlas.rs","font.rs","glyph.rs","glyph_ranges.rs","mod.rs"]},{"name":"input","files":["keyboard.rs","mod.rs","mouse.rs"]},{"name":"render","files":["draw_data.rs","mod.rs","renderer.rs"]},{"name":"widget","files":["color_editors.rs","combo_box.rs","drag.rs","image.rs","list_box.rs","menu.rs","misc.rs","mod.rs","progress_bar.rs","selectable.rs","slider.rs","tab.rs","text.rs","tree.rs"]},{"name":"window","files":["child_window.rs","content_region.rs","mod.rs","scroll.rs"]}],"files":["clipboard.rs","color.rs","columns.rs","context.rs","drag_drop.rs","draw_list.rs","input_widget.rs","internal.rs","io.rs","layout.rs","lib.rs","list_clipper.rs","plothistogram.rs","plotlines.rs","popups.rs","stacks.rs","string.rs","style.rs","tables.rs","tokens.rs","utils.rs"]};
 sourcesIndex["arcdps_imgui_sys"] = {"name":"","files":["bindings.rs","lib.rs"]};
@@ -9,6 +9,7 @@ sourcesIndex["chlorine"] = {"name":"","files":["lib.rs"]};
 sourcesIndex["heck"] = {"name":"","files":["kebab.rs","lib.rs","lower_camel.rs","shouty_kebab.rs","shouty_snake.rs","snake.rs","title.rs","upper_camel.rs"]};
 sourcesIndex["instant"] = {"name":"","files":["lib.rs","native.rs"]};
 sourcesIndex["lock_api"] = {"name":"","files":["lib.rs","mutex.rs","remutex.rs","rwlock.rs"]};
+sourcesIndex["log"] = {"name":"","files":["lib.rs","macros.rs"]};
 sourcesIndex["num_enum"] = {"name":"","files":["lib.rs"]};
 sourcesIndex["num_enum_derive"] = {"name":"","files":["lib.rs"]};
 sourcesIndex["parking_lot"] = {"name":"","files":["condvar.rs","deadlock.rs","elision.rs","fair_mutex.rs","lib.rs","mutex.rs","once.rs","raw_fair_mutex.rs","raw_mutex.rs","raw_rwlock.rs","remutex.rs","rwlock.rs","util.rs"]};

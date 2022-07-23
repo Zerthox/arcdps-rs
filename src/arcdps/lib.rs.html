@@ -298,6 +298,23 @@
 <span id="293">293</span>
 <span id="294">294</span>
 <span id="295">295</span>
+<span id="296">296</span>
+<span id="297">297</span>
+<span id="298">298</span>
+<span id="299">299</span>
+<span id="300">300</span>
+<span id="301">301</span>
+<span id="302">302</span>
+<span id="303">303</span>
+<span id="304">304</span>
+<span id="305">305</span>
+<span id="306">306</span>
+<span id="307">307</span>
+<span id="308">308</span>
+<span id="309">309</span>
+<span id="310">310</span>
+<span id="311">311</span>
+<span id="312">312</span>
 </pre><pre class="rust"><code><span class="doccomment">//! [ArcDPS](https://www.deltaconnected.com/arcdps/) bindings for Rust plugins.</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! # Usage</span>
@@ -366,6 +383,9 @@
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;extras&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">extras</span>;
 
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;log&quot;</span>)]</span>
+<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">log</span>;
+
 <span class="kw">mod</span> <span class="ident">instance</span>;
 <span class="kw">mod</span> <span class="ident">panic</span>;
 <span class="kw">mod</span> <span class="ident">util</span>;
@@ -403,7 +423,7 @@
     <span class="doccomment">/// Raw WndProc callback.</span>
     <span class="kw">pub</span> <span class="ident">raw_wnd_nofilter</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RawWndProcCallback</span><span class="op">&gt;</span>,
 
-    <span class="doccomment">/// Raw Imgui callback.</span>
+    <span class="doccomment">/// Raw ImGui callback.</span>
     <span class="kw">pub</span> <span class="ident">raw_imgui</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RawImguiCallback</span><span class="op">&gt;</span>,
 
     <span class="doccomment">/// Raw options callback.</span>
@@ -571,6 +591,9 @@
     };
     <span class="kw">use</span> <span class="ident">prelude</span>::<span class="kw-2">*</span>;
 
+    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;log&quot;</span>)]</span>
+    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::log::WindowLogger</span>;
+
     <span class="doccomment">/// Internally used function to initialize with information received from Arc.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">init</span>(
@@ -582,9 +605,20 @@
         <span class="ident">_id3d</span>: <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
         <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>,
     ) {
+        <span class="comment">// arc exports have to be retrieved before panic hook &amp; logging</span>
         <span class="ident">init_imgui</span>(<span class="ident">imgui_ctx</span>, <span class="ident">malloc</span>, <span class="ident">free</span>);
         <span class="ident">ARC_INSTANCE</span>.<span class="ident">init</span>(<span class="ident">arc_handle</span>, <span class="ident">str_from_cstr</span>(<span class="ident">arc_version</span>));
-        <span class="ident">init_panic_hook</span>(<span class="ident">name</span>);
+
+        <span class="comment">// only set panic hook if export e3 was found</span>
+        <span class="kw">if</span> <span class="ident">ARC_INSTANCE</span>.<span class="ident">e3</span>.<span class="ident">is_some</span>() {
+            <span class="ident">init_panic_hook</span>(<span class="ident">name</span>);
+        }
+
+        <span class="comment">// only set logger if export e8 was found</span>
+        <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;log&quot;</span>)]</span>
+        <span class="kw">if</span> <span class="ident">ARC_INSTANCE</span>.<span class="ident">e8</span>.<span class="ident">is_some</span>() {
+            <span class="kw">let</span> <span class="kw">_</span> <span class="op">=</span> <span class="ident">log::set_boxed_logger</span>(<span class="ident">Box::new</span>(<span class="ident">WindowLogger::new</span>(<span class="ident">name</span>)));
+        }
     }
 
     <span class="doccomment">/// Internally used function to retrieve the [`imgui::Ui`].</span>

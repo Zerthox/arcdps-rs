@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["WindowLogger","A logger logging to ArcDPS’ log window."]]});
