@@ -24,7 +24,7 @@ ArcDPS' exports now have proper safe abstractions and are available under [`arcd
 You can find raw versions of them in [`arcdps::exports::raw`](https://zerthox.github.io/arcdps-bindings/arcdps/exports/raw/).
 
 ## Unofficial Extras
-Support for [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases) is hidden behind the `extras` [feature flag](https://doc.rust-lang.org/cargo/reference/features.html) now.
+Support for [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases) is hidden behind the `extras` [feature](https://doc.rust-lang.org/cargo/reference/features.html) now.
 After enabling it, everything specific to Unofficial Extras is available in the [`arcdps::extras`](https://zerthox.github.io/arcdps-bindings/arcdps/extras/) module.
 
 The names of the callbacks have been shortened from for example `unofficial_extras_squad_update` to just `extras_squad_update`.
@@ -34,3 +34,8 @@ It now receives [`ExtrasAddonInfo`](https://zerthox.github.io/arcdps-bindings/ar
 The account name of the current player is passed separately as second parameter.
 
 The bindings are updated to support more recent versions of Unofficial Extras and the added callbacks.
+
+## Logging
+Logging is hidden behind the `log` [feature](https://doc.rust-lang.org/cargo/reference/features.html) now.
+It will only log to ArcDPS' log window and no longer includes filename and line numbers in the messages.
+You can log messages to the `arcdps.log` file using [`log_to_file`](https://zerthox.github.io/arcdps-bindings/arcdps/exports/fn.log_to_file.html) (or its corresponding raw version).
