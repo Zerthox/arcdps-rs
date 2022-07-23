@@ -1,3 +1,7 @@
+//! Logging via the [`log`] crate.
+//!
+//! *Requires the `"log"` feature.*
+
 use crate::exports::log_to_window;
 use log::{Log, Metadata, Record};
 
