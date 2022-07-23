@@ -103,7 +103,7 @@ pub struct SupportedFields {
     /// Raw WndProc callback.
     pub raw_wnd_nofilter: Option<RawWndProcCallback>,
 
-    /// Raw Imgui callback.
+    /// Raw ImGui callback.
     pub raw_imgui: Option<RawImguiCallback>,
 
     /// Raw options callback.

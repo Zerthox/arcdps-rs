@@ -10,7 +10,7 @@ If you are looking to migrate, see [Migrating from Greaka's bindings](./docs/mig
 
 ## Features
 - Rust abstractions for ArcDPS callbacks, types and exports
-- Imgui interfacing via [imgui-rs](https://github.com/imgui-rs/imgui-rs)
+- ImGui interfacing via [imgui-rs](https://github.com/imgui-rs/imgui-rs)
 - Versioning via `Cargo.toml`
 - Optional [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases) support
 - Optional [serde](https://serde.rs/) and [strum](https://docs.rs/strum/latest/strum/) integration

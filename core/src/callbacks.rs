@@ -18,9 +18,9 @@ pub struct ArcDpsExport {
     /// Pick a random number that is not used by other modules.
     pub sig: u32,
 
-    /// Imgui version number.
+    /// ImGui version number.
     ///
-    /// Set to `18000` if you do not use Imgui (as of 2021-02-02).
+    /// Set to `18000` if you do not use ImGui (as of 2021-02-02).
     pub imgui_version: u32,
 
     /// Plugin name string.
@@ -41,7 +41,7 @@ pub struct ArcDpsExport {
     /// Return is ignored.
     pub combat: Option<RawCombatCallback>,
 
-    /// Imgui callback.
+    /// ImGui callback.
     pub imgui: Option<RawImguiCallback>,
 
     /// Options callback.

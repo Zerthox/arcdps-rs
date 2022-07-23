@@ -15,15 +15,34 @@ pub static mut ARC_INSTANCE: ArcInstance = ArcInstance::empty();
 // TODO: should we move other globals from codegen here? or move this to codegen?
 #[derive(Debug)]
 pub struct ArcInstance {
+    /// Handle to ArcDPS dll.
     pub handle: HINSTANCE,
+
+    /// ArcDPS version as string.
     pub version: Option<&'static str>,
+
+    /// [`imgui::Ui`] kept in memory between renders.
     pub ui: Option<imgui::Ui<'static>>,
+
+    /// Config path export.
     pub e0: Option<Export0>,
+
+    /// Log file export.
     pub e3: Option<Export3>,
+
+    /// Colors export.
     pub e5: Option<Export5>,
+
+    /// Ui settings export.
     pub e6: Option<Export6>,
+
+    /// Modifiers export.
     pub e7: Option<Export7>,
+
+    /// Log window export.
     pub e8: Option<Export8>,
+
+    /// Add event export.
     pub e9: Option<Export9>,
 }
 
@@ -68,10 +87,10 @@ impl ArcInstance {
 pub type MallocFn = unsafe extern "C" fn(size: usize, user_data: *mut c_void) -> *mut c_void;
 pub type FreeFn = unsafe extern "C" fn(ptr: *mut c_void, user_data: *mut c_void);
 
-/// Imgui context.
+/// ImGui context.
 pub static mut IG_CONTEXT: Option<imgui::Context> = None;
 
-/// Helper to initialize Imgui.
+/// Helper to initialize ImGui.
 pub unsafe fn init_imgui(
     ctx: *mut imgui::sys::ImGuiContext,
     malloc: Option<MallocFn>,
