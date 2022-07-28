@@ -16,6 +16,7 @@ use raw::{
 use std::{
     ffi::{CString, NulError, OsString},
     mem::MaybeUninit,
+    ops::RangeInclusive,
     os::windows::prelude::*,
     path::PathBuf,
     slice,
@@ -85,6 +86,9 @@ pub struct Colors {
 }
 
 impl Colors {
+    /// Range of valid subgroups.
+    const SUB_RANGE: RangeInclusive<usize> = 0..=15;
+
     /// Reads a color from the raw color array.
     ///
     /// The first index is the index of the subarray.
@@ -132,7 +136,7 @@ impl Colors {
     /// Also returns [`None`] if the subgroup is out of the game subgroup range.
     pub fn sub_base(&self, sub: usize) -> Option<Color> {
         // range check
-        if sub != 0 && sub <= 15 {
+        if Self::SUB_RANGE.contains(&sub) {
             unsafe { self.read_color(3, sub) }
         } else {
             None
@@ -145,7 +149,7 @@ impl Colors {
     /// Also returns [`None`] if the subgroup is out of the game subgroup range.
     pub fn sub_highlight(&self, sub: usize) -> Option<Color> {
         // range check
-        if sub != 0 && sub <= 15 {
+        if Self::SUB_RANGE.contains(&sub) {
             unsafe { self.read_color(4, sub) }
         } else {
             None
