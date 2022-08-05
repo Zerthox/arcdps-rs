@@ -24,4 +24,4 @@ pub type ExtrasKeybindChangedCallback = fn(changed: KeybindChange);
 
 pub type RawExtrasChatMessageCallback =
     unsafe extern "C" fn(chat_message: *const RawChatMessageInfo);
-pub type ExtrasChatMessageCallback = fn(chat_message_info: ChatMessageInfo);
+pub type ExtrasChatMessageCallback = fn(chat_message_info: &ChatMessageInfo);
