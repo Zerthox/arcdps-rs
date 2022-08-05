@@ -14,7 +14,7 @@ pub use user::*;
 
 use crate::util::str_from_cstr;
 use callbacks::{
-    RawExtrasKeybindChangedCallback, RawExtrasLanguageChangedCallback, RawExtrasSquadUpdateCallback,
+    RawExtrasKeybindChangedCallback, RawExtrasLanguageChangedCallback, RawExtrasSquadUpdateCallback, RawExtrasChatMessageCallback,
 };
 use std::os::raw::c_char;
 use windows::Win32::Foundation::HINSTANCE;
@@ -138,6 +138,9 @@ pub struct ExtrasSubscriberInfo {
     /// After initialization this is called for every current keybind that exists.
     /// If you want to get a single keybind, at any time you want, call the exported function.
     pub keybind_changed_callback: Option<RawExtrasKeybindChangedCallback>,
+
+    /// Called whenever a chat message is sent in your party/squad
+    pub chat_message_callback: Option<RawChatMessageCallbackSignature>,
 }
 
 impl ExtrasSubscriberInfo {
@@ -150,11 +153,13 @@ impl ExtrasSubscriberInfo {
         squad_update: Option<RawExtrasSquadUpdateCallback>,
         language_changed: Option<RawExtrasLanguageChangedCallback>,
         keybind_changed: Option<RawExtrasKeybindChangedCallback>,
+        chat_message: Option<RawExtrasChatMessageCallback>,
     ) {
         self.header.info_version = SUB_INFO_VERSION;
         self.subscriber_name = name.as_ptr() as *const c_char;
         self.squad_update_callback = squad_update;
         self.language_changed_callback = language_changed;
         self.keybind_changed_callback = keybind_changed;
+        self.chat_message_callback = chat_message;
     }
 }

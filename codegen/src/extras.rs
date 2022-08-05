@@ -16,6 +16,9 @@ pub(crate) struct ExtrasGen {
 
     pub raw_extras_keybind_changed: Option<Expr>,
     pub extras_keybind_changed: Option<Expr>,
+
+    pub raw_extras_chat_message: Option<Expr>,
+    pub extras_chat_message: Option<Expr>,
 }
 
 /// Helper to unwrap an optional callback.
@@ -35,11 +38,14 @@ impl ExtrasGen {
             unwrap(self.build_extras_language_changed());
         let (keybind_changed_func, keybind_changed_value) =
             unwrap(self.build_extras_keybind_changed());
+        let (chat_message_func, chat_message_value) =
+            unwrap(self.build_extras_chat_message());
         let init_func = self.build_extras_init(
             name,
             squad_update_value,
             language_changed_value,
             keybind_changed_value,
+            chat_message_value,
         );
 
         quote! {
@@ -47,6 +53,7 @@ impl ExtrasGen {
             #squad_update_func
             #language_changed_func
             #keybind_changed_func
+            #chat_message_func
         }
     }
 
@@ -57,18 +64,20 @@ impl ExtrasGen {
         squad_update: Option<TokenStream>,
         language_changed: Option<TokenStream>,
         keybind_changed: Option<TokenStream>,
+        chat_message: Option<TokenStream>,
     ) -> TokenStream {
         let has_callback =
             squad_update.is_some() || language_changed.is_some() || keybind_changed.is_some();
         let squad_callback = squad_update.unwrap_or(quote! { None });
         let lang_callback = language_changed.unwrap_or(quote! { None });
         let keybind_callback = keybind_changed.unwrap_or(quote! { None });
+        let chat_callback = chat_message.unwrap_or(quote! { None });
 
         // we only subscribe if compat check passes
         // extras info may still be read afterwards
         let subscribe = quote! {
             if addon.check_compat() {
-                sub.subscribe(#name, #squad_callback, #lang_callback, #keybind_callback);
+                sub.subscribe(#name, #squad_callback, #lang_callback, #keybind_callback, #chat_callback);
             }
         };
 
@@ -157,6 +166,23 @@ impl ExtrasGen {
                     unsafe extern "C" fn abstract_extras_keybind_changed(changed: ::arcdps::extras::keybinds::RawKeybindChange) {
                         let safe = (#safe) as ExtrasKeybindChangedCallback;
                         safe(changed.into())
+                    }
+                }
+            },
+        )
+    }
+
+    /// Generates the extras chat message callback.
+    fn build_extras_chat_message(&self) -> Option<CallbackInfo> {
+        CallbackInfo::build_optional(
+            self.raw_extras_chat_message.as_ref(),
+            self.extras_chat_message.as_ref(),
+            quote! { abstract_extras_chat_message },
+            |safe, span| {
+                quote_spanned! {span=>
+                    unsafe extern "C" fn abstract_extras_chat_message(info: ::arcdps::extras::message::RawChatMessageInfo) {
+                        let safe = (#safe) as ExtrasChatMessageCallback;
+                        safe(info.into())
                     }
                 }
             },
