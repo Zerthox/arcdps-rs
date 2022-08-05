@@ -38,8 +38,7 @@ impl ExtrasGen {
             unwrap(self.build_extras_language_changed());
         let (keybind_changed_func, keybind_changed_value) =
             unwrap(self.build_extras_keybind_changed());
-        let (chat_message_func, chat_message_value) =
-            unwrap(self.build_extras_chat_message());
+        let (chat_message_func, chat_message_value) = unwrap(self.build_extras_chat_message());
         let init_func = self.build_extras_init(
             name,
             squad_update_value,

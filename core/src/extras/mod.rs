@@ -14,7 +14,8 @@ pub use user::*;
 
 use crate::util::str_from_cstr;
 use callbacks::{
-    RawExtrasKeybindChangedCallback, RawExtrasLanguageChangedCallback, RawExtrasSquadUpdateCallback, RawExtrasChatMessageCallback,
+    RawExtrasChatMessageCallback, RawExtrasKeybindChangedCallback,
+    RawExtrasLanguageChangedCallback, RawExtrasSquadUpdateCallback,
 };
 use std::os::raw::c_char;
 use windows::Win32::Foundation::HINSTANCE;
@@ -140,7 +141,7 @@ pub struct ExtrasSubscriberInfo {
     pub keybind_changed_callback: Option<RawExtrasKeybindChangedCallback>,
 
     /// Called whenever a chat message is sent in your party/squad
-    pub chat_message_callback: Option<RawChatMessageCallbackSignature>,
+    pub chat_message_callback: Option<RawExtrasChatMessageCallback>,
 }
 
 impl ExtrasSubscriberInfo {
