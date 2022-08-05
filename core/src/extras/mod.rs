@@ -5,8 +5,8 @@
 pub mod callbacks;
 pub mod exports;
 pub mod keybinds;
+pub mod message;
 
-mod message;
 mod user;
 
 pub use keybinds::{Control, Key, KeyCode, KeybindChange, MouseCode};
