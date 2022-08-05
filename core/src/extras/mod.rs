@@ -26,7 +26,7 @@ use serde::{Deserialize, Serialize};
 const API_VERSION: u32 = 2;
 
 /// Supported [`ExtrasSubscriberInfo`] version.
-const SUB_INFO_VERSION: u32 = 1;
+const SUB_INFO_VERSION: u32 = 2;
 
 /// Helper to check compatibility.
 fn check_compat(api_version: u32, sub_info_version: u32) -> bool {
