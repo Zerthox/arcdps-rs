@@ -181,7 +181,7 @@ impl ExtrasGen {
                 quote_spanned! {span=>
                     unsafe extern "C" fn abstract_extras_chat_message(info: *const ::arcdps::extras::message::RawChatMessageInfo) {
                         let safe = (#safe) as ExtrasChatMessageCallback;
-                        safe(info.into())
+                        safe(&(*info).into())
                     }
                 }
             },
