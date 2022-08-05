@@ -205,6 +205,12 @@ pub struct SupportedFields {
     #[cfg(feature = "extras")]
     pub raw_extras_keybind_changed: Option<RawExtrasKeybindChangedCallback>,
 
+    /// Raw extras chat message callback.
+    ///
+    /// *Requires the `"extras"` feature.*
+    #[cfg(feature = "extras")]
+    pub raw_extras_chat_message: Option<RawExtrasChatMessageCallback>,
+
     /// Initialization callback for [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases).
     ///
     /// Can be called before or after ArcDPS [`init`](Self::init).
@@ -245,6 +251,14 @@ pub struct SupportedFields {
     /// *Requires the `"extras"` feature.*
     #[cfg(feature = "extras")]
     pub extras_keybind_changed: Option<ExtrasKeybindChangedCallback>,
+
+    /// Chat message callback for [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases).
+    ///
+    /// Called whenever a chat message is sent in your party/squad
+    ///
+    /// *Requires the `"extras"` feature.*
+    #[cfg(feature = "extras")]
+    pub extras_chat_messaage: Option<ExtrasChatMessageCallback>,
 }
 
 /// Exports for usage in macros.
