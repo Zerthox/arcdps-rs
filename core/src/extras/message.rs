@@ -46,8 +46,8 @@ pub struct ChatMessageInfo<'a> {
     pub text: &'a str,
 }
 
-impl From<RawChatMessageInfo> for ChatMessageInfo<'_> {
-    fn from(raw: RawChatMessageInfo) -> Self {
+impl From<&RawChatMessageInfo> for ChatMessageInfo<'_> {
+    fn from(raw: &RawChatMessageInfo) -> Self {
         let timestamp = unsafe { get_str_from_ptr_and_len(raw.timestamp, raw.timestamp_length) };
         let timestamp = chrono::DateTime::parse_from_rfc3339(timestamp).unwrap();
 
