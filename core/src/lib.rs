@@ -258,7 +258,7 @@ pub struct SupportedFields {
     ///
     /// *Requires the `"extras"` feature.*
     #[cfg(feature = "extras")]
-    pub extras_chat_messaage: Option<ExtrasChatMessageCallback>,
+    pub extras_chat_message: Option<ExtrasChatMessageCallback>,
 }
 
 /// Exports for usage in macros.
