@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["deserialize","Deserialize a `NaiveDateTime` from a second timestamp or none"],["serialize","Serialize a datetime into an integer number of seconds since the epoch or none"]]});

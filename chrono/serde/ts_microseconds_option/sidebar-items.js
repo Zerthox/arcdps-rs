@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["deserialize","Deserialize a `DateTime` from a microsecond timestamp or none"],["serialize","Serialize a UTC datetime into an integer number of microseconds since the epoch or none"]]});

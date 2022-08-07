@@ -163,6 +163,12 @@
 <span id="158">158</span>
 <span id="159">159</span>
 <span id="160">160</span>
+<span id="161">161</span>
+<span id="162">162</span>
+<span id="163">163</span>
+<span id="164">164</span>
+<span id="165">165</span>
+<span id="166">166</span>
 </pre><pre class="rust"><code><span class="doccomment">//! [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases) support.</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! *Requires the `&quot;extras&quot;` feature.*</span>
@@ -170,8 +176,8 @@
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">callbacks</span>;
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">exports</span>;
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">keybinds</span>;
+<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">message</span>;
 
-<span class="kw">mod</span> <span class="ident">message</span>;
 <span class="kw">mod</span> <span class="ident">user</span>;
 
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">keybinds</span>::{<span class="ident">Control</span>, <span class="ident">Key</span>, <span class="ident">KeyCode</span>, <span class="ident">KeybindChange</span>, <span class="ident">MouseCode</span>};
@@ -179,7 +185,8 @@
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::util::str_from_cstr</span>;
 <span class="kw">use</span> <span class="ident">callbacks</span>::{
-    <span class="ident">RawExtrasKeybindChangedCallback</span>, <span class="ident">RawExtrasLanguageChangedCallback</span>, <span class="ident">RawExtrasSquadUpdateCallback</span>,
+    <span class="ident">RawExtrasChatMessageCallback</span>, <span class="ident">RawExtrasKeybindChangedCallback</span>,
+    <span class="ident">RawExtrasLanguageChangedCallback</span>, <span class="ident">RawExtrasSquadUpdateCallback</span>,
 };
 <span class="kw">use</span> <span class="ident">std::os::raw::c_char</span>;
 <span class="kw">use</span> <span class="ident">windows::Win32::Foundation::HINSTANCE</span>;
@@ -191,7 +198,7 @@
 <span class="kw">const</span> <span class="ident">API_VERSION</span>: <span class="ident">u32</span> <span class="op">=</span> <span class="number">2</span>;
 
 <span class="doccomment">/// Supported [`ExtrasSubscriberInfo`] version.</span>
-<span class="kw">const</span> <span class="ident">SUB_INFO_VERSION</span>: <span class="ident">u32</span> <span class="op">=</span> <span class="number">1</span>;
+<span class="kw">const</span> <span class="ident">SUB_INFO_VERSION</span>: <span class="ident">u32</span> <span class="op">=</span> <span class="number">2</span>;
 
 <span class="doccomment">/// Helper to check compatibility.</span>
 <span class="kw">fn</span> <span class="ident">check_compat</span>(<span class="ident">api_version</span>: <span class="ident">u32</span>, <span class="ident">sub_info_version</span>: <span class="ident">u32</span>) -&gt; <span class="ident">bool</span> {
@@ -303,6 +310,9 @@
     <span class="doccomment">/// After initialization this is called for every current keybind that exists.</span>
     <span class="doccomment">/// If you want to get a single keybind, at any time you want, call the exported function.</span>
     <span class="kw">pub</span> <span class="ident">keybind_changed_callback</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RawExtrasKeybindChangedCallback</span><span class="op">&gt;</span>,
+
+    <span class="doccomment">/// Called whenever a chat message is sent in your party/squad</span>
+    <span class="kw">pub</span> <span class="ident">chat_message_callback</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RawExtrasChatMessageCallback</span><span class="op">&gt;</span>,
 }
 
 <span class="kw">impl</span> <span class="ident">ExtrasSubscriberInfo</span> {
@@ -315,12 +325,14 @@
         <span class="ident">squad_update</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RawExtrasSquadUpdateCallback</span><span class="op">&gt;</span>,
         <span class="ident">language_changed</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RawExtrasLanguageChangedCallback</span><span class="op">&gt;</span>,
         <span class="ident">keybind_changed</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RawExtrasKeybindChangedCallback</span><span class="op">&gt;</span>,
+        <span class="ident">chat_message</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RawExtrasChatMessageCallback</span><span class="op">&gt;</span>,
     ) {
         <span class="self">self</span>.<span class="ident">header</span>.<span class="ident">info_version</span> <span class="op">=</span> <span class="ident">SUB_INFO_VERSION</span>;
         <span class="self">self</span>.<span class="ident">subscriber_name</span> <span class="op">=</span> <span class="ident">name</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">c_char</span>;
         <span class="self">self</span>.<span class="ident">squad_update_callback</span> <span class="op">=</span> <span class="ident">squad_update</span>;
         <span class="self">self</span>.<span class="ident">language_changed_callback</span> <span class="op">=</span> <span class="ident">language_changed</span>;
         <span class="self">self</span>.<span class="ident">keybind_changed_callback</span> <span class="op">=</span> <span class="ident">keybind_changed</span>;
+        <span class="self">self</span>.<span class="ident">chat_message_callback</span> <span class="op">=</span> <span class="ident">chat_message</span>;
     }
 }
 </code></pre></div>

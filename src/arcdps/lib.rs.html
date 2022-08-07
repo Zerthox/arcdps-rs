@@ -318,6 +318,20 @@
 <span id="313">313</span>
 <span id="314">314</span>
 <span id="315">315</span>
+<span id="316">316</span>
+<span id="317">317</span>
+<span id="318">318</span>
+<span id="319">319</span>
+<span id="320">320</span>
+<span id="321">321</span>
+<span id="322">322</span>
+<span id="323">323</span>
+<span id="324">324</span>
+<span id="325">325</span>
+<span id="326">326</span>
+<span id="327">327</span>
+<span id="328">328</span>
+<span id="329">329</span>
 </pre><pre class="rust"><code><span class="doccomment">//! [ArcDPS](https://www.deltaconnected.com/arcdps/) bindings for Rust plugins.</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! # Usage</span>
@@ -525,6 +539,12 @@
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;extras&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="ident">raw_extras_keybind_changed</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RawExtrasKeybindChangedCallback</span><span class="op">&gt;</span>,
 
+    <span class="doccomment">/// Raw extras chat message callback.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// *Requires the `&quot;extras&quot;` feature.*</span>
+    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;extras&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="ident">raw_extras_chat_message</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RawExtrasChatMessageCallback</span><span class="op">&gt;</span>,
+
     <span class="doccomment">/// Initialization callback for [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases).</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Can be called before or after ArcDPS [`init`](Self::init).</span>
@@ -565,6 +585,14 @@
     <span class="doccomment">/// *Requires the `&quot;extras&quot;` feature.*</span>
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;extras&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="ident">extras_keybind_changed</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ExtrasKeybindChangedCallback</span><span class="op">&gt;</span>,
+
+    <span class="doccomment">/// Chat message callback for [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases).</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Called whenever a chat message is sent in your party/squad</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// *Requires the `&quot;extras&quot;` feature.*</span>
+    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;extras&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="ident">extras_chat_message</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ExtrasChatMessageCallback</span><span class="op">&gt;</span>,
 }
 
 <span class="doccomment">/// Exports for usage in macros.</span>
