@@ -1,4 +1,6 @@
+use crate::util::str_from_cstr_len;
 use chrono::{DateTime, FixedOffset};
+use std::os::raw::c_char;
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
@@ -48,14 +50,15 @@ pub struct ChatMessageInfo<'a> {
 
 impl From<&RawChatMessageInfo> for ChatMessageInfo<'_> {
     fn from(raw: &RawChatMessageInfo) -> Self {
-        let timestamp = unsafe { get_str_from_ptr_and_len(raw.timestamp, raw.timestamp_length) };
-        let timestamp = chrono::DateTime::parse_from_rfc3339(timestamp).unwrap();
+        let timestamp = unsafe { str_from_cstr_len(raw.timestamp, raw.timestamp_length) };
+        let timestamp =
+            DateTime::parse_from_rfc3339(timestamp).expect("failed to parse message timestamp");
 
-        let account_name =
-            unsafe { get_str_from_ptr_and_len(raw.account_name, raw.account_name_length) };
+        let account_name = unsafe { str_from_cstr_len(raw.account_name, raw.account_name_length) };
         let character_name =
-            unsafe { get_str_from_ptr_and_len(raw.character_name, raw.character_name_length) };
-        let text = unsafe { get_str_from_ptr_and_len(raw.text, raw.text_length) };
+            unsafe { str_from_cstr_len(raw.character_name, raw.character_name_length) };
+        let text = unsafe { str_from_cstr_len(raw.text, raw.text_length) };
+
         let is_broadcast = (raw.is_broadcast & 0x01) != 0;
 
         Self {
@@ -100,23 +103,23 @@ pub struct RawChatMessageInfo {
     /// "absolute ordering" for chat messages, however the time can potentially
     /// differ several seconds between the client and server because of latency
     /// and clock skew. The string is only valid for the duration of the call.
-    pub timestamp: *const u8,
+    pub timestamp: *const c_char,
     pub timestamp_length: u64,
 
     /// Null terminated account name of the player that sent the message,
     /// including leading ':'. The string is only valid for the duration of the
     /// call.
-    pub account_name: *const u8,
+    pub account_name: *const c_char,
     pub account_name_length: u64,
 
     /// Null terminated character name of the player that sent the message. The
     /// string is only valid for the duration of the call.
-    pub character_name: *const u8,
+    pub character_name: *const c_char,
     pub character_name_length: u64,
 
     /// Null terminated string containing the content of the message that was
     /// sent. The string is only valid for the duration of the call.
-    pub text: *const u8,
+    pub text: *const c_char,
     pub text_length: u64,
 }
 
@@ -132,11 +135,4 @@ pub enum ChannelType {
     Squad = 1,
     Reserved = 2,
     Invalid = 3,
-}
-
-/// Converts a pointer and length into a &str with a lifetime. The pointer must not be null
-#[inline(always)]
-unsafe fn get_str_from_ptr_and_len(src: *const u8, len: u64) -> &'static str {
-    let buff = std::slice::from_raw_parts(src, len as usize);
-    std::str::from_utf8_unchecked(buff)
 }
