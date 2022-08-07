@@ -90,7 +90,7 @@ impl ExtrasGen {
                 #subscribe
 
                 let user = ::arcdps::__macro::str_from_cstr(addon.self_account_name as _)
-                    .map(|string| ::arcdps::__macro::strip_account_prefix(string));
+                    .map(::arcdps::__macro::strip_account_prefix);
 
                 safe(addon.clone().into(), user);
             }
