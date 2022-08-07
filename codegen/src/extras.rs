@@ -73,7 +73,7 @@ impl ExtrasGen {
         let chat_callback = chat_message.unwrap_or(quote! { None });
 
         let subscribe = quote! {
-            sub.subscribe(#name, #squad_callback, #lang_callback, #keybind_callback, #chat_callback);
+            sub.subscribe(addon, #name, #squad_callback, #lang_callback, #keybind_callback, #chat_callback);
         };
 
         let content = if let Some(raw) = &self.raw_extras_init {
@@ -99,7 +99,8 @@ impl ExtrasGen {
                 #subscribe
             }
         } else {
-            quote! {}
+            // we dont need the export
+            return quote! {};
         };
 
         quote_spanned! {content.span()=>
