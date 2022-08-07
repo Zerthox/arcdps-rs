@@ -15,11 +15,22 @@ use serde::{Deserialize, Serialize};
 /// ```
 #[derive(Debug, Clone)]
 pub struct Agent<'a> {
+    /// Name of the agent.
     pub name: Option<&'a str>,
+
+    /// Unique id.
     pub id: usize,
+
+    /// Profession of the agent.
     pub prof: u32,
+
+    /// Elite (specialization) of the agent.
     pub elite: u32,
+
+    /// Whether the agent is self (the local player).
     pub is_self: u32,
+
+    /// Team the agent is in.
     pub team: u16,
 }
 
@@ -37,22 +48,32 @@ impl From<RawAgent> for Agent<'_> {
 }
 
 /// An [`Agent`] with an owned [`String`].
-/// For more info see [`Agent`].
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct AgentOwned {
+    /// Name of the agent.
     pub name: Option<String>,
+
+    /// Unique id.
     pub id: usize,
+
+    /// Profession of the agent.
     pub prof: u32,
+
+    /// Elite (specialization) of the agent.
     pub elite: u32,
+
+    /// Whether the agent is self (the local player).
     pub is_self: u32,
+
+    /// Team the agent is in.
     pub team: u16,
 }
 
 impl From<Agent<'_>> for AgentOwned {
     fn from(agent: Agent<'_>) -> Self {
         Self {
-            name: agent.name.map(|x| x.to_string()),
+            name: agent.name.map(|string| string.to_string()),
             id: agent.id,
             prof: agent.prof,
             elite: agent.elite,
