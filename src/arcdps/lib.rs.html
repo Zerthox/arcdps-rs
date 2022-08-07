@@ -332,6 +332,7 @@
 <span id="327">327</span>
 <span id="328">328</span>
 <span id="329">329</span>
+<span id="330">330</span>
 </pre><pre class="rust"><code><span class="doccomment">//! [ArcDPS](https://www.deltaconnected.com/arcdps/) bindings for Rust plugins.</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! # Usage</span>
@@ -413,6 +414,7 @@
 };
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">arcdps_codegen::export</span>;
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">arcdps_imgui</span> <span class="kw">as</span> <span class="ident">imgui</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">util::strip_account_prefix</span>;
 
 <span class="kw">use</span> <span class="ident">callbacks</span>::<span class="kw-2">*</span>;
 
@@ -613,7 +615,7 @@
         <span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::extras::callbacks</span>::<span class="kw-2">*</span>;
     }
 
-    <span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::util::str_from_cstr</span>;
+    <span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::util</span>::{<span class="ident">str_from_cstr</span>, <span class="ident">strip_account_prefix</span>};
 
     <span class="kw">use</span> <span class="kw">crate</span>::{
         <span class="ident">imgui</span>,
