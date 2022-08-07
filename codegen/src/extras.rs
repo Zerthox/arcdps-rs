@@ -72,12 +72,8 @@ impl ExtrasGen {
         let keybind_callback = keybind_changed.unwrap_or(quote! { None });
         let chat_callback = chat_message.unwrap_or(quote! { None });
 
-        // we only subscribe if compat check passes
-        // extras info may still be read afterwards
         let subscribe = quote! {
-            if addon.check_compat() {
-                sub.subscribe(#name, #squad_callback, #lang_callback, #keybind_callback, #chat_callback);
-            }
+            sub.subscribe(#name, #squad_callback, #lang_callback, #keybind_callback, #chat_callback);
         };
 
         let content = if let Some(raw) = &self.raw_extras_init {
