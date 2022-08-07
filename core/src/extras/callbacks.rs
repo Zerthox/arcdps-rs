@@ -10,7 +10,7 @@ pub type RawExtrasSubscriberInit = unsafe extern "C" fn(
     subscriber_info: &mut ExtrasSubscriberInfo,
 );
 
-pub type ExtrasInitFunc = fn(extras_info: ExtrasAddonInfo, account_name: Option<&'static str>);
+pub type ExtrasInitFunc = fn(extras_info: ExtrasAddonInfo, account_name: Option<&str>);
 
 pub type RawExtrasSquadUpdateCallback =
     unsafe extern "C" fn(updated_users: *const RawUserInfo, updated_users_count: u64);
