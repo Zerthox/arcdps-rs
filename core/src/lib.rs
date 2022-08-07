@@ -79,6 +79,7 @@ pub use api::{
 };
 pub use arcdps_codegen::export;
 pub use arcdps_imgui as imgui;
+pub use util::strip_account_prefix;
 
 use callbacks::*;
 
@@ -279,7 +280,7 @@ pub mod __macro {
         pub use crate::extras::callbacks::*;
     }
 
-    pub use crate::util::str_from_cstr;
+    pub use crate::util::{str_from_cstr, strip_account_prefix};
 
     use crate::{
         imgui,

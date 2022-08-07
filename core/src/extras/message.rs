@@ -1,4 +1,4 @@
-use crate::util::str_from_cstr_len;
+use crate::{strip_account_prefix, util::str_from_cstr_len};
 use chrono::{DateTime, FixedOffset};
 use std::os::raw::c_char;
 
@@ -120,7 +120,7 @@ impl From<&RawChatMessageInfo> for ChatMessageInfo<'_> {
             subgroup: raw.subgroup,
             is_broadcast,
             timestamp,
-            account_name: account_name.trim_start_matches(':'),
+            account_name: strip_account_prefix(account_name),
             character_name,
             text,
         }

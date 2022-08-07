@@ -29,6 +29,12 @@ pub unsafe fn str_from_cstr_len<'a>(ptr: *const c_char, len: u64) -> &'a str {
     str::from_utf8(slice).expect("cstr with invalid utf8")
 }
 
+/// Strips the `':'` prefix from an account name if present.
+#[inline]
+pub fn strip_account_prefix(account_name: &str) -> &str {
+    account_name.strip_prefix(':').unwrap_or(account_name)
+}
+
 /// Helper to retrieve an exported function.
 /// Name needs to be null-terminated.
 #[inline]
