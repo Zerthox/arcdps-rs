@@ -30,9 +30,18 @@
 <span id="25">25</span>
 <span id="26">26</span>
 <span id="27">27</span>
+<span id="28">28</span>
+<span id="29">29</span>
+<span id="30">30</span>
+<span id="31">31</span>
+<span id="32">32</span>
+<span id="33">33</span>
+<span id="34">34</span>
+<span id="35">35</span>
+<span id="36">36</span>
 </pre><pre class="rust"><code><span class="doccomment">//! Miscellaneous utilities.</span>
 
-<span class="kw">use</span> <span class="ident">std</span>::{<span class="ident">ffi::CStr</span>, <span class="ident">os::raw::c_char</span>};
+<span class="kw">use</span> <span class="ident">std</span>::{<span class="ident">ffi::CStr</span>, <span class="ident">os::raw::c_char</span>, <span class="ident">slice</span>, <span class="ident">str</span>};
 <span class="kw">use</span> <span class="ident">windows</span>::{
     <span class="ident">core::PCSTR</span>,
     <span class="ident">Win32</span>::{
@@ -41,7 +50,7 @@
     },
 };
 
-<span class="doccomment">/// Helper to convert ArcDPS strings to [`str`].</span>
+<span class="doccomment">/// Helper to convert a string pointer to a [`str`].</span>
 <span class="attribute">#[<span class="ident">inline</span>]</span>
 <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">str_from_cstr</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>(<span class="ident">ptr</span>: <span class="kw-2">*const</span> <span class="ident">c_char</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span><span class="op">&gt;</span> {
     <span class="kw">if</span> <span class="ident">ptr</span>.<span class="ident">is_null</span>() {
@@ -49,6 +58,15 @@
     } <span class="kw">else</span> {
         <span class="ident">CStr::from_ptr</span>(<span class="ident">ptr</span>).<span class="ident">to_str</span>().<span class="ident">ok</span>()
     }
+}
+
+<span class="doccomment">/// Helper to convert a string pointer and a length to a [`str`].</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// The pointer needs to be non-null. Panics if the string is invalid UTF-8.</span>
+<span class="attribute">#[<span class="ident">inline</span>]</span>
+<span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">str_from_cstr_len</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>(<span class="ident">ptr</span>: <span class="kw-2">*const</span> <span class="ident">c_char</span>, <span class="ident">len</span>: <span class="ident">u64</span>) -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span> {
+    <span class="kw">let</span> <span class="ident">slice</span> <span class="op">=</span> <span class="ident">slice::from_raw_parts</span>(<span class="ident">ptr</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">u8</span>, <span class="ident">len</span> <span class="kw">as</span> <span class="ident">usize</span>);
+    <span class="ident">str::from_utf8</span>(<span class="ident">slice</span>).<span class="ident">expect</span>(<span class="string">&quot;cstr with invalid utf8&quot;</span>)
 }
 
 <span class="doccomment">/// Helper to retrieve an exported function.</span>

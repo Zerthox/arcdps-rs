@@ -1,1 +1,1 @@
-initSidebarItems({"enum":[["ChannelType",""]],"struct":[["ChannelTypeIter","An iterator over the variants of [Self]"],["ChatMessageInfo",""],["ChatMessageInfoOwned",""],["RawChatMessageInfo",""]]});
+initSidebarItems({"enum":[["ChannelType",""]],"struct":[["ChannelTypeIter","An iterator over the variants of [Self]"],["ChatMessageInfo","A chat message."],["ChatMessageInfoOwned","A [`ChatMessageInfo`] with owned [`String`] fields."],["RawChatMessageInfo",""]]});
