@@ -20,7 +20,7 @@ If you are looking to migrate, see [Migrating from Greaka's bindings](./docs/mig
 ## Usage
 ```toml
 [dependencies]
-arcdps = { version = "0.8", git = "https://github.com/zerthox/arcdps-bindings" }
+arcdps = { git = "https://github.com/zerthox/arcdps-bindings" }
 ```
 
 ```rs
@@ -60,7 +60,6 @@ fn custom_combat_name(
 
 ```toml
 [dependencies.arcdps]
-version = "0.8"
 git = "https://github.com/zerthox/arcdps-bindings"
 features = ["extras"]
 ```
