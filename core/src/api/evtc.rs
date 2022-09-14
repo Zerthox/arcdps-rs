@@ -204,7 +204,8 @@ pub enum StateChange {
     /// Source agent swapped weapon set.
     ///
     /// `dst_agent` contains the current set id.
-    /// `0`/`1` for underwater weapons and `4`/`5` for land weapons.
+    /// `0`/`1` for underwater weapon sets and `4`/`5` for land weapon sets.
+    /// `2` is bundle/kit weapon set and `3` transform weapon set.
     WeaponSwap,
 
     /// Source agent maximum health change.
