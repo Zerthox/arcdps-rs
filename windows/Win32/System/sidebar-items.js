@@ -1,1 +1,1 @@
-initSidebarItems({"mod":[["LibraryLoader",""]]});
+window.SIDEBAR_ITEMS = {"mod":[["LibraryLoader",""]]};

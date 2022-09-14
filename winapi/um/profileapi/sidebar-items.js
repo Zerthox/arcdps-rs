@@ -1,1 +1,1 @@
-initSidebarItems({"fn":[["QueryPerformanceCounter",""],["QueryPerformanceFrequency",""]]});
+window.SIDEBAR_ITEMS = {"fn":[["QueryPerformanceCounter",""],["QueryPerformanceFrequency",""]]};

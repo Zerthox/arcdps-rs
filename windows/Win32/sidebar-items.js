@@ -1,1 +1,1 @@
-initSidebarItems({"mod":[["Foundation",""],["System",""],["UI",""]]});
+window.SIDEBAR_ITEMS = {"mod":[["Foundation",""],["System",""],["UI",""]]};

@@ -1,1 +1,1 @@
-initSidebarItems({"type":[["ExportGetKey",""],["ExportGetKeybind",""]]});
+window.SIDEBAR_ITEMS = {"type":[["ExportGetKey",""],["ExportGetKeybind",""]]};

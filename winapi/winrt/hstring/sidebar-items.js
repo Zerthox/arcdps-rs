@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":[["HSTRING_BUFFER__",""],["HSTRING__",""]],"struct":[["HSTRING_HEADER",""],["HSTRING_HEADER_Reserved",""]],"type":[["HSTRING",""],["HSTRING_BUFFER",""]]};

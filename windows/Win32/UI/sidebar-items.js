@@ -1,1 +1,1 @@
-initSidebarItems({"mod":[["WindowsAndMessaging",""]]});
+window.SIDEBAR_ITEMS = {"mod":[["WindowsAndMessaging",""]]};
