@@ -19,7 +19,7 @@ pub unsafe fn str_from_cstr<'a>(ptr: *const c_char) -> Option<&'a str> {
     }
 }
 
-/// Helper to convert a string pointer and a length to a [`str`].
+/// Helper to convert a string pointer and a length to a [`prim@str`].
 ///
 /// The pointer needs to be non-null. Panics if the string is invalid UTF-8.
 #[inline]
