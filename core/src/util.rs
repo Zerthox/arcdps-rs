@@ -9,7 +9,7 @@ use windows::{
     },
 };
 
-/// Helper to convert a string pointer to a [`str`].
+/// Helper to convert a string pointer to a [`prim@str`].
 #[inline]
 pub unsafe fn str_from_cstr<'a>(ptr: *const c_char) -> Option<&'a str> {
     if ptr.is_null() {
