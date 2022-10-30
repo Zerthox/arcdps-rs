@@ -64,8 +64,11 @@ impl From<ChatMessageInfo<'_>> for ChatMessageInfoOwned {
 /// Strings are available for the duration of the call.
 /// If you need it for longer than that, consider converting it to [`ChatMessageInfoOwned`].
 ///
-/// ```ignore
+/// ```no_run
+/// # use arcdps::extras::message::{ChatMessageInfo, ChatMessageInfoOwned};
+/// # fn f(message: ChatMessageInfo) {
 /// let message: ChatMessageInfoOwned = message.into();
+/// # }
 /// ```
 #[derive(Debug, Clone)]
 pub struct ChatMessageInfo<'a> {

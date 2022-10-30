@@ -4,7 +4,8 @@
 //! Plugins export information for ArcDPS via the [`export!`] macro.
 //! To see which fields are supported by it, have a look at [`SupportedFields`].
 //!
-//! ```ignore
+//! ```no_run
+//! # mod test {
 //! use std::error::Error;
 //! use arcdps::{Agent, CombatEvent, StateChange};
 //!
@@ -34,12 +35,14 @@
 //!         }
 //!     }
 //! }
+//! # }
 //! ```
 //!
 //! # Unofficial Extras
 //! [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases) support is hidden behind the `extras` feature flag.
 //!
-//! ```ignore
+//! ```no_run
+//! # mod test {
 //! use arcdps::extras::{UserInfoIter, UserRole};
 //!
 //! arcdps::export! {
@@ -55,6 +58,7 @@
 //!         }
 //!     }
 //! }
+//! # }
 //! ```
 
 #![allow(clippy::missing_safety_doc)]
