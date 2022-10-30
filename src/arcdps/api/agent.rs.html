@@ -93,6 +93,9 @@
 <span id="93">93</span>
 <span id="94">94</span>
 <span id="95">95</span>
+<span id="96">96</span>
+<span id="97">97</span>
+<span id="98">98</span>
 </pre><pre class="rust"><code><span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::util::str_from_cstr</span>;
 <span class="kw">use</span> <span class="ident">std::os::raw::c_char</span>;
 
@@ -105,8 +108,11 @@
 <span class="doccomment">/// Due to this, this struct is not usable for longer than the function call.</span>
 <span class="doccomment">/// If you need it for longer than that, consider converting it to [`AgentOwned`].</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// ```ignore</span>
+<span class="doccomment">/// ```no_run</span>
+<span class="doccomment">/// # use arcdps::{Agent, AgentOwned};</span>
+<span class="doccomment">/// # fn f(agent: Agent) {</span>
 <span class="doccomment">/// let agent: AgentOwned = agent.into();</span>
+<span class="doccomment">/// # }</span>
 <span class="doccomment">/// ```</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Agent</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {

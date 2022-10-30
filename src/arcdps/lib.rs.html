@@ -328,13 +328,18 @@
 <span id="328">328</span>
 <span id="329">329</span>
 <span id="330">330</span>
+<span id="331">331</span>
+<span id="332">332</span>
+<span id="333">333</span>
+<span id="334">334</span>
 </pre><pre class="rust"><code><span class="doccomment">//! [ArcDPS](https://www.deltaconnected.com/arcdps/) bindings for Rust plugins.</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! # Usage</span>
 <span class="doccomment">//! Plugins export information for ArcDPS via the [`export!`] macro.</span>
 <span class="doccomment">//! To see which fields are supported by it, have a look at [`SupportedFields`].</span>
 <span class="doccomment">//!</span>
-<span class="doccomment">//! ```ignore</span>
+<span class="doccomment">//! ```no_run</span>
+<span class="doccomment">//! # mod test {</span>
 <span class="doccomment">//! use std::error::Error;</span>
 <span class="doccomment">//! use arcdps::{Agent, CombatEvent, StateChange};</span>
 <span class="doccomment">//!</span>
@@ -364,12 +369,14 @@
 <span class="doccomment">//!         }</span>
 <span class="doccomment">//!     }</span>
 <span class="doccomment">//! }</span>
+<span class="doccomment">//! # }</span>
 <span class="doccomment">//! ```</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! # Unofficial Extras</span>
 <span class="doccomment">//! [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases) support is hidden behind the `extras` feature flag.</span>
 <span class="doccomment">//!</span>
-<span class="doccomment">//! ```ignore</span>
+<span class="doccomment">//! ```no_run</span>
+<span class="doccomment">//! # mod test {</span>
 <span class="doccomment">//! use arcdps::extras::{UserInfoIter, UserRole};</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! arcdps::export! {</span>
@@ -385,6 +392,7 @@
 <span class="doccomment">//!         }</span>
 <span class="doccomment">//!     }</span>
 <span class="doccomment">//! }</span>
+<span class="doccomment">//! # }</span>
 <span class="doccomment">//! ```</span>
 
 <span class="attribute">#![<span class="ident">allow</span>(<span class="ident">clippy::missing_safety_doc</span>)]</span>
