@@ -131,9 +131,6 @@
 <span id="131">131</span>
 <span id="132">132</span>
 <span id="133">133</span>
-<span id="134">134</span>
-<span id="135">135</span>
-<span id="136">136</span>
 </pre><pre class="rust"><code><span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::ArcDpsGen</span>;
 <span class="kw">use</span> <span class="ident">proc_macro2</span>::{<span class="ident">Span</span>, <span class="ident">TokenStream</span>};
 <span class="kw">use</span> <span class="ident">quote::quote</span>;
@@ -175,7 +172,6 @@
 
         <span class="kw">let</span> <span class="ident">init</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">build_init</span>();
         <span class="kw">let</span> <span class="ident">release</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">build_release</span>();
-        <span class="kw">let</span> <span class="ident">update_url</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">build_update_url</span>();
 
         <span class="kw">let</span> (<span class="ident">combat_func</span>, <span class="ident">combat_value</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">build_combat</span>().<span class="ident">into_tuple</span>();
         <span class="kw">let</span> (<span class="ident">combat_local_func</span>, <span class="ident">combat_local_value</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">build_combat_local</span>().<span class="ident">into_tuple</span>();
@@ -257,8 +253,6 @@
             <span class="kw">pub</span> <span class="kw">extern</span> <span class="string">&quot;system&quot;</span> <span class="kw">fn</span> <span class="ident">get_release_addr</span>() -&gt; <span class="kw-2">*mut</span> <span class="ident">c_void</span> {
                 <span class="ident">unload</span> <span class="kw">as</span> <span class="kw">_</span>
             }
-
-            #<span class="ident">update_url</span>
 
             #<span class="ident">combat_func</span>
             #<span class="ident">combat_local_func</span>

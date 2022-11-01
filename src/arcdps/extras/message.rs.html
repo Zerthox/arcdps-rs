@@ -191,9 +191,6 @@
 <span id="191">191</span>
 <span id="192">192</span>
 <span id="193">193</span>
-<span id="194">194</span>
-<span id="195">195</span>
-<span id="196">196</span>
 </pre><pre class="rust"><code><span class="kw">use</span> <span class="kw">crate</span>::{<span class="ident">strip_account_prefix</span>, <span class="ident">util::str_from_cstr_len</span>};
 <span class="kw">use</span> <span class="ident">chrono</span>::{<span class="ident">DateTime</span>, <span class="ident">FixedOffset</span>};
 <span class="kw">use</span> <span class="ident">std::os::raw::c_char</span>;
@@ -260,11 +257,8 @@
 <span class="doccomment">/// Strings are available for the duration of the call.</span>
 <span class="doccomment">/// If you need it for longer than that, consider converting it to [`ChatMessageInfoOwned`].</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// ```no_run</span>
-<span class="doccomment">/// # use arcdps::extras::message::{ChatMessageInfo, ChatMessageInfoOwned};</span>
-<span class="doccomment">/// # fn f(message: ChatMessageInfo) {</span>
+<span class="doccomment">/// ```ignore</span>
 <span class="doccomment">/// let message: ChatMessageInfoOwned = message.into();</span>
-<span class="doccomment">/// # }</span>
 <span class="doccomment">/// ```</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">ChatMessageInfo</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {

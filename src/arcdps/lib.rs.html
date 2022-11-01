@@ -328,22 +328,13 @@
 <span id="328">328</span>
 <span id="329">329</span>
 <span id="330">330</span>
-<span id="331">331</span>
-<span id="332">332</span>
-<span id="333">333</span>
-<span id="334">334</span>
-<span id="335">335</span>
-<span id="336">336</span>
-<span id="337">337</span>
-<span id="338">338</span>
 </pre><pre class="rust"><code><span class="doccomment">//! [ArcDPS](https://www.deltaconnected.com/arcdps/) bindings for Rust plugins.</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! # Usage</span>
 <span class="doccomment">//! Plugins export information for ArcDPS via the [`export!`] macro.</span>
 <span class="doccomment">//! To see which fields are supported by it, have a look at [`SupportedFields`].</span>
 <span class="doccomment">//!</span>
-<span class="doccomment">//! ```no_run</span>
-<span class="doccomment">//! # mod test {</span>
+<span class="doccomment">//! ```ignore</span>
 <span class="doccomment">//! use std::error::Error;</span>
 <span class="doccomment">//! use arcdps::{Agent, CombatEvent, StateChange};</span>
 <span class="doccomment">//!</span>
@@ -373,14 +364,12 @@
 <span class="doccomment">//!         }</span>
 <span class="doccomment">//!     }</span>
 <span class="doccomment">//! }</span>
-<span class="doccomment">//! # }</span>
 <span class="doccomment">//! ```</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! # Unofficial Extras</span>
 <span class="doccomment">//! [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases) support is hidden behind the `extras` feature flag.</span>
 <span class="doccomment">//!</span>
-<span class="doccomment">//! ```no_run</span>
-<span class="doccomment">//! # mod test {</span>
+<span class="doccomment">//! ```ignore</span>
 <span class="doccomment">//! use arcdps::extras::{UserInfoIter, UserRole};</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! arcdps::export! {</span>
@@ -396,7 +385,6 @@
 <span class="doccomment">//!         }</span>
 <span class="doccomment">//!     }</span>
 <span class="doccomment">//! }</span>
-<span class="doccomment">//! # }</span>
 <span class="doccomment">//! ```</span>
 
 <span class="attribute">#![<span class="ident">allow</span>(<span class="ident">clippy::missing_safety_doc</span>)]</span>
@@ -411,7 +399,7 @@
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;log&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">log</span>;
 
-<span class="kw">mod</span> <span class="ident">globals</span>;
+<span class="kw">mod</span> <span class="ident">instance</span>;
 <span class="kw">mod</span> <span class="ident">panic</span>;
 <span class="kw">mod</span> <span class="ident">util</span>;
 
@@ -445,10 +433,6 @@
 
     <span class="doccomment">/// Callback for plugin unload.</span>
     <span class="kw">pub</span> <span class="ident">release</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ReleaseFunc</span><span class="op">&gt;</span>,
-
-    <span class="doccomment">/// Callback for plugin unload.</span>
-    <span class="comment">// TODO: higher level abstraction?</span>
-    <span class="kw">pub</span> <span class="ident">update_url</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">UpdateUrlFunc</span><span class="op">&gt;</span>,
 
     <span class="doccomment">/// Raw WndProc callback.</span>
     <span class="kw">pub</span> <span class="ident">raw_wnd_nofilter</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RawWndProcCallback</span><span class="op">&gt;</span>,
@@ -614,7 +598,7 @@
     <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">prelude</span> {
         <span class="kw">pub</span> <span class="kw">use</span> <span class="kw">crate</span>::{
             <span class="ident">callbacks</span>::<span class="kw-2">*</span>,
-            <span class="ident">globals</span>::{<span class="ident">FreeFn</span>, <span class="ident">MallocFn</span>},
+            <span class="ident">instance</span>::{<span class="ident">FreeFn</span>, <span class="ident">MallocFn</span>},
         };
         <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">std::os::raw</span>::{<span class="ident">c_char</span>, <span class="ident">c_void</span>};
         <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">windows::Win32</span>::{
@@ -626,11 +610,11 @@
         <span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::extras::callbacks</span>::<span class="kw-2">*</span>;
     }
 
-    <span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::util</span>::{<span class="ident">str_from_cstr</span>, <span class="ident">str_to_wide</span>, <span class="ident">strip_account_prefix</span>};
+    <span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::util</span>::{<span class="ident">str_from_cstr</span>, <span class="ident">strip_account_prefix</span>};
 
     <span class="kw">use</span> <span class="kw">crate</span>::{
-        <span class="ident">globals</span>::{<span class="ident">init_imgui</span>, <span class="ident">ARC_INSTANCE</span>},
         <span class="ident">imgui</span>,
+        <span class="ident">instance</span>::{<span class="ident">init_imgui</span>, <span class="ident">ARC_INSTANCE</span>},
         <span class="ident">panic::init_panic_hook</span>,
     };
     <span class="kw">use</span> <span class="ident">prelude</span>::<span class="kw-2">*</span>;
