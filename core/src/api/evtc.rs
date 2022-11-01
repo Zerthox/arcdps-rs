@@ -541,20 +541,31 @@ pub enum BuffCycle {
 )]
 #[repr(u16)]
 pub enum CustomSkill {
+    #[deprecated = "use `CustomSkill::RESURRECT` constant instead"]
+    Resurrect = CustomSkill::RESURRECT as u16,
+
+    #[deprecated = "use `CustomSkill::BANDAGE` constant instead"]
+    Bandage = CustomSkill::BANDAGE as u16,
+
+    #[deprecated = "use `CustomSkill::DODGE` constant instead"]
+    Dodge = CustomSkill::DODGE as u16,
+}
+
+impl CustomSkill {
     /// Resurrect skill.
     ///
     /// Not custom but important and unnamed.
-    Resurrect = 1066,
+    pub const RESURRECT: u32 = 1066;
 
     /// Bandage downstate skill.
     ///
     /// Personal healing only.
-    Bandage = 1175,
+    pub const BANDAGE: u32 = 1175;
 
     /// Dodge skill.
     ///
     /// Will occur in `is_activation == normal` event.
-    Dodge = 65001,
+    pub const DODGE: u32 = 65001;
 }
 
 /// Buff info category.
