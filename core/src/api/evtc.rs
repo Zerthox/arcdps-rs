@@ -441,10 +441,18 @@ pub enum StateChange {
 
     /// Id to GUID.
     ///
-    /// `&src_agent = 16byte` persistent content guid, `overstack_value` is of contentlocal enum, `skillid` is content id.
+    /// `&src_agent = 16byte` persistent content guid, `overstack_value` is a variant of [`ContentLocal`], `skillid` is content id.
     ///
     /// *Not used in realtime API.*
     IdToGUID,
+
+    /// Log NPC changed.
+    ///
+    /// `value` contains the server Unix timestamp as `u32`.
+    /// `buff_dmg` contains the local Unix timestamp.
+    ///
+    /// `src_agent` is species id.
+    LogNPCUpdate,
 
     /// Unknown or invalid.
     #[num_enum(default)]
@@ -606,4 +614,18 @@ pub enum Attribute {
     /// Unknown or invalid.
     #[num_enum(default)]
     Unknown = 65535,
+}
+
+#[derive(
+    Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, TryFromPrimitive,
+)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
+#[cfg_attr(
+    feature = "strum",
+    derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames)
+)]
+#[repr(u32)]
+pub enum ContentLocal {
+    Effect,
+    Marker,
 }
