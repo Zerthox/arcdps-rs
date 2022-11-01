@@ -172,6 +172,29 @@
 <span id="172">172</span>
 <span id="173">173</span>
 <span id="174">174</span>
+<span id="175">175</span>
+<span id="176">176</span>
+<span id="177">177</span>
+<span id="178">178</span>
+<span id="179">179</span>
+<span id="180">180</span>
+<span id="181">181</span>
+<span id="182">182</span>
+<span id="183">183</span>
+<span id="184">184</span>
+<span id="185">185</span>
+<span id="186">186</span>
+<span id="187">187</span>
+<span id="188">188</span>
+<span id="189">189</span>
+<span id="190">190</span>
+<span id="191">191</span>
+<span id="192">192</span>
+<span id="193">193</span>
+<span id="194">194</span>
+<span id="195">195</span>
+<span id="196">196</span>
+<span id="197">197</span>
 </pre><pre class="rust"><code><span class="kw">use</span> <span class="kw">crate</span>::{<span class="ident">ArcDpsGen</span>, <span class="ident">CallbackInfo</span>};
 <span class="kw">use</span> <span class="ident">proc_macro2</span>::{<span class="ident">Span</span>, <span class="ident">TokenStream</span>};
 <span class="kw">use</span> <span class="ident">quote</span>::{<span class="ident">quote</span>, <span class="ident">quote_spanned</span>};
@@ -192,7 +215,30 @@
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build_release</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">TokenStream</span> {
         <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">release</span>) <span class="op">=</span> <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">release</span> {
             <span class="kw">let</span> <span class="ident">span</span> <span class="op">=</span> <span class="ident">syn::Error::new_spanned</span>(<span class="kw-2">&amp;</span><span class="ident">release</span>, <span class="string">&quot;&quot;</span>).<span class="ident">span</span>();
-            <span class="macro">quote_spanned!</span>(<span class="ident">span</span>=&gt; ((#<span class="ident">release</span>) <span class="kw">as</span> <span class="ident">ReleaseFunc</span>)();)
+            <span class="macro">quote_spanned!</span>(<span class="ident">span</span>=&gt; ((#<span class="ident">release</span>) <span class="kw">as</span> <span class="ident">ReleaseFunc</span>)())
+        } <span class="kw">else</span> {
+            <span class="macro">quote!</span> {}
+        }
+    }
+
+    <span class="doccomment">/// Generates the update url function.</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build_update_url</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">TokenStream</span> {
+        <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">update_url</span>) <span class="op">=</span> <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">update_url</span> {
+            <span class="kw">let</span> <span class="ident">span</span> <span class="op">=</span> <span class="ident">syn::Error::new_spanned</span>(<span class="kw-2">&amp;</span><span class="ident">update_url</span>, <span class="string">&quot;&quot;</span>).<span class="ident">span</span>();
+            <span class="kw">let</span> <span class="ident">call</span> <span class="op">=</span> <span class="macro">quote_spanned!</span>(<span class="ident">span</span>=&gt; ((#<span class="ident">update_url</span>) <span class="kw">as</span> <span class="ident">UpdateUrlFunc</span>)());
+            <span class="macro">quote!</span> {
+                <span class="kw">static</span> <span class="kw-2">mut</span> <span class="ident">UPDATE_URL</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u16</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">Vec::new</span>();
+
+                <span class="attribute">#[<span class="ident">no_mangle</span>]</span>
+                <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;system&quot;</span> <span class="kw">fn</span> <span class="ident">get_update_url</span>() -&gt; <span class="kw-2">*mut</span> <span class="ident">u16</span> {
+                    <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">url</span>) <span class="op">=</span> #<span class="ident">call</span> {
+                        <span class="ident">UPDATE_URL</span> <span class="op">=</span> <span class="ident">::arcdps::__macro::str_to_wide</span>(<span class="ident">url</span>);
+                        <span class="ident">UPDATE_URL</span>.<span class="ident">as_mut_ptr</span>()
+                    } <span class="kw">else</span> {
+                        <span class="ident">::std::ptr::null</span>()
+                    }
+                }
+            }
         } <span class="kw">else</span> {
             <span class="macro">quote!</span> {}
         }

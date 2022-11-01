@@ -41,9 +41,28 @@
 <span id="41">41</span>
 <span id="42">42</span>
 <span id="43">43</span>
+<span id="44">44</span>
+<span id="45">45</span>
+<span id="46">46</span>
+<span id="47">47</span>
+<span id="48">48</span>
+<span id="49">49</span>
+<span id="50">50</span>
+<span id="51">51</span>
+<span id="52">52</span>
+<span id="53">53</span>
+<span id="54">54</span>
+<span id="55">55</span>
+<span id="56">56</span>
+<span id="57">57</span>
 </pre><pre class="rust"><code><span class="doccomment">//! Miscellaneous utilities.</span>
 
-<span class="kw">use</span> <span class="ident">std</span>::{<span class="ident">ffi::CStr</span>, <span class="ident">os::raw::c_char</span>, <span class="ident">slice</span>, <span class="ident">str</span>};
+<span class="kw">use</span> <span class="ident">std</span>::{
+    <span class="ident">ffi</span>::{<span class="ident">CStr</span>, <span class="ident">OsStr</span>},
+    <span class="ident">iter</span>,
+    <span class="ident">os</span>::{<span class="ident">raw::c_char</span>, <span class="ident">windows::prelude::OsStrExt</span>},
+    <span class="ident">slice</span>, <span class="ident">str</span>,
+};
 <span class="kw">use</span> <span class="ident">windows</span>::{
     <span class="ident">core::PCSTR</span>,
     <span class="ident">Win32</span>::{
@@ -83,6 +102,15 @@
 <span class="attribute">#[<span class="ident">inline</span>]</span>
 <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">exported_proc</span>(<span class="ident">handle</span>: <span class="ident">HINSTANCE</span>, <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>) -&gt; <span class="ident">FARPROC</span> {
     <span class="ident">GetProcAddress</span>(<span class="ident">handle</span>, <span class="ident">PCSTR</span>(<span class="ident">name</span>.<span class="ident">as_ptr</span>()))
+}
+
+<span class="doccomment">/// Helper to convert a string to a Windows wide char string.</span>
+<span class="attribute">#[<span class="ident">inline</span>]</span>
+<span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">str_to_wide</span>(<span class="ident">string</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>) -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u16</span><span class="op">&gt;</span> {
+    <span class="ident">OsStr::new</span>(<span class="ident">string</span>.<span class="ident">as_ref</span>())
+        .<span class="ident">encode_wide</span>()
+        .<span class="ident">chain</span>(<span class="ident">iter::once</span>(<span class="number">0</span>))
+        .<span class="ident">collect</span>()
 }
 </code></pre></div>
 </section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="arcdps" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>

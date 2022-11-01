@@ -607,6 +607,39 @@
 <span id="607">607</span>
 <span id="608">608</span>
 <span id="609">609</span>
+<span id="610">610</span>
+<span id="611">611</span>
+<span id="612">612</span>
+<span id="613">613</span>
+<span id="614">614</span>
+<span id="615">615</span>
+<span id="616">616</span>
+<span id="617">617</span>
+<span id="618">618</span>
+<span id="619">619</span>
+<span id="620">620</span>
+<span id="621">621</span>
+<span id="622">622</span>
+<span id="623">623</span>
+<span id="624">624</span>
+<span id="625">625</span>
+<span id="626">626</span>
+<span id="627">627</span>
+<span id="628">628</span>
+<span id="629">629</span>
+<span id="630">630</span>
+<span id="631">631</span>
+<span id="632">632</span>
+<span id="633">633</span>
+<span id="634">634</span>
+<span id="635">635</span>
+<span id="636">636</span>
+<span id="637">637</span>
+<span id="638">638</span>
+<span id="639">639</span>
+<span id="640">640</span>
+<span id="641">641</span>
+<span id="642">642</span>
 </pre><pre class="rust"><code><span class="kw">use</span> <span class="ident">num_enum</span>::{<span class="ident">FromPrimitive</span>, <span class="ident">IntoPrimitive</span>, <span class="ident">TryFromPrimitive</span>};
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>)]</span>
@@ -1050,10 +1083,18 @@
 
     <span class="doccomment">/// Id to GUID.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// `&amp;src_agent = 16byte` persistent content guid, `overstack_value` is of contentlocal enum, `skillid` is content id.</span>
+    <span class="doccomment">/// `&amp;src_agent = 16byte` persistent content guid, `overstack_value` is a variant of [`ContentLocal`], `skillid` is content id.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// *Not used in realtime API.*</span>
     <span class="ident">IdToGUID</span>,
+
+    <span class="doccomment">/// Log NPC changed.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// `value` contains the server Unix timestamp as `u32`.</span>
+    <span class="doccomment">/// `buff_dmg` contains the local Unix timestamp.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// `src_agent` is species id.</span>
+    <span class="ident">LogNPCUpdate</span>,
 
     <span class="doccomment">/// Unknown or invalid.</span>
     <span class="attribute">#[<span class="ident">num_enum</span>(<span class="ident">default</span>)]</span>
@@ -1142,20 +1183,31 @@
 )]</span>
 <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">u16</span>)]</span>
 <span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">CustomSkill</span> {
+    <span class="attribute">#[<span class="ident">deprecated</span> <span class="op">=</span> <span class="string">&quot;use `CustomSkill::RESURRECT` constant instead&quot;</span>]</span>
+    <span class="ident">Resurrect</span> <span class="op">=</span> <span class="ident">CustomSkill::RESURRECT</span> <span class="kw">as</span> <span class="ident">u16</span>,
+
+    <span class="attribute">#[<span class="ident">deprecated</span> <span class="op">=</span> <span class="string">&quot;use `CustomSkill::BANDAGE` constant instead&quot;</span>]</span>
+    <span class="ident">Bandage</span> <span class="op">=</span> <span class="ident">CustomSkill::BANDAGE</span> <span class="kw">as</span> <span class="ident">u16</span>,
+
+    <span class="attribute">#[<span class="ident">deprecated</span> <span class="op">=</span> <span class="string">&quot;use `CustomSkill::DODGE` constant instead&quot;</span>]</span>
+    <span class="ident">Dodge</span> <span class="op">=</span> <span class="ident">CustomSkill::DODGE</span> <span class="kw">as</span> <span class="ident">u16</span>,
+}
+
+<span class="kw">impl</span> <span class="ident">CustomSkill</span> {
     <span class="doccomment">/// Resurrect skill.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Not custom but important and unnamed.</span>
-    <span class="ident">Resurrect</span> <span class="op">=</span> <span class="number">1066</span>,
+    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">RESURRECT</span>: <span class="ident">u32</span> <span class="op">=</span> <span class="number">1066</span>;
 
     <span class="doccomment">/// Bandage downstate skill.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Personal healing only.</span>
-    <span class="ident">Bandage</span> <span class="op">=</span> <span class="number">1175</span>,
+    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">BANDAGE</span>: <span class="ident">u32</span> <span class="op">=</span> <span class="number">1175</span>;
 
     <span class="doccomment">/// Dodge skill.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Will occur in `is_activation == normal` event.</span>
-    <span class="ident">Dodge</span> <span class="op">=</span> <span class="number">65001</span>,
+    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DODGE</span>: <span class="ident">u32</span> <span class="op">=</span> <span class="number">65001</span>;
 }
 
 <span class="doccomment">/// Buff info category.</span>
@@ -1215,6 +1267,20 @@
     <span class="doccomment">/// Unknown or invalid.</span>
     <span class="attribute">#[<span class="ident">num_enum</span>(<span class="ident">default</span>)]</span>
     <span class="ident">Unknown</span> <span class="op">=</span> <span class="number">65535</span>,
+}
+
+<span class="attribute">#[<span class="ident">derive</span>(
+    <span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>, <span class="ident">Hash</span>, <span class="ident">IntoPrimitive</span>, <span class="ident">TryFromPrimitive</span>,
+)]</span>
+<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>, <span class="ident">derive</span>(<span class="ident">Serialize</span>, <span class="ident">Deserialize</span>))]</span>
+<span class="attribute">#[<span class="ident">cfg_attr</span>(
+    <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;strum&quot;</span>,
+    <span class="ident">derive</span>(<span class="ident">Display</span>, <span class="ident">EnumCount</span>, <span class="ident">EnumIter</span>, <span class="ident">IntoStaticStr</span>, <span class="ident">EnumVariantNames</span>)
+)]</span>
+<span class="attribute">#[<span class="ident">repr</span>(<span class="ident">u32</span>)]</span>
+<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">ContentLocal</span> {
+    <span class="ident">Effect</span>,
+    <span class="ident">Marker</span>,
 }
 </code></pre></div>
 </section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="arcdps" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>

@@ -172,6 +172,8 @@
 <span id="172">172</span>
 <span id="173">173</span>
 <span id="174">174</span>
+<span id="175">175</span>
+<span id="176">176</span>
 </pre><pre class="rust"><code><span class="kw">mod</span> <span class="ident">callbacks</span>;
 <span class="kw">mod</span> <span class="ident">export</span>;
 <span class="kw">mod</span> <span class="ident">parse</span>;
@@ -227,6 +229,7 @@
     <span class="ident">sig</span>: <span class="ident">Expr</span>,
     <span class="ident">init</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
     <span class="ident">release</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
+    <span class="ident">update_url</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
 
     <span class="ident">raw_combat</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
     <span class="ident">combat</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
@@ -260,6 +263,7 @@
             <span class="ident">sig</span>: <span class="ident">Expr::Verbatim</span>(<span class="ident">TokenStream::new</span>()),
             <span class="ident">init</span>: <span class="prelude-val">None</span>,
             <span class="ident">release</span>: <span class="prelude-val">None</span>,
+            <span class="ident">update_url</span>: <span class="prelude-val">None</span>,
 
             <span class="ident">raw_combat</span>: <span class="prelude-val">None</span>,
             <span class="ident">combat</span>: <span class="prelude-val">None</span>,
