@@ -73,7 +73,7 @@ pub mod extras;
 #[cfg(feature = "log")]
 pub mod log;
 
-mod instance;
+mod globals;
 mod panic;
 mod util;
 
@@ -272,7 +272,7 @@ pub mod __macro {
     pub mod prelude {
         pub use crate::{
             callbacks::*,
-            instance::{FreeFn, MallocFn},
+            globals::{FreeFn, MallocFn},
         };
         pub use std::os::raw::{c_char, c_void};
         pub use windows::Win32::{
@@ -287,8 +287,8 @@ pub mod __macro {
     pub use crate::util::{str_from_cstr, strip_account_prefix};
 
     use crate::{
+        globals::{init_imgui, ARC_INSTANCE},
         imgui,
-        instance::{init_imgui, ARC_INSTANCE},
         panic::init_panic_hook,
     };
     use prelude::*;

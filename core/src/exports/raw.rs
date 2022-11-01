@@ -1,4 +1,4 @@
-use crate::{api::RawCombatEvent, imgui::sys::ImVec4, instance::ARC_INSTANCE};
+use crate::{api::RawCombatEvent, globals::ARC_INSTANCE, imgui::sys::ImVec4};
 use std::os::raw::c_char;
 
 pub type Export0 = unsafe extern "C" fn() -> *const u16;
