@@ -1,6 +1,11 @@
 //! Miscellaneous utilities.
 
-use std::{ffi::CStr, os::raw::c_char, slice, str};
+use std::{
+    ffi::{CStr, OsStr},
+    iter,
+    os::{raw::c_char, windows::prelude::OsStrExt},
+    slice, str,
+};
 use windows::{
     core::PCSTR,
     Win32::{
@@ -40,4 +45,13 @@ pub fn strip_account_prefix(account_name: &str) -> &str {
 #[inline]
 pub unsafe fn exported_proc(handle: HINSTANCE, name: &'static str) -> FARPROC {
     GetProcAddress(handle, PCSTR(name.as_ptr()))
+}
+
+/// Helper to convert a string to a Windows wide char string.
+#[inline]
+pub unsafe fn str_to_wide(string: impl AsRef<str>) -> Vec<u16> {
+    OsStr::new(string.as_ref())
+        .encode_wide()
+        .chain(iter::once(0))
+        .collect()
 }

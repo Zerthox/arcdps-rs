@@ -53,6 +53,7 @@ pub(crate) struct ArcDpsGen {
     sig: Expr,
     init: Option<Expr>,
     release: Option<Expr>,
+    update_url: Option<Expr>,
 
     raw_combat: Option<Expr>,
     combat: Option<Expr>,
@@ -86,6 +87,7 @@ impl Default for ArcDpsGen {
             sig: Expr::Verbatim(TokenStream::new()),
             init: None,
             release: None,
+            update_url: None,
 
             raw_combat: None,
             combat: None,

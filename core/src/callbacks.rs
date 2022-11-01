@@ -74,6 +74,8 @@ pub type InitFunc = fn() -> Result<(), Box<dyn Error>>;
 
 pub type ReleaseFunc = fn();
 
+pub type UpdateUrlFunc = fn() -> Option<String>;
+
 pub type RawWndProcCallback =
     unsafe extern "C" fn(h_wnd: HWND, u_msg: u32, w_param: WPARAM, l_param: LPARAM) -> u32;
 pub type WndProcCallback = fn(key: usize, key_down: bool, prev_key_down: bool) -> bool;

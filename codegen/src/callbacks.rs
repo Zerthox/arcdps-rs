@@ -18,7 +18,30 @@ impl ArcDpsGen {
     pub fn build_release(&self) -> TokenStream {
         if let Some(release) = &self.release {
             let span = syn::Error::new_spanned(&release, "").span();
-            quote_spanned!(span=> ((#release) as ReleaseFunc)();)
+            quote_spanned!(span=> ((#release) as ReleaseFunc)())
+        } else {
+            quote! {}
+        }
+    }
+
+    /// Generates the update url function.
+    pub fn build_update_url(&self) -> TokenStream {
+        if let Some(update_url) = &self.update_url {
+            let span = syn::Error::new_spanned(&update_url, "").span();
+            let call = quote_spanned!(span=> ((#update_url) as UpdateUrlFunc)());
+            quote! {
+                static mut UPDATE_URL: Vec<u16> = Vec::new();
+
+                #[no_mangle]
+                pub unsafe extern "system" fn get_update_url() -> *mut u16 {
+                    if let Some(url) = #call {
+                        UPDATE_URL = ::arcdps::__macro::str_to_wide(url);
+                        UPDATE_URL.as_mut_ptr()
+                    } else {
+                        ::std::ptr::null()
+                    }
+                }
+            }
         } else {
             quote! {}
         }

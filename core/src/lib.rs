@@ -108,6 +108,10 @@ pub struct SupportedFields {
     /// Callback for plugin unload.
     pub release: Option<ReleaseFunc>,
 
+    /// Callback for plugin unload.
+    // TODO: higher level abstraction?
+    pub update_url: Option<UpdateUrlFunc>,
+
     /// Raw WndProc callback.
     pub raw_wnd_nofilter: Option<RawWndProcCallback>,
 
@@ -284,7 +288,7 @@ pub mod __macro {
         pub use crate::extras::callbacks::*;
     }
 
-    pub use crate::util::{str_from_cstr, strip_account_prefix};
+    pub use crate::util::{str_from_cstr, str_to_wide, strip_account_prefix};
 
     use crate::{
         globals::{init_imgui, ARC_INSTANCE},

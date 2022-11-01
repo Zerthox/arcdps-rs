@@ -39,6 +39,7 @@ impl ArcDpsGen {
 
         let init = self.build_init();
         let release = self.build_release();
+        let update_url = self.build_update_url();
 
         let (combat_func, combat_value) = self.build_combat().into_tuple();
         let (combat_local_func, combat_local_value) = self.build_combat_local().into_tuple();
@@ -120,6 +121,8 @@ impl ArcDpsGen {
             pub extern "system" fn get_release_addr() -> *mut c_void {
                 unload as _
             }
+
+            #update_url
 
             #combat_func
             #combat_local_func
