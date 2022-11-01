@@ -138,6 +138,96 @@ pub enum Specialization {
     Catalyst = 67,
 }
 
+impl Specialization {
+    /// Returns the [`Profession`] corresponding to the specialization.
+    pub fn profession(&self) -> Profession {
+        match self {
+            Self::Unknown => Profession::Unknown,
+
+            Self::Dueling
+            | Self::Domination
+            | Self::Inspiration
+            | Self::Illusions
+            | Self::Chronomancer
+            | Self::Chaos
+            | Self::Mirage
+            | Self::Virtuoso => Profession::Mesmer,
+
+            Self::DeathMagic
+            | Self::BloodMagic
+            | Self::Reaper
+            | Self::Curses
+            | Self::SoulReaping
+            | Self::Spite
+            | Self::Scourge
+            | Self::Harbinger => Profession::Necromancer,
+
+            Self::Invocation
+            | Self::Retribution
+            | Self::Corruption
+            | Self::Devastation
+            | Self::Salvation
+            | Self::Herald
+            | Self::Renegade
+            | Self::Vindicator => Profession::Revenant,
+
+            Self::Strength
+            | Self::Tactics
+            | Self::Berserker
+            | Self::Defense
+            | Self::Arms
+            | Self::Discipline
+            | Self::Spellbreaker
+            | Self::Bladesworn => Profession::Warrior,
+
+            Self::Druid
+            | Self::Marksmanship
+            | Self::NatureMagic
+            | Self::Skirmishing
+            | Self::Beastmastery
+            | Self::WildernessSurvival
+            | Self::Soulbeast
+            | Self::Untamed => Profession::Ranger,
+
+            Self::Explosives
+            | Self::Tools
+            | Self::Alchemy
+            | Self::Firearms
+            | Self::Scrapper
+            | Self::Inventions
+            | Self::Holosmith
+            | Self::Mechanist => Profession::Engineer,
+
+            Self::Daredevil
+            | Self::ShadowArts
+            | Self::DeadlyArts
+            | Self::CriticalStrikes
+            | Self::Trickery
+            | Self::Acrobatics
+            | Self::Deadeye
+            | Self::Specter => Profession::Thief,
+
+            Self::Valor
+            | Self::Radiance
+            | Self::Dragonhunter
+            | Self::Zeal
+            | Self::Virtues
+            | Self::Honor
+            | Self::Firebrand
+            | Self::Willbender => Profession::Guardian,
+
+            Self::Water
+            | Self::Earth
+            | Self::Fire
+            | Self::Arcane
+            | Self::Air
+            | Self::Tempest
+            | Self::Weaver
+            | Self::Catalyst => Profession::Elementalist,
+        }
+    }
+}
+
 /// GW2 client language.
 #[derive(
     Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, TryFromPrimitive,
