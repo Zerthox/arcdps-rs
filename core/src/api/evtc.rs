@@ -1,3 +1,6 @@
+// workaround for strum derives on deprecated custom skill enum
+#![allow(deprecated)]
+
 use num_enum::{FromPrimitive, IntoPrimitive, TryFromPrimitive};
 
 #[cfg(feature = "serde")]
