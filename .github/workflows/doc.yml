@@ -10,7 +10,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: dtolnay/toolchain@stable
+      - uses: dtolnay/rust-toolchain@stable
       - run: cargo doc --all-features
       - uses: peaceiris/actions-gh-pages@v3
         with:
