@@ -590,7 +590,6 @@ pub enum BuffCategory {
 }
 
 /// Buff formula attributes.
-// TODO: document unclear attributes
 #[derive(
     Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
 )]
@@ -612,22 +611,41 @@ pub enum Attribute {
     Condition,
     Concentration,
     Expertise,
-
     Armor,
+
+    /// Agony Resistance.
     Agony,
+
+    /// Stat increase.
     StatInc,
+
+    /// Flat Increase.
     FlatInc,
+
+    /// Outgoing strike damage.
     PhysInc,
+
+    /// Outgoing condition damage.
     CondInc,
+
+    /// Incoming strike damage.
     PhysRec,
+
+    /// Incoming condition damage.
     CondRec,
+
+    /// Attack speed.
     Attackspeed,
+
+    /// Outgoing life leech.
     SiphonInc,
+
+    /// Incoming life leech.
     SiphonRec,
 
     /// Unknown or invalid.
     #[num_enum(default)]
-    Unknown = 65535,
+    Unknown = u16::MAX,
 }
 
 #[derive(
