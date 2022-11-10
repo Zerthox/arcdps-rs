@@ -7,7 +7,7 @@ impl ArcDpsGen {
     /// Generates the init function.
     pub fn build_init(&self) -> TokenStream {
         if let Some(init) = &self.init {
-            let span = syn::Error::new_spanned(&init, "").span();
+            let span = syn::Error::new_spanned(init, "").span();
             quote_spanned!(span=> ((#init) as InitFunc)())
         } else {
             quote! { Ok(()) }
@@ -17,7 +17,7 @@ impl ArcDpsGen {
     /// Generates the release function.
     pub fn build_release(&self) -> TokenStream {
         if let Some(release) = &self.release {
-            let span = syn::Error::new_spanned(&release, "").span();
+            let span = syn::Error::new_spanned(release, "").span();
             quote_spanned!(span=> ((#release) as ReleaseFunc)())
         } else {
             quote! {}
@@ -27,7 +27,7 @@ impl ArcDpsGen {
     /// Generates the update url function.
     pub fn build_update_url(&self) -> TokenStream {
         if let Some(update_url) = &self.update_url {
-            let span = syn::Error::new_spanned(&update_url, "").span();
+            let span = syn::Error::new_spanned(update_url, "").span();
             let call = quote_spanned!(span=> ((#update_url) as UpdateUrlFunc)());
             quote! {
                 static mut UPDATE_URL: Vec<u16> = Vec::new();

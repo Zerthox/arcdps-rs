@@ -154,12 +154,12 @@ impl CallbackInfo {
         wrapper: impl FnOnce(&Expr, Span) -> TokenStream,
     ) -> Option<CallbackInfo> {
         if let Some(raw) = raw {
-            let span = syn::Error::new_spanned(&raw, "").span();
+            let span = syn::Error::new_spanned(raw, "").span();
             let value = quote_spanned!(span=> Some((#raw) as _) );
 
             Some(CallbackInfo::new(quote! {}, value))
         } else if let Some(safe) = safe {
-            let span = syn::Error::new_spanned(&safe, "").span();
+            let span = syn::Error::new_spanned(safe, "").span();
             let func = wrapper(safe, span);
             let value = quote_spanned!(span=> Some(self::#name as _) );
 

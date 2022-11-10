@@ -77,13 +77,13 @@ impl ExtrasGen {
         };
 
         let content = if let Some(raw) = &self.raw_extras_init {
-            let span = syn::Error::new_spanned(&raw, "").span();
+            let span = syn::Error::new_spanned(raw, "").span();
             quote_spanned! {span=>
                 let raw = (#raw) as RawExtrasSubscriberInit;
                 raw(addon, sub)
             }
         } else if let Some(safe) = &self.extras_init {
-            let span = syn::Error::new_spanned(&safe, "").span();
+            let span = syn::Error::new_spanned(safe, "").span();
             quote_spanned! {span=>
                 let safe = (#safe) as ExtrasInitFunc;
 
