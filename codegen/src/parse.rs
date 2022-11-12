@@ -102,6 +102,7 @@ impl Parse for ArcDpsGen {
 
                     "init" => gen.init = Some(field.expr),
                     "release" => gen.release = Some(field.expr),
+                    "update_url" => gen.update_url = Some(field.expr),
 
                     _ => {
                         match_parse!(
