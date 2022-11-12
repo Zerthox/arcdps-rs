@@ -33,10 +33,10 @@ impl ArcDpsGen {
                 static mut UPDATE_URL: Vec<u16> = Vec::new();
 
                 #[no_mangle]
-                pub unsafe extern "system" fn get_update_url() -> *mut u16 {
+                pub unsafe extern "system" fn get_update_url() -> *const u16 {
                     if let Some(url) = #call {
                         UPDATE_URL = ::arcdps::__macro::str_to_wide(url);
-                        UPDATE_URL.as_mut_ptr()
+                        UPDATE_URL.as_ptr()
                     } else {
                         ::std::ptr::null()
                     }
