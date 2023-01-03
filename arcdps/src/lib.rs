@@ -11,7 +11,7 @@
 //!
 //! arcdps::export! {
 //!     name: "Example Plugin",
-//!     sig: 123, // change this to a random number
+//!     sig: 0x12345678, // change this to a random number
 //!     init,
 //!     combat: custom_combat_name,
 //! }

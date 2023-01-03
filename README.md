@@ -28,7 +28,7 @@ use arcdps::{Agent, CombatEvent, StateChange};
 
 arcdps::export! {
     name: "Example Plugin",
-    sig: 123, // change this to a random number
+    sig: 0x12345678, // change this to a random number
     init,
     combat: custom_combat_name,
 }
@@ -68,7 +68,7 @@ use arcdps::extras::{UserInfoIter, UserRole};
 
 arcdps::export! {
     name: "Example Plugin",
-    sig: 123,
+    sig: 0x12354678,
     extras_squad_update,
 }
 
