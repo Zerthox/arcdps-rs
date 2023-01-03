@@ -1,3 +1,5 @@
+//! Global instance with Unofficial Extras information.
+
 use crate::{
     extras::exports::raw::{ExportGetKey, ExportGetKeybind},
     util::exported_proc,

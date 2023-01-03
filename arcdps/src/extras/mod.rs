@@ -4,10 +4,11 @@
 
 pub mod callbacks;
 pub mod exports;
-pub mod globals;
 pub mod keybinds;
 pub mod message;
 pub mod user;
+
+mod globals;
 
 pub use keybinds::{Control, Key, KeyCode, Keybind, KeybindChange, MouseCode};
 pub use user::{UserInfo, UserInfoIter, UserInfoOwned, UserRole};

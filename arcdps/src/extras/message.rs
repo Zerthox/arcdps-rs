@@ -1,3 +1,5 @@
+//! Message information provided by Unofficial Extras.
+
 use crate::{strip_account_prefix, util::str_from_cstr_len};
 use chrono::{DateTime, FixedOffset};
 use std::os::raw::c_char;

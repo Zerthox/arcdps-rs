@@ -1,3 +1,5 @@
+//! Keybind information provided by Unofficial Extras.
+
 use num_enum::{FromPrimitive, IntoPrimitive, TryFromPrimitive};
 
 #[cfg(feature = "serde")]

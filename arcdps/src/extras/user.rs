@@ -1,3 +1,5 @@
+//! User information provided by Unofficial Extras.
+
 use crate::util::{str_from_cstr, strip_account_prefix};
 use num_enum::{IntoPrimitive, TryFromPrimitive};
 use std::os::raw::c_char;

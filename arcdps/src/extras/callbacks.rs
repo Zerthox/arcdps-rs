@@ -1,3 +1,5 @@
+//! Unofficial extras callback types.
+
 use super::{
     keybinds::{KeybindChange, RawKeybindChange},
     message::{ChatMessageInfo, RawChatMessageInfo},
