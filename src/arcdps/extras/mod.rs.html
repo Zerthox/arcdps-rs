@@ -217,16 +217,18 @@
 <span id="217">217</span>
 <span id="218">218</span>
 <span id="219">219</span>
+<span id="220">220</span>
 </pre><pre class="rust"><code><span class="doccomment">//! [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases) support.
 //!
 //! *Requires the `&quot;extras&quot;` feature.*
 
 </span><span class="kw">pub mod </span>callbacks;
 <span class="kw">pub mod </span>exports;
-<span class="kw">pub mod </span>globals;
 <span class="kw">pub mod </span>keybinds;
 <span class="kw">pub mod </span>message;
 <span class="kw">pub mod </span>user;
+
+<span class="kw">mod </span>globals;
 
 <span class="kw">pub use </span>keybinds::{Control, Key, KeyCode, Keybind, KeybindChange, MouseCode};
 <span class="kw">pub use </span>user::{UserInfo, UserInfoIter, UserInfoOwned, UserRole};
