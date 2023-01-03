@@ -123,11 +123,11 @@ impl ExtrasGen {
             |safe, span| {
                 quote_spanned! {span=>
                     unsafe extern "C" fn abstract_extras_squad_update(
-                        users: *const ::arcdps::extras::RawUserInfo,
+                        users: *const ::arcdps::extras::user::RawUserInfo,
                         count: u64
                     ) {
                         let safe = (#safe) as ExtrasSquadUpdateCallback;
-                        safe(::arcdps::extras::to_user_info_iter(users, count))
+                        safe(::arcdps::extras::user::to_user_info_iter(users, count))
                     }
                 }
             },

@@ -1,7 +1,8 @@
 use super::{
     keybinds::{KeybindChange, RawKeybindChange},
     message::{ChatMessageInfo, RawChatMessageInfo},
-    ExtrasAddonInfo, ExtrasSubscriberInfo, RawExtrasAddonInfo, RawUserInfo, UserInfoIter,
+    user::{RawUserInfo, UserInfoIter},
+    ExtrasAddonInfo, ExtrasSubscriberInfo, RawExtrasAddonInfo,
 };
 use crate::api::Language;
 
