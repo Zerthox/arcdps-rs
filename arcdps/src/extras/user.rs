@@ -1,4 +1,4 @@
-use crate::util::str_from_cstr;
+use crate::util::{str_from_cstr, strip_account_prefix};
 use num_enum::{IntoPrimitive, TryFromPrimitive};
 use std::os::raw::c_char;
 use std::{iter::Map, slice};
@@ -74,7 +74,7 @@ pub struct UserInfo<'a> {
 impl From<RawUserInfo> for UserInfo<'_> {
     fn from(raw: RawUserInfo) -> Self {
         Self {
-            account_name: unsafe { str_from_cstr(raw.account_name) },
+            account_name: unsafe { str_from_cstr(raw.account_name).map(strip_account_prefix) },
             join_time: raw.join_time,
             role: raw.role,
             subgroup: raw.subgroup,
