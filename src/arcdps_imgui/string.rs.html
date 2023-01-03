@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\arcdps-imgui-0.8.0\src\string.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>string.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script><script defer src="../../main.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../arcdps_imgui/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../arcdps_imgui/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../arcdps_imgui/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\arcdps-imgui-0.8.0\src\string.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>string.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../normalize.css"><link rel="stylesheet" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../ayu.css" disabled><link rel="stylesheet" href="../../dark.css" disabled><link rel="stylesheet" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script><script defer src="../../main.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../arcdps_imgui/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -542,549 +542,549 @@
 <span id="542">542</span>
 <span id="543">543</span>
 <span id="544">544</span>
-</pre><pre class="rust"><code><span class="kw">use</span> <span class="ident">std::borrow</span>::{<span class="ident">Borrow</span>, <span class="ident">Cow</span>};
-<span class="kw">use</span> <span class="ident">std::ffi::CStr</span>;
-<span class="kw">use</span> <span class="ident">std::ops</span>::{<span class="ident">Deref</span>, <span class="ident">Index</span>, <span class="ident">RangeFull</span>};
-<span class="kw">use</span> <span class="ident">std::os::raw::c_char</span>;
-<span class="kw">use</span> <span class="ident">std::str</span>;
-<span class="kw">use</span> <span class="ident">std</span>::{<span class="ident">fmt</span>, <span class="ident">ptr</span>};
+</pre><pre class="rust"><code><span class="kw">use </span>std::borrow::{Borrow, Cow};
+<span class="kw">use </span>std::ffi::CStr;
+<span class="kw">use </span>std::ops::{Deref, Index, RangeFull};
+<span class="kw">use </span>std::os::raw::c_char;
+<span class="kw">use </span>std::str;
+<span class="kw">use </span>std::{fmt, ptr};
 
-<span class="doccomment">/// this is the unsafe cell upon which we build our abstraction.</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>)]</span>
-<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">struct</span> <span class="ident">UiBuffer</span> {
-    <span class="ident">buffer</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>,
-    <span class="ident">max_len</span>: <span class="ident">usize</span>,
+<span class="doccomment">/// this is the unsafe cell upon which we build our abstraction.
+</span><span class="attribute">#[derive(Debug)]
+</span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">struct </span>UiBuffer {
+    buffer: Vec&lt;u8&gt;,
+    max_len: usize,
 }
 
-<span class="kw">impl</span> <span class="ident">UiBuffer</span> {
-    <span class="doccomment">/// Creates a new max buffer with the given length.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">max_len</span>: <span class="ident">usize</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">Self</span> {
-            <span class="ident">buffer</span>: <span class="ident">Vec::with_capacity</span>(<span class="ident">max_len</span>),
-            <span class="ident">max_len</span>,
+<span class="kw">impl </span>UiBuffer {
+    <span class="doccomment">/// Creates a new max buffer with the given length.
+    </span><span class="kw">pub fn </span>new(max_len: usize) -&gt; <span class="self">Self </span>{
+        <span class="self">Self </span>{
+            buffer: Vec::with_capacity(max_len),
+            max_len,
         }
     }
 
-    <span class="doccomment">/// Internal method to push a single text to our scratch buffer.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">scratch_txt</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">txt</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>) -&gt; <span class="kw-2">*const</span> <span class="ident">sys::cty::c_char</span> {
-        <span class="self">self</span>.<span class="ident">refresh_buffer</span>();
-        <span class="self">self</span>.<span class="ident">push</span>(<span class="ident">txt</span>)
+    <span class="doccomment">/// Internal method to push a single text to our scratch buffer.
+    </span><span class="kw">pub fn </span>scratch_txt(<span class="kw-2">&amp;mut </span><span class="self">self</span>, txt: <span class="kw">impl </span>AsRef&lt;str&gt;) -&gt; <span class="kw-2">*const </span>sys::cty::c_char {
+        <span class="self">self</span>.refresh_buffer();
+        <span class="self">self</span>.push(txt)
     }
 
-    <span class="doccomment">/// Internal method to push an option text to our scratch buffer.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">scratch_txt_opt</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">txt</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>) -&gt; <span class="kw-2">*const</span> <span class="ident">sys::cty::c_char</span> {
-        <span class="kw">match</span> <span class="ident">txt</span> {
-            <span class="prelude-val">Some</span>(<span class="ident">v</span>) =&gt; <span class="self">self</span>.<span class="ident">scratch_txt</span>(<span class="ident">v</span>),
-            <span class="prelude-val">None</span> =&gt; <span class="ident">ptr::null</span>(),
+    <span class="doccomment">/// Internal method to push an option text to our scratch buffer.
+    </span><span class="kw">pub fn </span>scratch_txt_opt(<span class="kw-2">&amp;mut </span><span class="self">self</span>, txt: <span class="prelude-ty">Option</span>&lt;<span class="kw">impl </span>AsRef&lt;str&gt;&gt;) -&gt; <span class="kw-2">*const </span>sys::cty::c_char {
+        <span class="kw">match </span>txt {
+            <span class="prelude-val">Some</span>(v) =&gt; <span class="self">self</span>.scratch_txt(v),
+            <span class="prelude-val">None </span>=&gt; ptr::null(),
         }
     }
 
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">scratch_txt_two</span>(
-        <span class="kw-2">&amp;mut</span> <span class="self">self</span>,
-        <span class="ident">txt_0</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>,
-        <span class="ident">txt_1</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>,
-    ) -&gt; (<span class="kw-2">*const</span> <span class="ident">sys::cty::c_char</span>, <span class="kw-2">*const</span> <span class="ident">sys::cty::c_char</span>) {
-        <span class="self">self</span>.<span class="ident">refresh_buffer</span>();
-        (<span class="self">self</span>.<span class="ident">push</span>(<span class="ident">txt_0</span>), <span class="self">self</span>.<span class="ident">push</span>(<span class="ident">txt_1</span>))
+    <span class="kw">pub fn </span>scratch_txt_two(
+        <span class="kw-2">&amp;mut </span><span class="self">self</span>,
+        txt_0: <span class="kw">impl </span>AsRef&lt;str&gt;,
+        txt_1: <span class="kw">impl </span>AsRef&lt;str&gt;,
+    ) -&gt; (<span class="kw-2">*const </span>sys::cty::c_char, <span class="kw-2">*const </span>sys::cty::c_char) {
+        <span class="self">self</span>.refresh_buffer();
+        (<span class="self">self</span>.push(txt_0), <span class="self">self</span>.push(txt_1))
     }
 
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">scratch_txt_with_opt</span>(
-        <span class="kw-2">&amp;mut</span> <span class="self">self</span>,
-        <span class="ident">txt_0</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>,
-        <span class="ident">txt_1</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>,
-    ) -&gt; (<span class="kw-2">*const</span> <span class="ident">sys::cty::c_char</span>, <span class="kw-2">*const</span> <span class="ident">sys::cty::c_char</span>) {
-        <span class="kw">match</span> <span class="ident">txt_1</span> {
-            <span class="prelude-val">Some</span>(<span class="ident">value</span>) =&gt; <span class="self">self</span>.<span class="ident">scratch_txt_two</span>(<span class="ident">txt_0</span>, <span class="ident">value</span>),
-            <span class="prelude-val">None</span> =&gt; (<span class="self">self</span>.<span class="ident">scratch_txt</span>(<span class="ident">txt_0</span>), <span class="ident">ptr::null</span>()),
+    <span class="kw">pub fn </span>scratch_txt_with_opt(
+        <span class="kw-2">&amp;mut </span><span class="self">self</span>,
+        txt_0: <span class="kw">impl </span>AsRef&lt;str&gt;,
+        txt_1: <span class="prelude-ty">Option</span>&lt;<span class="kw">impl </span>AsRef&lt;str&gt;&gt;,
+    ) -&gt; (<span class="kw-2">*const </span>sys::cty::c_char, <span class="kw-2">*const </span>sys::cty::c_char) {
+        <span class="kw">match </span>txt_1 {
+            <span class="prelude-val">Some</span>(value) =&gt; <span class="self">self</span>.scratch_txt_two(txt_0, value),
+            <span class="prelude-val">None </span>=&gt; (<span class="self">self</span>.scratch_txt(txt_0), ptr::null()),
         }
     }
 
-    <span class="doccomment">/// Attempts to clear the buffer if it&#39;s over the maximum length allowed.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">refresh_buffer</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
-        <span class="kw">if</span> <span class="self">self</span>.<span class="ident">buffer</span>.<span class="ident">len</span>() <span class="op">&gt;</span> <span class="self">self</span>.<span class="ident">max_len</span> {
-            <span class="self">self</span>.<span class="ident">buffer</span>.<span class="ident">clear</span>();
+    <span class="doccomment">/// Attempts to clear the buffer if it&#39;s over the maximum length allowed.
+    </span><span class="kw">pub fn </span>refresh_buffer(<span class="kw-2">&amp;mut </span><span class="self">self</span>) {
+        <span class="kw">if </span><span class="self">self</span>.buffer.len() &gt; <span class="self">self</span>.max_len {
+            <span class="self">self</span>.buffer.clear();
         }
     }
 
-    <span class="doccomment">/// Pushes a new scratch sheet text, which means it&#39;s not handling any clearing at all.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">push</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">txt</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>) -&gt; <span class="kw-2">*const</span> <span class="ident">sys::cty::c_char</span> {
-        <span class="kw">unsafe</span> {
-            <span class="kw">let</span> <span class="ident">len</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">buffer</span>.<span class="ident">len</span>();
-            <span class="self">self</span>.<span class="ident">buffer</span>.<span class="ident">extend</span>(<span class="ident">txt</span>.<span class="ident">as_ref</span>().<span class="ident">as_bytes</span>());
-            <span class="self">self</span>.<span class="ident">buffer</span>.<span class="ident">push</span>(<span class="string">b&#39;\0&#39;</span>);
+    <span class="doccomment">/// Pushes a new scratch sheet text, which means it&#39;s not handling any clearing at all.
+    </span><span class="kw">pub fn </span>push(<span class="kw-2">&amp;mut </span><span class="self">self</span>, txt: <span class="kw">impl </span>AsRef&lt;str&gt;) -&gt; <span class="kw-2">*const </span>sys::cty::c_char {
+        <span class="kw">unsafe </span>{
+            <span class="kw">let </span>len = <span class="self">self</span>.buffer.len();
+            <span class="self">self</span>.buffer.extend(txt.as_ref().as_bytes());
+            <span class="self">self</span>.buffer.push(<span class="string">b&#39;\0&#39;</span>);
 
-            <span class="self">self</span>.<span class="ident">buffer</span>.<span class="ident">as_ptr</span>().<span class="ident">add</span>(<span class="ident">len</span>) <span class="kw">as</span> <span class="kw-2">*const</span> <span class="kw">_</span>
-        }
+            <span class="self">self</span>.buffer.as_ptr().add(len) <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_
+        </span>}
     }
 }
 
-<span class="attribute">#[<span class="ident">macro_export</span>]</span>
-<span class="attribute">#[<span class="ident">deprecated</span> <span class="op">=</span> <span class="string">&quot;all functions take AsRef&lt;str&gt; now -- use inline strings or `format` instead&quot;</span>]</span>
-<span class="macro">macro_rules!</span> <span class="ident">im_str</span> {
-    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">e</span>:<span class="ident">literal</span> $(,)<span class="question-mark">?</span>) =&gt; {{
-        <span class="kw">const</span> <span class="ident">__INPUT</span>: <span class="kw-2">&amp;</span><span class="ident">str</span> <span class="op">=</span> <span class="macro">concat!</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">e</span>, <span class="string">&quot;\0&quot;</span>);
+<span class="attribute">#[macro_export]
+#[deprecated = <span class="string">&quot;all functions take AsRef&lt;str&gt; now -- use inline strings or `format` instead&quot;</span>]
+</span><span class="macro">macro_rules! </span>im_str {
+    (<span class="macro-nonterminal">$e</span>:literal $(,)<span class="question-mark">?</span>) =&gt; {{
+        <span class="kw">const </span>__INPUT: <span class="kw-2">&amp;</span>str = <span class="macro">concat!</span>(<span class="macro-nonterminal">$e</span>, <span class="string">&quot;\0&quot;</span>);
         {
-            <span class="comment">// Trigger a compile error if there&#39;s an interior NUL character.</span>
-            <span class="kw">const</span> <span class="ident">_CHECK_NUL</span>: [(); <span class="number">0</span>] <span class="op">=</span> [(); {
-                <span class="kw">let</span> <span class="ident">bytes</span> <span class="op">=</span> <span class="ident">__INPUT</span>.<span class="ident">as_bytes</span>();
-                <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">i</span> <span class="op">=</span> <span class="number">0</span>;
-                <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">found_nul</span> <span class="op">=</span> <span class="number">0</span>;
-                <span class="kw">while</span> <span class="ident">i</span> <span class="op">&lt;</span> <span class="ident">bytes</span>.<span class="ident">len</span>() <span class="op">-</span> <span class="number">1</span> <span class="op">&amp;&amp;</span> <span class="ident">found_nul</span> <span class="op">==</span> <span class="number">0</span> {
-                    <span class="kw">if</span> <span class="ident">bytes</span>[<span class="ident">i</span>] <span class="op">==</span> <span class="number">0</span> {
-                        <span class="ident">found_nul</span> <span class="op">=</span> <span class="number">1</span>;
+            <span class="comment">// Trigger a compile error if there&#39;s an interior NUL character.
+            </span><span class="kw">const </span>_CHECK_NUL: [(); <span class="number">0</span>] = [(); {
+                <span class="kw">let </span>bytes = __INPUT.as_bytes();
+                <span class="kw">let </span><span class="kw-2">mut </span>i = <span class="number">0</span>;
+                <span class="kw">let </span><span class="kw-2">mut </span>found_nul = <span class="number">0</span>;
+                <span class="kw">while </span>i &lt; bytes.len() - <span class="number">1 </span>&amp;&amp; found_nul == <span class="number">0 </span>{
+                    <span class="kw">if </span>bytes[i] == <span class="number">0 </span>{
+                        found_nul = <span class="number">1</span>;
                     }
-                    <span class="ident">i</span> <span class="op">+</span><span class="op">=</span> <span class="number">1</span>;
+                    i += <span class="number">1</span>;
                 }
-                <span class="ident">found_nul</span>
+                found_nul
             }];
-            <span class="kw">const</span> <span class="ident">RESULT</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::ImStr</span> <span class="op">=</span> <span class="kw">unsafe</span> {
-                <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::__core::mem::transmute</span>::<span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> [<span class="ident">u8</span>], <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::ImStr</span><span class="op">&gt;</span>(<span class="ident">__INPUT</span>.<span class="ident">as_bytes</span>())
+            <span class="kw">const </span>RESULT: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span><span class="macro-nonterminal">$crate::ImStr </span>= <span class="kw">unsafe </span>{
+                <span class="macro-nonterminal">$crate::__core::mem::transmute</span>::&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>[u8], <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span><span class="macro-nonterminal">$crate::ImStr</span>&gt;(__INPUT.as_bytes())
             };
-            <span class="ident">RESULT</span>
+            RESULT
         }
     }};
-    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">e</span>:<span class="ident">literal</span>, $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">arg</span>:<span class="ident">tt</span>)<span class="op">+</span>) =&gt; ({
-        <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::ImString::new</span>(<span class="macro">format!</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">e</span>, $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">arg</span>)<span class="kw-2">*</span>))
+    (<span class="macro-nonterminal">$e</span>:literal, $(<span class="macro-nonterminal">$arg</span>:tt)+) =&gt; ({
+        <span class="macro-nonterminal">$crate::ImString::new</span>(<span class="macro">format!</span>(<span class="macro-nonterminal">$e</span>, $(<span class="macro-nonterminal">$arg</span>)<span class="kw-2">*</span>))
     });
 }
 
-<span class="doccomment">/// A UTF-8 encoded, growable, implicitly nul-terminated string.</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Hash</span>, <span class="ident">Ord</span>, <span class="ident">Eq</span>, <span class="ident">PartialOrd</span>, <span class="ident">PartialEq</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">ImString</span>(<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>);
+<span class="doccomment">/// A UTF-8 encoded, growable, implicitly nul-terminated string.
+</span><span class="attribute">#[derive(Clone, Hash, Ord, Eq, PartialOrd, PartialEq)]
+</span><span class="kw">pub struct </span>ImString(<span class="kw">pub</span>(<span class="kw">crate</span>) Vec&lt;u8&gt;);
 
-<span class="kw">impl</span> <span class="ident">ImString</span> {
-    <span class="doccomment">/// Creates a new `ImString` from an existing string.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="ident">value</span>: <span class="ident">T</span>) -&gt; <span class="ident">ImString</span> {
-        <span class="kw">unsafe</span> {
-            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">s</span> <span class="op">=</span> <span class="ident">ImString::from_utf8_unchecked</span>(<span class="ident">value</span>.<span class="ident">into</span>().<span class="ident">into_bytes</span>());
-            <span class="ident">s</span>.<span class="ident">refresh_len</span>();
-            <span class="ident">s</span>
+<span class="kw">impl </span>ImString {
+    <span class="doccomment">/// Creates a new `ImString` from an existing string.
+    </span><span class="kw">pub fn </span>new&lt;T: Into&lt;String&gt;&gt;(value: T) -&gt; ImString {
+        <span class="kw">unsafe </span>{
+            <span class="kw">let </span><span class="kw-2">mut </span>s = ImString::from_utf8_unchecked(value.into().into_bytes());
+            s.refresh_len();
+            s
         }
     }
 
-    <span class="doccomment">/// Creates a new empty `ImString` with a particular capacity</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">with_capacity</span>(<span class="ident">capacity</span>: <span class="ident">usize</span>) -&gt; <span class="ident">ImString</span> {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">v</span> <span class="op">=</span> <span class="ident">Vec::with_capacity</span>(<span class="ident">capacity</span> <span class="op">+</span> <span class="number">1</span>);
-        <span class="ident">v</span>.<span class="ident">push</span>(<span class="string">b&#39;\0&#39;</span>);
-        <span class="ident">ImString</span>(<span class="ident">v</span>)
+    <span class="doccomment">/// Creates a new empty `ImString` with a particular capacity
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>with_capacity(capacity: usize) -&gt; ImString {
+        <span class="kw">let </span><span class="kw-2">mut </span>v = Vec::with_capacity(capacity + <span class="number">1</span>);
+        v.push(<span class="string">b&#39;\0&#39;</span>);
+        ImString(v)
     }
 
-    <span class="doccomment">/// Converts a vector of bytes to a `ImString` without checking that the string contains valid</span>
-    <span class="doccomment">/// UTF-8</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Safety</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// It is up to the caller to guarantee the vector contains valid UTF-8 and no null terminator.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_utf8_unchecked</span>(<span class="kw-2">mut</span> <span class="ident">v</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>) -&gt; <span class="ident">ImString</span> {
-        <span class="ident">v</span>.<span class="ident">push</span>(<span class="string">b&#39;\0&#39;</span>);
-        <span class="ident">ImString</span>(<span class="ident">v</span>)
+    <span class="doccomment">/// Converts a vector of bytes to a `ImString` without checking that the string contains valid
+    /// UTF-8
+    ///
+    /// # Safety
+    ///
+    /// It is up to the caller to guarantee the vector contains valid UTF-8 and no null terminator.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub unsafe fn </span>from_utf8_unchecked(<span class="kw-2">mut </span>v: Vec&lt;u8&gt;) -&gt; ImString {
+        v.push(<span class="string">b&#39;\0&#39;</span>);
+        ImString(v)
     }
 
-    <span class="doccomment">/// Converts a vector of bytes to a `ImString` without checking that the string contains valid</span>
-    <span class="doccomment">/// UTF-8</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Safety</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// It is up to the caller to guarantee the vector contains valid UTF-8 and a null terminator.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_utf8_with_nul_unchecked</span>(<span class="ident">v</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>) -&gt; <span class="ident">ImString</span> {
-        <span class="ident">ImString</span>(<span class="ident">v</span>)
+    <span class="doccomment">/// Converts a vector of bytes to a `ImString` without checking that the string contains valid
+    /// UTF-8
+    ///
+    /// # Safety
+    ///
+    /// It is up to the caller to guarantee the vector contains valid UTF-8 and a null terminator.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub unsafe fn </span>from_utf8_with_nul_unchecked(v: Vec&lt;u8&gt;) -&gt; ImString {
+        ImString(v)
     }
 
-    <span class="doccomment">/// Truncates this `ImString`, removing all contents</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">clear</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
-        <span class="self">self</span>.<span class="number">0</span>.<span class="ident">clear</span>();
-        <span class="self">self</span>.<span class="number">0</span>.<span class="ident">push</span>(<span class="string">b&#39;\0&#39;</span>);
+    <span class="doccomment">/// Truncates this `ImString`, removing all contents
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>clear(<span class="kw-2">&amp;mut </span><span class="self">self</span>) {
+        <span class="self">self</span>.<span class="number">0</span>.clear();
+        <span class="self">self</span>.<span class="number">0</span>.push(<span class="string">b&#39;\0&#39;</span>);
     }
 
-    <span class="doccomment">/// Appends the given character to the end of this `ImString`</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">push</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">ch</span>: <span class="ident">char</span>) {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">buf</span> <span class="op">=</span> [<span class="number">0</span>; <span class="number">4</span>];
-        <span class="self">self</span>.<span class="ident">push_str</span>(<span class="ident">ch</span>.<span class="ident">encode_utf8</span>(<span class="kw-2">&amp;mut</span> <span class="ident">buf</span>));
+    <span class="doccomment">/// Appends the given character to the end of this `ImString`
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>push(<span class="kw-2">&amp;mut </span><span class="self">self</span>, ch: char) {
+        <span class="kw">let </span><span class="kw-2">mut </span>buf = [<span class="number">0</span>; <span class="number">4</span>];
+        <span class="self">self</span>.push_str(ch.encode_utf8(<span class="kw-2">&amp;mut </span>buf));
     }
 
-    <span class="doccomment">/// Appends a given string slice to the end of this `ImString`</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">push_str</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">string</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) {
-        <span class="self">self</span>.<span class="number">0</span>.<span class="ident">pop</span>();
-        <span class="self">self</span>.<span class="number">0</span>.<span class="ident">extend</span>(<span class="ident">string</span>.<span class="ident">bytes</span>());
-        <span class="self">self</span>.<span class="number">0</span>.<span class="ident">push</span>(<span class="string">b&#39;\0&#39;</span>);
-        <span class="kw">unsafe</span> {
-            <span class="self">self</span>.<span class="ident">refresh_len</span>();
+    <span class="doccomment">/// Appends a given string slice to the end of this `ImString`
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>push_str(<span class="kw-2">&amp;mut </span><span class="self">self</span>, string: <span class="kw-2">&amp;</span>str) {
+        <span class="self">self</span>.<span class="number">0</span>.pop();
+        <span class="self">self</span>.<span class="number">0</span>.extend(string.bytes());
+        <span class="self">self</span>.<span class="number">0</span>.push(<span class="string">b&#39;\0&#39;</span>);
+        <span class="kw">unsafe </span>{
+            <span class="self">self</span>.refresh_len();
         }
     }
 
-    <span class="doccomment">/// Returns the capacity of this `ImString` in bytes</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">capacity</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">usize</span> {
-        <span class="self">self</span>.<span class="number">0</span>.<span class="ident">capacity</span>() <span class="op">-</span> <span class="number">1</span>
+    <span class="doccomment">/// Returns the capacity of this `ImString` in bytes
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>capacity(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; usize {
+        <span class="self">self</span>.<span class="number">0</span>.capacity() - <span class="number">1
+    </span>}
+
+    <span class="doccomment">/// Returns the capacity of this `ImString` in bytes, including the implicit null byte
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>capacity_with_nul(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; usize {
+        <span class="self">self</span>.<span class="number">0</span>.capacity()
     }
 
-    <span class="doccomment">/// Returns the capacity of this `ImString` in bytes, including the implicit null byte</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">capacity_with_nul</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">usize</span> {
-        <span class="self">self</span>.<span class="number">0</span>.<span class="ident">capacity</span>()
+    <span class="doccomment">/// Ensures that the capacity of this `ImString` is at least `additional` bytes larger than the
+    /// current length.
+    ///
+    /// The capacity may be increased by more than `additional` bytes.
+    </span><span class="kw">pub fn </span>reserve(<span class="kw-2">&amp;mut </span><span class="self">self</span>, additional: usize) {
+        <span class="self">self</span>.<span class="number">0</span>.reserve(additional);
     }
 
-    <span class="doccomment">/// Ensures that the capacity of this `ImString` is at least `additional` bytes larger than the</span>
-    <span class="doccomment">/// current length.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// The capacity may be increased by more than `additional` bytes.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">reserve</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">additional</span>: <span class="ident">usize</span>) {
-        <span class="self">self</span>.<span class="number">0</span>.<span class="ident">reserve</span>(<span class="ident">additional</span>);
+    <span class="doccomment">/// Ensures that the capacity of this `ImString` is at least `additional` bytes larger than the
+    /// current length
+    </span><span class="kw">pub fn </span>reserve_exact(<span class="kw-2">&amp;mut </span><span class="self">self</span>, additional: usize) {
+        <span class="self">self</span>.<span class="number">0</span>.reserve_exact(additional);
     }
 
-    <span class="doccomment">/// Ensures that the capacity of this `ImString` is at least `additional` bytes larger than the</span>
-    <span class="doccomment">/// current length</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">reserve_exact</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">additional</span>: <span class="ident">usize</span>) {
-        <span class="self">self</span>.<span class="number">0</span>.<span class="ident">reserve_exact</span>(<span class="ident">additional</span>);
+    <span class="doccomment">/// Returns a raw pointer to the underlying buffer
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>as_ptr(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">*const </span>c_char {
+        <span class="self">self</span>.<span class="number">0</span>.as_ptr() <span class="kw">as </span><span class="kw-2">*const </span>c_char
     }
 
-    <span class="doccomment">/// Returns a raw pointer to the underlying buffer</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">as_ptr</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">*const</span> <span class="ident">c_char</span> {
-        <span class="self">self</span>.<span class="number">0</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">c_char</span>
+    <span class="doccomment">/// Returns a raw mutable pointer to the underlying buffer.
+    ///
+    /// If the underlying data is modified, `refresh_len` *must* be called afterwards.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>as_mut_ptr(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; <span class="kw-2">*mut </span>c_char {
+        <span class="self">self</span>.<span class="number">0</span>.as_mut_ptr() <span class="kw">as </span><span class="kw-2">*mut </span>c_char
     }
 
-    <span class="doccomment">/// Returns a raw mutable pointer to the underlying buffer.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// If the underlying data is modified, `refresh_len` *must* be called afterwards.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">as_mut_ptr</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="kw-2">*mut</span> <span class="ident">c_char</span> {
-        <span class="self">self</span>.<span class="number">0</span>.<span class="ident">as_mut_ptr</span>() <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">c_char</span>
-    }
-
-    <span class="doccomment">/// Updates the underlying buffer length based on the current contents.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This function *must* be called if the underlying data is modified via a pointer</span>
-    <span class="doccomment">/// obtained by `as_mut_ptr`.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Safety</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// It is up to the caller to guarantee the this ImString contains valid UTF-8 and a null</span>
-    <span class="doccomment">/// terminator.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">refresh_len</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
-        <span class="kw">let</span> <span class="ident">len</span> <span class="op">=</span> <span class="ident">CStr::from_ptr</span>(<span class="self">self</span>.<span class="number">0</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">c_char</span>)
-            .<span class="ident">to_bytes_with_nul</span>()
-            .<span class="ident">len</span>();
-        <span class="self">self</span>.<span class="number">0</span>.<span class="ident">set_len</span>(<span class="ident">len</span>);
-    }
-}
-
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">Default</span> <span class="kw">for</span> <span class="ident">ImString</span> {
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">default</span>() -&gt; <span class="ident">ImString</span> {
-        <span class="ident">ImString</span>(<span class="macro">vec!</span>[<span class="string">b&#39;\0&#39;</span>])
+    <span class="doccomment">/// Updates the underlying buffer length based on the current contents.
+    ///
+    /// This function *must* be called if the underlying data is modified via a pointer
+    /// obtained by `as_mut_ptr`.
+    ///
+    /// # Safety
+    ///
+    /// It is up to the caller to guarantee the this ImString contains valid UTF-8 and a null
+    /// terminator.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub unsafe fn </span>refresh_len(<span class="kw-2">&amp;mut </span><span class="self">self</span>) {
+        <span class="kw">let </span>len = CStr::from_ptr(<span class="self">self</span>.<span class="number">0</span>.as_ptr() <span class="kw">as </span><span class="kw-2">*const </span>c_char)
+            .to_bytes_with_nul()
+            .len();
+        <span class="self">self</span>.<span class="number">0</span>.set_len(len);
     }
 }
 
-<span class="kw">impl</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">ImString</span> {
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">s</span>: <span class="ident">String</span>) -&gt; <span class="ident">ImString</span> {
-        <span class="ident">ImString::new</span>(<span class="ident">s</span>)
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; Default <span class="kw">for </span>ImString {
+    <span class="attribute">#[inline]
+    </span><span class="kw">fn </span>default() -&gt; ImString {
+        ImString(<span class="macro">vec!</span>[<span class="string">b&#39;\0&#39;</span>])
     }
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">ImString</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">ImStr</span><span class="op">&gt;</span> {
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">s</span>: <span class="ident">ImString</span>) -&gt; <span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">ImStr</span><span class="op">&gt;</span> {
-        <span class="ident">Cow::Owned</span>(<span class="ident">s</span>)
+<span class="kw">impl </span>From&lt;String&gt; <span class="kw">for </span>ImString {
+    <span class="attribute">#[inline]
+    </span><span class="kw">fn </span>from(s: String) -&gt; ImString {
+        ImString::new(s)
     }
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">From</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">ImString</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">ImStr</span><span class="op">&gt;</span> {
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">ImString</span>) -&gt; <span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">ImStr</span><span class="op">&gt;</span> {
-        <span class="ident">Cow::Borrowed</span>(<span class="ident">s</span>)
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; From&lt;ImString&gt; <span class="kw">for </span>Cow&lt;<span class="lifetime">&#39;a</span>, ImStr&gt; {
+    <span class="attribute">#[inline]
+    </span><span class="kw">fn </span>from(s: ImString) -&gt; Cow&lt;<span class="lifetime">&#39;a</span>, ImStr&gt; {
+        Cow::Owned(s)
     }
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span>: <span class="question-mark">?</span><span class="ident">Sized</span> <span class="op">+</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">ImStr</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="ident">From</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">T</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">ImString</span> {
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">T</span>) -&gt; <span class="ident">ImString</span> {
-        <span class="ident">s</span>.<span class="ident">as_ref</span>().<span class="ident">to_owned</span>()
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; From&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>ImString&gt; <span class="kw">for </span>Cow&lt;<span class="lifetime">&#39;a</span>, ImStr&gt; {
+    <span class="attribute">#[inline]
+    </span><span class="kw">fn </span>from(s: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>ImString) -&gt; Cow&lt;<span class="lifetime">&#39;a</span>, ImStr&gt; {
+        Cow::Borrowed(s)
     }
 }
 
-<span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">ImStr</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">ImString</span> {
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">as_ref</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="ident">ImStr</span> {
-        <span class="self">self</span>
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>, T: <span class="question-mark">?</span>Sized + AsRef&lt;ImStr&gt;&gt; From&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>T&gt; <span class="kw">for </span>ImString {
+    <span class="attribute">#[inline]
+    </span><span class="kw">fn </span>from(s: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>T) -&gt; ImString {
+        s.as_ref().to_owned()
     }
 }
 
-<span class="kw">impl</span> <span class="ident">Borrow</span><span class="op">&lt;</span><span class="ident">ImStr</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">ImString</span> {
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">borrow</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="ident">ImStr</span> {
-        <span class="self">self</span>
+<span class="kw">impl </span>AsRef&lt;ImStr&gt; <span class="kw">for </span>ImString {
+    <span class="attribute">#[inline]
+    </span><span class="kw">fn </span>as_ref(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>ImStr {
+        <span class="self">self
+    </span>}
+}
+
+<span class="kw">impl </span>Borrow&lt;ImStr&gt; <span class="kw">for </span>ImString {
+    <span class="attribute">#[inline]
+    </span><span class="kw">fn </span>borrow(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>ImStr {
+        <span class="self">self
+    </span>}
+}
+
+<span class="kw">impl </span>AsRef&lt;str&gt; <span class="kw">for </span>ImString {
+    <span class="attribute">#[inline]
+    </span><span class="kw">fn </span>as_ref(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>str {
+        <span class="self">self</span>.to_str()
     }
 }
 
-<span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">ImString</span> {
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">as_ref</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="ident">str</span> {
-        <span class="self">self</span>.<span class="ident">to_str</span>()
+<span class="kw">impl </span>Borrow&lt;str&gt; <span class="kw">for </span>ImString {
+    <span class="attribute">#[inline]
+    </span><span class="kw">fn </span>borrow(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>str {
+        <span class="self">self</span>.to_str()
     }
 }
 
-<span class="kw">impl</span> <span class="ident">Borrow</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">ImString</span> {
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">borrow</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="ident">str</span> {
-        <span class="self">self</span>.<span class="ident">to_str</span>()
+<span class="kw">impl </span>Index&lt;RangeFull&gt; <span class="kw">for </span>ImString {
+    <span class="kw">type </span>Output = ImStr;
+    <span class="attribute">#[inline]
+    </span><span class="kw">fn </span>index(<span class="kw-2">&amp;</span><span class="self">self</span>, _index: RangeFull) -&gt; <span class="kw-2">&amp;</span>ImStr {
+        <span class="self">self
+    </span>}
+}
+
+<span class="kw">impl </span>fmt::Debug <span class="kw">for </span>ImString {
+    <span class="attribute">#[inline]
+    </span><span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; fmt::Result {
+        fmt::Debug::fmt(<span class="self">self</span>.to_str(), f)
     }
 }
 
-<span class="kw">impl</span> <span class="ident">Index</span><span class="op">&lt;</span><span class="ident">RangeFull</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">ImString</span> {
-    <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="ident">ImStr</span>;
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">index</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">_index</span>: <span class="ident">RangeFull</span>) -&gt; <span class="kw-2">&amp;</span><span class="ident">ImStr</span> {
-        <span class="self">self</span>
+<span class="kw">impl </span>fmt::Display <span class="kw">for </span>ImString {
+    <span class="attribute">#[inline]
+    </span><span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; fmt::Result {
+        fmt::Display::fmt(<span class="self">self</span>.to_str(), f)
     }
 }
 
-<span class="kw">impl</span> <span class="ident">fmt::Debug</span> <span class="kw">for</span> <span class="ident">ImString</span> {
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
-        <span class="ident">fmt::Debug::fmt</span>(<span class="self">self</span>.<span class="ident">to_str</span>(), <span class="ident">f</span>)
-    }
-}
-
-<span class="kw">impl</span> <span class="ident">fmt::Display</span> <span class="kw">for</span> <span class="ident">ImString</span> {
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
-        <span class="ident">fmt::Display::fmt</span>(<span class="self">self</span>.<span class="ident">to_str</span>(), <span class="ident">f</span>)
-    }
-}
-
-<span class="kw">impl</span> <span class="ident">Deref</span> <span class="kw">for</span> <span class="ident">ImString</span> {
-    <span class="kw">type</span> <span class="ident">Target</span> <span class="op">=</span> <span class="ident">ImStr</span>;
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">deref</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="ident">ImStr</span> {
-        <span class="comment">// as_ptr() is used, because we need to look at the bytes to figure out the length</span>
-        <span class="comment">// self.0.len() is incorrect, because there might be more than one nul byte in the end, or</span>
-        <span class="comment">// some interior nuls in the data</span>
-        <span class="kw">unsafe</span> {
-            <span class="kw-2">&amp;</span><span class="kw-2">*</span>(<span class="ident">CStr::from_ptr</span>(<span class="self">self</span>.<span class="number">0</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">c_char</span>) <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">CStr</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">ImStr</span>)
+<span class="kw">impl </span>Deref <span class="kw">for </span>ImString {
+    <span class="kw">type </span>Target = ImStr;
+    <span class="attribute">#[inline]
+    </span><span class="kw">fn </span>deref(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>ImStr {
+        <span class="comment">// as_ptr() is used, because we need to look at the bytes to figure out the length
+        // self.0.len() is incorrect, because there might be more than one nul byte in the end, or
+        // some interior nuls in the data
+        </span><span class="kw">unsafe </span>{
+            <span class="kw-2">&amp;*</span>(CStr::from_ptr(<span class="self">self</span>.<span class="number">0</span>.as_ptr() <span class="kw">as </span><span class="kw-2">*const </span>c_char) <span class="kw">as </span><span class="kw-2">*const </span>CStr <span class="kw">as </span><span class="kw-2">*const </span>ImStr)
         }
     }
 }
 
-<span class="kw">impl</span> <span class="ident">fmt::Write</span> <span class="kw">for</span> <span class="ident">ImString</span> {
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">write_str</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="ident">fmt::Result</span> {
-        <span class="self">self</span>.<span class="ident">push_str</span>(<span class="ident">s</span>);
+<span class="kw">impl </span>fmt::Write <span class="kw">for </span>ImString {
+    <span class="attribute">#[inline]
+    </span><span class="kw">fn </span>write_str(<span class="kw-2">&amp;mut </span><span class="self">self</span>, s: <span class="kw-2">&amp;</span>str) -&gt; fmt::Result {
+        <span class="self">self</span>.push_str(s);
         <span class="prelude-val">Ok</span>(())
     }
 
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">write_char</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">c</span>: <span class="ident">char</span>) -&gt; <span class="ident">fmt::Result</span> {
-        <span class="self">self</span>.<span class="ident">push</span>(<span class="ident">c</span>);
+    <span class="attribute">#[inline]
+    </span><span class="kw">fn </span>write_char(<span class="kw-2">&amp;mut </span><span class="self">self</span>, c: char) -&gt; fmt::Result {
+        <span class="self">self</span>.push(c);
         <span class="prelude-val">Ok</span>(())
     }
 }
 
-<span class="doccomment">/// A UTF-8 encoded, implicitly nul-terminated string slice.</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Hash</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>)]</span>
-<span class="attribute">#[<span class="ident">repr</span>(<span class="ident">transparent</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">ImStr</span>([<span class="ident">u8</span>]);
+<span class="doccomment">/// A UTF-8 encoded, implicitly nul-terminated string slice.
+</span><span class="attribute">#[derive(Hash, PartialEq, Eq, PartialOrd, Ord)]
+#[repr(transparent)]
+</span><span class="kw">pub struct </span>ImStr([u8]);
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">Default</span> <span class="kw">for</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">ImStr</span> {
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">default</span>() -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">ImStr</span> {
-        <span class="kw">static</span> <span class="ident">SLICE</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>] <span class="op">=</span> <span class="kw-2">&amp;</span>[<span class="number">0</span>];
-        <span class="kw">unsafe</span> { <span class="ident">ImStr::from_utf8_with_nul_unchecked</span>(<span class="ident">SLICE</span>) }
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; Default <span class="kw">for </span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>ImStr {
+    <span class="attribute">#[inline]
+    </span><span class="kw">fn </span>default() -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>ImStr {
+        <span class="kw">static </span>SLICE: <span class="kw-2">&amp;</span>[u8] = <span class="kw-2">&amp;</span>[<span class="number">0</span>];
+        <span class="kw">unsafe </span>{ ImStr::from_utf8_with_nul_unchecked(SLICE) }
     }
 }
 
-<span class="kw">impl</span> <span class="ident">fmt::Debug</span> <span class="kw">for</span> <span class="ident">ImStr</span> {
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
-        <span class="ident">fmt::Debug::fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>, <span class="ident">f</span>)
+<span class="kw">impl </span>fmt::Debug <span class="kw">for </span>ImStr {
+    <span class="attribute">#[inline]
+    </span><span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; fmt::Result {
+        fmt::Debug::fmt(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>, f)
     }
 }
 
-<span class="kw">impl</span> <span class="ident">fmt::Display</span> <span class="kw">for</span> <span class="ident">ImStr</span> {
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
-        <span class="ident">fmt::Display::fmt</span>(<span class="self">self</span>.<span class="ident">to_str</span>(), <span class="ident">f</span>)
+<span class="kw">impl </span>fmt::Display <span class="kw">for </span>ImStr {
+    <span class="attribute">#[inline]
+    </span><span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; fmt::Result {
+        fmt::Display::fmt(<span class="self">self</span>.to_str(), f)
     }
 }
 
-<span class="kw">impl</span> <span class="ident">ImStr</span> {
-    <span class="doccomment">/// Wraps a raw UTF-8 encoded C string</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Safety</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// It is up to the caller to guarantee the pointer is not null and it points to a</span>
-    <span class="doccomment">/// null-terminated UTF-8 string valid for the duration of the arbitrary lifetime &#39;a.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_ptr_unchecked</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>(<span class="ident">ptr</span>: <span class="kw-2">*const</span> <span class="ident">c_char</span>) -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">ImStr</span> {
-        <span class="ident">ImStr::from_cstr_unchecked</span>(<span class="ident">CStr::from_ptr</span>(<span class="ident">ptr</span>))
+<span class="kw">impl </span>ImStr {
+    <span class="doccomment">/// Wraps a raw UTF-8 encoded C string
+    ///
+    /// # Safety
+    ///
+    /// It is up to the caller to guarantee the pointer is not null and it points to a
+    /// null-terminated UTF-8 string valid for the duration of the arbitrary lifetime &#39;a.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub unsafe fn </span>from_ptr_unchecked&lt;<span class="lifetime">&#39;a</span>&gt;(ptr: <span class="kw-2">*const </span>c_char) -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>ImStr {
+        ImStr::from_cstr_unchecked(CStr::from_ptr(ptr))
     }
 
-    <span class="doccomment">/// Converts a slice of bytes to an imgui-rs string slice without checking for valid UTF-8 or</span>
-    <span class="doccomment">/// null termination.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Safety</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// It is up to the caller to guarantee the slice contains valid UTF-8 and a null terminator.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_utf8_with_nul_unchecked</span>(<span class="ident">bytes</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) -&gt; <span class="kw-2">&amp;</span><span class="ident">ImStr</span> {
-        <span class="kw-2">&amp;</span><span class="kw-2">*</span>(<span class="ident">bytes</span> <span class="kw">as</span> <span class="kw-2">*const</span> [<span class="ident">u8</span>] <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">ImStr</span>)
+    <span class="doccomment">/// Converts a slice of bytes to an imgui-rs string slice without checking for valid UTF-8 or
+    /// null termination.
+    ///
+    /// # Safety
+    ///
+    /// It is up to the caller to guarantee the slice contains valid UTF-8 and a null terminator.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub unsafe fn </span>from_utf8_with_nul_unchecked(bytes: <span class="kw-2">&amp;</span>[u8]) -&gt; <span class="kw-2">&amp;</span>ImStr {
+        <span class="kw-2">&amp;*</span>(bytes <span class="kw">as </span><span class="kw-2">*const </span>[u8] <span class="kw">as </span><span class="kw-2">*const </span>ImStr)
     }
 
-    <span class="doccomment">/// Converts a CStr reference to an imgui-rs string slice without checking for valid UTF-8.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Safety</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// It is up to the caller to guarantee the CStr reference contains valid UTF-8.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_cstr_unchecked</span>(<span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="ident">CStr</span>) -&gt; <span class="kw-2">&amp;</span><span class="ident">ImStr</span> {
-        <span class="kw-2">&amp;</span><span class="kw-2">*</span>(<span class="ident">value</span>.<span class="ident">to_bytes_with_nul</span>() <span class="kw">as</span> <span class="kw-2">*const</span> [<span class="ident">u8</span>] <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">ImStr</span>)
+    <span class="doccomment">/// Converts a CStr reference to an imgui-rs string slice without checking for valid UTF-8.
+    ///
+    /// # Safety
+    ///
+    /// It is up to the caller to guarantee the CStr reference contains valid UTF-8.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub unsafe fn </span>from_cstr_unchecked(value: <span class="kw-2">&amp;</span>CStr) -&gt; <span class="kw-2">&amp;</span>ImStr {
+        <span class="kw-2">&amp;*</span>(value.to_bytes_with_nul() <span class="kw">as </span><span class="kw-2">*const </span>[u8] <span class="kw">as </span><span class="kw-2">*const </span>ImStr)
     }
 
-    <span class="doccomment">/// Converts an imgui-rs string slice to a raw pointer</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">as_ptr</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">*const</span> <span class="ident">c_char</span> {
-        <span class="self">self</span>.<span class="number">0</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">c_char</span>
+    <span class="doccomment">/// Converts an imgui-rs string slice to a raw pointer
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>as_ptr(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">*const </span>c_char {
+        <span class="self">self</span>.<span class="number">0</span>.as_ptr() <span class="kw">as </span><span class="kw-2">*const </span>c_char
     }
 
-    <span class="doccomment">/// Converts an imgui-rs string slice to a normal string slice</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">to_str</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="ident">str</span> {
-        <span class="self">self</span>.<span class="ident">sanity_check</span>();
-        <span class="kw">unsafe</span> { <span class="ident">str::from_utf8_unchecked</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>[..(<span class="self">self</span>.<span class="number">0</span>.<span class="ident">len</span>() <span class="op">-</span> <span class="number">1</span>)]) }
+    <span class="doccomment">/// Converts an imgui-rs string slice to a normal string slice
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>to_str(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>str {
+        <span class="self">self</span>.sanity_check();
+        <span class="kw">unsafe </span>{ str::from_utf8_unchecked(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>[..(<span class="self">self</span>.<span class="number">0</span>.len() - <span class="number">1</span>)]) }
     }
 
-    <span class="doccomment">/// Returns true if the imgui-rs string slice is empty</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_empty</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
-        <span class="macro">debug_assert!</span>(<span class="self">self</span>.<span class="number">0</span>.<span class="ident">len</span>() <span class="op">!</span><span class="op">=</span> <span class="number">0</span>);
-        <span class="self">self</span>.<span class="number">0</span>.<span class="ident">len</span>() <span class="op">==</span> <span class="number">1</span>
-    }
+    <span class="doccomment">/// Returns true if the imgui-rs string slice is empty
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>is_empty(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        <span class="macro">debug_assert!</span>(<span class="self">self</span>.<span class="number">0</span>.len() != <span class="number">0</span>);
+        <span class="self">self</span>.<span class="number">0</span>.len() == <span class="number">1
+    </span>}
 
-    <span class="comment">// TODO: if this is too slow, avoid the UTF8 validation except if we&#39;d</span>
-    <span class="comment">// already be doing O(n) stuff.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">sanity_check</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) {
+    <span class="comment">// TODO: if this is too slow, avoid the UTF8 validation except if we&#39;d
+    // already be doing O(n) stuff.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">fn </span>sanity_check(<span class="kw-2">&amp;</span><span class="self">self</span>) {
         <span class="macro">debug_assert!</span>(
-            <span class="ident">str::from_utf8</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>).<span class="ident">is_ok</span>()
-                <span class="op">&amp;&amp;</span> <span class="op">!</span><span class="self">self</span>.<span class="number">0</span>.<span class="ident">is_empty</span>()
-                <span class="op">&amp;&amp;</span> <span class="op">!</span><span class="self">self</span>.<span class="number">0</span>[..(<span class="self">self</span>.<span class="number">0</span>.<span class="ident">len</span>() <span class="op">-</span> <span class="number">1</span>)].<span class="ident">contains</span>(<span class="kw-2">&amp;</span><span class="number">0u8</span>)
-                <span class="op">&amp;&amp;</span> <span class="self">self</span>.<span class="number">0</span>[<span class="self">self</span>.<span class="number">0</span>.<span class="ident">len</span>() <span class="op">-</span> <span class="number">1</span>] <span class="op">==</span> <span class="number">0</span>,
+            str::from_utf8(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>).is_ok()
+                &amp;&amp; !<span class="self">self</span>.<span class="number">0</span>.is_empty()
+                &amp;&amp; !<span class="self">self</span>.<span class="number">0</span>[..(<span class="self">self</span>.<span class="number">0</span>.len() - <span class="number">1</span>)].contains(<span class="kw-2">&amp;</span><span class="number">0u8</span>)
+                &amp;&amp; <span class="self">self</span>.<span class="number">0</span>[<span class="self">self</span>.<span class="number">0</span>.len() - <span class="number">1</span>] == <span class="number">0</span>,
             <span class="string">&quot;bad ImStr: {:?}&quot;</span>,
-            <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>
-        );
+            <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0
+        </span>);
     }
 }
 
-<span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">CStr</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">ImStr</span> {
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">as_ref</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="ident">CStr</span> {
-        <span class="comment">// Safety: our safety requirements are a superset of CStr&#39;s, so this is fine</span>
-        <span class="kw">unsafe</span> { <span class="ident">CStr::from_bytes_with_nul_unchecked</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>) }
+<span class="kw">impl </span>AsRef&lt;CStr&gt; <span class="kw">for </span>ImStr {
+    <span class="attribute">#[inline]
+    </span><span class="kw">fn </span>as_ref(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>CStr {
+        <span class="comment">// Safety: our safety requirements are a superset of CStr&#39;s, so this is fine
+        </span><span class="kw">unsafe </span>{ CStr::from_bytes_with_nul_unchecked(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>) }
     }
 }
 
-<span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">ImStr</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">ImStr</span> {
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">as_ref</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="ident">ImStr</span> {
-        <span class="self">self</span>
+<span class="kw">impl </span>AsRef&lt;ImStr&gt; <span class="kw">for </span>ImStr {
+    <span class="attribute">#[inline]
+    </span><span class="kw">fn </span>as_ref(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>ImStr {
+        <span class="self">self
+    </span>}
+}
+
+<span class="kw">impl </span>AsRef&lt;str&gt; <span class="kw">for </span>ImStr {
+    <span class="attribute">#[inline]
+    </span><span class="kw">fn </span>as_ref(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>str {
+        <span class="self">self</span>.to_str()
     }
 }
 
-<span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">ImStr</span> {
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">as_ref</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="ident">str</span> {
-        <span class="self">self</span>.<span class="ident">to_str</span>()
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; From&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>ImStr&gt; <span class="kw">for </span>Cow&lt;<span class="lifetime">&#39;a</span>, ImStr&gt; {
+    <span class="attribute">#[inline]
+    </span><span class="kw">fn </span>from(s: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>ImStr) -&gt; Cow&lt;<span class="lifetime">&#39;a</span>, ImStr&gt; {
+        Cow::Borrowed(s)
     }
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">From</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">ImStr</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">ImStr</span><span class="op">&gt;</span> {
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">ImStr</span>) -&gt; <span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">ImStr</span><span class="op">&gt;</span> {
-        <span class="ident">Cow::Borrowed</span>(<span class="ident">s</span>)
+<span class="kw">impl </span>ToOwned <span class="kw">for </span>ImStr {
+    <span class="kw">type </span>Owned = ImString;
+    <span class="attribute">#[inline]
+    </span><span class="kw">fn </span>to_owned(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; ImString {
+        <span class="self">self</span>.sanity_check();
+        ImString(<span class="self">self</span>.<span class="number">0</span>.to_owned())
     }
 }
 
-<span class="kw">impl</span> <span class="ident">ToOwned</span> <span class="kw">for</span> <span class="ident">ImStr</span> {
-    <span class="kw">type</span> <span class="ident">Owned</span> <span class="op">=</span> <span class="ident">ImString</span>;
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">to_owned</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">ImString</span> {
-        <span class="self">self</span>.<span class="ident">sanity_check</span>();
-        <span class="ident">ImString</span>(<span class="self">self</span>.<span class="number">0</span>.<span class="ident">to_owned</span>())
+<span class="attribute">#[test]
+</span><span class="kw">fn </span>test_imstring_constructors() {
+    <span class="kw">let </span>s = ImString::new(<span class="string">&quot;test&quot;</span>);
+    <span class="macro">assert_eq!</span>(s.<span class="number">0</span>, <span class="string">b&quot;test\0&quot;</span>);
+
+    <span class="kw">let </span>s = ImString::with_capacity(<span class="number">100</span>);
+    <span class="macro">assert_eq!</span>(s.<span class="number">0</span>, <span class="string">b&quot;\0&quot;</span>);
+
+    <span class="kw">let </span>s = <span class="kw">unsafe </span>{ ImString::from_utf8_unchecked(<span class="macro">vec!</span>[<span class="string">b&#39;t&#39;</span>, <span class="string">b&#39;e&#39;</span>, <span class="string">b&#39;s&#39;</span>, <span class="string">b&#39;t&#39;</span>]) };
+    <span class="macro">assert_eq!</span>(s.<span class="number">0</span>, <span class="string">b&quot;test\0&quot;</span>);
+
+    <span class="kw">let </span>s = <span class="kw">unsafe </span>{ ImString::from_utf8_with_nul_unchecked(<span class="macro">vec!</span>[<span class="string">b&#39;t&#39;</span>, <span class="string">b&#39;e&#39;</span>, <span class="string">b&#39;s&#39;</span>, <span class="string">b&#39;t&#39;</span>, <span class="string">b&#39;\0&#39;</span>]) };
+    <span class="macro">assert_eq!</span>(s.<span class="number">0</span>, <span class="string">b&quot;test\0&quot;</span>);
+}
+
+<span class="attribute">#[test]
+</span><span class="kw">fn </span>test_imstring_operations() {
+    <span class="kw">let </span><span class="kw-2">mut </span>s = ImString::new(<span class="string">&quot;test&quot;</span>);
+    s.clear();
+    <span class="macro">assert_eq!</span>(s.<span class="number">0</span>, <span class="string">b&quot;\0&quot;</span>);
+    s.push(<span class="string">&#39;z&#39;</span>);
+    <span class="macro">assert_eq!</span>(s.<span class="number">0</span>, <span class="string">b&quot;z\0&quot;</span>);
+    s.push(<span class="string">&#39;ä&#39;</span>);
+    <span class="macro">assert_eq!</span>(s.<span class="number">0</span>, <span class="string">b&quot;z\xc3\xa4\0&quot;</span>);
+    s.clear();
+    s.push_str(<span class="string">&quot;imgui-rs&quot;</span>);
+    <span class="macro">assert_eq!</span>(s.<span class="number">0</span>, <span class="string">b&quot;imgui-rs\0&quot;</span>);
+    s.push_str(<span class="string">&quot;öä&quot;</span>);
+    <span class="macro">assert_eq!</span>(s.<span class="number">0</span>, <span class="string">b&quot;imgui-rs\xc3\xb6\xc3\xa4\0&quot;</span>);
+}
+
+<span class="attribute">#[test]
+</span><span class="kw">fn </span>test_imstring_fmt_write() {
+    <span class="kw">use </span>std::fmt::Write;
+    <span class="kw">let </span><span class="kw-2">mut </span>s = ImString::default();
+    <span class="kw">let _ </span>= <span class="macro">write!</span>(s, <span class="string">&quot;format {:02x}&quot;</span>, <span class="number">0x42</span>);
+    <span class="macro">assert_eq!</span>(s.<span class="number">0</span>, <span class="string">b&quot;format 42\0&quot;</span>);
+}
+
+<span class="attribute">#[test]
+</span><span class="kw">fn </span>test_imstring_refresh_len() {
+    <span class="kw">let </span><span class="kw-2">mut </span>s = ImString::new(<span class="string">&quot;testing&quot;</span>);
+    <span class="kw">unsafe </span>{
+        <span class="kw">let </span><span class="kw-2">mut </span>ptr = s.as_mut_ptr() <span class="kw">as </span><span class="kw-2">*mut </span>u8;
+        ptr = ptr.wrapping_add(<span class="number">2</span>);
+        <span class="kw-2">*</span>ptr = <span class="string">b&#39;z&#39;</span>;
+        ptr = ptr.wrapping_add(<span class="number">1</span>);
+        <span class="kw-2">*</span>ptr = <span class="string">b&#39;\0&#39;</span>;
     }
+    <span class="macro">assert_eq!</span>(s.<span class="number">0</span>, <span class="string">b&quot;tez\0ing\0&quot;</span>);
+    <span class="kw">unsafe </span>{ s.refresh_len() };
+    <span class="macro">assert_eq!</span>(s.<span class="number">0</span>, <span class="string">b&quot;tez\0&quot;</span>);
 }
 
-<span class="attribute">#[<span class="ident">test</span>]</span>
-<span class="kw">fn</span> <span class="ident">test_imstring_constructors</span>() {
-    <span class="kw">let</span> <span class="ident">s</span> <span class="op">=</span> <span class="ident">ImString::new</span>(<span class="string">&quot;test&quot;</span>);
-    <span class="macro">assert_eq!</span>(<span class="ident">s</span>.<span class="number">0</span>, <span class="string">b&quot;test\0&quot;</span>);
+<span class="attribute">#[test]
+</span><span class="kw">fn </span>test_imstring_interior_nul() {
+    <span class="kw">let </span>s = ImString::new(<span class="string">&quot;test\0ohno&quot;</span>);
+    <span class="macro">assert_eq!</span>(s.<span class="number">0</span>, <span class="string">b&quot;test\0&quot;</span>);
+    <span class="macro">assert_eq!</span>(s.to_str(), <span class="string">&quot;test&quot;</span>);
+    <span class="macro">assert!</span>(!s.is_empty());
 
-    <span class="kw">let</span> <span class="ident">s</span> <span class="op">=</span> <span class="ident">ImString::with_capacity</span>(<span class="number">100</span>);
-    <span class="macro">assert_eq!</span>(<span class="ident">s</span>.<span class="number">0</span>, <span class="string">b&quot;\0&quot;</span>);
-
-    <span class="kw">let</span> <span class="ident">s</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">ImString::from_utf8_unchecked</span>(<span class="macro">vec!</span>[<span class="string">b&#39;t&#39;</span>, <span class="string">b&#39;e&#39;</span>, <span class="string">b&#39;s&#39;</span>, <span class="string">b&#39;t&#39;</span>]) };
-    <span class="macro">assert_eq!</span>(<span class="ident">s</span>.<span class="number">0</span>, <span class="string">b&quot;test\0&quot;</span>);
-
-    <span class="kw">let</span> <span class="ident">s</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">ImString::from_utf8_with_nul_unchecked</span>(<span class="macro">vec!</span>[<span class="string">b&#39;t&#39;</span>, <span class="string">b&#39;e&#39;</span>, <span class="string">b&#39;s&#39;</span>, <span class="string">b&#39;t&#39;</span>, <span class="string">b&#39;\0&#39;</span>]) };
-    <span class="macro">assert_eq!</span>(<span class="ident">s</span>.<span class="number">0</span>, <span class="string">b&quot;test\0&quot;</span>);
-}
-
-<span class="attribute">#[<span class="ident">test</span>]</span>
-<span class="kw">fn</span> <span class="ident">test_imstring_operations</span>() {
-    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">s</span> <span class="op">=</span> <span class="ident">ImString::new</span>(<span class="string">&quot;test&quot;</span>);
-    <span class="ident">s</span>.<span class="ident">clear</span>();
-    <span class="macro">assert_eq!</span>(<span class="ident">s</span>.<span class="number">0</span>, <span class="string">b&quot;\0&quot;</span>);
-    <span class="ident">s</span>.<span class="ident">push</span>(<span class="string">&#39;z&#39;</span>);
-    <span class="macro">assert_eq!</span>(<span class="ident">s</span>.<span class="number">0</span>, <span class="string">b&quot;z\0&quot;</span>);
-    <span class="ident">s</span>.<span class="ident">push</span>(<span class="string">&#39;ä&#39;</span>);
-    <span class="macro">assert_eq!</span>(<span class="ident">s</span>.<span class="number">0</span>, <span class="string">b&quot;z\xc3\xa4\0&quot;</span>);
-    <span class="ident">s</span>.<span class="ident">clear</span>();
-    <span class="ident">s</span>.<span class="ident">push_str</span>(<span class="string">&quot;imgui-rs&quot;</span>);
-    <span class="macro">assert_eq!</span>(<span class="ident">s</span>.<span class="number">0</span>, <span class="string">b&quot;imgui-rs\0&quot;</span>);
-    <span class="ident">s</span>.<span class="ident">push_str</span>(<span class="string">&quot;öä&quot;</span>);
-    <span class="macro">assert_eq!</span>(<span class="ident">s</span>.<span class="number">0</span>, <span class="string">b&quot;imgui-rs\xc3\xb6\xc3\xa4\0&quot;</span>);
-}
-
-<span class="attribute">#[<span class="ident">test</span>]</span>
-<span class="kw">fn</span> <span class="ident">test_imstring_fmt_write</span>() {
-    <span class="kw">use</span> <span class="ident">std::fmt::Write</span>;
-    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">s</span> <span class="op">=</span> <span class="ident">ImString::default</span>();
-    <span class="kw">let</span> <span class="kw">_</span> <span class="op">=</span> <span class="macro">write!</span>(<span class="ident">s</span>, <span class="string">&quot;format {:02x}&quot;</span>, <span class="number">0x42</span>);
-    <span class="macro">assert_eq!</span>(<span class="ident">s</span>.<span class="number">0</span>, <span class="string">b&quot;format 42\0&quot;</span>);
-}
-
-<span class="attribute">#[<span class="ident">test</span>]</span>
-<span class="kw">fn</span> <span class="ident">test_imstring_refresh_len</span>() {
-    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">s</span> <span class="op">=</span> <span class="ident">ImString::new</span>(<span class="string">&quot;testing&quot;</span>);
-    <span class="kw">unsafe</span> {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">ptr</span> <span class="op">=</span> <span class="ident">s</span>.<span class="ident">as_mut_ptr</span>() <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">u8</span>;
-        <span class="ident">ptr</span> <span class="op">=</span> <span class="ident">ptr</span>.<span class="ident">wrapping_add</span>(<span class="number">2</span>);
-        <span class="kw-2">*</span><span class="ident">ptr</span> <span class="op">=</span> <span class="string">b&#39;z&#39;</span>;
-        <span class="ident">ptr</span> <span class="op">=</span> <span class="ident">ptr</span>.<span class="ident">wrapping_add</span>(<span class="number">1</span>);
-        <span class="kw-2">*</span><span class="ident">ptr</span> <span class="op">=</span> <span class="string">b&#39;\0&#39;</span>;
-    }
-    <span class="macro">assert_eq!</span>(<span class="ident">s</span>.<span class="number">0</span>, <span class="string">b&quot;tez\0ing\0&quot;</span>);
-    <span class="kw">unsafe</span> { <span class="ident">s</span>.<span class="ident">refresh_len</span>() };
-    <span class="macro">assert_eq!</span>(<span class="ident">s</span>.<span class="number">0</span>, <span class="string">b&quot;tez\0&quot;</span>);
-}
-
-<span class="attribute">#[<span class="ident">test</span>]</span>
-<span class="kw">fn</span> <span class="ident">test_imstring_interior_nul</span>() {
-    <span class="kw">let</span> <span class="ident">s</span> <span class="op">=</span> <span class="ident">ImString::new</span>(<span class="string">&quot;test\0ohno&quot;</span>);
-    <span class="macro">assert_eq!</span>(<span class="ident">s</span>.<span class="number">0</span>, <span class="string">b&quot;test\0&quot;</span>);
-    <span class="macro">assert_eq!</span>(<span class="ident">s</span>.<span class="ident">to_str</span>(), <span class="string">&quot;test&quot;</span>);
-    <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">s</span>.<span class="ident">is_empty</span>());
-
-    <span class="kw">let</span> <span class="ident">s</span> <span class="op">=</span> <span class="ident">ImString::new</span>(<span class="string">&quot;\0ohno&quot;</span>);
-    <span class="macro">assert_eq!</span>(<span class="ident">s</span>.<span class="ident">to_str</span>(), <span class="string">&quot;&quot;</span>);
-    <span class="macro">assert!</span>(<span class="ident">s</span>.<span class="ident">is_empty</span>());
+    <span class="kw">let </span>s = ImString::new(<span class="string">&quot;\0ohno&quot;</span>);
+    <span class="macro">assert_eq!</span>(s.to_str(), <span class="string">&quot;&quot;</span>);
+    <span class="macro">assert!</span>(s.is_empty());
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="arcdps_imgui" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="arcdps_imgui" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.0 (69f9c33d7 2022-12-12)" ></div></body></html>

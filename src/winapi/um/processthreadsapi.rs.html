@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\winapi-0.3.9\src\um\processthreadsapi.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>processthreadsapi.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../winapi/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../winapi/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../winapi/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\winapi-0.3.9\src\um\processthreadsapi.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>processthreadsapi.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../normalize.css"><link rel="stylesheet" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../ayu.css" disabled><link rel="stylesheet" href="../../../dark.css" disabled><link rel="stylesheet" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../../winapi/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -439,446 +439,446 @@
 <span id="439">439</span>
 <span id="440">440</span>
 <span id="441">441</span>
-</pre><pre class="rust"><code><span class="comment">// Licensed under the Apache License, Version 2.0</span>
-<span class="comment">// &lt;LICENSE-APACHE or http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license</span>
-<span class="comment">// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your option.</span>
-<span class="comment">// All files in the project carrying such notice may not be copied, modified, or distributed</span>
-<span class="comment">// except according to those terms</span>
-<span class="doccomment">//! ApiSet Contract for api-ms-win-core-processthreads-l1</span>
-<span class="kw">use</span> <span class="ident">ctypes</span>::{<span class="ident">c_int</span>, <span class="ident">c_void</span>};
-<span class="kw">use</span> <span class="ident">shared::basetsd</span>::{<span class="ident">DWORD_PTR</span>, <span class="ident">PSIZE_T</span>, <span class="ident">PULONG_PTR</span>, <span class="ident">SIZE_T</span>, <span class="ident">ULONG_PTR</span>};
-<span class="kw">use</span> <span class="ident">shared::guiddef::LPCGUID</span>;
-<span class="kw">use</span> <span class="ident">shared::minwindef</span>::{
-    <span class="ident">BOOL</span>, <span class="ident">DWORD</span>, <span class="ident">LPBYTE</span>, <span class="ident">LPCVOID</span>, <span class="ident">LPDWORD</span>, <span class="ident">LPFILETIME</span>, <span class="ident">LPVOID</span>, <span class="ident">PBOOL</span>, <span class="ident">PDWORD</span>, <span class="ident">PULONG</span>, <span class="ident">UINT</span>, <span class="ident">WORD</span>
+</pre><pre class="rust"><code><span class="comment">// Licensed under the Apache License, Version 2.0
+// &lt;LICENSE-APACHE or http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license
+// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your option.
+// All files in the project carrying such notice may not be copied, modified, or distributed
+// except according to those terms
+</span><span class="doccomment">//! ApiSet Contract for api-ms-win-core-processthreads-l1
+</span><span class="kw">use </span>ctypes::{c_int, c_void};
+<span class="kw">use </span>shared::basetsd::{DWORD_PTR, PSIZE_T, PULONG_PTR, SIZE_T, ULONG_PTR};
+<span class="kw">use </span>shared::guiddef::LPCGUID;
+<span class="kw">use </span>shared::minwindef::{
+    BOOL, DWORD, LPBYTE, LPCVOID, LPDWORD, LPFILETIME, LPVOID, PBOOL, PDWORD, PULONG, UINT, WORD
 };
-<span class="kw">use</span> <span class="ident">um::minwinbase</span>::{<span class="ident">LPCONTEXT</span>, <span class="ident">LPSECURITY_ATTRIBUTES</span>, <span class="ident">LPTHREAD_START_ROUTINE</span>};
-<span class="kw">use</span> <span class="ident">um::winnt</span>::{
-    <span class="ident">CONTEXT</span>, <span class="ident">HANDLE</span>, <span class="ident">LPCSTR</span>, <span class="ident">LPCWSTR</span>, <span class="ident">LPSTR</span>, <span class="ident">LPWSTR</span>, <span class="ident">PAPCFUNC</span>, <span class="ident">PHANDLE</span>, <span class="ident">PPROCESSOR_NUMBER</span>,
-    <span class="ident">PROCESS_MITIGATION_POLICY</span>, <span class="ident">PVOID</span>
+<span class="kw">use </span>um::minwinbase::{LPCONTEXT, LPSECURITY_ATTRIBUTES, LPTHREAD_START_ROUTINE};
+<span class="kw">use </span>um::winnt::{
+    CONTEXT, HANDLE, LPCSTR, LPCWSTR, LPSTR, LPWSTR, PAPCFUNC, PHANDLE, PPROCESSOR_NUMBER,
+    PROCESS_MITIGATION_POLICY, PVOID
 };
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">PROCESS_INFORMATION</span> {
-    <span class="ident">hProcess</span>: <span class="ident">HANDLE</span>,
-    <span class="ident">hThread</span>: <span class="ident">HANDLE</span>,
-    <span class="ident">dwProcessId</span>: <span class="ident">DWORD</span>,
-    <span class="ident">dwThreadId</span>: <span class="ident">DWORD</span>,
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>PROCESS_INFORMATION {
+    hProcess: HANDLE,
+    hThread: HANDLE,
+    dwProcessId: DWORD,
+    dwThreadId: DWORD,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PPROCESS_INFORMATION</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">PROCESS_INFORMATION</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LPPROCESS_INFORMATION</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">PROCESS_INFORMATION</span>;
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">STARTUPINFOA</span> {
-    <span class="ident">cb</span>: <span class="ident">DWORD</span>,
-    <span class="ident">lpReserved</span>: <span class="ident">LPSTR</span>,
-    <span class="ident">lpDesktop</span>: <span class="ident">LPSTR</span>,
-    <span class="ident">lpTitle</span>: <span class="ident">LPSTR</span>,
-    <span class="ident">dwX</span>: <span class="ident">DWORD</span>,
-    <span class="ident">dwY</span>: <span class="ident">DWORD</span>,
-    <span class="ident">dwXSize</span>: <span class="ident">DWORD</span>,
-    <span class="ident">dwYSize</span>: <span class="ident">DWORD</span>,
-    <span class="ident">dwXCountChars</span>: <span class="ident">DWORD</span>,
-    <span class="ident">dwYCountChars</span>: <span class="ident">DWORD</span>,
-    <span class="ident">dwFillAttribute</span>: <span class="ident">DWORD</span>,
-    <span class="ident">dwFlags</span>: <span class="ident">DWORD</span>,
-    <span class="ident">wShowWindow</span>: <span class="ident">WORD</span>,
-    <span class="ident">cbReserved2</span>: <span class="ident">WORD</span>,
-    <span class="ident">lpReserved2</span>: <span class="ident">LPBYTE</span>,
-    <span class="ident">hStdInput</span>: <span class="ident">HANDLE</span>,
-    <span class="ident">hStdOutput</span>: <span class="ident">HANDLE</span>,
-    <span class="ident">hStdError</span>: <span class="ident">HANDLE</span>,
+<span class="kw">pub type </span>PPROCESS_INFORMATION = <span class="kw-2">*mut </span>PROCESS_INFORMATION;
+<span class="kw">pub type </span>LPPROCESS_INFORMATION = <span class="kw-2">*mut </span>PROCESS_INFORMATION;
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>STARTUPINFOA {
+    cb: DWORD,
+    lpReserved: LPSTR,
+    lpDesktop: LPSTR,
+    lpTitle: LPSTR,
+    dwX: DWORD,
+    dwY: DWORD,
+    dwXSize: DWORD,
+    dwYSize: DWORD,
+    dwXCountChars: DWORD,
+    dwYCountChars: DWORD,
+    dwFillAttribute: DWORD,
+    dwFlags: DWORD,
+    wShowWindow: WORD,
+    cbReserved2: WORD,
+    lpReserved2: LPBYTE,
+    hStdInput: HANDLE,
+    hStdOutput: HANDLE,
+    hStdError: HANDLE,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LPSTARTUPINFOA</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">STARTUPINFOA</span>;
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">STARTUPINFOW</span> {
-    <span class="ident">cb</span>: <span class="ident">DWORD</span>,
-    <span class="ident">lpReserved</span>: <span class="ident">LPWSTR</span>,
-    <span class="ident">lpDesktop</span>: <span class="ident">LPWSTR</span>,
-    <span class="ident">lpTitle</span>: <span class="ident">LPWSTR</span>,
-    <span class="ident">dwX</span>: <span class="ident">DWORD</span>,
-    <span class="ident">dwY</span>: <span class="ident">DWORD</span>,
-    <span class="ident">dwXSize</span>: <span class="ident">DWORD</span>,
-    <span class="ident">dwYSize</span>: <span class="ident">DWORD</span>,
-    <span class="ident">dwXCountChars</span>: <span class="ident">DWORD</span>,
-    <span class="ident">dwYCountChars</span>: <span class="ident">DWORD</span>,
-    <span class="ident">dwFillAttribute</span>: <span class="ident">DWORD</span>,
-    <span class="ident">dwFlags</span>: <span class="ident">DWORD</span>,
-    <span class="ident">wShowWindow</span>: <span class="ident">WORD</span>,
-    <span class="ident">cbReserved2</span>: <span class="ident">WORD</span>,
-    <span class="ident">lpReserved2</span>: <span class="ident">LPBYTE</span>,
-    <span class="ident">hStdInput</span>: <span class="ident">HANDLE</span>,
-    <span class="ident">hStdOutput</span>: <span class="ident">HANDLE</span>,
-    <span class="ident">hStdError</span>: <span class="ident">HANDLE</span>,
+<span class="kw">pub type </span>LPSTARTUPINFOA = <span class="kw-2">*mut </span>STARTUPINFOA;
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>STARTUPINFOW {
+    cb: DWORD,
+    lpReserved: LPWSTR,
+    lpDesktop: LPWSTR,
+    lpTitle: LPWSTR,
+    dwX: DWORD,
+    dwY: DWORD,
+    dwXSize: DWORD,
+    dwYSize: DWORD,
+    dwXCountChars: DWORD,
+    dwYCountChars: DWORD,
+    dwFillAttribute: DWORD,
+    dwFlags: DWORD,
+    wShowWindow: WORD,
+    cbReserved2: WORD,
+    lpReserved2: LPBYTE,
+    hStdInput: HANDLE,
+    hStdOutput: HANDLE,
+    hStdError: HANDLE,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LPSTARTUPINFOW</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">STARTUPINFOW</span>;
-<span class="kw">extern</span> <span class="string">&quot;system&quot;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">QueueUserAPC</span>(
-        <span class="ident">pfnAPC</span>: <span class="ident">PAPCFUNC</span>,
-        <span class="ident">hThread</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">dwData</span>: <span class="ident">ULONG_PTR</span>,
-    ) -&gt; <span class="ident">DWORD</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetProcessTimes</span>(
-        <span class="ident">hProcess</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">lpCreationTime</span>: <span class="ident">LPFILETIME</span>,
-        <span class="ident">lpExitTime</span>: <span class="ident">LPFILETIME</span>,
-        <span class="ident">lpKernelTime</span>: <span class="ident">LPFILETIME</span>,
-        <span class="ident">lpUserTime</span>: <span class="ident">LPFILETIME</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetCurrentProcess</span>() -&gt; <span class="ident">HANDLE</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetCurrentProcessId</span>() -&gt; <span class="ident">DWORD</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ExitProcess</span>(
-        <span class="ident">uExitCode</span>: <span class="ident">UINT</span>,
+<span class="kw">pub type </span>LPSTARTUPINFOW = <span class="kw-2">*mut </span>STARTUPINFOW;
+<span class="kw">extern </span><span class="string">&quot;system&quot; </span>{
+    <span class="kw">pub fn </span>QueueUserAPC(
+        pfnAPC: PAPCFUNC,
+        hThread: HANDLE,
+        dwData: ULONG_PTR,
+    ) -&gt; DWORD;
+    <span class="kw">pub fn </span>GetProcessTimes(
+        hProcess: HANDLE,
+        lpCreationTime: LPFILETIME,
+        lpExitTime: LPFILETIME,
+        lpKernelTime: LPFILETIME,
+        lpUserTime: LPFILETIME,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>GetCurrentProcess() -&gt; HANDLE;
+    <span class="kw">pub fn </span>GetCurrentProcessId() -&gt; DWORD;
+    <span class="kw">pub fn </span>ExitProcess(
+        uExitCode: UINT,
     );
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TerminateProcess</span>(
-        <span class="ident">hProcess</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">uExitCode</span>: <span class="ident">UINT</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetExitCodeProcess</span>(
-        <span class="ident">hProcess</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">lpExitCode</span>: <span class="ident">LPDWORD</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">SwitchToThread</span>() -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CreateThread</span>(
-        <span class="ident">lpThreadAttributes</span>: <span class="ident">LPSECURITY_ATTRIBUTES</span>,
-        <span class="ident">dwStackSize</span>: <span class="ident">SIZE_T</span>,
-        <span class="ident">lpStartAddress</span>: <span class="ident">LPTHREAD_START_ROUTINE</span>,
-        <span class="ident">lpParameter</span>: <span class="ident">LPVOID</span>,
-        <span class="ident">dwCreationFlags</span>: <span class="ident">DWORD</span>,
-        <span class="ident">lpThreadId</span>: <span class="ident">LPDWORD</span>,
-    ) -&gt; <span class="ident">HANDLE</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CreateRemoteThread</span>(
-        <span class="ident">hProcess</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">lpThreadAttributes</span>: <span class="ident">LPSECURITY_ATTRIBUTES</span>,
-        <span class="ident">dwStackSize</span>: <span class="ident">SIZE_T</span>,
-        <span class="ident">lpStartAddress</span>: <span class="ident">LPTHREAD_START_ROUTINE</span>,
-        <span class="ident">lpParameter</span>: <span class="ident">LPVOID</span>,
-        <span class="ident">dwCreationFlags</span>: <span class="ident">DWORD</span>,
-        <span class="ident">lpThreadId</span>: <span class="ident">LPDWORD</span>,
-    ) -&gt; <span class="ident">HANDLE</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetCurrentThread</span>() -&gt; <span class="ident">HANDLE</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetCurrentThreadId</span>() -&gt; <span class="ident">DWORD</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">OpenThread</span>(
-        <span class="ident">dwDesiredAccess</span>: <span class="ident">DWORD</span>,
-        <span class="ident">bInheritHandle</span>: <span class="ident">BOOL</span>,
-        <span class="ident">dwThreadId</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">HANDLE</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">SetThreadPriority</span>(
-        <span class="ident">hThread</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">nPriority</span>: <span class="ident">c_int</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">SetThreadPriorityBoost</span>(
-        <span class="ident">hThread</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">bDisablePriorityBoost</span>: <span class="ident">BOOL</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetThreadPriorityBoost</span>(
-        <span class="ident">hThread</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">pDisablePriorityBoost</span>: <span class="ident">PBOOL</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetThreadPriority</span>(
-        <span class="ident">hThread</span>: <span class="ident">HANDLE</span>,
-    ) -&gt; <span class="ident">c_int</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ExitThread</span>(
-        <span class="ident">dwExitCode</span>: <span class="ident">DWORD</span>,
+    <span class="kw">pub fn </span>TerminateProcess(
+        hProcess: HANDLE,
+        uExitCode: UINT,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>GetExitCodeProcess(
+        hProcess: HANDLE,
+        lpExitCode: LPDWORD,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>SwitchToThread() -&gt; BOOL;
+    <span class="kw">pub fn </span>CreateThread(
+        lpThreadAttributes: LPSECURITY_ATTRIBUTES,
+        dwStackSize: SIZE_T,
+        lpStartAddress: LPTHREAD_START_ROUTINE,
+        lpParameter: LPVOID,
+        dwCreationFlags: DWORD,
+        lpThreadId: LPDWORD,
+    ) -&gt; HANDLE;
+    <span class="kw">pub fn </span>CreateRemoteThread(
+        hProcess: HANDLE,
+        lpThreadAttributes: LPSECURITY_ATTRIBUTES,
+        dwStackSize: SIZE_T,
+        lpStartAddress: LPTHREAD_START_ROUTINE,
+        lpParameter: LPVOID,
+        dwCreationFlags: DWORD,
+        lpThreadId: LPDWORD,
+    ) -&gt; HANDLE;
+    <span class="kw">pub fn </span>GetCurrentThread() -&gt; HANDLE;
+    <span class="kw">pub fn </span>GetCurrentThreadId() -&gt; DWORD;
+    <span class="kw">pub fn </span>OpenThread(
+        dwDesiredAccess: DWORD,
+        bInheritHandle: BOOL,
+        dwThreadId: DWORD,
+    ) -&gt; HANDLE;
+    <span class="kw">pub fn </span>SetThreadPriority(
+        hThread: HANDLE,
+        nPriority: c_int,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>SetThreadPriorityBoost(
+        hThread: HANDLE,
+        bDisablePriorityBoost: BOOL,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>GetThreadPriorityBoost(
+        hThread: HANDLE,
+        pDisablePriorityBoost: PBOOL,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>GetThreadPriority(
+        hThread: HANDLE,
+    ) -&gt; c_int;
+    <span class="kw">pub fn </span>ExitThread(
+        dwExitCode: DWORD,
     );
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TerminateThread</span>(
-        <span class="ident">hThread</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">dwExitCode</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetExitCodeThread</span>(
-        <span class="ident">hThread</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">lpExitCode</span>: <span class="ident">LPDWORD</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">SuspendThread</span>(
-        <span class="ident">hThread</span>: <span class="ident">HANDLE</span>,
-    ) -&gt; <span class="ident">DWORD</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ResumeThread</span>(
-        <span class="ident">hThread</span>: <span class="ident">HANDLE</span>,
-    ) -&gt; <span class="ident">DWORD</span>;
+    <span class="kw">pub fn </span>TerminateThread(
+        hThread: HANDLE,
+        dwExitCode: DWORD,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>GetExitCodeThread(
+        hThread: HANDLE,
+        lpExitCode: LPDWORD,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>SuspendThread(
+        hThread: HANDLE,
+    ) -&gt; DWORD;
+    <span class="kw">pub fn </span>ResumeThread(
+        hThread: HANDLE,
+    ) -&gt; DWORD;
 }
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TLS_OUT_OF_INDEXES</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0xFFFFFFFF</span>;
-<span class="kw">extern</span> <span class="string">&quot;system&quot;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TlsAlloc</span>() -&gt; <span class="ident">DWORD</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TlsGetValue</span>(
-        <span class="ident">dwTlsIndex</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">LPVOID</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TlsSetValue</span>(
-        <span class="ident">dwTlsIndex</span>: <span class="ident">DWORD</span>,
-        <span class="ident">lpTlsValue</span>: <span class="ident">LPVOID</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TlsFree</span>(
-        <span class="ident">dwTlsIndex</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CreateProcessA</span>(
-        <span class="ident">lpApplicationName</span>: <span class="ident">LPCSTR</span>,
-        <span class="ident">lpCommandLine</span>: <span class="ident">LPSTR</span>,
-        <span class="ident">lpProcessAttributes</span>: <span class="ident">LPSECURITY_ATTRIBUTES</span>,
-        <span class="ident">lpThreadAttributes</span>: <span class="ident">LPSECURITY_ATTRIBUTES</span>,
-        <span class="ident">bInheritHandles</span>: <span class="ident">BOOL</span>,
-        <span class="ident">dwCreationFlags</span>: <span class="ident">DWORD</span>,
-        <span class="ident">lpEnvironment</span>: <span class="ident">LPVOID</span>,
-        <span class="ident">lpCurrentDirectory</span>: <span class="ident">LPCSTR</span>,
-        <span class="ident">lpStartupInfo</span>: <span class="ident">LPSTARTUPINFOA</span>,
-        <span class="ident">lpProcessInformation</span>: <span class="ident">LPPROCESS_INFORMATION</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CreateProcessW</span>(
-        <span class="ident">lpApplicationName</span>: <span class="ident">LPCWSTR</span>,
-        <span class="ident">lpCommandLine</span>: <span class="ident">LPWSTR</span>,
-        <span class="ident">lpProcessAttributes</span>: <span class="ident">LPSECURITY_ATTRIBUTES</span>,
-        <span class="ident">lpThreadAttributes</span>: <span class="ident">LPSECURITY_ATTRIBUTES</span>,
-        <span class="ident">bInheritHandles</span>: <span class="ident">BOOL</span>,
-        <span class="ident">dwCreationFlags</span>: <span class="ident">DWORD</span>,
-        <span class="ident">lpEnvironment</span>: <span class="ident">LPVOID</span>,
-        <span class="ident">lpCurrentDirectory</span>: <span class="ident">LPCWSTR</span>,
-        <span class="ident">lpStartupInfo</span>: <span class="ident">LPSTARTUPINFOW</span>,
-        <span class="ident">lpProcessInformation</span>: <span class="ident">LPPROCESS_INFORMATION</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">SetProcessShutdownParameters</span>(
-        <span class="ident">dwLevel</span>: <span class="ident">DWORD</span>,
-        <span class="ident">dwFlags</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetProcessVersion</span>(
-        <span class="ident">ProcessId</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">DWORD</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetStartupInfoW</span>(
-        <span class="ident">lpStartupInfo</span>: <span class="ident">LPSTARTUPINFOW</span>,
+<span class="kw">pub const </span>TLS_OUT_OF_INDEXES: DWORD = <span class="number">0xFFFFFFFF</span>;
+<span class="kw">extern </span><span class="string">&quot;system&quot; </span>{
+    <span class="kw">pub fn </span>TlsAlloc() -&gt; DWORD;
+    <span class="kw">pub fn </span>TlsGetValue(
+        dwTlsIndex: DWORD,
+    ) -&gt; LPVOID;
+    <span class="kw">pub fn </span>TlsSetValue(
+        dwTlsIndex: DWORD,
+        lpTlsValue: LPVOID,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>TlsFree(
+        dwTlsIndex: DWORD,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>CreateProcessA(
+        lpApplicationName: LPCSTR,
+        lpCommandLine: LPSTR,
+        lpProcessAttributes: LPSECURITY_ATTRIBUTES,
+        lpThreadAttributes: LPSECURITY_ATTRIBUTES,
+        bInheritHandles: BOOL,
+        dwCreationFlags: DWORD,
+        lpEnvironment: LPVOID,
+        lpCurrentDirectory: LPCSTR,
+        lpStartupInfo: LPSTARTUPINFOA,
+        lpProcessInformation: LPPROCESS_INFORMATION,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>CreateProcessW(
+        lpApplicationName: LPCWSTR,
+        lpCommandLine: LPWSTR,
+        lpProcessAttributes: LPSECURITY_ATTRIBUTES,
+        lpThreadAttributes: LPSECURITY_ATTRIBUTES,
+        bInheritHandles: BOOL,
+        dwCreationFlags: DWORD,
+        lpEnvironment: LPVOID,
+        lpCurrentDirectory: LPCWSTR,
+        lpStartupInfo: LPSTARTUPINFOW,
+        lpProcessInformation: LPPROCESS_INFORMATION,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>SetProcessShutdownParameters(
+        dwLevel: DWORD,
+        dwFlags: DWORD,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>GetProcessVersion(
+        ProcessId: DWORD,
+    ) -&gt; DWORD;
+    <span class="kw">pub fn </span>GetStartupInfoW(
+        lpStartupInfo: LPSTARTUPINFOW,
     );
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CreateProcessAsUserW</span>(
-        <span class="ident">hToken</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">lpApplicationName</span>: <span class="ident">LPCWSTR</span>,
-        <span class="ident">lpCommandLine</span>: <span class="ident">LPWSTR</span>,
-        <span class="ident">lpProcessAttributes</span>: <span class="ident">LPSECURITY_ATTRIBUTES</span>,
-        <span class="ident">lpThreadAttributes</span>: <span class="ident">LPSECURITY_ATTRIBUTES</span>,
-        <span class="ident">bInheritHandles</span>: <span class="ident">BOOL</span>,
-        <span class="ident">dwCreationFlags</span>: <span class="ident">DWORD</span>,
-        <span class="ident">lpEnvironment</span>: <span class="ident">LPVOID</span>,
-        <span class="ident">lpCurrentDirectory</span>: <span class="ident">LPCWSTR</span>,
-        <span class="ident">lpStartupInfo</span>: <span class="ident">LPSTARTUPINFOW</span>,
-        <span class="ident">lpProcessInformation</span>: <span class="ident">LPPROCESS_INFORMATION</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="comment">// pub fn GetCurrentProcessToken();</span>
-    <span class="comment">// pub fn GetCurrentThreadToken();</span>
-    <span class="comment">// pub fn GetCurrentThreadEffectiveToken();</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">SetThreadToken</span>(
-        <span class="ident">Thread</span>: <span class="ident">PHANDLE</span>,
-        <span class="ident">Token</span>: <span class="ident">HANDLE</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">OpenProcessToken</span>(
-        <span class="ident">ProcessHandle</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">DesiredAccess</span>: <span class="ident">DWORD</span>,
-        <span class="ident">TokenHandle</span>: <span class="ident">PHANDLE</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">OpenThreadToken</span>(
-        <span class="ident">ThreadHandle</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">DesiredAccess</span>: <span class="ident">DWORD</span>,
-        <span class="ident">OpenAsSelf</span>: <span class="ident">BOOL</span>,
-        <span class="ident">TokenHandle</span>: <span class="ident">PHANDLE</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">SetPriorityClass</span>(
-        <span class="ident">hProcess</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">dwPriorityClass</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">SetThreadStackGuarantee</span>(
-        <span class="ident">StackSizeInBytes</span>: <span class="ident">PULONG</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetPriorityClass</span>(
-        <span class="ident">hProcess</span>: <span class="ident">HANDLE</span>,
-    ) -&gt; <span class="ident">DWORD</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ProcessIdToSessionId</span>(
-        <span class="ident">dwProcessId</span>: <span class="ident">DWORD</span>,
-        <span class="ident">pSessionId</span>: <span class="kw-2">*mut</span> <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetProcessId</span>(
-        <span class="ident">Process</span>: <span class="ident">HANDLE</span>,
-    ) -&gt; <span class="ident">DWORD</span>;
+    <span class="kw">pub fn </span>CreateProcessAsUserW(
+        hToken: HANDLE,
+        lpApplicationName: LPCWSTR,
+        lpCommandLine: LPWSTR,
+        lpProcessAttributes: LPSECURITY_ATTRIBUTES,
+        lpThreadAttributes: LPSECURITY_ATTRIBUTES,
+        bInheritHandles: BOOL,
+        dwCreationFlags: DWORD,
+        lpEnvironment: LPVOID,
+        lpCurrentDirectory: LPCWSTR,
+        lpStartupInfo: LPSTARTUPINFOW,
+        lpProcessInformation: LPPROCESS_INFORMATION,
+    ) -&gt; BOOL;
+    <span class="comment">// pub fn GetCurrentProcessToken();
+    // pub fn GetCurrentThreadToken();
+    // pub fn GetCurrentThreadEffectiveToken();
+    </span><span class="kw">pub fn </span>SetThreadToken(
+        Thread: PHANDLE,
+        Token: HANDLE,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>OpenProcessToken(
+        ProcessHandle: HANDLE,
+        DesiredAccess: DWORD,
+        TokenHandle: PHANDLE,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>OpenThreadToken(
+        ThreadHandle: HANDLE,
+        DesiredAccess: DWORD,
+        OpenAsSelf: BOOL,
+        TokenHandle: PHANDLE,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>SetPriorityClass(
+        hProcess: HANDLE,
+        dwPriorityClass: DWORD,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>SetThreadStackGuarantee(
+        StackSizeInBytes: PULONG,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>GetPriorityClass(
+        hProcess: HANDLE,
+    ) -&gt; DWORD;
+    <span class="kw">pub fn </span>ProcessIdToSessionId(
+        dwProcessId: DWORD,
+        pSessionId: <span class="kw-2">*mut </span>DWORD,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>GetProcessId(
+        Process: HANDLE,
+    ) -&gt; DWORD;
 }
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">PROC_THREAD_ATTRIBUTE_LIST</span> {
-    <span class="ident">dummy</span>: <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>PROC_THREAD_ATTRIBUTE_LIST {
+    dummy: <span class="kw-2">*mut </span>c_void,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PPROC_THREAD_ATTRIBUTE_LIST</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">PROC_THREAD_ATTRIBUTE_LIST</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LPPROC_THREAD_ATTRIBUTE_LIST</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">PROC_THREAD_ATTRIBUTE_LIST</span>;
-<span class="kw">extern</span> <span class="string">&quot;system&quot;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetThreadId</span>(
-        <span class="ident">Thread</span>: <span class="ident">HANDLE</span>,
-    ) -&gt; <span class="ident">DWORD</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">FlushProcessWriteBuffers</span>();
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetProcessIdOfThread</span>(
-        <span class="ident">Thread</span>: <span class="ident">HANDLE</span>,
-    ) -&gt; <span class="ident">DWORD</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">InitializeProcThreadAttributeList</span>(
-        <span class="ident">lpAttributeList</span>: <span class="ident">LPPROC_THREAD_ATTRIBUTE_LIST</span>,
-        <span class="ident">dwAttributeCount</span>: <span class="ident">DWORD</span>,
-        <span class="ident">dwFlags</span>: <span class="ident">DWORD</span>,
-        <span class="ident">lpSize</span>: <span class="ident">PSIZE_T</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">DeleteProcThreadAttributeList</span>(
-        <span class="ident">lpAttributeList</span>: <span class="ident">LPPROC_THREAD_ATTRIBUTE_LIST</span>,
+<span class="kw">pub type </span>PPROC_THREAD_ATTRIBUTE_LIST = <span class="kw-2">*mut </span>PROC_THREAD_ATTRIBUTE_LIST;
+<span class="kw">pub type </span>LPPROC_THREAD_ATTRIBUTE_LIST = <span class="kw-2">*mut </span>PROC_THREAD_ATTRIBUTE_LIST;
+<span class="kw">extern </span><span class="string">&quot;system&quot; </span>{
+    <span class="kw">pub fn </span>GetThreadId(
+        Thread: HANDLE,
+    ) -&gt; DWORD;
+    <span class="kw">pub fn </span>FlushProcessWriteBuffers();
+    <span class="kw">pub fn </span>GetProcessIdOfThread(
+        Thread: HANDLE,
+    ) -&gt; DWORD;
+    <span class="kw">pub fn </span>InitializeProcThreadAttributeList(
+        lpAttributeList: LPPROC_THREAD_ATTRIBUTE_LIST,
+        dwAttributeCount: DWORD,
+        dwFlags: DWORD,
+        lpSize: PSIZE_T,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>DeleteProcThreadAttributeList(
+        lpAttributeList: LPPROC_THREAD_ATTRIBUTE_LIST,
     );
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">SetProcessAffinityUpdateMode</span>(
-        <span class="ident">hProcess</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">dwFlags</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">QueryProcessAffinityUpdateMode</span>(
-        <span class="ident">hProcess</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">lpdwFlags</span>: <span class="ident">LPDWORD</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">UpdateProcThreadAttribute</span>(
-        <span class="ident">lpAttributeList</span>: <span class="ident">LPPROC_THREAD_ATTRIBUTE_LIST</span>,
-        <span class="ident">dwFlags</span>: <span class="ident">DWORD</span>,
-        <span class="ident">Attribute</span>: <span class="ident">DWORD_PTR</span>,
-        <span class="ident">lpValue</span>: <span class="ident">PVOID</span>,
-        <span class="ident">cbSize</span>: <span class="ident">SIZE_T</span>,
-        <span class="ident">lpPreviousValue</span>: <span class="ident">PVOID</span>,
-        <span class="ident">lpReturnSize</span>: <span class="ident">PSIZE_T</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CreateRemoteThreadEx</span>(
-        <span class="ident">hProcess</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">lpThreadAttributes</span>: <span class="ident">LPSECURITY_ATTRIBUTES</span>,
-        <span class="ident">dwStackSize</span>: <span class="ident">SIZE_T</span>,
-        <span class="ident">lpStartAddress</span>: <span class="ident">LPTHREAD_START_ROUTINE</span>,
-        <span class="ident">lpParameter</span>: <span class="ident">LPVOID</span>,
-        <span class="ident">dwCreationFlags</span>: <span class="ident">DWORD</span>,
-        <span class="ident">lpAttributeList</span>: <span class="ident">LPPROC_THREAD_ATTRIBUTE_LIST</span>,
-        <span class="ident">lpThreadId</span>: <span class="ident">LPDWORD</span>,
-    ) -&gt; <span class="ident">HANDLE</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetCurrentThreadStackLimits</span>(
-        <span class="ident">LowLimit</span>: <span class="ident">PULONG_PTR</span>,
-        <span class="ident">HighLimit</span>: <span class="ident">PULONG_PTR</span>,
+    <span class="kw">pub fn </span>SetProcessAffinityUpdateMode(
+        hProcess: HANDLE,
+        dwFlags: DWORD,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>QueryProcessAffinityUpdateMode(
+        hProcess: HANDLE,
+        lpdwFlags: LPDWORD,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>UpdateProcThreadAttribute(
+        lpAttributeList: LPPROC_THREAD_ATTRIBUTE_LIST,
+        dwFlags: DWORD,
+        Attribute: DWORD_PTR,
+        lpValue: PVOID,
+        cbSize: SIZE_T,
+        lpPreviousValue: PVOID,
+        lpReturnSize: PSIZE_T,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>CreateRemoteThreadEx(
+        hProcess: HANDLE,
+        lpThreadAttributes: LPSECURITY_ATTRIBUTES,
+        dwStackSize: SIZE_T,
+        lpStartAddress: LPTHREAD_START_ROUTINE,
+        lpParameter: LPVOID,
+        dwCreationFlags: DWORD,
+        lpAttributeList: LPPROC_THREAD_ATTRIBUTE_LIST,
+        lpThreadId: LPDWORD,
+    ) -&gt; HANDLE;
+    <span class="kw">pub fn </span>GetCurrentThreadStackLimits(
+        LowLimit: PULONG_PTR,
+        HighLimit: PULONG_PTR,
     );
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetThreadContext</span>(
-        <span class="ident">hThread</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">lpContext</span>: <span class="ident">LPCONTEXT</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">SetThreadContext</span>(
-        <span class="ident">hThread</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">lpContext</span>: <span class="kw-2">*const</span> <span class="ident">CONTEXT</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">SetProcessMitigationPolicy</span>(
-        <span class="ident">MitigationPolicy</span>: <span class="ident">PROCESS_MITIGATION_POLICY</span>,
-        <span class="ident">lpBuffer</span>: <span class="ident">PVOID</span>,
-        <span class="ident">dwLength</span>: <span class="ident">SIZE_T</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetProcessMitigationPolicy</span>(
-        <span class="ident">hProcess</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">MitigationPolicy</span>: <span class="ident">PROCESS_MITIGATION_POLICY</span>,
-        <span class="ident">lpBuffer</span>: <span class="ident">PVOID</span>,
-        <span class="ident">dwLength</span>: <span class="ident">SIZE_T</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">FlushInstructionCache</span>(
-        <span class="ident">hProcess</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">lpBaseAddress</span>: <span class="ident">LPCVOID</span>,
-        <span class="ident">dwSize</span>: <span class="ident">SIZE_T</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetThreadTimes</span>(
-        <span class="ident">hThread</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">lpCreationTime</span>: <span class="ident">LPFILETIME</span>,
-        <span class="ident">lpExitTime</span>: <span class="ident">LPFILETIME</span>,
-        <span class="ident">lpKernelTime</span>: <span class="ident">LPFILETIME</span>,
-        <span class="ident">lpUserTime</span>: <span class="ident">LPFILETIME</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">OpenProcess</span>(
-        <span class="ident">dwDesiredAccess</span>: <span class="ident">DWORD</span>,
-        <span class="ident">bInheritHandle</span>: <span class="ident">BOOL</span>,
-        <span class="ident">dwProcessId</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">HANDLE</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">IsProcessorFeaturePresent</span>(
-        <span class="ident">ProcessorFeature</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetProcessHandleCount</span>(
-        <span class="ident">hProcess</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">pdwHandleCount</span>: <span class="ident">PDWORD</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetCurrentProcessorNumber</span>() -&gt; <span class="ident">DWORD</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">SetThreadIdealProcessorEx</span>(
-        <span class="ident">hThread</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">lpIdealProcessor</span>: <span class="ident">PPROCESSOR_NUMBER</span>,
-        <span class="ident">lpPreviousIdealProcessor</span>: <span class="ident">PPROCESSOR_NUMBER</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetThreadIdealProcessorEx</span>(
-        <span class="ident">hThread</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">lpIdealProcessor</span>: <span class="ident">PPROCESSOR_NUMBER</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetCurrentProcessorNumberEx</span>(
-        <span class="ident">ProcNumber</span>: <span class="ident">PPROCESSOR_NUMBER</span>,
+    <span class="kw">pub fn </span>GetThreadContext(
+        hThread: HANDLE,
+        lpContext: LPCONTEXT,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>SetThreadContext(
+        hThread: HANDLE,
+        lpContext: <span class="kw-2">*const </span>CONTEXT,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>SetProcessMitigationPolicy(
+        MitigationPolicy: PROCESS_MITIGATION_POLICY,
+        lpBuffer: PVOID,
+        dwLength: SIZE_T,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>GetProcessMitigationPolicy(
+        hProcess: HANDLE,
+        MitigationPolicy: PROCESS_MITIGATION_POLICY,
+        lpBuffer: PVOID,
+        dwLength: SIZE_T,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>FlushInstructionCache(
+        hProcess: HANDLE,
+        lpBaseAddress: LPCVOID,
+        dwSize: SIZE_T,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>GetThreadTimes(
+        hThread: HANDLE,
+        lpCreationTime: LPFILETIME,
+        lpExitTime: LPFILETIME,
+        lpKernelTime: LPFILETIME,
+        lpUserTime: LPFILETIME,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>OpenProcess(
+        dwDesiredAccess: DWORD,
+        bInheritHandle: BOOL,
+        dwProcessId: DWORD,
+    ) -&gt; HANDLE;
+    <span class="kw">pub fn </span>IsProcessorFeaturePresent(
+        ProcessorFeature: DWORD,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>GetProcessHandleCount(
+        hProcess: HANDLE,
+        pdwHandleCount: PDWORD,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>GetCurrentProcessorNumber() -&gt; DWORD;
+    <span class="kw">pub fn </span>SetThreadIdealProcessorEx(
+        hThread: HANDLE,
+        lpIdealProcessor: PPROCESSOR_NUMBER,
+        lpPreviousIdealProcessor: PPROCESSOR_NUMBER,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>GetThreadIdealProcessorEx(
+        hThread: HANDLE,
+        lpIdealProcessor: PPROCESSOR_NUMBER,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>GetCurrentProcessorNumberEx(
+        ProcNumber: PPROCESSOR_NUMBER,
     );
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetProcessPriorityBoost</span>(
-        <span class="ident">hProcess</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">pDisablePriorityBoost</span>: <span class="ident">PBOOL</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">SetProcessPriorityBoost</span>(
-        <span class="ident">hProcess</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">bDisablePriorityBoost</span>: <span class="ident">BOOL</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetThreadIOPendingFlag</span>(
-        <span class="ident">hThread</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">lpIOIsPending</span>: <span class="ident">PBOOL</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetSystemTimes</span>(
-        <span class="ident">lpIdleTime</span>: <span class="ident">LPFILETIME</span>,
-        <span class="ident">lpKernelTime</span>: <span class="ident">LPFILETIME</span>,
-        <span class="ident">lpUserTime</span>: <span class="ident">LPFILETIME</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
+    <span class="kw">pub fn </span>GetProcessPriorityBoost(
+        hProcess: HANDLE,
+        pDisablePriorityBoost: PBOOL,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>SetProcessPriorityBoost(
+        hProcess: HANDLE,
+        bDisablePriorityBoost: BOOL,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>GetThreadIOPendingFlag(
+        hThread: HANDLE,
+        lpIOIsPending: PBOOL,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>GetSystemTimes(
+        lpIdleTime: LPFILETIME,
+        lpKernelTime: LPFILETIME,
+        lpUserTime: LPFILETIME,
+    ) -&gt; BOOL;
 }
-<span class="macro">ENUM!</span>{<span class="kw">enum</span> <span class="ident">THREAD_INFORMATION_CLASS</span> {
-    <span class="ident">ThreadMemoryPriority</span>,
-    <span class="ident">ThreadAbsoluteCpuPriority</span>,
-    <span class="ident">ThreadInformationClassMax</span>,
+<span class="macro">ENUM!</span>{<span class="kw">enum </span>THREAD_INFORMATION_CLASS {
+    ThreadMemoryPriority,
+    ThreadAbsoluteCpuPriority,
+    ThreadInformationClassMax,
 }}
-<span class="comment">// MEMORY_PRIORITY_INFORMATION</span>
-<span class="kw">extern</span> <span class="string">&quot;system&quot;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetThreadInformation</span>(
-        <span class="ident">hThread</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">ThreadInformationClass</span>: <span class="ident">THREAD_INFORMATION_CLASS</span>,
-        <span class="ident">ThreadInformation</span>: <span class="ident">LPVOID</span>,
-        <span class="ident">ThreadInformationSize</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">SetThreadInformation</span>(
-        <span class="ident">hThread</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">ThreadInformationClass</span>: <span class="ident">THREAD_INFORMATION_CLASS</span>,
-        <span class="ident">ThreadInformation</span>: <span class="ident">LPVOID</span>,
-        <span class="ident">ThreadInformationSize</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">IsProcessCritical</span>(
-        <span class="ident">hProcess</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">Critical</span>: <span class="ident">PBOOL</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">SetProtectedPolicy</span>(
-        <span class="ident">PolicyGuid</span>: <span class="ident">LPCGUID</span>,
-        <span class="ident">PolicyValue</span>: <span class="ident">ULONG_PTR</span>,
-        <span class="ident">OldPolicyValue</span>: <span class="ident">PULONG_PTR</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">QueryProtectedPolicy</span>(
-        <span class="ident">PolicyGuid</span>: <span class="ident">LPCGUID</span>,
-        <span class="ident">PolicyValue</span>: <span class="ident">PULONG_PTR</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">SetThreadIdealProcessor</span>(
-        <span class="ident">hThread</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">dwIdealProcessor</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">DWORD</span>;
+<span class="comment">// MEMORY_PRIORITY_INFORMATION
+</span><span class="kw">extern </span><span class="string">&quot;system&quot; </span>{
+    <span class="kw">pub fn </span>GetThreadInformation(
+        hThread: HANDLE,
+        ThreadInformationClass: THREAD_INFORMATION_CLASS,
+        ThreadInformation: LPVOID,
+        ThreadInformationSize: DWORD,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>SetThreadInformation(
+        hThread: HANDLE,
+        ThreadInformationClass: THREAD_INFORMATION_CLASS,
+        ThreadInformation: LPVOID,
+        ThreadInformationSize: DWORD,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>IsProcessCritical(
+        hProcess: HANDLE,
+        Critical: PBOOL,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>SetProtectedPolicy(
+        PolicyGuid: LPCGUID,
+        PolicyValue: ULONG_PTR,
+        OldPolicyValue: PULONG_PTR,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>QueryProtectedPolicy(
+        PolicyGuid: LPCGUID,
+        PolicyValue: PULONG_PTR,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>SetThreadIdealProcessor(
+        hThread: HANDLE,
+        dwIdealProcessor: DWORD,
+    ) -&gt; DWORD;
 }
-<span class="macro">ENUM!</span>{<span class="kw">enum</span> <span class="ident">PROCESS_INFORMATION_CLASS</span> {
-    <span class="ident">ProcessMemoryPriority</span>,
-    <span class="ident">ProcessInformationClassMax</span>,
+<span class="macro">ENUM!</span>{<span class="kw">enum </span>PROCESS_INFORMATION_CLASS {
+    ProcessMemoryPriority,
+    ProcessInformationClassMax,
 }}
-<span class="kw">extern</span> <span class="string">&quot;system&quot;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">SetProcessInformation</span>(
-        <span class="ident">hProcess</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">ProcessInformationClass</span>: <span class="ident">PROCESS_INFORMATION_CLASS</span>,
-        <span class="ident">ProcessInformation</span>: <span class="ident">LPVOID</span>,
-        <span class="ident">ProcessInformationSize</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetProcessInformation</span>(
-        <span class="ident">hProcess</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">ProcessInformationClass</span>: <span class="ident">PROCESS_INFORMATION_CLASS</span>,
-        <span class="ident">ProcessInformation</span>: <span class="ident">LPVOID</span>,
-        <span class="ident">ProcessInformationSize</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="comment">// pub fn GetSystemCpuSetInformation();</span>
-    <span class="comment">// pub fn GetProcessDefaultCpuSets();</span>
-    <span class="comment">// pub fn SetProcessDefaultCpuSets();</span>
-    <span class="comment">// pub fn GetThreadSelectedCpuSets();</span>
-    <span class="comment">// pub fn SetThreadSelectedCpuSets();</span>
-    <span class="comment">// pub fn CreateProcessAsUserA();</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetProcessShutdownParameters</span>(
-        <span class="ident">lpdwLevel</span>: <span class="ident">LPDWORD</span>,
-        <span class="ident">lpdwFlags</span>: <span class="ident">LPDWORD</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="comment">// pub fn SetThreadDescription();</span>
-    <span class="comment">// pub fn GetThreadDescription();</span>
-}
+<span class="kw">extern </span><span class="string">&quot;system&quot; </span>{
+    <span class="kw">pub fn </span>SetProcessInformation(
+        hProcess: HANDLE,
+        ProcessInformationClass: PROCESS_INFORMATION_CLASS,
+        ProcessInformation: LPVOID,
+        ProcessInformationSize: DWORD,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>GetProcessInformation(
+        hProcess: HANDLE,
+        ProcessInformationClass: PROCESS_INFORMATION_CLASS,
+        ProcessInformation: LPVOID,
+        ProcessInformationSize: DWORD,
+    ) -&gt; BOOL;
+    <span class="comment">// pub fn GetSystemCpuSetInformation();
+    // pub fn GetProcessDefaultCpuSets();
+    // pub fn SetProcessDefaultCpuSets();
+    // pub fn GetThreadSelectedCpuSets();
+    // pub fn SetThreadSelectedCpuSets();
+    // pub fn CreateProcessAsUserA();
+    </span><span class="kw">pub fn </span>GetProcessShutdownParameters(
+        lpdwLevel: LPDWORD,
+        lpdwFlags: LPDWORD,
+    ) -&gt; BOOL;
+    <span class="comment">// pub fn SetThreadDescription();
+    // pub fn GetThreadDescription();
+</span>}
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="winapi" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="winapi" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.0 (69f9c33d7 2022-12-12)" ></div></body></html>

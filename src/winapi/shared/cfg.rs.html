@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\winapi-0.3.9\src\shared\cfg.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>cfg.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../winapi/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../winapi/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../winapi/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\winapi-0.3.9\src\shared\cfg.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>cfg.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../normalize.css"><link rel="stylesheet" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../ayu.css" disabled><link rel="stylesheet" href="../../../dark.css" disabled><link rel="stylesheet" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../../winapi/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -136,143 +136,143 @@
 <span id="136">136</span>
 <span id="137">137</span>
 <span id="138">138</span>
-</pre><pre class="rust"><code><span class="comment">// Licensed under the Apache License, Version 2.0</span>
-<span class="comment">// &lt;LICENSE-APACHE or http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license</span>
-<span class="comment">// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your option.</span>
-<span class="comment">// All files in the project carrying such notice may not be copied, modified, or distributed</span>
-<span class="comment">// except according to those terms.</span>
-<span class="doccomment">//! common Configuration Manager definitions for both user mode and kernel mode code</span>
-<span class="kw">use</span> <span class="ident">shared::minwindef</span>::{<span class="ident">DWORD</span>, <span class="ident">ULONG</span>};
-<span class="macro">ENUM!</span>{<span class="kw">enum</span> <span class="ident">PNP_VETO_TYPE</span> {
-    <span class="ident">PNP_VetoTypeUnknown</span>,
-    <span class="ident">PNP_VetoLegacyDevice</span>,
-    <span class="ident">PNP_VetoPendingClose</span>,
-    <span class="ident">PNP_VetoWindowsApp</span>,
-    <span class="ident">PNP_VetoWindowsService</span>,
-    <span class="ident">PNP_VetoOutstandingOpen</span>,
-    <span class="ident">PNP_VetoDevice</span>,
-    <span class="ident">PNP_VetoDriver</span>,
-    <span class="ident">PNP_VetoIllegalDeviceRequest</span>,
-    <span class="ident">PNP_VetoInsufficientPower</span>,
-    <span class="ident">PNP_VetoNonDisableable</span>,
-    <span class="ident">PNP_VetoLegacyDriver</span>,
-    <span class="ident">PNP_VetoInsufficientRights</span>,
+</pre><pre class="rust"><code><span class="comment">// Licensed under the Apache License, Version 2.0
+// &lt;LICENSE-APACHE or http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license
+// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your option.
+// All files in the project carrying such notice may not be copied, modified, or distributed
+// except according to those terms.
+</span><span class="doccomment">//! common Configuration Manager definitions for both user mode and kernel mode code
+</span><span class="kw">use </span>shared::minwindef::{DWORD, ULONG};
+<span class="macro">ENUM!</span>{<span class="kw">enum </span>PNP_VETO_TYPE {
+    PNP_VetoTypeUnknown,
+    PNP_VetoLegacyDevice,
+    PNP_VetoPendingClose,
+    PNP_VetoWindowsApp,
+    PNP_VetoWindowsService,
+    PNP_VetoOutstandingOpen,
+    PNP_VetoDevice,
+    PNP_VetoDriver,
+    PNP_VetoIllegalDeviceRequest,
+    PNP_VetoInsufficientPower,
+    PNP_VetoNonDisableable,
+    PNP_VetoLegacyDriver,
+    PNP_VetoInsufficientRights,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PPNP_VETO_TYPE</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">PNP_VETO_TYPE</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CM_PROB_NOT_CONFIGURED</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000001</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CM_PROB_DEVLOADER_FAILED</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000002</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CM_PROB_OUT_OF_MEMORY</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000003</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CM_PROB_ENTRY_IS_WRONG_TYPE</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000004</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CM_PROB_LACKED_ARBITRATOR</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000005</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CM_PROB_BOOT_CONFIG_CONFLICT</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000006</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CM_PROB_FAILED_FILTER</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000007</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CM_PROB_DEVLOADER_NOT_FOUND</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000008</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CM_PROB_INVALID_DATA</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000009</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CM_PROB_FAILED_START</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0000000A</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CM_PROB_LIAR</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0000000B</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CM_PROB_NORMAL_CONFLICT</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0000000C</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CM_PROB_NOT_VERIFIED</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0000000D</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CM_PROB_NEED_RESTART</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0000000E</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CM_PROB_REENUMERATION</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0000000F</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CM_PROB_PARTIAL_LOG_CONF</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000010</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CM_PROB_UNKNOWN_RESOURCE</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000011</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CM_PROB_REINSTALL</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000012</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CM_PROB_REGISTRY</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000013</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CM_PROB_VXDLDR</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000014</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CM_PROB_WILL_BE_REMOVED</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000015</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CM_PROB_DISABLED</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000016</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CM_PROB_DEVLOADER_NOT_READY</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000017</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CM_PROB_DEVICE_NOT_THERE</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000018</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CM_PROB_MOVED</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000019</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CM_PROB_TOO_EARLY</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0000001A</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CM_PROB_NO_VALID_LOG_CONF</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0000001B</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CM_PROB_FAILED_INSTALL</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0000001C</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CM_PROB_HARDWARE_DISABLED</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0000001D</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CM_PROB_CANT_SHARE_IRQ</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0000001E</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CM_PROB_FAILED_ADD</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0000001F</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CM_PROB_DISABLED_SERVICE</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000020</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CM_PROB_TRANSLATION_FAILED</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000021</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CM_PROB_NO_SOFTCONFIG</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000022</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CM_PROB_BIOS_TABLE</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000023</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CM_PROB_IRQ_TRANSLATION_FAILED</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000024</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CM_PROB_FAILED_DRIVER_ENTRY</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000025</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CM_PROB_DRIVER_FAILED_PRIOR_UNLOAD</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000026</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CM_PROB_DRIVER_FAILED_LOAD</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000027</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CM_PROB_DRIVER_SERVICE_KEY_INVALID</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000028</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CM_PROB_LEGACY_SERVICE_NO_DEVICES</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000029</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CM_PROB_DUPLICATE_DEVICE</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0000002A</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CM_PROB_FAILED_POST_START</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0000002B</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CM_PROB_HALTED</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0000002C</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CM_PROB_PHANTOM</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0000002D</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CM_PROB_SYSTEM_SHUTDOWN</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0000002E</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CM_PROB_HELD_FOR_EJECT</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0000002F</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CM_PROB_DRIVER_BLOCKED</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000030</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CM_PROB_REGISTRY_TOO_LARGE</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000031</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CM_PROB_SETPROPERTIES_FAILED</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000032</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CM_PROB_WAITING_ON_DEPENDENCY</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000033</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CM_PROB_UNSIGNED_DRIVER</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000034</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CM_PROB_USED_BY_DEBUGGER</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000035</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">NUM_CM_PROB_V1</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000025</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">NUM_CM_PROB_V2</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000032</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">NUM_CM_PROB_V3</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000033</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">NUM_CM_PROB_V4</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000034</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">NUM_CM_PROB_V5</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000035</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">NUM_CM_PROB_V6</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000036</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DN_ROOT_ENUMERATED</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000001</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DN_DRIVER_LOADED</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000002</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DN_ENUM_LOADED</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000004</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DN_STARTED</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000008</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DN_MANUAL</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000010</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DN_NEED_TO_ENUM</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000020</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DN_NOT_FIRST_TIME</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000040</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DN_HARDWARE_ENUM</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000080</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DN_LIAR</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000100</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DN_HAS_MARK</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000200</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DN_HAS_PROBLEM</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000400</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DN_FILTERED</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000800</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DN_MOVED</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00001000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DN_DISABLEABLE</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00002000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DN_REMOVABLE</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00004000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DN_PRIVATE_PROBLEM</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00008000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DN_MF_PARENT</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00010000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DN_MF_CHILD</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00020000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DN_WILL_BE_REMOVED</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00040000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DN_NOT_FIRST_TIMEE</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00080000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DN_STOP_FREE_RES</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00100000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DN_REBAL_CANDIDATE</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00200000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DN_BAD_PARTIAL</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00400000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DN_NT_ENUMERATOR</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00800000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DN_NT_DRIVER</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x01000000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DN_NEEDS_LOCKING</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x02000000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DN_ARM_WAKEUP</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x04000000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DN_APM_ENUMERATOR</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x08000000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DN_APM_DRIVER</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x10000000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DN_SILENT_INSTALL</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x20000000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DN_NO_SHOW_IN_DM</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x40000000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DN_BOOT_LOG_PROB</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x80000000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DN_NEED_RESTART</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="ident">DN_LIAR</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DN_DRIVER_BLOCKED</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="ident">DN_NOT_FIRST_TIME</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DN_LEGACY_DRIVER</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="ident">DN_MOVED</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DN_CHILD_WITH_INVALID_ID</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="ident">DN_HAS_MARK</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DN_DEVICE_DISCONNECTED</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="ident">DN_NEEDS_LOCKING</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DN_CHANGEABLE_FLAGS</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="ident">DN_NOT_FIRST_TIME</span> <span class="op">+</span> <span class="ident">DN_HARDWARE_ENUM</span> <span class="op">+</span> <span class="ident">DN_HAS_MARK</span>
-    <span class="op">+</span> <span class="ident">DN_DISABLEABLE</span> <span class="op">+</span> <span class="ident">DN_REMOVABLE</span> <span class="op">+</span> <span class="ident">DN_MF_CHILD</span> <span class="op">+</span> <span class="ident">DN_MF_PARENT</span> <span class="op">+</span> <span class="ident">DN_NOT_FIRST_TIMEE</span>
-    <span class="op">+</span> <span class="ident">DN_STOP_FREE_RES</span> <span class="op">+</span> <span class="ident">DN_REBAL_CANDIDATE</span> <span class="op">+</span> <span class="ident">DN_NT_ENUMERATOR</span> <span class="op">+</span> <span class="ident">DN_NT_DRIVER</span> <span class="op">+</span> <span class="ident">DN_SILENT_INSTALL</span>
-    <span class="op">+</span> <span class="ident">DN_NO_SHOW_IN_DM</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">LCPRI_FORCECONFIG</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">0x00000000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">LCPRI_BOOTCONFIG</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">0x00000001</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">LCPRI_DESIRED</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">0x00002000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">LCPRI_NORMAL</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">0x00003000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">LCPRI_LASTBESTCONFIG</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">0x00003FFF</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">LCPRI_SUBOPTIMAL</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">0x00005000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">LCPRI_LASTSOFTCONFIG</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">0x00007FFF</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">LCPRI_RESTART</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">0x00008000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">LCPRI_REBOOT</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">0x00009000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">LCPRI_POWEROFF</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">0x0000A000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">LCPRI_HARDRECONFIG</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">0x0000C000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">LCPRI_HARDWIRED</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">0x0000E000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">LCPRI_IMPOSSIBLE</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">0x0000F000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">LCPRI_DISABLED</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">0x0000FFFF</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">MAX_LCPRI</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">0x0000FFFF</span>;
+<span class="kw">pub type </span>PPNP_VETO_TYPE = <span class="kw-2">*mut </span>PNP_VETO_TYPE;
+<span class="kw">pub const </span>CM_PROB_NOT_CONFIGURED: DWORD = <span class="number">0x00000001</span>;
+<span class="kw">pub const </span>CM_PROB_DEVLOADER_FAILED: DWORD = <span class="number">0x00000002</span>;
+<span class="kw">pub const </span>CM_PROB_OUT_OF_MEMORY: DWORD = <span class="number">0x00000003</span>;
+<span class="kw">pub const </span>CM_PROB_ENTRY_IS_WRONG_TYPE: DWORD = <span class="number">0x00000004</span>;
+<span class="kw">pub const </span>CM_PROB_LACKED_ARBITRATOR: DWORD = <span class="number">0x00000005</span>;
+<span class="kw">pub const </span>CM_PROB_BOOT_CONFIG_CONFLICT: DWORD = <span class="number">0x00000006</span>;
+<span class="kw">pub const </span>CM_PROB_FAILED_FILTER: DWORD = <span class="number">0x00000007</span>;
+<span class="kw">pub const </span>CM_PROB_DEVLOADER_NOT_FOUND: DWORD = <span class="number">0x00000008</span>;
+<span class="kw">pub const </span>CM_PROB_INVALID_DATA: DWORD = <span class="number">0x00000009</span>;
+<span class="kw">pub const </span>CM_PROB_FAILED_START: DWORD = <span class="number">0x0000000A</span>;
+<span class="kw">pub const </span>CM_PROB_LIAR: DWORD = <span class="number">0x0000000B</span>;
+<span class="kw">pub const </span>CM_PROB_NORMAL_CONFLICT: DWORD = <span class="number">0x0000000C</span>;
+<span class="kw">pub const </span>CM_PROB_NOT_VERIFIED: DWORD = <span class="number">0x0000000D</span>;
+<span class="kw">pub const </span>CM_PROB_NEED_RESTART: DWORD = <span class="number">0x0000000E</span>;
+<span class="kw">pub const </span>CM_PROB_REENUMERATION: DWORD = <span class="number">0x0000000F</span>;
+<span class="kw">pub const </span>CM_PROB_PARTIAL_LOG_CONF: DWORD = <span class="number">0x00000010</span>;
+<span class="kw">pub const </span>CM_PROB_UNKNOWN_RESOURCE: DWORD = <span class="number">0x00000011</span>;
+<span class="kw">pub const </span>CM_PROB_REINSTALL: DWORD = <span class="number">0x00000012</span>;
+<span class="kw">pub const </span>CM_PROB_REGISTRY: DWORD = <span class="number">0x00000013</span>;
+<span class="kw">pub const </span>CM_PROB_VXDLDR: DWORD = <span class="number">0x00000014</span>;
+<span class="kw">pub const </span>CM_PROB_WILL_BE_REMOVED: DWORD = <span class="number">0x00000015</span>;
+<span class="kw">pub const </span>CM_PROB_DISABLED: DWORD = <span class="number">0x00000016</span>;
+<span class="kw">pub const </span>CM_PROB_DEVLOADER_NOT_READY: DWORD = <span class="number">0x00000017</span>;
+<span class="kw">pub const </span>CM_PROB_DEVICE_NOT_THERE: DWORD = <span class="number">0x00000018</span>;
+<span class="kw">pub const </span>CM_PROB_MOVED: DWORD = <span class="number">0x00000019</span>;
+<span class="kw">pub const </span>CM_PROB_TOO_EARLY: DWORD = <span class="number">0x0000001A</span>;
+<span class="kw">pub const </span>CM_PROB_NO_VALID_LOG_CONF: DWORD = <span class="number">0x0000001B</span>;
+<span class="kw">pub const </span>CM_PROB_FAILED_INSTALL: DWORD = <span class="number">0x0000001C</span>;
+<span class="kw">pub const </span>CM_PROB_HARDWARE_DISABLED: DWORD = <span class="number">0x0000001D</span>;
+<span class="kw">pub const </span>CM_PROB_CANT_SHARE_IRQ: DWORD = <span class="number">0x0000001E</span>;
+<span class="kw">pub const </span>CM_PROB_FAILED_ADD: DWORD = <span class="number">0x0000001F</span>;
+<span class="kw">pub const </span>CM_PROB_DISABLED_SERVICE: DWORD = <span class="number">0x00000020</span>;
+<span class="kw">pub const </span>CM_PROB_TRANSLATION_FAILED: DWORD = <span class="number">0x00000021</span>;
+<span class="kw">pub const </span>CM_PROB_NO_SOFTCONFIG: DWORD = <span class="number">0x00000022</span>;
+<span class="kw">pub const </span>CM_PROB_BIOS_TABLE: DWORD = <span class="number">0x00000023</span>;
+<span class="kw">pub const </span>CM_PROB_IRQ_TRANSLATION_FAILED: DWORD = <span class="number">0x00000024</span>;
+<span class="kw">pub const </span>CM_PROB_FAILED_DRIVER_ENTRY: DWORD = <span class="number">0x00000025</span>;
+<span class="kw">pub const </span>CM_PROB_DRIVER_FAILED_PRIOR_UNLOAD: DWORD = <span class="number">0x00000026</span>;
+<span class="kw">pub const </span>CM_PROB_DRIVER_FAILED_LOAD: DWORD = <span class="number">0x00000027</span>;
+<span class="kw">pub const </span>CM_PROB_DRIVER_SERVICE_KEY_INVALID: DWORD = <span class="number">0x00000028</span>;
+<span class="kw">pub const </span>CM_PROB_LEGACY_SERVICE_NO_DEVICES: DWORD = <span class="number">0x00000029</span>;
+<span class="kw">pub const </span>CM_PROB_DUPLICATE_DEVICE: DWORD = <span class="number">0x0000002A</span>;
+<span class="kw">pub const </span>CM_PROB_FAILED_POST_START: DWORD = <span class="number">0x0000002B</span>;
+<span class="kw">pub const </span>CM_PROB_HALTED: DWORD = <span class="number">0x0000002C</span>;
+<span class="kw">pub const </span>CM_PROB_PHANTOM: DWORD = <span class="number">0x0000002D</span>;
+<span class="kw">pub const </span>CM_PROB_SYSTEM_SHUTDOWN: DWORD = <span class="number">0x0000002E</span>;
+<span class="kw">pub const </span>CM_PROB_HELD_FOR_EJECT: DWORD = <span class="number">0x0000002F</span>;
+<span class="kw">pub const </span>CM_PROB_DRIVER_BLOCKED: DWORD = <span class="number">0x00000030</span>;
+<span class="kw">pub const </span>CM_PROB_REGISTRY_TOO_LARGE: DWORD = <span class="number">0x00000031</span>;
+<span class="kw">pub const </span>CM_PROB_SETPROPERTIES_FAILED: DWORD = <span class="number">0x00000032</span>;
+<span class="kw">pub const </span>CM_PROB_WAITING_ON_DEPENDENCY: DWORD = <span class="number">0x00000033</span>;
+<span class="kw">pub const </span>CM_PROB_UNSIGNED_DRIVER: DWORD = <span class="number">0x00000034</span>;
+<span class="kw">pub const </span>CM_PROB_USED_BY_DEBUGGER: DWORD = <span class="number">0x00000035</span>;
+<span class="kw">pub const </span>NUM_CM_PROB_V1: DWORD = <span class="number">0x00000025</span>;
+<span class="kw">pub const </span>NUM_CM_PROB_V2: DWORD = <span class="number">0x00000032</span>;
+<span class="kw">pub const </span>NUM_CM_PROB_V3: DWORD = <span class="number">0x00000033</span>;
+<span class="kw">pub const </span>NUM_CM_PROB_V4: DWORD = <span class="number">0x00000034</span>;
+<span class="kw">pub const </span>NUM_CM_PROB_V5: DWORD = <span class="number">0x00000035</span>;
+<span class="kw">pub const </span>NUM_CM_PROB_V6: DWORD = <span class="number">0x00000036</span>;
+<span class="kw">pub const </span>DN_ROOT_ENUMERATED: DWORD = <span class="number">0x00000001</span>;
+<span class="kw">pub const </span>DN_DRIVER_LOADED: DWORD = <span class="number">0x00000002</span>;
+<span class="kw">pub const </span>DN_ENUM_LOADED: DWORD = <span class="number">0x00000004</span>;
+<span class="kw">pub const </span>DN_STARTED: DWORD = <span class="number">0x00000008</span>;
+<span class="kw">pub const </span>DN_MANUAL: DWORD = <span class="number">0x00000010</span>;
+<span class="kw">pub const </span>DN_NEED_TO_ENUM: DWORD = <span class="number">0x00000020</span>;
+<span class="kw">pub const </span>DN_NOT_FIRST_TIME: DWORD = <span class="number">0x00000040</span>;
+<span class="kw">pub const </span>DN_HARDWARE_ENUM: DWORD = <span class="number">0x00000080</span>;
+<span class="kw">pub const </span>DN_LIAR: DWORD = <span class="number">0x00000100</span>;
+<span class="kw">pub const </span>DN_HAS_MARK: DWORD = <span class="number">0x00000200</span>;
+<span class="kw">pub const </span>DN_HAS_PROBLEM: DWORD = <span class="number">0x00000400</span>;
+<span class="kw">pub const </span>DN_FILTERED: DWORD = <span class="number">0x00000800</span>;
+<span class="kw">pub const </span>DN_MOVED: DWORD = <span class="number">0x00001000</span>;
+<span class="kw">pub const </span>DN_DISABLEABLE: DWORD = <span class="number">0x00002000</span>;
+<span class="kw">pub const </span>DN_REMOVABLE: DWORD = <span class="number">0x00004000</span>;
+<span class="kw">pub const </span>DN_PRIVATE_PROBLEM: DWORD = <span class="number">0x00008000</span>;
+<span class="kw">pub const </span>DN_MF_PARENT: DWORD = <span class="number">0x00010000</span>;
+<span class="kw">pub const </span>DN_MF_CHILD: DWORD = <span class="number">0x00020000</span>;
+<span class="kw">pub const </span>DN_WILL_BE_REMOVED: DWORD = <span class="number">0x00040000</span>;
+<span class="kw">pub const </span>DN_NOT_FIRST_TIMEE: DWORD = <span class="number">0x00080000</span>;
+<span class="kw">pub const </span>DN_STOP_FREE_RES: DWORD = <span class="number">0x00100000</span>;
+<span class="kw">pub const </span>DN_REBAL_CANDIDATE: DWORD = <span class="number">0x00200000</span>;
+<span class="kw">pub const </span>DN_BAD_PARTIAL: DWORD = <span class="number">0x00400000</span>;
+<span class="kw">pub const </span>DN_NT_ENUMERATOR: DWORD = <span class="number">0x00800000</span>;
+<span class="kw">pub const </span>DN_NT_DRIVER: DWORD = <span class="number">0x01000000</span>;
+<span class="kw">pub const </span>DN_NEEDS_LOCKING: DWORD = <span class="number">0x02000000</span>;
+<span class="kw">pub const </span>DN_ARM_WAKEUP: DWORD = <span class="number">0x04000000</span>;
+<span class="kw">pub const </span>DN_APM_ENUMERATOR: DWORD = <span class="number">0x08000000</span>;
+<span class="kw">pub const </span>DN_APM_DRIVER: DWORD = <span class="number">0x10000000</span>;
+<span class="kw">pub const </span>DN_SILENT_INSTALL: DWORD = <span class="number">0x20000000</span>;
+<span class="kw">pub const </span>DN_NO_SHOW_IN_DM: DWORD = <span class="number">0x40000000</span>;
+<span class="kw">pub const </span>DN_BOOT_LOG_PROB: DWORD = <span class="number">0x80000000</span>;
+<span class="kw">pub const </span>DN_NEED_RESTART: DWORD = DN_LIAR;
+<span class="kw">pub const </span>DN_DRIVER_BLOCKED: DWORD = DN_NOT_FIRST_TIME;
+<span class="kw">pub const </span>DN_LEGACY_DRIVER: DWORD = DN_MOVED;
+<span class="kw">pub const </span>DN_CHILD_WITH_INVALID_ID: DWORD = DN_HAS_MARK;
+<span class="kw">pub const </span>DN_DEVICE_DISCONNECTED: DWORD = DN_NEEDS_LOCKING;
+<span class="kw">pub const </span>DN_CHANGEABLE_FLAGS: DWORD = DN_NOT_FIRST_TIME + DN_HARDWARE_ENUM + DN_HAS_MARK
+    + DN_DISABLEABLE + DN_REMOVABLE + DN_MF_CHILD + DN_MF_PARENT + DN_NOT_FIRST_TIMEE
+    + DN_STOP_FREE_RES + DN_REBAL_CANDIDATE + DN_NT_ENUMERATOR + DN_NT_DRIVER + DN_SILENT_INSTALL
+    + DN_NO_SHOW_IN_DM;
+<span class="kw">pub const </span>LCPRI_FORCECONFIG: ULONG = <span class="number">0x00000000</span>;
+<span class="kw">pub const </span>LCPRI_BOOTCONFIG: ULONG = <span class="number">0x00000001</span>;
+<span class="kw">pub const </span>LCPRI_DESIRED: ULONG = <span class="number">0x00002000</span>;
+<span class="kw">pub const </span>LCPRI_NORMAL: ULONG = <span class="number">0x00003000</span>;
+<span class="kw">pub const </span>LCPRI_LASTBESTCONFIG: ULONG = <span class="number">0x00003FFF</span>;
+<span class="kw">pub const </span>LCPRI_SUBOPTIMAL: ULONG = <span class="number">0x00005000</span>;
+<span class="kw">pub const </span>LCPRI_LASTSOFTCONFIG: ULONG = <span class="number">0x00007FFF</span>;
+<span class="kw">pub const </span>LCPRI_RESTART: ULONG = <span class="number">0x00008000</span>;
+<span class="kw">pub const </span>LCPRI_REBOOT: ULONG = <span class="number">0x00009000</span>;
+<span class="kw">pub const </span>LCPRI_POWEROFF: ULONG = <span class="number">0x0000A000</span>;
+<span class="kw">pub const </span>LCPRI_HARDRECONFIG: ULONG = <span class="number">0x0000C000</span>;
+<span class="kw">pub const </span>LCPRI_HARDWIRED: ULONG = <span class="number">0x0000E000</span>;
+<span class="kw">pub const </span>LCPRI_IMPOSSIBLE: ULONG = <span class="number">0x0000F000</span>;
+<span class="kw">pub const </span>LCPRI_DISABLED: ULONG = <span class="number">0x0000FFFF</span>;
+<span class="kw">pub const </span>MAX_LCPRI: ULONG = <span class="number">0x0000FFFF</span>;
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="winapi" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="winapi" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.0 (69f9c33d7 2022-12-12)" ></div></body></html>

@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\winapi-0.3.9\src\um\wincon.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>wincon.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../winapi/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../winapi/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../winapi/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\winapi-0.3.9\src\um\wincon.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>wincon.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../normalize.css"><link rel="stylesheet" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../ayu.css" disabled><link rel="stylesheet" href="../../../dark.css" disabled><link rel="stylesheet" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../../winapi/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -457,464 +457,464 @@
 <span id="457">457</span>
 <span id="458">458</span>
 <span id="459">459</span>
-</pre><pre class="rust"><code><span class="comment">// Licensed under the Apache License, Version 2.0</span>
-<span class="comment">// &lt;LICENSE-APACHE or http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license</span>
-<span class="comment">// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your option.</span>
-<span class="comment">// All files in the project carrying such notice may not be copied, modified, or distributed</span>
-<span class="comment">// except according to those terms.</span>
-<span class="doccomment">//! This module contains the public data structures, data types, and procedures exported by the NT</span>
-<span class="doccomment">//! console subsystem.</span>
-<span class="kw">use</span> <span class="ident">ctypes::c_void</span>;
-<span class="kw">use</span> <span class="ident">shared::minwindef</span>::{<span class="ident">BOOL</span>, <span class="ident">DWORD</span>, <span class="ident">LPDWORD</span>, <span class="ident">LPVOID</span>, <span class="ident">LPWORD</span>, <span class="ident">UINT</span>, <span class="ident">ULONG</span>, <span class="ident">WORD</span>};
-<span class="kw">use</span> <span class="ident">shared::windef</span>::{<span class="ident">COLORREF</span>, <span class="ident">HWND</span>};
-<span class="kw">use</span> <span class="ident">um::minwinbase::SECURITY_ATTRIBUTES</span>;
-<span class="kw">use</span> <span class="ident">um::wingdi::LF_FACESIZE</span>;
-<span class="kw">use</span> <span class="ident">um::winnt</span>::{<span class="ident">CHAR</span>, <span class="ident">HANDLE</span>, <span class="ident">LPCSTR</span>, <span class="ident">LPCWSTR</span>, <span class="ident">LPSTR</span>, <span class="ident">LPWSTR</span>, <span class="ident">WCHAR</span>};
-<span class="comment">// Many definitions in wincontypes used to be defined in this file, so reexport them to avoid</span>
-<span class="comment">// breakage. For clarity they are imported in the order they are defined in that file rather</span>
-<span class="comment">// than winapi&#39;s usual alphabetical ordering, with some newlines and indentation to match their</span>
-<span class="comment">// grouping in the file.</span>
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">um::wincontypes</span>::{
-    <span class="ident">COORD</span>, <span class="ident">PCOORD</span>,
-    <span class="ident">SMALL_RECT</span>, <span class="ident">PSMALL_RECT</span>,
-    <span class="ident">KEY_EVENT_RECORD_uChar</span>, <span class="ident">KEY_EVENT_RECORD</span>, <span class="ident">PKEY_EVENT_RECORD</span>,
-    <span class="ident">RIGHT_ALT_PRESSED</span>, <span class="ident">LEFT_ALT_PRESSED</span>, <span class="ident">RIGHT_CTRL_PRESSED</span>, <span class="ident">LEFT_CTRL_PRESSED</span>, <span class="ident">SHIFT_PRESSED</span>,
-        <span class="ident">NUMLOCK_ON</span>, <span class="ident">SCROLLLOCK_ON</span>, <span class="ident">CAPSLOCK_ON</span>, <span class="ident">ENHANCED_KEY</span>, <span class="ident">NLS_DBCSCHAR</span>, <span class="ident">NLS_ALPHANUMERIC</span>,
-        <span class="ident">NLS_KATAKANA</span>, <span class="ident">NLS_HIRAGANA</span>, <span class="ident">NLS_ROMAN</span>, <span class="ident">NLS_IME_CONVERSION</span>, <span class="ident">NLS_IME_DISABLE</span>,
-    <span class="ident">MOUSE_EVENT_RECORD</span>, <span class="ident">PMOUSE_EVENT_RECORD</span>,
-    <span class="ident">FROM_LEFT_1ST_BUTTON_PRESSED</span>, <span class="ident">RIGHTMOST_BUTTON_PRESSED</span>, <span class="ident">FROM_LEFT_2ND_BUTTON_PRESSED</span>,
-        <span class="ident">FROM_LEFT_3RD_BUTTON_PRESSED</span>, <span class="ident">FROM_LEFT_4TH_BUTTON_PRESSED</span>, <span class="ident">MOUSE_MOVED</span>, <span class="ident">DOUBLE_CLICK</span>,
-        <span class="ident">MOUSE_WHEELED</span>, <span class="ident">MOUSE_HWHEELED</span>,
-    <span class="ident">WINDOW_BUFFER_SIZE_RECORD</span>, <span class="ident">PWINDOW_BUFFER_SIZE_RECORD</span>,
-    <span class="ident">MENU_EVENT_RECORD</span>, <span class="ident">PMENU_EVENT_RECORD</span>,
-    <span class="ident">FOCUS_EVENT_RECORD</span>, <span class="ident">PFOCUS_EVENT_RECORD</span>,
-    <span class="ident">INPUT_RECORD_Event</span>, <span class="ident">INPUT_RECORD</span>, <span class="ident">PINPUT_RECORD</span>,
-    <span class="ident">KEY_EVENT</span>, <span class="ident">MOUSE_EVENT</span>, <span class="ident">WINDOW_BUFFER_SIZE_EVENT</span>, <span class="ident">MENU_EVENT</span>, <span class="ident">FOCUS_EVENT</span>,
-    <span class="ident">CHAR_INFO_Char</span>, <span class="ident">CHAR_INFO</span>, <span class="ident">PCHAR_INFO</span>,
-    <span class="ident">CONSOLE_FONT_INFO</span>, <span class="ident">PCONSOLE_FONT_INFO</span>
+</pre><pre class="rust"><code><span class="comment">// Licensed under the Apache License, Version 2.0
+// &lt;LICENSE-APACHE or http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license
+// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your option.
+// All files in the project carrying such notice may not be copied, modified, or distributed
+// except according to those terms.
+</span><span class="doccomment">//! This module contains the public data structures, data types, and procedures exported by the NT
+//! console subsystem.
+</span><span class="kw">use </span>ctypes::c_void;
+<span class="kw">use </span>shared::minwindef::{BOOL, DWORD, LPDWORD, LPVOID, LPWORD, UINT, ULONG, WORD};
+<span class="kw">use </span>shared::windef::{COLORREF, HWND};
+<span class="kw">use </span>um::minwinbase::SECURITY_ATTRIBUTES;
+<span class="kw">use </span>um::wingdi::LF_FACESIZE;
+<span class="kw">use </span>um::winnt::{CHAR, HANDLE, LPCSTR, LPCWSTR, LPSTR, LPWSTR, WCHAR};
+<span class="comment">// Many definitions in wincontypes used to be defined in this file, so reexport them to avoid
+// breakage. For clarity they are imported in the order they are defined in that file rather
+// than winapi&#39;s usual alphabetical ordering, with some newlines and indentation to match their
+// grouping in the file.
+</span><span class="kw">pub use </span>um::wincontypes::{
+    COORD, PCOORD,
+    SMALL_RECT, PSMALL_RECT,
+    KEY_EVENT_RECORD_uChar, KEY_EVENT_RECORD, PKEY_EVENT_RECORD,
+    RIGHT_ALT_PRESSED, LEFT_ALT_PRESSED, RIGHT_CTRL_PRESSED, LEFT_CTRL_PRESSED, SHIFT_PRESSED,
+        NUMLOCK_ON, SCROLLLOCK_ON, CAPSLOCK_ON, ENHANCED_KEY, NLS_DBCSCHAR, NLS_ALPHANUMERIC,
+        NLS_KATAKANA, NLS_HIRAGANA, NLS_ROMAN, NLS_IME_CONVERSION, NLS_IME_DISABLE,
+    MOUSE_EVENT_RECORD, PMOUSE_EVENT_RECORD,
+    FROM_LEFT_1ST_BUTTON_PRESSED, RIGHTMOST_BUTTON_PRESSED, FROM_LEFT_2ND_BUTTON_PRESSED,
+        FROM_LEFT_3RD_BUTTON_PRESSED, FROM_LEFT_4TH_BUTTON_PRESSED, MOUSE_MOVED, DOUBLE_CLICK,
+        MOUSE_WHEELED, MOUSE_HWHEELED,
+    WINDOW_BUFFER_SIZE_RECORD, PWINDOW_BUFFER_SIZE_RECORD,
+    MENU_EVENT_RECORD, PMENU_EVENT_RECORD,
+    FOCUS_EVENT_RECORD, PFOCUS_EVENT_RECORD,
+    INPUT_RECORD_Event, INPUT_RECORD, PINPUT_RECORD,
+    KEY_EVENT, MOUSE_EVENT, WINDOW_BUFFER_SIZE_EVENT, MENU_EVENT, FOCUS_EVENT,
+    CHAR_INFO_Char, CHAR_INFO, PCHAR_INFO,
+    CONSOLE_FONT_INFO, PCONSOLE_FONT_INFO
 };
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">FOREGROUND_BLUE</span>: <span class="ident">WORD</span> <span class="op">=</span> <span class="number">0x0001</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">FOREGROUND_GREEN</span>: <span class="ident">WORD</span> <span class="op">=</span> <span class="number">0x0002</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">FOREGROUND_RED</span>: <span class="ident">WORD</span> <span class="op">=</span> <span class="number">0x0004</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">FOREGROUND_INTENSITY</span>: <span class="ident">WORD</span> <span class="op">=</span> <span class="number">0x0008</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">BACKGROUND_BLUE</span>: <span class="ident">WORD</span> <span class="op">=</span> <span class="number">0x0010</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">BACKGROUND_GREEN</span>: <span class="ident">WORD</span> <span class="op">=</span> <span class="number">0x0020</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">BACKGROUND_RED</span>: <span class="ident">WORD</span> <span class="op">=</span> <span class="number">0x0040</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">BACKGROUND_INTENSITY</span>: <span class="ident">WORD</span> <span class="op">=</span> <span class="number">0x0080</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">COMMON_LVB_LEADING_BYTE</span>: <span class="ident">WORD</span> <span class="op">=</span> <span class="number">0x0100</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">COMMON_LVB_TRAILING_BYTE</span>: <span class="ident">WORD</span> <span class="op">=</span> <span class="number">0x0200</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">COMMON_LVB_GRID_HORIZONTAL</span>: <span class="ident">WORD</span> <span class="op">=</span> <span class="number">0x0400</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">COMMON_LVB_GRID_LVERTICAL</span>: <span class="ident">WORD</span> <span class="op">=</span> <span class="number">0x0800</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">COMMON_LVB_GRID_RVERTICAL</span>: <span class="ident">WORD</span> <span class="op">=</span> <span class="number">0x1000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">COMMON_LVB_REVERSE_VIDEO</span>: <span class="ident">WORD</span> <span class="op">=</span> <span class="number">0x4000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">COMMON_LVB_UNDERSCORE</span>: <span class="ident">WORD</span> <span class="op">=</span> <span class="number">0x8000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">COMMON_LVB_SBCSDBCS</span>: <span class="ident">WORD</span> <span class="op">=</span> <span class="number">0x0300</span>;
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">CONSOLE_SCREEN_BUFFER_INFO</span> {
-    <span class="ident">dwSize</span>: <span class="ident">COORD</span>,
-    <span class="ident">dwCursorPosition</span>: <span class="ident">COORD</span>,
-    <span class="ident">wAttributes</span>: <span class="ident">WORD</span>,
-    <span class="ident">srWindow</span>: <span class="ident">SMALL_RECT</span>,
-    <span class="ident">dwMaximumWindowSize</span>: <span class="ident">COORD</span>,
+<span class="kw">pub const </span>FOREGROUND_BLUE: WORD = <span class="number">0x0001</span>;
+<span class="kw">pub const </span>FOREGROUND_GREEN: WORD = <span class="number">0x0002</span>;
+<span class="kw">pub const </span>FOREGROUND_RED: WORD = <span class="number">0x0004</span>;
+<span class="kw">pub const </span>FOREGROUND_INTENSITY: WORD = <span class="number">0x0008</span>;
+<span class="kw">pub const </span>BACKGROUND_BLUE: WORD = <span class="number">0x0010</span>;
+<span class="kw">pub const </span>BACKGROUND_GREEN: WORD = <span class="number">0x0020</span>;
+<span class="kw">pub const </span>BACKGROUND_RED: WORD = <span class="number">0x0040</span>;
+<span class="kw">pub const </span>BACKGROUND_INTENSITY: WORD = <span class="number">0x0080</span>;
+<span class="kw">pub const </span>COMMON_LVB_LEADING_BYTE: WORD = <span class="number">0x0100</span>;
+<span class="kw">pub const </span>COMMON_LVB_TRAILING_BYTE: WORD = <span class="number">0x0200</span>;
+<span class="kw">pub const </span>COMMON_LVB_GRID_HORIZONTAL: WORD = <span class="number">0x0400</span>;
+<span class="kw">pub const </span>COMMON_LVB_GRID_LVERTICAL: WORD = <span class="number">0x0800</span>;
+<span class="kw">pub const </span>COMMON_LVB_GRID_RVERTICAL: WORD = <span class="number">0x1000</span>;
+<span class="kw">pub const </span>COMMON_LVB_REVERSE_VIDEO: WORD = <span class="number">0x4000</span>;
+<span class="kw">pub const </span>COMMON_LVB_UNDERSCORE: WORD = <span class="number">0x8000</span>;
+<span class="kw">pub const </span>COMMON_LVB_SBCSDBCS: WORD = <span class="number">0x0300</span>;
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>CONSOLE_SCREEN_BUFFER_INFO {
+    dwSize: COORD,
+    dwCursorPosition: COORD,
+    wAttributes: WORD,
+    srWindow: SMALL_RECT,
+    dwMaximumWindowSize: COORD,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PCONSOLE_SCREEN_BUFFER_INFO</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">CONSOLE_SCREEN_BUFFER_INFO</span>;
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">CONSOLE_SCREEN_BUFFER_INFOEX</span> {
-    <span class="ident">cbSize</span>: <span class="ident">ULONG</span>,
-    <span class="ident">dwSize</span>: <span class="ident">COORD</span>,
-    <span class="ident">dwCursorPosition</span>: <span class="ident">COORD</span>,
-    <span class="ident">wAttributes</span>: <span class="ident">WORD</span>,
-    <span class="ident">srWindow</span>: <span class="ident">SMALL_RECT</span>,
-    <span class="ident">dwMaximumWindowSize</span>: <span class="ident">COORD</span>,
-    <span class="ident">wPopupAttributes</span>: <span class="ident">WORD</span>,
-    <span class="ident">bFullscreenSupported</span>: <span class="ident">BOOL</span>,
-    <span class="ident">ColorTable</span>: [<span class="ident">COLORREF</span>; <span class="number">16</span>],
+<span class="kw">pub type </span>PCONSOLE_SCREEN_BUFFER_INFO = <span class="kw-2">*mut </span>CONSOLE_SCREEN_BUFFER_INFO;
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>CONSOLE_SCREEN_BUFFER_INFOEX {
+    cbSize: ULONG,
+    dwSize: COORD,
+    dwCursorPosition: COORD,
+    wAttributes: WORD,
+    srWindow: SMALL_RECT,
+    dwMaximumWindowSize: COORD,
+    wPopupAttributes: WORD,
+    bFullscreenSupported: BOOL,
+    ColorTable: [COLORREF; <span class="number">16</span>],
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PCONSOLE_SCREEN_BUFFER_INFOEX</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">CONSOLE_SCREEN_BUFFER_INFOEX</span>;
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">CONSOLE_CURSOR_INFO</span> {
-    <span class="ident">dwSize</span>: <span class="ident">DWORD</span>,
-    <span class="ident">bVisible</span>: <span class="ident">BOOL</span>,
+<span class="kw">pub type </span>PCONSOLE_SCREEN_BUFFER_INFOEX = <span class="kw-2">*mut </span>CONSOLE_SCREEN_BUFFER_INFOEX;
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>CONSOLE_CURSOR_INFO {
+    dwSize: DWORD,
+    bVisible: BOOL,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PCONSOLE_CURSOR_INFO</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">CONSOLE_CURSOR_INFO</span>;
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">CONSOLE_FONT_INFOEX</span> {
-    <span class="ident">cbSize</span>: <span class="ident">ULONG</span>,
-    <span class="ident">nFont</span>: <span class="ident">DWORD</span>,
-    <span class="ident">dwFontSize</span>: <span class="ident">COORD</span>,
-    <span class="ident">FontFamily</span>: <span class="ident">UINT</span>,
-    <span class="ident">FontWeight</span>: <span class="ident">UINT</span>,
-    <span class="ident">FaceName</span>: [<span class="ident">WCHAR</span>; <span class="ident">LF_FACESIZE</span>],
+<span class="kw">pub type </span>PCONSOLE_CURSOR_INFO = <span class="kw-2">*mut </span>CONSOLE_CURSOR_INFO;
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>CONSOLE_FONT_INFOEX {
+    cbSize: ULONG,
+    nFont: DWORD,
+    dwFontSize: COORD,
+    FontFamily: UINT,
+    FontWeight: UINT,
+    FaceName: [WCHAR; LF_FACESIZE],
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PCONSOLE_FONT_INFOEX</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">CONSOLE_FONT_INFOEX</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">HISTORY_NO_DUP_FLAG</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x1</span>;
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">CONSOLE_HISTORY_INFO</span> {
-    <span class="ident">cbSize</span>: <span class="ident">UINT</span>,
-    <span class="ident">HistoryBufferSize</span>: <span class="ident">UINT</span>,
-    <span class="ident">NumberOfHistoryBuffers</span>: <span class="ident">UINT</span>,
-    <span class="ident">dwFlags</span>: <span class="ident">DWORD</span>,
+<span class="kw">pub type </span>PCONSOLE_FONT_INFOEX = <span class="kw-2">*mut </span>CONSOLE_FONT_INFOEX;
+<span class="kw">pub const </span>HISTORY_NO_DUP_FLAG: DWORD = <span class="number">0x1</span>;
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>CONSOLE_HISTORY_INFO {
+    cbSize: UINT,
+    HistoryBufferSize: UINT,
+    NumberOfHistoryBuffers: UINT,
+    dwFlags: DWORD,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PCONSOLE_HISTORY_INFO</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">CONSOLE_HISTORY_INFO</span>;
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">CONSOLE_SELECTION_INFO</span> {
-    <span class="ident">dwFlags</span>: <span class="ident">DWORD</span>,
-    <span class="ident">dwSelectionAnchor</span>: <span class="ident">COORD</span>,
-    <span class="ident">srSelection</span>: <span class="ident">SMALL_RECT</span>,
+<span class="kw">pub type </span>PCONSOLE_HISTORY_INFO = <span class="kw-2">*mut </span>CONSOLE_HISTORY_INFO;
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>CONSOLE_SELECTION_INFO {
+    dwFlags: DWORD,
+    dwSelectionAnchor: COORD,
+    srSelection: SMALL_RECT,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PCONSOLE_SELECTION_INFO</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">CONSOLE_SELECTION_INFO</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CONSOLE_NO_SELECTION</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CONSOLE_SELECTION_IN_PROGRESS</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0001</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CONSOLE_SELECTION_NOT_EMPTY</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0002</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CONSOLE_MOUSE_SELECTION</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0004</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CONSOLE_MOUSE_DOWN</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0008</span>;
-<span class="macro">FN!</span>{<span class="ident">stdcall</span> <span class="ident">PHANDLER_ROUTINE</span>(
-    <span class="ident">CtrlType</span>: <span class="ident">DWORD</span>,
-) -&gt; <span class="ident">BOOL</span>}
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CTRL_C_EVENT</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CTRL_BREAK_EVENT</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">1</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CTRL_CLOSE_EVENT</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">2</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CTRL_LOGOFF_EVENT</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">5</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CTRL_SHUTDOWN_EVENT</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">6</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">ENABLE_PROCESSED_INPUT</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0001</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">ENABLE_LINE_INPUT</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0002</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">ENABLE_ECHO_INPUT</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0004</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">ENABLE_WINDOW_INPUT</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0008</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">ENABLE_MOUSE_INPUT</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0010</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">ENABLE_INSERT_MODE</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0020</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">ENABLE_QUICK_EDIT_MODE</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0040</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">ENABLE_EXTENDED_FLAGS</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0080</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">ENABLE_AUTO_POSITION</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0100</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">ENABLE_VIRTUAL_TERMINAL_INPUT</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0200</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">ENABLE_PROCESSED_OUTPUT</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0001</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">ENABLE_WRAP_AT_EOL_OUTPUT</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0002</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">ENABLE_VIRTUAL_TERMINAL_PROCESSING</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0004</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DISABLE_NEWLINE_AUTO_RETURN</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0008</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">ENABLE_LVB_GRID_WORLDWIDE</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0010</span>;
-<span class="kw">extern</span> <span class="string">&quot;system&quot;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">PeekConsoleInputW</span>(
-        <span class="ident">hConsoleInput</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">lpBuffer</span>: <span class="ident">PINPUT_RECORD</span>,
-        <span class="ident">nLength</span>: <span class="ident">DWORD</span>,
-        <span class="ident">lpNumberOfEventsRead</span>: <span class="ident">LPDWORD</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">WriteConsoleInputA</span>(
-        <span class="ident">hConsoleInput</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">lpBuffer</span>: <span class="kw-2">*const</span> <span class="ident">INPUT_RECORD</span>,
-        <span class="ident">nLength</span>: <span class="ident">DWORD</span>,
-        <span class="ident">lpNumberOfEventsWritten</span>: <span class="ident">LPDWORD</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">WriteConsoleInputW</span>(
-        <span class="ident">hConsoleInput</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">lpBuffer</span>: <span class="kw-2">*const</span> <span class="ident">INPUT_RECORD</span>,
-        <span class="ident">nLength</span>: <span class="ident">DWORD</span>,
-        <span class="ident">lpNumberOfEventsWritten</span>: <span class="ident">LPDWORD</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ReadConsoleOutputA</span>(
-        <span class="ident">hConsoleOutput</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">lpBuffer</span>: <span class="ident">PCHAR_INFO</span>,
-        <span class="ident">dwBufferSize</span>: <span class="ident">COORD</span>,
-        <span class="ident">dwBufferCoord</span>: <span class="ident">COORD</span>,
-        <span class="ident">lpReadRegion</span>: <span class="ident">PSMALL_RECT</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ReadConsoleOutputW</span>(
-        <span class="ident">hConsoleOutput</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">lpBuffer</span>: <span class="ident">PCHAR_INFO</span>,
-        <span class="ident">dwBufferSize</span>: <span class="ident">COORD</span>,
-        <span class="ident">dwBufferCoord</span>: <span class="ident">COORD</span>,
-        <span class="ident">lpReadRegion</span>: <span class="ident">PSMALL_RECT</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">WriteConsoleOutputA</span>(
-        <span class="ident">hConsoleOutput</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">lpBuffer</span>: <span class="kw-2">*const</span> <span class="ident">CHAR_INFO</span>,
-        <span class="ident">dwBufferSize</span>: <span class="ident">COORD</span>,
-        <span class="ident">dwBufferCoord</span>: <span class="ident">COORD</span>,
-        <span class="ident">lpWriteRegion</span>: <span class="ident">PSMALL_RECT</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">WriteConsoleOutputW</span>(
-        <span class="ident">hConsoleOutput</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">lpBuffer</span>: <span class="kw-2">*const</span> <span class="ident">CHAR_INFO</span>,
-        <span class="ident">dwBufferSize</span>: <span class="ident">COORD</span>,
-        <span class="ident">dwBufferCoord</span>: <span class="ident">COORD</span>,
-        <span class="ident">lpWriteRegion</span>: <span class="ident">PSMALL_RECT</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ReadConsoleOutputCharacterA</span>(
-        <span class="ident">hConsoleOutput</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">lpCharacter</span>: <span class="ident">LPSTR</span>,
-        <span class="ident">nLength</span>: <span class="ident">DWORD</span>,
-        <span class="ident">dwReadCoord</span>: <span class="ident">COORD</span>,
-        <span class="ident">lpNumberOfCharsRead</span>: <span class="ident">LPDWORD</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ReadConsoleOutputCharacterW</span>(
-        <span class="ident">hConsoleOutput</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">lpCharacter</span>: <span class="ident">LPWSTR</span>,
-        <span class="ident">nLength</span>: <span class="ident">DWORD</span>,
-        <span class="ident">dwReadCoord</span>: <span class="ident">COORD</span>,
-        <span class="ident">lpNumberOfCharsRead</span>: <span class="ident">LPDWORD</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ReadConsoleOutputAttribute</span>(
-        <span class="ident">hConsoleOutput</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">lpAttribute</span>: <span class="ident">LPWORD</span>,
-        <span class="ident">nLength</span>: <span class="ident">DWORD</span>,
-        <span class="ident">dwReadCoord</span>: <span class="ident">COORD</span>,
-        <span class="ident">lpNumberOfAttrsRead</span>: <span class="ident">LPDWORD</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">WriteConsoleOutputCharacterA</span>(
-        <span class="ident">hConsoleOutput</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">lpCharacter</span>: <span class="ident">LPCSTR</span>,
-        <span class="ident">nLength</span>: <span class="ident">DWORD</span>,
-        <span class="ident">dwWriteCoord</span>: <span class="ident">COORD</span>,
-        <span class="ident">lpNumberOfCharsWritten</span>: <span class="ident">LPDWORD</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">WriteConsoleOutputCharacterW</span>(
-        <span class="ident">hConsoleOutput</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">lpCharacter</span>: <span class="ident">LPCWSTR</span>,
-        <span class="ident">nLength</span>: <span class="ident">DWORD</span>,
-        <span class="ident">dwWriteCoord</span>: <span class="ident">COORD</span>,
-        <span class="ident">lpNumberOfCharsWritten</span>: <span class="ident">LPDWORD</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">WriteConsoleOutputAttribute</span>(
-        <span class="ident">hConsoleOutput</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">lpAttribute</span>: <span class="kw-2">*const</span> <span class="ident">WORD</span>,
-        <span class="ident">nLength</span>: <span class="ident">DWORD</span>,
-        <span class="ident">dwWriteCoord</span>: <span class="ident">COORD</span>,
-        <span class="ident">lpNumberOfAttrsWritten</span>: <span class="ident">LPDWORD</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">FillConsoleOutputCharacterA</span>(
-        <span class="ident">hConsoleOutput</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">cCharacter</span>: <span class="ident">CHAR</span>,
-        <span class="ident">nLength</span>: <span class="ident">DWORD</span>,
-        <span class="ident">dwWriteCoord</span>: <span class="ident">COORD</span>,
-        <span class="ident">lpNumberOfCharsWritten</span>: <span class="ident">LPDWORD</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">FillConsoleOutputCharacterW</span>(
-        <span class="ident">hConsoleOutput</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">cCharacter</span>: <span class="ident">WCHAR</span>,
-        <span class="ident">nLength</span>: <span class="ident">DWORD</span>,
-        <span class="ident">dwWriteCoord</span>: <span class="ident">COORD</span>,
-        <span class="ident">lpNumberOfCharsWritten</span>: <span class="ident">LPDWORD</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">FillConsoleOutputAttribute</span>(
-        <span class="ident">hConsoleOutput</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">wAttribute</span>: <span class="ident">WORD</span>,
-        <span class="ident">nLength</span>: <span class="ident">DWORD</span>,
-        <span class="ident">dwWriteCoord</span>: <span class="ident">COORD</span>,
-        <span class="ident">lpNumberOfAttrsWritten</span>: <span class="ident">LPDWORD</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
+<span class="kw">pub type </span>PCONSOLE_SELECTION_INFO = <span class="kw-2">*mut </span>CONSOLE_SELECTION_INFO;
+<span class="kw">pub const </span>CONSOLE_NO_SELECTION: DWORD = <span class="number">0x0000</span>;
+<span class="kw">pub const </span>CONSOLE_SELECTION_IN_PROGRESS: DWORD = <span class="number">0x0001</span>;
+<span class="kw">pub const </span>CONSOLE_SELECTION_NOT_EMPTY: DWORD = <span class="number">0x0002</span>;
+<span class="kw">pub const </span>CONSOLE_MOUSE_SELECTION: DWORD = <span class="number">0x0004</span>;
+<span class="kw">pub const </span>CONSOLE_MOUSE_DOWN: DWORD = <span class="number">0x0008</span>;
+<span class="macro">FN!</span>{stdcall PHANDLER_ROUTINE(
+    CtrlType: DWORD,
+) -&gt; BOOL}
+<span class="kw">pub const </span>CTRL_C_EVENT: DWORD = <span class="number">0</span>;
+<span class="kw">pub const </span>CTRL_BREAK_EVENT: DWORD = <span class="number">1</span>;
+<span class="kw">pub const </span>CTRL_CLOSE_EVENT: DWORD = <span class="number">2</span>;
+<span class="kw">pub const </span>CTRL_LOGOFF_EVENT: DWORD = <span class="number">5</span>;
+<span class="kw">pub const </span>CTRL_SHUTDOWN_EVENT: DWORD = <span class="number">6</span>;
+<span class="kw">pub const </span>ENABLE_PROCESSED_INPUT: DWORD = <span class="number">0x0001</span>;
+<span class="kw">pub const </span>ENABLE_LINE_INPUT: DWORD = <span class="number">0x0002</span>;
+<span class="kw">pub const </span>ENABLE_ECHO_INPUT: DWORD = <span class="number">0x0004</span>;
+<span class="kw">pub const </span>ENABLE_WINDOW_INPUT: DWORD = <span class="number">0x0008</span>;
+<span class="kw">pub const </span>ENABLE_MOUSE_INPUT: DWORD = <span class="number">0x0010</span>;
+<span class="kw">pub const </span>ENABLE_INSERT_MODE: DWORD = <span class="number">0x0020</span>;
+<span class="kw">pub const </span>ENABLE_QUICK_EDIT_MODE: DWORD = <span class="number">0x0040</span>;
+<span class="kw">pub const </span>ENABLE_EXTENDED_FLAGS: DWORD = <span class="number">0x0080</span>;
+<span class="kw">pub const </span>ENABLE_AUTO_POSITION: DWORD = <span class="number">0x0100</span>;
+<span class="kw">pub const </span>ENABLE_VIRTUAL_TERMINAL_INPUT: DWORD = <span class="number">0x0200</span>;
+<span class="kw">pub const </span>ENABLE_PROCESSED_OUTPUT: DWORD = <span class="number">0x0001</span>;
+<span class="kw">pub const </span>ENABLE_WRAP_AT_EOL_OUTPUT: DWORD = <span class="number">0x0002</span>;
+<span class="kw">pub const </span>ENABLE_VIRTUAL_TERMINAL_PROCESSING: DWORD = <span class="number">0x0004</span>;
+<span class="kw">pub const </span>DISABLE_NEWLINE_AUTO_RETURN: DWORD = <span class="number">0x0008</span>;
+<span class="kw">pub const </span>ENABLE_LVB_GRID_WORLDWIDE: DWORD = <span class="number">0x0010</span>;
+<span class="kw">extern </span><span class="string">&quot;system&quot; </span>{
+    <span class="kw">pub fn </span>PeekConsoleInputW(
+        hConsoleInput: HANDLE,
+        lpBuffer: PINPUT_RECORD,
+        nLength: DWORD,
+        lpNumberOfEventsRead: LPDWORD,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>WriteConsoleInputA(
+        hConsoleInput: HANDLE,
+        lpBuffer: <span class="kw-2">*const </span>INPUT_RECORD,
+        nLength: DWORD,
+        lpNumberOfEventsWritten: LPDWORD,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>WriteConsoleInputW(
+        hConsoleInput: HANDLE,
+        lpBuffer: <span class="kw-2">*const </span>INPUT_RECORD,
+        nLength: DWORD,
+        lpNumberOfEventsWritten: LPDWORD,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>ReadConsoleOutputA(
+        hConsoleOutput: HANDLE,
+        lpBuffer: PCHAR_INFO,
+        dwBufferSize: COORD,
+        dwBufferCoord: COORD,
+        lpReadRegion: PSMALL_RECT,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>ReadConsoleOutputW(
+        hConsoleOutput: HANDLE,
+        lpBuffer: PCHAR_INFO,
+        dwBufferSize: COORD,
+        dwBufferCoord: COORD,
+        lpReadRegion: PSMALL_RECT,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>WriteConsoleOutputA(
+        hConsoleOutput: HANDLE,
+        lpBuffer: <span class="kw-2">*const </span>CHAR_INFO,
+        dwBufferSize: COORD,
+        dwBufferCoord: COORD,
+        lpWriteRegion: PSMALL_RECT,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>WriteConsoleOutputW(
+        hConsoleOutput: HANDLE,
+        lpBuffer: <span class="kw-2">*const </span>CHAR_INFO,
+        dwBufferSize: COORD,
+        dwBufferCoord: COORD,
+        lpWriteRegion: PSMALL_RECT,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>ReadConsoleOutputCharacterA(
+        hConsoleOutput: HANDLE,
+        lpCharacter: LPSTR,
+        nLength: DWORD,
+        dwReadCoord: COORD,
+        lpNumberOfCharsRead: LPDWORD,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>ReadConsoleOutputCharacterW(
+        hConsoleOutput: HANDLE,
+        lpCharacter: LPWSTR,
+        nLength: DWORD,
+        dwReadCoord: COORD,
+        lpNumberOfCharsRead: LPDWORD,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>ReadConsoleOutputAttribute(
+        hConsoleOutput: HANDLE,
+        lpAttribute: LPWORD,
+        nLength: DWORD,
+        dwReadCoord: COORD,
+        lpNumberOfAttrsRead: LPDWORD,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>WriteConsoleOutputCharacterA(
+        hConsoleOutput: HANDLE,
+        lpCharacter: LPCSTR,
+        nLength: DWORD,
+        dwWriteCoord: COORD,
+        lpNumberOfCharsWritten: LPDWORD,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>WriteConsoleOutputCharacterW(
+        hConsoleOutput: HANDLE,
+        lpCharacter: LPCWSTR,
+        nLength: DWORD,
+        dwWriteCoord: COORD,
+        lpNumberOfCharsWritten: LPDWORD,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>WriteConsoleOutputAttribute(
+        hConsoleOutput: HANDLE,
+        lpAttribute: <span class="kw-2">*const </span>WORD,
+        nLength: DWORD,
+        dwWriteCoord: COORD,
+        lpNumberOfAttrsWritten: LPDWORD,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>FillConsoleOutputCharacterA(
+        hConsoleOutput: HANDLE,
+        cCharacter: CHAR,
+        nLength: DWORD,
+        dwWriteCoord: COORD,
+        lpNumberOfCharsWritten: LPDWORD,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>FillConsoleOutputCharacterW(
+        hConsoleOutput: HANDLE,
+        cCharacter: WCHAR,
+        nLength: DWORD,
+        dwWriteCoord: COORD,
+        lpNumberOfCharsWritten: LPDWORD,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>FillConsoleOutputAttribute(
+        hConsoleOutput: HANDLE,
+        wAttribute: WORD,
+        nLength: DWORD,
+        dwWriteCoord: COORD,
+        lpNumberOfAttrsWritten: LPDWORD,
+    ) -&gt; BOOL;
 }
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CONSOLE_REAL_OUTPUT_HANDLE</span>: <span class="kw-2">*mut</span> <span class="ident">c_void</span> <span class="op">=</span> <span class="op">-</span><span class="number">2isize</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">c_void</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CONSOLE_REAL_INPUT_HANDLE</span>: <span class="kw-2">*mut</span> <span class="ident">c_void</span> <span class="op">=</span> <span class="op">-</span><span class="number">3isize</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">c_void</span>;
-<span class="kw">extern</span> <span class="string">&quot;system&quot;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetConsoleScreenBufferInfo</span>(
-        <span class="ident">hConsoleOutput</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">lpConsoleScreenBufferInfo</span>: <span class="ident">PCONSOLE_SCREEN_BUFFER_INFO</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetConsoleScreenBufferInfoEx</span>(
-        <span class="ident">hConsoleOutput</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">lpConsoleScreenBufferInfoEx</span>: <span class="ident">PCONSOLE_SCREEN_BUFFER_INFOEX</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">SetConsoleScreenBufferInfoEx</span>(
-        <span class="ident">hConsoleOutput</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">lpConsoleScreenBufferInfoEx</span>: <span class="ident">PCONSOLE_SCREEN_BUFFER_INFOEX</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetLargestConsoleWindowSize</span>(
-        <span class="ident">hConsoleOutput</span>: <span class="ident">HANDLE</span>,
-    ) -&gt; <span class="ident">COORD</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetConsoleCursorInfo</span>(
-        <span class="ident">hConsoleOutput</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">lpConsoleCursorInfo</span>: <span class="ident">PCONSOLE_CURSOR_INFO</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetCurrentConsoleFont</span>(
-        <span class="ident">hConsoleOutput</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">bMaximumWindow</span>: <span class="ident">BOOL</span>,
-        <span class="ident">lpConsoleCurrentFont</span>: <span class="ident">PCONSOLE_FONT_INFO</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetCurrentConsoleFontEx</span>(
-        <span class="ident">hConsoleOutput</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">bMaximumWindow</span>: <span class="ident">BOOL</span>,
-        <span class="ident">lpConsoleCurrentFontEx</span>: <span class="ident">PCONSOLE_FONT_INFOEX</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">SetCurrentConsoleFontEx</span>(
-        <span class="ident">hConsoleOutput</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">bMaximumWindow</span>: <span class="ident">BOOL</span>,
-        <span class="ident">lpConsoleCurrentFontEx</span>: <span class="ident">PCONSOLE_FONT_INFOEX</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetConsoleHistoryInfo</span>(
-        <span class="ident">lpConsoleHistoryInfo</span>: <span class="ident">PCONSOLE_HISTORY_INFO</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">SetConsoleHistoryInfo</span>(
-        <span class="ident">lpConsoleHistoryInfo</span>: <span class="ident">PCONSOLE_HISTORY_INFO</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetConsoleFontSize</span>(
-        <span class="ident">hConsoleOutput</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">nFont</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">COORD</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetConsoleSelectionInfo</span>(
-        <span class="ident">lpConsoleSelectionInfo</span>: <span class="ident">PCONSOLE_SELECTION_INFO</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetNumberOfConsoleMouseButtons</span>(
-        <span class="ident">lpNumberOfMouseButtons</span>: <span class="ident">LPDWORD</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">SetConsoleActiveScreenBuffer</span>(
-        <span class="ident">hConsoleOutput</span>: <span class="ident">HANDLE</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">FlushConsoleInputBuffer</span>(
-        <span class="ident">hConsoleInput</span>: <span class="ident">HANDLE</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">SetConsoleScreenBufferSize</span>(
-        <span class="ident">hConsoleOutput</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">dwSize</span>: <span class="ident">COORD</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">SetConsoleCursorPosition</span>(
-        <span class="ident">hConsoleOutput</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">dwCursorPosition</span>: <span class="ident">COORD</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">SetConsoleCursorInfo</span>(
-        <span class="ident">hConsoleOutput</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">lpConsoleCursorInfo</span>: <span class="kw-2">*const</span> <span class="ident">CONSOLE_CURSOR_INFO</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ScrollConsoleScreenBufferA</span>(
-        <span class="ident">hConsoleOutput</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">lpScrollRectangle</span>: <span class="kw-2">*const</span> <span class="ident">SMALL_RECT</span>,
-        <span class="ident">lpClipRectangle</span>: <span class="kw-2">*const</span> <span class="ident">SMALL_RECT</span>,
-        <span class="ident">dwDestinationOrigin</span>: <span class="ident">COORD</span>,
-        <span class="ident">lpFill</span>: <span class="kw-2">*const</span> <span class="ident">CHAR_INFO</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ScrollConsoleScreenBufferW</span>(
-        <span class="ident">hConsoleOutput</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">lpScrollRectangle</span>: <span class="kw-2">*const</span> <span class="ident">SMALL_RECT</span>,
-        <span class="ident">lpClipRectangle</span>: <span class="kw-2">*const</span> <span class="ident">SMALL_RECT</span>,
-        <span class="ident">dwDestinationOrigin</span>: <span class="ident">COORD</span>,
-        <span class="ident">lpFill</span>: <span class="kw-2">*const</span> <span class="ident">CHAR_INFO</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">SetConsoleWindowInfo</span>(
-        <span class="ident">hConsoleOutput</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">bAbsolute</span>: <span class="ident">BOOL</span>,
-        <span class="ident">lpConsoleWindow</span>: <span class="kw-2">*const</span> <span class="ident">SMALL_RECT</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">SetConsoleTextAttribute</span>(
-        <span class="ident">hConsoleOutput</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">wAttributes</span>: <span class="ident">WORD</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GenerateConsoleCtrlEvent</span>(
-        <span class="ident">dwCtrlEvent</span>: <span class="ident">DWORD</span>,
-        <span class="ident">dwProcessGroupId</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">FreeConsole</span>() -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">AttachConsole</span>(
-        <span class="ident">dwProcessId</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
+<span class="kw">pub const </span>CONSOLE_REAL_OUTPUT_HANDLE: <span class="kw-2">*mut </span>c_void = -<span class="number">2isize </span><span class="kw">as </span><span class="kw-2">*mut </span>c_void;
+<span class="kw">pub const </span>CONSOLE_REAL_INPUT_HANDLE: <span class="kw-2">*mut </span>c_void = -<span class="number">3isize </span><span class="kw">as </span><span class="kw-2">*mut </span>c_void;
+<span class="kw">extern </span><span class="string">&quot;system&quot; </span>{
+    <span class="kw">pub fn </span>GetConsoleScreenBufferInfo(
+        hConsoleOutput: HANDLE,
+        lpConsoleScreenBufferInfo: PCONSOLE_SCREEN_BUFFER_INFO,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>GetConsoleScreenBufferInfoEx(
+        hConsoleOutput: HANDLE,
+        lpConsoleScreenBufferInfoEx: PCONSOLE_SCREEN_BUFFER_INFOEX,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>SetConsoleScreenBufferInfoEx(
+        hConsoleOutput: HANDLE,
+        lpConsoleScreenBufferInfoEx: PCONSOLE_SCREEN_BUFFER_INFOEX,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>GetLargestConsoleWindowSize(
+        hConsoleOutput: HANDLE,
+    ) -&gt; COORD;
+    <span class="kw">pub fn </span>GetConsoleCursorInfo(
+        hConsoleOutput: HANDLE,
+        lpConsoleCursorInfo: PCONSOLE_CURSOR_INFO,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>GetCurrentConsoleFont(
+        hConsoleOutput: HANDLE,
+        bMaximumWindow: BOOL,
+        lpConsoleCurrentFont: PCONSOLE_FONT_INFO,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>GetCurrentConsoleFontEx(
+        hConsoleOutput: HANDLE,
+        bMaximumWindow: BOOL,
+        lpConsoleCurrentFontEx: PCONSOLE_FONT_INFOEX,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>SetCurrentConsoleFontEx(
+        hConsoleOutput: HANDLE,
+        bMaximumWindow: BOOL,
+        lpConsoleCurrentFontEx: PCONSOLE_FONT_INFOEX,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>GetConsoleHistoryInfo(
+        lpConsoleHistoryInfo: PCONSOLE_HISTORY_INFO,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>SetConsoleHistoryInfo(
+        lpConsoleHistoryInfo: PCONSOLE_HISTORY_INFO,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>GetConsoleFontSize(
+        hConsoleOutput: HANDLE,
+        nFont: DWORD,
+    ) -&gt; COORD;
+    <span class="kw">pub fn </span>GetConsoleSelectionInfo(
+        lpConsoleSelectionInfo: PCONSOLE_SELECTION_INFO,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>GetNumberOfConsoleMouseButtons(
+        lpNumberOfMouseButtons: LPDWORD,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>SetConsoleActiveScreenBuffer(
+        hConsoleOutput: HANDLE,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>FlushConsoleInputBuffer(
+        hConsoleInput: HANDLE,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>SetConsoleScreenBufferSize(
+        hConsoleOutput: HANDLE,
+        dwSize: COORD,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>SetConsoleCursorPosition(
+        hConsoleOutput: HANDLE,
+        dwCursorPosition: COORD,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>SetConsoleCursorInfo(
+        hConsoleOutput: HANDLE,
+        lpConsoleCursorInfo: <span class="kw-2">*const </span>CONSOLE_CURSOR_INFO,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>ScrollConsoleScreenBufferA(
+        hConsoleOutput: HANDLE,
+        lpScrollRectangle: <span class="kw-2">*const </span>SMALL_RECT,
+        lpClipRectangle: <span class="kw-2">*const </span>SMALL_RECT,
+        dwDestinationOrigin: COORD,
+        lpFill: <span class="kw-2">*const </span>CHAR_INFO,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>ScrollConsoleScreenBufferW(
+        hConsoleOutput: HANDLE,
+        lpScrollRectangle: <span class="kw-2">*const </span>SMALL_RECT,
+        lpClipRectangle: <span class="kw-2">*const </span>SMALL_RECT,
+        dwDestinationOrigin: COORD,
+        lpFill: <span class="kw-2">*const </span>CHAR_INFO,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>SetConsoleWindowInfo(
+        hConsoleOutput: HANDLE,
+        bAbsolute: BOOL,
+        lpConsoleWindow: <span class="kw-2">*const </span>SMALL_RECT,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>SetConsoleTextAttribute(
+        hConsoleOutput: HANDLE,
+        wAttributes: WORD,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>GenerateConsoleCtrlEvent(
+        dwCtrlEvent: DWORD,
+        dwProcessGroupId: DWORD,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>FreeConsole() -&gt; BOOL;
+    <span class="kw">pub fn </span>AttachConsole(
+        dwProcessId: DWORD,
+    ) -&gt; BOOL;
 }
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">ATTACH_PARENT_PROCESS</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0xFFFFFFFF</span>;
-<span class="kw">extern</span> <span class="string">&quot;system&quot;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetConsoleTitleA</span>(
-        <span class="ident">lpConsoleTitle</span>: <span class="ident">LPSTR</span>,
-        <span class="ident">nSize</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">DWORD</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetConsoleTitleW</span>(
-        <span class="ident">lpConsoleTitle</span>: <span class="ident">LPWSTR</span>,
-        <span class="ident">nSize</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">DWORD</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetConsoleOriginalTitleA</span>(
-        <span class="ident">lpConsoleTitle</span>: <span class="ident">LPSTR</span>,
-        <span class="ident">nSize</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">DWORD</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetConsoleOriginalTitleW</span>(
-        <span class="ident">lpConsoleTitle</span>: <span class="ident">LPWSTR</span>,
-        <span class="ident">nSize</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">DWORD</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">SetConsoleTitleA</span>(
-        <span class="ident">lpConsoleTitle</span>: <span class="ident">LPCSTR</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">SetConsoleTitleW</span>(
-        <span class="ident">lpConsoleTitle</span>: <span class="ident">LPCWSTR</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
+<span class="kw">pub const </span>ATTACH_PARENT_PROCESS: DWORD = <span class="number">0xFFFFFFFF</span>;
+<span class="kw">extern </span><span class="string">&quot;system&quot; </span>{
+    <span class="kw">pub fn </span>GetConsoleTitleA(
+        lpConsoleTitle: LPSTR,
+        nSize: DWORD,
+    ) -&gt; DWORD;
+    <span class="kw">pub fn </span>GetConsoleTitleW(
+        lpConsoleTitle: LPWSTR,
+        nSize: DWORD,
+    ) -&gt; DWORD;
+    <span class="kw">pub fn </span>GetConsoleOriginalTitleA(
+        lpConsoleTitle: LPSTR,
+        nSize: DWORD,
+    ) -&gt; DWORD;
+    <span class="kw">pub fn </span>GetConsoleOriginalTitleW(
+        lpConsoleTitle: LPWSTR,
+        nSize: DWORD,
+    ) -&gt; DWORD;
+    <span class="kw">pub fn </span>SetConsoleTitleA(
+        lpConsoleTitle: LPCSTR,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>SetConsoleTitleW(
+        lpConsoleTitle: LPCWSTR,
+    ) -&gt; BOOL;
 }
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">CONSOLE_READCONSOLE_CONTROL</span> {
-    <span class="ident">nLength</span>: <span class="ident">ULONG</span>,
-    <span class="ident">nInitialChars</span>: <span class="ident">ULONG</span>,
-    <span class="ident">dwCtrlWakeupMask</span>: <span class="ident">ULONG</span>,
-    <span class="ident">dwControlKeyState</span>: <span class="ident">ULONG</span>,
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>CONSOLE_READCONSOLE_CONTROL {
+    nLength: ULONG,
+    nInitialChars: ULONG,
+    dwCtrlWakeupMask: ULONG,
+    dwControlKeyState: ULONG,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PCONSOLE_READCONSOLE_CONTROL</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">CONSOLE_READCONSOLE_CONTROL</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CONSOLE_TEXTMODE_BUFFER</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">1</span>;
-<span class="kw">extern</span> <span class="string">&quot;system&quot;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CreateConsoleScreenBuffer</span>(
-        <span class="ident">dwDesiredAccess</span>: <span class="ident">DWORD</span>,
-        <span class="ident">dwShareMode</span>: <span class="ident">DWORD</span>,
-        <span class="ident">lpSecurityAttributes</span>: <span class="kw-2">*const</span> <span class="ident">SECURITY_ATTRIBUTES</span>,
-        <span class="ident">dwFlags</span>: <span class="ident">DWORD</span>,
-        <span class="ident">lpScreenBufferData</span>: <span class="ident">LPVOID</span>,
-    ) -&gt; <span class="ident">HANDLE</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">SetConsoleCP</span>(
-        <span class="ident">wCodePageID</span>: <span class="ident">UINT</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">SetConsoleOutputCP</span>(
-        <span class="ident">wCodePageID</span>: <span class="ident">UINT</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
+<span class="kw">pub type </span>PCONSOLE_READCONSOLE_CONTROL = <span class="kw-2">*mut </span>CONSOLE_READCONSOLE_CONTROL;
+<span class="kw">pub const </span>CONSOLE_TEXTMODE_BUFFER: DWORD = <span class="number">1</span>;
+<span class="kw">extern </span><span class="string">&quot;system&quot; </span>{
+    <span class="kw">pub fn </span>CreateConsoleScreenBuffer(
+        dwDesiredAccess: DWORD,
+        dwShareMode: DWORD,
+        lpSecurityAttributes: <span class="kw-2">*const </span>SECURITY_ATTRIBUTES,
+        dwFlags: DWORD,
+        lpScreenBufferData: LPVOID,
+    ) -&gt; HANDLE;
+    <span class="kw">pub fn </span>SetConsoleCP(
+        wCodePageID: UINT,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>SetConsoleOutputCP(
+        wCodePageID: UINT,
+    ) -&gt; BOOL;
 }
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CONSOLE_FULLSCREEN</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">1</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CONSOLE_FULLSCREEN_HARDWARE</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">2</span>;
-<span class="kw">extern</span> <span class="string">&quot;system&quot;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetConsoleDisplayMode</span>(
-        <span class="ident">lpModeFlags</span>: <span class="ident">LPDWORD</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
+<span class="kw">pub const </span>CONSOLE_FULLSCREEN: DWORD = <span class="number">1</span>;
+<span class="kw">pub const </span>CONSOLE_FULLSCREEN_HARDWARE: DWORD = <span class="number">2</span>;
+<span class="kw">extern </span><span class="string">&quot;system&quot; </span>{
+    <span class="kw">pub fn </span>GetConsoleDisplayMode(
+        lpModeFlags: LPDWORD,
+    ) -&gt; BOOL;
 }
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CONSOLE_FULLSCREEN_MODE</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">1</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CONSOLE_WINDOWED_MODE</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">2</span>;
-<span class="kw">extern</span> <span class="string">&quot;system&quot;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">SetConsoleDisplayMode</span>(
-        <span class="ident">hConsoleOutput</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">dwFlags</span>: <span class="ident">DWORD</span>,
-        <span class="ident">lpNewScreenBufferDimensions</span>: <span class="ident">PCOORD</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetConsoleWindow</span>() -&gt; <span class="ident">HWND</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetConsoleProcessList</span>(
-        <span class="ident">lpdwProcessList</span>: <span class="ident">LPDWORD</span>,
-        <span class="ident">dwProcessCount</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">DWORD</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">AddConsoleAliasA</span>(
-        <span class="ident">Source</span>: <span class="ident">LPSTR</span>,
-        <span class="ident">Target</span>: <span class="ident">LPSTR</span>,
-        <span class="ident">ExeName</span>: <span class="ident">LPSTR</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">AddConsoleAliasW</span>(
-        <span class="ident">Source</span>: <span class="ident">LPWSTR</span>,
-        <span class="ident">Target</span>: <span class="ident">LPWSTR</span>,
-        <span class="ident">ExeName</span>: <span class="ident">LPWSTR</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetConsoleAliasA</span>(
-        <span class="ident">Source</span>: <span class="ident">LPSTR</span>,
-        <span class="ident">TargetBuffer</span>: <span class="ident">LPSTR</span>,
-        <span class="ident">TargetBufferLength</span>: <span class="ident">DWORD</span>,
-        <span class="ident">ExeName</span>: <span class="ident">LPSTR</span>,
-    ) -&gt; <span class="ident">DWORD</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetConsoleAliasW</span>(
-        <span class="ident">Source</span>: <span class="ident">LPWSTR</span>,
-        <span class="ident">TargetBuffer</span>: <span class="ident">LPWSTR</span>,
-        <span class="ident">TargetBufferLength</span>: <span class="ident">DWORD</span>,
-        <span class="ident">ExeName</span>: <span class="ident">LPWSTR</span>,
-    ) -&gt; <span class="ident">DWORD</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetConsoleAliasesLengthA</span>(
-        <span class="ident">ExeName</span>: <span class="ident">LPSTR</span>,
-    ) -&gt; <span class="ident">DWORD</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetConsoleAliasesLengthW</span>(
-        <span class="ident">ExeName</span>: <span class="ident">LPWSTR</span>,
-    ) -&gt; <span class="ident">DWORD</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetConsoleAliasExesLengthA</span>() -&gt; <span class="ident">DWORD</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetConsoleAliasExesLengthW</span>() -&gt; <span class="ident">DWORD</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetConsoleAliasesA</span>(
-        <span class="ident">AliasBuffer</span>: <span class="ident">LPSTR</span>,
-        <span class="ident">AliasBufferLength</span>: <span class="ident">DWORD</span>,
-        <span class="ident">ExeName</span>: <span class="ident">LPSTR</span>,
-    ) -&gt; <span class="ident">DWORD</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetConsoleAliasesW</span>(
-        <span class="ident">AliasBuffer</span>: <span class="ident">LPWSTR</span>,
-        <span class="ident">AliasBufferLength</span>: <span class="ident">DWORD</span>,
-        <span class="ident">ExeName</span>: <span class="ident">LPWSTR</span>,
-    ) -&gt; <span class="ident">DWORD</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetConsoleAliasExesA</span>(
-        <span class="ident">ExeNameBuffer</span>: <span class="ident">LPSTR</span>,
-        <span class="ident">ExeNameBufferLength</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">DWORD</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetConsoleAliasExesW</span>(
-        <span class="ident">ExeNameBuffer</span>: <span class="ident">LPWSTR</span>,
-        <span class="ident">ExeNameBufferLength</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">DWORD</span>;
+<span class="kw">pub const </span>CONSOLE_FULLSCREEN_MODE: DWORD = <span class="number">1</span>;
+<span class="kw">pub const </span>CONSOLE_WINDOWED_MODE: DWORD = <span class="number">2</span>;
+<span class="kw">extern </span><span class="string">&quot;system&quot; </span>{
+    <span class="kw">pub fn </span>SetConsoleDisplayMode(
+        hConsoleOutput: HANDLE,
+        dwFlags: DWORD,
+        lpNewScreenBufferDimensions: PCOORD,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>GetConsoleWindow() -&gt; HWND;
+    <span class="kw">pub fn </span>GetConsoleProcessList(
+        lpdwProcessList: LPDWORD,
+        dwProcessCount: DWORD,
+    ) -&gt; DWORD;
+    <span class="kw">pub fn </span>AddConsoleAliasA(
+        Source: LPSTR,
+        Target: LPSTR,
+        ExeName: LPSTR,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>AddConsoleAliasW(
+        Source: LPWSTR,
+        Target: LPWSTR,
+        ExeName: LPWSTR,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>GetConsoleAliasA(
+        Source: LPSTR,
+        TargetBuffer: LPSTR,
+        TargetBufferLength: DWORD,
+        ExeName: LPSTR,
+    ) -&gt; DWORD;
+    <span class="kw">pub fn </span>GetConsoleAliasW(
+        Source: LPWSTR,
+        TargetBuffer: LPWSTR,
+        TargetBufferLength: DWORD,
+        ExeName: LPWSTR,
+    ) -&gt; DWORD;
+    <span class="kw">pub fn </span>GetConsoleAliasesLengthA(
+        ExeName: LPSTR,
+    ) -&gt; DWORD;
+    <span class="kw">pub fn </span>GetConsoleAliasesLengthW(
+        ExeName: LPWSTR,
+    ) -&gt; DWORD;
+    <span class="kw">pub fn </span>GetConsoleAliasExesLengthA() -&gt; DWORD;
+    <span class="kw">pub fn </span>GetConsoleAliasExesLengthW() -&gt; DWORD;
+    <span class="kw">pub fn </span>GetConsoleAliasesA(
+        AliasBuffer: LPSTR,
+        AliasBufferLength: DWORD,
+        ExeName: LPSTR,
+    ) -&gt; DWORD;
+    <span class="kw">pub fn </span>GetConsoleAliasesW(
+        AliasBuffer: LPWSTR,
+        AliasBufferLength: DWORD,
+        ExeName: LPWSTR,
+    ) -&gt; DWORD;
+    <span class="kw">pub fn </span>GetConsoleAliasExesA(
+        ExeNameBuffer: LPSTR,
+        ExeNameBufferLength: DWORD,
+    ) -&gt; DWORD;
+    <span class="kw">pub fn </span>GetConsoleAliasExesW(
+        ExeNameBuffer: LPWSTR,
+        ExeNameBufferLength: DWORD,
+    ) -&gt; DWORD;
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="winapi" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="winapi" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.0 (69f9c33d7 2022-12-12)" ></div></body></html>

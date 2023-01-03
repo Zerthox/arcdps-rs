@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\arcdps-imgui-0.8.0\src\window\scroll.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>scroll.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../arcdps_imgui/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../arcdps_imgui/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../arcdps_imgui/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\arcdps-imgui-0.8.0\src\window\scroll.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>scroll.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../normalize.css"><link rel="stylesheet" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../ayu.css" disabled><link rel="stylesheet" href="../../../dark.css" disabled><link rel="stylesheet" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../../arcdps_imgui/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -116,123 +116,123 @@
 <span id="116">116</span>
 <span id="117">117</span>
 <span id="118">118</span>
-</pre><pre class="rust"><code><span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::sys</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::Ui</span>;
+</pre><pre class="rust"><code><span class="kw">use </span><span class="kw">crate</span>::sys;
+<span class="kw">use </span><span class="kw">crate</span>::Ui;
 
-<span class="doccomment">/// # Window scrolling</span>
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> <span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Returns the horizontal scrolling position.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Value is between 0.0 and self.scroll_max_x().</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GetScrollX&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">scroll_x</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">f32</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igGetScrollX</span>() }
+<span class="doccomment">/// # Window scrolling
+</span><span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>&gt; Ui&lt;<span class="lifetime">&#39;ui</span>&gt; {
+    <span class="doccomment">/// Returns the horizontal scrolling position.
+    ///
+    /// Value is between 0.0 and self.scroll_max_x().
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;GetScrollX&quot;</span>)]
+    </span><span class="kw">pub fn </span>scroll_x(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; f32 {
+        <span class="kw">unsafe </span>{ sys::igGetScrollX() }
     }
-    <span class="doccomment">/// Returns the vertical scrolling position.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Value is between 0.0 and self.scroll_max_y().</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GetScrollY&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">scroll_y</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">f32</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igGetScrollY</span>() }
+    <span class="doccomment">/// Returns the vertical scrolling position.
+    ///
+    /// Value is between 0.0 and self.scroll_max_y().
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;GetScrollY&quot;</span>)]
+    </span><span class="kw">pub fn </span>scroll_y(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; f32 {
+        <span class="kw">unsafe </span>{ sys::igGetScrollY() }
     }
-    <span class="doccomment">/// Returns the maximum horizontal scrolling position.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Roughly equal to content size X - window size X.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GetScrollMaxX&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">scroll_max_x</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">f32</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igGetScrollMaxX</span>() }
+    <span class="doccomment">/// Returns the maximum horizontal scrolling position.
+    ///
+    /// Roughly equal to content size X - window size X.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;GetScrollMaxX&quot;</span>)]
+    </span><span class="kw">pub fn </span>scroll_max_x(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; f32 {
+        <span class="kw">unsafe </span>{ sys::igGetScrollMaxX() }
     }
-    <span class="doccomment">/// Returns the maximum vertical scrolling position.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Roughly equal to content size Y - window size Y.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GetScrollMaxY&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">scroll_max_y</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">f32</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igGetScrollMaxY</span>() }
+    <span class="doccomment">/// Returns the maximum vertical scrolling position.
+    ///
+    /// Roughly equal to content size Y - window size Y.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;GetScrollMaxY&quot;</span>)]
+    </span><span class="kw">pub fn </span>scroll_max_y(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; f32 {
+        <span class="kw">unsafe </span>{ sys::igGetScrollMaxY() }
     }
-    <span class="doccomment">/// Sets the horizontal scrolling position</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;SetScrollX&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_scroll_x</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">scroll_x</span>: <span class="ident">f32</span>) {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igSetScrollX</span>(<span class="ident">scroll_x</span>) };
+    <span class="doccomment">/// Sets the horizontal scrolling position
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;SetScrollX&quot;</span>)]
+    </span><span class="kw">pub fn </span>set_scroll_x(<span class="kw-2">&amp;</span><span class="self">self</span>, scroll_x: f32) {
+        <span class="kw">unsafe </span>{ sys::igSetScrollX(scroll_x) };
     }
-    <span class="doccomment">/// Sets the vertical scroll position</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;SetScrollY&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_scroll_y</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">scroll_y</span>: <span class="ident">f32</span>) {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igSetScrollY</span>(<span class="ident">scroll_y</span>) };
+    <span class="doccomment">/// Sets the vertical scroll position
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;SetScrollY&quot;</span>)]
+    </span><span class="kw">pub fn </span>set_scroll_y(<span class="kw-2">&amp;</span><span class="self">self</span>, scroll_y: f32) {
+        <span class="kw">unsafe </span>{ sys::igSetScrollY(scroll_y) };
     }
-    <span class="doccomment">/// Adjusts the horizontal scroll position to make the current cursor position visible.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This is the same as [set_scroll_here_x_with_ratio](Self::set_scroll_here_x_with_ratio) but with `ratio` at 0.5.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;SetScrollHereX&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_scroll_here_x</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) {
-        <span class="self">self</span>.<span class="ident">set_scroll_here_x_with_ratio</span>(<span class="number">0.5</span>);
+    <span class="doccomment">/// Adjusts the horizontal scroll position to make the current cursor position visible.
+    ///
+    /// This is the same as [set_scroll_here_x_with_ratio](Self::set_scroll_here_x_with_ratio) but with `ratio` at 0.5.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;SetScrollHereX&quot;</span>)]
+    </span><span class="kw">pub fn </span>set_scroll_here_x(<span class="kw-2">&amp;</span><span class="self">self</span>) {
+        <span class="self">self</span>.set_scroll_here_x_with_ratio(<span class="number">0.5</span>);
     }
-    <span class="doccomment">/// Adjusts the horizontal scroll position to make the current cursor position visible.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// center_x_ratio:</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// - `0.0`: left</span>
-    <span class="doccomment">/// - `0.5`: center</span>
-    <span class="doccomment">/// - `1.0`: right</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;SetScrollHereX&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_scroll_here_x_with_ratio</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">center_x_ratio</span>: <span class="ident">f32</span>) {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igSetScrollHereX</span>(<span class="ident">center_x_ratio</span>) };
+    <span class="doccomment">/// Adjusts the horizontal scroll position to make the current cursor position visible.
+    ///
+    /// center_x_ratio:
+    ///
+    /// - `0.0`: left
+    /// - `0.5`: center
+    /// - `1.0`: right
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;SetScrollHereX&quot;</span>)]
+    </span><span class="kw">pub fn </span>set_scroll_here_x_with_ratio(<span class="kw-2">&amp;</span><span class="self">self</span>, center_x_ratio: f32) {
+        <span class="kw">unsafe </span>{ sys::igSetScrollHereX(center_x_ratio) };
     }
-    <span class="doccomment">/// Adjusts the vertical scroll position to make the current cursor position visible</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This is the same as [set_scroll_here_y_with_ratio](Self::set_scroll_here_y_with_ratio) but with `ratio` at 0.5.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;SetScrollHereY&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_scroll_here_y</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) {
-        <span class="self">self</span>.<span class="ident">set_scroll_here_y_with_ratio</span>(<span class="number">0.5</span>);
+    <span class="doccomment">/// Adjusts the vertical scroll position to make the current cursor position visible
+    ///
+    /// This is the same as [set_scroll_here_y_with_ratio](Self::set_scroll_here_y_with_ratio) but with `ratio` at 0.5.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;SetScrollHereY&quot;</span>)]
+    </span><span class="kw">pub fn </span>set_scroll_here_y(<span class="kw-2">&amp;</span><span class="self">self</span>) {
+        <span class="self">self</span>.set_scroll_here_y_with_ratio(<span class="number">0.5</span>);
     }
-    <span class="doccomment">/// Adjusts the vertical scroll position to make the current cursor position visible.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// center_y_ratio:</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// - `0.0`: top</span>
-    <span class="doccomment">/// - `0.5`: center</span>
-    <span class="doccomment">/// - `1.0`: bottom</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;SetScrollHereY&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_scroll_here_y_with_ratio</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">center_y_ratio</span>: <span class="ident">f32</span>) {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igSetScrollHereY</span>(<span class="ident">center_y_ratio</span>) };
+    <span class="doccomment">/// Adjusts the vertical scroll position to make the current cursor position visible.
+    ///
+    /// center_y_ratio:
+    ///
+    /// - `0.0`: top
+    /// - `0.5`: center
+    /// - `1.0`: bottom
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;SetScrollHereY&quot;</span>)]
+    </span><span class="kw">pub fn </span>set_scroll_here_y_with_ratio(<span class="kw-2">&amp;</span><span class="self">self</span>, center_y_ratio: f32) {
+        <span class="kw">unsafe </span>{ sys::igSetScrollHereY(center_y_ratio) };
     }
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;SetScrollFromPosX&quot;</span>)]</span>
-    <span class="doccomment">/// Adjusts the horizontal scroll position to make the given position visible</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This is the same as [set_scroll_from_pos_x_with_ratio](Self::set_scroll_from_pos_x_with_ratio)</span>
-    <span class="doccomment">/// but with `ratio` at 0.5.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_scroll_from_pos_x</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">local_x</span>: <span class="ident">f32</span>) {
-        <span class="self">self</span>.<span class="ident">set_scroll_from_pos_x_with_ratio</span>(<span class="ident">local_x</span>, <span class="number">0.5</span>);
+    <span class="attribute">#[doc(alias = <span class="string">&quot;SetScrollFromPosX&quot;</span>)]
+    </span><span class="doccomment">/// Adjusts the horizontal scroll position to make the given position visible
+    ///
+    /// This is the same as [set_scroll_from_pos_x_with_ratio](Self::set_scroll_from_pos_x_with_ratio)
+    /// but with `ratio` at 0.5.
+    </span><span class="kw">pub fn </span>set_scroll_from_pos_x(<span class="kw-2">&amp;</span><span class="self">self</span>, local_x: f32) {
+        <span class="self">self</span>.set_scroll_from_pos_x_with_ratio(local_x, <span class="number">0.5</span>);
     }
-    <span class="doccomment">/// Adjusts the horizontal scroll position to make the given position visible.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// center_x_ratio:</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// - `0.0`: left</span>
-    <span class="doccomment">/// - `0.5`: center</span>
-    <span class="doccomment">/// - `1.0`: right</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;SetScrollFromPosX&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_scroll_from_pos_x_with_ratio</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">local_x</span>: <span class="ident">f32</span>, <span class="ident">center_x_ratio</span>: <span class="ident">f32</span>) {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igSetScrollFromPosX</span>(<span class="ident">local_x</span>, <span class="ident">center_x_ratio</span>) };
+    <span class="doccomment">/// Adjusts the horizontal scroll position to make the given position visible.
+    ///
+    /// center_x_ratio:
+    ///
+    /// - `0.0`: left
+    /// - `0.5`: center
+    /// - `1.0`: right
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;SetScrollFromPosX&quot;</span>)]
+    </span><span class="kw">pub fn </span>set_scroll_from_pos_x_with_ratio(<span class="kw-2">&amp;</span><span class="self">self</span>, local_x: f32, center_x_ratio: f32) {
+        <span class="kw">unsafe </span>{ sys::igSetScrollFromPosX(local_x, center_x_ratio) };
     }
-    <span class="doccomment">/// Adjusts the vertical scroll position to make the given position visible</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This is the same as [set_scroll_from_pos_y_with_ratio](Self::set_scroll_from_pos_y_with_ratio)</span>
-    <span class="doccomment">/// but with `ratio` at 0.5.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;SetScrollFromPosY&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_scroll_from_pos_y</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">local_y</span>: <span class="ident">f32</span>) {
-        <span class="self">self</span>.<span class="ident">set_scroll_from_pos_y_with_ratio</span>(<span class="ident">local_y</span>, <span class="number">0.5</span>);
+    <span class="doccomment">/// Adjusts the vertical scroll position to make the given position visible
+    ///
+    /// This is the same as [set_scroll_from_pos_y_with_ratio](Self::set_scroll_from_pos_y_with_ratio)
+    /// but with `ratio` at 0.5.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;SetScrollFromPosY&quot;</span>)]
+    </span><span class="kw">pub fn </span>set_scroll_from_pos_y(<span class="kw-2">&amp;</span><span class="self">self</span>, local_y: f32) {
+        <span class="self">self</span>.set_scroll_from_pos_y_with_ratio(local_y, <span class="number">0.5</span>);
     }
-    <span class="doccomment">/// Adjusts the vertical scroll position to make the given position visible.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// center_y_ratio:</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// - `0.0`: top</span>
-    <span class="doccomment">/// - `0.5`: center</span>
-    <span class="doccomment">/// - `1.0`: bottom</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;SetScrollFromPosY&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_scroll_from_pos_y_with_ratio</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">local_y</span>: <span class="ident">f32</span>, <span class="ident">center_y_ratio</span>: <span class="ident">f32</span>) {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igSetScrollFromPosY</span>(<span class="ident">local_y</span>, <span class="ident">center_y_ratio</span>) };
+    <span class="doccomment">/// Adjusts the vertical scroll position to make the given position visible.
+    ///
+    /// center_y_ratio:
+    ///
+    /// - `0.0`: top
+    /// - `0.5`: center
+    /// - `1.0`: bottom
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;SetScrollFromPosY&quot;</span>)]
+    </span><span class="kw">pub fn </span>set_scroll_from_pos_y_with_ratio(<span class="kw-2">&amp;</span><span class="self">self</span>, local_y: f32, center_y_ratio: f32) {
+        <span class="kw">unsafe </span>{ sys::igSetScrollFromPosY(local_y, center_y_ratio) };
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="arcdps_imgui" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="arcdps_imgui" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.0 (69f9c33d7 2022-12-12)" ></div></body></html>

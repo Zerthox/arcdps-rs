@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\arcdps-imgui-0.8.0\src\widget\color_editors.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>color_editors.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../arcdps_imgui/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../arcdps_imgui/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../arcdps_imgui/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\arcdps-imgui-0.8.0\src\widget\color_editors.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>color_editors.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../normalize.css"><link rel="stylesheet" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../ayu.css" disabled><link rel="stylesheet" href="../../../dark.css" disabled><link rel="stylesheet" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../../arcdps_imgui/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -645,652 +645,652 @@
 <span id="645">645</span>
 <span id="646">646</span>
 <span id="647">647</span>
-</pre><pre class="rust"><code><span class="kw">use</span> <span class="ident">bitflags::bitflags</span>;
-<span class="kw">use</span> <span class="ident">std::ptr</span>;
+</pre><pre class="rust"><code><span class="kw">use </span>bitflags::bitflags;
+<span class="kw">use </span>std::ptr;
 
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::sys</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::Ui</span>;
+<span class="kw">use </span><span class="kw">crate</span>::sys;
+<span class="kw">use </span><span class="kw">crate</span>::Ui;
 
-<span class="doccomment">/// Mutable reference to an editable color value.</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>)]</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">EditableColor</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Color value with three float components (e.g. RGB).</span>
-    <span class="ident">Float3</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="kw-2">mut</span> [<span class="ident">f32</span>; <span class="number">3</span>]),
-    <span class="doccomment">/// Color value with four float components (e.g. RGBA).</span>
-    <span class="ident">Float4</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="kw-2">mut</span> [<span class="ident">f32</span>; <span class="number">4</span>]),
+<span class="doccomment">/// Mutable reference to an editable color value.
+</span><span class="attribute">#[derive(Debug)]
+</span><span class="kw">pub enum </span>EditableColor&lt;<span class="lifetime">&#39;a</span>&gt; {
+    <span class="doccomment">/// Color value with three float components (e.g. RGB).
+    </span>Float3(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><span class="kw-2">mut </span>[f32; <span class="number">3</span>]),
+    <span class="doccomment">/// Color value with four float components (e.g. RGBA).
+    </span>Float4(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><span class="kw-2">mut </span>[f32; <span class="number">4</span>]),
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">EditableColor</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Returns an unsafe mutable pointer to the color slice&#39;s buffer.</span>
-    <span class="kw">fn</span> <span class="ident">as_mut_ptr</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="kw-2">*mut</span> <span class="ident">f32</span> {
-        <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
-            <span class="ident">EditableColor::Float3</span>(<span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">value</span>) =&gt; <span class="ident">value</span>.<span class="ident">as_mut_ptr</span>(),
-            <span class="ident">EditableColor::Float4</span>(<span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">value</span>) =&gt; <span class="ident">value</span>.<span class="ident">as_mut_ptr</span>(),
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; EditableColor&lt;<span class="lifetime">&#39;a</span>&gt; {
+    <span class="doccomment">/// Returns an unsafe mutable pointer to the color slice&#39;s buffer.
+    </span><span class="kw">fn </span>as_mut_ptr(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; <span class="kw-2">*mut </span>f32 {
+        <span class="kw">match </span><span class="kw-2">*</span><span class="self">self </span>{
+            EditableColor::Float3(<span class="kw-2">ref mut </span>value) =&gt; value.as_mut_ptr(),
+            EditableColor::Float4(<span class="kw-2">ref mut </span>value) =&gt; value.as_mut_ptr(),
         }
     }
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">From</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="kw-2">mut</span> [<span class="ident">f32</span>; <span class="number">3</span>]<span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">EditableColor</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="kw-2">mut</span> [<span class="ident">f32</span>; <span class="number">3</span>]) -&gt; <span class="ident">EditableColor</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
-        <span class="ident">EditableColor::Float3</span>(<span class="ident">value</span>)
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; From&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><span class="kw-2">mut </span>[f32; <span class="number">3</span>]&gt; <span class="kw">for </span>EditableColor&lt;<span class="lifetime">&#39;a</span>&gt; {
+    <span class="attribute">#[inline]
+    </span><span class="kw">fn </span>from(value: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><span class="kw-2">mut </span>[f32; <span class="number">3</span>]) -&gt; EditableColor&lt;<span class="lifetime">&#39;a</span>&gt; {
+        EditableColor::Float3(value)
     }
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">From</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="kw-2">mut</span> [<span class="ident">f32</span>; <span class="number">4</span>]<span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">EditableColor</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="kw-2">mut</span> [<span class="ident">f32</span>; <span class="number">4</span>]) -&gt; <span class="ident">EditableColor</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
-        <span class="ident">EditableColor::Float4</span>(<span class="ident">value</span>)
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; From&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><span class="kw-2">mut </span>[f32; <span class="number">4</span>]&gt; <span class="kw">for </span>EditableColor&lt;<span class="lifetime">&#39;a</span>&gt; {
+    <span class="attribute">#[inline]
+    </span><span class="kw">fn </span>from(value: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><span class="kw-2">mut </span>[f32; <span class="number">4</span>]) -&gt; EditableColor&lt;<span class="lifetime">&#39;a</span>&gt; {
+        EditableColor::Float4(value)
     }
 }
 
-<span class="doccomment">/// Color editor input mode.</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>)]</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">ColorEditInputMode</span> {
-    <span class="doccomment">/// Edit as RGB(A).</span>
-    <span class="ident">Rgb</span>,
-    <span class="doccomment">/// Edit as HSV(A).</span>
-    <span class="ident">Hsv</span>,
+<span class="doccomment">/// Color editor input mode.
+</span><span class="attribute">#[derive(Copy, Clone, Debug, PartialEq, Eq)]
+</span><span class="kw">pub enum </span>ColorEditInputMode {
+    <span class="doccomment">/// Edit as RGB(A).
+    </span>Rgb,
+    <span class="doccomment">/// Edit as HSV(A).
+    </span>Hsv,
 }
 
-<span class="kw">impl</span> <span class="ident">ColorEditInputMode</span> {
-    <span class="comment">// Note: Probably no point in deprecating these since they&#39;re ~0 maintance burden.</span>
-    <span class="doccomment">/// Edit as RGB(A). Alias for [`Self::Rgb`] for backwards-compatibility.</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">RGB</span>: <span class="self">Self</span> <span class="op">=</span> <span class="ident"><span class="self">Self</span>::Rgb</span>;
-    <span class="doccomment">/// Edit as HSV(A). Alias for [`Self::Hsv`] for backwards-compatibility.</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">HSV</span>: <span class="self">Self</span> <span class="op">=</span> <span class="ident"><span class="self">Self</span>::Hsv</span>;
+<span class="kw">impl </span>ColorEditInputMode {
+    <span class="comment">// Note: Probably no point in deprecating these since they&#39;re ~0 maintance burden.
+    </span><span class="doccomment">/// Edit as RGB(A). Alias for [`Self::Rgb`] for backwards-compatibility.
+    </span><span class="kw">pub const </span>RGB: <span class="self">Self </span>= <span class="self">Self</span>::Rgb;
+    <span class="doccomment">/// Edit as HSV(A). Alias for [`Self::Hsv`] for backwards-compatibility.
+    </span><span class="kw">pub const </span>HSV: <span class="self">Self </span>= <span class="self">Self</span>::Hsv;
 }
 
-<span class="doccomment">/// Color editor display mode.</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>)]</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">ColorEditDisplayMode</span> {
-    <span class="doccomment">/// Display as RGB(A).</span>
-    <span class="ident">Rgb</span>,
-    <span class="doccomment">/// Display as HSV(A).</span>
-    <span class="ident">Hsv</span>,
-    <span class="doccomment">/// Display as hex (e.g. `#AABBCC(DD)`)</span>
-    <span class="ident">Hex</span>,
+<span class="doccomment">/// Color editor display mode.
+</span><span class="attribute">#[derive(Copy, Clone, Debug, PartialEq, Eq)]
+</span><span class="kw">pub enum </span>ColorEditDisplayMode {
+    <span class="doccomment">/// Display as RGB(A).
+    </span>Rgb,
+    <span class="doccomment">/// Display as HSV(A).
+    </span>Hsv,
+    <span class="doccomment">/// Display as hex (e.g. `#AABBCC(DD)`)
+    </span>Hex,
 }
 
-<span class="kw">impl</span> <span class="ident">ColorEditDisplayMode</span> {
-    <span class="comment">// Note: Probably no point in deprecating these since they&#39;re ~0 maintance burden.</span>
-    <span class="doccomment">/// Display as RGB(A). Alias for [`Self::Rgb`] for backwards-compatibility.</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">RGB</span>: <span class="self">Self</span> <span class="op">=</span> <span class="ident"><span class="self">Self</span>::Rgb</span>;
-    <span class="doccomment">/// Display as HSV(A). Alias for [`Self::Hsv`] for backwards-compatibility.</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">HSV</span>: <span class="self">Self</span> <span class="op">=</span> <span class="ident"><span class="self">Self</span>::Hsv</span>;
-    <span class="doccomment">/// Display as hex. Alias for [`Self::Hex`] for backwards-compatibility.</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">HEX</span>: <span class="self">Self</span> <span class="op">=</span> <span class="ident"><span class="self">Self</span>::Hex</span>;
+<span class="kw">impl </span>ColorEditDisplayMode {
+    <span class="comment">// Note: Probably no point in deprecating these since they&#39;re ~0 maintance burden.
+    </span><span class="doccomment">/// Display as RGB(A). Alias for [`Self::Rgb`] for backwards-compatibility.
+    </span><span class="kw">pub const </span>RGB: <span class="self">Self </span>= <span class="self">Self</span>::Rgb;
+    <span class="doccomment">/// Display as HSV(A). Alias for [`Self::Hsv`] for backwards-compatibility.
+    </span><span class="kw">pub const </span>HSV: <span class="self">Self </span>= <span class="self">Self</span>::Hsv;
+    <span class="doccomment">/// Display as hex. Alias for [`Self::Hex`] for backwards-compatibility.
+    </span><span class="kw">pub const </span>HEX: <span class="self">Self </span>= <span class="self">Self</span>::Hex;
 }
 
-<span class="doccomment">/// Color picker hue/saturation/value editor mode</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>)]</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">ColorPickerMode</span> {
-    <span class="doccomment">/// Use a bar for hue, rectangle for saturation/value.</span>
-    <span class="ident">HueBar</span>,
-    <span class="doccomment">/// Use a wheel for hue, triangle for saturation/value.</span>
-    <span class="ident">HueWheel</span>,
+<span class="doccomment">/// Color picker hue/saturation/value editor mode
+</span><span class="attribute">#[derive(Copy, Clone, Debug, PartialEq, Eq)]
+</span><span class="kw">pub enum </span>ColorPickerMode {
+    <span class="doccomment">/// Use a bar for hue, rectangle for saturation/value.
+    </span>HueBar,
+    <span class="doccomment">/// Use a wheel for hue, triangle for saturation/value.
+    </span>HueWheel,
 }
 
-<span class="doccomment">/// Color component formatting</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>)]</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">ColorFormat</span> {
-    <span class="doccomment">/// Display values formatted as 0..255.</span>
-    <span class="ident">U8</span>,
-    <span class="doccomment">/// Display values formatted as 0.0..1.0.</span>
-    <span class="ident">Float</span>,
+<span class="doccomment">/// Color component formatting
+</span><span class="attribute">#[derive(Copy, Clone, Debug, PartialEq, Eq)]
+</span><span class="kw">pub enum </span>ColorFormat {
+    <span class="doccomment">/// Display values formatted as 0..255.
+    </span>U8,
+    <span class="doccomment">/// Display values formatted as 0.0..1.0.
+    </span>Float,
 }
 
-<span class="doccomment">/// Color editor preview style</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>)]</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">ColorPreview</span> {
-    <span class="doccomment">/// Don&#39;t show the alpha component.</span>
-    <span class="ident">Opaque</span>,
-    <span class="doccomment">/// Half of the preview area shows the alpha component using a checkerboard pattern.</span>
-    <span class="ident">HalfAlpha</span>,
-    <span class="doccomment">/// Show the alpha component using a checkerboard pattern.</span>
-    <span class="ident">Alpha</span>,
+<span class="doccomment">/// Color editor preview style
+</span><span class="attribute">#[derive(Copy, Clone, Debug, PartialEq, Eq)]
+</span><span class="kw">pub enum </span>ColorPreview {
+    <span class="doccomment">/// Don&#39;t show the alpha component.
+    </span>Opaque,
+    <span class="doccomment">/// Half of the preview area shows the alpha component using a checkerboard pattern.
+    </span>HalfAlpha,
+    <span class="doccomment">/// Show the alpha component using a checkerboard pattern.
+    </span>Alpha,
 }
 
-<span class="macro">bitflags!</span> {
-    <span class="doccomment">/// Color edit flags</span>
-    <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">transparent</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">ColorEditFlags</span>: <span class="ident">u32</span> {
-        <span class="doccomment">/// ColorEdit, ColorPicker, ColorButton: ignore Alpha component (read only 3 components of</span>
-        <span class="doccomment">/// the value).</span>
-        <span class="kw">const</span> <span class="ident">NO_ALPHA</span> <span class="op">=</span> <span class="ident">sys::ImGuiColorEditFlags_NoAlpha</span>;
-        <span class="doccomment">/// ColorEdit: disable picker when clicking on colored square.</span>
-        <span class="kw">const</span> <span class="ident">NO_PICKER</span> <span class="op">=</span> <span class="ident">sys::ImGuiColorEditFlags_NoPicker</span>;
-        <span class="doccomment">/// ColorEdit: disable toggling options menu when right-clicking on inputs/small preview.</span>
-        <span class="kw">const</span> <span class="ident">NO_OPTIONS</span> <span class="op">=</span> <span class="ident">sys::ImGuiColorEditFlags_NoOptions</span>;
-        <span class="doccomment">/// ColorEdit, ColorPicker: disable colored square preview next to the inputs. (e.g. to</span>
-        <span class="doccomment">/// show only the inputs)</span>
-        <span class="kw">const</span> <span class="ident">NO_SMALL_PREVIEW</span> <span class="op">=</span> <span class="ident">sys::ImGuiColorEditFlags_NoSmallPreview</span>;
-        <span class="doccomment">/// ColorEdit, ColorPicker: disable inputs sliders/text widgets (e.g. to show only the</span>
-        <span class="doccomment">/// small preview colored square).</span>
-        <span class="kw">const</span> <span class="ident">NO_INPUTS</span> <span class="op">=</span> <span class="ident">sys::ImGuiColorEditFlags_NoInputs</span>;
-        <span class="doccomment">/// ColorEdit, ColorPicker, ColorButton: disable tooltip when hovering the preview.</span>
-        <span class="kw">const</span> <span class="ident">NO_TOOLTIP</span> <span class="op">=</span> <span class="ident">sys::ImGuiColorEditFlags_NoTooltip</span>;
-        <span class="doccomment">/// ColorEdit, ColorPicker: disable display of inline text label (the label is still</span>
-        <span class="doccomment">/// forwarded to the tooltip and picker).</span>
-        <span class="kw">const</span> <span class="ident">NO_LABEL</span> <span class="op">=</span> <span class="ident">sys::ImGuiColorEditFlags_NoLabel</span>;
-        <span class="doccomment">/// ColorPicker: disable bigger color preview on right side of the picker, use small</span>
-        <span class="doccomment">/// colored square preview instead.</span>
-        <span class="kw">const</span> <span class="ident">NO_SIDE_PREVIEW</span> <span class="op">=</span> <span class="ident">sys::ImGuiColorEditFlags_NoSidePreview</span>;
-        <span class="doccomment">/// ColorEdit: disable drag and drop target. ColorButton: disable drag and drop source.</span>
-        <span class="kw">const</span> <span class="ident">NO_DRAG_DROP</span> <span class="op">=</span> <span class="ident">sys::ImGuiColorEditFlags_NoDragDrop</span>;
-        <span class="doccomment">/// ColorButton: disable border (which is enforced by default).</span>
-        <span class="kw">const</span> <span class="ident">NO_BORDER</span> <span class="op">=</span> <span class="ident">sys::ImGuiColorEditFlags_NoBorder</span>;
+<span class="macro">bitflags! </span>{
+    <span class="doccomment">/// Color edit flags
+    </span><span class="attribute">#[repr(transparent)]
+    </span><span class="kw">pub struct </span>ColorEditFlags: u32 {
+        <span class="doccomment">/// ColorEdit, ColorPicker, ColorButton: ignore Alpha component (read only 3 components of
+        /// the value).
+        </span><span class="kw">const </span>NO_ALPHA = sys::ImGuiColorEditFlags_NoAlpha;
+        <span class="doccomment">/// ColorEdit: disable picker when clicking on colored square.
+        </span><span class="kw">const </span>NO_PICKER = sys::ImGuiColorEditFlags_NoPicker;
+        <span class="doccomment">/// ColorEdit: disable toggling options menu when right-clicking on inputs/small preview.
+        </span><span class="kw">const </span>NO_OPTIONS = sys::ImGuiColorEditFlags_NoOptions;
+        <span class="doccomment">/// ColorEdit, ColorPicker: disable colored square preview next to the inputs. (e.g. to
+        /// show only the inputs)
+        </span><span class="kw">const </span>NO_SMALL_PREVIEW = sys::ImGuiColorEditFlags_NoSmallPreview;
+        <span class="doccomment">/// ColorEdit, ColorPicker: disable inputs sliders/text widgets (e.g. to show only the
+        /// small preview colored square).
+        </span><span class="kw">const </span>NO_INPUTS = sys::ImGuiColorEditFlags_NoInputs;
+        <span class="doccomment">/// ColorEdit, ColorPicker, ColorButton: disable tooltip when hovering the preview.
+        </span><span class="kw">const </span>NO_TOOLTIP = sys::ImGuiColorEditFlags_NoTooltip;
+        <span class="doccomment">/// ColorEdit, ColorPicker: disable display of inline text label (the label is still
+        /// forwarded to the tooltip and picker).
+        </span><span class="kw">const </span>NO_LABEL = sys::ImGuiColorEditFlags_NoLabel;
+        <span class="doccomment">/// ColorPicker: disable bigger color preview on right side of the picker, use small
+        /// colored square preview instead.
+        </span><span class="kw">const </span>NO_SIDE_PREVIEW = sys::ImGuiColorEditFlags_NoSidePreview;
+        <span class="doccomment">/// ColorEdit: disable drag and drop target. ColorButton: disable drag and drop source.
+        </span><span class="kw">const </span>NO_DRAG_DROP = sys::ImGuiColorEditFlags_NoDragDrop;
+        <span class="doccomment">/// ColorButton: disable border (which is enforced by default).
+        </span><span class="kw">const </span>NO_BORDER = sys::ImGuiColorEditFlags_NoBorder;
 
-        <span class="doccomment">/// ColorEdit, ColorPicker: show vertical alpha bar/gradient in picker.</span>
-        <span class="kw">const</span> <span class="ident">ALPHA_BAR</span> <span class="op">=</span> <span class="ident">sys::ImGuiColorEditFlags_AlphaBar</span>;
-        <span class="doccomment">/// ColorEdit, ColorPicker, ColorButton: display preview as a transparent color over a</span>
-        <span class="doccomment">/// checkerboard, instead of opaque.</span>
-        <span class="kw">const</span> <span class="ident">ALPHA_PREVIEW</span> <span class="op">=</span> <span class="ident">sys::ImGuiColorEditFlags_AlphaPreview</span>;
-        <span class="doccomment">/// ColorEdit, ColorPicker, ColorButton: display half opaque / half checkerboard, instead</span>
-        <span class="doccomment">/// of opaque.</span>
-        <span class="kw">const</span> <span class="ident">ALPHA_PREVIEW_HALF</span> <span class="op">=</span> <span class="ident">sys::ImGuiColorEditFlags_AlphaPreviewHalf</span>;
-        <span class="doccomment">/// (WIP) ColorEdit: Currently onlys disable 0.0f..1.0f limits in RGBA editing (note: you</span>
-        <span class="doccomment">/// probably want to use `ColorEditFlags::FLOAT` as well).</span>
-        <span class="kw">const</span> <span class="ident">HDR</span> <span class="op">=</span> <span class="ident">sys::ImGuiColorEditFlags_HDR</span>;
-        <span class="doccomment">/// ColorEdit: display only as RGB. ColorPicker: Enable RGB display.</span>
-        <span class="kw">const</span> <span class="ident">DISPLAY_RGB</span> <span class="op">=</span> <span class="ident">sys::ImGuiColorEditFlags_DisplayRGB</span>;
-        <span class="doccomment">/// ColorEdit: display only as HSV. ColorPicker: Enable HSV display.</span>
-        <span class="kw">const</span> <span class="ident">DISPLAY_HSV</span> <span class="op">=</span> <span class="ident">sys::ImGuiColorEditFlags_DisplayHSV</span>;
-        <span class="doccomment">/// ColorEdit: display only as HEX. ColorPicker: Enable Hex display.</span>
-        <span class="kw">const</span> <span class="ident">DISPLAY_HEX</span> <span class="op">=</span> <span class="ident">sys::ImGuiColorEditFlags_DisplayHex</span>;
-        <span class="doccomment">/// ColorEdit, ColorPicker, ColorButton: _display_ values formatted as 0..255.</span>
-        <span class="kw">const</span> <span class="ident">UINT8</span> <span class="op">=</span> <span class="ident">sys::ImGuiColorEditFlags_Uint8</span>;
-        <span class="doccomment">/// ColorEdit, ColorPicker, ColorButton: _display_ values formatted as 0.0f..1.0f floats</span>
-        <span class="doccomment">/// instead of 0..255 integers. No round-trip of value via integers.</span>
-        <span class="kw">const</span> <span class="ident">FLOAT</span> <span class="op">=</span> <span class="ident">sys::ImGuiColorEditFlags_Float</span>;
-        <span class="doccomment">/// ColorPicker: bar for Hue, rectangle for Sat/Value.</span>
-        <span class="kw">const</span> <span class="ident">PICKER_HUE_BAR</span> <span class="op">=</span> <span class="ident">sys::ImGuiColorEditFlags_PickerHueBar</span>;
-        <span class="doccomment">/// ColorPicker: wheel for Hue, triangle for Sat/Value.</span>
-        <span class="kw">const</span> <span class="ident">PICKER_HUE_WHEEL</span> <span class="op">=</span> <span class="ident">sys::ImGuiColorEditFlags_PickerHueWheel</span>;
-        <span class="doccomment">/// ColorEdit, ColorPicker: input and output data in RGB format.</span>
-        <span class="kw">const</span> <span class="ident">INPUT_RGB</span> <span class="op">=</span> <span class="ident">sys::ImGuiColorEditFlags_InputRGB</span>;
-        <span class="doccomment">/// ColorEdit, ColorPicker: input and output data in HSV format.</span>
-        <span class="kw">const</span> <span class="ident">INPUT_HSV</span> <span class="op">=</span> <span class="ident">sys::ImGuiColorEditFlags_InputHSV</span>;
+        <span class="doccomment">/// ColorEdit, ColorPicker: show vertical alpha bar/gradient in picker.
+        </span><span class="kw">const </span>ALPHA_BAR = sys::ImGuiColorEditFlags_AlphaBar;
+        <span class="doccomment">/// ColorEdit, ColorPicker, ColorButton: display preview as a transparent color over a
+        /// checkerboard, instead of opaque.
+        </span><span class="kw">const </span>ALPHA_PREVIEW = sys::ImGuiColorEditFlags_AlphaPreview;
+        <span class="doccomment">/// ColorEdit, ColorPicker, ColorButton: display half opaque / half checkerboard, instead
+        /// of opaque.
+        </span><span class="kw">const </span>ALPHA_PREVIEW_HALF = sys::ImGuiColorEditFlags_AlphaPreviewHalf;
+        <span class="doccomment">/// (WIP) ColorEdit: Currently onlys disable 0.0f..1.0f limits in RGBA editing (note: you
+        /// probably want to use `ColorEditFlags::FLOAT` as well).
+        </span><span class="kw">const </span>HDR = sys::ImGuiColorEditFlags_HDR;
+        <span class="doccomment">/// ColorEdit: display only as RGB. ColorPicker: Enable RGB display.
+        </span><span class="kw">const </span>DISPLAY_RGB = sys::ImGuiColorEditFlags_DisplayRGB;
+        <span class="doccomment">/// ColorEdit: display only as HSV. ColorPicker: Enable HSV display.
+        </span><span class="kw">const </span>DISPLAY_HSV = sys::ImGuiColorEditFlags_DisplayHSV;
+        <span class="doccomment">/// ColorEdit: display only as HEX. ColorPicker: Enable Hex display.
+        </span><span class="kw">const </span>DISPLAY_HEX = sys::ImGuiColorEditFlags_DisplayHex;
+        <span class="doccomment">/// ColorEdit, ColorPicker, ColorButton: _display_ values formatted as 0..255.
+        </span><span class="kw">const </span>UINT8 = sys::ImGuiColorEditFlags_Uint8;
+        <span class="doccomment">/// ColorEdit, ColorPicker, ColorButton: _display_ values formatted as 0.0f..1.0f floats
+        /// instead of 0..255 integers. No round-trip of value via integers.
+        </span><span class="kw">const </span>FLOAT = sys::ImGuiColorEditFlags_Float;
+        <span class="doccomment">/// ColorPicker: bar for Hue, rectangle for Sat/Value.
+        </span><span class="kw">const </span>PICKER_HUE_BAR = sys::ImGuiColorEditFlags_PickerHueBar;
+        <span class="doccomment">/// ColorPicker: wheel for Hue, triangle for Sat/Value.
+        </span><span class="kw">const </span>PICKER_HUE_WHEEL = sys::ImGuiColorEditFlags_PickerHueWheel;
+        <span class="doccomment">/// ColorEdit, ColorPicker: input and output data in RGB format.
+        </span><span class="kw">const </span>INPUT_RGB = sys::ImGuiColorEditFlags_InputRGB;
+        <span class="doccomment">/// ColorEdit, ColorPicker: input and output data in HSV format.
+        </span><span class="kw">const </span>INPUT_HSV = sys::ImGuiColorEditFlags_InputHSV;
     }
 }
 
-<span class="doccomment">/// Builder for a color editor widget.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # Examples</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// ```no_run</span>
-<span class="doccomment">/// # use arcdps_imgui::*;</span>
-<span class="doccomment">/// # let mut imgui = Context::create();</span>
-<span class="doccomment">/// # let ui = imgui.frame();</span>
-<span class="doccomment">/// # let mut color = [0.0, 0.0, 0.0, 1.0];</span>
-<span class="doccomment">/// let ce = ColorEdit::new(im_str!(&quot;color_edit&quot;), &amp;mut color);</span>
-<span class="doccomment">/// if ce.build(&amp;ui) {</span>
-<span class="doccomment">///   println!(&quot;The color was changed&quot;);</span>
-<span class="doccomment">/// }</span>
-<span class="doccomment">/// ```</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>)]</span>
-<span class="attribute">#[<span class="ident">must_use</span>]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">ColorEdit</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span> <span class="op">+</span> <span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
-    <span class="ident">label</span>: <span class="ident">T</span>,
-    <span class="ident">value</span>: <span class="ident">EditableColor</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>,
-    <span class="ident">flags</span>: <span class="ident">ColorEditFlags</span>,
+<span class="doccomment">/// Builder for a color editor widget.
+///
+/// # Examples
+///
+/// ```no_run
+/// # use arcdps_imgui::*;
+/// # let mut imgui = Context::create();
+/// # let ui = imgui.frame();
+/// # let mut color = [0.0, 0.0, 0.0, 1.0];
+/// let ce = ColorEdit::new(im_str!(&quot;color_edit&quot;), &amp;mut color);
+/// if ce.build(&amp;ui) {
+///   println!(&quot;The color was changed&quot;);
+/// }
+/// ```
+</span><span class="attribute">#[derive(Debug)]
+#[must_use]
+</span><span class="kw">pub struct </span>ColorEdit&lt;<span class="lifetime">&#39;a</span>, T: AsRef&lt;str&gt; + <span class="lifetime">&#39;a</span>&gt; {
+    label: T,
+    value: EditableColor&lt;<span class="lifetime">&#39;a</span>&gt;,
+    flags: ColorEditFlags,
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span> <span class="op">+</span> <span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">ColorEdit</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Constructs a new color editor builder.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;ColorEdit3&quot;</span>, <span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;ColorEdit4&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">label</span>: <span class="ident">T</span>, <span class="ident">value</span>: <span class="kw">impl</span> <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">EditableColor</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span><span class="op">&gt;</span>) -&gt; <span class="ident">ColorEdit</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span><span class="op">&gt;</span> {
-        <span class="ident">ColorEdit</span> {
-            <span class="ident">label</span>,
-            <span class="ident">value</span>: <span class="ident">value</span>.<span class="ident">into</span>(),
-            <span class="ident">flags</span>: <span class="ident">ColorEditFlags::empty</span>(),
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>, T: AsRef&lt;str&gt; + <span class="lifetime">&#39;a</span>&gt; ColorEdit&lt;<span class="lifetime">&#39;a</span>, T&gt; {
+    <span class="doccomment">/// Constructs a new color editor builder.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;ColorEdit3&quot;</span>, alias = <span class="string">&quot;ColorEdit4&quot;</span>)]
+    </span><span class="kw">pub fn </span>new(label: T, value: <span class="kw">impl </span>Into&lt;EditableColor&lt;<span class="lifetime">&#39;a</span>&gt;&gt;) -&gt; ColorEdit&lt;<span class="lifetime">&#39;a</span>, T&gt; {
+        ColorEdit {
+            label,
+            value: value.into(),
+            flags: ColorEditFlags::empty(),
         }
     }
-    <span class="doccomment">/// Replaces all current settings with the given flags.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">flags</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">flags</span>: <span class="ident">ColorEditFlags</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span> <span class="op">=</span> <span class="ident">flags</span>;
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Enables/disables the use of the alpha component.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">alpha</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">ColorEditFlags::NO_ALPHA</span>, <span class="op">!</span><span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Enables/disables the picker that appears when clicking on colored square.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">picker</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">ColorEditFlags::NO_PICKER</span>, <span class="op">!</span><span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Enables/disables toggling of the options menu when right-clicking on inputs or the small</span>
-    <span class="doccomment">/// preview.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">options</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">ColorEditFlags::NO_OPTIONS</span>, <span class="op">!</span><span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Enables/disables the colored square preview next to the inputs.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">small_preview</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">ColorEditFlags::NO_SMALL_PREVIEW</span>, <span class="op">!</span><span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Enables/disables the input sliders/text widgets.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">inputs</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">ColorEditFlags::NO_INPUTS</span>, <span class="op">!</span><span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Enables/disables the tooltip that appears when hovering the preview.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">tooltip</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">ColorEditFlags::NO_TOOLTIP</span>, <span class="op">!</span><span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Enables/disables display of the inline text label (the label is in any case forwarded to</span>
-    <span class="doccomment">/// the tooltip and picker).</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">label</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">ColorEditFlags::NO_LABEL</span>, <span class="op">!</span><span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Enables/disables the vertical alpha bar/gradient in the color picker.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">alpha_bar</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">ColorEditFlags::ALPHA_BAR</span>, <span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Sets the preview style.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">preview</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">preview</span>: <span class="ident">ColorPreview</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(
-            <span class="ident">ColorEditFlags::ALPHA_PREVIEW_HALF</span>,
-            <span class="ident">preview</span> <span class="op">==</span> <span class="ident">ColorPreview::HalfAlpha</span>,
+    <span class="doccomment">/// Replaces all current settings with the given flags.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>flags(<span class="kw-2">mut </span><span class="self">self</span>, flags: ColorEditFlags) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags = flags;
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Enables/disables the use of the alpha component.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>alpha(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(ColorEditFlags::NO_ALPHA, !value);
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Enables/disables the picker that appears when clicking on colored square.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>picker(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(ColorEditFlags::NO_PICKER, !value);
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Enables/disables toggling of the options menu when right-clicking on inputs or the small
+    /// preview.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>options(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(ColorEditFlags::NO_OPTIONS, !value);
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Enables/disables the colored square preview next to the inputs.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>small_preview(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(ColorEditFlags::NO_SMALL_PREVIEW, !value);
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Enables/disables the input sliders/text widgets.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>inputs(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(ColorEditFlags::NO_INPUTS, !value);
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Enables/disables the tooltip that appears when hovering the preview.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>tooltip(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(ColorEditFlags::NO_TOOLTIP, !value);
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Enables/disables display of the inline text label (the label is in any case forwarded to
+    /// the tooltip and picker).
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>label(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(ColorEditFlags::NO_LABEL, !value);
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Enables/disables the vertical alpha bar/gradient in the color picker.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>alpha_bar(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(ColorEditFlags::ALPHA_BAR, value);
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Sets the preview style.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>preview(<span class="kw-2">mut </span><span class="self">self</span>, preview: ColorPreview) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(
+            ColorEditFlags::ALPHA_PREVIEW_HALF,
+            preview == ColorPreview::HalfAlpha,
         );
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(
-            <span class="ident">ColorEditFlags::ALPHA_PREVIEW</span>,
-            <span class="ident">preview</span> <span class="op">==</span> <span class="ident">ColorPreview::Alpha</span>,
+        <span class="self">self</span>.flags.set(
+            ColorEditFlags::ALPHA_PREVIEW,
+            preview == ColorPreview::Alpha,
         );
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// (WIP) Currently only disables 0.0..1.0 limits in RGBA edition.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Note: you probably want to use ColorFormat::Float as well.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">hdr</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">ColorEditFlags::HDR</span>, <span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Sets the data format for input and output data.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">input_mode</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">input_mode</span>: <span class="ident">ColorEditInputMode</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(
-            <span class="ident">ColorEditFlags::INPUT_RGB</span>,
-            <span class="ident">input_mode</span> <span class="op">==</span> <span class="ident">ColorEditInputMode::RGB</span>,
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// (WIP) Currently only disables 0.0..1.0 limits in RGBA edition.
+    ///
+    /// Note: you probably want to use ColorFormat::Float as well.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>hdr(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(ColorEditFlags::HDR, value);
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Sets the data format for input and output data.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>input_mode(<span class="kw-2">mut </span><span class="self">self</span>, input_mode: ColorEditInputMode) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(
+            ColorEditFlags::INPUT_RGB,
+            input_mode == ColorEditInputMode::RGB,
         );
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(
-            <span class="ident">ColorEditFlags::INPUT_HSV</span>,
-            <span class="ident">input_mode</span> <span class="op">==</span> <span class="ident">ColorEditInputMode::HSV</span>,
+        <span class="self">self</span>.flags.set(
+            ColorEditFlags::INPUT_HSV,
+            input_mode == ColorEditInputMode::HSV,
         );
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Sets the color editor display mode.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">display_mode</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">mode</span>: <span class="ident">ColorEditDisplayMode</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(
-            <span class="ident">ColorEditFlags::DISPLAY_RGB</span>,
-            <span class="ident">mode</span> <span class="op">==</span> <span class="ident">ColorEditDisplayMode::RGB</span>,
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Sets the color editor display mode.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>display_mode(<span class="kw-2">mut </span><span class="self">self</span>, mode: ColorEditDisplayMode) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(
+            ColorEditFlags::DISPLAY_RGB,
+            mode == ColorEditDisplayMode::RGB,
         );
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(
-            <span class="ident">ColorEditFlags::DISPLAY_HSV</span>,
-            <span class="ident">mode</span> <span class="op">==</span> <span class="ident">ColorEditDisplayMode::HSV</span>,
+        <span class="self">self</span>.flags.set(
+            ColorEditFlags::DISPLAY_HSV,
+            mode == ColorEditDisplayMode::HSV,
         );
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(
-            <span class="ident">ColorEditFlags::DISPLAY_HEX</span>,
-            <span class="ident">mode</span> <span class="op">==</span> <span class="ident">ColorEditDisplayMode::HEX</span>,
+        <span class="self">self</span>.flags.set(
+            ColorEditFlags::DISPLAY_HEX,
+            mode == ColorEditDisplayMode::HEX,
         );
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Sets the formatting style of color components.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">format</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">format</span>: <span class="ident">ColorFormat</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>
-            .<span class="ident">set</span>(<span class="ident">ColorEditFlags::UINT8</span>, <span class="ident">format</span> <span class="op">==</span> <span class="ident">ColorFormat::U8</span>);
-        <span class="self">self</span>.<span class="ident">flags</span>
-            .<span class="ident">set</span>(<span class="ident">ColorEditFlags::FLOAT</span>, <span class="ident">format</span> <span class="op">==</span> <span class="ident">ColorFormat::Float</span>);
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Builds the color editor.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Returns true if the color value was changed.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">ui</span>: <span class="kw-2">&amp;</span><span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">bool</span> {
-        <span class="kw">if</span> <span class="kw">let</span> <span class="ident">EditableColor::Float3</span>(<span class="kw">_</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">value</span> {
-            <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">insert</span>(<span class="ident">ColorEditFlags::NO_ALPHA</span>);
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Sets the formatting style of color components.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>format(<span class="kw-2">mut </span><span class="self">self</span>, format: ColorFormat) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags
+            .set(ColorEditFlags::UINT8, format == ColorFormat::U8);
+        <span class="self">self</span>.flags
+            .set(ColorEditFlags::FLOAT, format == ColorFormat::Float);
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Builds the color editor.
+    ///
+    /// Returns true if the color value was changed.
+    </span><span class="kw">pub fn </span>build(<span class="kw-2">mut </span><span class="self">self</span>, ui: <span class="kw-2">&amp;</span>Ui&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; bool {
+        <span class="kw">if let </span>EditableColor::Float3(<span class="kw">_</span>) = <span class="self">self</span>.value {
+            <span class="self">self</span>.flags.insert(ColorEditFlags::NO_ALPHA);
         }
-        <span class="kw">match</span> <span class="self">self</span>.<span class="ident">value</span> {
-            <span class="ident">EditableColor::Float3</span>(<span class="ident">value</span>) =&gt; <span class="kw">unsafe</span> {
-                <span class="ident">sys::igColorEdit3</span>(
-                    <span class="ident">ui</span>.<span class="ident">scratch_txt</span>(<span class="self">self</span>.<span class="ident">label</span>),
-                    <span class="ident">value</span>.<span class="ident">as_mut_ptr</span>(),
-                    <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">bits</span>() <span class="kw">as</span> <span class="kw">_</span>,
+        <span class="kw">match </span><span class="self">self</span>.value {
+            EditableColor::Float3(value) =&gt; <span class="kw">unsafe </span>{
+                sys::igColorEdit3(
+                    ui.scratch_txt(<span class="self">self</span>.label),
+                    value.as_mut_ptr(),
+                    <span class="self">self</span>.flags.bits() <span class="kw">as _</span>,
                 )
             },
-            <span class="ident">EditableColor::Float4</span>(<span class="ident">value</span>) =&gt; <span class="kw">unsafe</span> {
-                <span class="ident">sys::igColorEdit4</span>(
-                    <span class="ident">ui</span>.<span class="ident">scratch_txt</span>(<span class="self">self</span>.<span class="ident">label</span>),
-                    <span class="ident">value</span>.<span class="ident">as_mut_ptr</span>(),
-                    <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">bits</span>() <span class="kw">as</span> <span class="kw">_</span>,
+            EditableColor::Float4(value) =&gt; <span class="kw">unsafe </span>{
+                sys::igColorEdit4(
+                    ui.scratch_txt(<span class="self">self</span>.label),
+                    value.as_mut_ptr(),
+                    <span class="self">self</span>.flags.bits() <span class="kw">as _</span>,
                 )
             },
         }
     }
 }
 
-<span class="doccomment">/// Builder for a color picker widget.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # Examples</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// ```no_run</span>
-<span class="doccomment">/// # use arcdps_imgui::*;</span>
-<span class="doccomment">/// # let mut imgui = Context::create();</span>
-<span class="doccomment">/// # let ui = imgui.frame();</span>
-<span class="doccomment">/// # let mut color = [0.0, 0.0, 0.0, 1.0];</span>
-<span class="doccomment">/// let cp = ColorPicker::new(im_str!(&quot;color_picker&quot;), &amp;mut color);</span>
-<span class="doccomment">/// if cp.build(&amp;ui) {</span>
-<span class="doccomment">///   println!(&quot;A color was picked&quot;);</span>
-<span class="doccomment">/// }</span>
-<span class="doccomment">/// ```</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>)]</span>
-<span class="attribute">#[<span class="ident">must_use</span>]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">ColorPicker</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span> <span class="op">+</span> <span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
-    <span class="ident">label</span>: <span class="ident">T</span>,
-    <span class="ident">value</span>: <span class="ident">EditableColor</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>,
-    <span class="ident">flags</span>: <span class="ident">ColorEditFlags</span>,
-    <span class="ident">ref_color</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> [<span class="ident">f32</span>; <span class="number">4</span>]<span class="op">&gt;</span>,
+<span class="doccomment">/// Builder for a color picker widget.
+///
+/// # Examples
+///
+/// ```no_run
+/// # use arcdps_imgui::*;
+/// # let mut imgui = Context::create();
+/// # let ui = imgui.frame();
+/// # let mut color = [0.0, 0.0, 0.0, 1.0];
+/// let cp = ColorPicker::new(im_str!(&quot;color_picker&quot;), &amp;mut color);
+/// if cp.build(&amp;ui) {
+///   println!(&quot;A color was picked&quot;);
+/// }
+/// ```
+</span><span class="attribute">#[derive(Debug)]
+#[must_use]
+</span><span class="kw">pub struct </span>ColorPicker&lt;<span class="lifetime">&#39;a</span>, T: AsRef&lt;str&gt; + <span class="lifetime">&#39;a</span>&gt; {
+    label: T,
+    value: EditableColor&lt;<span class="lifetime">&#39;a</span>&gt;,
+    flags: ColorEditFlags,
+    ref_color: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>[f32; <span class="number">4</span>]&gt;,
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="ident">ColorPicker</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Constructs a new color picker builder.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;ColorButton&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">label</span>: <span class="ident">T</span>, <span class="ident">value</span>: <span class="kw">impl</span> <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">EditableColor</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span><span class="op">&gt;</span>) -&gt; <span class="self">Self</span> {
-        <span class="ident">ColorPicker</span> {
-            <span class="ident">label</span>,
-            <span class="ident">value</span>: <span class="ident">value</span>.<span class="ident">into</span>(),
-            <span class="ident">flags</span>: <span class="ident">ColorEditFlags::empty</span>(),
-            <span class="ident">ref_color</span>: <span class="prelude-val">None</span>,
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>, T: AsRef&lt;str&gt;&gt; ColorPicker&lt;<span class="lifetime">&#39;a</span>, T&gt; {
+    <span class="doccomment">/// Constructs a new color picker builder.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;ColorButton&quot;</span>)]
+    </span><span class="kw">pub fn </span>new(label: T, value: <span class="kw">impl </span>Into&lt;EditableColor&lt;<span class="lifetime">&#39;a</span>&gt;&gt;) -&gt; <span class="self">Self </span>{
+        ColorPicker {
+            label,
+            value: value.into(),
+            flags: ColorEditFlags::empty(),
+            ref_color: <span class="prelude-val">None</span>,
         }
     }
-    <span class="doccomment">/// Replaces all current settings with the given flags.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">flags</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">flags</span>: <span class="ident">ColorEditFlags</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span> <span class="op">=</span> <span class="ident">flags</span>;
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Enables/disables the use of the alpha component.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">alpha</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">ColorEditFlags::NO_ALPHA</span>, <span class="op">!</span><span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Enables/disables toggling of the options menu when right-clicking on inputs or the small</span>
-    <span class="doccomment">/// preview.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">options</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">ColorEditFlags::NO_OPTIONS</span>, <span class="op">!</span><span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Enables/disables the colored square preview next to the inputs.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">small_preview</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">ColorEditFlags::NO_SMALL_PREVIEW</span>, <span class="op">!</span><span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Enables/disables the input sliders/text widgets.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">inputs</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">ColorEditFlags::NO_INPUTS</span>, <span class="op">!</span><span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Enables/disables the tooltip that appears when hovering the preview.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">tooltip</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">ColorEditFlags::NO_TOOLTIP</span>, <span class="op">!</span><span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Enables/disables display of the inline text label (the label is in any case forwarded to</span>
-    <span class="doccomment">/// the tooltip and picker).</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">label</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">ColorEditFlags::NO_LABEL</span>, <span class="op">!</span><span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Enables/disables the bigger color preview on the right side of the picker.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">side_preview</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">ColorEditFlags::NO_SIDE_PREVIEW</span>, <span class="op">!</span><span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Enables/disables the vertical alpha bar/gradient in the color picker.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">alpha_bar</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">ColorEditFlags::ALPHA_BAR</span>, <span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Sets the preview style.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">preview</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">preview</span>: <span class="ident">ColorPreview</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(
-            <span class="ident">ColorEditFlags::ALPHA_PREVIEW_HALF</span>,
-            <span class="ident">preview</span> <span class="op">==</span> <span class="ident">ColorPreview::HalfAlpha</span>,
+    <span class="doccomment">/// Replaces all current settings with the given flags.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>flags(<span class="kw-2">mut </span><span class="self">self</span>, flags: ColorEditFlags) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags = flags;
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Enables/disables the use of the alpha component.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>alpha(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(ColorEditFlags::NO_ALPHA, !value);
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Enables/disables toggling of the options menu when right-clicking on inputs or the small
+    /// preview.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>options(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(ColorEditFlags::NO_OPTIONS, !value);
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Enables/disables the colored square preview next to the inputs.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>small_preview(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(ColorEditFlags::NO_SMALL_PREVIEW, !value);
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Enables/disables the input sliders/text widgets.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>inputs(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(ColorEditFlags::NO_INPUTS, !value);
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Enables/disables the tooltip that appears when hovering the preview.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>tooltip(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(ColorEditFlags::NO_TOOLTIP, !value);
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Enables/disables display of the inline text label (the label is in any case forwarded to
+    /// the tooltip and picker).
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>label(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(ColorEditFlags::NO_LABEL, !value);
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Enables/disables the bigger color preview on the right side of the picker.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>side_preview(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(ColorEditFlags::NO_SIDE_PREVIEW, !value);
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Enables/disables the vertical alpha bar/gradient in the color picker.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>alpha_bar(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(ColorEditFlags::ALPHA_BAR, value);
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Sets the preview style.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>preview(<span class="kw-2">mut </span><span class="self">self</span>, preview: ColorPreview) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(
+            ColorEditFlags::ALPHA_PREVIEW_HALF,
+            preview == ColorPreview::HalfAlpha,
         );
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(
-            <span class="ident">ColorEditFlags::ALPHA_PREVIEW</span>,
-            <span class="ident">preview</span> <span class="op">==</span> <span class="ident">ColorPreview::Alpha</span>,
+        <span class="self">self</span>.flags.set(
+            ColorEditFlags::ALPHA_PREVIEW,
+            preview == ColorPreview::Alpha,
         );
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Sets the data format for input and output data.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">input_mode</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">input_mode</span>: <span class="ident">ColorEditInputMode</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(
-            <span class="ident">ColorEditFlags::INPUT_RGB</span>,
-            <span class="ident">input_mode</span> <span class="op">==</span> <span class="ident">ColorEditInputMode::RGB</span>,
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Sets the data format for input and output data.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>input_mode(<span class="kw-2">mut </span><span class="self">self</span>, input_mode: ColorEditInputMode) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(
+            ColorEditFlags::INPUT_RGB,
+            input_mode == ColorEditInputMode::RGB,
         );
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(
-            <span class="ident">ColorEditFlags::INPUT_HSV</span>,
-            <span class="ident">input_mode</span> <span class="op">==</span> <span class="ident">ColorEditInputMode::HSV</span>,
+        <span class="self">self</span>.flags.set(
+            ColorEditFlags::INPUT_HSV,
+            input_mode == ColorEditInputMode::HSV,
         );
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Enables/disables displaying the value as RGB.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">display_rgb</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">ColorEditFlags::DISPLAY_RGB</span>, <span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Enables/disables displaying the value as HSV.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">display_hsv</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">ColorEditFlags::DISPLAY_HSV</span>, <span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Enables/disables displaying the value as hex.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">display_hex</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">ColorEditFlags::DISPLAY_HEX</span>, <span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Sets the hue/saturation/value editor mode.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">mode</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">mode</span>: <span class="ident">ColorPickerMode</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(
-            <span class="ident">ColorEditFlags::PICKER_HUE_BAR</span>,
-            <span class="ident">mode</span> <span class="op">==</span> <span class="ident">ColorPickerMode::HueBar</span>,
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Enables/disables displaying the value as RGB.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>display_rgb(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(ColorEditFlags::DISPLAY_RGB, value);
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Enables/disables displaying the value as HSV.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>display_hsv(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(ColorEditFlags::DISPLAY_HSV, value);
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Enables/disables displaying the value as hex.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>display_hex(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(ColorEditFlags::DISPLAY_HEX, value);
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Sets the hue/saturation/value editor mode.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>mode(<span class="kw-2">mut </span><span class="self">self</span>, mode: ColorPickerMode) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(
+            ColorEditFlags::PICKER_HUE_BAR,
+            mode == ColorPickerMode::HueBar,
         );
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(
-            <span class="ident">ColorEditFlags::PICKER_HUE_WHEEL</span>,
-            <span class="ident">mode</span> <span class="op">==</span> <span class="ident">ColorPickerMode::HueWheel</span>,
+        <span class="self">self</span>.flags.set(
+            ColorEditFlags::PICKER_HUE_WHEEL,
+            mode == ColorPickerMode::HueWheel,
         );
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Sets the formatting style of color components.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">format</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">format</span>: <span class="ident">ColorFormat</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>
-            .<span class="ident">set</span>(<span class="ident">ColorEditFlags::UINT8</span>, <span class="ident">format</span> <span class="op">==</span> <span class="ident">ColorFormat::U8</span>);
-        <span class="self">self</span>.<span class="ident">flags</span>
-            .<span class="ident">set</span>(<span class="ident">ColorEditFlags::FLOAT</span>, <span class="ident">format</span> <span class="op">==</span> <span class="ident">ColorFormat::Float</span>);
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Sets the shown reference color.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">reference_color</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">ref_color</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> [<span class="ident">f32</span>; <span class="number">4</span>]) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">ref_color</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">ref_color</span>);
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Builds the color picker.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Returns true if the color value was changed.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">ui</span>: <span class="kw-2">&amp;</span><span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">bool</span> {
-        <span class="kw">if</span> <span class="kw">let</span> <span class="ident">EditableColor::Float3</span>(<span class="kw">_</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">value</span> {
-            <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">insert</span>(<span class="ident">ColorEditFlags::NO_ALPHA</span>);
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Sets the formatting style of color components.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>format(<span class="kw-2">mut </span><span class="self">self</span>, format: ColorFormat) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags
+            .set(ColorEditFlags::UINT8, format == ColorFormat::U8);
+        <span class="self">self</span>.flags
+            .set(ColorEditFlags::FLOAT, format == ColorFormat::Float);
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Sets the shown reference color.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>reference_color(<span class="kw-2">mut </span><span class="self">self</span>, ref_color: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>[f32; <span class="number">4</span>]) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.ref_color = <span class="prelude-val">Some</span>(ref_color);
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Builds the color picker.
+    ///
+    /// Returns true if the color value was changed.
+    </span><span class="kw">pub fn </span>build(<span class="kw-2">mut </span><span class="self">self</span>, ui: <span class="kw-2">&amp;</span>Ui&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; bool {
+        <span class="kw">if let </span>EditableColor::Float3(<span class="kw">_</span>) = <span class="self">self</span>.value {
+            <span class="self">self</span>.flags.insert(ColorEditFlags::NO_ALPHA);
         }
-        <span class="kw">let</span> <span class="ident">ref_color</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">ref_color</span>.<span class="ident">map</span>(<span class="op">|</span><span class="ident">c</span><span class="op">|</span> <span class="ident">c</span>.<span class="ident">as_ptr</span>()).<span class="ident">unwrap_or</span>(<span class="ident">ptr::null</span>());
-        <span class="kw">unsafe</span> {
-            <span class="ident">sys::igColorPicker4</span>(
-                <span class="ident">ui</span>.<span class="ident">scratch_txt</span>(<span class="self">self</span>.<span class="ident">label</span>),
-                <span class="self">self</span>.<span class="ident">value</span>.<span class="ident">as_mut_ptr</span>(),
-                <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">bits</span>() <span class="kw">as</span> <span class="kw">_</span>,
-                <span class="ident">ref_color</span>,
+        <span class="kw">let </span>ref_color = <span class="self">self</span>.ref_color.map(|c| c.as_ptr()).unwrap_or(ptr::null());
+        <span class="kw">unsafe </span>{
+            sys::igColorPicker4(
+                ui.scratch_txt(<span class="self">self</span>.label),
+                <span class="self">self</span>.value.as_mut_ptr(),
+                <span class="self">self</span>.flags.bits() <span class="kw">as _</span>,
+                ref_color,
             )
         }
     }
 }
 
-<span class="doccomment">/// Builder for a color button widget.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # Examples</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// ```no_run</span>
-<span class="doccomment">/// # use arcdps_imgui::*;</span>
-<span class="doccomment">/// # let mut imgui = Context::create();</span>
-<span class="doccomment">/// # let ui = imgui.frame();</span>
-<span class="doccomment">/// ColorButton::new(im_str!(&quot;color_button&quot;), [1.0, 0.0, 0.0, 1.0])</span>
-<span class="doccomment">///     .build(&amp;ui);</span>
-<span class="doccomment">/// ```</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Debug</span>)]</span>
-<span class="attribute">#[<span class="ident">must_use</span>]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">ColorButton</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
-    <span class="ident">desc_id</span>: <span class="ident">T</span>,
-    <span class="ident">color</span>: [<span class="ident">f32</span>; <span class="number">4</span>],
-    <span class="ident">flags</span>: <span class="ident">ColorEditFlags</span>,
-    <span class="ident">size</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
+<span class="doccomment">/// Builder for a color button widget.
+///
+/// # Examples
+///
+/// ```no_run
+/// # use arcdps_imgui::*;
+/// # let mut imgui = Context::create();
+/// # let ui = imgui.frame();
+/// ColorButton::new(im_str!(&quot;color_button&quot;), [1.0, 0.0, 0.0, 1.0])
+///     .build(&amp;ui);
+/// ```
+</span><span class="attribute">#[derive(Copy, Clone, Debug)]
+#[must_use]
+</span><span class="kw">pub struct </span>ColorButton&lt;T&gt; {
+    desc_id: T,
+    color: [f32; <span class="number">4</span>],
+    flags: ColorEditFlags,
+    size: [f32; <span class="number">2</span>],
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="ident">ColorButton</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Constructs a new color button builder.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">desc_id</span>: <span class="ident">T</span>, <span class="ident">color</span>: [<span class="ident">f32</span>; <span class="number">4</span>]) -&gt; <span class="self">Self</span> {
-        <span class="ident">ColorButton</span> {
-            <span class="ident">desc_id</span>,
-            <span class="ident">color</span>,
-            <span class="ident">flags</span>: <span class="ident">ColorEditFlags::empty</span>(),
-            <span class="ident">size</span>: [<span class="number">0.0</span>, <span class="number">0.0</span>],
+<span class="kw">impl</span>&lt;T: AsRef&lt;str&gt;&gt; ColorButton&lt;T&gt; {
+    <span class="doccomment">/// Constructs a new color button builder.
+    </span><span class="kw">pub fn </span>new(desc_id: T, color: [f32; <span class="number">4</span>]) -&gt; <span class="self">Self </span>{
+        ColorButton {
+            desc_id,
+            color,
+            flags: ColorEditFlags::empty(),
+            size: [<span class="number">0.0</span>, <span class="number">0.0</span>],
         }
     }
-    <span class="doccomment">/// Replaces all current settings with the given flags.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">flags</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">flags</span>: <span class="ident">ColorEditFlags</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span> <span class="op">=</span> <span class="ident">flags</span>;
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Enables/disables the use of the alpha component.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">alpha</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">ColorEditFlags::NO_ALPHA</span>, <span class="op">!</span><span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Enables/disables the tooltip that appears when hovering the preview.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">tooltip</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">ColorEditFlags::NO_TOOLTIP</span>, <span class="op">!</span><span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Sets the preview style.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">preview</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">preview</span>: <span class="ident">ColorPreview</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(
-            <span class="ident">ColorEditFlags::ALPHA_PREVIEW_HALF</span>,
-            <span class="ident">preview</span> <span class="op">==</span> <span class="ident">ColorPreview::HalfAlpha</span>,
+    <span class="doccomment">/// Replaces all current settings with the given flags.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>flags(<span class="kw-2">mut </span><span class="self">self</span>, flags: ColorEditFlags) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags = flags;
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Enables/disables the use of the alpha component.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>alpha(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(ColorEditFlags::NO_ALPHA, !value);
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Enables/disables the tooltip that appears when hovering the preview.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>tooltip(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(ColorEditFlags::NO_TOOLTIP, !value);
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Sets the preview style.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>preview(<span class="kw-2">mut </span><span class="self">self</span>, preview: ColorPreview) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(
+            ColorEditFlags::ALPHA_PREVIEW_HALF,
+            preview == ColorPreview::HalfAlpha,
         );
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(
-            <span class="ident">ColorEditFlags::ALPHA_PREVIEW</span>,
-            <span class="ident">preview</span> <span class="op">==</span> <span class="ident">ColorPreview::Alpha</span>,
+        <span class="self">self</span>.flags.set(
+            ColorEditFlags::ALPHA_PREVIEW,
+            preview == ColorPreview::Alpha,
         );
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Sets the data format for input data.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">input_mode</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">input_mode</span>: <span class="ident">ColorEditInputMode</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(
-            <span class="ident">ColorEditFlags::INPUT_RGB</span>,
-            <span class="ident">input_mode</span> <span class="op">==</span> <span class="ident">ColorEditInputMode::RGB</span>,
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Sets the data format for input data.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>input_mode(<span class="kw-2">mut </span><span class="self">self</span>, input_mode: ColorEditInputMode) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(
+            ColorEditFlags::INPUT_RGB,
+            input_mode == ColorEditInputMode::RGB,
         );
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(
-            <span class="ident">ColorEditFlags::INPUT_HSV</span>,
-            <span class="ident">input_mode</span> <span class="op">==</span> <span class="ident">ColorEditInputMode::HSV</span>,
+        <span class="self">self</span>.flags.set(
+            ColorEditFlags::INPUT_HSV,
+            input_mode == ColorEditInputMode::HSV,
         );
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Enables/disables using the button as drag&amp;drop source.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Enabled by default.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">drag_drop</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">ColorEditFlags::NO_DRAG_DROP</span>, <span class="op">!</span><span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Enables/disables the button border.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Enabled by default.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">border</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">ColorEditFlags::NO_BORDER</span>, <span class="op">!</span><span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Sets the button size.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Use 0.0 for width and/or height to use the default size.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">size</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">size</span>: [<span class="ident">f32</span>; <span class="number">2</span>]) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">size</span> <span class="op">=</span> <span class="ident">size</span>;
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Builds the color button.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Returns true if this color button was clicked.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build</span>(<span class="self">self</span>, <span class="ident">ui</span>: <span class="kw-2">&amp;</span><span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> {
-            <span class="ident">sys::igColorButton</span>(
-                <span class="ident">ui</span>.<span class="ident">scratch_txt</span>(<span class="self">self</span>.<span class="ident">desc_id</span>),
-                <span class="self">self</span>.<span class="ident">color</span>.<span class="ident">into</span>(),
-                <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">bits</span>() <span class="kw">as</span> <span class="kw">_</span>,
-                <span class="self">self</span>.<span class="ident">size</span>.<span class="ident">into</span>(),
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Enables/disables using the button as drag&amp;drop source.
+    ///
+    /// Enabled by default.
+    </span><span class="kw">pub fn </span>drag_drop(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(ColorEditFlags::NO_DRAG_DROP, !value);
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Enables/disables the button border.
+    ///
+    /// Enabled by default.
+    </span><span class="kw">pub fn </span>border(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(ColorEditFlags::NO_BORDER, !value);
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Sets the button size.
+    ///
+    /// Use 0.0 for width and/or height to use the default size.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>size(<span class="kw-2">mut </span><span class="self">self</span>, size: [f32; <span class="number">2</span>]) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.size = size;
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Builds the color button.
+    ///
+    /// Returns true if this color button was clicked.
+    </span><span class="kw">pub fn </span>build(<span class="self">self</span>, ui: <span class="kw-2">&amp;</span>Ui&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; bool {
+        <span class="kw">unsafe </span>{
+            sys::igColorButton(
+                ui.scratch_txt(<span class="self">self</span>.desc_id),
+                <span class="self">self</span>.color.into(),
+                <span class="self">self</span>.flags.bits() <span class="kw">as _</span>,
+                <span class="self">self</span>.size.into(),
             )
         }
     }
 }
 
-<span class="doccomment">/// # Widgets: Color Editor/Picker</span>
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> <span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Initializes current color editor/picker options (generally on application startup) if you</span>
-    <span class="doccomment">/// want to select a default format, picker type, etc. Users will be able to change many</span>
-    <span class="doccomment">/// settings, unless you use .options(false) in your widget builders.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;SetColorEditOptions&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_color_edit_options</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">flags</span>: <span class="ident">ColorEditFlags</span>) {
-        <span class="kw">unsafe</span> {
-            <span class="ident">sys::igSetColorEditOptions</span>(<span class="ident">flags</span>.<span class="ident">bits</span>() <span class="kw">as</span> <span class="ident">i32</span>);
+<span class="doccomment">/// # Widgets: Color Editor/Picker
+</span><span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>&gt; Ui&lt;<span class="lifetime">&#39;ui</span>&gt; {
+    <span class="doccomment">/// Initializes current color editor/picker options (generally on application startup) if you
+    /// want to select a default format, picker type, etc. Users will be able to change many
+    /// settings, unless you use .options(false) in your widget builders.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;SetColorEditOptions&quot;</span>)]
+    </span><span class="kw">pub fn </span>set_color_edit_options(<span class="kw-2">&amp;</span><span class="self">self</span>, flags: ColorEditFlags) {
+        <span class="kw">unsafe </span>{
+            sys::igSetColorEditOptions(flags.bits() <span class="kw">as </span>i32);
         }
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="arcdps_imgui" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="arcdps_imgui" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.0 (69f9c33d7 2022-12-12)" ></div></body></html>

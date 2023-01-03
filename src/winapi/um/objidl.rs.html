@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\winapi-0.3.9\src\um\objidl.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>objidl.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../winapi/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../winapi/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../winapi/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\winapi-0.3.9\src\um\objidl.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>objidl.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../normalize.css"><link rel="stylesheet" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../ayu.css" disabled><link rel="stylesheet" href="../../../dark.css" disabled><link rel="stylesheet" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../../winapi/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -523,530 +523,530 @@
 <span id="523">523</span>
 <span id="524">524</span>
 <span id="525">525</span>
-</pre><pre class="rust"><code><span class="comment">// Licensed under the Apache License, Version 2.0</span>
-<span class="comment">// &lt;LICENSE-APACHE or http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license</span>
-<span class="comment">// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your option.</span>
-<span class="comment">// All files in the project carrying such notice may not be copied, modified, or distributed</span>
-<span class="comment">// except according to those terms.</span>
-<span class="doccomment">//! this ALWAYS GENERATED file contains the definitions for the interfaces</span>
-<span class="kw">use</span> <span class="ident">ctypes::c_void</span>;
-<span class="kw">use</span> <span class="ident">shared::basetsd::UINT64</span>;
-<span class="kw">use</span> <span class="ident">shared::guiddef</span>::{<span class="ident">CLSID</span>, <span class="ident">IID</span>, <span class="ident">REFCLSID</span>, <span class="ident">REFIID</span>};
-<span class="kw">use</span> <span class="ident">shared::minwindef</span>::{<span class="ident">BOOL</span>, <span class="ident">BYTE</span>, <span class="ident">DWORD</span>, <span class="ident">FILETIME</span>, <span class="ident">HGLOBAL</span>, <span class="ident">ULONG</span>, <span class="ident">WORD</span>};
-<span class="kw">use</span> <span class="ident">shared::ntdef::LONG</span>;
-<span class="kw">use</span> <span class="ident">shared::windef</span>::{<span class="ident">HBITMAP</span>, <span class="ident">HENHMETAFILE</span>};
-<span class="kw">use</span> <span class="ident">shared::wtypes</span>::{<span class="ident">CLIPFORMAT</span>, <span class="ident">HMETAFILEPICT</span>};
-<span class="kw">use</span> <span class="ident">shared::wtypesbase</span>::{<span class="ident">LPCOLESTR</span>, <span class="ident">LPOLESTR</span>, <span class="ident">OLECHAR</span>};
-<span class="kw">use</span> <span class="ident">um::objidlbase</span>::{<span class="ident">IEnumString</span>, <span class="ident">IStream</span>, <span class="ident">STATSTG</span>};
-<span class="kw">use</span> <span class="ident">um::unknwnbase</span>::{<span class="ident">IUnknown</span>, <span class="ident">IUnknownVtbl</span>};
-<span class="kw">use</span> <span class="ident">um::winnt</span>::{<span class="ident">HRESULT</span>, <span class="ident">ULARGE_INTEGER</span>};
-<span class="comment">//8402</span>
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">BIND_OPTS</span> {
-    <span class="ident">cbStruct</span>: <span class="ident">DWORD</span>,
-    <span class="ident">grfFlags</span>: <span class="ident">DWORD</span>,
-    <span class="ident">grfMode</span>: <span class="ident">DWORD</span>,
-    <span class="ident">dwTickCountDeadline</span>: <span class="ident">DWORD</span>,
+</pre><pre class="rust"><code><span class="comment">// Licensed under the Apache License, Version 2.0
+// &lt;LICENSE-APACHE or http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license
+// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your option.
+// All files in the project carrying such notice may not be copied, modified, or distributed
+// except according to those terms.
+</span><span class="doccomment">//! this ALWAYS GENERATED file contains the definitions for the interfaces
+</span><span class="kw">use </span>ctypes::c_void;
+<span class="kw">use </span>shared::basetsd::UINT64;
+<span class="kw">use </span>shared::guiddef::{CLSID, IID, REFCLSID, REFIID};
+<span class="kw">use </span>shared::minwindef::{BOOL, BYTE, DWORD, FILETIME, HGLOBAL, ULONG, WORD};
+<span class="kw">use </span>shared::ntdef::LONG;
+<span class="kw">use </span>shared::windef::{HBITMAP, HENHMETAFILE};
+<span class="kw">use </span>shared::wtypes::{CLIPFORMAT, HMETAFILEPICT};
+<span class="kw">use </span>shared::wtypesbase::{LPCOLESTR, LPOLESTR, OLECHAR};
+<span class="kw">use </span>um::objidlbase::{IEnumString, IStream, STATSTG};
+<span class="kw">use </span>um::unknwnbase::{IUnknown, IUnknownVtbl};
+<span class="kw">use </span>um::winnt::{HRESULT, ULARGE_INTEGER};
+<span class="comment">//8402
+</span><span class="macro">STRUCT!</span>{<span class="kw">struct </span>BIND_OPTS {
+    cbStruct: DWORD,
+    grfFlags: DWORD,
+    grfMode: DWORD,
+    dwTickCountDeadline: DWORD,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LPBIND_OPTS</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">BIND_OPTS</span>;
-<span class="comment">//8479</span>
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x0000000e</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IBindCtx</span>(<span class="ident">IBindCtxVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">RegisterObjectBound</span>(
-        <span class="ident">punk</span>: <span class="kw-2">*mut</span> <span class="ident">IUnknown</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">RevokeObjectBound</span>(
-        <span class="ident">punk</span>: <span class="kw-2">*mut</span> <span class="ident">IUnknown</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">ReleaseBoundObjects</span>() -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">SetBindOptions</span>(
-        <span class="ident">pbindopts</span>: <span class="kw-2">*mut</span> <span class="ident">BIND_OPTS</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">GetBindOptions</span>(
-        <span class="ident">pbindopts</span>: <span class="kw-2">*mut</span> <span class="ident">BIND_OPTS</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">GetRunningObjectTable</span>(
-        <span class="ident">pprot</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">IRunningObjectTable</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">RegisterObjectParam</span>(
-        <span class="ident">pszKey</span>: <span class="ident">LPOLESTR</span>,
-        <span class="ident">punk</span>: <span class="kw-2">*mut</span> <span class="ident">IUnknown</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">GetObjectParam</span>(
-        <span class="ident">pszKey</span>: <span class="ident">LPOLESTR</span>,
-        <span class="ident">ppunk</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">IUnknown</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">EnumObjectParam</span>(
-        <span class="ident">ppenum</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">IEnumString</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">RevokeObjectParam</span>(
-        <span class="ident">pszKey</span>: <span class="ident">LPOLESTR</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
+<span class="kw">pub type </span>LPBIND_OPTS = <span class="kw-2">*mut </span>BIND_OPTS;
+<span class="comment">//8479
+</span><span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x0000000e</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]
+</span>interface IBindCtx(IBindCtxVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>RegisterObjectBound(
+        punk: <span class="kw-2">*mut </span>IUnknown,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>RevokeObjectBound(
+        punk: <span class="kw-2">*mut </span>IUnknown,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>ReleaseBoundObjects() -&gt; HRESULT,
+    <span class="kw">fn </span>SetBindOptions(
+        pbindopts: <span class="kw-2">*mut </span>BIND_OPTS,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>GetBindOptions(
+        pbindopts: <span class="kw-2">*mut </span>BIND_OPTS,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>GetRunningObjectTable(
+        pprot: <span class="kw-2">*mut *mut </span>IRunningObjectTable,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>RegisterObjectParam(
+        pszKey: LPOLESTR,
+        punk: <span class="kw-2">*mut </span>IUnknown,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>GetObjectParam(
+        pszKey: LPOLESTR,
+        ppunk: <span class="kw-2">*mut *mut </span>IUnknown,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>EnumObjectParam(
+        ppenum: <span class="kw-2">*mut *mut </span>IEnumString,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>RevokeObjectParam(
+        pszKey: LPOLESTR,
+    ) -&gt; HRESULT,
 }}
-<span class="comment">//8681</span>
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x00000102</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IEnumMoniker</span>(<span class="ident">IEnumMonikerVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">Next</span>(
-        <span class="ident">celt</span>: <span class="ident">ULONG</span>,
-        <span class="ident">rgelt</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">IMoniker</span>,
-        <span class="ident">pceltFetched</span>: <span class="kw-2">*mut</span> <span class="ident">ULONG</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Skip</span>(
-        <span class="ident">celt</span>: <span class="ident">ULONG</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Reset</span>() -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Clone</span>(
-        <span class="ident">ppenum</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">IEnumMoniker</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
+<span class="comment">//8681
+</span><span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x00000102</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]
+</span>interface IEnumMoniker(IEnumMonikerVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>Next(
+        celt: ULONG,
+        rgelt: <span class="kw-2">*mut *mut </span>IMoniker,
+        pceltFetched: <span class="kw-2">*mut </span>ULONG,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>Skip(
+        celt: ULONG,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>Reset() -&gt; HRESULT,
+    <span class="kw">fn </span>Clone(
+        ppenum: <span class="kw-2">*mut *mut </span>IEnumMoniker,
+    ) -&gt; HRESULT,
 }}
-<span class="comment">//8958</span>
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x00000010</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IRunningObjectTable</span>(<span class="ident">IRunningObjectTableVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">Register</span>(
-        <span class="ident">grfFlags</span>: <span class="ident">DWORD</span>,
-        <span class="ident">punkObject</span>: <span class="kw-2">*mut</span> <span class="ident">IUnknown</span>,
-        <span class="ident">pmkObjectName</span>: <span class="kw-2">*mut</span> <span class="ident">IMoniker</span>,
-        <span class="ident">pdwRegister</span>: <span class="kw-2">*mut</span> <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Revoke</span>(
-        <span class="ident">dwRegister</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">IsRunning</span>(
-        <span class="ident">pmkObjectName</span>: <span class="kw-2">*mut</span> <span class="ident">IMoniker</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">GetObject</span>(
-        <span class="ident">pmkObjectName</span>: <span class="kw-2">*mut</span> <span class="ident">IMoniker</span>,
-        <span class="ident">ppunkObject</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">IUnknown</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">NoteChangeTime</span>(
-        <span class="ident">dwRegister</span>: <span class="ident">DWORD</span>,
-        <span class="ident">pfiletime</span>: <span class="kw-2">*mut</span> <span class="ident">FILETIME</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">GetTimeOfLastChange</span>(
-        <span class="ident">pmkObjectName</span>: <span class="kw-2">*mut</span> <span class="ident">IMoniker</span>,
-        <span class="ident">pfiletime</span>: <span class="kw-2">*mut</span> <span class="ident">FILETIME</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">EnumRunning</span>(
-        <span class="ident">ppenumMoniker</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">IEnumMoniker</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
+<span class="comment">//8958
+</span><span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x00000010</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]
+</span>interface IRunningObjectTable(IRunningObjectTableVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>Register(
+        grfFlags: DWORD,
+        punkObject: <span class="kw-2">*mut </span>IUnknown,
+        pmkObjectName: <span class="kw-2">*mut </span>IMoniker,
+        pdwRegister: <span class="kw-2">*mut </span>DWORD,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>Revoke(
+        dwRegister: DWORD,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>IsRunning(
+        pmkObjectName: <span class="kw-2">*mut </span>IMoniker,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>GetObject(
+        pmkObjectName: <span class="kw-2">*mut </span>IMoniker,
+        ppunkObject: <span class="kw-2">*mut *mut </span>IUnknown,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>NoteChangeTime(
+        dwRegister: DWORD,
+        pfiletime: <span class="kw-2">*mut </span>FILETIME,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>GetTimeOfLastChange(
+        pmkObjectName: <span class="kw-2">*mut </span>IMoniker,
+        pfiletime: <span class="kw-2">*mut </span>FILETIME,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>EnumRunning(
+        ppenumMoniker: <span class="kw-2">*mut *mut </span>IEnumMoniker,
+    ) -&gt; HRESULT,
 }}
-<span class="comment">//9125</span>
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x0000010c</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IPersist</span>(<span class="ident">IPersistVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">GetClassID</span>(
-        <span class="ident">pClassID</span>: <span class="kw-2">*mut</span> <span class="ident">CLSID</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
+<span class="comment">//9125
+</span><span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x0000010c</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]
+</span>interface IPersist(IPersistVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>GetClassID(
+        pClassID: <span class="kw-2">*mut </span>CLSID,
+    ) -&gt; HRESULT,
 }}
-<span class="comment">//9207</span>
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x00000109</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IPersistStream</span>(<span class="ident">IPersistStreamVtbl</span>): <span class="ident">IPersist</span>(<span class="ident">IPersistVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">IsDirty</span>() -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Load</span>(
-        <span class="ident">pStm</span>: <span class="kw-2">*mut</span> <span class="ident">IStream</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Save</span>(
-        <span class="ident">pStm</span>: <span class="kw-2">*mut</span> <span class="ident">IStream</span>,
-        <span class="ident">fClearDirty</span>: <span class="ident">BOOL</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">GetSizeMax</span>(
-        <span class="ident">pcbSize</span>: <span class="kw-2">*mut</span> <span class="ident">ULARGE_INTEGER</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
+<span class="comment">//9207
+</span><span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x00000109</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]
+</span>interface IPersistStream(IPersistStreamVtbl): IPersist(IPersistVtbl) {
+    <span class="kw">fn </span>IsDirty() -&gt; HRESULT,
+    <span class="kw">fn </span>Load(
+        pStm: <span class="kw-2">*mut </span>IStream,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>Save(
+        pStm: <span class="kw-2">*mut </span>IStream,
+        fClearDirty: BOOL,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>GetSizeMax(
+        pcbSize: <span class="kw-2">*mut </span>ULARGE_INTEGER,
+    ) -&gt; HRESULT,
 }}
-<span class="comment">//9350</span>
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x0000000f</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IMoniker</span>(<span class="ident">IMonikerVtbl</span>): <span class="ident">IPersistStream</span>(<span class="ident">IPersistStreamVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">BindToObject</span>(
-        <span class="ident">pbc</span>: <span class="kw-2">*mut</span> <span class="ident">IBindCtx</span>,
-        <span class="ident">pmkToLeft</span>: <span class="kw-2">*mut</span> <span class="ident">IMoniker</span>,
-        <span class="ident">riidResult</span>: <span class="ident">REFIID</span>,
-        <span class="ident">ppvResult</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">BindToStorage</span>(
-        <span class="ident">pbc</span>: <span class="kw-2">*mut</span> <span class="ident">IBindCtx</span>,
-        <span class="ident">pmkToLeft</span>: <span class="kw-2">*mut</span> <span class="ident">IMoniker</span>,
-        <span class="ident">riid</span>: <span class="ident">REFIID</span>,
-        <span class="ident">ppvObj</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Reduce</span>(
-        <span class="ident">pbc</span>: <span class="kw-2">*mut</span> <span class="ident">IBindCtx</span>,
-        <span class="ident">dwReduceHowFar</span>: <span class="ident">DWORD</span>,
-        <span class="ident">ppmkToLeft</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">IMoniker</span>,
-        <span class="ident">ppmkReduced</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">IMoniker</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">ComposeWith</span>(
-        <span class="ident">pmkRight</span>: <span class="kw-2">*mut</span> <span class="ident">IMoniker</span>,
-        <span class="ident">fOnlyIfNotGeneric</span>: <span class="ident">BOOL</span>,
-        <span class="ident">ppmkComposite</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">IMoniker</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Enum</span>(
-        <span class="ident">fForward</span>: <span class="ident">BOOL</span>,
-        <span class="ident">ppenumMoniker</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">IEnumMoniker</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">IsEqual</span>(
-        <span class="ident">pmkOtherMoniker</span>: <span class="kw-2">*mut</span> <span class="ident">IMoniker</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Hash</span>(
-        <span class="ident">pdwHash</span>: <span class="kw-2">*mut</span> <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">IsRunning</span>(
-        <span class="ident">pbc</span>: <span class="kw-2">*mut</span> <span class="ident">IBindCtx</span>,
-        <span class="ident">pmkToLeft</span>: <span class="kw-2">*mut</span> <span class="ident">IMoniker</span>,
-        <span class="ident">pmkNewlyRunning</span>: <span class="kw-2">*mut</span> <span class="ident">IMoniker</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">GetTimeOfLastChange</span>(
-        <span class="ident">pbc</span>: <span class="kw-2">*mut</span> <span class="ident">IBindCtx</span>,
-        <span class="ident">pmkToLeft</span>: <span class="kw-2">*mut</span> <span class="ident">IMoniker</span>,
-        <span class="ident">pFileTime</span>: <span class="kw-2">*mut</span> <span class="ident">FILETIME</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Inverse</span>(
-        <span class="ident">ppmk</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">IMoniker</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">CommonPrefixWith</span>(
-        <span class="ident">pmkOther</span>: <span class="kw-2">*mut</span> <span class="ident">IMoniker</span>,
-        <span class="ident">ppmkPrefix</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">IMoniker</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">RelativePathTo</span>(
-        <span class="ident">pmkOther</span>: <span class="kw-2">*mut</span> <span class="ident">IMoniker</span>,
-        <span class="ident">ppmkRelPath</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">IMoniker</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">GetDisplayName</span>(
-        <span class="ident">pbc</span>: <span class="kw-2">*mut</span> <span class="ident">IBindCtx</span>,
-        <span class="ident">pmkToLeft</span>: <span class="kw-2">*mut</span> <span class="ident">IMoniker</span>,
-        <span class="ident">ppszDisplayName</span>: <span class="kw-2">*mut</span> <span class="ident">LPOLESTR</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">ParseDisplayName</span>(
-        <span class="ident">pbc</span>: <span class="kw-2">*mut</span> <span class="ident">IBindCtx</span>,
-        <span class="ident">pmkToLeft</span>: <span class="kw-2">*mut</span> <span class="ident">IMoniker</span>,
-        <span class="ident">pszDisplayName</span>: <span class="ident">LPOLESTR</span>,
-        <span class="ident">pchEaten</span>: <span class="kw-2">*mut</span> <span class="ident">ULONG</span>,
-        <span class="ident">ppmkOut</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">IMoniker</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">IsSystemMoniker</span>(
-        <span class="ident">pdwMksys</span>: <span class="kw-2">*mut</span> <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
+<span class="comment">//9350
+</span><span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x0000000f</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]
+</span>interface IMoniker(IMonikerVtbl): IPersistStream(IPersistStreamVtbl) {
+    <span class="kw">fn </span>BindToObject(
+        pbc: <span class="kw-2">*mut </span>IBindCtx,
+        pmkToLeft: <span class="kw-2">*mut </span>IMoniker,
+        riidResult: REFIID,
+        ppvResult: <span class="kw-2">*mut *mut </span>c_void,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>BindToStorage(
+        pbc: <span class="kw-2">*mut </span>IBindCtx,
+        pmkToLeft: <span class="kw-2">*mut </span>IMoniker,
+        riid: REFIID,
+        ppvObj: <span class="kw-2">*mut *mut </span>c_void,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>Reduce(
+        pbc: <span class="kw-2">*mut </span>IBindCtx,
+        dwReduceHowFar: DWORD,
+        ppmkToLeft: <span class="kw-2">*mut *mut </span>IMoniker,
+        ppmkReduced: <span class="kw-2">*mut *mut </span>IMoniker,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>ComposeWith(
+        pmkRight: <span class="kw-2">*mut </span>IMoniker,
+        fOnlyIfNotGeneric: BOOL,
+        ppmkComposite: <span class="kw-2">*mut *mut </span>IMoniker,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>Enum(
+        fForward: BOOL,
+        ppenumMoniker: <span class="kw-2">*mut *mut </span>IEnumMoniker,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>IsEqual(
+        pmkOtherMoniker: <span class="kw-2">*mut </span>IMoniker,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>Hash(
+        pdwHash: <span class="kw-2">*mut </span>DWORD,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>IsRunning(
+        pbc: <span class="kw-2">*mut </span>IBindCtx,
+        pmkToLeft: <span class="kw-2">*mut </span>IMoniker,
+        pmkNewlyRunning: <span class="kw-2">*mut </span>IMoniker,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>GetTimeOfLastChange(
+        pbc: <span class="kw-2">*mut </span>IBindCtx,
+        pmkToLeft: <span class="kw-2">*mut </span>IMoniker,
+        pFileTime: <span class="kw-2">*mut </span>FILETIME,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>Inverse(
+        ppmk: <span class="kw-2">*mut *mut </span>IMoniker,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>CommonPrefixWith(
+        pmkOther: <span class="kw-2">*mut </span>IMoniker,
+        ppmkPrefix: <span class="kw-2">*mut *mut </span>IMoniker,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>RelativePathTo(
+        pmkOther: <span class="kw-2">*mut </span>IMoniker,
+        ppmkRelPath: <span class="kw-2">*mut *mut </span>IMoniker,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>GetDisplayName(
+        pbc: <span class="kw-2">*mut </span>IBindCtx,
+        pmkToLeft: <span class="kw-2">*mut </span>IMoniker,
+        ppszDisplayName: <span class="kw-2">*mut </span>LPOLESTR,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>ParseDisplayName(
+        pbc: <span class="kw-2">*mut </span>IBindCtx,
+        pmkToLeft: <span class="kw-2">*mut </span>IMoniker,
+        pszDisplayName: LPOLESTR,
+        pchEaten: <span class="kw-2">*mut </span>ULONG,
+        ppmkOut: <span class="kw-2">*mut *mut </span>IMoniker,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>IsSystemMoniker(
+        pdwMksys: <span class="kw-2">*mut </span>DWORD,
+    ) -&gt; HRESULT,
 }}
-<span class="macro">ENUM!</span>{<span class="kw">enum</span> <span class="ident">EOLE_AUTHENTICATION_CAPABILITIES</span> {
-    <span class="ident">EOAC_NONE</span> <span class="op">=</span> <span class="number">0</span>,
-    <span class="ident">EOAC_MUTUAL_AUTH</span> <span class="op">=</span> <span class="number">0x1</span>,
-    <span class="ident">EOAC_STATIC_CLOAKING</span> <span class="op">=</span> <span class="number">0x20</span>,
-    <span class="ident">EOAC_DYNAMIC_CLOAKING</span> <span class="op">=</span> <span class="number">0x40</span>,
-    <span class="ident">EOAC_ANY_AUTHORITY</span> <span class="op">=</span> <span class="number">0x80</span>,
-    <span class="ident">EOAC_MAKE_FULLSIC</span> <span class="op">=</span> <span class="number">0x100</span>,
-    <span class="ident">EOAC_DEFAULT</span> <span class="op">=</span> <span class="number">0x800</span>,
-    <span class="ident">EOAC_SECURE_REFS</span> <span class="op">=</span> <span class="number">0x2</span>,
-    <span class="ident">EOAC_ACCESS_CONTROL</span> <span class="op">=</span> <span class="number">0x4</span>,
-    <span class="ident">EOAC_APPID</span> <span class="op">=</span> <span class="number">0x8</span>,
-    <span class="ident">EOAC_DYNAMIC</span> <span class="op">=</span> <span class="number">0x10</span>,
-    <span class="ident">EOAC_REQUIRE_FULLSIC</span> <span class="op">=</span> <span class="number">0x200</span>,
-    <span class="ident">EOAC_AUTO_IMPERSONATE</span> <span class="op">=</span> <span class="number">0x400</span>,
-    <span class="ident">EOAC_NO_CUSTOM_MARSHAL</span> <span class="op">=</span> <span class="number">0x2000</span>,
-    <span class="ident">EOAC_DISABLE_AAA</span> <span class="op">=</span> <span class="number">0x1000</span>,
+<span class="macro">ENUM!</span>{<span class="kw">enum </span>EOLE_AUTHENTICATION_CAPABILITIES {
+    EOAC_NONE = <span class="number">0</span>,
+    EOAC_MUTUAL_AUTH = <span class="number">0x1</span>,
+    EOAC_STATIC_CLOAKING = <span class="number">0x20</span>,
+    EOAC_DYNAMIC_CLOAKING = <span class="number">0x40</span>,
+    EOAC_ANY_AUTHORITY = <span class="number">0x80</span>,
+    EOAC_MAKE_FULLSIC = <span class="number">0x100</span>,
+    EOAC_DEFAULT = <span class="number">0x800</span>,
+    EOAC_SECURE_REFS = <span class="number">0x2</span>,
+    EOAC_ACCESS_CONTROL = <span class="number">0x4</span>,
+    EOAC_APPID = <span class="number">0x8</span>,
+    EOAC_DYNAMIC = <span class="number">0x10</span>,
+    EOAC_REQUIRE_FULLSIC = <span class="number">0x200</span>,
+    EOAC_AUTO_IMPERSONATE = <span class="number">0x400</span>,
+    EOAC_NO_CUSTOM_MARSHAL = <span class="number">0x2000</span>,
+    EOAC_DISABLE_AAA = <span class="number">0x1000</span>,
 }}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">SOLE_AUTHENTICATION_SERVICE</span> {
-    <span class="ident">dwAuthnSvc</span>: <span class="ident">DWORD</span>,
-    <span class="ident">dwAuthzSvc</span>: <span class="ident">DWORD</span>,
-    <span class="ident">pPrincipalName</span>: <span class="kw-2">*mut</span> <span class="ident">OLECHAR</span>,
-    <span class="ident">hr</span>: <span class="ident">HRESULT</span>,
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>SOLE_AUTHENTICATION_SERVICE {
+    dwAuthnSvc: DWORD,
+    dwAuthzSvc: DWORD,
+    pPrincipalName: <span class="kw-2">*mut </span>OLECHAR,
+    hr: HRESULT,
 }}
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x0000000d</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IEnumSTATSTG</span>(<span class="ident">IEnumSTATSTGVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">Next</span>(
-        <span class="ident">celt</span>: <span class="ident">ULONG</span>,
-        <span class="ident">rgelt</span>: <span class="kw-2">*mut</span> <span class="ident">STATSTG</span>,
-        <span class="ident">pceltFetched</span>: <span class="kw-2">*mut</span> <span class="ident">ULONG</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Skip</span>(
-        <span class="ident">celt</span>: <span class="ident">ULONG</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Reset</span>() -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Clone</span>(
-        <span class="ident">ppenum</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">IEnumSTATSTG</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x0000000d</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]
+</span>interface IEnumSTATSTG(IEnumSTATSTGVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>Next(
+        celt: ULONG,
+        rgelt: <span class="kw-2">*mut </span>STATSTG,
+        pceltFetched: <span class="kw-2">*mut </span>ULONG,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>Skip(
+        celt: ULONG,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>Reset() -&gt; HRESULT,
+    <span class="kw">fn </span>Clone(
+        ppenum: <span class="kw-2">*mut *mut </span>IEnumSTATSTG,
+    ) -&gt; HRESULT,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">SNB</span> <span class="op">=</span> <span class="kw-2">*const</span> <span class="kw-2">*const</span> <span class="ident">OLECHAR</span>;
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x0000000b</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IStorage</span>(<span class="ident">IStorageVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">CreateStream</span>(
-        <span class="ident">pwcsName</span>: <span class="kw-2">*const</span> <span class="ident">OLECHAR</span>,
-        <span class="ident">grfMode</span>: <span class="ident">DWORD</span>,
-        <span class="ident">reserved1</span>: <span class="ident">DWORD</span>,
-        <span class="ident">reserved2</span>: <span class="ident">DWORD</span>,
-        <span class="ident">ppstm</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">IStream</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">OpenStream</span>(
-        <span class="ident">pwcsName</span>: <span class="kw-2">*const</span> <span class="ident">OLECHAR</span>,
-        <span class="ident">reserved1</span>: <span class="kw-2">*const</span> <span class="ident">c_void</span>,
-        <span class="ident">grfMode</span>: <span class="ident">DWORD</span>,
-        <span class="ident">reserved2</span>: <span class="ident">DWORD</span>,
-        <span class="ident">ppstm</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">IStream</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">CreateStorage</span>(
-        <span class="ident">pwcsName</span>: <span class="kw-2">*const</span> <span class="ident">OLECHAR</span>,
-        <span class="ident">grfMode</span>: <span class="ident">DWORD</span>,
-        <span class="ident">reserved1</span>: <span class="ident">DWORD</span>,
-        <span class="ident">reserved2</span>: <span class="ident">DWORD</span>,
-        <span class="ident">ppstg</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">IStorage</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">OpenStorage</span>(
-        <span class="ident">pwcsName</span>: <span class="kw-2">*const</span> <span class="ident">OLECHAR</span>,
-        <span class="ident">pstgPriority</span>: <span class="ident">IStorage</span>,
-        <span class="ident">grfMode</span>: <span class="ident">DWORD</span>,
-        <span class="ident">snbExclude</span>: <span class="ident">SNB</span>,
-        <span class="ident">reserved</span>: <span class="ident">DWORD</span>,
-        <span class="ident">ppstg</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">IStorage</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">CopyTo</span>(
-        <span class="ident">ciidExclude</span>: <span class="ident">DWORD</span>,
-        <span class="ident">rgiidExclude</span>: <span class="kw-2">*const</span> <span class="ident">IID</span>,
-        <span class="ident">snbExclude</span>: <span class="ident">SNB</span>,
-        <span class="ident">pstgDest</span>: <span class="kw-2">*const</span> <span class="ident">IStorage</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">MoveElementTo</span>(
-        <span class="ident">pwcsName</span>: <span class="kw-2">*const</span> <span class="ident">OLECHAR</span>,
-        <span class="ident">pstgDest</span>: <span class="kw-2">*const</span> <span class="ident">IStorage</span>,
-        <span class="ident">pwcsNewName</span>: <span class="kw-2">*const</span> <span class="ident">OLECHAR</span>,
-        <span class="ident">grfFlags</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Commit</span>(
-        <span class="ident">grfCommitFlags</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Revert</span>() -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">EnumElements</span>(
-        <span class="ident">reserved1</span>: <span class="ident">DWORD</span>,
-        <span class="ident">reserved2</span>: <span class="kw-2">*const</span> <span class="ident">c_void</span>,
-        <span class="ident">reserved3</span>: <span class="ident">DWORD</span>,
-        <span class="ident">ppenum</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">IEnumSTATSTG</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">DestroyElement</span>(
-        <span class="ident">pwcsName</span>: <span class="kw-2">*const</span> <span class="ident">OLECHAR</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">RenameElement</span>(
-        <span class="ident">pwcsOldName</span>: <span class="kw-2">*const</span> <span class="ident">OLECHAR</span>,
-        <span class="ident">pwcsNewName</span>: <span class="kw-2">*const</span> <span class="ident">OLECHAR</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">SetElementTimes</span>(
-        <span class="ident">pwcsName</span>: <span class="kw-2">*const</span> <span class="ident">OLECHAR</span>,
-        <span class="ident">pctime</span>: <span class="kw-2">*const</span> <span class="ident">FILETIME</span>,
-        <span class="ident">patime</span>: <span class="kw-2">*const</span> <span class="ident">FILETIME</span>,
-        <span class="ident">pmtime</span>: <span class="kw-2">*const</span> <span class="ident">FILETIME</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">SetClass</span>(
-        <span class="ident">clsid</span>: <span class="ident">REFCLSID</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">SetStateBits</span>(
-        <span class="ident">grfStateBits</span>: <span class="ident">DWORD</span>,
-        <span class="ident">grfMask</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Stat</span>(
-        <span class="ident">pstatstg</span>: <span class="kw-2">*mut</span> <span class="ident">STATSTG</span>,
-        <span class="ident">grfStatFlag</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
+<span class="kw">pub type </span>SNB = <span class="kw-2">*const *const </span>OLECHAR;
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x0000000b</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]
+</span>interface IStorage(IStorageVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>CreateStream(
+        pwcsName: <span class="kw-2">*const </span>OLECHAR,
+        grfMode: DWORD,
+        reserved1: DWORD,
+        reserved2: DWORD,
+        ppstm: <span class="kw-2">*mut *mut </span>IStream,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>OpenStream(
+        pwcsName: <span class="kw-2">*const </span>OLECHAR,
+        reserved1: <span class="kw-2">*const </span>c_void,
+        grfMode: DWORD,
+        reserved2: DWORD,
+        ppstm: <span class="kw-2">*mut *mut </span>IStream,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>CreateStorage(
+        pwcsName: <span class="kw-2">*const </span>OLECHAR,
+        grfMode: DWORD,
+        reserved1: DWORD,
+        reserved2: DWORD,
+        ppstg: <span class="kw-2">*mut *mut </span>IStorage,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>OpenStorage(
+        pwcsName: <span class="kw-2">*const </span>OLECHAR,
+        pstgPriority: IStorage,
+        grfMode: DWORD,
+        snbExclude: SNB,
+        reserved: DWORD,
+        ppstg: <span class="kw-2">*mut *mut </span>IStorage,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>CopyTo(
+        ciidExclude: DWORD,
+        rgiidExclude: <span class="kw-2">*const </span>IID,
+        snbExclude: SNB,
+        pstgDest: <span class="kw-2">*const </span>IStorage,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>MoveElementTo(
+        pwcsName: <span class="kw-2">*const </span>OLECHAR,
+        pstgDest: <span class="kw-2">*const </span>IStorage,
+        pwcsNewName: <span class="kw-2">*const </span>OLECHAR,
+        grfFlags: DWORD,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>Commit(
+        grfCommitFlags: DWORD,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>Revert() -&gt; HRESULT,
+    <span class="kw">fn </span>EnumElements(
+        reserved1: DWORD,
+        reserved2: <span class="kw-2">*const </span>c_void,
+        reserved3: DWORD,
+        ppenum: <span class="kw-2">*mut *mut </span>IEnumSTATSTG,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>DestroyElement(
+        pwcsName: <span class="kw-2">*const </span>OLECHAR,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>RenameElement(
+        pwcsOldName: <span class="kw-2">*const </span>OLECHAR,
+        pwcsNewName: <span class="kw-2">*const </span>OLECHAR,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>SetElementTimes(
+        pwcsName: <span class="kw-2">*const </span>OLECHAR,
+        pctime: <span class="kw-2">*const </span>FILETIME,
+        patime: <span class="kw-2">*const </span>FILETIME,
+        pmtime: <span class="kw-2">*const </span>FILETIME,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>SetClass(
+        clsid: REFCLSID,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>SetStateBits(
+        grfStateBits: DWORD,
+        grfMask: DWORD,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>Stat(
+        pstatstg: <span class="kw-2">*mut </span>STATSTG,
+        grfStatFlag: DWORD,
+    ) -&gt; HRESULT,
 }}
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x0000010b</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IPersistFile</span>(<span class="ident">IPersistFileVtbl</span>): <span class="ident">IPersist</span>(<span class="ident">IPersistVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">IsDirty</span>() -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Load</span>(
-        <span class="ident">pszFileName</span>: <span class="ident">LPCOLESTR</span>,
-        <span class="ident">dwMode</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Save</span>(
-        <span class="ident">pszFileName</span>: <span class="ident">LPCOLESTR</span>,
-        <span class="ident">fRemember</span>: <span class="ident">BOOL</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">SaveCompleted</span>(
-        <span class="ident">pszFileName</span>: <span class="ident">LPCOLESTR</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">GetCurFile</span>(
-        <span class="ident">ppszFileName</span>: <span class="kw-2">*mut</span> <span class="ident">LPOLESTR</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x0000010b</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]
+</span>interface IPersistFile(IPersistFileVtbl): IPersist(IPersistVtbl) {
+    <span class="kw">fn </span>IsDirty() -&gt; HRESULT,
+    <span class="kw">fn </span>Load(
+        pszFileName: LPCOLESTR,
+        dwMode: DWORD,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>Save(
+        pszFileName: LPCOLESTR,
+        fRemember: BOOL,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>SaveCompleted(
+        pszFileName: LPCOLESTR,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>GetCurFile(
+        ppszFileName: <span class="kw-2">*mut </span>LPOLESTR,
+    ) -&gt; HRESULT,
 }}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">DVTARGETDEVICE</span> {
-    <span class="ident">tdSize</span>: <span class="ident">DWORD</span>,
-    <span class="ident">tdDriverNameOffset</span>: <span class="ident">WORD</span>,
-    <span class="ident">tdDeviceNameOffset</span>: <span class="ident">WORD</span>,
-    <span class="ident">tdPortNameOffset</span>: <span class="ident">WORD</span>,
-    <span class="ident">tdExtDevmodeOFfset</span>: <span class="ident">WORD</span>,
-    <span class="ident">tdData</span>: [<span class="ident">BYTE</span>; <span class="number">1</span>],
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>DVTARGETDEVICE {
+    tdSize: DWORD,
+    tdDriverNameOffset: WORD,
+    tdDeviceNameOffset: WORD,
+    tdPortNameOffset: WORD,
+    tdExtDevmodeOFfset: WORD,
+    tdData: [BYTE; <span class="number">1</span>],
 }}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">FORMATETC</span> {
-    <span class="ident">cfFormat</span>: <span class="ident">CLIPFORMAT</span>,
-    <span class="ident">ptd</span>: <span class="kw-2">*const</span> <span class="ident">DVTARGETDEVICE</span>,
-    <span class="ident">dwAspect</span>: <span class="ident">DWORD</span>,
-    <span class="ident">lindex</span>: <span class="ident">LONG</span>,
-    <span class="ident">tymed</span>: <span class="ident">DWORD</span>,
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>FORMATETC {
+    cfFormat: CLIPFORMAT,
+    ptd: <span class="kw-2">*const </span>DVTARGETDEVICE,
+    dwAspect: DWORD,
+    lindex: LONG,
+    tymed: DWORD,
 }}
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x00000103</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IEnumFORMATETC</span>(<span class="ident">IEnumFORMATETCVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">Next</span>(
-        <span class="ident">celt</span>: <span class="ident">ULONG</span>,
-        <span class="ident">rgelt</span>: <span class="kw-2">*mut</span> <span class="ident">FORMATETC</span>,
-        <span class="ident">pceltFetched</span>: <span class="kw-2">*mut</span> <span class="ident">ULONG</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Skip</span>(
-        <span class="ident">celt</span>: <span class="ident">ULONG</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Reset</span>() -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Clone</span>(
-        <span class="ident">ppenum</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">IEnumFORMATETC</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x00000103</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]
+</span>interface IEnumFORMATETC(IEnumFORMATETCVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>Next(
+        celt: ULONG,
+        rgelt: <span class="kw-2">*mut </span>FORMATETC,
+        pceltFetched: <span class="kw-2">*mut </span>ULONG,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>Skip(
+        celt: ULONG,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>Reset() -&gt; HRESULT,
+    <span class="kw">fn </span>Clone(
+        ppenum: <span class="kw-2">*mut *mut </span>IEnumFORMATETC,
+    ) -&gt; HRESULT,
 }}
-<span class="macro">ENUM!</span>{<span class="kw">enum</span> <span class="ident">ADVF</span> {
-    <span class="ident">ADVF_NODATA</span> <span class="op">=</span> <span class="number">1</span>,
-    <span class="ident">ADVF_PRIMEFIRST</span> <span class="op">=</span> <span class="number">2</span>,
-    <span class="ident">ADVF_ONLYONCE</span> <span class="op">=</span> <span class="number">4</span>,
-    <span class="ident">ADVF_DATAONSTOP</span> <span class="op">=</span> <span class="number">64</span>,
-    <span class="ident">ADVFCACHE_NOHANDLER</span> <span class="op">=</span> <span class="number">8</span>,
-    <span class="ident">ADVFCACHE_FORCEBUILTIN</span> <span class="op">=</span> <span class="number">16</span>,
-    <span class="ident">ADVFCACHE_ONSAVE</span> <span class="op">=</span> <span class="number">32</span>,
+<span class="macro">ENUM!</span>{<span class="kw">enum </span>ADVF {
+    ADVF_NODATA = <span class="number">1</span>,
+    ADVF_PRIMEFIRST = <span class="number">2</span>,
+    ADVF_ONLYONCE = <span class="number">4</span>,
+    ADVF_DATAONSTOP = <span class="number">64</span>,
+    ADVFCACHE_NOHANDLER = <span class="number">8</span>,
+    ADVFCACHE_FORCEBUILTIN = <span class="number">16</span>,
+    ADVFCACHE_ONSAVE = <span class="number">32</span>,
 }}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">STATDATA</span> {
-    <span class="ident">formatetc</span>: <span class="ident">FORMATETC</span>,
-    <span class="ident">advf</span>: <span class="ident">DWORD</span>,
-    <span class="ident">pAdvSInk</span>: <span class="kw-2">*mut</span> <span class="ident">IAdviseSink</span>,
-    <span class="ident">dwConnection</span>: <span class="ident">DWORD</span>,
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>STATDATA {
+    formatetc: FORMATETC,
+    advf: DWORD,
+    pAdvSInk: <span class="kw-2">*mut </span>IAdviseSink,
+    dwConnection: DWORD,
 }}
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x00000105</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IEnumSTATDATA</span>(<span class="ident">IEnumSTATDATAVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">Next</span>(
-        <span class="ident">celt</span>: <span class="ident">ULONG</span>,
-        <span class="ident">rgelt</span>: <span class="kw-2">*mut</span> <span class="ident">STATDATA</span>,
-        <span class="ident">pceltFetched</span>: <span class="kw-2">*mut</span> <span class="ident">ULONG</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Skip</span>(
-        <span class="ident">celt</span>: <span class="ident">ULONG</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Reset</span>() -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Clone</span>(
-        <span class="ident">ppenum</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">IEnumSTATDATA</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x00000105</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]
+</span>interface IEnumSTATDATA(IEnumSTATDATAVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>Next(
+        celt: ULONG,
+        rgelt: <span class="kw-2">*mut </span>STATDATA,
+        pceltFetched: <span class="kw-2">*mut </span>ULONG,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>Skip(
+        celt: ULONG,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>Reset() -&gt; HRESULT,
+    <span class="kw">fn </span>Clone(
+        ppenum: <span class="kw-2">*mut *mut </span>IEnumSTATDATA,
+    ) -&gt; HRESULT,
 }}
-<span class="macro">ENUM!</span>{<span class="kw">enum</span> <span class="ident">TYMED</span> {
-    <span class="ident">TYMED_HGLOBAL</span> <span class="op">=</span> <span class="number">1</span>,
-    <span class="ident">TYMED_FILE</span> <span class="op">=</span> <span class="number">2</span>,
-    <span class="ident">TYMED_ISTREAM</span> <span class="op">=</span> <span class="number">4</span>,
-    <span class="ident">TYMED_ISTORAGE</span> <span class="op">=</span> <span class="number">8</span>,
-    <span class="ident">TYMED_GDI</span> <span class="op">=</span> <span class="number">16</span>,
-    <span class="ident">TYMED_MFPICT</span> <span class="op">=</span> <span class="number">32</span>,
-    <span class="ident">TYMED_ENHMF</span> <span class="op">=</span> <span class="number">64</span>,
-    <span class="ident">TYMED_NULL</span> <span class="op">=</span> <span class="number">0</span>,
+<span class="macro">ENUM!</span>{<span class="kw">enum </span>TYMED {
+    TYMED_HGLOBAL = <span class="number">1</span>,
+    TYMED_FILE = <span class="number">2</span>,
+    TYMED_ISTREAM = <span class="number">4</span>,
+    TYMED_ISTORAGE = <span class="number">8</span>,
+    TYMED_GDI = <span class="number">16</span>,
+    TYMED_MFPICT = <span class="number">32</span>,
+    TYMED_ENHMF = <span class="number">64</span>,
+    TYMED_NULL = <span class="number">0</span>,
 }}
-<span class="macro">UNION!</span>{<span class="kw">union</span> <span class="ident">STGMEDIUM_u</span> {
-    [<span class="ident">u64</span>; <span class="number">7</span>], <span class="comment">//TODO: I guessed to move on</span>
-    <span class="ident">hBitmap</span> <span class="ident">hBitmap_mut</span>: <span class="ident">HBITMAP</span>,
-    <span class="ident">hMetaFilePict</span> <span class="ident">hMetaFilePict_mut</span>: <span class="ident">HMETAFILEPICT</span>,
-    <span class="ident">hEnhMetaFile</span> <span class="ident">hEnhMetaFile_mut</span>: <span class="ident">HENHMETAFILE</span>,
-    <span class="ident">hGlobal</span> <span class="ident">hGlobal_mut</span>: <span class="ident">HGLOBAL</span>,
-    <span class="ident">lpszFileName</span> <span class="ident">lpszFileName_mut</span>: <span class="ident">LPOLESTR</span>,
-    <span class="ident">pstm</span> <span class="ident">pstm_mut</span>: <span class="kw-2">*mut</span> <span class="ident">IStream</span>,
-    <span class="ident">pstg</span> <span class="ident">pstg_mut</span>: <span class="kw-2">*mut</span> <span class="ident">IStorage</span>,
+<span class="macro">UNION!</span>{<span class="kw">union </span>STGMEDIUM_u {
+    [u64; <span class="number">7</span>], <span class="comment">//TODO: I guessed to move on
+    </span>hBitmap hBitmap_mut: HBITMAP,
+    hMetaFilePict hMetaFilePict_mut: HMETAFILEPICT,
+    hEnhMetaFile hEnhMetaFile_mut: HENHMETAFILE,
+    hGlobal hGlobal_mut: HGLOBAL,
+    lpszFileName lpszFileName_mut: LPOLESTR,
+    pstm pstm_mut: <span class="kw-2">*mut </span>IStream,
+    pstg pstg_mut: <span class="kw-2">*mut </span>IStorage,
 }}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">STGMEDIUM</span> {
-    <span class="ident">tymed</span>: <span class="ident">DWORD</span>,
-    <span class="ident">u</span>: <span class="kw-2">*mut</span> <span class="ident">STGMEDIUM_u</span>,
-    <span class="ident">pUnkForRelease</span>: <span class="kw-2">*mut</span> <span class="ident">IUnknown</span>,
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>STGMEDIUM {
+    tymed: DWORD,
+    u: <span class="kw-2">*mut </span>STGMEDIUM_u,
+    pUnkForRelease: <span class="kw-2">*mut </span>IUnknown,
 }}
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x0000010f</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IAdviseSink</span>(<span class="ident">IAdviseSinkVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">OnDataChange</span>(
-        <span class="ident">pformatetc</span>: <span class="kw-2">*mut</span> <span class="ident">FORMATETC</span>,
-        <span class="ident">pStgmed</span>: <span class="kw-2">*mut</span> <span class="ident">STGMEDIUM</span>,
-    ) -&gt; <span class="ident">c_void</span>,
-    <span class="kw">fn</span> <span class="ident">OnViewChange</span>(
-        <span class="ident">dwAspect</span>: <span class="ident">DWORD</span>,
-        <span class="ident">lindex</span>: <span class="ident">LONG</span>,
-    ) -&gt; <span class="ident">c_void</span>,
-    <span class="kw">fn</span> <span class="ident">OnRename</span>(
-        <span class="ident">pmk</span>: <span class="kw-2">*mut</span> <span class="ident">IMoniker</span>,
-    ) -&gt; <span class="ident">c_void</span>,
-    <span class="kw">fn</span> <span class="ident">OnSave</span>() -&gt; <span class="ident">c_void</span>,
-    <span class="kw">fn</span> <span class="ident">OnClose</span>() -&gt; <span class="ident">c_void</span>,
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x0000010f</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]
+</span>interface IAdviseSink(IAdviseSinkVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>OnDataChange(
+        pformatetc: <span class="kw-2">*mut </span>FORMATETC,
+        pStgmed: <span class="kw-2">*mut </span>STGMEDIUM,
+    ) -&gt; c_void,
+    <span class="kw">fn </span>OnViewChange(
+        dwAspect: DWORD,
+        lindex: LONG,
+    ) -&gt; c_void,
+    <span class="kw">fn </span>OnRename(
+        pmk: <span class="kw-2">*mut </span>IMoniker,
+    ) -&gt; c_void,
+    <span class="kw">fn </span>OnSave() -&gt; c_void,
+    <span class="kw">fn </span>OnClose() -&gt; c_void,
 }}
-<span class="macro">ENUM!</span>{<span class="kw">enum</span> <span class="ident">DATADIR</span> {
-    <span class="ident">DATADIR_GET</span> <span class="op">=</span> <span class="number">1</span>,
-    <span class="ident">DATADIR_SET</span> <span class="op">=</span> <span class="number">2</span>,
+<span class="macro">ENUM!</span>{<span class="kw">enum </span>DATADIR {
+    DATADIR_GET = <span class="number">1</span>,
+    DATADIR_SET = <span class="number">2</span>,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LPDATAOBJECT</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">IDataObject</span>;
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x0000010e</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IDataObject</span>(<span class="ident">IDataObjectVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">GetData</span>(
-        <span class="ident">pformatetcIn</span>: <span class="kw-2">*const</span> <span class="ident">FORMATETC</span>,
-        <span class="ident">pmedium</span>: <span class="kw-2">*mut</span> <span class="ident">STGMEDIUM</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">GetDataHere</span>(
-        <span class="ident">pformatetc</span>: <span class="kw-2">*const</span> <span class="ident">FORMATETC</span>,
-        <span class="ident">pmedium</span>: <span class="kw-2">*mut</span> <span class="ident">STGMEDIUM</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">QueryGetData</span>(
-        <span class="ident">pformatetc</span>: <span class="kw-2">*const</span> <span class="ident">FORMATETC</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">GetCanonicalFormatEtc</span>(
-        <span class="ident">pformatetcIn</span>: <span class="kw-2">*const</span> <span class="ident">FORMATETC</span>,
-        <span class="ident">pformatetcOut</span>: <span class="kw-2">*mut</span> <span class="ident">FORMATETC</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">SetData</span>(
-        <span class="ident">pformatetc</span>: <span class="kw-2">*const</span> <span class="ident">FORMATETC</span>,
-        <span class="ident">pformatetcOut</span>: <span class="kw-2">*const</span> <span class="ident">FORMATETC</span>,
-        <span class="ident">fRelease</span>: <span class="ident">BOOL</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">EnumFormatEtc</span>(
-        <span class="ident">dwDirection</span>: <span class="ident">DWORD</span>,
-        <span class="ident">ppenumFormatEtc</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">IEnumFORMATETC</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">DAdvise</span>(
-        <span class="ident">pformatetc</span>: <span class="kw-2">*const</span> <span class="ident">FORMATETC</span>,
-        <span class="ident">advf</span>: <span class="ident">DWORD</span>,
-        <span class="ident">pAdvSInk</span>: <span class="kw-2">*const</span> <span class="ident">IAdviseSink</span>,
-        <span class="ident">pdwConnection</span>: <span class="kw-2">*mut</span> <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">DUnadvise</span>(
-        <span class="ident">dwConnection</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">EnumDAdvise</span>(
-        <span class="ident">ppenumAdvise</span>: <span class="kw-2">*const</span> <span class="kw-2">*const</span> <span class="ident">IEnumSTATDATA</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
+<span class="kw">pub type </span>LPDATAOBJECT = <span class="kw-2">*mut </span>IDataObject;
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x0000010e</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]
+</span>interface IDataObject(IDataObjectVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>GetData(
+        pformatetcIn: <span class="kw-2">*const </span>FORMATETC,
+        pmedium: <span class="kw-2">*mut </span>STGMEDIUM,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>GetDataHere(
+        pformatetc: <span class="kw-2">*const </span>FORMATETC,
+        pmedium: <span class="kw-2">*mut </span>STGMEDIUM,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>QueryGetData(
+        pformatetc: <span class="kw-2">*const </span>FORMATETC,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>GetCanonicalFormatEtc(
+        pformatetcIn: <span class="kw-2">*const </span>FORMATETC,
+        pformatetcOut: <span class="kw-2">*mut </span>FORMATETC,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>SetData(
+        pformatetc: <span class="kw-2">*const </span>FORMATETC,
+        pformatetcOut: <span class="kw-2">*const </span>FORMATETC,
+        fRelease: BOOL,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>EnumFormatEtc(
+        dwDirection: DWORD,
+        ppenumFormatEtc: <span class="kw-2">*mut *mut </span>IEnumFORMATETC,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>DAdvise(
+        pformatetc: <span class="kw-2">*const </span>FORMATETC,
+        advf: DWORD,
+        pAdvSInk: <span class="kw-2">*const </span>IAdviseSink,
+        pdwConnection: <span class="kw-2">*mut </span>DWORD,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>DUnadvise(
+        dwConnection: DWORD,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>EnumDAdvise(
+        ppenumAdvise: <span class="kw-2">*const *const </span>IEnumSTATDATA,
+    ) -&gt; HRESULT,
 }}
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0xa2f05a09</span>, <span class="number">0x27a2</span>, <span class="number">0x42b5</span>, <span class="number">0xbc</span>, <span class="number">0x0e</span>, <span class="number">0xac</span>, <span class="number">0x16</span>, <span class="number">0x3e</span>, <span class="number">0xf4</span>, <span class="number">0x9d</span>, <span class="number">0x9b</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IApartmentShutdown</span>(<span class="ident">IApartmentShutdownVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">OnUninitialize</span>(
-        <span class="ident">ui64ApartmentIdentifier</span>: <span class="ident">UINT64</span>,
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0xa2f05a09</span>, <span class="number">0x27a2</span>, <span class="number">0x42b5</span>, <span class="number">0xbc</span>, <span class="number">0x0e</span>, <span class="number">0xac</span>, <span class="number">0x16</span>, <span class="number">0x3e</span>, <span class="number">0xf4</span>, <span class="number">0x9d</span>, <span class="number">0x9b</span>)]
+</span>interface IApartmentShutdown(IApartmentShutdownVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>OnUninitialize(
+        ui64ApartmentIdentifier: UINT64,
     ) -&gt; (),
 }}
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x00000003</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IMarshal</span>(<span class="ident">IMarshalVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">GetUnmarshalClass</span>(
-        <span class="ident">riid</span>: <span class="ident">REFIID</span>,
-        <span class="ident">pv</span>: <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-        <span class="ident">dwDestContext</span>: <span class="ident">DWORD</span>,
-        <span class="ident">pvDestContext</span>: <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-        <span class="ident">mshlflags</span>: <span class="ident">DWORD</span>,
-        <span class="ident">pCid</span>: <span class="kw-2">*mut</span> <span class="ident">CLSID</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">GetMarshalSizeMax</span>(
-        <span class="ident">riid</span>: <span class="ident">REFIID</span>,
-        <span class="ident">pv</span>: <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-        <span class="ident">dwDestContext</span>: <span class="ident">DWORD</span>,
-        <span class="ident">pvDestContext</span>: <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-        <span class="ident">mshlflags</span>: <span class="ident">DWORD</span>,
-        <span class="ident">pSize</span>: <span class="kw-2">*mut</span> <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">MarshalInterface</span>(
-        <span class="ident">pStm</span>: <span class="kw-2">*mut</span> <span class="ident">IStream</span>,
-        <span class="ident">riid</span>: <span class="ident">REFIID</span>,
-        <span class="ident">pv</span>: <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-        <span class="ident">dwDestContext</span>: <span class="ident">DWORD</span>,
-        <span class="ident">pvDestContext</span>: <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-        <span class="ident">mshlflags</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">UnmarshalInterface</span>(
-        <span class="ident">pStm</span>: <span class="kw-2">*mut</span> <span class="ident">IStream</span>,
-        <span class="ident">riid</span>: <span class="ident">REFIID</span>,
-        <span class="ident">ppv</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">ReleaseMarshalData</span>(
-        <span class="ident">pStm</span>: <span class="kw-2">*mut</span> <span class="ident">IStream</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">DisconnectObject</span>(
-        <span class="ident">dwReserved</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x00000003</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]
+</span>interface IMarshal(IMarshalVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>GetUnmarshalClass(
+        riid: REFIID,
+        pv: <span class="kw-2">*mut </span>c_void,
+        dwDestContext: DWORD,
+        pvDestContext: <span class="kw-2">*mut </span>c_void,
+        mshlflags: DWORD,
+        pCid: <span class="kw-2">*mut </span>CLSID,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>GetMarshalSizeMax(
+        riid: REFIID,
+        pv: <span class="kw-2">*mut </span>c_void,
+        dwDestContext: DWORD,
+        pvDestContext: <span class="kw-2">*mut </span>c_void,
+        mshlflags: DWORD,
+        pSize: <span class="kw-2">*mut </span>DWORD,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>MarshalInterface(
+        pStm: <span class="kw-2">*mut </span>IStream,
+        riid: REFIID,
+        pv: <span class="kw-2">*mut </span>c_void,
+        dwDestContext: DWORD,
+        pvDestContext: <span class="kw-2">*mut </span>c_void,
+        mshlflags: DWORD,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>UnmarshalInterface(
+        pStm: <span class="kw-2">*mut </span>IStream,
+        riid: REFIID,
+        ppv: <span class="kw-2">*mut *mut </span>c_void,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>ReleaseMarshalData(
+        pStm: <span class="kw-2">*mut </span>IStream,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>DisconnectObject(
+        dwReserved: DWORD,
+    ) -&gt; HRESULT,
 }}
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="winapi" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="winapi" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.0 (69f9c33d7 2022-12-12)" ></div></body></html>

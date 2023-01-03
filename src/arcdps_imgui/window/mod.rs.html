@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\arcdps-imgui-0.8.0\src\window\mod.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>mod.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../arcdps_imgui/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../arcdps_imgui/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../arcdps_imgui/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\arcdps-imgui-0.8.0\src\window\mod.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>mod.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../normalize.css"><link rel="stylesheet" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../ayu.css" disabled><link rel="stylesheet" href="../../../dark.css" disabled><link rel="stylesheet" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../../arcdps_imgui/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -557,564 +557,564 @@
 <span id="557">557</span>
 <span id="558">558</span>
 <span id="559">559</span>
-</pre><pre class="rust"><code><span class="kw">use</span> <span class="ident">bitflags::bitflags</span>;
-<span class="kw">use</span> <span class="ident">std::f32</span>;
-<span class="kw">use</span> <span class="ident">std::ptr</span>;
+</pre><pre class="rust"><code><span class="kw">use </span>bitflags::bitflags;
+<span class="kw">use </span>std::f32;
+<span class="kw">use </span>std::ptr;
 
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::sys</span>;
-<span class="kw">use</span> <span class="kw">crate</span>::{<span class="ident">Condition</span>, <span class="ident">Ui</span>};
+<span class="kw">use </span><span class="kw">crate</span>::sys;
+<span class="kw">use crate</span>::{Condition, Ui};
 
-<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">mod</span> <span class="ident">child_window</span>;
-<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">mod</span> <span class="ident">content_region</span>;
-<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">mod</span> <span class="ident">scroll</span>;
+<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">mod </span>child_window;
+<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">mod </span>content_region;
+<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">mod </span>scroll;
 
-<span class="macro">bitflags!</span> {
-    <span class="doccomment">/// Window hover check option flags</span>
-    <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">transparent</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">WindowHoveredFlags</span>: <span class="ident">u32</span> {
-        <span class="doccomment">/// Return true if any child of the window is hovered</span>
-        <span class="kw">const</span> <span class="ident">CHILD_WINDOWS</span> <span class="op">=</span> <span class="ident">sys::ImGuiHoveredFlags_ChildWindows</span>;
-        <span class="doccomment">/// Test from root window (top-most parent of the current hierarchy)</span>
-        <span class="kw">const</span> <span class="ident">ROOT_WINDOW</span> <span class="op">=</span> <span class="ident">sys::ImGuiHoveredFlags_RootWindow</span>;
-        <span class="doccomment">/// Return true if any window is hovered</span>
-        <span class="kw">const</span> <span class="ident">ANY_WINDOW</span> <span class="op">=</span> <span class="ident">sys::ImGuiHoveredFlags_AnyWindow</span>;
-        <span class="doccomment">/// Return true even if a popup window is blocking access to this window</span>
-        <span class="kw">const</span> <span class="ident">ALLOW_WHEN_BLOCKED_BY_POPUP</span> <span class="op">=</span> <span class="ident">sys::ImGuiHoveredFlags_AllowWhenBlockedByPopup</span>;
-        <span class="doccomment">/// Return true even if an active item is blocking access to this window</span>
-        <span class="kw">const</span> <span class="ident">ALLOW_WHEN_BLOCKED_BY_ACTIVE_ITEM</span> <span class="op">=</span> <span class="ident">sys::ImGuiHoveredFlags_AllowWhenBlockedByActiveItem</span>;
-        <span class="doccomment">/// Test from root window, and return true if any child is hovered</span>
-        <span class="kw">const</span> <span class="ident">ROOT_AND_CHILD_WINDOWS</span> <span class="op">=</span> <span class="ident"><span class="self">Self</span>::ROOT_WINDOW</span>.<span class="ident">bits</span> <span class="op">|</span> <span class="ident"><span class="self">Self</span>::CHILD_WINDOWS</span>.<span class="ident">bits</span>;
+<span class="macro">bitflags! </span>{
+    <span class="doccomment">/// Window hover check option flags
+    </span><span class="attribute">#[repr(transparent)]
+    </span><span class="kw">pub struct </span>WindowHoveredFlags: u32 {
+        <span class="doccomment">/// Return true if any child of the window is hovered
+        </span><span class="kw">const </span>CHILD_WINDOWS = sys::ImGuiHoveredFlags_ChildWindows;
+        <span class="doccomment">/// Test from root window (top-most parent of the current hierarchy)
+        </span><span class="kw">const </span>ROOT_WINDOW = sys::ImGuiHoveredFlags_RootWindow;
+        <span class="doccomment">/// Return true if any window is hovered
+        </span><span class="kw">const </span>ANY_WINDOW = sys::ImGuiHoveredFlags_AnyWindow;
+        <span class="doccomment">/// Return true even if a popup window is blocking access to this window
+        </span><span class="kw">const </span>ALLOW_WHEN_BLOCKED_BY_POPUP = sys::ImGuiHoveredFlags_AllowWhenBlockedByPopup;
+        <span class="doccomment">/// Return true even if an active item is blocking access to this window
+        </span><span class="kw">const </span>ALLOW_WHEN_BLOCKED_BY_ACTIVE_ITEM = sys::ImGuiHoveredFlags_AllowWhenBlockedByActiveItem;
+        <span class="doccomment">/// Test from root window, and return true if any child is hovered
+        </span><span class="kw">const </span>ROOT_AND_CHILD_WINDOWS = <span class="self">Self</span>::ROOT_WINDOW.bits | <span class="self">Self</span>::CHILD_WINDOWS.bits;
     }
 }
 
-<span class="macro">bitflags!</span> {
-    <span class="doccomment">/// Window focus check option flags</span>
-    <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">transparent</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">WindowFocusedFlags</span>: <span class="ident">u32</span> {
-        <span class="doccomment">/// Return true if any child of the window is focused</span>
-        <span class="kw">const</span> <span class="ident">CHILD_WINDOWS</span> <span class="op">=</span> <span class="ident">sys::ImGuiFocusedFlags_ChildWindows</span>;
-        <span class="doccomment">/// Test from root window (top-most parent of the current hierarchy)</span>
-        <span class="kw">const</span> <span class="ident">ROOT_WINDOW</span> <span class="op">=</span> <span class="ident">sys::ImGuiFocusedFlags_RootWindow</span>;
-        <span class="doccomment">/// Return true if any window is focused</span>
-        <span class="kw">const</span> <span class="ident">ANY_WINDOW</span> <span class="op">=</span> <span class="ident">sys::ImGuiFocusedFlags_AnyWindow</span>;
-        <span class="doccomment">/// Test from root window, and return true if any child is focused</span>
-        <span class="kw">const</span> <span class="ident">ROOT_AND_CHILD_WINDOWS</span> <span class="op">=</span> <span class="ident"><span class="self">Self</span>::ROOT_WINDOW</span>.<span class="ident">bits</span> <span class="op">|</span> <span class="ident"><span class="self">Self</span>::CHILD_WINDOWS</span>.<span class="ident">bits</span>;
+<span class="macro">bitflags! </span>{
+    <span class="doccomment">/// Window focus check option flags
+    </span><span class="attribute">#[repr(transparent)]
+    </span><span class="kw">pub struct </span>WindowFocusedFlags: u32 {
+        <span class="doccomment">/// Return true if any child of the window is focused
+        </span><span class="kw">const </span>CHILD_WINDOWS = sys::ImGuiFocusedFlags_ChildWindows;
+        <span class="doccomment">/// Test from root window (top-most parent of the current hierarchy)
+        </span><span class="kw">const </span>ROOT_WINDOW = sys::ImGuiFocusedFlags_RootWindow;
+        <span class="doccomment">/// Return true if any window is focused
+        </span><span class="kw">const </span>ANY_WINDOW = sys::ImGuiFocusedFlags_AnyWindow;
+        <span class="doccomment">/// Test from root window, and return true if any child is focused
+        </span><span class="kw">const </span>ROOT_AND_CHILD_WINDOWS = <span class="self">Self</span>::ROOT_WINDOW.bits | <span class="self">Self</span>::CHILD_WINDOWS.bits;
     }
 }
 
-<span class="macro">bitflags!</span> {
-    <span class="doccomment">/// Configuration flags for windows</span>
-    <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">transparent</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">WindowFlags</span>: <span class="ident">u32</span> {
-        <span class="doccomment">/// Disable the title bar</span>
-        <span class="kw">const</span> <span class="ident">NO_TITLE_BAR</span> <span class="op">=</span> <span class="ident">sys::ImGuiWindowFlags_NoTitleBar</span>;
-        <span class="doccomment">/// Disable resizing with the lower-right grip</span>
-        <span class="kw">const</span> <span class="ident">NO_RESIZE</span> <span class="op">=</span> <span class="ident">sys::ImGuiWindowFlags_NoResize</span>;
-        <span class="doccomment">/// Disable moving the window</span>
-        <span class="kw">const</span> <span class="ident">NO_MOVE</span> <span class="op">=</span> <span class="ident">sys::ImGuiWindowFlags_NoMove</span>;
-        <span class="doccomment">/// Disable scrollbars (scrolling is still possible with the mouse or programmatically)</span>
-        <span class="kw">const</span> <span class="ident">NO_SCROLLBAR</span> <span class="op">=</span> <span class="ident">sys::ImGuiWindowFlags_NoScrollbar</span>;
-        <span class="doccomment">/// Disable vertical scrolling with the mouse wheel.</span>
-        <span class="doccomment">///</span>
-        <span class="doccomment">/// On child window, the mouse wheel will be forwarded to the parent unless `NO_SCROLLBAR`</span>
-        <span class="doccomment">/// is also set.</span>
-        <span class="kw">const</span> <span class="ident">NO_SCROLL_WITH_MOUSE</span> <span class="op">=</span> <span class="ident">sys::ImGuiWindowFlags_NoScrollWithMouse</span>;
-        <span class="doccomment">/// Disable collapsing the window by double-clicking it</span>
-        <span class="kw">const</span> <span class="ident">NO_COLLAPSE</span> <span class="op">=</span> <span class="ident">sys::ImGuiWindowFlags_NoCollapse</span>;
-        <span class="doccomment">/// Resize the window to its content on every frame</span>
-        <span class="kw">const</span> <span class="ident">ALWAYS_AUTO_RESIZE</span> <span class="op">=</span> <span class="ident">sys::ImGuiWindowFlags_AlwaysAutoResize</span>;
-        <span class="doccomment">/// Disable drawing of background color and outside border</span>
-        <span class="kw">const</span> <span class="ident">NO_BACKGROUND</span> <span class="op">=</span> <span class="ident">sys::ImGuiWindowFlags_NoBackground</span>;
-        <span class="doccomment">/// Never load/save settings</span>
-        <span class="kw">const</span> <span class="ident">NO_SAVED_SETTINGS</span> <span class="op">=</span> <span class="ident">sys::ImGuiWindowFlags_NoSavedSettings</span>;
-        <span class="doccomment">/// Disable catching mouse input. Hovering test will pass through</span>
-        <span class="kw">const</span> <span class="ident">NO_MOUSE_INPUTS</span> <span class="op">=</span> <span class="ident">sys::ImGuiWindowFlags_NoMouseInputs</span>;
-        <span class="doccomment">/// Show a menu bar</span>
-        <span class="kw">const</span> <span class="ident">MENU_BAR</span> <span class="op">=</span> <span class="ident">sys::ImGuiWindowFlags_MenuBar</span>;
-        <span class="doccomment">/// Allow horizontal scrollbar to appear</span>
-        <span class="kw">const</span> <span class="ident">HORIZONTAL_SCROLLBAR</span> <span class="op">=</span> <span class="ident">sys::ImGuiWindowFlags_HorizontalScrollbar</span>;
-        <span class="doccomment">/// Disable taking focus when transitioning from hidden to visible state</span>
-        <span class="kw">const</span> <span class="ident">NO_FOCUS_ON_APPEARING</span> <span class="op">=</span> <span class="ident">sys::ImGuiWindowFlags_NoFocusOnAppearing</span>;
-        <span class="doccomment">/// Disable bringing window to front when taking focus (e.g. clicking it or</span>
-        <span class="doccomment">/// programmatically giving it focus)</span>
-        <span class="kw">const</span> <span class="ident">NO_BRING_TO_FRONT_ON_FOCUS</span> <span class="op">=</span> <span class="ident">sys::ImGuiWindowFlags_NoBringToFrontOnFocus</span>;
-        <span class="doccomment">/// Always show vertical scrollbar</span>
-        <span class="kw">const</span> <span class="ident">ALWAYS_VERTICAL_SCROLLBAR</span> <span class="op">=</span> <span class="ident">sys::ImGuiWindowFlags_AlwaysVerticalScrollbar</span>;
-        <span class="doccomment">/// Always show horizontal scrollbar</span>
-        <span class="kw">const</span> <span class="ident">ALWAYS_HORIZONTAL_SCROLLBAR</span> <span class="op">=</span> <span class="ident">sys::ImGuiWindowFlags_AlwaysHorizontalScrollbar</span>;
-        <span class="doccomment">/// Ensure child windows without border use `style.window_padding`</span>
-        <span class="kw">const</span> <span class="ident">ALWAYS_USE_WINDOW_PADDING</span> <span class="op">=</span> <span class="ident">sys::ImGuiWindowFlags_AlwaysUseWindowPadding</span>;
-        <span class="doccomment">/// Disable gamepad/keyboard navigation within the window</span>
-        <span class="kw">const</span> <span class="ident">NO_NAV_INPUTS</span> <span class="op">=</span> <span class="ident">sys::ImGuiWindowFlags_NoNavInputs</span>;
-        <span class="doccomment">/// No focusing toward this window with gamepad/keyboard navigation (e.g. skipped by</span>
-        <span class="doccomment">/// CTRL+TAB)</span>
-        <span class="kw">const</span> <span class="ident">NO_NAV_FOCUS</span> <span class="op">=</span> <span class="ident">sys::ImGuiWindowFlags_NoNavFocus</span>;
-        <span class="doccomment">/// Append &#39;*&#39; to title without affecting the ID, as a convenience</span>
-        <span class="kw">const</span> <span class="ident">UNSAVED_DOCUMENT</span> <span class="op">=</span> <span class="ident">sys::ImGuiWindowFlags_UnsavedDocument</span>;
-        <span class="doccomment">/// Disable gamepad/keyboard navigation and focusing.</span>
-        <span class="doccomment">///</span>
-        <span class="doccomment">/// Shorthand for `WindowFlags::NO_NAV_INPUTS | WindowFlags::NO_NAV_FOCUS`.</span>
-        <span class="kw">const</span> <span class="ident">NO_NAV</span> <span class="op">=</span> <span class="ident">sys::ImGuiWindowFlags_NoNav</span>;
-        <span class="doccomment">/// Disable all window decorations.</span>
-        <span class="doccomment">///</span>
-        <span class="doccomment">/// Shorthand for `WindowFlags::NO_TITLE_BAR | WindowFlags::NO_RESIZE |</span>
-        <span class="doccomment">/// WindowFlags::NO_SCROLLBAR | WindowFlags::NO_COLLAPSE`.</span>
-        <span class="kw">const</span> <span class="ident">NO_DECORATION</span> <span class="op">=</span> <span class="ident">sys::ImGuiWindowFlags_NoDecoration</span>;
-        <span class="doccomment">/// Don&#39;t handle input.</span>
-        <span class="doccomment">///</span>
-        <span class="doccomment">/// Shorthand for `WindowFlags::NO_MOUSE_INPUTS | WindowFlags::NO_NAV_INPUTS |</span>
-        <span class="doccomment">/// WindowFlags::NO_NAV_FOCUS`.</span>
-        <span class="kw">const</span> <span class="ident">NO_INPUTS</span> <span class="op">=</span> <span class="ident">sys::ImGuiWindowFlags_NoInputs</span>;
+<span class="macro">bitflags! </span>{
+    <span class="doccomment">/// Configuration flags for windows
+    </span><span class="attribute">#[repr(transparent)]
+    </span><span class="kw">pub struct </span>WindowFlags: u32 {
+        <span class="doccomment">/// Disable the title bar
+        </span><span class="kw">const </span>NO_TITLE_BAR = sys::ImGuiWindowFlags_NoTitleBar;
+        <span class="doccomment">/// Disable resizing with the lower-right grip
+        </span><span class="kw">const </span>NO_RESIZE = sys::ImGuiWindowFlags_NoResize;
+        <span class="doccomment">/// Disable moving the window
+        </span><span class="kw">const </span>NO_MOVE = sys::ImGuiWindowFlags_NoMove;
+        <span class="doccomment">/// Disable scrollbars (scrolling is still possible with the mouse or programmatically)
+        </span><span class="kw">const </span>NO_SCROLLBAR = sys::ImGuiWindowFlags_NoScrollbar;
+        <span class="doccomment">/// Disable vertical scrolling with the mouse wheel.
+        ///
+        /// On child window, the mouse wheel will be forwarded to the parent unless `NO_SCROLLBAR`
+        /// is also set.
+        </span><span class="kw">const </span>NO_SCROLL_WITH_MOUSE = sys::ImGuiWindowFlags_NoScrollWithMouse;
+        <span class="doccomment">/// Disable collapsing the window by double-clicking it
+        </span><span class="kw">const </span>NO_COLLAPSE = sys::ImGuiWindowFlags_NoCollapse;
+        <span class="doccomment">/// Resize the window to its content on every frame
+        </span><span class="kw">const </span>ALWAYS_AUTO_RESIZE = sys::ImGuiWindowFlags_AlwaysAutoResize;
+        <span class="doccomment">/// Disable drawing of background color and outside border
+        </span><span class="kw">const </span>NO_BACKGROUND = sys::ImGuiWindowFlags_NoBackground;
+        <span class="doccomment">/// Never load/save settings
+        </span><span class="kw">const </span>NO_SAVED_SETTINGS = sys::ImGuiWindowFlags_NoSavedSettings;
+        <span class="doccomment">/// Disable catching mouse input. Hovering test will pass through
+        </span><span class="kw">const </span>NO_MOUSE_INPUTS = sys::ImGuiWindowFlags_NoMouseInputs;
+        <span class="doccomment">/// Show a menu bar
+        </span><span class="kw">const </span>MENU_BAR = sys::ImGuiWindowFlags_MenuBar;
+        <span class="doccomment">/// Allow horizontal scrollbar to appear
+        </span><span class="kw">const </span>HORIZONTAL_SCROLLBAR = sys::ImGuiWindowFlags_HorizontalScrollbar;
+        <span class="doccomment">/// Disable taking focus when transitioning from hidden to visible state
+        </span><span class="kw">const </span>NO_FOCUS_ON_APPEARING = sys::ImGuiWindowFlags_NoFocusOnAppearing;
+        <span class="doccomment">/// Disable bringing window to front when taking focus (e.g. clicking it or
+        /// programmatically giving it focus)
+        </span><span class="kw">const </span>NO_BRING_TO_FRONT_ON_FOCUS = sys::ImGuiWindowFlags_NoBringToFrontOnFocus;
+        <span class="doccomment">/// Always show vertical scrollbar
+        </span><span class="kw">const </span>ALWAYS_VERTICAL_SCROLLBAR = sys::ImGuiWindowFlags_AlwaysVerticalScrollbar;
+        <span class="doccomment">/// Always show horizontal scrollbar
+        </span><span class="kw">const </span>ALWAYS_HORIZONTAL_SCROLLBAR = sys::ImGuiWindowFlags_AlwaysHorizontalScrollbar;
+        <span class="doccomment">/// Ensure child windows without border use `style.window_padding`
+        </span><span class="kw">const </span>ALWAYS_USE_WINDOW_PADDING = sys::ImGuiWindowFlags_AlwaysUseWindowPadding;
+        <span class="doccomment">/// Disable gamepad/keyboard navigation within the window
+        </span><span class="kw">const </span>NO_NAV_INPUTS = sys::ImGuiWindowFlags_NoNavInputs;
+        <span class="doccomment">/// No focusing toward this window with gamepad/keyboard navigation (e.g. skipped by
+        /// CTRL+TAB)
+        </span><span class="kw">const </span>NO_NAV_FOCUS = sys::ImGuiWindowFlags_NoNavFocus;
+        <span class="doccomment">/// Append &#39;*&#39; to title without affecting the ID, as a convenience
+        </span><span class="kw">const </span>UNSAVED_DOCUMENT = sys::ImGuiWindowFlags_UnsavedDocument;
+        <span class="doccomment">/// Disable gamepad/keyboard navigation and focusing.
+        ///
+        /// Shorthand for `WindowFlags::NO_NAV_INPUTS | WindowFlags::NO_NAV_FOCUS`.
+        </span><span class="kw">const </span>NO_NAV = sys::ImGuiWindowFlags_NoNav;
+        <span class="doccomment">/// Disable all window decorations.
+        ///
+        /// Shorthand for `WindowFlags::NO_TITLE_BAR | WindowFlags::NO_RESIZE |
+        /// WindowFlags::NO_SCROLLBAR | WindowFlags::NO_COLLAPSE`.
+        </span><span class="kw">const </span>NO_DECORATION = sys::ImGuiWindowFlags_NoDecoration;
+        <span class="doccomment">/// Don&#39;t handle input.
+        ///
+        /// Shorthand for `WindowFlags::NO_MOUSE_INPUTS | WindowFlags::NO_NAV_INPUTS |
+        /// WindowFlags::NO_NAV_FOCUS`.
+        </span><span class="kw">const </span>NO_INPUTS = sys::ImGuiWindowFlags_NoInputs;
     }
 }
 
-<span class="doccomment">/// # Window utilities</span>
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> <span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Returns true if the current window appeared during this frame</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;IsWindowAppearing&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_window_appearing</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igIsWindowAppearing</span>() }
+<span class="doccomment">/// # Window utilities
+</span><span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>&gt; Ui&lt;<span class="lifetime">&#39;ui</span>&gt; {
+    <span class="doccomment">/// Returns true if the current window appeared during this frame
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;IsWindowAppearing&quot;</span>)]
+    </span><span class="kw">pub fn </span>is_window_appearing(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        <span class="kw">unsafe </span>{ sys::igIsWindowAppearing() }
     }
-    <span class="doccomment">/// Returns true if the current window is in collapsed state (= only the title bar is visible)</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;IsWindowCollapsed&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_window_collapsed</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igIsWindowCollapsed</span>() }
+    <span class="doccomment">/// Returns true if the current window is in collapsed state (= only the title bar is visible)
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;IsWindowCollapsed&quot;</span>)]
+    </span><span class="kw">pub fn </span>is_window_collapsed(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        <span class="kw">unsafe </span>{ sys::igIsWindowCollapsed() }
     }
-    <span class="doccomment">/// Returns true if the current window is focused</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;IsWindowFocused&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_window_focused</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igIsWindowFocused</span>(<span class="number">0</span>) }
+    <span class="doccomment">/// Returns true if the current window is focused
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;IsWindowFocused&quot;</span>)]
+    </span><span class="kw">pub fn </span>is_window_focused(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        <span class="kw">unsafe </span>{ sys::igIsWindowFocused(<span class="number">0</span>) }
     }
-    <span class="doccomment">/// Returns true if the current window is focused based on the given flags</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;IsWindowFocused&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_window_focused_with_flags</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">flags</span>: <span class="ident">WindowFocusedFlags</span>) -&gt; <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igIsWindowFocused</span>(<span class="ident">flags</span>.<span class="ident">bits</span>() <span class="kw">as</span> <span class="ident">i32</span>) }
+    <span class="doccomment">/// Returns true if the current window is focused based on the given flags
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;IsWindowFocused&quot;</span>)]
+    </span><span class="kw">pub fn </span>is_window_focused_with_flags(<span class="kw-2">&amp;</span><span class="self">self</span>, flags: WindowFocusedFlags) -&gt; bool {
+        <span class="kw">unsafe </span>{ sys::igIsWindowFocused(flags.bits() <span class="kw">as </span>i32) }
     }
-    <span class="doccomment">/// Returns true if the current window is hovered</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;IsWindowHovered&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_window_hovered</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igIsWindowHovered</span>(<span class="number">0</span>) }
+    <span class="doccomment">/// Returns true if the current window is hovered
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;IsWindowHovered&quot;</span>)]
+    </span><span class="kw">pub fn </span>is_window_hovered(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        <span class="kw">unsafe </span>{ sys::igIsWindowHovered(<span class="number">0</span>) }
     }
-    <span class="doccomment">/// Returns true if the current window is hovered based on the given flags</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;IsWindowHovered&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_window_hovered_with_flags</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">flags</span>: <span class="ident">WindowHoveredFlags</span>) -&gt; <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igIsWindowHovered</span>(<span class="ident">flags</span>.<span class="ident">bits</span>() <span class="kw">as</span> <span class="ident">i32</span>) }
+    <span class="doccomment">/// Returns true if the current window is hovered based on the given flags
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;IsWindowHovered&quot;</span>)]
+    </span><span class="kw">pub fn </span>is_window_hovered_with_flags(<span class="kw-2">&amp;</span><span class="self">self</span>, flags: WindowHoveredFlags) -&gt; bool {
+        <span class="kw">unsafe </span>{ sys::igIsWindowHovered(flags.bits() <span class="kw">as </span>i32) }
     }
-    <span class="doccomment">/// Returns the position of the current window (in screen space)</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GetWindowPos&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">window_pos</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; [<span class="ident">f32</span>; <span class="number">2</span>] {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">out</span> <span class="op">=</span> <span class="ident">sys::ImVec2::zero</span>();
-        <span class="kw">unsafe</span> { <span class="ident">sys::igGetWindowPos</span>(<span class="kw-2">&amp;mut</span> <span class="ident">out</span>) };
-        <span class="ident">out</span>.<span class="ident">into</span>()
+    <span class="doccomment">/// Returns the position of the current window (in screen space)
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;GetWindowPos&quot;</span>)]
+    </span><span class="kw">pub fn </span>window_pos(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; [f32; <span class="number">2</span>] {
+        <span class="kw">let </span><span class="kw-2">mut </span>out = sys::ImVec2::zero();
+        <span class="kw">unsafe </span>{ sys::igGetWindowPos(<span class="kw-2">&amp;mut </span>out) };
+        out.into()
     }
-    <span class="doccomment">/// Returns the size of the current window</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GetWindowPos&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">window_size</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; [<span class="ident">f32</span>; <span class="number">2</span>] {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">out</span> <span class="op">=</span> <span class="ident">sys::ImVec2::zero</span>();
-        <span class="kw">unsafe</span> { <span class="ident">sys::igGetWindowSize</span>(<span class="kw-2">&amp;mut</span> <span class="ident">out</span>) };
-        <span class="ident">out</span>.<span class="ident">into</span>()
+    <span class="doccomment">/// Returns the size of the current window
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;GetWindowPos&quot;</span>)]
+    </span><span class="kw">pub fn </span>window_size(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; [f32; <span class="number">2</span>] {
+        <span class="kw">let </span><span class="kw-2">mut </span>out = sys::ImVec2::zero();
+        <span class="kw">unsafe </span>{ sys::igGetWindowSize(<span class="kw-2">&amp;mut </span>out) };
+        out.into()
     }
 }
 
-<span class="doccomment">/// Builder for a window</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>)]</span>
-<span class="attribute">#[<span class="ident">must_use</span>]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Window</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span><span class="op">&gt;</span> {
-    <span class="ident">name</span>: <span class="ident">T</span>,
-    <span class="ident">opened</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="kw-2">mut</span> <span class="ident">bool</span><span class="op">&gt;</span>,
-    <span class="ident">flags</span>: <span class="ident">WindowFlags</span>,
-    <span class="ident">pos</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-    <span class="ident">pos_cond</span>: <span class="ident">Condition</span>,
-    <span class="ident">pos_pivot</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-    <span class="ident">size</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-    <span class="ident">size_cond</span>: <span class="ident">Condition</span>,
-    <span class="ident">size_constraints</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span>([<span class="ident">f32</span>; <span class="number">2</span>], [<span class="ident">f32</span>; <span class="number">2</span>])<span class="op">&gt;</span>,
-    <span class="ident">content_size</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-    <span class="ident">collapsed</span>: <span class="ident">bool</span>,
-    <span class="ident">collapsed_cond</span>: <span class="ident">Condition</span>,
-    <span class="ident">focused</span>: <span class="ident">bool</span>,
-    <span class="ident">bg_alpha</span>: <span class="ident">f32</span>,
+<span class="doccomment">/// Builder for a window
+</span><span class="attribute">#[derive(Debug)]
+#[must_use]
+</span><span class="kw">pub struct </span>Window&lt;<span class="lifetime">&#39;a</span>, T&gt; {
+    name: T,
+    opened: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><span class="kw-2">mut </span>bool&gt;,
+    flags: WindowFlags,
+    pos: [f32; <span class="number">2</span>],
+    pos_cond: Condition,
+    pos_pivot: [f32; <span class="number">2</span>],
+    size: [f32; <span class="number">2</span>],
+    size_cond: Condition,
+    size_constraints: <span class="prelude-ty">Option</span>&lt;([f32; <span class="number">2</span>], [f32; <span class="number">2</span>])&gt;,
+    content_size: [f32; <span class="number">2</span>],
+    collapsed: bool,
+    collapsed_cond: Condition,
+    focused: bool,
+    bg_alpha: f32,
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="ident">Window</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Creates a new window builder with the given name</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">name</span>: <span class="ident">T</span>) -&gt; <span class="self">Self</span> {
-        <span class="ident">Window</span> {
-            <span class="ident">name</span>,
-            <span class="ident">opened</span>: <span class="prelude-val">None</span>,
-            <span class="ident">flags</span>: <span class="ident">WindowFlags::empty</span>(),
-            <span class="ident">pos</span>: [<span class="number">0.0</span>, <span class="number">0.0</span>],
-            <span class="ident">pos_cond</span>: <span class="ident">Condition::Never</span>,
-            <span class="ident">pos_pivot</span>: [<span class="number">0.0</span>, <span class="number">0.0</span>],
-            <span class="ident">size</span>: [<span class="number">0.0</span>, <span class="number">0.0</span>],
-            <span class="ident">size_cond</span>: <span class="ident">Condition::Never</span>,
-            <span class="ident">size_constraints</span>: <span class="prelude-val">None</span>,
-            <span class="ident">content_size</span>: [<span class="number">0.0</span>, <span class="number">0.0</span>],
-            <span class="ident">collapsed</span>: <span class="bool-val">false</span>,
-            <span class="ident">collapsed_cond</span>: <span class="ident">Condition::Never</span>,
-            <span class="ident">focused</span>: <span class="bool-val">false</span>,
-            <span class="ident">bg_alpha</span>: <span class="ident">f32::NAN</span>,
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>, T: AsRef&lt;str&gt;&gt; Window&lt;<span class="lifetime">&#39;a</span>, T&gt; {
+    <span class="doccomment">/// Creates a new window builder with the given name
+    </span><span class="kw">pub fn </span>new(name: T) -&gt; <span class="self">Self </span>{
+        Window {
+            name,
+            opened: <span class="prelude-val">None</span>,
+            flags: WindowFlags::empty(),
+            pos: [<span class="number">0.0</span>, <span class="number">0.0</span>],
+            pos_cond: Condition::Never,
+            pos_pivot: [<span class="number">0.0</span>, <span class="number">0.0</span>],
+            size: [<span class="number">0.0</span>, <span class="number">0.0</span>],
+            size_cond: Condition::Never,
+            size_constraints: <span class="prelude-val">None</span>,
+            content_size: [<span class="number">0.0</span>, <span class="number">0.0</span>],
+            collapsed: <span class="bool-val">false</span>,
+            collapsed_cond: Condition::Never,
+            focused: <span class="bool-val">false</span>,
+            bg_alpha: f32::NAN,
         }
     }
-    <span class="doccomment">/// Enables the window close button, which sets the passed boolean to false when clicked</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">opened</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">opened</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="kw-2">mut</span> <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">opened</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">opened</span>);
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Replace current window flags with the given value</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">flags</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">flags</span>: <span class="ident">WindowFlags</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span> <span class="op">=</span> <span class="ident">flags</span>;
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Sets the window position, which is applied based on the given condition value</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">position</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">position</span>: [<span class="ident">f32</span>; <span class="number">2</span>], <span class="ident">condition</span>: <span class="ident">Condition</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">pos</span> <span class="op">=</span> <span class="ident">position</span>;
-        <span class="self">self</span>.<span class="ident">pos_cond</span> <span class="op">=</span> <span class="ident">condition</span>;
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Sets the window position pivot, which can be used to adjust the alignment of the window</span>
-    <span class="doccomment">/// relative to the position.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// For example, pass [0.5, 0.5] to center the window on the position.</span>
-    <span class="doccomment">/// Does nothing if window position is not also set with `position()`.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">position_pivot</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">pivot</span>: [<span class="ident">f32</span>; <span class="number">2</span>]) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">pos_pivot</span> <span class="op">=</span> <span class="ident">pivot</span>;
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Sets the window size, which is applied based on the given condition value</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">size</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">size</span>: [<span class="ident">f32</span>; <span class="number">2</span>], <span class="ident">condition</span>: <span class="ident">Condition</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">size</span> <span class="op">=</span> <span class="ident">size</span>;
-        <span class="self">self</span>.<span class="ident">size_cond</span> <span class="op">=</span> <span class="ident">condition</span>;
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Sets window size constraints.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Use -1.0, -1.0 on either X or Y axis to preserve current size.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">size_constraints</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">size_min</span>: [<span class="ident">f32</span>; <span class="number">2</span>], <span class="ident">size_max</span>: [<span class="ident">f32</span>; <span class="number">2</span>]) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">size_constraints</span> <span class="op">=</span> <span class="prelude-val">Some</span>((<span class="ident">size_min</span>, <span class="ident">size_max</span>));
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Sets the window content size, which can be used to enforce scrollbars.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Does not include window decorations (title bar, menu bar, etc.). Set one of the values to</span>
-    <span class="doccomment">/// 0.0 to leave the size automatic.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">content_size</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">size</span>: [<span class="ident">f32</span>; <span class="number">2</span>]) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">content_size</span> <span class="op">=</span> <span class="ident">size</span>;
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Sets the window collapse state, which is applied based on the given condition value</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">collapsed</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">collapsed</span>: <span class="ident">bool</span>, <span class="ident">condition</span>: <span class="ident">Condition</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">collapsed</span> <span class="op">=</span> <span class="ident">collapsed</span>;
-        <span class="self">self</span>.<span class="ident">collapsed_cond</span> <span class="op">=</span> <span class="ident">condition</span>;
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Sets the window focused state, which can be used to bring the window to front</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">focused</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">focused</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">focused</span> <span class="op">=</span> <span class="ident">focused</span>;
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Sets the background color alpha value.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// See also `draw_background`</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">bg_alpha</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">bg_alpha</span>: <span class="ident">f32</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">bg_alpha</span> <span class="op">=</span> <span class="ident">bg_alpha</span>;
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Enables/disables the title bar.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Enabled by default.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">title_bar</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">WindowFlags::NO_TITLE_BAR</span>, <span class="op">!</span><span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Enables/disables resizing with the lower-right grip.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Enabled by default.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">resizable</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">WindowFlags::NO_RESIZE</span>, <span class="op">!</span><span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Enables/disables moving the window.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Enabled by default.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">movable</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">WindowFlags::NO_MOVE</span>, <span class="op">!</span><span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Enables/disables scrollbars (scrolling is still possible with the mouse or</span>
-    <span class="doccomment">/// programmatically).</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Enabled by default.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">scroll_bar</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">WindowFlags::NO_SCROLLBAR</span>, <span class="op">!</span><span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Enables/disables vertical scrolling with the mouse wheel.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Enabled by default.</span>
-    <span class="doccomment">/// When enabled, child windows forward the mouse wheel to the parent unless `NO_SCROLLBAR`</span>
-    <span class="doccomment">/// is also set.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">scrollable</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">WindowFlags::NO_SCROLL_WITH_MOUSE</span>, <span class="op">!</span><span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Enables/disables collapsing the window by double-clicking it.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Enabled by default.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">collapsible</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">WindowFlags::NO_COLLAPSE</span>, <span class="op">!</span><span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Enables/disables resizing the window to its content on every frame.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Disabled by default.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">always_auto_resize</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">WindowFlags::ALWAYS_AUTO_RESIZE</span>, <span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Enables/disables drawing of background color and outside border.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Enabled by default.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">draw_background</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">WindowFlags::NO_BACKGROUND</span>, <span class="op">!</span><span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Enables/disables loading and saving of settings (e.g. from/to an .ini file).</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Enabled by default.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">save_settings</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">WindowFlags::NO_SAVED_SETTINGS</span>, <span class="op">!</span><span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Enables/disables catching mouse input.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Enabled by default.</span>
-    <span class="doccomment">/// Note: Hovering test will pass through when disabled</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">mouse_inputs</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">WindowFlags::NO_MOUSE_INPUTS</span>, <span class="op">!</span><span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Enables/disables the menu bar.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Disabled by default.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">menu_bar</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">WindowFlags::MENU_BAR</span>, <span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Enables/disables the horizontal scrollbar.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Disabled by default.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">horizontal_scrollbar</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">WindowFlags::HORIZONTAL_SCROLLBAR</span>, <span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Enables/disables taking focus when transitioning from hidden to visible state.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Enabled by default.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">focus_on_appearing</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">WindowFlags::NO_FOCUS_ON_APPEARING</span>, <span class="op">!</span><span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Enables/disables bringing the window to front when taking focus (e.g. clicking it or</span>
-    <span class="doccomment">/// programmatically giving it focus).</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Enabled by default.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">bring_to_front_on_focus</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>
-            .<span class="ident">set</span>(<span class="ident">WindowFlags::NO_BRING_TO_FRONT_ON_FOCUS</span>, <span class="op">!</span><span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// When enabled, forces the vertical scrollbar to render regardless of the content size.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Disabled by default.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">always_vertical_scrollbar</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>
-            .<span class="ident">set</span>(<span class="ident">WindowFlags::ALWAYS_VERTICAL_SCROLLBAR</span>, <span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// When enabled, forces the horizontal scrollbar to render regardless of the content size.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Disabled by default.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">always_horizontal_scrollbar</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>
-            .<span class="ident">set</span>(<span class="ident">WindowFlags::ALWAYS_HORIZONTAL_SCROLLBAR</span>, <span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// When enabled, ensures child windows without border use `style.window_padding`.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Disabled by default.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">always_use_window_padding</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>
-            .<span class="ident">set</span>(<span class="ident">WindowFlags::ALWAYS_USE_WINDOW_PADDING</span>, <span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Enables/disables gamepad/keyboard navigation within the window.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Enabled by default.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">nav_inputs</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">WindowFlags::NO_NAV_INPUTS</span>, <span class="op">!</span><span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Enables/disables focusing toward this window with gamepad/keyboard navigation (e.g.</span>
-    <span class="doccomment">/// CTRL+TAB).</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Enabled by default.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">nav_focus</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">WindowFlags::NO_NAV_FOCUS</span>, <span class="op">!</span><span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// When enabled, appends &#39;*&#39; to title without affecting the ID, as a convenience.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Disabled by default.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">unsaved_document</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">WindowFlags::UNSAVED_DOCUMENT</span>, <span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Disable gamepad/keyboard navigation and focusing.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Shorthand for</span>
-    <span class="doccomment">/// ```text</span>
-    <span class="doccomment">/// .nav_inputs(false)</span>
-    <span class="doccomment">/// .nav_focus(false)</span>
-    <span class="doccomment">/// ```</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">no_nav</span>(<span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span> <span class="op">|</span><span class="op">=</span> <span class="ident">WindowFlags::NO_NAV</span>;
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Disable all window decorations.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Shorthand for</span>
-    <span class="doccomment">/// ```text</span>
-    <span class="doccomment">/// .title_bar(false)</span>
-    <span class="doccomment">/// .resizable(false)</span>
-    <span class="doccomment">/// .scroll_bar(false)</span>
-    <span class="doccomment">/// .collapsible(false)</span>
-    <span class="doccomment">/// ```</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">no_decoration</span>(<span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span> <span class="op">|</span><span class="op">=</span> <span class="ident">WindowFlags::NO_DECORATION</span>;
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Don&#39;t handle input.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Shorthand for</span>
-    <span class="doccomment">/// ```text</span>
-    <span class="doccomment">/// .mouse_inputs(false)</span>
-    <span class="doccomment">/// .nav_inputs(false)</span>
-    <span class="doccomment">/// .nav_focus(false)</span>
-    <span class="doccomment">/// ```</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">no_inputs</span>(<span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span> <span class="op">|</span><span class="op">=</span> <span class="ident">WindowFlags::NO_INPUTS</span>;
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Creates a window and starts appending to it.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Returns `Some(WindowToken)` if the window is visible. After content has been</span>
-    <span class="doccomment">/// rendered, the token must be ended by calling `.end()`.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Returns `None` if the window is not visible and no content should be rendered.</span>
-    <span class="attribute">#[<span class="ident">must_use</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">begin</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">ui</span>: <span class="kw-2">&amp;</span><span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">WindowToken</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="kw">if</span> <span class="self">self</span>.<span class="ident">pos_cond</span> <span class="op">!</span><span class="op">=</span> <span class="ident">Condition::Never</span> {
-            <span class="kw">unsafe</span> {
-                <span class="ident">sys::igSetNextWindowPos</span>(
-                    <span class="self">self</span>.<span class="ident">pos</span>.<span class="ident">into</span>(),
-                    <span class="self">self</span>.<span class="ident">pos_cond</span> <span class="kw">as</span> <span class="ident">i32</span>,
-                    <span class="self">self</span>.<span class="ident">pos_pivot</span>.<span class="ident">into</span>(),
+    <span class="doccomment">/// Enables the window close button, which sets the passed boolean to false when clicked
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>opened(<span class="kw-2">mut </span><span class="self">self</span>, opened: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><span class="kw-2">mut </span>bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.opened = <span class="prelude-val">Some</span>(opened);
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Replace current window flags with the given value
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>flags(<span class="kw-2">mut </span><span class="self">self</span>, flags: WindowFlags) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags = flags;
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Sets the window position, which is applied based on the given condition value
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>position(<span class="kw-2">mut </span><span class="self">self</span>, position: [f32; <span class="number">2</span>], condition: Condition) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.pos = position;
+        <span class="self">self</span>.pos_cond = condition;
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Sets the window position pivot, which can be used to adjust the alignment of the window
+    /// relative to the position.
+    ///
+    /// For example, pass [0.5, 0.5] to center the window on the position.
+    /// Does nothing if window position is not also set with `position()`.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>position_pivot(<span class="kw-2">mut </span><span class="self">self</span>, pivot: [f32; <span class="number">2</span>]) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.pos_pivot = pivot;
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Sets the window size, which is applied based on the given condition value
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>size(<span class="kw-2">mut </span><span class="self">self</span>, size: [f32; <span class="number">2</span>], condition: Condition) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.size = size;
+        <span class="self">self</span>.size_cond = condition;
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Sets window size constraints.
+    ///
+    /// Use -1.0, -1.0 on either X or Y axis to preserve current size.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>size_constraints(<span class="kw-2">mut </span><span class="self">self</span>, size_min: [f32; <span class="number">2</span>], size_max: [f32; <span class="number">2</span>]) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.size_constraints = <span class="prelude-val">Some</span>((size_min, size_max));
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Sets the window content size, which can be used to enforce scrollbars.
+    ///
+    /// Does not include window decorations (title bar, menu bar, etc.). Set one of the values to
+    /// 0.0 to leave the size automatic.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>content_size(<span class="kw-2">mut </span><span class="self">self</span>, size: [f32; <span class="number">2</span>]) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.content_size = size;
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Sets the window collapse state, which is applied based on the given condition value
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>collapsed(<span class="kw-2">mut </span><span class="self">self</span>, collapsed: bool, condition: Condition) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.collapsed = collapsed;
+        <span class="self">self</span>.collapsed_cond = condition;
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Sets the window focused state, which can be used to bring the window to front
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>focused(<span class="kw-2">mut </span><span class="self">self</span>, focused: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.focused = focused;
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Sets the background color alpha value.
+    ///
+    /// See also `draw_background`
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>bg_alpha(<span class="kw-2">mut </span><span class="self">self</span>, bg_alpha: f32) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.bg_alpha = bg_alpha;
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Enables/disables the title bar.
+    ///
+    /// Enabled by default.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>title_bar(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(WindowFlags::NO_TITLE_BAR, !value);
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Enables/disables resizing with the lower-right grip.
+    ///
+    /// Enabled by default.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>resizable(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(WindowFlags::NO_RESIZE, !value);
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Enables/disables moving the window.
+    ///
+    /// Enabled by default.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>movable(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(WindowFlags::NO_MOVE, !value);
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Enables/disables scrollbars (scrolling is still possible with the mouse or
+    /// programmatically).
+    ///
+    /// Enabled by default.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>scroll_bar(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(WindowFlags::NO_SCROLLBAR, !value);
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Enables/disables vertical scrolling with the mouse wheel.
+    ///
+    /// Enabled by default.
+    /// When enabled, child windows forward the mouse wheel to the parent unless `NO_SCROLLBAR`
+    /// is also set.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>scrollable(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(WindowFlags::NO_SCROLL_WITH_MOUSE, !value);
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Enables/disables collapsing the window by double-clicking it.
+    ///
+    /// Enabled by default.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>collapsible(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(WindowFlags::NO_COLLAPSE, !value);
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Enables/disables resizing the window to its content on every frame.
+    ///
+    /// Disabled by default.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>always_auto_resize(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(WindowFlags::ALWAYS_AUTO_RESIZE, value);
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Enables/disables drawing of background color and outside border.
+    ///
+    /// Enabled by default.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>draw_background(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(WindowFlags::NO_BACKGROUND, !value);
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Enables/disables loading and saving of settings (e.g. from/to an .ini file).
+    ///
+    /// Enabled by default.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>save_settings(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(WindowFlags::NO_SAVED_SETTINGS, !value);
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Enables/disables catching mouse input.
+    ///
+    /// Enabled by default.
+    /// Note: Hovering test will pass through when disabled
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>mouse_inputs(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(WindowFlags::NO_MOUSE_INPUTS, !value);
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Enables/disables the menu bar.
+    ///
+    /// Disabled by default.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>menu_bar(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(WindowFlags::MENU_BAR, value);
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Enables/disables the horizontal scrollbar.
+    ///
+    /// Disabled by default.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>horizontal_scrollbar(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(WindowFlags::HORIZONTAL_SCROLLBAR, value);
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Enables/disables taking focus when transitioning from hidden to visible state.
+    ///
+    /// Enabled by default.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>focus_on_appearing(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(WindowFlags::NO_FOCUS_ON_APPEARING, !value);
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Enables/disables bringing the window to front when taking focus (e.g. clicking it or
+    /// programmatically giving it focus).
+    ///
+    /// Enabled by default.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>bring_to_front_on_focus(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags
+            .set(WindowFlags::NO_BRING_TO_FRONT_ON_FOCUS, !value);
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// When enabled, forces the vertical scrollbar to render regardless of the content size.
+    ///
+    /// Disabled by default.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>always_vertical_scrollbar(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags
+            .set(WindowFlags::ALWAYS_VERTICAL_SCROLLBAR, value);
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// When enabled, forces the horizontal scrollbar to render regardless of the content size.
+    ///
+    /// Disabled by default.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>always_horizontal_scrollbar(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags
+            .set(WindowFlags::ALWAYS_HORIZONTAL_SCROLLBAR, value);
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// When enabled, ensures child windows without border use `style.window_padding`.
+    ///
+    /// Disabled by default.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>always_use_window_padding(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags
+            .set(WindowFlags::ALWAYS_USE_WINDOW_PADDING, value);
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Enables/disables gamepad/keyboard navigation within the window.
+    ///
+    /// Enabled by default.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>nav_inputs(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(WindowFlags::NO_NAV_INPUTS, !value);
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Enables/disables focusing toward this window with gamepad/keyboard navigation (e.g.
+    /// CTRL+TAB).
+    ///
+    /// Enabled by default.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>nav_focus(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(WindowFlags::NO_NAV_FOCUS, !value);
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// When enabled, appends &#39;*&#39; to title without affecting the ID, as a convenience.
+    ///
+    /// Disabled by default.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>unsaved_document(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(WindowFlags::UNSAVED_DOCUMENT, value);
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Disable gamepad/keyboard navigation and focusing.
+    ///
+    /// Shorthand for
+    /// ```text
+    /// .nav_inputs(false)
+    /// .nav_focus(false)
+    /// ```
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>no_nav(<span class="kw-2">mut </span><span class="self">self</span>) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags |= WindowFlags::NO_NAV;
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Disable all window decorations.
+    ///
+    /// Shorthand for
+    /// ```text
+    /// .title_bar(false)
+    /// .resizable(false)
+    /// .scroll_bar(false)
+    /// .collapsible(false)
+    /// ```
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>no_decoration(<span class="kw-2">mut </span><span class="self">self</span>) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags |= WindowFlags::NO_DECORATION;
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Don&#39;t handle input.
+    ///
+    /// Shorthand for
+    /// ```text
+    /// .mouse_inputs(false)
+    /// .nav_inputs(false)
+    /// .nav_focus(false)
+    /// ```
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>no_inputs(<span class="kw-2">mut </span><span class="self">self</span>) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags |= WindowFlags::NO_INPUTS;
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Creates a window and starts appending to it.
+    ///
+    /// Returns `Some(WindowToken)` if the window is visible. After content has been
+    /// rendered, the token must be ended by calling `.end()`.
+    ///
+    /// Returns `None` if the window is not visible and no content should be rendered.
+    </span><span class="attribute">#[must_use]
+    </span><span class="kw">pub fn </span>begin&lt;<span class="lifetime">&#39;ui</span>&gt;(<span class="self">self</span>, ui: <span class="kw-2">&amp;</span>Ui&lt;<span class="lifetime">&#39;ui</span>&gt;) -&gt; <span class="prelude-ty">Option</span>&lt;WindowToken&lt;<span class="lifetime">&#39;ui</span>&gt;&gt; {
+        <span class="kw">if </span><span class="self">self</span>.pos_cond != Condition::Never {
+            <span class="kw">unsafe </span>{
+                sys::igSetNextWindowPos(
+                    <span class="self">self</span>.pos.into(),
+                    <span class="self">self</span>.pos_cond <span class="kw">as </span>i32,
+                    <span class="self">self</span>.pos_pivot.into(),
                 )
             };
         }
-        <span class="kw">if</span> <span class="self">self</span>.<span class="ident">size_cond</span> <span class="op">!</span><span class="op">=</span> <span class="ident">Condition::Never</span> {
-            <span class="kw">unsafe</span> { <span class="ident">sys::igSetNextWindowSize</span>(<span class="self">self</span>.<span class="ident">size</span>.<span class="ident">into</span>(), <span class="self">self</span>.<span class="ident">size_cond</span> <span class="kw">as</span> <span class="ident">i32</span>) };
+        <span class="kw">if </span><span class="self">self</span>.size_cond != Condition::Never {
+            <span class="kw">unsafe </span>{ sys::igSetNextWindowSize(<span class="self">self</span>.size.into(), <span class="self">self</span>.size_cond <span class="kw">as </span>i32) };
         }
-        <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>((<span class="ident">size_min</span>, <span class="ident">size_max</span>)) <span class="op">=</span> <span class="self">self</span>.<span class="ident">size_constraints</span> {
-            <span class="comment">// TODO: callback support</span>
-            <span class="kw">unsafe</span> {
-                <span class="ident">sys::igSetNextWindowSizeConstraints</span>(
-                    <span class="ident">size_min</span>.<span class="ident">into</span>(),
-                    <span class="ident">size_max</span>.<span class="ident">into</span>(),
+        <span class="kw">if let </span><span class="prelude-val">Some</span>((size_min, size_max)) = <span class="self">self</span>.size_constraints {
+            <span class="comment">// TODO: callback support
+            </span><span class="kw">unsafe </span>{
+                sys::igSetNextWindowSizeConstraints(
+                    size_min.into(),
+                    size_max.into(),
                     <span class="prelude-val">None</span>,
-                    <span class="ident">ptr::null_mut</span>(),
+                    ptr::null_mut(),
                 )
             };
         }
-        <span class="kw">if</span> <span class="self">self</span>.<span class="ident">content_size</span>[<span class="number">0</span>] <span class="op">!</span><span class="op">=</span> <span class="number">0.0</span> <span class="op">|</span><span class="op">|</span> <span class="self">self</span>.<span class="ident">content_size</span>[<span class="number">1</span>] <span class="op">!</span><span class="op">=</span> <span class="number">0.0</span> {
-            <span class="kw">unsafe</span> { <span class="ident">sys::igSetNextWindowContentSize</span>(<span class="self">self</span>.<span class="ident">content_size</span>.<span class="ident">into</span>()) };
+        <span class="kw">if </span><span class="self">self</span>.content_size[<span class="number">0</span>] != <span class="number">0.0 </span>|| <span class="self">self</span>.content_size[<span class="number">1</span>] != <span class="number">0.0 </span>{
+            <span class="kw">unsafe </span>{ sys::igSetNextWindowContentSize(<span class="self">self</span>.content_size.into()) };
         }
-        <span class="kw">if</span> <span class="self">self</span>.<span class="ident">collapsed_cond</span> <span class="op">!</span><span class="op">=</span> <span class="ident">Condition::Never</span> {
-            <span class="kw">unsafe</span> { <span class="ident">sys::igSetNextWindowCollapsed</span>(<span class="self">self</span>.<span class="ident">collapsed</span>, <span class="self">self</span>.<span class="ident">collapsed_cond</span> <span class="kw">as</span> <span class="ident">i32</span>) };
+        <span class="kw">if </span><span class="self">self</span>.collapsed_cond != Condition::Never {
+            <span class="kw">unsafe </span>{ sys::igSetNextWindowCollapsed(<span class="self">self</span>.collapsed, <span class="self">self</span>.collapsed_cond <span class="kw">as </span>i32) };
         }
-        <span class="kw">if</span> <span class="self">self</span>.<span class="ident">focused</span> {
-            <span class="kw">unsafe</span> { <span class="ident">sys::igSetNextWindowFocus</span>() };
+        <span class="kw">if </span><span class="self">self</span>.focused {
+            <span class="kw">unsafe </span>{ sys::igSetNextWindowFocus() };
         }
-        <span class="kw">if</span> <span class="self">self</span>.<span class="ident">bg_alpha</span>.<span class="ident">is_finite</span>() {
-            <span class="kw">unsafe</span> { <span class="ident">sys::igSetNextWindowBgAlpha</span>(<span class="self">self</span>.<span class="ident">bg_alpha</span>) };
+        <span class="kw">if </span><span class="self">self</span>.bg_alpha.is_finite() {
+            <span class="kw">unsafe </span>{ sys::igSetNextWindowBgAlpha(<span class="self">self</span>.bg_alpha) };
         }
-        <span class="kw">let</span> <span class="ident">should_render</span> <span class="op">=</span> <span class="kw">unsafe</span> {
-            <span class="ident">sys::igBegin</span>(
-                <span class="ident">ui</span>.<span class="ident">scratch_txt</span>(<span class="self">self</span>.<span class="ident">name</span>),
-                <span class="self">self</span>.<span class="ident">opened</span>
-                    .<span class="ident">map</span>(<span class="op">|</span><span class="ident">x</span><span class="op">|</span> <span class="ident">x</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">bool</span>)
-                    .<span class="ident">unwrap_or</span>(<span class="ident">ptr::null_mut</span>()),
-                <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">bits</span>() <span class="kw">as</span> <span class="ident">i32</span>,
+        <span class="kw">let </span>should_render = <span class="kw">unsafe </span>{
+            sys::igBegin(
+                ui.scratch_txt(<span class="self">self</span>.name),
+                <span class="self">self</span>.opened
+                    .map(|x| x <span class="kw">as </span><span class="kw-2">*mut </span>bool)
+                    .unwrap_or(ptr::null_mut()),
+                <span class="self">self</span>.flags.bits() <span class="kw">as </span>i32,
             )
         };
-        <span class="kw">if</span> <span class="ident">should_render</span> {
-            <span class="prelude-val">Some</span>(<span class="ident">WindowToken::new</span>(<span class="ident">ui</span>))
-        } <span class="kw">else</span> {
-            <span class="kw">unsafe</span> { <span class="ident">sys::igEnd</span>() };
-            <span class="prelude-val">None</span>
-        }
+        <span class="kw">if </span>should_render {
+            <span class="prelude-val">Some</span>(WindowToken::new(ui))
+        } <span class="kw">else </span>{
+            <span class="kw">unsafe </span>{ sys::igEnd() };
+            <span class="prelude-val">None
+        </span>}
     }
-    <span class="doccomment">/// Creates a window and runs a closure to construct the contents.</span>
-    <span class="doccomment">/// Returns the result of the closure, if it is called.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Note: the closure is not called if no window content is visible (e.g. window is collapsed</span>
-    <span class="doccomment">/// or fully clipped).</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build</span><span class="op">&lt;</span><span class="ident">R</span>, <span class="ident">F</span>: <span class="ident">FnOnce</span>() -&gt; <span class="ident">R</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">ui</span>: <span class="kw-2">&amp;</span><span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>, <span class="ident">f</span>: <span class="ident">F</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">R</span><span class="op">&gt;</span> {
-        <span class="self">self</span>.<span class="ident">begin</span>(<span class="ident">ui</span>).<span class="ident">map</span>(<span class="op">|</span><span class="ident">_window</span><span class="op">|</span> <span class="ident">f</span>())
+    <span class="doccomment">/// Creates a window and runs a closure to construct the contents.
+    /// Returns the result of the closure, if it is called.
+    ///
+    /// Note: the closure is not called if no window content is visible (e.g. window is collapsed
+    /// or fully clipped).
+    </span><span class="kw">pub fn </span>build&lt;R, F: FnOnce() -&gt; R&gt;(<span class="self">self</span>, ui: <span class="kw-2">&amp;</span>Ui&lt;<span class="lifetime">&#39;_</span>&gt;, f: F) -&gt; <span class="prelude-ty">Option</span>&lt;R&gt; {
+        <span class="self">self</span>.begin(ui).map(|_window| f())
     }
 }
 
 <span class="macro">create_token!</span>(
-    <span class="doccomment">/// Tracks a window that can be ended by calling `.end()`</span>
-    <span class="doccomment">/// or by dropping.</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">WindowToken</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>;
+    <span class="doccomment">/// Tracks a window that can be ended by calling `.end()`
+    /// or by dropping.
+    </span><span class="kw">pub struct </span>WindowToken&lt;<span class="lifetime">&#39;ui</span>&gt;;
 
-    <span class="doccomment">/// Ends a window</span>
-    <span class="ident">drop</span> { <span class="ident">sys::igEnd</span>() }
+    <span class="doccomment">/// Ends a window
+    </span>drop { sys::igEnd() }
 );
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="arcdps_imgui" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="arcdps_imgui" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.0 (69f9c33d7 2022-12-12)" ></div></body></html>

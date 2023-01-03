@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `core\src\extras\user.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>user.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../arcdps/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../arcdps/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../arcdps/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `arcdps\src\extras\user.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>user.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../normalize.css"><link rel="stylesheet" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../ayu.css" disabled><link rel="stylesheet" href="../../../dark.css" disabled><link rel="stylesheet" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../../arcdps/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -148,155 +148,155 @@
 <span id="148">148</span>
 <span id="149">149</span>
 <span id="150">150</span>
-</pre><pre class="rust"><code><span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::util::str_from_cstr</span>;
-<span class="kw">use</span> <span class="ident">num_enum</span>::{<span class="ident">IntoPrimitive</span>, <span class="ident">TryFromPrimitive</span>};
-<span class="kw">use</span> <span class="ident">std::os::raw::c_char</span>;
-<span class="kw">use</span> <span class="ident">std</span>::{<span class="ident">iter::Map</span>, <span class="ident">slice</span>};
+</pre><pre class="rust"><code><span class="kw">use </span><span class="kw">crate</span>::util::{str_from_cstr, strip_account_prefix};
+<span class="kw">use </span>num_enum::{IntoPrimitive, TryFromPrimitive};
+<span class="kw">use </span>std::os::raw::c_char;
+<span class="kw">use </span>std::{iter::Map, slice};
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>)]</span>
-<span class="kw">use</span> <span class="ident">serde</span>::{<span class="ident">Deserialize</span>, <span class="ident">Serialize</span>};
+<span class="attribute">#[cfg(feature = <span class="string">&quot;serde&quot;</span>)]
+</span><span class="kw">use </span>serde::{Deserialize, Serialize};
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;strum&quot;</span>)]</span>
-<span class="kw">use</span> <span class="ident">strum</span>::{<span class="ident">Display</span>, <span class="ident">EnumCount</span>, <span class="ident">EnumIter</span>, <span class="ident">EnumVariantNames</span>, <span class="ident">IntoStaticStr</span>};
+<span class="attribute">#[cfg(feature = <span class="string">&quot;strum&quot;</span>)]
+</span><span class="kw">use </span>strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
 
-<span class="doccomment">/// Role of a user in the squad.</span>
-<span class="attribute">#[<span class="ident">derive</span>(
-    <span class="ident">Debug</span>, <span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>, <span class="ident">Hash</span>, <span class="ident">IntoPrimitive</span>, <span class="ident">TryFromPrimitive</span>,
-)]</span>
-<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>, <span class="ident">derive</span>(<span class="ident">Serialize</span>, <span class="ident">Deserialize</span>))]</span>
-<span class="attribute">#[<span class="ident">cfg_attr</span>(
-    <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;strum&quot;</span>,
-    <span class="ident">derive</span>(<span class="ident">Display</span>, <span class="ident">EnumCount</span>, <span class="ident">EnumIter</span>, <span class="ident">IntoStaticStr</span>, <span class="ident">EnumVariantNames</span>)
-)]</span>
-<span class="attribute">#[<span class="ident">repr</span>(<span class="ident">u8</span>)]</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">UserRole</span> {
-    <span class="doccomment">/// User is leader (commander tag).</span>
-    <span class="ident">SquadLeader</span> <span class="op">=</span> <span class="number">0</span>,
+<span class="doccomment">/// Role of a user in the squad.
+</span><span class="attribute">#[derive(
+    Debug, Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, TryFromPrimitive,
+)]
+#[cfg_attr(feature = <span class="string">&quot;serde&quot;</span>, derive(Serialize, Deserialize))]
+#[cfg_attr(
+    feature = <span class="string">&quot;strum&quot;</span>,
+    derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames)
+)]
+#[repr(u8)]
+</span><span class="kw">pub enum </span>UserRole {
+    <span class="doccomment">/// User is leader (commander tag).
+    </span>SquadLeader = <span class="number">0</span>,
 
-    <span class="doccomment">/// User is lieutenant.</span>
-    <span class="ident">Lieutenant</span> <span class="op">=</span> <span class="number">1</span>,
+    <span class="doccomment">/// User is lieutenant.
+    </span>Lieutenant = <span class="number">1</span>,
 
-    <span class="doccomment">/// User is regular member.</span>
-    <span class="ident">Member</span> <span class="op">=</span> <span class="number">2</span>,
+    <span class="doccomment">/// User is regular member.
+    </span>Member = <span class="number">2</span>,
 
-    <span class="doccomment">/// User is invited.</span>
-    <span class="ident">Invited</span> <span class="op">=</span> <span class="number">3</span>,
+    <span class="doccomment">/// User is invited.
+    </span>Invited = <span class="number">3</span>,
 
-    <span class="doccomment">/// User has requested to join.</span>
-    <span class="ident">Applied</span> <span class="op">=</span> <span class="number">4</span>,
+    <span class="doccomment">/// User has requested to join.
+    </span>Applied = <span class="number">4</span>,
 
-    <span class="doccomment">/// User has left.</span>
-    <span class="prelude-val">None</span> <span class="op">=</span> <span class="number">5</span>,
+    <span class="doccomment">/// User has left.
+    </span><span class="prelude-val">None </span>= <span class="number">5</span>,
 
-    <span class="doccomment">/// Internal only.</span>
-    <span class="ident">Invalid</span> <span class="op">=</span> <span class="number">6</span>,
+    <span class="doccomment">/// Internal only.
+    </span>Invalid = <span class="number">6</span>,
 }
 
-<span class="doccomment">/// Information about a player related to the squad.</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">UserInfo</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Account name, without leading &#39;:&#39;.</span>
-    <span class="kw">pub</span> <span class="ident">account_name</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span><span class="op">&gt;</span>,
+<span class="doccomment">/// Information about a player related to the squad.
+</span><span class="attribute">#[derive(Debug, Clone)]
+</span><span class="kw">pub struct </span>UserInfo&lt;<span class="lifetime">&#39;a</span>&gt; {
+    <span class="doccomment">/// Account name, without leading &#39;:&#39;.
+    </span><span class="kw">pub </span>account_name: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>str&gt;,
 
-    <span class="doccomment">/// Unix timestamp when the user joined the squad.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// `0` if time could not be determined.</span>
-    <span class="kw">pub</span> <span class="ident">join_time</span>: <span class="ident">u64</span>,
+    <span class="doccomment">/// Unix timestamp when the user joined the squad.
+    ///
+    /// `0` if time could not be determined.
+    </span><span class="kw">pub </span>join_time: u64,
 
-    <span class="doccomment">/// Role in squad, or [`UserRole::None`] if the user was removed from the squad.</span>
-    <span class="kw">pub</span> <span class="ident">role</span>: <span class="ident">UserRole</span>,
+    <span class="doccomment">/// Role in squad, or [`UserRole::None`] if the user was removed from the squad.
+    </span><span class="kw">pub </span>role: UserRole,
 
-    <span class="doccomment">/// Subgroup the user is in.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// `0` when no subgroup could be found, which is either the first subgroup or no subgroup.</span>
-    <span class="kw">pub</span> <span class="ident">subgroup</span>: <span class="ident">u8</span>,
+    <span class="doccomment">/// Subgroup the user is in.
+    ///
+    /// `0` when no subgroup could be found, which is either the first subgroup or no subgroup.
+    </span><span class="kw">pub </span>subgroup: u8,
 
-    <span class="doccomment">/// Whether this player is ready or not (in a squad ready check).</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ### Remarks</span>
-    <span class="doccomment">/// `role` set to [`UserRole::SquadLeader`] and `ready_status == true` implies that a ready check was just started.</span>
-    <span class="doccomment">/// Similarly, `role` set to [`UserRole::SquadLeader`] and `ready_status == false` implies that a ready check either finished or was cancelled.</span>
-    <span class="doccomment">/// If everyone in the squad had an event sent with `ready_status == true` then that means that the ready check finished successfully.</span>
-    <span class="doccomment">/// After which there will be events sent for each user where their `ready_status == false`.</span>
-    <span class="kw">pub</span> <span class="ident">ready_status</span>: <span class="ident">bool</span>,
+    <span class="doccomment">/// Whether this player is ready or not (in a squad ready check).
+    ///
+    /// ### Remarks
+    /// `role` set to [`UserRole::SquadLeader`] and `ready_status == true` implies that a ready check was just started.
+    /// Similarly, `role` set to [`UserRole::SquadLeader`] and `ready_status == false` implies that a ready check either finished or was cancelled.
+    /// If everyone in the squad had an event sent with `ready_status == true` then that means that the ready check finished successfully.
+    /// After which there will be events sent for each user where their `ready_status == false`.
+    </span><span class="kw">pub </span>ready_status: bool,
 }
 
-<span class="kw">impl</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">RawUserInfo</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">UserInfo</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">raw</span>: <span class="ident">RawUserInfo</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">Self</span> {
-            <span class="ident">account_name</span>: <span class="kw">unsafe</span> { <span class="ident">str_from_cstr</span>(<span class="ident">raw</span>.<span class="ident">account_name</span>) },
-            <span class="ident">join_time</span>: <span class="ident">raw</span>.<span class="ident">join_time</span>,
-            <span class="ident">role</span>: <span class="ident">raw</span>.<span class="ident">role</span>,
-            <span class="ident">subgroup</span>: <span class="ident">raw</span>.<span class="ident">subgroup</span>,
-            <span class="ident">ready_status</span>: <span class="ident">raw</span>.<span class="ident">ready_status</span>,
+<span class="kw">impl </span>From&lt;RawUserInfo&gt; <span class="kw">for </span>UserInfo&lt;<span class="lifetime">&#39;_</span>&gt; {
+    <span class="kw">fn </span>from(raw: RawUserInfo) -&gt; <span class="self">Self </span>{
+        <span class="self">Self </span>{
+            account_name: <span class="kw">unsafe </span>{ str_from_cstr(raw.account_name).map(strip_account_prefix) },
+            join_time: raw.join_time,
+            role: raw.role,
+            subgroup: raw.subgroup,
+            ready_status: raw.ready_status,
         }
     }
 }
 
-<span class="doccomment">/// Information about a user with owned [`String`].</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>)]</span>
-<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>, <span class="ident">derive</span>(<span class="ident">Serialize</span>, <span class="ident">Deserialize</span>))]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">UserInfoOwned</span> {
-    <span class="doccomment">/// Account name, without leading &#39;:&#39;.</span>
-    <span class="kw">pub</span> <span class="ident">account_name</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>,
+<span class="doccomment">/// Information about a user with owned [`String`].
+</span><span class="attribute">#[derive(Debug, Clone)]
+#[cfg_attr(feature = <span class="string">&quot;serde&quot;</span>, derive(Serialize, Deserialize))]
+</span><span class="kw">pub struct </span>UserInfoOwned {
+    <span class="doccomment">/// Account name, without leading &#39;:&#39;.
+    </span><span class="kw">pub </span>account_name: <span class="prelude-ty">Option</span>&lt;String&gt;,
 
-    <span class="doccomment">/// Unix timestamp when the user joined the squad.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// `0` if time could not be determined.</span>
-    <span class="kw">pub</span> <span class="ident">join_time</span>: <span class="ident">u64</span>,
+    <span class="doccomment">/// Unix timestamp when the user joined the squad.
+    ///
+    /// `0` if time could not be determined.
+    </span><span class="kw">pub </span>join_time: u64,
 
-    <span class="doccomment">/// Role in squad, or [`UserRole::None`] if the user was removed from the squad.</span>
-    <span class="kw">pub</span> <span class="ident">role</span>: <span class="ident">UserRole</span>,
+    <span class="doccomment">/// Role in squad, or [`UserRole::None`] if the user was removed from the squad.
+    </span><span class="kw">pub </span>role: UserRole,
 
-    <span class="doccomment">/// Subgroup the user is in.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// `0` when no subgroup could be found, which is either the first subgroup or no subgroup.</span>
-    <span class="kw">pub</span> <span class="ident">subgroup</span>: <span class="ident">u8</span>,
+    <span class="doccomment">/// Subgroup the user is in.
+    ///
+    /// `0` when no subgroup could be found, which is either the first subgroup or no subgroup.
+    </span><span class="kw">pub </span>subgroup: u8,
 
-    <span class="doccomment">/// Whether this player is ready or not (in a squad ready check).</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ### Remarks</span>
-    <span class="doccomment">/// `role` set to [`UserRole::SquadLeader`] and `ready_status == true` implies that a ready check was just started.</span>
-    <span class="doccomment">/// Similarly, `role` set to [`UserRole::SquadLeader`] and `ready_status == false` implies that a ready check either finished or was cancelled.</span>
-    <span class="doccomment">/// If everyone in the squad had an event sent with `ready_status == true` then that means that the ready check finished successfully.</span>
-    <span class="doccomment">/// After which there will be events sent for each user where their `ready_status == false`.</span>
-    <span class="kw">pub</span> <span class="ident">ready_status</span>: <span class="ident">bool</span>,
+    <span class="doccomment">/// Whether this player is ready or not (in a squad ready check).
+    ///
+    /// ### Remarks
+    /// `role` set to [`UserRole::SquadLeader`] and `ready_status == true` implies that a ready check was just started.
+    /// Similarly, `role` set to [`UserRole::SquadLeader`] and `ready_status == false` implies that a ready check either finished or was cancelled.
+    /// If everyone in the squad had an event sent with `ready_status == true` then that means that the ready check finished successfully.
+    /// After which there will be events sent for each user where their `ready_status == false`.
+    </span><span class="kw">pub </span>ready_status: bool,
 }
 
-<span class="kw">impl</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">UserInfo</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">UserInfoOwned</span> {
-    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">user</span>: <span class="ident">UserInfo</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">Self</span> {
-            <span class="ident">account_name</span>: <span class="ident">user</span>.<span class="ident">account_name</span>.<span class="ident">map</span>(<span class="op">|</span><span class="ident">x</span><span class="op">|</span> <span class="ident">x</span>.<span class="ident">to_string</span>()),
-            <span class="ident">join_time</span>: <span class="ident">user</span>.<span class="ident">join_time</span>,
-            <span class="ident">role</span>: <span class="ident">user</span>.<span class="ident">role</span>,
-            <span class="ident">subgroup</span>: <span class="ident">user</span>.<span class="ident">subgroup</span>,
-            <span class="ident">ready_status</span>: <span class="ident">user</span>.<span class="ident">ready_status</span>,
+<span class="kw">impl </span>From&lt;UserInfo&lt;<span class="lifetime">&#39;_</span>&gt;&gt; <span class="kw">for </span>UserInfoOwned {
+    <span class="kw">fn </span>from(user: UserInfo&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; <span class="self">Self </span>{
+        <span class="self">Self </span>{
+            account_name: user.account_name.map(|x| x.to_string()),
+            join_time: user.join_time,
+            role: user.role,
+            subgroup: user.subgroup,
+            ready_status: user.ready_status,
         }
     }
 }
 
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>)]</span>
-<span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">RawUserInfo</span> {
-    <span class="kw">pub</span> <span class="ident">account_name</span>: <span class="kw-2">*const</span> <span class="ident">c_char</span>,
-    <span class="kw">pub</span> <span class="ident">join_time</span>: <span class="ident">u64</span>,
-    <span class="kw">pub</span> <span class="ident">role</span>: <span class="ident">UserRole</span>,
-    <span class="kw">pub</span> <span class="ident">subgroup</span>: <span class="ident">u8</span>,
-    <span class="kw">pub</span> <span class="ident">ready_status</span>: <span class="ident">bool</span>,
-    <span class="kw">pub</span> <span class="ident">_unused1</span>: <span class="ident">u8</span>,
-    <span class="kw">pub</span> <span class="ident">_unused2</span>: <span class="ident">u32</span>,
+<span class="attribute">#[derive(Debug, Clone)]
+#[repr(C)]
+</span><span class="kw">pub struct </span>RawUserInfo {
+    <span class="kw">pub </span>account_name: <span class="kw-2">*const </span>c_char,
+    <span class="kw">pub </span>join_time: u64,
+    <span class="kw">pub </span>role: UserRole,
+    <span class="kw">pub </span>subgroup: u8,
+    <span class="kw">pub </span>ready_status: bool,
+    <span class="kw">pub </span>_unused1: u8,
+    <span class="kw">pub </span>_unused2: u32,
 }
 
-<span class="doccomment">/// Iterator over changed users.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">UserInfoIter</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">Map</span><span class="op">&lt;</span><span class="ident">slice::Iter</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">RawUserInfo</span><span class="op">&gt;</span>, <span class="ident">UserConvert</span><span class="op">&gt;</span>;
+<span class="doccomment">/// Iterator over changed users.
+</span><span class="kw">pub type </span>UserInfoIter&lt;<span class="lifetime">&#39;a</span>&gt; = Map&lt;slice::Iter&lt;<span class="lifetime">&#39;a</span>, RawUserInfo&gt;, UserConvert&gt;;
 
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">UserConvert</span> <span class="op">=</span> <span class="kw">for</span><span class="op">&lt;</span><span class="lifetime">&#39;r</span><span class="op">&gt;</span> <span class="kw">fn</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;r</span> <span class="ident">RawUserInfo</span>) -&gt; <span class="ident">UserInfo</span><span class="op">&lt;</span><span class="lifetime">&#39;r</span><span class="op">&gt;</span>;
+<span class="kw">pub type </span>UserConvert = <span class="kw">for</span>&lt;<span class="lifetime">&#39;r</span>&gt; <span class="kw">fn</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;r </span>RawUserInfo) -&gt; UserInfo&lt;<span class="lifetime">&#39;r</span>&gt;;
 
-<span class="doccomment">/// Helper to convert a [`RawUserInfo`] pointer and a length to an iterator over [`UserInfo`].</span>
-<span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">to_user_info_iter</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>(<span class="ident">ptr</span>: <span class="kw-2">*const</span> <span class="ident">RawUserInfo</span>, <span class="ident">len</span>: <span class="ident">u64</span>) -&gt; <span class="ident">UserInfoIter</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
-    <span class="ident">std::slice::from_raw_parts</span>(<span class="ident">ptr</span>, <span class="ident">len</span> <span class="kw">as</span> <span class="ident">usize</span>)
-        .<span class="ident">iter</span>()
-        .<span class="ident">map</span>(<span class="op">|</span><span class="ident">raw</span><span class="op">|</span> <span class="ident">raw</span>.<span class="ident">clone</span>().<span class="ident">into</span>())
+<span class="doccomment">/// Helper to convert a [`RawUserInfo`] pointer and a length to an iterator over [`UserInfo`].
+</span><span class="kw">pub unsafe fn </span>to_user_info_iter&lt;<span class="lifetime">&#39;a</span>&gt;(ptr: <span class="kw-2">*const </span>RawUserInfo, len: u64) -&gt; UserInfoIter&lt;<span class="lifetime">&#39;a</span>&gt; {
+    std::slice::from_raw_parts(ptr, len <span class="kw">as </span>usize)
+        .iter()
+        .map(|raw| raw.clone().into())
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="arcdps" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="arcdps" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.0 (69f9c33d7 2022-12-12)" ></div></body></html>

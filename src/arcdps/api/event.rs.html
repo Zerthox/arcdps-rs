@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `core\src\api\event.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>event.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../arcdps/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../arcdps/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../arcdps/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `arcdps\src\api\event.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>event.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../normalize.css"><link rel="stylesheet" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../ayu.css" disabled><link rel="stylesheet" href="../../../dark.css" disabled><link rel="stylesheet" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../../arcdps/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -217,224 +217,224 @@
 <span id="217">217</span>
 <span id="218">218</span>
 <span id="219">219</span>
-</pre><pre class="rust"><code><span class="kw">use</span> <span class="kw">super</span>::{<span class="ident">Activation</span>, <span class="ident">Affinity</span>, <span class="ident">BuffRemove</span>, <span class="ident">StateChange</span>};
+</pre><pre class="rust"><code><span class="kw">use super</span>::{Activation, Affinity, BuffRemove, StateChange};
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>)]</span>
-<span class="kw">use</span> <span class="ident">serde</span>::{<span class="ident">Deserialize</span>, <span class="ident">Serialize</span>};
+<span class="attribute">#[cfg(feature = <span class="string">&quot;serde&quot;</span>)]
+</span><span class="kw">use </span>serde::{Deserialize, Serialize};
 
-<span class="doccomment">/// ArcDPS combat event.</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>)]</span>
-<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>, <span class="ident">derive</span>(<span class="ident">Serialize</span>, <span class="ident">Deserialize</span>))]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">CombatEvent</span> {
-    <span class="doccomment">/// `timeGetTime()` at time of registering the event.</span>
-    <span class="kw">pub</span> <span class="ident">time</span>: <span class="ident">u64</span>,
+<span class="doccomment">/// ArcDPS combat event.
+</span><span class="attribute">#[derive(Debug, Clone)]
+#[cfg_attr(feature = <span class="string">&quot;serde&quot;</span>, derive(Serialize, Deserialize))]
+</span><span class="kw">pub struct </span>CombatEvent {
+    <span class="doccomment">/// `timeGetTime()` at time of registering the event.
+    </span><span class="kw">pub </span>time: u64,
 
-    <span class="doccomment">/// Agent that caused the event.</span>
-    <span class="kw">pub</span> <span class="ident">src_agent</span>: <span class="ident">usize</span>,
+    <span class="doccomment">/// Agent that caused the event.
+    </span><span class="kw">pub </span>src_agent: usize,
 
-    <span class="doccomment">/// Agent the event happened to.</span>
-    <span class="kw">pub</span> <span class="ident">dst_agent</span>: <span class="ident">usize</span>,
+    <span class="doccomment">/// Agent the event happened to.
+    </span><span class="kw">pub </span>dst_agent: usize,
 
-    <span class="doccomment">/// Value, if relevant to the event.</span>
-    <span class="kw">pub</span> <span class="ident">value</span>: <span class="ident">i32</span>,
+    <span class="doccomment">/// Value, if relevant to the event.
+    </span><span class="kw">pub </span>value: i32,
 
-    <span class="doccomment">/// Buff damage, if relevant to the event.</span>
-    <span class="kw">pub</span> <span class="ident">buff_dmg</span>: <span class="ident">i32</span>,
+    <span class="doccomment">/// Buff damage, if relevant to the event.
+    </span><span class="kw">pub </span>buff_dmg: i32,
 
-    <span class="doccomment">/// Overstack value, if relevant to the event.</span>
-    <span class="kw">pub</span> <span class="ident">overstack_value</span>: <span class="ident">u32</span>,
+    <span class="doccomment">/// Overstack value, if relevant to the event.
+    </span><span class="kw">pub </span>overstack_value: u32,
 
-    <span class="doccomment">/// Skill id of the relevant skill (can be zero).</span>
-    <span class="kw">pub</span> <span class="ident">skill_id</span>: <span class="ident">u32</span>,
+    <span class="doccomment">/// Skill id of the relevant skill (can be zero).
+    </span><span class="kw">pub </span>skill_id: u32,
 
-    <span class="doccomment">/// Id of source agent as appears in game at time of event.</span>
-    <span class="kw">pub</span> <span class="ident">src_instance_id</span>: <span class="ident">u16</span>,
+    <span class="doccomment">/// Id of source agent as appears in game at time of event.
+    </span><span class="kw">pub </span>src_instance_id: u16,
 
-    <span class="doccomment">/// Id of destination agent as appears in game at time of event.</span>
-    <span class="kw">pub</span> <span class="ident">dst_instance_id</span>: <span class="ident">u16</span>,
+    <span class="doccomment">/// Id of destination agent as appears in game at time of event.
+    </span><span class="kw">pub </span>dst_instance_id: u16,
 
-    <span class="doccomment">/// If `src_agent` has a master (e.g. is minion), will be equal to instance id of master, zero otherwise.</span>
-    <span class="kw">pub</span> <span class="ident">src_master_instance_id</span>: <span class="ident">u16</span>,
+    <span class="doccomment">/// If `src_agent` has a master (e.g. is minion), will be equal to instance id of master, zero otherwise.
+    </span><span class="kw">pub </span>src_master_instance_id: u16,
 
-    <span class="doccomment">/// If `dst_agent` has a master (e.g. is minion), will be equal to instance id of master, zero otherwise.</span>
-    <span class="kw">pub</span> <span class="ident">dst_master_instance_id</span>: <span class="ident">u16</span>,
+    <span class="doccomment">/// If `dst_agent` has a master (e.g. is minion), will be equal to instance id of master, zero otherwise.
+    </span><span class="kw">pub </span>dst_master_instance_id: u16,
 
-    <span class="doccomment">/// Current affinity of `src_agent` and `dst_agent`.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// *Arc calls this &quot;iff&quot; for if friend/foe.*</span>
-    <span class="kw">pub</span> <span class="ident">affinity</span>: <span class="ident">Affinity</span>,
+    <span class="doccomment">/// Current affinity of `src_agent` and `dst_agent`.
+    ///
+    /// *Arc calls this &quot;iff&quot; for if friend/foe.*
+    </span><span class="kw">pub </span>affinity: Affinity,
 
-    <span class="doccomment">/// Buff, if relevant to the event.</span>
-    <span class="kw">pub</span> <span class="ident">buff</span>: <span class="ident">u8</span>,
+    <span class="doccomment">/// Buff, if relevant to the event.
+    </span><span class="kw">pub </span>buff: u8,
 
-    <span class="doccomment">/// Combat result.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// For direct damage events this is a variant of [`Strike`](crate::Strike).</span>
-    <span class="kw">pub</span> <span class="ident">result</span>: <span class="ident">u8</span>,
+    <span class="doccomment">/// Combat result.
+    ///
+    /// For direct damage events this is a variant of [`Strike`](crate::Strike).
+    </span><span class="kw">pub </span>result: u8,
 
-    <span class="doccomment">/// Whether event is a kind of [`Activation`].</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// For [`Activation::CancelFire`] and [`Activation::CancelCancel`] `value` will be the ms duration of the time spent in animation.</span>
-    <span class="doccomment">/// `buff_dmg` will be the ms duration of the scaled (as if not affected) time spent.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// For Normal or Quickness, `value` will be the ms duration at which all significant effects have happened.</span>
-    <span class="doccomment">/// `buff_dmg` will be the ms duration at which control is expected to be returned to character.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// `dst_agent` will be x/y of target of skill effect.</span>
-    <span class="doccomment">/// `overstack_value` will be z of target of skill effect.</span>
-    <span class="kw">pub</span> <span class="ident">is_activation</span>: <span class="ident">Activation</span>,
+    <span class="doccomment">/// Whether event is a kind of [`Activation`].
+    ///
+    /// For [`Activation::CancelFire`] and [`Activation::CancelCancel`] `value` will be the ms duration of the time spent in animation.
+    /// `buff_dmg` will be the ms duration of the scaled (as if not affected) time spent.
+    ///
+    /// For Normal or Quickness, `value` will be the ms duration at which all significant effects have happened.
+    /// `buff_dmg` will be the ms duration at which control is expected to be returned to character.
+    ///
+    /// `dst_agent` will be x/y of target of skill effect.
+    /// `overstack_value` will be z of target of skill effect.
+    </span><span class="kw">pub </span>is_activation: Activation,
 
-    <span class="doccomment">/// Whether event is a kind of [`BuffRemove`].</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// `src_agent` is agent that had buff removed, `dst_agent` is the agent that removed it.</span>
-    <span class="doccomment">/// `value` will be the remaining time removed calculated as duration.</span>
-    <span class="doccomment">/// `buff_dmg` will be the remaining time removed calculated as intensity.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// For [`BuffRemove::All`] `result` will be the number of stacks removed.</span>
-    <span class="doccomment">/// For [`BuffRemove::Single`] pad61-64 (uint32) will be buff instance id of buff removed.</span>
-    <span class="kw">pub</span> <span class="ident">is_buff_remove</span>: <span class="ident">BuffRemove</span>,
+    <span class="doccomment">/// Whether event is a kind of [`BuffRemove`].
+    ///
+    /// `src_agent` is agent that had buff removed, `dst_agent` is the agent that removed it.
+    /// `value` will be the remaining time removed calculated as duration.
+    /// `buff_dmg` will be the remaining time removed calculated as intensity.
+    ///
+    /// For [`BuffRemove::All`] `result` will be the number of stacks removed.
+    /// For [`BuffRemove::Single`] pad61-64 (uint32) will be buff instance id of buff removed.
+    </span><span class="kw">pub </span>is_buff_remove: BuffRemove,
 
-    <span class="doccomment">/// Whether `src_agent` is above 90% Health.</span>
-    <span class="kw">pub</span> <span class="ident">is_ninety</span>: <span class="ident">u8</span>,
+    <span class="doccomment">/// Whether `src_agent` is above 90% Health.
+    </span><span class="kw">pub </span>is_ninety: u8,
 
-    <span class="doccomment">/// Whether `dst_agent` is below 50% Health.</span>
-    <span class="kw">pub</span> <span class="ident">is_fifty</span>: <span class="ident">u8</span>,
+    <span class="doccomment">/// Whether `dst_agent` is below 50% Health.
+    </span><span class="kw">pub </span>is_fifty: u8,
 
-    <span class="doccomment">/// Whether `src_agent` is moving at time of event.</span>
-    <span class="kw">pub</span> <span class="ident">is_moving</span>: <span class="ident">u8</span>,
+    <span class="doccomment">/// Whether `src_agent` is moving at time of event.
+    </span><span class="kw">pub </span>is_moving: u8,
 
-    <span class="doccomment">/// Whether event is a kind of [`StateChange`].</span>
-    <span class="kw">pub</span> <span class="ident">is_statechange</span>: <span class="ident">StateChange</span>,
+    <span class="doccomment">/// Whether event is a kind of [`StateChange`].
+    </span><span class="kw">pub </span>is_statechange: StateChange,
 
-    <span class="doccomment">/// Whether `src_agent` is flanking at time of event.</span>
-    <span class="kw">pub</span> <span class="ident">is_flanking</span>: <span class="ident">u8</span>,
+    <span class="doccomment">/// Whether `src_agent` is flanking at time of event.
+    </span><span class="kw">pub </span>is_flanking: u8,
 
-    <span class="doccomment">/// Shields, if relevant to the event.</span>
-    <span class="kw">pub</span> <span class="ident">is_shields</span>: <span class="ident">u8</span>,
+    <span class="doccomment">/// Shields, if relevant to the event.
+    </span><span class="kw">pub </span>is_shields: u8,
 
-    <span class="doccomment">/// For relevant Events this may be a variant of [`BuffCycle`](crate::BuffCycle).</span>
-    <span class="kw">pub</span> <span class="ident">is_off_cycle</span>: <span class="ident">u8</span>,
+    <span class="doccomment">/// For relevant Events this may be a variant of [`BuffCycle`](crate::BuffCycle).
+    </span><span class="kw">pub </span>is_off_cycle: u8,
 
-    <span class="doccomment">/// Padding.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// May contain information depending on the kind of event.</span>
-    <span class="kw">pub</span> <span class="ident">pad61</span>: <span class="ident">u8</span>,
+    <span class="doccomment">/// Padding.
+    ///
+    /// May contain information depending on the kind of event.
+    </span><span class="kw">pub </span>pad61: u8,
 
-    <span class="doccomment">/// Padding.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// May contain information depending on the kind of event.</span>
-    <span class="kw">pub</span> <span class="ident">pad62</span>: <span class="ident">u8</span>,
+    <span class="doccomment">/// Padding.
+    ///
+    /// May contain information depending on the kind of event.
+    </span><span class="kw">pub </span>pad62: u8,
 
-    <span class="doccomment">/// Padding.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// May contain information depending on the kind of event.</span>
-    <span class="kw">pub</span> <span class="ident">pad63</span>: <span class="ident">u8</span>,
+    <span class="doccomment">/// Padding.
+    ///
+    /// May contain information depending on the kind of event.
+    </span><span class="kw">pub </span>pad63: u8,
 
-    <span class="doccomment">/// Padding.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// May contain information depending on the kind of event.</span>
-    <span class="kw">pub</span> <span class="ident">pad64</span>: <span class="ident">u8</span>,
+    <span class="doccomment">/// Padding.
+    ///
+    /// May contain information depending on the kind of event.
+    </span><span class="kw">pub </span>pad64: u8,
 }
 
-<span class="kw">impl</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">RawCombatEvent</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">CombatEvent</span> {
-    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">raw</span>: <span class="ident">RawCombatEvent</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">Self</span> {
-            <span class="ident">time</span>: <span class="ident">raw</span>.<span class="ident">time</span>,
-            <span class="ident">src_agent</span>: <span class="ident">raw</span>.<span class="ident">src_agent</span>,
-            <span class="ident">dst_agent</span>: <span class="ident">raw</span>.<span class="ident">dst_agent</span>,
-            <span class="ident">value</span>: <span class="ident">raw</span>.<span class="ident">value</span>,
-            <span class="ident">buff_dmg</span>: <span class="ident">raw</span>.<span class="ident">buff_dmg</span>,
-            <span class="ident">overstack_value</span>: <span class="ident">raw</span>.<span class="ident">overstack_value</span>,
-            <span class="ident">skill_id</span>: <span class="ident">raw</span>.<span class="ident">skill_id</span>,
-            <span class="ident">src_instance_id</span>: <span class="ident">raw</span>.<span class="ident">src_instance_id</span>,
-            <span class="ident">dst_instance_id</span>: <span class="ident">raw</span>.<span class="ident">dst_instance_id</span>,
-            <span class="ident">src_master_instance_id</span>: <span class="ident">raw</span>.<span class="ident">src_master_instance_id</span>,
-            <span class="ident">dst_master_instance_id</span>: <span class="ident">raw</span>.<span class="ident">dst_master_instance_id</span>,
-            <span class="ident">affinity</span>: <span class="ident">raw</span>.<span class="ident">affinity</span>.<span class="ident">into</span>(),
-            <span class="ident">buff</span>: <span class="ident">raw</span>.<span class="ident">buff</span>,
-            <span class="ident">result</span>: <span class="ident">raw</span>.<span class="ident">result</span>,
-            <span class="ident">is_activation</span>: <span class="ident">raw</span>.<span class="ident">is_activation</span>.<span class="ident">into</span>(),
-            <span class="ident">is_buff_remove</span>: <span class="ident">raw</span>.<span class="ident">is_buff_remove</span>.<span class="ident">into</span>(),
-            <span class="ident">is_ninety</span>: <span class="ident">raw</span>.<span class="ident">is_ninety</span>,
-            <span class="ident">is_fifty</span>: <span class="ident">raw</span>.<span class="ident">is_fifty</span>,
-            <span class="ident">is_moving</span>: <span class="ident">raw</span>.<span class="ident">is_moving</span>,
-            <span class="ident">is_statechange</span>: <span class="ident">raw</span>.<span class="ident">is_statechange</span>.<span class="ident">into</span>(),
-            <span class="ident">is_flanking</span>: <span class="ident">raw</span>.<span class="ident">is_flanking</span>,
-            <span class="ident">is_shields</span>: <span class="ident">raw</span>.<span class="ident">is_shields</span>,
-            <span class="ident">is_off_cycle</span>: <span class="ident">raw</span>.<span class="ident">is_off_cycle</span>,
-            <span class="ident">pad61</span>: <span class="ident">raw</span>.<span class="ident">pad61</span>,
-            <span class="ident">pad62</span>: <span class="ident">raw</span>.<span class="ident">pad62</span>,
-            <span class="ident">pad63</span>: <span class="ident">raw</span>.<span class="ident">pad63</span>,
-            <span class="ident">pad64</span>: <span class="ident">raw</span>.<span class="ident">pad64</span>,
+<span class="kw">impl </span>From&lt;RawCombatEvent&gt; <span class="kw">for </span>CombatEvent {
+    <span class="kw">fn </span>from(raw: RawCombatEvent) -&gt; <span class="self">Self </span>{
+        <span class="self">Self </span>{
+            time: raw.time,
+            src_agent: raw.src_agent,
+            dst_agent: raw.dst_agent,
+            value: raw.value,
+            buff_dmg: raw.buff_dmg,
+            overstack_value: raw.overstack_value,
+            skill_id: raw.skill_id,
+            src_instance_id: raw.src_instance_id,
+            dst_instance_id: raw.dst_instance_id,
+            src_master_instance_id: raw.src_master_instance_id,
+            dst_master_instance_id: raw.dst_master_instance_id,
+            affinity: raw.affinity.into(),
+            buff: raw.buff,
+            result: raw.result,
+            is_activation: raw.is_activation.into(),
+            is_buff_remove: raw.is_buff_remove.into(),
+            is_ninety: raw.is_ninety,
+            is_fifty: raw.is_fifty,
+            is_moving: raw.is_moving,
+            is_statechange: raw.is_statechange.into(),
+            is_flanking: raw.is_flanking,
+            is_shields: raw.is_shields,
+            is_off_cycle: raw.is_off_cycle,
+            pad61: raw.pad61,
+            pad62: raw.pad62,
+            pad63: raw.pad63,
+            pad64: raw.pad64,
         }
     }
 }
 
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>)]</span>
-<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>, <span class="ident">derive</span>(<span class="ident">Serialize</span>, <span class="ident">Deserialize</span>))]</span>
-<span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">RawCombatEvent</span> {
-    <span class="kw">pub</span> <span class="ident">time</span>: <span class="ident">u64</span>,
-    <span class="kw">pub</span> <span class="ident">src_agent</span>: <span class="ident">usize</span>,
-    <span class="kw">pub</span> <span class="ident">dst_agent</span>: <span class="ident">usize</span>,
-    <span class="kw">pub</span> <span class="ident">value</span>: <span class="ident">i32</span>,
-    <span class="kw">pub</span> <span class="ident">buff_dmg</span>: <span class="ident">i32</span>,
-    <span class="kw">pub</span> <span class="ident">overstack_value</span>: <span class="ident">u32</span>,
-    <span class="kw">pub</span> <span class="ident">skill_id</span>: <span class="ident">u32</span>,
-    <span class="kw">pub</span> <span class="ident">src_instance_id</span>: <span class="ident">u16</span>,
-    <span class="kw">pub</span> <span class="ident">dst_instance_id</span>: <span class="ident">u16</span>,
-    <span class="kw">pub</span> <span class="ident">src_master_instance_id</span>: <span class="ident">u16</span>,
-    <span class="kw">pub</span> <span class="ident">dst_master_instance_id</span>: <span class="ident">u16</span>,
-    <span class="kw">pub</span> <span class="ident">affinity</span>: <span class="ident">u8</span>,
-    <span class="kw">pub</span> <span class="ident">buff</span>: <span class="ident">u8</span>,
-    <span class="kw">pub</span> <span class="ident">result</span>: <span class="ident">u8</span>,
-    <span class="kw">pub</span> <span class="ident">is_activation</span>: <span class="ident">u8</span>,
-    <span class="kw">pub</span> <span class="ident">is_buff_remove</span>: <span class="ident">u8</span>,
-    <span class="kw">pub</span> <span class="ident">is_ninety</span>: <span class="ident">u8</span>,
-    <span class="kw">pub</span> <span class="ident">is_fifty</span>: <span class="ident">u8</span>,
-    <span class="kw">pub</span> <span class="ident">is_moving</span>: <span class="ident">u8</span>,
-    <span class="kw">pub</span> <span class="ident">is_statechange</span>: <span class="ident">u8</span>,
-    <span class="kw">pub</span> <span class="ident">is_flanking</span>: <span class="ident">u8</span>,
-    <span class="kw">pub</span> <span class="ident">is_shields</span>: <span class="ident">u8</span>,
-    <span class="kw">pub</span> <span class="ident">is_off_cycle</span>: <span class="ident">u8</span>,
-    <span class="kw">pub</span> <span class="ident">pad61</span>: <span class="ident">u8</span>,
-    <span class="kw">pub</span> <span class="ident">pad62</span>: <span class="ident">u8</span>,
-    <span class="kw">pub</span> <span class="ident">pad63</span>: <span class="ident">u8</span>,
-    <span class="kw">pub</span> <span class="ident">pad64</span>: <span class="ident">u8</span>,
+<span class="attribute">#[derive(Debug, Clone)]
+#[cfg_attr(feature = <span class="string">&quot;serde&quot;</span>, derive(Serialize, Deserialize))]
+#[repr(C)]
+</span><span class="kw">pub struct </span>RawCombatEvent {
+    <span class="kw">pub </span>time: u64,
+    <span class="kw">pub </span>src_agent: usize,
+    <span class="kw">pub </span>dst_agent: usize,
+    <span class="kw">pub </span>value: i32,
+    <span class="kw">pub </span>buff_dmg: i32,
+    <span class="kw">pub </span>overstack_value: u32,
+    <span class="kw">pub </span>skill_id: u32,
+    <span class="kw">pub </span>src_instance_id: u16,
+    <span class="kw">pub </span>dst_instance_id: u16,
+    <span class="kw">pub </span>src_master_instance_id: u16,
+    <span class="kw">pub </span>dst_master_instance_id: u16,
+    <span class="kw">pub </span>affinity: u8,
+    <span class="kw">pub </span>buff: u8,
+    <span class="kw">pub </span>result: u8,
+    <span class="kw">pub </span>is_activation: u8,
+    <span class="kw">pub </span>is_buff_remove: u8,
+    <span class="kw">pub </span>is_ninety: u8,
+    <span class="kw">pub </span>is_fifty: u8,
+    <span class="kw">pub </span>is_moving: u8,
+    <span class="kw">pub </span>is_statechange: u8,
+    <span class="kw">pub </span>is_flanking: u8,
+    <span class="kw">pub </span>is_shields: u8,
+    <span class="kw">pub </span>is_off_cycle: u8,
+    <span class="kw">pub </span>pad61: u8,
+    <span class="kw">pub </span>pad62: u8,
+    <span class="kw">pub </span>pad63: u8,
+    <span class="kw">pub </span>pad64: u8,
 }
 
-<span class="kw">impl</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">CombatEvent</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">RawCombatEvent</span> {
-    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">event</span>: <span class="ident">CombatEvent</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">Self</span> {
-            <span class="ident">time</span>: <span class="ident">event</span>.<span class="ident">time</span>,
-            <span class="ident">src_agent</span>: <span class="ident">event</span>.<span class="ident">src_agent</span>,
-            <span class="ident">dst_agent</span>: <span class="ident">event</span>.<span class="ident">dst_agent</span>,
-            <span class="ident">value</span>: <span class="ident">event</span>.<span class="ident">value</span>,
-            <span class="ident">buff_dmg</span>: <span class="ident">event</span>.<span class="ident">buff_dmg</span>,
-            <span class="ident">overstack_value</span>: <span class="ident">event</span>.<span class="ident">overstack_value</span>,
-            <span class="ident">skill_id</span>: <span class="ident">event</span>.<span class="ident">skill_id</span>,
-            <span class="ident">src_instance_id</span>: <span class="ident">event</span>.<span class="ident">src_instance_id</span>,
-            <span class="ident">dst_instance_id</span>: <span class="ident">event</span>.<span class="ident">dst_instance_id</span>,
-            <span class="ident">src_master_instance_id</span>: <span class="ident">event</span>.<span class="ident">src_master_instance_id</span>,
-            <span class="ident">dst_master_instance_id</span>: <span class="ident">event</span>.<span class="ident">dst_master_instance_id</span>,
-            <span class="ident">affinity</span>: <span class="ident">event</span>.<span class="ident">affinity</span> <span class="kw">as</span> <span class="ident">u8</span>,
-            <span class="ident">buff</span>: <span class="ident">event</span>.<span class="ident">buff</span>,
-            <span class="ident">result</span>: <span class="ident">event</span>.<span class="ident">result</span>,
-            <span class="ident">is_activation</span>: <span class="ident">event</span>.<span class="ident">is_activation</span> <span class="kw">as</span> <span class="ident">u8</span>,
-            <span class="ident">is_buff_remove</span>: <span class="ident">event</span>.<span class="ident">is_buff_remove</span> <span class="kw">as</span> <span class="ident">u8</span>,
-            <span class="ident">is_ninety</span>: <span class="ident">event</span>.<span class="ident">is_ninety</span>,
-            <span class="ident">is_fifty</span>: <span class="ident">event</span>.<span class="ident">is_fifty</span>,
-            <span class="ident">is_moving</span>: <span class="ident">event</span>.<span class="ident">is_moving</span>,
-            <span class="ident">is_statechange</span>: <span class="ident">event</span>.<span class="ident">is_statechange</span> <span class="kw">as</span> <span class="ident">u8</span>,
-            <span class="ident">is_flanking</span>: <span class="ident">event</span>.<span class="ident">is_flanking</span>,
-            <span class="ident">is_shields</span>: <span class="ident">event</span>.<span class="ident">is_shields</span>,
-            <span class="ident">is_off_cycle</span>: <span class="ident">event</span>.<span class="ident">is_off_cycle</span>,
-            <span class="ident">pad61</span>: <span class="ident">event</span>.<span class="ident">pad61</span>,
-            <span class="ident">pad62</span>: <span class="ident">event</span>.<span class="ident">pad62</span>,
-            <span class="ident">pad63</span>: <span class="ident">event</span>.<span class="ident">pad63</span>,
-            <span class="ident">pad64</span>: <span class="ident">event</span>.<span class="ident">pad64</span>,
+<span class="kw">impl </span>From&lt;CombatEvent&gt; <span class="kw">for </span>RawCombatEvent {
+    <span class="kw">fn </span>from(event: CombatEvent) -&gt; <span class="self">Self </span>{
+        <span class="self">Self </span>{
+            time: event.time,
+            src_agent: event.src_agent,
+            dst_agent: event.dst_agent,
+            value: event.value,
+            buff_dmg: event.buff_dmg,
+            overstack_value: event.overstack_value,
+            skill_id: event.skill_id,
+            src_instance_id: event.src_instance_id,
+            dst_instance_id: event.dst_instance_id,
+            src_master_instance_id: event.src_master_instance_id,
+            dst_master_instance_id: event.dst_master_instance_id,
+            affinity: event.affinity <span class="kw">as </span>u8,
+            buff: event.buff,
+            result: event.result,
+            is_activation: event.is_activation <span class="kw">as </span>u8,
+            is_buff_remove: event.is_buff_remove <span class="kw">as </span>u8,
+            is_ninety: event.is_ninety,
+            is_fifty: event.is_fifty,
+            is_moving: event.is_moving,
+            is_statechange: event.is_statechange <span class="kw">as </span>u8,
+            is_flanking: event.is_flanking,
+            is_shields: event.is_shields,
+            is_off_cycle: event.is_off_cycle,
+            pad61: event.pad61,
+            pad62: event.pad62,
+            pad63: event.pad63,
+            pad64: event.pad64,
         }
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="arcdps" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="arcdps" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.0 (69f9c33d7 2022-12-12)" ></div></body></html>

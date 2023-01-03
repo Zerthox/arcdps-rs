@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\winapi-0.3.9\src\um\objidlbase.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>objidlbase.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../winapi/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../winapi/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../winapi/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\winapi-0.3.9\src\um\objidlbase.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>objidlbase.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../normalize.css"><link rel="stylesheet" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../ayu.css" disabled><link rel="stylesheet" href="../../../dark.css" disabled><link rel="stylesheet" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../../winapi/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -950,957 +950,957 @@
 <span id="950">950</span>
 <span id="951">951</span>
 <span id="952">952</span>
-</pre><pre class="rust"><code><span class="comment">// Licensed under the Apache License, Version 2.0</span>
-<span class="comment">// &lt;LICENSE-APACHE or http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license</span>
-<span class="comment">// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your option.</span>
-<span class="comment">// All files in the project carrying such notice may not be copied, modified, or distributed</span>
-<span class="comment">// except according to those terms.</span>
-<span class="kw">use</span> <span class="ident">ctypes</span>::{<span class="ident">c_int</span>, <span class="ident">c_void</span>};
-<span class="kw">use</span> <span class="ident">shared::basetsd</span>::{<span class="ident">SIZE_T</span>, <span class="ident">ULONG_PTR</span>};
-<span class="kw">use</span> <span class="ident">shared::guiddef</span>::{<span class="ident">CLSID</span>, <span class="ident">GUID</span>, <span class="ident">IID</span>, <span class="ident">REFCLSID</span>, <span class="ident">REFGUID</span>, <span class="ident">REFIID</span>};
-<span class="kw">use</span> <span class="ident">shared::minwindef</span>::{<span class="ident">BOOL</span>, <span class="ident">BYTE</span>, <span class="ident">DWORD</span>, <span class="ident">FILETIME</span>, <span class="ident">ULONG</span>};
-<span class="kw">use</span> <span class="ident">shared::wtypesbase</span>::{<span class="ident">COAUTHINFO</span>, <span class="ident">DOUBLE</span>, <span class="ident">LPOLESTR</span>, <span class="ident">OLECHAR</span>};
-<span class="kw">use</span> <span class="ident">um::unknwnbase</span>::{<span class="ident">IUnknown</span>, <span class="ident">IUnknownVtbl</span>};
-<span class="kw">use</span> <span class="ident">um::winnt</span>::{<span class="ident">HANDLE</span>, <span class="ident">HRESULT</span>, <span class="ident">LARGE_INTEGER</span>, <span class="ident">LONG</span>, <span class="ident">LPWSTR</span>, <span class="ident">ULARGE_INTEGER</span>};
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">COSERVERINFO</span> {
-    <span class="ident">dwReserved1</span>: <span class="ident">DWORD</span>,
-    <span class="ident">pwszName</span>: <span class="ident">LPWSTR</span>,
-    <span class="ident">pAuthInfo</span>: <span class="kw-2">*mut</span> <span class="ident">COAUTHINFO</span>,
-    <span class="ident">dwReserved2</span>: <span class="ident">DWORD</span>,
+</pre><pre class="rust"><code><span class="comment">// Licensed under the Apache License, Version 2.0
+// &lt;LICENSE-APACHE or http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license
+// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your option.
+// All files in the project carrying such notice may not be copied, modified, or distributed
+// except according to those terms.
+</span><span class="kw">use </span>ctypes::{c_int, c_void};
+<span class="kw">use </span>shared::basetsd::{SIZE_T, ULONG_PTR};
+<span class="kw">use </span>shared::guiddef::{CLSID, GUID, IID, REFCLSID, REFGUID, REFIID};
+<span class="kw">use </span>shared::minwindef::{BOOL, BYTE, DWORD, FILETIME, ULONG};
+<span class="kw">use </span>shared::wtypesbase::{COAUTHINFO, DOUBLE, LPOLESTR, OLECHAR};
+<span class="kw">use </span>um::unknwnbase::{IUnknown, IUnknownVtbl};
+<span class="kw">use </span>um::winnt::{HANDLE, HRESULT, LARGE_INTEGER, LONG, LPWSTR, ULARGE_INTEGER};
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>COSERVERINFO {
+    dwReserved1: DWORD,
+    pwszName: LPWSTR,
+    pAuthInfo: <span class="kw-2">*mut </span>COAUTHINFO,
+    dwReserved2: DWORD,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LPMARSHAL</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">IMarshal</span>;
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x00000003</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IMarshal</span>(<span class="ident">IMarshalVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">GetUnmarshalClass</span>(
-        <span class="ident">riid</span>: <span class="ident">REFIID</span>,
-        <span class="ident">pv</span>: <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-        <span class="ident">dwDestContext</span>: <span class="ident">DWORD</span>,
-        <span class="ident">pvDestContext</span>: <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-        <span class="ident">mshlflags</span>: <span class="ident">DWORD</span>,
-        <span class="ident">pCid</span>: <span class="kw-2">*mut</span> <span class="ident">CLSID</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">GetMarshalSizeMax</span>(
-        <span class="ident">riid</span>: <span class="ident">REFIID</span>,
-        <span class="ident">pv</span>: <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-        <span class="ident">dwDestContext</span>: <span class="ident">DWORD</span>,
-        <span class="ident">pvDestContext</span>: <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-        <span class="ident">mshlflags</span>: <span class="ident">DWORD</span>,
-        <span class="ident">pSize</span>: <span class="kw-2">*mut</span> <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">MarshalInterface</span>(
-        <span class="ident">pStm</span>: <span class="kw-2">*mut</span> <span class="ident">IStream</span>,
-        <span class="ident">riid</span>: <span class="ident">REFIID</span>,
-        <span class="ident">pv</span>: <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-        <span class="ident">dwDestContext</span>: <span class="ident">DWORD</span>,
-        <span class="ident">pvDestContext</span>: <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-        <span class="ident">mshlflags</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">UnmarshalInterface</span>(
-        <span class="ident">pStm</span>: <span class="kw-2">*mut</span> <span class="ident">IStream</span>,
-        <span class="ident">riid</span>: <span class="ident">REFIID</span>,
-        <span class="ident">ppv</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">ReleaseMarshalData</span>(
-        <span class="ident">pStm</span>: <span class="kw-2">*mut</span> <span class="ident">IStream</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">DisconnectObject</span>(
-        <span class="ident">dwReserved</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
+<span class="kw">pub type </span>LPMARSHAL = <span class="kw-2">*mut </span>IMarshal;
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x00000003</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]
+</span>interface IMarshal(IMarshalVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>GetUnmarshalClass(
+        riid: REFIID,
+        pv: <span class="kw-2">*mut </span>c_void,
+        dwDestContext: DWORD,
+        pvDestContext: <span class="kw-2">*mut </span>c_void,
+        mshlflags: DWORD,
+        pCid: <span class="kw-2">*mut </span>CLSID,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>GetMarshalSizeMax(
+        riid: REFIID,
+        pv: <span class="kw-2">*mut </span>c_void,
+        dwDestContext: DWORD,
+        pvDestContext: <span class="kw-2">*mut </span>c_void,
+        mshlflags: DWORD,
+        pSize: <span class="kw-2">*mut </span>DWORD,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>MarshalInterface(
+        pStm: <span class="kw-2">*mut </span>IStream,
+        riid: REFIID,
+        pv: <span class="kw-2">*mut </span>c_void,
+        dwDestContext: DWORD,
+        pvDestContext: <span class="kw-2">*mut </span>c_void,
+        mshlflags: DWORD,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>UnmarshalInterface(
+        pStm: <span class="kw-2">*mut </span>IStream,
+        riid: REFIID,
+        ppv: <span class="kw-2">*mut *mut </span>c_void,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>ReleaseMarshalData(
+        pStm: <span class="kw-2">*mut </span>IStream,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>DisconnectObject(
+        dwReserved: DWORD,
+    ) -&gt; HRESULT,
 }}
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0xecc8691b</span>, <span class="number">0xc1db</span>, <span class="number">0x4dc0</span>, <span class="number">0x85</span>, <span class="number">0x5e</span>, <span class="number">0x65</span>, <span class="number">0xf6</span>, <span class="number">0xc5</span>, <span class="number">0x51</span>, <span class="number">0xaf</span>, <span class="number">0x49</span>)]</span>
-<span class="ident">interface</span> <span class="ident">INoMarshal</span>(<span class="ident">INoMarshalVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {}}
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x94ea2b94</span>, <span class="number">0xe9cc</span>, <span class="number">0x49e0</span>, <span class="number">0xc0</span>, <span class="number">0xff</span>, <span class="number">0xee</span>, <span class="number">0x64</span>, <span class="number">0xca</span>, <span class="number">0x8f</span>, <span class="number">0x5b</span>, <span class="number">0x90</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IAgileObject</span>(<span class="ident">IAgileObjectVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {}}
-<span class="macro">ENUM!</span>{<span class="kw">enum</span> <span class="ident">ACTIVATIONTYPE</span> {
-    <span class="ident">ACTIVATIONTYPE_UNCATEGORIZED</span> <span class="op">=</span> <span class="number">0</span>,
-    <span class="ident">ACTIVATIONTYPE_FROM_MONIKER</span> <span class="op">=</span> <span class="number">0x1</span>,
-    <span class="ident">ACTIVATIONTYPE_FROM_DATA</span> <span class="op">=</span> <span class="number">0x2</span>,
-    <span class="ident">ACTIVATIONTYPE_FROM_STORAGE</span> <span class="op">=</span> <span class="number">0x4</span>,
-    <span class="ident">ACTIVATIONTYPE_FROM_STREAM</span> <span class="op">=</span> <span class="number">0x8</span>,
-    <span class="ident">ACTIVATIONTYPE_FROM_FILE</span> <span class="op">=</span> <span class="number">0x10</span>,
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0xecc8691b</span>, <span class="number">0xc1db</span>, <span class="number">0x4dc0</span>, <span class="number">0x85</span>, <span class="number">0x5e</span>, <span class="number">0x65</span>, <span class="number">0xf6</span>, <span class="number">0xc5</span>, <span class="number">0x51</span>, <span class="number">0xaf</span>, <span class="number">0x49</span>)]
+</span>interface INoMarshal(INoMarshalVtbl): IUnknown(IUnknownVtbl) {}}
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x94ea2b94</span>, <span class="number">0xe9cc</span>, <span class="number">0x49e0</span>, <span class="number">0xc0</span>, <span class="number">0xff</span>, <span class="number">0xee</span>, <span class="number">0x64</span>, <span class="number">0xca</span>, <span class="number">0x8f</span>, <span class="number">0x5b</span>, <span class="number">0x90</span>)]
+</span>interface IAgileObject(IAgileObjectVtbl): IUnknown(IUnknownVtbl) {}}
+<span class="macro">ENUM!</span>{<span class="kw">enum </span>ACTIVATIONTYPE {
+    ACTIVATIONTYPE_UNCATEGORIZED = <span class="number">0</span>,
+    ACTIVATIONTYPE_FROM_MONIKER = <span class="number">0x1</span>,
+    ACTIVATIONTYPE_FROM_DATA = <span class="number">0x2</span>,
+    ACTIVATIONTYPE_FROM_STORAGE = <span class="number">0x4</span>,
+    ACTIVATIONTYPE_FROM_STREAM = <span class="number">0x8</span>,
+    ACTIVATIONTYPE_FROM_FILE = <span class="number">0x10</span>,
 }}
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x00000017</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IActivationFilter</span>(<span class="ident">IActivationFilterVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">HandleActivation</span>(
-        <span class="ident">dwActivationType</span>: <span class="ident">DWORD</span>,
-        <span class="ident">rclsid</span>: <span class="ident">REFCLSID</span>,
-        <span class="ident">pReplacementClsId</span>: <span class="kw-2">*mut</span> <span class="ident">CLSID</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x00000017</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]
+</span>interface IActivationFilter(IActivationFilterVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>HandleActivation(
+        dwActivationType: DWORD,
+        rclsid: REFCLSID,
+        pReplacementClsId: <span class="kw-2">*mut </span>CLSID,
+    ) -&gt; HRESULT,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LPMARSHAL2</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">IMarshal2</span>;
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x000001cf</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IMarshal2</span>(<span class="ident">IMarshal2Vtbl</span>): <span class="ident">IMarshal</span>(<span class="ident">IMarshalVtbl</span>) {}}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LPMALLOC</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">IMalloc</span>;
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x00000002</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IMalloc</span>(<span class="ident">IMallocVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">Alloc</span>(
-        <span class="ident">cb</span>: <span class="ident">SIZE_T</span>,
-    ) -&gt; <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-    <span class="kw">fn</span> <span class="ident">Realloc</span>(
-        <span class="ident">pv</span>: <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-        <span class="ident">cb</span>: <span class="ident">SIZE_T</span>,
-    ) -&gt; <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-    <span class="kw">fn</span> <span class="ident">Free</span>(
-        <span class="ident">pv</span>: <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
+<span class="kw">pub type </span>LPMARSHAL2 = <span class="kw-2">*mut </span>IMarshal2;
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x000001cf</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]
+</span>interface IMarshal2(IMarshal2Vtbl): IMarshal(IMarshalVtbl) {}}
+<span class="kw">pub type </span>LPMALLOC = <span class="kw-2">*mut </span>IMalloc;
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x00000002</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]
+</span>interface IMalloc(IMallocVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>Alloc(
+        cb: SIZE_T,
+    ) -&gt; <span class="kw-2">*mut </span>c_void,
+    <span class="kw">fn </span>Realloc(
+        pv: <span class="kw-2">*mut </span>c_void,
+        cb: SIZE_T,
+    ) -&gt; <span class="kw-2">*mut </span>c_void,
+    <span class="kw">fn </span>Free(
+        pv: <span class="kw-2">*mut </span>c_void,
     ) -&gt; (),
-    <span class="kw">fn</span> <span class="ident">GetSize</span>(
-        <span class="ident">pv</span>: <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-    ) -&gt; <span class="ident">SIZE_T</span>,
-    <span class="kw">fn</span> <span class="ident">DidAlloc</span>(
-        <span class="ident">pv</span>: <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-    ) -&gt; <span class="ident">c_int</span>,
-    <span class="kw">fn</span> <span class="ident">HeapMinimize</span>() -&gt; (),
+    <span class="kw">fn </span>GetSize(
+        pv: <span class="kw-2">*mut </span>c_void,
+    ) -&gt; SIZE_T,
+    <span class="kw">fn </span>DidAlloc(
+        pv: <span class="kw-2">*mut </span>c_void,
+    ) -&gt; c_int,
+    <span class="kw">fn </span>HeapMinimize() -&gt; (),
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LPSTDMARSHALINFO</span> <span class="op">=</span> <span class="ident">IStdMarshalInfo</span>;
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x00000018</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IStdMarshalInfo</span>(<span class="ident">IStdMarshalInfoVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">GetClassForHandler</span>(
-        <span class="ident">dwDestContext</span>: <span class="ident">DWORD</span>,
-        <span class="ident">pvDestContext</span>: <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-        <span class="ident">pClsid</span>: <span class="kw-2">*mut</span> <span class="ident">CLSID</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
+<span class="kw">pub type </span>LPSTDMARSHALINFO = IStdMarshalInfo;
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x00000018</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]
+</span>interface IStdMarshalInfo(IStdMarshalInfoVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>GetClassForHandler(
+        dwDestContext: DWORD,
+        pvDestContext: <span class="kw-2">*mut </span>c_void,
+        pClsid: <span class="kw-2">*mut </span>CLSID,
+    ) -&gt; HRESULT,
 }}
-<span class="macro">ENUM!</span>{<span class="kw">enum</span> <span class="ident">EXTCONN</span> {
-    <span class="ident">EXTCONN_STRONG</span> <span class="op">=</span> <span class="number">0x1</span>,
-    <span class="ident">EXTCONN_WEAK</span> <span class="op">=</span> <span class="number">0x2</span>,
-    <span class="ident">EXTCONN_CALLABLE</span> <span class="op">=</span> <span class="number">0x4</span>,
+<span class="macro">ENUM!</span>{<span class="kw">enum </span>EXTCONN {
+    EXTCONN_STRONG = <span class="number">0x1</span>,
+    EXTCONN_WEAK = <span class="number">0x2</span>,
+    EXTCONN_CALLABLE = <span class="number">0x4</span>,
 }}
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x00000019</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IExternalConnection</span>(<span class="ident">IExternalConnectionVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">AddConnection</span>(
-        <span class="ident">extconn</span>: <span class="ident">DWORD</span>,
-        <span class="ident">reserved</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">DWORD</span>,
-    <span class="kw">fn</span> <span class="ident">ReleaseConnection</span>(
-        <span class="ident">extconn</span>: <span class="ident">DWORD</span>,
-        <span class="ident">reserved</span>: <span class="ident">DWORD</span>,
-        <span class="ident">fLastReleaseCloses</span>: <span class="ident">BOOL</span>,
-    ) -&gt; <span class="ident">DWORD</span>,
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x00000019</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]
+</span>interface IExternalConnection(IExternalConnectionVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>AddConnection(
+        extconn: DWORD,
+        reserved: DWORD,
+    ) -&gt; DWORD,
+    <span class="kw">fn </span>ReleaseConnection(
+        extconn: DWORD,
+        reserved: DWORD,
+        fLastReleaseCloses: BOOL,
+    ) -&gt; DWORD,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LPMULTIQI</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">IMultiQI</span>;
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">MULTI_QI</span> {
-    <span class="ident">pIID</span>: <span class="kw-2">*const</span> <span class="ident">IID</span>,
-    <span class="ident">pItf</span>: <span class="kw-2">*mut</span> <span class="ident">IUnknown</span>,
-    <span class="ident">hr</span>: <span class="ident">HRESULT</span>,
+<span class="kw">pub type </span>LPMULTIQI = <span class="kw-2">*mut </span>IMultiQI;
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>MULTI_QI {
+    pIID: <span class="kw-2">*const </span>IID,
+    pItf: <span class="kw-2">*mut </span>IUnknown,
+    hr: HRESULT,
 }}
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x00000020</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IMultiQI</span>(<span class="ident">IMultiQIVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">QueryMultipleInterfaces</span>(
-        <span class="ident">cMQIs</span>: <span class="ident">ULONG</span>,
-        <span class="ident">pMQIs</span>: <span class="kw-2">*mut</span> <span class="ident">MULTI_QI</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x00000020</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]
+</span>interface IMultiQI(IMultiQIVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>QueryMultipleInterfaces(
+        cMQIs: ULONG,
+        pMQIs: <span class="kw-2">*mut </span>MULTI_QI,
+    ) -&gt; HRESULT,
 }}
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x000e0020</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]</span>
-<span class="ident">interface</span> <span class="ident">AsyncIMultiQI</span>(<span class="ident">AsyncIMultiQIVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">Begin_QueryMultipleInterfaces</span>(
-        <span class="ident">cMQIs</span>: <span class="ident">ULONG</span>,
-        <span class="ident">pMQIs</span>: <span class="kw-2">*mut</span> <span class="ident">MULTI_QI</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Finish_QueryMultipleInterfaces</span>(
-        <span class="ident">pMQIs</span>: <span class="kw-2">*mut</span> <span class="ident">MULTI_QI</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x000e0020</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]
+</span>interface AsyncIMultiQI(AsyncIMultiQIVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>Begin_QueryMultipleInterfaces(
+        cMQIs: ULONG,
+        pMQIs: <span class="kw-2">*mut </span>MULTI_QI,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>Finish_QueryMultipleInterfaces(
+        pMQIs: <span class="kw-2">*mut </span>MULTI_QI,
+    ) -&gt; HRESULT,
 }}
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x00000021</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IInternalUnknown</span>(<span class="ident">IInternalUnknownVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">QueryInternalInterface</span>(
-        <span class="ident">riid</span>: <span class="ident">REFIID</span>,
-        <span class="ident">ppv</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x00000021</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]
+</span>interface IInternalUnknown(IInternalUnknownVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>QueryInternalInterface(
+        riid: REFIID,
+        ppv: <span class="kw-2">*mut *mut </span>c_void,
+    ) -&gt; HRESULT,
 }}
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x00000100</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IEnumUnknown</span>(<span class="ident">IEnumUnknownVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">Next</span>(
-        <span class="ident">celt</span>: <span class="ident">ULONG</span>,
-        <span class="ident">rgelt</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">IUnknown</span>,
-        <span class="ident">pceltFetched</span>: <span class="kw-2">*mut</span> <span class="ident">ULONG</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Skip</span>(
-        <span class="ident">celt</span>: <span class="ident">ULONG</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Reset</span>() -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Clone</span>(
-        <span class="ident">ppenum</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">IEnumUnknown</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x00000100</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]
+</span>interface IEnumUnknown(IEnumUnknownVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>Next(
+        celt: ULONG,
+        rgelt: <span class="kw-2">*mut *mut </span>IUnknown,
+        pceltFetched: <span class="kw-2">*mut </span>ULONG,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>Skip(
+        celt: ULONG,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>Reset() -&gt; HRESULT,
+    <span class="kw">fn </span>Clone(
+        ppenum: <span class="kw-2">*mut *mut </span>IEnumUnknown,
+    ) -&gt; HRESULT,
 }}
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x00000101</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IEnumString</span>(<span class="ident">IEnumStringVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">Next</span>(
-        <span class="ident">celt</span>: <span class="ident">ULONG</span>,
-        <span class="ident">rgelt</span>: <span class="kw-2">*mut</span> <span class="ident">LPOLESTR</span>,
-        <span class="ident">pceltFetched</span>: <span class="kw-2">*mut</span> <span class="ident">ULONG</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Skip</span>(
-        <span class="ident">celt</span>: <span class="ident">ULONG</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Reset</span>() -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Clone</span>(
-        <span class="ident">ppenum</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">IEnumString</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x00000101</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]
+</span>interface IEnumString(IEnumStringVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>Next(
+        celt: ULONG,
+        rgelt: <span class="kw-2">*mut </span>LPOLESTR,
+        pceltFetched: <span class="kw-2">*mut </span>ULONG,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>Skip(
+        celt: ULONG,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>Reset() -&gt; HRESULT,
+    <span class="kw">fn </span>Clone(
+        ppenum: <span class="kw-2">*mut *mut </span>IEnumString,
+    ) -&gt; HRESULT,
 }}
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x0c733a30</span>, <span class="number">0x2a1c</span>, <span class="number">0x11ce</span>, <span class="number">0xad</span>, <span class="number">0xe5</span>, <span class="number">0x00</span>, <span class="number">0xaa</span>, <span class="number">0x00</span>, <span class="number">0x44</span>, <span class="number">0x77</span>, <span class="number">0x3d</span>)]</span>
-<span class="ident">interface</span> <span class="ident">ISequentialStream</span>(<span class="ident">ISequentialStreamVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">Read</span>(
-        <span class="ident">pv</span>: <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-        <span class="ident">cb</span>: <span class="ident">ULONG</span>,
-        <span class="ident">pcbRead</span>: <span class="kw-2">*mut</span> <span class="ident">ULONG</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Write</span>(
-        <span class="ident">pv</span>: <span class="kw-2">*const</span> <span class="ident">c_void</span>,
-        <span class="ident">cb</span>: <span class="ident">ULONG</span>,
-        <span class="ident">pcbWritten</span>: <span class="kw-2">*mut</span> <span class="ident">ULONG</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x0c733a30</span>, <span class="number">0x2a1c</span>, <span class="number">0x11ce</span>, <span class="number">0xad</span>, <span class="number">0xe5</span>, <span class="number">0x00</span>, <span class="number">0xaa</span>, <span class="number">0x00</span>, <span class="number">0x44</span>, <span class="number">0x77</span>, <span class="number">0x3d</span>)]
+</span>interface ISequentialStream(ISequentialStreamVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>Read(
+        pv: <span class="kw-2">*mut </span>c_void,
+        cb: ULONG,
+        pcbRead: <span class="kw-2">*mut </span>ULONG,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>Write(
+        pv: <span class="kw-2">*const </span>c_void,
+        cb: ULONG,
+        pcbWritten: <span class="kw-2">*mut </span>ULONG,
+    ) -&gt; HRESULT,
 }}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">STATSTG</span> {
-    <span class="ident">pwcsName</span>: <span class="ident">LPOLESTR</span>,
-    <span class="ident">type_</span>: <span class="ident">DWORD</span>,
-    <span class="ident">cbSize</span>: <span class="ident">ULARGE_INTEGER</span>,
-    <span class="ident">mtime</span>: <span class="ident">FILETIME</span>,
-    <span class="ident">ctime</span>: <span class="ident">FILETIME</span>,
-    <span class="ident">atime</span>: <span class="ident">FILETIME</span>,
-    <span class="ident">grfMode</span>: <span class="ident">DWORD</span>,
-    <span class="ident">grfLocksSupported</span>: <span class="ident">DWORD</span>,
-    <span class="ident">clsid</span>: <span class="ident">CLSID</span>,
-    <span class="ident">grfStateBits</span>: <span class="ident">DWORD</span>,
-    <span class="ident">reserved</span>: <span class="ident">DWORD</span>,
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>STATSTG {
+    pwcsName: LPOLESTR,
+    type_: DWORD,
+    cbSize: ULARGE_INTEGER,
+    mtime: FILETIME,
+    ctime: FILETIME,
+    atime: FILETIME,
+    grfMode: DWORD,
+    grfLocksSupported: DWORD,
+    clsid: CLSID,
+    grfStateBits: DWORD,
+    reserved: DWORD,
 }}
-<span class="macro">ENUM!</span>{<span class="kw">enum</span> <span class="ident">STGTY</span> {
-    <span class="ident">STGTY_STORAGE</span> <span class="op">=</span> <span class="number">1</span>,
-    <span class="ident">STGTY_STREAM</span> <span class="op">=</span> <span class="number">2</span>,
-    <span class="ident">STGTY_LOCKBYTES</span> <span class="op">=</span> <span class="number">3</span>,
-    <span class="ident">STGTY_PROPERTY</span> <span class="op">=</span> <span class="number">4</span>,
+<span class="macro">ENUM!</span>{<span class="kw">enum </span>STGTY {
+    STGTY_STORAGE = <span class="number">1</span>,
+    STGTY_STREAM = <span class="number">2</span>,
+    STGTY_LOCKBYTES = <span class="number">3</span>,
+    STGTY_PROPERTY = <span class="number">4</span>,
 }}
-<span class="macro">ENUM!</span>{<span class="kw">enum</span> <span class="ident">STREAM_SEEK</span> {
-    <span class="ident">STREAM_SEEK_SET</span> <span class="op">=</span> <span class="number">0</span>,
-    <span class="ident">STREAM_SEEK_CUR</span> <span class="op">=</span> <span class="number">1</span>,
-    <span class="ident">STREAM_SEEK_END</span> <span class="op">=</span> <span class="number">2</span>,
+<span class="macro">ENUM!</span>{<span class="kw">enum </span>STREAM_SEEK {
+    STREAM_SEEK_SET = <span class="number">0</span>,
+    STREAM_SEEK_CUR = <span class="number">1</span>,
+    STREAM_SEEK_END = <span class="number">2</span>,
 }}
-<span class="macro">ENUM!</span>{<span class="kw">enum</span> <span class="ident">LOCKTYPE</span> {
-    <span class="ident">LOCK_WRITE</span> <span class="op">=</span> <span class="number">1</span>,
-    <span class="ident">LOCK_EXCLUSIVE</span> <span class="op">=</span> <span class="number">2</span>,
-    <span class="ident">LOCK_ONLYONCE</span> <span class="op">=</span> <span class="number">4</span>,
+<span class="macro">ENUM!</span>{<span class="kw">enum </span>LOCKTYPE {
+    LOCK_WRITE = <span class="number">1</span>,
+    LOCK_EXCLUSIVE = <span class="number">2</span>,
+    LOCK_ONLYONCE = <span class="number">4</span>,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LPSTREAM</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">IStream</span>;
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x0000000c</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IStream</span>(<span class="ident">IStreamVtbl</span>): <span class="ident">ISequentialStream</span>(<span class="ident">ISequentialStreamVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">Seek</span>(
-        <span class="ident">dlibMove</span>: <span class="ident">LARGE_INTEGER</span>,
-        <span class="ident">dwOrigin</span>: <span class="ident">DWORD</span>,
-        <span class="ident">plibNewPosition</span>: <span class="kw-2">*mut</span> <span class="ident">ULARGE_INTEGER</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">SetSize</span>(
-        <span class="ident">libNewSize</span>: <span class="ident">ULARGE_INTEGER</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">CopyTo</span>(
-        <span class="ident">pstm</span>: <span class="kw-2">*mut</span> <span class="ident">IStream</span>,
-        <span class="ident">cb</span>: <span class="ident">ULARGE_INTEGER</span>,
-        <span class="ident">pcbRead</span>: <span class="kw-2">*mut</span> <span class="ident">ULARGE_INTEGER</span>,
-        <span class="ident">pcbWritten</span>: <span class="kw-2">*mut</span> <span class="ident">ULARGE_INTEGER</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Commit</span>(
-        <span class="ident">grfCommitFlags</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Revert</span>() -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">LockRegion</span>(
-        <span class="ident">libOffset</span>: <span class="ident">ULARGE_INTEGER</span>,
-        <span class="ident">cb</span>: <span class="ident">ULARGE_INTEGER</span>,
-        <span class="ident">dwLockType</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">UnlockRegion</span>(
-        <span class="ident">libOffset</span>: <span class="ident">ULARGE_INTEGER</span>,
-        <span class="ident">cb</span>: <span class="ident">ULARGE_INTEGER</span>,
-        <span class="ident">dwLockType</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Stat</span>(
-        <span class="ident">pstatstg</span>: <span class="kw-2">*mut</span> <span class="ident">STATSTG</span>,
-        <span class="ident">grfStatFlag</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Clone</span>(
-        <span class="ident">ppstm</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">IStream</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
+<span class="kw">pub type </span>LPSTREAM = <span class="kw-2">*mut </span>IStream;
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x0000000c</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]
+</span>interface IStream(IStreamVtbl): ISequentialStream(ISequentialStreamVtbl) {
+    <span class="kw">fn </span>Seek(
+        dlibMove: LARGE_INTEGER,
+        dwOrigin: DWORD,
+        plibNewPosition: <span class="kw-2">*mut </span>ULARGE_INTEGER,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>SetSize(
+        libNewSize: ULARGE_INTEGER,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>CopyTo(
+        pstm: <span class="kw-2">*mut </span>IStream,
+        cb: ULARGE_INTEGER,
+        pcbRead: <span class="kw-2">*mut </span>ULARGE_INTEGER,
+        pcbWritten: <span class="kw-2">*mut </span>ULARGE_INTEGER,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>Commit(
+        grfCommitFlags: DWORD,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>Revert() -&gt; HRESULT,
+    <span class="kw">fn </span>LockRegion(
+        libOffset: ULARGE_INTEGER,
+        cb: ULARGE_INTEGER,
+        dwLockType: DWORD,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>UnlockRegion(
+        libOffset: ULARGE_INTEGER,
+        cb: ULARGE_INTEGER,
+        dwLockType: DWORD,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>Stat(
+        pstatstg: <span class="kw-2">*mut </span>STATSTG,
+        grfStatFlag: DWORD,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>Clone(
+        ppstm: <span class="kw-2">*mut *mut </span>IStream,
+    ) -&gt; HRESULT,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">RPCOLEDATAREP</span> <span class="op">=</span> <span class="ident">ULONG</span>;
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">RPCOLEMESSAGE</span> {
-    <span class="ident">reserved1</span>: <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-    <span class="ident">dataRepresentation</span>: <span class="ident">RPCOLEDATAREP</span>,
-    <span class="ident">Buffer</span>: <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-    <span class="ident">cbBuffer</span>: <span class="ident">ULONG</span>,
-    <span class="ident">iMethod</span>: <span class="ident">ULONG</span>,
-    <span class="ident">reserved2</span>: [<span class="kw-2">*mut</span> <span class="ident">c_void</span>; <span class="number">5</span>],
-    <span class="ident">rpcFlags</span>: <span class="ident">ULONG</span>,
+<span class="kw">pub type </span>RPCOLEDATAREP = ULONG;
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>RPCOLEMESSAGE {
+    reserved1: <span class="kw-2">*mut </span>c_void,
+    dataRepresentation: RPCOLEDATAREP,
+    Buffer: <span class="kw-2">*mut </span>c_void,
+    cbBuffer: ULONG,
+    iMethod: ULONG,
+    reserved2: [<span class="kw-2">*mut </span>c_void; <span class="number">5</span>],
+    rpcFlags: ULONG,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PRPCOLEMESSAGE</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">RPCOLEMESSAGE</span>;
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0xd5f56b60</span>, <span class="number">0x593b</span>, <span class="number">0x101a</span>, <span class="number">0xb5</span>, <span class="number">0x69</span>, <span class="number">0x08</span>, <span class="number">0x00</span>, <span class="number">0x2b</span>, <span class="number">0x2d</span>, <span class="number">0xbf</span>, <span class="number">0x7a</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IRpcChannelBuffer</span>(<span class="ident">IRpcChannelBufferVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">GetBuffer</span>(
-        <span class="ident">pMessage</span>: <span class="kw-2">*mut</span> <span class="ident">RPCOLEMESSAGE</span>,
-        <span class="ident">riid</span>: <span class="ident">REFIID</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">SendReceive</span>(
-        <span class="ident">pMessage</span>: <span class="kw-2">*mut</span> <span class="ident">RPCOLEMESSAGE</span>,
-        <span class="ident">pStatus</span>: <span class="kw-2">*mut</span> <span class="ident">ULONG</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">FreeBuffer</span>(
-        <span class="ident">pMessage</span>: <span class="kw-2">*mut</span> <span class="ident">RPCOLEMESSAGE</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">GetDestCtx</span>(
-        <span class="ident">pdwDestContext</span>: <span class="kw-2">*mut</span> <span class="ident">DWORD</span>,
-        <span class="ident">ppvDestContext</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">IsConnected</span>() -&gt; <span class="ident">HRESULT</span>,
+<span class="kw">pub type </span>PRPCOLEMESSAGE = <span class="kw-2">*mut </span>RPCOLEMESSAGE;
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0xd5f56b60</span>, <span class="number">0x593b</span>, <span class="number">0x101a</span>, <span class="number">0xb5</span>, <span class="number">0x69</span>, <span class="number">0x08</span>, <span class="number">0x00</span>, <span class="number">0x2b</span>, <span class="number">0x2d</span>, <span class="number">0xbf</span>, <span class="number">0x7a</span>)]
+</span>interface IRpcChannelBuffer(IRpcChannelBufferVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>GetBuffer(
+        pMessage: <span class="kw-2">*mut </span>RPCOLEMESSAGE,
+        riid: REFIID,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>SendReceive(
+        pMessage: <span class="kw-2">*mut </span>RPCOLEMESSAGE,
+        pStatus: <span class="kw-2">*mut </span>ULONG,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>FreeBuffer(
+        pMessage: <span class="kw-2">*mut </span>RPCOLEMESSAGE,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>GetDestCtx(
+        pdwDestContext: <span class="kw-2">*mut </span>DWORD,
+        ppvDestContext: <span class="kw-2">*mut *mut </span>c_void,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>IsConnected() -&gt; HRESULT,
 }}
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x594f31d0</span>, <span class="number">0x7f19</span>, <span class="number">0x11d0</span>, <span class="number">0xb1</span>, <span class="number">0x94</span>, <span class="number">0x00</span>, <span class="number">0xa0</span>, <span class="number">0xc9</span>, <span class="number">0x0d</span>, <span class="number">0xc8</span>, <span class="number">0xbf</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IRpcChannelBuffer2</span>(<span class="ident">IRpcChannelBuffer2Vtbl</span>): <span class="ident">IRpcChannelBuffer</span>(<span class="ident">IRpcChannelBufferVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">GetProtocolVersion</span>(
-        <span class="ident">pdwVersion</span>: <span class="kw-2">*mut</span> <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x594f31d0</span>, <span class="number">0x7f19</span>, <span class="number">0x11d0</span>, <span class="number">0xb1</span>, <span class="number">0x94</span>, <span class="number">0x00</span>, <span class="number">0xa0</span>, <span class="number">0xc9</span>, <span class="number">0x0d</span>, <span class="number">0xc8</span>, <span class="number">0xbf</span>)]
+</span>interface IRpcChannelBuffer2(IRpcChannelBuffer2Vtbl): IRpcChannelBuffer(IRpcChannelBufferVtbl) {
+    <span class="kw">fn </span>GetProtocolVersion(
+        pdwVersion: <span class="kw-2">*mut </span>DWORD,
+    ) -&gt; HRESULT,
 }}
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0xa5029fb6</span>, <span class="number">0x3c34</span>, <span class="number">0x11d1</span>, <span class="number">0x9c</span>, <span class="number">0x99</span>, <span class="number">0x00</span>, <span class="number">0xc0</span>, <span class="number">0x4f</span>, <span class="number">0xb9</span>, <span class="number">0x98</span>, <span class="number">0xaa</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IAsyncRpcChannelBuffer</span>(<span class="ident">IAsyncRpcChannelBufferVtbl</span>):
-    <span class="ident">IRpcChannelBuffer2</span>(<span class="ident">IRpcChannelBuffer2Vtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">Send</span>(
-        <span class="ident">pMsg</span>: <span class="kw-2">*mut</span> <span class="ident">RPCOLEMESSAGE</span>,
-        <span class="ident">pSync</span>: <span class="kw-2">*mut</span> <span class="ident">ISynchronize</span>,
-        <span class="ident">pulStatus</span>: <span class="kw-2">*mut</span> <span class="ident">ULONG</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Receive</span>(
-        <span class="ident">pMsg</span>: <span class="kw-2">*mut</span> <span class="ident">RPCOLEMESSAGE</span>,
-        <span class="ident">pulStatus</span>: <span class="kw-2">*mut</span> <span class="ident">ULONG</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">GetDestCtxEx</span>(
-        <span class="ident">pMsg</span>: <span class="kw-2">*mut</span> <span class="ident">RPCOLEMESSAGE</span>,
-        <span class="ident">pdwDestContext</span>: <span class="kw-2">*mut</span> <span class="ident">DWORD</span>,
-        <span class="ident">ppvDestContext</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0xa5029fb6</span>, <span class="number">0x3c34</span>, <span class="number">0x11d1</span>, <span class="number">0x9c</span>, <span class="number">0x99</span>, <span class="number">0x00</span>, <span class="number">0xc0</span>, <span class="number">0x4f</span>, <span class="number">0xb9</span>, <span class="number">0x98</span>, <span class="number">0xaa</span>)]
+</span>interface IAsyncRpcChannelBuffer(IAsyncRpcChannelBufferVtbl):
+    IRpcChannelBuffer2(IRpcChannelBuffer2Vtbl) {
+    <span class="kw">fn </span>Send(
+        pMsg: <span class="kw-2">*mut </span>RPCOLEMESSAGE,
+        pSync: <span class="kw-2">*mut </span>ISynchronize,
+        pulStatus: <span class="kw-2">*mut </span>ULONG,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>Receive(
+        pMsg: <span class="kw-2">*mut </span>RPCOLEMESSAGE,
+        pulStatus: <span class="kw-2">*mut </span>ULONG,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>GetDestCtxEx(
+        pMsg: <span class="kw-2">*mut </span>RPCOLEMESSAGE,
+        pdwDestContext: <span class="kw-2">*mut </span>DWORD,
+        ppvDestContext: <span class="kw-2">*mut *mut </span>c_void,
+    ) -&gt; HRESULT,
 }}
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x25b15600</span>, <span class="number">0x0115</span>, <span class="number">0x11d0</span>, <span class="number">0xbf</span>, <span class="number">0x0d</span>, <span class="number">0x00</span>, <span class="number">0xaa</span>, <span class="number">0x00</span>, <span class="number">0xb8</span>, <span class="number">0xdf</span>, <span class="number">0xd2</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IRpcChannelBuffer3</span>(<span class="ident">IRpcChannelBuffer3Vtbl</span>): <span class="ident">IRpcChannelBuffer2</span>(<span class="ident">IRpcChannelBuffer2Vtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">Send</span>(
-        <span class="ident">pMsg</span>: <span class="kw-2">*mut</span> <span class="ident">RPCOLEMESSAGE</span>,
-        <span class="ident">pulStatus</span>: <span class="kw-2">*mut</span> <span class="ident">ULONG</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Receive</span>(
-        <span class="ident">pMsg</span>: <span class="kw-2">*mut</span> <span class="ident">RPCOLEMESSAGE</span>,
-        <span class="ident">ulSize</span>: <span class="ident">ULONG</span>,
-        <span class="ident">pulStatus</span>: <span class="kw-2">*mut</span> <span class="ident">ULONG</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Cancel</span>(
-        <span class="ident">pMsg</span>: <span class="kw-2">*mut</span> <span class="ident">RPCOLEMESSAGE</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">GetCallContext</span>(
-        <span class="ident">pMsg</span>: <span class="kw-2">*mut</span> <span class="ident">RPCOLEMESSAGE</span>,
-        <span class="ident">riid</span>: <span class="ident">REFIID</span>,
-        <span class="ident">pInterface</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">GetDestCtxEx</span>(
-        <span class="ident">pMsg</span>: <span class="kw-2">*mut</span> <span class="ident">RPCOLEMESSAGE</span>,
-        <span class="ident">pdwDestContext</span>: <span class="kw-2">*mut</span> <span class="ident">DWORD</span>,
-        <span class="ident">ppvDestContext</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">GetState</span>(
-        <span class="ident">pMsg</span>: <span class="kw-2">*mut</span> <span class="ident">RPCOLEMESSAGE</span>,
-        <span class="ident">pState</span>: <span class="kw-2">*mut</span> <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">RegisterAsync</span>(
-        <span class="ident">pMsg</span>: <span class="kw-2">*mut</span> <span class="ident">RPCOLEMESSAGE</span>,
-        <span class="ident">pAsyncMgr</span>: <span class="kw-2">*mut</span> <span class="ident">IAsyncManager</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x25b15600</span>, <span class="number">0x0115</span>, <span class="number">0x11d0</span>, <span class="number">0xbf</span>, <span class="number">0x0d</span>, <span class="number">0x00</span>, <span class="number">0xaa</span>, <span class="number">0x00</span>, <span class="number">0xb8</span>, <span class="number">0xdf</span>, <span class="number">0xd2</span>)]
+</span>interface IRpcChannelBuffer3(IRpcChannelBuffer3Vtbl): IRpcChannelBuffer2(IRpcChannelBuffer2Vtbl) {
+    <span class="kw">fn </span>Send(
+        pMsg: <span class="kw-2">*mut </span>RPCOLEMESSAGE,
+        pulStatus: <span class="kw-2">*mut </span>ULONG,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>Receive(
+        pMsg: <span class="kw-2">*mut </span>RPCOLEMESSAGE,
+        ulSize: ULONG,
+        pulStatus: <span class="kw-2">*mut </span>ULONG,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>Cancel(
+        pMsg: <span class="kw-2">*mut </span>RPCOLEMESSAGE,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>GetCallContext(
+        pMsg: <span class="kw-2">*mut </span>RPCOLEMESSAGE,
+        riid: REFIID,
+        pInterface: <span class="kw-2">*mut *mut </span>c_void,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>GetDestCtxEx(
+        pMsg: <span class="kw-2">*mut </span>RPCOLEMESSAGE,
+        pdwDestContext: <span class="kw-2">*mut </span>DWORD,
+        ppvDestContext: <span class="kw-2">*mut *mut </span>c_void,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>GetState(
+        pMsg: <span class="kw-2">*mut </span>RPCOLEMESSAGE,
+        pState: <span class="kw-2">*mut </span>DWORD,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>RegisterAsync(
+        pMsg: <span class="kw-2">*mut </span>RPCOLEMESSAGE,
+        pAsyncMgr: <span class="kw-2">*mut </span>IAsyncManager,
+    ) -&gt; HRESULT,
 }}
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x58a08519</span>, <span class="number">0x24c8</span>, <span class="number">0x4935</span>, <span class="number">0xb4</span>, <span class="number">0x82</span>, <span class="number">0x3f</span>, <span class="number">0xd8</span>, <span class="number">0x23</span>, <span class="number">0x33</span>, <span class="number">0x3a</span>, <span class="number">0x4f</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IRpcSyntaxNegotiate</span>(<span class="ident">IRpcSyntaxNegotiateVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">NegotiateSyntax</span>(
-        <span class="ident">pMsg</span>: <span class="kw-2">*mut</span> <span class="ident">RPCOLEMESSAGE</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x58a08519</span>, <span class="number">0x24c8</span>, <span class="number">0x4935</span>, <span class="number">0xb4</span>, <span class="number">0x82</span>, <span class="number">0x3f</span>, <span class="number">0xd8</span>, <span class="number">0x23</span>, <span class="number">0x33</span>, <span class="number">0x3a</span>, <span class="number">0x4f</span>)]
+</span>interface IRpcSyntaxNegotiate(IRpcSyntaxNegotiateVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>NegotiateSyntax(
+        pMsg: <span class="kw-2">*mut </span>RPCOLEMESSAGE,
+    ) -&gt; HRESULT,
 }}
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0xd5f56a34</span>, <span class="number">0x593b</span>, <span class="number">0x101a</span>, <span class="number">0xb5</span>, <span class="number">0x69</span>, <span class="number">0x08</span>, <span class="number">0x00</span>, <span class="number">0x2b</span>, <span class="number">0x2d</span>, <span class="number">0xbf</span>, <span class="number">0x7a</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IRpcProxyBuffer</span>(<span class="ident">IRpcProxyBufferVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">Connect</span>(
-        <span class="ident">pRpcChannelBuffer</span>: <span class="kw-2">*mut</span> <span class="ident">IRpcChannelBuffer</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Disconnect</span>() -&gt; (),
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0xd5f56a34</span>, <span class="number">0x593b</span>, <span class="number">0x101a</span>, <span class="number">0xb5</span>, <span class="number">0x69</span>, <span class="number">0x08</span>, <span class="number">0x00</span>, <span class="number">0x2b</span>, <span class="number">0x2d</span>, <span class="number">0xbf</span>, <span class="number">0x7a</span>)]
+</span>interface IRpcProxyBuffer(IRpcProxyBufferVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>Connect(
+        pRpcChannelBuffer: <span class="kw-2">*mut </span>IRpcChannelBuffer,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>Disconnect() -&gt; (),
 }}
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0xd5f56afc</span>, <span class="number">0x593b</span>, <span class="number">0x101a</span>, <span class="number">0xb5</span>, <span class="number">0x69</span>, <span class="number">0x08</span>, <span class="number">0x00</span>, <span class="number">0x2b</span>, <span class="number">0x2d</span>, <span class="number">0xbf</span>, <span class="number">0x7a</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IRpcStubBuffer</span>(<span class="ident">IRpcStubBufferVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">Connect</span>(
-        <span class="ident">pUnkServer</span>: <span class="kw-2">*mut</span> <span class="ident">IUnknown</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Disconnect</span>() -&gt; (),
-    <span class="kw">fn</span> <span class="ident">Invoke</span>(
-        <span class="ident">_prpcmsg</span>: <span class="kw-2">*mut</span> <span class="ident">RPCOLEMESSAGE</span>,
-        <span class="ident">_pRpcChannelBuffer</span>: <span class="kw-2">*mut</span> <span class="ident">IRpcChannelBuffer</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">IsIIDSupported</span>(
-        <span class="ident">riid</span>: <span class="ident">REFIID</span>,
-    ) -&gt; <span class="kw-2">*mut</span> <span class="ident">IRpcStubBuffer</span>,
-    <span class="kw">fn</span> <span class="ident">CountRefs</span>() -&gt; <span class="ident">ULONG</span>,
-    <span class="kw">fn</span> <span class="ident">DebugServerQueryInterface</span>(
-        <span class="ident">ppv</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">DebugServerRelease</span>(
-        <span class="ident">pv</span>: <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-    ) -&gt; (),
-}}
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0xd5f569d0</span>, <span class="number">0x593b</span>, <span class="number">0x101a</span>, <span class="number">0xb5</span>, <span class="number">0x69</span>, <span class="number">0x08</span>, <span class="number">0x00</span>, <span class="number">0x2b</span>, <span class="number">0x2d</span>, <span class="number">0xbf</span>, <span class="number">0x7a</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IPSFactoryBuffer</span>(<span class="ident">IPSFactoryBufferVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">CreateProxy</span>(
-        <span class="ident">pUnkOuter</span>: <span class="kw-2">*mut</span> <span class="ident">IUnknown</span>,
-        <span class="ident">riid</span>: <span class="ident">REFIID</span>,
-        <span class="ident">ppProxy</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">IRpcProxyBuffer</span>,
-        <span class="ident">ppv</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">CreateStub</span>(
-        <span class="ident">riid</span>: <span class="ident">REFIID</span>,
-        <span class="ident">pUnkServer</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">IUnknown</span>,
-        <span class="ident">ppStub</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">IRpcStubBuffer</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-}}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">SChannelHookCallInfo</span> {
-    <span class="ident">iid</span>: <span class="ident">IID</span>,
-    <span class="ident">cbSize</span>: <span class="ident">DWORD</span>,
-    <span class="ident">uCausality</span>: <span class="ident">GUID</span>,
-    <span class="ident">dwServerPid</span>: <span class="ident">DWORD</span>,
-    <span class="ident">iMethod</span>: <span class="ident">DWORD</span>,
-    <span class="ident">pObject</span>: <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-}}
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x1008c4a0</span>, <span class="number">0x7613</span>, <span class="number">0x11cf</span>, <span class="number">0x9a</span>, <span class="number">0xf1</span>, <span class="number">0x00</span>, <span class="number">0x20</span>, <span class="number">0xaf</span>, <span class="number">0x6e</span>, <span class="number">0x72</span>, <span class="number">0xf4</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IChannelHook</span>(<span class="ident">IChannelHookVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">ClientGetSize</span>(
-        <span class="ident">uExtent</span>: <span class="ident">REFGUID</span>,
-        <span class="ident">riid</span>: <span class="ident">REFIID</span>,
-        <span class="ident">pDataSize</span>: <span class="kw-2">*mut</span> <span class="ident">ULONG</span>,
-    ) -&gt; (),
-    <span class="kw">fn</span> <span class="ident">ClientFillBuffer</span>(
-        <span class="ident">uExtent</span>: <span class="ident">REFGUID</span>,
-        <span class="ident">riid</span>: <span class="ident">REFIID</span>,
-        <span class="ident">pDataSize</span>: <span class="kw-2">*mut</span> <span class="ident">ULONG</span>,
-        <span class="ident">pDataBuffer</span>: <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-    ) -&gt; (),
-    <span class="kw">fn</span> <span class="ident">ClientNotify</span>(
-        <span class="ident">uExtent</span>: <span class="ident">REFGUID</span>,
-        <span class="ident">riid</span>: <span class="ident">REFIID</span>,
-        <span class="ident">cbDataSize</span>: <span class="ident">ULONG</span>,
-        <span class="ident">pDataBuffer</span>: <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-        <span class="ident">lDataRep</span>: <span class="ident">DWORD</span>,
-        <span class="ident">hrFault</span>: <span class="ident">HRESULT</span>,
-    ) -&gt; (),
-    <span class="kw">fn</span> <span class="ident">ServerNotify</span>(
-        <span class="ident">uExtent</span>: <span class="ident">REFGUID</span>,
-        <span class="ident">riid</span>: <span class="ident">REFIID</span>,
-        <span class="ident">cbDataSize</span>: <span class="ident">ULONG</span>,
-        <span class="ident">pDataBuffer</span>: <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-        <span class="ident">lDataRep</span>: <span class="ident">DWORD</span>,
-    ) -&gt; (),
-    <span class="kw">fn</span> <span class="ident">ServerGetSize</span>(
-        <span class="ident">uExtent</span>: <span class="ident">REFGUID</span>,
-        <span class="ident">riid</span>: <span class="ident">REFIID</span>,
-        <span class="ident">hrFault</span>: <span class="ident">HRESULT</span>,
-        <span class="ident">pDataSize</span>: <span class="kw-2">*mut</span> <span class="ident">ULONG</span>,
-    ) -&gt; (),
-    <span class="kw">fn</span> <span class="ident">ServerFillBuffer</span>(
-        <span class="ident">uExtent</span>: <span class="ident">REFGUID</span>,
-        <span class="ident">riid</span>: <span class="ident">REFIID</span>,
-        <span class="ident">pDataSize</span>: <span class="kw-2">*mut</span> <span class="ident">ULONG</span>,
-        <span class="ident">pDataBuffer</span>: <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-        <span class="ident">hrFault</span>: <span class="ident">HRESULT</span>,
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0xd5f56afc</span>, <span class="number">0x593b</span>, <span class="number">0x101a</span>, <span class="number">0xb5</span>, <span class="number">0x69</span>, <span class="number">0x08</span>, <span class="number">0x00</span>, <span class="number">0x2b</span>, <span class="number">0x2d</span>, <span class="number">0xbf</span>, <span class="number">0x7a</span>)]
+</span>interface IRpcStubBuffer(IRpcStubBufferVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>Connect(
+        pUnkServer: <span class="kw-2">*mut </span>IUnknown,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>Disconnect() -&gt; (),
+    <span class="kw">fn </span>Invoke(
+        _prpcmsg: <span class="kw-2">*mut </span>RPCOLEMESSAGE,
+        _pRpcChannelBuffer: <span class="kw-2">*mut </span>IRpcChannelBuffer,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>IsIIDSupported(
+        riid: REFIID,
+    ) -&gt; <span class="kw-2">*mut </span>IRpcStubBuffer,
+    <span class="kw">fn </span>CountRefs() -&gt; ULONG,
+    <span class="kw">fn </span>DebugServerQueryInterface(
+        ppv: <span class="kw-2">*mut *mut </span>c_void,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>DebugServerRelease(
+        pv: <span class="kw-2">*mut </span>c_void,
     ) -&gt; (),
 }}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">SOLE_AUTHENTICATION_SERVICE</span> {
-    <span class="ident">dwAuthnSvc</span>: <span class="ident">DWORD</span>,
-    <span class="ident">dwAuthzSvc</span>: <span class="ident">DWORD</span>,
-    <span class="ident">pPrincipalName</span>: <span class="kw-2">*mut</span> <span class="ident">OLECHAR</span>,
-    <span class="ident">hr</span>: <span class="ident">HRESULT</span>,
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0xd5f569d0</span>, <span class="number">0x593b</span>, <span class="number">0x101a</span>, <span class="number">0xb5</span>, <span class="number">0x69</span>, <span class="number">0x08</span>, <span class="number">0x00</span>, <span class="number">0x2b</span>, <span class="number">0x2d</span>, <span class="number">0xbf</span>, <span class="number">0x7a</span>)]
+</span>interface IPSFactoryBuffer(IPSFactoryBufferVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>CreateProxy(
+        pUnkOuter: <span class="kw-2">*mut </span>IUnknown,
+        riid: REFIID,
+        ppProxy: <span class="kw-2">*mut *mut </span>IRpcProxyBuffer,
+        ppv: <span class="kw-2">*mut *mut </span>c_void,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>CreateStub(
+        riid: REFIID,
+        pUnkServer: <span class="kw-2">*mut *mut </span>IUnknown,
+        ppStub: <span class="kw-2">*mut *mut </span>IRpcStubBuffer,
+    ) -&gt; HRESULT,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PSOLE_AUTHENTICATION_SERVICE</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">SOLE_AUTHENTICATION_SERVICE</span>;
-<span class="macro">ENUM!</span>{<span class="kw">enum</span> <span class="ident">EOLE_AUTHENTICATION_CAPABILITIES</span> {
-    <span class="ident">EOAC_NONE</span> <span class="op">=</span> <span class="number">0</span>,
-    <span class="ident">EOAC_MUTUAL_AUTH</span> <span class="op">=</span> <span class="number">0x1</span>,
-    <span class="ident">EOAC_STATIC_CLOAKING</span> <span class="op">=</span> <span class="number">0x20</span>,
-    <span class="ident">EOAC_DYNAMIC_CLOAKING</span> <span class="op">=</span> <span class="number">0x40</span>,
-    <span class="ident">EOAC_ANY_AUTHORITY</span> <span class="op">=</span> <span class="number">0x80</span>,
-    <span class="ident">EOAC_MAKE_FULLSIC</span> <span class="op">=</span> <span class="number">0x100</span>,
-    <span class="ident">EOAC_DEFAULT</span> <span class="op">=</span> <span class="number">0x800</span>,
-    <span class="ident">EOAC_SECURE_REFS</span> <span class="op">=</span> <span class="number">0x2</span>,
-    <span class="ident">EOAC_ACCESS_CONTROL</span> <span class="op">=</span> <span class="number">0x4</span>,
-    <span class="ident">EOAC_APPID</span> <span class="op">=</span> <span class="number">0x8</span>,
-    <span class="ident">EOAC_DYNAMIC</span> <span class="op">=</span> <span class="number">0x10</span>,
-    <span class="ident">EOAC_REQUIRE_FULLSIC</span> <span class="op">=</span> <span class="number">0x200</span>,
-    <span class="ident">EOAC_AUTO_IMPERSONATE</span> <span class="op">=</span> <span class="number">0x400</span>,
-    <span class="ident">EOAC_DISABLE_AAA</span> <span class="op">=</span> <span class="number">0x1000</span>,
-    <span class="ident">EOAC_NO_CUSTOM_MARSHAL</span> <span class="op">=</span> <span class="number">0x2000</span>,
-    <span class="ident">EOAC_RESERVED1</span> <span class="op">=</span> <span class="number">0x4000</span>,
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>SChannelHookCallInfo {
+    iid: IID,
+    cbSize: DWORD,
+    uCausality: GUID,
+    dwServerPid: DWORD,
+    iMethod: DWORD,
+    pObject: <span class="kw-2">*mut </span>c_void,
 }}
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">COLE_DEFAULT_PRINCIPAL</span>: <span class="kw-2">*mut</span> <span class="ident">OLECHAR</span> <span class="op">=</span> <span class="op">-</span><span class="number">1isize</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">OLECHAR</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">COLE_DEFAULT_AUTHINFO</span>: <span class="kw-2">*mut</span> <span class="ident">c_void</span> <span class="op">=</span> <span class="op">-</span><span class="number">1isize</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">c_void</span>;
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">SOLE_AUTHENTICATION_INFO</span> {
-    <span class="ident">dwAuthnSvc</span>: <span class="ident">DWORD</span>,
-    <span class="ident">dwAuthzSvc</span>: <span class="ident">DWORD</span>,
-    <span class="ident">pAuthInfo</span>: <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x1008c4a0</span>, <span class="number">0x7613</span>, <span class="number">0x11cf</span>, <span class="number">0x9a</span>, <span class="number">0xf1</span>, <span class="number">0x00</span>, <span class="number">0x20</span>, <span class="number">0xaf</span>, <span class="number">0x6e</span>, <span class="number">0x72</span>, <span class="number">0xf4</span>)]
+</span>interface IChannelHook(IChannelHookVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>ClientGetSize(
+        uExtent: REFGUID,
+        riid: REFIID,
+        pDataSize: <span class="kw-2">*mut </span>ULONG,
+    ) -&gt; (),
+    <span class="kw">fn </span>ClientFillBuffer(
+        uExtent: REFGUID,
+        riid: REFIID,
+        pDataSize: <span class="kw-2">*mut </span>ULONG,
+        pDataBuffer: <span class="kw-2">*mut </span>c_void,
+    ) -&gt; (),
+    <span class="kw">fn </span>ClientNotify(
+        uExtent: REFGUID,
+        riid: REFIID,
+        cbDataSize: ULONG,
+        pDataBuffer: <span class="kw-2">*mut </span>c_void,
+        lDataRep: DWORD,
+        hrFault: HRESULT,
+    ) -&gt; (),
+    <span class="kw">fn </span>ServerNotify(
+        uExtent: REFGUID,
+        riid: REFIID,
+        cbDataSize: ULONG,
+        pDataBuffer: <span class="kw-2">*mut </span>c_void,
+        lDataRep: DWORD,
+    ) -&gt; (),
+    <span class="kw">fn </span>ServerGetSize(
+        uExtent: REFGUID,
+        riid: REFIID,
+        hrFault: HRESULT,
+        pDataSize: <span class="kw-2">*mut </span>ULONG,
+    ) -&gt; (),
+    <span class="kw">fn </span>ServerFillBuffer(
+        uExtent: REFGUID,
+        riid: REFIID,
+        pDataSize: <span class="kw-2">*mut </span>ULONG,
+        pDataBuffer: <span class="kw-2">*mut </span>c_void,
+        hrFault: HRESULT,
+    ) -&gt; (),
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PSOLE_AUTHENTICATION_INFO</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">SOLE_AUTHENTICATION_INFO</span>;
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">SOLE_AUTHENTICATION_LIST</span> {
-    <span class="ident">cAuthInfo</span>: <span class="ident">DWORD</span>,
-    <span class="ident">aAuthInfo</span>: <span class="kw-2">*mut</span> <span class="ident">SOLE_AUTHENTICATION_INFO</span>,
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>SOLE_AUTHENTICATION_SERVICE {
+    dwAuthnSvc: DWORD,
+    dwAuthzSvc: DWORD,
+    pPrincipalName: <span class="kw-2">*mut </span>OLECHAR,
+    hr: HRESULT,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PSOLE_AUTHENTICATION_LIST</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">SOLE_AUTHENTICATION_LIST</span>;
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x0000013d</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IClientSecurity</span>(<span class="ident">IClientSecurityVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">QueryBlanket</span>(
-        <span class="ident">pProxy</span>: <span class="kw-2">*mut</span> <span class="ident">IUnknown</span>,
-        <span class="ident">pAuthnSvc</span>: <span class="kw-2">*mut</span> <span class="ident">DWORD</span>,
-        <span class="ident">pAuthzSvc</span>: <span class="kw-2">*mut</span> <span class="ident">DWORD</span>,
-        <span class="ident">pServerPrincName</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">OLECHAR</span>,
-        <span class="ident">pAuthnLevel</span>: <span class="kw-2">*mut</span> <span class="ident">DWORD</span>,
-        <span class="ident">pImpLevel</span>: <span class="kw-2">*mut</span> <span class="ident">DWORD</span>,
-        <span class="ident">pAuthInfo</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-        <span class="ident">pCapabilities</span>: <span class="kw-2">*mut</span> <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">SetBlanket</span>(
-        <span class="ident">pProxy</span>: <span class="kw-2">*mut</span> <span class="ident">IUnknown</span>,
-        <span class="ident">dwAuthnSvc</span>: <span class="ident">DWORD</span>,
-        <span class="ident">dwAuthzSvc</span>: <span class="ident">DWORD</span>,
-        <span class="ident">pServerPrincName</span>: <span class="kw-2">*mut</span> <span class="ident">OLECHAR</span>,
-        <span class="ident">dwAuthnLevel</span>: <span class="ident">DWORD</span>,
-        <span class="ident">dwImpLevel</span>: <span class="ident">DWORD</span>,
-        <span class="ident">pAuthInfo</span>: <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-        <span class="ident">dwCapabilities</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">CopyProxy</span>(
-        <span class="ident">pProxy</span>: <span class="kw-2">*mut</span> <span class="ident">IUnknown</span>,
-        <span class="ident">ppCopy</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">IUnknown</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
+<span class="kw">pub type </span>PSOLE_AUTHENTICATION_SERVICE = <span class="kw-2">*mut </span>SOLE_AUTHENTICATION_SERVICE;
+<span class="macro">ENUM!</span>{<span class="kw">enum </span>EOLE_AUTHENTICATION_CAPABILITIES {
+    EOAC_NONE = <span class="number">0</span>,
+    EOAC_MUTUAL_AUTH = <span class="number">0x1</span>,
+    EOAC_STATIC_CLOAKING = <span class="number">0x20</span>,
+    EOAC_DYNAMIC_CLOAKING = <span class="number">0x40</span>,
+    EOAC_ANY_AUTHORITY = <span class="number">0x80</span>,
+    EOAC_MAKE_FULLSIC = <span class="number">0x100</span>,
+    EOAC_DEFAULT = <span class="number">0x800</span>,
+    EOAC_SECURE_REFS = <span class="number">0x2</span>,
+    EOAC_ACCESS_CONTROL = <span class="number">0x4</span>,
+    EOAC_APPID = <span class="number">0x8</span>,
+    EOAC_DYNAMIC = <span class="number">0x10</span>,
+    EOAC_REQUIRE_FULLSIC = <span class="number">0x200</span>,
+    EOAC_AUTO_IMPERSONATE = <span class="number">0x400</span>,
+    EOAC_DISABLE_AAA = <span class="number">0x1000</span>,
+    EOAC_NO_CUSTOM_MARSHAL = <span class="number">0x2000</span>,
+    EOAC_RESERVED1 = <span class="number">0x4000</span>,
 }}
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x0000013e</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IServerSecurity</span>(<span class="ident">IServerSecurityVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">QueryBlanket</span>(
-        <span class="ident">pAuthnSvc</span>: <span class="kw-2">*mut</span> <span class="ident">DWORD</span>,
-        <span class="ident">pAuthzSvc</span>: <span class="kw-2">*mut</span> <span class="ident">DWORD</span>,
-        <span class="ident">pServerPrincName</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">OLECHAR</span>,
-        <span class="ident">pAuthnLevel</span>: <span class="kw-2">*mut</span> <span class="ident">DWORD</span>,
-        <span class="ident">pImpLevel</span>: <span class="kw-2">*mut</span> <span class="ident">DWORD</span>,
-        <span class="ident">pPrivs</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-        <span class="ident">pCapabilities</span>: <span class="kw-2">*mut</span> <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">ImpersonateClient</span>() -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">RevertToSelf</span>() -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">IsImpersonating</span>() -&gt; <span class="ident">BOOL</span>,
+<span class="kw">pub const </span>COLE_DEFAULT_PRINCIPAL: <span class="kw-2">*mut </span>OLECHAR = -<span class="number">1isize </span><span class="kw">as </span><span class="kw-2">*mut </span>OLECHAR;
+<span class="kw">pub const </span>COLE_DEFAULT_AUTHINFO: <span class="kw-2">*mut </span>c_void = -<span class="number">1isize </span><span class="kw">as </span><span class="kw-2">*mut </span>c_void;
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>SOLE_AUTHENTICATION_INFO {
+    dwAuthnSvc: DWORD,
+    dwAuthzSvc: DWORD,
+    pAuthInfo: <span class="kw-2">*mut </span>c_void,
 }}
-<span class="macro">ENUM!</span>{<span class="kw">enum</span> <span class="ident">RPCOPT_PROPERTIES</span> {
-    <span class="ident">COMBND_RPCTIMEOUT</span> <span class="op">=</span> <span class="number">0x1</span>,
-    <span class="ident">COMBND_SERVER_LOCALITY</span> <span class="op">=</span> <span class="number">0x2</span>,
-    <span class="ident">COMBND_RESERVED1</span> <span class="op">=</span> <span class="number">0x4</span>,
-    <span class="ident">COMBND_RESERVED2</span> <span class="op">=</span> <span class="number">0x5</span>,
-    <span class="ident">COMBND_RESERVED3</span> <span class="op">=</span> <span class="number">0x8</span>,
-    <span class="ident">COMBND_RESERVED4</span> <span class="op">=</span> <span class="number">0x10</span>,
+<span class="kw">pub type </span>PSOLE_AUTHENTICATION_INFO = <span class="kw-2">*mut </span>SOLE_AUTHENTICATION_INFO;
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>SOLE_AUTHENTICATION_LIST {
+    cAuthInfo: DWORD,
+    aAuthInfo: <span class="kw-2">*mut </span>SOLE_AUTHENTICATION_INFO,
 }}
-<span class="macro">ENUM!</span>{<span class="kw">enum</span> <span class="ident">RPCOPT_SERVER_LOCALITY_VALUES</span> {
-    <span class="ident">SERVER_LOCALITY_PROCESS_LOCAL</span> <span class="op">=</span> <span class="number">0</span>,
-    <span class="ident">SERVER_LOCALITY_MACHINE_LOCAL</span> <span class="op">=</span> <span class="number">1</span>,
-    <span class="ident">SERVER_LOCALITY_REMOTE</span> <span class="op">=</span> <span class="number">2</span>,
+<span class="kw">pub type </span>PSOLE_AUTHENTICATION_LIST = <span class="kw-2">*mut </span>SOLE_AUTHENTICATION_LIST;
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x0000013d</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]
+</span>interface IClientSecurity(IClientSecurityVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>QueryBlanket(
+        pProxy: <span class="kw-2">*mut </span>IUnknown,
+        pAuthnSvc: <span class="kw-2">*mut </span>DWORD,
+        pAuthzSvc: <span class="kw-2">*mut </span>DWORD,
+        pServerPrincName: <span class="kw-2">*mut *mut </span>OLECHAR,
+        pAuthnLevel: <span class="kw-2">*mut </span>DWORD,
+        pImpLevel: <span class="kw-2">*mut </span>DWORD,
+        pAuthInfo: <span class="kw-2">*mut *mut </span>c_void,
+        pCapabilities: <span class="kw-2">*mut </span>DWORD,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>SetBlanket(
+        pProxy: <span class="kw-2">*mut </span>IUnknown,
+        dwAuthnSvc: DWORD,
+        dwAuthzSvc: DWORD,
+        pServerPrincName: <span class="kw-2">*mut </span>OLECHAR,
+        dwAuthnLevel: DWORD,
+        dwImpLevel: DWORD,
+        pAuthInfo: <span class="kw-2">*mut </span>c_void,
+        dwCapabilities: DWORD,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>CopyProxy(
+        pProxy: <span class="kw-2">*mut </span>IUnknown,
+        ppCopy: <span class="kw-2">*mut *mut </span>IUnknown,
+    ) -&gt; HRESULT,
 }}
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x00000144</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IRpcOptions</span>(<span class="ident">IRpcOptionsVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">Set</span>(
-        <span class="ident">pPrx</span>: <span class="kw-2">*mut</span> <span class="ident">IUnknown</span>,
-        <span class="ident">dwProperty</span>: <span class="ident">RPCOPT_PROPERTIES</span>,
-        <span class="ident">dwValue</span>: <span class="ident">ULONG_PTR</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Query</span>(
-        <span class="ident">pPrx</span>: <span class="kw-2">*mut</span> <span class="ident">IUnknown</span>,
-        <span class="ident">dwProperty</span>: <span class="ident">RPCOPT_PROPERTIES</span>,
-        <span class="ident">pdwValue</span>: <span class="kw-2">*mut</span> <span class="ident">ULONG_PTR</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x0000013e</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]
+</span>interface IServerSecurity(IServerSecurityVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>QueryBlanket(
+        pAuthnSvc: <span class="kw-2">*mut </span>DWORD,
+        pAuthzSvc: <span class="kw-2">*mut </span>DWORD,
+        pServerPrincName: <span class="kw-2">*mut *mut </span>OLECHAR,
+        pAuthnLevel: <span class="kw-2">*mut </span>DWORD,
+        pImpLevel: <span class="kw-2">*mut </span>DWORD,
+        pPrivs: <span class="kw-2">*mut *mut </span>c_void,
+        pCapabilities: <span class="kw-2">*mut </span>DWORD,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>ImpersonateClient() -&gt; HRESULT,
+    <span class="kw">fn </span>RevertToSelf() -&gt; HRESULT,
+    <span class="kw">fn </span>IsImpersonating() -&gt; BOOL,
 }}
-<span class="macro">ENUM!</span>{<span class="kw">enum</span> <span class="ident">GLOBALOPT_PROPERTIES</span> {
-    <span class="ident">COMGLB_EXCEPTION_HANDLING</span> <span class="op">=</span> <span class="number">1</span>,
-    <span class="ident">COMGLB_APPID</span> <span class="op">=</span> <span class="number">2</span>,
-    <span class="ident">COMGLB_RPC_THREADPOOL_SETTING</span> <span class="op">=</span> <span class="number">3</span>,
-    <span class="ident">COMGLB_RO_SETTINGS</span> <span class="op">=</span> <span class="number">4</span>,
-    <span class="ident">COMGLB_UNMARSHALING_POLICY</span> <span class="op">=</span> <span class="number">5</span>,
-    <span class="ident">COMGLB_PROPERTIES_RESERVED1</span> <span class="op">=</span> <span class="number">6</span>,
+<span class="macro">ENUM!</span>{<span class="kw">enum </span>RPCOPT_PROPERTIES {
+    COMBND_RPCTIMEOUT = <span class="number">0x1</span>,
+    COMBND_SERVER_LOCALITY = <span class="number">0x2</span>,
+    COMBND_RESERVED1 = <span class="number">0x4</span>,
+    COMBND_RESERVED2 = <span class="number">0x5</span>,
+    COMBND_RESERVED3 = <span class="number">0x8</span>,
+    COMBND_RESERVED4 = <span class="number">0x10</span>,
 }}
-<span class="macro">ENUM!</span>{<span class="kw">enum</span> <span class="ident">GLOBALOPT_EH_VALUES</span> {
-    <span class="ident">COMGLB_EXCEPTION_HANDLE</span> <span class="op">=</span> <span class="number">0</span>,
-    <span class="ident">COMGLB_EXCEPTION_DONOT_HANDLE_FATAL</span> <span class="op">=</span> <span class="number">1</span>,
-    <span class="ident">COMGLB_EXCEPTION_DONOT_HANDLE</span> <span class="op">=</span> <span class="ident">COMGLB_EXCEPTION_DONOT_HANDLE_FATAL</span>,
-    <span class="ident">COMGLB_EXCEPTION_DONOT_HANDLE_ANY</span> <span class="op">=</span> <span class="number">2</span>,
+<span class="macro">ENUM!</span>{<span class="kw">enum </span>RPCOPT_SERVER_LOCALITY_VALUES {
+    SERVER_LOCALITY_PROCESS_LOCAL = <span class="number">0</span>,
+    SERVER_LOCALITY_MACHINE_LOCAL = <span class="number">1</span>,
+    SERVER_LOCALITY_REMOTE = <span class="number">2</span>,
 }}
-<span class="macro">ENUM!</span>{<span class="kw">enum</span> <span class="ident">GLOBALOPT_RPCTP_VALUES</span> {
-    <span class="ident">COMGLB_RPC_THREADPOOL_SETTING_DEFAULT_POOL</span> <span class="op">=</span> <span class="number">0</span>,
-    <span class="ident">COMGLB_RPC_THREADPOOL_SETTING_PRIVATE_POOL</span> <span class="op">=</span> <span class="number">1</span>,
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x00000144</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]
+</span>interface IRpcOptions(IRpcOptionsVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>Set(
+        pPrx: <span class="kw-2">*mut </span>IUnknown,
+        dwProperty: RPCOPT_PROPERTIES,
+        dwValue: ULONG_PTR,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>Query(
+        pPrx: <span class="kw-2">*mut </span>IUnknown,
+        dwProperty: RPCOPT_PROPERTIES,
+        pdwValue: <span class="kw-2">*mut </span>ULONG_PTR,
+    ) -&gt; HRESULT,
 }}
-<span class="macro">ENUM!</span>{<span class="kw">enum</span> <span class="ident">GLOBALOPT_RO_FLAGS</span> {
-    <span class="ident">COMGLB_STA_MODALLOOP_REMOVE_TOUCH_MESSAGES</span> <span class="op">=</span> <span class="number">0x1</span>,
-    <span class="ident">COMGLB_STA_MODALLOOP_SHARED_QUEUE_REMOVE_INPUT_MESSAGES</span> <span class="op">=</span> <span class="number">0x2</span>,
-    <span class="ident">COMGLB_STA_MODALLOOP_SHARED_QUEUE_DONOT_REMOVE_INPUT_MESSAGES</span> <span class="op">=</span> <span class="number">0x4</span>,
-    <span class="ident">COMGLB_FAST_RUNDOWN</span> <span class="op">=</span> <span class="number">0x8</span>,
-    <span class="ident">COMGLB_RESERVED1</span> <span class="op">=</span> <span class="number">0x10</span>,
-    <span class="ident">COMGLB_RESERVED2</span> <span class="op">=</span> <span class="number">0x20</span>,
-    <span class="ident">COMGLB_RESERVED3</span> <span class="op">=</span> <span class="number">0x40</span>,
-    <span class="ident">COMGLB_STA_MODALLOOP_SHARED_QUEUE_REORDER_POINTER_MESSAGES</span> <span class="op">=</span> <span class="number">0x80</span>,
-    <span class="ident">COMGLB_RESERVED4</span> <span class="op">=</span> <span class="number">0x100</span>,
-    <span class="ident">COMGLB_RESERVED5</span> <span class="op">=</span> <span class="number">0x200</span>,
-    <span class="ident">COMGLB_RESERVED6</span> <span class="op">=</span> <span class="number">0x400</span>,
+<span class="macro">ENUM!</span>{<span class="kw">enum </span>GLOBALOPT_PROPERTIES {
+    COMGLB_EXCEPTION_HANDLING = <span class="number">1</span>,
+    COMGLB_APPID = <span class="number">2</span>,
+    COMGLB_RPC_THREADPOOL_SETTING = <span class="number">3</span>,
+    COMGLB_RO_SETTINGS = <span class="number">4</span>,
+    COMGLB_UNMARSHALING_POLICY = <span class="number">5</span>,
+    COMGLB_PROPERTIES_RESERVED1 = <span class="number">6</span>,
 }}
-<span class="macro">ENUM!</span>{<span class="kw">enum</span> <span class="ident">GLOBALOPT_UNMARSHALING_POLICY_VALUES</span> {
-    <span class="ident">COMGLB_UNMARSHALING_POLICY_NORMAL</span> <span class="op">=</span> <span class="number">0</span>,
-    <span class="ident">COMGLB_UNMARSHALING_POLICY_STRONG</span> <span class="op">=</span> <span class="number">1</span>,
-    <span class="ident">COMGLB_UNMARSHALING_POLICY_HYBRID</span> <span class="op">=</span> <span class="number">2</span>,
+<span class="macro">ENUM!</span>{<span class="kw">enum </span>GLOBALOPT_EH_VALUES {
+    COMGLB_EXCEPTION_HANDLE = <span class="number">0</span>,
+    COMGLB_EXCEPTION_DONOT_HANDLE_FATAL = <span class="number">1</span>,
+    COMGLB_EXCEPTION_DONOT_HANDLE = COMGLB_EXCEPTION_DONOT_HANDLE_FATAL,
+    COMGLB_EXCEPTION_DONOT_HANDLE_ANY = <span class="number">2</span>,
 }}
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x0000015b</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IGlobalOptions</span>(<span class="ident">IGlobalOptionsVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">Set</span>(
-        <span class="ident">dwProperty</span>: <span class="ident">GLOBALOPT_PROPERTIES</span>,
-        <span class="ident">dwValue</span>: <span class="ident">ULONG_PTR</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Query</span>(
-        <span class="ident">dwProperty</span>: <span class="ident">GLOBALOPT_PROPERTIES</span>,
-        <span class="ident">pdwValue</span>: <span class="kw-2">*mut</span> <span class="ident">ULONG_PTR</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
+<span class="macro">ENUM!</span>{<span class="kw">enum </span>GLOBALOPT_RPCTP_VALUES {
+    COMGLB_RPC_THREADPOOL_SETTING_DEFAULT_POOL = <span class="number">0</span>,
+    COMGLB_RPC_THREADPOOL_SETTING_PRIVATE_POOL = <span class="number">1</span>,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LPSURROGATE</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">ISurrogate</span>;
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x00000022</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]</span>
-<span class="ident">interface</span> <span class="ident">ISurrogate</span>(<span class="ident">ISurrogateVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">LoadDllServer</span>(
-        <span class="ident">Clsid</span>: <span class="ident">REFCLSID</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">FreeSurrogate</span>() -&gt; <span class="ident">HRESULT</span>,
+<span class="macro">ENUM!</span>{<span class="kw">enum </span>GLOBALOPT_RO_FLAGS {
+    COMGLB_STA_MODALLOOP_REMOVE_TOUCH_MESSAGES = <span class="number">0x1</span>,
+    COMGLB_STA_MODALLOOP_SHARED_QUEUE_REMOVE_INPUT_MESSAGES = <span class="number">0x2</span>,
+    COMGLB_STA_MODALLOOP_SHARED_QUEUE_DONOT_REMOVE_INPUT_MESSAGES = <span class="number">0x4</span>,
+    COMGLB_FAST_RUNDOWN = <span class="number">0x8</span>,
+    COMGLB_RESERVED1 = <span class="number">0x10</span>,
+    COMGLB_RESERVED2 = <span class="number">0x20</span>,
+    COMGLB_RESERVED3 = <span class="number">0x40</span>,
+    COMGLB_STA_MODALLOOP_SHARED_QUEUE_REORDER_POINTER_MESSAGES = <span class="number">0x80</span>,
+    COMGLB_RESERVED4 = <span class="number">0x100</span>,
+    COMGLB_RESERVED5 = <span class="number">0x200</span>,
+    COMGLB_RESERVED6 = <span class="number">0x400</span>,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LPGLOBALINTERFACETABLE</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">IGlobalInterfaceTable</span>;
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x00000146</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IGlobalInterfaceTable</span>(<span class="ident">IGlobalInterfaceTableVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">RegisterInterfaceInGlobal</span>(
-        <span class="ident">pUnk</span>: <span class="kw-2">*mut</span> <span class="ident">IUnknown</span>,
-        <span class="ident">riid</span>: <span class="ident">REFIID</span>,
-        <span class="ident">pdwCookie</span>: <span class="kw-2">*mut</span> <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">RevokeInterfaceFromGlobal</span>(
-        <span class="ident">dwCookie</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">GetInterfaceFromGlobal</span>(
-        <span class="ident">dwCookie</span>: <span class="ident">DWORD</span>,
-        <span class="ident">riid</span>: <span class="ident">REFIID</span>,
-        <span class="ident">ppv</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
+<span class="macro">ENUM!</span>{<span class="kw">enum </span>GLOBALOPT_UNMARSHALING_POLICY_VALUES {
+    COMGLB_UNMARSHALING_POLICY_NORMAL = <span class="number">0</span>,
+    COMGLB_UNMARSHALING_POLICY_STRONG = <span class="number">1</span>,
+    COMGLB_UNMARSHALING_POLICY_HYBRID = <span class="number">2</span>,
 }}
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x00000030</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]</span>
-<span class="ident">interface</span> <span class="ident">ISynchronize</span>(<span class="ident">ISynchronizeVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">Wait</span>(
-        <span class="ident">dwFlags</span>: <span class="ident">DWORD</span>,
-        <span class="ident">dwMilliseconds</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Signal</span>() -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Reset</span>() -&gt; <span class="ident">HRESULT</span>,
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x0000015b</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]
+</span>interface IGlobalOptions(IGlobalOptionsVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>Set(
+        dwProperty: GLOBALOPT_PROPERTIES,
+        dwValue: ULONG_PTR,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>Query(
+        dwProperty: GLOBALOPT_PROPERTIES,
+        pdwValue: <span class="kw-2">*mut </span>ULONG_PTR,
+    ) -&gt; HRESULT,
 }}
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x00000031</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]</span>
-<span class="ident">interface</span> <span class="ident">ISynchronizeHandle</span>(<span class="ident">ISynchronizeHandleVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">GetHandle</span>(
-        <span class="ident">ph</span>: <span class="kw-2">*mut</span> <span class="ident">HANDLE</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
+<span class="kw">pub type </span>LPSURROGATE = <span class="kw-2">*mut </span>ISurrogate;
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x00000022</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]
+</span>interface ISurrogate(ISurrogateVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>LoadDllServer(
+        Clsid: REFCLSID,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>FreeSurrogate() -&gt; HRESULT,
 }}
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x00000032</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]</span>
-<span class="ident">interface</span> <span class="ident">ISynchronizeEvent</span>(<span class="ident">ISynchronizeEventVtbl</span>): <span class="ident">ISynchronizeHandle</span>(<span class="ident">ISynchronizeHandleVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">SetEventHandle</span>(
-        <span class="ident">ph</span>: <span class="kw-2">*mut</span> <span class="ident">HANDLE</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
+<span class="kw">pub type </span>LPGLOBALINTERFACETABLE = <span class="kw-2">*mut </span>IGlobalInterfaceTable;
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x00000146</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]
+</span>interface IGlobalInterfaceTable(IGlobalInterfaceTableVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>RegisterInterfaceInGlobal(
+        pUnk: <span class="kw-2">*mut </span>IUnknown,
+        riid: REFIID,
+        pdwCookie: <span class="kw-2">*mut </span>DWORD,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>RevokeInterfaceFromGlobal(
+        dwCookie: DWORD,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>GetInterfaceFromGlobal(
+        dwCookie: DWORD,
+        riid: REFIID,
+        ppv: <span class="kw-2">*mut *mut </span>c_void,
+    ) -&gt; HRESULT,
 }}
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x00000033</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]</span>
-<span class="ident">interface</span> <span class="ident">ISynchronizeContainer</span>(<span class="ident">ISynchronizeContainerVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">AddSynchronize</span>(
-        <span class="ident">pSync</span>: <span class="kw-2">*mut</span> <span class="ident">ISynchronize</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">WaitMultiple</span>(
-        <span class="ident">dwFlags</span>: <span class="ident">DWORD</span>,
-        <span class="ident">dwTimeOut</span>: <span class="ident">DWORD</span>,
-        <span class="ident">ppSync</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">ISynchronize</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x00000030</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]
+</span>interface ISynchronize(ISynchronizeVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>Wait(
+        dwFlags: DWORD,
+        dwMilliseconds: DWORD,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>Signal() -&gt; HRESULT,
+    <span class="kw">fn </span>Reset() -&gt; HRESULT,
 }}
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x00000025</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]</span>
-<span class="ident">interface</span> <span class="ident">ISynchronizeMutex</span>(<span class="ident">ISynchronizeMutexVtbl</span>): <span class="ident">ISynchronize</span>(<span class="ident">ISynchronizeVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">ReleaseMutex</span>() -&gt; <span class="ident">HRESULT</span>,
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x00000031</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]
+</span>interface ISynchronizeHandle(ISynchronizeHandleVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>GetHandle(
+        ph: <span class="kw-2">*mut </span>HANDLE,
+    ) -&gt; HRESULT,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LPCANCELMETHODCALLS</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">ICancelMethodCalls</span>;
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x00000029</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]</span>
-<span class="ident">interface</span> <span class="ident">ICancelMethodCalls</span>(<span class="ident">ICancelMethodCallsVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">Cancel</span>(
-        <span class="ident">ulSeconds</span>: <span class="ident">ULONG</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">TestCancel</span>() -&gt; <span class="ident">HRESULT</span>,
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x00000032</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]
+</span>interface ISynchronizeEvent(ISynchronizeEventVtbl): ISynchronizeHandle(ISynchronizeHandleVtbl) {
+    <span class="kw">fn </span>SetEventHandle(
+        ph: <span class="kw-2">*mut </span>HANDLE,
+    ) -&gt; HRESULT,
 }}
-<span class="macro">ENUM!</span>{<span class="kw">enum</span> <span class="ident">DCOM_CALL_STATE</span> {
-    <span class="ident">DCOM_NONE</span> <span class="op">=</span> <span class="number">0</span>,
-    <span class="ident">DCOM_CALL_COMPLETE</span> <span class="op">=</span> <span class="number">0x1</span>,
-    <span class="ident">DCOM_CALL_CANCELED</span> <span class="op">=</span> <span class="number">0x2</span>,
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x00000033</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]
+</span>interface ISynchronizeContainer(ISynchronizeContainerVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>AddSynchronize(
+        pSync: <span class="kw-2">*mut </span>ISynchronize,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>WaitMultiple(
+        dwFlags: DWORD,
+        dwTimeOut: DWORD,
+        ppSync: <span class="kw-2">*mut *mut </span>ISynchronize,
+    ) -&gt; HRESULT,
 }}
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x0000002a</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IAsyncManager</span>(<span class="ident">IAsyncManagerVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">CompleteCall</span>(
-        <span class="prelude-ty">Result</span>: <span class="ident">HRESULT</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">GetCallContext</span>(
-        <span class="ident">riid</span>: <span class="ident">REFIID</span>,
-        <span class="ident">pInterface</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">GetState</span>(
-        <span class="ident">pulStateFlags</span>: <span class="kw-2">*mut</span> <span class="ident">ULONG</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x00000025</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]
+</span>interface ISynchronizeMutex(ISynchronizeMutexVtbl): ISynchronize(ISynchronizeVtbl) {
+    <span class="kw">fn </span>ReleaseMutex() -&gt; HRESULT,
 }}
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x1c733a30</span>, <span class="number">0x2a1c</span>, <span class="number">0x11ce</span>, <span class="number">0xad</span>, <span class="number">0xe5</span>, <span class="number">0x00</span>, <span class="number">0xaa</span>, <span class="number">0x00</span>, <span class="number">0x44</span>, <span class="number">0x77</span>, <span class="number">0x3d</span>)]</span>
-<span class="ident">interface</span> <span class="ident">ICallFactory</span>(<span class="ident">ICallFactoryVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">CreateCall</span>(
-        <span class="ident">riid</span>: <span class="ident">REFIID</span>,
-        <span class="ident">pCtrlUnk</span>: <span class="kw-2">*mut</span> <span class="ident">IUnknown</span>,
-        <span class="ident">riid2</span>: <span class="ident">REFIID</span>,
-        <span class="ident">ppv</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">IUnknown</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
+<span class="kw">pub type </span>LPCANCELMETHODCALLS = <span class="kw-2">*mut </span>ICancelMethodCalls;
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x00000029</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]
+</span>interface ICancelMethodCalls(ICancelMethodCallsVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>Cancel(
+        ulSeconds: ULONG,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>TestCancel() -&gt; HRESULT,
 }}
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x00000149</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IRpcHelper</span>(<span class="ident">IRpcHelperVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">GetDCOMProtocolVersion</span>(
-        <span class="ident">pComVersion</span>: <span class="kw-2">*mut</span> <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">GetIIDFromOBJREF</span>(
-        <span class="ident">pObjRef</span>: <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-        <span class="ident">piid</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">IID</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
+<span class="macro">ENUM!</span>{<span class="kw">enum </span>DCOM_CALL_STATE {
+    DCOM_NONE = <span class="number">0</span>,
+    DCOM_CALL_COMPLETE = <span class="number">0x1</span>,
+    DCOM_CALL_CANCELED = <span class="number">0x2</span>,
 }}
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0xeb0cb9e8</span>, <span class="number">0x7996</span>, <span class="number">0x11d2</span>, <span class="number">0x87</span>, <span class="number">0x2e</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0xf8</span>, <span class="number">0x08</span>, <span class="number">0x08</span>, <span class="number">0x59</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IReleaseMarshalBuffers</span>(<span class="ident">IReleaseMarshalBuffersVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">ReleaseMarshalBuffer</span>(
-        <span class="ident">pMsg</span>: <span class="kw-2">*mut</span> <span class="ident">RPCOLEMESSAGE</span>,
-        <span class="ident">dwFlags</span>: <span class="ident">DWORD</span>,
-        <span class="ident">pChnl</span>: <span class="kw-2">*mut</span> <span class="ident">IUnknown</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x0000002a</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]
+</span>interface IAsyncManager(IAsyncManagerVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>CompleteCall(
+        <span class="prelude-ty">Result</span>: HRESULT,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>GetCallContext(
+        riid: REFIID,
+        pInterface: <span class="kw-2">*mut *mut </span>c_void,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>GetState(
+        pulStateFlags: <span class="kw-2">*mut </span>ULONG,
+    ) -&gt; HRESULT,
 }}
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x0000002b</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IWaitMultiple</span>(<span class="ident">IWaitMultipleVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">WaitMultiple</span>(
-        <span class="ident">timeout</span>: <span class="ident">DWORD</span>,
-        <span class="ident">pSync</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">ISynchronize</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">AddSynchronize</span>(
-        <span class="ident">pSync</span>: <span class="kw-2">*mut</span> <span class="ident">ISynchronize</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x1c733a30</span>, <span class="number">0x2a1c</span>, <span class="number">0x11ce</span>, <span class="number">0xad</span>, <span class="number">0xe5</span>, <span class="number">0x00</span>, <span class="number">0xaa</span>, <span class="number">0x00</span>, <span class="number">0x44</span>, <span class="number">0x77</span>, <span class="number">0x3d</span>)]
+</span>interface ICallFactory(ICallFactoryVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>CreateCall(
+        riid: REFIID,
+        pCtrlUnk: <span class="kw-2">*mut </span>IUnknown,
+        riid2: REFIID,
+        ppv: <span class="kw-2">*mut *mut </span>IUnknown,
+    ) -&gt; HRESULT,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LPADDRTRACKINGCONTROL</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">IAddrTrackingControl</span>;
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x00000147</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IAddrTrackingControl</span>(<span class="ident">IAddrTrackingControlVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">EnableCOMDynamicAddrTracking</span>() -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">DisableCOMDynamicAddrTracking</span>() -&gt; <span class="ident">HRESULT</span>,
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x00000149</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]
+</span>interface IRpcHelper(IRpcHelperVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>GetDCOMProtocolVersion(
+        pComVersion: <span class="kw-2">*mut </span>DWORD,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>GetIIDFromOBJREF(
+        pObjRef: <span class="kw-2">*mut </span>c_void,
+        piid: <span class="kw-2">*mut *mut </span>IID,
+    ) -&gt; HRESULT,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LPADDREXCLUSIONCONTROL</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">IAddrExclusionControl</span>;
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x00000148</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IAddrExclusionControl</span>(<span class="ident">IAddrExclusionControlVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">GetCurrentAddrExclusionList</span>(
-        <span class="ident">riid</span>: <span class="ident">REFIID</span>,
-        <span class="ident">ppEnumerator</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">UpdateAddrExclusionList</span>(
-        <span class="ident">pEnumerator</span>: <span class="kw-2">*mut</span> <span class="ident">IUnknown</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0xeb0cb9e8</span>, <span class="number">0x7996</span>, <span class="number">0x11d2</span>, <span class="number">0x87</span>, <span class="number">0x2e</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0xf8</span>, <span class="number">0x08</span>, <span class="number">0x08</span>, <span class="number">0x59</span>)]
+</span>interface IReleaseMarshalBuffers(IReleaseMarshalBuffersVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>ReleaseMarshalBuffer(
+        pMsg: <span class="kw-2">*mut </span>RPCOLEMESSAGE,
+        dwFlags: DWORD,
+        pChnl: <span class="kw-2">*mut </span>IUnknown,
+    ) -&gt; HRESULT,
 }}
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0xdb2f3aca</span>, <span class="number">0x2f86</span>, <span class="number">0x11d1</span>, <span class="number">0x8e</span>, <span class="number">0x04</span>, <span class="number">0x00</span>, <span class="number">0xc0</span>, <span class="number">0x4f</span>, <span class="number">0xb9</span>, <span class="number">0x98</span>, <span class="number">0x9a</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IPipeByte</span>(<span class="ident">IPipeByteVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">Pull</span>(
-        <span class="ident">buf</span>: <span class="kw-2">*mut</span> <span class="ident">BYTE</span>,
-        <span class="ident">cRequest</span>: <span class="ident">ULONG</span>,
-        <span class="ident">pcReturned</span>: <span class="kw-2">*mut</span> <span class="ident">ULONG</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Push</span>(
-        <span class="ident">buf</span>: <span class="kw-2">*mut</span> <span class="ident">BYTE</span>,
-        <span class="ident">cSent</span>: <span class="ident">ULONG</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x0000002b</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]
+</span>interface IWaitMultiple(IWaitMultipleVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>WaitMultiple(
+        timeout: DWORD,
+        pSync: <span class="kw-2">*mut *mut </span>ISynchronize,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>AddSynchronize(
+        pSync: <span class="kw-2">*mut </span>ISynchronize,
+    ) -&gt; HRESULT,
 }}
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0xdb2f3acb</span>, <span class="number">0x2f86</span>, <span class="number">0x11d1</span>, <span class="number">0x8e</span>, <span class="number">0x04</span>, <span class="number">0x00</span>, <span class="number">0xc0</span>, <span class="number">0x4f</span>, <span class="number">0xb9</span>, <span class="number">0x98</span>, <span class="number">0x9a</span>)]</span>
-<span class="ident">interface</span> <span class="ident">AsyncIPipeByte</span>(<span class="ident">AsyncIPipeByteVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">Begin_Pull</span>(
-        <span class="ident">cRequest</span>: <span class="ident">ULONG</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Finish_Pull</span>(
-        <span class="ident">buf</span>: <span class="kw-2">*mut</span> <span class="ident">BYTE</span>,
-        <span class="ident">pcReturned</span>: <span class="kw-2">*mut</span> <span class="ident">ULONG</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Begin_Push</span>(
-        <span class="ident">buf</span>: <span class="kw-2">*mut</span> <span class="ident">BYTE</span>,
-        <span class="ident">cSent</span>: <span class="ident">ULONG</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Finish_Push</span>() -&gt; <span class="ident">HRESULT</span>,
+<span class="kw">pub type </span>LPADDRTRACKINGCONTROL = <span class="kw-2">*mut </span>IAddrTrackingControl;
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x00000147</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]
+</span>interface IAddrTrackingControl(IAddrTrackingControlVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>EnableCOMDynamicAddrTracking() -&gt; HRESULT,
+    <span class="kw">fn </span>DisableCOMDynamicAddrTracking() -&gt; HRESULT,
 }}
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0xdb2f3acc</span>, <span class="number">0x2f86</span>, <span class="number">0x11d1</span>, <span class="number">0x8e</span>, <span class="number">0x04</span>, <span class="number">0x00</span>, <span class="number">0xc0</span>, <span class="number">0x4f</span>, <span class="number">0xb9</span>, <span class="number">0x98</span>, <span class="number">0x9a</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IPipeLong</span>(<span class="ident">IPipeLongVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">Pull</span>(
-        <span class="ident">buf</span>: <span class="kw-2">*mut</span> <span class="ident">LONG</span>,
-        <span class="ident">cRequest</span>: <span class="ident">ULONG</span>,
-        <span class="ident">pcReturned</span>: <span class="kw-2">*mut</span> <span class="ident">ULONG</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Push</span>(
-        <span class="ident">buf</span>: <span class="kw-2">*mut</span> <span class="ident">LONG</span>,
-        <span class="ident">cSent</span>: <span class="ident">ULONG</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
+<span class="kw">pub type </span>LPADDREXCLUSIONCONTROL = <span class="kw-2">*mut </span>IAddrExclusionControl;
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x00000148</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]
+</span>interface IAddrExclusionControl(IAddrExclusionControlVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>GetCurrentAddrExclusionList(
+        riid: REFIID,
+        ppEnumerator: <span class="kw-2">*mut *mut </span>c_void,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>UpdateAddrExclusionList(
+        pEnumerator: <span class="kw-2">*mut </span>IUnknown,
+    ) -&gt; HRESULT,
 }}
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0xdb2f3acd</span>, <span class="number">0x2f86</span>, <span class="number">0x11d1</span>, <span class="number">0x8e</span>, <span class="number">0x04</span>, <span class="number">0x00</span>, <span class="number">0xc0</span>, <span class="number">0x4f</span>, <span class="number">0xb9</span>, <span class="number">0x98</span>, <span class="number">0x9a</span>)]</span>
-<span class="ident">interface</span> <span class="ident">AsyncIPipeLong</span>(<span class="ident">AsyncIPipeLongVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">Begin_Pull</span>(
-        <span class="ident">cRequest</span>: <span class="ident">ULONG</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Finish_Pull</span>(
-        <span class="ident">buf</span>: <span class="kw-2">*mut</span> <span class="ident">LONG</span>,
-        <span class="ident">pcReturned</span>: <span class="kw-2">*mut</span> <span class="ident">ULONG</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Begin_Push</span>(
-        <span class="ident">buf</span>: <span class="kw-2">*mut</span> <span class="ident">LONG</span>,
-        <span class="ident">cSent</span>: <span class="ident">ULONG</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Finish_Push</span>() -&gt; <span class="ident">HRESULT</span>,
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0xdb2f3aca</span>, <span class="number">0x2f86</span>, <span class="number">0x11d1</span>, <span class="number">0x8e</span>, <span class="number">0x04</span>, <span class="number">0x00</span>, <span class="number">0xc0</span>, <span class="number">0x4f</span>, <span class="number">0xb9</span>, <span class="number">0x98</span>, <span class="number">0x9a</span>)]
+</span>interface IPipeByte(IPipeByteVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>Pull(
+        buf: <span class="kw-2">*mut </span>BYTE,
+        cRequest: ULONG,
+        pcReturned: <span class="kw-2">*mut </span>ULONG,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>Push(
+        buf: <span class="kw-2">*mut </span>BYTE,
+        cSent: ULONG,
+    ) -&gt; HRESULT,
 }}
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0xdb2f3ace</span>, <span class="number">0x2f86</span>, <span class="number">0x11d1</span>, <span class="number">0x8e</span>, <span class="number">0x04</span>, <span class="number">0x00</span>, <span class="number">0xc0</span>, <span class="number">0x4f</span>, <span class="number">0xb9</span>, <span class="number">0x98</span>, <span class="number">0x9a</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IPipeDouble</span>(<span class="ident">IPipeDoubleVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">Pull</span>(
-        <span class="ident">buf</span>: <span class="kw-2">*mut</span> <span class="ident">DOUBLE</span>,
-        <span class="ident">cRequest</span>: <span class="ident">ULONG</span>,
-        <span class="ident">pcReturned</span>: <span class="kw-2">*mut</span> <span class="ident">ULONG</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Push</span>(
-        <span class="ident">buf</span>: <span class="kw-2">*mut</span> <span class="ident">DOUBLE</span>,
-        <span class="ident">cSent</span>: <span class="ident">ULONG</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0xdb2f3acb</span>, <span class="number">0x2f86</span>, <span class="number">0x11d1</span>, <span class="number">0x8e</span>, <span class="number">0x04</span>, <span class="number">0x00</span>, <span class="number">0xc0</span>, <span class="number">0x4f</span>, <span class="number">0xb9</span>, <span class="number">0x98</span>, <span class="number">0x9a</span>)]
+</span>interface AsyncIPipeByte(AsyncIPipeByteVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>Begin_Pull(
+        cRequest: ULONG,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>Finish_Pull(
+        buf: <span class="kw-2">*mut </span>BYTE,
+        pcReturned: <span class="kw-2">*mut </span>ULONG,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>Begin_Push(
+        buf: <span class="kw-2">*mut </span>BYTE,
+        cSent: ULONG,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>Finish_Push() -&gt; HRESULT,
 }}
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0xdb2f3acf</span>, <span class="number">0x2f86</span>, <span class="number">0x11d1</span>, <span class="number">0x8e</span>, <span class="number">0x04</span>, <span class="number">0x00</span>, <span class="number">0xc0</span>, <span class="number">0x4f</span>, <span class="number">0xb9</span>, <span class="number">0x98</span>, <span class="number">0x9a</span>)]</span>
-<span class="ident">interface</span> <span class="ident">AsyncIPipeDouble</span>(<span class="ident">AsyncIPipeDoubleVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">Begin_Pull</span>(
-        <span class="ident">cRequest</span>: <span class="ident">ULONG</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Finish_Pull</span>(
-        <span class="ident">buf</span>: <span class="kw-2">*mut</span> <span class="ident">DOUBLE</span>,
-        <span class="ident">pcReturned</span>: <span class="kw-2">*mut</span> <span class="ident">ULONG</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Begin_Push</span>(
-        <span class="ident">buf</span>: <span class="kw-2">*mut</span> <span class="ident">DOUBLE</span>,
-        <span class="ident">cSent</span>: <span class="ident">ULONG</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Finish_Push</span>() -&gt; <span class="ident">HRESULT</span>,
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0xdb2f3acc</span>, <span class="number">0x2f86</span>, <span class="number">0x11d1</span>, <span class="number">0x8e</span>, <span class="number">0x04</span>, <span class="number">0x00</span>, <span class="number">0xc0</span>, <span class="number">0x4f</span>, <span class="number">0xb9</span>, <span class="number">0x98</span>, <span class="number">0x9a</span>)]
+</span>interface IPipeLong(IPipeLongVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>Pull(
+        buf: <span class="kw-2">*mut </span>LONG,
+        cRequest: ULONG,
+        pcReturned: <span class="kw-2">*mut </span>ULONG,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>Push(
+        buf: <span class="kw-2">*mut </span>LONG,
+        cSent: ULONG,
+    ) -&gt; HRESULT,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">CPFLAGS</span> <span class="op">=</span> <span class="ident">DWORD</span>;
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">ContextProperty</span> {
-    <span class="ident">policyId</span>: <span class="ident">GUID</span>,
-    <span class="ident">flags</span>: <span class="ident">CPFLAGS</span>,
-    <span class="ident">pUnk</span>: <span class="kw-2">*mut</span> <span class="ident">IUnknown</span>,
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0xdb2f3acd</span>, <span class="number">0x2f86</span>, <span class="number">0x11d1</span>, <span class="number">0x8e</span>, <span class="number">0x04</span>, <span class="number">0x00</span>, <span class="number">0xc0</span>, <span class="number">0x4f</span>, <span class="number">0xb9</span>, <span class="number">0x98</span>, <span class="number">0x9a</span>)]
+</span>interface AsyncIPipeLong(AsyncIPipeLongVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>Begin_Pull(
+        cRequest: ULONG,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>Finish_Pull(
+        buf: <span class="kw-2">*mut </span>LONG,
+        pcReturned: <span class="kw-2">*mut </span>ULONG,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>Begin_Push(
+        buf: <span class="kw-2">*mut </span>LONG,
+        cSent: ULONG,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>Finish_Push() -&gt; HRESULT,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LPENUMCONTEXTPROPS</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">IEnumContextProps</span>;
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x000001c1</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IEnumContextProps</span>(<span class="ident">IEnumContextPropsVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">Next</span>(
-        <span class="ident">celt</span>: <span class="ident">ULONG</span>,
-        <span class="ident">pContextProperties</span>: <span class="kw-2">*mut</span> <span class="ident">ContextProperty</span>,
-        <span class="ident">pceltFetched</span>: <span class="kw-2">*mut</span> <span class="ident">ULONG</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Skip</span>(
-        <span class="ident">celt</span>: <span class="ident">ULONG</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Reset</span>() -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Clone</span>(
-        <span class="ident">ppEnumContextProps</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">IEnumContextProps</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Count</span>(
-        <span class="ident">pcelt</span>: <span class="kw-2">*mut</span> <span class="ident">ULONG</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0xdb2f3ace</span>, <span class="number">0x2f86</span>, <span class="number">0x11d1</span>, <span class="number">0x8e</span>, <span class="number">0x04</span>, <span class="number">0x00</span>, <span class="number">0xc0</span>, <span class="number">0x4f</span>, <span class="number">0xb9</span>, <span class="number">0x98</span>, <span class="number">0x9a</span>)]
+</span>interface IPipeDouble(IPipeDoubleVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>Pull(
+        buf: <span class="kw-2">*mut </span>DOUBLE,
+        cRequest: ULONG,
+        pcReturned: <span class="kw-2">*mut </span>ULONG,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>Push(
+        buf: <span class="kw-2">*mut </span>DOUBLE,
+        cSent: ULONG,
+    ) -&gt; HRESULT,
 }}
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x000001c0</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IContext</span>(<span class="ident">IContextVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">SetProperty</span>(
-        <span class="ident">rpolicyId</span>: <span class="ident">REFGUID</span>,
-        <span class="ident">flags</span>: <span class="ident">CPFLAGS</span>,
-        <span class="ident">pUnk</span>: <span class="kw-2">*mut</span> <span class="ident">IUnknown</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">RemoveProperty</span>(
-        <span class="ident">rPolicyId</span>: <span class="ident">REFGUID</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">GetProperty</span>(
-        <span class="ident">policyId</span>: <span class="ident">REFGUID</span>,
-        <span class="ident">pFlags</span>: <span class="kw-2">*mut</span> <span class="ident">CPFLAGS</span>,
-        <span class="ident">ppUnk</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">IUnknown</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">EnumContextProps</span>(
-        <span class="ident">ppEnumContextProps</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">IEnumContextProps</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0xdb2f3acf</span>, <span class="number">0x2f86</span>, <span class="number">0x11d1</span>, <span class="number">0x8e</span>, <span class="number">0x04</span>, <span class="number">0x00</span>, <span class="number">0xc0</span>, <span class="number">0x4f</span>, <span class="number">0xb9</span>, <span class="number">0x98</span>, <span class="number">0x9a</span>)]
+</span>interface AsyncIPipeDouble(AsyncIPipeDoubleVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>Begin_Pull(
+        cRequest: ULONG,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>Finish_Pull(
+        buf: <span class="kw-2">*mut </span>DOUBLE,
+        pcReturned: <span class="kw-2">*mut </span>ULONG,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>Begin_Push(
+        buf: <span class="kw-2">*mut </span>DOUBLE,
+        cSent: ULONG,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>Finish_Push() -&gt; HRESULT,
 }}
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x000001c6</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IObjContext</span>(<span class="ident">IObjContextVtbl</span>): <span class="ident">IContext</span>(<span class="ident">IContextVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">Reserved1</span>() -&gt; (),
-    <span class="kw">fn</span> <span class="ident">Reserved2</span>() -&gt; (),
-    <span class="kw">fn</span> <span class="ident">Reserved3</span>() -&gt; (),
-    <span class="kw">fn</span> <span class="ident">Reserved4</span>() -&gt; (),
-    <span class="kw">fn</span> <span class="ident">Reserved5</span>() -&gt; (),
-    <span class="kw">fn</span> <span class="ident">Reserved6</span>() -&gt; (),
-    <span class="kw">fn</span> <span class="ident">Reserved7</span>() -&gt; (),
+<span class="kw">pub type </span>CPFLAGS = DWORD;
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>ContextProperty {
+    policyId: GUID,
+    flags: CPFLAGS,
+    pUnk: <span class="kw-2">*mut </span>IUnknown,
 }}
-<span class="macro">ENUM!</span>{<span class="kw">enum</span> <span class="ident">APTTYPEQUALIFIER</span> {
-    <span class="ident">APTTYPEQUALIFIER_NONE</span> <span class="op">=</span> <span class="number">0</span>,
-    <span class="ident">APTTYPEQUALIFIER_IMPLICIT_MTA</span> <span class="op">=</span> <span class="number">1</span>,
-    <span class="ident">APTTYPEQUALIFIER_NA_ON_MTA</span> <span class="op">=</span> <span class="number">2</span>,
-    <span class="ident">APTTYPEQUALIFIER_NA_ON_STA</span> <span class="op">=</span> <span class="number">3</span>,
-    <span class="ident">APTTYPEQUALIFIER_NA_ON_IMPLICIT_MTA</span> <span class="op">=</span> <span class="number">4</span>,
-    <span class="ident">APTTYPEQUALIFIER_NA_ON_MAINSTA</span> <span class="op">=</span> <span class="number">5</span>,
-    <span class="ident">APTTYPEQUALIFIER_APPLICATION_STA</span><span class="op">=</span> <span class="number">6</span>,
+<span class="kw">pub type </span>LPENUMCONTEXTPROPS = <span class="kw-2">*mut </span>IEnumContextProps;
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x000001c1</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]
+</span>interface IEnumContextProps(IEnumContextPropsVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>Next(
+        celt: ULONG,
+        pContextProperties: <span class="kw-2">*mut </span>ContextProperty,
+        pceltFetched: <span class="kw-2">*mut </span>ULONG,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>Skip(
+        celt: ULONG,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>Reset() -&gt; HRESULT,
+    <span class="kw">fn </span>Clone(
+        ppEnumContextProps: <span class="kw-2">*mut *mut </span>IEnumContextProps,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>Count(
+        pcelt: <span class="kw-2">*mut </span>ULONG,
+    ) -&gt; HRESULT,
 }}
-<span class="macro">ENUM!</span>{<span class="kw">enum</span> <span class="ident">APTTYPE</span> {
-    <span class="ident">APTTYPE_CURRENT</span> <span class="op">=</span> <span class="op">-</span><span class="number">1i32</span> <span class="kw">as</span> <span class="ident">u32</span>,
-    <span class="ident">APTTYPE_STA</span> <span class="op">=</span> <span class="number">0</span>,
-    <span class="ident">APTTYPE_MTA</span> <span class="op">=</span> <span class="number">1</span>,
-    <span class="ident">APTTYPE_NA</span> <span class="op">=</span> <span class="number">2</span>,
-    <span class="ident">APTTYPE_MAINSTA</span> <span class="op">=</span> <span class="number">3</span>,
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x000001c0</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]
+</span>interface IContext(IContextVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>SetProperty(
+        rpolicyId: REFGUID,
+        flags: CPFLAGS,
+        pUnk: <span class="kw-2">*mut </span>IUnknown,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>RemoveProperty(
+        rPolicyId: REFGUID,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>GetProperty(
+        policyId: REFGUID,
+        pFlags: <span class="kw-2">*mut </span>CPFLAGS,
+        ppUnk: <span class="kw-2">*mut *mut </span>IUnknown,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>EnumContextProps(
+        ppEnumContextProps: <span class="kw-2">*mut *mut </span>IEnumContextProps,
+    ) -&gt; HRESULT,
 }}
-<span class="macro">ENUM!</span>{<span class="kw">enum</span> <span class="ident">THDTYPE</span> {
-    <span class="ident">THDTYPE_BLOCKMESSAGES</span> <span class="op">=</span> <span class="number">0</span>,
-    <span class="ident">THDTYPE_PROCESSMESSAGES</span> <span class="op">=</span> <span class="number">1</span>,
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x000001c6</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]
+</span>interface IObjContext(IObjContextVtbl): IContext(IContextVtbl) {
+    <span class="kw">fn </span>Reserved1() -&gt; (),
+    <span class="kw">fn </span>Reserved2() -&gt; (),
+    <span class="kw">fn </span>Reserved3() -&gt; (),
+    <span class="kw">fn </span>Reserved4() -&gt; (),
+    <span class="kw">fn </span>Reserved5() -&gt; (),
+    <span class="kw">fn </span>Reserved6() -&gt; (),
+    <span class="kw">fn </span>Reserved7() -&gt; (),
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">APARTMENTID</span> <span class="op">=</span> <span class="ident">DWORD</span>;
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x000001ce</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IComThreadingInfo</span>(<span class="ident">IComThreadingInfoVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">GetCurrentApartmentType</span>(
-        <span class="ident">pAptType</span>: <span class="kw-2">*mut</span> <span class="ident">APTTYPE</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">GetCurrentThreadType</span>(
-        <span class="ident">pThreadType</span>: <span class="kw-2">*mut</span> <span class="ident">THDTYPE</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">GetCurrentLogicalThreadId</span>(
-        <span class="ident">pguidLogicalThreadId</span>: <span class="kw-2">*mut</span> <span class="ident">GUID</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">SetCurrentLogicalThreadId</span>(
-        <span class="ident">rguid</span>: <span class="ident">REFGUID</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
+<span class="macro">ENUM!</span>{<span class="kw">enum </span>APTTYPEQUALIFIER {
+    APTTYPEQUALIFIER_NONE = <span class="number">0</span>,
+    APTTYPEQUALIFIER_IMPLICIT_MTA = <span class="number">1</span>,
+    APTTYPEQUALIFIER_NA_ON_MTA = <span class="number">2</span>,
+    APTTYPEQUALIFIER_NA_ON_STA = <span class="number">3</span>,
+    APTTYPEQUALIFIER_NA_ON_IMPLICIT_MTA = <span class="number">4</span>,
+    APTTYPEQUALIFIER_NA_ON_MAINSTA = <span class="number">5</span>,
+    APTTYPEQUALIFIER_APPLICATION_STA= <span class="number">6</span>,
 }}
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x72380d55</span>, <span class="number">0x8d2b</span>, <span class="number">0x43a3</span>, <span class="number">0x85</span>, <span class="number">0x13</span>, <span class="number">0x2b</span>, <span class="number">0x6e</span>, <span class="number">0xf3</span>, <span class="number">0x14</span>, <span class="number">0x34</span>, <span class="number">0xe9</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IProcessInitControl</span>(<span class="ident">IProcessInitControlVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">ResetInitializerTimeout</span>(
-        <span class="ident">dwSecondsRemaining</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
+<span class="macro">ENUM!</span>{<span class="kw">enum </span>APTTYPE {
+    APTTYPE_CURRENT = -<span class="number">1i32 </span><span class="kw">as </span>u32,
+    APTTYPE_STA = <span class="number">0</span>,
+    APTTYPE_MTA = <span class="number">1</span>,
+    APTTYPE_NA = <span class="number">2</span>,
+    APTTYPE_MAINSTA = <span class="number">3</span>,
 }}
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x00000040</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IFastRundown</span>(<span class="ident">IFastRundownVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {}}
-<span class="macro">ENUM!</span>{<span class="kw">enum</span> <span class="ident">CO_MARSHALING_CONTEXT_ATTRIBUTES</span> {
-    <span class="ident">CO_MARSHALING_SOURCE_IS_APP_CONTAINER</span> <span class="op">=</span> <span class="number">0</span>,
-    <span class="ident">CO_MARSHALING_CONTEXT_ATTRIBUTE_RESERVED_1</span> <span class="op">=</span> <span class="number">0x80000000</span>,
-    <span class="ident">CO_MARSHALING_CONTEXT_ATTRIBUTE_RESERVED_2</span> <span class="op">=</span> <span class="number">0x80000001</span>,
-    <span class="ident">CO_MARSHALING_CONTEXT_ATTRIBUTE_RESERVED_3</span> <span class="op">=</span> <span class="number">0x80000002</span>,
-    <span class="ident">CO_MARSHALING_CONTEXT_ATTRIBUTE_RESERVED_4</span> <span class="op">=</span> <span class="number">0x80000003</span>,
-    <span class="ident">CO_MARSHALING_CONTEXT_ATTRIBUTE_RESERVED_5</span> <span class="op">=</span> <span class="number">0x80000004</span>,
-    <span class="ident">CO_MARSHALING_CONTEXT_ATTRIBUTE_RESERVED_6</span> <span class="op">=</span> <span class="number">0x80000005</span>,
-    <span class="ident">CO_MARSHALING_CONTEXT_ATTRIBUTE_RESERVED_7</span> <span class="op">=</span> <span class="number">0x80000006</span>,
-    <span class="ident">CO_MARSHALING_CONTEXT_ATTRIBUTE_RESERVED_8</span> <span class="op">=</span> <span class="number">0x80000007</span>,
-    <span class="ident">CO_MARSHALING_CONTEXT_ATTRIBUTE_RESERVED_9</span> <span class="op">=</span> <span class="number">0x80000008</span>,
+<span class="macro">ENUM!</span>{<span class="kw">enum </span>THDTYPE {
+    THDTYPE_BLOCKMESSAGES = <span class="number">0</span>,
+    THDTYPE_PROCESSMESSAGES = <span class="number">1</span>,
 }}
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0xd8f2f5e6</span>, <span class="number">0x6102</span>, <span class="number">0x4863</span>, <span class="number">0x9f</span>, <span class="number">0x26</span>, <span class="number">0x38</span>, <span class="number">0x9a</span>, <span class="number">0x46</span>, <span class="number">0x76</span>, <span class="number">0xef</span>, <span class="number">0xde</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IMarshalingStream</span>(<span class="ident">IMarshalingStreamVtbl</span>): <span class="ident">IStream</span>(<span class="ident">IStreamVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">GetMarshalingContextAttribute</span>(
-        <span class="ident">attribute</span>: <span class="ident">CO_MARSHALING_CONTEXT_ATTRIBUTES</span>,
-        <span class="ident">pAttributeValue</span>: <span class="kw-2">*mut</span> <span class="ident">ULONG_PTR</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
+<span class="kw">pub type </span>APARTMENTID = DWORD;
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x000001ce</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]
+</span>interface IComThreadingInfo(IComThreadingInfoVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>GetCurrentApartmentType(
+        pAptType: <span class="kw-2">*mut </span>APTTYPE,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>GetCurrentThreadType(
+        pThreadType: <span class="kw-2">*mut </span>THDTYPE,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>GetCurrentLogicalThreadId(
+        pguidLogicalThreadId: <span class="kw-2">*mut </span>GUID,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>SetCurrentLogicalThreadId(
+        rguid: REFGUID,
+    ) -&gt; HRESULT,
 }}
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0xc03f6a43</span>, <span class="number">0x65a4</span>, <span class="number">0x9818</span>, <span class="number">0x98</span>, <span class="number">0x7e</span>, <span class="number">0xe0</span>, <span class="number">0xb8</span>, <span class="number">0x10</span>, <span class="number">0xd2</span>, <span class="number">0xa6</span>, <span class="number">0xf2</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IAgileReference</span>(<span class="ident">IAgileReferenceVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">Resolve</span>(
-        <span class="ident">riid</span>: <span class="ident">REFIID</span>,
-        <span class="ident">ppvObjectReference</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x72380d55</span>, <span class="number">0x8d2b</span>, <span class="number">0x43a3</span>, <span class="number">0x85</span>, <span class="number">0x13</span>, <span class="number">0x2b</span>, <span class="number">0x6e</span>, <span class="number">0xf3</span>, <span class="number">0x14</span>, <span class="number">0x34</span>, <span class="number">0xe9</span>)]
+</span>interface IProcessInitControl(IProcessInitControlVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>ResetInitializerTimeout(
+        dwSecondsRemaining: DWORD,
+    ) -&gt; HRESULT,
+}}
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x00000040</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]
+</span>interface IFastRundown(IFastRundownVtbl): IUnknown(IUnknownVtbl) {}}
+<span class="macro">ENUM!</span>{<span class="kw">enum </span>CO_MARSHALING_CONTEXT_ATTRIBUTES {
+    CO_MARSHALING_SOURCE_IS_APP_CONTAINER = <span class="number">0</span>,
+    CO_MARSHALING_CONTEXT_ATTRIBUTE_RESERVED_1 = <span class="number">0x80000000</span>,
+    CO_MARSHALING_CONTEXT_ATTRIBUTE_RESERVED_2 = <span class="number">0x80000001</span>,
+    CO_MARSHALING_CONTEXT_ATTRIBUTE_RESERVED_3 = <span class="number">0x80000002</span>,
+    CO_MARSHALING_CONTEXT_ATTRIBUTE_RESERVED_4 = <span class="number">0x80000003</span>,
+    CO_MARSHALING_CONTEXT_ATTRIBUTE_RESERVED_5 = <span class="number">0x80000004</span>,
+    CO_MARSHALING_CONTEXT_ATTRIBUTE_RESERVED_6 = <span class="number">0x80000005</span>,
+    CO_MARSHALING_CONTEXT_ATTRIBUTE_RESERVED_7 = <span class="number">0x80000006</span>,
+    CO_MARSHALING_CONTEXT_ATTRIBUTE_RESERVED_8 = <span class="number">0x80000007</span>,
+    CO_MARSHALING_CONTEXT_ATTRIBUTE_RESERVED_9 = <span class="number">0x80000008</span>,
+}}
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0xd8f2f5e6</span>, <span class="number">0x6102</span>, <span class="number">0x4863</span>, <span class="number">0x9f</span>, <span class="number">0x26</span>, <span class="number">0x38</span>, <span class="number">0x9a</span>, <span class="number">0x46</span>, <span class="number">0x76</span>, <span class="number">0xef</span>, <span class="number">0xde</span>)]
+</span>interface IMarshalingStream(IMarshalingStreamVtbl): IStream(IStreamVtbl) {
+    <span class="kw">fn </span>GetMarshalingContextAttribute(
+        attribute: CO_MARSHALING_CONTEXT_ATTRIBUTES,
+        pAttributeValue: <span class="kw-2">*mut </span>ULONG_PTR,
+    ) -&gt; HRESULT,
+}}
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0xc03f6a43</span>, <span class="number">0x65a4</span>, <span class="number">0x9818</span>, <span class="number">0x98</span>, <span class="number">0x7e</span>, <span class="number">0xe0</span>, <span class="number">0xb8</span>, <span class="number">0x10</span>, <span class="number">0xd2</span>, <span class="number">0xa6</span>, <span class="number">0xf2</span>)]
+</span>interface IAgileReference(IAgileReferenceVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>Resolve(
+        riid: REFIID,
+        ppvObjectReference: <span class="kw-2">*mut *mut </span>c_void,
+    ) -&gt; HRESULT,
 }}
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="winapi" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="winapi" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.0 (69f9c33d7 2022-12-12)" ></div></body></html>

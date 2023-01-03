@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\arcdps-imgui-0.8.0\src\input_widget.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>input_widget.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script><script defer src="../../main.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../arcdps_imgui/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../arcdps_imgui/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../arcdps_imgui/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\arcdps-imgui-0.8.0\src\input_widget.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>input_widget.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../normalize.css"><link rel="stylesheet" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../ayu.css" disabled><link rel="stylesheet" href="../../dark.css" disabled><link rel="stylesheet" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script><script defer src="../../main.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../arcdps_imgui/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -1040,1047 +1040,1047 @@
 <span id="1040">1040</span>
 <span id="1041">1041</span>
 <span id="1042">1042</span>
-</pre><pre class="rust"><code><span class="kw">use</span> <span class="ident">bitflags::bitflags</span>;
-<span class="kw">use</span> <span class="ident">std::ops::Range</span>;
-<span class="kw">use</span> <span class="ident">std::os::raw</span>::{<span class="ident">c_char</span>, <span class="ident">c_int</span>, <span class="ident">c_void</span>};
+</pre><pre class="rust"><code><span class="kw">use </span>bitflags::bitflags;
+<span class="kw">use </span>std::ops::Range;
+<span class="kw">use </span>std::os::raw::{c_char, c_int, c_void};
 
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::sys</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::Ui</span>;
+<span class="kw">use </span><span class="kw">crate</span>::sys;
+<span class="kw">use </span><span class="kw">crate</span>::Ui;
 
 <span class="macro">bitflags!</span>(
-    <span class="doccomment">/// Flags for text inputs</span>
-    <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">InputTextFlags</span>: <span class="ident">u32</span> {
-        <span class="doccomment">/// Allow 0123456789.+-*/</span>
-        <span class="kw">const</span> <span class="ident">CHARS_DECIMAL</span> <span class="op">=</span> <span class="ident">sys::ImGuiInputTextFlags_CharsDecimal</span>;
-        <span class="doccomment">/// Allow 0123456789ABCDEFabcdef</span>
-        <span class="kw">const</span> <span class="ident">CHARS_HEXADECIMAL</span> <span class="op">=</span> <span class="ident">sys::ImGuiInputTextFlags_CharsHexadecimal</span>;
-        <span class="doccomment">/// Turn a..z into A..Z</span>
-        <span class="kw">const</span> <span class="ident">CHARS_UPPERCASE</span> <span class="op">=</span> <span class="ident">sys::ImGuiInputTextFlags_CharsUppercase</span>;
-        <span class="doccomment">/// Filter out spaces, tabs</span>
-        <span class="kw">const</span> <span class="ident">CHARS_NO_BLANK</span> <span class="op">=</span> <span class="ident">sys::ImGuiInputTextFlags_CharsNoBlank</span>;
-        <span class="doccomment">/// Select entire text when first taking mouse focus</span>
-        <span class="kw">const</span> <span class="ident">AUTO_SELECT_ALL</span> <span class="op">=</span> <span class="ident">sys::ImGuiInputTextFlags_AutoSelectAll</span>;
-        <span class="doccomment">/// Return &#39;true&#39; when Enter is pressed (as opposed to when the value was modified)</span>
-        <span class="kw">const</span> <span class="ident">ENTER_RETURNS_TRUE</span> <span class="op">=</span> <span class="ident">sys::ImGuiInputTextFlags_EnterReturnsTrue</span>;
-        <span class="doccomment">/// Call user function on pressing TAB (for completion handling)</span>
-        <span class="kw">const</span> <span class="ident">CALLBACK_COMPLETION</span> <span class="op">=</span> <span class="ident">sys::ImGuiInputTextFlags_CallbackCompletion</span>;
-        <span class="doccomment">/// Call user function on pressing Up/Down arrows (for history handling)</span>
-        <span class="kw">const</span> <span class="ident">CALLBACK_HISTORY</span> <span class="op">=</span> <span class="ident">sys::ImGuiInputTextFlags_CallbackHistory</span>;
-        <span class="doccomment">/// Call user function on pressing Up/Down arrows (for history handling)</span>
-        <span class="kw">const</span> <span class="ident">CALLBACK_EDIT</span> <span class="op">=</span> <span class="ident">sys::ImGuiInputTextFlags_CallbackEdit</span>;
-        <span class="doccomment">/// Call user function every time. User code may query cursor position, modify text buffer.</span>
-        <span class="kw">const</span> <span class="ident">CALLBACK_ALWAYS</span> <span class="op">=</span> <span class="ident">sys::ImGuiInputTextFlags_CallbackAlways</span>;
-        <span class="doccomment">/// Call user function to filter character.</span>
-        <span class="kw">const</span> <span class="ident">CALLBACK_CHAR_FILTER</span> <span class="op">=</span> <span class="ident">sys::ImGuiInputTextFlags_CallbackCharFilter</span>;
-        <span class="doccomment">/// Pressing TAB input a &#39;\t&#39; character into the text field</span>
-        <span class="kw">const</span> <span class="ident">ALLOW_TAB_INPUT</span> <span class="op">=</span> <span class="ident">sys::ImGuiInputTextFlags_AllowTabInput</span>;
-        <span class="doccomment">/// In multi-line mode, unfocus with Enter, add new line with Ctrl+Enter (default is</span>
-        <span class="doccomment">/// opposite: unfocus with Ctrl+Enter, add line with Enter).</span>
-        <span class="kw">const</span> <span class="ident">CTRL_ENTER_FOR_NEW_LINE</span> <span class="op">=</span> <span class="ident">sys::ImGuiInputTextFlags_CtrlEnterForNewLine</span>;
-        <span class="doccomment">/// Disable following the cursor horizontally</span>
-        <span class="kw">const</span> <span class="ident">NO_HORIZONTAL_SCROLL</span> <span class="op">=</span> <span class="ident">sys::ImGuiInputTextFlags_NoHorizontalScroll</span>;
-        <span class="doccomment">/// Always overwrite (aka &quot;insert mode&quot;).</span>
-        <span class="kw">const</span> <span class="ident">ALWAYS_OVERWRITE</span> <span class="op">=</span> <span class="ident">sys::ImGuiInputTextFlags_AlwaysInsertMode</span>;
-        <span class="doccomment">/// Read-only mode</span>
-        <span class="kw">const</span> <span class="ident">READ_ONLY</span> <span class="op">=</span> <span class="ident">sys::ImGuiInputTextFlags_ReadOnly</span>;
-        <span class="doccomment">/// Password mode, display all characters as &#39;*&#39;</span>
-        <span class="kw">const</span> <span class="ident">PASSWORD</span> <span class="op">=</span> <span class="ident">sys::ImGuiInputTextFlags_Password</span>;
-        <span class="doccomment">/// Disable undo/redo.</span>
-        <span class="kw">const</span> <span class="ident">NO_UNDO_REDO</span> <span class="op">=</span> <span class="ident">sys::ImGuiInputTextFlags_NoUndoRedo</span>;
-        <span class="doccomment">/// Allow 0123456789.+-*/eE (Scientific notation input)</span>
-        <span class="kw">const</span> <span class="ident">CHARS_SCIENTIFIC</span> <span class="op">=</span> <span class="ident">sys::ImGuiInputTextFlags_CharsScientific</span>;
-        <span class="doccomment">/// Allow buffer capacity resize + notify when the string wants to be resized</span>
-        <span class="kw">const</span> <span class="ident">CALLBACK_RESIZE</span> <span class="op">=</span> <span class="ident">sys::ImGuiInputTextFlags_CallbackResize</span>;
+    <span class="doccomment">/// Flags for text inputs
+    </span><span class="attribute">#[repr(C)]
+    </span><span class="kw">pub struct </span>InputTextFlags: u32 {
+        <span class="doccomment">/// Allow 0123456789.+-*/
+        </span><span class="kw">const </span>CHARS_DECIMAL = sys::ImGuiInputTextFlags_CharsDecimal;
+        <span class="doccomment">/// Allow 0123456789ABCDEFabcdef
+        </span><span class="kw">const </span>CHARS_HEXADECIMAL = sys::ImGuiInputTextFlags_CharsHexadecimal;
+        <span class="doccomment">/// Turn a..z into A..Z
+        </span><span class="kw">const </span>CHARS_UPPERCASE = sys::ImGuiInputTextFlags_CharsUppercase;
+        <span class="doccomment">/// Filter out spaces, tabs
+        </span><span class="kw">const </span>CHARS_NO_BLANK = sys::ImGuiInputTextFlags_CharsNoBlank;
+        <span class="doccomment">/// Select entire text when first taking mouse focus
+        </span><span class="kw">const </span>AUTO_SELECT_ALL = sys::ImGuiInputTextFlags_AutoSelectAll;
+        <span class="doccomment">/// Return &#39;true&#39; when Enter is pressed (as opposed to when the value was modified)
+        </span><span class="kw">const </span>ENTER_RETURNS_TRUE = sys::ImGuiInputTextFlags_EnterReturnsTrue;
+        <span class="doccomment">/// Call user function on pressing TAB (for completion handling)
+        </span><span class="kw">const </span>CALLBACK_COMPLETION = sys::ImGuiInputTextFlags_CallbackCompletion;
+        <span class="doccomment">/// Call user function on pressing Up/Down arrows (for history handling)
+        </span><span class="kw">const </span>CALLBACK_HISTORY = sys::ImGuiInputTextFlags_CallbackHistory;
+        <span class="doccomment">/// Call user function on pressing Up/Down arrows (for history handling)
+        </span><span class="kw">const </span>CALLBACK_EDIT = sys::ImGuiInputTextFlags_CallbackEdit;
+        <span class="doccomment">/// Call user function every time. User code may query cursor position, modify text buffer.
+        </span><span class="kw">const </span>CALLBACK_ALWAYS = sys::ImGuiInputTextFlags_CallbackAlways;
+        <span class="doccomment">/// Call user function to filter character.
+        </span><span class="kw">const </span>CALLBACK_CHAR_FILTER = sys::ImGuiInputTextFlags_CallbackCharFilter;
+        <span class="doccomment">/// Pressing TAB input a &#39;\t&#39; character into the text field
+        </span><span class="kw">const </span>ALLOW_TAB_INPUT = sys::ImGuiInputTextFlags_AllowTabInput;
+        <span class="doccomment">/// In multi-line mode, unfocus with Enter, add new line with Ctrl+Enter (default is
+        /// opposite: unfocus with Ctrl+Enter, add line with Enter).
+        </span><span class="kw">const </span>CTRL_ENTER_FOR_NEW_LINE = sys::ImGuiInputTextFlags_CtrlEnterForNewLine;
+        <span class="doccomment">/// Disable following the cursor horizontally
+        </span><span class="kw">const </span>NO_HORIZONTAL_SCROLL = sys::ImGuiInputTextFlags_NoHorizontalScroll;
+        <span class="doccomment">/// Always overwrite (aka &quot;insert mode&quot;).
+        </span><span class="kw">const </span>ALWAYS_OVERWRITE = sys::ImGuiInputTextFlags_AlwaysInsertMode;
+        <span class="doccomment">/// Read-only mode
+        </span><span class="kw">const </span>READ_ONLY = sys::ImGuiInputTextFlags_ReadOnly;
+        <span class="doccomment">/// Password mode, display all characters as &#39;*&#39;
+        </span><span class="kw">const </span>PASSWORD = sys::ImGuiInputTextFlags_Password;
+        <span class="doccomment">/// Disable undo/redo.
+        </span><span class="kw">const </span>NO_UNDO_REDO = sys::ImGuiInputTextFlags_NoUndoRedo;
+        <span class="doccomment">/// Allow 0123456789.+-*/eE (Scientific notation input)
+        </span><span class="kw">const </span>CHARS_SCIENTIFIC = sys::ImGuiInputTextFlags_CharsScientific;
+        <span class="doccomment">/// Allow buffer capacity resize + notify when the string wants to be resized
+        </span><span class="kw">const </span>CALLBACK_RESIZE = sys::ImGuiInputTextFlags_CallbackResize;
     }
 );
 
-<span class="macro">macro_rules!</span> <span class="ident">impl_text_flags</span> {
-    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">InputType</span>:<span class="ident">ident</span>) =&gt; {
-        <span class="attribute">#[<span class="ident">inline</span>]</span>
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">flags</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">flags</span>: <span class="ident">InputTextFlags</span>) -&gt; <span class="self">Self</span> {
-            <span class="self">self</span>.<span class="ident">flags</span> <span class="op">=</span> <span class="ident">flags</span>;
-            <span class="self">self</span>
+<span class="macro">macro_rules! </span>impl_text_flags {
+    (<span class="macro-nonterminal">$InputType</span>:ident) =&gt; {
+        <span class="attribute">#[inline]
+        </span><span class="kw">pub fn </span>flags(<span class="kw-2">mut </span><span class="self">self</span>, flags: InputTextFlags) -&gt; <span class="self">Self </span>{
+            <span class="self">self</span>.flags = flags;
+            <span class="self">self
+        </span>}
+
+        <span class="attribute">#[inline]
+        </span><span class="kw">pub fn </span>chars_decimal(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+            <span class="self">self</span>.flags.set(InputTextFlags::CHARS_DECIMAL, value);
+            <span class="self">self
+        </span>}
+
+        <span class="attribute">#[inline]
+        </span><span class="kw">pub fn </span>chars_hexadecimal(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+            <span class="self">self</span>.flags.set(InputTextFlags::CHARS_HEXADECIMAL, value);
+            <span class="self">self
+        </span>}
+
+        <span class="attribute">#[inline]
+        </span><span class="kw">pub fn </span>chars_uppercase(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+            <span class="self">self</span>.flags.set(InputTextFlags::CHARS_UPPERCASE, value);
+            <span class="self">self
+        </span>}
+
+        <span class="attribute">#[inline]
+        </span><span class="kw">pub fn </span>chars_noblank(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+            <span class="self">self</span>.flags.set(InputTextFlags::CHARS_NO_BLANK, value);
+            <span class="self">self
+        </span>}
+
+        <span class="attribute">#[inline]
+        </span><span class="kw">pub fn </span>auto_select_all(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+            <span class="self">self</span>.flags.set(InputTextFlags::AUTO_SELECT_ALL, value);
+            <span class="self">self
+        </span>}
+
+        <span class="attribute">#[inline]
+        </span><span class="kw">pub fn </span>enter_returns_true(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+            <span class="self">self</span>.flags.set(InputTextFlags::ENTER_RETURNS_TRUE, value);
+            <span class="self">self
+        </span>}
+
+        <span class="attribute">#[inline]
+        </span><span class="kw">pub fn </span>allow_tab_input(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+            <span class="self">self</span>.flags.set(InputTextFlags::ALLOW_TAB_INPUT, value);
+            <span class="self">self
+        </span>}
+
+        <span class="attribute">#[inline]
+        </span><span class="kw">pub fn </span>no_horizontal_scroll(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+            <span class="self">self</span>.flags.set(InputTextFlags::NO_HORIZONTAL_SCROLL, value);
+            <span class="self">self
+        </span>}
+
+        <span class="doccomment">/// Note: this is equivalent to `always_overwrite`
+        </span><span class="attribute">#[inline]
+        </span><span class="kw">pub fn </span>always_insert_mode(<span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+            <span class="self">self</span>.always_overwrite(value)
         }
 
-        <span class="attribute">#[<span class="ident">inline</span>]</span>
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">chars_decimal</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-            <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">InputTextFlags::CHARS_DECIMAL</span>, <span class="ident">value</span>);
-            <span class="self">self</span>
-        }
+        <span class="attribute">#[inline]
+        #[allow(deprecated)]
+        </span><span class="kw">pub fn </span>always_overwrite(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+            <span class="self">self</span>.flags.set(InputTextFlags::ALWAYS_OVERWRITE, value);
+            <span class="self">self
+        </span>}
 
-        <span class="attribute">#[<span class="ident">inline</span>]</span>
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">chars_hexadecimal</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-            <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">InputTextFlags::CHARS_HEXADECIMAL</span>, <span class="ident">value</span>);
-            <span class="self">self</span>
-        }
+        <span class="attribute">#[inline]
+        </span><span class="kw">pub fn </span>read_only(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+            <span class="self">self</span>.flags.set(InputTextFlags::READ_ONLY, value);
+            <span class="self">self
+        </span>}
 
-        <span class="attribute">#[<span class="ident">inline</span>]</span>
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">chars_uppercase</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-            <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">InputTextFlags::CHARS_UPPERCASE</span>, <span class="ident">value</span>);
-            <span class="self">self</span>
-        }
+        <span class="attribute">#[inline]
+        </span><span class="kw">pub fn </span>password(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+            <span class="self">self</span>.flags.set(InputTextFlags::PASSWORD, value);
+            <span class="self">self
+        </span>}
 
-        <span class="attribute">#[<span class="ident">inline</span>]</span>
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">chars_noblank</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-            <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">InputTextFlags::CHARS_NO_BLANK</span>, <span class="ident">value</span>);
-            <span class="self">self</span>
-        }
-
-        <span class="attribute">#[<span class="ident">inline</span>]</span>
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">auto_select_all</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-            <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">InputTextFlags::AUTO_SELECT_ALL</span>, <span class="ident">value</span>);
-            <span class="self">self</span>
-        }
-
-        <span class="attribute">#[<span class="ident">inline</span>]</span>
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">enter_returns_true</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-            <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">InputTextFlags::ENTER_RETURNS_TRUE</span>, <span class="ident">value</span>);
-            <span class="self">self</span>
-        }
-
-        <span class="attribute">#[<span class="ident">inline</span>]</span>
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">allow_tab_input</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-            <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">InputTextFlags::ALLOW_TAB_INPUT</span>, <span class="ident">value</span>);
-            <span class="self">self</span>
-        }
-
-        <span class="attribute">#[<span class="ident">inline</span>]</span>
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">no_horizontal_scroll</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-            <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">InputTextFlags::NO_HORIZONTAL_SCROLL</span>, <span class="ident">value</span>);
-            <span class="self">self</span>
-        }
-
-        <span class="doccomment">/// Note: this is equivalent to `always_overwrite`</span>
-        <span class="attribute">#[<span class="ident">inline</span>]</span>
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">always_insert_mode</span>(<span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-            <span class="self">self</span>.<span class="ident">always_overwrite</span>(<span class="ident">value</span>)
-        }
-
-        <span class="attribute">#[<span class="ident">inline</span>]</span>
-        <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">deprecated</span>)]</span>
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">always_overwrite</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-            <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">InputTextFlags::ALWAYS_OVERWRITE</span>, <span class="ident">value</span>);
-            <span class="self">self</span>
-        }
-
-        <span class="attribute">#[<span class="ident">inline</span>]</span>
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">read_only</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-            <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">InputTextFlags::READ_ONLY</span>, <span class="ident">value</span>);
-            <span class="self">self</span>
-        }
-
-        <span class="attribute">#[<span class="ident">inline</span>]</span>
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">password</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-            <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">InputTextFlags::PASSWORD</span>, <span class="ident">value</span>);
-            <span class="self">self</span>
-        }
-
-        <span class="attribute">#[<span class="ident">inline</span>]</span>
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">no_undo_redo</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-            <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">InputTextFlags::NO_UNDO_REDO</span>, <span class="ident">value</span>);
-            <span class="self">self</span>
-        }
+        <span class="attribute">#[inline]
+        </span><span class="kw">pub fn </span>no_undo_redo(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+            <span class="self">self</span>.flags.set(InputTextFlags::NO_UNDO_REDO, value);
+            <span class="self">self
+        </span>}
     };
 }
 
-<span class="macro">macro_rules!</span> <span class="ident">impl_step_params</span> {
-    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">InputType</span>:<span class="ident">ident</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">Value</span>:<span class="ident">ty</span>) =&gt; {
-        <span class="attribute">#[<span class="ident">inline</span>]</span>
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">step</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">Value</span>) -&gt; <span class="self">Self</span> {
-            <span class="self">self</span>.<span class="ident">step</span> <span class="op">=</span> <span class="ident">value</span>;
-            <span class="self">self</span>
-        }
+<span class="macro">macro_rules! </span>impl_step_params {
+    (<span class="macro-nonterminal">$InputType</span>:ident, <span class="macro-nonterminal">$Value</span>:ty) =&gt; {
+        <span class="attribute">#[inline]
+        </span><span class="kw">pub fn </span>step(<span class="kw-2">mut </span><span class="self">self</span>, value: <span class="macro-nonterminal">$Value</span>) -&gt; <span class="self">Self </span>{
+            <span class="self">self</span>.step = value;
+            <span class="self">self
+        </span>}
 
-        <span class="attribute">#[<span class="ident">inline</span>]</span>
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">step_fast</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">Value</span>) -&gt; <span class="self">Self</span> {
-            <span class="self">self</span>.<span class="ident">step_fast</span> <span class="op">=</span> <span class="ident">value</span>;
-            <span class="self">self</span>
-        }
+        <span class="attribute">#[inline]
+        </span><span class="kw">pub fn </span>step_fast(<span class="kw-2">mut </span><span class="self">self</span>, value: <span class="macro-nonterminal">$Value</span>) -&gt; <span class="self">Self </span>{
+            <span class="self">self</span>.step_fast = value;
+            <span class="self">self
+        </span>}
     };
 }
 
-<span class="attribute">#[<span class="ident">must_use</span>]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">InputText</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, <span class="ident">L</span>, <span class="ident">H</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>, <span class="ident">T</span> <span class="op">=</span> <span class="ident">PassthroughCallback</span><span class="op">&gt;</span> {
-    <span class="ident">label</span>: <span class="ident">L</span>,
-    <span class="ident">hint</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">H</span><span class="op">&gt;</span>,
-    <span class="ident">buf</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> <span class="kw-2">mut</span> <span class="ident">String</span>,
-    <span class="ident">callback_handler</span>: <span class="ident">T</span>,
-    <span class="ident">flags</span>: <span class="ident">InputTextFlags</span>,
-    <span class="ident">ui</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>,
+<span class="attribute">#[must_use]
+</span><span class="kw">pub struct </span>InputText&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, L, H = <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str, T = PassthroughCallback&gt; {
+    label: L,
+    hint: <span class="prelude-ty">Option</span>&lt;H&gt;,
+    buf: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p </span><span class="kw-2">mut </span>String,
+    callback_handler: T,
+    flags: InputTextFlags,
+    ui: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span>Ui&lt;<span class="lifetime">&#39;ui</span>&gt;,
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, <span class="ident">L</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="ident">InputText</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, <span class="ident">L</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Creates a new input text widget to edit the given string.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # String Editing</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Please note, ImGui requires this string to be null-terminated. We accomplish this</span>
-    <span class="doccomment">/// by appending and then removing a null terminator (`\0`) from the String you pass in.</span>
-    <span class="doccomment">/// This has several consequences:</span>
-    <span class="doccomment">/// 1. The string&#39;s backing buffer may be resized and relocated even without edits as result</span>
-    <span class="doccomment">/// of this pushed char.</span>
-    <span class="doccomment">/// 2. **The string will appear truncated if the string contains `\0` inside it.** This will not</span>
-    <span class="doccomment">/// cause memory *unsafety*, but it will limit your usage. If that&#39;s the case, please pre-process</span>
-    <span class="doccomment">/// your string.</span>
-    <span class="doccomment">/// 3. Truncations by ImGui appear to be done primarily by insertions of `\0` to the truncation point.</span>
-    <span class="doccomment">/// We will handle this for you and edit the string &quot;properly&quot; too, but this might show up in callbacks.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">ui</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>, <span class="ident">label</span>: <span class="ident">L</span>, <span class="ident">buf</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> <span class="kw-2">mut</span> <span class="ident">String</span>) -&gt; <span class="self">Self</span> {
-        <span class="ident">InputText</span> {
-            <span class="ident">label</span>,
-            <span class="ident">hint</span>: <span class="prelude-val">None</span>,
-            <span class="comment">// this is fine because no one else has access to this and imgui is single threaded.</span>
-            <span class="ident">callback_handler</span>: <span class="ident">PassthroughCallback</span>,
-            <span class="ident">buf</span>,
-            <span class="ident">flags</span>: <span class="ident">InputTextFlags::CALLBACK_RESIZE</span>,
-            <span class="ident">ui</span>,
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, L: AsRef&lt;str&gt;&gt; InputText&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, L&gt; {
+    <span class="doccomment">/// Creates a new input text widget to edit the given string.
+    ///
+    /// # String Editing
+    ///
+    /// Please note, ImGui requires this string to be null-terminated. We accomplish this
+    /// by appending and then removing a null terminator (`\0`) from the String you pass in.
+    /// This has several consequences:
+    /// 1. The string&#39;s backing buffer may be resized and relocated even without edits as result
+    /// of this pushed char.
+    /// 2. **The string will appear truncated if the string contains `\0` inside it.** This will not
+    /// cause memory *unsafety*, but it will limit your usage. If that&#39;s the case, please pre-process
+    /// your string.
+    /// 3. Truncations by ImGui appear to be done primarily by insertions of `\0` to the truncation point.
+    /// We will handle this for you and edit the string &quot;properly&quot; too, but this might show up in callbacks.
+    </span><span class="kw">pub fn </span>new(ui: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span>Ui&lt;<span class="lifetime">&#39;ui</span>&gt;, label: L, buf: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p </span><span class="kw-2">mut </span>String) -&gt; <span class="self">Self </span>{
+        InputText {
+            label,
+            hint: <span class="prelude-val">None</span>,
+            <span class="comment">// this is fine because no one else has access to this and imgui is single threaded.
+            </span>callback_handler: PassthroughCallback,
+            buf,
+            flags: InputTextFlags::CALLBACK_RESIZE,
+            ui,
         }
     }
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, <span class="ident">T</span>, <span class="ident">L</span>, <span class="ident">H</span><span class="op">&gt;</span> <span class="ident">InputText</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, <span class="ident">L</span>, <span class="ident">H</span>, <span class="ident">T</span><span class="op">&gt;</span>
-<span class="kw">where</span>
-    <span class="ident">L</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>,
-    <span class="ident">H</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>,
-    <span class="ident">T</span>: <span class="ident">InputTextCallbackHandler</span>,
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, T, L, H&gt; InputText&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, L, H, T&gt;
+<span class="kw">where
+    </span>L: AsRef&lt;str&gt;,
+    H: AsRef&lt;str&gt;,
+    T: InputTextCallbackHandler,
 {
-    <span class="doccomment">/// Sets the hint displayed in the input text background.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">hint</span><span class="op">&lt;</span><span class="ident">H2</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">hint</span>: <span class="ident">H2</span>) -&gt; <span class="ident">InputText</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, <span class="ident">L</span>, <span class="ident">H2</span>, <span class="ident">T</span><span class="op">&gt;</span> {
-        <span class="ident">InputText</span> {
-            <span class="ident">label</span>: <span class="self">self</span>.<span class="ident">label</span>,
-            <span class="ident">hint</span>: <span class="prelude-val">Some</span>(<span class="ident">hint</span>),
-            <span class="ident">buf</span>: <span class="self">self</span>.<span class="ident">buf</span>,
-            <span class="ident">callback_handler</span>: <span class="self">self</span>.<span class="ident">callback_handler</span>,
-            <span class="ident">flags</span>: <span class="self">self</span>.<span class="ident">flags</span>,
-            <span class="ident">ui</span>: <span class="self">self</span>.<span class="ident">ui</span>,
+    <span class="doccomment">/// Sets the hint displayed in the input text background.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>hint&lt;H2: AsRef&lt;str&gt;&gt;(<span class="self">self</span>, hint: H2) -&gt; InputText&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, L, H2, T&gt; {
+        InputText {
+            label: <span class="self">self</span>.label,
+            hint: <span class="prelude-val">Some</span>(hint),
+            buf: <span class="self">self</span>.buf,
+            callback_handler: <span class="self">self</span>.callback_handler,
+            flags: <span class="self">self</span>.flags,
+            ui: <span class="self">self</span>.ui,
         }
     }
 
-    <span class="macro">impl_text_flags!</span>(<span class="ident">InputText</span>);
+    <span class="macro">impl_text_flags!</span>(InputText);
 
-    <span class="comment">// I am commenting this ability out for now -- because we need to push `\0` for imgui,</span>
-    <span class="comment">// we may resize the buffer no matter what, and we must do that.</span>
-    <span class="comment">// The solution for this will be, I suspect, to build a second api channel that takes</span>
-    <span class="comment">// an `&amp;mut CStr`, which is ugly! I suspect few to none will want no-resizing, so I&#39;m deferring</span>
-    <span class="comment">// fixing the problem. -- sanbox-irl 09/15/2021, see #523 for more</span>
-    <span class="comment">//</span>
-    <span class="comment">// /// By default (as of 0.8.0), imgui-rs will automatically handle string resizes</span>
-    <span class="comment">// /// for [InputText] and [InputTextMultiline].</span>
-    <span class="comment">// ///</span>
-    <span class="comment">// /// If, for some reason, you don&#39;t want this, you can run this function to prevent this.</span>
-    <span class="comment">// /// In that case, edits which would cause a resize will not occur.</span>
-    <span class="comment">// /// #[inline]</span>
-    <span class="comment">// pub unsafe fn do_not_resize(mut self) -&gt; Self {</span>
-    <span class="comment">//     self.flags.remove(InputTextFlags::CALLBACK_RESIZE);</span>
-    <span class="comment">//     self</span>
-    <span class="comment">// }</span>
+    <span class="comment">// I am commenting this ability out for now -- because we need to push `\0` for imgui,
+    // we may resize the buffer no matter what, and we must do that.
+    // The solution for this will be, I suspect, to build a second api channel that takes
+    // an `&amp;mut CStr`, which is ugly! I suspect few to none will want no-resizing, so I&#39;m deferring
+    // fixing the problem. -- sanbox-irl 09/15/2021, see #523 for more
+    //
+    // /// By default (as of 0.8.0), imgui-rs will automatically handle string resizes
+    // /// for [InputText] and [InputTextMultiline].
+    // ///
+    // /// If, for some reason, you don&#39;t want this, you can run this function to prevent this.
+    // /// In that case, edits which would cause a resize will not occur.
+    // /// #[inline]
+    // pub unsafe fn do_not_resize(mut self) -&gt; Self {
+    //     self.flags.remove(InputTextFlags::CALLBACK_RESIZE);
+    //     self
+    // }
 
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">callback</span><span class="op">&lt;</span><span class="ident">T2</span>: <span class="ident">InputTextCallbackHandler</span><span class="op">&gt;</span>(
-        <span class="kw-2">mut</span> <span class="self">self</span>,
-        <span class="ident">callbacks</span>: <span class="ident">InputTextCallback</span>,
-        <span class="ident">callback</span>: <span class="ident">T2</span>,
-    ) -&gt; <span class="ident">InputText</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, <span class="ident">L</span>, <span class="ident">H</span>, <span class="ident">T2</span><span class="op">&gt;</span> {
-        <span class="kw">if</span> <span class="ident">callbacks</span>.<span class="ident">contains</span>(<span class="ident">InputTextCallback::COMPLETION</span>) {
-            <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">insert</span>(<span class="ident">InputTextFlags::CALLBACK_COMPLETION</span>);
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>callback&lt;T2: InputTextCallbackHandler&gt;(
+        <span class="kw-2">mut </span><span class="self">self</span>,
+        callbacks: InputTextCallback,
+        callback: T2,
+    ) -&gt; InputText&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, L, H, T2&gt; {
+        <span class="kw">if </span>callbacks.contains(InputTextCallback::COMPLETION) {
+            <span class="self">self</span>.flags.insert(InputTextFlags::CALLBACK_COMPLETION);
         }
-        <span class="kw">if</span> <span class="ident">callbacks</span>.<span class="ident">contains</span>(<span class="ident">InputTextCallback::HISTORY</span>) {
-            <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">insert</span>(<span class="ident">InputTextFlags::CALLBACK_HISTORY</span>);
+        <span class="kw">if </span>callbacks.contains(InputTextCallback::HISTORY) {
+            <span class="self">self</span>.flags.insert(InputTextFlags::CALLBACK_HISTORY);
         }
-        <span class="kw">if</span> <span class="ident">callbacks</span>.<span class="ident">contains</span>(<span class="ident">InputTextCallback::ALWAYS</span>) {
-            <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">insert</span>(<span class="ident">InputTextFlags::CALLBACK_ALWAYS</span>);
+        <span class="kw">if </span>callbacks.contains(InputTextCallback::ALWAYS) {
+            <span class="self">self</span>.flags.insert(InputTextFlags::CALLBACK_ALWAYS);
         }
-        <span class="kw">if</span> <span class="ident">callbacks</span>.<span class="ident">contains</span>(<span class="ident">InputTextCallback::CHAR_FILTER</span>) {
-            <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">insert</span>(<span class="ident">InputTextFlags::CALLBACK_CHAR_FILTER</span>);
+        <span class="kw">if </span>callbacks.contains(InputTextCallback::CHAR_FILTER) {
+            <span class="self">self</span>.flags.insert(InputTextFlags::CALLBACK_CHAR_FILTER);
         }
-        <span class="kw">if</span> <span class="ident">callbacks</span>.<span class="ident">contains</span>(<span class="ident">InputTextCallback::EDIT</span>) {
-            <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">insert</span>(<span class="ident">InputTextFlags::CALLBACK_EDIT</span>);
+        <span class="kw">if </span>callbacks.contains(InputTextCallback::EDIT) {
+            <span class="self">self</span>.flags.insert(InputTextFlags::CALLBACK_EDIT);
         }
-        <span class="ident">InputText</span> {
-            <span class="ident">callback_handler</span>: <span class="ident">callback</span>,
-            <span class="ident">label</span>: <span class="self">self</span>.<span class="ident">label</span>,
-            <span class="ident">hint</span>: <span class="self">self</span>.<span class="ident">hint</span>,
-            <span class="ident">buf</span>: <span class="self">self</span>.<span class="ident">buf</span>,
-            <span class="ident">flags</span>: <span class="self">self</span>.<span class="ident">flags</span>,
-            <span class="ident">ui</span>: <span class="self">self</span>.<span class="ident">ui</span>,
+        InputText {
+            callback_handler: callback,
+            label: <span class="self">self</span>.label,
+            hint: <span class="self">self</span>.hint,
+            buf: <span class="self">self</span>.buf,
+            flags: <span class="self">self</span>.flags,
+            ui: <span class="self">self</span>.ui,
         }
     }
 
-    <span class="doccomment">/// Builds the string editor, performing string editing operations.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # String Editing</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Please note, ImGui requires this string to be null-terminated. We accomplish this</span>
-    <span class="doccomment">/// by appending and then removing a null terminator (`\0`) from the String you pass in.</span>
-    <span class="doccomment">/// This has several consequences:</span>
-    <span class="doccomment">/// 1. The string&#39;s backing buffer may be resized and relocated even without edits as result</span>
-    <span class="doccomment">/// of this pushed char.</span>
-    <span class="doccomment">/// 2. **The string will appear truncated if the string contains `\0` inside it.** This will not</span>
-    <span class="doccomment">/// cause memory *unsafety*, but it will limit your usage. If that&#39;s the case, please pre-process</span>
-    <span class="doccomment">/// your string.</span>
-    <span class="doccomment">/// 3. Truncations by ImGui appear to be done primarily by insertions of `\0` to the truncation point.</span>
-    <span class="doccomment">/// We will handle this for you and edit the string &quot;properly&quot; too, but this might show up in callbacks.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build</span>(<span class="self">self</span>) -&gt; <span class="ident">bool</span> {
-        <span class="comment">// needs to be null-terminated! this is a hack!</span>
-        <span class="self">self</span>.<span class="ident">buf</span>.<span class="ident">push</span>(<span class="string">&#39;\0&#39;</span>);
+    <span class="doccomment">/// Builds the string editor, performing string editing operations.
+    ///
+    /// # String Editing
+    ///
+    /// Please note, ImGui requires this string to be null-terminated. We accomplish this
+    /// by appending and then removing a null terminator (`\0`) from the String you pass in.
+    /// This has several consequences:
+    /// 1. The string&#39;s backing buffer may be resized and relocated even without edits as result
+    /// of this pushed char.
+    /// 2. **The string will appear truncated if the string contains `\0` inside it.** This will not
+    /// cause memory *unsafety*, but it will limit your usage. If that&#39;s the case, please pre-process
+    /// your string.
+    /// 3. Truncations by ImGui appear to be done primarily by insertions of `\0` to the truncation point.
+    /// We will handle this for you and edit the string &quot;properly&quot; too, but this might show up in callbacks.
+    </span><span class="kw">pub fn </span>build(<span class="self">self</span>) -&gt; bool {
+        <span class="comment">// needs to be null-terminated! this is a hack!
+        </span><span class="self">self</span>.buf.push(<span class="string">&#39;\0&#39;</span>);
 
-        <span class="kw">let</span> (<span class="ident">ptr</span>, <span class="ident">capacity</span>) <span class="op">=</span> (<span class="self">self</span>.<span class="ident">buf</span>.<span class="ident">as_mut_ptr</span>(), <span class="self">self</span>.<span class="ident">buf</span>.<span class="ident">capacity</span>());
+        <span class="kw">let </span>(ptr, capacity) = (<span class="self">self</span>.buf.as_mut_ptr(), <span class="self">self</span>.buf.capacity());
 
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">data</span> <span class="op">=</span> <span class="ident">UserData</span> {
-            <span class="ident">container</span>: <span class="self">self</span>.<span class="ident">buf</span>,
-            <span class="ident">cback_handler</span>: <span class="self">self</span>.<span class="ident">callback_handler</span>,
+        <span class="kw">let </span><span class="kw-2">mut </span>data = UserData {
+            container: <span class="self">self</span>.buf,
+            cback_handler: <span class="self">self</span>.callback_handler,
         };
-        <span class="kw">let</span> <span class="ident">data</span> <span class="op">=</span> <span class="kw-2">&amp;mut</span> <span class="ident">data</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="kw">_</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">c_void</span>;
+        <span class="kw">let </span>data = <span class="kw-2">&amp;mut </span>data <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_ as </span><span class="kw-2">*mut </span>c_void;
 
-        <span class="kw">let</span> <span class="ident">o</span> <span class="op">=</span> <span class="kw">unsafe</span> {
-            <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">hint</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">hint</span> {
-                <span class="kw">let</span> (<span class="ident">label</span>, <span class="ident">hint</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">ui</span>.<span class="ident">scratch_txt_two</span>(<span class="self">self</span>.<span class="ident">label</span>, <span class="ident">hint</span>);
-                <span class="ident">sys::igInputTextWithHint</span>(
-                    <span class="ident">label</span>,
-                    <span class="ident">hint</span>,
-                    <span class="ident">ptr</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">sys::cty::c_char</span>,
-                    <span class="ident">capacity</span>,
-                    <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">bits</span>() <span class="kw">as</span> <span class="ident">i32</span>,
-                    <span class="prelude-val">Some</span>(<span class="ident">callback</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>),
-                    <span class="ident">data</span>,
+        <span class="kw">let </span>o = <span class="kw">unsafe </span>{
+            <span class="kw">if let </span><span class="prelude-val">Some</span>(hint) = <span class="self">self</span>.hint {
+                <span class="kw">let </span>(label, hint) = <span class="self">self</span>.ui.scratch_txt_two(<span class="self">self</span>.label, hint);
+                sys::igInputTextWithHint(
+                    label,
+                    hint,
+                    ptr <span class="kw">as </span><span class="kw-2">*mut </span>sys::cty::c_char,
+                    capacity,
+                    <span class="self">self</span>.flags.bits() <span class="kw">as </span>i32,
+                    <span class="prelude-val">Some</span>(callback::&lt;T&gt;),
+                    data,
                 )
-            } <span class="kw">else</span> {
-                <span class="kw">let</span> <span class="ident">label</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">ui</span>.<span class="ident">scratch_txt</span>(<span class="self">self</span>.<span class="ident">label</span>);
+            } <span class="kw">else </span>{
+                <span class="kw">let </span>label = <span class="self">self</span>.ui.scratch_txt(<span class="self">self</span>.label);
 
-                <span class="ident">sys::igInputText</span>(
-                    <span class="ident">label</span>,
-                    <span class="ident">ptr</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">sys::cty::c_char</span>,
-                    <span class="ident">capacity</span>,
-                    <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">bits</span>() <span class="kw">as</span> <span class="ident">i32</span>,
-                    <span class="prelude-val">Some</span>(<span class="ident">callback</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>),
-                    <span class="ident">data</span>,
+                sys::igInputText(
+                    label,
+                    ptr <span class="kw">as </span><span class="kw-2">*mut </span>sys::cty::c_char,
+                    capacity,
+                    <span class="self">self</span>.flags.bits() <span class="kw">as </span>i32,
+                    <span class="prelude-val">Some</span>(callback::&lt;T&gt;),
+                    data,
                 )
             }
         };
 
-        <span class="kw">let</span> <span class="ident">cap</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">buf</span>.<span class="ident">capacity</span>();
+        <span class="kw">let </span>cap = <span class="self">self</span>.buf.capacity();
 
-        <span class="comment">// SAFETY: this slice is simply a view into the underlying buffer</span>
-        <span class="comment">// of a String. We MAY be holding onto a view of uninitialized memory,</span>
-        <span class="comment">// however, since we&#39;re holding this as a u8 slice, I think it should be</span>
-        <span class="comment">// alright...</span>
-        <span class="comment">// additionally, we can go over the bytes directly, rather than char indices,</span>
-        <span class="comment">// because NUL will never appear in any UTF8 outside the NUL character (ie, within</span>
-        <span class="comment">// a char).</span>
-        <span class="kw">let</span> <span class="ident">buf</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">std::slice::from_raw_parts</span>(<span class="self">self</span>.<span class="ident">buf</span>.<span class="ident">as_ptr</span>(), <span class="ident">cap</span>) };
-        <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">len</span>) <span class="op">=</span> <span class="ident">buf</span>.<span class="ident">iter</span>().<span class="ident">position</span>(<span class="op">|</span><span class="ident">x</span><span class="op">|</span> <span class="kw-2">*</span><span class="ident">x</span> <span class="op">==</span> <span class="string">b&#39;\0&#39;</span>) {
-            <span class="comment">// `len` is the position of the first `\0` byte in the String</span>
-            <span class="kw">unsafe</span> {
-                <span class="self">self</span>.<span class="ident">buf</span>.<span class="ident">as_mut_vec</span>().<span class="ident">set_len</span>(<span class="ident">len</span>);
+        <span class="comment">// SAFETY: this slice is simply a view into the underlying buffer
+        // of a String. We MAY be holding onto a view of uninitialized memory,
+        // however, since we&#39;re holding this as a u8 slice, I think it should be
+        // alright...
+        // additionally, we can go over the bytes directly, rather than char indices,
+        // because NUL will never appear in any UTF8 outside the NUL character (ie, within
+        // a char).
+        </span><span class="kw">let </span>buf = <span class="kw">unsafe </span>{ std::slice::from_raw_parts(<span class="self">self</span>.buf.as_ptr(), cap) };
+        <span class="kw">if let </span><span class="prelude-val">Some</span>(len) = buf.iter().position(|x| <span class="kw-2">*</span>x == <span class="string">b&#39;\0&#39;</span>) {
+            <span class="comment">// `len` is the position of the first `\0` byte in the String
+            </span><span class="kw">unsafe </span>{
+                <span class="self">self</span>.buf.as_mut_vec().set_len(len);
             }
-        } <span class="kw">else</span> {
-            <span class="comment">// There is no null terminator, the best we can do is to not</span>
-            <span class="comment">// update the string length.</span>
-        }
+        } <span class="kw">else </span>{
+            <span class="comment">// There is no null terminator, the best we can do is to not
+            // update the string length.
+        </span>}
 
-        <span class="ident">o</span>
+        o
     }
 }
 
-<span class="attribute">#[<span class="ident">must_use</span>]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">InputTextMultiline</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, <span class="ident">L</span>, <span class="ident">T</span> <span class="op">=</span> <span class="ident">PassthroughCallback</span><span class="op">&gt;</span> {
-    <span class="ident">label</span>: <span class="ident">L</span>,
-    <span class="ident">buf</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> <span class="kw-2">mut</span> <span class="ident">String</span>,
-    <span class="ident">flags</span>: <span class="ident">InputTextFlags</span>,
-    <span class="ident">size</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-    <span class="ident">callback_handler</span>: <span class="ident">T</span>,
-    <span class="ident">ui</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>,
+<span class="attribute">#[must_use]
+</span><span class="kw">pub struct </span>InputTextMultiline&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, L, T = PassthroughCallback&gt; {
+    label: L,
+    buf: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p </span><span class="kw-2">mut </span>String,
+    flags: InputTextFlags,
+    size: [f32; <span class="number">2</span>],
+    callback_handler: T,
+    ui: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span>Ui&lt;<span class="lifetime">&#39;ui</span>&gt;,
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, <span class="ident">L</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="ident">InputTextMultiline</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, <span class="ident">L</span>, <span class="ident">PassthroughCallback</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Creates a new input text widget to edit the given string.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # String Editing</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Please note, ImGui requires this string to be null-terminated. We accomplish this</span>
-    <span class="doccomment">/// by appending and then removing a null terminator (`\0`) from the String you pass in.</span>
-    <span class="doccomment">/// This has several consequences:</span>
-    <span class="doccomment">/// 1. The string&#39;s backing buffer may be resized and relocated even without edits as result</span>
-    <span class="doccomment">/// of this pushed char.</span>
-    <span class="doccomment">/// 2. **The string will appear truncated if the string contains `\0` inside it.** This will not</span>
-    <span class="doccomment">/// cause memory *unsafety*, but it will limit your usage. If that&#39;s the case, please pre-process</span>
-    <span class="doccomment">/// your string.</span>
-    <span class="doccomment">/// 3. Truncations by ImGui appear to be done primarily by insertions of `\0` to the truncation point.</span>
-    <span class="doccomment">/// We will handle this for you and edit the string &quot;properly&quot; too, but this might show up in callbacks.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">ui</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>, <span class="ident">label</span>: <span class="ident">L</span>, <span class="ident">buf</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> <span class="kw-2">mut</span> <span class="ident">String</span>, <span class="ident">size</span>: [<span class="ident">f32</span>; <span class="number">2</span>]) -&gt; <span class="self">Self</span> {
-        <span class="ident">InputTextMultiline</span> {
-            <span class="ident">label</span>,
-            <span class="ident">buf</span>,
-            <span class="ident">flags</span>: <span class="ident">InputTextFlags::CALLBACK_RESIZE</span>,
-            <span class="ident">size</span>,
-            <span class="ident">callback_handler</span>: <span class="ident">PassthroughCallback</span>,
-            <span class="ident">ui</span>,
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, L: AsRef&lt;str&gt;&gt; InputTextMultiline&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, L, PassthroughCallback&gt; {
+    <span class="doccomment">/// Creates a new input text widget to edit the given string.
+    ///
+    /// # String Editing
+    ///
+    /// Please note, ImGui requires this string to be null-terminated. We accomplish this
+    /// by appending and then removing a null terminator (`\0`) from the String you pass in.
+    /// This has several consequences:
+    /// 1. The string&#39;s backing buffer may be resized and relocated even without edits as result
+    /// of this pushed char.
+    /// 2. **The string will appear truncated if the string contains `\0` inside it.** This will not
+    /// cause memory *unsafety*, but it will limit your usage. If that&#39;s the case, please pre-process
+    /// your string.
+    /// 3. Truncations by ImGui appear to be done primarily by insertions of `\0` to the truncation point.
+    /// We will handle this for you and edit the string &quot;properly&quot; too, but this might show up in callbacks.
+    </span><span class="kw">pub fn </span>new(ui: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span>Ui&lt;<span class="lifetime">&#39;ui</span>&gt;, label: L, buf: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p </span><span class="kw-2">mut </span>String, size: [f32; <span class="number">2</span>]) -&gt; <span class="self">Self </span>{
+        InputTextMultiline {
+            label,
+            buf,
+            flags: InputTextFlags::CALLBACK_RESIZE,
+            size,
+            callback_handler: PassthroughCallback,
+            ui,
         }
     }
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, <span class="ident">T</span>: <span class="ident">InputTextCallbackHandler</span>, <span class="ident">L</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="ident">InputTextMultiline</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, <span class="ident">L</span>, <span class="ident">T</span><span class="op">&gt;</span> {
-    <span class="macro">impl_text_flags!</span>(<span class="ident">InputText</span>);
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, T: InputTextCallbackHandler, L: AsRef&lt;str&gt;&gt; InputTextMultiline&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, L, T&gt; {
+    <span class="macro">impl_text_flags!</span>(InputText);
 
-    <span class="comment">// I am commenting this ability out for now -- because we need to push `\0` for imgui,</span>
-    <span class="comment">// we may resize the buffer no matter what, and we must do that.</span>
-    <span class="comment">// The solution for this will be, I suspect, to build a second api channel that takes</span>
-    <span class="comment">// an `&amp;mut CStr`, which is ugly! I suspect few to none will want no-resizing, so I&#39;m deferring</span>
-    <span class="comment">// fixing the problem. -- sanbox-irl 09/15/2021, see #523 for more</span>
-    <span class="comment">// /// By default (as of 0.8.0), imgui-rs will automatically handle string resizes</span>
-    <span class="comment">// /// for [InputText] and [InputTextMultiline].</span>
-    <span class="comment">// ///</span>
-    <span class="comment">// /// If, for some reason, you don&#39;t want this, you can run this function to prevent this.</span>
-    <span class="comment">// /// In that case, edits which would cause a resize will not occur.</span>
-    <span class="comment">// #[inline]</span>
-    <span class="comment">// pub fn do_not_resize(mut self) -&gt; Self {</span>
-    <span class="comment">//     self.flags.remove(InputTextFlags::CALLBACK_RESIZE);</span>
-    <span class="comment">//     self</span>
-    <span class="comment">// }</span>
+    <span class="comment">// I am commenting this ability out for now -- because we need to push `\0` for imgui,
+    // we may resize the buffer no matter what, and we must do that.
+    // The solution for this will be, I suspect, to build a second api channel that takes
+    // an `&amp;mut CStr`, which is ugly! I suspect few to none will want no-resizing, so I&#39;m deferring
+    // fixing the problem. -- sanbox-irl 09/15/2021, see #523 for more
+    // /// By default (as of 0.8.0), imgui-rs will automatically handle string resizes
+    // /// for [InputText] and [InputTextMultiline].
+    // ///
+    // /// If, for some reason, you don&#39;t want this, you can run this function to prevent this.
+    // /// In that case, edits which would cause a resize will not occur.
+    // #[inline]
+    // pub fn do_not_resize(mut self) -&gt; Self {
+    //     self.flags.remove(InputTextFlags::CALLBACK_RESIZE);
+    //     self
+    // }
 
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">callback</span><span class="op">&lt;</span><span class="ident">T2</span>: <span class="ident">InputTextCallbackHandler</span><span class="op">&gt;</span>(
-        <span class="kw-2">mut</span> <span class="self">self</span>,
-        <span class="ident">callbacks</span>: <span class="ident">InputTextMultilineCallback</span>,
-        <span class="ident">callback_handler</span>: <span class="ident">T2</span>,
-    ) -&gt; <span class="ident">InputTextMultiline</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, <span class="ident">L</span>, <span class="ident">T2</span><span class="op">&gt;</span> {
-        <span class="kw">if</span> <span class="ident">callbacks</span>.<span class="ident">contains</span>(<span class="ident">InputTextMultilineCallback::COMPLETION</span>) {
-            <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">insert</span>(<span class="ident">InputTextFlags::CALLBACK_COMPLETION</span>);
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>callback&lt;T2: InputTextCallbackHandler&gt;(
+        <span class="kw-2">mut </span><span class="self">self</span>,
+        callbacks: InputTextMultilineCallback,
+        callback_handler: T2,
+    ) -&gt; InputTextMultiline&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, L, T2&gt; {
+        <span class="kw">if </span>callbacks.contains(InputTextMultilineCallback::COMPLETION) {
+            <span class="self">self</span>.flags.insert(InputTextFlags::CALLBACK_COMPLETION);
         }
-        <span class="kw">if</span> <span class="ident">callbacks</span>.<span class="ident">contains</span>(<span class="ident">InputTextMultilineCallback::ALWAYS</span>) {
-            <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">insert</span>(<span class="ident">InputTextFlags::CALLBACK_ALWAYS</span>);
+        <span class="kw">if </span>callbacks.contains(InputTextMultilineCallback::ALWAYS) {
+            <span class="self">self</span>.flags.insert(InputTextFlags::CALLBACK_ALWAYS);
         }
-        <span class="kw">if</span> <span class="ident">callbacks</span>.<span class="ident">contains</span>(<span class="ident">InputTextMultilineCallback::CHAR_FILTER</span>) {
-            <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">insert</span>(<span class="ident">InputTextFlags::CALLBACK_CHAR_FILTER</span>);
+        <span class="kw">if </span>callbacks.contains(InputTextMultilineCallback::CHAR_FILTER) {
+            <span class="self">self</span>.flags.insert(InputTextFlags::CALLBACK_CHAR_FILTER);
         }
-        <span class="kw">if</span> <span class="ident">callbacks</span>.<span class="ident">contains</span>(<span class="ident">InputTextMultilineCallback::EDIT</span>) {
-            <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">insert</span>(<span class="ident">InputTextFlags::CALLBACK_EDIT</span>);
+        <span class="kw">if </span>callbacks.contains(InputTextMultilineCallback::EDIT) {
+            <span class="self">self</span>.flags.insert(InputTextFlags::CALLBACK_EDIT);
         }
 
-        <span class="ident">InputTextMultiline</span> {
-            <span class="ident">label</span>: <span class="self">self</span>.<span class="ident">label</span>,
-            <span class="ident">buf</span>: <span class="self">self</span>.<span class="ident">buf</span>,
-            <span class="ident">flags</span>: <span class="self">self</span>.<span class="ident">flags</span>,
-            <span class="ident">size</span>: <span class="self">self</span>.<span class="ident">size</span>,
-            <span class="ident">callback_handler</span>,
-            <span class="ident">ui</span>: <span class="self">self</span>.<span class="ident">ui</span>,
+        InputTextMultiline {
+            label: <span class="self">self</span>.label,
+            buf: <span class="self">self</span>.buf,
+            flags: <span class="self">self</span>.flags,
+            size: <span class="self">self</span>.size,
+            callback_handler,
+            ui: <span class="self">self</span>.ui,
         }
     }
 
-    <span class="doccomment">/// Builds the string editor, performing string editing operations.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # String Editing</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Please note, ImGui requires this string to be null-terminated. We accomplish this</span>
-    <span class="doccomment">/// by appending and then removing a null terminator (`\0`) from the String you pass in.</span>
-    <span class="doccomment">/// This has several consequences:</span>
-    <span class="doccomment">/// 1. The string&#39;s backing buffer may be resized and relocated even without edits as result</span>
-    <span class="doccomment">/// of this pushed char.</span>
-    <span class="doccomment">/// 2. **The string will appear truncated if the string contains `\0` inside it.** This will not</span>
-    <span class="doccomment">/// cause memory *unsafety*, but it will limit your usage. If that&#39;s the case, please pre-process</span>
-    <span class="doccomment">/// your string.</span>
-    <span class="doccomment">/// 3. Truncations by ImGui appear to be done primarily by insertions of `\0` to the truncation point.</span>
-    <span class="doccomment">/// We will handle this for you and edit the string &quot;properly&quot; too, but this might show up in callbacks.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build</span>(<span class="self">self</span>) -&gt; <span class="ident">bool</span> {
-        <span class="comment">// needs to be null-terminated! this is a hack!</span>
-        <span class="self">self</span>.<span class="ident">buf</span>.<span class="ident">push</span>(<span class="string">&#39;\0&#39;</span>);
-        <span class="kw">let</span> (<span class="ident">ptr</span>, <span class="ident">capacity</span>) <span class="op">=</span> (<span class="self">self</span>.<span class="ident">buf</span>.<span class="ident">as_mut_ptr</span>(), <span class="self">self</span>.<span class="ident">buf</span>.<span class="ident">capacity</span>());
+    <span class="doccomment">/// Builds the string editor, performing string editing operations.
+    ///
+    /// # String Editing
+    ///
+    /// Please note, ImGui requires this string to be null-terminated. We accomplish this
+    /// by appending and then removing a null terminator (`\0`) from the String you pass in.
+    /// This has several consequences:
+    /// 1. The string&#39;s backing buffer may be resized and relocated even without edits as result
+    /// of this pushed char.
+    /// 2. **The string will appear truncated if the string contains `\0` inside it.** This will not
+    /// cause memory *unsafety*, but it will limit your usage. If that&#39;s the case, please pre-process
+    /// your string.
+    /// 3. Truncations by ImGui appear to be done primarily by insertions of `\0` to the truncation point.
+    /// We will handle this for you and edit the string &quot;properly&quot; too, but this might show up in callbacks.
+    </span><span class="kw">pub fn </span>build(<span class="self">self</span>) -&gt; bool {
+        <span class="comment">// needs to be null-terminated! this is a hack!
+        </span><span class="self">self</span>.buf.push(<span class="string">&#39;\0&#39;</span>);
+        <span class="kw">let </span>(ptr, capacity) = (<span class="self">self</span>.buf.as_mut_ptr(), <span class="self">self</span>.buf.capacity());
 
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">data</span> <span class="op">=</span> <span class="ident">UserData</span> {
-            <span class="ident">container</span>: <span class="self">self</span>.<span class="ident">buf</span>,
-            <span class="ident">cback_handler</span>: <span class="self">self</span>.<span class="ident">callback_handler</span>,
+        <span class="kw">let </span><span class="kw-2">mut </span>data = UserData {
+            container: <span class="self">self</span>.buf,
+            cback_handler: <span class="self">self</span>.callback_handler,
         };
-        <span class="kw">let</span> <span class="ident">data</span> <span class="op">=</span> <span class="kw-2">&amp;mut</span> <span class="ident">data</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="kw">_</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">c_void</span>;
+        <span class="kw">let </span>data = <span class="kw-2">&amp;mut </span>data <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_ as </span><span class="kw-2">*mut </span>c_void;
 
-        <span class="kw">let</span> <span class="ident">o</span> <span class="op">=</span> <span class="kw">unsafe</span> {
-            <span class="ident">sys::igInputTextMultiline</span>(
-                <span class="self">self</span>.<span class="ident">ui</span>.<span class="ident">scratch_txt</span>(<span class="self">self</span>.<span class="ident">label</span>),
-                <span class="ident">ptr</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">sys::cty::c_char</span>,
-                <span class="ident">capacity</span>,
-                <span class="self">self</span>.<span class="ident">size</span>.<span class="ident">into</span>(),
-                <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">bits</span>() <span class="kw">as</span> <span class="ident">i32</span>,
-                <span class="prelude-val">Some</span>(<span class="ident">callback</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>),
-                <span class="ident">data</span>,
+        <span class="kw">let </span>o = <span class="kw">unsafe </span>{
+            sys::igInputTextMultiline(
+                <span class="self">self</span>.ui.scratch_txt(<span class="self">self</span>.label),
+                ptr <span class="kw">as </span><span class="kw-2">*mut </span>sys::cty::c_char,
+                capacity,
+                <span class="self">self</span>.size.into(),
+                <span class="self">self</span>.flags.bits() <span class="kw">as </span>i32,
+                <span class="prelude-val">Some</span>(callback::&lt;T&gt;),
+                data,
             )
         };
 
-        <span class="kw">let</span> <span class="ident">cap</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">buf</span>.<span class="ident">capacity</span>();
+        <span class="kw">let </span>cap = <span class="self">self</span>.buf.capacity();
 
-        <span class="comment">// SAFETY: this slice is simply a view into the underlying buffer</span>
-        <span class="comment">// of a String. We MAY be holding onto a view of uninitialized memory,</span>
-        <span class="comment">// however, since we&#39;re holding this as a u8 slice, I think it should be</span>
-        <span class="comment">// alright...</span>
-        <span class="comment">// additionally, we can go over the bytes directly, rather than char indices,</span>
-        <span class="comment">// because NUL will never appear in any UTF8 outside the NUL character (ie, within</span>
-        <span class="comment">// a char).</span>
-        <span class="kw">let</span> <span class="ident">buf</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">std::slice::from_raw_parts</span>(<span class="self">self</span>.<span class="ident">buf</span>.<span class="ident">as_ptr</span>(), <span class="ident">cap</span>) };
-        <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">len</span>) <span class="op">=</span> <span class="ident">buf</span>.<span class="ident">iter</span>().<span class="ident">position</span>(<span class="op">|</span><span class="ident">x</span><span class="op">|</span> <span class="kw-2">*</span><span class="ident">x</span> <span class="op">==</span> <span class="string">b&#39;\0&#39;</span>) {
-            <span class="comment">// `len` is the position of the first `\0` byte in the String</span>
-            <span class="kw">unsafe</span> {
-                <span class="self">self</span>.<span class="ident">buf</span>.<span class="ident">as_mut_vec</span>().<span class="ident">set_len</span>(<span class="ident">len</span>);
+        <span class="comment">// SAFETY: this slice is simply a view into the underlying buffer
+        // of a String. We MAY be holding onto a view of uninitialized memory,
+        // however, since we&#39;re holding this as a u8 slice, I think it should be
+        // alright...
+        // additionally, we can go over the bytes directly, rather than char indices,
+        // because NUL will never appear in any UTF8 outside the NUL character (ie, within
+        // a char).
+        </span><span class="kw">let </span>buf = <span class="kw">unsafe </span>{ std::slice::from_raw_parts(<span class="self">self</span>.buf.as_ptr(), cap) };
+        <span class="kw">if let </span><span class="prelude-val">Some</span>(len) = buf.iter().position(|x| <span class="kw-2">*</span>x == <span class="string">b&#39;\0&#39;</span>) {
+            <span class="comment">// `len` is the position of the first `\0` byte in the String
+            </span><span class="kw">unsafe </span>{
+                <span class="self">self</span>.buf.as_mut_vec().set_len(len);
             }
-        } <span class="kw">else</span> {
-            <span class="comment">// There is no null terminator, the best we can do is to not</span>
-            <span class="comment">// update the string length.</span>
-        }
+        } <span class="kw">else </span>{
+            <span class="comment">// There is no null terminator, the best we can do is to not
+            // update the string length.
+        </span>}
 
-        <span class="ident">o</span>
+        o
     }
 }
 
-<span class="attribute">#[<span class="ident">must_use</span>]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">InputInt</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, <span class="ident">L</span><span class="op">&gt;</span> {
-    <span class="ident">label</span>: <span class="ident">L</span>,
-    <span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> <span class="kw-2">mut</span> <span class="ident">i32</span>,
-    <span class="ident">step</span>: <span class="ident">i32</span>,
-    <span class="ident">step_fast</span>: <span class="ident">i32</span>,
-    <span class="ident">flags</span>: <span class="ident">InputTextFlags</span>,
-    <span class="ident">ui</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>,
+<span class="attribute">#[must_use]
+</span><span class="kw">pub struct </span>InputInt&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, L&gt; {
+    label: L,
+    value: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p </span><span class="kw-2">mut </span>i32,
+    step: i32,
+    step_fast: i32,
+    flags: InputTextFlags,
+    ui: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span>Ui&lt;<span class="lifetime">&#39;ui</span>&gt;,
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, <span class="ident">L</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="ident">InputInt</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, <span class="ident">L</span><span class="op">&gt;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">ui</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>, <span class="ident">label</span>: <span class="ident">L</span>, <span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> <span class="kw-2">mut</span> <span class="ident">i32</span>) -&gt; <span class="self">Self</span> {
-        <span class="ident">InputInt</span> {
-            <span class="ident">label</span>,
-            <span class="ident">value</span>,
-            <span class="ident">step</span>: <span class="number">1</span>,
-            <span class="ident">step_fast</span>: <span class="number">100</span>,
-            <span class="ident">flags</span>: <span class="ident">InputTextFlags::empty</span>(),
-            <span class="ident">ui</span>,
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, L: AsRef&lt;str&gt;&gt; InputInt&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, L&gt; {
+    <span class="kw">pub fn </span>new(ui: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span>Ui&lt;<span class="lifetime">&#39;ui</span>&gt;, label: L, value: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p </span><span class="kw-2">mut </span>i32) -&gt; <span class="self">Self </span>{
+        InputInt {
+            label,
+            value,
+            step: <span class="number">1</span>,
+            step_fast: <span class="number">100</span>,
+            flags: InputTextFlags::empty(),
+            ui,
         }
     }
 
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build</span>(<span class="self">self</span>) -&gt; <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> {
-            <span class="ident">sys::igInputInt</span>(
-                <span class="self">self</span>.<span class="ident">ui</span>.<span class="ident">scratch_txt</span>(<span class="self">self</span>.<span class="ident">label</span>),
-                <span class="self">self</span>.<span class="ident">value</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">i32</span>,
-                <span class="self">self</span>.<span class="ident">step</span>,
-                <span class="self">self</span>.<span class="ident">step_fast</span>,
-                <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">bits</span>() <span class="kw">as</span> <span class="ident">i32</span>,
+    <span class="kw">pub fn </span>build(<span class="self">self</span>) -&gt; bool {
+        <span class="kw">unsafe </span>{
+            sys::igInputInt(
+                <span class="self">self</span>.ui.scratch_txt(<span class="self">self</span>.label),
+                <span class="self">self</span>.value <span class="kw">as </span><span class="kw-2">*mut </span>i32,
+                <span class="self">self</span>.step,
+                <span class="self">self</span>.step_fast,
+                <span class="self">self</span>.flags.bits() <span class="kw">as </span>i32,
             )
         }
     }
 
-    <span class="macro">impl_step_params!</span>(<span class="ident">InputInt</span>, <span class="ident">i32</span>);
-    <span class="macro">impl_text_flags!</span>(<span class="ident">InputInt</span>);
+    <span class="macro">impl_step_params!</span>(InputInt, i32);
+    <span class="macro">impl_text_flags!</span>(InputInt);
 }
 
-<span class="attribute">#[<span class="ident">must_use</span>]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">InputFloat</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, <span class="ident">L</span><span class="op">&gt;</span> {
-    <span class="ident">label</span>: <span class="ident">L</span>,
-    <span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> <span class="kw-2">mut</span> <span class="ident">f32</span>,
-    <span class="ident">step</span>: <span class="ident">f32</span>,
-    <span class="ident">step_fast</span>: <span class="ident">f32</span>,
-    <span class="ident">flags</span>: <span class="ident">InputTextFlags</span>,
-    <span class="ident">ui</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>,
+<span class="attribute">#[must_use]
+</span><span class="kw">pub struct </span>InputFloat&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, L&gt; {
+    label: L,
+    value: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p </span><span class="kw-2">mut </span>f32,
+    step: f32,
+    step_fast: f32,
+    flags: InputTextFlags,
+    ui: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span>Ui&lt;<span class="lifetime">&#39;ui</span>&gt;,
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, <span class="ident">L</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="ident">InputFloat</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, <span class="ident">L</span><span class="op">&gt;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">ui</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>, <span class="ident">label</span>: <span class="ident">L</span>, <span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> <span class="kw-2">mut</span> <span class="ident">f32</span>) -&gt; <span class="self">Self</span> {
-        <span class="ident">InputFloat</span> {
-            <span class="ident">label</span>,
-            <span class="ident">value</span>,
-            <span class="ident">step</span>: <span class="number">0.0</span>,
-            <span class="ident">step_fast</span>: <span class="number">0.0</span>,
-            <span class="ident">flags</span>: <span class="ident">InputTextFlags::empty</span>(),
-            <span class="ident">ui</span>,
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, L: AsRef&lt;str&gt;&gt; InputFloat&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, L&gt; {
+    <span class="kw">pub fn </span>new(ui: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span>Ui&lt;<span class="lifetime">&#39;ui</span>&gt;, label: L, value: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p </span><span class="kw-2">mut </span>f32) -&gt; <span class="self">Self </span>{
+        InputFloat {
+            label,
+            value,
+            step: <span class="number">0.0</span>,
+            step_fast: <span class="number">0.0</span>,
+            flags: InputTextFlags::empty(),
+            ui,
         }
     }
 
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build</span>(<span class="self">self</span>) -&gt; <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> {
-            <span class="ident">sys::igInputFloat</span>(
-                <span class="self">self</span>.<span class="ident">ui</span>.<span class="ident">scratch_txt</span>(<span class="self">self</span>.<span class="ident">label</span>),
-                <span class="self">self</span>.<span class="ident">value</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">f32</span>,
-                <span class="self">self</span>.<span class="ident">step</span>,
-                <span class="self">self</span>.<span class="ident">step_fast</span>,
-                <span class="string">b&quot;%.3f\0&quot;</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw-2">*const</span> <span class="kw">_</span>,
-                <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">bits</span>() <span class="kw">as</span> <span class="ident">i32</span>,
+    <span class="kw">pub fn </span>build(<span class="self">self</span>) -&gt; bool {
+        <span class="kw">unsafe </span>{
+            sys::igInputFloat(
+                <span class="self">self</span>.ui.scratch_txt(<span class="self">self</span>.label),
+                <span class="self">self</span>.value <span class="kw">as </span><span class="kw-2">*mut </span>f32,
+                <span class="self">self</span>.step,
+                <span class="self">self</span>.step_fast,
+                <span class="string">b&quot;%.3f\0&quot;</span>.as_ptr() <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>,
+                <span class="self">self</span>.flags.bits() <span class="kw">as </span>i32,
             )
         }
     }
 
-    <span class="macro">impl_step_params!</span>(<span class="ident">InputFloat</span>, <span class="ident">f32</span>);
-    <span class="macro">impl_text_flags!</span>(<span class="ident">InputFloat</span>);
+    <span class="macro">impl_step_params!</span>(InputFloat, f32);
+    <span class="macro">impl_text_flags!</span>(InputFloat);
 }
 
-<span class="macro">macro_rules!</span> <span class="ident">impl_input_floatn</span> {
-    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">InputFloatN</span>:<span class="ident">ident</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">N</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">igInputFloatN</span>:<span class="ident">ident</span>) =&gt; {
-        <span class="attribute">#[<span class="ident">must_use</span>]</span>
-        <span class="kw">pub</span> <span class="kw">struct</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">InputFloatN</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, <span class="ident">L</span><span class="op">&gt;</span> {
-            <span class="ident">label</span>: <span class="ident">L</span>,
-            <span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> <span class="kw-2">mut</span> [<span class="ident">f32</span>; <span class="macro-nonterminal">$</span><span class="macro-nonterminal">N</span>],
-            <span class="ident">flags</span>: <span class="ident">InputTextFlags</span>,
-            <span class="ident">ui</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>,
+<span class="macro">macro_rules! </span>impl_input_floatn {
+    (<span class="macro-nonterminal">$InputFloatN</span>:ident, <span class="macro-nonterminal">$N</span>:expr, <span class="macro-nonterminal">$igInputFloatN</span>:ident) =&gt; {
+        <span class="attribute">#[must_use]
+        </span><span class="kw">pub struct </span><span class="macro-nonterminal">$InputFloatN</span>&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, L&gt; {
+            label: L,
+            value: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p </span><span class="kw-2">mut </span>[f32; <span class="macro-nonterminal">$N</span>],
+            flags: InputTextFlags,
+            ui: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span>Ui&lt;<span class="lifetime">&#39;ui</span>&gt;,
         }
 
-        <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, <span class="ident">L</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">InputFloatN</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, <span class="ident">L</span><span class="op">&gt;</span> {
-            <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">ui</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>, <span class="ident">label</span>: <span class="ident">L</span>, <span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> <span class="kw-2">mut</span> [<span class="ident">f32</span>; <span class="macro-nonterminal">$</span><span class="macro-nonterminal">N</span>]) -&gt; <span class="self">Self</span> {
-                <span class="macro-nonterminal">$</span><span class="macro-nonterminal">InputFloatN</span> {
-                    <span class="ident">label</span>,
-                    <span class="ident">value</span>,
-                    <span class="ident">flags</span>: <span class="ident">InputTextFlags::empty</span>(),
-                    <span class="ident">ui</span>,
+        <span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, L: AsRef&lt;str&gt;&gt; <span class="macro-nonterminal">$InputFloatN</span>&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, L&gt; {
+            <span class="kw">pub fn </span>new(ui: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span>Ui&lt;<span class="lifetime">&#39;ui</span>&gt;, label: L, value: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p </span><span class="kw-2">mut </span>[f32; <span class="macro-nonterminal">$N</span>]) -&gt; <span class="self">Self </span>{
+                <span class="macro-nonterminal">$InputFloatN </span>{
+                    label,
+                    value,
+                    flags: InputTextFlags::empty(),
+                    ui,
                 }
             }
 
-            <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build</span>(<span class="self">self</span>) -&gt; <span class="ident">bool</span> {
-                <span class="kw">unsafe</span> {
-                    <span class="ident">sys</span>::<span class="macro-nonterminal">$</span><span class="macro-nonterminal">igInputFloatN</span>(
-                        <span class="self">self</span>.<span class="ident">ui</span>.<span class="ident">scratch_txt</span>(<span class="self">self</span>.<span class="ident">label</span>),
-                        <span class="self">self</span>.<span class="ident">value</span>.<span class="ident">as_mut_ptr</span>(),
-                        <span class="string">b&quot;%.3f\0&quot;</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw-2">*const</span> <span class="kw">_</span>,
-                        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">bits</span>() <span class="kw">as</span> <span class="ident">i32</span>,
+            <span class="kw">pub fn </span>build(<span class="self">self</span>) -&gt; bool {
+                <span class="kw">unsafe </span>{
+                    sys::<span class="macro-nonterminal">$igInputFloatN</span>(
+                        <span class="self">self</span>.ui.scratch_txt(<span class="self">self</span>.label),
+                        <span class="self">self</span>.value.as_mut_ptr(),
+                        <span class="string">b&quot;%.3f\0&quot;</span>.as_ptr() <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>,
+                        <span class="self">self</span>.flags.bits() <span class="kw">as </span>i32,
                     )
                 }
             }
 
-            <span class="macro">impl_text_flags!</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">InputFloatN</span>);
+            <span class="macro">impl_text_flags!</span>(<span class="macro-nonterminal">$InputFloatN</span>);
         }
     };
 }
 
-<span class="macro">impl_input_floatn!</span>(<span class="ident">InputFloat2</span>, <span class="number">2</span>, <span class="ident">igInputFloat2</span>);
-<span class="macro">impl_input_floatn!</span>(<span class="ident">InputFloat3</span>, <span class="number">3</span>, <span class="ident">igInputFloat3</span>);
-<span class="macro">impl_input_floatn!</span>(<span class="ident">InputFloat4</span>, <span class="number">4</span>, <span class="ident">igInputFloat4</span>);
+<span class="macro">impl_input_floatn!</span>(InputFloat2, <span class="number">2</span>, igInputFloat2);
+<span class="macro">impl_input_floatn!</span>(InputFloat3, <span class="number">3</span>, igInputFloat3);
+<span class="macro">impl_input_floatn!</span>(InputFloat4, <span class="number">4</span>, igInputFloat4);
 
-<span class="macro">macro_rules!</span> <span class="ident">impl_input_intn</span> {
-    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">InputIntN</span>:<span class="ident">ident</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">N</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">igInputIntN</span>:<span class="ident">ident</span>) =&gt; {
-        <span class="attribute">#[<span class="ident">must_use</span>]</span>
-        <span class="kw">pub</span> <span class="kw">struct</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">InputIntN</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, <span class="ident">L</span><span class="op">&gt;</span> {
-            <span class="ident">label</span>: <span class="ident">L</span>,
-            <span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> <span class="kw-2">mut</span> [<span class="ident">i32</span>; <span class="macro-nonterminal">$</span><span class="macro-nonterminal">N</span>],
-            <span class="ident">flags</span>: <span class="ident">InputTextFlags</span>,
-            <span class="ident">ui</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>,
+<span class="macro">macro_rules! </span>impl_input_intn {
+    (<span class="macro-nonterminal">$InputIntN</span>:ident, <span class="macro-nonterminal">$N</span>:expr, <span class="macro-nonterminal">$igInputIntN</span>:ident) =&gt; {
+        <span class="attribute">#[must_use]
+        </span><span class="kw">pub struct </span><span class="macro-nonterminal">$InputIntN</span>&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, L&gt; {
+            label: L,
+            value: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p </span><span class="kw-2">mut </span>[i32; <span class="macro-nonterminal">$N</span>],
+            flags: InputTextFlags,
+            ui: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span>Ui&lt;<span class="lifetime">&#39;ui</span>&gt;,
         }
 
-        <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, <span class="ident">L</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">InputIntN</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, <span class="ident">L</span><span class="op">&gt;</span> {
-            <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">ui</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>, <span class="ident">label</span>: <span class="ident">L</span>, <span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> <span class="kw-2">mut</span> [<span class="ident">i32</span>; <span class="macro-nonterminal">$</span><span class="macro-nonterminal">N</span>]) -&gt; <span class="self">Self</span> {
-                <span class="macro-nonterminal">$</span><span class="macro-nonterminal">InputIntN</span> {
-                    <span class="ident">label</span>,
-                    <span class="ident">value</span>,
-                    <span class="ident">flags</span>: <span class="ident">InputTextFlags::empty</span>(),
-                    <span class="ident">ui</span>,
+        <span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, L: AsRef&lt;str&gt;&gt; <span class="macro-nonterminal">$InputIntN</span>&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, L&gt; {
+            <span class="kw">pub fn </span>new(ui: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span>Ui&lt;<span class="lifetime">&#39;ui</span>&gt;, label: L, value: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p </span><span class="kw-2">mut </span>[i32; <span class="macro-nonterminal">$N</span>]) -&gt; <span class="self">Self </span>{
+                <span class="macro-nonterminal">$InputIntN </span>{
+                    label,
+                    value,
+                    flags: InputTextFlags::empty(),
+                    ui,
                 }
             }
 
-            <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build</span>(<span class="self">self</span>) -&gt; <span class="ident">bool</span> {
-                <span class="kw">unsafe</span> {
-                    <span class="ident">sys</span>::<span class="macro-nonterminal">$</span><span class="macro-nonterminal">igInputIntN</span>(
-                        <span class="self">self</span>.<span class="ident">ui</span>.<span class="ident">scratch_txt</span>(<span class="self">self</span>.<span class="ident">label</span>),
-                        <span class="self">self</span>.<span class="ident">value</span>.<span class="ident">as_mut_ptr</span>(),
-                        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">bits</span>() <span class="kw">as</span> <span class="ident">i32</span>,
+            <span class="kw">pub fn </span>build(<span class="self">self</span>) -&gt; bool {
+                <span class="kw">unsafe </span>{
+                    sys::<span class="macro-nonterminal">$igInputIntN</span>(
+                        <span class="self">self</span>.ui.scratch_txt(<span class="self">self</span>.label),
+                        <span class="self">self</span>.value.as_mut_ptr(),
+                        <span class="self">self</span>.flags.bits() <span class="kw">as </span>i32,
                     )
                 }
             }
 
-            <span class="macro">impl_text_flags!</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">InputIntN</span>);
+            <span class="macro">impl_text_flags!</span>(<span class="macro-nonterminal">$InputIntN</span>);
         }
     };
 }
 
-<span class="macro">impl_input_intn!</span>(<span class="ident">InputInt2</span>, <span class="number">2</span>, <span class="ident">igInputInt2</span>);
-<span class="macro">impl_input_intn!</span>(<span class="ident">InputInt3</span>, <span class="number">3</span>, <span class="ident">igInputInt3</span>);
-<span class="macro">impl_input_intn!</span>(<span class="ident">InputInt4</span>, <span class="number">4</span>, <span class="ident">igInputInt4</span>);
+<span class="macro">impl_input_intn!</span>(InputInt2, <span class="number">2</span>, igInputInt2);
+<span class="macro">impl_input_intn!</span>(InputInt3, <span class="number">3</span>, igInputInt3);
+<span class="macro">impl_input_intn!</span>(InputInt4, <span class="number">4</span>, igInputInt4);
 
 <span class="macro">bitflags!</span>(
-    <span class="doccomment">/// Callback flags for an `InputText` widget. These correspond to</span>
-    <span class="doccomment">/// the general textflags.</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">InputTextCallback</span>: <span class="ident">u32</span> {
-        <span class="doccomment">/// Call user function on pressing TAB (for completion handling)</span>
-        <span class="kw">const</span> <span class="ident">COMPLETION</span> <span class="op">=</span> <span class="ident">sys::ImGuiInputTextFlags_CallbackCompletion</span>;
-        <span class="doccomment">/// Call user function on pressing Up/Down arrows (for history handling)</span>
-        <span class="kw">const</span> <span class="ident">HISTORY</span> <span class="op">=</span> <span class="ident">sys::ImGuiInputTextFlags_CallbackHistory</span>;
-        <span class="doccomment">/// Call user function every time. User code may query cursor position, modify text buffer.</span>
-        <span class="kw">const</span> <span class="ident">ALWAYS</span> <span class="op">=</span> <span class="ident">sys::ImGuiInputTextFlags_CallbackAlways</span>;
-        <span class="doccomment">/// Call user function to filter character.</span>
-        <span class="kw">const</span> <span class="ident">CHAR_FILTER</span> <span class="op">=</span> <span class="ident">sys::ImGuiInputTextFlags_CallbackCharFilter</span>;
-        <span class="doccomment">/// Callback on buffer edit (note that InputText already returns true on edit, the</span>
-        <span class="doccomment">/// callback is useful mainly to manipulate the underlying buffer while focus is active)</span>
-        <span class="kw">const</span> <span class="ident">EDIT</span> <span class="op">=</span> <span class="ident">sys::ImGuiInputTextFlags_CallbackEdit</span>;
+    <span class="doccomment">/// Callback flags for an `InputText` widget. These correspond to
+    /// the general textflags.
+    </span><span class="kw">pub struct </span>InputTextCallback: u32 {
+        <span class="doccomment">/// Call user function on pressing TAB (for completion handling)
+        </span><span class="kw">const </span>COMPLETION = sys::ImGuiInputTextFlags_CallbackCompletion;
+        <span class="doccomment">/// Call user function on pressing Up/Down arrows (for history handling)
+        </span><span class="kw">const </span>HISTORY = sys::ImGuiInputTextFlags_CallbackHistory;
+        <span class="doccomment">/// Call user function every time. User code may query cursor position, modify text buffer.
+        </span><span class="kw">const </span>ALWAYS = sys::ImGuiInputTextFlags_CallbackAlways;
+        <span class="doccomment">/// Call user function to filter character.
+        </span><span class="kw">const </span>CHAR_FILTER = sys::ImGuiInputTextFlags_CallbackCharFilter;
+        <span class="doccomment">/// Callback on buffer edit (note that InputText already returns true on edit, the
+        /// callback is useful mainly to manipulate the underlying buffer while focus is active)
+        </span><span class="kw">const </span>EDIT = sys::ImGuiInputTextFlags_CallbackEdit;
     }
 );
 
 <span class="macro">bitflags!</span>(
-    <span class="doccomment">/// Callback flags for an `InputTextMultiline` widget. These correspond to the</span>
-    <span class="doccomment">/// general textflags.</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">InputTextMultilineCallback</span>: <span class="ident">u32</span> {
-        <span class="doccomment">/// Call user function on pressing TAB (for completion handling)</span>
-        <span class="kw">const</span> <span class="ident">COMPLETION</span> <span class="op">=</span> <span class="ident">sys::ImGuiInputTextFlags_CallbackCompletion</span>;
-        <span class="doccomment">/// Call user function every time. User code may query cursor position, modify text buffer.</span>
-        <span class="kw">const</span> <span class="ident">ALWAYS</span> <span class="op">=</span> <span class="ident">sys::ImGuiInputTextFlags_CallbackAlways</span>;
-        <span class="doccomment">/// Call user function to filter character.</span>
-        <span class="kw">const</span> <span class="ident">CHAR_FILTER</span> <span class="op">=</span> <span class="ident">sys::ImGuiInputTextFlags_CallbackCharFilter</span>;
-        <span class="doccomment">/// Callback on buffer edit (note that InputText already returns true on edit, the</span>
-        <span class="doccomment">/// callback is useful mainly to manipulate the underlying buffer while focus is active)</span>
-        <span class="kw">const</span> <span class="ident">EDIT</span> <span class="op">=</span> <span class="ident">sys::ImGuiInputTextFlags_CallbackEdit</span>;
+    <span class="doccomment">/// Callback flags for an `InputTextMultiline` widget. These correspond to the
+    /// general textflags.
+    </span><span class="kw">pub struct </span>InputTextMultilineCallback: u32 {
+        <span class="doccomment">/// Call user function on pressing TAB (for completion handling)
+        </span><span class="kw">const </span>COMPLETION = sys::ImGuiInputTextFlags_CallbackCompletion;
+        <span class="doccomment">/// Call user function every time. User code may query cursor position, modify text buffer.
+        </span><span class="kw">const </span>ALWAYS = sys::ImGuiInputTextFlags_CallbackAlways;
+        <span class="doccomment">/// Call user function to filter character.
+        </span><span class="kw">const </span>CHAR_FILTER = sys::ImGuiInputTextFlags_CallbackCharFilter;
+        <span class="doccomment">/// Callback on buffer edit (note that InputText already returns true on edit, the
+        /// callback is useful mainly to manipulate the underlying buffer while focus is active)
+        </span><span class="kw">const </span>EDIT = sys::ImGuiInputTextFlags_CallbackEdit;
     }
 );
 
-<span class="doccomment">/// This trait provides an interface which ImGui will call on `InputText`</span>
-<span class="doccomment">/// and `InputTextMultiline` callbacks.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// Each method is called *if and only if* the corresponding flag for each</span>
-<span class="doccomment">/// method is passed to ImGui in the `callback` builder.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// Each method here lists the flag required to call it, and this module begins</span>
-<span class="doccomment">/// with an example of callbacks being used.</span>
-<span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">InputTextCallbackHandler</span> {
-    <span class="doccomment">/// Filters a char -- returning a `None` means that the char is removed,</span>
-    <span class="doccomment">/// and returning another char substitutes it out.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Because of upstream ImGui choices, you do not have access to the buffer</span>
-    <span class="doccomment">/// during this callback (for some reason).</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// To make ImGui run this callback, use [InputTextCallback::CHAR_FILTER] or</span>
-    <span class="doccomment">/// [InputTextMultilineCallback::CHAR_FILTER].</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # arcdps compatibility note</span>
-    <span class="doccomment">/// arcdps uses ImGui compiled without support for 32bit characters.</span>
-    <span class="doccomment">/// For this reason, we changed this API from Rust `char`s to underlying</span>
-    <span class="doccomment">/// raw characters (16bit).</span>
-    <span class="kw">fn</span> <span class="ident">char_filter</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">c</span>: <span class="ident">u16</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">u16</span><span class="op">&gt;</span> {
-        <span class="prelude-val">Some</span>(<span class="ident">c</span>)
+<span class="doccomment">/// This trait provides an interface which ImGui will call on `InputText`
+/// and `InputTextMultiline` callbacks.
+///
+/// Each method is called *if and only if* the corresponding flag for each
+/// method is passed to ImGui in the `callback` builder.
+///
+/// Each method here lists the flag required to call it, and this module begins
+/// with an example of callbacks being used.
+</span><span class="kw">pub trait </span>InputTextCallbackHandler {
+    <span class="doccomment">/// Filters a char -- returning a `None` means that the char is removed,
+    /// and returning another char substitutes it out.
+    ///
+    /// Because of upstream ImGui choices, you do not have access to the buffer
+    /// during this callback (for some reason).
+    ///
+    /// To make ImGui run this callback, use [InputTextCallback::CHAR_FILTER] or
+    /// [InputTextMultilineCallback::CHAR_FILTER].
+    ///
+    /// # arcdps compatibility note
+    /// arcdps uses ImGui compiled without support for 32bit characters.
+    /// For this reason, we changed this API from Rust `char`s to underlying
+    /// raw characters (16bit).
+    </span><span class="kw">fn </span>char_filter(<span class="kw-2">&amp;mut </span><span class="self">self</span>, c: u16) -&gt; <span class="prelude-ty">Option</span>&lt;u16&gt; {
+        <span class="prelude-val">Some</span>(c)
     }
 
-    <span class="doccomment">/// Allows one to perform autocompletion work when the Tab key has been pressed.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// To make ImGui run this callback, use [InputTextCallback::COMPLETION] or</span>
-    <span class="doccomment">/// [InputTextMultilineCallback::COMPLETION].</span>
-    <span class="kw">fn</span> <span class="ident">on_completion</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="kw">_</span>: <span class="ident">TextCallbackData</span>) {}
+    <span class="doccomment">/// Allows one to perform autocompletion work when the Tab key has been pressed.
+    ///
+    /// To make ImGui run this callback, use [InputTextCallback::COMPLETION] or
+    /// [InputTextMultilineCallback::COMPLETION].
+    </span><span class="kw">fn </span>on_completion(<span class="kw-2">&amp;mut </span><span class="self">self</span>, <span class="kw">_</span>: TextCallbackData) {}
 
-    <span class="doccomment">/// Allows one to edit the inner buffer whenever the buffer has been changed.</span>
-    <span class="doccomment">///    </span>
-    <span class="doccomment">/// To make ImGui run this callback, use [InputTextCallback::EDIT] or</span>
-    <span class="doccomment">/// [InputTextMultilineCallback::EDIT].</span>
-    <span class="kw">fn</span> <span class="ident">on_edit</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="kw">_</span>: <span class="ident">TextCallbackData</span>) {}
+    <span class="doccomment">/// Allows one to edit the inner buffer whenever the buffer has been changed.
+    ///    
+    /// To make ImGui run this callback, use [InputTextCallback::EDIT] or
+    /// [InputTextMultilineCallback::EDIT].
+    </span><span class="kw">fn </span>on_edit(<span class="kw-2">&amp;mut </span><span class="self">self</span>, <span class="kw">_</span>: TextCallbackData) {}
 
-    <span class="doccomment">/// A callback when one of the direction keys have been pressed.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// To make ImGui run this callback, use [InputTextCallback::HISTORY]. It appears</span>
-    <span class="doccomment">/// that this callback will not be ran in a multiline input widget at all.</span>
-    <span class="kw">fn</span> <span class="ident">on_history</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="kw">_</span>: <span class="ident">HistoryDirection</span>, <span class="kw">_</span>: <span class="ident">TextCallbackData</span>) {}
+    <span class="doccomment">/// A callback when one of the direction keys have been pressed.
+    ///
+    /// To make ImGui run this callback, use [InputTextCallback::HISTORY]. It appears
+    /// that this callback will not be ran in a multiline input widget at all.
+    </span><span class="kw">fn </span>on_history(<span class="kw-2">&amp;mut </span><span class="self">self</span>, <span class="kw">_</span>: HistoryDirection, <span class="kw">_</span>: TextCallbackData) {}
 
-    <span class="doccomment">/// A callback which will always fire, each tick.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// To make ImGui run this callback, use [InputTextCallback::ALWAYS] or</span>
-    <span class="doccomment">/// [InputTextMultilineCallback::ALWAYS].</span>
-    <span class="kw">fn</span> <span class="ident">on_always</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="kw">_</span>: <span class="ident">TextCallbackData</span>) {}
+    <span class="doccomment">/// A callback which will always fire, each tick.
+    ///
+    /// To make ImGui run this callback, use [InputTextCallback::ALWAYS] or
+    /// [InputTextMultilineCallback::ALWAYS].
+    </span><span class="kw">fn </span>on_always(<span class="kw-2">&amp;mut </span><span class="self">self</span>, <span class="kw">_</span>: TextCallbackData) {}
 }
 
-<span class="doccomment">/// The arrow key a user pressed to trigger the `on_history` callback.</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>, <span class="ident">Hash</span>)]</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">HistoryDirection</span> {
-    <span class="ident">Up</span>,
-    <span class="ident">Down</span>,
+<span class="doccomment">/// The arrow key a user pressed to trigger the `on_history` callback.
+</span><span class="attribute">#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
+</span><span class="kw">pub enum </span>HistoryDirection {
+    Up,
+    Down,
 }
 
-<span class="doccomment">/// This struct provides methods to edit the underlying text buffer that</span>
-<span class="doccomment">/// Dear ImGui manipulates. Primarily, it gives [remove_chars](Self::remove_chars),</span>
-<span class="doccomment">/// [insert_chars](Self::insert_chars), and mutable access to what text is selected.</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">TextCallbackData</span>(<span class="kw-2">*mut</span> <span class="ident">sys::ImGuiInputTextCallbackData</span>);
+<span class="doccomment">/// This struct provides methods to edit the underlying text buffer that
+/// Dear ImGui manipulates. Primarily, it gives [remove_chars](Self::remove_chars),
+/// [insert_chars](Self::insert_chars), and mutable access to what text is selected.
+</span><span class="kw">pub struct </span>TextCallbackData(<span class="kw-2">*mut </span>sys::ImGuiInputTextCallbackData);
 
-<span class="kw">impl</span> <span class="ident">TextCallbackData</span> {
-    <span class="doccomment">/// Creates the buffer.</span>
-    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">data</span>: <span class="kw-2">*mut</span> <span class="ident">sys::ImGuiInputTextCallbackData</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">Self</span>(<span class="ident">data</span>)
+<span class="kw">impl </span>TextCallbackData {
+    <span class="doccomment">/// Creates the buffer.
+    </span><span class="kw">unsafe fn </span>new(data: <span class="kw-2">*mut </span>sys::ImGuiInputTextCallbackData) -&gt; <span class="self">Self </span>{
+        <span class="self">Self</span>(data)
     }
 
-    <span class="doccomment">/// Get a reference to the text callback buffer&#39;s str.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">str</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="ident">str</span> {
-        <span class="kw">unsafe</span> {
-            <span class="ident">std::str::from_utf8</span>(<span class="ident">std::slice::from_raw_parts</span>(
-                (<span class="kw-2">*</span>(<span class="self">self</span>.<span class="number">0</span>)).<span class="ident">Buf</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="kw">_</span>,
-                (<span class="kw-2">*</span>(<span class="self">self</span>.<span class="number">0</span>)).<span class="ident">BufTextLen</span> <span class="kw">as</span> <span class="ident">usize</span>,
+    <span class="doccomment">/// Get a reference to the text callback buffer&#39;s str.
+    </span><span class="kw">pub fn </span>str(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>str {
+        <span class="kw">unsafe </span>{
+            std::str::from_utf8(std::slice::from_raw_parts(
+                (<span class="kw-2">*</span>(<span class="self">self</span>.<span class="number">0</span>)).Buf <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>,
+                (<span class="kw-2">*</span>(<span class="self">self</span>.<span class="number">0</span>)).BufTextLen <span class="kw">as </span>usize,
             ))
-            .<span class="ident">expect</span>(<span class="string">&quot;internal imgui error -- it boofed a utf8&quot;</span>)
+            .expect(<span class="string">&quot;internal imgui error -- it boofed a utf8&quot;</span>)
         }
     }
 
-    <span class="doccomment">/// Gives access to the underlying byte array MUTABLY.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ## Safety</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This is very unsafe, and the following invariants must be</span>
-    <span class="doccomment">/// upheld:</span>
-    <span class="doccomment">/// 1. Keep the data utf8 valid.</span>
-    <span class="doccomment">/// 2. After editing the string, call [set_dirty].</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// To truncate the string, please use [remove_chars]. To extend</span>
-    <span class="doccomment">/// the string, please use [insert_chars] and [push_str].</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This function should have highly limited usage, but could be for</span>
-    <span class="doccomment">/// editing certain characters in the buffer based on some external condition.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [remove_chars]: Self::remove_chars</span>
-    <span class="doccomment">/// [set_dirty]: Self::set_dirty</span>
-    <span class="doccomment">/// [insert_chars]: Self::insert_chars</span>
-    <span class="doccomment">/// [push_str]: Self::push_str</span>
-    <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">str_as_bytes_mut</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="kw-2">&amp;mut</span> [<span class="ident">u8</span>] {
-        <span class="kw">let</span> <span class="ident">str</span> <span class="op">=</span> <span class="ident">std::str::from_utf8_mut</span>(<span class="ident">std::slice::from_raw_parts_mut</span>(
-            (<span class="kw-2">*</span>(<span class="self">self</span>.<span class="number">0</span>)).<span class="ident">Buf</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="kw">_</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="kw">_</span>,
-            (<span class="kw-2">*</span>(<span class="self">self</span>.<span class="number">0</span>)).<span class="ident">BufTextLen</span> <span class="kw">as</span> <span class="ident">usize</span>,
+    <span class="doccomment">/// Gives access to the underlying byte array MUTABLY.
+    ///
+    /// ## Safety
+    ///
+    /// This is very unsafe, and the following invariants must be
+    /// upheld:
+    /// 1. Keep the data utf8 valid.
+    /// 2. After editing the string, call [set_dirty].
+    ///
+    /// To truncate the string, please use [remove_chars]. To extend
+    /// the string, please use [insert_chars] and [push_str].
+    ///
+    /// This function should have highly limited usage, but could be for
+    /// editing certain characters in the buffer based on some external condition.
+    ///
+    /// [remove_chars]: Self::remove_chars
+    /// [set_dirty]: Self::set_dirty
+    /// [insert_chars]: Self::insert_chars
+    /// [push_str]: Self::push_str
+    </span><span class="kw">pub unsafe fn </span>str_as_bytes_mut(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;mut </span>[u8] {
+        <span class="kw">let </span>str = std::str::from_utf8_mut(std::slice::from_raw_parts_mut(
+            (<span class="kw-2">*</span>(<span class="self">self</span>.<span class="number">0</span>)).Buf <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_ as </span><span class="kw-2">*mut </span><span class="kw">_</span>,
+            (<span class="kw-2">*</span>(<span class="self">self</span>.<span class="number">0</span>)).BufTextLen <span class="kw">as </span>usize,
         ))
-        .<span class="ident">expect</span>(<span class="string">&quot;internal imgui error -- it boofed a utf8&quot;</span>);
+        .expect(<span class="string">&quot;internal imgui error -- it boofed a utf8&quot;</span>);
 
-        <span class="ident">str</span>.<span class="ident">as_bytes_mut</span>()
+        str.as_bytes_mut()
     }
 
-    <span class="doccomment">/// Sets the dirty flag on the text to imgui, indicating that</span>
-    <span class="doccomment">/// it should reapply this string to its internal state.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// **NB:** You only need to use this method if you&#39;re using `[str_as_bytes_mut]`.</span>
-    <span class="doccomment">/// If you use the helper methods [remove_chars] and [insert_chars],</span>
-    <span class="doccomment">/// this will be set for you. However, this is no downside to setting</span>
-    <span class="doccomment">/// the dirty flag spuriously except the minor CPU time imgui will spend.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [str_as_bytes_mut]: Self::str_as_bytes_mut</span>
-    <span class="doccomment">/// [remove_chars]: Self::remove_chars</span>
-    <span class="doccomment">/// [insert_chars]: Self::insert_chars</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_dirty</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
-        <span class="kw">unsafe</span> {
-            (<span class="kw-2">*</span>(<span class="self">self</span>.<span class="number">0</span>)).<span class="ident">BufDirty</span> <span class="op">=</span> <span class="bool-val">true</span>;
+    <span class="doccomment">/// Sets the dirty flag on the text to imgui, indicating that
+    /// it should reapply this string to its internal state.
+    ///
+    /// **NB:** You only need to use this method if you&#39;re using `[str_as_bytes_mut]`.
+    /// If you use the helper methods [remove_chars] and [insert_chars],
+    /// this will be set for you. However, this is no downside to setting
+    /// the dirty flag spuriously except the minor CPU time imgui will spend.
+    ///
+    /// [str_as_bytes_mut]: Self::str_as_bytes_mut
+    /// [remove_chars]: Self::remove_chars
+    /// [insert_chars]: Self::insert_chars
+    </span><span class="kw">pub fn </span>set_dirty(<span class="kw-2">&amp;mut </span><span class="self">self</span>) {
+        <span class="kw">unsafe </span>{
+            (<span class="kw-2">*</span>(<span class="self">self</span>.<span class="number">0</span>)).BufDirty = <span class="bool-val">true</span>;
         }
     }
 
-    <span class="doccomment">/// Gets a range of the selected text. See [selection_start_mut](Self::selection_start_mut)</span>
-    <span class="doccomment">/// and [selection_end_mut](Self::selection_end_mut) to mutably edit these values.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This Range is given in `usize` so that it might be used in indexing</span>
-    <span class="doccomment">/// operations more easily. To quickly grab the selected text, use [selected](Self::selected).</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">selection</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Range</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span> {
-        <span class="kw">unsafe</span> { (<span class="kw-2">*</span>(<span class="self">self</span>.<span class="number">0</span>)).<span class="ident">SelectionStart</span> <span class="kw">as</span> <span class="ident">usize</span>..(<span class="kw-2">*</span>(<span class="self">self</span>.<span class="number">0</span>)).<span class="ident">SelectionEnd</span> <span class="kw">as</span> <span class="ident">usize</span> }
+    <span class="doccomment">/// Gets a range of the selected text. See [selection_start_mut](Self::selection_start_mut)
+    /// and [selection_end_mut](Self::selection_end_mut) to mutably edit these values.
+    ///
+    /// This Range is given in `usize` so that it might be used in indexing
+    /// operations more easily. To quickly grab the selected text, use [selected](Self::selected).
+    </span><span class="kw">pub fn </span>selection(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Range&lt;usize&gt; {
+        <span class="kw">unsafe </span>{ (<span class="kw-2">*</span>(<span class="self">self</span>.<span class="number">0</span>)).SelectionStart <span class="kw">as </span>usize..(<span class="kw-2">*</span>(<span class="self">self</span>.<span class="number">0</span>)).SelectionEnd <span class="kw">as </span>usize }
     }
 
-    <span class="doccomment">/// Returns the selected text directly. Note that if no text is selected,</span>
-    <span class="doccomment">/// an empty str slice will be returned.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">selected</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="ident">str</span> {
-        <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">str</span>()[<span class="self">self</span>.<span class="ident">selection</span>()]
+    <span class="doccomment">/// Returns the selected text directly. Note that if no text is selected,
+    /// an empty str slice will be returned.
+    </span><span class="kw">pub fn </span>selected(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>str {
+        <span class="kw-2">&amp;</span><span class="self">self</span>.str()[<span class="self">self</span>.selection()]
     }
 
-    <span class="doccomment">/// Sets the cursor to select all.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">select_all</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
-        <span class="kw">unsafe</span> {
-            <span class="ident">sys::ImGuiInputTextCallbackData_SelectAll</span>(<span class="self">self</span>.<span class="number">0</span>);
+    <span class="doccomment">/// Sets the cursor to select all.
+    </span><span class="kw">pub fn </span>select_all(<span class="kw-2">&amp;mut </span><span class="self">self</span>) {
+        <span class="kw">unsafe </span>{
+            sys::ImGuiInputTextCallbackData_SelectAll(<span class="self">self</span>.<span class="number">0</span>);
         }
     }
 
-    <span class="doccomment">/// Clears the selection.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">clear_selection</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
-        <span class="kw">unsafe</span> {
-            <span class="ident">sys::ImGuiInputTextCallbackData_ClearSelection</span>(<span class="self">self</span>.<span class="number">0</span>);
+    <span class="doccomment">/// Clears the selection.
+    </span><span class="kw">pub fn </span>clear_selection(<span class="kw-2">&amp;mut </span><span class="self">self</span>) {
+        <span class="kw">unsafe </span>{
+            sys::ImGuiInputTextCallbackData_ClearSelection(<span class="self">self</span>.<span class="number">0</span>);
         }
     }
 
-    <span class="doccomment">/// Checks if there is a selection within the text.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">has_selection</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
-        <span class="op">!</span><span class="self">self</span>.<span class="ident">selection</span>().<span class="ident">is_empty</span>()
+    <span class="doccomment">/// Checks if there is a selection within the text.
+    </span><span class="kw">pub fn </span>has_selection(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        !<span class="self">self</span>.selection().is_empty()
     }
 
-    <span class="doccomment">/// Pushes the given str to the end of this buffer. If this</span>
-    <span class="doccomment">/// would require the String to resize, it will be resized.</span>
-    <span class="doccomment">/// This is automatically handled.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">push_str</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) {
-        <span class="comment">// this is safe because the ench of a self.str is a char_boundary.</span>
-        <span class="kw">unsafe</span> {
-            <span class="self">self</span>.<span class="ident">insert_chars_unsafe</span>((<span class="kw-2">*</span><span class="self">self</span>.<span class="number">0</span>).<span class="ident">BufTextLen</span> <span class="kw">as</span> <span class="ident">usize</span>, <span class="ident">s</span>);
+    <span class="doccomment">/// Pushes the given str to the end of this buffer. If this
+    /// would require the String to resize, it will be resized.
+    /// This is automatically handled.
+    </span><span class="kw">pub fn </span>push_str(<span class="kw-2">&amp;mut </span><span class="self">self</span>, s: <span class="kw-2">&amp;</span>str) {
+        <span class="comment">// this is safe because the ench of a self.str is a char_boundary.
+        </span><span class="kw">unsafe </span>{
+            <span class="self">self</span>.insert_chars_unsafe((<span class="kw-2">*</span><span class="self">self</span>.<span class="number">0</span>).BufTextLen <span class="kw">as </span>usize, s);
         }
     }
 
-    <span class="doccomment">/// Inserts the given string at the given position. If this</span>
-    <span class="doccomment">/// would require the String to resize, it will be resized</span>
-    <span class="doccomment">/// automatically.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ## Panics</span>
-    <span class="doccomment">/// Panics if the `pos` is not a char_boundary.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">insert_chars</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">pos</span>: <span class="ident">usize</span>, <span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) {
-        <span class="macro">assert!</span>(<span class="self">self</span>.<span class="ident">str</span>().<span class="ident">is_char_boundary</span>(<span class="ident">pos</span>));
-        <span class="kw">unsafe</span> {
-            <span class="self">self</span>.<span class="ident">insert_chars_unsafe</span>(<span class="ident">pos</span>, <span class="ident">s</span>);
+    <span class="doccomment">/// Inserts the given string at the given position. If this
+    /// would require the String to resize, it will be resized
+    /// automatically.
+    ///
+    /// ## Panics
+    /// Panics if the `pos` is not a char_boundary.
+    </span><span class="kw">pub fn </span>insert_chars(<span class="kw-2">&amp;mut </span><span class="self">self</span>, pos: usize, s: <span class="kw-2">&amp;</span>str) {
+        <span class="macro">assert!</span>(<span class="self">self</span>.str().is_char_boundary(pos));
+        <span class="kw">unsafe </span>{
+            <span class="self">self</span>.insert_chars_unsafe(pos, s);
         }
     }
 
-    <span class="doccomment">/// Inserts the given string at the given position, unsafely. If this</span>
-    <span class="doccomment">/// would require the String to resize, it will be resized automatically.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ## Safety</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// It is up to the caller to confirm that the `pos` is a valid byte</span>
-    <span class="doccomment">/// position, or use [insert_chars](Self::insert_chars) which will panic</span>
-    <span class="doccomment">/// if it isn&#39;t.</span>
-    <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">insert_chars_unsafe</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">pos</span>: <span class="ident">usize</span>, <span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) {
-        <span class="kw">let</span> <span class="ident">start</span> <span class="op">=</span> <span class="ident">s</span>.<span class="ident">as_ptr</span>();
-        <span class="kw">let</span> <span class="ident">end</span> <span class="op">=</span> <span class="ident">start</span>.<span class="ident">add</span>(<span class="ident">s</span>.<span class="ident">len</span>());
+    <span class="doccomment">/// Inserts the given string at the given position, unsafely. If this
+    /// would require the String to resize, it will be resized automatically.
+    ///
+    /// ## Safety
+    ///
+    /// It is up to the caller to confirm that the `pos` is a valid byte
+    /// position, or use [insert_chars](Self::insert_chars) which will panic
+    /// if it isn&#39;t.
+    </span><span class="kw">pub unsafe fn </span>insert_chars_unsafe(<span class="kw-2">&amp;mut </span><span class="self">self</span>, pos: usize, s: <span class="kw-2">&amp;</span>str) {
+        <span class="kw">let </span>start = s.as_ptr();
+        <span class="kw">let </span>end = start.add(s.len());
 
-        <span class="ident">sys::ImGuiInputTextCallbackData_InsertChars</span>(
+        sys::ImGuiInputTextCallbackData_InsertChars(
             <span class="self">self</span>.<span class="number">0</span>,
-            <span class="ident">pos</span> <span class="kw">as</span> <span class="ident">i32</span>,
-            <span class="ident">start</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">c_char</span>,
-            <span class="ident">end</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">c_char</span>,
+            pos <span class="kw">as </span>i32,
+            start <span class="kw">as </span><span class="kw-2">*const </span>c_char,
+            end <span class="kw">as </span><span class="kw-2">*const </span>c_char,
         );
     }
 
-    <span class="doccomment">/// Clears the string to an empty buffer.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">clear</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
-        <span class="kw">unsafe</span> {
-            <span class="self">self</span>.<span class="ident">remove_chars_unchecked</span>(<span class="number">0</span>, (<span class="kw-2">*</span><span class="self">self</span>.<span class="number">0</span>).<span class="ident">BufTextLen</span> <span class="kw">as</span> <span class="ident">usize</span>);
+    <span class="doccomment">/// Clears the string to an empty buffer.
+    </span><span class="kw">pub fn </span>clear(<span class="kw-2">&amp;mut </span><span class="self">self</span>) {
+        <span class="kw">unsafe </span>{
+            <span class="self">self</span>.remove_chars_unchecked(<span class="number">0</span>, (<span class="kw-2">*</span><span class="self">self</span>.<span class="number">0</span>).BufTextLen <span class="kw">as </span>usize);
         }
     }
 
-    <span class="doccomment">/// Removes the given number of characters from the string starting</span>
-    <span class="doccomment">/// at some byte pos.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ## Panics</span>
-    <span class="doccomment">/// Panics if the `pos` is not a char boundary.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">remove_chars</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">pos</span>: <span class="ident">usize</span>, <span class="ident">char_count</span>: <span class="ident">usize</span>) {
-        <span class="kw">let</span> <span class="ident">inner</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">str</span>()[<span class="ident">pos</span>..];
-        <span class="kw">let</span> <span class="ident">byte_count</span> <span class="op">=</span> <span class="ident">inner</span>
-            .<span class="ident">char_indices</span>()
-            .<span class="ident">nth</span>(<span class="ident">char_count</span>)
-            .<span class="ident">map</span>(<span class="op">|</span><span class="ident">v</span><span class="op">|</span> <span class="ident">v</span>.<span class="number">0</span>)
-            .<span class="ident">unwrap_or_else</span>(<span class="op">|</span><span class="op">|</span> <span class="ident">inner</span>.<span class="ident">len</span>());
+    <span class="doccomment">/// Removes the given number of characters from the string starting
+    /// at some byte pos.
+    ///
+    /// ## Panics
+    /// Panics if the `pos` is not a char boundary.
+    </span><span class="kw">pub fn </span>remove_chars(<span class="kw-2">&amp;mut </span><span class="self">self</span>, pos: usize, char_count: usize) {
+        <span class="kw">let </span>inner = <span class="kw-2">&amp;</span><span class="self">self</span>.str()[pos..];
+        <span class="kw">let </span>byte_count = inner
+            .char_indices()
+            .nth(char_count)
+            .map(|v| v.<span class="number">0</span>)
+            .unwrap_or_else(|| inner.len());
 
-        <span class="kw">unsafe</span> {
-            <span class="self">self</span>.<span class="ident">remove_chars_unchecked</span>(<span class="ident">pos</span>, <span class="ident">byte_count</span>);
+        <span class="kw">unsafe </span>{
+            <span class="self">self</span>.remove_chars_unchecked(pos, byte_count);
         }
     }
 
-    <span class="doccomment">/// Removes the given number of bytes from the string starting</span>
-    <span class="doccomment">/// at some byte pos, without checking for utf8 validity. Use</span>
-    <span class="doccomment">/// [remove_chars](Self::remove_chars) for a safe variant.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ## Safety</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// It is up to the caller to ensure that the position is at a valid utf8 char_boundary</span>
-    <span class="doccomment">/// and that there are enough bytes within the string remaining.</span>
-    <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">remove_chars_unchecked</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">pos</span>: <span class="ident">usize</span>, <span class="ident">byte_count</span>: <span class="ident">usize</span>) {
-        <span class="ident">sys::ImGuiInputTextCallbackData_DeleteChars</span>(<span class="self">self</span>.<span class="number">0</span>, <span class="ident">pos</span> <span class="kw">as</span> <span class="ident">i32</span>, <span class="ident">byte_count</span> <span class="kw">as</span> <span class="ident">i32</span>);
+    <span class="doccomment">/// Removes the given number of bytes from the string starting
+    /// at some byte pos, without checking for utf8 validity. Use
+    /// [remove_chars](Self::remove_chars) for a safe variant.
+    ///
+    /// ## Safety
+    ///
+    /// It is up to the caller to ensure that the position is at a valid utf8 char_boundary
+    /// and that there are enough bytes within the string remaining.
+    </span><span class="kw">pub unsafe fn </span>remove_chars_unchecked(<span class="kw-2">&amp;mut </span><span class="self">self</span>, pos: usize, byte_count: usize) {
+        sys::ImGuiInputTextCallbackData_DeleteChars(<span class="self">self</span>.<span class="number">0</span>, pos <span class="kw">as </span>i32, byte_count <span class="kw">as </span>i32);
     }
 
-    <span class="doccomment">/// Get a reference to the text callback buffer&#39;s cursor pos.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cursor_pos</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">usize</span> {
-        <span class="kw">unsafe</span> { (<span class="kw-2">*</span><span class="self">self</span>.<span class="number">0</span>).<span class="ident">CursorPos</span> <span class="kw">as</span> <span class="ident">usize</span> }
+    <span class="doccomment">/// Get a reference to the text callback buffer&#39;s cursor pos.
+    </span><span class="kw">pub fn </span>cursor_pos(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; usize {
+        <span class="kw">unsafe </span>{ (<span class="kw-2">*</span><span class="self">self</span>.<span class="number">0</span>).CursorPos <span class="kw">as </span>usize }
     }
 
-    <span class="doccomment">/// Set the text callback buffer&#39;s cursor pos.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_cursor_pos</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">cursor_pos</span>: <span class="ident">usize</span>) {
-        <span class="kw">unsafe</span> {
-            (<span class="kw-2">*</span><span class="self">self</span>.<span class="number">0</span>).<span class="ident">CursorPos</span> <span class="op">=</span> <span class="ident">cursor_pos</span> <span class="kw">as</span> <span class="ident">i32</span>;
+    <span class="doccomment">/// Set the text callback buffer&#39;s cursor pos.
+    </span><span class="kw">pub fn </span>set_cursor_pos(<span class="kw-2">&amp;mut </span><span class="self">self</span>, cursor_pos: usize) {
+        <span class="kw">unsafe </span>{
+            (<span class="kw-2">*</span><span class="self">self</span>.<span class="number">0</span>).CursorPos = cursor_pos <span class="kw">as </span>i32;
         }
     }
 
-    <span class="doccomment">/// Get a mutable reference to the text callback buffer&#39;s selection start.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">selection_start_mut</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="kw-2">&amp;mut</span> <span class="ident">i32</span> {
-        <span class="kw">unsafe</span> { <span class="kw-2">&amp;mut</span> (<span class="kw-2">*</span><span class="self">self</span>.<span class="number">0</span>).<span class="ident">SelectionStart</span> }
+    <span class="doccomment">/// Get a mutable reference to the text callback buffer&#39;s selection start.
+    </span><span class="kw">pub fn </span>selection_start_mut(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;mut </span>i32 {
+        <span class="kw">unsafe </span>{ <span class="kw-2">&amp;mut </span>(<span class="kw-2">*</span><span class="self">self</span>.<span class="number">0</span>).SelectionStart }
     }
 
-    <span class="doccomment">/// Get a mutable reference to the text callback buffer&#39;s selection end..</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">selection_end_mut</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="kw-2">&amp;mut</span> <span class="ident">i32</span> {
-        <span class="kw">unsafe</span> { <span class="kw-2">&amp;mut</span> (<span class="kw-2">*</span><span class="self">self</span>.<span class="number">0</span>).<span class="ident">SelectionEnd</span> }
+    <span class="doccomment">/// Get a mutable reference to the text callback buffer&#39;s selection end..
+    </span><span class="kw">pub fn </span>selection_end_mut(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;mut </span>i32 {
+        <span class="kw">unsafe </span>{ <span class="kw-2">&amp;mut </span>(<span class="kw-2">*</span><span class="self">self</span>.<span class="number">0</span>).SelectionEnd }
     }
 }
 
-<span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
-<span class="kw">struct</span> <span class="ident">UserData</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
-    <span class="ident">container</span>: <span class="kw-2">*mut</span> <span class="ident">String</span>,
-    <span class="ident">cback_handler</span>: <span class="ident">T</span>,
+<span class="attribute">#[repr(C)]
+</span><span class="kw">struct </span>UserData&lt;T&gt; {
+    container: <span class="kw-2">*mut </span>String,
+    cback_handler: T,
 }
 
-<span class="doccomment">/// This is our default callback.</span>
-<span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span> <span class="ident">callback</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">InputTextCallbackHandler</span><span class="op">&gt;</span>(
-    <span class="ident">data</span>: <span class="kw-2">*mut</span> <span class="ident">sys::ImGuiInputTextCallbackData</span>,
-) -&gt; <span class="ident">c_int</span> {
-    <span class="kw">struct</span> <span class="ident">CallbackData</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span><span class="op">&gt;</span> {
-        <span class="ident">event_flag</span>: <span class="ident">InputTextFlags</span>,
-        <span class="ident">user_data</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="kw-2">mut</span> <span class="ident">UserData</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>,
+<span class="doccomment">/// This is our default callback.
+</span><span class="kw">extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>callback&lt;T: InputTextCallbackHandler&gt;(
+    data: <span class="kw-2">*mut </span>sys::ImGuiInputTextCallbackData,
+) -&gt; c_int {
+    <span class="kw">struct </span>CallbackData&lt;<span class="lifetime">&#39;a</span>, T&gt; {
+        event_flag: InputTextFlags,
+        user_data: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><span class="kw-2">mut </span>UserData&lt;T&gt;,
     }
 
-    <span class="kw">let</span> <span class="ident">callback_data</span> <span class="op">=</span> <span class="kw">unsafe</span> {
-        <span class="ident">CallbackData</span> {
-            <span class="ident">event_flag</span>: <span class="ident">InputTextFlags::from_bits</span>((<span class="kw-2">*</span><span class="ident">data</span>).<span class="ident">EventFlag</span> <span class="kw">as</span> <span class="ident">u32</span>).<span class="ident">unwrap</span>(),
-            <span class="ident">user_data</span>: <span class="kw-2">&amp;mut</span> <span class="kw-2">*</span>((<span class="kw-2">*</span><span class="ident">data</span>).<span class="ident">UserData</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">UserData</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>),
+    <span class="kw">let </span>callback_data = <span class="kw">unsafe </span>{
+        CallbackData {
+            event_flag: InputTextFlags::from_bits((<span class="kw-2">*</span>data).EventFlag <span class="kw">as </span>u32).unwrap(),
+            user_data: <span class="kw-2">&amp;mut *</span>((<span class="kw-2">*</span>data).UserData <span class="kw">as </span><span class="kw-2">*mut </span>UserData&lt;T&gt;),
         }
     };
 
-    <span class="comment">// check this callback.</span>
-    <span class="kw">match</span> <span class="ident">callback_data</span>.<span class="ident">event_flag</span> {
-        <span class="ident">InputTextFlags::CALLBACK_ALWAYS</span> =&gt; {
-            <span class="kw">let</span> <span class="ident">text_info</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">TextCallbackData::new</span>(<span class="kw-2">&amp;mut</span> <span class="kw-2">*</span><span class="ident">data</span>) };
-            <span class="ident">callback_data</span>.<span class="ident">user_data</span>.<span class="ident">cback_handler</span>.<span class="ident">on_always</span>(<span class="ident">text_info</span>);
+    <span class="comment">// check this callback.
+    </span><span class="kw">match </span>callback_data.event_flag {
+        InputTextFlags::CALLBACK_ALWAYS =&gt; {
+            <span class="kw">let </span>text_info = <span class="kw">unsafe </span>{ TextCallbackData::new(<span class="kw-2">&amp;mut *</span>data) };
+            callback_data.user_data.cback_handler.on_always(text_info);
         }
-        <span class="ident">InputTextFlags::CALLBACK_EDIT</span> =&gt; {
-            <span class="kw">let</span> <span class="ident">text_info</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">TextCallbackData::new</span>(<span class="kw-2">&amp;mut</span> <span class="kw-2">*</span><span class="ident">data</span>) };
+        InputTextFlags::CALLBACK_EDIT =&gt; {
+            <span class="kw">let </span>text_info = <span class="kw">unsafe </span>{ TextCallbackData::new(<span class="kw-2">&amp;mut *</span>data) };
 
-            <span class="ident">callback_data</span>.<span class="ident">user_data</span>.<span class="ident">cback_handler</span>.<span class="ident">on_edit</span>(<span class="ident">text_info</span>);
+            callback_data.user_data.cback_handler.on_edit(text_info);
         }
-        <span class="ident">InputTextFlags::CALLBACK_COMPLETION</span> =&gt; {
-            <span class="kw">let</span> <span class="ident">text_info</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">TextCallbackData::new</span>(<span class="kw-2">&amp;mut</span> <span class="kw-2">*</span><span class="ident">data</span>) };
-            <span class="ident">callback_data</span>
-                .<span class="ident">user_data</span>
-                .<span class="ident">cback_handler</span>
-                .<span class="ident">on_completion</span>(<span class="ident">text_info</span>);
+        InputTextFlags::CALLBACK_COMPLETION =&gt; {
+            <span class="kw">let </span>text_info = <span class="kw">unsafe </span>{ TextCallbackData::new(<span class="kw-2">&amp;mut *</span>data) };
+            callback_data
+                .user_data
+                .cback_handler
+                .on_completion(text_info);
         }
-        <span class="ident">InputTextFlags::CALLBACK_RESIZE</span> =&gt; {
-            <span class="kw">unsafe</span> {
-                <span class="kw">let</span> <span class="ident">requested_size</span> <span class="op">=</span> (<span class="kw-2">*</span><span class="ident">data</span>).<span class="ident">BufSize</span> <span class="kw">as</span> <span class="ident">usize</span>;
-                <span class="kw">let</span> <span class="ident">buffer</span> <span class="op">=</span> <span class="kw-2">&amp;mut</span> <span class="kw-2">*</span><span class="ident">callback_data</span>.<span class="ident">user_data</span>.<span class="ident">container</span>;
+        InputTextFlags::CALLBACK_RESIZE =&gt; {
+            <span class="kw">unsafe </span>{
+                <span class="kw">let </span>requested_size = (<span class="kw-2">*</span>data).BufSize <span class="kw">as </span>usize;
+                <span class="kw">let </span>buffer = <span class="kw-2">&amp;mut *</span>callback_data.user_data.container;
 
-                <span class="comment">// just confirm that we ARE working with our string.</span>
-                <span class="macro">debug_assert_eq!</span>(<span class="ident">buffer</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw-2">*const</span> <span class="kw">_</span>, (<span class="kw-2">*</span><span class="ident">data</span>).<span class="ident">Buf</span>);
+                <span class="comment">// just confirm that we ARE working with our string.
+                </span><span class="macro">debug_assert_eq!</span>(buffer.as_ptr() <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>, (<span class="kw-2">*</span>data).Buf);
 
-                <span class="kw">if</span> <span class="ident">requested_size</span> <span class="op">&gt;</span> <span class="ident">buffer</span>.<span class="ident">capacity</span>() {
-                    <span class="kw">let</span> <span class="ident">additional_bytes</span> <span class="op">=</span> <span class="ident">requested_size</span> <span class="op">-</span> <span class="ident">buffer</span>.<span class="ident">len</span>();
+                <span class="kw">if </span>requested_size &gt; buffer.capacity() {
+                    <span class="kw">let </span>additional_bytes = requested_size - buffer.len();
 
-                    <span class="comment">// reserve more data...</span>
-                    <span class="ident">buffer</span>.<span class="ident">reserve</span>(<span class="ident">additional_bytes</span>);
+                    <span class="comment">// reserve more data...
+                    </span>buffer.reserve(additional_bytes);
 
-                    (<span class="kw-2">*</span><span class="ident">data</span>).<span class="ident">Buf</span> <span class="op">=</span> <span class="ident">buffer</span>.<span class="ident">as_mut_ptr</span>() <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="kw">_</span>;
-                    (<span class="kw-2">*</span><span class="ident">data</span>).<span class="ident">BufDirty</span> <span class="op">=</span> <span class="bool-val">true</span>;
+                    (<span class="kw-2">*</span>data).Buf = buffer.as_mut_ptr() <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>;
+                    (<span class="kw-2">*</span>data).BufDirty = <span class="bool-val">true</span>;
                 }
             }
         }
-        <span class="ident">InputTextFlags::CALLBACK_CHAR_FILTER</span> =&gt; {
-            <span class="kw">let</span> <span class="ident">chr</span> <span class="op">=</span> <span class="kw">unsafe</span> { (<span class="kw-2">*</span><span class="ident">data</span>).<span class="ident">EventChar</span> };
-            <span class="kw">let</span> <span class="ident">new_data</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">callback_data</span>.<span class="ident">user_data</span>.<span class="ident">cback_handler</span>.<span class="ident">char_filter</span>(<span class="ident">chr</span>) {
-                <span class="prelude-val">Some</span>(<span class="ident">value</span>) =&gt; <span class="ident">value</span>,
-                <span class="comment">// 0 means &quot;do not use this char&quot; in imgui docs</span>
-                <span class="prelude-val">None</span> =&gt; <span class="number">0</span>,
+        InputTextFlags::CALLBACK_CHAR_FILTER =&gt; {
+            <span class="kw">let </span>chr = <span class="kw">unsafe </span>{ (<span class="kw-2">*</span>data).EventChar };
+            <span class="kw">let </span>new_data = <span class="kw">match </span>callback_data.user_data.cback_handler.char_filter(chr) {
+                <span class="prelude-val">Some</span>(value) =&gt; value,
+                <span class="comment">// 0 means &quot;do not use this char&quot; in imgui docs
+                </span><span class="prelude-val">None </span>=&gt; <span class="number">0</span>,
             };
-            <span class="comment">// set the new char...</span>
-            <span class="kw">unsafe</span> {
-                (<span class="kw-2">*</span><span class="ident">data</span>).<span class="ident">EventChar</span> <span class="op">=</span> <span class="ident">new_data</span>;
+            <span class="comment">// set the new char...
+            </span><span class="kw">unsafe </span>{
+                (<span class="kw-2">*</span>data).EventChar = new_data;
             }
         }
-        <span class="ident">InputTextFlags::CALLBACK_HISTORY</span> =&gt; {
-            <span class="kw">let</span> <span class="ident">key</span> <span class="op">=</span> <span class="kw">unsafe</span> {
-                <span class="kw">let</span> <span class="ident">key</span> <span class="op">=</span> (<span class="kw-2">*</span><span class="ident">data</span>).<span class="ident">EventKey</span> <span class="kw">as</span> <span class="ident">u32</span>;
-                <span class="kw">match</span> <span class="ident">key</span> {
-                    <span class="ident">sys::ImGuiKey_UpArrow</span> =&gt; <span class="ident">HistoryDirection::Up</span>,
-                    <span class="ident">sys::ImGuiKey_DownArrow</span> =&gt; <span class="ident">HistoryDirection::Down</span>,
-                    <span class="kw">_</span> =&gt; <span class="macro">panic!</span>(<span class="string">&quot;Unexpected key&quot;</span>),
+        InputTextFlags::CALLBACK_HISTORY =&gt; {
+            <span class="kw">let </span>key = <span class="kw">unsafe </span>{
+                <span class="kw">let </span>key = (<span class="kw-2">*</span>data).EventKey <span class="kw">as </span>u32;
+                <span class="kw">match </span>key {
+                    sys::ImGuiKey_UpArrow =&gt; HistoryDirection::Up,
+                    sys::ImGuiKey_DownArrow =&gt; HistoryDirection::Down,
+                    <span class="kw">_ </span>=&gt; <span class="macro">panic!</span>(<span class="string">&quot;Unexpected key&quot;</span>),
                 }
             };
-            <span class="kw">let</span> <span class="ident">text_info</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">TextCallbackData::new</span>(<span class="kw-2">&amp;mut</span> <span class="kw-2">*</span><span class="ident">data</span>) };
+            <span class="kw">let </span>text_info = <span class="kw">unsafe </span>{ TextCallbackData::new(<span class="kw-2">&amp;mut *</span>data) };
 
-            <span class="ident">callback_data</span>
-                .<span class="ident">user_data</span>
-                .<span class="ident">cback_handler</span>
-                .<span class="ident">on_history</span>(<span class="ident">key</span>, <span class="ident">text_info</span>);
+            callback_data
+                .user_data
+                .cback_handler
+                .on_history(key, text_info);
         }
 
-        <span class="kw">_</span> =&gt; {}
+        <span class="kw">_ </span>=&gt; {}
     }
 
-    <span class="number">0</span>
-}
+    <span class="number">0
+</span>}
 
-<span class="doccomment">/// This is a Zst which implements TextCallbackHandler as a passthrough.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// If you do not set a callback handler, this will be used (but will never</span>
-<span class="doccomment">/// actually run, since you will not have pass imgui any flags).</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">PassthroughCallback</span>;
-<span class="kw">impl</span> <span class="ident">InputTextCallbackHandler</span> <span class="kw">for</span> <span class="ident">PassthroughCallback</span> {}
+<span class="doccomment">/// This is a Zst which implements TextCallbackHandler as a passthrough.
+///
+/// If you do not set a callback handler, this will be used (but will never
+/// actually run, since you will not have pass imgui any flags).
+</span><span class="kw">pub struct </span>PassthroughCallback;
+<span class="kw">impl </span>InputTextCallbackHandler <span class="kw">for </span>PassthroughCallback {}
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="arcdps_imgui" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="arcdps_imgui" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.0 (69f9c33d7 2022-12-12)" ></div></body></html>

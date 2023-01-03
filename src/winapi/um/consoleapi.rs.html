@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\winapi-0.3.9\src\um\consoleapi.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>consoleapi.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../winapi/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../winapi/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../winapi/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\winapi-0.3.9\src\um\consoleapi.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>consoleapi.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../normalize.css"><link rel="stylesheet" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../ayu.css" disabled><link rel="stylesheet" href="../../../dark.css" disabled><link rel="stylesheet" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../../winapi/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -89,96 +89,96 @@
 <span id="89">89</span>
 <span id="90">90</span>
 <span id="91">91</span>
-</pre><pre class="rust"><code><span class="comment">// Licensed under the Apache License, Version 2.0</span>
-<span class="comment">// &lt;LICENSE-APACHE or http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license</span>
-<span class="comment">// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your option.</span>
-<span class="comment">// All files in the project carrying such notice may not be copied, modified, or distributed</span>
-<span class="comment">// except according to those terms.</span>
-<span class="doccomment">//! ApiSet Contract for api-ms-win-core-console-l1</span>
-<span class="kw">use</span> <span class="ident">shared::minwindef</span>::{<span class="ident">BOOL</span>, <span class="ident">DWORD</span>, <span class="ident">LPDWORD</span>, <span class="ident">LPVOID</span>, <span class="ident">UINT</span>};
-<span class="kw">use</span> <span class="ident">um::wincon</span>::{<span class="ident">PCONSOLE_READCONSOLE_CONTROL</span>, <span class="ident">PHANDLER_ROUTINE</span>};
-<span class="kw">use</span> <span class="ident">um::wincontypes</span>::{<span class="ident">COORD</span>, <span class="ident">HPCON</span>, <span class="ident">PINPUT_RECORD</span>};
-<span class="kw">use</span> <span class="ident">um::winnt</span>::{<span class="ident">HANDLE</span>, <span class="ident">HRESULT</span>, <span class="ident">VOID</span>};
-<span class="kw">extern</span> <span class="string">&quot;system&quot;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">AllocConsole</span>() -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetConsoleCP</span>() -&gt; <span class="ident">UINT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetConsoleMode</span>(
-        <span class="ident">hConsoleHandle</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">lpMode</span>: <span class="ident">LPDWORD</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetConsoleOutputCP</span>() -&gt; <span class="ident">UINT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetNumberOfConsoleInputEvents</span>(
-        <span class="ident">hConsoleInput</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">lpNumberOfEvents</span>: <span class="ident">LPDWORD</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">PeekConsoleInputA</span>(
-        <span class="ident">hConsoleInput</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">lpBuffer</span>: <span class="ident">PINPUT_RECORD</span>,
-        <span class="ident">nLength</span>: <span class="ident">DWORD</span>,
-        <span class="ident">lpNumberOfEventsRead</span>: <span class="ident">LPDWORD</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ReadConsoleA</span>(
-        <span class="ident">hConsoleInput</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">lpBuffer</span>: <span class="ident">LPVOID</span>,
-        <span class="ident">nNumberOfCharsToRead</span>: <span class="ident">DWORD</span>,
-        <span class="ident">lpNumberOfCharsRead</span>: <span class="ident">LPDWORD</span>,
-        <span class="ident">pInputControl</span>: <span class="ident">PCONSOLE_READCONSOLE_CONTROL</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ReadConsoleW</span>(
-        <span class="ident">hConsoleInput</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">lpBuffer</span>: <span class="ident">LPVOID</span>,
-        <span class="ident">nNumberOfCharsToRead</span>: <span class="ident">DWORD</span>,
-        <span class="ident">lpNumberOfCharsRead</span>: <span class="ident">LPDWORD</span>,
-        <span class="ident">pInputControl</span>: <span class="ident">PCONSOLE_READCONSOLE_CONTROL</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ReadConsoleInputA</span>(
-        <span class="ident">hConsoleInput</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">lpBuffer</span>: <span class="ident">PINPUT_RECORD</span>,
-        <span class="ident">nLength</span>: <span class="ident">DWORD</span>,
-        <span class="ident">lpNumberOfEventsRead</span>: <span class="ident">LPDWORD</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ReadConsoleInputW</span>(
-        <span class="ident">hConsoleInput</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">lpBuffer</span>: <span class="ident">PINPUT_RECORD</span>,
-        <span class="ident">nLength</span>: <span class="ident">DWORD</span>,
-        <span class="ident">lpNumberOfEventsRead</span>: <span class="ident">LPDWORD</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">SetConsoleCtrlHandler</span>(
-        <span class="ident">HandlerRoutine</span>: <span class="ident">PHANDLER_ROUTINE</span>,
-        <span class="ident">Add</span>: <span class="ident">BOOL</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">SetConsoleMode</span>(
-        <span class="ident">hConsoleHandle</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">dwMode</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">WriteConsoleA</span>(
-        <span class="ident">hConsoleOutput</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">lpBuffer</span>: <span class="kw-2">*const</span> <span class="ident">VOID</span>,
-        <span class="ident">nNumberOfCharsToWrite</span>: <span class="ident">DWORD</span>,
-        <span class="ident">lpNumberOfCharsWritten</span>: <span class="ident">LPDWORD</span>,
-        <span class="ident">lpReserved</span>: <span class="ident">LPVOID</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">WriteConsoleW</span>(
-        <span class="ident">hConsoleOutput</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">lpBuffer</span>: <span class="kw-2">*const</span> <span class="ident">VOID</span>,
-        <span class="ident">nNumberOfCharsToWrite</span>: <span class="ident">DWORD</span>,
-        <span class="ident">lpNumberOfCharsWritten</span>: <span class="ident">LPDWORD</span>,
-        <span class="ident">lpReserved</span>: <span class="ident">LPVOID</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CreatePseudoConsole</span>(
-        <span class="ident">size</span>: <span class="ident">COORD</span>,
-        <span class="ident">hInput</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">hOutput</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">dwFlags</span>: <span class="ident">DWORD</span>,
-        <span class="ident">phPC</span>: <span class="kw-2">*mut</span> <span class="ident">HPCON</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ResizePseudoConsole</span>(
-        <span class="ident">hPC</span>: <span class="ident">HPCON</span>,
-        <span class="ident">size</span>: <span class="ident">COORD</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ClosePseudoConsole</span>(
-        <span class="ident">hPC</span>: <span class="ident">HPCON</span>,
+</pre><pre class="rust"><code><span class="comment">// Licensed under the Apache License, Version 2.0
+// &lt;LICENSE-APACHE or http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license
+// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your option.
+// All files in the project carrying such notice may not be copied, modified, or distributed
+// except according to those terms.
+</span><span class="doccomment">//! ApiSet Contract for api-ms-win-core-console-l1
+</span><span class="kw">use </span>shared::minwindef::{BOOL, DWORD, LPDWORD, LPVOID, UINT};
+<span class="kw">use </span>um::wincon::{PCONSOLE_READCONSOLE_CONTROL, PHANDLER_ROUTINE};
+<span class="kw">use </span>um::wincontypes::{COORD, HPCON, PINPUT_RECORD};
+<span class="kw">use </span>um::winnt::{HANDLE, HRESULT, VOID};
+<span class="kw">extern </span><span class="string">&quot;system&quot; </span>{
+    <span class="kw">pub fn </span>AllocConsole() -&gt; BOOL;
+    <span class="kw">pub fn </span>GetConsoleCP() -&gt; UINT;
+    <span class="kw">pub fn </span>GetConsoleMode(
+        hConsoleHandle: HANDLE,
+        lpMode: LPDWORD,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>GetConsoleOutputCP() -&gt; UINT;
+    <span class="kw">pub fn </span>GetNumberOfConsoleInputEvents(
+        hConsoleInput: HANDLE,
+        lpNumberOfEvents: LPDWORD,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>PeekConsoleInputA(
+        hConsoleInput: HANDLE,
+        lpBuffer: PINPUT_RECORD,
+        nLength: DWORD,
+        lpNumberOfEventsRead: LPDWORD,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>ReadConsoleA(
+        hConsoleInput: HANDLE,
+        lpBuffer: LPVOID,
+        nNumberOfCharsToRead: DWORD,
+        lpNumberOfCharsRead: LPDWORD,
+        pInputControl: PCONSOLE_READCONSOLE_CONTROL,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>ReadConsoleW(
+        hConsoleInput: HANDLE,
+        lpBuffer: LPVOID,
+        nNumberOfCharsToRead: DWORD,
+        lpNumberOfCharsRead: LPDWORD,
+        pInputControl: PCONSOLE_READCONSOLE_CONTROL,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>ReadConsoleInputA(
+        hConsoleInput: HANDLE,
+        lpBuffer: PINPUT_RECORD,
+        nLength: DWORD,
+        lpNumberOfEventsRead: LPDWORD,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>ReadConsoleInputW(
+        hConsoleInput: HANDLE,
+        lpBuffer: PINPUT_RECORD,
+        nLength: DWORD,
+        lpNumberOfEventsRead: LPDWORD,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>SetConsoleCtrlHandler(
+        HandlerRoutine: PHANDLER_ROUTINE,
+        Add: BOOL,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>SetConsoleMode(
+        hConsoleHandle: HANDLE,
+        dwMode: DWORD,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>WriteConsoleA(
+        hConsoleOutput: HANDLE,
+        lpBuffer: <span class="kw-2">*const </span>VOID,
+        nNumberOfCharsToWrite: DWORD,
+        lpNumberOfCharsWritten: LPDWORD,
+        lpReserved: LPVOID,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>WriteConsoleW(
+        hConsoleOutput: HANDLE,
+        lpBuffer: <span class="kw-2">*const </span>VOID,
+        nNumberOfCharsToWrite: DWORD,
+        lpNumberOfCharsWritten: LPDWORD,
+        lpReserved: LPVOID,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>CreatePseudoConsole(
+        size: COORD,
+        hInput: HANDLE,
+        hOutput: HANDLE,
+        dwFlags: DWORD,
+        phPC: <span class="kw-2">*mut </span>HPCON,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>ResizePseudoConsole(
+        hPC: HPCON,
+        size: COORD,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>ClosePseudoConsole(
+        hPC: HPCON,
     );
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="winapi" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="winapi" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.0 (69f9c33d7 2022-12-12)" ></div></body></html>

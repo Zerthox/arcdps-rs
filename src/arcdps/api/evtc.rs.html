@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `core\src\api\evtc.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>evtc.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../arcdps/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../arcdps/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../arcdps/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `arcdps\src\api\evtc.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>evtc.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../normalize.css"><link rel="stylesheet" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../ayu.css" disabled><link rel="stylesheet" href="../../../dark.css" disabled><link rel="stylesheet" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../../arcdps/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -607,614 +607,722 @@
 <span id="607">607</span>
 <span id="608">608</span>
 <span id="609">609</span>
-</pre><pre class="rust"><code><span class="kw">use</span> <span class="ident">num_enum</span>::{<span class="ident">FromPrimitive</span>, <span class="ident">IntoPrimitive</span>, <span class="ident">TryFromPrimitive</span>};
+<span id="610">610</span>
+<span id="611">611</span>
+<span id="612">612</span>
+<span id="613">613</span>
+<span id="614">614</span>
+<span id="615">615</span>
+<span id="616">616</span>
+<span id="617">617</span>
+<span id="618">618</span>
+<span id="619">619</span>
+<span id="620">620</span>
+<span id="621">621</span>
+<span id="622">622</span>
+<span id="623">623</span>
+<span id="624">624</span>
+<span id="625">625</span>
+<span id="626">626</span>
+<span id="627">627</span>
+<span id="628">628</span>
+<span id="629">629</span>
+<span id="630">630</span>
+<span id="631">631</span>
+<span id="632">632</span>
+<span id="633">633</span>
+<span id="634">634</span>
+<span id="635">635</span>
+<span id="636">636</span>
+<span id="637">637</span>
+<span id="638">638</span>
+<span id="639">639</span>
+<span id="640">640</span>
+<span id="641">641</span>
+<span id="642">642</span>
+<span id="643">643</span>
+<span id="644">644</span>
+<span id="645">645</span>
+<span id="646">646</span>
+<span id="647">647</span>
+<span id="648">648</span>
+<span id="649">649</span>
+<span id="650">650</span>
+<span id="651">651</span>
+<span id="652">652</span>
+<span id="653">653</span>
+<span id="654">654</span>
+<span id="655">655</span>
+<span id="656">656</span>
+<span id="657">657</span>
+<span id="658">658</span>
+<span id="659">659</span>
+<span id="660">660</span>
+<span id="661">661</span>
+<span id="662">662</span>
+<span id="663">663</span>
+</pre><pre class="rust"><code><span class="comment">// workaround for strum derives on deprecated custom skill enum
+</span><span class="attribute">#![allow(deprecated)]
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>)]</span>
-<span class="kw">use</span> <span class="ident">serde</span>::{<span class="ident">Deserialize</span>, <span class="ident">Serialize</span>};
+</span><span class="kw">use </span>num_enum::{FromPrimitive, IntoPrimitive, TryFromPrimitive};
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;strum&quot;</span>)]</span>
-<span class="kw">use</span> <span class="ident">strum</span>::{<span class="ident">Display</span>, <span class="ident">EnumCount</span>, <span class="ident">EnumIter</span>, <span class="ident">EnumVariantNames</span>, <span class="ident">IntoStaticStr</span>};
+<span class="attribute">#[cfg(feature = <span class="string">&quot;serde&quot;</span>)]
+</span><span class="kw">use </span>serde::{Deserialize, Serialize};
 
-<span class="doccomment">/// Whether the agent is an ally or enemy.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// *Arc calls this &quot;iff&quot; for if friend/foe.*</span>
-<span class="attribute">#[<span class="ident">derive</span>(
-    <span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>, <span class="ident">Hash</span>, <span class="ident">IntoPrimitive</span>, <span class="ident">FromPrimitive</span>,
-)]</span>
-<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>, <span class="ident">derive</span>(<span class="ident">Serialize</span>, <span class="ident">Deserialize</span>))]</span>
-<span class="attribute">#[<span class="ident">cfg_attr</span>(
-    <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;strum&quot;</span>,
-    <span class="ident">derive</span>(<span class="ident">Display</span>, <span class="ident">EnumCount</span>, <span class="ident">EnumIter</span>, <span class="ident">IntoStaticStr</span>, <span class="ident">EnumVariantNames</span>)
-)]</span>
-<span class="attribute">#[<span class="ident">repr</span>(<span class="ident">u8</span>)]</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">Affinity</span> {
-    <span class="doccomment">/// Allied agent.</span>
-    <span class="ident">Friend</span>,
+<span class="attribute">#[cfg(feature = <span class="string">&quot;strum&quot;</span>)]
+</span><span class="kw">use </span>strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
 
-    <span class="doccomment">/// Enemy agent.</span>
-    <span class="ident">Foe</span>,
+<span class="doccomment">/// Whether the agent is an ally or enemy.
+///
+/// *Arc calls this &quot;iff&quot; for if friend/foe.*
+</span><span class="attribute">#[derive(
+    Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
+)]
+#[cfg_attr(feature = <span class="string">&quot;serde&quot;</span>, derive(Serialize, Deserialize))]
+#[cfg_attr(
+    feature = <span class="string">&quot;strum&quot;</span>,
+    derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames)
+)]
+#[repr(u8)]
+</span><span class="kw">pub enum </span>Affinity {
+    <span class="doccomment">/// Allied agent.
+    </span>Friend,
 
-    <span class="doccomment">/// Uncertain whether ally or enemy.</span>
-    <span class="attribute">#[<span class="ident">num_enum</span>(<span class="ident">default</span>)]</span>
-    <span class="ident">Unknown</span>,
+    <span class="doccomment">/// Enemy agent.
+    </span>Foe,
+
+    <span class="doccomment">/// Uncertain whether ally or enemy.
+    </span><span class="attribute">#[num_enum(default)]
+    </span>Unknown,
 }
 
-<span class="doccomment">/// Strike types.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// *Arc calls this &quot;combat result&quot;.*</span>
-<span class="attribute">#[<span class="ident">derive</span>(
-    <span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>, <span class="ident">Hash</span>, <span class="ident">IntoPrimitive</span>, <span class="ident">FromPrimitive</span>,
-)]</span>
-<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>, <span class="ident">derive</span>(<span class="ident">Serialize</span>, <span class="ident">Deserialize</span>))]</span>
-<span class="attribute">#[<span class="ident">cfg_attr</span>(
-    <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;strum&quot;</span>,
-    <span class="ident">derive</span>(<span class="ident">Display</span>, <span class="ident">EnumCount</span>, <span class="ident">EnumIter</span>, <span class="ident">IntoStaticStr</span>, <span class="ident">EnumVariantNames</span>)
-)]</span>
-<span class="attribute">#[<span class="ident">repr</span>(<span class="ident">u8</span>)]</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">Strike</span> {
-    <span class="doccomment">/// Normal damage strike.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// No crit, no glance.</span>
-    <span class="ident">Normal</span>,
+<span class="doccomment">/// Strike types.
+///
+/// *Arc calls this &quot;combat result&quot;.*
+</span><span class="attribute">#[derive(
+    Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
+)]
+#[cfg_attr(feature = <span class="string">&quot;serde&quot;</span>, derive(Serialize, Deserialize))]
+#[cfg_attr(
+    feature = <span class="string">&quot;strum&quot;</span>,
+    derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames)
+)]
+#[repr(u8)]
+</span><span class="kw">pub enum </span>Strike {
+    <span class="doccomment">/// Normal damage strike.
+    ///
+    /// No crit, no glance.
+    </span>Normal,
 
-    <span class="doccomment">/// Strike was critical.</span>
-    <span class="ident">Crit</span>,
+    <span class="doccomment">/// Strike was critical.
+    </span>Crit,
 
-    <span class="doccomment">/// Strike was glancing.</span>
-    <span class="ident">Glance</span>,
+    <span class="doccomment">/// Strike was glancing.
+    </span>Glance,
 
-    <span class="doccomment">/// Strike was blocked.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Due to Aegis, Chrono Shield 4 etc.</span>
-    <span class="ident">Block</span>,
+    <span class="doccomment">/// Strike was blocked.
+    ///
+    /// Due to Aegis, Chrono Shield 4 etc.
+    </span>Block,
 
-    <span class="doccomment">/// Strike was evaded.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Due to dodge, Mesmer Sword 2 etc.</span>
-    <span class="ident">Evade</span>,
+    <span class="doccomment">/// Strike was evaded.
+    ///
+    /// Due to dodge, Mesmer Sword 2 etc.
+    </span>Evade,
 
-    <span class="doccomment">/// Strike interrupted something.</span>
-    <span class="ident">Interrupt</span>,
+    <span class="doccomment">/// Strike interrupted something.
+    </span>Interrupt,
 
-    <span class="doccomment">/// Strike was absorbed.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Usually due to an invulnerability like Guardian Renewed Focus.</span>
-    <span class="ident">Absorb</span>,
+    <span class="doccomment">/// Strike was absorbed.
+    ///
+    /// Usually due to an invulnerability like Guardian Renewed Focus.
+    </span>Absorb,
 
-    <span class="doccomment">/// Strike missed.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Due to blind etc.</span>
-    <span class="ident">Blind</span>,
+    <span class="doccomment">/// Strike missed.
+    ///
+    /// Due to blind etc.
+    </span>Blind,
 
-    <span class="doccomment">/// Skill killed the target.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Not a damage strike.</span>
-    <span class="ident">KillingBlow</span>,
+    <span class="doccomment">/// Skill killed the target.
+    ///
+    /// Not a damage strike.
+    </span>KillingBlow,
 
-    <span class="doccomment">/// Skill downed the target.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Not a damage strike.</span>
-    <span class="ident">Downed</span>,
+    <span class="doccomment">/// Skill downed the target.
+    ///
+    /// Not a damage strike.
+    </span>Downed,
 
-    <span class="doccomment">/// Skill dealt breakbar damage.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Not a damage strike.</span>
-    <span class="ident">Breakbar</span>,
+    <span class="doccomment">/// Skill dealt breakbar damage.
+    ///
+    /// Not a damage strike.
+    </span>Breakbar,
 
-    <span class="doccomment">/// On-activation event.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Not a damage strike.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// *Arc: Source hit target if damaging buff.*</span>
-    <span class="ident">Activation</span>,
+    <span class="doccomment">/// On-activation event.
+    ///
+    /// Not a damage strike.
+    ///
+    /// *Arc: Source hit target if damaging buff.*
+    </span>Activation,
 
-    <span class="doccomment">/// Unknown or invalid.</span>
-    <span class="attribute">#[<span class="ident">num_enum</span>(<span class="ident">default</span>)]</span>
-    <span class="ident">Unknown</span>,
+    <span class="doccomment">/// Unknown or invalid.
+    </span><span class="attribute">#[num_enum(default)]
+    </span>Unknown,
 }
 
-<span class="doccomment">/// Skill activation (cast).</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// *Arc calls this &quot;combat activation&quot;.*</span>
-<span class="attribute">#[<span class="ident">derive</span>(
-    <span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>, <span class="ident">Hash</span>, <span class="ident">IntoPrimitive</span>, <span class="ident">FromPrimitive</span>,
-)]</span>
-<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>, <span class="ident">derive</span>(<span class="ident">Serialize</span>, <span class="ident">Deserialize</span>))]</span>
-<span class="attribute">#[<span class="ident">repr</span>(<span class="ident">u8</span>)]</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">Activation</span> {
-    <span class="doccomment">/// Not used, different kind of event.</span>
+<span class="doccomment">/// Skill activation (cast).
+///
+/// *Arc calls this &quot;combat activation&quot;.*
+</span><span class="attribute">#[derive(
+    Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
+)]
+#[cfg_attr(feature = <span class="string">&quot;serde&quot;</span>, derive(Serialize, Deserialize))]
+#[repr(u8)]
+</span><span class="kw">pub enum </span>Activation {
+    <span class="doccomment">/// Not used, different kind of event.
+    </span><span class="prelude-val">None</span>,
+
+    <span class="doccomment">/// Started skill/animation activation.
+    </span>Start,
+
+    <span class="doccomment">/// Unused as of 5th November 2019.
+    </span>QuicknessUnused,
+
+    <span class="doccomment">/// Stopped skill activation with reaching tooltip time.
+    </span>CancelFire,
+
+    <span class="doccomment">/// Stopped skill activation without reaching tooltip time.
+    </span>CancelCancel,
+
+    <span class="doccomment">/// Animation completed fully.
+    </span>Reset,
+
+    <span class="doccomment">/// Unknown or invalid.
+    </span><span class="attribute">#[num_enum(default)]
+    </span>Unknown,
+}
+
+<span class="doccomment">/// Combat state change.
+</span><span class="attribute">#[derive(
+    Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
+)]
+#[cfg_attr(feature = <span class="string">&quot;serde&quot;</span>, derive(Serialize, Deserialize))]
+#[cfg_attr(
+    feature = <span class="string">&quot;strum&quot;</span>,
+    derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames)
+)]
+#[repr(u8)]
+</span><span class="kw">pub enum </span>StateChange {
+    <span class="doccomment">/// Not used, different kind of event.
+    </span><span class="prelude-val">None</span>,
+
+    <span class="doccomment">/// Source agent entered combat.
+    ///
+    /// `dst_agent` contains the subgroup.
+    </span>EnterCombat,
+
+    <span class="doccomment">/// Source agent left combat.
+    </span>ExitCombat,
+
+    <span class="doccomment">/// Source agent is now alive.
+    </span>ChangeUp,
+
+    <span class="doccomment">/// Source agent is now dead.
+    </span>ChangeDead,
+
+    <span class="doccomment">/// Source agent is now downed.
+    </span>ChangeDown,
+
+    <span class="doccomment">/// Source agent is now in game tracking range.
+    ///
+    /// *Not used in realtime API.*
+    </span>Spawn,
+
+    <span class="doccomment">/// Source agent is no longer being tracked or out of game tracking range.
+    ///
+    /// *Not used in realtime API.*
+    </span>Despawn,
+
+    <span class="doccomment">/// Source agent health change.
+    ///
+    /// `dst_agent` contains percentage as `percent * 10000`.
+    /// For example 99.5% will be `9950`.
+    ///
+    /// *Not used in realtime API.*
+    </span>HealthUpdate,
+
+    <span class="doccomment">/// Logging has started.
+    ///
+    /// `value` contains the server Unix timestamp as `u32`.
+    /// `buff_dmg` contains the local Unix timestamp.
+    ///
+    /// `arc_agent` is `0x637261` (ArcDPS id) if log EVTC and species id if realtime API.
+    </span>LogStart,
+
+    <span class="doccomment">/// Logging has ended.
+    ///
+    /// `value` contains the server Unix timestamp as `u32`.
+    /// `buff_dmg` contains the local Unix timestamp.
+    ///
+    /// `src_agent` is `0x637261` (ArcDPS id) if log EVTC and species id if realtime API.
+    </span>LogEnd,
+
+    <span class="doccomment">/// Source agent swapped weapon set.
+    ///
+    /// `dst_agent` contains the current set id.
+    /// `0`/`1` for underwater weapon sets and `4`/`5` for land weapon sets.
+    /// `2` is bundle/kit weapon set and `3` transform weapon set.
+    </span>WeaponSwap,
+
+    <span class="doccomment">/// Source agent maximum health change.
+    ///
+    /// `dst_agent` contains the new maximum health.
+    ///
+    /// *Not used in realtime API.*
+    </span>MaxHealthUpdate,
+
+    <span class="doccomment">/// Source agent is &quot;recording&quot; player.
+    ///
+    /// *Not used in realtime API.*
+    </span>PointOfView,
+
+    <span class="doccomment">/// Source agent contains the game text language.
+    ///
+    /// *Not used in realtime API.*
+    </span>Language,
+
+    <span class="doccomment">/// Source agent contains the game build.
+    ///
+    /// *Not used in realtime API.*
+    </span>GWBuild,
+
+    <span class="doccomment">/// Source agent contains the sever shard id.
+    ///
+    /// *Not used in realtime API.*
+    </span>ShardId,
+
+    <span class="doccomment">/// Source agent got a reward chest.
+    ///
+    /// Source is always self.
+    /// `dst_agent` contains the reward id.
+    /// Value contains the reward type.
+    </span>Reward,
+
+    <span class="doccomment">/// Appears once per buff per agent on logging start.
+    ///
+    /// *(`statechange == 18` and `buff == 18`, normal combat event otherwise)*
+    </span>BuffInitial,
+
+    <span class="doccomment">/// Source agent position change.
+    ///
+    /// `dst_agent` contains x/y/z as array of 3 floats.
+    ///
+    /// *Not used in realtime API.*
+    </span>Position,
+
+    <span class="doccomment">/// Source agent velocity change.
+    ///
+    /// `dst_agent` contains x/y/z as array of 3 floats.
+    ///
+    /// *Not used in realtime API.*
+    </span>Velocity,
+
+    <span class="doccomment">/// Source agent facing change.
+    ///
+    /// `dst_agent` contains x/y as array of 2 floats.
+    ///
+    /// *Not used in realtime API.*
+    </span>Facing,
+
+    <span class="doccomment">/// Source agent team change.
+    ///
+    /// `dst_agent` contains the new team id.
+    </span>TeamChange,
+
+    <span class="doccomment">/// Source agent is now an attack target.
+    ///
+    /// `dst_agent` is the parent agent (gadget type).
+    /// Value contains the current targetable state.
+    ///
+    /// *Not used in realtime API.*
+    </span>AttackTarget,
+
+    <span class="doccomment">/// Source agent targetability change.
+    ///
+    /// `dst_agent` contains the new targetable state.
+    /// `0` for no, `1` for yes. Default is yes.
+    ///
+    /// *Not used in realtime API.*
+    </span>Targetable,
+
+    <span class="doccomment">/// Source agent contains the map id.
+    ///
+    /// *Not used in realtime API.*
+    </span>MapId,
+
+    <span class="doccomment">/// Used internally by ArcDPS.
+    /// Should not appear anywhere.
+    </span>ReplInfo,
+
+    <span class="doccomment">/// Source agent with active buff.
+    ///
+    /// `dst_agent` contains the stack id marked active.
+    </span>StackActive,
+
+    <span class="doccomment">/// Source agent with reset buff.
+    ///
+    /// `value` is the duration to reset to (also marks inactive).
+    /// `pad61` contains the stack id.
+    </span>StackReset,
+
+    <span class="doccomment">/// Source agent is in guild.
+    ///
+    /// `dst_agent` until `buff_dmg` is 16 byte (`u8`) guid.
+    ///
+    /// Given in client form, needs minor rearrange for API form.
+    </span>Guild,
+
+    <span class="doccomment">/// Buff information.
+    ///
+    /// If `is_flanking` probably invulnerable.
+    /// If `is_shields` probably invert.
+    ///
+    /// Offcycle contains the category.
+    /// `pad61` contains the stacking type.
+    /// `pad62` contains the probably resistance.
+    /// `src_master_instid` contains the max stacks.
+    /// `overstack_value` contains the duration cap.
+    ///
+    /// *Not used in realtime API.*
+    </span>BuffInfo,
+
+    <span class="doccomment">/// Buff formula.
+    ///
+    /// Time contains `type`, `attr1`, `attr2`, `param1`, `param2`, `param3`, `trait_src` and `trait_self` as array of 8 floats.
+    /// Source instance id contains `buff_src` and `buff_self` as array of 2 floats.
+    ///
+    /// If `is_flanking` not NPC.
+    /// If `is_shields` not player.
+    /// If `is_offcycle` break.
+    ///
+    /// `overstack_value` is value of type determined by `pad61`.
+    ///
+    /// Once per formula.
+    ///
+    /// *Not used in realtime API.*
+    </span>BuffFormula,
+
+    <span class="doccomment">/// Skill information.
+    ///
+    /// Time contains `recharge`, `range0`, `range1` and `tooltiptime` as array of 4 floats.
+    ///
+    /// *Not used in realtime API.*
+    </span>SkillInfo,
+
+    <span class="doccomment">/// Skill action.
+    ///
+    /// `src_agent` contains the action.
+    /// `dst_agent` contains at which millisecond.
+    ///
+    /// One per timing.
+    ///
+    /// *Not used in realtime API.*
+    </span>SkillTiming,
+
+    <span class="doccomment">/// Source agent breakbar state change.
+    ///
+    /// Value is [`u16`] game enum (active, recover, immune, none).
+    ///
+    /// *Not used in realtime API.*
+    </span>BreakbarState,
+
+    <span class="doccomment">/// Breakbar percentage.
+    ///
+    /// `value` contains percentage as float.
+    ///
+    /// *Not used in realtime API.*
+    </span>BreakbarPercent,
+
+    <span class="doccomment">/// Error.
+    ///
+    /// `time` contains the error message as an array of up to 32 characters.
+    ///
+    /// *Not used in realtime API.*
+    </span>Error,
+
+    <span class="doccomment">/// Source agent has tag.
+    ///
+    /// `value` is the id of the tag.
+    /// Tag id is volatile, depends on game build.
+    </span>Tag,
+
+    <span class="doccomment">/// Source agent barrier change.
+    ///
+    /// `dst_agent` contains percentage as `percent * 10000`.
+    /// For example 99.5% will be `9950`.
+    ///
+    /// *Not used in realtime API.*
+    </span>BarrierUpdate,
+
+    <span class="doccomment">/// Arc UI stats reset.
+    ///
+    /// `src_agent` contains the NPC id of the active log.
+    ///
+    /// *Not used in log EVTC.*
+    </span>StatReset,
+
+    <span class="doccomment">/// Combat event with state change byte set to this.
+    </span>Extension,
+
+    <span class="doccomment">/// Combat event with state change byte set to this.
+    </span>ApiDelayed,
+
+    <span class="doccomment">/// Instance started.
+    ///
+    /// `src_agent` contains the time in ms at which the instance was likely started.
+    </span>InstanceStart,
+
+    <span class="doccomment">/// Tick rate.
+    ///
+    /// Every 500ms.
+    /// `src_agent` is `25 - tickrate` (when `tickrate &lt; 21`).
+    </span>Tickrate,
+
+    <span class="doccomment">/// Last 90% before down.
+    ///
+    /// `src_agent` is enemy agent that went down, `dst_agent` is time in ms since last 90%.
+    /// For downs contribution.
+    </span>Last90BeforeDown,
+
+    <span class="doccomment">/// Effect created.
+    ///
+    /// `src_agent` is owner.
+    /// `dst_agent` if at agent, else `&amp;value = float[3] xyz`, `&amp;iff = float[2] xy` orient, `&amp;pad61 = float[1] z` orient, `skillid = effectid`.
+    /// If `is_flanking`: `duration = trackingid`.
+    /// `&amp;is_shields = uint16` duration.
+    /// If `effectid == 0`, end `&amp;is_shields = trackingid`.
+    ///
+    /// *Not used in realtime API.*
+    </span>Effect,
+
+    <span class="doccomment">/// Id to GUID.
+    ///
+    /// `&amp;src_agent = 16byte` persistent content guid, `overstack_value` is a variant of [`ContentLocal`], `skillid` is content id.
+    ///
+    /// *Not used in realtime API.*
+    </span>IdToGUID,
+
+    <span class="doccomment">/// Log NPC changed.
+    ///
+    /// `value` contains the server Unix timestamp as `u32`.
+    /// `buff_dmg` contains the local Unix timestamp.
+    ///
+    /// `src_agent` is species id.
+    </span>LogNPCUpdate,
+
+    <span class="doccomment">/// Unknown or invalid.
+    </span><span class="attribute">#[num_enum(default)]
+    </span>Unknown,
+}
+
+<span class="doccomment">/// Combat buff remove.
+</span><span class="attribute">#[derive(
+    Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
+)]
+#[cfg_attr(feature = <span class="string">&quot;serde&quot;</span>, derive(Serialize, Deserialize))]
+#[cfg_attr(
+    feature = <span class="string">&quot;strum&quot;</span>,
+    derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames)
+)]
+#[repr(u8)]
+</span><span class="kw">pub enum </span>BuffRemove {
+    <span class="doccomment">/// Not used, different kind of event.
+    </span><span class="prelude-val">None</span>,
+
+    <span class="doccomment">/// Last or all stacks removed.
+    ///
+    /// Sent by server.
+    </span>All,
+
+    <span class="doccomment">/// Single stack removed.
+    ///
+    /// Happens for each stack on cleanse.
+    ///
+    /// Sent by server.
+    </span>Single,
+
+    <span class="doccomment">/// Single stack removed.
+    ///
+    /// Automatically by Arc on out of combat or all stack.
+    /// Ignore for strip/cleanse calculation.
+    /// Use for in/out volume.
+    </span>Manual,
+
+    <span class="doccomment">/// Unknown or invalid.
+    </span><span class="attribute">#[num_enum(default)]
+    </span>Unknown,
+}
+
+<span class="doccomment">/// Combat buff cycle.
+</span><span class="attribute">#[derive(
+    Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
+)]
+#[cfg_attr(feature = <span class="string">&quot;serde&quot;</span>, derive(Serialize, Deserialize))]
+#[cfg_attr(
+    feature = <span class="string">&quot;strum&quot;</span>,
+    derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames)
+)]
+#[repr(u8)]
+</span><span class="kw">pub enum </span>BuffCycle {
+    <span class="doccomment">/// Damage happened on tick timer.
+    </span>Cycle,
+
+    <span class="doccomment">/// Damage happened outside tick timer (resistable).
+    </span>NotCycle,
+
+    <span class="doccomment">/// Retired since May 2021.
+    </span>NotCycleOrResist,
+
+    <span class="doccomment">/// Damage happened to target on hitting target.
+    </span>NotCycleDmgToTargetOnHit,
+
+    <span class="doccomment">/// Damage happened to source on hitting target.
+    </span>NotCycleDmgToSourceOnHit,
+
+    <span class="doccomment">/// Damage happened to target on source losing a stack.
+    </span>NotCycleDmgToTargetOnStackRemove,
+
+    <span class="attribute">#[num_enum(default)]
+    </span>Unknown,
+}
+
+<span class="doccomment">/// ArcDPS custom skill ids.
+</span><span class="attribute">#[derive(
+    Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, TryFromPrimitive,
+)]
+#[cfg_attr(feature = <span class="string">&quot;serde&quot;</span>, derive(Serialize, Deserialize))]
+#[cfg_attr(
+    feature = <span class="string">&quot;strum&quot;</span>,
+    derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames)
+)]
+#[repr(u16)]
+</span><span class="kw">pub enum </span>CustomSkill {
+    <span class="attribute">#[deprecated = <span class="string">&quot;use `CustomSkill::RESURRECT` constant instead&quot;</span>]
+    </span>Resurrect = CustomSkill::RESURRECT <span class="kw">as </span>u16,
+
+    <span class="attribute">#[deprecated = <span class="string">&quot;use `CustomSkill::BANDAGE` constant instead&quot;</span>]
+    </span>Bandage = CustomSkill::BANDAGE <span class="kw">as </span>u16,
+
+    <span class="attribute">#[deprecated = <span class="string">&quot;use `CustomSkill::DODGE` constant instead&quot;</span>]
+    </span>Dodge = CustomSkill::DODGE <span class="kw">as </span>u16,
+}
+
+<span class="kw">impl </span>CustomSkill {
+    <span class="doccomment">/// Resurrect skill.
+    ///
+    /// Not custom but important and unnamed.
+    </span><span class="kw">pub const </span>RESURRECT: u32 = <span class="number">1066</span>;
+
+    <span class="doccomment">/// Bandage downstate skill.
+    ///
+    /// Personal healing only.
+    </span><span class="kw">pub const </span>BANDAGE: u32 = <span class="number">1175</span>;
+
+    <span class="doccomment">/// Dodge skill.
+    ///
+    /// Will occur in `is_activation == normal` event.
+    </span><span class="kw">pub const </span>DODGE: u32 = <span class="number">65001</span>;
+}
+
+<span class="doccomment">/// Buff info category.
+</span><span class="attribute">#[derive(
+    Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, TryFromPrimitive,
+)]
+#[cfg_attr(feature = <span class="string">&quot;serde&quot;</span>, derive(Serialize, Deserialize))]
+#[repr(u8)]
+</span><span class="kw">pub enum </span>BuffCategory {
+    Boon = <span class="number">0</span>,
+    Any = <span class="number">1</span>,
+    Condition = <span class="number">2</span>,
+    Food = <span class="number">4</span>,
+    Upgrade = <span class="number">6</span>,
+    Boost = <span class="number">8</span>,
+    Trait = <span class="number">11</span>,
+    Enhancement = <span class="number">13</span>,
+    Stance = <span class="number">16</span>,
+}
+
+<span class="doccomment">/// Buff formula attributes.
+</span><span class="attribute">#[derive(
+    Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
+)]
+#[cfg_attr(feature = <span class="string">&quot;serde&quot;</span>, derive(Serialize, Deserialize))]
+#[cfg_attr(
+    feature = <span class="string">&quot;strum&quot;</span>,
+    derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames)
+)]
+#[repr(u16)]
+</span><span class="kw">pub enum </span>Attribute {
     <span class="prelude-val">None</span>,
 
-    <span class="doccomment">/// Started skill/animation activation.</span>
-    <span class="ident">Start</span>,
+    Power,
+    Precision,
+    Toughness,
+    Vitality,
+    Ferocity,
+    Healing,
+    Condition,
+    Concentration,
+    Expertise,
+    Armor,
 
-    <span class="doccomment">/// Unused as of 5th November 2019.</span>
-    <span class="ident">QuicknessUnused</span>,
+    <span class="doccomment">/// Agony Resistance.
+    </span>Agony,
 
-    <span class="doccomment">/// Stopped skill activation with reaching tooltip time.</span>
-    <span class="ident">CancelFire</span>,
+    <span class="doccomment">/// Stat increase.
+    </span>StatInc,
 
-    <span class="doccomment">/// Stopped skill activation without reaching tooltip time.</span>
-    <span class="ident">CancelCancel</span>,
+    <span class="doccomment">/// Flat Increase.
+    </span>FlatInc,
 
-    <span class="doccomment">/// Animation completed fully.</span>
-    <span class="ident">Reset</span>,
+    <span class="doccomment">/// Outgoing strike damage.
+    </span>PhysInc,
 
-    <span class="doccomment">/// Unknown or invalid.</span>
-    <span class="attribute">#[<span class="ident">num_enum</span>(<span class="ident">default</span>)]</span>
-    <span class="ident">Unknown</span>,
+    <span class="doccomment">/// Outgoing condition damage.
+    </span>CondInc,
+
+    <span class="doccomment">/// Incoming strike damage.
+    </span>PhysRec,
+
+    <span class="doccomment">/// Incoming condition damage.
+    </span>CondRec,
+
+    <span class="doccomment">/// Attack speed.
+    </span>Attackspeed,
+
+    <span class="doccomment">/// Outgoing life leech.
+    </span>SiphonInc,
+
+    <span class="doccomment">/// Incoming life leech.
+    </span>SiphonRec,
+
+    <span class="doccomment">/// Unknown or invalid.
+    </span><span class="attribute">#[num_enum(default)]
+    </span>Unknown = u16::MAX,
 }
 
-<span class="doccomment">/// Combat state change.</span>
-<span class="attribute">#[<span class="ident">derive</span>(
-    <span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>, <span class="ident">Hash</span>, <span class="ident">IntoPrimitive</span>, <span class="ident">FromPrimitive</span>,
-)]</span>
-<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>, <span class="ident">derive</span>(<span class="ident">Serialize</span>, <span class="ident">Deserialize</span>))]</span>
-<span class="attribute">#[<span class="ident">cfg_attr</span>(
-    <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;strum&quot;</span>,
-    <span class="ident">derive</span>(<span class="ident">Display</span>, <span class="ident">EnumCount</span>, <span class="ident">EnumIter</span>, <span class="ident">IntoStaticStr</span>, <span class="ident">EnumVariantNames</span>)
-)]</span>
-<span class="attribute">#[<span class="ident">repr</span>(<span class="ident">u8</span>)]</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">StateChange</span> {
-    <span class="doccomment">/// Not used, different kind of event.</span>
-    <span class="prelude-val">None</span>,
-
-    <span class="doccomment">/// Source agent entered combat.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// `dst_agent` contains the subgroup.</span>
-    <span class="ident">EnterCombat</span>,
-
-    <span class="doccomment">/// Source agent left combat.</span>
-    <span class="ident">ExitCombat</span>,
-
-    <span class="doccomment">/// Source agent is now alive.</span>
-    <span class="ident">ChangeUp</span>,
-
-    <span class="doccomment">/// Source agent is now dead.</span>
-    <span class="ident">ChangeDead</span>,
-
-    <span class="doccomment">/// Source agent is now downed.</span>
-    <span class="ident">ChangeDown</span>,
-
-    <span class="doccomment">/// Source agent is now in game tracking range.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// *Not used in realtime API.*</span>
-    <span class="ident">Spawn</span>,
-
-    <span class="doccomment">/// Source agent is no longer being tracked or out of game tracking range.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// *Not used in realtime API.*</span>
-    <span class="ident">Despawn</span>,
-
-    <span class="doccomment">/// Source agent health change.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// `dst_agent` contains percentage as `percent * 10000`.</span>
-    <span class="doccomment">/// For example 99.5% will be `9950`.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// *Not used in realtime API.*</span>
-    <span class="ident">HealthUpdate</span>,
-
-    <span class="doccomment">/// Logging has started.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// `value` contains the server Unix timestamp as `u32`.</span>
-    <span class="doccomment">/// `buff_dmg` contains the local Unix timestamp.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// `arc_agent` is `0x637261` (ArcDPS id) if log EVTC and species id if realtime API.</span>
-    <span class="ident">LogStart</span>,
-
-    <span class="doccomment">/// Logging has ended.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// `value` contains the server Unix timestamp as `u32`.</span>
-    <span class="doccomment">/// `buff_dmg` contains the local Unix timestamp.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// `src_agent` is `0x637261` (ArcDPS id) if log EVTC and species id if realtime API.</span>
-    <span class="ident">LogEnd</span>,
-
-    <span class="doccomment">/// Source agent swapped weapon set.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// `dst_agent` contains the current set id.</span>
-    <span class="doccomment">/// `0`/`1` for underwater weapon sets and `4`/`5` for land weapon sets.</span>
-    <span class="doccomment">/// `2` is bundle/kit weapon set and `3` transform weapon set.</span>
-    <span class="ident">WeaponSwap</span>,
-
-    <span class="doccomment">/// Source agent maximum health change.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// `dst_agent` contains the new maximum health.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// *Not used in realtime API.*</span>
-    <span class="ident">MaxHealthUpdate</span>,
-
-    <span class="doccomment">/// Source agent is &quot;recording&quot; player.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// *Not used in realtime API.*</span>
-    <span class="ident">PointOfView</span>,
-
-    <span class="doccomment">/// Source agent contains the game text language.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// *Not used in realtime API.*</span>
-    <span class="ident">Language</span>,
-
-    <span class="doccomment">/// Source agent contains the game build.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// *Not used in realtime API.*</span>
-    <span class="ident">GWBuild</span>,
-
-    <span class="doccomment">/// Source agent contains the sever shard id.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// *Not used in realtime API.*</span>
-    <span class="ident">ShardId</span>,
-
-    <span class="doccomment">/// Source agent got a reward chest.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Source is always self.</span>
-    <span class="doccomment">/// `dst_agent` contains the reward id.</span>
-    <span class="doccomment">/// Value contains the reward type.</span>
-    <span class="ident">Reward</span>,
-
-    <span class="doccomment">/// Appears once per buff per agent on logging start.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// *(`statechange == 18` and `buff == 18`, normal combat event otherwise)*</span>
-    <span class="ident">BuffInitial</span>,
-
-    <span class="doccomment">/// Source agent position change.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// `dst_agent` contains x/y/z as array of 3 floats.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// *Not used in realtime API.*</span>
-    <span class="ident">Position</span>,
-
-    <span class="doccomment">/// Source agent velocity change.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// `dst_agent` contains x/y/z as array of 3 floats.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// *Not used in realtime API.*</span>
-    <span class="ident">Velocity</span>,
-
-    <span class="doccomment">/// Source agent facing change.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// `dst_agent` contains x/y as array of 2 floats.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// *Not used in realtime API.*</span>
-    <span class="ident">Facing</span>,
-
-    <span class="doccomment">/// Source agent team change.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// `dst_agent` contains the new team id.</span>
-    <span class="ident">TeamChange</span>,
-
-    <span class="doccomment">/// Source agent is now an attack target.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// `dst_agent` is the parent agent (gadget type).</span>
-    <span class="doccomment">/// Value contains the current targetable state.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// *Not used in realtime API.*</span>
-    <span class="ident">AttackTarget</span>,
-
-    <span class="doccomment">/// Source agent targetability change.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// `dst_agent` contains the new targetable state.</span>
-    <span class="doccomment">/// `0` for no, `1` for yes. Default is yes.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// *Not used in realtime API.*</span>
-    <span class="ident">Targetable</span>,
-
-    <span class="doccomment">/// Source agent contains the map id.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// *Not used in realtime API.*</span>
-    <span class="ident">MapId</span>,
-
-    <span class="doccomment">/// Used internally by ArcDPS.</span>
-    <span class="doccomment">/// Should not appear anywhere.</span>
-    <span class="ident">ReplInfo</span>,
-
-    <span class="doccomment">/// Source agent with active buff.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// `dst_agent` contains the stack id marked active.</span>
-    <span class="ident">StackActive</span>,
-
-    <span class="doccomment">/// Source agent with reset buff.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// `value` is the duration to reset to (also marks inactive).</span>
-    <span class="doccomment">/// `pad61` contains the stack id.</span>
-    <span class="ident">StackReset</span>,
-
-    <span class="doccomment">/// Source agent is in guild.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// `dst_agent` until `buff_dmg` is 16 byte (`u8`) guid.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Given in client form, needs minor rearrange for API form.</span>
-    <span class="ident">Guild</span>,
-
-    <span class="doccomment">/// Buff information.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// If `is_flanking` probably invulnerable.</span>
-    <span class="doccomment">/// If `is_shields` probably invert.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Offcycle contains the category.</span>
-    <span class="doccomment">/// `pad61` contains the stacking type.</span>
-    <span class="doccomment">/// `pad62` contains the probably resistance.</span>
-    <span class="doccomment">/// `src_master_instid` contains the max stacks.</span>
-    <span class="doccomment">/// `overstack_value` contains the duration cap.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// *Not used in realtime API.*</span>
-    <span class="ident">BuffInfo</span>,
-
-    <span class="doccomment">/// Buff formula.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Time contains `type`, `attr1`, `attr2`, `param1`, `param2`, `param3`, `trait_src` and `trait_self` as array of 8 floats.</span>
-    <span class="doccomment">/// Source instance id contains `buff_src` and `buff_self` as array of 2 floats.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// If `is_flanking` not NPC.</span>
-    <span class="doccomment">/// If `is_shields` not player.</span>
-    <span class="doccomment">/// If `is_offcycle` break.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// `overstack_value` is value of type determined by `pad61`.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Once per formula.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// *Not used in realtime API.*</span>
-    <span class="ident">BuffFormula</span>,
-
-    <span class="doccomment">/// Skill information.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Time contains `recharge`, `range0`, `range1` and `tooltiptime` as array of 4 floats.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// *Not used in realtime API.*</span>
-    <span class="ident">SkillInfo</span>,
-
-    <span class="doccomment">/// Skill action.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// `src_agent` contains the action.</span>
-    <span class="doccomment">/// `dst_agent` contains at which millisecond.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// One per timing.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// *Not used in realtime API.*</span>
-    <span class="ident">SkillTiming</span>,
-
-    <span class="doccomment">/// Source agent breakbar state change.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Value is [`u16`] game enum (active, recover, immune, none).</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// *Not used in realtime API.*</span>
-    <span class="ident">BreakbarState</span>,
-
-    <span class="doccomment">/// Breakbar percentage.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// `value` contains percentage as float.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// *Not used in realtime API.*</span>
-    <span class="ident">BreakbarPercent</span>,
-
-    <span class="doccomment">/// Error.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// `time` contains the error message as an array of up to 32 characters.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// *Not used in realtime API.*</span>
-    <span class="ident">Error</span>,
-
-    <span class="doccomment">/// Source agent has tag.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// `value` is the id of the tag.</span>
-    <span class="doccomment">/// Tag id is volatile, depends on game build.</span>
-    <span class="ident">Tag</span>,
-
-    <span class="doccomment">/// Source agent barrier change.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// `dst_agent` contains percentage as `percent * 10000`.</span>
-    <span class="doccomment">/// For example 99.5% will be `9950`.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// *Not used in realtime API.*</span>
-    <span class="ident">BarrierUpdate</span>,
-
-    <span class="doccomment">/// Arc UI stats reset.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// `src_agent` contains the NPC id of the active log.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// *Not used in log EVTC.*</span>
-    <span class="ident">StatReset</span>,
-
-    <span class="doccomment">/// Combat event with state change byte set to this.</span>
-    <span class="ident">Extension</span>,
-
-    <span class="doccomment">/// Combat event with state change byte set to this.</span>
-    <span class="ident">ApiDelayed</span>,
-
-    <span class="doccomment">/// Instance started.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// `src_agent` contains the time in ms at which the instance was likely started.</span>
-    <span class="ident">InstanceStart</span>,
-
-    <span class="doccomment">/// Tick rate.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Every 500ms.</span>
-    <span class="doccomment">/// `src_agent` is `25 - tickrate` (when `tickrate &lt; 21`).</span>
-    <span class="ident">Tickrate</span>,
-
-    <span class="doccomment">/// Last 90% before down.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// `src_agent` is enemy agent that went down, `dst_agent` is time in ms since last 90%.</span>
-    <span class="doccomment">/// For downs contribution.</span>
-    <span class="ident">Last90BeforeDown</span>,
-
-    <span class="doccomment">/// Effect created.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// `src_agent` is owner.</span>
-    <span class="doccomment">/// `dst_agent` if at agent, else `&amp;value = float[3] xyz`, `&amp;iff = float[2] xy` orient, `&amp;pad61 = float[1] z` orient, `skillid = effectid`.</span>
-    <span class="doccomment">/// If `is_flanking`: `duration = trackingid`.</span>
-    <span class="doccomment">/// `&amp;is_shields = uint16` duration.</span>
-    <span class="doccomment">/// If `effectid == 0`, end `&amp;is_shields = trackingid`.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// *Not used in realtime API.*</span>
-    <span class="ident">Effect</span>,
-
-    <span class="doccomment">/// Id to GUID.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// `&amp;src_agent = 16byte` persistent content guid, `overstack_value` is of contentlocal enum, `skillid` is content id.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// *Not used in realtime API.*</span>
-    <span class="ident">IdToGUID</span>,
-
-    <span class="doccomment">/// Unknown or invalid.</span>
-    <span class="attribute">#[<span class="ident">num_enum</span>(<span class="ident">default</span>)]</span>
-    <span class="ident">Unknown</span>,
-}
-
-<span class="doccomment">/// Combat buff remove.</span>
-<span class="attribute">#[<span class="ident">derive</span>(
-    <span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>, <span class="ident">Hash</span>, <span class="ident">IntoPrimitive</span>, <span class="ident">FromPrimitive</span>,
-)]</span>
-<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>, <span class="ident">derive</span>(<span class="ident">Serialize</span>, <span class="ident">Deserialize</span>))]</span>
-<span class="attribute">#[<span class="ident">cfg_attr</span>(
-    <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;strum&quot;</span>,
-    <span class="ident">derive</span>(<span class="ident">Display</span>, <span class="ident">EnumCount</span>, <span class="ident">EnumIter</span>, <span class="ident">IntoStaticStr</span>, <span class="ident">EnumVariantNames</span>)
-)]</span>
-<span class="attribute">#[<span class="ident">repr</span>(<span class="ident">u8</span>)]</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">BuffRemove</span> {
-    <span class="doccomment">/// Not used, different kind of event.</span>
-    <span class="prelude-val">None</span>,
-
-    <span class="doccomment">/// Last or all stacks removed.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Sent by server.</span>
-    <span class="ident">All</span>,
-
-    <span class="doccomment">/// Single stack removed.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Happens for each stack on cleanse.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Sent by server.</span>
-    <span class="ident">Single</span>,
-
-    <span class="doccomment">/// Single stack removed.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Automatically by Arc on out of combat or all stack.</span>
-    <span class="doccomment">/// Ignore for strip/cleanse calculation.</span>
-    <span class="doccomment">/// Use for in/out volume.</span>
-    <span class="ident">Manual</span>,
-
-    <span class="doccomment">/// Unknown or invalid.</span>
-    <span class="attribute">#[<span class="ident">num_enum</span>(<span class="ident">default</span>)]</span>
-    <span class="ident">Unknown</span>,
-}
-
-<span class="doccomment">/// Combat buff cycle.</span>
-<span class="attribute">#[<span class="ident">derive</span>(
-    <span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>, <span class="ident">Hash</span>, <span class="ident">IntoPrimitive</span>, <span class="ident">FromPrimitive</span>,
-)]</span>
-<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>, <span class="ident">derive</span>(<span class="ident">Serialize</span>, <span class="ident">Deserialize</span>))]</span>
-<span class="attribute">#[<span class="ident">cfg_attr</span>(
-    <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;strum&quot;</span>,
-    <span class="ident">derive</span>(<span class="ident">Display</span>, <span class="ident">EnumCount</span>, <span class="ident">EnumIter</span>, <span class="ident">IntoStaticStr</span>, <span class="ident">EnumVariantNames</span>)
-)]</span>
-<span class="attribute">#[<span class="ident">repr</span>(<span class="ident">u8</span>)]</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">BuffCycle</span> {
-    <span class="doccomment">/// Damage happened on tick timer.</span>
-    <span class="ident">Cycle</span>,
-
-    <span class="doccomment">/// Damage happened outside tick timer (resistable).</span>
-    <span class="ident">NotCycle</span>,
-
-    <span class="doccomment">/// Retired since May 2021.</span>
-    <span class="ident">NotCycleOrResist</span>,
-
-    <span class="doccomment">/// Damage happened to target on hitting target.</span>
-    <span class="ident">NotCycleDmgToTargetOnHit</span>,
-
-    <span class="doccomment">/// Damage happened to source on hitting target.</span>
-    <span class="ident">NotCycleDmgToSourceOnHit</span>,
-
-    <span class="doccomment">/// Damage happened to target on source losing a stack.</span>
-    <span class="ident">NotCycleDmgToTargetOnStackRemove</span>,
-
-    <span class="attribute">#[<span class="ident">num_enum</span>(<span class="ident">default</span>)]</span>
-    <span class="ident">Unknown</span>,
-}
-
-<span class="doccomment">/// ArcDPS custom skill ids.</span>
-<span class="attribute">#[<span class="ident">derive</span>(
-    <span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>, <span class="ident">Hash</span>, <span class="ident">IntoPrimitive</span>, <span class="ident">TryFromPrimitive</span>,
-)]</span>
-<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>, <span class="ident">derive</span>(<span class="ident">Serialize</span>, <span class="ident">Deserialize</span>))]</span>
-<span class="attribute">#[<span class="ident">cfg_attr</span>(
-    <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;strum&quot;</span>,
-    <span class="ident">derive</span>(<span class="ident">Display</span>, <span class="ident">EnumCount</span>, <span class="ident">EnumIter</span>, <span class="ident">IntoStaticStr</span>, <span class="ident">EnumVariantNames</span>)
-)]</span>
-<span class="attribute">#[<span class="ident">repr</span>(<span class="ident">u16</span>)]</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">CustomSkill</span> {
-    <span class="doccomment">/// Resurrect skill.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Not custom but important and unnamed.</span>
-    <span class="ident">Resurrect</span> <span class="op">=</span> <span class="number">1066</span>,
-
-    <span class="doccomment">/// Bandage downstate skill.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Personal healing only.</span>
-    <span class="ident">Bandage</span> <span class="op">=</span> <span class="number">1175</span>,
-
-    <span class="doccomment">/// Dodge skill.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Will occur in `is_activation == normal` event.</span>
-    <span class="ident">Dodge</span> <span class="op">=</span> <span class="number">65001</span>,
-}
-
-<span class="doccomment">/// Buff info category.</span>
-<span class="attribute">#[<span class="ident">derive</span>(
-    <span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>, <span class="ident">Hash</span>, <span class="ident">IntoPrimitive</span>, <span class="ident">TryFromPrimitive</span>,
-)]</span>
-<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>, <span class="ident">derive</span>(<span class="ident">Serialize</span>, <span class="ident">Deserialize</span>))]</span>
-<span class="attribute">#[<span class="ident">repr</span>(<span class="ident">u8</span>)]</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">BuffCategory</span> {
-    <span class="ident">Boon</span> <span class="op">=</span> <span class="number">0</span>,
-    <span class="ident">Any</span> <span class="op">=</span> <span class="number">1</span>,
-    <span class="ident">Condition</span> <span class="op">=</span> <span class="number">2</span>,
-    <span class="ident">Food</span> <span class="op">=</span> <span class="number">4</span>,
-    <span class="ident">Upgrade</span> <span class="op">=</span> <span class="number">6</span>,
-    <span class="ident">Boost</span> <span class="op">=</span> <span class="number">8</span>,
-    <span class="ident">Trait</span> <span class="op">=</span> <span class="number">11</span>,
-    <span class="ident">Enhancement</span> <span class="op">=</span> <span class="number">13</span>,
-    <span class="ident">Stance</span> <span class="op">=</span> <span class="number">16</span>,
-}
-
-<span class="doccomment">/// Buff formula attributes.</span>
-<span class="comment">// TODO: document unclear attributes</span>
-<span class="attribute">#[<span class="ident">derive</span>(
-    <span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>, <span class="ident">Hash</span>, <span class="ident">IntoPrimitive</span>, <span class="ident">FromPrimitive</span>,
-)]</span>
-<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>, <span class="ident">derive</span>(<span class="ident">Serialize</span>, <span class="ident">Deserialize</span>))]</span>
-<span class="attribute">#[<span class="ident">cfg_attr</span>(
-    <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;strum&quot;</span>,
-    <span class="ident">derive</span>(<span class="ident">Display</span>, <span class="ident">EnumCount</span>, <span class="ident">EnumIter</span>, <span class="ident">IntoStaticStr</span>, <span class="ident">EnumVariantNames</span>)
-)]</span>
-<span class="attribute">#[<span class="ident">repr</span>(<span class="ident">u16</span>)]</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">Attribute</span> {
-    <span class="prelude-val">None</span>,
-
-    <span class="ident">Power</span>,
-    <span class="ident">Precision</span>,
-    <span class="ident">Toughness</span>,
-    <span class="ident">Vitality</span>,
-    <span class="ident">Ferocity</span>,
-    <span class="ident">Healing</span>,
-    <span class="ident">Condition</span>,
-    <span class="ident">Concentration</span>,
-    <span class="ident">Expertise</span>,
-
-    <span class="ident">Armor</span>,
-    <span class="ident">Agony</span>,
-    <span class="ident">StatInc</span>,
-    <span class="ident">FlatInc</span>,
-    <span class="ident">PhysInc</span>,
-    <span class="ident">CondInc</span>,
-    <span class="ident">PhysRec</span>,
-    <span class="ident">CondRec</span>,
-    <span class="ident">Attackspeed</span>,
-    <span class="ident">SiphonInc</span>,
-    <span class="ident">SiphonRec</span>,
-
-    <span class="doccomment">/// Unknown or invalid.</span>
-    <span class="attribute">#[<span class="ident">num_enum</span>(<span class="ident">default</span>)]</span>
-    <span class="ident">Unknown</span> <span class="op">=</span> <span class="number">65535</span>,
+<span class="attribute">#[derive(
+    Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, TryFromPrimitive,
+)]
+#[cfg_attr(feature = <span class="string">&quot;serde&quot;</span>, derive(Serialize, Deserialize))]
+#[cfg_attr(
+    feature = <span class="string">&quot;strum&quot;</span>,
+    derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames)
+)]
+#[repr(u32)]
+</span><span class="kw">pub enum </span>ContentLocal {
+    Effect,
+    Marker,
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="arcdps" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="arcdps" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.0 (69f9c33d7 2022-12-12)" ></div></body></html>

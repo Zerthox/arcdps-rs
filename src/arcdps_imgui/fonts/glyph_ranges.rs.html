@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\arcdps-imgui-0.8.0\src\fonts\glyph_ranges.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>glyph_ranges.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../arcdps_imgui/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../arcdps_imgui/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../arcdps_imgui/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\arcdps-imgui-0.8.0\src\fonts\glyph_ranges.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>glyph_ranges.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../normalize.css"><link rel="stylesheet" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../ayu.css" disabled><link rel="stylesheet" href="../../../dark.css" disabled><link rel="stylesheet" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../../arcdps_imgui/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -150,157 +150,157 @@
 <span id="150">150</span>
 <span id="151">151</span>
 <span id="152">152</span>
-</pre><pre class="rust"><code><span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::sys</span>;
+</pre><pre class="rust"><code><span class="kw">use </span><span class="kw">crate</span>::sys;
 
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Eq</span>, <span class="ident">PartialEq</span>, <span class="ident">Debug</span>)]</span>
-<span class="kw">enum</span> <span class="ident">FontGlyphRangeData</span> {
-    <span class="ident">ChineseSimplifiedCommon</span>,
-    <span class="ident">ChineseFull</span>,
-    <span class="ident">Cyrillic</span>,
-    <span class="ident">Default</span>,
-    <span class="ident">Japanese</span>,
-    <span class="ident">Korean</span>,
-    <span class="ident">Thai</span>,
-    <span class="ident">Vietnamese</span>,
-    <span class="ident">Custom</span>(<span class="kw-2">*const</span> <span class="ident">sys::ImWchar</span>),
+<span class="attribute">#[derive(Clone, Eq, PartialEq, Debug)]
+</span><span class="kw">enum </span>FontGlyphRangeData {
+    ChineseSimplifiedCommon,
+    ChineseFull,
+    Cyrillic,
+    Default,
+    Japanese,
+    Korean,
+    Thai,
+    Vietnamese,
+    Custom(<span class="kw-2">*const </span>sys::ImWchar),
 }
 
-<span class="doccomment">/// A set of 16-bit Unicode codepoints</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Eq</span>, <span class="ident">PartialEq</span>, <span class="ident">Debug</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">FontGlyphRanges</span>(<span class="ident">FontGlyphRangeData</span>);
-<span class="kw">impl</span> <span class="ident">FontGlyphRanges</span> {
-    <span class="doccomment">/// The default set of glyph ranges used by imgui.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">default</span>() -&gt; <span class="ident">FontGlyphRanges</span> {
-        <span class="ident">FontGlyphRanges</span>(<span class="ident">FontGlyphRangeData::Default</span>)
+<span class="doccomment">/// A set of 16-bit Unicode codepoints
+</span><span class="attribute">#[derive(Clone, Eq, PartialEq, Debug)]
+</span><span class="kw">pub struct </span>FontGlyphRanges(FontGlyphRangeData);
+<span class="kw">impl </span>FontGlyphRanges {
+    <span class="doccomment">/// The default set of glyph ranges used by imgui.
+    </span><span class="kw">pub fn </span>default() -&gt; FontGlyphRanges {
+        FontGlyphRanges(FontGlyphRangeData::Default)
     }
-    <span class="doccomment">/// A set of glyph ranges appropriate for use with simplified common Chinese text.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">chinese_simplified_common</span>() -&gt; <span class="ident">FontGlyphRanges</span> {
-        <span class="ident">FontGlyphRanges</span>(<span class="ident">FontGlyphRangeData::ChineseSimplifiedCommon</span>)
+    <span class="doccomment">/// A set of glyph ranges appropriate for use with simplified common Chinese text.
+    </span><span class="kw">pub fn </span>chinese_simplified_common() -&gt; FontGlyphRanges {
+        FontGlyphRanges(FontGlyphRangeData::ChineseSimplifiedCommon)
     }
-    <span class="doccomment">/// A set of glyph ranges appropriate for use with Chinese text.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">chinese_full</span>() -&gt; <span class="ident">FontGlyphRanges</span> {
-        <span class="ident">FontGlyphRanges</span>(<span class="ident">FontGlyphRangeData::ChineseFull</span>)
+    <span class="doccomment">/// A set of glyph ranges appropriate for use with Chinese text.
+    </span><span class="kw">pub fn </span>chinese_full() -&gt; FontGlyphRanges {
+        FontGlyphRanges(FontGlyphRangeData::ChineseFull)
     }
-    <span class="doccomment">/// A set of glyph ranges appropriate for use with Cyrillic text.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cyrillic</span>() -&gt; <span class="ident">FontGlyphRanges</span> {
-        <span class="ident">FontGlyphRanges</span>(<span class="ident">FontGlyphRangeData::Cyrillic</span>)
+    <span class="doccomment">/// A set of glyph ranges appropriate for use with Cyrillic text.
+    </span><span class="kw">pub fn </span>cyrillic() -&gt; FontGlyphRanges {
+        FontGlyphRanges(FontGlyphRangeData::Cyrillic)
     }
-    <span class="doccomment">/// A set of glyph ranges appropriate for use with Japanese text.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">japanese</span>() -&gt; <span class="ident">FontGlyphRanges</span> {
-        <span class="ident">FontGlyphRanges</span>(<span class="ident">FontGlyphRangeData::Japanese</span>)
+    <span class="doccomment">/// A set of glyph ranges appropriate for use with Japanese text.
+    </span><span class="kw">pub fn </span>japanese() -&gt; FontGlyphRanges {
+        FontGlyphRanges(FontGlyphRangeData::Japanese)
     }
-    <span class="doccomment">/// A set of glyph ranges appropriate for use with Korean text.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">korean</span>() -&gt; <span class="ident">FontGlyphRanges</span> {
-        <span class="ident">FontGlyphRanges</span>(<span class="ident">FontGlyphRangeData::Korean</span>)
+    <span class="doccomment">/// A set of glyph ranges appropriate for use with Korean text.
+    </span><span class="kw">pub fn </span>korean() -&gt; FontGlyphRanges {
+        FontGlyphRanges(FontGlyphRangeData::Korean)
     }
-    <span class="doccomment">/// A set of glyph ranges appropriate for use with Thai text.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">thai</span>() -&gt; <span class="ident">FontGlyphRanges</span> {
-        <span class="ident">FontGlyphRanges</span>(<span class="ident">FontGlyphRangeData::Thai</span>)
+    <span class="doccomment">/// A set of glyph ranges appropriate for use with Thai text.
+    </span><span class="kw">pub fn </span>thai() -&gt; FontGlyphRanges {
+        FontGlyphRanges(FontGlyphRangeData::Thai)
     }
-    <span class="doccomment">/// A set of glyph ranges appropriate for use with Vietnamese text.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">vietnamese</span>() -&gt; <span class="ident">FontGlyphRanges</span> {
-        <span class="ident">FontGlyphRanges</span>(<span class="ident">FontGlyphRangeData::Vietnamese</span>)
+    <span class="doccomment">/// A set of glyph ranges appropriate for use with Vietnamese text.
+    </span><span class="kw">pub fn </span>vietnamese() -&gt; FontGlyphRanges {
+        FontGlyphRanges(FontGlyphRangeData::Vietnamese)
     }
 
-    <span class="doccomment">/// Creates a glyph range from a static slice. The expected format is a series of pairs of</span>
-    <span class="doccomment">/// non-zero shorts, each representing an inclusive range of codepoints, followed by a single</span>
-    <span class="doccomment">/// zero terminating the range. The ranges must not overlap.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// As the slice is expected to last as long as a font is used, and is written into global</span>
-    <span class="doccomment">/// state, it must be `&#39;static`.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Panics</span>
-    <span class="doccomment">/// ======</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This function will panic if the given slice is not a valid font range.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_slice</span>(<span class="ident">slice</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> [<span class="ident">u16</span>]) -&gt; <span class="ident">FontGlyphRanges</span> {
+    <span class="doccomment">/// Creates a glyph range from a static slice. The expected format is a series of pairs of
+    /// non-zero shorts, each representing an inclusive range of codepoints, followed by a single
+    /// zero terminating the range. The ranges must not overlap.
+    ///
+    /// As the slice is expected to last as long as a font is used, and is written into global
+    /// state, it must be `&#39;static`.
+    ///
+    /// Panics
+    /// ======
+    ///
+    /// This function will panic if the given slice is not a valid font range.
+    </span><span class="kw">pub fn </span>from_slice(slice: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>[u16]) -&gt; FontGlyphRanges {
         <span class="macro">assert_eq!</span>(
-            <span class="ident">slice</span>.<span class="ident">len</span>() <span class="op">%</span> <span class="number">2</span>,
+            slice.len() % <span class="number">2</span>,
             <span class="number">1</span>,
-            <span class="string">&quot;The length of a glyph range must be odd.&quot;</span>
-        );
+            <span class="string">&quot;The length of a glyph range must be odd.&quot;
+        </span>);
         <span class="macro">assert_eq!</span>(
-            <span class="ident">slice</span>.<span class="ident">last</span>(),
+            slice.last(),
             <span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="number">0</span>),
-            <span class="string">&quot;A glyph range must be zero-terminated.&quot;</span>
-        );
+            <span class="string">&quot;A glyph range must be zero-terminated.&quot;
+        </span>);
 
-        <span class="kw">for</span> (<span class="ident">i</span>, <span class="kw-2">&amp;</span><span class="ident">glyph</span>) <span class="kw">in</span> <span class="ident">slice</span>.<span class="ident">iter</span>().<span class="ident">enumerate</span>().<span class="ident">take</span>(<span class="ident">slice</span>.<span class="ident">len</span>() <span class="op">-</span> <span class="number">1</span>) {
+        <span class="kw">for </span>(i, <span class="kw-2">&amp;</span>glyph) <span class="kw">in </span>slice.iter().enumerate().take(slice.len() - <span class="number">1</span>) {
             <span class="macro">assert_ne!</span>(
-                <span class="ident">glyph</span>, <span class="number">0</span>,
+                glyph, <span class="number">0</span>,
                 <span class="string">&quot;A glyph in a range cannot be zero. \
                  (Glyph is zero at index {})&quot;</span>,
-                <span class="ident">i</span>
+                i
             )
         }
 
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">ranges</span> <span class="op">=</span> <span class="ident">Vec::new</span>();
-        <span class="kw">for</span> <span class="ident">i</span> <span class="kw">in</span> <span class="number">0</span>..<span class="ident">slice</span>.<span class="ident">len</span>() <span class="op">/</span> <span class="number">2</span> {
-            <span class="kw">let</span> (<span class="ident">start</span>, <span class="ident">end</span>) <span class="op">=</span> (<span class="ident">slice</span>[<span class="ident">i</span> <span class="op">*</span> <span class="number">2</span>], <span class="ident">slice</span>[<span class="ident">i</span> <span class="op">*</span> <span class="number">2</span> <span class="op">+</span> <span class="number">1</span>]);
+        <span class="kw">let </span><span class="kw-2">mut </span>ranges = Vec::new();
+        <span class="kw">for </span>i <span class="kw">in </span><span class="number">0</span>..slice.len() / <span class="number">2 </span>{
+            <span class="kw">let </span>(start, end) = (slice[i * <span class="number">2</span>], slice[i * <span class="number">2 </span>+ <span class="number">1</span>]);
             <span class="macro">assert!</span>(
-                <span class="ident">start</span> <span class="op">&lt;</span><span class="op">=</span> <span class="ident">end</span>,
+                start &lt;= end,
                 <span class="string">&quot;The start of a range cannot be larger than its end. \
                  (At index {}, {} &gt; {})&quot;</span>,
-                <span class="ident">i</span> <span class="op">*</span> <span class="number">2</span>,
-                <span class="ident">start</span>,
-                <span class="ident">end</span>
+                i * <span class="number">2</span>,
+                start,
+                end
             );
-            <span class="ident">ranges</span>.<span class="ident">push</span>((<span class="ident">start</span>, <span class="ident">end</span>));
+            ranges.push((start, end));
         }
-        <span class="ident">ranges</span>.<span class="ident">sort_unstable_by_key</span>(<span class="op">|</span><span class="ident">x</span><span class="op">|</span> <span class="ident">x</span>.<span class="number">0</span>);
-        <span class="kw">for</span> <span class="ident">i</span> <span class="kw">in</span> <span class="number">0</span>..<span class="ident">ranges</span>.<span class="ident">len</span>() <span class="op">-</span> <span class="number">1</span> {
-            <span class="kw">let</span> (<span class="ident">range_a</span>, <span class="ident">range_b</span>) <span class="op">=</span> (<span class="ident">ranges</span>[<span class="ident">i</span>], <span class="ident">ranges</span>[<span class="ident">i</span> <span class="op">+</span> <span class="number">1</span>]);
-            <span class="kw">if</span> <span class="ident">range_a</span>.<span class="number">1</span> <span class="op">&gt;</span><span class="op">=</span> <span class="ident">range_b</span>.<span class="number">0</span> {
+        ranges.sort_unstable_by_key(|x| x.<span class="number">0</span>);
+        <span class="kw">for </span>i <span class="kw">in </span><span class="number">0</span>..ranges.len() - <span class="number">1 </span>{
+            <span class="kw">let </span>(range_a, range_b) = (ranges[i], ranges[i + <span class="number">1</span>]);
+            <span class="kw">if </span>range_a.<span class="number">1 </span>&gt;= range_b.<span class="number">0 </span>{
                 <span class="macro">panic!</span>(
                     <span class="string">&quot;The glyph ranges {:?} and {:?} overlap between {:?}.&quot;</span>,
-                    <span class="ident">range_a</span>,
-                    <span class="ident">range_b</span>,
-                    (<span class="ident">range_a</span>.<span class="number">1</span>, <span class="ident">range_b</span>.<span class="number">0</span>)
+                    range_a,
+                    range_b,
+                    (range_a.<span class="number">1</span>, range_b.<span class="number">0</span>)
                 );
             }
         }
 
-        <span class="kw">unsafe</span> { <span class="ident">FontGlyphRanges::from_slice_unchecked</span>(<span class="ident">slice</span>) }
+        <span class="kw">unsafe </span>{ FontGlyphRanges::from_slice_unchecked(slice) }
     }
 
-    <span class="doccomment">/// Creates a glyph range from a static slice without checking its validity.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// See [`FontGlyphRanges::from_slice`] for more information.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Safety</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// It is up to the caller to guarantee the slice contents are valid.</span>
-    <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_slice_unchecked</span>(<span class="ident">slice</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> [<span class="ident">u16</span>]) -&gt; <span class="ident">FontGlyphRanges</span> {
-        <span class="ident">FontGlyphRanges::from_ptr</span>(<span class="ident">slice</span>.<span class="ident">as_ptr</span>())
+    <span class="doccomment">/// Creates a glyph range from a static slice without checking its validity.
+    ///
+    /// See [`FontGlyphRanges::from_slice`] for more information.
+    ///
+    /// # Safety
+    ///
+    /// It is up to the caller to guarantee the slice contents are valid.
+    </span><span class="kw">pub unsafe fn </span>from_slice_unchecked(slice: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>[u16]) -&gt; FontGlyphRanges {
+        FontGlyphRanges::from_ptr(slice.as_ptr())
     }
 
-    <span class="doccomment">/// Creates a glyph range from a pointer, without checking its validity or enforcing its</span>
-    <span class="doccomment">/// lifetime. The memory the pointer points to must be valid for as long as the font is</span>
-    <span class="doccomment">/// in use.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Safety</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// It is up to the caller to guarantee the pointer is not null, remains valid forever, and</span>
-    <span class="doccomment">/// points to valid data.</span>
-    <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_ptr</span>(<span class="ident">ptr</span>: <span class="kw-2">*const</span> <span class="ident">u16</span>) -&gt; <span class="ident">FontGlyphRanges</span> {
-        <span class="ident">FontGlyphRanges</span>(<span class="ident">FontGlyphRangeData::Custom</span>(<span class="ident">ptr</span>))
+    <span class="doccomment">/// Creates a glyph range from a pointer, without checking its validity or enforcing its
+    /// lifetime. The memory the pointer points to must be valid for as long as the font is
+    /// in use.
+    ///
+    /// # Safety
+    ///
+    /// It is up to the caller to guarantee the pointer is not null, remains valid forever, and
+    /// points to valid data.
+    </span><span class="kw">pub unsafe fn </span>from_ptr(ptr: <span class="kw-2">*const </span>u16) -&gt; FontGlyphRanges {
+        FontGlyphRanges(FontGlyphRangeData::Custom(ptr))
     }
 
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">to_ptr</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">atlas</span>: <span class="kw-2">*mut</span> <span class="ident">sys::ImFontAtlas</span>) -&gt; <span class="kw-2">*const</span> <span class="ident">sys::ImWchar</span> {
-        <span class="kw">match</span> <span class="self">self</span>.<span class="number">0</span> {
-            <span class="ident">FontGlyphRangeData::ChineseFull</span> =&gt; <span class="ident">sys::ImFontAtlas_GetGlyphRangesChineseFull</span>(<span class="ident">atlas</span>),
-            <span class="ident">FontGlyphRangeData::ChineseSimplifiedCommon</span> =&gt; {
-                <span class="ident">sys::ImFontAtlas_GetGlyphRangesChineseSimplifiedCommon</span>(<span class="ident">atlas</span>)
+    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">unsafe fn </span>to_ptr(<span class="kw-2">&amp;</span><span class="self">self</span>, atlas: <span class="kw-2">*mut </span>sys::ImFontAtlas) -&gt; <span class="kw-2">*const </span>sys::ImWchar {
+        <span class="kw">match </span><span class="self">self</span>.<span class="number">0 </span>{
+            FontGlyphRangeData::ChineseFull =&gt; sys::ImFontAtlas_GetGlyphRangesChineseFull(atlas),
+            FontGlyphRangeData::ChineseSimplifiedCommon =&gt; {
+                sys::ImFontAtlas_GetGlyphRangesChineseSimplifiedCommon(atlas)
             }
-            <span class="ident">FontGlyphRangeData::Cyrillic</span> =&gt; <span class="ident">sys::ImFontAtlas_GetGlyphRangesCyrillic</span>(<span class="ident">atlas</span>),
-            <span class="ident">FontGlyphRangeData::Default</span> =&gt; <span class="ident">sys::ImFontAtlas_GetGlyphRangesDefault</span>(<span class="ident">atlas</span>),
-            <span class="ident">FontGlyphRangeData::Japanese</span> =&gt; <span class="ident">sys::ImFontAtlas_GetGlyphRangesJapanese</span>(<span class="ident">atlas</span>),
-            <span class="ident">FontGlyphRangeData::Korean</span> =&gt; <span class="ident">sys::ImFontAtlas_GetGlyphRangesKorean</span>(<span class="ident">atlas</span>),
-            <span class="ident">FontGlyphRangeData::Thai</span> =&gt; <span class="ident">sys::ImFontAtlas_GetGlyphRangesThai</span>(<span class="ident">atlas</span>),
-            <span class="ident">FontGlyphRangeData::Vietnamese</span> =&gt; <span class="ident">sys::ImFontAtlas_GetGlyphRangesVietnamese</span>(<span class="ident">atlas</span>),
-            <span class="ident">FontGlyphRangeData::Custom</span>(<span class="ident">ptr</span>) =&gt; <span class="ident">ptr</span>,
+            FontGlyphRangeData::Cyrillic =&gt; sys::ImFontAtlas_GetGlyphRangesCyrillic(atlas),
+            FontGlyphRangeData::Default =&gt; sys::ImFontAtlas_GetGlyphRangesDefault(atlas),
+            FontGlyphRangeData::Japanese =&gt; sys::ImFontAtlas_GetGlyphRangesJapanese(atlas),
+            FontGlyphRangeData::Korean =&gt; sys::ImFontAtlas_GetGlyphRangesKorean(atlas),
+            FontGlyphRangeData::Thai =&gt; sys::ImFontAtlas_GetGlyphRangesThai(atlas),
+            FontGlyphRangeData::Vietnamese =&gt; sys::ImFontAtlas_GetGlyphRangesVietnamese(atlas),
+            FontGlyphRangeData::Custom(ptr) =&gt; ptr,
         }
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="arcdps_imgui" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="arcdps_imgui" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.0 (69f9c33d7 2022-12-12)" ></div></body></html>

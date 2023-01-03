@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\arcdps-imgui-0.8.0\src\widget\tab.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>tab.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../arcdps_imgui/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../arcdps_imgui/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../arcdps_imgui/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\arcdps-imgui-0.8.0\src\widget\tab.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>tab.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../normalize.css"><link rel="stylesheet" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../ayu.css" disabled><link rel="stylesheet" href="../../../dark.css" disabled><link rel="stylesheet" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../../arcdps_imgui/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -236,243 +236,243 @@
 <span id="236">236</span>
 <span id="237">237</span>
 <span id="238">238</span>
-</pre><pre class="rust"><code><span class="doccomment">//!   # Examples</span>
-<span class="comment">//</span>
-<span class="doccomment">//! ```no_run</span>
-<span class="doccomment">//! # use arcdps_imgui::*;</span>
-<span class="doccomment">//! # let mut ctx = Context::create();</span>
-<span class="doccomment">//! # let ui = ctx.frame();</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! // During UI construction</span>
-<span class="doccomment">//! TabBar::new(im_str!(&quot;tabbar&quot;)).build(&amp;ui, || {</span>
-<span class="doccomment">//!                   TabItem::new(im_str!(&quot;a tab&quot;)).build(&amp;ui, || {</span>
-<span class="doccomment">//!                       ui.text(im_str!(&quot;tab content 1&quot;));</span>
-<span class="doccomment">//!                   });</span>
-<span class="doccomment">//!                   TabItem::new(im_str!(&quot;2tab&quot;)).build(&amp;ui, || {</span>
-<span class="doccomment">//!                       ui.text(im_str!(&quot;tab content 2&quot;));</span>
-<span class="doccomment">//!                   });</span>
-<span class="doccomment">//!               });</span>
-<span class="doccomment">//! ```</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! See `test_window_impl.rs` for a more complicated example.</span>
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::sys</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::Ui</span>;
-<span class="kw">use</span> <span class="ident">bitflags::bitflags</span>;
-<span class="kw">use</span> <span class="ident">std::ptr</span>;
+</pre><pre class="rust"><code><span class="doccomment">//!   # Examples
+</span><span class="comment">//
+</span><span class="doccomment">//! ```no_run
+//! # use arcdps_imgui::*;
+//! # let mut ctx = Context::create();
+//! # let ui = ctx.frame();
+//!
+//! // During UI construction
+//! TabBar::new(im_str!(&quot;tabbar&quot;)).build(&amp;ui, || {
+//!                   TabItem::new(im_str!(&quot;a tab&quot;)).build(&amp;ui, || {
+//!                       ui.text(im_str!(&quot;tab content 1&quot;));
+//!                   });
+//!                   TabItem::new(im_str!(&quot;2tab&quot;)).build(&amp;ui, || {
+//!                       ui.text(im_str!(&quot;tab content 2&quot;));
+//!                   });
+//!               });
+//! ```
+//!
+//! See `test_window_impl.rs` for a more complicated example.
+</span><span class="kw">use </span><span class="kw">crate</span>::sys;
+<span class="kw">use </span><span class="kw">crate</span>::Ui;
+<span class="kw">use </span>bitflags::bitflags;
+<span class="kw">use </span>std::ptr;
 
-<span class="macro">bitflags!</span> {
-    <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">transparent</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">TabBarFlags</span>: <span class="ident">u32</span> {
-        <span class="kw">const</span> <span class="ident">REORDERABLE</span> <span class="op">=</span> <span class="ident">sys::ImGuiTabBarFlags_Reorderable</span>;
-        <span class="kw">const</span> <span class="ident">AUTO_SELECT_NEW_TABS</span> <span class="op">=</span> <span class="ident">sys::ImGuiTabBarFlags_AutoSelectNewTabs</span>;
-        <span class="kw">const</span> <span class="ident">TAB_LIST_POPUP_BUTTON</span> <span class="op">=</span> <span class="ident">sys::ImGuiTabBarFlags_TabListPopupButton</span>;
-        <span class="kw">const</span> <span class="ident">NO_CLOSE_WITH_MIDDLE_MOUSE_BUTTON</span> <span class="op">=</span> <span class="ident">sys::ImGuiTabBarFlags_NoCloseWithMiddleMouseButton</span>;
-        <span class="kw">const</span> <span class="ident">NO_TAB_LIST_SCROLLING_BUTTONS</span> <span class="op">=</span> <span class="ident">sys::ImGuiTabBarFlags_NoTabListScrollingButtons</span>;
-        <span class="kw">const</span> <span class="ident">NO_TOOLTIP</span> <span class="op">=</span> <span class="ident">sys::ImGuiTabBarFlags_NoTooltip</span>;
-        <span class="kw">const</span> <span class="ident">FITTING_POLICY_RESIZE_DOWN</span> <span class="op">=</span> <span class="ident">sys::ImGuiTabBarFlags_FittingPolicyResizeDown</span>;
-        <span class="kw">const</span> <span class="ident">FITTING_POLICY_SCROLL</span> <span class="op">=</span> <span class="ident">sys::ImGuiTabBarFlags_FittingPolicyScroll</span>;
-        <span class="kw">const</span> <span class="ident">FITTING_POLICY_MASK</span> <span class="op">=</span> <span class="ident">sys::ImGuiTabBarFlags_FittingPolicyMask_</span>;
-        <span class="kw">const</span> <span class="ident">FITTING_POLICY_DEFAULT</span> <span class="op">=</span> <span class="ident">sys::ImGuiTabBarFlags_FittingPolicyDefault_</span>;
+<span class="macro">bitflags! </span>{
+    <span class="attribute">#[repr(transparent)]
+    </span><span class="kw">pub struct </span>TabBarFlags: u32 {
+        <span class="kw">const </span>REORDERABLE = sys::ImGuiTabBarFlags_Reorderable;
+        <span class="kw">const </span>AUTO_SELECT_NEW_TABS = sys::ImGuiTabBarFlags_AutoSelectNewTabs;
+        <span class="kw">const </span>TAB_LIST_POPUP_BUTTON = sys::ImGuiTabBarFlags_TabListPopupButton;
+        <span class="kw">const </span>NO_CLOSE_WITH_MIDDLE_MOUSE_BUTTON = sys::ImGuiTabBarFlags_NoCloseWithMiddleMouseButton;
+        <span class="kw">const </span>NO_TAB_LIST_SCROLLING_BUTTONS = sys::ImGuiTabBarFlags_NoTabListScrollingButtons;
+        <span class="kw">const </span>NO_TOOLTIP = sys::ImGuiTabBarFlags_NoTooltip;
+        <span class="kw">const </span>FITTING_POLICY_RESIZE_DOWN = sys::ImGuiTabBarFlags_FittingPolicyResizeDown;
+        <span class="kw">const </span>FITTING_POLICY_SCROLL = sys::ImGuiTabBarFlags_FittingPolicyScroll;
+        <span class="kw">const </span>FITTING_POLICY_MASK = sys::ImGuiTabBarFlags_FittingPolicyMask_;
+        <span class="kw">const </span>FITTING_POLICY_DEFAULT = sys::ImGuiTabBarFlags_FittingPolicyDefault_;
     }
 }
 
-<span class="macro">bitflags!</span> {
-    <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">transparent</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">TabItemFlags</span>: <span class="ident">u32</span> {
-        <span class="kw">const</span> <span class="ident">UNSAVED_DOCUMENT</span> <span class="op">=</span> <span class="ident">sys::ImGuiTabItemFlags_UnsavedDocument</span>;
-        <span class="kw">const</span> <span class="ident">SET_SELECTED</span> <span class="op">=</span> <span class="ident">sys::ImGuiTabItemFlags_SetSelected</span>;
-        <span class="kw">const</span> <span class="ident">NO_CLOSE_WITH_MIDDLE_MOUSE_BUTTON</span> <span class="op">=</span> <span class="ident">sys::ImGuiTabItemFlags_NoCloseWithMiddleMouseButton</span>;
-        <span class="kw">const</span> <span class="ident">NO_PUSH_ID</span> <span class="op">=</span> <span class="ident">sys::ImGuiTabItemFlags_NoPushId</span>;
-        <span class="kw">const</span> <span class="ident">NO_TOOLTIP</span> <span class="op">=</span> <span class="ident">sys::ImGuiTabItemFlags_NoTooltip</span>;
-        <span class="kw">const</span> <span class="ident">NO_REORDER</span> <span class="op">=</span> <span class="ident">sys::ImGuiTabItemFlags_NoReorder</span>;
-        <span class="kw">const</span> <span class="ident">LEADING</span> <span class="op">=</span> <span class="ident">sys::ImGuiTabItemFlags_Leading</span>;
-        <span class="kw">const</span> <span class="ident">TRAILING</span> <span class="op">=</span> <span class="ident">sys::ImGuiTabItemFlags_Trailing</span>;
+<span class="macro">bitflags! </span>{
+    <span class="attribute">#[repr(transparent)]
+    </span><span class="kw">pub struct </span>TabItemFlags: u32 {
+        <span class="kw">const </span>UNSAVED_DOCUMENT = sys::ImGuiTabItemFlags_UnsavedDocument;
+        <span class="kw">const </span>SET_SELECTED = sys::ImGuiTabItemFlags_SetSelected;
+        <span class="kw">const </span>NO_CLOSE_WITH_MIDDLE_MOUSE_BUTTON = sys::ImGuiTabItemFlags_NoCloseWithMiddleMouseButton;
+        <span class="kw">const </span>NO_PUSH_ID = sys::ImGuiTabItemFlags_NoPushId;
+        <span class="kw">const </span>NO_TOOLTIP = sys::ImGuiTabItemFlags_NoTooltip;
+        <span class="kw">const </span>NO_REORDER = sys::ImGuiTabItemFlags_NoReorder;
+        <span class="kw">const </span>LEADING = sys::ImGuiTabItemFlags_Leading;
+        <span class="kw">const </span>TRAILING = sys::ImGuiTabItemFlags_Trailing;
     }
 }
 
-<span class="doccomment">/// Builder for a tab bar.</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">TabBar</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
-    <span class="ident">id</span>: <span class="ident">T</span>,
-    <span class="ident">flags</span>: <span class="ident">TabBarFlags</span>,
+<span class="doccomment">/// Builder for a tab bar.
+</span><span class="kw">pub struct </span>TabBar&lt;T&gt; {
+    id: T,
+    flags: TabBarFlags,
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="ident">TabBar</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;BeginTabBar&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">id</span>: <span class="ident">T</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">Self</span> {
-            <span class="ident">id</span>,
-            <span class="ident">flags</span>: <span class="ident">TabBarFlags::empty</span>(),
+<span class="kw">impl</span>&lt;T: AsRef&lt;str&gt;&gt; TabBar&lt;T&gt; {
+    <span class="attribute">#[inline]
+    #[doc(alias = <span class="string">&quot;BeginTabBar&quot;</span>)]
+    </span><span class="kw">pub fn </span>new(id: T) -&gt; <span class="self">Self </span>{
+        <span class="self">Self </span>{
+            id,
+            flags: TabBarFlags::empty(),
         }
     }
 
-    <span class="doccomment">/// Enable/Disable the reorderable property</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Disabled by default</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">reorderable</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">TabBarFlags::REORDERABLE</span>, <span class="ident">value</span>);
-        <span class="self">self</span>
+    <span class="doccomment">/// Enable/Disable the reorderable property
+    ///
+    /// Disabled by default
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>reorderable(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(TabBarFlags::REORDERABLE, value);
+        <span class="self">self
+    </span>}
+
+    <span class="doccomment">/// Set the flags of the tab bar.
+    ///
+    /// Flags are empty by default
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>flags(<span class="kw-2">mut </span><span class="self">self</span>, flags: TabBarFlags) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags = flags;
+        <span class="self">self
+    </span>}
+
+    <span class="attribute">#[must_use]
+    </span><span class="kw">pub fn </span>begin&lt;<span class="lifetime">&#39;ui</span>&gt;(<span class="self">self</span>, ui: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span>Ui&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; <span class="prelude-ty">Option</span>&lt;TabBarToken&lt;<span class="lifetime">&#39;ui</span>&gt;&gt; {
+        ui.tab_bar_with_flags(<span class="self">self</span>.id, <span class="self">self</span>.flags)
     }
 
-    <span class="doccomment">/// Set the flags of the tab bar.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Flags are empty by default</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">flags</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">flags</span>: <span class="ident">TabBarFlags</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span> <span class="op">=</span> <span class="ident">flags</span>;
-        <span class="self">self</span>
-    }
-
-    <span class="attribute">#[<span class="ident">must_use</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">begin</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">ui</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">TabBarToken</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="ident">ui</span>.<span class="ident">tab_bar_with_flags</span>(<span class="self">self</span>.<span class="ident">id</span>, <span class="self">self</span>.<span class="ident">flags</span>)
-    }
-
-    <span class="doccomment">/// Creates a tab bar and runs a closure to construct the contents.</span>
-    <span class="doccomment">/// Returns the result of the closure, if it is called.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Note: the closure is not called if no tabbar content is visible</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build</span><span class="op">&lt;</span><span class="ident">R</span>, <span class="ident">F</span>: <span class="ident">FnOnce</span>() -&gt; <span class="ident">R</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">ui</span>: <span class="kw-2">&amp;</span><span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>, <span class="ident">f</span>: <span class="ident">F</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">R</span><span class="op">&gt;</span> {
-        <span class="self">self</span>.<span class="ident">begin</span>(<span class="ident">ui</span>).<span class="ident">map</span>(<span class="op">|</span><span class="ident">_tab</span><span class="op">|</span> <span class="ident">f</span>())
+    <span class="doccomment">/// Creates a tab bar and runs a closure to construct the contents.
+    /// Returns the result of the closure, if it is called.
+    ///
+    /// Note: the closure is not called if no tabbar content is visible
+    </span><span class="kw">pub fn </span>build&lt;R, F: FnOnce() -&gt; R&gt;(<span class="self">self</span>, ui: <span class="kw-2">&amp;</span>Ui&lt;<span class="lifetime">&#39;_</span>&gt;, f: F) -&gt; <span class="prelude-ty">Option</span>&lt;R&gt; {
+        <span class="self">self</span>.begin(ui).map(|_tab| f())
     }
 }
 
 <span class="macro">create_token!</span>(
-    <span class="doccomment">/// Tracks a window that can be ended by calling `.end()`</span>
-    <span class="doccomment">/// or by dropping</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">TabBarToken</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>;
+    <span class="doccomment">/// Tracks a window that can be ended by calling `.end()`
+    /// or by dropping
+    </span><span class="kw">pub struct </span>TabBarToken&lt;<span class="lifetime">&#39;ui</span>&gt;;
 
-    <span class="doccomment">/// Ends a tab bar.</span>
-    <span class="ident">drop</span> { <span class="ident">sys::igEndTabBar</span>() }
+    <span class="doccomment">/// Ends a tab bar.
+    </span>drop { sys::igEndTabBar() }
 );
 
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">TabItem</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span><span class="op">&gt;</span> {
-    <span class="ident">label</span>: <span class="ident">T</span>,
-    <span class="ident">opened</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="kw-2">mut</span> <span class="ident">bool</span><span class="op">&gt;</span>,
-    <span class="ident">flags</span>: <span class="ident">TabItemFlags</span>,
+<span class="kw">pub struct </span>TabItem&lt;<span class="lifetime">&#39;a</span>, T&gt; {
+    label: T,
+    opened: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><span class="kw-2">mut </span>bool&gt;,
+    flags: TabItemFlags,
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="ident">TabItem</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span><span class="op">&gt;</span> {
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;BeginTabItem&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">name</span>: <span class="ident">T</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">Self</span> {
-            <span class="ident">label</span>: <span class="ident">name</span>,
-            <span class="ident">opened</span>: <span class="prelude-val">None</span>,
-            <span class="ident">flags</span>: <span class="ident">TabItemFlags::empty</span>(),
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>, T: AsRef&lt;str&gt;&gt; TabItem&lt;<span class="lifetime">&#39;a</span>, T&gt; {
+    <span class="attribute">#[doc(alias = <span class="string">&quot;BeginTabItem&quot;</span>)]
+    </span><span class="kw">pub fn </span>new(name: T) -&gt; <span class="self">Self </span>{
+        <span class="self">Self </span>{
+            label: name,
+            opened: <span class="prelude-val">None</span>,
+            flags: TabItemFlags::empty(),
         }
     }
 
-    <span class="doccomment">/// Will open or close the tab.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// True to display the tab. Tab item is visible by default.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">opened</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">opened</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="kw-2">mut</span> <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">opened</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">opened</span>);
-        <span class="self">self</span>
+    <span class="doccomment">/// Will open or close the tab.
+    ///
+    /// True to display the tab. Tab item is visible by default.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>opened(<span class="kw-2">mut </span><span class="self">self</span>, opened: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><span class="kw-2">mut </span>bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.opened = <span class="prelude-val">Some</span>(opened);
+        <span class="self">self
+    </span>}
+
+    <span class="doccomment">/// Set the flags of the tab item.
+    ///
+    /// Flags are empty by default
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>flags(<span class="kw-2">mut </span><span class="self">self</span>, flags: TabItemFlags) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags = flags;
+        <span class="self">self
+    </span>}
+
+    <span class="attribute">#[must_use]
+    </span><span class="kw">pub fn </span>begin&lt;<span class="lifetime">&#39;ui</span>&gt;(<span class="self">self</span>, ui: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span>Ui&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; <span class="prelude-ty">Option</span>&lt;TabItemToken&lt;<span class="lifetime">&#39;ui</span>&gt;&gt; {
+        ui.tab_item_with_flags(<span class="self">self</span>.label, <span class="self">self</span>.opened, <span class="self">self</span>.flags)
     }
 
-    <span class="doccomment">/// Set the flags of the tab item.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Flags are empty by default</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">flags</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">flags</span>: <span class="ident">TabItemFlags</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span> <span class="op">=</span> <span class="ident">flags</span>;
-        <span class="self">self</span>
-    }
-
-    <span class="attribute">#[<span class="ident">must_use</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">begin</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">ui</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">TabItemToken</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="ident">ui</span>.<span class="ident">tab_item_with_flags</span>(<span class="self">self</span>.<span class="ident">label</span>, <span class="self">self</span>.<span class="ident">opened</span>, <span class="self">self</span>.<span class="ident">flags</span>)
-    }
-
-    <span class="doccomment">/// Creates a tab item and runs a closure to construct the contents.</span>
-    <span class="doccomment">/// Returns the result of the closure, if it is called.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Note: the closure is not called if the tab item is not selected</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build</span><span class="op">&lt;</span><span class="ident">R</span>, <span class="ident">F</span>: <span class="ident">FnOnce</span>() -&gt; <span class="ident">R</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">ui</span>: <span class="kw-2">&amp;</span><span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>, <span class="ident">f</span>: <span class="ident">F</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">R</span><span class="op">&gt;</span> {
-        <span class="self">self</span>.<span class="ident">begin</span>(<span class="ident">ui</span>).<span class="ident">map</span>(<span class="op">|</span><span class="ident">_tab</span><span class="op">|</span> <span class="ident">f</span>())
+    <span class="doccomment">/// Creates a tab item and runs a closure to construct the contents.
+    /// Returns the result of the closure, if it is called.
+    ///
+    /// Note: the closure is not called if the tab item is not selected
+    </span><span class="kw">pub fn </span>build&lt;R, F: FnOnce() -&gt; R&gt;(<span class="self">self</span>, ui: <span class="kw-2">&amp;</span>Ui&lt;<span class="lifetime">&#39;_</span>&gt;, f: F) -&gt; <span class="prelude-ty">Option</span>&lt;R&gt; {
+        <span class="self">self</span>.begin(ui).map(|_tab| f())
     }
 }
 
 <span class="macro">create_token!</span>(
-    <span class="doccomment">/// Tracks a tab bar item that can be ended by calling `.end()`</span>
-    <span class="doccomment">/// or by dropping</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">TabItemToken</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>;
+    <span class="doccomment">/// Tracks a tab bar item that can be ended by calling `.end()`
+    /// or by dropping
+    </span><span class="kw">pub struct </span>TabItemToken&lt;<span class="lifetime">&#39;ui</span>&gt;;
 
-    <span class="doccomment">/// Ends a tab bar item.</span>
-    <span class="ident">drop</span> { <span class="ident">sys::igEndTabItem</span>() }
+    <span class="doccomment">/// Ends a tab bar item.
+    </span>drop { sys::igEndTabItem() }
 );
 
-<span class="kw">impl</span> <span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Creates a tab bar and returns a tab bar token, allowing you to append</span>
-    <span class="doccomment">/// Tab items afterwards. This passes no flags. To pass flags explicitly,</span>
-    <span class="doccomment">/// use [tab_bar_with_flags](Self::tab_bar_with_flags).</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">tab_bar</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">id</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">TabBarToken</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="self">self</span>.<span class="ident">tab_bar_with_flags</span>(<span class="ident">id</span>, <span class="ident">TabBarFlags::empty</span>())
+<span class="kw">impl </span>Ui&lt;<span class="lifetime">&#39;_</span>&gt; {
+    <span class="doccomment">/// Creates a tab bar and returns a tab bar token, allowing you to append
+    /// Tab items afterwards. This passes no flags. To pass flags explicitly,
+    /// use [tab_bar_with_flags](Self::tab_bar_with_flags).
+    </span><span class="kw">pub fn </span>tab_bar(<span class="kw-2">&amp;</span><span class="self">self</span>, id: <span class="kw">impl </span>AsRef&lt;str&gt;) -&gt; <span class="prelude-ty">Option</span>&lt;TabBarToken&lt;<span class="lifetime">&#39;_</span>&gt;&gt; {
+        <span class="self">self</span>.tab_bar_with_flags(id, TabBarFlags::empty())
     }
-    <span class="comment">//</span>
-    <span class="doccomment">/// Creates a tab bar and returns a tab bar token, allowing you to append</span>
-    <span class="doccomment">/// Tab items afterwards.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">tab_bar_with_flags</span>(
+    <span class="comment">//
+    </span><span class="doccomment">/// Creates a tab bar and returns a tab bar token, allowing you to append
+    /// Tab items afterwards.
+    </span><span class="kw">pub fn </span>tab_bar_with_flags(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">id</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>,
-        <span class="ident">flags</span>: <span class="ident">TabBarFlags</span>,
-    ) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">TabBarToken</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="kw">let</span> <span class="ident">should_render</span> <span class="op">=</span>
-            <span class="kw">unsafe</span> { <span class="ident">sys::igBeginTabBar</span>(<span class="self">self</span>.<span class="ident">scratch_txt</span>(<span class="ident">id</span>), <span class="ident">flags</span>.<span class="ident">bits</span>() <span class="kw">as</span> <span class="ident">i32</span>) };
+        id: <span class="kw">impl </span>AsRef&lt;str&gt;,
+        flags: TabBarFlags,
+    ) -&gt; <span class="prelude-ty">Option</span>&lt;TabBarToken&lt;<span class="lifetime">&#39;_</span>&gt;&gt; {
+        <span class="kw">let </span>should_render =
+            <span class="kw">unsafe </span>{ sys::igBeginTabBar(<span class="self">self</span>.scratch_txt(id), flags.bits() <span class="kw">as </span>i32) };
 
-        <span class="kw">if</span> <span class="ident">should_render</span> {
-            <span class="prelude-val">Some</span>(<span class="ident">TabBarToken::new</span>(<span class="self">self</span>))
-        } <span class="kw">else</span> {
-            <span class="kw">unsafe</span> { <span class="ident">sys::igEndTabBar</span>() };
-            <span class="prelude-val">None</span>
-        }
+        <span class="kw">if </span>should_render {
+            <span class="prelude-val">Some</span>(TabBarToken::new(<span class="self">self</span>))
+        } <span class="kw">else </span>{
+            <span class="kw">unsafe </span>{ sys::igEndTabBar() };
+            <span class="prelude-val">None
+        </span>}
     }
 
-    <span class="doccomment">/// Creates a new tab item and returns a token if its contents are visible.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// By default, this doesn&#39;t pass an opened bool nor any flags. See [tab_item_with_opened]</span>
-    <span class="doccomment">/// and [tab_item_with_flags] for more.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [tab_item_with_opened]: Self::tab_item_with_opened</span>
-    <span class="doccomment">/// [tab_item_with_flags]: Self::tab_item_with_flags</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">tab_item</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">label</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">TabItemToken</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="self">self</span>.<span class="ident">tab_item_with_flags</span>(<span class="ident">label</span>, <span class="prelude-val">None</span>, <span class="ident">TabItemFlags::empty</span>())
+    <span class="doccomment">/// Creates a new tab item and returns a token if its contents are visible.
+    ///
+    /// By default, this doesn&#39;t pass an opened bool nor any flags. See [tab_item_with_opened]
+    /// and [tab_item_with_flags] for more.
+    ///
+    /// [tab_item_with_opened]: Self::tab_item_with_opened
+    /// [tab_item_with_flags]: Self::tab_item_with_flags
+    </span><span class="kw">pub fn </span>tab_item(<span class="kw-2">&amp;</span><span class="self">self</span>, label: <span class="kw">impl </span>AsRef&lt;str&gt;) -&gt; <span class="prelude-ty">Option</span>&lt;TabItemToken&lt;<span class="lifetime">&#39;_</span>&gt;&gt; {
+        <span class="self">self</span>.tab_item_with_flags(label, <span class="prelude-val">None</span>, TabItemFlags::empty())
     }
 
-    <span class="doccomment">/// Creates a new tab item and returns a token if its contents are visible.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// By default, this doesn&#39;t pass any flags. See `[tab_item_with_flags]` for more.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">tab_item_with_opened</span>(
+    <span class="doccomment">/// Creates a new tab item and returns a token if its contents are visible.
+    ///
+    /// By default, this doesn&#39;t pass any flags. See `[tab_item_with_flags]` for more.
+    </span><span class="kw">pub fn </span>tab_item_with_opened(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">label</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>,
-        <span class="ident">opened</span>: <span class="kw-2">&amp;mut</span> <span class="ident">bool</span>,
-    ) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">TabItemToken</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="self">self</span>.<span class="ident">tab_item_with_flags</span>(<span class="ident">label</span>, <span class="prelude-val">Some</span>(<span class="ident">opened</span>), <span class="ident">TabItemFlags::empty</span>())
+        label: <span class="kw">impl </span>AsRef&lt;str&gt;,
+        opened: <span class="kw-2">&amp;mut </span>bool,
+    ) -&gt; <span class="prelude-ty">Option</span>&lt;TabItemToken&lt;<span class="lifetime">&#39;_</span>&gt;&gt; {
+        <span class="self">self</span>.tab_item_with_flags(label, <span class="prelude-val">Some</span>(opened), TabItemFlags::empty())
     }
 
-    <span class="doccomment">/// Creates a new tab item and returns a token if its contents are visible.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">tab_item_with_flags</span>(
+    <span class="doccomment">/// Creates a new tab item and returns a token if its contents are visible.
+    </span><span class="kw">pub fn </span>tab_item_with_flags(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">label</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>,
-        <span class="ident">opened</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;mut</span> <span class="ident">bool</span><span class="op">&gt;</span>,
-        <span class="ident">flags</span>: <span class="ident">TabItemFlags</span>,
-    ) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">TabItemToken</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="kw">let</span> <span class="ident">should_render</span> <span class="op">=</span> <span class="kw">unsafe</span> {
-            <span class="ident">sys::igBeginTabItem</span>(
-                <span class="self">self</span>.<span class="ident">scratch_txt</span>(<span class="ident">label</span>),
-                <span class="ident">opened</span>.<span class="ident">map</span>(<span class="op">|</span><span class="ident">x</span><span class="op">|</span> <span class="ident">x</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">bool</span>).<span class="ident">unwrap_or</span>(<span class="ident">ptr::null_mut</span>()),
-                <span class="ident">flags</span>.<span class="ident">bits</span>() <span class="kw">as</span> <span class="ident">i32</span>,
+        label: <span class="kw">impl </span>AsRef&lt;str&gt;,
+        opened: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;mut </span>bool&gt;,
+        flags: TabItemFlags,
+    ) -&gt; <span class="prelude-ty">Option</span>&lt;TabItemToken&lt;<span class="lifetime">&#39;_</span>&gt;&gt; {
+        <span class="kw">let </span>should_render = <span class="kw">unsafe </span>{
+            sys::igBeginTabItem(
+                <span class="self">self</span>.scratch_txt(label),
+                opened.map(|x| x <span class="kw">as </span><span class="kw-2">*mut </span>bool).unwrap_or(ptr::null_mut()),
+                flags.bits() <span class="kw">as </span>i32,
             )
         };
 
-        <span class="kw">if</span> <span class="ident">should_render</span> {
-            <span class="prelude-val">Some</span>(<span class="ident">TabItemToken::new</span>(<span class="self">self</span>))
-        } <span class="kw">else</span> {
-            <span class="prelude-val">None</span>
-        }
+        <span class="kw">if </span>should_render {
+            <span class="prelude-val">Some</span>(TabItemToken::new(<span class="self">self</span>))
+        } <span class="kw">else </span>{
+            <span class="prelude-val">None
+        </span>}
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="arcdps_imgui" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="arcdps_imgui" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.0 (69f9c33d7 2022-12-12)" ></div></body></html>

@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\arcdps-imgui-0.8.0\src\color.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>color.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script><script defer src="../../main.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../arcdps_imgui/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../arcdps_imgui/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../arcdps_imgui/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\arcdps-imgui-0.8.0\src\color.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>color.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../normalize.css"><link rel="stylesheet" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../ayu.css" disabled><link rel="stylesheet" href="../../dark.css" disabled><link rel="stylesheet" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script><script defer src="../../main.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../arcdps_imgui/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -368,375 +368,375 @@
 <span id="368">368</span>
 <span id="369">369</span>
 <span id="370">370</span>
-</pre><pre class="rust"><code><span class="doccomment">/// Wraps u32 that represents a packed RGBA color. Mostly used by types in the</span>
-<span class="doccomment">/// low level custom drawing API, such as [`DrawListMut`](crate::DrawListMut).</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// The bits of a color are in &quot;`0xAABBGGRR`&quot; format (e.g. RGBA as little endian</span>
-<span class="doccomment">/// bytes). For clarity: we don&#39;t support an equivalent to the</span>
-<span class="doccomment">/// `IMGUI_USE_BGRA_PACKED_COLOR` define.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// This used to be named `ImColor32`, but was renamed to avoid confusion with</span>
-<span class="doccomment">/// the type with that name in the C++ API (which uses 32 bits per channel).</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// While it doesn&#39;t provide methods to access the fields, they can be accessed</span>
-<span class="doccomment">/// via the `Deref`/`DerefMut` impls it provides targeting</span>
-<span class="doccomment">/// [`imgui::color::ImColor32Fields`](crate::color::ImColor32Fields), which has</span>
-<span class="doccomment">/// no other meaningful uses.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # Example</span>
-<span class="doccomment">/// ```</span>
-<span class="doccomment">/// let mut c = arcdps_imgui::ImColor32::from_rgba(0x80, 0xc0, 0x40, 0xff);</span>
-<span class="doccomment">/// assert_eq!(c.to_bits(), 0xff_40_c0_80); // Note: 0xAA_BB_GG_RR</span>
-<span class="doccomment">/// // Field access</span>
-<span class="doccomment">/// assert_eq!(c.r, 0x80);</span>
-<span class="doccomment">/// assert_eq!(c.g, 0xc0);</span>
-<span class="doccomment">/// assert_eq!(c.b, 0x40);</span>
-<span class="doccomment">/// assert_eq!(c.a, 0xff);</span>
-<span class="doccomment">/// c.b = 0xbb;</span>
-<span class="doccomment">/// assert_eq!(c.to_bits(), 0xff_bb_c0_80);</span>
-<span class="doccomment">/// ```</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Eq</span>, <span class="ident">PartialEq</span>, <span class="ident">Ord</span>, <span class="ident">PartialOrd</span>, <span class="ident">Hash</span>)]</span>
-<span class="attribute">#[<span class="ident">repr</span>(<span class="ident">transparent</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">ImColor32</span>(<span class="ident">u32</span>); <span class="comment">// TBH maybe the wrapped field should be `pub`.</span>
+</pre><pre class="rust"><code><span class="doccomment">/// Wraps u32 that represents a packed RGBA color. Mostly used by types in the
+/// low level custom drawing API, such as [`DrawListMut`](crate::DrawListMut).
+///
+/// The bits of a color are in &quot;`0xAABBGGRR`&quot; format (e.g. RGBA as little endian
+/// bytes). For clarity: we don&#39;t support an equivalent to the
+/// `IMGUI_USE_BGRA_PACKED_COLOR` define.
+///
+/// This used to be named `ImColor32`, but was renamed to avoid confusion with
+/// the type with that name in the C++ API (which uses 32 bits per channel).
+///
+/// While it doesn&#39;t provide methods to access the fields, they can be accessed
+/// via the `Deref`/`DerefMut` impls it provides targeting
+/// [`imgui::color::ImColor32Fields`](crate::color::ImColor32Fields), which has
+/// no other meaningful uses.
+///
+/// # Example
+/// ```
+/// let mut c = arcdps_imgui::ImColor32::from_rgba(0x80, 0xc0, 0x40, 0xff);
+/// assert_eq!(c.to_bits(), 0xff_40_c0_80); // Note: 0xAA_BB_GG_RR
+/// // Field access
+/// assert_eq!(c.r, 0x80);
+/// assert_eq!(c.g, 0xc0);
+/// assert_eq!(c.b, 0x40);
+/// assert_eq!(c.a, 0xff);
+/// c.b = 0xbb;
+/// assert_eq!(c.to_bits(), 0xff_bb_c0_80);
+/// ```
+</span><span class="attribute">#[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+#[repr(transparent)]
+</span><span class="kw">pub struct </span>ImColor32(u32); <span class="comment">// TBH maybe the wrapped field should be `pub`.
 
-<span class="kw">impl</span> <span class="ident">ImColor32</span> {
-    <span class="doccomment">/// Convenience constant for solid black.</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">BLACK</span>: <span class="self">Self</span> <span class="op">=</span> <span class="self">Self</span>(<span class="number">0xff_00_00_00</span>);
+</span><span class="kw">impl </span>ImColor32 {
+    <span class="doccomment">/// Convenience constant for solid black.
+    </span><span class="kw">pub const </span>BLACK: <span class="self">Self </span>= <span class="self">Self</span>(<span class="number">0xff_00_00_00</span>);
 
-    <span class="doccomment">/// Convenience constant for solid white.</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">WHITE</span>: <span class="self">Self</span> <span class="op">=</span> <span class="self">Self</span>(<span class="number">0xff_ff_ff_ff</span>);
+    <span class="doccomment">/// Convenience constant for solid white.
+    </span><span class="kw">pub const </span>WHITE: <span class="self">Self </span>= <span class="self">Self</span>(<span class="number">0xff_ff_ff_ff</span>);
 
-    <span class="doccomment">/// Convenience constant for full transparency.</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TRANSPARENT</span>: <span class="self">Self</span> <span class="op">=</span> <span class="self">Self</span>(<span class="number">0</span>);
+    <span class="doccomment">/// Convenience constant for full transparency.
+    </span><span class="kw">pub const </span>TRANSPARENT: <span class="self">Self </span>= <span class="self">Self</span>(<span class="number">0</span>);
 
-    <span class="doccomment">/// Construct a color from 4 single-byte `u8` channel values, which should</span>
-    <span class="doccomment">/// be between 0 and 255.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">from_rgba</span>(<span class="ident">r</span>: <span class="ident">u8</span>, <span class="ident">g</span>: <span class="ident">u8</span>, <span class="ident">b</span>: <span class="ident">u8</span>, <span class="ident">a</span>: <span class="ident">u8</span>) -&gt; <span class="self">Self</span> {
+    <span class="doccomment">/// Construct a color from 4 single-byte `u8` channel values, which should
+    /// be between 0 and 255.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub const fn </span>from_rgba(r: u8, g: u8, b: u8, a: u8) -&gt; <span class="self">Self </span>{
         <span class="self">Self</span>(
-            ((<span class="ident">a</span> <span class="kw">as</span> <span class="ident">u32</span>) <span class="op">&lt;</span><span class="op">&lt;</span> <span class="ident"><span class="self">Self</span>::A_SHIFT</span>)
-                <span class="op">|</span> ((<span class="ident">r</span> <span class="kw">as</span> <span class="ident">u32</span>) <span class="op">&lt;</span><span class="op">&lt;</span> <span class="ident"><span class="self">Self</span>::R_SHIFT</span>)
-                <span class="op">|</span> ((<span class="ident">g</span> <span class="kw">as</span> <span class="ident">u32</span>) <span class="op">&lt;</span><span class="op">&lt;</span> <span class="ident"><span class="self">Self</span>::G_SHIFT</span>)
-                <span class="op">|</span> ((<span class="ident">b</span> <span class="kw">as</span> <span class="ident">u32</span>) <span class="op">&lt;</span><span class="op">&lt;</span> <span class="ident"><span class="self">Self</span>::B_SHIFT</span>),
+            ((a <span class="kw">as </span>u32) &lt;&lt; <span class="self">Self</span>::A_SHIFT)
+                | ((r <span class="kw">as </span>u32) &lt;&lt; <span class="self">Self</span>::R_SHIFT)
+                | ((g <span class="kw">as </span>u32) &lt;&lt; <span class="self">Self</span>::G_SHIFT)
+                | ((b <span class="kw">as </span>u32) &lt;&lt; <span class="self">Self</span>::B_SHIFT),
         )
     }
 
-    <span class="doccomment">/// Construct a fully opaque color from 3 single-byte `u8` channel values.</span>
-    <span class="doccomment">/// Same as [`Self::from_rgba`] with a == 255</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">from_rgb</span>(<span class="ident">r</span>: <span class="ident">u8</span>, <span class="ident">g</span>: <span class="ident">u8</span>, <span class="ident">b</span>: <span class="ident">u8</span>) -&gt; <span class="self">Self</span> {
-        <span class="ident"><span class="self">Self</span>::from_rgba</span>(<span class="ident">r</span>, <span class="ident">g</span>, <span class="ident">b</span>, <span class="number">0xff</span>)
+    <span class="doccomment">/// Construct a fully opaque color from 3 single-byte `u8` channel values.
+    /// Same as [`Self::from_rgba`] with a == 255
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub const fn </span>from_rgb(r: u8, g: u8, b: u8) -&gt; <span class="self">Self </span>{
+        <span class="self">Self</span>::from_rgba(r, g, b, <span class="number">0xff</span>)
     }
 
-    <span class="doccomment">/// Construct a fully opaque color from 4 `f32` channel values in the range</span>
-    <span class="doccomment">/// `0.0 ..= 1.0` (values outside this range are clamped to it, with NaN</span>
-    <span class="doccomment">/// mapped to 0.0).</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Note: No alpha premultiplication is done, so your input should be have</span>
-    <span class="doccomment">/// premultiplied alpha if needed.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="comment">// not const fn because no float math in const eval yet 😩</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_rgba_f32s</span>(<span class="ident">r</span>: <span class="ident">f32</span>, <span class="ident">g</span>: <span class="ident">f32</span>, <span class="ident">b</span>: <span class="ident">f32</span>, <span class="ident">a</span>: <span class="ident">f32</span>) -&gt; <span class="self">Self</span> {
-        <span class="ident"><span class="self">Self</span>::from_rgba</span>(
-            <span class="ident">f32_to_u8_sat</span>(<span class="ident">r</span>),
-            <span class="ident">f32_to_u8_sat</span>(<span class="ident">g</span>),
-            <span class="ident">f32_to_u8_sat</span>(<span class="ident">b</span>),
-            <span class="ident">f32_to_u8_sat</span>(<span class="ident">a</span>),
+    <span class="doccomment">/// Construct a fully opaque color from 4 `f32` channel values in the range
+    /// `0.0 ..= 1.0` (values outside this range are clamped to it, with NaN
+    /// mapped to 0.0).
+    ///
+    /// Note: No alpha premultiplication is done, so your input should be have
+    /// premultiplied alpha if needed.
+    </span><span class="attribute">#[inline]
+    </span><span class="comment">// not const fn because no float math in const eval yet 😩
+    </span><span class="kw">pub fn </span>from_rgba_f32s(r: f32, g: f32, b: f32, a: f32) -&gt; <span class="self">Self </span>{
+        <span class="self">Self</span>::from_rgba(
+            f32_to_u8_sat(r),
+            f32_to_u8_sat(g),
+            f32_to_u8_sat(b),
+            f32_to_u8_sat(a),
         )
     }
 
-    <span class="doccomment">/// Return the channels as an array of f32 in `[r, g, b, a]` order.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">to_rgba_f32s</span>(<span class="self">self</span>) -&gt; [<span class="ident">f32</span>; <span class="number">4</span>] {
-        <span class="kw">let</span> <span class="kw-2">&amp;</span><span class="ident">ImColor32Fields</span> { <span class="ident">r</span>, <span class="ident">g</span>, <span class="ident">b</span>, <span class="ident">a</span> } <span class="op">=</span> <span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="self">self</span>;
+    <span class="doccomment">/// Return the channels as an array of f32 in `[r, g, b, a]` order.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>to_rgba_f32s(<span class="self">self</span>) -&gt; [f32; <span class="number">4</span>] {
+        <span class="kw">let </span><span class="kw-2">&amp;</span>ImColor32Fields { r, g, b, a } = <span class="kw-2">&amp;*</span><span class="self">self</span>;
         [
-            <span class="ident">u8_to_f32_sat</span>(<span class="ident">r</span>),
-            <span class="ident">u8_to_f32_sat</span>(<span class="ident">g</span>),
-            <span class="ident">u8_to_f32_sat</span>(<span class="ident">b</span>),
-            <span class="ident">u8_to_f32_sat</span>(<span class="ident">a</span>),
+            u8_to_f32_sat(r),
+            u8_to_f32_sat(g),
+            u8_to_f32_sat(b),
+            u8_to_f32_sat(a),
         ]
     }
 
-    <span class="doccomment">/// Return the channels as an array of u8 in `[r, g, b, a]` order.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">to_rgba</span>(<span class="self">self</span>) -&gt; [<span class="ident">u8</span>; <span class="number">4</span>] {
-        <span class="kw">let</span> <span class="kw-2">&amp;</span><span class="ident">ImColor32Fields</span> { <span class="ident">r</span>, <span class="ident">g</span>, <span class="ident">b</span>, <span class="ident">a</span> } <span class="op">=</span> <span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="self">self</span>;
-        [<span class="ident">r</span>, <span class="ident">g</span>, <span class="ident">b</span>, <span class="ident">a</span>]
+    <span class="doccomment">/// Return the channels as an array of u8 in `[r, g, b, a]` order.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>to_rgba(<span class="self">self</span>) -&gt; [u8; <span class="number">4</span>] {
+        <span class="kw">let </span><span class="kw-2">&amp;</span>ImColor32Fields { r, g, b, a } = <span class="kw-2">&amp;*</span><span class="self">self</span>;
+        [r, g, b, a]
     }
 
-    <span class="doccomment">/// Equivalent to [`Self::from_rgba_f32s`], but with an alpha of 1.0 (e.g.</span>
-    <span class="doccomment">/// opaque).</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_rgb_f32s</span>(<span class="ident">r</span>: <span class="ident">f32</span>, <span class="ident">g</span>: <span class="ident">f32</span>, <span class="ident">b</span>: <span class="ident">f32</span>) -&gt; <span class="self">Self</span> {
-        <span class="ident"><span class="self">Self</span>::from_rgba</span>(<span class="ident">f32_to_u8_sat</span>(<span class="ident">r</span>), <span class="ident">f32_to_u8_sat</span>(<span class="ident">g</span>), <span class="ident">f32_to_u8_sat</span>(<span class="ident">b</span>), <span class="number">0xff</span>)
+    <span class="doccomment">/// Equivalent to [`Self::from_rgba_f32s`], but with an alpha of 1.0 (e.g.
+    /// opaque).
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>from_rgb_f32s(r: f32, g: f32, b: f32) -&gt; <span class="self">Self </span>{
+        <span class="self">Self</span>::from_rgba(f32_to_u8_sat(r), f32_to_u8_sat(g), f32_to_u8_sat(b), <span class="number">0xff</span>)
     }
 
-    <span class="doccomment">/// Construct a color from the `u32` that makes up the bits in `0xAABBGGRR`</span>
-    <span class="doccomment">/// format.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Specifically, this takes the RGBA values as a little-endian u32 with 8</span>
-    <span class="doccomment">/// bits per channel.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Note that [`ImColor32::from_rgba`] may be a bit easier to use.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">from_bits</span>(<span class="ident">u</span>: <span class="ident">u32</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">Self</span>(<span class="ident">u</span>)
+    <span class="doccomment">/// Construct a color from the `u32` that makes up the bits in `0xAABBGGRR`
+    /// format.
+    ///
+    /// Specifically, this takes the RGBA values as a little-endian u32 with 8
+    /// bits per channel.
+    ///
+    /// Note that [`ImColor32::from_rgba`] may be a bit easier to use.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub const fn </span>from_bits(u: u32) -&gt; <span class="self">Self </span>{
+        <span class="self">Self</span>(u)
     }
 
-    <span class="doccomment">/// Return the bits of the color as a u32. These are in &quot;`0xAABBGGRR`&quot; format, that</span>
-    <span class="doccomment">/// is, little-endian RGBA with 8 bits per channel.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">to_bits</span>(<span class="self">self</span>) -&gt; <span class="ident">u32</span> {
-        <span class="self">self</span>.<span class="number">0</span>
-    }
+    <span class="doccomment">/// Return the bits of the color as a u32. These are in &quot;`0xAABBGGRR`&quot; format, that
+    /// is, little-endian RGBA with 8 bits per channel.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub const fn </span>to_bits(<span class="self">self</span>) -&gt; u32 {
+        <span class="self">self</span>.<span class="number">0
+    </span>}
 
-    <span class="comment">// These are public in C++ ImGui, should they be public here?</span>
-    <span class="doccomment">/// The number of bits to shift the byte of the red channel. Always 0.</span>
-    <span class="kw">const</span> <span class="ident">R_SHIFT</span>: <span class="ident">u32</span> <span class="op">=</span> <span class="number">0</span>;
-    <span class="doccomment">/// The number of bits to shift the byte of the green channel. Always 8.</span>
-    <span class="kw">const</span> <span class="ident">G_SHIFT</span>: <span class="ident">u32</span> <span class="op">=</span> <span class="number">8</span>;
-    <span class="doccomment">/// The number of bits to shift the byte of the blue channel. Always 16.</span>
-    <span class="kw">const</span> <span class="ident">B_SHIFT</span>: <span class="ident">u32</span> <span class="op">=</span> <span class="number">16</span>;
-    <span class="doccomment">/// The number of bits to shift the byte of the alpha channel. Always 24.</span>
-    <span class="kw">const</span> <span class="ident">A_SHIFT</span>: <span class="ident">u32</span> <span class="op">=</span> <span class="number">24</span>;
+    <span class="comment">// These are public in C++ ImGui, should they be public here?
+    </span><span class="doccomment">/// The number of bits to shift the byte of the red channel. Always 0.
+    </span><span class="kw">const </span>R_SHIFT: u32 = <span class="number">0</span>;
+    <span class="doccomment">/// The number of bits to shift the byte of the green channel. Always 8.
+    </span><span class="kw">const </span>G_SHIFT: u32 = <span class="number">8</span>;
+    <span class="doccomment">/// The number of bits to shift the byte of the blue channel. Always 16.
+    </span><span class="kw">const </span>B_SHIFT: u32 = <span class="number">16</span>;
+    <span class="doccomment">/// The number of bits to shift the byte of the alpha channel. Always 24.
+    </span><span class="kw">const </span>A_SHIFT: u32 = <span class="number">24</span>;
 }
 
-<span class="kw">impl</span> <span class="ident">Default</span> <span class="kw">for</span> <span class="ident">ImColor32</span> {
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">default</span>() -&gt; <span class="self">Self</span> {
-        <span class="ident"><span class="self">Self</span>::TRANSPARENT</span>
-    }
-}
-
-<span class="kw">impl</span> <span class="ident">std::fmt::Debug</span> <span class="kw">for</span> <span class="ident">ImColor32</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;mut</span> <span class="ident">std::fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">std::fmt::Result</span> {
-        <span class="ident">f</span>.<span class="ident">debug_struct</span>(<span class="string">&quot;ImColor32&quot;</span>)
-            .<span class="ident">field</span>(<span class="string">&quot;r&quot;</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">r</span>)
-            .<span class="ident">field</span>(<span class="string">&quot;g&quot;</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">g</span>)
-            .<span class="ident">field</span>(<span class="string">&quot;b&quot;</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">b</span>)
-            .<span class="ident">field</span>(<span class="string">&quot;a&quot;</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">a</span>)
-            .<span class="ident">finish</span>()
+<span class="kw">impl </span>Default <span class="kw">for </span>ImColor32 {
+    <span class="attribute">#[inline]
+    </span><span class="kw">fn </span>default() -&gt; <span class="self">Self </span>{
+        <span class="self">Self</span>::TRANSPARENT
     }
 }
 
-<span class="doccomment">/// A struct that exists to allow field access to [`ImColor32`]. It essentially</span>
-<span class="doccomment">/// exists to be a `Deref`/`DerefMut` target and provide field access.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// Note that while this is repr(C), be aware that on big-endian machines</span>
-<span class="doccomment">/// (`cfg(target_endian = &quot;big&quot;)`) the order of the fields is reversed, as this</span>
-<span class="doccomment">/// is a view into a packed u32.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// Generally should not be used, except as the target of the `Deref` impl of</span>
-<span class="doccomment">/// [`ImColor32`].</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Debug</span>)]</span>
-<span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>, <span class="ident">align</span>(<span class="number">4</span>))]</span>
-<span class="comment">// Should this be #[non_exhaustive] to discourage direct use?</span>
-<span class="attribute">#[<span class="ident">rustfmt::skip</span>]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">ImColor32Fields</span> {
-    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">target_endian</span> <span class="op">=</span> <span class="string">&quot;little&quot;</span>)]</span> <span class="kw">pub</span> <span class="ident">r</span>: <span class="ident">u8</span>,
-    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">target_endian</span> <span class="op">=</span> <span class="string">&quot;little&quot;</span>)]</span> <span class="kw">pub</span> <span class="ident">g</span>: <span class="ident">u8</span>,
-    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">target_endian</span> <span class="op">=</span> <span class="string">&quot;little&quot;</span>)]</span> <span class="kw">pub</span> <span class="ident">b</span>: <span class="ident">u8</span>,
-    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">target_endian</span> <span class="op">=</span> <span class="string">&quot;little&quot;</span>)]</span> <span class="kw">pub</span> <span class="ident">a</span>: <span class="ident">u8</span>,
-    <span class="comment">// TODO(someday): i guess we should have BE tests, but for now I verified</span>
-    <span class="comment">// this locally.</span>
-    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">target_endian</span> <span class="op">=</span> <span class="string">&quot;big&quot;</span>)]</span> <span class="kw">pub</span> <span class="ident">a</span>: <span class="ident">u8</span>,
-    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">target_endian</span> <span class="op">=</span> <span class="string">&quot;big&quot;</span>)]</span> <span class="kw">pub</span> <span class="ident">b</span>: <span class="ident">u8</span>,
-    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">target_endian</span> <span class="op">=</span> <span class="string">&quot;big&quot;</span>)]</span> <span class="kw">pub</span> <span class="ident">g</span>: <span class="ident">u8</span>,
-    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">target_endian</span> <span class="op">=</span> <span class="string">&quot;big&quot;</span>)]</span> <span class="kw">pub</span> <span class="ident">r</span>: <span class="ident">u8</span>,
-}
-
-<span class="comment">// We assume that big and little are the only endiannesses, and that exactly one</span>
-<span class="comment">// is set. That is, PDP endian is not in use, and the we aren&#39;t using a</span>
-<span class="comment">// completely broken custom target json or something.</span>
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(
-    <span class="ident">all</span>(<span class="ident">target_endian</span> <span class="op">=</span> <span class="string">&quot;little&quot;</span>, <span class="ident">target_endian</span> <span class="op">=</span> <span class="string">&quot;big&quot;</span>),
-    <span class="ident">all</span>(<span class="ident">not</span>(<span class="ident">target_endian</span> <span class="op">=</span> <span class="string">&quot;little&quot;</span>), <span class="ident">not</span>(<span class="ident">target_endian</span> <span class="op">=</span> <span class="string">&quot;big&quot;</span>)),
-))]</span>
-<span class="macro">compile_error!</span>(<span class="string">&quot;`cfg(target_endian = \&quot;little\&quot;)` must be `cfg(not(target_endian = \&quot;big\&quot;)`&quot;</span>);
-
-<span class="comment">// static assert sizes match</span>
-<span class="kw">const</span> <span class="kw">_</span>: [(); <span class="ident">core::mem::size_of</span>::<span class="op">&lt;</span><span class="ident">ImColor32</span><span class="op">&gt;</span>()] <span class="op">=</span> [(); <span class="ident">core::mem::size_of</span>::<span class="op">&lt;</span><span class="ident">ImColor32Fields</span><span class="op">&gt;</span>()];
-<span class="kw">const</span> <span class="kw">_</span>: [(); <span class="ident">core::mem::align_of</span>::<span class="op">&lt;</span><span class="ident">ImColor32</span><span class="op">&gt;</span>()] <span class="op">=</span> [(); <span class="ident">core::mem::align_of</span>::<span class="op">&lt;</span><span class="ident">ImColor32Fields</span><span class="op">&gt;</span>()];
-
-<span class="kw">impl</span> <span class="ident">core::ops::Deref</span> <span class="kw">for</span> <span class="ident">ImColor32</span> {
-    <span class="kw">type</span> <span class="ident">Target</span> <span class="op">=</span> <span class="ident">ImColor32Fields</span>;
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">deref</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="ident">ImColor32Fields</span> {
-        <span class="comment">// Safety: we statically assert the size and align match, and neither</span>
-        <span class="comment">// type has any special invariants.</span>
-        <span class="kw">unsafe</span> { <span class="kw-2">&amp;</span><span class="kw-2">*</span>(<span class="self">self</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="self">Self</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">ImColor32Fields</span>) }
-    }
-}
-<span class="kw">impl</span> <span class="ident">core::ops::DerefMut</span> <span class="kw">for</span> <span class="ident">ImColor32</span> {
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">deref_mut</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="kw-2">&amp;mut</span> <span class="ident">ImColor32Fields</span> {
-        <span class="comment">// Safety: we statically assert the size and align match, and neither</span>
-        <span class="comment">// type has any special invariants.</span>
-        <span class="kw">unsafe</span> { <span class="kw-2">&amp;mut</span> <span class="kw-2">*</span>(<span class="self">self</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="self">Self</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">ImColor32Fields</span>) }
+<span class="kw">impl </span>std::fmt::Debug <span class="kw">for </span>ImColor32 {
+    <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>std::fmt::Formatter&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; std::fmt::Result {
+        f.debug_struct(<span class="string">&quot;ImColor32&quot;</span>)
+            .field(<span class="string">&quot;r&quot;</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.r)
+            .field(<span class="string">&quot;g&quot;</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.g)
+            .field(<span class="string">&quot;b&quot;</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.b)
+            .field(<span class="string">&quot;a&quot;</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.a)
+            .finish()
     }
 }
 
-<span class="kw">impl</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">ImColor32</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">u32</span> {
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">color</span>: <span class="ident">ImColor32</span>) -&gt; <span class="self">Self</span> {
-        <span class="ident">color</span>.<span class="number">0</span>
+<span class="doccomment">/// A struct that exists to allow field access to [`ImColor32`]. It essentially
+/// exists to be a `Deref`/`DerefMut` target and provide field access.
+///
+/// Note that while this is repr(C), be aware that on big-endian machines
+/// (`cfg(target_endian = &quot;big&quot;)`) the order of the fields is reversed, as this
+/// is a view into a packed u32.
+///
+/// Generally should not be used, except as the target of the `Deref` impl of
+/// [`ImColor32`].
+</span><span class="attribute">#[derive(Copy, Clone, Debug)]
+#[repr(C, align(<span class="number">4</span>))]
+</span><span class="comment">// Should this be #[non_exhaustive] to discourage direct use?
+</span><span class="attribute">#[rustfmt::skip]
+</span><span class="kw">pub struct </span>ImColor32Fields {
+    <span class="attribute">#[cfg(target_endian = <span class="string">&quot;little&quot;</span>)] </span><span class="kw">pub </span>r: u8,
+    <span class="attribute">#[cfg(target_endian = <span class="string">&quot;little&quot;</span>)] </span><span class="kw">pub </span>g: u8,
+    <span class="attribute">#[cfg(target_endian = <span class="string">&quot;little&quot;</span>)] </span><span class="kw">pub </span>b: u8,
+    <span class="attribute">#[cfg(target_endian = <span class="string">&quot;little&quot;</span>)] </span><span class="kw">pub </span>a: u8,
+    <span class="comment">// TODO(someday): i guess we should have BE tests, but for now I verified
+    // this locally.
+    </span><span class="attribute">#[cfg(target_endian = <span class="string">&quot;big&quot;</span>)] </span><span class="kw">pub </span>a: u8,
+    <span class="attribute">#[cfg(target_endian = <span class="string">&quot;big&quot;</span>)] </span><span class="kw">pub </span>b: u8,
+    <span class="attribute">#[cfg(target_endian = <span class="string">&quot;big&quot;</span>)] </span><span class="kw">pub </span>g: u8,
+    <span class="attribute">#[cfg(target_endian = <span class="string">&quot;big&quot;</span>)] </span><span class="kw">pub </span>r: u8,
+}
+
+<span class="comment">// We assume that big and little are the only endiannesses, and that exactly one
+// is set. That is, PDP endian is not in use, and the we aren&#39;t using a
+// completely broken custom target json or something.
+</span><span class="attribute">#[cfg(any(
+    all(target_endian = <span class="string">&quot;little&quot;</span>, target_endian = <span class="string">&quot;big&quot;</span>),
+    all(not(target_endian = <span class="string">&quot;little&quot;</span>), not(target_endian = <span class="string">&quot;big&quot;</span>)),
+))]
+</span><span class="macro">compile_error!</span>(<span class="string">&quot;`cfg(target_endian = \&quot;little\&quot;)` must be `cfg(not(target_endian = \&quot;big\&quot;)`&quot;</span>);
+
+<span class="comment">// static assert sizes match
+</span><span class="kw">const _</span>: [(); core::mem::size_of::&lt;ImColor32&gt;()] = [(); core::mem::size_of::&lt;ImColor32Fields&gt;()];
+<span class="kw">const _</span>: [(); core::mem::align_of::&lt;ImColor32&gt;()] = [(); core::mem::align_of::&lt;ImColor32Fields&gt;()];
+
+<span class="kw">impl </span>core::ops::Deref <span class="kw">for </span>ImColor32 {
+    <span class="kw">type </span>Target = ImColor32Fields;
+    <span class="attribute">#[inline]
+    </span><span class="kw">fn </span>deref(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>ImColor32Fields {
+        <span class="comment">// Safety: we statically assert the size and align match, and neither
+        // type has any special invariants.
+        </span><span class="kw">unsafe </span>{ <span class="kw-2">&amp;*</span>(<span class="self">self </span><span class="kw">as </span><span class="kw-2">*const </span><span class="self">Self </span><span class="kw">as </span><span class="kw-2">*const </span>ImColor32Fields) }
+    }
+}
+<span class="kw">impl </span>core::ops::DerefMut <span class="kw">for </span>ImColor32 {
+    <span class="attribute">#[inline]
+    </span><span class="kw">fn </span>deref_mut(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;mut </span>ImColor32Fields {
+        <span class="comment">// Safety: we statically assert the size and align match, and neither
+        // type has any special invariants.
+        </span><span class="kw">unsafe </span>{ <span class="kw-2">&amp;mut *</span>(<span class="self">self </span><span class="kw">as </span><span class="kw-2">*mut </span><span class="self">Self </span><span class="kw">as </span><span class="kw-2">*mut </span>ImColor32Fields) }
     }
 }
 
-<span class="kw">impl</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">u32</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">ImColor32</span> {
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">color</span>: <span class="ident">u32</span>) -&gt; <span class="self">Self</span> {
-        <span class="ident">ImColor32</span>(<span class="ident">color</span>)
+<span class="kw">impl </span>From&lt;ImColor32&gt; <span class="kw">for </span>u32 {
+    <span class="attribute">#[inline]
+    </span><span class="kw">fn </span>from(color: ImColor32) -&gt; <span class="self">Self </span>{
+        color.<span class="number">0
+    </span>}
+}
+
+<span class="kw">impl </span>From&lt;u32&gt; <span class="kw">for </span>ImColor32 {
+    <span class="attribute">#[inline]
+    </span><span class="kw">fn </span>from(color: u32) -&gt; <span class="self">Self </span>{
+        ImColor32(color)
     }
 }
 
-<span class="kw">impl</span> <span class="ident">From</span><span class="op">&lt;</span>[<span class="ident">f32</span>; <span class="number">4</span>]<span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">ImColor32</span> {
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">v</span>: [<span class="ident">f32</span>; <span class="number">4</span>]) -&gt; <span class="self">Self</span> {
-        <span class="ident"><span class="self">Self</span>::from_rgba_f32s</span>(<span class="ident">v</span>[<span class="number">0</span>], <span class="ident">v</span>[<span class="number">1</span>], <span class="ident">v</span>[<span class="number">2</span>], <span class="ident">v</span>[<span class="number">3</span>])
+<span class="kw">impl </span>From&lt;[f32; <span class="number">4</span>]&gt; <span class="kw">for </span>ImColor32 {
+    <span class="attribute">#[inline]
+    </span><span class="kw">fn </span>from(v: [f32; <span class="number">4</span>]) -&gt; <span class="self">Self </span>{
+        <span class="self">Self</span>::from_rgba_f32s(v[<span class="number">0</span>], v[<span class="number">1</span>], v[<span class="number">2</span>], v[<span class="number">3</span>])
     }
 }
 
-<span class="kw">impl</span> <span class="ident">From</span><span class="op">&lt;</span>(<span class="ident">f32</span>, <span class="ident">f32</span>, <span class="ident">f32</span>, <span class="ident">f32</span>)<span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">ImColor32</span> {
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">v</span>: (<span class="ident">f32</span>, <span class="ident">f32</span>, <span class="ident">f32</span>, <span class="ident">f32</span>)) -&gt; <span class="self">Self</span> {
-        <span class="ident"><span class="self">Self</span>::from_rgba_f32s</span>(<span class="ident">v</span>.<span class="number">0</span>, <span class="ident">v</span>.<span class="number">1</span>, <span class="ident">v</span>.<span class="number">2</span>, <span class="ident">v</span>.<span class="number">3</span>)
+<span class="kw">impl </span>From&lt;(f32, f32, f32, f32)&gt; <span class="kw">for </span>ImColor32 {
+    <span class="attribute">#[inline]
+    </span><span class="kw">fn </span>from(v: (f32, f32, f32, f32)) -&gt; <span class="self">Self </span>{
+        <span class="self">Self</span>::from_rgba_f32s(v.<span class="number">0</span>, v.<span class="number">1</span>, v.<span class="number">2</span>, v.<span class="number">3</span>)
     }
 }
 
-<span class="kw">impl</span> <span class="ident">From</span><span class="op">&lt;</span>[<span class="ident">f32</span>; <span class="number">3</span>]<span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">ImColor32</span> {
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">v</span>: [<span class="ident">f32</span>; <span class="number">3</span>]) -&gt; <span class="self">Self</span> {
-        <span class="ident"><span class="self">Self</span>::from_rgb_f32s</span>(<span class="ident">v</span>[<span class="number">0</span>], <span class="ident">v</span>[<span class="number">1</span>], <span class="ident">v</span>[<span class="number">2</span>])
+<span class="kw">impl </span>From&lt;[f32; <span class="number">3</span>]&gt; <span class="kw">for </span>ImColor32 {
+    <span class="attribute">#[inline]
+    </span><span class="kw">fn </span>from(v: [f32; <span class="number">3</span>]) -&gt; <span class="self">Self </span>{
+        <span class="self">Self</span>::from_rgb_f32s(v[<span class="number">0</span>], v[<span class="number">1</span>], v[<span class="number">2</span>])
     }
 }
 
-<span class="kw">impl</span> <span class="ident">From</span><span class="op">&lt;</span>(<span class="ident">f32</span>, <span class="ident">f32</span>, <span class="ident">f32</span>)<span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">ImColor32</span> {
-    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">v</span>: (<span class="ident">f32</span>, <span class="ident">f32</span>, <span class="ident">f32</span>)) -&gt; <span class="self">Self</span> {
-        <span class="ident"><span class="self">Self</span>::from_rgb_f32s</span>(<span class="ident">v</span>.<span class="number">0</span>, <span class="ident">v</span>.<span class="number">1</span>, <span class="ident">v</span>.<span class="number">2</span>)
+<span class="kw">impl </span>From&lt;(f32, f32, f32)&gt; <span class="kw">for </span>ImColor32 {
+    <span class="kw">fn </span>from(v: (f32, f32, f32)) -&gt; <span class="self">Self </span>{
+        <span class="self">Self</span>::from_rgb_f32s(v.<span class="number">0</span>, v.<span class="number">1</span>, v.<span class="number">2</span>)
     }
 }
 
-<span class="kw">impl</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">ImColor32</span><span class="op">&gt;</span> <span class="kw">for</span> [<span class="ident">f32</span>; <span class="number">4</span>] {
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">v</span>: <span class="ident">ImColor32</span>) -&gt; <span class="self">Self</span> {
-        <span class="ident">v</span>.<span class="ident">to_rgba_f32s</span>()
+<span class="kw">impl </span>From&lt;ImColor32&gt; <span class="kw">for </span>[f32; <span class="number">4</span>] {
+    <span class="attribute">#[inline]
+    </span><span class="kw">fn </span>from(v: ImColor32) -&gt; <span class="self">Self </span>{
+        v.to_rgba_f32s()
     }
 }
-<span class="kw">impl</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">ImColor32</span><span class="op">&gt;</span> <span class="kw">for</span> (<span class="ident">f32</span>, <span class="ident">f32</span>, <span class="ident">f32</span>, <span class="ident">f32</span>) {
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">color</span>: <span class="ident">ImColor32</span>) -&gt; <span class="self">Self</span> {
-        <span class="kw">let</span> [<span class="ident">r</span>, <span class="ident">g</span>, <span class="ident">b</span>, <span class="ident">a</span>]: [<span class="ident">f32</span>; <span class="number">4</span>] <span class="op">=</span> <span class="ident">color</span>.<span class="ident">into</span>();
-        (<span class="ident">r</span>, <span class="ident">g</span>, <span class="ident">b</span>, <span class="ident">a</span>)
-    }
-}
-
-<span class="comment">// These utilities might be worth making `pub` as free functions in</span>
-<span class="comment">// `crate::color` so user code can ensure their numeric handling is</span>
-<span class="comment">// consistent...</span>
-
-<span class="doccomment">/// Clamp `v` to between 0.0 and 1.0, always returning a value between those.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// Never returns NaN, or -0.0 — instead returns +0.0 for these (We differ from</span>
-<span class="doccomment">/// C++ Dear ImGUI here which probably is just ignoring values like these).</span>
-<span class="attribute">#[<span class="ident">inline</span>]</span>
-<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">saturate</span>(<span class="ident">v</span>: <span class="ident">f32</span>) -&gt; <span class="ident">f32</span> {
-    <span class="comment">// Note: written strangely so that special values (NaN/-0.0) are handled</span>
-    <span class="comment">// automatically with no extra checks.</span>
-    <span class="kw">if</span> <span class="ident">v</span> <span class="op">&gt;</span> <span class="number">0.0</span> {
-        <span class="kw">if</span> <span class="ident">v</span> <span class="op">&lt;</span><span class="op">=</span> <span class="number">1.0</span> {
-            <span class="ident">v</span>
-        } <span class="kw">else</span> {
-            <span class="number">1.0</span>
-        }
-    } <span class="kw">else</span> {
-        <span class="number">0.0</span>
+<span class="kw">impl </span>From&lt;ImColor32&gt; <span class="kw">for </span>(f32, f32, f32, f32) {
+    <span class="attribute">#[inline]
+    </span><span class="kw">fn </span>from(color: ImColor32) -&gt; <span class="self">Self </span>{
+        <span class="kw">let </span>[r, g, b, a]: [f32; <span class="number">4</span>] = color.into();
+        (r, g, b, a)
     }
 }
 
-<span class="doccomment">/// Quantize a value in `0.0..=1.0` to `0..=u8::MAX`. Input outside 0.0..=1.0 is</span>
-<span class="doccomment">/// clamped. Uses a bias of 0.5, because we assume centered quantization is used</span>
-<span class="doccomment">/// (and because C++ imgui does it too). See:</span>
-<span class="doccomment">/// - https://github.com/ocornut/imgui/blob/e28b51786eae60f32c18214658c15952639085a2/imgui_internal.h#L218</span>
-<span class="doccomment">/// - https://cbloomrants.blogspot.com/2020/09/topics-in-quantization-for-games.html</span>
-<span class="doccomment">///   (see `quantize_centered`)</span>
-<span class="attribute">#[<span class="ident">inline</span>]</span>
-<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">f32_to_u8_sat</span>(<span class="ident">f</span>: <span class="ident">f32</span>) -&gt; <span class="ident">u8</span> {
-    <span class="kw">let</span> <span class="ident">f</span> <span class="op">=</span> <span class="ident">saturate</span>(<span class="ident">f</span>) <span class="op">*</span> <span class="number">255.0</span> <span class="op">+</span> <span class="number">0.5</span>;
-    <span class="comment">// Safety: `saturate`&#39;s result is between 0.0 and 1.0 (never NaN even for</span>
-    <span class="comment">// NaN input), and so for all inputs, `saturate(f) * 255.0 + 0.5` is inside</span>
-    <span class="comment">// `0.5 ..= 255.5`.</span>
-    <span class="comment">//</span>
-    <span class="comment">// This is verified for all f32 in `test_f32_to_u8_sat_exhaustive`.</span>
-    <span class="comment">//</span>
-    <span class="comment">// Also note that LLVM doesn&#39;t bother trying to figure this out so the</span>
-    <span class="comment">// unchecked does actually help. (That said, this likely doesn&#39;t matter</span>
-    <span class="comment">// for imgui-rs, but I had this code in another project and it felt</span>
-    <span class="comment">// silly to needlessly pessimize it).</span>
-    <span class="kw">unsafe</span> { <span class="ident">f</span>.<span class="ident">to_int_unchecked</span>() }
+<span class="comment">// These utilities might be worth making `pub` as free functions in
+// `crate::color` so user code can ensure their numeric handling is
+// consistent...
+
+</span><span class="doccomment">/// Clamp `v` to between 0.0 and 1.0, always returning a value between those.
+///
+/// Never returns NaN, or -0.0 — instead returns +0.0 for these (We differ from
+/// C++ Dear ImGUI here which probably is just ignoring values like these).
+</span><span class="attribute">#[inline]
+</span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>saturate(v: f32) -&gt; f32 {
+    <span class="comment">// Note: written strangely so that special values (NaN/-0.0) are handled
+    // automatically with no extra checks.
+    </span><span class="kw">if </span>v &gt; <span class="number">0.0 </span>{
+        <span class="kw">if </span>v &lt;= <span class="number">1.0 </span>{
+            v
+        } <span class="kw">else </span>{
+            <span class="number">1.0
+        </span>}
+    } <span class="kw">else </span>{
+        <span class="number">0.0
+    </span>}
 }
 
-<span class="doccomment">/// Opposite of `f32_to_u8_sat`. Since we assume centered quantization, this is</span>
-<span class="doccomment">/// equivalent to dividing by 255 (or, multiplying by 1.0/255.0)</span>
-<span class="attribute">#[<span class="ident">inline</span>]</span>
-<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">u8_to_f32_sat</span>(<span class="ident">u</span>: <span class="ident">u8</span>) -&gt; <span class="ident">f32</span> {
-    (<span class="ident">u</span> <span class="kw">as</span> <span class="ident">f32</span>) <span class="op">*</span> (<span class="number">1.0</span> <span class="op">/</span> <span class="number">255.0</span>)
+<span class="doccomment">/// Quantize a value in `0.0..=1.0` to `0..=u8::MAX`. Input outside 0.0..=1.0 is
+/// clamped. Uses a bias of 0.5, because we assume centered quantization is used
+/// (and because C++ imgui does it too). See:
+/// - https://github.com/ocornut/imgui/blob/e28b51786eae60f32c18214658c15952639085a2/imgui_internal.h#L218
+/// - https://cbloomrants.blogspot.com/2020/09/topics-in-quantization-for-games.html
+///   (see `quantize_centered`)
+</span><span class="attribute">#[inline]
+</span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>f32_to_u8_sat(f: f32) -&gt; u8 {
+    <span class="kw">let </span>f = saturate(f) * <span class="number">255.0 </span>+ <span class="number">0.5</span>;
+    <span class="comment">// Safety: `saturate`&#39;s result is between 0.0 and 1.0 (never NaN even for
+    // NaN input), and so for all inputs, `saturate(f) * 255.0 + 0.5` is inside
+    // `0.5 ..= 255.5`.
+    //
+    // This is verified for all f32 in `test_f32_to_u8_sat_exhaustive`.
+    //
+    // Also note that LLVM doesn&#39;t bother trying to figure this out so the
+    // unchecked does actually help. (That said, this likely doesn&#39;t matter
+    // for imgui-rs, but I had this code in another project and it felt
+    // silly to needlessly pessimize it).
+    </span><span class="kw">unsafe </span>{ f.to_int_unchecked() }
 }
 
-<span class="attribute">#[<span class="ident">test</span>]</span>
-<span class="kw">fn</span> <span class="ident">check_sat</span>() {
-    <span class="macro">assert_eq!</span>(<span class="ident">saturate</span>(<span class="number">1.0</span>), <span class="number">1.0</span>);
-    <span class="macro">assert_eq!</span>(<span class="ident">saturate</span>(<span class="number">0.5</span>), <span class="number">0.5</span>);
-    <span class="macro">assert_eq!</span>(<span class="ident">saturate</span>(<span class="number">0.0</span>), <span class="number">0.0</span>);
-    <span class="macro">assert_eq!</span>(<span class="ident">saturate</span>(<span class="op">-</span><span class="number">1.0</span>), <span class="number">0.0</span>);
-    <span class="comment">// next float from 1.0</span>
-    <span class="macro">assert_eq!</span>(<span class="ident">saturate</span>(<span class="number">1.0</span> <span class="op">+</span> <span class="ident">f32::EPSILON</span>), <span class="number">1.0</span>);
-    <span class="comment">// prev float from 0.0 (Well, from -0.0)</span>
-    <span class="macro">assert_eq!</span>(<span class="ident">saturate</span>(<span class="op">-</span><span class="ident">f32::MIN_POSITIVE</span>), <span class="number">0.0</span>);
-    <span class="comment">// some NaNs.</span>
-    <span class="macro">assert_eq!</span>(<span class="ident">saturate</span>(<span class="ident">f32::NAN</span>), <span class="number">0.0</span>);
-    <span class="macro">assert_eq!</span>(<span class="ident">saturate</span>(<span class="op">-</span><span class="ident">f32::NAN</span>), <span class="number">0.0</span>);
-    <span class="comment">// neg zero comes through as +0</span>
-    <span class="macro">assert_eq!</span>(<span class="ident">saturate</span>(<span class="op">-</span><span class="number">0.0</span>).<span class="ident">to_bits</span>(), <span class="number">0.0f32</span>.<span class="ident">to_bits</span>());
+<span class="doccomment">/// Opposite of `f32_to_u8_sat`. Since we assume centered quantization, this is
+/// equivalent to dividing by 255 (or, multiplying by 1.0/255.0)
+</span><span class="attribute">#[inline]
+</span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>u8_to_f32_sat(u: u8) -&gt; f32 {
+    (u <span class="kw">as </span>f32) * (<span class="number">1.0 </span>/ <span class="number">255.0</span>)
 }
 
-<span class="comment">// Check that the unsafe in `f32_to_u8_sat` is fine for all f32 (and that the</span>
-<span class="comment">// comments I wrote about `saturate` are actually true). This is way too slow in</span>
-<span class="comment">// debug mode, but finishes in ~15s on my machine for release (just this test).</span>
-<span class="comment">// This is tested in CI, but will only run if invoked manually with something</span>
-<span class="comment">// like: `cargo test -p imgui --release -- --ignored`.</span>
-<span class="attribute">#[<span class="ident">test</span>]</span>
-<span class="attribute">#[<span class="ident">ignore</span>]</span>
-<span class="kw">fn</span> <span class="ident">test_f32_to_u8_sat_exhaustive</span>() {
-    <span class="kw">for</span> <span class="ident">f</span> <span class="kw">in</span> (<span class="number">0</span>..<span class="op">=</span><span class="ident">u32::MAX</span>).<span class="ident">map</span>(<span class="ident">f32::from_bits</span>) {
-        <span class="kw">let</span> <span class="ident">v</span> <span class="op">=</span> <span class="ident">saturate</span>(<span class="ident">f</span>);
+<span class="attribute">#[test]
+</span><span class="kw">fn </span>check_sat() {
+    <span class="macro">assert_eq!</span>(saturate(<span class="number">1.0</span>), <span class="number">1.0</span>);
+    <span class="macro">assert_eq!</span>(saturate(<span class="number">0.5</span>), <span class="number">0.5</span>);
+    <span class="macro">assert_eq!</span>(saturate(<span class="number">0.0</span>), <span class="number">0.0</span>);
+    <span class="macro">assert_eq!</span>(saturate(-<span class="number">1.0</span>), <span class="number">0.0</span>);
+    <span class="comment">// next float from 1.0
+    </span><span class="macro">assert_eq!</span>(saturate(<span class="number">1.0 </span>+ f32::EPSILON), <span class="number">1.0</span>);
+    <span class="comment">// prev float from 0.0 (Well, from -0.0)
+    </span><span class="macro">assert_eq!</span>(saturate(-f32::MIN_POSITIVE), <span class="number">0.0</span>);
+    <span class="comment">// some NaNs.
+    </span><span class="macro">assert_eq!</span>(saturate(f32::NAN), <span class="number">0.0</span>);
+    <span class="macro">assert_eq!</span>(saturate(-f32::NAN), <span class="number">0.0</span>);
+    <span class="comment">// neg zero comes through as +0
+    </span><span class="macro">assert_eq!</span>(saturate(-<span class="number">0.0</span>).to_bits(), <span class="number">0.0f32</span>.to_bits());
+}
+
+<span class="comment">// Check that the unsafe in `f32_to_u8_sat` is fine for all f32 (and that the
+// comments I wrote about `saturate` are actually true). This is way too slow in
+// debug mode, but finishes in ~15s on my machine for release (just this test).
+// This is tested in CI, but will only run if invoked manually with something
+// like: `cargo test -p imgui --release -- --ignored`.
+</span><span class="attribute">#[test]
+#[ignore]
+</span><span class="kw">fn </span>test_f32_to_u8_sat_exhaustive() {
+    <span class="kw">for </span>f <span class="kw">in </span>(<span class="number">0</span>..=u32::MAX).map(f32::from_bits) {
+        <span class="kw">let </span>v = saturate(f);
         <span class="macro">assert!</span>(
-            (<span class="number">0.0</span>..<span class="op">=</span><span class="number">1.0</span>).<span class="ident">contains</span>(<span class="kw-2">&amp;</span><span class="ident">v</span>) <span class="op">&amp;&amp;</span> (<span class="ident">v</span>.<span class="ident">to_bits</span>() <span class="op">!</span><span class="op">=</span> (<span class="op">-</span><span class="number">0.0f32</span>).<span class="ident">to_bits</span>()),
+            (<span class="number">0.0</span>..=<span class="number">1.0</span>).contains(<span class="kw-2">&amp;</span>v) &amp;&amp; (v.to_bits() != (-<span class="number">0.0f32</span>).to_bits()),
             <span class="string">&quot;sat({} [e.g. {:#x}]) =&gt; {} [e.g {:#x}]&quot;</span>,
-            <span class="ident">f</span>,
-            <span class="ident">f</span>.<span class="ident">to_bits</span>(),
-            <span class="ident">v</span>,
-            <span class="ident">v</span>.<span class="ident">to_bits</span>(),
+            f,
+            f.to_bits(),
+            v,
+            v.to_bits(),
         );
-        <span class="kw">let</span> <span class="ident">sat</span> <span class="op">=</span> <span class="ident">v</span> <span class="op">*</span> <span class="number">255.0</span> <span class="op">+</span> <span class="number">0.5</span>;
-        <span class="comment">// Note: This checks what&#39;s required by is the safety predicate for</span>
-        <span class="comment">// `f32::to_int_unchecked`:</span>
-        <span class="comment">// https://doc.rust-lang.org/std/primitive.f32.html#method.to_int_unchecked</span>
-        <span class="macro">assert!</span>(
-            <span class="ident">sat</span>.<span class="ident">trunc</span>() <span class="op">&gt;</span><span class="op">=</span> <span class="number">0.0</span> <span class="op">&amp;&amp;</span> <span class="ident">sat</span>.<span class="ident">trunc</span>() <span class="op">&lt;</span><span class="op">=</span> (<span class="ident">u8::MAX</span> <span class="kw">as</span> <span class="ident">f32</span>) <span class="op">&amp;&amp;</span> <span class="ident">sat</span>.<span class="ident">is_finite</span>(),
+        <span class="kw">let </span>sat = v * <span class="number">255.0 </span>+ <span class="number">0.5</span>;
+        <span class="comment">// Note: This checks what&#39;s required by is the safety predicate for
+        // `f32::to_int_unchecked`:
+        // https://doc.rust-lang.org/std/primitive.f32.html#method.to_int_unchecked
+        </span><span class="macro">assert!</span>(
+            sat.trunc() &gt;= <span class="number">0.0 </span>&amp;&amp; sat.trunc() &lt;= (u8::MAX <span class="kw">as </span>f32) &amp;&amp; sat.is_finite(),
             <span class="string">&quot;f32_to_u8_sat({} [e.g. {:#x}]) would be UB!&quot;</span>,
-            <span class="ident">f</span>,
-            <span class="ident">f</span>.<span class="ident">to_bits</span>(),
+            f,
+            f.to_bits(),
         );
     }
 }
 
-<span class="attribute">#[<span class="ident">test</span>]</span>
-<span class="kw">fn</span> <span class="ident">test_saturate_all_u8s</span>() {
-    <span class="kw">for</span> <span class="ident">u</span> <span class="kw">in</span> <span class="number">0</span>..<span class="op">=</span><span class="ident">u8::MAX</span> {
-        <span class="kw">let</span> <span class="ident">v</span> <span class="op">=</span> <span class="ident">f32_to_u8_sat</span>(<span class="ident">u8_to_f32_sat</span>(<span class="ident">u</span>));
-        <span class="macro">assert_eq!</span>(<span class="ident">u</span>, <span class="ident">v</span>);
+<span class="attribute">#[test]
+</span><span class="kw">fn </span>test_saturate_all_u8s() {
+    <span class="kw">for </span>u <span class="kw">in </span><span class="number">0</span>..=u8::MAX {
+        <span class="kw">let </span>v = f32_to_u8_sat(u8_to_f32_sat(u));
+        <span class="macro">assert_eq!</span>(u, v);
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="arcdps_imgui" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="arcdps_imgui" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.0 (69f9c33d7 2022-12-12)" ></div></body></html>

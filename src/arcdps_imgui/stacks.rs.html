@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\arcdps-imgui-0.8.0\src\stacks.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>stacks.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script><script defer src="../../main.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../arcdps_imgui/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../arcdps_imgui/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../arcdps_imgui/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\arcdps-imgui-0.8.0\src\stacks.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>stacks.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../normalize.css"><link rel="stylesheet" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../ayu.css" disabled><link rel="stylesheet" href="../../dark.css" disabled><link rel="stylesheet" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script><script defer src="../../main.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../arcdps_imgui/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -470,477 +470,477 @@
 <span id="470">470</span>
 <span id="471">471</span>
 <span id="472">472</span>
-</pre><pre class="rust"><code><span class="kw">use</span> <span class="ident">std::mem</span>;
-<span class="kw">use</span> <span class="ident">std::os::raw</span>::{<span class="ident">c_char</span>, <span class="ident">c_void</span>};
-<span class="kw">use</span> <span class="ident">std::ptr</span>;
-<span class="kw">use</span> <span class="ident">std::thread</span>;
+</pre><pre class="rust"><code><span class="kw">use </span>std::mem;
+<span class="kw">use </span>std::os::raw::{c_char, c_void};
+<span class="kw">use </span>std::ptr;
+<span class="kw">use </span>std::thread;
 
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::context::Context</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::fonts::atlas::FontId</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::internal::RawCast</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::style</span>::{<span class="ident">StyleColor</span>, <span class="ident">StyleVar</span>};
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::sys</span>;
-<span class="kw">use</span> <span class="kw">crate</span>::{<span class="ident">Id</span>, <span class="ident">Ui</span>};
+<span class="kw">use </span><span class="kw">crate</span>::context::Context;
+<span class="kw">use </span><span class="kw">crate</span>::fonts::atlas::FontId;
+<span class="kw">use </span><span class="kw">crate</span>::internal::RawCast;
+<span class="kw">use </span><span class="kw">crate</span>::style::{StyleColor, StyleVar};
+<span class="kw">use </span><span class="kw">crate</span>::sys;
+<span class="kw">use crate</span>::{Id, Ui};
 
-<span class="doccomment">/// # Parameter stacks (shared)</span>
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> <span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Switches to the given font by pushing it to the font stack.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Returns a `FontStackToken` that must be popped by calling `.pop()`</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Panics</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Panics if the font atlas does not contain the given font</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```no_run</span>
-    <span class="doccomment">/// # use arcdps_imgui::*;</span>
-    <span class="doccomment">/// # let mut ctx = Context::create();</span>
-    <span class="doccomment">/// # let font_data_sources = [];</span>
-    <span class="doccomment">/// // At initialization time</span>
-    <span class="doccomment">/// let my_custom_font = ctx.fonts().add_font(&amp;font_data_sources);</span>
-    <span class="doccomment">/// # let ui = ctx.frame();</span>
-    <span class="doccomment">/// // During UI construction</span>
-    <span class="doccomment">/// let font = ui.push_font(my_custom_font);</span>
-    <span class="doccomment">/// ui.text(&quot;I use the custom font!&quot;);</span>
-    <span class="doccomment">/// font.pop();</span>
-    <span class="doccomment">/// ```</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PushFont&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">push_font</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">id</span>: <span class="ident">FontId</span>) -&gt; <span class="ident">FontStackToken</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span> {
-        <span class="kw">let</span> <span class="ident">fonts</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">fonts</span>();
-        <span class="kw">let</span> <span class="ident">font</span> <span class="op">=</span> <span class="ident">fonts</span>
-            .<span class="ident">get_font</span>(<span class="ident">id</span>)
-            .<span class="ident">expect</span>(<span class="string">&quot;Font atlas did not contain the given font&quot;</span>);
-        <span class="kw">unsafe</span> { <span class="ident">sys::igPushFont</span>(<span class="ident">font</span>.<span class="ident">raw</span>() <span class="kw">as</span> <span class="kw-2">*const</span> <span class="kw">_</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="kw">_</span>) };
-        <span class="ident">FontStackToken::new</span>(<span class="self">self</span>)
+<span class="doccomment">/// # Parameter stacks (shared)
+</span><span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>&gt; Ui&lt;<span class="lifetime">&#39;ui</span>&gt; {
+    <span class="doccomment">/// Switches to the given font by pushing it to the font stack.
+    ///
+    /// Returns a `FontStackToken` that must be popped by calling `.pop()`
+    ///
+    /// # Panics
+    ///
+    /// Panics if the font atlas does not contain the given font
+    ///
+    /// # Examples
+    ///
+    /// ```no_run
+    /// # use arcdps_imgui::*;
+    /// # let mut ctx = Context::create();
+    /// # let font_data_sources = [];
+    /// // At initialization time
+    /// let my_custom_font = ctx.fonts().add_font(&amp;font_data_sources);
+    /// # let ui = ctx.frame();
+    /// // During UI construction
+    /// let font = ui.push_font(my_custom_font);
+    /// ui.text(&quot;I use the custom font!&quot;);
+    /// font.pop();
+    /// ```
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;PushFont&quot;</span>)]
+    </span><span class="kw">pub fn </span>push_font(<span class="kw-2">&amp;</span><span class="self">self</span>, id: FontId) -&gt; FontStackToken&lt;<span class="lifetime">&#39;_</span>&gt; {
+        <span class="kw">let </span>fonts = <span class="self">self</span>.fonts();
+        <span class="kw">let </span>font = fonts
+            .get_font(id)
+            .expect(<span class="string">&quot;Font atlas did not contain the given font&quot;</span>);
+        <span class="kw">unsafe </span>{ sys::igPushFont(font.raw() <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_ as </span><span class="kw-2">*mut </span><span class="kw">_</span>) };
+        FontStackToken::new(<span class="self">self</span>)
     }
-    <span class="doccomment">/// Changes a style color by pushing a change to the color stack.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Returns a `ColorStackToken` that must be popped by calling `.pop()`</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```no_run</span>
-    <span class="doccomment">/// # use arcdps_imgui::*;</span>
-    <span class="doccomment">/// # let mut ctx = Context::create();</span>
-    <span class="doccomment">/// # let ui = ctx.frame();</span>
-    <span class="doccomment">/// const RED: [f32; 4] = [1.0, 0.0, 0.0, 1.0];</span>
-    <span class="doccomment">/// let color = ui.push_style_color(StyleColor::Text, RED);</span>
-    <span class="doccomment">/// ui.text(&quot;I&#39;m red!&quot;);</span>
-    <span class="doccomment">/// color.pop();</span>
-    <span class="doccomment">/// ```</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PushStyleColorVec4&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">push_style_color</span>(
+    <span class="doccomment">/// Changes a style color by pushing a change to the color stack.
+    ///
+    /// Returns a `ColorStackToken` that must be popped by calling `.pop()`
+    ///
+    /// # Examples
+    ///
+    /// ```no_run
+    /// # use arcdps_imgui::*;
+    /// # let mut ctx = Context::create();
+    /// # let ui = ctx.frame();
+    /// const RED: [f32; 4] = [1.0, 0.0, 0.0, 1.0];
+    /// let color = ui.push_style_color(StyleColor::Text, RED);
+    /// ui.text(&quot;I&#39;m red!&quot;);
+    /// color.pop();
+    /// ```
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;PushStyleColorVec4&quot;</span>)]
+    </span><span class="kw">pub fn </span>push_style_color(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">style_color</span>: <span class="ident">StyleColor</span>,
-        <span class="ident">color</span>: [<span class="ident">f32</span>; <span class="number">4</span>],
-    ) -&gt; <span class="ident">ColorStackToken</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igPushStyleColor_Vec4</span>(<span class="ident">style_color</span> <span class="kw">as</span> <span class="ident">i32</span>, <span class="ident">color</span>.<span class="ident">into</span>()) };
-        <span class="ident">ColorStackToken::new</span>(<span class="self">self</span>)
+        style_color: StyleColor,
+        color: [f32; <span class="number">4</span>],
+    ) -&gt; ColorStackToken&lt;<span class="lifetime">&#39;_</span>&gt; {
+        <span class="kw">unsafe </span>{ sys::igPushStyleColor_Vec4(style_color <span class="kw">as </span>i32, color.into()) };
+        ColorStackToken::new(<span class="self">self</span>)
     }
 
-    <span class="doccomment">/// Changes style colors by pushing several changes to the color stack.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Returns a `ColorStackToken` that must be popped by calling `.pop()`</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```no_run</span>
-    <span class="doccomment">/// # use arcdps_imgui::*;</span>
-    <span class="doccomment">/// # let mut ctx = Context::create();</span>
-    <span class="doccomment">/// # let ui = ctx.frame();</span>
-    <span class="doccomment">/// const RED: [f32; 4] = [1.0, 0.0, 0.0, 1.0];</span>
-    <span class="doccomment">/// const GREEN: [f32; 4] = [0.0, 1.0, 0.0, 1.0];</span>
-    <span class="doccomment">/// let colors = ui.push_style_colors(&amp;[</span>
-    <span class="doccomment">///     (StyleColor::Text, RED),</span>
-    <span class="doccomment">///     (StyleColor::TextDisabled, GREEN),</span>
-    <span class="doccomment">/// ]);</span>
-    <span class="doccomment">/// ui.text(&quot;I&#39;m red!&quot;);</span>
-    <span class="doccomment">/// ui.text_disabled(&quot;I&#39;m green!&quot;);</span>
-    <span class="doccomment">/// colors.pop(&amp;ui);</span>
-    <span class="doccomment">/// ```</span>
-    <span class="attribute">#[<span class="ident">deprecated</span> <span class="op">=</span> <span class="string">&quot;deprecated in 0.7.0. Use `push_style_color` multiple times for similar effect.&quot;</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">push_style_colors</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">I</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">style_colors</span>: <span class="ident">I</span>) -&gt; <span class="ident">MultiColorStackToken</span>
-    <span class="kw">where</span>
-        <span class="ident">I</span>: <span class="ident">IntoIterator</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> (<span class="ident">StyleColor</span>, [<span class="ident">f32</span>; <span class="number">4</span>])<span class="op">&gt;</span>,
+    <span class="doccomment">/// Changes style colors by pushing several changes to the color stack.
+    ///
+    /// Returns a `ColorStackToken` that must be popped by calling `.pop()`
+    ///
+    /// # Examples
+    ///
+    /// ```no_run
+    /// # use arcdps_imgui::*;
+    /// # let mut ctx = Context::create();
+    /// # let ui = ctx.frame();
+    /// const RED: [f32; 4] = [1.0, 0.0, 0.0, 1.0];
+    /// const GREEN: [f32; 4] = [0.0, 1.0, 0.0, 1.0];
+    /// let colors = ui.push_style_colors(&amp;[
+    ///     (StyleColor::Text, RED),
+    ///     (StyleColor::TextDisabled, GREEN),
+    /// ]);
+    /// ui.text(&quot;I&#39;m red!&quot;);
+    /// ui.text_disabled(&quot;I&#39;m green!&quot;);
+    /// colors.pop(&amp;ui);
+    /// ```
+    </span><span class="attribute">#[deprecated = <span class="string">&quot;deprecated in 0.7.0. Use `push_style_color` multiple times for similar effect.&quot;</span>]
+    </span><span class="kw">pub fn </span>push_style_colors&lt;<span class="lifetime">&#39;a</span>, I&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, style_colors: I) -&gt; MultiColorStackToken
+    <span class="kw">where
+        </span>I: IntoIterator&lt;Item = <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>(StyleColor, [f32; <span class="number">4</span>])&gt;,
     {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">count</span> <span class="op">=</span> <span class="number">0</span>;
-        <span class="kw">for</span> <span class="kw-2">&amp;</span>(<span class="ident">style_color</span>, <span class="ident">color</span>) <span class="kw">in</span> <span class="ident">style_colors</span> {
-            <span class="kw">unsafe</span> { <span class="ident">sys::igPushStyleColor_Vec4</span>(<span class="ident">style_color</span> <span class="kw">as</span> <span class="ident">i32</span>, <span class="ident">color</span>.<span class="ident">into</span>()) };
-            <span class="ident">count</span> <span class="op">+</span><span class="op">=</span> <span class="number">1</span>;
+        <span class="kw">let </span><span class="kw-2">mut </span>count = <span class="number">0</span>;
+        <span class="kw">for </span><span class="kw-2">&amp;</span>(style_color, color) <span class="kw">in </span>style_colors {
+            <span class="kw">unsafe </span>{ sys::igPushStyleColor_Vec4(style_color <span class="kw">as </span>i32, color.into()) };
+            count += <span class="number">1</span>;
         }
-        <span class="ident">MultiColorStackToken</span> {
-            <span class="ident">count</span>,
-            <span class="ident">ctx</span>: <span class="self">self</span>.<span class="ident">ctx</span>,
+        MultiColorStackToken {
+            count,
+            ctx: <span class="self">self</span>.ctx,
         }
     }
-    <span class="doccomment">/// Changes a style variable by pushing a change to the style stack.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Returns a `StyleStackToken` that can be popped by calling `.end()`</span>
-    <span class="doccomment">/// or by allowing to drop.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```no_run</span>
-    <span class="doccomment">/// # use arcdps_imgui::*;</span>
-    <span class="doccomment">/// # let mut ctx = Context::create();</span>
-    <span class="doccomment">/// # let ui = ctx.frame();</span>
-    <span class="doccomment">/// let style = ui.push_style_var(StyleVar::Alpha(0.2));</span>
-    <span class="doccomment">/// ui.text(&quot;I&#39;m transparent!&quot;);</span>
-    <span class="doccomment">/// style.pop();</span>
-    <span class="doccomment">/// ```</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PushStyleVar&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">push_style_var</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">style_var</span>: <span class="ident">StyleVar</span>) -&gt; <span class="ident">StyleStackToken</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span> {
-        <span class="kw">unsafe</span> { <span class="ident">push_style_var</span>(<span class="ident">style_var</span>) };
-        <span class="ident">StyleStackToken::new</span>(<span class="self">self</span>)
+    <span class="doccomment">/// Changes a style variable by pushing a change to the style stack.
+    ///
+    /// Returns a `StyleStackToken` that can be popped by calling `.end()`
+    /// or by allowing to drop.
+    ///
+    /// # Examples
+    ///
+    /// ```no_run
+    /// # use arcdps_imgui::*;
+    /// # let mut ctx = Context::create();
+    /// # let ui = ctx.frame();
+    /// let style = ui.push_style_var(StyleVar::Alpha(0.2));
+    /// ui.text(&quot;I&#39;m transparent!&quot;);
+    /// style.pop();
+    /// ```
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;PushStyleVar&quot;</span>)]
+    </span><span class="kw">pub fn </span>push_style_var(<span class="kw-2">&amp;</span><span class="self">self</span>, style_var: StyleVar) -&gt; StyleStackToken&lt;<span class="lifetime">&#39;_</span>&gt; {
+        <span class="kw">unsafe </span>{ push_style_var(style_var) };
+        StyleStackToken::new(<span class="self">self</span>)
     }
-    <span class="doccomment">/// Changes style variables by pushing several changes to the style stack.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Returns a `StyleStackToken` that must be popped by calling `.pop()`</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```no_run</span>
-    <span class="doccomment">/// # use arcdps_imgui::*;</span>
-    <span class="doccomment">/// # let mut ctx = Context::create();</span>
-    <span class="doccomment">/// # let ui = ctx.frame();</span>
-    <span class="doccomment">/// let styles = ui.push_style_vars(&amp;[</span>
-    <span class="doccomment">///     StyleVar::Alpha(0.2),</span>
-    <span class="doccomment">///     StyleVar::ItemSpacing([50.0, 50.0])</span>
-    <span class="doccomment">/// ]);</span>
-    <span class="doccomment">/// ui.text(&quot;We&#39;re transparent...&quot;);</span>
-    <span class="doccomment">/// ui.text(&quot;...with large spacing as well&quot;);</span>
-    <span class="doccomment">/// styles.pop(&amp;ui);</span>
-    <span class="doccomment">/// ```</span>
-    <span class="attribute">#[<span class="ident">deprecated</span> <span class="op">=</span> <span class="string">&quot;deprecated in 0.7.0. Use `push_style_var` multiple times for similar effect.&quot;</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">push_style_vars</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">I</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">style_vars</span>: <span class="ident">I</span>) -&gt; <span class="ident">MultiStyleStackToken</span>
-    <span class="kw">where</span>
-        <span class="ident">I</span>: <span class="ident">IntoIterator</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">StyleVar</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Changes style variables by pushing several changes to the style stack.
+    ///
+    /// Returns a `StyleStackToken` that must be popped by calling `.pop()`
+    ///
+    /// # Examples
+    ///
+    /// ```no_run
+    /// # use arcdps_imgui::*;
+    /// # let mut ctx = Context::create();
+    /// # let ui = ctx.frame();
+    /// let styles = ui.push_style_vars(&amp;[
+    ///     StyleVar::Alpha(0.2),
+    ///     StyleVar::ItemSpacing([50.0, 50.0])
+    /// ]);
+    /// ui.text(&quot;We&#39;re transparent...&quot;);
+    /// ui.text(&quot;...with large spacing as well&quot;);
+    /// styles.pop(&amp;ui);
+    /// ```
+    </span><span class="attribute">#[deprecated = <span class="string">&quot;deprecated in 0.7.0. Use `push_style_var` multiple times for similar effect.&quot;</span>]
+    </span><span class="kw">pub fn </span>push_style_vars&lt;<span class="lifetime">&#39;a</span>, I&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, style_vars: I) -&gt; MultiStyleStackToken
+    <span class="kw">where
+        </span>I: IntoIterator&lt;Item = <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>StyleVar&gt;,
     {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">count</span> <span class="op">=</span> <span class="number">0</span>;
-        <span class="kw">for</span> <span class="kw-2">&amp;</span><span class="ident">style_var</span> <span class="kw">in</span> <span class="ident">style_vars</span> {
-            <span class="kw">unsafe</span> { <span class="ident">push_style_var</span>(<span class="ident">style_var</span>) };
-            <span class="ident">count</span> <span class="op">+</span><span class="op">=</span> <span class="number">1</span>;
+        <span class="kw">let </span><span class="kw-2">mut </span>count = <span class="number">0</span>;
+        <span class="kw">for </span><span class="kw-2">&amp;</span>style_var <span class="kw">in </span>style_vars {
+            <span class="kw">unsafe </span>{ push_style_var(style_var) };
+            count += <span class="number">1</span>;
         }
-        <span class="ident">MultiStyleStackToken</span> {
-            <span class="ident">count</span>,
-            <span class="ident">ctx</span>: <span class="self">self</span>.<span class="ident">ctx</span>,
+        MultiStyleStackToken {
+            count,
+            ctx: <span class="self">self</span>.ctx,
         }
     }
 }
 
 <span class="macro">create_token!</span>(
-    <span class="doccomment">/// Tracks a font pushed to the font stack that can be popped by calling `.end()`</span>
-    <span class="doccomment">/// or by dropping.</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">FontStackToken</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>;
+    <span class="doccomment">/// Tracks a font pushed to the font stack that can be popped by calling `.end()`
+    /// or by dropping.
+    </span><span class="kw">pub struct </span>FontStackToken&lt;<span class="lifetime">&#39;ui</span>&gt;;
 
-    <span class="doccomment">/// Pops a change from the font stack.</span>
-    <span class="ident">drop</span> { <span class="ident">sys::igPopFont</span>() }
+    <span class="doccomment">/// Pops a change from the font stack.
+    </span>drop { sys::igPopFont() }
 );
 
-<span class="kw">impl</span> <span class="ident">FontStackToken</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Pops a change from the font stack.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">pop</span>(<span class="self">self</span>) {
-        <span class="self">self</span>.<span class="ident">end</span>()
+<span class="kw">impl </span>FontStackToken&lt;<span class="lifetime">&#39;_</span>&gt; {
+    <span class="doccomment">/// Pops a change from the font stack.
+    </span><span class="kw">pub fn </span>pop(<span class="self">self</span>) {
+        <span class="self">self</span>.end()
     }
 }
 
 <span class="macro">create_token!</span>(
-    <span class="doccomment">/// Tracks a color pushed to the color stack that can be popped by calling `.end()`</span>
-    <span class="doccomment">/// or by dropping.</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">ColorStackToken</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>;
+    <span class="doccomment">/// Tracks a color pushed to the color stack that can be popped by calling `.end()`
+    /// or by dropping.
+    </span><span class="kw">pub struct </span>ColorStackToken&lt;<span class="lifetime">&#39;ui</span>&gt;;
 
-    <span class="doccomment">/// Pops a change from the color stack.</span>
-    <span class="ident">drop</span> { <span class="ident">sys::igPopStyleColor</span>(<span class="number">1</span>) }
+    <span class="doccomment">/// Pops a change from the color stack.
+    </span>drop { sys::igPopStyleColor(<span class="number">1</span>) }
 );
 
-<span class="kw">impl</span> <span class="ident">ColorStackToken</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Pops a change from the color stack.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">pop</span>(<span class="self">self</span>) {
-        <span class="self">self</span>.<span class="ident">end</span>()
+<span class="kw">impl </span>ColorStackToken&lt;<span class="lifetime">&#39;_</span>&gt; {
+    <span class="doccomment">/// Pops a change from the color stack.
+    </span><span class="kw">pub fn </span>pop(<span class="self">self</span>) {
+        <span class="self">self</span>.end()
     }
 }
 
-<span class="doccomment">/// Tracks one or more changes pushed to the color stack that must be popped by calling `.pop()`</span>
-<span class="attribute">#[<span class="ident">must_use</span>]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">MultiColorStackToken</span> {
-    <span class="ident">count</span>: <span class="ident">usize</span>,
-    <span class="ident">ctx</span>: <span class="kw-2">*const</span> <span class="ident">Context</span>,
+<span class="doccomment">/// Tracks one or more changes pushed to the color stack that must be popped by calling `.pop()`
+</span><span class="attribute">#[must_use]
+</span><span class="kw">pub struct </span>MultiColorStackToken {
+    count: usize,
+    ctx: <span class="kw-2">*const </span>Context,
 }
 
-<span class="kw">impl</span> <span class="ident">MultiColorStackToken</span> {
-    <span class="doccomment">/// Pops changes from the color stack</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PopStyleColor&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">pop</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="kw">_</span>: <span class="kw-2">&amp;</span><span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) {
-        <span class="self">self</span>.<span class="ident">ctx</span> <span class="op">=</span> <span class="ident">ptr::null</span>();
-        <span class="kw">unsafe</span> { <span class="ident">sys::igPopStyleColor</span>(<span class="self">self</span>.<span class="ident">count</span> <span class="kw">as</span> <span class="ident">i32</span>) };
+<span class="kw">impl </span>MultiColorStackToken {
+    <span class="doccomment">/// Pops changes from the color stack
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;PopStyleColor&quot;</span>)]
+    </span><span class="kw">pub fn </span>pop(<span class="kw-2">mut </span><span class="self">self</span>, <span class="kw">_</span>: <span class="kw-2">&amp;</span>Ui&lt;<span class="lifetime">&#39;_</span>&gt;) {
+        <span class="self">self</span>.ctx = ptr::null();
+        <span class="kw">unsafe </span>{ sys::igPopStyleColor(<span class="self">self</span>.count <span class="kw">as </span>i32) };
     }
 }
 
-<span class="kw">impl</span> <span class="ident">Drop</span> <span class="kw">for</span> <span class="ident">MultiColorStackToken</span> {
-    <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
-        <span class="kw">if</span> <span class="op">!</span><span class="self">self</span>.<span class="ident">ctx</span>.<span class="ident">is_null</span>() <span class="op">&amp;&amp;</span> <span class="op">!</span><span class="ident">thread::panicking</span>() {
+<span class="kw">impl </span>Drop <span class="kw">for </span>MultiColorStackToken {
+    <span class="kw">fn </span>drop(<span class="kw-2">&amp;mut </span><span class="self">self</span>) {
+        <span class="kw">if </span>!<span class="self">self</span>.ctx.is_null() &amp;&amp; !thread::panicking() {
             <span class="macro">panic!</span>(<span class="string">&quot;A ColorStackToken was leaked. Did you call .pop()?&quot;</span>);
         }
     }
 }
 
 <span class="macro">create_token!</span>(
-    <span class="doccomment">/// Tracks a style pushed to the style stack that can be popped by calling `.end()`</span>
-    <span class="doccomment">/// or by dropping.</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">StyleStackToken</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>;
+    <span class="doccomment">/// Tracks a style pushed to the style stack that can be popped by calling `.end()`
+    /// or by dropping.
+    </span><span class="kw">pub struct </span>StyleStackToken&lt;<span class="lifetime">&#39;ui</span>&gt;;
 
-    <span class="doccomment">/// Pops a change from the style stack.</span>
-    <span class="ident">drop</span> { <span class="ident">sys::igPopStyleVar</span>(<span class="number">1</span>) }
+    <span class="doccomment">/// Pops a change from the style stack.
+    </span>drop { sys::igPopStyleVar(<span class="number">1</span>) }
 );
 
-<span class="kw">impl</span> <span class="ident">StyleStackToken</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Pops a change from the style stack.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">pop</span>(<span class="self">self</span>) {
-        <span class="self">self</span>.<span class="ident">end</span>()
+<span class="kw">impl </span>StyleStackToken&lt;<span class="lifetime">&#39;_</span>&gt; {
+    <span class="doccomment">/// Pops a change from the style stack.
+    </span><span class="kw">pub fn </span>pop(<span class="self">self</span>) {
+        <span class="self">self</span>.end()
     }
 }
 
-<span class="doccomment">/// Tracks one or more changes pushed to the style stack that must be popped by calling `.pop()`</span>
-<span class="attribute">#[<span class="ident">must_use</span>]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">MultiStyleStackToken</span> {
-    <span class="ident">count</span>: <span class="ident">usize</span>,
-    <span class="ident">ctx</span>: <span class="kw-2">*const</span> <span class="ident">Context</span>,
+<span class="doccomment">/// Tracks one or more changes pushed to the style stack that must be popped by calling `.pop()`
+</span><span class="attribute">#[must_use]
+</span><span class="kw">pub struct </span>MultiStyleStackToken {
+    count: usize,
+    ctx: <span class="kw-2">*const </span>Context,
 }
 
-<span class="kw">impl</span> <span class="ident">MultiStyleStackToken</span> {
-    <span class="doccomment">/// Pops changes from the style stack</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PopStyleVar&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">pop</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="kw">_</span>: <span class="kw-2">&amp;</span><span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) {
-        <span class="self">self</span>.<span class="ident">ctx</span> <span class="op">=</span> <span class="ident">ptr::null</span>();
-        <span class="kw">unsafe</span> { <span class="ident">sys::igPopStyleVar</span>(<span class="self">self</span>.<span class="ident">count</span> <span class="kw">as</span> <span class="ident">i32</span>) };
+<span class="kw">impl </span>MultiStyleStackToken {
+    <span class="doccomment">/// Pops changes from the style stack
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;PopStyleVar&quot;</span>)]
+    </span><span class="kw">pub fn </span>pop(<span class="kw-2">mut </span><span class="self">self</span>, <span class="kw">_</span>: <span class="kw-2">&amp;</span>Ui&lt;<span class="lifetime">&#39;_</span>&gt;) {
+        <span class="self">self</span>.ctx = ptr::null();
+        <span class="kw">unsafe </span>{ sys::igPopStyleVar(<span class="self">self</span>.count <span class="kw">as </span>i32) };
     }
 }
 
-<span class="kw">impl</span> <span class="ident">Drop</span> <span class="kw">for</span> <span class="ident">MultiStyleStackToken</span> {
-    <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
-        <span class="kw">if</span> <span class="op">!</span><span class="self">self</span>.<span class="ident">ctx</span>.<span class="ident">is_null</span>() <span class="op">&amp;&amp;</span> <span class="op">!</span><span class="ident">thread::panicking</span>() {
+<span class="kw">impl </span>Drop <span class="kw">for </span>MultiStyleStackToken {
+    <span class="kw">fn </span>drop(<span class="kw-2">&amp;mut </span><span class="self">self</span>) {
+        <span class="kw">if </span>!<span class="self">self</span>.ctx.is_null() &amp;&amp; !thread::panicking() {
             <span class="macro">panic!</span>(<span class="string">&quot;A StyleStackToken was leaked. Did you call .pop()?&quot;</span>);
         }
     }
 }
 
-<span class="attribute">#[<span class="ident">inline</span>]</span>
-<span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">push_style_var</span>(<span class="ident">style_var</span>: <span class="ident">StyleVar</span>) {
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::style::StyleVar</span>::<span class="kw-2">*</span>;
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::sys</span>::{<span class="ident">igPushStyleVar_Float</span>, <span class="ident">igPushStyleVar_Vec2</span>};
-    <span class="kw">match</span> <span class="ident">style_var</span> {
-        <span class="ident">Alpha</span>(<span class="ident">v</span>) =&gt; <span class="ident">igPushStyleVar_Float</span>(<span class="ident">sys::ImGuiStyleVar_Alpha</span> <span class="kw">as</span> <span class="ident">i32</span>, <span class="ident">v</span>),
-        <span class="ident">WindowPadding</span>(<span class="ident">v</span>) =&gt; <span class="ident">igPushStyleVar_Vec2</span>(<span class="ident">sys::ImGuiStyleVar_WindowPadding</span> <span class="kw">as</span> <span class="ident">i32</span>, <span class="ident">v</span>.<span class="ident">into</span>()),
-        <span class="ident">WindowRounding</span>(<span class="ident">v</span>) =&gt; <span class="ident">igPushStyleVar_Float</span>(<span class="ident">sys::ImGuiStyleVar_WindowRounding</span> <span class="kw">as</span> <span class="ident">i32</span>, <span class="ident">v</span>),
-        <span class="ident">WindowBorderSize</span>(<span class="ident">v</span>) =&gt; <span class="ident">igPushStyleVar_Float</span>(<span class="ident">sys::ImGuiStyleVar_WindowBorderSize</span> <span class="kw">as</span> <span class="ident">i32</span>, <span class="ident">v</span>),
-        <span class="ident">WindowMinSize</span>(<span class="ident">v</span>) =&gt; <span class="ident">igPushStyleVar_Vec2</span>(<span class="ident">sys::ImGuiStyleVar_WindowMinSize</span> <span class="kw">as</span> <span class="ident">i32</span>, <span class="ident">v</span>.<span class="ident">into</span>()),
-        <span class="ident">WindowTitleAlign</span>(<span class="ident">v</span>) =&gt; {
-            <span class="ident">igPushStyleVar_Vec2</span>(<span class="ident">sys::ImGuiStyleVar_WindowTitleAlign</span> <span class="kw">as</span> <span class="ident">i32</span>, <span class="ident">v</span>.<span class="ident">into</span>())
+<span class="attribute">#[inline]
+</span><span class="kw">unsafe fn </span>push_style_var(style_var: StyleVar) {
+    <span class="kw">use </span><span class="kw">crate</span>::style::StyleVar::<span class="kw-2">*</span>;
+    <span class="kw">use </span><span class="kw">crate</span>::sys::{igPushStyleVar_Float, igPushStyleVar_Vec2};
+    <span class="kw">match </span>style_var {
+        Alpha(v) =&gt; igPushStyleVar_Float(sys::ImGuiStyleVar_Alpha <span class="kw">as </span>i32, v),
+        WindowPadding(v) =&gt; igPushStyleVar_Vec2(sys::ImGuiStyleVar_WindowPadding <span class="kw">as </span>i32, v.into()),
+        WindowRounding(v) =&gt; igPushStyleVar_Float(sys::ImGuiStyleVar_WindowRounding <span class="kw">as </span>i32, v),
+        WindowBorderSize(v) =&gt; igPushStyleVar_Float(sys::ImGuiStyleVar_WindowBorderSize <span class="kw">as </span>i32, v),
+        WindowMinSize(v) =&gt; igPushStyleVar_Vec2(sys::ImGuiStyleVar_WindowMinSize <span class="kw">as </span>i32, v.into()),
+        WindowTitleAlign(v) =&gt; {
+            igPushStyleVar_Vec2(sys::ImGuiStyleVar_WindowTitleAlign <span class="kw">as </span>i32, v.into())
         }
-        <span class="ident">ChildRounding</span>(<span class="ident">v</span>) =&gt; <span class="ident">igPushStyleVar_Float</span>(<span class="ident">sys::ImGuiStyleVar_ChildRounding</span> <span class="kw">as</span> <span class="ident">i32</span>, <span class="ident">v</span>),
-        <span class="ident">ChildBorderSize</span>(<span class="ident">v</span>) =&gt; <span class="ident">igPushStyleVar_Float</span>(<span class="ident">sys::ImGuiStyleVar_ChildBorderSize</span> <span class="kw">as</span> <span class="ident">i32</span>, <span class="ident">v</span>),
-        <span class="ident">PopupRounding</span>(<span class="ident">v</span>) =&gt; <span class="ident">igPushStyleVar_Float</span>(<span class="ident">sys::ImGuiStyleVar_PopupRounding</span> <span class="kw">as</span> <span class="ident">i32</span>, <span class="ident">v</span>),
-        <span class="ident">PopupBorderSize</span>(<span class="ident">v</span>) =&gt; <span class="ident">igPushStyleVar_Float</span>(<span class="ident">sys::ImGuiStyleVar_PopupBorderSize</span> <span class="kw">as</span> <span class="ident">i32</span>, <span class="ident">v</span>),
-        <span class="ident">FramePadding</span>(<span class="ident">v</span>) =&gt; <span class="ident">igPushStyleVar_Vec2</span>(<span class="ident">sys::ImGuiStyleVar_FramePadding</span> <span class="kw">as</span> <span class="ident">i32</span>, <span class="ident">v</span>.<span class="ident">into</span>()),
-        <span class="ident">FrameRounding</span>(<span class="ident">v</span>) =&gt; <span class="ident">igPushStyleVar_Float</span>(<span class="ident">sys::ImGuiStyleVar_FrameRounding</span> <span class="kw">as</span> <span class="ident">i32</span>, <span class="ident">v</span>),
-        <span class="ident">FrameBorderSize</span>(<span class="ident">v</span>) =&gt; <span class="ident">igPushStyleVar_Float</span>(<span class="ident">sys::ImGuiStyleVar_FrameBorderSize</span> <span class="kw">as</span> <span class="ident">i32</span>, <span class="ident">v</span>),
-        <span class="ident">ItemSpacing</span>(<span class="ident">v</span>) =&gt; <span class="ident">igPushStyleVar_Vec2</span>(<span class="ident">sys::ImGuiStyleVar_ItemSpacing</span> <span class="kw">as</span> <span class="ident">i32</span>, <span class="ident">v</span>.<span class="ident">into</span>()),
-        <span class="ident">ItemInnerSpacing</span>(<span class="ident">v</span>) =&gt; {
-            <span class="ident">igPushStyleVar_Vec2</span>(<span class="ident">sys::ImGuiStyleVar_ItemInnerSpacing</span> <span class="kw">as</span> <span class="ident">i32</span>, <span class="ident">v</span>.<span class="ident">into</span>())
+        ChildRounding(v) =&gt; igPushStyleVar_Float(sys::ImGuiStyleVar_ChildRounding <span class="kw">as </span>i32, v),
+        ChildBorderSize(v) =&gt; igPushStyleVar_Float(sys::ImGuiStyleVar_ChildBorderSize <span class="kw">as </span>i32, v),
+        PopupRounding(v) =&gt; igPushStyleVar_Float(sys::ImGuiStyleVar_PopupRounding <span class="kw">as </span>i32, v),
+        PopupBorderSize(v) =&gt; igPushStyleVar_Float(sys::ImGuiStyleVar_PopupBorderSize <span class="kw">as </span>i32, v),
+        FramePadding(v) =&gt; igPushStyleVar_Vec2(sys::ImGuiStyleVar_FramePadding <span class="kw">as </span>i32, v.into()),
+        FrameRounding(v) =&gt; igPushStyleVar_Float(sys::ImGuiStyleVar_FrameRounding <span class="kw">as </span>i32, v),
+        FrameBorderSize(v) =&gt; igPushStyleVar_Float(sys::ImGuiStyleVar_FrameBorderSize <span class="kw">as </span>i32, v),
+        ItemSpacing(v) =&gt; igPushStyleVar_Vec2(sys::ImGuiStyleVar_ItemSpacing <span class="kw">as </span>i32, v.into()),
+        ItemInnerSpacing(v) =&gt; {
+            igPushStyleVar_Vec2(sys::ImGuiStyleVar_ItemInnerSpacing <span class="kw">as </span>i32, v.into())
         }
-        <span class="ident">IndentSpacing</span>(<span class="ident">v</span>) =&gt; <span class="ident">igPushStyleVar_Float</span>(<span class="ident">sys::ImGuiStyleVar_IndentSpacing</span> <span class="kw">as</span> <span class="ident">i32</span>, <span class="ident">v</span>),
-        <span class="ident">ScrollbarSize</span>(<span class="ident">v</span>) =&gt; <span class="ident">igPushStyleVar_Float</span>(<span class="ident">sys::ImGuiStyleVar_ScrollbarSize</span> <span class="kw">as</span> <span class="ident">i32</span>, <span class="ident">v</span>),
-        <span class="ident">ScrollbarRounding</span>(<span class="ident">v</span>) =&gt; {
-            <span class="ident">igPushStyleVar_Float</span>(<span class="ident">sys::ImGuiStyleVar_ScrollbarRounding</span> <span class="kw">as</span> <span class="ident">i32</span>, <span class="ident">v</span>)
+        IndentSpacing(v) =&gt; igPushStyleVar_Float(sys::ImGuiStyleVar_IndentSpacing <span class="kw">as </span>i32, v),
+        ScrollbarSize(v) =&gt; igPushStyleVar_Float(sys::ImGuiStyleVar_ScrollbarSize <span class="kw">as </span>i32, v),
+        ScrollbarRounding(v) =&gt; {
+            igPushStyleVar_Float(sys::ImGuiStyleVar_ScrollbarRounding <span class="kw">as </span>i32, v)
         }
-        <span class="ident">GrabMinSize</span>(<span class="ident">v</span>) =&gt; <span class="ident">igPushStyleVar_Float</span>(<span class="ident">sys::ImGuiStyleVar_GrabMinSize</span> <span class="kw">as</span> <span class="ident">i32</span>, <span class="ident">v</span>),
-        <span class="ident">GrabRounding</span>(<span class="ident">v</span>) =&gt; <span class="ident">igPushStyleVar_Float</span>(<span class="ident">sys::ImGuiStyleVar_GrabRounding</span> <span class="kw">as</span> <span class="ident">i32</span>, <span class="ident">v</span>),
-        <span class="ident">TabRounding</span>(<span class="ident">v</span>) =&gt; <span class="ident">igPushStyleVar_Float</span>(<span class="ident">sys::ImGuiStyleVar_TabRounding</span> <span class="kw">as</span> <span class="ident">i32</span>, <span class="ident">v</span>),
-        <span class="ident">ButtonTextAlign</span>(<span class="ident">v</span>) =&gt; {
-            <span class="ident">igPushStyleVar_Vec2</span>(<span class="ident">sys::ImGuiStyleVar_ButtonTextAlign</span> <span class="kw">as</span> <span class="ident">i32</span>, <span class="ident">v</span>.<span class="ident">into</span>())
+        GrabMinSize(v) =&gt; igPushStyleVar_Float(sys::ImGuiStyleVar_GrabMinSize <span class="kw">as </span>i32, v),
+        GrabRounding(v) =&gt; igPushStyleVar_Float(sys::ImGuiStyleVar_GrabRounding <span class="kw">as </span>i32, v),
+        TabRounding(v) =&gt; igPushStyleVar_Float(sys::ImGuiStyleVar_TabRounding <span class="kw">as </span>i32, v),
+        ButtonTextAlign(v) =&gt; {
+            igPushStyleVar_Vec2(sys::ImGuiStyleVar_ButtonTextAlign <span class="kw">as </span>i32, v.into())
         }
-        <span class="ident">SelectableTextAlign</span>(<span class="ident">v</span>) =&gt; {
-            <span class="ident">igPushStyleVar_Vec2</span>(<span class="ident">sys::ImGuiStyleVar_SelectableTextAlign</span> <span class="kw">as</span> <span class="ident">i32</span>, <span class="ident">v</span>.<span class="ident">into</span>())
+        SelectableTextAlign(v) =&gt; {
+            igPushStyleVar_Vec2(sys::ImGuiStyleVar_SelectableTextAlign <span class="kw">as </span>i32, v.into())
         }
-        <span class="ident">CellPadding</span>(<span class="ident">v</span>) =&gt; <span class="ident">igPushStyleVar_Vec2</span>(<span class="ident">sys::ImGuiStyleVar_CellPadding</span> <span class="kw">as</span> <span class="ident">i32</span>, <span class="ident">v</span>.<span class="ident">into</span>())
+        CellPadding(v) =&gt; igPushStyleVar_Vec2(sys::ImGuiStyleVar_CellPadding <span class="kw">as </span>i32, v.into())
     }
 }
 
-<span class="doccomment">/// # Parameter stacks (current window)</span>
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> <span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Changes the item width by pushing a change to the item width stack.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Returns an `ItemWidthStackToken` that may be popped by calling `.pop()`</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// - `&gt; 0.0`: width is `item_width` pixels</span>
-    <span class="doccomment">/// - `= 0.0`: default to ~2/3 of window width</span>
-    <span class="doccomment">/// - `&lt; 0.0`: `item_width` pixels relative to the right of window (-1.0 always aligns width to</span>
-    <span class="doccomment">/// the right side)</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PushItemWith&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">push_item_width</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">item_width</span>: <span class="ident">f32</span>) -&gt; <span class="ident">ItemWidthStackToken</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igPushItemWidth</span>(<span class="ident">item_width</span>) };
-        <span class="ident">ItemWidthStackToken</span> { <span class="ident">_ctx</span>: <span class="self">self</span>.<span class="ident">ctx</span> }
+<span class="doccomment">/// # Parameter stacks (current window)
+</span><span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>&gt; Ui&lt;<span class="lifetime">&#39;ui</span>&gt; {
+    <span class="doccomment">/// Changes the item width by pushing a change to the item width stack.
+    ///
+    /// Returns an `ItemWidthStackToken` that may be popped by calling `.pop()`
+    ///
+    /// - `&gt; 0.0`: width is `item_width` pixels
+    /// - `= 0.0`: default to ~2/3 of window width
+    /// - `&lt; 0.0`: `item_width` pixels relative to the right of window (-1.0 always aligns width to
+    /// the right side)
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;PushItemWith&quot;</span>)]
+    </span><span class="kw">pub fn </span>push_item_width(<span class="kw-2">&amp;</span><span class="self">self</span>, item_width: f32) -&gt; ItemWidthStackToken {
+        <span class="kw">unsafe </span>{ sys::igPushItemWidth(item_width) };
+        ItemWidthStackToken { _ctx: <span class="self">self</span>.ctx }
     }
-    <span class="doccomment">/// Sets the width of the next item.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// - `&gt; 0.0`: width is `item_width` pixels</span>
-    <span class="doccomment">/// - `= 0.0`: default to ~2/3 of window width</span>
-    <span class="doccomment">/// - `&lt; 0.0`: `item_width` pixels relative to the right of window (-1.0 always aligns width to</span>
-    <span class="doccomment">/// the right side)</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;SetNextItemWidth&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_next_item_width</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">item_width</span>: <span class="ident">f32</span>) {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igSetNextItemWidth</span>(<span class="ident">item_width</span>) };
+    <span class="doccomment">/// Sets the width of the next item.
+    ///
+    /// - `&gt; 0.0`: width is `item_width` pixels
+    /// - `= 0.0`: default to ~2/3 of window width
+    /// - `&lt; 0.0`: `item_width` pixels relative to the right of window (-1.0 always aligns width to
+    /// the right side)
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;SetNextItemWidth&quot;</span>)]
+    </span><span class="kw">pub fn </span>set_next_item_width(<span class="kw-2">&amp;</span><span class="self">self</span>, item_width: f32) {
+        <span class="kw">unsafe </span>{ sys::igSetNextItemWidth(item_width) };
     }
-    <span class="doccomment">/// Returns the width of the item given the pushed settings and the current cursor position.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This is NOT necessarily the width of last item.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;CalcItemWidth&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">calc_item_width</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">f32</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igCalcItemWidth</span>() }
-    }
-
-    <span class="doccomment">/// Changes the text wrapping position to the end of window (or column), which</span>
-    <span class="doccomment">/// is generally the default.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This is the same as calling [push_text_wrap_pos_with_pos](Self::push_text_wrap_pos_with_pos)</span>
-    <span class="doccomment">/// with `wrap_pos_x` set to 0.0.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Returns a `TextWrapPosStackToken` that may be popped by calling `.pop()`</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PushTextWrapPos&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">push_text_wrap_pos</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">TextWrapPosStackToken</span> {
-        <span class="self">self</span>.<span class="ident">push_text_wrap_pos_with_pos</span>(<span class="number">0.0</span>)
+    <span class="doccomment">/// Returns the width of the item given the pushed settings and the current cursor position.
+    ///
+    /// This is NOT necessarily the width of last item.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;CalcItemWidth&quot;</span>)]
+    </span><span class="kw">pub fn </span>calc_item_width(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; f32 {
+        <span class="kw">unsafe </span>{ sys::igCalcItemWidth() }
     }
 
-    <span class="doccomment">/// Changes the text wrapping position by pushing a change to the text wrapping position stack.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Returns a `TextWrapPosStackToken` that may be popped by calling `.pop()`</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// - `&gt; 0.0`: wrap at `wrap_pos_x` position in window local space</span>
-    <span class="doccomment">/// - `= 0.0`: wrap to end of window (or column)</span>
-    <span class="doccomment">/// - `&lt; 0.0`: no wrapping</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PushTextWrapPos&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">push_text_wrap_pos_with_pos</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">wrap_pos_x</span>: <span class="ident">f32</span>) -&gt; <span class="ident">TextWrapPosStackToken</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igPushTextWrapPos</span>(<span class="ident">wrap_pos_x</span>) };
-        <span class="ident">TextWrapPosStackToken</span> { <span class="ident">_ctx</span>: <span class="self">self</span>.<span class="ident">ctx</span> }
+    <span class="doccomment">/// Changes the text wrapping position to the end of window (or column), which
+    /// is generally the default.
+    ///
+    /// This is the same as calling [push_text_wrap_pos_with_pos](Self::push_text_wrap_pos_with_pos)
+    /// with `wrap_pos_x` set to 0.0.
+    ///
+    /// Returns a `TextWrapPosStackToken` that may be popped by calling `.pop()`
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;PushTextWrapPos&quot;</span>)]
+    </span><span class="kw">pub fn </span>push_text_wrap_pos(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; TextWrapPosStackToken {
+        <span class="self">self</span>.push_text_wrap_pos_with_pos(<span class="number">0.0</span>)
     }
 
-    <span class="doccomment">/// Changes an item flag by pushing a change to the item flag stack.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Returns a `ItemFlagsStackToken` that may be popped by calling `.pop()`</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PushItemFlag&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">push_item_flag</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">item_flag</span>: <span class="ident">ItemFlag</span>) -&gt; <span class="ident">ItemFlagsStackToken</span> {
-        <span class="kw">use</span> <span class="ident"><span class="self">self</span>::ItemFlag</span>::<span class="kw-2">*</span>;
-        <span class="kw">match</span> <span class="ident">item_flag</span> {
-            <span class="ident">AllowKeyboardFocus</span>(<span class="ident">v</span>) =&gt; <span class="kw">unsafe</span> { <span class="ident">sys::igPushAllowKeyboardFocus</span>(<span class="ident">v</span>) },
-            <span class="ident">ButtonRepeat</span>(<span class="ident">v</span>) =&gt; <span class="kw">unsafe</span> { <span class="ident">sys::igPushButtonRepeat</span>(<span class="ident">v</span>) },
+    <span class="doccomment">/// Changes the text wrapping position by pushing a change to the text wrapping position stack.
+    ///
+    /// Returns a `TextWrapPosStackToken` that may be popped by calling `.pop()`
+    ///
+    /// - `&gt; 0.0`: wrap at `wrap_pos_x` position in window local space
+    /// - `= 0.0`: wrap to end of window (or column)
+    /// - `&lt; 0.0`: no wrapping
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;PushTextWrapPos&quot;</span>)]
+    </span><span class="kw">pub fn </span>push_text_wrap_pos_with_pos(<span class="kw-2">&amp;</span><span class="self">self</span>, wrap_pos_x: f32) -&gt; TextWrapPosStackToken {
+        <span class="kw">unsafe </span>{ sys::igPushTextWrapPos(wrap_pos_x) };
+        TextWrapPosStackToken { _ctx: <span class="self">self</span>.ctx }
+    }
+
+    <span class="doccomment">/// Changes an item flag by pushing a change to the item flag stack.
+    ///
+    /// Returns a `ItemFlagsStackToken` that may be popped by calling `.pop()`
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;PushItemFlag&quot;</span>)]
+    </span><span class="kw">pub fn </span>push_item_flag(<span class="kw-2">&amp;</span><span class="self">self</span>, item_flag: ItemFlag) -&gt; ItemFlagsStackToken {
+        <span class="kw">use </span><span class="self">self</span>::ItemFlag::<span class="kw-2">*</span>;
+        <span class="kw">match </span>item_flag {
+            AllowKeyboardFocus(v) =&gt; <span class="kw">unsafe </span>{ sys::igPushAllowKeyboardFocus(v) },
+            ButtonRepeat(v) =&gt; <span class="kw">unsafe </span>{ sys::igPushButtonRepeat(v) },
         }
-        <span class="ident">ItemFlagsStackToken</span> {
-            <span class="ident">discriminant</span>: <span class="ident">mem::discriminant</span>(<span class="kw-2">&amp;</span><span class="ident">item_flag</span>),
-            <span class="ident">_ctx</span>: <span class="self">self</span>.<span class="ident">ctx</span>,
+        ItemFlagsStackToken {
+            discriminant: mem::discriminant(<span class="kw-2">&amp;</span>item_flag),
+            _ctx: <span class="self">self</span>.ctx,
         }
     }
 }
 
-<span class="doccomment">/// A temporary change in item flags</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>)]</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">ItemFlag</span> {
-    <span class="ident">AllowKeyboardFocus</span>(<span class="ident">bool</span>),
-    <span class="ident">ButtonRepeat</span>(<span class="ident">bool</span>),
+<span class="doccomment">/// A temporary change in item flags
+</span><span class="attribute">#[derive(Copy, Clone, Debug, PartialEq)]
+</span><span class="kw">pub enum </span>ItemFlag {
+    AllowKeyboardFocus(bool),
+    ButtonRepeat(bool),
 }
 
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">ItemWidthStackToken</span> {
-    <span class="ident">_ctx</span>: <span class="kw-2">*const</span> <span class="ident">Context</span>,
+<span class="kw">pub struct </span>ItemWidthStackToken {
+    _ctx: <span class="kw-2">*const </span>Context,
 }
 
-<span class="kw">impl</span> <span class="ident">ItemWidthStackToken</span> {
-    <span class="doccomment">/// Pops a change from the item width stack</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PopItemWidth&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">pop</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="kw">_</span>: <span class="kw-2">&amp;</span><span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) {
-        <span class="self">self</span>.<span class="ident">_ctx</span> <span class="op">=</span> <span class="ident">ptr::null</span>();
-        <span class="kw">unsafe</span> { <span class="ident">sys::igPopItemWidth</span>() };
+<span class="kw">impl </span>ItemWidthStackToken {
+    <span class="doccomment">/// Pops a change from the item width stack
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;PopItemWidth&quot;</span>)]
+    </span><span class="kw">pub fn </span>pop(<span class="kw-2">mut </span><span class="self">self</span>, <span class="kw">_</span>: <span class="kw-2">&amp;</span>Ui&lt;<span class="lifetime">&#39;_</span>&gt;) {
+        <span class="self">self</span>._ctx = ptr::null();
+        <span class="kw">unsafe </span>{ sys::igPopItemWidth() };
     }
 }
 
-<span class="doccomment">/// Tracks a change pushed to the text wrap position stack</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">TextWrapPosStackToken</span> {
-    <span class="ident">_ctx</span>: <span class="kw-2">*const</span> <span class="ident">Context</span>,
+<span class="doccomment">/// Tracks a change pushed to the text wrap position stack
+</span><span class="kw">pub struct </span>TextWrapPosStackToken {
+    _ctx: <span class="kw-2">*const </span>Context,
 }
 
-<span class="kw">impl</span> <span class="ident">TextWrapPosStackToken</span> {
-    <span class="doccomment">/// Pops a change from the text wrap position stack</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PopTextWrapPos&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">pop</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="kw">_</span>: <span class="kw-2">&amp;</span><span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) {
-        <span class="self">self</span>.<span class="ident">_ctx</span> <span class="op">=</span> <span class="ident">ptr::null</span>();
-        <span class="kw">unsafe</span> { <span class="ident">sys::igPopTextWrapPos</span>() };
+<span class="kw">impl </span>TextWrapPosStackToken {
+    <span class="doccomment">/// Pops a change from the text wrap position stack
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;PopTextWrapPos&quot;</span>)]
+    </span><span class="kw">pub fn </span>pop(<span class="kw-2">mut </span><span class="self">self</span>, <span class="kw">_</span>: <span class="kw-2">&amp;</span>Ui&lt;<span class="lifetime">&#39;_</span>&gt;) {
+        <span class="self">self</span>._ctx = ptr::null();
+        <span class="kw">unsafe </span>{ sys::igPopTextWrapPos() };
     }
 }
 
-<span class="doccomment">/// Tracks a change pushed to the item flags stack</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">ItemFlagsStackToken</span> {
-    <span class="ident">discriminant</span>: <span class="ident">mem::Discriminant</span><span class="op">&lt;</span><span class="ident">ItemFlag</span><span class="op">&gt;</span>,
-    <span class="ident">_ctx</span>: <span class="kw-2">*const</span> <span class="ident">Context</span>,
+<span class="doccomment">/// Tracks a change pushed to the item flags stack
+</span><span class="kw">pub struct </span>ItemFlagsStackToken {
+    discriminant: mem::Discriminant&lt;ItemFlag&gt;,
+    _ctx: <span class="kw-2">*const </span>Context,
 }
 
-<span class="kw">impl</span> <span class="ident">ItemFlagsStackToken</span> {
-    <span class="doccomment">/// Pops a change from the item flags stack</span>
+<span class="kw">impl </span>ItemFlagsStackToken {
+    <span class="doccomment">/// Pops a change from the item flags stack
 
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PopAllowKeyboardFocus&quot;</span>, <span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PopButtonRepeat&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">pop</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="kw">_</span>: <span class="kw-2">&amp;</span><span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) {
-        <span class="self">self</span>.<span class="ident">_ctx</span> <span class="op">=</span> <span class="ident">ptr::null</span>();
-        <span class="kw">const</span> <span class="ident">ALLOW_KEYBOARD_FOCUS</span>: <span class="ident">ItemFlag</span> <span class="op">=</span> <span class="ident">ItemFlag::AllowKeyboardFocus</span>(<span class="bool-val">true</span>);
-        <span class="kw">const</span> <span class="ident">BUTTON_REPEAT</span>: <span class="ident">ItemFlag</span> <span class="op">=</span> <span class="ident">ItemFlag::ButtonRepeat</span>(<span class="bool-val">true</span>);
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;PopAllowKeyboardFocus&quot;</span>, alias = <span class="string">&quot;PopButtonRepeat&quot;</span>)]
+    </span><span class="kw">pub fn </span>pop(<span class="kw-2">mut </span><span class="self">self</span>, <span class="kw">_</span>: <span class="kw-2">&amp;</span>Ui&lt;<span class="lifetime">&#39;_</span>&gt;) {
+        <span class="self">self</span>._ctx = ptr::null();
+        <span class="kw">const </span>ALLOW_KEYBOARD_FOCUS: ItemFlag = ItemFlag::AllowKeyboardFocus(<span class="bool-val">true</span>);
+        <span class="kw">const </span>BUTTON_REPEAT: ItemFlag = ItemFlag::ButtonRepeat(<span class="bool-val">true</span>);
 
-        <span class="kw">if</span> <span class="self">self</span>.<span class="ident">discriminant</span> <span class="op">==</span> <span class="ident">mem::discriminant</span>(<span class="kw-2">&amp;</span><span class="ident">ALLOW_KEYBOARD_FOCUS</span>) {
-            <span class="kw">unsafe</span> { <span class="ident">sys::igPopAllowKeyboardFocus</span>() };
-        } <span class="kw">else</span> <span class="kw">if</span> <span class="self">self</span>.<span class="ident">discriminant</span> <span class="op">==</span> <span class="ident">mem::discriminant</span>(<span class="kw-2">&amp;</span><span class="ident">BUTTON_REPEAT</span>) {
-            <span class="kw">unsafe</span> { <span class="ident">sys::igPopButtonRepeat</span>() };
-        } <span class="kw">else</span> {
+        <span class="kw">if </span><span class="self">self</span>.discriminant == mem::discriminant(<span class="kw-2">&amp;</span>ALLOW_KEYBOARD_FOCUS) {
+            <span class="kw">unsafe </span>{ sys::igPopAllowKeyboardFocus() };
+        } <span class="kw">else if </span><span class="self">self</span>.discriminant == mem::discriminant(<span class="kw-2">&amp;</span>BUTTON_REPEAT) {
+            <span class="kw">unsafe </span>{ sys::igPopButtonRepeat() };
+        } <span class="kw">else </span>{
             <span class="macro">unreachable!</span>();
         }
     }
 }
 
 <span class="macro">create_token!</span>(
-    <span class="doccomment">/// Tracks an ID pushed to the ID stack that can be popped by calling `.pop()`</span>
-    <span class="doccomment">/// or by dropping.</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">IdStackToken</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>;
+    <span class="doccomment">/// Tracks an ID pushed to the ID stack that can be popped by calling `.pop()`
+    /// or by dropping.
+    </span><span class="kw">pub struct </span>IdStackToken&lt;<span class="lifetime">&#39;ui</span>&gt;;
 
-    <span class="doccomment">/// Pops a change from the ID stack</span>
-    <span class="ident">drop</span> { <span class="ident">sys::igPopID</span>() }
+    <span class="doccomment">/// Pops a change from the ID stack
+    </span>drop { sys::igPopID() }
 );
 
-<span class="kw">impl</span> <span class="ident">IdStackToken</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Pops a change from the ID stack</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">pop</span>(<span class="self">self</span>) {
-        <span class="self">self</span>.<span class="ident">end</span>()
+<span class="kw">impl </span>IdStackToken&lt;<span class="lifetime">&#39;_</span>&gt; {
+    <span class="doccomment">/// Pops a change from the ID stack
+    </span><span class="kw">pub fn </span>pop(<span class="self">self</span>) {
+        <span class="self">self</span>.end()
     }
 }
 
-<span class="doccomment">/// # ID stack</span>
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> <span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Pushes an identifier to the ID stack.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Returns an `IdStackToken` that can be popped by calling `.end()`</span>
-    <span class="doccomment">/// or by dropping manually.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PushId&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">push_id</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">I</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">Id</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">id</span>: <span class="ident">I</span>) -&gt; <span class="ident">IdStackToken</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> {
-        <span class="kw">let</span> <span class="ident">id</span> <span class="op">=</span> <span class="ident">id</span>.<span class="ident">into</span>();
+<span class="doccomment">/// # ID stack
+</span><span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>&gt; Ui&lt;<span class="lifetime">&#39;ui</span>&gt; {
+    <span class="doccomment">/// Pushes an identifier to the ID stack.
+    ///
+    /// Returns an `IdStackToken` that can be popped by calling `.end()`
+    /// or by dropping manually.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;PushId&quot;</span>)]
+    </span><span class="kw">pub fn </span>push_id&lt;<span class="lifetime">&#39;a</span>, I: Into&lt;Id&lt;<span class="lifetime">&#39;a</span>&gt;&gt;&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, id: I) -&gt; IdStackToken&lt;<span class="lifetime">&#39;ui</span>&gt; {
+        <span class="kw">let </span>id = id.into();
 
-        <span class="kw">unsafe</span> {
-            <span class="kw">match</span> <span class="ident">id</span> {
-                <span class="ident">Id::Int</span>(<span class="ident">i</span>) =&gt; <span class="ident">sys::igPushID_Int</span>(<span class="ident">i</span>),
-                <span class="ident">Id::Str</span>(<span class="ident">s</span>) =&gt; {
-                    <span class="kw">let</span> <span class="ident">start</span> <span class="op">=</span> <span class="ident">s</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">c_char</span>;
-                    <span class="kw">let</span> <span class="ident">end</span> <span class="op">=</span> <span class="ident">start</span>.<span class="ident">add</span>(<span class="ident">s</span>.<span class="ident">len</span>());
-                    <span class="ident">sys::igPushID_StrStr</span>(<span class="ident">start</span>, <span class="ident">end</span>)
+        <span class="kw">unsafe </span>{
+            <span class="kw">match </span>id {
+                Id::Int(i) =&gt; sys::igPushID_Int(i),
+                Id::Str(s) =&gt; {
+                    <span class="kw">let </span>start = s.as_ptr() <span class="kw">as </span><span class="kw-2">*const </span>c_char;
+                    <span class="kw">let </span>end = start.add(s.len());
+                    sys::igPushID_StrStr(start, end)
                 }
-                <span class="ident">Id::Ptr</span>(<span class="ident">p</span>) =&gt; <span class="ident">sys::igPushID_Ptr</span>(<span class="ident">p</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">c_void</span>),
+                Id::Ptr(p) =&gt; sys::igPushID_Ptr(p <span class="kw">as </span><span class="kw-2">*const </span>c_void),
             }
         }
-        <span class="ident">IdStackToken::new</span>(<span class="self">self</span>)
+        IdStackToken::new(<span class="self">self</span>)
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="arcdps_imgui" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="arcdps_imgui" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.0 (69f9c33d7 2022-12-12)" ></div></body></html>

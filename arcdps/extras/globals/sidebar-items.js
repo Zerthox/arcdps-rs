@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"static":[["EXTRAS_GLOBALS","Global instance of Unofficial Extras handle & exported functions."]],"struct":[["ExtrasGlobals","Unofficial Extras handle & exported functions."]]};

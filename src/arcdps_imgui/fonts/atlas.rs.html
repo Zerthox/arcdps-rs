@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\arcdps-imgui-0.8.0\src\fonts\atlas.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>atlas.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../arcdps_imgui/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../arcdps_imgui/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../arcdps_imgui/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\arcdps-imgui-0.8.0\src\fonts\atlas.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>atlas.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../normalize.css"><link rel="stylesheet" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../ayu.css" disabled><link rel="stylesheet" href="../../../dark.css" disabled><link rel="stylesheet" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../../arcdps_imgui/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -496,503 +496,503 @@
 <span id="496">496</span>
 <span id="497">497</span>
 <span id="498">498</span>
-</pre><pre class="rust"><code><span class="kw">use</span> <span class="ident">bitflags::bitflags</span>;
-<span class="kw">use</span> <span class="ident">std::cell</span>;
-<span class="kw">use</span> <span class="ident">std::f32</span>;
-<span class="kw">use</span> <span class="ident">std::ops</span>::{<span class="ident">Deref</span>, <span class="ident">DerefMut</span>};
-<span class="kw">use</span> <span class="ident">std::os::raw</span>::{<span class="ident">c_int</span>, <span class="ident">c_uchar</span>, <span class="ident">c_void</span>};
-<span class="kw">use</span> <span class="ident">std::ptr</span>;
-<span class="kw">use</span> <span class="ident">std::slice</span>;
+</pre><pre class="rust"><code><span class="kw">use </span>bitflags::bitflags;
+<span class="kw">use </span>std::cell;
+<span class="kw">use </span>std::f32;
+<span class="kw">use </span>std::ops::{Deref, DerefMut};
+<span class="kw">use </span>std::os::raw::{c_int, c_uchar, c_void};
+<span class="kw">use </span>std::ptr;
+<span class="kw">use </span>std::slice;
 
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::fonts::font::Font</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::fonts::glyph_ranges::FontGlyphRanges</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::internal</span>::{<span class="ident">ImVector</span>, <span class="ident">RawCast</span>};
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::sys</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::TextureId</span>;
+<span class="kw">use </span><span class="kw">crate</span>::fonts::font::Font;
+<span class="kw">use </span><span class="kw">crate</span>::fonts::glyph_ranges::FontGlyphRanges;
+<span class="kw">use </span><span class="kw">crate</span>::internal::{ImVector, RawCast};
+<span class="kw">use </span><span class="kw">crate</span>::sys;
+<span class="kw">use </span><span class="kw">crate</span>::TextureId;
 
-<span class="macro">bitflags!</span> {
-    <span class="doccomment">/// Font atlas configuration flags</span>
-    <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">transparent</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">FontAtlasFlags</span>: <span class="ident">u32</span> {
-        <span class="doccomment">/// Don&#39;t round the height to next power of two</span>
-        <span class="kw">const</span> <span class="ident">NO_POWER_OF_TWO_HEIGHT</span> <span class="op">=</span> <span class="ident">sys::ImFontAtlasFlags_NoPowerOfTwoHeight</span>;
-        <span class="doccomment">/// Don&#39;t build software mouse cursors into the atlas</span>
-        <span class="kw">const</span> <span class="ident">NO_MOUSE_CURSORS</span> <span class="op">=</span> <span class="ident">sys::ImFontAtlasFlags_NoMouseCursors</span>;
-        <span class="doccomment">/// Don&#39;t build thick line textures into the atlas</span>
-        <span class="kw">const</span> <span class="ident">NO_BAKED_LINES</span> <span class="op">=</span> <span class="ident">sys::ImFontAtlasFlags_NoBakedLines</span>;
+<span class="macro">bitflags! </span>{
+    <span class="doccomment">/// Font atlas configuration flags
+    </span><span class="attribute">#[repr(transparent)]
+    </span><span class="kw">pub struct </span>FontAtlasFlags: u32 {
+        <span class="doccomment">/// Don&#39;t round the height to next power of two
+        </span><span class="kw">const </span>NO_POWER_OF_TWO_HEIGHT = sys::ImFontAtlasFlags_NoPowerOfTwoHeight;
+        <span class="doccomment">/// Don&#39;t build software mouse cursors into the atlas
+        </span><span class="kw">const </span>NO_MOUSE_CURSORS = sys::ImFontAtlasFlags_NoMouseCursors;
+        <span class="doccomment">/// Don&#39;t build thick line textures into the atlas
+        </span><span class="kw">const </span>NO_BAKED_LINES = sys::ImFontAtlasFlags_NoBakedLines;
     }
 }
 
-<span class="doccomment">/// A font identifier</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">Eq</span>, <span class="ident">PartialEq</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">FontId</span>(<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw-2">*const</span> <span class="ident">Font</span>);
+<span class="doccomment">/// A font identifier
+</span><span class="attribute">#[derive(Copy, Clone, Debug, Eq, PartialEq)]
+</span><span class="kw">pub struct </span>FontId(<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw-2">*const </span>Font);
 
-<span class="doccomment">/// A font atlas that builds a single texture</span>
-<span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">FontAtlas</span> {
-    <span class="ident">locked</span>: <span class="ident">bool</span>,
-    <span class="doccomment">/// Configuration flags</span>
-    <span class="kw">pub</span> <span class="ident">flags</span>: <span class="ident">FontAtlasFlags</span>,
-    <span class="doccomment">/// Texture identifier</span>
-    <span class="kw">pub</span> <span class="ident">tex_id</span>: <span class="ident">TextureId</span>,
-    <span class="doccomment">/// Texture width desired by user before building the atlas.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Must be a power-of-two. If you have many glyphs and your graphics API has texture size</span>
-    <span class="doccomment">/// restrictions, you may want to increase texture width to decrease the height.</span>
-    <span class="kw">pub</span> <span class="ident">tex_desired_width</span>: <span class="ident">i32</span>,
-    <span class="doccomment">/// Padding between glyphs within texture in pixels.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Defaults to 1. If your rendering method doesn&#39;t rely on bilinear filtering, you may set</span>
-    <span class="doccomment">/// this to 0.</span>
-    <span class="kw">pub</span> <span class="ident">tex_glyph_padding</span>: <span class="ident">i32</span>,
+<span class="doccomment">/// A font atlas that builds a single texture
+</span><span class="attribute">#[repr(C)]
+</span><span class="kw">pub struct </span>FontAtlas {
+    locked: bool,
+    <span class="doccomment">/// Configuration flags
+    </span><span class="kw">pub </span>flags: FontAtlasFlags,
+    <span class="doccomment">/// Texture identifier
+    </span><span class="kw">pub </span>tex_id: TextureId,
+    <span class="doccomment">/// Texture width desired by user before building the atlas.
+    ///
+    /// Must be a power-of-two. If you have many glyphs and your graphics API has texture size
+    /// restrictions, you may want to increase texture width to decrease the height.
+    </span><span class="kw">pub </span>tex_desired_width: i32,
+    <span class="doccomment">/// Padding between glyphs within texture in pixels.
+    ///
+    /// Defaults to 1. If your rendering method doesn&#39;t rely on bilinear filtering, you may set
+    /// this to 0.
+    </span><span class="kw">pub </span>tex_glyph_padding: i32,
 
-    <span class="ident">tex_pixels_alpha8</span>: <span class="kw-2">*mut</span> <span class="ident">u8</span>,
-    <span class="ident">tex_pixels_rgba32</span>: <span class="kw-2">*mut</span> <span class="ident">u32</span>,
-    <span class="ident">tex_width</span>: <span class="ident">i32</span>,
-    <span class="ident">tex_height</span>: <span class="ident">i32</span>,
-    <span class="ident">tex_uv_scale</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-    <span class="ident">tex_uv_white_pixel</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-    <span class="ident">fonts</span>: <span class="ident">ImVector</span><span class="op">&lt;</span><span class="kw-2">*mut</span> <span class="ident">Font</span><span class="op">&gt;</span>,
-    <span class="ident">custom_rects</span>: <span class="ident">sys::ImVector_ImFontAtlasCustomRect</span>,
-    <span class="ident">config_data</span>: <span class="ident">sys::ImVector_ImFontConfig</span>,
-    <span class="ident">tex_uv_lines</span>: [[<span class="ident">f32</span>; <span class="number">4</span>]; <span class="number">64</span>],
-    <span class="ident">pack_id_mouse_cursors</span>: <span class="ident">i32</span>,
-    <span class="ident">pack_id_lines</span>: <span class="ident">i32</span>,
+    tex_pixels_alpha8: <span class="kw-2">*mut </span>u8,
+    tex_pixels_rgba32: <span class="kw-2">*mut </span>u32,
+    tex_width: i32,
+    tex_height: i32,
+    tex_uv_scale: [f32; <span class="number">2</span>],
+    tex_uv_white_pixel: [f32; <span class="number">2</span>],
+    fonts: ImVector&lt;<span class="kw-2">*mut </span>Font&gt;,
+    custom_rects: sys::ImVector_ImFontAtlasCustomRect,
+    config_data: sys::ImVector_ImFontConfig,
+    tex_uv_lines: [[f32; <span class="number">4</span>]; <span class="number">64</span>],
+    pack_id_mouse_cursors: i32,
+    pack_id_lines: i32,
 }
 
-<span class="kw">unsafe</span> <span class="kw">impl</span> <span class="ident">RawCast</span><span class="op">&lt;</span><span class="ident">sys::ImFontAtlas</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">FontAtlas</span> {}
+<span class="kw">unsafe impl </span>RawCast&lt;sys::ImFontAtlas&gt; <span class="kw">for </span>FontAtlas {}
 
-<span class="kw">impl</span> <span class="ident">FontAtlas</span> {
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;AddFontDefault&quot;</span>, <span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;AddFont&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">add_font</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">font_sources</span>: <span class="kw-2">&amp;</span>[<span class="ident">FontSource</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>]) -&gt; <span class="ident">FontId</span> {
-        <span class="kw">let</span> (<span class="ident">head</span>, <span class="ident">tail</span>) <span class="op">=</span> <span class="ident">font_sources</span>.<span class="ident">split_first</span>().<span class="ident">unwrap</span>();
-        <span class="kw">let</span> <span class="ident">font_id</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">add_font_internal</span>(<span class="ident">head</span>, <span class="bool-val">false</span>);
-        <span class="kw">for</span> <span class="ident">font</span> <span class="kw">in</span> <span class="ident">tail</span> {
-            <span class="self">self</span>.<span class="ident">add_font_internal</span>(<span class="ident">font</span>, <span class="bool-val">true</span>);
+<span class="kw">impl </span>FontAtlas {
+    <span class="attribute">#[doc(alias = <span class="string">&quot;AddFontDefault&quot;</span>, alias = <span class="string">&quot;AddFont&quot;</span>)]
+    </span><span class="kw">pub fn </span>add_font(<span class="kw-2">&amp;mut </span><span class="self">self</span>, font_sources: <span class="kw-2">&amp;</span>[FontSource&lt;<span class="lifetime">&#39;_</span>&gt;]) -&gt; FontId {
+        <span class="kw">let </span>(head, tail) = font_sources.split_first().unwrap();
+        <span class="kw">let </span>font_id = <span class="self">self</span>.add_font_internal(head, <span class="bool-val">false</span>);
+        <span class="kw">for </span>font <span class="kw">in </span>tail {
+            <span class="self">self</span>.add_font_internal(font, <span class="bool-val">true</span>);
         }
-        <span class="ident">font_id</span>
+        font_id
     }
-    <span class="kw">fn</span> <span class="ident">add_font_internal</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">font_source</span>: <span class="kw-2">&amp;</span><span class="ident">FontSource</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>, <span class="ident">merge_mode</span>: <span class="ident">bool</span>) -&gt; <span class="ident">FontId</span> {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">raw_config</span> <span class="op">=</span> <span class="ident">sys_font_config_default</span>();
-        <span class="ident">raw_config</span>.<span class="ident">MergeMode</span> <span class="op">=</span> <span class="ident">merge_mode</span>;
-        <span class="kw">let</span> <span class="ident">raw_font</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">font_source</span> {
-            <span class="ident">FontSource::DefaultFontData</span> { <span class="ident">config</span> } =&gt; <span class="kw">unsafe</span> {
-                <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">config</span>) <span class="op">=</span> <span class="ident">config</span> {
-                    <span class="ident">config</span>.<span class="ident">apply_to_raw_config</span>(<span class="kw-2">&amp;mut</span> <span class="ident">raw_config</span>, <span class="self">self</span>.<span class="ident">raw_mut</span>());
+    <span class="kw">fn </span>add_font_internal(<span class="kw-2">&amp;mut </span><span class="self">self</span>, font_source: <span class="kw-2">&amp;</span>FontSource&lt;<span class="lifetime">&#39;_</span>&gt;, merge_mode: bool) -&gt; FontId {
+        <span class="kw">let </span><span class="kw-2">mut </span>raw_config = sys_font_config_default();
+        raw_config.MergeMode = merge_mode;
+        <span class="kw">let </span>raw_font = <span class="kw">match </span>font_source {
+            FontSource::DefaultFontData { config } =&gt; <span class="kw">unsafe </span>{
+                <span class="kw">if let </span><span class="prelude-val">Some</span>(config) = config {
+                    config.apply_to_raw_config(<span class="kw-2">&amp;mut </span>raw_config, <span class="self">self</span>.raw_mut());
                 }
-                <span class="ident">sys::ImFontAtlas_AddFontDefault</span>(<span class="self">self</span>.<span class="ident">raw_mut</span>(), <span class="kw-2">&amp;</span><span class="ident">raw_config</span>)
+                sys::ImFontAtlas_AddFontDefault(<span class="self">self</span>.raw_mut(), <span class="kw-2">&amp;</span>raw_config)
             },
-            <span class="ident">FontSource::TtfData</span> {
-                <span class="ident">data</span>,
-                <span class="ident">size_pixels</span>,
-                <span class="ident">config</span>,
+            FontSource::TtfData {
+                data,
+                size_pixels,
+                config,
             } =&gt; {
-                <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">config</span>) <span class="op">=</span> <span class="ident">config</span> {
-                    <span class="kw">unsafe</span> {
-                        <span class="ident">config</span>.<span class="ident">apply_to_raw_config</span>(<span class="kw-2">&amp;mut</span> <span class="ident">raw_config</span>, <span class="self">self</span>.<span class="ident">raw_mut</span>());
+                <span class="kw">if let </span><span class="prelude-val">Some</span>(config) = config {
+                    <span class="kw">unsafe </span>{
+                        config.apply_to_raw_config(<span class="kw-2">&amp;mut </span>raw_config, <span class="self">self</span>.raw_mut());
                     }
                 }
-                <span class="comment">// We can&#39;t guarantee `data` is alive when the font atlas is built, so</span>
-                <span class="comment">// make a copy and move ownership of the data to the atlas</span>
-                <span class="kw">let</span> <span class="ident">data_copy</span> <span class="op">=</span> <span class="kw">unsafe</span> {
-                    <span class="kw">let</span> <span class="ident">ptr</span> <span class="op">=</span> <span class="ident">sys::igMemAlloc</span>(<span class="ident">data</span>.<span class="ident">len</span>()) <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">u8</span>;
-                    <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ptr</span>.<span class="ident">is_null</span>());
-                    <span class="ident">slice::from_raw_parts_mut</span>(<span class="ident">ptr</span>, <span class="ident">data</span>.<span class="ident">len</span>())
+                <span class="comment">// We can&#39;t guarantee `data` is alive when the font atlas is built, so
+                // make a copy and move ownership of the data to the atlas
+                </span><span class="kw">let </span>data_copy = <span class="kw">unsafe </span>{
+                    <span class="kw">let </span>ptr = sys::igMemAlloc(data.len()) <span class="kw">as </span><span class="kw-2">*mut </span>u8;
+                    <span class="macro">assert!</span>(!ptr.is_null());
+                    slice::from_raw_parts_mut(ptr, data.len())
                 };
-                <span class="ident">data_copy</span>.<span class="ident">copy_from_slice</span>(<span class="ident">data</span>);
-                <span class="ident">raw_config</span>.<span class="ident">FontData</span> <span class="op">=</span> <span class="ident">data_copy</span>.<span class="ident">as_mut_ptr</span>() <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">c_void</span>;
-                <span class="ident">raw_config</span>.<span class="ident">FontDataSize</span> <span class="op">=</span> <span class="ident">data_copy</span>.<span class="ident">len</span>() <span class="kw">as</span> <span class="ident">i32</span>;
-                <span class="ident">raw_config</span>.<span class="ident">FontDataOwnedByAtlas</span> <span class="op">=</span> <span class="bool-val">true</span>;
-                <span class="ident">raw_config</span>.<span class="ident">SizePixels</span> <span class="op">=</span> <span class="kw-2">*</span><span class="ident">size_pixels</span>;
-                <span class="kw">unsafe</span> { <span class="ident">sys::ImFontAtlas_AddFont</span>(<span class="self">self</span>.<span class="ident">raw_mut</span>(), <span class="kw-2">&amp;</span><span class="ident">raw_config</span>) }
+                data_copy.copy_from_slice(data);
+                raw_config.FontData = data_copy.as_mut_ptr() <span class="kw">as </span><span class="kw-2">*mut </span>c_void;
+                raw_config.FontDataSize = data_copy.len() <span class="kw">as </span>i32;
+                raw_config.FontDataOwnedByAtlas = <span class="bool-val">true</span>;
+                raw_config.SizePixels = <span class="kw-2">*</span>size_pixels;
+                <span class="kw">unsafe </span>{ sys::ImFontAtlas_AddFont(<span class="self">self</span>.raw_mut(), <span class="kw-2">&amp;</span>raw_config) }
             }
         };
-        <span class="ident">FontId</span>(<span class="ident">raw_font</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="kw">_</span>)
+        FontId(raw_font <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>)
     }
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">fonts</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">FontId</span><span class="op">&gt;</span> {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">result</span> <span class="op">=</span> <span class="ident">Vec::new</span>();
-        <span class="kw">unsafe</span> {
-            <span class="kw">for</span> <span class="kw-2">&amp;</span><span class="ident">font</span> <span class="kw">in</span> <span class="self">self</span>.<span class="ident">fonts</span>.<span class="ident">as_slice</span>() {
-                <span class="ident">result</span>.<span class="ident">push</span>((<span class="kw-2">*</span><span class="ident">font</span>).<span class="ident">id</span>());
+    <span class="kw">pub fn </span>fonts(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Vec&lt;FontId&gt; {
+        <span class="kw">let </span><span class="kw-2">mut </span>result = Vec::new();
+        <span class="kw">unsafe </span>{
+            <span class="kw">for </span><span class="kw-2">&amp;</span>font <span class="kw">in </span><span class="self">self</span>.fonts.as_slice() {
+                result.push((<span class="kw-2">*</span>font).id());
             }
         }
-        <span class="ident">result</span>
+        result
     }
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_font</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">id</span>: <span class="ident">FontId</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">Font</span><span class="op">&gt;</span> {
-        <span class="kw">unsafe</span> {
-            <span class="kw">for</span> <span class="kw-2">&amp;</span><span class="ident">font</span> <span class="kw">in</span> <span class="self">self</span>.<span class="ident">fonts</span>.<span class="ident">as_slice</span>() {
-                <span class="kw">if</span> <span class="ident">id</span> <span class="op">==</span> <span class="ident">FontId</span>(<span class="ident">font</span>) {
-                    <span class="kw">return</span> <span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="kw-2">*</span>(<span class="ident">font</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">Font</span>));
+    <span class="kw">pub fn </span>get_font(<span class="kw-2">&amp;</span><span class="self">self</span>, id: FontId) -&gt; <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>Font&gt; {
+        <span class="kw">unsafe </span>{
+            <span class="kw">for </span><span class="kw-2">&amp;</span>font <span class="kw">in </span><span class="self">self</span>.fonts.as_slice() {
+                <span class="kw">if </span>id == FontId(font) {
+                    <span class="kw">return </span><span class="prelude-val">Some</span>(<span class="kw-2">&amp;*</span>(font <span class="kw">as </span><span class="kw-2">*const </span>Font));
                 }
             }
         }
-        <span class="prelude-val">None</span>
+        <span class="prelude-val">None
+    </span>}
+    <span class="doccomment">/// Returns true if the font atlas has been built
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;IsBuilt&quot;</span>)]
+    </span><span class="kw">pub fn </span>is_built(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        <span class="kw">unsafe </span>{ sys::ImFontAtlas_IsBuilt(<span class="self">self</span>.raw() <span class="kw">as </span><span class="kw-2">*const </span>sys::ImFontAtlas <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>) }
     }
-    <span class="doccomment">/// Returns true if the font atlas has been built</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;IsBuilt&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_built</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::ImFontAtlas_IsBuilt</span>(<span class="self">self</span>.<span class="ident">raw</span>() <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">sys::ImFontAtlas</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="kw">_</span>) }
-    }
-    <span class="doccomment">/// Builds a 1 byte per-pixel font atlas texture</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GetTextDataAsAlpha8&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build_alpha8_texture</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="ident">FontAtlasTexture</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span> {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">pixels</span>: <span class="kw-2">*mut</span> <span class="ident">c_uchar</span> <span class="op">=</span> <span class="ident">ptr::null_mut</span>();
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">width</span>: <span class="ident">c_int</span> <span class="op">=</span> <span class="number">0</span>;
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">height</span>: <span class="ident">c_int</span> <span class="op">=</span> <span class="number">0</span>;
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">bytes_per_pixel</span>: <span class="ident">c_int</span> <span class="op">=</span> <span class="number">0</span>;
-        <span class="kw">unsafe</span> {
-            <span class="ident">sys::ImFontAtlas_GetTexDataAsAlpha8</span>(
-                <span class="self">self</span>.<span class="ident">raw_mut</span>(),
-                <span class="kw-2">&amp;mut</span> <span class="ident">pixels</span>,
-                <span class="kw-2">&amp;mut</span> <span class="ident">width</span>,
-                <span class="kw-2">&amp;mut</span> <span class="ident">height</span>,
-                <span class="kw-2">&amp;mut</span> <span class="ident">bytes_per_pixel</span>,
+    <span class="doccomment">/// Builds a 1 byte per-pixel font atlas texture
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;GetTextDataAsAlpha8&quot;</span>)]
+    </span><span class="kw">pub fn </span>build_alpha8_texture(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; FontAtlasTexture&lt;<span class="lifetime">&#39;_</span>&gt; {
+        <span class="kw">let </span><span class="kw-2">mut </span>pixels: <span class="kw-2">*mut </span>c_uchar = ptr::null_mut();
+        <span class="kw">let </span><span class="kw-2">mut </span>width: c_int = <span class="number">0</span>;
+        <span class="kw">let </span><span class="kw-2">mut </span>height: c_int = <span class="number">0</span>;
+        <span class="kw">let </span><span class="kw-2">mut </span>bytes_per_pixel: c_int = <span class="number">0</span>;
+        <span class="kw">unsafe </span>{
+            sys::ImFontAtlas_GetTexDataAsAlpha8(
+                <span class="self">self</span>.raw_mut(),
+                <span class="kw-2">&amp;mut </span>pixels,
+                <span class="kw-2">&amp;mut </span>width,
+                <span class="kw-2">&amp;mut </span>height,
+                <span class="kw-2">&amp;mut </span>bytes_per_pixel,
             );
-            <span class="macro">assert!</span>(<span class="ident">width</span> <span class="op">&gt;</span><span class="op">=</span> <span class="number">0</span>, <span class="string">&quot;font texture width must be positive&quot;</span>);
-            <span class="macro">assert!</span>(<span class="ident">height</span> <span class="op">&gt;</span><span class="op">=</span> <span class="number">0</span>, <span class="string">&quot;font texture height must be positive&quot;</span>);
+            <span class="macro">assert!</span>(width &gt;= <span class="number">0</span>, <span class="string">&quot;font texture width must be positive&quot;</span>);
+            <span class="macro">assert!</span>(height &gt;= <span class="number">0</span>, <span class="string">&quot;font texture height must be positive&quot;</span>);
             <span class="macro">assert!</span>(
-                <span class="ident">bytes_per_pixel</span> <span class="op">&gt;</span><span class="op">=</span> <span class="number">0</span>,
-                <span class="string">&quot;font texture bytes per pixel must be positive&quot;</span>
-            );
-            <span class="kw">let</span> <span class="ident">height</span> <span class="op">=</span> <span class="ident">height</span> <span class="kw">as</span> <span class="ident">usize</span>;
-            <span class="comment">// Check multiplication to avoid constructing an invalid slice in case of overflow</span>
-            <span class="kw">let</span> <span class="ident">pitch</span> <span class="op">=</span> <span class="ident">width</span>
-                .<span class="ident">checked_mul</span>(<span class="ident">bytes_per_pixel</span>)
-                .<span class="ident">expect</span>(<span class="string">&quot;Overflow in font texture pitch calculation&quot;</span>)
-                <span class="kw">as</span> <span class="ident">usize</span>;
-            <span class="ident">FontAtlasTexture</span> {
-                <span class="ident">width</span>: <span class="ident">width</span> <span class="kw">as</span> <span class="ident">u32</span>,
-                <span class="ident">height</span>: <span class="ident">height</span> <span class="kw">as</span> <span class="ident">u32</span>,
-                <span class="ident">data</span>: <span class="ident">slice::from_raw_parts</span>(<span class="ident">pixels</span>, <span class="ident">pitch</span> <span class="op">*</span> <span class="ident">height</span>),
+                bytes_per_pixel &gt;= <span class="number">0</span>,
+                <span class="string">&quot;font texture bytes per pixel must be positive&quot;
+            </span>);
+            <span class="kw">let </span>height = height <span class="kw">as </span>usize;
+            <span class="comment">// Check multiplication to avoid constructing an invalid slice in case of overflow
+            </span><span class="kw">let </span>pitch = width
+                .checked_mul(bytes_per_pixel)
+                .expect(<span class="string">&quot;Overflow in font texture pitch calculation&quot;</span>)
+                <span class="kw">as </span>usize;
+            FontAtlasTexture {
+                width: width <span class="kw">as </span>u32,
+                height: height <span class="kw">as </span>u32,
+                data: slice::from_raw_parts(pixels, pitch * height),
             }
         }
     }
-    <span class="doccomment">/// Builds a 4 byte per-pixel font atlas texture</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GetTextDataAsRGBA32&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build_rgba32_texture</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="ident">FontAtlasTexture</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span> {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">pixels</span>: <span class="kw-2">*mut</span> <span class="ident">c_uchar</span> <span class="op">=</span> <span class="ident">ptr::null_mut</span>();
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">width</span>: <span class="ident">c_int</span> <span class="op">=</span> <span class="number">0</span>;
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">height</span>: <span class="ident">c_int</span> <span class="op">=</span> <span class="number">0</span>;
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">bytes_per_pixel</span>: <span class="ident">c_int</span> <span class="op">=</span> <span class="number">0</span>;
-        <span class="kw">unsafe</span> {
-            <span class="ident">sys::ImFontAtlas_GetTexDataAsRGBA32</span>(
-                <span class="self">self</span>.<span class="ident">raw_mut</span>(),
-                <span class="kw-2">&amp;mut</span> <span class="ident">pixels</span>,
-                <span class="kw-2">&amp;mut</span> <span class="ident">width</span>,
-                <span class="kw-2">&amp;mut</span> <span class="ident">height</span>,
-                <span class="kw-2">&amp;mut</span> <span class="ident">bytes_per_pixel</span>,
+    <span class="doccomment">/// Builds a 4 byte per-pixel font atlas texture
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;GetTextDataAsRGBA32&quot;</span>)]
+    </span><span class="kw">pub fn </span>build_rgba32_texture(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; FontAtlasTexture&lt;<span class="lifetime">&#39;_</span>&gt; {
+        <span class="kw">let </span><span class="kw-2">mut </span>pixels: <span class="kw-2">*mut </span>c_uchar = ptr::null_mut();
+        <span class="kw">let </span><span class="kw-2">mut </span>width: c_int = <span class="number">0</span>;
+        <span class="kw">let </span><span class="kw-2">mut </span>height: c_int = <span class="number">0</span>;
+        <span class="kw">let </span><span class="kw-2">mut </span>bytes_per_pixel: c_int = <span class="number">0</span>;
+        <span class="kw">unsafe </span>{
+            sys::ImFontAtlas_GetTexDataAsRGBA32(
+                <span class="self">self</span>.raw_mut(),
+                <span class="kw-2">&amp;mut </span>pixels,
+                <span class="kw-2">&amp;mut </span>width,
+                <span class="kw-2">&amp;mut </span>height,
+                <span class="kw-2">&amp;mut </span>bytes_per_pixel,
             );
-            <span class="macro">assert!</span>(<span class="ident">width</span> <span class="op">&gt;</span><span class="op">=</span> <span class="number">0</span>, <span class="string">&quot;font texture width must be positive&quot;</span>);
-            <span class="macro">assert!</span>(<span class="ident">height</span> <span class="op">&gt;</span><span class="op">=</span> <span class="number">0</span>, <span class="string">&quot;font texture height must be positive&quot;</span>);
+            <span class="macro">assert!</span>(width &gt;= <span class="number">0</span>, <span class="string">&quot;font texture width must be positive&quot;</span>);
+            <span class="macro">assert!</span>(height &gt;= <span class="number">0</span>, <span class="string">&quot;font texture height must be positive&quot;</span>);
             <span class="macro">assert!</span>(
-                <span class="ident">bytes_per_pixel</span> <span class="op">&gt;</span><span class="op">=</span> <span class="number">0</span>,
-                <span class="string">&quot;font texture bytes per pixel must be positive&quot;</span>
-            );
-            <span class="kw">let</span> <span class="ident">height</span> <span class="op">=</span> <span class="ident">height</span> <span class="kw">as</span> <span class="ident">usize</span>;
-            <span class="comment">// Check multiplication to avoid constructing an invalid slice in case of overflow</span>
-            <span class="kw">let</span> <span class="ident">pitch</span> <span class="op">=</span> <span class="ident">width</span>
-                .<span class="ident">checked_mul</span>(<span class="ident">bytes_per_pixel</span>)
-                .<span class="ident">expect</span>(<span class="string">&quot;Overflow in font texture pitch calculation&quot;</span>)
-                <span class="kw">as</span> <span class="ident">usize</span>;
-            <span class="ident">FontAtlasTexture</span> {
-                <span class="ident">width</span>: <span class="ident">width</span> <span class="kw">as</span> <span class="ident">u32</span>,
-                <span class="ident">height</span>: <span class="ident">height</span> <span class="kw">as</span> <span class="ident">u32</span>,
-                <span class="ident">data</span>: <span class="ident">slice::from_raw_parts</span>(<span class="ident">pixels</span>, <span class="ident">pitch</span> <span class="op">*</span> <span class="ident">height</span>),
+                bytes_per_pixel &gt;= <span class="number">0</span>,
+                <span class="string">&quot;font texture bytes per pixel must be positive&quot;
+            </span>);
+            <span class="kw">let </span>height = height <span class="kw">as </span>usize;
+            <span class="comment">// Check multiplication to avoid constructing an invalid slice in case of overflow
+            </span><span class="kw">let </span>pitch = width
+                .checked_mul(bytes_per_pixel)
+                .expect(<span class="string">&quot;Overflow in font texture pitch calculation&quot;</span>)
+                <span class="kw">as </span>usize;
+            FontAtlasTexture {
+                width: width <span class="kw">as </span>u32,
+                height: height <span class="kw">as </span>u32,
+                data: slice::from_raw_parts(pixels, pitch * height),
             }
         }
     }
-    <span class="doccomment">/// Clears the font atlas completely (both input and output data)</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;Clear&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">clear</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
-        <span class="kw">unsafe</span> {
-            <span class="ident">sys::ImFontAtlas_Clear</span>(<span class="self">self</span>.<span class="ident">raw_mut</span>());
+    <span class="doccomment">/// Clears the font atlas completely (both input and output data)
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;Clear&quot;</span>)]
+    </span><span class="kw">pub fn </span>clear(<span class="kw-2">&amp;mut </span><span class="self">self</span>) {
+        <span class="kw">unsafe </span>{
+            sys::ImFontAtlas_Clear(<span class="self">self</span>.raw_mut());
         }
     }
-    <span class="doccomment">/// Clears output font data (glyph storage, UV coordinates)</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;ClearFonts&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">clear_fonts</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
-        <span class="kw">unsafe</span> {
-            <span class="ident">sys::ImFontAtlas_ClearFonts</span>(<span class="self">self</span>.<span class="ident">raw_mut</span>());
+    <span class="doccomment">/// Clears output font data (glyph storage, UV coordinates)
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;ClearFonts&quot;</span>)]
+    </span><span class="kw">pub fn </span>clear_fonts(<span class="kw-2">&amp;mut </span><span class="self">self</span>) {
+        <span class="kw">unsafe </span>{
+            sys::ImFontAtlas_ClearFonts(<span class="self">self</span>.raw_mut());
         }
     }
-    <span class="doccomment">/// Clears output texture data.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Can be used to save RAM once the texture has been transferred to the GPU.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;ClearTexData&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">clear_tex_data</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
-        <span class="kw">unsafe</span> {
-            <span class="ident">sys::ImFontAtlas_ClearTexData</span>(<span class="self">self</span>.<span class="ident">raw_mut</span>());
+    <span class="doccomment">/// Clears output texture data.
+    ///
+    /// Can be used to save RAM once the texture has been transferred to the GPU.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;ClearTexData&quot;</span>)]
+    </span><span class="kw">pub fn </span>clear_tex_data(<span class="kw-2">&amp;mut </span><span class="self">self</span>) {
+        <span class="kw">unsafe </span>{
+            sys::ImFontAtlas_ClearTexData(<span class="self">self</span>.raw_mut());
         }
     }
-    <span class="doccomment">/// Clears all the data used to build the textures and fonts</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;ClearInputData&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">clear_input_data</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
-        <span class="kw">unsafe</span> {
-            <span class="ident">sys::ImFontAtlas_ClearInputData</span>(<span class="self">self</span>.<span class="ident">raw_mut</span>());
+    <span class="doccomment">/// Clears all the data used to build the textures and fonts
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;ClearInputData&quot;</span>)]
+    </span><span class="kw">pub fn </span>clear_input_data(<span class="kw-2">&amp;mut </span><span class="self">self</span>) {
+        <span class="kw">unsafe </span>{
+            sys::ImFontAtlas_ClearInputData(<span class="self">self</span>.raw_mut());
         }
     }
 }
 
-<span class="attribute">#[<span class="ident">test</span>]</span>
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">test</span>)]</span>
-<span class="kw">fn</span> <span class="ident">test_font_atlas_memory_layout</span>() {
-    <span class="kw">use</span> <span class="ident">std::mem</span>;
+<span class="attribute">#[test]
+#[cfg(test)]
+</span><span class="kw">fn </span>test_font_atlas_memory_layout() {
+    <span class="kw">use </span>std::mem;
     <span class="macro">assert_eq!</span>(
-        <span class="ident">mem::size_of</span>::<span class="op">&lt;</span><span class="ident">FontAtlas</span><span class="op">&gt;</span>(),
-        <span class="ident">mem::size_of</span>::<span class="op">&lt;</span><span class="ident">sys::ImFontAtlas</span><span class="op">&gt;</span>()
+        mem::size_of::&lt;FontAtlas&gt;(),
+        mem::size_of::&lt;sys::ImFontAtlas&gt;()
     );
     <span class="macro">assert_eq!</span>(
-        <span class="ident">mem::align_of</span>::<span class="op">&lt;</span><span class="ident">FontAtlas</span><span class="op">&gt;</span>(),
-        <span class="ident">mem::align_of</span>::<span class="op">&lt;</span><span class="ident">sys::ImFontAtlas</span><span class="op">&gt;</span>()
+        mem::align_of::&lt;FontAtlas&gt;(),
+        mem::align_of::&lt;sys::ImFontAtlas&gt;()
     );
-    <span class="kw">use</span> <span class="ident">sys::ImFontAtlas</span>;
-    <span class="macro">macro_rules!</span> <span class="ident">assert_field_offset</span> {
-        (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">l</span>:<span class="ident">ident</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">r</span>:<span class="ident">ident</span>) =&gt; {
+    <span class="kw">use </span>sys::ImFontAtlas;
+    <span class="macro">macro_rules! </span>assert_field_offset {
+        (<span class="macro-nonterminal">$l</span>:ident, <span class="macro-nonterminal">$r</span>:ident) =&gt; {
             <span class="macro">assert_eq!</span>(
-                <span class="macro">memoffset::offset_of!</span>(<span class="ident">FontAtlas</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">l</span>),
-                <span class="macro">memoffset::offset_of!</span>(<span class="ident">ImFontAtlas</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">r</span>)
+                <span class="macro">memoffset::offset_of!</span>(FontAtlas, <span class="macro-nonterminal">$l</span>),
+                <span class="macro">memoffset::offset_of!</span>(ImFontAtlas, <span class="macro-nonterminal">$r</span>)
             );
         };
     }
-    <span class="macro">assert_field_offset!</span>(<span class="ident">locked</span>, <span class="ident">Locked</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">flags</span>, <span class="ident">Flags</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">tex_id</span>, <span class="ident">TexID</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">tex_desired_width</span>, <span class="ident">TexDesiredWidth</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">tex_glyph_padding</span>, <span class="ident">TexGlyphPadding</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">tex_pixels_alpha8</span>, <span class="ident">TexPixelsAlpha8</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">tex_pixels_rgba32</span>, <span class="ident">TexPixelsRGBA32</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">tex_width</span>, <span class="ident">TexWidth</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">tex_height</span>, <span class="ident">TexHeight</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">tex_uv_scale</span>, <span class="ident">TexUvScale</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">tex_uv_white_pixel</span>, <span class="ident">TexUvWhitePixel</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">fonts</span>, <span class="ident">Fonts</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">custom_rects</span>, <span class="ident">CustomRects</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">config_data</span>, <span class="ident">ConfigData</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">tex_uv_lines</span>, <span class="ident">TexUvLines</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">pack_id_mouse_cursors</span>, <span class="ident">PackIdMouseCursors</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">pack_id_lines</span>, <span class="ident">PackIdLines</span>);
+    <span class="macro">assert_field_offset!</span>(locked, Locked);
+    <span class="macro">assert_field_offset!</span>(flags, Flags);
+    <span class="macro">assert_field_offset!</span>(tex_id, TexID);
+    <span class="macro">assert_field_offset!</span>(tex_desired_width, TexDesiredWidth);
+    <span class="macro">assert_field_offset!</span>(tex_glyph_padding, TexGlyphPadding);
+    <span class="macro">assert_field_offset!</span>(tex_pixels_alpha8, TexPixelsAlpha8);
+    <span class="macro">assert_field_offset!</span>(tex_pixels_rgba32, TexPixelsRGBA32);
+    <span class="macro">assert_field_offset!</span>(tex_width, TexWidth);
+    <span class="macro">assert_field_offset!</span>(tex_height, TexHeight);
+    <span class="macro">assert_field_offset!</span>(tex_uv_scale, TexUvScale);
+    <span class="macro">assert_field_offset!</span>(tex_uv_white_pixel, TexUvWhitePixel);
+    <span class="macro">assert_field_offset!</span>(fonts, Fonts);
+    <span class="macro">assert_field_offset!</span>(custom_rects, CustomRects);
+    <span class="macro">assert_field_offset!</span>(config_data, ConfigData);
+    <span class="macro">assert_field_offset!</span>(tex_uv_lines, TexUvLines);
+    <span class="macro">assert_field_offset!</span>(pack_id_mouse_cursors, PackIdMouseCursors);
+    <span class="macro">assert_field_offset!</span>(pack_id_lines, PackIdLines);
 }
 
-<span class="doccomment">/// A source for binary font data</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Debug</span>)]</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">FontSource</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Default font included with the library (ProggyClean.ttf)</span>
-    <span class="ident">DefaultFontData</span> { <span class="ident">config</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">FontConfig</span><span class="op">&gt;</span> },
-    <span class="doccomment">/// Binary TTF/OTF font data</span>
-    <span class="ident">TtfData</span> {
-        <span class="ident">data</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> [<span class="ident">u8</span>],
-        <span class="ident">size_pixels</span>: <span class="ident">f32</span>,
-        <span class="ident">config</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">FontConfig</span><span class="op">&gt;</span>,
+<span class="doccomment">/// A source for binary font data
+</span><span class="attribute">#[derive(Clone, Debug)]
+</span><span class="kw">pub enum </span>FontSource&lt;<span class="lifetime">&#39;a</span>&gt; {
+    <span class="doccomment">/// Default font included with the library (ProggyClean.ttf)
+    </span>DefaultFontData { config: <span class="prelude-ty">Option</span>&lt;FontConfig&gt; },
+    <span class="doccomment">/// Binary TTF/OTF font data
+    </span>TtfData {
+        data: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>[u8],
+        size_pixels: f32,
+        config: <span class="prelude-ty">Option</span>&lt;FontConfig&gt;,
     },
 }
 
-<span class="doccomment">/// Configuration settings for a font</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Debug</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">FontConfig</span> {
-    <span class="doccomment">/// Size in pixels for the rasterizer</span>
-    <span class="kw">pub</span> <span class="ident">size_pixels</span>: <span class="ident">f32</span>,
-    <span class="doccomment">/// Horizontal oversampling</span>
-    <span class="kw">pub</span> <span class="ident">oversample_h</span>: <span class="ident">i32</span>,
-    <span class="doccomment">/// Vertical oversampling</span>
-    <span class="kw">pub</span> <span class="ident">oversample_v</span>: <span class="ident">i32</span>,
-    <span class="doccomment">/// Align every glyph to pixel boundary</span>
-    <span class="kw">pub</span> <span class="ident">pixel_snap_h</span>: <span class="ident">bool</span>,
-    <span class="doccomment">/// Extra spacing (in pixels) between glyphs</span>
-    <span class="kw">pub</span> <span class="ident">glyph_extra_spacing</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-    <span class="doccomment">/// Offset for all glyphs in this font</span>
-    <span class="kw">pub</span> <span class="ident">glyph_offset</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-    <span class="doccomment">/// Unicode ranges to use from this font</span>
-    <span class="kw">pub</span> <span class="ident">glyph_ranges</span>: <span class="ident">FontGlyphRanges</span>,
-    <span class="doccomment">/// Minimum advance_x for glyphs</span>
-    <span class="kw">pub</span> <span class="ident">glyph_min_advance_x</span>: <span class="ident">f32</span>,
-    <span class="doccomment">/// Maximum advance_x for glyphs</span>
-    <span class="kw">pub</span> <span class="ident">glyph_max_advance_x</span>: <span class="ident">f32</span>,
-    <span class="doccomment">/// Settings for a custom font rasterizer if used</span>
-    <span class="kw">pub</span> <span class="ident">rasterizer_flags</span>: <span class="ident">u32</span>,
-    <span class="doccomment">/// Brighten (&gt;1.0) or darken (&lt;1.0) font output</span>
-    <span class="kw">pub</span> <span class="ident">rasterizer_multiply</span>: <span class="ident">f32</span>,
-    <span class="doccomment">/// Explicitly specify the ellipsis character.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// With multiple font sources the first specified ellipsis is used.</span>
-    <span class="kw">pub</span> <span class="ident">ellipsis_char</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">char</span><span class="op">&gt;</span>,
-    <span class="kw">pub</span> <span class="ident">name</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>,
+<span class="doccomment">/// Configuration settings for a font
+</span><span class="attribute">#[derive(Clone, Debug)]
+</span><span class="kw">pub struct </span>FontConfig {
+    <span class="doccomment">/// Size in pixels for the rasterizer
+    </span><span class="kw">pub </span>size_pixels: f32,
+    <span class="doccomment">/// Horizontal oversampling
+    </span><span class="kw">pub </span>oversample_h: i32,
+    <span class="doccomment">/// Vertical oversampling
+    </span><span class="kw">pub </span>oversample_v: i32,
+    <span class="doccomment">/// Align every glyph to pixel boundary
+    </span><span class="kw">pub </span>pixel_snap_h: bool,
+    <span class="doccomment">/// Extra spacing (in pixels) between glyphs
+    </span><span class="kw">pub </span>glyph_extra_spacing: [f32; <span class="number">2</span>],
+    <span class="doccomment">/// Offset for all glyphs in this font
+    </span><span class="kw">pub </span>glyph_offset: [f32; <span class="number">2</span>],
+    <span class="doccomment">/// Unicode ranges to use from this font
+    </span><span class="kw">pub </span>glyph_ranges: FontGlyphRanges,
+    <span class="doccomment">/// Minimum advance_x for glyphs
+    </span><span class="kw">pub </span>glyph_min_advance_x: f32,
+    <span class="doccomment">/// Maximum advance_x for glyphs
+    </span><span class="kw">pub </span>glyph_max_advance_x: f32,
+    <span class="doccomment">/// Settings for a custom font rasterizer if used
+    </span><span class="kw">pub </span>rasterizer_flags: u32,
+    <span class="doccomment">/// Brighten (&gt;1.0) or darken (&lt;1.0) font output
+    </span><span class="kw">pub </span>rasterizer_multiply: f32,
+    <span class="doccomment">/// Explicitly specify the ellipsis character.
+    ///
+    /// With multiple font sources the first specified ellipsis is used.
+    </span><span class="kw">pub </span>ellipsis_char: <span class="prelude-ty">Option</span>&lt;char&gt;,
+    <span class="kw">pub </span>name: <span class="prelude-ty">Option</span>&lt;String&gt;,
 }
 
-<span class="kw">impl</span> <span class="ident">Default</span> <span class="kw">for</span> <span class="ident">FontConfig</span> {
-    <span class="kw">fn</span> <span class="ident">default</span>() -&gt; <span class="ident">FontConfig</span> {
-        <span class="ident">FontConfig</span> {
-            <span class="ident">size_pixels</span>: <span class="number">0.0</span>,
-            <span class="ident">oversample_h</span>: <span class="number">3</span>,
-            <span class="ident">oversample_v</span>: <span class="number">1</span>,
-            <span class="ident">pixel_snap_h</span>: <span class="bool-val">false</span>,
-            <span class="ident">glyph_extra_spacing</span>: [<span class="number">0.0</span>, <span class="number">0.0</span>],
-            <span class="ident">glyph_offset</span>: [<span class="number">0.0</span>, <span class="number">0.0</span>],
-            <span class="ident">glyph_ranges</span>: <span class="ident">FontGlyphRanges::default</span>(),
-            <span class="ident">glyph_min_advance_x</span>: <span class="number">0.0</span>,
-            <span class="ident">glyph_max_advance_x</span>: <span class="ident">f32::MAX</span>,
-            <span class="ident">rasterizer_flags</span>: <span class="number">0</span>,
-            <span class="ident">rasterizer_multiply</span>: <span class="number">1.0</span>,
-            <span class="ident">ellipsis_char</span>: <span class="prelude-val">None</span>,
-            <span class="ident">name</span>: <span class="prelude-val">None</span>,
+<span class="kw">impl </span>Default <span class="kw">for </span>FontConfig {
+    <span class="kw">fn </span>default() -&gt; FontConfig {
+        FontConfig {
+            size_pixels: <span class="number">0.0</span>,
+            oversample_h: <span class="number">3</span>,
+            oversample_v: <span class="number">1</span>,
+            pixel_snap_h: <span class="bool-val">false</span>,
+            glyph_extra_spacing: [<span class="number">0.0</span>, <span class="number">0.0</span>],
+            glyph_offset: [<span class="number">0.0</span>, <span class="number">0.0</span>],
+            glyph_ranges: FontGlyphRanges::default(),
+            glyph_min_advance_x: <span class="number">0.0</span>,
+            glyph_max_advance_x: f32::MAX,
+            rasterizer_flags: <span class="number">0</span>,
+            rasterizer_multiply: <span class="number">1.0</span>,
+            ellipsis_char: <span class="prelude-val">None</span>,
+            name: <span class="prelude-val">None</span>,
         }
     }
 }
 
-<span class="kw">impl</span> <span class="ident">FontConfig</span> {
-    <span class="kw">fn</span> <span class="ident">apply_to_raw_config</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">raw</span>: <span class="kw-2">&amp;mut</span> <span class="ident">sys::ImFontConfig</span>, <span class="ident">atlas</span>: <span class="kw-2">*mut</span> <span class="ident">sys::ImFontAtlas</span>) {
-        <span class="ident">raw</span>.<span class="ident">SizePixels</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">size_pixels</span>;
-        <span class="ident">raw</span>.<span class="ident">OversampleH</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">oversample_h</span>;
-        <span class="ident">raw</span>.<span class="ident">OversampleV</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">oversample_v</span>;
-        <span class="ident">raw</span>.<span class="ident">PixelSnapH</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">pixel_snap_h</span>;
-        <span class="ident">raw</span>.<span class="ident">GlyphExtraSpacing</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">glyph_extra_spacing</span>.<span class="ident">into</span>();
-        <span class="ident">raw</span>.<span class="ident">GlyphOffset</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">glyph_offset</span>.<span class="ident">into</span>();
-        <span class="ident">raw</span>.<span class="ident">GlyphRanges</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="self">self</span>.<span class="ident">glyph_ranges</span>.<span class="ident">to_ptr</span>(<span class="ident">atlas</span>) };
-        <span class="ident">raw</span>.<span class="ident">GlyphMinAdvanceX</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">glyph_min_advance_x</span>;
-        <span class="ident">raw</span>.<span class="ident">GlyphMaxAdvanceX</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">glyph_max_advance_x</span>;
-        <span class="ident">raw</span>.<span class="ident">RasterizerFlags</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">rasterizer_flags</span>;
-        <span class="ident">raw</span>.<span class="ident">RasterizerMultiply</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">rasterizer_multiply</span>;
-        <span class="ident">raw</span>.<span class="ident">EllipsisChar</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">ellipsis_char</span>.<span class="ident">map</span>(<span class="op">|</span><span class="ident">x</span><span class="op">|</span> <span class="ident">x</span> <span class="kw">as</span> <span class="ident">u16</span>).<span class="ident">unwrap_or</span>(<span class="number">0xffff</span>);
-        <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">name</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">name</span>.<span class="ident">as_ref</span>() {
-            <span class="kw">let</span> <span class="ident">bytes</span> <span class="op">=</span> <span class="ident">name</span>.<span class="ident">as_bytes</span>();
-            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">len</span> <span class="op">=</span> <span class="ident">bytes</span>.<span class="ident">len</span>().<span class="ident">min</span>(<span class="ident">raw</span>.<span class="ident">Name</span>.<span class="ident">len</span>() <span class="op">-</span> <span class="number">1</span>);
-            <span class="kw">while</span> <span class="op">!</span><span class="ident">name</span>.<span class="ident">is_char_boundary</span>(<span class="ident">len</span>) {
-                <span class="ident">len</span> <span class="op">-</span><span class="op">=</span> <span class="number">1</span>;
+<span class="kw">impl </span>FontConfig {
+    <span class="kw">fn </span>apply_to_raw_config(<span class="kw-2">&amp;</span><span class="self">self</span>, raw: <span class="kw-2">&amp;mut </span>sys::ImFontConfig, atlas: <span class="kw-2">*mut </span>sys::ImFontAtlas) {
+        raw.SizePixels = <span class="self">self</span>.size_pixels;
+        raw.OversampleH = <span class="self">self</span>.oversample_h;
+        raw.OversampleV = <span class="self">self</span>.oversample_v;
+        raw.PixelSnapH = <span class="self">self</span>.pixel_snap_h;
+        raw.GlyphExtraSpacing = <span class="self">self</span>.glyph_extra_spacing.into();
+        raw.GlyphOffset = <span class="self">self</span>.glyph_offset.into();
+        raw.GlyphRanges = <span class="kw">unsafe </span>{ <span class="self">self</span>.glyph_ranges.to_ptr(atlas) };
+        raw.GlyphMinAdvanceX = <span class="self">self</span>.glyph_min_advance_x;
+        raw.GlyphMaxAdvanceX = <span class="self">self</span>.glyph_max_advance_x;
+        raw.RasterizerFlags = <span class="self">self</span>.rasterizer_flags;
+        raw.RasterizerMultiply = <span class="self">self</span>.rasterizer_multiply;
+        raw.EllipsisChar = <span class="self">self</span>.ellipsis_char.map(|x| x <span class="kw">as </span>u16).unwrap_or(<span class="number">0xffff</span>);
+        <span class="kw">if let </span><span class="prelude-val">Some</span>(name) = <span class="self">self</span>.name.as_ref() {
+            <span class="kw">let </span>bytes = name.as_bytes();
+            <span class="kw">let </span><span class="kw-2">mut </span>len = bytes.len().min(raw.Name.len() - <span class="number">1</span>);
+            <span class="kw">while </span>!name.is_char_boundary(len) {
+                len -= <span class="number">1</span>;
             }
-            <span class="kw">unsafe</span> {
-                <span class="ident">bytes</span>.<span class="ident">as_ptr</span>().<span class="ident">copy_to</span>(<span class="ident">raw</span>.<span class="ident">Name</span>.<span class="ident">as_mut_ptr</span>() <span class="kw">as</span> <span class="kw">_</span>, <span class="ident">len</span>);
-                <span class="ident">raw</span>.<span class="ident">Name</span>[<span class="ident">len</span>] <span class="op">=</span> <span class="number">0</span>;
+            <span class="kw">unsafe </span>{
+                bytes.as_ptr().copy_to(raw.Name.as_mut_ptr() <span class="kw">as _</span>, len);
+                raw.Name[len] = <span class="number">0</span>;
             }
         }
     }
 }
 
-<span class="kw">fn</span> <span class="ident">sys_font_config_default</span>() -&gt; <span class="ident">sys::ImFontConfig</span> {
-    <span class="kw">unsafe</span> {
-        <span class="kw">let</span> <span class="ident">heap_allocated</span> <span class="op">=</span> <span class="ident">sys::ImFontConfig_ImFontConfig</span>();
-        <span class="kw">let</span> <span class="ident">copy</span> <span class="op">=</span> <span class="kw-2">*</span><span class="ident">heap_allocated</span>;
-        <span class="ident">sys::ImFontConfig_destroy</span>(<span class="ident">heap_allocated</span>);
-        <span class="ident">copy</span>
+<span class="kw">fn </span>sys_font_config_default() -&gt; sys::ImFontConfig {
+    <span class="kw">unsafe </span>{
+        <span class="kw">let </span>heap_allocated = sys::ImFontConfig_ImFontConfig();
+        <span class="kw">let </span>copy = <span class="kw-2">*</span>heap_allocated;
+        sys::ImFontConfig_destroy(heap_allocated);
+        copy
     }
 }
 
-<span class="attribute">#[<span class="ident">test</span>]</span>
-<span class="kw">fn</span> <span class="ident">test_font_config_default</span>() {
-    <span class="kw">let</span> <span class="ident">sys_font_config</span> <span class="op">=</span> <span class="ident">sys_font_config_default</span>();
-    <span class="kw">let</span> <span class="ident">font_config</span> <span class="op">=</span> <span class="ident">FontConfig::default</span>();
-    <span class="macro">assert_eq!</span>(<span class="ident">font_config</span>.<span class="ident">size_pixels</span>, <span class="ident">sys_font_config</span>.<span class="ident">SizePixels</span>);
-    <span class="macro">assert_eq!</span>(<span class="ident">font_config</span>.<span class="ident">oversample_h</span>, <span class="ident">sys_font_config</span>.<span class="ident">OversampleH</span>);
-    <span class="macro">assert_eq!</span>(<span class="ident">font_config</span>.<span class="ident">oversample_v</span>, <span class="ident">sys_font_config</span>.<span class="ident">OversampleV</span>);
-    <span class="macro">assert_eq!</span>(<span class="ident">font_config</span>.<span class="ident">pixel_snap_h</span>, <span class="ident">sys_font_config</span>.<span class="ident">PixelSnapH</span>);
+<span class="attribute">#[test]
+</span><span class="kw">fn </span>test_font_config_default() {
+    <span class="kw">let </span>sys_font_config = sys_font_config_default();
+    <span class="kw">let </span>font_config = FontConfig::default();
+    <span class="macro">assert_eq!</span>(font_config.size_pixels, sys_font_config.SizePixels);
+    <span class="macro">assert_eq!</span>(font_config.oversample_h, sys_font_config.OversampleH);
+    <span class="macro">assert_eq!</span>(font_config.oversample_v, sys_font_config.OversampleV);
+    <span class="macro">assert_eq!</span>(font_config.pixel_snap_h, sys_font_config.PixelSnapH);
     <span class="macro">assert_eq!</span>(
-        <span class="ident">font_config</span>.<span class="ident">glyph_extra_spacing</span>[<span class="number">0</span>],
-        <span class="ident">sys_font_config</span>.<span class="ident">GlyphExtraSpacing</span>.<span class="ident">x</span>
+        font_config.glyph_extra_spacing[<span class="number">0</span>],
+        sys_font_config.GlyphExtraSpacing.x
     );
     <span class="macro">assert_eq!</span>(
-        <span class="ident">font_config</span>.<span class="ident">glyph_extra_spacing</span>[<span class="number">1</span>],
-        <span class="ident">sys_font_config</span>.<span class="ident">GlyphExtraSpacing</span>.<span class="ident">y</span>
+        font_config.glyph_extra_spacing[<span class="number">1</span>],
+        sys_font_config.GlyphExtraSpacing.y
     );
-    <span class="macro">assert_eq!</span>(<span class="ident">font_config</span>.<span class="ident">glyph_offset</span>[<span class="number">0</span>], <span class="ident">sys_font_config</span>.<span class="ident">GlyphOffset</span>.<span class="ident">x</span>);
-    <span class="macro">assert_eq!</span>(<span class="ident">font_config</span>.<span class="ident">glyph_offset</span>[<span class="number">1</span>], <span class="ident">sys_font_config</span>.<span class="ident">GlyphOffset</span>.<span class="ident">y</span>);
+    <span class="macro">assert_eq!</span>(font_config.glyph_offset[<span class="number">0</span>], sys_font_config.GlyphOffset.x);
+    <span class="macro">assert_eq!</span>(font_config.glyph_offset[<span class="number">1</span>], sys_font_config.GlyphOffset.y);
     <span class="macro">assert_eq!</span>(
-        <span class="ident">font_config</span>.<span class="ident">glyph_min_advance_x</span>,
-        <span class="ident">sys_font_config</span>.<span class="ident">GlyphMinAdvanceX</span>
-    );
-    <span class="macro">assert_eq!</span>(
-        <span class="ident">font_config</span>.<span class="ident">glyph_max_advance_x</span>,
-        <span class="ident">sys_font_config</span>.<span class="ident">GlyphMaxAdvanceX</span>
+        font_config.glyph_min_advance_x,
+        sys_font_config.GlyphMinAdvanceX
     );
     <span class="macro">assert_eq!</span>(
-        <span class="ident">font_config</span>.<span class="ident">rasterizer_multiply</span>,
-        <span class="ident">sys_font_config</span>.<span class="ident">RasterizerMultiply</span>
+        font_config.glyph_max_advance_x,
+        sys_font_config.GlyphMaxAdvanceX
+    );
+    <span class="macro">assert_eq!</span>(
+        font_config.rasterizer_multiply,
+        sys_font_config.RasterizerMultiply
     );
 }
 
-<span class="doccomment">/// Handle to a font atlas texture</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Debug</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">FontAtlasTexture</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Texture width (in pixels)</span>
-    <span class="kw">pub</span> <span class="ident">width</span>: <span class="ident">u32</span>,
-    <span class="doccomment">/// Texture height (in pixels)</span>
-    <span class="kw">pub</span> <span class="ident">height</span>: <span class="ident">u32</span>,
-    <span class="doccomment">/// Raw texture data (in bytes).</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// The format depends on which function was called to obtain this data.</span>
-    <span class="kw">pub</span> <span class="ident">data</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> [<span class="ident">u8</span>],
+<span class="doccomment">/// Handle to a font atlas texture
+</span><span class="attribute">#[derive(Clone, Debug)]
+</span><span class="kw">pub struct </span>FontAtlasTexture&lt;<span class="lifetime">&#39;a</span>&gt; {
+    <span class="doccomment">/// Texture width (in pixels)
+    </span><span class="kw">pub </span>width: u32,
+    <span class="doccomment">/// Texture height (in pixels)
+    </span><span class="kw">pub </span>height: u32,
+    <span class="doccomment">/// Raw texture data (in bytes).
+    ///
+    /// The format depends on which function was called to obtain this data.
+    </span><span class="kw">pub </span>data: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>[u8],
 }
 
-<span class="doccomment">/// A font atlas that can be shared between contexts</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">SharedFontAtlas</span>(<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw-2">*mut</span> <span class="ident">sys::ImFontAtlas</span>);
+<span class="doccomment">/// A font atlas that can be shared between contexts
+</span><span class="attribute">#[derive(Debug)]
+</span><span class="kw">pub struct </span>SharedFontAtlas(<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw-2">*mut </span>sys::ImFontAtlas);
 
-<span class="kw">impl</span> <span class="ident">SharedFontAtlas</span> {
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;ImFontAtlas&quot;</span>, <span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;ImFontAtlas::ImFontAtlas&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">create</span>() -&gt; <span class="ident">SharedFontAtlas</span> {
-        <span class="ident">SharedFontAtlas</span>(<span class="kw">unsafe</span> { <span class="ident">sys::ImFontAtlas_ImFontAtlas</span>() })
+<span class="kw">impl </span>SharedFontAtlas {
+    <span class="attribute">#[doc(alias = <span class="string">&quot;ImFontAtlas&quot;</span>, alias = <span class="string">&quot;ImFontAtlas::ImFontAtlas&quot;</span>)]
+    </span><span class="kw">pub fn </span>create() -&gt; SharedFontAtlas {
+        SharedFontAtlas(<span class="kw">unsafe </span>{ sys::ImFontAtlas_ImFontAtlas() })
     }
 }
 
-<span class="kw">impl</span> <span class="ident">Drop</span> <span class="kw">for</span> <span class="ident">SharedFontAtlas</span> {
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;ImFontAtlas::Destory&quot;</span>)]</span>
-    <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
-        <span class="kw">unsafe</span> { <span class="ident">sys::ImFontAtlas_destroy</span>(<span class="self">self</span>.<span class="number">0</span>) };
+<span class="kw">impl </span>Drop <span class="kw">for </span>SharedFontAtlas {
+    <span class="attribute">#[doc(alias = <span class="string">&quot;ImFontAtlas::Destory&quot;</span>)]
+    </span><span class="kw">fn </span>drop(<span class="kw-2">&amp;mut </span><span class="self">self</span>) {
+        <span class="kw">unsafe </span>{ sys::ImFontAtlas_destroy(<span class="self">self</span>.<span class="number">0</span>) };
     }
 }
 
-<span class="kw">impl</span> <span class="ident">Deref</span> <span class="kw">for</span> <span class="ident">SharedFontAtlas</span> {
-    <span class="kw">type</span> <span class="ident">Target</span> <span class="op">=</span> <span class="ident">FontAtlas</span>;
-    <span class="kw">fn</span> <span class="ident">deref</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="ident">FontAtlas</span> {
-        <span class="kw">unsafe</span> { <span class="kw-2">&amp;</span><span class="kw-2">*</span>(<span class="self">self</span>.<span class="number">0</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">FontAtlas</span>) }
+<span class="kw">impl </span>Deref <span class="kw">for </span>SharedFontAtlas {
+    <span class="kw">type </span>Target = FontAtlas;
+    <span class="kw">fn </span>deref(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>FontAtlas {
+        <span class="kw">unsafe </span>{ <span class="kw-2">&amp;*</span>(<span class="self">self</span>.<span class="number">0 </span><span class="kw">as </span><span class="kw-2">*const </span>FontAtlas) }
     }
 }
 
-<span class="kw">impl</span> <span class="ident">DerefMut</span> <span class="kw">for</span> <span class="ident">SharedFontAtlas</span> {
-    <span class="kw">fn</span> <span class="ident">deref_mut</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="kw-2">&amp;mut</span> <span class="ident">FontAtlas</span> {
-        <span class="kw">unsafe</span> { <span class="kw-2">&amp;mut</span> <span class="kw-2">*</span>(<span class="self">self</span>.<span class="number">0</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">FontAtlas</span>) }
+<span class="kw">impl </span>DerefMut <span class="kw">for </span>SharedFontAtlas {
+    <span class="kw">fn </span>deref_mut(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;mut </span>FontAtlas {
+        <span class="kw">unsafe </span>{ <span class="kw-2">&amp;mut *</span>(<span class="self">self</span>.<span class="number">0 </span><span class="kw">as </span><span class="kw-2">*mut </span>FontAtlas) }
     }
 }
 
-<span class="doccomment">/// An immutably borrowed reference to a (possibly shared) font atlas</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">FontAtlasRef</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
-    <span class="ident">Owned</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">FontAtlas</span>),
-    <span class="ident">Shared</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">cell::RefMut</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">SharedFontAtlas</span><span class="op">&gt;</span>),
+<span class="doccomment">/// An immutably borrowed reference to a (possibly shared) font atlas
+</span><span class="kw">pub enum </span>FontAtlasRef&lt;<span class="lifetime">&#39;a</span>&gt; {
+    Owned(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>FontAtlas),
+    Shared(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>cell::RefMut&lt;<span class="lifetime">&#39;a</span>, SharedFontAtlas&gt;),
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">Deref</span> <span class="kw">for</span> <span class="ident">FontAtlasRef</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
-    <span class="kw">type</span> <span class="ident">Target</span> <span class="op">=</span> <span class="ident">FontAtlas</span>;
-    <span class="kw">fn</span> <span class="ident">deref</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="ident">FontAtlas</span> {
-        <span class="kw">use</span> <span class="ident"><span class="self">self</span>::FontAtlasRef</span>::<span class="kw-2">*</span>;
-        <span class="kw">match</span> <span class="self">self</span> {
-            <span class="ident">Owned</span>(<span class="ident">atlas</span>) =&gt; <span class="ident">atlas</span>,
-            <span class="ident">Shared</span>(<span class="ident">cell</span>) =&gt; <span class="ident">cell</span>,
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; Deref <span class="kw">for </span>FontAtlasRef&lt;<span class="lifetime">&#39;a</span>&gt; {
+    <span class="kw">type </span>Target = FontAtlas;
+    <span class="kw">fn </span>deref(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>FontAtlas {
+        <span class="kw">use </span><span class="self">self</span>::FontAtlasRef::<span class="kw-2">*</span>;
+        <span class="kw">match </span><span class="self">self </span>{
+            Owned(atlas) =&gt; atlas,
+            Shared(cell) =&gt; cell,
         }
     }
 }
 
-<span class="doccomment">/// A mutably borrowed reference to a (possibly shared) font atlas</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">FontAtlasRefMut</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
-    <span class="ident">Owned</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="kw-2">mut</span> <span class="ident">FontAtlas</span>),
-    <span class="ident">Shared</span>(<span class="ident">cell::RefMut</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">SharedFontAtlas</span><span class="op">&gt;</span>),
+<span class="doccomment">/// A mutably borrowed reference to a (possibly shared) font atlas
+</span><span class="kw">pub enum </span>FontAtlasRefMut&lt;<span class="lifetime">&#39;a</span>&gt; {
+    Owned(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><span class="kw-2">mut </span>FontAtlas),
+    Shared(cell::RefMut&lt;<span class="lifetime">&#39;a</span>, SharedFontAtlas&gt;),
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">Deref</span> <span class="kw">for</span> <span class="ident">FontAtlasRefMut</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
-    <span class="kw">type</span> <span class="ident">Target</span> <span class="op">=</span> <span class="ident">FontAtlas</span>;
-    <span class="kw">fn</span> <span class="ident">deref</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="ident">FontAtlas</span> {
-        <span class="kw">use</span> <span class="ident"><span class="self">self</span>::FontAtlasRefMut</span>::<span class="kw-2">*</span>;
-        <span class="kw">match</span> <span class="self">self</span> {
-            <span class="ident">Owned</span>(<span class="ident">atlas</span>) =&gt; <span class="ident">atlas</span>,
-            <span class="ident">Shared</span>(<span class="ident">cell</span>) =&gt; <span class="ident">cell</span>,
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; Deref <span class="kw">for </span>FontAtlasRefMut&lt;<span class="lifetime">&#39;a</span>&gt; {
+    <span class="kw">type </span>Target = FontAtlas;
+    <span class="kw">fn </span>deref(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>FontAtlas {
+        <span class="kw">use </span><span class="self">self</span>::FontAtlasRefMut::<span class="kw-2">*</span>;
+        <span class="kw">match </span><span class="self">self </span>{
+            Owned(atlas) =&gt; atlas,
+            Shared(cell) =&gt; cell,
         }
     }
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">DerefMut</span> <span class="kw">for</span> <span class="ident">FontAtlasRefMut</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">deref_mut</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="kw-2">&amp;mut</span> <span class="ident">FontAtlas</span> {
-        <span class="kw">use</span> <span class="ident"><span class="self">self</span>::FontAtlasRefMut</span>::<span class="kw-2">*</span>;
-        <span class="kw">match</span> <span class="self">self</span> {
-            <span class="ident">Owned</span>(<span class="ident">atlas</span>) =&gt; <span class="ident">atlas</span>,
-            <span class="ident">Shared</span>(<span class="ident">cell</span>) =&gt; <span class="ident">cell</span>,
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; DerefMut <span class="kw">for </span>FontAtlasRefMut&lt;<span class="lifetime">&#39;a</span>&gt; {
+    <span class="kw">fn </span>deref_mut(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;mut </span>FontAtlas {
+        <span class="kw">use </span><span class="self">self</span>::FontAtlasRefMut::<span class="kw-2">*</span>;
+        <span class="kw">match </span><span class="self">self </span>{
+            Owned(atlas) =&gt; atlas,
+            Shared(cell) =&gt; cell,
         }
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="arcdps_imgui" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="arcdps_imgui" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.0 (69f9c33d7 2022-12-12)" ></div></body></html>

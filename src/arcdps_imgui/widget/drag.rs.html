@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\arcdps-imgui-0.8.0\src\widget\drag.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>drag.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../arcdps_imgui/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../arcdps_imgui/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../arcdps_imgui/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\arcdps-imgui-0.8.0\src\widget\drag.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>drag.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../normalize.css"><link rel="stylesheet" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../ayu.css" disabled><link rel="stylesheet" href="../../../dark.css" disabled><link rel="stylesheet" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../../arcdps_imgui/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -283,290 +283,290 @@
 <span id="283">283</span>
 <span id="284">284</span>
 <span id="285">285</span>
-</pre><pre class="rust"><code><span class="kw">use</span> <span class="ident">std::os::raw::c_void</span>;
-<span class="kw">use</span> <span class="ident">std::ptr</span>;
+</pre><pre class="rust"><code><span class="kw">use </span>std::os::raw::c_void;
+<span class="kw">use </span>std::ptr;
 
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::internal::DataTypeKind</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::sys</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::widget::slider::SliderFlags</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::Ui</span>;
+<span class="kw">use </span><span class="kw">crate</span>::internal::DataTypeKind;
+<span class="kw">use </span><span class="kw">crate</span>::sys;
+<span class="kw">use </span><span class="kw">crate</span>::widget::slider::SliderFlags;
+<span class="kw">use </span><span class="kw">crate</span>::Ui;
 
-<span class="doccomment">/// Builder for a drag slider widget.</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Debug</span>)]</span>
-<span class="attribute">#[<span class="ident">must_use</span>]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Drag</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">L</span>, <span class="ident">F</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span><span class="op">&gt;</span> {
-    <span class="ident">label</span>: <span class="ident">L</span>,
-    <span class="ident">speed</span>: <span class="ident">f32</span>,
-    <span class="ident">min</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>,
-    <span class="ident">max</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>,
-    <span class="ident">display_format</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>,
-    <span class="ident">flags</span>: <span class="ident">SliderFlags</span>,
+<span class="doccomment">/// Builder for a drag slider widget.
+</span><span class="attribute">#[derive(Copy, Clone, Debug)]
+#[must_use]
+</span><span class="kw">pub struct </span>Drag&lt;T, L, F = <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str&gt; {
+    label: L,
+    speed: f32,
+    min: <span class="prelude-ty">Option</span>&lt;T&gt;,
+    max: <span class="prelude-ty">Option</span>&lt;T&gt;,
+    display_format: <span class="prelude-ty">Option</span>&lt;F&gt;,
+    flags: SliderFlags,
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">L</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>, <span class="ident">T</span>: <span class="ident">DataTypeKind</span><span class="op">&gt;</span> <span class="ident">Drag</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">L</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Constructs a new drag slider builder.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;DragScalar&quot;</span>, <span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;DragScalarN&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">label</span>: <span class="ident">L</span>) -&gt; <span class="self">Self</span> {
-        <span class="ident">Drag</span> {
-            <span class="ident">label</span>,
-            <span class="ident">speed</span>: <span class="number">1.0</span>,
-            <span class="ident">min</span>: <span class="prelude-val">None</span>,
-            <span class="ident">max</span>: <span class="prelude-val">None</span>,
-            <span class="ident">display_format</span>: <span class="prelude-val">None</span>,
-            <span class="ident">flags</span>: <span class="ident">SliderFlags::empty</span>(),
+<span class="kw">impl</span>&lt;L: AsRef&lt;str&gt;, T: DataTypeKind&gt; Drag&lt;T, L&gt; {
+    <span class="doccomment">/// Constructs a new drag slider builder.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;DragScalar&quot;</span>, alias = <span class="string">&quot;DragScalarN&quot;</span>)]
+    </span><span class="kw">pub fn </span>new(label: L) -&gt; <span class="self">Self </span>{
+        Drag {
+            label,
+            speed: <span class="number">1.0</span>,
+            min: <span class="prelude-val">None</span>,
+            max: <span class="prelude-val">None</span>,
+            display_format: <span class="prelude-val">None</span>,
+            flags: SliderFlags::empty(),
         }
     }
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">L</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>, <span class="ident">T</span>: <span class="ident">DataTypeKind</span>, <span class="ident">F</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="ident">Drag</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">L</span>, <span class="ident">F</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Sets the range (inclusive)</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">range</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">min</span>: <span class="ident">T</span>, <span class="ident">max</span>: <span class="ident">T</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">min</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">min</span>);
-        <span class="self">self</span>.<span class="ident">max</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">max</span>);
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Sets the value increment for a movement of one pixel.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Example: speed=0.2 means mouse needs to move 5 pixels to increase the slider value by 1</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">speed</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">speed</span>: <span class="ident">f32</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">speed</span> <span class="op">=</span> <span class="ident">speed</span>;
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Sets the display format using *a C-style printf string*</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">display_format</span><span class="op">&lt;</span><span class="ident">F2</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">display_format</span>: <span class="ident">F2</span>) -&gt; <span class="ident">Drag</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">L</span>, <span class="ident">F2</span><span class="op">&gt;</span> {
-        <span class="ident">Drag</span> {
-            <span class="ident">label</span>: <span class="self">self</span>.<span class="ident">label</span>,
-            <span class="ident">speed</span>: <span class="self">self</span>.<span class="ident">speed</span>,
-            <span class="ident">min</span>: <span class="self">self</span>.<span class="ident">min</span>,
-            <span class="ident">max</span>: <span class="self">self</span>.<span class="ident">max</span>,
-            <span class="ident">display_format</span>: <span class="prelude-val">Some</span>(<span class="ident">display_format</span>),
-            <span class="ident">flags</span>: <span class="self">self</span>.<span class="ident">flags</span>,
+<span class="kw">impl</span>&lt;L: AsRef&lt;str&gt;, T: DataTypeKind, F: AsRef&lt;str&gt;&gt; Drag&lt;T, L, F&gt; {
+    <span class="doccomment">/// Sets the range (inclusive)
+    </span><span class="kw">pub fn </span>range(<span class="kw-2">mut </span><span class="self">self</span>, min: T, max: T) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.min = <span class="prelude-val">Some</span>(min);
+        <span class="self">self</span>.max = <span class="prelude-val">Some</span>(max);
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Sets the value increment for a movement of one pixel.
+    ///
+    /// Example: speed=0.2 means mouse needs to move 5 pixels to increase the slider value by 1
+    </span><span class="kw">pub fn </span>speed(<span class="kw-2">mut </span><span class="self">self</span>, speed: f32) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.speed = speed;
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Sets the display format using *a C-style printf string*
+    </span><span class="kw">pub fn </span>display_format&lt;F2: AsRef&lt;str&gt;&gt;(<span class="self">self</span>, display_format: F2) -&gt; Drag&lt;T, L, F2&gt; {
+        Drag {
+            label: <span class="self">self</span>.label,
+            speed: <span class="self">self</span>.speed,
+            min: <span class="self">self</span>.min,
+            max: <span class="self">self</span>.max,
+            display_format: <span class="prelude-val">Some</span>(display_format),
+            flags: <span class="self">self</span>.flags,
         }
     }
-    <span class="doccomment">/// Replaces all current settings with the given flags</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">flags</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">flags</span>: <span class="ident">SliderFlags</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span> <span class="op">=</span> <span class="ident">flags</span>;
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Builds a drag slider that is bound to the given value.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Returns true if the slider value was changed.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build</span>(<span class="self">self</span>, <span class="ident">ui</span>: <span class="kw-2">&amp;</span><span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>, <span class="ident">value</span>: <span class="kw-2">&amp;mut</span> <span class="ident">T</span>) -&gt; <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> {
-            <span class="kw">let</span> (<span class="ident">one</span>, <span class="ident">two</span>) <span class="op">=</span> <span class="ident">ui</span>.<span class="ident">scratch_txt_with_opt</span>(<span class="self">self</span>.<span class="ident">label</span>, <span class="self">self</span>.<span class="ident">display_format</span>);
+    <span class="doccomment">/// Replaces all current settings with the given flags
+    </span><span class="kw">pub fn </span>flags(<span class="kw-2">mut </span><span class="self">self</span>, flags: SliderFlags) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags = flags;
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Builds a drag slider that is bound to the given value.
+    ///
+    /// Returns true if the slider value was changed.
+    </span><span class="kw">pub fn </span>build(<span class="self">self</span>, ui: <span class="kw-2">&amp;</span>Ui&lt;<span class="lifetime">&#39;_</span>&gt;, value: <span class="kw-2">&amp;mut </span>T) -&gt; bool {
+        <span class="kw">unsafe </span>{
+            <span class="kw">let </span>(one, two) = ui.scratch_txt_with_opt(<span class="self">self</span>.label, <span class="self">self</span>.display_format);
 
-            <span class="ident">sys::igDragScalar</span>(
-                <span class="ident">one</span>,
-                <span class="ident">T::KIND</span> <span class="kw">as</span> <span class="ident">i32</span>,
-                <span class="ident">value</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">T</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-                <span class="self">self</span>.<span class="ident">speed</span>,
-                <span class="self">self</span>.<span class="ident">min</span>
-                    .<span class="ident">as_ref</span>()
-                    .<span class="ident">map</span>(<span class="op">|</span><span class="ident">min</span><span class="op">|</span> <span class="ident">min</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">T</span>)
-                    .<span class="ident">unwrap_or</span>(<span class="ident">ptr::null</span>()) <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">c_void</span>,
-                <span class="self">self</span>.<span class="ident">max</span>
-                    .<span class="ident">as_ref</span>()
-                    .<span class="ident">map</span>(<span class="op">|</span><span class="ident">max</span><span class="op">|</span> <span class="ident">max</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">T</span>)
-                    .<span class="ident">unwrap_or</span>(<span class="ident">ptr::null</span>()) <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">c_void</span>,
-                <span class="ident">two</span>,
-                <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">bits</span>() <span class="kw">as</span> <span class="ident">i32</span>,
+            sys::igDragScalar(
+                one,
+                T::KIND <span class="kw">as </span>i32,
+                value <span class="kw">as </span><span class="kw-2">*mut </span>T <span class="kw">as </span><span class="kw-2">*mut </span>c_void,
+                <span class="self">self</span>.speed,
+                <span class="self">self</span>.min
+                    .as_ref()
+                    .map(|min| min <span class="kw">as </span><span class="kw-2">*const </span>T)
+                    .unwrap_or(ptr::null()) <span class="kw">as </span><span class="kw-2">*const </span>c_void,
+                <span class="self">self</span>.max
+                    .as_ref()
+                    .map(|max| max <span class="kw">as </span><span class="kw-2">*const </span>T)
+                    .unwrap_or(ptr::null()) <span class="kw">as </span><span class="kw-2">*const </span>c_void,
+                two,
+                <span class="self">self</span>.flags.bits() <span class="kw">as </span>i32,
             )
         }
     }
-    <span class="doccomment">/// Builds a horizontal array of multiple drag sliders attached to the given slice.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Returns true if any slider value was changed.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build_array</span>(<span class="self">self</span>, <span class="ident">ui</span>: <span class="kw-2">&amp;</span><span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>, <span class="ident">values</span>: <span class="kw-2">&amp;mut</span> [<span class="ident">T</span>]) -&gt; <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> {
-            <span class="kw">let</span> (<span class="ident">one</span>, <span class="ident">two</span>) <span class="op">=</span> <span class="ident">ui</span>.<span class="ident">scratch_txt_with_opt</span>(<span class="self">self</span>.<span class="ident">label</span>, <span class="self">self</span>.<span class="ident">display_format</span>);
+    <span class="doccomment">/// Builds a horizontal array of multiple drag sliders attached to the given slice.
+    ///
+    /// Returns true if any slider value was changed.
+    </span><span class="kw">pub fn </span>build_array(<span class="self">self</span>, ui: <span class="kw-2">&amp;</span>Ui&lt;<span class="lifetime">&#39;_</span>&gt;, values: <span class="kw-2">&amp;mut </span>[T]) -&gt; bool {
+        <span class="kw">unsafe </span>{
+            <span class="kw">let </span>(one, two) = ui.scratch_txt_with_opt(<span class="self">self</span>.label, <span class="self">self</span>.display_format);
 
-            <span class="ident">sys::igDragScalarN</span>(
-                <span class="ident">one</span>,
-                <span class="ident">T::KIND</span> <span class="kw">as</span> <span class="ident">i32</span>,
-                <span class="ident">values</span>.<span class="ident">as_mut_ptr</span>() <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-                <span class="ident">values</span>.<span class="ident">len</span>() <span class="kw">as</span> <span class="ident">i32</span>,
-                <span class="self">self</span>.<span class="ident">speed</span>,
-                <span class="self">self</span>.<span class="ident">min</span>
-                    .<span class="ident">as_ref</span>()
-                    .<span class="ident">map</span>(<span class="op">|</span><span class="ident">min</span><span class="op">|</span> <span class="ident">min</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">T</span>)
-                    .<span class="ident">unwrap_or</span>(<span class="ident">ptr::null</span>()) <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">c_void</span>,
-                <span class="self">self</span>.<span class="ident">max</span>
-                    .<span class="ident">as_ref</span>()
-                    .<span class="ident">map</span>(<span class="op">|</span><span class="ident">max</span><span class="op">|</span> <span class="ident">max</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">T</span>)
-                    .<span class="ident">unwrap_or</span>(<span class="ident">ptr::null</span>()) <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">c_void</span>,
-                <span class="ident">two</span>,
-                <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">bits</span>() <span class="kw">as</span> <span class="ident">i32</span>,
+            sys::igDragScalarN(
+                one,
+                T::KIND <span class="kw">as </span>i32,
+                values.as_mut_ptr() <span class="kw">as </span><span class="kw-2">*mut </span>c_void,
+                values.len() <span class="kw">as </span>i32,
+                <span class="self">self</span>.speed,
+                <span class="self">self</span>.min
+                    .as_ref()
+                    .map(|min| min <span class="kw">as </span><span class="kw-2">*const </span>T)
+                    .unwrap_or(ptr::null()) <span class="kw">as </span><span class="kw-2">*const </span>c_void,
+                <span class="self">self</span>.max
+                    .as_ref()
+                    .map(|max| max <span class="kw">as </span><span class="kw-2">*const </span>T)
+                    .unwrap_or(ptr::null()) <span class="kw">as </span><span class="kw-2">*const </span>c_void,
+                two,
+                <span class="self">self</span>.flags.bits() <span class="kw">as </span>i32,
             )
         }
     }
 }
 
-<span class="doccomment">/// Builder for a drag slider widget.</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Debug</span>)]</span>
-<span class="attribute">#[<span class="ident">must_use</span>]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">DragRange</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">L</span>, <span class="ident">F</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>, <span class="ident">M</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span><span class="op">&gt;</span> {
-    <span class="ident">label</span>: <span class="ident">L</span>,
-    <span class="ident">speed</span>: <span class="ident">f32</span>,
-    <span class="ident">min</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>,
-    <span class="ident">max</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>,
-    <span class="ident">display_format</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>,
-    <span class="ident">max_display_format</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">M</span><span class="op">&gt;</span>,
-    <span class="ident">flags</span>: <span class="ident">SliderFlags</span>,
+<span class="doccomment">/// Builder for a drag slider widget.
+</span><span class="attribute">#[derive(Copy, Clone, Debug)]
+#[must_use]
+</span><span class="kw">pub struct </span>DragRange&lt;T, L, F = <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str, M = <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str&gt; {
+    label: L,
+    speed: f32,
+    min: <span class="prelude-ty">Option</span>&lt;T&gt;,
+    max: <span class="prelude-ty">Option</span>&lt;T&gt;,
+    display_format: <span class="prelude-ty">Option</span>&lt;F&gt;,
+    max_display_format: <span class="prelude-ty">Option</span>&lt;M&gt;,
+    flags: SliderFlags,
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">DataTypeKind</span>, <span class="ident">L</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="ident">DragRange</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">L</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Constructs a new drag slider builder.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;DragIntRange2&quot;</span>, <span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;DragFloatRange2&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">label</span>: <span class="ident">L</span>) -&gt; <span class="ident">DragRange</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">L</span><span class="op">&gt;</span> {
-        <span class="ident">DragRange</span> {
-            <span class="ident">label</span>,
-            <span class="ident">speed</span>: <span class="number">1.0</span>,
-            <span class="ident">min</span>: <span class="prelude-val">None</span>,
-            <span class="ident">max</span>: <span class="prelude-val">None</span>,
-            <span class="ident">display_format</span>: <span class="prelude-val">None</span>,
-            <span class="ident">max_display_format</span>: <span class="prelude-val">None</span>,
-            <span class="ident">flags</span>: <span class="ident">SliderFlags::empty</span>(),
+<span class="kw">impl</span>&lt;T: DataTypeKind, L: AsRef&lt;str&gt;&gt; DragRange&lt;T, L&gt; {
+    <span class="doccomment">/// Constructs a new drag slider builder.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;DragIntRange2&quot;</span>, alias = <span class="string">&quot;DragFloatRange2&quot;</span>)]
+    </span><span class="kw">pub fn </span>new(label: L) -&gt; DragRange&lt;T, L&gt; {
+        DragRange {
+            label,
+            speed: <span class="number">1.0</span>,
+            min: <span class="prelude-val">None</span>,
+            max: <span class="prelude-val">None</span>,
+            display_format: <span class="prelude-val">None</span>,
+            max_display_format: <span class="prelude-val">None</span>,
+            flags: SliderFlags::empty(),
         }
     }
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">L</span>, <span class="ident">F</span>, <span class="ident">M</span><span class="op">&gt;</span> <span class="ident">DragRange</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">L</span>, <span class="ident">F</span>, <span class="ident">M</span><span class="op">&gt;</span>
-<span class="kw">where</span>
-    <span class="ident">T</span>: <span class="ident">DataTypeKind</span>,
-    <span class="ident">L</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>,
-    <span class="ident">F</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>,
-    <span class="ident">M</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>,
+<span class="kw">impl</span>&lt;T, L, F, M&gt; DragRange&lt;T, L, F, M&gt;
+<span class="kw">where
+    </span>T: DataTypeKind,
+    L: AsRef&lt;str&gt;,
+    F: AsRef&lt;str&gt;,
+    M: AsRef&lt;str&gt;,
 {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">range</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">min</span>: <span class="ident">T</span>, <span class="ident">max</span>: <span class="ident">T</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">min</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">min</span>);
-        <span class="self">self</span>.<span class="ident">max</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">max</span>);
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Sets the value increment for a movement of one pixel.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Example: speed=0.2 means mouse needs to move 5 pixels to increase the slider value by 1</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">speed</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">speed</span>: <span class="ident">f32</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">speed</span> <span class="op">=</span> <span class="ident">speed</span>;
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Sets the display format using *a C-style printf string*</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">display_format</span><span class="op">&lt;</span><span class="ident">F2</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">display_format</span>: <span class="ident">F2</span>) -&gt; <span class="ident">DragRange</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">L</span>, <span class="ident">F2</span>, <span class="ident">M</span><span class="op">&gt;</span> {
-        <span class="ident">DragRange</span> {
-            <span class="ident">label</span>: <span class="self">self</span>.<span class="ident">label</span>,
-            <span class="ident">speed</span>: <span class="self">self</span>.<span class="ident">speed</span>,
-            <span class="ident">min</span>: <span class="self">self</span>.<span class="ident">min</span>,
-            <span class="ident">max</span>: <span class="self">self</span>.<span class="ident">max</span>,
-            <span class="ident">display_format</span>: <span class="prelude-val">Some</span>(<span class="ident">display_format</span>),
-            <span class="ident">max_display_format</span>: <span class="self">self</span>.<span class="ident">max_display_format</span>,
-            <span class="ident">flags</span>: <span class="self">self</span>.<span class="ident">flags</span>,
+    <span class="kw">pub fn </span>range(<span class="kw-2">mut </span><span class="self">self</span>, min: T, max: T) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.min = <span class="prelude-val">Some</span>(min);
+        <span class="self">self</span>.max = <span class="prelude-val">Some</span>(max);
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Sets the value increment for a movement of one pixel.
+    ///
+    /// Example: speed=0.2 means mouse needs to move 5 pixels to increase the slider value by 1
+    </span><span class="kw">pub fn </span>speed(<span class="kw-2">mut </span><span class="self">self</span>, speed: f32) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.speed = speed;
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Sets the display format using *a C-style printf string*
+    </span><span class="kw">pub fn </span>display_format&lt;F2: AsRef&lt;str&gt;&gt;(<span class="self">self</span>, display_format: F2) -&gt; DragRange&lt;T, L, F2, M&gt; {
+        DragRange {
+            label: <span class="self">self</span>.label,
+            speed: <span class="self">self</span>.speed,
+            min: <span class="self">self</span>.min,
+            max: <span class="self">self</span>.max,
+            display_format: <span class="prelude-val">Some</span>(display_format),
+            max_display_format: <span class="self">self</span>.max_display_format,
+            flags: <span class="self">self</span>.flags,
         }
     }
-    <span class="doccomment">/// Sets the display format for the max value using *a C-style printf string*</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">max_display_format</span><span class="op">&lt;</span><span class="ident">M2</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(
+    <span class="doccomment">/// Sets the display format for the max value using *a C-style printf string*
+    </span><span class="kw">pub fn </span>max_display_format&lt;M2: AsRef&lt;str&gt;&gt;(
         <span class="self">self</span>,
-        <span class="ident">max_display_format</span>: <span class="ident">M2</span>,
-    ) -&gt; <span class="ident">DragRange</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">L</span>, <span class="ident">F</span>, <span class="ident">M2</span><span class="op">&gt;</span> {
-        <span class="ident">DragRange</span> {
-            <span class="ident">label</span>: <span class="self">self</span>.<span class="ident">label</span>,
-            <span class="ident">speed</span>: <span class="self">self</span>.<span class="ident">speed</span>,
-            <span class="ident">min</span>: <span class="self">self</span>.<span class="ident">min</span>,
-            <span class="ident">max</span>: <span class="self">self</span>.<span class="ident">max</span>,
-            <span class="ident">display_format</span>: <span class="self">self</span>.<span class="ident">display_format</span>,
-            <span class="ident">max_display_format</span>: <span class="prelude-val">Some</span>(<span class="ident">max_display_format</span>),
-            <span class="ident">flags</span>: <span class="self">self</span>.<span class="ident">flags</span>,
+        max_display_format: M2,
+    ) -&gt; DragRange&lt;T, L, F, M2&gt; {
+        DragRange {
+            label: <span class="self">self</span>.label,
+            speed: <span class="self">self</span>.speed,
+            min: <span class="self">self</span>.min,
+            max: <span class="self">self</span>.max,
+            display_format: <span class="self">self</span>.display_format,
+            max_display_format: <span class="prelude-val">Some</span>(max_display_format),
+            flags: <span class="self">self</span>.flags,
         }
     }
-    <span class="doccomment">/// Replaces all current settings with the given flags</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">flags</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">flags</span>: <span class="ident">SliderFlags</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span> <span class="op">=</span> <span class="ident">flags</span>;
-        <span class="self">self</span>
-    }
+    <span class="doccomment">/// Replaces all current settings with the given flags
+    </span><span class="kw">pub fn </span>flags(<span class="kw-2">mut </span><span class="self">self</span>, flags: SliderFlags) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags = flags;
+        <span class="self">self
+    </span>}
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">L</span>, <span class="ident">F</span>, <span class="ident">M</span><span class="op">&gt;</span> <span class="ident">DragRange</span><span class="op">&lt;</span><span class="ident">f32</span>, <span class="ident">L</span>, <span class="ident">F</span>, <span class="ident">M</span><span class="op">&gt;</span>
-<span class="kw">where</span>
-    <span class="ident">L</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>,
-    <span class="ident">F</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>,
-    <span class="ident">M</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>,
+<span class="kw">impl</span>&lt;L, F, M&gt; DragRange&lt;f32, L, F, M&gt;
+<span class="kw">where
+    </span>L: AsRef&lt;str&gt;,
+    F: AsRef&lt;str&gt;,
+    M: AsRef&lt;str&gt;,
 {
-    <span class="doccomment">/// Builds a drag range slider that is bound to the given min/max values.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Returns true if the slider value was changed.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;DragFloatRange2&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build</span>(<span class="self">self</span>, <span class="ident">ui</span>: <span class="kw-2">&amp;</span><span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>, <span class="ident">min</span>: <span class="kw-2">&amp;mut</span> <span class="ident">f32</span>, <span class="ident">max</span>: <span class="kw-2">&amp;mut</span> <span class="ident">f32</span>) -&gt; <span class="ident">bool</span> {
-        <span class="kw">let</span> <span class="ident">label</span>;
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">display_format</span> <span class="op">=</span> <span class="ident">std::ptr::null</span>();
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">max_display_format</span> <span class="op">=</span> <span class="ident">std::ptr::null</span>();
+    <span class="doccomment">/// Builds a drag range slider that is bound to the given min/max values.
+    ///
+    /// Returns true if the slider value was changed.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;DragFloatRange2&quot;</span>)]
+    </span><span class="kw">pub fn </span>build(<span class="self">self</span>, ui: <span class="kw-2">&amp;</span>Ui&lt;<span class="lifetime">&#39;_</span>&gt;, min: <span class="kw-2">&amp;mut </span>f32, max: <span class="kw-2">&amp;mut </span>f32) -&gt; bool {
+        <span class="kw">let </span>label;
+        <span class="kw">let </span><span class="kw-2">mut </span>display_format = std::ptr::null();
+        <span class="kw">let </span><span class="kw-2">mut </span>max_display_format = std::ptr::null();
 
-        <span class="comment">// we do this ourselves the long way...</span>
-        <span class="kw">unsafe</span> {
-            <span class="kw">let</span> <span class="ident">buffer</span> <span class="op">=</span> <span class="kw-2">&amp;mut</span> <span class="kw-2">*</span><span class="ident">ui</span>.<span class="ident">buffer</span>.<span class="ident">get</span>();
-            <span class="ident">buffer</span>.<span class="ident">refresh_buffer</span>();
+        <span class="comment">// we do this ourselves the long way...
+        </span><span class="kw">unsafe </span>{
+            <span class="kw">let </span>buffer = <span class="kw-2">&amp;mut *</span>ui.buffer.get();
+            buffer.refresh_buffer();
 
-            <span class="ident">label</span> <span class="op">=</span> <span class="ident">buffer</span>.<span class="ident">push</span>(<span class="self">self</span>.<span class="ident">label</span>);
-            <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">v</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">display_format</span> {
-                <span class="ident">display_format</span> <span class="op">=</span> <span class="ident">buffer</span>.<span class="ident">push</span>(<span class="ident">v</span>);
+            label = buffer.push(<span class="self">self</span>.label);
+            <span class="kw">if let </span><span class="prelude-val">Some</span>(v) = <span class="self">self</span>.display_format {
+                display_format = buffer.push(v);
             }
-            <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">v</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">max_display_format</span> {
-                <span class="ident">max_display_format</span> <span class="op">=</span> <span class="ident">buffer</span>.<span class="ident">push</span>(<span class="ident">v</span>);
+            <span class="kw">if let </span><span class="prelude-val">Some</span>(v) = <span class="self">self</span>.max_display_format {
+                max_display_format = buffer.push(v);
             }
 
-            <span class="ident">sys::igDragFloatRange2</span>(
-                <span class="ident">label</span>,
-                <span class="ident">min</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">f32</span>,
-                <span class="ident">max</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">f32</span>,
-                <span class="self">self</span>.<span class="ident">speed</span>,
-                <span class="self">self</span>.<span class="ident">min</span>.<span class="ident">unwrap_or</span>(<span class="number">0.0</span>),
-                <span class="self">self</span>.<span class="ident">max</span>.<span class="ident">unwrap_or</span>(<span class="number">0.0</span>),
-                <span class="ident">display_format</span>,
-                <span class="ident">max_display_format</span>,
-                <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">bits</span>() <span class="kw">as</span> <span class="ident">i32</span>,
+            sys::igDragFloatRange2(
+                label,
+                min <span class="kw">as </span><span class="kw-2">*mut </span>f32,
+                max <span class="kw">as </span><span class="kw-2">*mut </span>f32,
+                <span class="self">self</span>.speed,
+                <span class="self">self</span>.min.unwrap_or(<span class="number">0.0</span>),
+                <span class="self">self</span>.max.unwrap_or(<span class="number">0.0</span>),
+                display_format,
+                max_display_format,
+                <span class="self">self</span>.flags.bits() <span class="kw">as </span>i32,
             )
         }
     }
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">L</span>, <span class="ident">F</span>, <span class="ident">M</span><span class="op">&gt;</span> <span class="ident">DragRange</span><span class="op">&lt;</span><span class="ident">i32</span>, <span class="ident">L</span>, <span class="ident">F</span>, <span class="ident">M</span><span class="op">&gt;</span>
-<span class="kw">where</span>
-    <span class="ident">L</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>,
-    <span class="ident">F</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>,
-    <span class="ident">M</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>,
+<span class="kw">impl</span>&lt;L, F, M&gt; DragRange&lt;i32, L, F, M&gt;
+<span class="kw">where
+    </span>L: AsRef&lt;str&gt;,
+    F: AsRef&lt;str&gt;,
+    M: AsRef&lt;str&gt;,
 {
-    <span class="doccomment">/// Builds a drag range slider that is bound to the given min/max values.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Returns true if the slider value was changed.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;DragIntRange2&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build</span>(<span class="self">self</span>, <span class="ident">ui</span>: <span class="kw-2">&amp;</span><span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>, <span class="ident">min</span>: <span class="kw-2">&amp;mut</span> <span class="ident">i32</span>, <span class="ident">max</span>: <span class="kw-2">&amp;mut</span> <span class="ident">i32</span>) -&gt; <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> {
-            <span class="kw">let</span> <span class="ident">label</span>;
-            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">display_format</span> <span class="op">=</span> <span class="ident">std::ptr::null</span>();
-            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">max_display_format</span> <span class="op">=</span> <span class="ident">std::ptr::null</span>();
+    <span class="doccomment">/// Builds a drag range slider that is bound to the given min/max values.
+    ///
+    /// Returns true if the slider value was changed.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;DragIntRange2&quot;</span>)]
+    </span><span class="kw">pub fn </span>build(<span class="self">self</span>, ui: <span class="kw-2">&amp;</span>Ui&lt;<span class="lifetime">&#39;_</span>&gt;, min: <span class="kw-2">&amp;mut </span>i32, max: <span class="kw-2">&amp;mut </span>i32) -&gt; bool {
+        <span class="kw">unsafe </span>{
+            <span class="kw">let </span>label;
+            <span class="kw">let </span><span class="kw-2">mut </span>display_format = std::ptr::null();
+            <span class="kw">let </span><span class="kw-2">mut </span>max_display_format = std::ptr::null();
 
-            <span class="comment">// we do this ourselves the long way...</span>
-            <span class="kw">let</span> <span class="ident">buffer</span> <span class="op">=</span> <span class="kw-2">&amp;mut</span> <span class="kw-2">*</span><span class="ident">ui</span>.<span class="ident">buffer</span>.<span class="ident">get</span>();
-            <span class="ident">buffer</span>.<span class="ident">refresh_buffer</span>();
+            <span class="comment">// we do this ourselves the long way...
+            </span><span class="kw">let </span>buffer = <span class="kw-2">&amp;mut *</span>ui.buffer.get();
+            buffer.refresh_buffer();
 
-            <span class="ident">label</span> <span class="op">=</span> <span class="ident">buffer</span>.<span class="ident">push</span>(<span class="self">self</span>.<span class="ident">label</span>);
-            <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">v</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">display_format</span> {
-                <span class="ident">display_format</span> <span class="op">=</span> <span class="ident">buffer</span>.<span class="ident">push</span>(<span class="ident">v</span>);
+            label = buffer.push(<span class="self">self</span>.label);
+            <span class="kw">if let </span><span class="prelude-val">Some</span>(v) = <span class="self">self</span>.display_format {
+                display_format = buffer.push(v);
             }
-            <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">v</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">max_display_format</span> {
-                <span class="ident">max_display_format</span> <span class="op">=</span> <span class="ident">buffer</span>.<span class="ident">push</span>(<span class="ident">v</span>);
+            <span class="kw">if let </span><span class="prelude-val">Some</span>(v) = <span class="self">self</span>.max_display_format {
+                max_display_format = buffer.push(v);
             }
 
-            <span class="ident">sys::igDragIntRange2</span>(
-                <span class="ident">label</span>,
-                <span class="ident">min</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">i32</span>,
-                <span class="ident">max</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">i32</span>,
-                <span class="self">self</span>.<span class="ident">speed</span>,
-                <span class="self">self</span>.<span class="ident">min</span>.<span class="ident">unwrap_or</span>(<span class="number">0</span>),
-                <span class="self">self</span>.<span class="ident">max</span>.<span class="ident">unwrap_or</span>(<span class="number">0</span>),
-                <span class="ident">display_format</span>,
-                <span class="ident">max_display_format</span>,
-                <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">bits</span>() <span class="kw">as</span> <span class="ident">i32</span>,
+            sys::igDragIntRange2(
+                label,
+                min <span class="kw">as </span><span class="kw-2">*mut </span>i32,
+                max <span class="kw">as </span><span class="kw-2">*mut </span>i32,
+                <span class="self">self</span>.speed,
+                <span class="self">self</span>.min.unwrap_or(<span class="number">0</span>),
+                <span class="self">self</span>.max.unwrap_or(<span class="number">0</span>),
+                display_format,
+                max_display_format,
+                <span class="self">self</span>.flags.bits() <span class="kw">as </span>i32,
             )
         }
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="arcdps_imgui" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="arcdps_imgui" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.0 (69f9c33d7 2022-12-12)" ></div></body></html>

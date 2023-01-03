@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `core\src\extras\mod.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>mod.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../arcdps/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../arcdps/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../arcdps/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `arcdps\src\extras\mod.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>mod.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../normalize.css"><link rel="stylesheet" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../ayu.css" disabled><link rel="stylesheet" href="../../../dark.css" disabled><link rel="stylesheet" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../../arcdps/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -210,217 +210,231 @@
 <span id="210">210</span>
 <span id="211">211</span>
 <span id="212">212</span>
-</pre><pre class="rust"><code><span class="doccomment">//! [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases) support.</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! *Requires the `&quot;extras&quot;` feature.*</span>
+<span id="213">213</span>
+<span id="214">214</span>
+<span id="215">215</span>
+<span id="216">216</span>
+<span id="217">217</span>
+<span id="218">218</span>
+<span id="219">219</span>
+</pre><pre class="rust"><code><span class="doccomment">//! [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases) support.
+//!
+//! *Requires the `&quot;extras&quot;` feature.*
 
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">callbacks</span>;
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">exports</span>;
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">keybinds</span>;
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">message</span>;
+</span><span class="kw">pub mod </span>callbacks;
+<span class="kw">pub mod </span>exports;
+<span class="kw">pub mod </span>globals;
+<span class="kw">pub mod </span>keybinds;
+<span class="kw">pub mod </span>message;
+<span class="kw">pub mod </span>user;
 
-<span class="kw">mod</span> <span class="ident">user</span>;
+<span class="kw">pub use </span>keybinds::{Control, Key, KeyCode, Keybind, KeybindChange, MouseCode};
+<span class="kw">pub use </span>user::{UserInfo, UserInfoIter, UserInfoOwned, UserRole};
 
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">keybinds</span>::{<span class="ident">Control</span>, <span class="ident">Key</span>, <span class="ident">KeyCode</span>, <span class="ident">KeybindChange</span>, <span class="ident">MouseCode</span>};
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">user</span>::<span class="kw-2">*</span>;
-
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::util::str_from_cstr</span>;
-<span class="kw">use</span> <span class="ident">callbacks</span>::{
-    <span class="ident">RawExtrasChatMessageCallback</span>, <span class="ident">RawExtrasKeybindChangedCallback</span>,
-    <span class="ident">RawExtrasLanguageChangedCallback</span>, <span class="ident">RawExtrasSquadUpdateCallback</span>,
+<span class="kw">use </span><span class="kw">crate</span>::util::str_from_cstr;
+<span class="kw">use </span>callbacks::{
+    RawExtrasChatMessageCallback, RawExtrasKeybindChangedCallback,
+    RawExtrasLanguageChangedCallback, RawExtrasSquadUpdateCallback,
 };
-<span class="kw">use</span> <span class="ident">std</span>::{<span class="ident">ops::RangeInclusive</span>, <span class="ident">os::raw::c_char</span>};
-<span class="kw">use</span> <span class="ident">windows::Win32::Foundation::HINSTANCE</span>;
+<span class="kw">use </span>globals::EXTRAS_GLOBALS;
+<span class="kw">use </span>std::{ops::RangeInclusive, os::raw::c_char};
+<span class="kw">use </span>windows::Win32::Foundation::HINSTANCE;
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>)]</span>
-<span class="kw">use</span> <span class="ident">serde</span>::{<span class="ident">Deserialize</span>, <span class="ident">Serialize</span>};
+<span class="attribute">#[cfg(feature = <span class="string">&quot;serde&quot;</span>)]
+</span><span class="kw">use </span>serde::{Deserialize, Serialize};
 
-<span class="doccomment">/// Supported extras API version.</span>
-<span class="kw">const</span> <span class="ident">API_VERSION</span>: <span class="ident">u32</span> <span class="op">=</span> <span class="number">2</span>;
+<span class="doccomment">/// Supported Unofficial Extras API version.
+</span><span class="kw">const </span>API_VERSION: u32 = <span class="number">2</span>;
 
-<span class="doccomment">/// Supported [`ExtrasSubscriberInfo`] version range.</span>
-<span class="kw">const</span> <span class="ident">SUB_INFO_RANGE</span>: <span class="ident">RangeInclusive</span><span class="op">&lt;</span><span class="ident">u32</span><span class="op">&gt;</span> <span class="op">=</span> <span class="number">1</span>..<span class="op">=</span><span class="number">2</span>;
+<span class="doccomment">/// Supported [`ExtrasSubscriberInfo`] version range.
+</span><span class="kw">const </span>SUB_INFO_RANGE: RangeInclusive&lt;u32&gt; = <span class="number">1</span>..=<span class="number">2</span>;
 
-<span class="doccomment">/// Helper to check compatibility.</span>
-<span class="attribute">#[<span class="ident">inline</span>]</span>
-<span class="kw">fn</span> <span class="ident">check_compat</span>(<span class="ident">api_version</span>: <span class="ident">u32</span>, <span class="ident">sub_info_version</span>: <span class="ident">u32</span>) -&gt; <span class="ident">bool</span> {
-    <span class="ident">api_version</span> <span class="op">==</span> <span class="ident">API_VERSION</span> <span class="op">&amp;&amp;</span> <span class="ident">SUB_INFO_RANGE</span>.<span class="ident">contains</span>(<span class="kw-2">&amp;</span><span class="ident">sub_info_version</span>)
+<span class="doccomment">/// Helper to check compatibility.
+</span><span class="attribute">#[inline]
+</span><span class="kw">fn </span>check_compat(api_version: u32, sub_info_version: u32) -&gt; bool {
+    api_version == API_VERSION &amp;&amp; SUB_INFO_RANGE.contains(<span class="kw-2">&amp;</span>sub_info_version)
 }
 
-<span class="doccomment">/// Information about the [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases) addon.</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>)]</span>
-<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>, <span class="ident">derive</span>(<span class="ident">Serialize</span>, <span class="ident">Deserialize</span>))]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">ExtrasAddonInfo</span> {
-    <span class="doccomment">/// Version of the API.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Gets incremented whenever a function signature or behavior changes in a breaking way.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Current version is `2`.</span>
-    <span class="kw">pub</span> <span class="ident">api_version</span>: <span class="ident">u32</span>,
+<span class="doccomment">/// Information about the [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases) addon.
+</span><span class="attribute">#[derive(Debug, Clone)]
+#[cfg_attr(feature = <span class="string">&quot;serde&quot;</span>, derive(Serialize, Deserialize))]
+</span><span class="kw">pub struct </span>ExtrasAddonInfo {
+    <span class="doccomment">/// Version of the API.
+    ///
+    /// Gets incremented whenever a function signature or behavior changes in a breaking way.
+    ///
+    /// Current version is `2`.
+    </span><span class="kw">pub </span>api_version: u32,
 
-    <span class="doccomment">/// Highest known version of the [`ExtrasSubscriberInfo`] struct.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Also determines the size of the subscriber info buffer in the init call.</span>
-    <span class="doccomment">/// The buffer is only guaranteed to have enough space for known [`ExtrasSubscriberInfo`] versions.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Current version is `2`.</span>
-    <span class="kw">pub</span> <span class="ident">max_info_version</span>: <span class="ident">u32</span>,
+    <span class="doccomment">/// Highest known version of the [`ExtrasSubscriberInfo`] struct.
+    ///
+    /// Also determines the size of the subscriber info buffer in the init call.
+    /// The buffer is only guaranteed to have enough space for known [`ExtrasSubscriberInfo`] versions.
+    ///
+    /// Current version is `2`.
+    </span><span class="kw">pub </span>max_info_version: u32,
 
-    <span class="doccomment">/// String version of the Unofficial Extras addon.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Gets changed on every release.</span>
-    <span class="kw">pub</span> <span class="ident">string_version</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// String version of the Unofficial Extras addon.
+    ///
+    /// Gets changed on every release.
+    </span><span class="kw">pub </span>string_version: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str&gt;,
 }
 
-<span class="kw">impl</span> <span class="ident">ExtrasAddonInfo</span> {
-    <span class="doccomment">/// Checks compatibility with the extras addon.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_compatible</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
-        <span class="ident">check_compat</span>(<span class="self">self</span>.<span class="ident">api_version</span>, <span class="self">self</span>.<span class="ident">max_info_version</span>)
+<span class="kw">impl </span>ExtrasAddonInfo {
+    <span class="doccomment">/// Checks compatibility with the Unofficial Extras addon.
+    </span><span class="kw">pub fn </span>is_compatible(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        check_compat(<span class="self">self</span>.api_version, <span class="self">self</span>.max_info_version)
     }
 
-    <span class="doccomment">/// Whether the extras addon supports the chat message callback.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">supports_chat_message_callback</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
-        <span class="self">self</span>.<span class="ident">max_info_version</span> <span class="op">&gt;</span><span class="op">=</span> <span class="number">2</span>
-    }
+    <span class="doccomment">/// Whether the Unofficial Extras addon supports the chat message callback.
+    </span><span class="kw">pub fn </span>supports_chat_message_callback(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        <span class="self">self</span>.max_info_version &gt;= <span class="number">2
+    </span>}
 }
 
-<span class="kw">impl</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">RawExtrasAddonInfo</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">ExtrasAddonInfo</span> {
-    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">raw</span>: <span class="ident">RawExtrasAddonInfo</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">Self</span> {
-            <span class="ident">api_version</span>: <span class="ident">raw</span>.<span class="ident">api_version</span>,
-            <span class="ident">max_info_version</span>: <span class="ident">raw</span>.<span class="ident">max_info_version</span>,
-            <span class="ident">string_version</span>: <span class="kw">unsafe</span> { <span class="ident">str_from_cstr</span>(<span class="ident">raw</span>.<span class="ident">string_version</span>) },
+<span class="kw">impl </span>From&lt;RawExtrasAddonInfo&gt; <span class="kw">for </span>ExtrasAddonInfo {
+    <span class="kw">fn </span>from(raw: RawExtrasAddonInfo) -&gt; <span class="self">Self </span>{
+        <span class="self">Self </span>{
+            api_version: raw.api_version,
+            max_info_version: raw.max_info_version,
+            string_version: <span class="kw">unsafe </span>{ str_from_cstr(raw.string_version) },
         }
     }
 }
 
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>)]</span>
-<span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">RawExtrasAddonInfo</span> {
-    <span class="doccomment">/// Version of the API.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Gets incremented whenever a function signature or behavior changes in a breaking way.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Current version is `2`.</span>
-    <span class="kw">pub</span> <span class="ident">api_version</span>: <span class="ident">u32</span>,
+<span class="attribute">#[derive(Debug, Clone)]
+#[repr(C)]
+</span><span class="kw">pub struct </span>RawExtrasAddonInfo {
+    <span class="doccomment">/// Version of the API.
+    ///
+    /// Gets incremented whenever a function signature or behavior changes in a breaking way.
+    ///
+    /// Current version is `2`.
+    </span><span class="kw">pub </span>api_version: u32,
 
-    <span class="doccomment">/// Highest known version of the [`ExtrasSubscriberInfo`] struct.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Also determines the size of the subscriber info buffer in the init call.</span>
-    <span class="doccomment">/// The buffer is only guaranteed to have enough space for known [`ExtrasSubscriberInfo`] versions.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Current version is `2`.</span>
-    <span class="kw">pub</span> <span class="ident">max_info_version</span>: <span class="ident">u32</span>,
+    <span class="doccomment">/// Highest known version of the [`ExtrasSubscriberInfo`] struct.
+    ///
+    /// Also determines the size of the subscriber info buffer in the init call.
+    /// The buffer is only guaranteed to have enough space for known [`ExtrasSubscriberInfo`] versions.
+    ///
+    /// Current version is `2`.
+    </span><span class="kw">pub </span>max_info_version: u32,
 
-    <span class="doccomment">/// String version of the Unofficial Extras addon.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Gets changed on every release.</span>
-    <span class="doccomment">/// The string is valid for the entire lifetime of the Unofficial Extras DLL.</span>
-    <span class="kw">pub</span> <span class="ident">string_version</span>: <span class="kw-2">*const</span> <span class="ident">c_char</span>,
+    <span class="doccomment">/// String version of the Unofficial Extras addon.
+    ///
+    /// Gets changed on every release.
+    /// The string is valid for the entire lifetime of the Unofficial Extras DLL.
+    </span><span class="kw">pub </span>string_version: <span class="kw-2">*const </span>c_char,
 
-    <span class="doccomment">/// Account name of the logged-in player, including leading `&#39;:&#39;`.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// The string is only valid for the duration of the init call.</span>
-    <span class="kw">pub</span> <span class="ident">self_account_name</span>: <span class="kw-2">*const</span> <span class="ident">c_char</span>,
+    <span class="doccomment">/// Account name of the logged-in player, including leading `&#39;:&#39;`.
+    ///
+    /// The string is only valid for the duration of the init call.
+    </span><span class="kw">pub </span>self_account_name: <span class="kw-2">*const </span>c_char,
 
-    <span class="doccomment">/// The handle to the Unofficial Extras module.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Use this to call the exports of the DLL.</span>
-    <span class="kw">pub</span> <span class="ident">extras_handle</span>: <span class="ident">HINSTANCE</span>,
+    <span class="doccomment">/// The handle to the Unofficial Extras module.
+    ///
+    /// Use this to call the exports of the DLL.
+    </span><span class="kw">pub </span>extras_handle: HINSTANCE,
 }
 
-<span class="kw">impl</span> <span class="ident">RawExtrasAddonInfo</span> {
-    <span class="doccomment">/// Checks compatibility with the extras addon.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_compatible</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
-        <span class="ident">check_compat</span>(<span class="self">self</span>.<span class="ident">api_version</span>, <span class="self">self</span>.<span class="ident">max_info_version</span>)
+<span class="kw">impl </span>RawExtrasAddonInfo {
+    <span class="doccomment">/// Checks compatibility with the Unofficial Extras addon.
+    </span><span class="kw">pub fn </span>is_compatible(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        check_compat(<span class="self">self</span>.api_version, <span class="self">self</span>.max_info_version)
     }
 
-    <span class="doccomment">/// Whether the extras addon supports the message callback.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">supports_chat_message_callback</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
-        <span class="self">self</span>.<span class="ident">max_info_version</span> <span class="op">&gt;</span><span class="op">=</span> <span class="number">2</span>
-    }
+    <span class="doccomment">/// Whether the Unofficial Extras addon supports the message callback.
+    </span><span class="kw">pub fn </span>supports_chat_message_callback(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        <span class="self">self</span>.max_info_version &gt;= <span class="number">2
+    </span>}
 }
 
-<span class="doccomment">/// Subscriber header shared across different versions.</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>)]</span>
-<span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">ExtrasSubscriberInfoHeader</span> {
-    <span class="doccomment">/// The version of the following info struct</span>
-    <span class="doccomment">/// This has to be set to the version you want to use.</span>
-    <span class="kw">pub</span> <span class="ident">info_version</span>: <span class="ident">u32</span>,
+<span class="doccomment">/// Subscriber header shared across different versions.
+</span><span class="attribute">#[derive(Debug)]
+#[repr(C)]
+</span><span class="kw">pub struct </span>ExtrasSubscriberInfoHeader {
+    <span class="doccomment">/// The version of the following info struct
+    /// This has to be set to the version you want to use.
+    </span><span class="kw">pub </span>info_version: u32,
 
-    <span class="doccomment">/// Unused padding.</span>
-    <span class="kw">pub</span> <span class="ident">unused1</span>: <span class="ident">u32</span>,
+    <span class="doccomment">/// Unused padding.
+    </span><span class="kw">pub </span>unused1: u32,
 }
 
-<span class="doccomment">/// Information about a subscriber to updates from Unofficial Extras.</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>)]</span>
-<span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">ExtrasSubscriberInfo</span> {
-    <span class="doccomment">/// Header shared across different versions.</span>
-    <span class="kw">pub</span> <span class="ident">header</span>: <span class="ident">ExtrasSubscriberInfoHeader</span>,
+<span class="doccomment">/// Information about a subscriber to updates from Unofficial Extras.
+</span><span class="attribute">#[derive(Debug)]
+#[repr(C)]
+</span><span class="kw">pub struct </span>ExtrasSubscriberInfo {
+    <span class="doccomment">/// Header shared across different versions.
+    </span><span class="kw">pub </span>header: ExtrasSubscriberInfoHeader,
 
-    <span class="doccomment">/// Name of the addon subscribing to the changes.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Must be valid for the lifetime of the subscribing addon.</span>
-    <span class="doccomment">/// Set to `nullptr` if initialization fails.</span>
-    <span class="kw">pub</span> <span class="ident">subscriber_name</span>: <span class="kw-2">*const</span> <span class="ident">c_char</span>,
+    <span class="doccomment">/// Name of the addon subscribing to the changes.
+    ///
+    /// Must be valid for the lifetime of the subscribing addon.
+    /// Set to `nullptr` if initialization fails.
+    </span><span class="kw">pub </span>subscriber_name: <span class="kw-2">*const </span>c_char,
 
-    <span class="doccomment">/// Called whenever anything in the squad changes.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Only the users that changed are sent.</span>
-    <span class="doccomment">/// If a user is removed from the squad, it will be sent with `role` set to [`UserRole::None`]</span>
-    <span class="kw">pub</span> <span class="ident">squad_update_callback</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RawExtrasSquadUpdateCallback</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Called whenever anything in the squad changes.
+    ///
+    /// Only the users that changed are sent.
+    /// If a user is removed from the squad, it will be sent with `role` set to [`UserRole::None`]
+    </span><span class="kw">pub </span>squad_update_callback: <span class="prelude-ty">Option</span>&lt;RawExtrasSquadUpdateCallback&gt;,
 
-    <span class="doccomment">/// Called whenever the language is changed.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Either by Changing it in the UI or by pressing the Right Ctrl (default) key.</span>
-    <span class="doccomment">/// Will also be called directly after initialization, with the current language, to get the startup language.</span>
-    <span class="kw">pub</span> <span class="ident">language_changed_callback</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RawExtrasLanguageChangedCallback</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Called whenever the language is changed.
+    ///
+    /// Either by Changing it in the UI or by pressing the Right Ctrl (default) key.
+    /// Will also be called directly after initialization, with the current language, to get the startup language.
+    </span><span class="kw">pub </span>language_changed_callback: <span class="prelude-ty">Option</span>&lt;RawExtrasLanguageChangedCallback&gt;,
 
-    <span class="doccomment">/// Called whenever a keybind is changed.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// By changing it in the ingame UI, by pressing the translation shortcut or with the Presets feature of this plugin.</span>
-    <span class="doccomment">/// It is called for every keybind separately.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// After initialization this is called for every current keybind that exists.</span>
-    <span class="doccomment">/// If you want to get a single keybind, at any time you want, call the exported function.</span>
-    <span class="kw">pub</span> <span class="ident">keybind_changed_callback</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RawExtrasKeybindChangedCallback</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Called whenever a keybind is changed.
+    ///
+    /// By changing it in the ingame UI, by pressing the translation shortcut or with the Presets feature of this plugin.
+    /// It is called for every keybind separately.
+    ///
+    /// After initialization this is called for every current keybind that exists.
+    /// If you want to get a single keybind, at any time you want, call the exported function.
+    </span><span class="kw">pub </span>keybind_changed_callback: <span class="prelude-ty">Option</span>&lt;RawExtrasKeybindChangedCallback&gt;,
 
-    <span class="doccomment">/// Called whenever a chat message is sent in your party/squad.</span>
-    <span class="kw">pub</span> <span class="ident">chat_message_callback</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RawExtrasChatMessageCallback</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Called whenever a chat message is sent in your party/squad.
+    </span><span class="kw">pub </span>chat_message_callback: <span class="prelude-ty">Option</span>&lt;RawExtrasChatMessageCallback&gt;,
 }
 
-<span class="kw">impl</span> <span class="ident">ExtrasSubscriberInfo</span> {
-    <span class="doccomment">/// Subscribes to unofficial extras callbacks after checking for compatibility.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Unsupported callbacks will be skipped.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Name needs to be null-terminated.</span>
-    <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">subscribe</span>(
-        <span class="kw-2">&amp;mut</span> <span class="self">self</span>,
-        <span class="ident">extras_addon</span>: <span class="kw-2">&amp;</span><span class="ident">RawExtrasAddonInfo</span>,
-        <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>,
-        <span class="ident">squad_update</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RawExtrasSquadUpdateCallback</span><span class="op">&gt;</span>,
-        <span class="ident">language_changed</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RawExtrasLanguageChangedCallback</span><span class="op">&gt;</span>,
-        <span class="ident">keybind_changed</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RawExtrasKeybindChangedCallback</span><span class="op">&gt;</span>,
-        <span class="ident">chat_message</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RawExtrasChatMessageCallback</span><span class="op">&gt;</span>,
+<span class="kw">impl </span>ExtrasSubscriberInfo {
+    <span class="doccomment">/// Subscribes to unofficial extras callbacks after checking for compatibility.
+    ///
+    /// Unsupported callbacks will be skipped.
+    ///
+    /// Name needs to be null-terminated.
+    </span><span class="kw">pub unsafe fn </span>subscribe(
+        <span class="kw-2">&amp;mut </span><span class="self">self</span>,
+        extras_addon: <span class="kw-2">&amp;</span>RawExtrasAddonInfo,
+        name: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str,
+        squad_update: <span class="prelude-ty">Option</span>&lt;RawExtrasSquadUpdateCallback&gt;,
+        language_changed: <span class="prelude-ty">Option</span>&lt;RawExtrasLanguageChangedCallback&gt;,
+        keybind_changed: <span class="prelude-ty">Option</span>&lt;RawExtrasKeybindChangedCallback&gt;,
+        chat_message: <span class="prelude-ty">Option</span>&lt;RawExtrasChatMessageCallback&gt;,
     ) {
-        <span class="kw">if</span> <span class="ident">extras_addon</span>.<span class="ident">is_compatible</span>() {
-            <span class="comment">// we simply use the max version</span>
-            <span class="self">self</span>.<span class="ident">header</span>.<span class="ident">info_version</span> <span class="op">=</span> <span class="ident">extras_addon</span>.<span class="ident">max_info_version</span>;
+        <span class="kw">if </span>extras_addon.is_compatible() {
+            <span class="comment">// initialize globals
+            </span>EXTRAS_GLOBALS.init(
+                extras_addon.extras_handle,
+                str_from_cstr(extras_addon.string_version),
+            );
 
-            <span class="self">self</span>.<span class="ident">subscriber_name</span> <span class="op">=</span> <span class="ident">name</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">c_char</span>;
-            <span class="self">self</span>.<span class="ident">squad_update_callback</span> <span class="op">=</span> <span class="ident">squad_update</span>;
-            <span class="self">self</span>.<span class="ident">language_changed_callback</span> <span class="op">=</span> <span class="ident">language_changed</span>;
-            <span class="self">self</span>.<span class="ident">keybind_changed_callback</span> <span class="op">=</span> <span class="ident">keybind_changed</span>;
+            <span class="comment">// we simply use the max version
+            </span><span class="self">self</span>.header.info_version = extras_addon.max_info_version;
 
-            <span class="comment">// only attempt to write message callback if supported</span>
-            <span class="kw">if</span> <span class="ident">extras_addon</span>.<span class="ident">supports_chat_message_callback</span>() {
-                <span class="self">self</span>.<span class="ident">chat_message_callback</span> <span class="op">=</span> <span class="ident">chat_message</span>;
+            <span class="self">self</span>.subscriber_name = name.as_ptr() <span class="kw">as </span><span class="kw-2">*const </span>c_char;
+            <span class="self">self</span>.squad_update_callback = squad_update;
+            <span class="self">self</span>.language_changed_callback = language_changed;
+            <span class="self">self</span>.keybind_changed_callback = keybind_changed;
+
+            <span class="comment">// only attempt to write message callback if supported
+            </span><span class="kw">if </span>extras_addon.supports_chat_message_callback() {
+                <span class="self">self</span>.chat_message_callback = chat_message;
             }
         }
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="arcdps" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="arcdps" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.0 (69f9c33d7 2022-12-12)" ></div></body></html>

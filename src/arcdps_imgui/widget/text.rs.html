@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\arcdps-imgui-0.8.0\src\widget\text.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>text.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../arcdps_imgui/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../arcdps_imgui/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../arcdps_imgui/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\arcdps-imgui-0.8.0\src\widget\text.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>text.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../normalize.css"><link rel="stylesheet" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../ayu.css" disabled><link rel="stylesheet" href="../../../dark.css" disabled><link rel="stylesheet" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../../arcdps_imgui/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -53,60 +53,60 @@
 <span id="53">53</span>
 <span id="54">54</span>
 <span id="55">55</span>
-</pre><pre class="rust"><code><span class="kw">use</span> <span class="ident">std::os::raw::c_char</span>;
+</pre><pre class="rust"><code><span class="kw">use </span>std::os::raw::c_char;
 
-<span class="comment">// use crate::string::ImStr;</span>
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::style::StyleColor</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::Ui</span>;
+<span class="comment">// use crate::string::ImStr;
+</span><span class="kw">use </span><span class="kw">crate</span>::style::StyleColor;
+<span class="kw">use </span><span class="kw">crate</span>::Ui;
 
-<span class="kw">static</span> <span class="ident">FMT</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>] <span class="op">=</span> <span class="string">b&quot;%s\0&quot;</span>;
+<span class="kw">static </span>FMT: <span class="kw-2">&amp;</span>[u8] = <span class="string">b&quot;%s\0&quot;</span>;
 
-<span class="attribute">#[<span class="ident">inline</span>]</span>
-<span class="kw">fn</span> <span class="ident">fmt_ptr</span>() -&gt; <span class="kw-2">*const</span> <span class="ident">c_char</span> {
-    <span class="ident">FMT</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">c_char</span>
+<span class="attribute">#[inline]
+</span><span class="kw">fn </span>fmt_ptr() -&gt; <span class="kw-2">*const </span>c_char {
+    FMT.as_ptr() <span class="kw">as </span><span class="kw-2">*const </span>c_char
 }
 
-<span class="doccomment">/// # Widgets: Text</span>
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> <span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Renders simple text</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;TextUnformatted&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">text</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">text</span>: <span class="ident">T</span>) {
-        <span class="kw">let</span> <span class="ident">s</span> <span class="op">=</span> <span class="ident">text</span>.<span class="ident">as_ref</span>();
-        <span class="kw">unsafe</span> {
-            <span class="kw">let</span> <span class="ident">start</span> <span class="op">=</span> <span class="ident">s</span>.<span class="ident">as_ptr</span>();
-            <span class="kw">let</span> <span class="ident">end</span> <span class="op">=</span> <span class="ident">start</span>.<span class="ident">add</span>(<span class="ident">s</span>.<span class="ident">len</span>());
-            <span class="ident">sys::igTextUnformatted</span>(<span class="ident">start</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">c_char</span>, <span class="ident">end</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">c_char</span>);
+<span class="doccomment">/// # Widgets: Text
+</span><span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>&gt; Ui&lt;<span class="lifetime">&#39;ui</span>&gt; {
+    <span class="doccomment">/// Renders simple text
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;TextUnformatted&quot;</span>)]
+    </span><span class="kw">pub fn </span>text&lt;T: AsRef&lt;str&gt;&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, text: T) {
+        <span class="kw">let </span>s = text.as_ref();
+        <span class="kw">unsafe </span>{
+            <span class="kw">let </span>start = s.as_ptr();
+            <span class="kw">let </span>end = start.add(s.len());
+            sys::igTextUnformatted(start <span class="kw">as </span><span class="kw-2">*const </span>c_char, end <span class="kw">as </span><span class="kw-2">*const </span>c_char);
         }
     }
-    <span class="doccomment">/// Renders simple text using the given text color</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">text_colored</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">color</span>: [<span class="ident">f32</span>; <span class="number">4</span>], <span class="ident">text</span>: <span class="ident">T</span>) {
-        <span class="kw">let</span> <span class="ident">style</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">push_style_color</span>(<span class="ident">StyleColor::Text</span>, <span class="ident">color</span>);
-        <span class="self">self</span>.<span class="ident">text</span>(<span class="ident">text</span>);
-        <span class="ident">style</span>.<span class="ident">end</span>();
+    <span class="doccomment">/// Renders simple text using the given text color
+    </span><span class="kw">pub fn </span>text_colored&lt;T: AsRef&lt;str&gt;&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, color: [f32; <span class="number">4</span>], text: T) {
+        <span class="kw">let </span>style = <span class="self">self</span>.push_style_color(StyleColor::Text, color);
+        <span class="self">self</span>.text(text);
+        style.end();
     }
-    <span class="doccomment">/// Renders simple text using `StyleColor::TextDisabled` color</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">text_disabled</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">text</span>: <span class="ident">T</span>) {
-        <span class="kw">let</span> <span class="ident">color</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">style_color</span>(<span class="ident">StyleColor::TextDisabled</span>);
-        <span class="kw">let</span> <span class="ident">style</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">push_style_color</span>(<span class="ident">StyleColor::Text</span>, <span class="ident">color</span>);
-        <span class="self">self</span>.<span class="ident">text</span>(<span class="ident">text</span>);
-        <span class="ident">style</span>.<span class="ident">end</span>();
+    <span class="doccomment">/// Renders simple text using `StyleColor::TextDisabled` color
+    </span><span class="kw">pub fn </span>text_disabled&lt;T: AsRef&lt;str&gt;&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, text: T) {
+        <span class="kw">let </span>color = <span class="self">self</span>.style_color(StyleColor::TextDisabled);
+        <span class="kw">let </span>style = <span class="self">self</span>.push_style_color(StyleColor::Text, color);
+        <span class="self">self</span>.text(text);
+        style.end();
     }
-    <span class="doccomment">/// Renders text wrapped to the end of window (or column)</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;TextWrapperd&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">text_wrapped</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">text</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>) {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igTextWrapped</span>(<span class="ident">fmt_ptr</span>(), <span class="self">self</span>.<span class="ident">scratch_txt</span>(<span class="ident">text</span>)) }
+    <span class="doccomment">/// Renders text wrapped to the end of window (or column)
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;TextWrapperd&quot;</span>)]
+    </span><span class="kw">pub fn </span>text_wrapped(<span class="kw-2">&amp;</span><span class="self">self</span>, text: <span class="kw">impl </span>AsRef&lt;str&gt;) {
+        <span class="kw">unsafe </span>{ sys::igTextWrapped(fmt_ptr(), <span class="self">self</span>.scratch_txt(text)) }
     }
-    <span class="doccomment">/// Render a text + label combination aligned the same way as value+label widgets</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;LabelText&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">label_text</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">label</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>, <span class="ident">text</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>) {
-        <span class="kw">let</span> (<span class="ident">ptr_one</span>, <span class="ident">ptr_two</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">scratch_txt_two</span>(<span class="ident">label</span>, <span class="ident">text</span>);
-        <span class="kw">unsafe</span> { <span class="ident">sys::igLabelText</span>(<span class="ident">ptr_one</span>, <span class="ident">fmt_ptr</span>(), <span class="ident">ptr_two</span>) }
+    <span class="doccomment">/// Render a text + label combination aligned the same way as value+label widgets
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;LabelText&quot;</span>)]
+    </span><span class="kw">pub fn </span>label_text(<span class="kw-2">&amp;</span><span class="self">self</span>, label: <span class="kw">impl </span>AsRef&lt;str&gt;, text: <span class="kw">impl </span>AsRef&lt;str&gt;) {
+        <span class="kw">let </span>(ptr_one, ptr_two) = <span class="self">self</span>.scratch_txt_two(label, text);
+        <span class="kw">unsafe </span>{ sys::igLabelText(ptr_one, fmt_ptr(), ptr_two) }
     }
-    <span class="doccomment">/// Renders text with a little bullet aligned to the typical tree node</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;BulletText&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">bullet_text</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">text</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>) {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igBulletText</span>(<span class="ident">fmt_ptr</span>(), <span class="self">self</span>.<span class="ident">scratch_txt</span>(<span class="ident">text</span>)) }
+    <span class="doccomment">/// Renders text with a little bullet aligned to the typical tree node
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;BulletText&quot;</span>)]
+    </span><span class="kw">pub fn </span>bullet_text(<span class="kw-2">&amp;</span><span class="self">self</span>, text: <span class="kw">impl </span>AsRef&lt;str&gt;) {
+        <span class="kw">unsafe </span>{ sys::igBulletText(fmt_ptr(), <span class="self">self</span>.scratch_txt(text)) }
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="arcdps_imgui" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="arcdps_imgui" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.0 (69f9c33d7 2022-12-12)" ></div></body></html>

@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\arcdps-imgui-0.8.0\src\plothistogram.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>plothistogram.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script><script defer src="../../main.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../arcdps_imgui/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../arcdps_imgui/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../arcdps_imgui/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\arcdps-imgui-0.8.0\src\plothistogram.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>plothistogram.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../normalize.css"><link rel="stylesheet" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../ayu.css" disabled><link rel="stylesheet" href="../../dark.css" disabled><link rel="stylesheet" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script><script defer src="../../main.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../arcdps_imgui/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -85,92 +85,92 @@
 <span id="85">85</span>
 <span id="86">86</span>
 <span id="87">87</span>
-</pre><pre class="rust"><code><span class="kw">use</span> <span class="ident">std::os::raw::c_float</span>;
-<span class="kw">use</span> <span class="ident">std</span>::{<span class="ident">f32</span>, <span class="ident">mem</span>};
+</pre><pre class="rust"><code><span class="kw">use </span>std::os::raw::c_float;
+<span class="kw">use </span>std::{f32, mem};
 
-<span class="kw">use</span> <span class="ident"><span class="kw">super</span>::Ui</span>;
+<span class="kw">use </span><span class="kw">super</span>::Ui;
 
-<span class="attribute">#[<span class="ident">must_use</span>]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">PlotHistogram</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, <span class="ident">Label</span>, <span class="ident">Overlay</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span><span class="op">&gt;</span> {
-    <span class="ident">label</span>: <span class="ident">Label</span>,
-    <span class="ident">values</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> [<span class="ident">f32</span>],
-    <span class="ident">values_offset</span>: <span class="ident">usize</span>,
-    <span class="ident">overlay_text</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Overlay</span><span class="op">&gt;</span>,
-    <span class="ident">scale_min</span>: <span class="ident">f32</span>,
-    <span class="ident">scale_max</span>: <span class="ident">f32</span>,
-    <span class="ident">graph_size</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-    <span class="ident">ui</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>,
+<span class="attribute">#[must_use]
+</span><span class="kw">pub struct </span>PlotHistogram&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, Label, Overlay = <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str&gt; {
+    label: Label,
+    values: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p </span>[f32],
+    values_offset: usize,
+    overlay_text: <span class="prelude-ty">Option</span>&lt;Overlay&gt;,
+    scale_min: f32,
+    scale_max: f32,
+    graph_size: [f32; <span class="number">2</span>],
+    ui: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span>Ui&lt;<span class="lifetime">&#39;ui</span>&gt;,
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, <span class="ident">Label</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="ident">PlotHistogram</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, <span class="ident">Label</span><span class="op">&gt;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">ui</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>, <span class="ident">label</span>: <span class="ident">Label</span>, <span class="ident">values</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> [<span class="ident">f32</span>]) -&gt; <span class="self">Self</span> {
-        <span class="ident">PlotHistogram</span> {
-            <span class="ident">label</span>,
-            <span class="ident">values</span>,
-            <span class="ident">values_offset</span>: <span class="number">0usize</span>,
-            <span class="ident">overlay_text</span>: <span class="prelude-val">None</span>,
-            <span class="ident">scale_min</span>: <span class="ident">f32::MAX</span>,
-            <span class="ident">scale_max</span>: <span class="ident">f32::MAX</span>,
-            <span class="ident">graph_size</span>: [<span class="number">0.0</span>, <span class="number">0.0</span>],
-            <span class="ident">ui</span>,
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, Label: AsRef&lt;str&gt;&gt; PlotHistogram&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, Label&gt; {
+    <span class="kw">pub fn </span>new(ui: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span>Ui&lt;<span class="lifetime">&#39;ui</span>&gt;, label: Label, values: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p </span>[f32]) -&gt; <span class="self">Self </span>{
+        PlotHistogram {
+            label,
+            values,
+            values_offset: <span class="number">0usize</span>,
+            overlay_text: <span class="prelude-val">None</span>,
+            scale_min: f32::MAX,
+            scale_max: f32::MAX,
+            graph_size: [<span class="number">0.0</span>, <span class="number">0.0</span>],
+            ui,
         }
     }
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, <span class="ident">Label</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>, <span class="ident">Overlay</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="ident">PlotHistogram</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, <span class="ident">Label</span>, <span class="ident">Overlay</span><span class="op">&gt;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">values_offset</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">values_offset</span>: <span class="ident">usize</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">values_offset</span> <span class="op">=</span> <span class="ident">values_offset</span>;
-        <span class="self">self</span>
-    }
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, Label: AsRef&lt;str&gt;, Overlay: AsRef&lt;str&gt;&gt; PlotHistogram&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, Label, Overlay&gt; {
+    <span class="kw">pub fn </span>values_offset(<span class="kw-2">mut </span><span class="self">self</span>, values_offset: usize) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.values_offset = values_offset;
+        <span class="self">self
+    </span>}
 
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">overlay_text</span><span class="op">&lt;</span><span class="ident">NewOverlay</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(
+    <span class="kw">pub fn </span>overlay_text&lt;NewOverlay: AsRef&lt;str&gt;&gt;(
         <span class="self">self</span>,
-        <span class="ident">overlay_text</span>: <span class="ident">NewOverlay</span>,
-    ) -&gt; <span class="ident">PlotHistogram</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, <span class="ident">Label</span>, <span class="ident">NewOverlay</span><span class="op">&gt;</span> {
-        <span class="ident">PlotHistogram</span> {
-            <span class="ident">label</span>: <span class="self">self</span>.<span class="ident">label</span>,
-            <span class="ident">values</span>: <span class="self">self</span>.<span class="ident">values</span>,
-            <span class="ident">values_offset</span>: <span class="self">self</span>.<span class="ident">values_offset</span>,
-            <span class="ident">overlay_text</span>: <span class="prelude-val">Some</span>(<span class="ident">overlay_text</span>),
-            <span class="ident">scale_min</span>: <span class="self">self</span>.<span class="ident">scale_min</span>,
-            <span class="ident">scale_max</span>: <span class="self">self</span>.<span class="ident">scale_max</span>,
-            <span class="ident">graph_size</span>: <span class="self">self</span>.<span class="ident">graph_size</span>,
-            <span class="ident">ui</span>: <span class="self">self</span>.<span class="ident">ui</span>,
+        overlay_text: NewOverlay,
+    ) -&gt; PlotHistogram&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, Label, NewOverlay&gt; {
+        PlotHistogram {
+            label: <span class="self">self</span>.label,
+            values: <span class="self">self</span>.values,
+            values_offset: <span class="self">self</span>.values_offset,
+            overlay_text: <span class="prelude-val">Some</span>(overlay_text),
+            scale_min: <span class="self">self</span>.scale_min,
+            scale_max: <span class="self">self</span>.scale_max,
+            graph_size: <span class="self">self</span>.graph_size,
+            ui: <span class="self">self</span>.ui,
         }
     }
 
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">scale_min</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">scale_min</span>: <span class="ident">f32</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">scale_min</span> <span class="op">=</span> <span class="ident">scale_min</span>;
-        <span class="self">self</span>
-    }
+    <span class="kw">pub fn </span>scale_min(<span class="kw-2">mut </span><span class="self">self</span>, scale_min: f32) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.scale_min = scale_min;
+        <span class="self">self
+    </span>}
 
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">scale_max</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">scale_max</span>: <span class="ident">f32</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">scale_max</span> <span class="op">=</span> <span class="ident">scale_max</span>;
-        <span class="self">self</span>
-    }
+    <span class="kw">pub fn </span>scale_max(<span class="kw-2">mut </span><span class="self">self</span>, scale_max: f32) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.scale_max = scale_max;
+        <span class="self">self
+    </span>}
 
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">graph_size</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">graph_size</span>: [<span class="ident">f32</span>; <span class="number">2</span>]) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">graph_size</span> <span class="op">=</span> <span class="ident">graph_size</span>;
-        <span class="self">self</span>
-    }
+    <span class="kw">pub fn </span>graph_size(<span class="kw-2">mut </span><span class="self">self</span>, graph_size: [f32; <span class="number">2</span>]) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.graph_size = graph_size;
+        <span class="self">self
+    </span>}
 
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build</span>(<span class="self">self</span>) {
-        <span class="kw">unsafe</span> {
-            <span class="kw">let</span> (<span class="ident">label</span>, <span class="ident">overlay_text</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">ui</span>.<span class="ident">scratch_txt_with_opt</span>(<span class="self">self</span>.<span class="ident">label</span>, <span class="self">self</span>.<span class="ident">overlay_text</span>);
+    <span class="kw">pub fn </span>build(<span class="self">self</span>) {
+        <span class="kw">unsafe </span>{
+            <span class="kw">let </span>(label, overlay_text) = <span class="self">self</span>.ui.scratch_txt_with_opt(<span class="self">self</span>.label, <span class="self">self</span>.overlay_text);
 
-            <span class="ident">sys::igPlotHistogram_FloatPtr</span>(
-                <span class="ident">label</span>,
-                <span class="self">self</span>.<span class="ident">values</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">c_float</span>,
-                <span class="self">self</span>.<span class="ident">values</span>.<span class="ident">len</span>() <span class="kw">as</span> <span class="ident">i32</span>,
-                <span class="self">self</span>.<span class="ident">values_offset</span> <span class="kw">as</span> <span class="ident">i32</span>,
-                <span class="ident">overlay_text</span>,
-                <span class="self">self</span>.<span class="ident">scale_min</span>,
-                <span class="self">self</span>.<span class="ident">scale_max</span>,
-                <span class="self">self</span>.<span class="ident">graph_size</span>.<span class="ident">into</span>(),
-                <span class="ident">mem::size_of</span>::<span class="op">&lt;</span><span class="ident">f32</span><span class="op">&gt;</span>() <span class="kw">as</span> <span class="ident">i32</span>,
+            sys::igPlotHistogram_FloatPtr(
+                label,
+                <span class="self">self</span>.values.as_ptr() <span class="kw">as </span><span class="kw-2">*const </span>c_float,
+                <span class="self">self</span>.values.len() <span class="kw">as </span>i32,
+                <span class="self">self</span>.values_offset <span class="kw">as </span>i32,
+                overlay_text,
+                <span class="self">self</span>.scale_min,
+                <span class="self">self</span>.scale_max,
+                <span class="self">self</span>.graph_size.into(),
+                mem::size_of::&lt;f32&gt;() <span class="kw">as </span>i32,
             );
         }
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="arcdps_imgui" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="arcdps_imgui" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.0 (69f9c33d7 2022-12-12)" ></div></body></html>

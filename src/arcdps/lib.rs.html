@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `core\src\lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script><script defer src="../../main.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../arcdps/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../arcdps/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../arcdps/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `arcdps\src\lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../normalize.css"><link rel="stylesheet" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../ayu.css" disabled><link rel="stylesheet" href="../../dark.css" disabled><link rel="stylesheet" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script><script defer src="../../main.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../arcdps/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -328,335 +328,351 @@
 <span id="328">328</span>
 <span id="329">329</span>
 <span id="330">330</span>
-</pre><pre class="rust"><code><span class="doccomment">//! [ArcDPS](https://www.deltaconnected.com/arcdps/) bindings for Rust plugins.</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! # Usage</span>
-<span class="doccomment">//! Plugins export information for ArcDPS via the [`export!`] macro.</span>
-<span class="doccomment">//! To see which fields are supported by it, have a look at [`SupportedFields`].</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! ```ignore</span>
-<span class="doccomment">//! use std::error::Error;</span>
-<span class="doccomment">//! use arcdps::{Agent, CombatEvent, StateChange};</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! arcdps::export! {</span>
-<span class="doccomment">//!     name: &quot;Example Plugin&quot;,</span>
-<span class="doccomment">//!     sig: 123, // change this to a random number</span>
-<span class="doccomment">//!     init,</span>
-<span class="doccomment">//!     combat: custom_combat_name,</span>
-<span class="doccomment">//! }</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! fn init() -&gt; Result&lt;(), Box&lt;dyn Error&gt;&gt; {</span>
-<span class="doccomment">//!     // may return an error to indicate load failure</span>
-<span class="doccomment">//!     Ok(())</span>
-<span class="doccomment">//! }</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! fn custom_combat_name(</span>
-<span class="doccomment">//!     event: Option&lt;CombatEvent&gt;,</span>
-<span class="doccomment">//!     src: Option&lt;Agent&gt;,</span>
-<span class="doccomment">//!     dst: Option&lt;Agent&gt;,</span>
-<span class="doccomment">//!     skill_name: Option&lt;&amp;str&gt;,</span>
-<span class="doccomment">//!     id: u64,</span>
-<span class="doccomment">//!     revision: u64,</span>
-<span class="doccomment">//! ) {</span>
-<span class="doccomment">//!     if let Some(event) = event {</span>
-<span class="doccomment">//!         if let StateChange::EnterCombat = event.is_statechange {</span>
-<span class="doccomment">//!             // source agent has entered combat</span>
-<span class="doccomment">//!         }</span>
-<span class="doccomment">//!     }</span>
-<span class="doccomment">//! }</span>
-<span class="doccomment">//! ```</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! # Unofficial Extras</span>
-<span class="doccomment">//! [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases) support is hidden behind the `extras` feature flag.</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! ```ignore</span>
-<span class="doccomment">//! use arcdps::extras::{UserInfoIter, UserRole};</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! arcdps::export! {</span>
-<span class="doccomment">//!     name: &quot;Example Plugin&quot;,</span>
-<span class="doccomment">//!     sig: 123,</span>
-<span class="doccomment">//!     extras_squad_update,</span>
-<span class="doccomment">//! }</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! fn extras_squad_update(users: UserInfoIter) {</span>
-<span class="doccomment">//!     for user in users {</span>
-<span class="doccomment">//!         if let UserRole::SquadLeader | UserRole::Lieutenant = user.role {</span>
-<span class="doccomment">//!             // user can place markers</span>
-<span class="doccomment">//!         }</span>
-<span class="doccomment">//!     }</span>
-<span class="doccomment">//! }</span>
-<span class="doccomment">//! ```</span>
+<span id="331">331</span>
+<span id="332">332</span>
+<span id="333">333</span>
+<span id="334">334</span>
+<span id="335">335</span>
+<span id="336">336</span>
+<span id="337">337</span>
+<span id="338">338</span>
+</pre><pre class="rust"><code><span class="doccomment">//! [ArcDPS](https://www.deltaconnected.com/arcdps/) bindings for Rust plugins.
+//!
+//! # Usage
+//! Plugins export information for ArcDPS via the [`export!`] macro.
+//! To see which fields are supported by it, have a look at [`SupportedFields`].
+//!
+//! ```no_run
+//! # mod test {
+//! use std::error::Error;
+//! use arcdps::{Agent, CombatEvent, StateChange};
+//!
+//! arcdps::export! {
+//!     name: &quot;Example Plugin&quot;,
+//!     sig: 0x12345678, // change this to a random number
+//!     init,
+//!     combat: custom_combat_name,
+//! }
+//!
+//! fn init() -&gt; Result&lt;(), Box&lt;dyn Error&gt;&gt; {
+//!     // may return an error to indicate load failure
+//!     Ok(())
+//! }
+//!
+//! fn custom_combat_name(
+//!     event: Option&lt;CombatEvent&gt;,
+//!     src: Option&lt;Agent&gt;,
+//!     dst: Option&lt;Agent&gt;,
+//!     skill_name: Option&lt;&amp;str&gt;,
+//!     id: u64,
+//!     revision: u64,
+//! ) {
+//!     if let Some(event) = event {
+//!         if let StateChange::EnterCombat = event.is_statechange {
+//!             // source agent has entered combat
+//!         }
+//!     }
+//! }
+//! # }
+//! ```
+//!
+//! # Unofficial Extras
+//! [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases) support is hidden behind the `extras` feature flag.
+//!
+//! ```no_run
+//! # mod test {
+//! use arcdps::extras::{UserInfoIter, UserRole};
+//!
+//! arcdps::export! {
+//!     name: &quot;Example Plugin&quot;,
+//!     sig: 123,
+//!     extras_squad_update,
+//! }
+//!
+//! fn extras_squad_update(users: UserInfoIter) {
+//!     for user in users {
+//!         if let UserRole::SquadLeader | UserRole::Lieutenant = user.role {
+//!             // user can place markers
+//!         }
+//!     }
+//! }
+//! # }
+//! ```
 
-<span class="attribute">#![<span class="ident">allow</span>(<span class="ident">clippy::missing_safety_doc</span>)]</span>
+</span><span class="attribute">#![allow(clippy::missing_safety_doc)]
 
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">api</span>;
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">callbacks</span>;
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">exports</span>;
+</span><span class="kw">pub mod </span>api;
+<span class="kw">pub mod </span>callbacks;
+<span class="kw">pub mod </span>exports;
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;extras&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">extras</span>;
+<span class="attribute">#[cfg(feature = <span class="string">&quot;extras&quot;</span>)]
+</span><span class="kw">pub mod </span>extras;
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;log&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">log</span>;
+<span class="attribute">#[cfg(feature = <span class="string">&quot;log&quot;</span>)]
+</span><span class="kw">pub mod </span>log;
 
-<span class="kw">mod</span> <span class="ident">instance</span>;
-<span class="kw">mod</span> <span class="ident">panic</span>;
-<span class="kw">mod</span> <span class="ident">util</span>;
+<span class="kw">mod </span>globals;
+<span class="kw">mod </span>panic;
+<span class="kw">mod </span>util;
 
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">api</span>::{
-    <span class="ident">Activation</span>, <span class="ident">Affinity</span>, <span class="ident">Agent</span>, <span class="ident">AgentOwned</span>, <span class="ident">Attribute</span>, <span class="ident">BuffCategory</span>, <span class="ident">BuffCycle</span>, <span class="ident">BuffRemove</span>,
-    <span class="ident">CombatEvent</span>, <span class="ident">CustomSkill</span>, <span class="ident">Language</span>, <span class="ident">Profession</span>, <span class="ident">Specialization</span>, <span class="ident">StateChange</span>, <span class="ident">Strike</span>,
+<span class="kw">pub use </span>api::{
+    Activation, Affinity, Agent, AgentOwned, Attribute, BuffCategory, BuffCycle, BuffRemove,
+    CombatEvent, CustomSkill, Language, Profession, Specialization, StateChange, Strike,
 };
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">arcdps_codegen::export</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">arcdps_imgui</span> <span class="kw">as</span> <span class="ident">imgui</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">util::strip_account_prefix</span>;
+<span class="kw">pub use </span>arcdps_codegen::export;
+<span class="kw">pub use </span>arcdps_imgui <span class="kw">as </span>imgui;
+<span class="kw">pub use </span>util::strip_account_prefix;
 
-<span class="kw">use</span> <span class="ident">callbacks</span>::<span class="kw-2">*</span>;
+<span class="kw">use </span>callbacks::<span class="kw-2">*</span>;
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;extras&quot;</span>)]</span>
-<span class="kw">use</span> <span class="ident">extras::callbacks</span>::<span class="kw-2">*</span>;
+<span class="attribute">#[cfg(feature = <span class="string">&quot;extras&quot;</span>)]
+</span><span class="kw">use </span>extras::callbacks::<span class="kw-2">*</span>;
 
-<span class="doccomment">/// Reference on what fields are currently supported by the [`export!`] macro.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// This struct is not used anywhere.</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">SupportedFields</span> {
-    <span class="doccomment">/// Name of the plugin.</span>
-    <span class="kw">pub</span> <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>,
+<span class="doccomment">/// Reference on what fields are currently supported by the [`export!`] macro.
+///
+/// This struct is not used anywhere.
+</span><span class="kw">pub struct </span>SupportedFields {
+    <span class="doccomment">/// Name of the plugin.
+    </span><span class="kw">pub </span>name: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str,
 
-    <span class="doccomment">/// Unique signature of the plugin.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Pick a random number that is not used by other modules.</span>
-    <span class="kw">pub</span> <span class="ident">sig</span>: <span class="ident">u32</span>,
+    <span class="doccomment">/// Unique signature of the plugin.
+    ///
+    /// Pick a random number that is not used by other modules.
+    </span><span class="kw">pub </span>sig: u32,
 
-    <span class="doccomment">/// Callback for plugin load.</span>
-    <span class="kw">pub</span> <span class="ident">init</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">InitFunc</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Callback for plugin load.
+    </span><span class="kw">pub </span>init: <span class="prelude-ty">Option</span>&lt;InitFunc&gt;,
 
-    <span class="doccomment">/// Callback for plugin unload.</span>
-    <span class="kw">pub</span> <span class="ident">release</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ReleaseFunc</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Callback for plugin unload.
+    </span><span class="kw">pub </span>release: <span class="prelude-ty">Option</span>&lt;ReleaseFunc&gt;,
 
-    <span class="doccomment">/// Raw WndProc callback.</span>
-    <span class="kw">pub</span> <span class="ident">raw_wnd_nofilter</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RawWndProcCallback</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Callback for plugin unload.
+    </span><span class="comment">// TODO: higher level abstraction?
+    </span><span class="kw">pub </span>update_url: <span class="prelude-ty">Option</span>&lt;UpdateUrlFunc&gt;,
 
-    <span class="doccomment">/// Raw ImGui callback.</span>
-    <span class="kw">pub</span> <span class="ident">raw_imgui</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RawImguiCallback</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Raw WndProc callback.
+    </span><span class="kw">pub </span>raw_wnd_nofilter: <span class="prelude-ty">Option</span>&lt;RawWndProcCallback&gt;,
 
-    <span class="doccomment">/// Raw options callback.</span>
-    <span class="kw">pub</span> <span class="ident">raw_options_end</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RawOptionsCallback</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Raw ImGui callback.
+    </span><span class="kw">pub </span>raw_imgui: <span class="prelude-ty">Option</span>&lt;RawImguiCallback&gt;,
 
-    <span class="doccomment">/// Raw combat callback.</span>
-    <span class="kw">pub</span> <span class="ident">raw_combat</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RawCombatCallback</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Raw options callback.
+    </span><span class="kw">pub </span>raw_options_end: <span class="prelude-ty">Option</span>&lt;RawOptionsCallback&gt;,
 
-    <span class="doccomment">/// Raw filtered WndProc callback.</span>
-    <span class="kw">pub</span> <span class="ident">raw_wnd_filter</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RawWndProcCallback</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Raw combat callback.
+    </span><span class="kw">pub </span>raw_combat: <span class="prelude-ty">Option</span>&lt;RawCombatCallback&gt;,
 
-    <span class="doccomment">/// Raw options windows callback.</span>
-    <span class="kw">pub</span> <span class="ident">raw_options_windows</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RawOptionsWindowsCallback</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Raw filtered WndProc callback.
+    </span><span class="kw">pub </span>raw_wnd_filter: <span class="prelude-ty">Option</span>&lt;RawWndProcCallback&gt;,
 
-    <span class="doccomment">/// Raw local combat callback.</span>
-    <span class="kw">pub</span> <span class="ident">raw_combat_local</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RawCombatCallback</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Raw options windows callback.
+    </span><span class="kw">pub </span>raw_options_windows: <span class="prelude-ty">Option</span>&lt;RawOptionsWindowsCallback&gt;,
 
-    <span class="doccomment">/// Callback for key presses.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Returning `true` will allow ArcDPS and GW2 to receive the key press.</span>
-    <span class="doccomment">/// First parameter indicates the [virtual key code](https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes).</span>
-    <span class="doccomment">/// Second parameter is `true` if the key was pressed and `false` when released.</span>
-    <span class="doccomment">/// Third parameter is `true` if the key was down before this event occurred, for example by holding it down.</span>
-    <span class="kw">pub</span> <span class="ident">wnd_nofilter</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">WndProcCallback</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Raw local combat callback.
+    </span><span class="kw">pub </span>raw_combat_local: <span class="prelude-ty">Option</span>&lt;RawCombatCallback&gt;,
 
-    <span class="doccomment">/// Callback for area combat events.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// May be called asynchronously, use `id` to keep track of order.</span>
-    <span class="doccomment">/// First event id will be `2`.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// At least one participant will be a party/squad member or minion of, or a buff applied by squad in the case of buff remove.</span>
-    <span class="doccomment">/// Not all statechanges are present in the realtime API, see [`StateChange`](crate::StateChange) for details.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// No `event` and `src.elite == 0` indicates a tracking change.</span>
-    <span class="doccomment">/// Player was added when `src.prof != 0`, otherwise removed.</span>
-    <span class="doccomment">/// When added `dst.name` contains the account name,</span>
-    <span class="doccomment">/// `dst.id` the instance id,</span>
-    <span class="doccomment">/// `dst.prof` the [`Profession`](crate::Profession),</span>
-    <span class="doccomment">/// `dst.elite` the elite [`Specialization`](crate::Specialization),</span>
-    <span class="doccomment">/// `dst.is_self` whether the added player is self (local player),</span>
-    <span class="doccomment">/// `src.team` the team and `dst.team` the subgroup.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// No `event` and `src.elite != 0` indicates a target change.</span>
-    <span class="doccomment">/// `src.id` will contain the new target.</span>
-    <span class="kw">pub</span> <span class="ident">combat</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">CombatCallback</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Callback for key presses.
+    ///
+    /// Returning `true` will allow ArcDPS and GW2 to receive the key press.
+    /// First parameter indicates the [virtual key code](https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes).
+    /// Second parameter is `true` if the key was pressed and `false` when released.
+    /// Third parameter is `true` if the key was down before this event occurred, for example by holding it down.
+    </span><span class="kw">pub </span>wnd_nofilter: <span class="prelude-ty">Option</span>&lt;WndProcCallback&gt;,
 
-    <span class="doccomment">/// Callback for standalone UI creation.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Provides an [`imgui::Ui`] for drawing.</span>
-    <span class="doccomment">/// The second parameter is `true` whenever the player is **not** in character select, loading screens or forced cameras.</span>
-    <span class="kw">pub</span> <span class="ident">imgui</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ImguiCallback</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Callback for area combat events.
+    ///
+    /// May be called asynchronously, use `id` to keep track of order.
+    /// First event id will be `2`.
+    ///
+    /// At least one participant will be a party/squad member or minion of, or a buff applied by squad in the case of buff remove.
+    /// Not all statechanges are present in the realtime API, see [`StateChange`](crate::StateChange) for details.
+    ///
+    /// No `event` and `src.elite == 0` indicates a tracking change.
+    /// Player was added when `src.prof != 0`, otherwise removed.
+    /// When added `dst.name` contains the account name,
+    /// `dst.id` the instance id,
+    /// `dst.prof` the [`Profession`](crate::Profession),
+    /// `dst.elite` the elite [`Specialization`](crate::Specialization),
+    /// `dst.is_self` whether the added player is self (local player),
+    /// `src.team` the team and `dst.team` the subgroup.
+    ///
+    /// No `event` and `src.elite != 0` indicates a target change.
+    /// `src.id` will contain the new target.
+    </span><span class="kw">pub </span>combat: <span class="prelude-ty">Option</span>&lt;CombatCallback&gt;,
 
-    <span class="doccomment">/// Callback for plugin settings UI creation.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Provides an [`imgui::Ui`] for drawing.</span>
-    <span class="kw">pub</span> <span class="ident">options_end</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">OptionsCallback</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Callback for standalone UI creation.
+    ///
+    /// Provides an [`imgui::Ui`] for drawing.
+    /// The second parameter is `true` whenever the player is **not** in character select, loading screens or forced cameras.
+    </span><span class="kw">pub </span>imgui: <span class="prelude-ty">Option</span>&lt;ImguiCallback&gt;,
 
-    <span class="doccomment">/// Callback for local combat events.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Same as [`combat`](Self::combat) but for events from chat log.</span>
-    <span class="kw">pub</span> <span class="ident">combat_local</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">CombatCallback</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Callback for plugin settings UI creation.
+    ///
+    /// Provides an [`imgui::Ui`] for drawing.
+    </span><span class="kw">pub </span>options_end: <span class="prelude-ty">Option</span>&lt;OptionsCallback&gt;,
 
-    <span class="doccomment">/// Callback for filtered key presses.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Same as [`wnd_nofilter`](Self::wnd_nofilter) but filtered to only notify when modifiers are pressed.</span>
-    <span class="kw">pub</span> <span class="ident">wnd_filter</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">WndProcCallback</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Callback for local combat events.
+    ///
+    /// Same as [`combat`](Self::combat) but for events from chat log.
+    </span><span class="kw">pub </span>combat_local: <span class="prelude-ty">Option</span>&lt;CombatCallback&gt;,
 
-    <span class="doccomment">/// Callback for options windows.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Called for each window checkbox in ArcDPS settings.</span>
-    <span class="doccomment">/// Last call will always be with [`None`].</span>
-    <span class="doccomment">/// Does not draw the checkbox if returning `true`.</span>
-    <span class="kw">pub</span> <span class="ident">options_windows</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">OptionsWindowsCallback</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Callback for filtered key presses.
+    ///
+    /// Same as [`wnd_nofilter`](Self::wnd_nofilter) but filtered to only notify when modifiers are pressed.
+    </span><span class="kw">pub </span>wnd_filter: <span class="prelude-ty">Option</span>&lt;WndProcCallback&gt;,
 
-    <span class="doccomment">/// Raw extras init callback.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// *Requires the `&quot;extras&quot;` feature.*</span>
-    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;extras&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="ident">raw_extras_init</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RawExtrasSubscriberInit</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Callback for options windows.
+    ///
+    /// Called for each window checkbox in ArcDPS settings.
+    /// Last call will always be with [`None`].
+    /// Does not draw the checkbox if returning `true`.
+    </span><span class="kw">pub </span>options_windows: <span class="prelude-ty">Option</span>&lt;OptionsWindowsCallback&gt;,
 
-    <span class="doccomment">/// Raw extras squad update callback.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// *Requires the `&quot;extras&quot;` feature.*</span>
-    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;extras&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="ident">raw_extras_squad_update</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RawExtrasSquadUpdateCallback</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Raw extras init callback.
+    ///
+    /// *Requires the `&quot;extras&quot;` feature.*
+    </span><span class="attribute">#[cfg(feature = <span class="string">&quot;extras&quot;</span>)]
+    </span><span class="kw">pub </span>raw_extras_init: <span class="prelude-ty">Option</span>&lt;RawExtrasSubscriberInit&gt;,
 
-    <span class="doccomment">/// Raw extras language changed callback.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// *Requires the `&quot;extras&quot;` feature.*</span>
-    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;extras&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="ident">raw_extras_language_changed</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RawExtrasLanguageChangedCallback</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Raw extras squad update callback.
+    ///
+    /// *Requires the `&quot;extras&quot;` feature.*
+    </span><span class="attribute">#[cfg(feature = <span class="string">&quot;extras&quot;</span>)]
+    </span><span class="kw">pub </span>raw_extras_squad_update: <span class="prelude-ty">Option</span>&lt;RawExtrasSquadUpdateCallback&gt;,
 
-    <span class="doccomment">/// Raw extras keybind changed callback.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// *Requires the `&quot;extras&quot;` feature.*</span>
-    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;extras&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="ident">raw_extras_keybind_changed</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RawExtrasKeybindChangedCallback</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Raw extras language changed callback.
+    ///
+    /// *Requires the `&quot;extras&quot;` feature.*
+    </span><span class="attribute">#[cfg(feature = <span class="string">&quot;extras&quot;</span>)]
+    </span><span class="kw">pub </span>raw_extras_language_changed: <span class="prelude-ty">Option</span>&lt;RawExtrasLanguageChangedCallback&gt;,
 
-    <span class="doccomment">/// Raw extras chat message callback.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// *Requires the `&quot;extras&quot;` feature.*</span>
-    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;extras&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="ident">raw_extras_chat_message</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RawExtrasChatMessageCallback</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Raw extras keybind changed callback.
+    ///
+    /// *Requires the `&quot;extras&quot;` feature.*
+    </span><span class="attribute">#[cfg(feature = <span class="string">&quot;extras&quot;</span>)]
+    </span><span class="kw">pub </span>raw_extras_keybind_changed: <span class="prelude-ty">Option</span>&lt;RawExtrasKeybindChangedCallback&gt;,
 
-    <span class="doccomment">/// Initialization callback for [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases).</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Can be called before or after ArcDPS [`init`](Self::init).</span>
-    <span class="doccomment">/// Receives information about the Unofficial Extras addon and the current player account name as parameters.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// *Requires the `&quot;extras&quot;` feature.*</span>
-    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;extras&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="ident">extras_init</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ExtrasInitFunc</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Raw extras chat message callback.
+    ///
+    /// *Requires the `&quot;extras&quot;` feature.*
+    </span><span class="attribute">#[cfg(feature = <span class="string">&quot;extras&quot;</span>)]
+    </span><span class="kw">pub </span>raw_extras_chat_message: <span class="prelude-ty">Option</span>&lt;RawExtrasChatMessageCallback&gt;,
 
-    <span class="doccomment">/// Squad update callback for [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases).</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Called whenever anything in the squad changes.</span>
-    <span class="doccomment">/// Only the users that changed are sent.</span>
-    <span class="doccomment">/// If a user was removed from the squad, their `role` will be set to [`UserRole::None`](crate::extras::UserRole::None).</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// *Requires the `&quot;extras&quot;` feature.*</span>
-    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;extras&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="ident">extras_squad_update</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ExtrasSquadUpdateCallback</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Initialization callback for [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases).
+    ///
+    /// Can be called before or after ArcDPS [`init`](Self::init).
+    /// Receives information about the Unofficial Extras addon and the current player account name as parameters.
+    ///
+    /// *Requires the `&quot;extras&quot;` feature.*
+    </span><span class="attribute">#[cfg(feature = <span class="string">&quot;extras&quot;</span>)]
+    </span><span class="kw">pub </span>extras_init: <span class="prelude-ty">Option</span>&lt;ExtrasInitFunc&gt;,
 
-    <span class="doccomment">/// Language changed callback for [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases).</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Called whenever the language is changed, either by changing it in the UI or by pressing the translation key (Right Ctrl by default).</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Will be called directly after initialization, with the current language, to get the startup language.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// *Requires the `&quot;extras&quot;` feature.*</span>
-    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;extras&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="ident">extras_language_changed</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ExtrasLanguageChangedCallback</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Squad update callback for [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases).
+    ///
+    /// Called whenever anything in the squad changes.
+    /// Only the users that changed are sent.
+    /// If a user was removed from the squad, their `role` will be set to [`UserRole::None`](crate::extras::UserRole::None).
+    ///
+    /// *Requires the `&quot;extras&quot;` feature.*
+    </span><span class="attribute">#[cfg(feature = <span class="string">&quot;extras&quot;</span>)]
+    </span><span class="kw">pub </span>extras_squad_update: <span class="prelude-ty">Option</span>&lt;ExtrasSquadUpdateCallback&gt;,
 
-    <span class="doccomment">/// Keybind changed callback for [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases).</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Called whenever a keybind is changed, either by changing it in the ingame UI or with the presets feature of Unofficial Extras.</span>
-    <span class="doccomment">/// It is called for every keybind separately.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// After initialization this is called for every current keybind that exists.</span>
-    <span class="doccomment">/// If you want to get a single keybind, at any time you want, call the exported function.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// *Requires the `&quot;extras&quot;` feature.*</span>
-    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;extras&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="ident">extras_keybind_changed</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ExtrasKeybindChangedCallback</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Language changed callback for [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases).
+    ///
+    /// Called whenever the language is changed, either by changing it in the UI or by pressing the translation key (Right Ctrl by default).
+    ///
+    /// Will be called directly after initialization, with the current language, to get the startup language.
+    ///
+    /// *Requires the `&quot;extras&quot;` feature.*
+    </span><span class="attribute">#[cfg(feature = <span class="string">&quot;extras&quot;</span>)]
+    </span><span class="kw">pub </span>extras_language_changed: <span class="prelude-ty">Option</span>&lt;ExtrasLanguageChangedCallback&gt;,
 
-    <span class="doccomment">/// Chat message callback for [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases).</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Called whenever a chat message is sent in your party/squad</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// *Requires the `&quot;extras&quot;` feature.*</span>
-    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;extras&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="ident">extras_chat_message</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ExtrasChatMessageCallback</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Keybind changed callback for [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases).
+    ///
+    /// Called whenever a keybind is changed, either by changing it in the ingame UI or with the presets feature of Unofficial Extras.
+    /// It is called for every keybind separately.
+    ///
+    /// After initialization this is called for every current keybind that exists.
+    /// If you want to get a single keybind, at any time you want, call the exported function.
+    ///
+    /// *Requires the `&quot;extras&quot;` feature.*
+    </span><span class="attribute">#[cfg(feature = <span class="string">&quot;extras&quot;</span>)]
+    </span><span class="kw">pub </span>extras_keybind_changed: <span class="prelude-ty">Option</span>&lt;ExtrasKeybindChangedCallback&gt;,
+
+    <span class="doccomment">/// Chat message callback for [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases).
+    ///
+    /// Called whenever a chat message is sent in your party/squad
+    ///
+    /// *Requires the `&quot;extras&quot;` feature.*
+    </span><span class="attribute">#[cfg(feature = <span class="string">&quot;extras&quot;</span>)]
+    </span><span class="kw">pub </span>extras_chat_message: <span class="prelude-ty">Option</span>&lt;ExtrasChatMessageCallback&gt;,
 }
 
-<span class="doccomment">/// Exports for usage in macros.</span>
-<span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">__macro</span> {
-    <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">prelude</span> {
-        <span class="kw">pub</span> <span class="kw">use</span> <span class="kw">crate</span>::{
-            <span class="ident">callbacks</span>::<span class="kw-2">*</span>,
-            <span class="ident">instance</span>::{<span class="ident">FreeFn</span>, <span class="ident">MallocFn</span>},
+<span class="doccomment">/// Exports for usage in macros.
+</span><span class="attribute">#[doc(hidden)]
+</span><span class="kw">pub mod </span>__macro {
+    <span class="kw">pub mod </span>prelude {
+        <span class="kw">pub use crate</span>::{
+            callbacks::<span class="kw-2">*</span>,
+            globals::{FreeFn, MallocFn},
         };
-        <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">std::os::raw</span>::{<span class="ident">c_char</span>, <span class="ident">c_void</span>};
-        <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">windows::Win32</span>::{
-            <span class="ident">Foundation</span>::{<span class="ident">HINSTANCE</span>, <span class="ident">HWND</span>, <span class="ident">LPARAM</span>, <span class="ident">WPARAM</span>},
-            <span class="ident">UI::WindowsAndMessaging</span>::{<span class="ident">WM_KEYDOWN</span>, <span class="ident">WM_KEYUP</span>, <span class="ident">WM_SYSKEYDOWN</span>, <span class="ident">WM_SYSKEYUP</span>},
+        <span class="kw">pub use </span>std::os::raw::{c_char, c_void};
+        <span class="kw">pub use </span>windows::Win32::{
+            Foundation::{HINSTANCE, HWND, LPARAM, WPARAM},
+            UI::WindowsAndMessaging::{WM_KEYDOWN, WM_KEYUP, WM_SYSKEYDOWN, WM_SYSKEYUP},
         };
 
-        <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;extras&quot;</span>)]</span>
-        <span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::extras::callbacks</span>::<span class="kw-2">*</span>;
+        <span class="attribute">#[cfg(feature = <span class="string">&quot;extras&quot;</span>)]
+        </span><span class="kw">pub use </span><span class="kw">crate</span>::extras::callbacks::<span class="kw-2">*</span>;
     }
 
-    <span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::util</span>::{<span class="ident">str_from_cstr</span>, <span class="ident">strip_account_prefix</span>};
+    <span class="kw">pub use </span><span class="kw">crate</span>::util::{str_from_cstr, str_to_wide, strip_account_prefix};
 
-    <span class="kw">use</span> <span class="kw">crate</span>::{
-        <span class="ident">imgui</span>,
-        <span class="ident">instance</span>::{<span class="ident">init_imgui</span>, <span class="ident">ARC_INSTANCE</span>},
-        <span class="ident">panic::init_panic_hook</span>,
+    <span class="kw">use crate</span>::{
+        globals::{init_imgui, ARC_GLOBALS},
+        imgui,
+        panic::init_panic_hook,
     };
-    <span class="kw">use</span> <span class="ident">prelude</span>::<span class="kw-2">*</span>;
+    <span class="kw">use </span>prelude::<span class="kw-2">*</span>;
 
-    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;log&quot;</span>)]</span>
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::log::WindowLogger</span>;
+    <span class="attribute">#[cfg(feature = <span class="string">&quot;log&quot;</span>)]
+    </span><span class="kw">use </span><span class="kw">crate</span>::log::WindowLogger;
 
-    <span class="doccomment">/// Internally used function to initialize with information received from Arc.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">init</span>(
-        <span class="ident">arc_version</span>: <span class="kw-2">*const</span> <span class="ident">c_char</span>,
-        <span class="ident">arc_handle</span>: <span class="ident">HINSTANCE</span>,
-        <span class="ident">imgui_ctx</span>: <span class="kw-2">*mut</span> <span class="ident">imgui::sys::ImGuiContext</span>,
-        <span class="ident">malloc</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">MallocFn</span><span class="op">&gt;</span>,
-        <span class="ident">free</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">FreeFn</span><span class="op">&gt;</span>,
-        <span class="ident">_id3d</span>: <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-        <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>,
+    <span class="doccomment">/// Internally used function to initialize with information received from Arc.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub unsafe fn </span>init(
+        arc_version: <span class="kw-2">*const </span>c_char,
+        arc_handle: HINSTANCE,
+        imgui_ctx: <span class="kw-2">*mut </span>imgui::sys::ImGuiContext,
+        malloc: <span class="prelude-ty">Option</span>&lt;MallocFn&gt;,
+        free: <span class="prelude-ty">Option</span>&lt;FreeFn&gt;,
+        _id3d: <span class="kw-2">*mut </span>c_void,
+        name: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str,
     ) {
-        <span class="comment">// arc exports have to be retrieved before panic hook &amp; logging</span>
-        <span class="ident">init_imgui</span>(<span class="ident">imgui_ctx</span>, <span class="ident">malloc</span>, <span class="ident">free</span>);
-        <span class="ident">ARC_INSTANCE</span>.<span class="ident">init</span>(<span class="ident">arc_handle</span>, <span class="ident">str_from_cstr</span>(<span class="ident">arc_version</span>));
+        <span class="comment">// arc exports have to be retrieved before panic hook &amp; logging
+        </span>init_imgui(imgui_ctx, malloc, free);
+        ARC_GLOBALS.init(arc_handle, str_from_cstr(arc_version));
 
-        <span class="comment">// only set panic hook if export e3 was found</span>
-        <span class="kw">if</span> <span class="ident">ARC_INSTANCE</span>.<span class="ident">e3</span>.<span class="ident">is_some</span>() {
-            <span class="ident">init_panic_hook</span>(<span class="ident">name</span>);
+        <span class="comment">// only set panic hook if export e3 was found
+        </span><span class="kw">if </span>ARC_GLOBALS.e3.is_some() {
+            init_panic_hook(name);
         }
 
-        <span class="comment">// only set logger if export e8 was found</span>
-        <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;log&quot;</span>)]</span>
-        <span class="kw">if</span> <span class="ident">ARC_INSTANCE</span>.<span class="ident">e8</span>.<span class="ident">is_some</span>() {
-            <span class="kw">let</span> <span class="ident">result</span> <span class="op">=</span> <span class="ident">log::set_boxed_logger</span>(<span class="ident">Box::new</span>(<span class="ident">WindowLogger::new</span>(<span class="ident">name</span>)));
-            <span class="kw">if</span> <span class="ident">result</span>.<span class="ident">is_ok</span>() {
-                <span class="ident">log::set_max_level</span>(<span class="ident">log::LevelFilter::Trace</span>);
+        <span class="comment">// only set logger if export e8 was found
+        </span><span class="attribute">#[cfg(feature = <span class="string">&quot;log&quot;</span>)]
+        </span><span class="kw">if </span>ARC_GLOBALS.e8.is_some() {
+            <span class="kw">let </span>result = log::set_boxed_logger(Box::new(WindowLogger::new(name)));
+            <span class="kw">if </span>result.is_ok() {
+                log::set_max_level(log::LevelFilter::Trace);
             }
         }
     }
 
-    <span class="doccomment">/// Internally used function to retrieve the [`imgui::Ui`].</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">ui</span>() -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">imgui::Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span><span class="op">&gt;</span> {
-        <span class="ident">ARC_INSTANCE</span>.<span class="ident">ui</span>.<span class="ident">as_ref</span>().<span class="ident">unwrap</span>()
+    <span class="doccomment">/// Internally used function to retrieve the [`imgui::Ui`].
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub unsafe fn </span>ui() -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>imgui::Ui&lt;<span class="lifetime">&#39;static</span>&gt; {
+        ARC_GLOBALS.ui.as_ref().unwrap()
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="arcdps" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="arcdps" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.0 (69f9c33d7 2022-12-12)" ></div></body></html>

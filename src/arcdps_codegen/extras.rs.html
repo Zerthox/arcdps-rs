@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `codegen\src\extras.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>extras.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script><script defer src="../../main.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../arcdps_codegen/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../arcdps_codegen/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../arcdps_codegen/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `arcdps_codegen\src\extras.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>extras.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../normalize.css"><link rel="stylesheet" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../ayu.css" disabled><link rel="stylesheet" href="../../dark.css" disabled><link rel="stylesheet" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script><script defer src="../../main.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../arcdps_codegen/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -185,187 +185,187 @@
 <span id="185">185</span>
 <span id="186">186</span>
 <span id="187">187</span>
-</pre><pre class="rust"><code><span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::CallbackInfo</span>;
-<span class="kw">use</span> <span class="ident">proc_macro2::TokenStream</span>;
-<span class="kw">use</span> <span class="ident">quote</span>::{<span class="ident">quote</span>, <span class="ident">quote_spanned</span>};
-<span class="kw">use</span> <span class="ident">syn</span>::{<span class="ident">spanned::Spanned</span>, <span class="ident">Expr</span>, <span class="ident">LitStr</span>};
+</pre><pre class="rust"><code><span class="kw">use </span><span class="kw">crate</span>::CallbackInfo;
+<span class="kw">use </span>proc_macro2::TokenStream;
+<span class="kw">use </span>quote::{quote, quote_spanned};
+<span class="kw">use </span>syn::{spanned::Spanned, Expr, LitStr};
 
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Default</span>)]</span>
-<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">struct</span> <span class="ident">ExtrasGen</span> {
-    <span class="kw">pub</span> <span class="ident">raw_extras_init</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
-    <span class="kw">pub</span> <span class="ident">extras_init</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
+<span class="attribute">#[derive(Default)]
+</span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">struct </span>ExtrasGen {
+    <span class="kw">pub </span>raw_extras_init: <span class="prelude-ty">Option</span>&lt;Expr&gt;,
+    <span class="kw">pub </span>extras_init: <span class="prelude-ty">Option</span>&lt;Expr&gt;,
 
-    <span class="kw">pub</span> <span class="ident">raw_extras_squad_update</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
-    <span class="kw">pub</span> <span class="ident">extras_squad_update</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
+    <span class="kw">pub </span>raw_extras_squad_update: <span class="prelude-ty">Option</span>&lt;Expr&gt;,
+    <span class="kw">pub </span>extras_squad_update: <span class="prelude-ty">Option</span>&lt;Expr&gt;,
 
-    <span class="kw">pub</span> <span class="ident">raw_extras_language_changed</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
-    <span class="kw">pub</span> <span class="ident">extras_language_changed</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
+    <span class="kw">pub </span>raw_extras_language_changed: <span class="prelude-ty">Option</span>&lt;Expr&gt;,
+    <span class="kw">pub </span>extras_language_changed: <span class="prelude-ty">Option</span>&lt;Expr&gt;,
 
-    <span class="kw">pub</span> <span class="ident">raw_extras_keybind_changed</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
-    <span class="kw">pub</span> <span class="ident">extras_keybind_changed</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
+    <span class="kw">pub </span>raw_extras_keybind_changed: <span class="prelude-ty">Option</span>&lt;Expr&gt;,
+    <span class="kw">pub </span>extras_keybind_changed: <span class="prelude-ty">Option</span>&lt;Expr&gt;,
 
-    <span class="kw">pub</span> <span class="ident">raw_extras_chat_message</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
-    <span class="kw">pub</span> <span class="ident">extras_chat_message</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
+    <span class="kw">pub </span>raw_extras_chat_message: <span class="prelude-ty">Option</span>&lt;Expr&gt;,
+    <span class="kw">pub </span>extras_chat_message: <span class="prelude-ty">Option</span>&lt;Expr&gt;,
 }
 
-<span class="doccomment">/// Helper to unwrap an optional callback.</span>
-<span class="kw">fn</span> <span class="ident">unwrap</span>(<span class="ident">option</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">CallbackInfo</span><span class="op">&gt;</span>) -&gt; (<span class="ident">TokenStream</span>, <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">TokenStream</span><span class="op">&gt;</span>) {
-    <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">callback</span>) <span class="op">=</span> <span class="ident">option</span> {
-        (<span class="ident">callback</span>.<span class="ident">function</span>, <span class="prelude-val">Some</span>(<span class="ident">callback</span>.<span class="ident">value</span>))
-    } <span class="kw">else</span> {
-        (<span class="macro">quote!</span> {}, <span class="prelude-val">None</span>)
+<span class="doccomment">/// Helper to unwrap an optional callback.
+</span><span class="kw">fn </span>unwrap(option: <span class="prelude-ty">Option</span>&lt;CallbackInfo&gt;) -&gt; (TokenStream, <span class="prelude-ty">Option</span>&lt;TokenStream&gt;) {
+    <span class="kw">if let </span><span class="prelude-val">Some</span>(callback) = option {
+        (callback.function, <span class="prelude-val">Some</span>(callback.value))
+    } <span class="kw">else </span>{
+        (<span class="macro">quote! </span>{}, <span class="prelude-val">None</span>)
     }
 }
 
-<span class="kw">impl</span> <span class="ident">ExtrasGen</span> {
-    <span class="doccomment">/// Generates Unofficial Extras exports.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">name</span>: <span class="ident">LitStr</span>) -&gt; <span class="ident">TokenStream</span> {
-        <span class="kw">let</span> (<span class="ident">squad_update_func</span>, <span class="ident">squad_update_value</span>) <span class="op">=</span> <span class="ident">unwrap</span>(<span class="self">self</span>.<span class="ident">build_extras_squad_update</span>());
-        <span class="kw">let</span> (<span class="ident">language_changed_func</span>, <span class="ident">language_changed_value</span>) <span class="op">=</span>
-            <span class="ident">unwrap</span>(<span class="self">self</span>.<span class="ident">build_extras_language_changed</span>());
-        <span class="kw">let</span> (<span class="ident">keybind_changed_func</span>, <span class="ident">keybind_changed_value</span>) <span class="op">=</span>
-            <span class="ident">unwrap</span>(<span class="self">self</span>.<span class="ident">build_extras_keybind_changed</span>());
-        <span class="kw">let</span> (<span class="ident">chat_message_func</span>, <span class="ident">chat_message_value</span>) <span class="op">=</span> <span class="ident">unwrap</span>(<span class="self">self</span>.<span class="ident">build_extras_chat_message</span>());
-        <span class="kw">let</span> <span class="ident">init_func</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">build_extras_init</span>(
-            <span class="ident">name</span>,
-            <span class="ident">squad_update_value</span>,
-            <span class="ident">language_changed_value</span>,
-            <span class="ident">keybind_changed_value</span>,
-            <span class="ident">chat_message_value</span>,
+<span class="kw">impl </span>ExtrasGen {
+    <span class="doccomment">/// Generates Unofficial Extras exports.
+    </span><span class="kw">pub fn </span>build(<span class="kw-2">&amp;</span><span class="self">self</span>, name: LitStr) -&gt; TokenStream {
+        <span class="kw">let </span>(squad_update_func, squad_update_value) = unwrap(<span class="self">self</span>.build_extras_squad_update());
+        <span class="kw">let </span>(language_changed_func, language_changed_value) =
+            unwrap(<span class="self">self</span>.build_extras_language_changed());
+        <span class="kw">let </span>(keybind_changed_func, keybind_changed_value) =
+            unwrap(<span class="self">self</span>.build_extras_keybind_changed());
+        <span class="kw">let </span>(chat_message_func, chat_message_value) = unwrap(<span class="self">self</span>.build_extras_chat_message());
+        <span class="kw">let </span>init_func = <span class="self">self</span>.build_extras_init(
+            name,
+            squad_update_value,
+            language_changed_value,
+            keybind_changed_value,
+            chat_message_value,
         );
 
-        <span class="macro">quote!</span> {
-            #<span class="ident">init_func</span>
-            #<span class="ident">squad_update_func</span>
-            #<span class="ident">language_changed_func</span>
-            #<span class="ident">keybind_changed_func</span>
-            #<span class="ident">chat_message_func</span>
+        <span class="macro">quote! </span>{
+            #init_func
+            #squad_update_func
+            #language_changed_func
+            #keybind_changed_func
+            #chat_message_func
         }
     }
 
-    <span class="doccomment">/// Generates the extras init function.</span>
-    <span class="kw">fn</span> <span class="ident">build_extras_init</span>(
+    <span class="doccomment">/// Generates the extras init function.
+    </span><span class="kw">fn </span>build_extras_init(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">name</span>: <span class="ident">LitStr</span>,
-        <span class="ident">squad_update</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">TokenStream</span><span class="op">&gt;</span>,
-        <span class="ident">language_changed</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">TokenStream</span><span class="op">&gt;</span>,
-        <span class="ident">keybind_changed</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">TokenStream</span><span class="op">&gt;</span>,
-        <span class="ident">chat_message</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">TokenStream</span><span class="op">&gt;</span>,
-    ) -&gt; <span class="ident">TokenStream</span> {
-        <span class="kw">let</span> <span class="ident">has_callback</span> <span class="op">=</span>
-            <span class="ident">squad_update</span>.<span class="ident">is_some</span>() <span class="op">|</span><span class="op">|</span> <span class="ident">language_changed</span>.<span class="ident">is_some</span>() <span class="op">|</span><span class="op">|</span> <span class="ident">keybind_changed</span>.<span class="ident">is_some</span>();
-        <span class="kw">let</span> <span class="ident">squad_callback</span> <span class="op">=</span> <span class="ident">squad_update</span>.<span class="ident">unwrap_or</span>(<span class="macro">quote!</span> { <span class="prelude-val">None</span> });
-        <span class="kw">let</span> <span class="ident">lang_callback</span> <span class="op">=</span> <span class="ident">language_changed</span>.<span class="ident">unwrap_or</span>(<span class="macro">quote!</span> { <span class="prelude-val">None</span> });
-        <span class="kw">let</span> <span class="ident">keybind_callback</span> <span class="op">=</span> <span class="ident">keybind_changed</span>.<span class="ident">unwrap_or</span>(<span class="macro">quote!</span> { <span class="prelude-val">None</span> });
-        <span class="kw">let</span> <span class="ident">chat_callback</span> <span class="op">=</span> <span class="ident">chat_message</span>.<span class="ident">unwrap_or</span>(<span class="macro">quote!</span> { <span class="prelude-val">None</span> });
+        name: LitStr,
+        squad_update: <span class="prelude-ty">Option</span>&lt;TokenStream&gt;,
+        language_changed: <span class="prelude-ty">Option</span>&lt;TokenStream&gt;,
+        keybind_changed: <span class="prelude-ty">Option</span>&lt;TokenStream&gt;,
+        chat_message: <span class="prelude-ty">Option</span>&lt;TokenStream&gt;,
+    ) -&gt; TokenStream {
+        <span class="kw">let </span>has_callback =
+            squad_update.is_some() || language_changed.is_some() || keybind_changed.is_some();
+        <span class="kw">let </span>squad_callback = squad_update.unwrap_or(<span class="macro">quote! </span>{ <span class="prelude-val">None </span>});
+        <span class="kw">let </span>lang_callback = language_changed.unwrap_or(<span class="macro">quote! </span>{ <span class="prelude-val">None </span>});
+        <span class="kw">let </span>keybind_callback = keybind_changed.unwrap_or(<span class="macro">quote! </span>{ <span class="prelude-val">None </span>});
+        <span class="kw">let </span>chat_callback = chat_message.unwrap_or(<span class="macro">quote! </span>{ <span class="prelude-val">None </span>});
 
-        <span class="kw">let</span> <span class="ident">subscribe</span> <span class="op">=</span> <span class="macro">quote!</span> {
-            <span class="ident">sub</span>.<span class="ident">subscribe</span>(<span class="ident">addon</span>, #<span class="ident">name</span>, #<span class="ident">squad_callback</span>, #<span class="ident">lang_callback</span>, #<span class="ident">keybind_callback</span>, #<span class="ident">chat_callback</span>);
+        <span class="kw">let </span>subscribe = <span class="macro">quote! </span>{
+            sub.subscribe(addon, #name, #squad_callback, #lang_callback, #keybind_callback, #chat_callback);
         };
 
-        <span class="kw">let</span> <span class="ident">content</span> <span class="op">=</span> <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">raw</span>) <span class="op">=</span> <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">raw_extras_init</span> {
-            <span class="kw">let</span> <span class="ident">span</span> <span class="op">=</span> <span class="ident">syn::Error::new_spanned</span>(<span class="kw-2">&amp;</span><span class="ident">raw</span>, <span class="string">&quot;&quot;</span>).<span class="ident">span</span>();
-            <span class="macro">quote_spanned!</span> {<span class="ident">span</span>=&gt;
-                <span class="kw">let</span> <span class="ident">raw</span> <span class="op">=</span> (#<span class="ident">raw</span>) <span class="kw">as</span> <span class="ident">RawExtrasSubscriberInit</span>;
-                <span class="ident">raw</span>(<span class="ident">addon</span>, <span class="ident">sub</span>)
+        <span class="kw">let </span>content = <span class="kw">if let </span><span class="prelude-val">Some</span>(raw) = <span class="kw-2">&amp;</span><span class="self">self</span>.raw_extras_init {
+            <span class="kw">let </span>span = syn::Error::new_spanned(raw, <span class="string">&quot;&quot;</span>).span();
+            <span class="macro">quote_spanned! </span>{span=&gt;
+                <span class="kw">let </span>raw = (#raw) <span class="kw">as </span>RawExtrasSubscriberInit;
+                raw(addon, sub)
             }
-        } <span class="kw">else</span> <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">safe</span>) <span class="op">=</span> <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">extras_init</span> {
-            <span class="kw">let</span> <span class="ident">span</span> <span class="op">=</span> <span class="ident">syn::Error::new_spanned</span>(<span class="kw-2">&amp;</span><span class="ident">safe</span>, <span class="string">&quot;&quot;</span>).<span class="ident">span</span>();
-            <span class="macro">quote_spanned!</span> {<span class="ident">span</span>=&gt;
-                <span class="kw">let</span> <span class="ident">safe</span> <span class="op">=</span> (#<span class="ident">safe</span>) <span class="kw">as</span> <span class="ident">ExtrasInitFunc</span>;
+        } <span class="kw">else if let </span><span class="prelude-val">Some</span>(safe) = <span class="kw-2">&amp;</span><span class="self">self</span>.extras_init {
+            <span class="kw">let </span>span = syn::Error::new_spanned(safe, <span class="string">&quot;&quot;</span>).span();
+            <span class="macro">quote_spanned! </span>{span=&gt;
+                <span class="kw">let </span>safe = (#safe) <span class="kw">as </span>ExtrasInitFunc;
 
-                #<span class="ident">subscribe</span>
+                #subscribe
 
-                <span class="kw">let</span> <span class="ident">user</span> <span class="op">=</span> <span class="ident">::arcdps::__macro::str_from_cstr</span>(<span class="ident">addon</span>.<span class="ident">self_account_name</span> <span class="kw">as</span> <span class="kw">_</span>)
-                    .<span class="ident">map</span>(<span class="ident">::arcdps::__macro::strip_account_prefix</span>);
+                <span class="kw">let </span>user = ::arcdps::__macro::str_from_cstr(addon.self_account_name <span class="kw">as _</span>)
+                    .map(::arcdps::__macro::strip_account_prefix);
 
-                <span class="ident">safe</span>(<span class="ident">addon</span>.<span class="ident">clone</span>().<span class="ident">into</span>(), <span class="ident">user</span>);
+                safe(addon.clone().into(), user);
             }
-        } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">has_callback</span> {
-            <span class="macro">quote!</span> {
-                #<span class="ident">subscribe</span>
+        } <span class="kw">else if </span>has_callback {
+            <span class="macro">quote! </span>{
+                #subscribe
             }
-        } <span class="kw">else</span> {
-            <span class="comment">// we dont need the export</span>
-            <span class="kw">return</span> <span class="macro">quote!</span> {};
+        } <span class="kw">else </span>{
+            <span class="comment">// we dont need the export
+            </span><span class="kw">return </span><span class="macro">quote! </span>{};
         };
 
-        <span class="macro">quote_spanned!</span> {<span class="ident">content</span>.<span class="ident">span</span>()=&gt;
-            <span class="attribute">#[<span class="ident">no_mangle</span>]</span>
-            <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;system&quot;</span> <span class="kw">fn</span> <span class="ident">arcdps_unofficial_extras_subscriber_init</span>(
-                <span class="ident">addon</span>: <span class="kw-2">&amp;</span><span class="ident">::arcdps::extras::RawExtrasAddonInfo</span>,
-                <span class="ident">sub</span>: <span class="kw-2">&amp;mut</span> <span class="ident">::arcdps::extras::ExtrasSubscriberInfo</span>
+        <span class="macro">quote_spanned! </span>{content.span()=&gt;
+            <span class="attribute">#[no_mangle]
+            </span><span class="kw">unsafe extern </span><span class="string">&quot;system&quot; </span><span class="kw">fn </span>arcdps_unofficial_extras_subscriber_init(
+                addon: <span class="kw-2">&amp;</span>::arcdps::extras::RawExtrasAddonInfo,
+                sub: <span class="kw-2">&amp;mut </span>::arcdps::extras::ExtrasSubscriberInfo
             ) {
-                #<span class="ident">content</span>
+                #content
             }
         }
     }
 
-    <span class="doccomment">/// Generates the extras squad update callback.</span>
-    <span class="kw">fn</span> <span class="ident">build_extras_squad_update</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">CallbackInfo</span><span class="op">&gt;</span> {
-        <span class="ident">CallbackInfo::build_optional</span>(
-            <span class="self">self</span>.<span class="ident">raw_extras_squad_update</span>.<span class="ident">as_ref</span>(),
-            <span class="self">self</span>.<span class="ident">extras_squad_update</span>.<span class="ident">as_ref</span>(),
-            <span class="macro">quote!</span> { <span class="ident">abstract_extras_squad_update</span> },
-            <span class="op">|</span><span class="ident">safe</span>, <span class="ident">span</span><span class="op">|</span> {
-                <span class="macro">quote_spanned!</span> {<span class="ident">span</span>=&gt;
-                    <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span> <span class="ident">abstract_extras_squad_update</span>(
-                        <span class="ident">users</span>: <span class="kw-2">*const</span> <span class="ident">::arcdps::extras::RawUserInfo</span>,
-                        <span class="ident">count</span>: <span class="ident">u64</span>
+    <span class="doccomment">/// Generates the extras squad update callback.
+    </span><span class="kw">fn </span>build_extras_squad_update(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;CallbackInfo&gt; {
+        CallbackInfo::build_optional(
+            <span class="self">self</span>.raw_extras_squad_update.as_ref(),
+            <span class="self">self</span>.extras_squad_update.as_ref(),
+            <span class="macro">quote! </span>{ abstract_extras_squad_update },
+            |safe, span| {
+                <span class="macro">quote_spanned! </span>{span=&gt;
+                    <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>abstract_extras_squad_update(
+                        users: <span class="kw-2">*const </span>::arcdps::extras::user::RawUserInfo,
+                        count: u64
                     ) {
-                        <span class="kw">let</span> <span class="ident">safe</span> <span class="op">=</span> (#<span class="ident">safe</span>) <span class="kw">as</span> <span class="ident">ExtrasSquadUpdateCallback</span>;
-                        <span class="ident">safe</span>(<span class="ident">::arcdps::extras::to_user_info_iter</span>(<span class="ident">users</span>, <span class="ident">count</span>))
+                        <span class="kw">let </span>safe = (#safe) <span class="kw">as </span>ExtrasSquadUpdateCallback;
+                        safe(::arcdps::extras::user::to_user_info_iter(users, count))
                     }
                 }
             },
         )
     }
 
-    <span class="doccomment">/// Generates the extras language changed callback.</span>
-    <span class="kw">fn</span> <span class="ident">build_extras_language_changed</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">CallbackInfo</span><span class="op">&gt;</span> {
-        <span class="ident">CallbackInfo::build_optional</span>(
-            <span class="self">self</span>.<span class="ident">raw_extras_language_changed</span>.<span class="ident">as_ref</span>(),
-            <span class="self">self</span>.<span class="ident">extras_language_changed</span>.<span class="ident">as_ref</span>(),
-            <span class="macro">quote!</span> { <span class="ident">abstract_extras_language_changed</span> },
-            <span class="op">|</span><span class="ident">safe</span>, <span class="ident">span</span><span class="op">|</span> {
-                <span class="macro">quote_spanned!</span> {<span class="ident">span</span>=&gt;
-                    <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span> <span class="ident">abstract_extras_language_changed</span>(<span class="ident">language</span>: <span class="ident">::arcdps::api::Language</span>) {
-                        <span class="kw">let</span> <span class="ident">safe</span> <span class="op">=</span> (#<span class="ident">safe</span>) <span class="kw">as</span> <span class="ident">ExtrasLanguageChangedCallback</span>;
-                        <span class="ident">safe</span>(<span class="ident">language</span>)
+    <span class="doccomment">/// Generates the extras language changed callback.
+    </span><span class="kw">fn </span>build_extras_language_changed(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;CallbackInfo&gt; {
+        CallbackInfo::build_optional(
+            <span class="self">self</span>.raw_extras_language_changed.as_ref(),
+            <span class="self">self</span>.extras_language_changed.as_ref(),
+            <span class="macro">quote! </span>{ abstract_extras_language_changed },
+            |safe, span| {
+                <span class="macro">quote_spanned! </span>{span=&gt;
+                    <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>abstract_extras_language_changed(language: ::arcdps::api::Language) {
+                        <span class="kw">let </span>safe = (#safe) <span class="kw">as </span>ExtrasLanguageChangedCallback;
+                        safe(language)
                     }
                 }
             },
         )
     }
 
-    <span class="doccomment">/// Generates the extras keybind changed callback.</span>
-    <span class="kw">fn</span> <span class="ident">build_extras_keybind_changed</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">CallbackInfo</span><span class="op">&gt;</span> {
-        <span class="ident">CallbackInfo::build_optional</span>(
-            <span class="self">self</span>.<span class="ident">raw_extras_keybind_changed</span>.<span class="ident">as_ref</span>(),
-            <span class="self">self</span>.<span class="ident">extras_keybind_changed</span>.<span class="ident">as_ref</span>(),
-            <span class="macro">quote!</span> { <span class="ident">abstract_extras_keybind_changed</span> },
-            <span class="op">|</span><span class="ident">safe</span>, <span class="ident">span</span><span class="op">|</span> {
-                <span class="macro">quote_spanned!</span> {<span class="ident">span</span>=&gt;
-                    <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span> <span class="ident">abstract_extras_keybind_changed</span>(<span class="ident">changed</span>: <span class="ident">::arcdps::extras::keybinds::RawKeybindChange</span>) {
-                        <span class="kw">let</span> <span class="ident">safe</span> <span class="op">=</span> (#<span class="ident">safe</span>) <span class="kw">as</span> <span class="ident">ExtrasKeybindChangedCallback</span>;
-                        <span class="ident">safe</span>(<span class="ident">changed</span>.<span class="ident">into</span>())
+    <span class="doccomment">/// Generates the extras keybind changed callback.
+    </span><span class="kw">fn </span>build_extras_keybind_changed(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;CallbackInfo&gt; {
+        CallbackInfo::build_optional(
+            <span class="self">self</span>.raw_extras_keybind_changed.as_ref(),
+            <span class="self">self</span>.extras_keybind_changed.as_ref(),
+            <span class="macro">quote! </span>{ abstract_extras_keybind_changed },
+            |safe, span| {
+                <span class="macro">quote_spanned! </span>{span=&gt;
+                    <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>abstract_extras_keybind_changed(changed: ::arcdps::extras::keybinds::RawKeybindChange) {
+                        <span class="kw">let </span>safe = (#safe) <span class="kw">as </span>ExtrasKeybindChangedCallback;
+                        safe(changed.into())
                     }
                 }
             },
         )
     }
 
-    <span class="doccomment">/// Generates the extras chat message callback.</span>
-    <span class="kw">fn</span> <span class="ident">build_extras_chat_message</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">CallbackInfo</span><span class="op">&gt;</span> {
-        <span class="ident">CallbackInfo::build_optional</span>(
-            <span class="self">self</span>.<span class="ident">raw_extras_chat_message</span>.<span class="ident">as_ref</span>(),
-            <span class="self">self</span>.<span class="ident">extras_chat_message</span>.<span class="ident">as_ref</span>(),
-            <span class="macro">quote!</span> { <span class="ident">abstract_extras_chat_message</span> },
-            <span class="op">|</span><span class="ident">safe</span>, <span class="ident">span</span><span class="op">|</span> {
-                <span class="macro">quote_spanned!</span> {<span class="ident">span</span>=&gt;
-                    <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span> <span class="ident">abstract_extras_chat_message</span>(<span class="ident">info</span>: <span class="kw-2">*const</span> <span class="ident">::arcdps::extras::message::RawChatMessageInfo</span>) {
-                        <span class="kw">let</span> <span class="ident">safe</span> <span class="op">=</span> (#<span class="ident">safe</span>) <span class="kw">as</span> <span class="ident">ExtrasChatMessageCallback</span>;
-                        <span class="ident">safe</span>(<span class="kw-2">&amp;</span><span class="ident">::arcdps::extras::message::ChatMessageInfo::from</span>(<span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="ident">info</span>))
+    <span class="doccomment">/// Generates the extras chat message callback.
+    </span><span class="kw">fn </span>build_extras_chat_message(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;CallbackInfo&gt; {
+        CallbackInfo::build_optional(
+            <span class="self">self</span>.raw_extras_chat_message.as_ref(),
+            <span class="self">self</span>.extras_chat_message.as_ref(),
+            <span class="macro">quote! </span>{ abstract_extras_chat_message },
+            |safe, span| {
+                <span class="macro">quote_spanned! </span>{span=&gt;
+                    <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>abstract_extras_chat_message(info: <span class="kw-2">*const </span>::arcdps::extras::message::RawChatMessageInfo) {
+                        <span class="kw">let </span>safe = (#safe) <span class="kw">as </span>ExtrasChatMessageCallback;
+                        safe(<span class="kw-2">&amp;</span>::arcdps::extras::message::ChatMessageInfo::from(<span class="kw-2">&amp;*</span>info))
                     }
                 }
             },
@@ -373,4 +373,4 @@
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="arcdps_codegen" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="arcdps_codegen" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.0 (69f9c33d7 2022-12-12)" ></div></body></html>

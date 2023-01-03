@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\winapi-0.3.9\src\um\combaseapi.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>combaseapi.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../winapi/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../winapi/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../winapi/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\winapi-0.3.9\src\um\combaseapi.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>combaseapi.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../normalize.css"><link rel="stylesheet" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../ayu.css" disabled><link rel="stylesheet" href="../../../dark.css" disabled><link rel="stylesheet" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../../winapi/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -475,482 +475,482 @@
 <span id="475">475</span>
 <span id="476">476</span>
 <span id="477">477</span>
-</pre><pre class="rust"><code><span class="comment">// Licensed under the Apache License, Version 2.0</span>
-<span class="comment">// &lt;LICENSE-APACHE or http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license</span>
-<span class="comment">// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your option.</span>
-<span class="comment">// All files in the project carrying such notice may not be copied, modified, or distributed</span>
-<span class="comment">// except according to those terms.</span>
-<span class="doccomment">//! Base Component Object Model defintions.</span>
-<span class="kw">use</span> <span class="ident">ctypes</span>::{<span class="ident">c_int</span>, <span class="ident">c_void</span>};
-<span class="kw">use</span> <span class="ident">shared::basetsd</span>::{<span class="ident">SIZE_T</span>, <span class="ident">UINT64</span>, <span class="ident">ULONG_PTR</span>};
-<span class="kw">use</span> <span class="ident">shared::guiddef</span>::{<span class="ident">CLSID</span>, <span class="ident">GUID</span>, <span class="ident">LPCLSID</span>, <span class="ident">LPIID</span>, <span class="ident">REFCLSID</span>, <span class="ident">REFGUID</span>, <span class="ident">REFIID</span>};
-<span class="kw">use</span> <span class="ident">shared::minwindef</span>::{<span class="ident">BOOL</span>, <span class="ident">DWORD</span>, <span class="ident">FILETIME</span>, <span class="ident">HGLOBAL</span>, <span class="ident">LPDWORD</span>, <span class="ident">LPHANDLE</span>, <span class="ident">LPVOID</span>, <span class="ident">ULONG</span>};
-<span class="kw">use</span> <span class="ident">shared::rpcdce</span>::{<span class="ident">RPC_AUTHZ_HANDLE</span>, <span class="ident">RPC_AUTH_IDENTITY_HANDLE</span>};
-<span class="kw">use</span> <span class="ident">shared::wtypesbase</span>::{
-    <span class="ident">CLSCTX</span>, <span class="ident">CLSCTX_INPROC_HANDLER</span>, <span class="ident">CLSCTX_INPROC_SERVER</span>, <span class="ident">CLSCTX_LOCAL_SERVER</span>, <span class="ident">CLSCTX_REMOTE_SERVER</span>,
-    <span class="ident">LPCOLESTR</span>, <span class="ident">LPOLESTR</span>, <span class="ident">OLECHAR</span>,
+</pre><pre class="rust"><code><span class="comment">// Licensed under the Apache License, Version 2.0
+// &lt;LICENSE-APACHE or http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license
+// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your option.
+// All files in the project carrying such notice may not be copied, modified, or distributed
+// except according to those terms.
+</span><span class="doccomment">//! Base Component Object Model defintions.
+</span><span class="kw">use </span>ctypes::{c_int, c_void};
+<span class="kw">use </span>shared::basetsd::{SIZE_T, UINT64, ULONG_PTR};
+<span class="kw">use </span>shared::guiddef::{CLSID, GUID, LPCLSID, LPIID, REFCLSID, REFGUID, REFIID};
+<span class="kw">use </span>shared::minwindef::{BOOL, DWORD, FILETIME, HGLOBAL, LPDWORD, LPHANDLE, LPVOID, ULONG};
+<span class="kw">use </span>shared::rpcdce::{RPC_AUTHZ_HANDLE, RPC_AUTH_IDENTITY_HANDLE};
+<span class="kw">use </span>shared::wtypesbase::{
+    CLSCTX, CLSCTX_INPROC_HANDLER, CLSCTX_INPROC_SERVER, CLSCTX_LOCAL_SERVER, CLSCTX_REMOTE_SERVER,
+    LPCOLESTR, LPOLESTR, OLECHAR,
 };
-<span class="kw">use</span> <span class="ident">um::objidl::SOLE_AUTHENTICATION_SERVICE</span>;
-<span class="kw">use</span> <span class="ident">um::objidlbase</span>::{
-    <span class="ident">APTTYPE</span>, <span class="ident">APTTYPEQUALIFIER</span>, <span class="ident">COSERVERINFO</span>, <span class="ident">IActivationFilter</span>, <span class="ident">IAgileReference</span>, <span class="ident">LPMALLOC</span>,
-    <span class="ident">LPMARSHAL</span>, <span class="ident">LPSTREAM</span>, <span class="ident">LPSURROGATE</span>, <span class="ident">MULTI_QI</span>,
+<span class="kw">use </span>um::objidl::SOLE_AUTHENTICATION_SERVICE;
+<span class="kw">use </span>um::objidlbase::{
+    APTTYPE, APTTYPEQUALIFIER, COSERVERINFO, IActivationFilter, IAgileReference, LPMALLOC,
+    LPMARSHAL, LPSTREAM, LPSURROGATE, MULTI_QI,
 };
-<span class="kw">use</span> <span class="ident">um::propidl::PROPVARIANT</span>;
-<span class="kw">use</span> <span class="ident">um::unknwnbase</span>::{<span class="ident">IUnknown</span>, <span class="ident">LPUNKNOWN</span>};
-<span class="kw">use</span> <span class="ident">um::winnt</span>::{<span class="ident">HANDLE</span>, <span class="ident">HRESULT</span>, <span class="ident">LARGE_INTEGER</span>, <span class="ident">LONG</span>, <span class="ident">PSECURITY_DESCRIPTOR</span>, <span class="ident">PVOID</span>, <span class="ident">ULARGE_INTEGER</span>};
-<span class="attribute">#[<span class="ident">inline</span>]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">LISet32</span>(<span class="ident">li</span>: <span class="kw-2">&amp;mut</span> <span class="ident">LARGE_INTEGER</span>, <span class="ident">v</span>: <span class="ident">DWORD</span>) {
-    <span class="kw">unsafe</span> {
-        <span class="ident">li</span>.<span class="ident">u_mut</span>().<span class="ident">HighPart</span> <span class="op">=</span> <span class="kw">if</span> (<span class="ident">v</span> <span class="kw">as</span> <span class="ident">LONG</span>) <span class="op">&lt;</span> <span class="number">0</span> {
-            <span class="op">-</span><span class="number">1</span>
-        } <span class="kw">else</span> {
-            <span class="number">0</span>
-        };
-        <span class="ident">li</span>.<span class="ident">u_mut</span>().<span class="ident">LowPart</span> <span class="op">=</span> <span class="ident">v</span>;
+<span class="kw">use </span>um::propidl::PROPVARIANT;
+<span class="kw">use </span>um::unknwnbase::{IUnknown, LPUNKNOWN};
+<span class="kw">use </span>um::winnt::{HANDLE, HRESULT, LARGE_INTEGER, LONG, PSECURITY_DESCRIPTOR, PVOID, ULARGE_INTEGER};
+<span class="attribute">#[inline]
+</span><span class="kw">pub fn </span>LISet32(li: <span class="kw-2">&amp;mut </span>LARGE_INTEGER, v: DWORD) {
+    <span class="kw">unsafe </span>{
+        li.u_mut().HighPart = <span class="kw">if </span>(v <span class="kw">as </span>LONG) &lt; <span class="number">0 </span>{
+            -<span class="number">1
+        </span>} <span class="kw">else </span>{
+            <span class="number">0
+        </span>};
+        li.u_mut().LowPart = v;
     }
 }
-<span class="attribute">#[<span class="ident">inline</span>]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ULISet32</span>(<span class="ident">li</span>: <span class="kw-2">&amp;mut</span> <span class="ident">ULARGE_INTEGER</span>, <span class="ident">v</span>: <span class="ident">DWORD</span>) {
-    <span class="kw">unsafe</span> {
-        <span class="ident">li</span>.<span class="ident">u_mut</span>().<span class="ident">HighPart</span> <span class="op">=</span> <span class="number">0</span>;
-        <span class="ident">li</span>.<span class="ident">u_mut</span>().<span class="ident">LowPart</span> <span class="op">=</span> <span class="ident">v</span>;
+<span class="attribute">#[inline]
+</span><span class="kw">pub fn </span>ULISet32(li: <span class="kw-2">&amp;mut </span>ULARGE_INTEGER, v: DWORD) {
+    <span class="kw">unsafe </span>{
+        li.u_mut().HighPart = <span class="number">0</span>;
+        li.u_mut().LowPart = v;
     }
 }
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CLSCTX_INPROC</span>: <span class="ident">CLSCTX</span> <span class="op">=</span> <span class="ident">CLSCTX_INPROC_SERVER</span> <span class="op">|</span> <span class="ident">CLSCTX_INPROC_HANDLER</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CLSCTX_ALL</span>: <span class="ident">CLSCTX</span> <span class="op">=</span> <span class="ident">CLSCTX_INPROC_SERVER</span> <span class="op">|</span> <span class="ident">CLSCTX_INPROC_HANDLER</span> <span class="op">|</span> <span class="ident">CLSCTX_LOCAL_SERVER</span>
-    <span class="op">|</span> <span class="ident">CLSCTX_REMOTE_SERVER</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CLSCTX_SERVER</span>: <span class="ident">CLSCTX</span> <span class="op">=</span> <span class="ident">CLSCTX_INPROC_SERVER</span> <span class="op">|</span> <span class="ident">CLSCTX_LOCAL_SERVER</span>
-    <span class="op">|</span> <span class="ident">CLSCTX_REMOTE_SERVER</span>;
-<span class="macro">ENUM!</span>{<span class="kw">enum</span> <span class="ident">REGCLS</span> {
-    <span class="ident">REGCLS_SINGLEUSE</span> <span class="op">=</span> <span class="number">0</span>,
-    <span class="ident">REGCLS_MULTIPLEUSE</span> <span class="op">=</span> <span class="number">1</span>,
-    <span class="ident">REGCLS_MULTI_SEPARATE</span> <span class="op">=</span> <span class="number">2</span>,
-    <span class="ident">REGCLS_SUSPENDED</span> <span class="op">=</span> <span class="number">4</span>,
-    <span class="ident">REGCLS_SURROGATE</span> <span class="op">=</span> <span class="number">8</span>,
-    <span class="ident">REGCLS_AGILE</span> <span class="op">=</span> <span class="number">0x10</span>,
+<span class="kw">pub const </span>CLSCTX_INPROC: CLSCTX = CLSCTX_INPROC_SERVER | CLSCTX_INPROC_HANDLER;
+<span class="kw">pub const </span>CLSCTX_ALL: CLSCTX = CLSCTX_INPROC_SERVER | CLSCTX_INPROC_HANDLER | CLSCTX_LOCAL_SERVER
+    | CLSCTX_REMOTE_SERVER;
+<span class="kw">pub const </span>CLSCTX_SERVER: CLSCTX = CLSCTX_INPROC_SERVER | CLSCTX_LOCAL_SERVER
+    | CLSCTX_REMOTE_SERVER;
+<span class="macro">ENUM!</span>{<span class="kw">enum </span>REGCLS {
+    REGCLS_SINGLEUSE = <span class="number">0</span>,
+    REGCLS_MULTIPLEUSE = <span class="number">1</span>,
+    REGCLS_MULTI_SEPARATE = <span class="number">2</span>,
+    REGCLS_SUSPENDED = <span class="number">4</span>,
+    REGCLS_SURROGATE = <span class="number">8</span>,
+    REGCLS_AGILE = <span class="number">0x10</span>,
 }}
-<span class="macro">ENUM!</span>{<span class="kw">enum</span> <span class="ident">COINITBASE</span> {
-    <span class="ident">COINITBASE_MULTITHREADED</span> <span class="op">=</span> <span class="number">0x0</span>,
+<span class="macro">ENUM!</span>{<span class="kw">enum </span>COINITBASE {
+    COINITBASE_MULTITHREADED = <span class="number">0x0</span>,
 }}
-<span class="kw">extern</span> <span class="string">&quot;system&quot;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoGetMalloc</span>(
-        <span class="ident">dwMemContext</span>: <span class="ident">DWORD</span>,
-        <span class="ident">ppMalloc</span>: <span class="kw-2">*mut</span> <span class="ident">LPMALLOC</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CreateStreamOnHGlobal</span>(
-        <span class="ident">hGlobal</span>: <span class="ident">HGLOBAL</span>,
-        <span class="ident">fDeleteOnRelease</span>: <span class="ident">BOOL</span>,
-        <span class="ident">ppstm</span>: <span class="kw-2">*mut</span> <span class="ident">LPSTREAM</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetHGlobalFromStream</span>(
-        <span class="ident">pstm</span>: <span class="ident">LPSTREAM</span>,
-        <span class="ident">phglobal</span>: <span class="kw-2">*mut</span> <span class="ident">HGLOBAL</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoUninitialize</span>() -&gt; ();
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoGetCurrentProcess</span>() -&gt; <span class="ident">DWORD</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoInitializeEx</span>(
-        <span class="ident">pvReserved</span>: <span class="ident">LPVOID</span>,
-        <span class="ident">dwCoInit</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoGetCallerTID</span>(
-        <span class="ident">lpdwTID</span>: <span class="ident">LPDWORD</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoGetCurrentLogicalThreadId</span>(
-        <span class="ident">pguid</span>: <span class="kw-2">*mut</span> <span class="ident">GUID</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoGetContextToken</span>(
-        <span class="ident">pToken</span>: <span class="kw-2">*mut</span> <span class="ident">ULONG_PTR</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoGetDefaultContext</span>(
-        <span class="ident">aptType</span>: <span class="ident">APTTYPE</span>,
-        <span class="ident">riid</span>: <span class="ident">REFIID</span>,
-        <span class="ident">ppv</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoGetApartmentType</span>(
-        <span class="ident">pAptType</span>: <span class="kw-2">*mut</span> <span class="ident">APTTYPE</span>,
-        <span class="ident">pAptQualifier</span>: <span class="kw-2">*mut</span> <span class="ident">APTTYPEQUALIFIER</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
+<span class="kw">extern </span><span class="string">&quot;system&quot; </span>{
+    <span class="kw">pub fn </span>CoGetMalloc(
+        dwMemContext: DWORD,
+        ppMalloc: <span class="kw-2">*mut </span>LPMALLOC,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>CreateStreamOnHGlobal(
+        hGlobal: HGLOBAL,
+        fDeleteOnRelease: BOOL,
+        ppstm: <span class="kw-2">*mut </span>LPSTREAM,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>GetHGlobalFromStream(
+        pstm: LPSTREAM,
+        phglobal: <span class="kw-2">*mut </span>HGLOBAL,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>CoUninitialize() -&gt; ();
+    <span class="kw">pub fn </span>CoGetCurrentProcess() -&gt; DWORD;
+    <span class="kw">pub fn </span>CoInitializeEx(
+        pvReserved: LPVOID,
+        dwCoInit: DWORD,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>CoGetCallerTID(
+        lpdwTID: LPDWORD,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>CoGetCurrentLogicalThreadId(
+        pguid: <span class="kw-2">*mut </span>GUID,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>CoGetContextToken(
+        pToken: <span class="kw-2">*mut </span>ULONG_PTR,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>CoGetDefaultContext(
+        aptType: APTTYPE,
+        riid: REFIID,
+        ppv: <span class="kw-2">*mut *mut </span>c_void,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>CoGetApartmentType(
+        pAptType: <span class="kw-2">*mut </span>APTTYPE,
+        pAptQualifier: <span class="kw-2">*mut </span>APTTYPEQUALIFIER,
+    ) -&gt; HRESULT;
 }
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">ServerInformation</span> {
-    <span class="ident">dwServerPid</span>: <span class="ident">DWORD</span>,
-    <span class="ident">dwServerTid</span>: <span class="ident">DWORD</span>,
-    <span class="ident">ui64ServerAddress</span>: <span class="ident">UINT64</span>,
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>ServerInformation {
+    dwServerPid: DWORD,
+    dwServerTid: DWORD,
+    ui64ServerAddress: UINT64,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PServerInformation</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">ServerInformation</span>;
-<span class="kw">extern</span> <span class="string">&quot;system&quot;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoDecodeProxy</span>(
-        <span class="ident">dwClientPid</span>: <span class="ident">DWORD</span>,
-        <span class="ident">ui64ProxyAddress</span>: <span class="ident">UINT64</span>,
-        <span class="ident">pServerInformation</span>: <span class="ident">PServerInformation</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
+<span class="kw">pub type </span>PServerInformation = <span class="kw-2">*mut </span>ServerInformation;
+<span class="kw">extern </span><span class="string">&quot;system&quot; </span>{
+    <span class="kw">pub fn </span>CoDecodeProxy(
+        dwClientPid: DWORD,
+        ui64ProxyAddress: UINT64,
+        pServerInformation: PServerInformation,
+    ) -&gt; HRESULT;
 }
-<span class="macro">DECLARE_HANDLE!</span>{<span class="ident">CO_MTA_USAGE_COOKIE</span>, <span class="ident">CO_MTA_USAGE_COOKIE__</span>}
-<span class="kw">extern</span> <span class="string">&quot;system&quot;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoIncrementMTAUsage</span>(
-        <span class="ident">pCookie</span>: <span class="kw-2">*mut</span> <span class="ident">CO_MTA_USAGE_COOKIE</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoDecrementMTAUsage</span>(
-        <span class="ident">Cookie</span>: <span class="ident">CO_MTA_USAGE_COOKIE</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoAllowUnmarshalerCLSID</span>(
-        <span class="ident">clsid</span>: <span class="ident">REFCLSID</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoGetObjectContext</span>(
-        <span class="ident">riid</span>: <span class="ident">REFIID</span>,
-        <span class="ident">ppv</span>: <span class="kw-2">*mut</span> <span class="ident">LPVOID</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoGetClassObject</span>(
-        <span class="ident">rclsid</span>: <span class="ident">REFCLSID</span>,
-        <span class="ident">dwClsContext</span>: <span class="ident">DWORD</span>,
-        <span class="ident">pvReserved</span>: <span class="ident">LPVOID</span>,
-        <span class="ident">riid</span>: <span class="ident">REFIID</span>,
-        <span class="ident">ppv</span>: <span class="kw-2">*mut</span> <span class="ident">LPVOID</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoRegisterClassObject</span>(
-        <span class="ident">rclsid</span>: <span class="ident">REFCLSID</span>,
-        <span class="ident">pUnk</span>: <span class="ident">LPUNKNOWN</span>,
-        <span class="ident">dwClsContext</span>: <span class="ident">DWORD</span>,
-        <span class="ident">flags</span>: <span class="ident">DWORD</span>,
-        <span class="ident">lpdwRegister</span>: <span class="ident">LPDWORD</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoRevokeClassObject</span>(
-        <span class="ident">dwRegister</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoResumeClassObjects</span>() -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoSuspendClassObjects</span>() -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoAddRefServerProcess</span>() -&gt; <span class="ident">ULONG</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoReleaseServerProcess</span>() -&gt; <span class="ident">ULONG</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoGetPSClsid</span>(
-        <span class="ident">riid</span>: <span class="ident">REFIID</span>,
-        <span class="ident">pClsid</span>: <span class="kw-2">*mut</span> <span class="ident">CLSID</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoRegisterPSClsid</span>(
-        <span class="ident">riid</span>: <span class="ident">REFIID</span>,
-        <span class="ident">rclsid</span>: <span class="ident">REFCLSID</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoRegisterSurrogate</span>(
-        <span class="ident">pSurrogate</span>: <span class="ident">LPSURROGATE</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoGetMarshalSizeMax</span>(
-        <span class="ident">pulSize</span>: <span class="kw-2">*mut</span> <span class="ident">ULONG</span>,
-        <span class="ident">riid</span>: <span class="ident">REFIID</span>,
-        <span class="ident">pUnk</span>: <span class="ident">LPUNKNOWN</span>,
-        <span class="ident">dwDestContext</span>: <span class="ident">DWORD</span>,
-        <span class="ident">pvDestContext</span>: <span class="ident">LPVOID</span>,
-        <span class="ident">mshlflags</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoMarshalInterface</span>(
-        <span class="ident">pStm</span>: <span class="ident">LPSTREAM</span>,
-        <span class="ident">riid</span>: <span class="ident">REFIID</span>,
-        <span class="ident">pUnk</span>: <span class="ident">LPUNKNOWN</span>,
-        <span class="ident">dwDestContext</span>: <span class="ident">DWORD</span>,
-        <span class="ident">pvDestContext</span>: <span class="ident">LPVOID</span>,
-        <span class="ident">mshlflags</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoUnmarshalInterface</span>(
-        <span class="ident">pStm</span>: <span class="ident">LPSTREAM</span>,
-        <span class="ident">riid</span>: <span class="ident">REFIID</span>,
-        <span class="ident">ppv</span>: <span class="kw-2">*mut</span> <span class="ident">LPVOID</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoMarshalHresult</span>(
-        <span class="ident">pstm</span>: <span class="ident">LPSTREAM</span>,
-        <span class="ident">hresult</span>: <span class="ident">HRESULT</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoUnmarshalHresult</span>(
-        <span class="ident">pstm</span>: <span class="ident">LPSTREAM</span>,
-        <span class="ident">phresult</span>: <span class="kw-2">*mut</span> <span class="ident">HRESULT</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoReleaseMarshalData</span>(
-        <span class="ident">pstm</span>: <span class="ident">LPSTREAM</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoDisconnectObject</span>(
-        <span class="ident">pUnk</span>: <span class="ident">LPUNKNOWN</span>,
-        <span class="ident">dwReserved</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoLockObjectExternal</span>(
-        <span class="ident">pUnk</span>: <span class="ident">LPUNKNOWN</span>,
-        <span class="ident">fLock</span>: <span class="ident">BOOL</span>,
-        <span class="ident">fLastUnlockReleases</span>: <span class="ident">BOOL</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoGetStandardMarshal</span>(
-        <span class="ident">riid</span>: <span class="ident">REFIID</span>,
-        <span class="ident">pUnk</span>: <span class="ident">LPUNKNOWN</span>,
-        <span class="ident">dwDestContext</span>: <span class="ident">DWORD</span>,
-        <span class="ident">pvDestContext</span>: <span class="ident">LPVOID</span>,
-        <span class="ident">mshlflags</span>: <span class="ident">DWORD</span>,
-        <span class="ident">ppMarshal</span>: <span class="kw-2">*mut</span> <span class="ident">LPMARSHAL</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoGetStdMarshalEx</span>(
-        <span class="ident">pUnkOuter</span>: <span class="ident">LPUNKNOWN</span>,
-        <span class="ident">smexflags</span>: <span class="ident">DWORD</span>,
-        <span class="ident">ppUnkInner</span>: <span class="kw-2">*mut</span> <span class="ident">LPUNKNOWN</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
+<span class="macro">DECLARE_HANDLE!</span>{CO_MTA_USAGE_COOKIE, CO_MTA_USAGE_COOKIE__}
+<span class="kw">extern </span><span class="string">&quot;system&quot; </span>{
+    <span class="kw">pub fn </span>CoIncrementMTAUsage(
+        pCookie: <span class="kw-2">*mut </span>CO_MTA_USAGE_COOKIE,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>CoDecrementMTAUsage(
+        Cookie: CO_MTA_USAGE_COOKIE,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>CoAllowUnmarshalerCLSID(
+        clsid: REFCLSID,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>CoGetObjectContext(
+        riid: REFIID,
+        ppv: <span class="kw-2">*mut </span>LPVOID,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>CoGetClassObject(
+        rclsid: REFCLSID,
+        dwClsContext: DWORD,
+        pvReserved: LPVOID,
+        riid: REFIID,
+        ppv: <span class="kw-2">*mut </span>LPVOID,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>CoRegisterClassObject(
+        rclsid: REFCLSID,
+        pUnk: LPUNKNOWN,
+        dwClsContext: DWORD,
+        flags: DWORD,
+        lpdwRegister: LPDWORD,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>CoRevokeClassObject(
+        dwRegister: DWORD,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>CoResumeClassObjects() -&gt; HRESULT;
+    <span class="kw">pub fn </span>CoSuspendClassObjects() -&gt; HRESULT;
+    <span class="kw">pub fn </span>CoAddRefServerProcess() -&gt; ULONG;
+    <span class="kw">pub fn </span>CoReleaseServerProcess() -&gt; ULONG;
+    <span class="kw">pub fn </span>CoGetPSClsid(
+        riid: REFIID,
+        pClsid: <span class="kw-2">*mut </span>CLSID,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>CoRegisterPSClsid(
+        riid: REFIID,
+        rclsid: REFCLSID,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>CoRegisterSurrogate(
+        pSurrogate: LPSURROGATE,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>CoGetMarshalSizeMax(
+        pulSize: <span class="kw-2">*mut </span>ULONG,
+        riid: REFIID,
+        pUnk: LPUNKNOWN,
+        dwDestContext: DWORD,
+        pvDestContext: LPVOID,
+        mshlflags: DWORD,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>CoMarshalInterface(
+        pStm: LPSTREAM,
+        riid: REFIID,
+        pUnk: LPUNKNOWN,
+        dwDestContext: DWORD,
+        pvDestContext: LPVOID,
+        mshlflags: DWORD,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>CoUnmarshalInterface(
+        pStm: LPSTREAM,
+        riid: REFIID,
+        ppv: <span class="kw-2">*mut </span>LPVOID,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>CoMarshalHresult(
+        pstm: LPSTREAM,
+        hresult: HRESULT,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>CoUnmarshalHresult(
+        pstm: LPSTREAM,
+        phresult: <span class="kw-2">*mut </span>HRESULT,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>CoReleaseMarshalData(
+        pstm: LPSTREAM,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>CoDisconnectObject(
+        pUnk: LPUNKNOWN,
+        dwReserved: DWORD,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>CoLockObjectExternal(
+        pUnk: LPUNKNOWN,
+        fLock: BOOL,
+        fLastUnlockReleases: BOOL,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>CoGetStandardMarshal(
+        riid: REFIID,
+        pUnk: LPUNKNOWN,
+        dwDestContext: DWORD,
+        pvDestContext: LPVOID,
+        mshlflags: DWORD,
+        ppMarshal: <span class="kw-2">*mut </span>LPMARSHAL,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>CoGetStdMarshalEx(
+        pUnkOuter: LPUNKNOWN,
+        smexflags: DWORD,
+        ppUnkInner: <span class="kw-2">*mut </span>LPUNKNOWN,
+    ) -&gt; HRESULT;
 }
-<span class="macro">ENUM!</span>{<span class="kw">enum</span> <span class="ident">STDMSHLFLAGS</span> {
-    <span class="ident">SMEXF_SERVER</span> <span class="op">=</span> <span class="number">0x01</span>,
-    <span class="ident">SMEXF_HANDLER</span> <span class="op">=</span> <span class="number">0x02</span>,
+<span class="macro">ENUM!</span>{<span class="kw">enum </span>STDMSHLFLAGS {
+    SMEXF_SERVER = <span class="number">0x01</span>,
+    SMEXF_HANDLER = <span class="number">0x02</span>,
 }}
-<span class="kw">extern</span> <span class="string">&quot;system&quot;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoIsHandlerConnected</span>(
-        <span class="ident">pUnk</span>: <span class="ident">LPUNKNOWN</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoMarshalInterThreadInterfaceInStream</span>(
-        <span class="ident">riid</span>: <span class="ident">REFIID</span>,
-        <span class="ident">pUnk</span>: <span class="ident">LPUNKNOWN</span>,
-        <span class="ident">ppStm</span>: <span class="kw-2">*mut</span> <span class="ident">LPSTREAM</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoGetInterfaceAndReleaseStream</span>(
-        <span class="ident">pStm</span>: <span class="ident">LPSTREAM</span>,
-        <span class="ident">iid</span>: <span class="ident">REFIID</span>,
-        <span class="ident">ppv</span>: <span class="kw-2">*mut</span> <span class="ident">LPVOID</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoCreateFreeThreadedMarshaler</span>(
-        <span class="ident">punkOuter</span>: <span class="ident">LPUNKNOWN</span>,
-        <span class="ident">ppunkMarshal</span>: <span class="kw-2">*mut</span> <span class="ident">LPUNKNOWN</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoFreeUnusedLibraries</span>();
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoFreeUnusedLibrariesEx</span>(
-        <span class="ident">dwUnloadDelay</span>: <span class="ident">DWORD</span>,
-        <span class="ident">dwReserved</span>: <span class="ident">DWORD</span>,
+<span class="kw">extern </span><span class="string">&quot;system&quot; </span>{
+    <span class="kw">pub fn </span>CoIsHandlerConnected(
+        pUnk: LPUNKNOWN,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>CoMarshalInterThreadInterfaceInStream(
+        riid: REFIID,
+        pUnk: LPUNKNOWN,
+        ppStm: <span class="kw-2">*mut </span>LPSTREAM,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>CoGetInterfaceAndReleaseStream(
+        pStm: LPSTREAM,
+        iid: REFIID,
+        ppv: <span class="kw-2">*mut </span>LPVOID,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>CoCreateFreeThreadedMarshaler(
+        punkOuter: LPUNKNOWN,
+        ppunkMarshal: <span class="kw-2">*mut </span>LPUNKNOWN,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>CoFreeUnusedLibraries();
+    <span class="kw">pub fn </span>CoFreeUnusedLibrariesEx(
+        dwUnloadDelay: DWORD,
+        dwReserved: DWORD,
     );
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoDisconnectContext</span>(
-        <span class="ident">dwTimeout</span>: <span class="ident">DWORD</span>,
-    )-&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoInitializeSecurity</span>(
-        <span class="ident">pSecDesc</span>: <span class="ident">PSECURITY_DESCRIPTOR</span>,
-        <span class="ident">cAuthSvc</span>: <span class="ident">LONG</span>,
-        <span class="ident">asAuthSvc</span>: <span class="kw-2">*mut</span> <span class="ident">SOLE_AUTHENTICATION_SERVICE</span>,
-        <span class="ident">pReserved1</span>: <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-        <span class="ident">dwAuthnLevel</span>: <span class="ident">DWORD</span>,
-        <span class="ident">dwImpLevel</span>: <span class="ident">DWORD</span>,
-        <span class="ident">pAuthList</span>: <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-        <span class="ident">dwCapabilities</span>: <span class="ident">DWORD</span>,
-        <span class="ident">pReserved3</span>: <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoGetCallContext</span>(
-        <span class="ident">riid</span>: <span class="ident">REFIID</span>,
-        <span class="ident">ppInterface</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoQueryProxyBlanket</span>(
-        <span class="ident">pProxy</span>: <span class="kw-2">*mut</span> <span class="ident">IUnknown</span>,
-        <span class="ident">pwAuthnSvc</span>: <span class="kw-2">*mut</span> <span class="ident">DWORD</span>,
-        <span class="ident">pAuthzSvc</span>: <span class="kw-2">*mut</span> <span class="ident">DWORD</span>,
-        <span class="ident">pServerPrincName</span>: <span class="kw-2">*mut</span> <span class="ident">LPOLESTR</span>,
-        <span class="ident">pAuthnLevel</span>: <span class="kw-2">*mut</span> <span class="ident">DWORD</span>,
-        <span class="ident">pImpLevel</span>: <span class="kw-2">*mut</span> <span class="ident">DWORD</span>,
-        <span class="ident">pAuthInfo</span>: <span class="kw-2">*mut</span> <span class="ident">RPC_AUTH_IDENTITY_HANDLE</span>,
-        <span class="ident">pCapabilites</span>: <span class="kw-2">*mut</span> <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoSetProxyBlanket</span>(
-        <span class="ident">pProxy</span>: <span class="kw-2">*mut</span> <span class="ident">IUnknown</span>,
-        <span class="ident">dwAuthnSvc</span>: <span class="ident">DWORD</span>,
-        <span class="ident">dwAuthzSvc</span>: <span class="ident">DWORD</span>,
-        <span class="ident">pServerPrincName</span>: <span class="kw-2">*mut</span> <span class="ident">OLECHAR</span>,
-        <span class="ident">dwAuthnLevel</span>: <span class="ident">DWORD</span>,
-        <span class="ident">dwImpLevel</span>: <span class="ident">DWORD</span>,
-        <span class="ident">pAuthInfo</span>: <span class="ident">RPC_AUTH_IDENTITY_HANDLE</span>,
-        <span class="ident">dwCapabilities</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoCopyProxy</span>(
-        <span class="ident">pProxy</span>: <span class="kw-2">*mut</span> <span class="ident">IUnknown</span>,
-        <span class="ident">ppCopy</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">IUnknown</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoQueryClientBlanket</span>(
-        <span class="ident">pAuthnSvc</span>: <span class="kw-2">*mut</span> <span class="ident">DWORD</span>,
-        <span class="ident">pAuthzSvc</span>: <span class="kw-2">*mut</span> <span class="ident">DWORD</span>,
-        <span class="ident">pServerPrincName</span>: <span class="kw-2">*mut</span> <span class="ident">LPOLESTR</span>,
-        <span class="ident">pAuthnLevel</span>: <span class="kw-2">*mut</span> <span class="ident">DWORD</span>,
-        <span class="ident">pImpLevel</span>: <span class="kw-2">*mut</span> <span class="ident">DWORD</span>,
-        <span class="ident">pPrivs</span>: <span class="kw-2">*mut</span> <span class="ident">RPC_AUTHZ_HANDLE</span>,
-        <span class="ident">pCapabilities</span>: <span class="kw-2">*mut</span> <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoImpersonateClient</span>() -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoRevertToSelf</span>() -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoQueryAuthenticationServices</span>(
-        <span class="ident">pcAuthSvc</span>: <span class="kw-2">*mut</span> <span class="ident">DWORD</span>,
-        <span class="ident">asAuthSvc</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">SOLE_AUTHENTICATION_SERVICE</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoSwitchCallContext</span>(
-        <span class="ident">pNewObject</span>: <span class="kw-2">*mut</span> <span class="ident">IUnknown</span>,
-        <span class="ident">ppOldObject</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">IUnknown</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
+    <span class="kw">pub fn </span>CoDisconnectContext(
+        dwTimeout: DWORD,
+    )-&gt; HRESULT;
+    <span class="kw">pub fn </span>CoInitializeSecurity(
+        pSecDesc: PSECURITY_DESCRIPTOR,
+        cAuthSvc: LONG,
+        asAuthSvc: <span class="kw-2">*mut </span>SOLE_AUTHENTICATION_SERVICE,
+        pReserved1: <span class="kw-2">*mut </span>c_void,
+        dwAuthnLevel: DWORD,
+        dwImpLevel: DWORD,
+        pAuthList: <span class="kw-2">*mut </span>c_void,
+        dwCapabilities: DWORD,
+        pReserved3: <span class="kw-2">*mut </span>c_void,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>CoGetCallContext(
+        riid: REFIID,
+        ppInterface: <span class="kw-2">*mut *mut </span>c_void,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>CoQueryProxyBlanket(
+        pProxy: <span class="kw-2">*mut </span>IUnknown,
+        pwAuthnSvc: <span class="kw-2">*mut </span>DWORD,
+        pAuthzSvc: <span class="kw-2">*mut </span>DWORD,
+        pServerPrincName: <span class="kw-2">*mut </span>LPOLESTR,
+        pAuthnLevel: <span class="kw-2">*mut </span>DWORD,
+        pImpLevel: <span class="kw-2">*mut </span>DWORD,
+        pAuthInfo: <span class="kw-2">*mut </span>RPC_AUTH_IDENTITY_HANDLE,
+        pCapabilites: <span class="kw-2">*mut </span>DWORD,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>CoSetProxyBlanket(
+        pProxy: <span class="kw-2">*mut </span>IUnknown,
+        dwAuthnSvc: DWORD,
+        dwAuthzSvc: DWORD,
+        pServerPrincName: <span class="kw-2">*mut </span>OLECHAR,
+        dwAuthnLevel: DWORD,
+        dwImpLevel: DWORD,
+        pAuthInfo: RPC_AUTH_IDENTITY_HANDLE,
+        dwCapabilities: DWORD,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>CoCopyProxy(
+        pProxy: <span class="kw-2">*mut </span>IUnknown,
+        ppCopy: <span class="kw-2">*mut *mut </span>IUnknown,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>CoQueryClientBlanket(
+        pAuthnSvc: <span class="kw-2">*mut </span>DWORD,
+        pAuthzSvc: <span class="kw-2">*mut </span>DWORD,
+        pServerPrincName: <span class="kw-2">*mut </span>LPOLESTR,
+        pAuthnLevel: <span class="kw-2">*mut </span>DWORD,
+        pImpLevel: <span class="kw-2">*mut </span>DWORD,
+        pPrivs: <span class="kw-2">*mut </span>RPC_AUTHZ_HANDLE,
+        pCapabilities: <span class="kw-2">*mut </span>DWORD,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>CoImpersonateClient() -&gt; HRESULT;
+    <span class="kw">pub fn </span>CoRevertToSelf() -&gt; HRESULT;
+    <span class="kw">pub fn </span>CoQueryAuthenticationServices(
+        pcAuthSvc: <span class="kw-2">*mut </span>DWORD,
+        asAuthSvc: <span class="kw-2">*mut *mut </span>SOLE_AUTHENTICATION_SERVICE,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>CoSwitchCallContext(
+        pNewObject: <span class="kw-2">*mut </span>IUnknown,
+        ppOldObject: <span class="kw-2">*mut *mut </span>IUnknown,
+    ) -&gt; HRESULT;
 }
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">COM_RIGHTS_EXECUTE</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">1</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">COM_RIGHTS_EXECUTE_LOCAL</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">2</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">COM_RIGHTS_EXECUTE_REMOTE</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">4</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">COM_RIGHTS_ACTIVATE_LOCAL</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">8</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">COM_RIGHTS_ACTIVATE_REMOTE</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">16</span>;
-<span class="kw">extern</span> <span class="string">&quot;system&quot;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoCreateInstance</span>(
-        <span class="ident">rclsid</span>: <span class="ident">REFCLSID</span>,
-        <span class="ident">pUnkOuter</span>: <span class="ident">LPUNKNOWN</span>,
-        <span class="ident">dwClsContext</span>: <span class="ident">DWORD</span>,
-        <span class="ident">riid</span>: <span class="ident">REFIID</span>,
-        <span class="ident">ppv</span>: <span class="kw-2">*mut</span> <span class="ident">LPVOID</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoCreateInstanceEx</span>(
-        <span class="ident">Clsid</span>: <span class="ident">REFCLSID</span>,
-        <span class="ident">punkOuter</span>: <span class="kw-2">*mut</span> <span class="ident">IUnknown</span>,
-        <span class="ident">dwClsCtx</span>: <span class="ident">DWORD</span>,
-        <span class="ident">pServerInfo</span>: <span class="kw-2">*mut</span> <span class="ident">COSERVERINFO</span>,
-        <span class="ident">dwCount</span>: <span class="ident">DWORD</span>,
-        <span class="ident">pResults</span>: <span class="kw-2">*mut</span> <span class="ident">MULTI_QI</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoRegisterActivationFilter</span>(
-        <span class="ident">pActivationFilter</span>: <span class="kw-2">*mut</span> <span class="ident">IActivationFilter</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoCreateInstanceFromApp</span>(
-        <span class="ident">Clsid</span>: <span class="ident">REFCLSID</span>,
-        <span class="ident">punkOuter</span>: <span class="kw-2">*mut</span> <span class="ident">IUnknown</span>,
-        <span class="ident">dwClsCtx</span>: <span class="ident">DWORD</span>,
-        <span class="ident">reserved</span>: <span class="ident">PVOID</span>,
-        <span class="ident">dwCount</span>: <span class="ident">DWORD</span>,
-        <span class="ident">pResults</span>: <span class="kw-2">*mut</span> <span class="ident">MULTI_QI</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoGetCancelObject</span>(
-        <span class="ident">dwThreadId</span>: <span class="ident">DWORD</span>,
-        <span class="ident">iid</span>: <span class="ident">REFIID</span>,
-        <span class="ident">ppUnk</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoSetCancelObject</span>(
-        <span class="ident">pUnk</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">IUnknown</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoCancelCall</span>(
-        <span class="ident">dwThreadId</span>: <span class="ident">DWORD</span>,
-        <span class="ident">ulTimeout</span>: <span class="ident">ULONG</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoTestCancel</span>() -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoEnableCallCancellation</span>(
-        <span class="ident">pReserved</span>: <span class="ident">LPVOID</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoDisableCallCancellation</span>(
-        <span class="ident">pReserved</span>: <span class="ident">LPVOID</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">StringFromCLSID</span>(
-        <span class="ident">rclsid</span>: <span class="ident">REFCLSID</span>,
-        <span class="ident">lplpsz</span>: <span class="kw-2">*mut</span> <span class="ident">LPOLESTR</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CLSIDFromString</span>(
-        <span class="ident">lpsz</span>: <span class="ident">LPCOLESTR</span>,
-        <span class="ident">pclsid</span>: <span class="ident">LPCLSID</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">StringFromIID</span>(
-        <span class="ident">rclsid</span>: <span class="ident">REFIID</span>,
-        <span class="ident">lplpsz</span>: <span class="kw-2">*mut</span> <span class="ident">LPOLESTR</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">IIDFromString</span>(
-        <span class="ident">lpsz</span>: <span class="ident">LPCOLESTR</span>,
-        <span class="ident">lpiid</span>: <span class="ident">LPIID</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ProgIDFromCLSID</span>(
-        <span class="ident">clsid</span>: <span class="ident">REFCLSID</span>,
-        <span class="ident">lplpszProgID</span>: <span class="kw-2">*mut</span> <span class="ident">LPOLESTR</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CLSIDFromProgID</span>(
-        <span class="ident">lpszProgID</span>: <span class="ident">LPCOLESTR</span>,
-        <span class="ident">lpclsid</span>: <span class="ident">LPCLSID</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">StringFromGUID2</span>(
-        <span class="ident">rguid</span>: <span class="ident">REFGUID</span>,
-        <span class="ident">lpsz</span>: <span class="ident">LPOLESTR</span>,
-        <span class="ident">cchMax</span>: <span class="ident">c_int</span>,
-    ) -&gt; <span class="ident">c_int</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoCreateGuid</span>(
-        <span class="ident">pguid</span>: <span class="kw-2">*mut</span> <span class="ident">GUID</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">PropVariantCopy</span>(
-        <span class="ident">pvarDest</span>: <span class="kw-2">*mut</span> <span class="ident">PROPVARIANT</span>,
-        <span class="ident">pvarSrc</span>: <span class="kw-2">*const</span> <span class="ident">PROPVARIANT</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">PropVariantClear</span>(
-        <span class="ident">pvar</span>: <span class="kw-2">*mut</span> <span class="ident">PROPVARIANT</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">FreePropVariantArray</span>(
-        <span class="ident">cVariants</span>: <span class="ident">ULONG</span>,
-        <span class="ident">rgvars</span>: <span class="kw-2">*mut</span> <span class="ident">PROPVARIANT</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoWaitForMultipleHandles</span>(
-        <span class="ident">dwFlags</span>: <span class="ident">DWORD</span>,
-        <span class="ident">dwTimeout</span>: <span class="ident">DWORD</span>,
-        <span class="ident">cHandles</span>: <span class="ident">ULONG</span>,
-        <span class="ident">pHandles</span>: <span class="ident">LPHANDLE</span>,
-        <span class="ident">lpdwindex</span>: <span class="ident">LPDWORD</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
+<span class="kw">pub const </span>COM_RIGHTS_EXECUTE: DWORD = <span class="number">1</span>;
+<span class="kw">pub const </span>COM_RIGHTS_EXECUTE_LOCAL: DWORD = <span class="number">2</span>;
+<span class="kw">pub const </span>COM_RIGHTS_EXECUTE_REMOTE: DWORD = <span class="number">4</span>;
+<span class="kw">pub const </span>COM_RIGHTS_ACTIVATE_LOCAL: DWORD = <span class="number">8</span>;
+<span class="kw">pub const </span>COM_RIGHTS_ACTIVATE_REMOTE: DWORD = <span class="number">16</span>;
+<span class="kw">extern </span><span class="string">&quot;system&quot; </span>{
+    <span class="kw">pub fn </span>CoCreateInstance(
+        rclsid: REFCLSID,
+        pUnkOuter: LPUNKNOWN,
+        dwClsContext: DWORD,
+        riid: REFIID,
+        ppv: <span class="kw-2">*mut </span>LPVOID,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>CoCreateInstanceEx(
+        Clsid: REFCLSID,
+        punkOuter: <span class="kw-2">*mut </span>IUnknown,
+        dwClsCtx: DWORD,
+        pServerInfo: <span class="kw-2">*mut </span>COSERVERINFO,
+        dwCount: DWORD,
+        pResults: <span class="kw-2">*mut </span>MULTI_QI,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>CoRegisterActivationFilter(
+        pActivationFilter: <span class="kw-2">*mut </span>IActivationFilter,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>CoCreateInstanceFromApp(
+        Clsid: REFCLSID,
+        punkOuter: <span class="kw-2">*mut </span>IUnknown,
+        dwClsCtx: DWORD,
+        reserved: PVOID,
+        dwCount: DWORD,
+        pResults: <span class="kw-2">*mut </span>MULTI_QI,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>CoGetCancelObject(
+        dwThreadId: DWORD,
+        iid: REFIID,
+        ppUnk: <span class="kw-2">*mut *mut </span>c_void,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>CoSetCancelObject(
+        pUnk: <span class="kw-2">*mut *mut </span>IUnknown,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>CoCancelCall(
+        dwThreadId: DWORD,
+        ulTimeout: ULONG,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>CoTestCancel() -&gt; HRESULT;
+    <span class="kw">pub fn </span>CoEnableCallCancellation(
+        pReserved: LPVOID,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>CoDisableCallCancellation(
+        pReserved: LPVOID,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>StringFromCLSID(
+        rclsid: REFCLSID,
+        lplpsz: <span class="kw-2">*mut </span>LPOLESTR,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>CLSIDFromString(
+        lpsz: LPCOLESTR,
+        pclsid: LPCLSID,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>StringFromIID(
+        rclsid: REFIID,
+        lplpsz: <span class="kw-2">*mut </span>LPOLESTR,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>IIDFromString(
+        lpsz: LPCOLESTR,
+        lpiid: LPIID,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>ProgIDFromCLSID(
+        clsid: REFCLSID,
+        lplpszProgID: <span class="kw-2">*mut </span>LPOLESTR,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>CLSIDFromProgID(
+        lpszProgID: LPCOLESTR,
+        lpclsid: LPCLSID,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>StringFromGUID2(
+        rguid: REFGUID,
+        lpsz: LPOLESTR,
+        cchMax: c_int,
+    ) -&gt; c_int;
+    <span class="kw">pub fn </span>CoCreateGuid(
+        pguid: <span class="kw-2">*mut </span>GUID,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>PropVariantCopy(
+        pvarDest: <span class="kw-2">*mut </span>PROPVARIANT,
+        pvarSrc: <span class="kw-2">*const </span>PROPVARIANT,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>PropVariantClear(
+        pvar: <span class="kw-2">*mut </span>PROPVARIANT,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>FreePropVariantArray(
+        cVariants: ULONG,
+        rgvars: <span class="kw-2">*mut </span>PROPVARIANT,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>CoWaitForMultipleHandles(
+        dwFlags: DWORD,
+        dwTimeout: DWORD,
+        cHandles: ULONG,
+        pHandles: LPHANDLE,
+        lpdwindex: LPDWORD,
+    ) -&gt; HRESULT;
 }
-<span class="macro">ENUM!</span>{<span class="kw">enum</span> <span class="ident">COWAIT_FLAGS</span> {
-    <span class="ident">COWAIT_DEFAULT</span> <span class="op">=</span> <span class="number">0</span>,
-    <span class="ident">COWAIT_WAITALL</span> <span class="op">=</span> <span class="number">1</span>,
-    <span class="ident">COWAIT_ALERTABLE</span> <span class="op">=</span> <span class="number">2</span>,
-    <span class="ident">COWAIT_INPUTAVAILABLE</span> <span class="op">=</span> <span class="number">4</span>,
-    <span class="ident">COWAIT_DISPATCH_CALLS</span> <span class="op">=</span> <span class="number">8</span>,
-    <span class="ident">COWAIT_DISPATCH_WINDOW_MESSAGES</span> <span class="op">=</span> <span class="number">0x10</span>,
+<span class="macro">ENUM!</span>{<span class="kw">enum </span>COWAIT_FLAGS {
+    COWAIT_DEFAULT = <span class="number">0</span>,
+    COWAIT_WAITALL = <span class="number">1</span>,
+    COWAIT_ALERTABLE = <span class="number">2</span>,
+    COWAIT_INPUTAVAILABLE = <span class="number">4</span>,
+    COWAIT_DISPATCH_CALLS = <span class="number">8</span>,
+    COWAIT_DISPATCH_WINDOW_MESSAGES = <span class="number">0x10</span>,
 }}
-<span class="macro">ENUM!</span>{<span class="kw">enum</span> <span class="ident">CWMO_FLAGS</span> {
-    <span class="ident">CWMO_DEFAULT</span> <span class="op">=</span> <span class="number">0</span>,
-    <span class="ident">CWMO_DISPATCH_CALLS</span> <span class="op">=</span> <span class="number">1</span>,
-    <span class="ident">CWMO_DISPATCH_WINDOW_MESSAGES</span> <span class="op">=</span> <span class="number">2</span>,
+<span class="macro">ENUM!</span>{<span class="kw">enum </span>CWMO_FLAGS {
+    CWMO_DEFAULT = <span class="number">0</span>,
+    CWMO_DISPATCH_CALLS = <span class="number">1</span>,
+    CWMO_DISPATCH_WINDOW_MESSAGES = <span class="number">2</span>,
 }}
-<span class="kw">extern</span> <span class="string">&quot;system&quot;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoWaitForMultipleObjects</span>(
-        <span class="ident">dwFlags</span>: <span class="ident">DWORD</span>,
-        <span class="ident">dwTimeout</span>: <span class="ident">DWORD</span>,
-        <span class="ident">cHandles</span>: <span class="ident">ULONG</span>,
-        <span class="ident">pHandles</span>: <span class="kw-2">*const</span> <span class="ident">HANDLE</span>,
-        <span class="ident">lpdwindex</span>: <span class="ident">LPDWORD</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
+<span class="kw">extern </span><span class="string">&quot;system&quot; </span>{
+    <span class="kw">pub fn </span>CoWaitForMultipleObjects(
+        dwFlags: DWORD,
+        dwTimeout: DWORD,
+        cHandles: ULONG,
+        pHandles: <span class="kw-2">*const </span>HANDLE,
+        lpdwindex: LPDWORD,
+    ) -&gt; HRESULT;
 }
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CWMO_MAX_HANDLES</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">56</span>;
-<span class="kw">extern</span> <span class="string">&quot;system&quot;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoGetTreatAsClass</span>(
-        <span class="ident">clsidOld</span>: <span class="ident">REFCLSID</span>,
-        <span class="ident">pClsidNew</span>: <span class="ident">LPCLSID</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoInvalidateRemoteMachineBindings</span>(
-        <span class="ident">pszMachineName</span>: <span class="ident">LPOLESTR</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
+<span class="kw">pub const </span>CWMO_MAX_HANDLES: ULONG = <span class="number">56</span>;
+<span class="kw">extern </span><span class="string">&quot;system&quot; </span>{
+    <span class="kw">pub fn </span>CoGetTreatAsClass(
+        clsidOld: REFCLSID,
+        pClsidNew: LPCLSID,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>CoInvalidateRemoteMachineBindings(
+        pszMachineName: LPOLESTR,
+    ) -&gt; HRESULT;
 }
-<span class="macro">ENUM!</span>{<span class="kw">enum</span> <span class="ident">AgileReferenceOptions</span> {
-    <span class="ident">AGILEREFERENCE_DEFAULT</span> <span class="op">=</span> <span class="number">0</span>,
-    <span class="ident">AGILEREFERENCE_DELAYEDMARSHAL</span> <span class="op">=</span> <span class="number">1</span>,
+<span class="macro">ENUM!</span>{<span class="kw">enum </span>AgileReferenceOptions {
+    AGILEREFERENCE_DEFAULT = <span class="number">0</span>,
+    AGILEREFERENCE_DELAYEDMARSHAL = <span class="number">1</span>,
 }}
-<span class="kw">extern</span> <span class="string">&quot;system&quot;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RoGetAgileReference</span>(
-        <span class="ident">options</span>: <span class="ident">AgileReferenceOptions</span>,
-        <span class="ident">riid</span>: <span class="ident">REFIID</span>,
-        <span class="ident">pUnk</span>: <span class="kw-2">*mut</span> <span class="ident">IUnknown</span>,
-        <span class="ident">ppAgileReference</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">IAgileReference</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
+<span class="kw">extern </span><span class="string">&quot;system&quot; </span>{
+    <span class="kw">pub fn </span>RoGetAgileReference(
+        options: AgileReferenceOptions,
+        riid: REFIID,
+        pUnk: <span class="kw-2">*mut </span>IUnknown,
+        ppAgileReference: <span class="kw-2">*mut *mut </span>IAgileReference,
+    ) -&gt; HRESULT;
 }
-<span class="macro">FN!</span>{<span class="ident">stdcall</span> <span class="ident">LPFNGETCLASSOBJECT</span>(
-    <span class="ident">REFCLSID</span>,
-    <span class="ident">REFIID</span>,
-    <span class="kw-2">*mut</span> <span class="ident">LPVOID</span>,
-) -&gt; <span class="ident">HRESULT</span>}
-<span class="macro">FN!</span>{<span class="ident">stdcall</span> <span class="ident">LPFNCANUNLOADNOW</span>() -&gt; <span class="ident">HRESULT</span>}
-<span class="kw">extern</span> <span class="string">&quot;system&quot;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">DllGetClassObject</span>(
-        <span class="ident">rclsid</span>: <span class="ident">REFCLSID</span>,
-        <span class="ident">riid</span>: <span class="ident">REFIID</span>,
-        <span class="ident">ppv</span>: <span class="kw-2">*mut</span> <span class="ident">LPVOID</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">DllCanUnloadNow</span>() -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoTaskMemAlloc</span>(
-        <span class="ident">cb</span>: <span class="ident">SIZE_T</span>,
-    ) -&gt; <span class="ident">LPVOID</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoTaskMemRealloc</span>(
-        <span class="ident">pv</span>: <span class="ident">LPVOID</span>,
-        <span class="ident">cb</span>: <span class="ident">SIZE_T</span>,
-    ) -&gt; <span class="ident">LPVOID</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoTaskMemFree</span>(
-        <span class="ident">pv</span>: <span class="ident">LPVOID</span>,
+<span class="macro">FN!</span>{stdcall LPFNGETCLASSOBJECT(
+    REFCLSID,
+    REFIID,
+    <span class="kw-2">*mut </span>LPVOID,
+) -&gt; HRESULT}
+<span class="macro">FN!</span>{stdcall LPFNCANUNLOADNOW() -&gt; HRESULT}
+<span class="kw">extern </span><span class="string">&quot;system&quot; </span>{
+    <span class="kw">pub fn </span>DllGetClassObject(
+        rclsid: REFCLSID,
+        riid: REFIID,
+        ppv: <span class="kw-2">*mut </span>LPVOID,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>DllCanUnloadNow() -&gt; HRESULT;
+    <span class="kw">pub fn </span>CoTaskMemAlloc(
+        cb: SIZE_T,
+    ) -&gt; LPVOID;
+    <span class="kw">pub fn </span>CoTaskMemRealloc(
+        pv: LPVOID,
+        cb: SIZE_T,
+    ) -&gt; LPVOID;
+    <span class="kw">pub fn </span>CoTaskMemFree(
+        pv: LPVOID,
     );
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CoFileTimeNow</span>(
-        <span class="ident">lpFileTime</span>: <span class="kw-2">*mut</span> <span class="ident">FILETIME</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CLSIDFromProgIDEx</span>(
-        <span class="ident">lpszProgID</span>: <span class="ident">LPCOLESTR</span>,
-        <span class="ident">lpclsid</span>: <span class="ident">LPCLSID</span>,
-    ) -&gt; <span class="ident">HRESULT</span>;
+    <span class="kw">pub fn </span>CoFileTimeNow(
+        lpFileTime: <span class="kw-2">*mut </span>FILETIME,
+    ) -&gt; HRESULT;
+    <span class="kw">pub fn </span>CLSIDFromProgIDEx(
+        lpszProgID: LPCOLESTR,
+        lpclsid: LPCLSID,
+    ) -&gt; HRESULT;
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="winapi" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="winapi" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.0 (69f9c33d7 2022-12-12)" ></div></body></html>

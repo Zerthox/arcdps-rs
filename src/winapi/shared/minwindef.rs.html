@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\winapi-0.3.9\src\shared\minwindef.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>minwindef.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../winapi/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../winapi/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../winapi/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\winapi-0.3.9\src\shared\minwindef.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>minwindef.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../normalize.css"><link rel="stylesheet" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../ayu.css" disabled><link rel="stylesheet" href="../../../dark.css" disabled><link rel="stylesheet" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../../winapi/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -100,107 +100,107 @@
 <span id="100">100</span>
 <span id="101">101</span>
 <span id="102">102</span>
-</pre><pre class="rust"><code><span class="comment">// Licensed under the Apache License, Version 2.0</span>
-<span class="comment">// &lt;LICENSE-APACHE or http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license</span>
-<span class="comment">// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your option.</span>
-<span class="comment">// All files in the project carrying such notice may not be copied, modified, or distributed</span>
-<span class="comment">// except according to those terms.</span>
-<span class="doccomment">//! Basic Windows Type Definitions for minwin partition</span>
-<span class="kw">use</span> <span class="ident">ctypes</span>::{<span class="ident">c_char</span>, <span class="ident">c_float</span>, <span class="ident">c_int</span>, <span class="ident">c_long</span>, <span class="ident">c_uchar</span>, <span class="ident">c_uint</span>, <span class="ident">c_ulong</span>, <span class="ident">c_ushort</span>, <span class="ident">c_void</span>};
-<span class="kw">use</span> <span class="ident">shared::basetsd</span>::{<span class="ident">LONG_PTR</span>, <span class="ident">UINT_PTR</span>};
-<span class="kw">use</span> <span class="ident">shared::ntdef</span>::{<span class="ident">HANDLE</span>, <span class="ident">LONG</span>};
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">ULONG</span> <span class="op">=</span> <span class="ident">c_ulong</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PULONG</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">ULONG</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">USHORT</span> <span class="op">=</span> <span class="ident">c_ushort</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PUSHORT</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">USHORT</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">UCHAR</span> <span class="op">=</span> <span class="ident">c_uchar</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PUCHAR</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">UCHAR</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PSZ</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">c_char</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">MAX_PATH</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="number">260</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">FALSE</span>: <span class="ident">BOOL</span> <span class="op">=</span> <span class="number">0</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TRUE</span>: <span class="ident">BOOL</span> <span class="op">=</span> <span class="number">1</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">DWORD</span> <span class="op">=</span> <span class="ident">c_ulong</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">BOOL</span> <span class="op">=</span> <span class="ident">c_int</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">BYTE</span> <span class="op">=</span> <span class="ident">c_uchar</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">WORD</span> <span class="op">=</span> <span class="ident">c_ushort</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">FLOAT</span> <span class="op">=</span> <span class="ident">c_float</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PFLOAT</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">FLOAT</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PBOOL</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">BOOL</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LPBOOL</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">BOOL</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PBYTE</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">BYTE</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LPBYTE</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">BYTE</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PINT</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">c_int</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LPINT</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">c_int</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PWORD</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">WORD</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LPWORD</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">WORD</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LPLONG</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">c_long</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PDWORD</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">DWORD</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LPDWORD</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">DWORD</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LPVOID</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">c_void</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LPCVOID</span> <span class="op">=</span> <span class="kw-2">*const</span> <span class="ident">c_void</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">INT</span> <span class="op">=</span> <span class="ident">c_int</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">UINT</span> <span class="op">=</span> <span class="ident">c_uint</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PUINT</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">c_uint</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">WPARAM</span> <span class="op">=</span> <span class="ident">UINT_PTR</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LPARAM</span> <span class="op">=</span> <span class="ident">LONG_PTR</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LRESULT</span> <span class="op">=</span> <span class="ident">LONG_PTR</span>;
-<span class="attribute">#[<span class="ident">inline</span>]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">MAKEWORD</span>(<span class="ident">a</span>: <span class="ident">BYTE</span>, <span class="ident">b</span>: <span class="ident">BYTE</span>) -&gt; <span class="ident">WORD</span> {
-    (<span class="ident">a</span> <span class="kw">as</span> <span class="ident">WORD</span>) <span class="op">|</span> ((<span class="ident">b</span> <span class="kw">as</span> <span class="ident">WORD</span>) <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">8</span>)
+</pre><pre class="rust"><code><span class="comment">// Licensed under the Apache License, Version 2.0
+// &lt;LICENSE-APACHE or http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license
+// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your option.
+// All files in the project carrying such notice may not be copied, modified, or distributed
+// except according to those terms.
+</span><span class="doccomment">//! Basic Windows Type Definitions for minwin partition
+</span><span class="kw">use </span>ctypes::{c_char, c_float, c_int, c_long, c_uchar, c_uint, c_ulong, c_ushort, c_void};
+<span class="kw">use </span>shared::basetsd::{LONG_PTR, UINT_PTR};
+<span class="kw">use </span>shared::ntdef::{HANDLE, LONG};
+<span class="kw">pub type </span>ULONG = c_ulong;
+<span class="kw">pub type </span>PULONG = <span class="kw-2">*mut </span>ULONG;
+<span class="kw">pub type </span>USHORT = c_ushort;
+<span class="kw">pub type </span>PUSHORT = <span class="kw-2">*mut </span>USHORT;
+<span class="kw">pub type </span>UCHAR = c_uchar;
+<span class="kw">pub type </span>PUCHAR = <span class="kw-2">*mut </span>UCHAR;
+<span class="kw">pub type </span>PSZ = <span class="kw-2">*mut </span>c_char;
+<span class="kw">pub const </span>MAX_PATH: usize = <span class="number">260</span>;
+<span class="kw">pub const </span>FALSE: BOOL = <span class="number">0</span>;
+<span class="kw">pub const </span>TRUE: BOOL = <span class="number">1</span>;
+<span class="kw">pub type </span>DWORD = c_ulong;
+<span class="kw">pub type </span>BOOL = c_int;
+<span class="kw">pub type </span>BYTE = c_uchar;
+<span class="kw">pub type </span>WORD = c_ushort;
+<span class="kw">pub type </span>FLOAT = c_float;
+<span class="kw">pub type </span>PFLOAT = <span class="kw-2">*mut </span>FLOAT;
+<span class="kw">pub type </span>PBOOL = <span class="kw-2">*mut </span>BOOL;
+<span class="kw">pub type </span>LPBOOL = <span class="kw-2">*mut </span>BOOL;
+<span class="kw">pub type </span>PBYTE = <span class="kw-2">*mut </span>BYTE;
+<span class="kw">pub type </span>LPBYTE = <span class="kw-2">*mut </span>BYTE;
+<span class="kw">pub type </span>PINT = <span class="kw-2">*mut </span>c_int;
+<span class="kw">pub type </span>LPINT = <span class="kw-2">*mut </span>c_int;
+<span class="kw">pub type </span>PWORD = <span class="kw-2">*mut </span>WORD;
+<span class="kw">pub type </span>LPWORD = <span class="kw-2">*mut </span>WORD;
+<span class="kw">pub type </span>LPLONG = <span class="kw-2">*mut </span>c_long;
+<span class="kw">pub type </span>PDWORD = <span class="kw-2">*mut </span>DWORD;
+<span class="kw">pub type </span>LPDWORD = <span class="kw-2">*mut </span>DWORD;
+<span class="kw">pub type </span>LPVOID = <span class="kw-2">*mut </span>c_void;
+<span class="kw">pub type </span>LPCVOID = <span class="kw-2">*const </span>c_void;
+<span class="kw">pub type </span>INT = c_int;
+<span class="kw">pub type </span>UINT = c_uint;
+<span class="kw">pub type </span>PUINT = <span class="kw-2">*mut </span>c_uint;
+<span class="kw">pub type </span>WPARAM = UINT_PTR;
+<span class="kw">pub type </span>LPARAM = LONG_PTR;
+<span class="kw">pub type </span>LRESULT = LONG_PTR;
+<span class="attribute">#[inline]
+</span><span class="kw">pub fn </span>MAKEWORD(a: BYTE, b: BYTE) -&gt; WORD {
+    (a <span class="kw">as </span>WORD) | ((b <span class="kw">as </span>WORD) &lt;&lt; <span class="number">8</span>)
 }
-<span class="attribute">#[<span class="ident">inline</span>]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">MAKELONG</span>(<span class="ident">a</span>: <span class="ident">WORD</span>, <span class="ident">b</span>: <span class="ident">WORD</span>) -&gt; <span class="ident">LONG</span> {
-    ((<span class="ident">a</span> <span class="kw">as</span> <span class="ident">DWORD</span>) <span class="op">|</span> ((<span class="ident">b</span> <span class="kw">as</span> <span class="ident">DWORD</span>) <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">16</span>)) <span class="kw">as</span> <span class="ident">LONG</span>
+<span class="attribute">#[inline]
+</span><span class="kw">pub fn </span>MAKELONG(a: WORD, b: WORD) -&gt; LONG {
+    ((a <span class="kw">as </span>DWORD) | ((b <span class="kw">as </span>DWORD) &lt;&lt; <span class="number">16</span>)) <span class="kw">as </span>LONG
 }
-<span class="attribute">#[<span class="ident">inline</span>]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">LOWORD</span>(<span class="ident">l</span>: <span class="ident">DWORD</span>) -&gt; <span class="ident">WORD</span> {
-    (<span class="ident">l</span> <span class="op">&amp;</span> <span class="number">0xffff</span>) <span class="kw">as</span> <span class="ident">WORD</span>
+<span class="attribute">#[inline]
+</span><span class="kw">pub fn </span>LOWORD(l: DWORD) -&gt; WORD {
+    (l &amp; <span class="number">0xffff</span>) <span class="kw">as </span>WORD
 }
-<span class="attribute">#[<span class="ident">inline</span>]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">HIWORD</span>(<span class="ident">l</span>: <span class="ident">DWORD</span>) -&gt; <span class="ident">WORD</span> {
-    ((<span class="ident">l</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">16</span>) <span class="op">&amp;</span> <span class="number">0xffff</span>) <span class="kw">as</span> <span class="ident">WORD</span>
+<span class="attribute">#[inline]
+</span><span class="kw">pub fn </span>HIWORD(l: DWORD) -&gt; WORD {
+    ((l &gt;&gt; <span class="number">16</span>) &amp; <span class="number">0xffff</span>) <span class="kw">as </span>WORD
 }
-<span class="attribute">#[<span class="ident">inline</span>]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">LOBYTE</span>(<span class="ident">l</span>: <span class="ident">WORD</span>) -&gt; <span class="ident">BYTE</span> {
-    (<span class="ident">l</span> <span class="op">&amp;</span> <span class="number">0xff</span>) <span class="kw">as</span> <span class="ident">BYTE</span>
+<span class="attribute">#[inline]
+</span><span class="kw">pub fn </span>LOBYTE(l: WORD) -&gt; BYTE {
+    (l &amp; <span class="number">0xff</span>) <span class="kw">as </span>BYTE
 }
-<span class="attribute">#[<span class="ident">inline</span>]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">HIBYTE</span>(<span class="ident">l</span>: <span class="ident">WORD</span>) -&gt; <span class="ident">BYTE</span> {
-    ((<span class="ident">l</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">8</span>) <span class="op">&amp;</span> <span class="number">0xff</span>) <span class="kw">as</span> <span class="ident">BYTE</span>
+<span class="attribute">#[inline]
+</span><span class="kw">pub fn </span>HIBYTE(l: WORD) -&gt; BYTE {
+    ((l &gt;&gt; <span class="number">8</span>) &amp; <span class="number">0xff</span>) <span class="kw">as </span>BYTE
 }
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">SPHANDLE</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">HANDLE</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LPHANDLE</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">HANDLE</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">HGLOBAL</span> <span class="op">=</span> <span class="ident">HANDLE</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">HLOCAL</span> <span class="op">=</span> <span class="ident">HANDLE</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">GLOBALHANDLE</span> <span class="op">=</span> <span class="ident">HANDLE</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LOCALHANDLE</span> <span class="op">=</span> <span class="ident">HANDLE</span>;
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">__some_function</span> {}
-<span class="doccomment">/// Pointer to a function with unknown type signature.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">FARPROC</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">__some_function</span>;
-<span class="doccomment">/// Pointer to a function with unknown type signature.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">NEARPROC</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">__some_function</span>;
-<span class="doccomment">/// Pointer to a function with unknown type signature.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PROC</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">__some_function</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">ATOM</span> <span class="op">=</span> <span class="ident">WORD</span>;
-<span class="macro">DECLARE_HANDLE!</span>{<span class="ident">HKEY</span>, <span class="ident">HKEY__</span>}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PHKEY</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">HKEY</span>;
-<span class="macro">DECLARE_HANDLE!</span>{<span class="ident">HMETAFILE</span>, <span class="ident">HMETAFILE__</span>}
-<span class="macro">DECLARE_HANDLE!</span>{<span class="ident">HINSTANCE</span>, <span class="ident">HINSTANCE__</span>}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">HMODULE</span> <span class="op">=</span> <span class="ident">HINSTANCE</span>;
-<span class="macro">DECLARE_HANDLE!</span>{<span class="ident">HRGN</span>, <span class="ident">HRGN__</span>}
-<span class="macro">DECLARE_HANDLE!</span>{<span class="ident">HRSRC</span>, <span class="ident">HRSRC__</span>}
-<span class="macro">DECLARE_HANDLE!</span>{<span class="ident">HSPRITE</span>, <span class="ident">HSPRITE__</span>}
-<span class="macro">DECLARE_HANDLE!</span>{<span class="ident">HLSURF</span>, <span class="ident">HLSURF__</span>}
-<span class="macro">DECLARE_HANDLE!</span>{<span class="ident">HSTR</span>, <span class="ident">HSTR__</span>}
-<span class="macro">DECLARE_HANDLE!</span>{<span class="ident">HTASK</span>, <span class="ident">HTASK__</span>}
-<span class="macro">DECLARE_HANDLE!</span>{<span class="ident">HWINSTA</span>, <span class="ident">HWINSTA__</span>}
-<span class="macro">DECLARE_HANDLE!</span>{<span class="ident">HKL</span>, <span class="ident">HKL__</span>}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">HFILE</span> <span class="op">=</span> <span class="ident">c_int</span>;
-<span class="macro">STRUCT!</span>{<span class="attribute">#[<span class="ident">debug</span>]</span> <span class="kw">struct</span> <span class="ident">FILETIME</span> {
-    <span class="ident">dwLowDateTime</span>: <span class="ident">DWORD</span>,
-    <span class="ident">dwHighDateTime</span>: <span class="ident">DWORD</span>,
+<span class="kw">pub type </span>SPHANDLE = <span class="kw-2">*mut </span>HANDLE;
+<span class="kw">pub type </span>LPHANDLE = <span class="kw-2">*mut </span>HANDLE;
+<span class="kw">pub type </span>HGLOBAL = HANDLE;
+<span class="kw">pub type </span>HLOCAL = HANDLE;
+<span class="kw">pub type </span>GLOBALHANDLE = HANDLE;
+<span class="kw">pub type </span>LOCALHANDLE = HANDLE;
+<span class="kw">pub enum </span>__some_function {}
+<span class="doccomment">/// Pointer to a function with unknown type signature.
+</span><span class="kw">pub type </span>FARPROC = <span class="kw-2">*mut </span>__some_function;
+<span class="doccomment">/// Pointer to a function with unknown type signature.
+</span><span class="kw">pub type </span>NEARPROC = <span class="kw-2">*mut </span>__some_function;
+<span class="doccomment">/// Pointer to a function with unknown type signature.
+</span><span class="kw">pub type </span>PROC = <span class="kw-2">*mut </span>__some_function;
+<span class="kw">pub type </span>ATOM = WORD;
+<span class="macro">DECLARE_HANDLE!</span>{HKEY, HKEY__}
+<span class="kw">pub type </span>PHKEY = <span class="kw-2">*mut </span>HKEY;
+<span class="macro">DECLARE_HANDLE!</span>{HMETAFILE, HMETAFILE__}
+<span class="macro">DECLARE_HANDLE!</span>{HINSTANCE, HINSTANCE__}
+<span class="kw">pub type </span>HMODULE = HINSTANCE;
+<span class="macro">DECLARE_HANDLE!</span>{HRGN, HRGN__}
+<span class="macro">DECLARE_HANDLE!</span>{HRSRC, HRSRC__}
+<span class="macro">DECLARE_HANDLE!</span>{HSPRITE, HSPRITE__}
+<span class="macro">DECLARE_HANDLE!</span>{HLSURF, HLSURF__}
+<span class="macro">DECLARE_HANDLE!</span>{HSTR, HSTR__}
+<span class="macro">DECLARE_HANDLE!</span>{HTASK, HTASK__}
+<span class="macro">DECLARE_HANDLE!</span>{HWINSTA, HWINSTA__}
+<span class="macro">DECLARE_HANDLE!</span>{HKL, HKL__}
+<span class="kw">pub type </span>HFILE = c_int;
+<span class="macro">STRUCT!</span>{<span class="attribute">#[debug] </span><span class="kw">struct </span>FILETIME {
+    dwLowDateTime: DWORD,
+    dwHighDateTime: DWORD,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PFILETIME</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">FILETIME</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LPFILETIME</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">FILETIME</span>;
+<span class="kw">pub type </span>PFILETIME = <span class="kw-2">*mut </span>FILETIME;
+<span class="kw">pub type </span>LPFILETIME = <span class="kw-2">*mut </span>FILETIME;
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="winapi" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="winapi" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.0 (69f9c33d7 2022-12-12)" ></div></body></html>

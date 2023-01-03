@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\arcdps-imgui-0.8.0\src\utils.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>utils.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script><script defer src="../../main.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../arcdps_imgui/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../arcdps_imgui/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../arcdps_imgui/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\arcdps-imgui-0.8.0\src\utils.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>utils.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../normalize.css"><link rel="stylesheet" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../ayu.css" disabled><link rel="stylesheet" href="../../dark.css" disabled><link rel="stylesheet" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script><script defer src="../../main.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../arcdps_imgui/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -174,181 +174,181 @@
 <span id="174">174</span>
 <span id="175">175</span>
 <span id="176">176</span>
-</pre><pre class="rust"><code><span class="attribute">#![<span class="ident">allow</span>(<span class="ident">clippy::float_cmp</span>)]</span>
-<span class="kw">use</span> <span class="ident">bitflags::bitflags</span>;
+</pre><pre class="rust"><code><span class="attribute">#![allow(clippy::float_cmp)]
+</span><span class="kw">use </span>bitflags::bitflags;
 
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::input::mouse::MouseButton</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::style::StyleColor</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::sys</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::Ui</span>;
+<span class="kw">use </span><span class="kw">crate</span>::input::mouse::MouseButton;
+<span class="kw">use </span><span class="kw">crate</span>::style::StyleColor;
+<span class="kw">use </span><span class="kw">crate</span>::sys;
+<span class="kw">use </span><span class="kw">crate</span>::Ui;
 
-<span class="macro">bitflags!</span> {
-    <span class="doccomment">/// Item hover check option flags</span>
-    <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">transparent</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">ItemHoveredFlags</span>: <span class="ident">u32</span> {
-        <span class="doccomment">/// Return true even if a popup window is blocking access to this item</span>
-        <span class="kw">const</span> <span class="ident">ALLOW_WHEN_BLOCKED_BY_POPUP</span> <span class="op">=</span> <span class="ident">sys::ImGuiHoveredFlags_AllowWhenBlockedByPopup</span>;
-        <span class="doccomment">/// Return true even if an active item is blocking access to this item</span>
-        <span class="kw">const</span> <span class="ident">ALLOW_WHEN_BLOCKED_BY_ACTIVE_ITEM</span> <span class="op">=</span> <span class="ident">sys::ImGuiHoveredFlags_AllowWhenBlockedByActiveItem</span>;
-        <span class="doccomment">/// Return true even if the position is obstructed or overlapped by another window</span>
-        <span class="kw">const</span> <span class="ident">ALLOW_WHEN_OVERLAPPED</span> <span class="op">=</span> <span class="ident">sys::ImGuiHoveredFlags_AllowWhenOverlapped</span>;
-        <span class="doccomment">/// Return true even if the item is disabled</span>
-        <span class="kw">const</span> <span class="ident">ALLOW_WHEN_DISABLED</span> <span class="op">=</span> <span class="ident">sys::ImGuiHoveredFlags_AllowWhenDisabled</span>;
-        <span class="kw">const</span> <span class="ident">RECT_ONLY</span> <span class="op">=</span> <span class="ident">sys::ImGuiHoveredFlags_RectOnly</span>;
+<span class="macro">bitflags! </span>{
+    <span class="doccomment">/// Item hover check option flags
+    </span><span class="attribute">#[repr(transparent)]
+    </span><span class="kw">pub struct </span>ItemHoveredFlags: u32 {
+        <span class="doccomment">/// Return true even if a popup window is blocking access to this item
+        </span><span class="kw">const </span>ALLOW_WHEN_BLOCKED_BY_POPUP = sys::ImGuiHoveredFlags_AllowWhenBlockedByPopup;
+        <span class="doccomment">/// Return true even if an active item is blocking access to this item
+        </span><span class="kw">const </span>ALLOW_WHEN_BLOCKED_BY_ACTIVE_ITEM = sys::ImGuiHoveredFlags_AllowWhenBlockedByActiveItem;
+        <span class="doccomment">/// Return true even if the position is obstructed or overlapped by another window
+        </span><span class="kw">const </span>ALLOW_WHEN_OVERLAPPED = sys::ImGuiHoveredFlags_AllowWhenOverlapped;
+        <span class="doccomment">/// Return true even if the item is disabled
+        </span><span class="kw">const </span>ALLOW_WHEN_DISABLED = sys::ImGuiHoveredFlags_AllowWhenDisabled;
+        <span class="kw">const </span>RECT_ONLY = sys::ImGuiHoveredFlags_RectOnly;
     }
 }
 
-<span class="doccomment">/// # Item/widget utilities</span>
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> <span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Returns `true` if the last item is hovered</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;IsItemHovered&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_item_hovered</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igIsItemHovered</span>(<span class="number">0</span>) }
+<span class="doccomment">/// # Item/widget utilities
+</span><span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>&gt; Ui&lt;<span class="lifetime">&#39;ui</span>&gt; {
+    <span class="doccomment">/// Returns `true` if the last item is hovered
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;IsItemHovered&quot;</span>)]
+    </span><span class="kw">pub fn </span>is_item_hovered(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        <span class="kw">unsafe </span>{ sys::igIsItemHovered(<span class="number">0</span>) }
     }
-    <span class="doccomment">/// Returns `true` if the last item is hovered based on the given flags</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;IsItemHovered&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_item_hovered_with_flags</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">flags</span>: <span class="ident">ItemHoveredFlags</span>) -&gt; <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igIsItemHovered</span>(<span class="ident">flags</span>.<span class="ident">bits</span>() <span class="kw">as</span> <span class="ident">i32</span>) }
+    <span class="doccomment">/// Returns `true` if the last item is hovered based on the given flags
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;IsItemHovered&quot;</span>)]
+    </span><span class="kw">pub fn </span>is_item_hovered_with_flags(<span class="kw-2">&amp;</span><span class="self">self</span>, flags: ItemHoveredFlags) -&gt; bool {
+        <span class="kw">unsafe </span>{ sys::igIsItemHovered(flags.bits() <span class="kw">as </span>i32) }
     }
-    <span class="doccomment">/// Returns `true` if the last item is active</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;IsItemActive&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_item_active</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igIsItemActive</span>() }
+    <span class="doccomment">/// Returns `true` if the last item is active
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;IsItemActive&quot;</span>)]
+    </span><span class="kw">pub fn </span>is_item_active(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        <span class="kw">unsafe </span>{ sys::igIsItemActive() }
     }
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;IsItemFocused&quot;</span>)]</span>
-    <span class="doccomment">/// Returns `true` if the last item is focused for keyboard/gamepad navigation</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_item_focused</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igIsItemFocused</span>() }
+    <span class="attribute">#[doc(alias = <span class="string">&quot;IsItemFocused&quot;</span>)]
+    </span><span class="doccomment">/// Returns `true` if the last item is focused for keyboard/gamepad navigation
+    </span><span class="kw">pub fn </span>is_item_focused(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        <span class="kw">unsafe </span>{ sys::igIsItemFocused() }
     }
-    <span class="doccomment">/// Returns `true` if the last item is being clicked by `MouseButton::Left`.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This is the same as [is_item_clicked_with_button](Self::is_item_clicked_with_button)</span>
-    <span class="doccomment">/// with `button` set to `MouseButton::Left`.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;IsItemClicked&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_item_clicked</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
-        <span class="self">self</span>.<span class="ident">is_item_clicked_with_button</span>(<span class="ident">MouseButton::Left</span>)
+    <span class="doccomment">/// Returns `true` if the last item is being clicked by `MouseButton::Left`.
+    ///
+    /// This is the same as [is_item_clicked_with_button](Self::is_item_clicked_with_button)
+    /// with `button` set to `MouseButton::Left`.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;IsItemClicked&quot;</span>)]
+    </span><span class="kw">pub fn </span>is_item_clicked(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        <span class="self">self</span>.is_item_clicked_with_button(MouseButton::Left)
     }
 
-    <span class="doccomment">/// Returns `true` if the last item is being clicked</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;IsItemClicked&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_item_clicked_with_button</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">button</span>: <span class="ident">MouseButton</span>) -&gt; <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igIsItemClicked</span>(<span class="ident">button</span> <span class="kw">as</span> <span class="ident">i32</span>) }
+    <span class="doccomment">/// Returns `true` if the last item is being clicked
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;IsItemClicked&quot;</span>)]
+    </span><span class="kw">pub fn </span>is_item_clicked_with_button(<span class="kw-2">&amp;</span><span class="self">self</span>, button: MouseButton) -&gt; bool {
+        <span class="kw">unsafe </span>{ sys::igIsItemClicked(button <span class="kw">as </span>i32) }
     }
-    <span class="doccomment">/// Returns `true` if the last item is visible</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;IsItemVisible&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_item_visible</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igIsItemVisible</span>() }
+    <span class="doccomment">/// Returns `true` if the last item is visible
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;IsItemVisible&quot;</span>)]
+    </span><span class="kw">pub fn </span>is_item_visible(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        <span class="kw">unsafe </span>{ sys::igIsItemVisible() }
     }
-    <span class="doccomment">/// Returns `true` if the last item modified its underlying value this frame or was pressed</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;IsItemEdited&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_item_edited</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igIsItemEdited</span>() }
+    <span class="doccomment">/// Returns `true` if the last item modified its underlying value this frame or was pressed
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;IsItemEdited&quot;</span>)]
+    </span><span class="kw">pub fn </span>is_item_edited(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        <span class="kw">unsafe </span>{ sys::igIsItemEdited() }
     }
-    <span class="doccomment">/// Returns `true` if the last item was just made active</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;IsItemActivated&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_item_activated</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igIsItemActivated</span>() }
+    <span class="doccomment">/// Returns `true` if the last item was just made active
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;IsItemActivated&quot;</span>)]
+    </span><span class="kw">pub fn </span>is_item_activated(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        <span class="kw">unsafe </span>{ sys::igIsItemActivated() }
     }
-    <span class="doccomment">/// Returns `true` if the last item was just made inactive</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;IsItemDeactivated&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_item_deactivated</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igIsItemDeactivated</span>() }
+    <span class="doccomment">/// Returns `true` if the last item was just made inactive
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;IsItemDeactivated&quot;</span>)]
+    </span><span class="kw">pub fn </span>is_item_deactivated(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        <span class="kw">unsafe </span>{ sys::igIsItemDeactivated() }
     }
-    <span class="doccomment">/// Returns `true` if the last item was just made inactive and made a value change when it was</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;IsItemDeactivatedAfterEdit&quot;</span>)]</span>
-    <span class="doccomment">/// active</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_item_deactivated_after_edit</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igIsItemDeactivatedAfterEdit</span>() }
+    <span class="doccomment">/// Returns `true` if the last item was just made inactive and made a value change when it was
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;IsItemDeactivatedAfterEdit&quot;</span>)]
+    </span><span class="doccomment">/// active
+    </span><span class="kw">pub fn </span>is_item_deactivated_after_edit(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        <span class="kw">unsafe </span>{ sys::igIsItemDeactivatedAfterEdit() }
     }
-    <span class="doccomment">/// Returns `true` if the last item open state was toggled</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;IsItemToggledOpen&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_item_toggled_open</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igIsItemToggledOpen</span>() }
+    <span class="doccomment">/// Returns `true` if the last item open state was toggled
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;IsItemToggledOpen&quot;</span>)]
+    </span><span class="kw">pub fn </span>is_item_toggled_open(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        <span class="kw">unsafe </span>{ sys::igIsItemToggledOpen() }
     }
-    <span class="doccomment">/// Returns `true` if any item is hovered</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;IsAnyItemHovered&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_any_item_hovered</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igIsAnyItemHovered</span>() }
+    <span class="doccomment">/// Returns `true` if any item is hovered
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;IsAnyItemHovered&quot;</span>)]
+    </span><span class="kw">pub fn </span>is_any_item_hovered(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        <span class="kw">unsafe </span>{ sys::igIsAnyItemHovered() }
     }
-    <span class="doccomment">/// Returns `true` if any item is active</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;IsAnyItemActive&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_any_item_active</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igIsAnyItemActive</span>() }
+    <span class="doccomment">/// Returns `true` if any item is active
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;IsAnyItemActive&quot;</span>)]
+    </span><span class="kw">pub fn </span>is_any_item_active(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        <span class="kw">unsafe </span>{ sys::igIsAnyItemActive() }
     }
-    <span class="doccomment">/// Returns `true` if any item is focused</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;IsAnyItemFocused&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_any_item_focused</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igIsAnyItemFocused</span>() }
+    <span class="doccomment">/// Returns `true` if any item is focused
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;IsAnyItemFocused&quot;</span>)]
+    </span><span class="kw">pub fn </span>is_any_item_focused(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        <span class="kw">unsafe </span>{ sys::igIsAnyItemFocused() }
     }
-    <span class="doccomment">/// Returns the upper-left bounding rectangle of the last item (in screen coordinates)</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GetItemRectMin&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">item_rect_min</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; [<span class="ident">f32</span>; <span class="number">2</span>] {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">out</span> <span class="op">=</span> <span class="ident">sys::ImVec2::zero</span>();
-        <span class="kw">unsafe</span> { <span class="ident">sys::igGetItemRectMin</span>(<span class="kw-2">&amp;mut</span> <span class="ident">out</span>) }
-        <span class="ident">out</span>.<span class="ident">into</span>()
+    <span class="doccomment">/// Returns the upper-left bounding rectangle of the last item (in screen coordinates)
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;GetItemRectMin&quot;</span>)]
+    </span><span class="kw">pub fn </span>item_rect_min(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; [f32; <span class="number">2</span>] {
+        <span class="kw">let </span><span class="kw-2">mut </span>out = sys::ImVec2::zero();
+        <span class="kw">unsafe </span>{ sys::igGetItemRectMin(<span class="kw-2">&amp;mut </span>out) }
+        out.into()
     }
-    <span class="doccomment">/// Returns the lower-right bounding rectangle of the last item (in screen coordinates)</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GetItemRectMax&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">item_rect_max</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; [<span class="ident">f32</span>; <span class="number">2</span>] {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">out</span> <span class="op">=</span> <span class="ident">sys::ImVec2::zero</span>();
-        <span class="kw">unsafe</span> { <span class="ident">sys::igGetItemRectMax</span>(<span class="kw-2">&amp;mut</span> <span class="ident">out</span>) }
-        <span class="ident">out</span>.<span class="ident">into</span>()
+    <span class="doccomment">/// Returns the lower-right bounding rectangle of the last item (in screen coordinates)
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;GetItemRectMax&quot;</span>)]
+    </span><span class="kw">pub fn </span>item_rect_max(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; [f32; <span class="number">2</span>] {
+        <span class="kw">let </span><span class="kw-2">mut </span>out = sys::ImVec2::zero();
+        <span class="kw">unsafe </span>{ sys::igGetItemRectMax(<span class="kw-2">&amp;mut </span>out) }
+        out.into()
     }
-    <span class="doccomment">/// Returns the size of the last item</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GetItemRectSize&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">item_rect_size</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; [<span class="ident">f32</span>; <span class="number">2</span>] {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">out</span> <span class="op">=</span> <span class="ident">sys::ImVec2::zero</span>();
-        <span class="kw">unsafe</span> { <span class="ident">sys::igGetItemRectSize</span>(<span class="kw-2">&amp;mut</span> <span class="ident">out</span>) }
-        <span class="ident">out</span>.<span class="ident">into</span>()
+    <span class="doccomment">/// Returns the size of the last item
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;GetItemRectSize&quot;</span>)]
+    </span><span class="kw">pub fn </span>item_rect_size(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; [f32; <span class="number">2</span>] {
+        <span class="kw">let </span><span class="kw-2">mut </span>out = sys::ImVec2::zero();
+        <span class="kw">unsafe </span>{ sys::igGetItemRectSize(<span class="kw-2">&amp;mut </span>out) }
+        out.into()
     }
-    <span class="doccomment">/// Allows the last item to be overlapped by a subsequent item.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Both may be activated during the same frame before the later one takes priority.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;SetItemAllowOverlap&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_item_allow_overlap</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igSetItemAllowOverlap</span>() };
+    <span class="doccomment">/// Allows the last item to be overlapped by a subsequent item.
+    ///
+    /// Both may be activated during the same frame before the later one takes priority.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;SetItemAllowOverlap&quot;</span>)]
+    </span><span class="kw">pub fn </span>set_item_allow_overlap(<span class="kw-2">&amp;</span><span class="self">self</span>) {
+        <span class="kw">unsafe </span>{ sys::igSetItemAllowOverlap() };
     }
-    <span class="doccomment">/// Makes the last item the default focused item of the window</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;SetItemDefaultFocus&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_item_default_focus</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igSetItemDefaultFocus</span>() };
+    <span class="doccomment">/// Makes the last item the default focused item of the window
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;SetItemDefaultFocus&quot;</span>)]
+    </span><span class="kw">pub fn </span>set_item_default_focus(<span class="kw-2">&amp;</span><span class="self">self</span>) {
+        <span class="kw">unsafe </span>{ sys::igSetItemDefaultFocus() };
     }
 }
 
-<span class="doccomment">/// # Miscellaneous utilities</span>
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> <span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Returns `true` if the rectangle (of given size, starting from cursor position) is visible</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;IsRectVisibleNil&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_cursor_rect_visible</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">size</span>: [<span class="ident">f32</span>; <span class="number">2</span>]) -&gt; <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igIsRectVisible_Nil</span>(<span class="ident">size</span>.<span class="ident">into</span>()) }
+<span class="doccomment">/// # Miscellaneous utilities
+</span><span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>&gt; Ui&lt;<span class="lifetime">&#39;ui</span>&gt; {
+    <span class="doccomment">/// Returns `true` if the rectangle (of given size, starting from cursor position) is visible
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;IsRectVisibleNil&quot;</span>)]
+    </span><span class="kw">pub fn </span>is_cursor_rect_visible(<span class="kw-2">&amp;</span><span class="self">self</span>, size: [f32; <span class="number">2</span>]) -&gt; bool {
+        <span class="kw">unsafe </span>{ sys::igIsRectVisible_Nil(size.into()) }
     }
-    <span class="doccomment">/// Returns `true` if the rectangle (in screen coordinates) is visible</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;IsRectVisibleNilVec2&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_rect_visible</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">rect_min</span>: [<span class="ident">f32</span>; <span class="number">2</span>], <span class="ident">rect_max</span>: [<span class="ident">f32</span>; <span class="number">2</span>]) -&gt; <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igIsRectVisible_Vec2</span>(<span class="ident">rect_min</span>.<span class="ident">into</span>(), <span class="ident">rect_max</span>.<span class="ident">into</span>()) }
+    <span class="doccomment">/// Returns `true` if the rectangle (in screen coordinates) is visible
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;IsRectVisibleNilVec2&quot;</span>)]
+    </span><span class="kw">pub fn </span>is_rect_visible(<span class="kw-2">&amp;</span><span class="self">self</span>, rect_min: [f32; <span class="number">2</span>], rect_max: [f32; <span class="number">2</span>]) -&gt; bool {
+        <span class="kw">unsafe </span>{ sys::igIsRectVisible_Vec2(rect_min.into(), rect_max.into()) }
     }
-    <span class="doccomment">/// Returns the global imgui-rs time.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Incremented by Io::delta_time every frame.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GetTime&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">time</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">f64</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igGetTime</span>() }
+    <span class="doccomment">/// Returns the global imgui-rs time.
+    ///
+    /// Incremented by Io::delta_time every frame.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;GetTime&quot;</span>)]
+    </span><span class="kw">pub fn </span>time(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; f64 {
+        <span class="kw">unsafe </span>{ sys::igGetTime() }
     }
-    <span class="doccomment">/// Returns the global imgui-rs frame count.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Incremented by 1 every frame.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GetFrameCount&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">frame_count</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">i32</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igGetFrameCount</span>() }
+    <span class="doccomment">/// Returns the global imgui-rs frame count.
+    ///
+    /// Incremented by 1 every frame.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;GetFrameCount&quot;</span>)]
+    </span><span class="kw">pub fn </span>frame_count(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; i32 {
+        <span class="kw">unsafe </span>{ sys::igGetFrameCount() }
     }
-    <span class="doccomment">/// Returns a single style color from the user interface style.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Use this function if you need to access the colors, but don&#39;t want to clone the entire</span>
-    <span class="doccomment">/// style object.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GetStyle&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">style_color</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">style_color</span>: <span class="ident">StyleColor</span>) -&gt; [<span class="ident">f32</span>; <span class="number">4</span>] {
-        <span class="self">self</span>.<span class="ident">ctx</span>.<span class="ident">style</span>()[<span class="ident">style_color</span>]
+    <span class="doccomment">/// Returns a single style color from the user interface style.
+    ///
+    /// Use this function if you need to access the colors, but don&#39;t want to clone the entire
+    /// style object.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;GetStyle&quot;</span>)]
+    </span><span class="kw">pub fn </span>style_color(<span class="kw-2">&amp;</span><span class="self">self</span>, style_color: StyleColor) -&gt; [f32; <span class="number">4</span>] {
+        <span class="self">self</span>.ctx.style()[style_color]
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="arcdps_imgui" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="arcdps_imgui" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.0 (69f9c33d7 2022-12-12)" ></div></body></html>

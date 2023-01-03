@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\winapi-0.3.9\src\shared\wtypes.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>wtypes.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../winapi/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../winapi/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../winapi/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\winapi-0.3.9\src\shared\wtypes.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>wtypes.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../normalize.css"><link rel="stylesheet" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../ayu.css" disabled><link rel="stylesheet" href="../../../dark.css" disabled><link rel="stylesheet" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../../winapi/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -342,349 +342,349 @@
 <span id="342">342</span>
 <span id="343">343</span>
 <span id="344">344</span>
-</pre><pre class="rust"><code><span class="comment">// Licensed under the Apache License, Version 2.0</span>
-<span class="comment">// &lt;LICENSE-APACHE or http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license</span>
-<span class="comment">// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your option.</span>
-<span class="comment">// All files in the project carrying such notice may not be copied, modified, or distributed</span>
-<span class="comment">// except according to those terms.</span>
-<span class="kw">use</span> <span class="ident">ctypes</span>::{<span class="ident">__int64</span>, <span class="ident">c_double</span>, <span class="ident">c_short</span>, <span class="ident">c_ushort</span>, <span class="ident">c_void</span>, <span class="ident">wchar_t</span>};
-<span class="kw">use</span> <span class="ident">shared::guiddef</span>::{<span class="ident">CLSID</span>, <span class="ident">GUID</span>};
-<span class="kw">use</span> <span class="ident">shared::minwindef</span>::{<span class="ident">BYTE</span>, <span class="ident">DWORD</span>, <span class="ident">ULONG</span>, <span class="ident">USHORT</span>, <span class="ident">WORD</span>};
-<span class="kw">use</span> <span class="ident">shared::ntdef</span>::{<span class="ident">LCID</span>, <span class="ident">LONG</span>, <span class="ident">LONGLONG</span>, <span class="ident">ULONGLONG</span>};
-<span class="kw">use</span> <span class="ident">shared::rpcndr::byte</span>;
-<span class="kw">use</span> <span class="ident">shared::wtypesbase</span>::{
-    <span class="ident">BYTE_BLOB</span>, <span class="ident">DWORD_BLOB</span>, <span class="ident">FLAGGED_BYTE_BLOB</span>, <span class="ident">FLAGGED_WORD_BLOB</span>, <span class="ident">LPOLESTR</span>, <span class="ident">OLECHAR</span>
+</pre><pre class="rust"><code><span class="comment">// Licensed under the Apache License, Version 2.0
+// &lt;LICENSE-APACHE or http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license
+// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your option.
+// All files in the project carrying such notice may not be copied, modified, or distributed
+// except according to those terms.
+</span><span class="kw">use </span>ctypes::{__int64, c_double, c_short, c_ushort, c_void, wchar_t};
+<span class="kw">use </span>shared::guiddef::{CLSID, GUID};
+<span class="kw">use </span>shared::minwindef::{BYTE, DWORD, ULONG, USHORT, WORD};
+<span class="kw">use </span>shared::ntdef::{LCID, LONG, LONGLONG, ULONGLONG};
+<span class="kw">use </span>shared::rpcndr::byte;
+<span class="kw">use </span>shared::wtypesbase::{
+    BYTE_BLOB, DWORD_BLOB, FLAGGED_BYTE_BLOB, FLAGGED_WORD_BLOB, LPOLESTR, OLECHAR
 };
-<span class="kw">use</span> <span class="ident">um::wingdi::LOGPALETTE</span>;
-<span class="comment">// extern RPC_IF_HANDLE __MIDL_itf_wtypes_0000_0000_v0_0_c_ifspec;</span>
-<span class="comment">// extern RPC_IF_HANDLE __MIDL_itf_wtypes_0000_0000_v0_0_s_ifspec;</span>
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">RemHGLOBAL</span> {
-    <span class="ident">fNullHGlobal</span>: <span class="ident">LONG</span>,
-    <span class="ident">cbData</span>: <span class="ident">ULONG</span>,
-    <span class="ident">data</span>: [<span class="ident">byte</span>; <span class="number">1</span>],
+<span class="kw">use </span>um::wingdi::LOGPALETTE;
+<span class="comment">// extern RPC_IF_HANDLE __MIDL_itf_wtypes_0000_0000_v0_0_c_ifspec;
+// extern RPC_IF_HANDLE __MIDL_itf_wtypes_0000_0000_v0_0_s_ifspec;
+</span><span class="macro">STRUCT!</span>{<span class="kw">struct </span>RemHGLOBAL {
+    fNullHGlobal: LONG,
+    cbData: ULONG,
+    data: [byte; <span class="number">1</span>],
 }}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">RemHMETAFILEPICT</span> {
-    <span class="ident">mm</span>: <span class="ident">LONG</span>,
-    <span class="ident">xExt</span>: <span class="ident">LONG</span>,
-    <span class="ident">yExt</span>: <span class="ident">LONG</span>,
-    <span class="ident">cbData</span>: <span class="ident">ULONG</span>,
-    <span class="ident">data</span>: [<span class="ident">byte</span>; <span class="number">1</span>],
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>RemHMETAFILEPICT {
+    mm: LONG,
+    xExt: LONG,
+    yExt: LONG,
+    cbData: ULONG,
+    data: [byte; <span class="number">1</span>],
 }}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">RemHENHMETAFILE</span> {
-    <span class="ident">cbData</span>: <span class="ident">ULONG</span>,
-    <span class="ident">data</span>: [<span class="ident">byte</span>; <span class="number">1</span>],
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>RemHENHMETAFILE {
+    cbData: ULONG,
+    data: [byte; <span class="number">1</span>],
 }}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">RemHBITMAP</span> {
-    <span class="ident">cbData</span>: <span class="ident">ULONG</span>,
-    <span class="ident">data</span>: [<span class="ident">byte</span>; <span class="number">1</span>],
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>RemHBITMAP {
+    cbData: ULONG,
+    data: [byte; <span class="number">1</span>],
 }}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">RemHPALETTE</span> {
-    <span class="ident">cbData</span>: <span class="ident">ULONG</span>,
-    <span class="ident">data</span>: [<span class="ident">byte</span>; <span class="number">1</span>],
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>RemHPALETTE {
+    cbData: ULONG,
+    data: [byte; <span class="number">1</span>],
 }}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">RemHBRUSH</span> {
-    <span class="ident">cbData</span>: <span class="ident">ULONG</span>,
-    <span class="ident">data</span>: [<span class="ident">byte</span>; <span class="number">1</span>],
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>RemHBRUSH {
+    cbData: ULONG,
+    data: [byte; <span class="number">1</span>],
 }}
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">ROTFLAGS_REGISTRATIONKEEPSALIVE</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x1</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">ROTFLAGS_ALLOWANYCLIENT</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x2</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">ROT_COMPARE_MAX</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">2048</span>;
-<span class="macro">ENUM!</span>{<span class="kw">enum</span> <span class="ident">DVASPECT</span> {
-    <span class="ident">DVASPECT_CONTENT</span> <span class="op">=</span> <span class="number">1</span>,
-    <span class="ident">DVASPECT_THUMBNAIL</span> <span class="op">=</span> <span class="number">2</span>,
-    <span class="ident">DVASPECT_ICON</span> <span class="op">=</span> <span class="number">4</span>,
-    <span class="ident">DVASPECT_DOCPRINT</span> <span class="op">=</span> <span class="number">8</span>,
+<span class="kw">pub const </span>ROTFLAGS_REGISTRATIONKEEPSALIVE: DWORD = <span class="number">0x1</span>;
+<span class="kw">pub const </span>ROTFLAGS_ALLOWANYCLIENT: DWORD = <span class="number">0x2</span>;
+<span class="kw">pub const </span>ROT_COMPARE_MAX: DWORD = <span class="number">2048</span>;
+<span class="macro">ENUM!</span>{<span class="kw">enum </span>DVASPECT {
+    DVASPECT_CONTENT = <span class="number">1</span>,
+    DVASPECT_THUMBNAIL = <span class="number">2</span>,
+    DVASPECT_ICON = <span class="number">4</span>,
+    DVASPECT_DOCPRINT = <span class="number">8</span>,
 }}
-<span class="macro">ENUM!</span>{<span class="kw">enum</span> <span class="ident">STGC</span> {
-    <span class="ident">STGC_DEFAULT</span> <span class="op">=</span> <span class="number">0</span>,
-    <span class="ident">STGC_OVERWRITE</span> <span class="op">=</span> <span class="number">1</span>,
-    <span class="ident">STGC_ONLYIFCURRENT</span> <span class="op">=</span> <span class="number">2</span>,
-    <span class="ident">STGC_DANGEROUSLYCOMMITMERELYTODISKCACHE</span> <span class="op">=</span> <span class="number">4</span>,
-    <span class="ident">STGC_CONSOLIDATE</span> <span class="op">=</span> <span class="number">8</span>,
+<span class="macro">ENUM!</span>{<span class="kw">enum </span>STGC {
+    STGC_DEFAULT = <span class="number">0</span>,
+    STGC_OVERWRITE = <span class="number">1</span>,
+    STGC_ONLYIFCURRENT = <span class="number">2</span>,
+    STGC_DANGEROUSLYCOMMITMERELYTODISKCACHE = <span class="number">4</span>,
+    STGC_CONSOLIDATE = <span class="number">8</span>,
 }}
-<span class="macro">ENUM!</span>{<span class="kw">enum</span> <span class="ident">STGMOVE</span> {
-    <span class="ident">STGMOVE_MOVE</span> <span class="op">=</span> <span class="number">0</span>,
-    <span class="ident">STGMOVE_COPY</span> <span class="op">=</span> <span class="number">1</span>,
-    <span class="ident">STGMOVE_SHALLOWCOPY</span> <span class="op">=</span> <span class="number">2</span>,
+<span class="macro">ENUM!</span>{<span class="kw">enum </span>STGMOVE {
+    STGMOVE_MOVE = <span class="number">0</span>,
+    STGMOVE_COPY = <span class="number">1</span>,
+    STGMOVE_SHALLOWCOPY = <span class="number">2</span>,
 }}
-<span class="macro">ENUM!</span>{<span class="kw">enum</span> <span class="ident">STATFLAG</span> {
-    <span class="ident">STATFLAG_DEFAULT</span> <span class="op">=</span> <span class="number">0</span>,
-    <span class="ident">STATFLAG_NONAME</span> <span class="op">=</span> <span class="number">1</span>,
-    <span class="ident">STATFLAG_NOOPEN</span> <span class="op">=</span> <span class="number">2</span>,
+<span class="macro">ENUM!</span>{<span class="kw">enum </span>STATFLAG {
+    STATFLAG_DEFAULT = <span class="number">0</span>,
+    STATFLAG_NONAME = <span class="number">1</span>,
+    STATFLAG_NOOPEN = <span class="number">2</span>,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">HCONTEXT</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">c_void</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">WDT_INPROC_CALL</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">0x48746457</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">WDT_REMOTE_CALL</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">0x52746457</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">WDT_INPROC64_CALL</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">0x50746457</span>;
-<span class="macro">UNION!</span>{<span class="kw">union</span> <span class="ident">userCLIPFORMAT_u</span> {
-    [<span class="ident">usize</span>; <span class="number">1</span>],
-    <span class="ident">dwValue</span> <span class="ident">dwValue_mut</span>: <span class="ident">DWORD</span>,
-    <span class="ident">pwszName</span> <span class="ident">pwszName_mut</span>: <span class="kw-2">*mut</span> <span class="ident">wchar_t</span>,
+<span class="kw">pub type </span>HCONTEXT = <span class="kw-2">*mut </span>c_void;
+<span class="kw">pub const </span>WDT_INPROC_CALL: ULONG = <span class="number">0x48746457</span>;
+<span class="kw">pub const </span>WDT_REMOTE_CALL: ULONG = <span class="number">0x52746457</span>;
+<span class="kw">pub const </span>WDT_INPROC64_CALL: ULONG = <span class="number">0x50746457</span>;
+<span class="macro">UNION!</span>{<span class="kw">union </span>userCLIPFORMAT_u {
+    [usize; <span class="number">1</span>],
+    dwValue dwValue_mut: DWORD,
+    pwszName pwszName_mut: <span class="kw-2">*mut </span>wchar_t,
 }}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">userCLIPFORMAT</span> {
-    <span class="ident">fContext</span>: <span class="ident">LONG</span>,
-    <span class="ident">u</span>: <span class="ident">userCLIPFORMAT_u</span>,
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>userCLIPFORMAT {
+    fContext: LONG,
+    u: userCLIPFORMAT_u,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">wireCLIPFORMAT</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">userCLIPFORMAT</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">CLIPFORMAT</span> <span class="op">=</span> <span class="ident">WORD</span>;
-<span class="macro">UNION!</span>{<span class="kw">union</span> <span class="ident">GDI_NONREMOTE_u</span> {
-    [<span class="ident">usize</span>; <span class="number">1</span>],
-    <span class="ident">hInproc</span> <span class="ident">hInproc_mut</span>: <span class="ident">LONG</span>,
-    <span class="ident">hRemote</span> <span class="ident">hRemote_mut</span>: <span class="kw-2">*mut</span> <span class="ident">DWORD_BLOB</span>,
+<span class="kw">pub type </span>wireCLIPFORMAT = <span class="kw-2">*mut </span>userCLIPFORMAT;
+<span class="kw">pub type </span>CLIPFORMAT = WORD;
+<span class="macro">UNION!</span>{<span class="kw">union </span>GDI_NONREMOTE_u {
+    [usize; <span class="number">1</span>],
+    hInproc hInproc_mut: LONG,
+    hRemote hRemote_mut: <span class="kw-2">*mut </span>DWORD_BLOB,
 }}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">GDI_NONREMOTE</span> {
-    <span class="ident">fContext</span>: <span class="ident">LONG</span>,
-    <span class="ident">u</span>: <span class="ident">GDI_NONREMOTE_u</span>,
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>GDI_NONREMOTE {
+    fContext: LONG,
+    u: GDI_NONREMOTE_u,
 }}
-<span class="macro">UNION!</span>{<span class="kw">union</span> <span class="ident">userHGLOBAL_u</span> {
-    [<span class="ident">u64</span>; <span class="number">1</span>],
-    <span class="ident">hInproc</span> <span class="ident">hInproc_mut</span>: <span class="ident">LONG</span>,
-    <span class="ident">hRemote</span> <span class="ident">hRemote_mut</span>: <span class="kw-2">*mut</span> <span class="ident">FLAGGED_BYTE_BLOB</span>,
-    <span class="ident">hInproc64</span> <span class="ident">hInproc64_mut</span>: <span class="ident">__int64</span>,
+<span class="macro">UNION!</span>{<span class="kw">union </span>userHGLOBAL_u {
+    [u64; <span class="number">1</span>],
+    hInproc hInproc_mut: LONG,
+    hRemote hRemote_mut: <span class="kw-2">*mut </span>FLAGGED_BYTE_BLOB,
+    hInproc64 hInproc64_mut: __int64,
 }}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">userHGLOBAL</span> {
-    <span class="ident">fContext</span>: <span class="ident">LONG</span>,
-    <span class="ident">u</span>: <span class="ident">userHGLOBAL_u</span>,
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>userHGLOBAL {
+    fContext: LONG,
+    u: userHGLOBAL_u,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">wireHGLOBAL</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">userHGLOBAL</span>;
-<span class="macro">UNION!</span>{<span class="kw">union</span> <span class="ident">userHMETAFILE_u</span> {
-    [<span class="ident">u64</span>; <span class="number">1</span>],
-    <span class="ident">hInproc</span> <span class="ident">hInproc_mut</span>: <span class="ident">LONG</span>,
-    <span class="ident">hRemote</span> <span class="ident">hRemote_mut</span>: <span class="kw-2">*mut</span> <span class="ident">BYTE_BLOB</span>,
-    <span class="ident">hInproc64</span> <span class="ident">hInproc64_mut</span>: <span class="ident">__int64</span>,
+<span class="kw">pub type </span>wireHGLOBAL = <span class="kw-2">*mut </span>userHGLOBAL;
+<span class="macro">UNION!</span>{<span class="kw">union </span>userHMETAFILE_u {
+    [u64; <span class="number">1</span>],
+    hInproc hInproc_mut: LONG,
+    hRemote hRemote_mut: <span class="kw-2">*mut </span>BYTE_BLOB,
+    hInproc64 hInproc64_mut: __int64,
 }}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">userHMETAFILE</span> {
-    <span class="ident">fContext</span>: <span class="ident">LONG</span>,
-    <span class="ident">u</span>: <span class="ident">userHMETAFILE_u</span>,
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>userHMETAFILE {
+    fContext: LONG,
+    u: userHMETAFILE_u,
 }}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">remoteMETAFILEPICT</span> {
-    <span class="ident">mm</span>: <span class="ident">LONG</span>,
-    <span class="ident">xExt</span>: <span class="ident">LONG</span>,
-    <span class="ident">yExt</span>: <span class="ident">LONG</span>,
-    <span class="ident">hMF</span>: <span class="kw-2">*mut</span> <span class="ident">userHMETAFILE</span>,
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>remoteMETAFILEPICT {
+    mm: LONG,
+    xExt: LONG,
+    yExt: LONG,
+    hMF: <span class="kw-2">*mut </span>userHMETAFILE,
 }}
-<span class="macro">UNION!</span>{<span class="kw">union</span> <span class="ident">userHMETAFILEPICT_u</span> {
-    [<span class="ident">u64</span>; <span class="number">1</span>],
-    <span class="ident">hInproc</span> <span class="ident">hInproc_mut</span>: <span class="ident">LONG</span>,
-    <span class="ident">hRemote</span> <span class="ident">hRemote_mut</span>: <span class="kw-2">*mut</span> <span class="ident">remoteMETAFILEPICT</span>,
-    <span class="ident">hInproc64</span> <span class="ident">hInproc64_mut</span>: <span class="ident">__int64</span>,
+<span class="macro">UNION!</span>{<span class="kw">union </span>userHMETAFILEPICT_u {
+    [u64; <span class="number">1</span>],
+    hInproc hInproc_mut: LONG,
+    hRemote hRemote_mut: <span class="kw-2">*mut </span>remoteMETAFILEPICT,
+    hInproc64 hInproc64_mut: __int64,
 }}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">userHMETAFILEPICT</span> {
-    <span class="ident">fContext</span>: <span class="ident">LONG</span>,
-    <span class="ident">u</span>: <span class="ident">userHMETAFILEPICT_u</span>,
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>userHMETAFILEPICT {
+    fContext: LONG,
+    u: userHMETAFILEPICT_u,
 }}
-<span class="macro">UNION!</span>{<span class="kw">union</span> <span class="ident">userHENHMETAFILE_u</span> {
-    [<span class="ident">u64</span>; <span class="number">1</span>],
-    <span class="ident">hInproc</span> <span class="ident">hInproc_mut</span>: <span class="ident">LONG</span>,
-    <span class="ident">hRemote</span> <span class="ident">hRemote_mut</span>: <span class="kw-2">*mut</span> <span class="ident">BYTE_BLOB</span>,
-    <span class="ident">hInproc64</span> <span class="ident">hInproc64_mut</span>: <span class="ident">__int64</span>,
+<span class="macro">UNION!</span>{<span class="kw">union </span>userHENHMETAFILE_u {
+    [u64; <span class="number">1</span>],
+    hInproc hInproc_mut: LONG,
+    hRemote hRemote_mut: <span class="kw-2">*mut </span>BYTE_BLOB,
+    hInproc64 hInproc64_mut: __int64,
 }}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">userHENHMETAFILE</span> {
-    <span class="ident">fContext</span>: <span class="ident">LONG</span>,
-    <span class="ident">u</span>: <span class="ident">userHENHMETAFILE_u</span>,
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>userHENHMETAFILE {
+    fContext: LONG,
+    u: userHENHMETAFILE_u,
 }}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">userBITMAP</span> {
-    <span class="ident">bmType</span>: <span class="ident">LONG</span>,
-    <span class="ident">bmWidth</span>: <span class="ident">LONG</span>,
-    <span class="ident">bmHeight</span>: <span class="ident">LONG</span>,
-    <span class="ident">bmWidthBytes</span>: <span class="ident">LONG</span>,
-    <span class="ident">bmPlanes</span>: <span class="ident">WORD</span>,
-    <span class="ident">bmBitsPixel</span>: <span class="ident">WORD</span>,
-    <span class="ident">cbSize</span>: <span class="ident">ULONG</span>,
-    <span class="ident">pBuffer</span>: [<span class="ident">byte</span>; <span class="number">1</span>],
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>userBITMAP {
+    bmType: LONG,
+    bmWidth: LONG,
+    bmHeight: LONG,
+    bmWidthBytes: LONG,
+    bmPlanes: WORD,
+    bmBitsPixel: WORD,
+    cbSize: ULONG,
+    pBuffer: [byte; <span class="number">1</span>],
 }}
-<span class="macro">UNION!</span>{<span class="kw">union</span> <span class="ident">userHBITMAP_u</span> {
-    [<span class="ident">u64</span>; <span class="number">1</span>],
-    <span class="ident">hInproc</span> <span class="ident">hInproc_mut</span>: <span class="ident">LONG</span>,
-    <span class="ident">hRemote</span> <span class="ident">hRemote_mut</span>: <span class="kw-2">*mut</span> <span class="ident">userBITMAP</span>,
-    <span class="ident">hInproc64</span> <span class="ident">hInproc64_mut</span>: <span class="ident">__int64</span>,
+<span class="macro">UNION!</span>{<span class="kw">union </span>userHBITMAP_u {
+    [u64; <span class="number">1</span>],
+    hInproc hInproc_mut: LONG,
+    hRemote hRemote_mut: <span class="kw-2">*mut </span>userBITMAP,
+    hInproc64 hInproc64_mut: __int64,
 }}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">userHBITMAP</span> {
-    <span class="ident">fContext</span>: <span class="ident">LONG</span>,
-    <span class="ident">u</span>: <span class="ident">userHBITMAP_u</span>,
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>userHBITMAP {
+    fContext: LONG,
+    u: userHBITMAP_u,
 }}
-<span class="macro">UNION!</span>{<span class="kw">union</span> <span class="ident">userHPALETTE_u</span> {
-    [<span class="ident">u64</span>; <span class="number">1</span>],
-    <span class="ident">hInproc</span> <span class="ident">hInproc_mut</span>: <span class="ident">LONG</span>,
-    <span class="ident">hRemote</span> <span class="ident">hRemote_mut</span>: <span class="kw-2">*mut</span> <span class="ident">LOGPALETTE</span>,
-    <span class="ident">hInproc64</span> <span class="ident">hInproc64_mut</span>: <span class="ident">__int64</span>,
+<span class="macro">UNION!</span>{<span class="kw">union </span>userHPALETTE_u {
+    [u64; <span class="number">1</span>],
+    hInproc hInproc_mut: LONG,
+    hRemote hRemote_mut: <span class="kw-2">*mut </span>LOGPALETTE,
+    hInproc64 hInproc64_mut: __int64,
 }}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">userHPALETTE</span> {
-    <span class="ident">fContext</span>: <span class="ident">LONG</span>,
-    <span class="ident">u</span>: <span class="ident">userHPALETTE_u</span>,
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>userHPALETTE {
+    fContext: LONG,
+    u: userHPALETTE_u,
 }}
-<span class="macro">UNION!</span>{<span class="kw">union</span> <span class="ident">RemotableHandle_u</span> {
-    [<span class="ident">u32</span>; <span class="number">1</span>],
-    <span class="ident">hInproc</span> <span class="ident">hInproc_mut</span>: <span class="ident">LONG</span>,
-    <span class="ident">hRemote</span> <span class="ident">hRemote_mut</span>: <span class="ident">LONG</span>,
+<span class="macro">UNION!</span>{<span class="kw">union </span>RemotableHandle_u {
+    [u32; <span class="number">1</span>],
+    hInproc hInproc_mut: LONG,
+    hRemote hRemote_mut: LONG,
 }}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">RemotableHandle</span> {
-    <span class="ident">fContext</span>: <span class="ident">LONG</span>,
-    <span class="ident">u</span>: <span class="ident">RemotableHandle_u</span>,
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>RemotableHandle {
+    fContext: LONG,
+    u: RemotableHandle_u,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">wireHWND</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">RemotableHandle</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">wireHMENU</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">RemotableHandle</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">wireHACCEL</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">RemotableHandle</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">wireHBRUSH</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">RemotableHandle</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">wireHFONT</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">RemotableHandle</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">wireHDC</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">RemotableHandle</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">wireHICON</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">RemotableHandle</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">wireHRGN</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">RemotableHandle</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">wireHMONITOR</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">RemotableHandle</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">wireHBITMAP</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">userHBITMAP</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">wireHPALETTE</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">userHPALETTE</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">wireHENHMETAFILE</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">userHENHMETAFILE</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">wireHMETAFILE</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">userHMETAFILE</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">wireHMETAFILEPICT</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">userHMETAFILEPICT</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">HMETAFILEPICT</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">c_void</span>;
-<span class="comment">// extern RPC_IF_HANDLE IWinTypes_v0_1_c_ifspec;</span>
-<span class="comment">// extern RPC_IF_HANDLE IWinTypes_v0_1_s_ifspec;</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">DATE</span> <span class="op">=</span> <span class="ident">c_double</span>;
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">CY</span> {
-    <span class="ident">int64</span>: <span class="ident">LONGLONG</span>,
+<span class="kw">pub type </span>wireHWND = <span class="kw-2">*mut </span>RemotableHandle;
+<span class="kw">pub type </span>wireHMENU = <span class="kw-2">*mut </span>RemotableHandle;
+<span class="kw">pub type </span>wireHACCEL = <span class="kw-2">*mut </span>RemotableHandle;
+<span class="kw">pub type </span>wireHBRUSH = <span class="kw-2">*mut </span>RemotableHandle;
+<span class="kw">pub type </span>wireHFONT = <span class="kw-2">*mut </span>RemotableHandle;
+<span class="kw">pub type </span>wireHDC = <span class="kw-2">*mut </span>RemotableHandle;
+<span class="kw">pub type </span>wireHICON = <span class="kw-2">*mut </span>RemotableHandle;
+<span class="kw">pub type </span>wireHRGN = <span class="kw-2">*mut </span>RemotableHandle;
+<span class="kw">pub type </span>wireHMONITOR = <span class="kw-2">*mut </span>RemotableHandle;
+<span class="kw">pub type </span>wireHBITMAP = <span class="kw-2">*mut </span>userHBITMAP;
+<span class="kw">pub type </span>wireHPALETTE = <span class="kw-2">*mut </span>userHPALETTE;
+<span class="kw">pub type </span>wireHENHMETAFILE = <span class="kw-2">*mut </span>userHENHMETAFILE;
+<span class="kw">pub type </span>wireHMETAFILE = <span class="kw-2">*mut </span>userHMETAFILE;
+<span class="kw">pub type </span>wireHMETAFILEPICT = <span class="kw-2">*mut </span>userHMETAFILEPICT;
+<span class="kw">pub type </span>HMETAFILEPICT = <span class="kw-2">*mut </span>c_void;
+<span class="comment">// extern RPC_IF_HANDLE IWinTypes_v0_1_c_ifspec;
+// extern RPC_IF_HANDLE IWinTypes_v0_1_s_ifspec;
+</span><span class="kw">pub type </span>DATE = c_double;
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>CY {
+    int64: LONGLONG,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LPCY</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">CY</span>;
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">DECIMAL</span> {
-    <span class="ident">wReserved</span>: <span class="ident">USHORT</span>,
-    <span class="ident">scale</span>: <span class="ident">BYTE</span>,
-    <span class="ident">sign</span>: <span class="ident">BYTE</span>,
-    <span class="ident">Hi32</span>: <span class="ident">ULONG</span>,
-    <span class="ident">Lo64</span>: <span class="ident">ULONGLONG</span>,
+<span class="kw">pub type </span>LPCY = <span class="kw-2">*mut </span>CY;
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>DECIMAL {
+    wReserved: USHORT,
+    scale: BYTE,
+    sign: BYTE,
+    Hi32: ULONG,
+    Lo64: ULONGLONG,
 }}
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DECIMAL_NEG</span>: <span class="ident">BYTE</span> <span class="op">=</span> <span class="number">0x80</span>;
-<span class="attribute">#[<span class="ident">inline</span>]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">DECIMAL_SETZERO</span>(<span class="ident">dec</span>: <span class="kw-2">&amp;mut</span> <span class="ident">DECIMAL</span>) {
-    <span class="ident">dec</span>.<span class="ident">Lo64</span> <span class="op">=</span> <span class="number">0</span>;
-    <span class="ident">dec</span>.<span class="ident">Hi32</span> <span class="op">=</span> <span class="number">0</span>;
-    <span class="ident">dec</span>.<span class="ident">scale</span> <span class="op">=</span> <span class="number">0</span>;
-    <span class="ident">dec</span>.<span class="ident">sign</span> <span class="op">=</span> <span class="number">0</span>;
+<span class="kw">pub const </span>DECIMAL_NEG: BYTE = <span class="number">0x80</span>;
+<span class="attribute">#[inline]
+</span><span class="kw">pub fn </span>DECIMAL_SETZERO(dec: <span class="kw-2">&amp;mut </span>DECIMAL) {
+    dec.Lo64 = <span class="number">0</span>;
+    dec.Hi32 = <span class="number">0</span>;
+    dec.scale = <span class="number">0</span>;
+    dec.sign = <span class="number">0</span>;
 }
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LPDECIMAL</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">DECIMAL</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">wireBSTR</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">FLAGGED_WORD_BLOB</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">BSTR</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">OLECHAR</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LPBSTR</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">BSTR</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">VARIANT_BOOL</span> <span class="op">=</span> <span class="ident">c_short</span>;
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">BSTRBLOB</span> {
-    <span class="ident">cbSize</span>: <span class="ident">ULONG</span>,
-    <span class="ident">pData</span>: <span class="kw-2">*mut</span> <span class="ident">BYTE</span>,
+<span class="kw">pub type </span>LPDECIMAL = <span class="kw-2">*mut </span>DECIMAL;
+<span class="kw">pub type </span>wireBSTR = <span class="kw-2">*mut </span>FLAGGED_WORD_BLOB;
+<span class="kw">pub type </span>BSTR = <span class="kw-2">*mut </span>OLECHAR;
+<span class="kw">pub type </span>LPBSTR = <span class="kw-2">*mut </span>BSTR;
+<span class="kw">pub type </span>VARIANT_BOOL = c_short;
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>BSTRBLOB {
+    cbSize: ULONG,
+    pData: <span class="kw-2">*mut </span>BYTE,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LPBSTRBLOB</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">BSTRBLOB</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">VARIANT_TRUE</span>: <span class="ident">VARIANT_BOOL</span> <span class="op">=</span> <span class="op">-</span><span class="number">1</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">VARIANT_FALSE</span>: <span class="ident">VARIANT_BOOL</span> <span class="op">=</span> <span class="number">0</span>;
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">CLIPDATA</span> {
-    <span class="ident">cbSize</span>: <span class="ident">ULONG</span>,
-    <span class="ident">ulClipFmt</span>: <span class="ident">LONG</span>,
-    <span class="ident">pClipData</span>: <span class="kw-2">*mut</span> <span class="ident">BYTE</span>,
+<span class="kw">pub type </span>LPBSTRBLOB = <span class="kw-2">*mut </span>BSTRBLOB;
+<span class="kw">pub const </span>VARIANT_TRUE: VARIANT_BOOL = -<span class="number">1</span>;
+<span class="kw">pub const </span>VARIANT_FALSE: VARIANT_BOOL = <span class="number">0</span>;
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>CLIPDATA {
+    cbSize: ULONG,
+    ulClipFmt: LONG,
+    pClipData: <span class="kw-2">*mut </span>BYTE,
 }}
-<span class="attribute">#[<span class="ident">inline</span>]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CBPCLIPDATA</span>(<span class="ident">clipdata</span>: <span class="ident">CLIPDATA</span>) -&gt; <span class="ident">ULONG</span> {
-    <span class="ident">clipdata</span>.<span class="ident">cbSize</span> <span class="op">-</span> <span class="number">4</span>
-}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">VARTYPE</span> <span class="op">=</span> <span class="ident">c_ushort</span>;
-<span class="macro">ENUM!</span>{<span class="kw">enum</span> <span class="ident">VARENUM</span> {
-    <span class="ident">VT_EMPTY</span> <span class="op">=</span> <span class="number">0</span>,
-    <span class="ident">VT_NULL</span> <span class="op">=</span> <span class="number">1</span>,
-    <span class="ident">VT_I2</span> <span class="op">=</span> <span class="number">2</span>,
-    <span class="ident">VT_I4</span> <span class="op">=</span> <span class="number">3</span>,
-    <span class="ident">VT_R4</span> <span class="op">=</span> <span class="number">4</span>,
-    <span class="ident">VT_R8</span> <span class="op">=</span> <span class="number">5</span>,
-    <span class="ident">VT_CY</span> <span class="op">=</span> <span class="number">6</span>,
-    <span class="ident">VT_DATE</span> <span class="op">=</span> <span class="number">7</span>,
-    <span class="ident">VT_BSTR</span> <span class="op">=</span> <span class="number">8</span>,
-    <span class="ident">VT_DISPATCH</span> <span class="op">=</span> <span class="number">9</span>,
-    <span class="ident">VT_ERROR</span> <span class="op">=</span> <span class="number">10</span>,
-    <span class="ident">VT_BOOL</span> <span class="op">=</span> <span class="number">11</span>,
-    <span class="ident">VT_VARIANT</span> <span class="op">=</span> <span class="number">12</span>,
-    <span class="ident">VT_UNKNOWN</span> <span class="op">=</span> <span class="number">13</span>,
-    <span class="ident">VT_DECIMAL</span> <span class="op">=</span> <span class="number">14</span>,
-    <span class="ident">VT_I1</span> <span class="op">=</span> <span class="number">16</span>,
-    <span class="ident">VT_UI1</span> <span class="op">=</span> <span class="number">17</span>,
-    <span class="ident">VT_UI2</span> <span class="op">=</span> <span class="number">18</span>,
-    <span class="ident">VT_UI4</span> <span class="op">=</span> <span class="number">19</span>,
-    <span class="ident">VT_I8</span> <span class="op">=</span> <span class="number">20</span>,
-    <span class="ident">VT_UI8</span> <span class="op">=</span> <span class="number">21</span>,
-    <span class="ident">VT_INT</span> <span class="op">=</span> <span class="number">22</span>,
-    <span class="ident">VT_UINT</span> <span class="op">=</span> <span class="number">23</span>,
-    <span class="ident">VT_VOID</span> <span class="op">=</span> <span class="number">24</span>,
-    <span class="ident">VT_HRESULT</span> <span class="op">=</span> <span class="number">25</span>,
-    <span class="ident">VT_PTR</span> <span class="op">=</span> <span class="number">26</span>,
-    <span class="ident">VT_SAFEARRAY</span> <span class="op">=</span> <span class="number">27</span>,
-    <span class="ident">VT_CARRAY</span> <span class="op">=</span> <span class="number">28</span>,
-    <span class="ident">VT_USERDEFINED</span> <span class="op">=</span> <span class="number">29</span>,
-    <span class="ident">VT_LPSTR</span> <span class="op">=</span> <span class="number">30</span>,
-    <span class="ident">VT_LPWSTR</span> <span class="op">=</span> <span class="number">31</span>,
-    <span class="ident">VT_RECORD</span> <span class="op">=</span> <span class="number">36</span>,
-    <span class="ident">VT_INT_PTR</span> <span class="op">=</span> <span class="number">37</span>,
-    <span class="ident">VT_UINT_PTR</span> <span class="op">=</span> <span class="number">38</span>,
-    <span class="ident">VT_FILETIME</span> <span class="op">=</span> <span class="number">64</span>,
-    <span class="ident">VT_BLOB</span> <span class="op">=</span> <span class="number">65</span>,
-    <span class="ident">VT_STREAM</span> <span class="op">=</span> <span class="number">66</span>,
-    <span class="ident">VT_STORAGE</span> <span class="op">=</span> <span class="number">67</span>,
-    <span class="ident">VT_STREAMED_OBJECT</span> <span class="op">=</span> <span class="number">68</span>,
-    <span class="ident">VT_STORED_OBJECT</span> <span class="op">=</span> <span class="number">69</span>,
-    <span class="ident">VT_BLOB_OBJECT</span> <span class="op">=</span> <span class="number">70</span>,
-    <span class="ident">VT_CF</span> <span class="op">=</span> <span class="number">71</span>,
-    <span class="ident">VT_CLSID</span> <span class="op">=</span> <span class="number">72</span>,
-    <span class="ident">VT_VERSIONED_STREAM</span> <span class="op">=</span> <span class="number">73</span>,
-    <span class="ident">VT_BSTR_BLOB</span> <span class="op">=</span> <span class="number">0xfff</span>,
-    <span class="ident">VT_VECTOR</span> <span class="op">=</span> <span class="number">0x1000</span>,
-    <span class="ident">VT_ARRAY</span> <span class="op">=</span> <span class="number">0x2000</span>,
-    <span class="ident">VT_BYREF</span> <span class="op">=</span> <span class="number">0x4000</span>,
-    <span class="ident">VT_RESERVED</span> <span class="op">=</span> <span class="number">0x8000</span>,
-    <span class="ident">VT_ILLEGAL</span> <span class="op">=</span> <span class="number">0xffff</span>,
-    <span class="ident">VT_ILLEGALMASKED</span> <span class="op">=</span> <span class="number">0xfff</span>,
-    <span class="ident">VT_TYPEMASK</span> <span class="op">=</span> <span class="number">0xfff</span>,
+<span class="attribute">#[inline]
+</span><span class="kw">pub fn </span>CBPCLIPDATA(clipdata: CLIPDATA) -&gt; ULONG {
+    clipdata.cbSize - <span class="number">4
+</span>}
+<span class="kw">pub type </span>VARTYPE = c_ushort;
+<span class="macro">ENUM!</span>{<span class="kw">enum </span>VARENUM {
+    VT_EMPTY = <span class="number">0</span>,
+    VT_NULL = <span class="number">1</span>,
+    VT_I2 = <span class="number">2</span>,
+    VT_I4 = <span class="number">3</span>,
+    VT_R4 = <span class="number">4</span>,
+    VT_R8 = <span class="number">5</span>,
+    VT_CY = <span class="number">6</span>,
+    VT_DATE = <span class="number">7</span>,
+    VT_BSTR = <span class="number">8</span>,
+    VT_DISPATCH = <span class="number">9</span>,
+    VT_ERROR = <span class="number">10</span>,
+    VT_BOOL = <span class="number">11</span>,
+    VT_VARIANT = <span class="number">12</span>,
+    VT_UNKNOWN = <span class="number">13</span>,
+    VT_DECIMAL = <span class="number">14</span>,
+    VT_I1 = <span class="number">16</span>,
+    VT_UI1 = <span class="number">17</span>,
+    VT_UI2 = <span class="number">18</span>,
+    VT_UI4 = <span class="number">19</span>,
+    VT_I8 = <span class="number">20</span>,
+    VT_UI8 = <span class="number">21</span>,
+    VT_INT = <span class="number">22</span>,
+    VT_UINT = <span class="number">23</span>,
+    VT_VOID = <span class="number">24</span>,
+    VT_HRESULT = <span class="number">25</span>,
+    VT_PTR = <span class="number">26</span>,
+    VT_SAFEARRAY = <span class="number">27</span>,
+    VT_CARRAY = <span class="number">28</span>,
+    VT_USERDEFINED = <span class="number">29</span>,
+    VT_LPSTR = <span class="number">30</span>,
+    VT_LPWSTR = <span class="number">31</span>,
+    VT_RECORD = <span class="number">36</span>,
+    VT_INT_PTR = <span class="number">37</span>,
+    VT_UINT_PTR = <span class="number">38</span>,
+    VT_FILETIME = <span class="number">64</span>,
+    VT_BLOB = <span class="number">65</span>,
+    VT_STREAM = <span class="number">66</span>,
+    VT_STORAGE = <span class="number">67</span>,
+    VT_STREAMED_OBJECT = <span class="number">68</span>,
+    VT_STORED_OBJECT = <span class="number">69</span>,
+    VT_BLOB_OBJECT = <span class="number">70</span>,
+    VT_CF = <span class="number">71</span>,
+    VT_CLSID = <span class="number">72</span>,
+    VT_VERSIONED_STREAM = <span class="number">73</span>,
+    VT_BSTR_BLOB = <span class="number">0xfff</span>,
+    VT_VECTOR = <span class="number">0x1000</span>,
+    VT_ARRAY = <span class="number">0x2000</span>,
+    VT_BYREF = <span class="number">0x4000</span>,
+    VT_RESERVED = <span class="number">0x8000</span>,
+    VT_ILLEGAL = <span class="number">0xffff</span>,
+    VT_ILLEGALMASKED = <span class="number">0xfff</span>,
+    VT_TYPEMASK = <span class="number">0xfff</span>,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PROPID</span> <span class="op">=</span> <span class="ident">ULONG</span>;
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">PROPERTYKEY</span> {
-    <span class="ident">fmtid</span>: <span class="ident">GUID</span>,
-    <span class="ident">pid</span>: <span class="ident">DWORD</span>,
+<span class="kw">pub type </span>PROPID = ULONG;
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>PROPERTYKEY {
+    fmtid: GUID,
+    pid: DWORD,
 }}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">CSPLATFORM</span> {
-    <span class="ident">dwPlatformId</span>: <span class="ident">DWORD</span>,
-    <span class="ident">dwVersionHi</span>: <span class="ident">DWORD</span>,
-    <span class="ident">dwVersionLo</span>: <span class="ident">DWORD</span>,
-    <span class="ident">dwProcessorArch</span>: <span class="ident">DWORD</span>,
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>CSPLATFORM {
+    dwPlatformId: DWORD,
+    dwVersionHi: DWORD,
+    dwVersionLo: DWORD,
+    dwProcessorArch: DWORD,
 }}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">QUERYCONTEXT</span> {
-    <span class="ident">dwContext</span>: <span class="ident">DWORD</span>,
-    <span class="ident">Platform</span>: <span class="ident">CSPLATFORM</span>,
-    <span class="ident">Locale</span>: <span class="ident">LCID</span>,
-    <span class="ident">dwVersionHi</span>: <span class="ident">DWORD</span>,
-    <span class="ident">dwVersionLo</span>: <span class="ident">DWORD</span>,
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>QUERYCONTEXT {
+    dwContext: DWORD,
+    Platform: CSPLATFORM,
+    Locale: LCID,
+    dwVersionHi: DWORD,
+    dwVersionLo: DWORD,
 }}
-<span class="macro">ENUM!</span>{<span class="kw">enum</span> <span class="ident">TYSPEC</span> {
-    <span class="ident">TYSPEC_CLSID</span>,
-    <span class="ident">TYSPEC_FILEEXT</span>,
-    <span class="ident">TYSPEC_MIMETYPE</span>,
-    <span class="ident">TYSPEC_FILENAME</span>,
-    <span class="ident">TYSPEC_PROGID</span>,
-    <span class="ident">TYSPEC_PACKAGENAME</span>,
-    <span class="ident">TYSPEC_OBJECTID</span>,
+<span class="macro">ENUM!</span>{<span class="kw">enum </span>TYSPEC {
+    TYSPEC_CLSID,
+    TYSPEC_FILEEXT,
+    TYSPEC_MIMETYPE,
+    TYSPEC_FILENAME,
+    TYSPEC_PROGID,
+    TYSPEC_PACKAGENAME,
+    TYSPEC_OBJECTID,
 }}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">uCLSSPEC_ByName</span> {
-    <span class="ident">pPackageName</span>: <span class="ident">LPOLESTR</span>,
-    <span class="ident">PolicyId</span>: <span class="ident">GUID</span>,
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>uCLSSPEC_ByName {
+    pPackageName: LPOLESTR,
+    PolicyId: GUID,
 }}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">uCLSSPEC_ByObjectId</span> {
-    <span class="ident">ObjectId</span>: <span class="ident">GUID</span>,
-    <span class="ident">PolicyId</span>: <span class="ident">GUID</span>,
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>uCLSSPEC_ByObjectId {
+    ObjectId: GUID,
+    PolicyId: GUID,
 }}
-<span class="macro">UNION!</span>{<span class="kw">union</span> <span class="ident">uCLSSPEC_u</span> {
-    [<span class="ident">u32</span>; <span class="number">8</span>] [<span class="ident">u64</span>; <span class="number">4</span>],
-    <span class="ident">clsid</span> <span class="ident">clsid_mut</span>: <span class="ident">CLSID</span>,
-    <span class="ident">pFileExt</span> <span class="ident">pFileExt_mut</span>: <span class="ident">LPOLESTR</span>,
-    <span class="ident">pMimeType</span> <span class="ident">pMimeType_mut</span>: <span class="ident">LPOLESTR</span>,
-    <span class="ident">pProgId</span> <span class="ident">pProgId_mut</span>: <span class="ident">LPOLESTR</span>,
-    <span class="ident">pFileName</span> <span class="ident">pFileName_mut</span>: <span class="ident">LPOLESTR</span>,
-    <span class="ident">ByName</span> <span class="ident">ByName_mut</span>: <span class="ident">uCLSSPEC_ByName</span>,
-    <span class="ident">ByObjectId</span> <span class="ident">ByObjectId_mut</span>: <span class="ident">uCLSSPEC_ByObjectId</span>,
+<span class="macro">UNION!</span>{<span class="kw">union </span>uCLSSPEC_u {
+    [u32; <span class="number">8</span>] [u64; <span class="number">4</span>],
+    clsid clsid_mut: CLSID,
+    pFileExt pFileExt_mut: LPOLESTR,
+    pMimeType pMimeType_mut: LPOLESTR,
+    pProgId pProgId_mut: LPOLESTR,
+    pFileName pFileName_mut: LPOLESTR,
+    ByName ByName_mut: uCLSSPEC_ByName,
+    ByObjectId ByObjectId_mut: uCLSSPEC_ByObjectId,
 }}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">uCLSSPEC</span> {
-    <span class="ident">tyspec</span>: <span class="ident">DWORD</span>,
-    <span class="ident">u</span>: <span class="ident">uCLSSPEC_u</span>,
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>uCLSSPEC {
+    tyspec: DWORD,
+    u: uCLSSPEC_u,
 }}
-<span class="comment">// extern RPC_IF_HANDLE __MIDL_itf_wtypes_0000_0001_v0_0_c_ifspec;</span>
-<span class="comment">// extern RPC_IF_HANDLE __MIDL_itf_wtypes_0000_0001_v0_0_s_ifspec;</span>
-</code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="winapi" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+<span class="comment">// extern RPC_IF_HANDLE __MIDL_itf_wtypes_0000_0001_v0_0_c_ifspec;
+// extern RPC_IF_HANDLE __MIDL_itf_wtypes_0000_0001_v0_0_s_ifspec;
+</span></code></pre></div>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="winapi" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.0 (69f9c33d7 2022-12-12)" ></div></body></html>

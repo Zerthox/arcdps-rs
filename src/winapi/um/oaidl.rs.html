@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\winapi-0.3.9\src\um\oaidl.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>oaidl.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../winapi/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../winapi/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../winapi/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\winapi-0.3.9\src\um\oaidl.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>oaidl.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../normalize.css"><link rel="stylesheet" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../ayu.css" disabled><link rel="stylesheet" href="../../../dark.css" disabled><link rel="stylesheet" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../../winapi/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -913,920 +913,920 @@
 <span id="913">913</span>
 <span id="914">914</span>
 <span id="915">915</span>
-</pre><pre class="rust"><code><span class="comment">// Licensed under the Apache License, Version 2.0</span>
-<span class="comment">// &lt;LICENSE-APACHE or http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license</span>
-<span class="comment">// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your option.</span>
-<span class="comment">// All files in the project carrying such notice may not be copied, modified, or distributed</span>
-<span class="comment">// except according to those terms.</span>
-<span class="doccomment">//! Mappings for the contents of OAIdl.h</span>
-<span class="kw">use</span> <span class="ident">shared::basetsd::ULONG_PTR</span>;
-<span class="kw">use</span> <span class="ident">shared::guiddef</span>::{<span class="ident">GUID</span>, <span class="ident">IID</span>, <span class="ident">REFGUID</span>, <span class="ident">REFIID</span>};
-<span class="kw">use</span> <span class="ident">shared::minwindef</span>::{<span class="ident">BOOL</span>, <span class="ident">BYTE</span>, <span class="ident">DWORD</span>, <span class="ident">FLOAT</span>, <span class="ident">INT</span>, <span class="ident">UINT</span>, <span class="ident">ULONG</span>, <span class="ident">USHORT</span>, <span class="ident">WORD</span>};
-<span class="kw">use</span> <span class="ident">shared::rpcndr::byte</span>;
-<span class="kw">use</span> <span class="ident">shared::wtypes</span>::{
-    <span class="ident">BSTR</span>, <span class="ident">CY</span>, <span class="ident">DATE</span>, <span class="ident">DECIMAL</span>, <span class="ident">VARIANT_BOOL</span>, <span class="ident">VARTYPE</span>, <span class="ident">VT_BSTR</span>, <span class="ident">VT_DISPATCH</span>, <span class="ident">VT_ERROR</span>,
-    <span class="ident">VT_I1</span>, <span class="ident">VT_I2</span>, <span class="ident">VT_I4</span>, <span class="ident">VT_I8</span>, <span class="ident">VT_RECORD</span>, <span class="ident">VT_RESERVED</span>, <span class="ident">VT_UNKNOWN</span>, <span class="ident">VT_VARIANT</span>,
-    <span class="ident">wireBSTR</span>
+</pre><pre class="rust"><code><span class="comment">// Licensed under the Apache License, Version 2.0
+// &lt;LICENSE-APACHE or http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license
+// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your option.
+// All files in the project carrying such notice may not be copied, modified, or distributed
+// except according to those terms.
+</span><span class="doccomment">//! Mappings for the contents of OAIdl.h
+</span><span class="kw">use </span>shared::basetsd::ULONG_PTR;
+<span class="kw">use </span>shared::guiddef::{GUID, IID, REFGUID, REFIID};
+<span class="kw">use </span>shared::minwindef::{BOOL, BYTE, DWORD, FLOAT, INT, UINT, ULONG, USHORT, WORD};
+<span class="kw">use </span>shared::rpcndr::byte;
+<span class="kw">use </span>shared::wtypes::{
+    BSTR, CY, DATE, DECIMAL, VARIANT_BOOL, VARTYPE, VT_BSTR, VT_DISPATCH, VT_ERROR,
+    VT_I1, VT_I2, VT_I4, VT_I8, VT_RECORD, VT_RESERVED, VT_UNKNOWN, VT_VARIANT,
+    wireBSTR
 };
-<span class="kw">use</span> <span class="ident">shared::wtypesbase</span>::{
-    <span class="ident">BYTE_SIZEDARR</span>, <span class="ident">DOUBLE</span>, <span class="ident">DWORD_SIZEDARR</span>, <span class="ident">HYPER_SIZEDARR</span>, <span class="ident">LPCOLESTR</span>, <span class="ident">LPOLESTR</span>, <span class="ident">SCODE</span>,
-    <span class="ident">WORD_SIZEDARR</span>
+<span class="kw">use </span>shared::wtypesbase::{
+    BYTE_SIZEDARR, DOUBLE, DWORD_SIZEDARR, HYPER_SIZEDARR, LPCOLESTR, LPOLESTR, SCODE,
+    WORD_SIZEDARR
 };
-<span class="kw">use</span> <span class="ident">um::unknwnbase</span>::{<span class="ident">IUnknown</span>, <span class="ident">IUnknownVtbl</span>};
-<span class="kw">use</span> <span class="ident">um::winnt</span>::{<span class="ident">CHAR</span>, <span class="ident">HRESULT</span>, <span class="ident">LCID</span>, <span class="ident">LONG</span>, <span class="ident">LONGLONG</span>, <span class="ident">PVOID</span>, <span class="ident">SHORT</span>, <span class="ident">ULONGLONG</span>};
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">CURRENCY</span> <span class="op">=</span> <span class="ident">CY</span>;
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">SAFEARRAYBOUND</span> {
-    <span class="ident">cElements</span>: <span class="ident">ULONG</span>,
-    <span class="ident">lLbound</span>: <span class="ident">LONG</span>,
+<span class="kw">use </span>um::unknwnbase::{IUnknown, IUnknownVtbl};
+<span class="kw">use </span>um::winnt::{CHAR, HRESULT, LCID, LONG, LONGLONG, PVOID, SHORT, ULONGLONG};
+<span class="kw">pub type </span>CURRENCY = CY;
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>SAFEARRAYBOUND {
+    cElements: ULONG,
+    lLbound: LONG,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LPSAFEARRAYBOUND</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">SAFEARRAYBOUND</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">wireBRECORD</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">_wireBRECORD</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">wireVARIANT</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">_wireVARIANT</span>;
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">SAFEARR_BSTR</span> {
-    <span class="ident">Size</span>: <span class="ident">ULONG</span>,
-    <span class="ident">aBstr</span>: <span class="kw-2">*mut</span> <span class="ident">wireBSTR</span>,
+<span class="kw">pub type </span>LPSAFEARRAYBOUND = <span class="kw-2">*mut </span>SAFEARRAYBOUND;
+<span class="kw">pub type </span>wireBRECORD = <span class="kw-2">*mut </span>_wireBRECORD;
+<span class="kw">pub type </span>wireVARIANT = <span class="kw-2">*mut </span>_wireVARIANT;
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>SAFEARR_BSTR {
+    Size: ULONG,
+    aBstr: <span class="kw-2">*mut </span>wireBSTR,
 }}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">SAFEARR_UNKNOWN</span> {
-    <span class="ident">Size</span>: <span class="ident">ULONG</span>,
-    <span class="ident">apUnknown</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">IUnknown</span>,
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>SAFEARR_UNKNOWN {
+    Size: ULONG,
+    apUnknown: <span class="kw-2">*mut *mut </span>IUnknown,
 }}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">SAFEARR_DISPATCH</span> {
-    <span class="ident">Size</span>: <span class="ident">ULONG</span>,
-    <span class="ident">apDispatch</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">IDispatch</span>,
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>SAFEARR_DISPATCH {
+    Size: ULONG,
+    apDispatch: <span class="kw-2">*mut *mut </span>IDispatch,
 }}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">SAFEARR_VARIANT</span> {
-    <span class="ident">Size</span>: <span class="ident">ULONG</span>,
-    <span class="ident">aVariant</span>: <span class="kw-2">*mut</span> <span class="ident">wireVARIANT</span>,
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>SAFEARR_VARIANT {
+    Size: ULONG,
+    aVariant: <span class="kw-2">*mut </span>wireVARIANT,
 }}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">SAFEARR_BRECORD</span> {
-    <span class="ident">Size</span>: <span class="ident">ULONG</span>,
-    <span class="ident">aRecord</span>: <span class="kw-2">*mut</span> <span class="ident">wireBRECORD</span>,
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>SAFEARR_BRECORD {
+    Size: ULONG,
+    aRecord: <span class="kw-2">*mut </span>wireBRECORD,
 }}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">SAFEARR_HAVEIID</span> {
-    <span class="ident">Size</span>: <span class="ident">ULONG</span>,
-    <span class="ident">apUnknown</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">IUnknown</span>,
-    <span class="ident">iid</span>: <span class="ident">IID</span>,
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>SAFEARR_HAVEIID {
+    Size: ULONG,
+    apUnknown: <span class="kw-2">*mut *mut </span>IUnknown,
+    iid: IID,
 }}
-<span class="macro">ENUM!</span>{<span class="kw">enum</span> <span class="ident">SF_TYPE</span> {
-    <span class="ident">SF_ERROR</span> <span class="op">=</span> <span class="ident">VT_ERROR</span>,
-    <span class="ident">SF_I1</span> <span class="op">=</span> <span class="ident">VT_I1</span>,
-    <span class="ident">SF_I2</span> <span class="op">=</span> <span class="ident">VT_I2</span>,
-    <span class="ident">SF_I4</span> <span class="op">=</span> <span class="ident">VT_I4</span>,
-    <span class="ident">SF_I8</span> <span class="op">=</span> <span class="ident">VT_I8</span>,
-    <span class="ident">SF_BSTR</span> <span class="op">=</span> <span class="ident">VT_BSTR</span>,
-    <span class="ident">SF_UNKNOWN</span> <span class="op">=</span> <span class="ident">VT_UNKNOWN</span>,
-    <span class="ident">SF_DISPATCH</span> <span class="op">=</span> <span class="ident">VT_DISPATCH</span>,
-    <span class="ident">SF_VARIANT</span> <span class="op">=</span> <span class="ident">VT_VARIANT</span>,
-    <span class="ident">SF_RECORD</span> <span class="op">=</span> <span class="ident">VT_RECORD</span>,
-    <span class="ident">SF_HAVEIID</span> <span class="op">=</span> <span class="ident">VT_UNKNOWN</span> <span class="op">|</span> <span class="ident">VT_RESERVED</span>,
+<span class="macro">ENUM!</span>{<span class="kw">enum </span>SF_TYPE {
+    SF_ERROR = VT_ERROR,
+    SF_I1 = VT_I1,
+    SF_I2 = VT_I2,
+    SF_I4 = VT_I4,
+    SF_I8 = VT_I8,
+    SF_BSTR = VT_BSTR,
+    SF_UNKNOWN = VT_UNKNOWN,
+    SF_DISPATCH = VT_DISPATCH,
+    SF_VARIANT = VT_VARIANT,
+    SF_RECORD = VT_RECORD,
+    SF_HAVEIID = VT_UNKNOWN | VT_RESERVED,
 }}
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">target_pointer_width</span> <span class="op">=</span> <span class="string">&quot;32&quot;</span>)]</span>
-<span class="macro">UNION!</span>{<span class="kw">union</span> <span class="ident">__MIDL_IOleAutomationTypes_0001</span> {
-    [<span class="ident">u32</span>; <span class="number">6</span>],
-    <span class="ident">BstrStr</span> <span class="ident">BstrStr_mut</span>: <span class="ident">SAFEARR_BSTR</span>,
-    <span class="ident">UnknownStr</span> <span class="ident">UnknownStr_mut</span>: <span class="ident">SAFEARR_UNKNOWN</span>,
-    <span class="ident">DispatchStr</span> <span class="ident">DispatchStr_mut</span>: <span class="ident">SAFEARR_DISPATCH</span>,
-    <span class="ident">VariantStr</span> <span class="ident">VariantStr_mut</span>: <span class="ident">SAFEARR_VARIANT</span>,
-    <span class="ident">RecordStr</span> <span class="ident">RecordStr_mut</span>: <span class="ident">SAFEARR_BRECORD</span>,
-    <span class="ident">HaveIidStr</span> <span class="ident">HaveIidStr_mut</span>: <span class="ident">SAFEARR_HAVEIID</span>,
-    <span class="ident">ByteStr</span> <span class="ident">ByteStr_mut</span>: <span class="ident">BYTE_SIZEDARR</span>,
-    <span class="ident">WordStr</span> <span class="ident">WordStr_mut</span>: <span class="ident">WORD_SIZEDARR</span>,
-    <span class="ident">LongStr</span> <span class="ident">LongStr_mut</span>: <span class="ident">DWORD_SIZEDARR</span>,
-    <span class="ident">HyperStr</span> <span class="ident">HyperStr_mut</span>: <span class="ident">HYPER_SIZEDARR</span>,
+<span class="attribute">#[cfg(target_pointer_width = <span class="string">&quot;32&quot;</span>)]
+</span><span class="macro">UNION!</span>{<span class="kw">union </span>__MIDL_IOleAutomationTypes_0001 {
+    [u32; <span class="number">6</span>],
+    BstrStr BstrStr_mut: SAFEARR_BSTR,
+    UnknownStr UnknownStr_mut: SAFEARR_UNKNOWN,
+    DispatchStr DispatchStr_mut: SAFEARR_DISPATCH,
+    VariantStr VariantStr_mut: SAFEARR_VARIANT,
+    RecordStr RecordStr_mut: SAFEARR_BRECORD,
+    HaveIidStr HaveIidStr_mut: SAFEARR_HAVEIID,
+    ByteStr ByteStr_mut: BYTE_SIZEDARR,
+    WordStr WordStr_mut: WORD_SIZEDARR,
+    LongStr LongStr_mut: DWORD_SIZEDARR,
+    HyperStr HyperStr_mut: HYPER_SIZEDARR,
 }}
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">target_pointer_width</span> <span class="op">=</span> <span class="string">&quot;64&quot;</span>)]</span>
-<span class="macro">UNION!</span>{<span class="kw">union</span> <span class="ident">__MIDL_IOleAutomationTypes_0001</span> {
-    [<span class="ident">u64</span>; <span class="number">4</span>],
-    <span class="ident">BstrStr</span> <span class="ident">BstrStr_mut</span>: <span class="ident">SAFEARR_BSTR</span>,
-    <span class="ident">UnknownStr</span> <span class="ident">UnknownStr_mut</span>: <span class="ident">SAFEARR_UNKNOWN</span>,
-    <span class="ident">DispatchStr</span> <span class="ident">DispatchStr_mut</span>: <span class="ident">SAFEARR_DISPATCH</span>,
-    <span class="ident">VariantStr</span> <span class="ident">VariantStr_mut</span>: <span class="ident">SAFEARR_VARIANT</span>,
-    <span class="ident">RecordStr</span> <span class="ident">RecordStr_mut</span>: <span class="ident">SAFEARR_BRECORD</span>,
-    <span class="ident">HaveIidStr</span> <span class="ident">HaveIidStr_mut</span>: <span class="ident">SAFEARR_HAVEIID</span>,
-    <span class="ident">ByteStr</span> <span class="ident">ByteStr_mut</span>: <span class="ident">BYTE_SIZEDARR</span>,
-    <span class="ident">WordStr</span> <span class="ident">WordStr_mut</span>: <span class="ident">WORD_SIZEDARR</span>,
-    <span class="ident">LongStr</span> <span class="ident">LongStr_mut</span>: <span class="ident">DWORD_SIZEDARR</span>,
-    <span class="ident">HyperStr</span> <span class="ident">HyperStr_mut</span>: <span class="ident">HYPER_SIZEDARR</span>,
+<span class="attribute">#[cfg(target_pointer_width = <span class="string">&quot;64&quot;</span>)]
+</span><span class="macro">UNION!</span>{<span class="kw">union </span>__MIDL_IOleAutomationTypes_0001 {
+    [u64; <span class="number">4</span>],
+    BstrStr BstrStr_mut: SAFEARR_BSTR,
+    UnknownStr UnknownStr_mut: SAFEARR_UNKNOWN,
+    DispatchStr DispatchStr_mut: SAFEARR_DISPATCH,
+    VariantStr VariantStr_mut: SAFEARR_VARIANT,
+    RecordStr RecordStr_mut: SAFEARR_BRECORD,
+    HaveIidStr HaveIidStr_mut: SAFEARR_HAVEIID,
+    ByteStr ByteStr_mut: BYTE_SIZEDARR,
+    WordStr WordStr_mut: WORD_SIZEDARR,
+    LongStr LongStr_mut: DWORD_SIZEDARR,
+    HyperStr HyperStr_mut: HYPER_SIZEDARR,
 }}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">SAFEARRAYUNION</span> {
-    <span class="ident">sfType</span>: <span class="ident">ULONG</span>,
-    <span class="ident">u</span>: <span class="ident">__MIDL_IOleAutomationTypes_0001</span>,
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>SAFEARRAYUNION {
+    sfType: ULONG,
+    u: __MIDL_IOleAutomationTypes_0001,
 }}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">_wireSAFEARRAY</span> {
-    <span class="ident">cDims</span>: <span class="ident">USHORT</span>,
-    <span class="ident">fFeatures</span>: <span class="ident">USHORT</span>,
-    <span class="ident">cbElements</span>: <span class="ident">ULONG</span>,
-    <span class="ident">cLocks</span>: <span class="ident">ULONG</span>,
-    <span class="ident">uArrayStructs</span>: <span class="ident">SAFEARRAYUNION</span>,
-    <span class="ident">rgsaBound</span>: [<span class="ident">SAFEARRAYBOUND</span>; <span class="number">1</span>],
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>_wireSAFEARRAY {
+    cDims: USHORT,
+    fFeatures: USHORT,
+    cbElements: ULONG,
+    cLocks: ULONG,
+    uArrayStructs: SAFEARRAYUNION,
+    rgsaBound: [SAFEARRAYBOUND; <span class="number">1</span>],
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">wireSAFEARRAY</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">_wireSAFEARRAY</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">wirePSAFEARRAY</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">wireSAFEARRAY</span>;
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">SAFEARRAY</span> {
-    <span class="ident">cDims</span>: <span class="ident">USHORT</span>,
-    <span class="ident">fFeatures</span>: <span class="ident">USHORT</span>,
-    <span class="ident">cbElements</span>: <span class="ident">ULONG</span>,
-    <span class="ident">cLocks</span>: <span class="ident">ULONG</span>,
-    <span class="ident">pvData</span>: <span class="ident">PVOID</span>,
-    <span class="ident">rgsabound</span>: [<span class="ident">SAFEARRAYBOUND</span>; <span class="number">1</span>],
+<span class="kw">pub type </span>wireSAFEARRAY = <span class="kw-2">*mut </span>_wireSAFEARRAY;
+<span class="kw">pub type </span>wirePSAFEARRAY = <span class="kw-2">*mut </span>wireSAFEARRAY;
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>SAFEARRAY {
+    cDims: USHORT,
+    fFeatures: USHORT,
+    cbElements: ULONG,
+    cLocks: ULONG,
+    pvData: PVOID,
+    rgsabound: [SAFEARRAYBOUND; <span class="number">1</span>],
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LPSAFEARRAY</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">SAFEARRAY</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">FADF_AUTO</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x1</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">FADF_STATIC</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x2</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">FADF_EMBEDDED</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x4</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">FADF_FIXEDSIZE</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x10</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">FADF_RECORD</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x20</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">FADF_HAVEIID</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x40</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">FADF_HAVEVARTYPE</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x80</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">FADF_BSTR</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x100</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">FADF_UNKNOWN</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x200</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">FADF_DISPATCH</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x400</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">FADF_VARIANT</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x800</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">FADF_RESERVED</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0xf008</span>;
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">__tagBRECORD</span> {
-    <span class="ident">pvRecord</span>: <span class="ident">PVOID</span>,
-    <span class="ident">pRecInfo</span>: <span class="kw-2">*mut</span> <span class="ident">IRecordInfo</span>,
+<span class="kw">pub type </span>LPSAFEARRAY = <span class="kw-2">*mut </span>SAFEARRAY;
+<span class="kw">pub const </span>FADF_AUTO: DWORD = <span class="number">0x1</span>;
+<span class="kw">pub const </span>FADF_STATIC: DWORD = <span class="number">0x2</span>;
+<span class="kw">pub const </span>FADF_EMBEDDED: DWORD = <span class="number">0x4</span>;
+<span class="kw">pub const </span>FADF_FIXEDSIZE: DWORD = <span class="number">0x10</span>;
+<span class="kw">pub const </span>FADF_RECORD: DWORD = <span class="number">0x20</span>;
+<span class="kw">pub const </span>FADF_HAVEIID: DWORD = <span class="number">0x40</span>;
+<span class="kw">pub const </span>FADF_HAVEVARTYPE: DWORD = <span class="number">0x80</span>;
+<span class="kw">pub const </span>FADF_BSTR: DWORD = <span class="number">0x100</span>;
+<span class="kw">pub const </span>FADF_UNKNOWN: DWORD = <span class="number">0x200</span>;
+<span class="kw">pub const </span>FADF_DISPATCH: DWORD = <span class="number">0x400</span>;
+<span class="kw">pub const </span>FADF_VARIANT: DWORD = <span class="number">0x800</span>;
+<span class="kw">pub const </span>FADF_RESERVED: DWORD = <span class="number">0xf008</span>;
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>__tagBRECORD {
+    pvRecord: PVOID,
+    pRecInfo: <span class="kw-2">*mut </span>IRecordInfo,
 }}
-<span class="macro">UNION!</span>{<span class="kw">union</span> <span class="ident">VARIANT_n3</span> {
-    [<span class="ident">u64</span>; <span class="number">1</span>] [<span class="ident">u64</span>; <span class="number">2</span>],
-    <span class="ident">llVal</span> <span class="ident">llVal_mut</span>: <span class="ident">LONGLONG</span>,
-    <span class="ident">lVal</span> <span class="ident">lVal_mut</span>: <span class="ident">LONG</span>,
-    <span class="ident">bVal</span> <span class="ident">bVal_mut</span>: <span class="ident">BYTE</span>,
-    <span class="ident">iVal</span> <span class="ident">iVal_mut</span>: <span class="ident">SHORT</span>,
-    <span class="ident">fltVal</span> <span class="ident">fltVal_mut</span>: <span class="ident">FLOAT</span>,
-    <span class="ident">dblVal</span> <span class="ident">dblVal_mut</span>: <span class="ident">DOUBLE</span>,
-    <span class="ident">boolVal</span> <span class="ident">boolVal_mut</span>: <span class="ident">VARIANT_BOOL</span>,
-    <span class="ident">scode</span> <span class="ident">scode_mut</span>: <span class="ident">SCODE</span>,
-    <span class="ident">cyVal</span> <span class="ident">cyVal_mut</span>: <span class="ident">CY</span>,
-    <span class="ident">date</span> <span class="ident">date_mut</span>: <span class="ident">DATE</span>,
-    <span class="ident">bstrVal</span> <span class="ident">bstrVal_mut</span>: <span class="ident">BSTR</span>,
-    <span class="ident">punkVal</span> <span class="ident">punkVal_mut</span>: <span class="kw-2">*mut</span> <span class="ident">IUnknown</span>,
-    <span class="ident">pdispVal</span> <span class="ident">pdispVal_mut</span>: <span class="kw-2">*mut</span> <span class="ident">IDispatch</span>,
-    <span class="ident">parray</span> <span class="ident">parray_mut</span>: <span class="kw-2">*mut</span> <span class="ident">SAFEARRAY</span>,
-    <span class="ident">pbVal</span> <span class="ident">pbVal_mut</span>: <span class="kw-2">*mut</span> <span class="ident">BYTE</span>,
-    <span class="ident">piVal</span> <span class="ident">piVal_mut</span>: <span class="kw-2">*mut</span> <span class="ident">SHORT</span>,
-    <span class="ident">plVal</span> <span class="ident">plVal_mut</span>: <span class="kw-2">*mut</span> <span class="ident">LONG</span>,
-    <span class="ident">pllVal</span> <span class="ident">pllVal_mut</span>: <span class="kw-2">*mut</span> <span class="ident">LONGLONG</span>,
-    <span class="ident">pfltVal</span> <span class="ident">pfltVal_mut</span>: <span class="kw-2">*mut</span> <span class="ident">FLOAT</span>,
-    <span class="ident">pdblVal</span> <span class="ident">pdblVal_mut</span>: <span class="kw-2">*mut</span> <span class="ident">DOUBLE</span>,
-    <span class="ident">pboolVal</span> <span class="ident">pboolVal_mut</span>: <span class="kw-2">*mut</span> <span class="ident">VARIANT_BOOL</span>,
-    <span class="ident">pscode</span> <span class="ident">pscode_mut</span>: <span class="kw-2">*mut</span> <span class="ident">SCODE</span>,
-    <span class="ident">pcyVal</span> <span class="ident">pcyVal_mut</span>: <span class="kw-2">*mut</span> <span class="ident">CY</span>,
-    <span class="ident">pdate</span> <span class="ident">pdate_mut</span>: <span class="kw-2">*mut</span> <span class="ident">DATE</span>,
-    <span class="ident">pbstrVal</span> <span class="ident">pbstrVal_mut</span>: <span class="kw-2">*mut</span> <span class="ident">BSTR</span>,
-    <span class="ident">ppunkVal</span> <span class="ident">ppunkVal_mut</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">IUnknown</span>,
-    <span class="ident">ppdispVal</span> <span class="ident">ppdispVal_mut</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">IDispatch</span>,
-    <span class="ident">pparray</span> <span class="ident">pparray_mut</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">SAFEARRAY</span>,
-    <span class="ident">pvarVal</span> <span class="ident">pvarVal_mut</span>: <span class="kw-2">*mut</span> <span class="ident">VARIANT</span>,
-    <span class="ident">byref</span> <span class="ident">byref_mut</span>: <span class="ident">PVOID</span>,
-    <span class="ident">cVal</span> <span class="ident">cVal_mut</span>: <span class="ident">CHAR</span>,
-    <span class="ident">uiVal</span> <span class="ident">uiVal_mut</span>: <span class="ident">USHORT</span>,
-    <span class="ident">ulVal</span> <span class="ident">ulVal_mut</span>: <span class="ident">ULONG</span>,
-    <span class="ident">ullVal</span> <span class="ident">ullVal_mut</span>: <span class="ident">ULONGLONG</span>,
-    <span class="ident">intVal</span> <span class="ident">intVal_mut</span>: <span class="ident">INT</span>,
-    <span class="ident">uintVal</span> <span class="ident">uintVal_mut</span>: <span class="ident">UINT</span>,
-    <span class="ident">pdecVal</span> <span class="ident">pdecVal_mut</span>: <span class="kw-2">*mut</span> <span class="ident">DECIMAL</span>,
-    <span class="ident">pcVal</span> <span class="ident">pcVal_mut</span>: <span class="kw-2">*mut</span> <span class="ident">CHAR</span>,
-    <span class="ident">puiVal</span> <span class="ident">puiVal_mut</span>: <span class="kw-2">*mut</span> <span class="ident">USHORT</span>,
-    <span class="ident">pulVal</span> <span class="ident">pulVal_mut</span>: <span class="kw-2">*mut</span> <span class="ident">ULONG</span>,
-    <span class="ident">pullVal</span> <span class="ident">pullVal_mut</span>: <span class="kw-2">*mut</span> <span class="ident">ULONGLONG</span>,
-    <span class="ident">pintVal</span> <span class="ident">pintVal_mut</span>: <span class="kw-2">*mut</span> <span class="ident">INT</span>,
-    <span class="ident">puintVal</span> <span class="ident">puintVal_mut</span>: <span class="kw-2">*mut</span> <span class="ident">UINT</span>,
-    <span class="ident">n4</span> <span class="ident">n4_mut</span>: <span class="ident">__tagBRECORD</span>,
+<span class="macro">UNION!</span>{<span class="kw">union </span>VARIANT_n3 {
+    [u64; <span class="number">1</span>] [u64; <span class="number">2</span>],
+    llVal llVal_mut: LONGLONG,
+    lVal lVal_mut: LONG,
+    bVal bVal_mut: BYTE,
+    iVal iVal_mut: SHORT,
+    fltVal fltVal_mut: FLOAT,
+    dblVal dblVal_mut: DOUBLE,
+    boolVal boolVal_mut: VARIANT_BOOL,
+    scode scode_mut: SCODE,
+    cyVal cyVal_mut: CY,
+    date date_mut: DATE,
+    bstrVal bstrVal_mut: BSTR,
+    punkVal punkVal_mut: <span class="kw-2">*mut </span>IUnknown,
+    pdispVal pdispVal_mut: <span class="kw-2">*mut </span>IDispatch,
+    parray parray_mut: <span class="kw-2">*mut </span>SAFEARRAY,
+    pbVal pbVal_mut: <span class="kw-2">*mut </span>BYTE,
+    piVal piVal_mut: <span class="kw-2">*mut </span>SHORT,
+    plVal plVal_mut: <span class="kw-2">*mut </span>LONG,
+    pllVal pllVal_mut: <span class="kw-2">*mut </span>LONGLONG,
+    pfltVal pfltVal_mut: <span class="kw-2">*mut </span>FLOAT,
+    pdblVal pdblVal_mut: <span class="kw-2">*mut </span>DOUBLE,
+    pboolVal pboolVal_mut: <span class="kw-2">*mut </span>VARIANT_BOOL,
+    pscode pscode_mut: <span class="kw-2">*mut </span>SCODE,
+    pcyVal pcyVal_mut: <span class="kw-2">*mut </span>CY,
+    pdate pdate_mut: <span class="kw-2">*mut </span>DATE,
+    pbstrVal pbstrVal_mut: <span class="kw-2">*mut </span>BSTR,
+    ppunkVal ppunkVal_mut: <span class="kw-2">*mut *mut </span>IUnknown,
+    ppdispVal ppdispVal_mut: <span class="kw-2">*mut *mut </span>IDispatch,
+    pparray pparray_mut: <span class="kw-2">*mut *mut </span>SAFEARRAY,
+    pvarVal pvarVal_mut: <span class="kw-2">*mut </span>VARIANT,
+    byref byref_mut: PVOID,
+    cVal cVal_mut: CHAR,
+    uiVal uiVal_mut: USHORT,
+    ulVal ulVal_mut: ULONG,
+    ullVal ullVal_mut: ULONGLONG,
+    intVal intVal_mut: INT,
+    uintVal uintVal_mut: UINT,
+    pdecVal pdecVal_mut: <span class="kw-2">*mut </span>DECIMAL,
+    pcVal pcVal_mut: <span class="kw-2">*mut </span>CHAR,
+    puiVal puiVal_mut: <span class="kw-2">*mut </span>USHORT,
+    pulVal pulVal_mut: <span class="kw-2">*mut </span>ULONG,
+    pullVal pullVal_mut: <span class="kw-2">*mut </span>ULONGLONG,
+    pintVal pintVal_mut: <span class="kw-2">*mut </span>INT,
+    puintVal puintVal_mut: <span class="kw-2">*mut </span>UINT,
+    n4 n4_mut: __tagBRECORD,
 }}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">__tagVARIANT</span> {
-    <span class="ident">vt</span>: <span class="ident">VARTYPE</span>,
-    <span class="ident">wReserved1</span>: <span class="ident">WORD</span>,
-    <span class="ident">wReserved2</span>: <span class="ident">WORD</span>,
-    <span class="ident">wReserved3</span>: <span class="ident">WORD</span>,
-    <span class="ident">n3</span>: <span class="ident">VARIANT_n3</span>,
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>__tagVARIANT {
+    vt: VARTYPE,
+    wReserved1: WORD,
+    wReserved2: WORD,
+    wReserved3: WORD,
+    n3: VARIANT_n3,
 }}
-<span class="macro">UNION!</span>{<span class="kw">union</span> <span class="ident">VARIANT_n1</span> {
-    [<span class="ident">u64</span>; <span class="number">2</span>] [<span class="ident">u64</span>; <span class="number">3</span>],
-    <span class="ident">n2</span> <span class="ident">n2_mut</span>: <span class="ident">__tagVARIANT</span>,
-    <span class="ident">decVal</span> <span class="ident">decVal_mut</span>: <span class="ident">DECIMAL</span>,
+<span class="macro">UNION!</span>{<span class="kw">union </span>VARIANT_n1 {
+    [u64; <span class="number">2</span>] [u64; <span class="number">3</span>],
+    n2 n2_mut: __tagVARIANT,
+    decVal decVal_mut: DECIMAL,
 }}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">VARIANT</span> {
-    <span class="ident">n1</span>: <span class="ident">VARIANT_n1</span>,
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>VARIANT {
+    n1: VARIANT_n1,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LPVARIANT</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">VARIANT</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">VARIANTARG</span> <span class="op">=</span> <span class="ident">VARIANT</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LPVARIANTARG</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">VARIANT</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">REFVARIANT</span> <span class="op">=</span> <span class="kw-2">*const</span> <span class="ident">VARIANT</span>;
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">_wireBRECORD</span> {
-    <span class="ident">fFlags</span>: <span class="ident">ULONG</span>,
-    <span class="ident">clSize</span>: <span class="ident">ULONG</span>,
-    <span class="ident">pRecInfo</span>: <span class="kw-2">*mut</span> <span class="ident">IRecordInfo</span>,
-    <span class="ident">pRecord</span>: <span class="kw-2">*mut</span> <span class="ident">byte</span>,
+<span class="kw">pub type </span>LPVARIANT = <span class="kw-2">*mut </span>VARIANT;
+<span class="kw">pub type </span>VARIANTARG = VARIANT;
+<span class="kw">pub type </span>LPVARIANTARG = <span class="kw-2">*mut </span>VARIANT;
+<span class="kw">pub type </span>REFVARIANT = <span class="kw-2">*const </span>VARIANT;
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>_wireBRECORD {
+    fFlags: ULONG,
+    clSize: ULONG,
+    pRecInfo: <span class="kw-2">*mut </span>IRecordInfo,
+    pRecord: <span class="kw-2">*mut </span>byte,
 }}
-<span class="macro">UNION!</span>{<span class="kw">union</span> <span class="ident">_wireVARIANT_u</span> {
-    [<span class="ident">u64</span>; <span class="number">2</span>],
-    <span class="ident">llVal</span> <span class="ident">llVal_mut</span>: <span class="ident">LONGLONG</span>,
-    <span class="ident">lVal</span> <span class="ident">lVal_mut</span>: <span class="ident">LONG</span>,
-    <span class="ident">bVal</span> <span class="ident">bVal_mut</span>: <span class="ident">BYTE</span>,
-    <span class="ident">iVal</span> <span class="ident">iVal_mut</span>: <span class="ident">SHORT</span>,
-    <span class="ident">fltVal</span> <span class="ident">fltVal_mut</span>: <span class="ident">FLOAT</span>,
-    <span class="ident">dblVal</span> <span class="ident">dblVal_mut</span>: <span class="ident">DOUBLE</span>,
-    <span class="ident">boolVal</span> <span class="ident">boolVal_mut</span>: <span class="ident">VARIANT_BOOL</span>,
-    <span class="ident">scode</span> <span class="ident">scode_mut</span>: <span class="ident">SCODE</span>,
-    <span class="ident">cyVal</span> <span class="ident">cyVal_mut</span>: <span class="ident">CY</span>,
-    <span class="ident">date</span> <span class="ident">date_mut</span>: <span class="ident">DATE</span>,
-    <span class="ident">bstrVal</span> <span class="ident">bstrVal_mut</span>: <span class="ident">wireBSTR</span>,
-    <span class="ident">punkVal</span> <span class="ident">punkVal_mut</span>: <span class="kw-2">*mut</span> <span class="ident">IUnknown</span>,
-    <span class="ident">pdispVal</span> <span class="ident">pdispVal_mut</span>: <span class="kw-2">*mut</span> <span class="ident">IDispatch</span>,
-    <span class="ident">parray</span> <span class="ident">parray_mut</span>: <span class="ident">wirePSAFEARRAY</span>,
-    <span class="ident">brecVal</span> <span class="ident">brecVal_mut</span>: <span class="ident">wireBRECORD</span>,
-    <span class="ident">pbVal</span> <span class="ident">pbVal_mut</span>: <span class="kw-2">*mut</span> <span class="ident">BYTE</span>,
-    <span class="ident">piVal</span> <span class="ident">piVal_mut</span>: <span class="kw-2">*mut</span> <span class="ident">SHORT</span>,
-    <span class="ident">plVal</span> <span class="ident">plVal_mut</span>: <span class="kw-2">*mut</span> <span class="ident">LONG</span>,
-    <span class="ident">pllVal</span> <span class="ident">pllVal_mut</span>: <span class="kw-2">*mut</span> <span class="ident">LONGLONG</span>,
-    <span class="ident">pfltVal</span> <span class="ident">pfltVal_mut</span>: <span class="kw-2">*mut</span> <span class="ident">FLOAT</span>,
-    <span class="ident">pdblVal</span> <span class="ident">pdblVal_mut</span>: <span class="kw-2">*mut</span> <span class="ident">DOUBLE</span>,
-    <span class="ident">pboolVal</span> <span class="ident">pboolVal_mut</span>: <span class="kw-2">*mut</span> <span class="ident">VARIANT_BOOL</span>,
-    <span class="ident">pscode</span> <span class="ident">pscode_mut</span>: <span class="kw-2">*mut</span> <span class="ident">SCODE</span>,
-    <span class="ident">pcyVal</span> <span class="ident">pcyVal_mut</span>: <span class="kw-2">*mut</span> <span class="ident">CY</span>,
-    <span class="ident">pdate</span> <span class="ident">pdate_mut</span>: <span class="kw-2">*mut</span> <span class="ident">DATE</span>,
-    <span class="ident">pbstrVal</span> <span class="ident">pbstrVal_mut</span>: <span class="kw-2">*mut</span> <span class="ident">wireBSTR</span>,
-    <span class="ident">ppunkVal</span> <span class="ident">ppunkVal_mut</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">IUnknown</span>,
-    <span class="ident">ppdispVal</span> <span class="ident">ppdispVal_mut</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">IDispatch</span>,
-    <span class="ident">pparray</span> <span class="ident">pparray_mut</span>: <span class="kw-2">*mut</span> <span class="ident">wirePSAFEARRAY</span>,
-    <span class="ident">pvarVal</span> <span class="ident">pvarVal_mut</span>: <span class="kw-2">*mut</span> <span class="ident">wireVARIANT</span>,
-    <span class="ident">cVal</span> <span class="ident">cVal_mut</span>: <span class="ident">CHAR</span>,
-    <span class="ident">uiVal</span> <span class="ident">uiVal_mut</span>: <span class="ident">USHORT</span>,
-    <span class="ident">ulVal</span> <span class="ident">ulVal_mut</span>: <span class="ident">ULONG</span>,
-    <span class="ident">ullVal</span> <span class="ident">ullVal_mut</span>: <span class="ident">ULONGLONG</span>,
-    <span class="ident">intVal</span> <span class="ident">intVal_mut</span>: <span class="ident">INT</span>,
-    <span class="ident">uintVal</span> <span class="ident">uintVal_mut</span>: <span class="ident">UINT</span>,
-    <span class="ident">decVal</span> <span class="ident">decVal_mut</span>: <span class="ident">DECIMAL</span>,
-    <span class="ident">pdecVal</span> <span class="ident">pdecVal_mut</span>: <span class="kw-2">*mut</span> <span class="ident">DECIMAL</span>,
-    <span class="ident">pcVal</span> <span class="ident">pcVal_mut</span>: <span class="kw-2">*mut</span> <span class="ident">CHAR</span>,
-    <span class="ident">puiVal</span> <span class="ident">puiVal_mut</span>: <span class="kw-2">*mut</span> <span class="ident">USHORT</span>,
-    <span class="ident">pulVal</span> <span class="ident">pulVal_mut</span>: <span class="kw-2">*mut</span> <span class="ident">ULONG</span>,
-    <span class="ident">pullVal</span> <span class="ident">pullVal_mut</span>: <span class="kw-2">*mut</span> <span class="ident">ULONGLONG</span>,
-    <span class="ident">pintVal</span> <span class="ident">pintVal_mut</span>: <span class="kw-2">*mut</span> <span class="ident">INT</span>,
-    <span class="ident">puintVal</span> <span class="ident">puintVal_mut</span>: <span class="kw-2">*mut</span> <span class="ident">UINT</span>,
+<span class="macro">UNION!</span>{<span class="kw">union </span>_wireVARIANT_u {
+    [u64; <span class="number">2</span>],
+    llVal llVal_mut: LONGLONG,
+    lVal lVal_mut: LONG,
+    bVal bVal_mut: BYTE,
+    iVal iVal_mut: SHORT,
+    fltVal fltVal_mut: FLOAT,
+    dblVal dblVal_mut: DOUBLE,
+    boolVal boolVal_mut: VARIANT_BOOL,
+    scode scode_mut: SCODE,
+    cyVal cyVal_mut: CY,
+    date date_mut: DATE,
+    bstrVal bstrVal_mut: wireBSTR,
+    punkVal punkVal_mut: <span class="kw-2">*mut </span>IUnknown,
+    pdispVal pdispVal_mut: <span class="kw-2">*mut </span>IDispatch,
+    parray parray_mut: wirePSAFEARRAY,
+    brecVal brecVal_mut: wireBRECORD,
+    pbVal pbVal_mut: <span class="kw-2">*mut </span>BYTE,
+    piVal piVal_mut: <span class="kw-2">*mut </span>SHORT,
+    plVal plVal_mut: <span class="kw-2">*mut </span>LONG,
+    pllVal pllVal_mut: <span class="kw-2">*mut </span>LONGLONG,
+    pfltVal pfltVal_mut: <span class="kw-2">*mut </span>FLOAT,
+    pdblVal pdblVal_mut: <span class="kw-2">*mut </span>DOUBLE,
+    pboolVal pboolVal_mut: <span class="kw-2">*mut </span>VARIANT_BOOL,
+    pscode pscode_mut: <span class="kw-2">*mut </span>SCODE,
+    pcyVal pcyVal_mut: <span class="kw-2">*mut </span>CY,
+    pdate pdate_mut: <span class="kw-2">*mut </span>DATE,
+    pbstrVal pbstrVal_mut: <span class="kw-2">*mut </span>wireBSTR,
+    ppunkVal ppunkVal_mut: <span class="kw-2">*mut *mut </span>IUnknown,
+    ppdispVal ppdispVal_mut: <span class="kw-2">*mut *mut </span>IDispatch,
+    pparray pparray_mut: <span class="kw-2">*mut </span>wirePSAFEARRAY,
+    pvarVal pvarVal_mut: <span class="kw-2">*mut </span>wireVARIANT,
+    cVal cVal_mut: CHAR,
+    uiVal uiVal_mut: USHORT,
+    ulVal ulVal_mut: ULONG,
+    ullVal ullVal_mut: ULONGLONG,
+    intVal intVal_mut: INT,
+    uintVal uintVal_mut: UINT,
+    decVal decVal_mut: DECIMAL,
+    pdecVal pdecVal_mut: <span class="kw-2">*mut </span>DECIMAL,
+    pcVal pcVal_mut: <span class="kw-2">*mut </span>CHAR,
+    puiVal puiVal_mut: <span class="kw-2">*mut </span>USHORT,
+    pulVal pulVal_mut: <span class="kw-2">*mut </span>ULONG,
+    pullVal pullVal_mut: <span class="kw-2">*mut </span>ULONGLONG,
+    pintVal pintVal_mut: <span class="kw-2">*mut </span>INT,
+    puintVal puintVal_mut: <span class="kw-2">*mut </span>UINT,
 }}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">_wireVARIANT</span> {
-    <span class="ident">clSize</span>: <span class="ident">DWORD</span>,
-    <span class="ident">rpcReserved</span>: <span class="ident">DWORD</span>,
-    <span class="ident">vt</span>: <span class="ident">USHORT</span>,
-    <span class="ident">wReserved1</span>: <span class="ident">USHORT</span>,
-    <span class="ident">wReserved2</span>: <span class="ident">USHORT</span>,
-    <span class="ident">wReserved3</span>: <span class="ident">USHORT</span>,
-    <span class="ident">u</span>: <span class="ident">_wireVARIANT_u</span>,
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>_wireVARIANT {
+    clSize: DWORD,
+    rpcReserved: DWORD,
+    vt: USHORT,
+    wReserved1: USHORT,
+    wReserved2: USHORT,
+    wReserved3: USHORT,
+    u: _wireVARIANT_u,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">DISPID</span> <span class="op">=</span> <span class="ident">LONG</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">MEMBERID</span> <span class="op">=</span> <span class="ident">DISPID</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">HREFTYPE</span> <span class="op">=</span> <span class="ident">DWORD</span>;
-<span class="macro">ENUM!</span>{<span class="kw">enum</span> <span class="ident">TYPEKIND</span> {
-    <span class="ident">TKIND_ENUM</span> <span class="op">=</span> <span class="number">0</span>,
-    <span class="ident">TKIND_RECORD</span>,
-    <span class="ident">TKIND_MODULE</span>,
-    <span class="ident">TKIND_INTERFACE</span>,
-    <span class="ident">TKIND_DISPATCH</span>,
-    <span class="ident">TKIND_COCLASS</span>,
-    <span class="ident">TKIND_ALIAS</span>,
-    <span class="ident">TKIND_UNION</span>,
-    <span class="ident">TKIND_MAX</span>,
+<span class="kw">pub type </span>DISPID = LONG;
+<span class="kw">pub type </span>MEMBERID = DISPID;
+<span class="kw">pub type </span>HREFTYPE = DWORD;
+<span class="macro">ENUM!</span>{<span class="kw">enum </span>TYPEKIND {
+    TKIND_ENUM = <span class="number">0</span>,
+    TKIND_RECORD,
+    TKIND_MODULE,
+    TKIND_INTERFACE,
+    TKIND_DISPATCH,
+    TKIND_COCLASS,
+    TKIND_ALIAS,
+    TKIND_UNION,
+    TKIND_MAX,
 }}
-<span class="macro">UNION!</span>{<span class="kw">union</span> <span class="ident">TYPEDESC_u</span> {
-    [<span class="ident">usize</span>; <span class="number">1</span>],
-    <span class="ident">lptdesc</span> <span class="ident">lptdesc_mut</span>: <span class="kw-2">*mut</span> <span class="ident">TYPEDESC</span>,
-    <span class="ident">lpadesc</span> <span class="ident">lpadesc_mut</span>: <span class="kw-2">*mut</span> <span class="ident">ARRAYDESC</span>,
-    <span class="ident">hreftype</span> <span class="ident">hreftype_mut</span>: <span class="ident">HREFTYPE</span>,
+<span class="macro">UNION!</span>{<span class="kw">union </span>TYPEDESC_u {
+    [usize; <span class="number">1</span>],
+    lptdesc lptdesc_mut: <span class="kw-2">*mut </span>TYPEDESC,
+    lpadesc lpadesc_mut: <span class="kw-2">*mut </span>ARRAYDESC,
+    hreftype hreftype_mut: HREFTYPE,
 }}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">TYPEDESC</span> {
-    <span class="ident">u</span>: <span class="ident">TYPEDESC_u</span>,
-    <span class="ident">vt</span>: <span class="ident">VARTYPE</span>,
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>TYPEDESC {
+    u: TYPEDESC_u,
+    vt: VARTYPE,
 }}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">ARRAYDESC</span> {
-    <span class="ident">tdescElem</span>: <span class="ident">TYPEDESC</span>,
-    <span class="ident">cDims</span>: <span class="ident">USHORT</span>,
-    <span class="ident">rgbounds</span>: [<span class="ident">SAFEARRAYBOUND</span>; <span class="number">1</span>],
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>ARRAYDESC {
+    tdescElem: TYPEDESC,
+    cDims: USHORT,
+    rgbounds: [SAFEARRAYBOUND; <span class="number">1</span>],
 }}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">PARAMDESCEX</span> {
-    <span class="ident">cBytes</span>: <span class="ident">ULONG</span>,
-    <span class="ident">varDefaultValue</span>: <span class="ident">VARIANTARG</span>,
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>PARAMDESCEX {
+    cBytes: ULONG,
+    varDefaultValue: VARIANTARG,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LPPARAMDESCEX</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">PARAMDESCEX</span>;
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">PARAMDESC</span> {
-    <span class="ident">pparamdescex</span>: <span class="ident">LPPARAMDESCEX</span>,
-    <span class="ident">wParamFlags</span>: <span class="ident">USHORT</span>,
+<span class="kw">pub type </span>LPPARAMDESCEX = <span class="kw-2">*mut </span>PARAMDESCEX;
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>PARAMDESC {
+    pparamdescex: LPPARAMDESCEX,
+    wParamFlags: USHORT,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LPPARAMDESC</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">PARAMDESC</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">PARAMFLAG_NONE</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">PARAMFLAG_FIN</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x1</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">PARAMFLAG_FOUT</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x2</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">PARAMFLAG_FLCID</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x4</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">PARAMFLAG_FRETVAL</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x8</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">PARAMFLAG_FOPT</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x10</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">PARAMFLAG_FHASDEFAULT</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x20</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">PARAMFLAG_FHASCUSTDATA</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x40</span>;
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">IDLDESC</span> {
-    <span class="ident">dwReserved</span>: <span class="ident">ULONG_PTR</span>,
-    <span class="ident">wIDLFlags</span>: <span class="ident">USHORT</span>,
+<span class="kw">pub type </span>LPPARAMDESC = <span class="kw-2">*mut </span>PARAMDESC;
+<span class="kw">pub const </span>PARAMFLAG_NONE: DWORD = <span class="number">0</span>;
+<span class="kw">pub const </span>PARAMFLAG_FIN: DWORD = <span class="number">0x1</span>;
+<span class="kw">pub const </span>PARAMFLAG_FOUT: DWORD = <span class="number">0x2</span>;
+<span class="kw">pub const </span>PARAMFLAG_FLCID: DWORD = <span class="number">0x4</span>;
+<span class="kw">pub const </span>PARAMFLAG_FRETVAL: DWORD = <span class="number">0x8</span>;
+<span class="kw">pub const </span>PARAMFLAG_FOPT: DWORD = <span class="number">0x10</span>;
+<span class="kw">pub const </span>PARAMFLAG_FHASDEFAULT: DWORD = <span class="number">0x20</span>;
+<span class="kw">pub const </span>PARAMFLAG_FHASCUSTDATA: DWORD = <span class="number">0x40</span>;
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>IDLDESC {
+    dwReserved: ULONG_PTR,
+    wIDLFlags: USHORT,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LPIDLDESC</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">IDLDESC</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">IDLFLAG_NONE</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="ident">PARAMFLAG_NONE</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">IDLFLAG_FIN</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="ident">PARAMFLAG_FIN</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">IDLFLAG_FOUT</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="ident">PARAMFLAG_FOUT</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">IDLFLAG_FLCID</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="ident">PARAMFLAG_FLCID</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">IDLFLAG_FRETVAL</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="ident">PARAMFLAG_FRETVAL</span>;
-<span class="macro">UNION!</span>{<span class="kw">union</span> <span class="ident">ELEMDESC_u</span> {
-    [<span class="ident">usize</span>; <span class="number">2</span>],
-    <span class="ident">idldesc</span> <span class="ident">idldesc_mut</span>: <span class="ident">IDLDESC</span>,
-    <span class="ident">paramdesc</span> <span class="ident">paramdesc_mut</span>: <span class="ident">PARAMDESC</span>,
+<span class="kw">pub type </span>LPIDLDESC = <span class="kw-2">*mut </span>IDLDESC;
+<span class="kw">pub const </span>IDLFLAG_NONE: DWORD = PARAMFLAG_NONE;
+<span class="kw">pub const </span>IDLFLAG_FIN: DWORD = PARAMFLAG_FIN;
+<span class="kw">pub const </span>IDLFLAG_FOUT: DWORD = PARAMFLAG_FOUT;
+<span class="kw">pub const </span>IDLFLAG_FLCID: DWORD = PARAMFLAG_FLCID;
+<span class="kw">pub const </span>IDLFLAG_FRETVAL: DWORD = PARAMFLAG_FRETVAL;
+<span class="macro">UNION!</span>{<span class="kw">union </span>ELEMDESC_u {
+    [usize; <span class="number">2</span>],
+    idldesc idldesc_mut: IDLDESC,
+    paramdesc paramdesc_mut: PARAMDESC,
 }}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">ELEMDESC</span> {
-    <span class="ident">tdesc</span>: <span class="ident">TYPEDESC</span>,
-    <span class="ident">u</span>: <span class="ident">ELEMDESC_u</span>,
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>ELEMDESC {
+    tdesc: TYPEDESC,
+    u: ELEMDESC_u,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LPELEMDESC</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">ELEMDESC</span>;
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">TYPEATTR</span> {
-    <span class="ident">guid</span>: <span class="ident">GUID</span>,
-    <span class="ident">lcid</span>: <span class="ident">LCID</span>,
-    <span class="ident">dwReserved</span>: <span class="ident">DWORD</span>,
-    <span class="ident">memidConstructor</span>: <span class="ident">MEMBERID</span>,
-    <span class="ident">memidDestructor</span>: <span class="ident">MEMBERID</span>,
-    <span class="ident">lpstrSchema</span>: <span class="ident">LPOLESTR</span>,
-    <span class="ident">cbSizeInstance</span>: <span class="ident">ULONG</span>,
-    <span class="ident">typekind</span>: <span class="ident">TYPEKIND</span>,
-    <span class="ident">cFuncs</span>: <span class="ident">WORD</span>,
-    <span class="ident">cVars</span>: <span class="ident">WORD</span>,
-    <span class="ident">cImplTypes</span>: <span class="ident">WORD</span>,
-    <span class="ident">cbSizeVft</span>: <span class="ident">WORD</span>,
-    <span class="ident">cbAlignment</span>: <span class="ident">WORD</span>,
-    <span class="ident">wTypeFlags</span>: <span class="ident">WORD</span>,
-    <span class="ident">wMajorVerNum</span>: <span class="ident">WORD</span>,
-    <span class="ident">wMinorVerNum</span>: <span class="ident">WORD</span>,
-    <span class="ident">tdescAlias</span>: <span class="ident">TYPEDESC</span>,
-    <span class="ident">idldescType</span>: <span class="ident">IDLDESC</span>,
+<span class="kw">pub type </span>LPELEMDESC = <span class="kw-2">*mut </span>ELEMDESC;
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>TYPEATTR {
+    guid: GUID,
+    lcid: LCID,
+    dwReserved: DWORD,
+    memidConstructor: MEMBERID,
+    memidDestructor: MEMBERID,
+    lpstrSchema: LPOLESTR,
+    cbSizeInstance: ULONG,
+    typekind: TYPEKIND,
+    cFuncs: WORD,
+    cVars: WORD,
+    cImplTypes: WORD,
+    cbSizeVft: WORD,
+    cbAlignment: WORD,
+    wTypeFlags: WORD,
+    wMajorVerNum: WORD,
+    wMinorVerNum: WORD,
+    tdescAlias: TYPEDESC,
+    idldescType: IDLDESC,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LPTYPEATTR</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">TYPEATTR</span>;
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">DISPPARAMS</span> {
-    <span class="ident">rgvarg</span>: <span class="kw-2">*mut</span> <span class="ident">VARIANTARG</span>,
-    <span class="ident">rgdispidNamedArgs</span>: <span class="kw-2">*mut</span> <span class="ident">DISPID</span>,
-    <span class="ident">cArgs</span>: <span class="ident">UINT</span>,
-    <span class="ident">cNamedArgs</span>: <span class="ident">UINT</span>,
+<span class="kw">pub type </span>LPTYPEATTR = <span class="kw-2">*mut </span>TYPEATTR;
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>DISPPARAMS {
+    rgvarg: <span class="kw-2">*mut </span>VARIANTARG,
+    rgdispidNamedArgs: <span class="kw-2">*mut </span>DISPID,
+    cArgs: UINT,
+    cNamedArgs: UINT,
 }}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">EXCEPINFO</span> {
-    <span class="ident">wCode</span>: <span class="ident">WORD</span>,
-    <span class="ident">wReserved</span>: <span class="ident">WORD</span>,
-    <span class="ident">bstrSource</span>: <span class="ident">BSTR</span>,
-    <span class="ident">bstrDescription</span>: <span class="ident">BSTR</span>,
-    <span class="ident">bstrHelpFile</span>: <span class="ident">BSTR</span>,
-    <span class="ident">dwHelpContext</span>: <span class="ident">DWORD</span>,
-    <span class="ident">pvReserved</span>: <span class="ident">PVOID</span>,
-    <span class="ident">pfnDeferredFillIn</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;system&quot;</span> <span class="kw">fn</span>(
-        <span class="ident">einfo</span>: <span class="kw-2">*mut</span> <span class="ident">EXCEPINFO</span>,
-    ) -&gt; <span class="ident">HRESULT</span><span class="op">&gt;</span>,
-    <span class="ident">scode</span>: <span class="ident">SCODE</span>,
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>EXCEPINFO {
+    wCode: WORD,
+    wReserved: WORD,
+    bstrSource: BSTR,
+    bstrDescription: BSTR,
+    bstrHelpFile: BSTR,
+    dwHelpContext: DWORD,
+    pvReserved: PVOID,
+    pfnDeferredFillIn: <span class="prelude-ty">Option</span>&lt;<span class="kw">unsafe extern </span><span class="string">&quot;system&quot; </span><span class="kw">fn</span>(
+        einfo: <span class="kw-2">*mut </span>EXCEPINFO,
+    ) -&gt; HRESULT&gt;,
+    scode: SCODE,
 }}
-<span class="macro">ENUM!</span>{<span class="kw">enum</span> <span class="ident">CALLCONV</span> {
-    <span class="ident">CC_FASTCALL</span> <span class="op">=</span> <span class="number">0</span>,
-    <span class="ident">CC_CDECL</span> <span class="op">=</span> <span class="number">1</span>,
-    <span class="ident">CC_MSCPASCAL</span>,
-    <span class="ident">CC_PASCAL</span>,
-    <span class="ident">CC_MACPASCAL</span>,
-    <span class="ident">CC_STDCALL</span>,
-    <span class="ident">CC_FPFASTCALL</span>,
-    <span class="ident">CC_SYSCALL</span>,
-    <span class="ident">CC_MPWCDECL</span>,
-    <span class="ident">CC_MPWPASCAL</span>,
-    <span class="ident">CC_MAX</span>,
+<span class="macro">ENUM!</span>{<span class="kw">enum </span>CALLCONV {
+    CC_FASTCALL = <span class="number">0</span>,
+    CC_CDECL = <span class="number">1</span>,
+    CC_MSCPASCAL,
+    CC_PASCAL,
+    CC_MACPASCAL,
+    CC_STDCALL,
+    CC_FPFASTCALL,
+    CC_SYSCALL,
+    CC_MPWCDECL,
+    CC_MPWPASCAL,
+    CC_MAX,
 }}
-<span class="macro">ENUM!</span>{<span class="kw">enum</span> <span class="ident">FUNCKIND</span> {
-    <span class="ident">FUNC_VIRTUAL</span> <span class="op">=</span> <span class="number">0</span>,
-    <span class="ident">FUNC_PUREVIRTUAL</span>,
-    <span class="ident">FUNC_NONVIRTUAL</span>,
-    <span class="ident">FUNC_STATIC</span>,
-    <span class="ident">FUNC_DISPATCH</span>,
+<span class="macro">ENUM!</span>{<span class="kw">enum </span>FUNCKIND {
+    FUNC_VIRTUAL = <span class="number">0</span>,
+    FUNC_PUREVIRTUAL,
+    FUNC_NONVIRTUAL,
+    FUNC_STATIC,
+    FUNC_DISPATCH,
 }}
-<span class="macro">ENUM!</span>{<span class="kw">enum</span> <span class="ident">INVOKEKIND</span> {
-    <span class="ident">INVOKE_FUNC</span> <span class="op">=</span> <span class="number">1</span>,
-    <span class="ident">INVOKE_PROPERTYGET</span> <span class="op">=</span> <span class="number">2</span>,
-    <span class="ident">INVOKE_PROPERTYPUT</span> <span class="op">=</span> <span class="number">4</span>,
-    <span class="ident">INVOKE_PROPERTYPUTREF</span> <span class="op">=</span> <span class="number">8</span>,
+<span class="macro">ENUM!</span>{<span class="kw">enum </span>INVOKEKIND {
+    INVOKE_FUNC = <span class="number">1</span>,
+    INVOKE_PROPERTYGET = <span class="number">2</span>,
+    INVOKE_PROPERTYPUT = <span class="number">4</span>,
+    INVOKE_PROPERTYPUTREF = <span class="number">8</span>,
 }}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">FUNCDESC</span> {
-    <span class="ident">memid</span>: <span class="ident">MEMBERID</span>,
-    <span class="ident">lprgscode</span>: <span class="kw-2">*mut</span> <span class="ident">SCODE</span>,
-    <span class="ident">lprgelemdescParam</span>: <span class="kw-2">*mut</span> <span class="ident">ELEMDESC</span>,
-    <span class="ident">funckind</span>: <span class="ident">FUNCKIND</span>,
-    <span class="ident">invkind</span>: <span class="ident">INVOKEKIND</span>,
-    <span class="ident">callconv</span>: <span class="ident">CALLCONV</span>,
-    <span class="ident">cParams</span>: <span class="ident">SHORT</span>,
-    <span class="ident">cParamsOpt</span>: <span class="ident">SHORT</span>,
-    <span class="ident">oVft</span>: <span class="ident">SHORT</span>,
-    <span class="ident">cScodes</span>: <span class="ident">SHORT</span>,
-    <span class="ident">elemdescFunc</span>: <span class="ident">ELEMDESC</span>,
-    <span class="ident">wFuncFlags</span>: <span class="ident">WORD</span>,
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>FUNCDESC {
+    memid: MEMBERID,
+    lprgscode: <span class="kw-2">*mut </span>SCODE,
+    lprgelemdescParam: <span class="kw-2">*mut </span>ELEMDESC,
+    funckind: FUNCKIND,
+    invkind: INVOKEKIND,
+    callconv: CALLCONV,
+    cParams: SHORT,
+    cParamsOpt: SHORT,
+    oVft: SHORT,
+    cScodes: SHORT,
+    elemdescFunc: ELEMDESC,
+    wFuncFlags: WORD,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LPFUNCDESC</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">FUNCDESC</span>;
-<span class="macro">ENUM!</span>{<span class="kw">enum</span> <span class="ident">VARKIND</span> {
-    <span class="ident">VAR_PERINSTANCE</span> <span class="op">=</span> <span class="number">0</span>,
-    <span class="ident">VAR_STATIC</span>,
-    <span class="ident">VAR_CONST</span>,
-    <span class="ident">VAR_DISPATCH</span>,
+<span class="kw">pub type </span>LPFUNCDESC = <span class="kw-2">*mut </span>FUNCDESC;
+<span class="macro">ENUM!</span>{<span class="kw">enum </span>VARKIND {
+    VAR_PERINSTANCE = <span class="number">0</span>,
+    VAR_STATIC,
+    VAR_CONST,
+    VAR_DISPATCH,
 }}
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">IMPLTYPEFLAG_FDEFAULT</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x1</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">IMPLTYPEFLAG_FSOURCE</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x2</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">IMPLTYPEFLAG_FRESTRICTED</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x4</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">IMPLTYPEFLAG_FDEFAULTVTABLE</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x8</span>;
-<span class="macro">UNION!</span>{<span class="kw">union</span> <span class="ident">VARDESC_u</span> {
-    [<span class="ident">usize</span>; <span class="number">1</span>],
-    <span class="ident">oInst</span> <span class="ident">oInst_mut</span>: <span class="ident">ULONG</span>,
-    <span class="ident">lpvarValue</span> <span class="ident">lpvarValue_mut</span>: <span class="kw-2">*mut</span> <span class="ident">VARIANT</span>,
+<span class="kw">pub const </span>IMPLTYPEFLAG_FDEFAULT: DWORD = <span class="number">0x1</span>;
+<span class="kw">pub const </span>IMPLTYPEFLAG_FSOURCE: DWORD = <span class="number">0x2</span>;
+<span class="kw">pub const </span>IMPLTYPEFLAG_FRESTRICTED: DWORD = <span class="number">0x4</span>;
+<span class="kw">pub const </span>IMPLTYPEFLAG_FDEFAULTVTABLE: DWORD = <span class="number">0x8</span>;
+<span class="macro">UNION!</span>{<span class="kw">union </span>VARDESC_u {
+    [usize; <span class="number">1</span>],
+    oInst oInst_mut: ULONG,
+    lpvarValue lpvarValue_mut: <span class="kw-2">*mut </span>VARIANT,
 }}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">VARDESC</span> {
-    <span class="ident">memid</span>: <span class="ident">MEMBERID</span>,
-    <span class="ident">lpstrSchema</span>: <span class="ident">LPOLESTR</span>,
-    <span class="ident">u</span>: <span class="ident">VARDESC_u</span>,
-    <span class="ident">elemdescVar</span>: <span class="ident">ELEMDESC</span>,
-    <span class="ident">wVarFlags</span>: <span class="ident">WORD</span>,
-    <span class="ident">varkind</span>: <span class="ident">VARKIND</span>,
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>VARDESC {
+    memid: MEMBERID,
+    lpstrSchema: LPOLESTR,
+    u: VARDESC_u,
+    elemdescVar: ELEMDESC,
+    wVarFlags: WORD,
+    varkind: VARKIND,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LPVARDESC</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">VARDESC</span>;
-<span class="macro">ENUM!</span>{<span class="kw">enum</span> <span class="ident">TYPEFLAGS</span> {
-    <span class="ident">TYPEFLAG_FAPPOBJECT</span> <span class="op">=</span> <span class="number">0x1</span>,
-    <span class="ident">TYPEFLAG_FCANCREATE</span> <span class="op">=</span> <span class="number">0x2</span>,
-    <span class="ident">TYPEFLAG_FLICENSED</span> <span class="op">=</span> <span class="number">0x4</span>,
-    <span class="ident">TYPEFLAG_FPREDECLID</span> <span class="op">=</span> <span class="number">0x8</span>,
-    <span class="ident">TYPEFLAG_FHIDDEN</span> <span class="op">=</span> <span class="number">0x10</span>,
-    <span class="ident">TYPEFLAG_FCONTROL</span> <span class="op">=</span> <span class="number">0x20</span>,
-    <span class="ident">TYPEFLAG_FDUAL</span> <span class="op">=</span> <span class="number">0x40</span>,
-    <span class="ident">TYPEFLAG_FNONEXTENSIBLE</span> <span class="op">=</span> <span class="number">0x80</span>,
-    <span class="ident">TYPEFLAG_FOLEAUTOMATION</span> <span class="op">=</span> <span class="number">0x100</span>,
-    <span class="ident">TYPEFLAG_FRESTRICTED</span> <span class="op">=</span> <span class="number">0x200</span>,
-    <span class="ident">TYPEFLAG_FAGGREGATABLE</span> <span class="op">=</span> <span class="number">0x400</span>,
-    <span class="ident">TYPEFLAG_FREPLACEABLE</span> <span class="op">=</span> <span class="number">0x800</span>,
-    <span class="ident">TYPEFLAG_FDISPATCHABLE</span> <span class="op">=</span> <span class="number">0x1000</span>,
-    <span class="ident">TYPEFLAG_FREVERSEBIND</span> <span class="op">=</span> <span class="number">0x2000</span>,
-    <span class="ident">TYPEFLAG_FPROXY</span> <span class="op">=</span> <span class="number">0x4000</span>,
+<span class="kw">pub type </span>LPVARDESC = <span class="kw-2">*mut </span>VARDESC;
+<span class="macro">ENUM!</span>{<span class="kw">enum </span>TYPEFLAGS {
+    TYPEFLAG_FAPPOBJECT = <span class="number">0x1</span>,
+    TYPEFLAG_FCANCREATE = <span class="number">0x2</span>,
+    TYPEFLAG_FLICENSED = <span class="number">0x4</span>,
+    TYPEFLAG_FPREDECLID = <span class="number">0x8</span>,
+    TYPEFLAG_FHIDDEN = <span class="number">0x10</span>,
+    TYPEFLAG_FCONTROL = <span class="number">0x20</span>,
+    TYPEFLAG_FDUAL = <span class="number">0x40</span>,
+    TYPEFLAG_FNONEXTENSIBLE = <span class="number">0x80</span>,
+    TYPEFLAG_FOLEAUTOMATION = <span class="number">0x100</span>,
+    TYPEFLAG_FRESTRICTED = <span class="number">0x200</span>,
+    TYPEFLAG_FAGGREGATABLE = <span class="number">0x400</span>,
+    TYPEFLAG_FREPLACEABLE = <span class="number">0x800</span>,
+    TYPEFLAG_FDISPATCHABLE = <span class="number">0x1000</span>,
+    TYPEFLAG_FREVERSEBIND = <span class="number">0x2000</span>,
+    TYPEFLAG_FPROXY = <span class="number">0x4000</span>,
 }}
-<span class="macro">ENUM!</span>{<span class="kw">enum</span> <span class="ident">FUNCFLAGS</span> {
-    <span class="ident">FUNCFLAG_FRESTRICTED</span> <span class="op">=</span> <span class="number">0x1</span>,
-    <span class="ident">FUNCFLAG_FSOURCE</span> <span class="op">=</span> <span class="number">0x2</span>,
-    <span class="ident">FUNCFLAG_FBINDABLE</span> <span class="op">=</span> <span class="number">0x4</span>,
-    <span class="ident">FUNCFLAG_FREQUESTEDIT</span> <span class="op">=</span> <span class="number">0x8</span>,
-    <span class="ident">FUNCFLAG_FDISPLAYBIND</span> <span class="op">=</span> <span class="number">0x10</span>,
-    <span class="ident">FUNCFLAG_FDEFAULTBIND</span> <span class="op">=</span> <span class="number">0x20</span>,
-    <span class="ident">FUNCFLAG_FHIDDEN</span> <span class="op">=</span> <span class="number">0x40</span>,
-    <span class="ident">FUNCFLAG_FUSESGETLASTERROR</span> <span class="op">=</span> <span class="number">0x80</span>,
-    <span class="ident">FUNCFLAG_FDEFAULTCOLLELEM</span> <span class="op">=</span> <span class="number">0x100</span>,
-    <span class="ident">FUNCFLAG_FUIDEFAULT</span> <span class="op">=</span> <span class="number">0x200</span>,
-    <span class="ident">FUNCFLAG_FNONBROWSABLE</span> <span class="op">=</span> <span class="number">0x400</span>,
-    <span class="ident">FUNCFLAG_FREPLACEABLE</span> <span class="op">=</span> <span class="number">0x800</span>,
-    <span class="ident">FUNCFLAG_FIMMEDIATEBIND</span> <span class="op">=</span> <span class="number">0x1000</span>,
+<span class="macro">ENUM!</span>{<span class="kw">enum </span>FUNCFLAGS {
+    FUNCFLAG_FRESTRICTED = <span class="number">0x1</span>,
+    FUNCFLAG_FSOURCE = <span class="number">0x2</span>,
+    FUNCFLAG_FBINDABLE = <span class="number">0x4</span>,
+    FUNCFLAG_FREQUESTEDIT = <span class="number">0x8</span>,
+    FUNCFLAG_FDISPLAYBIND = <span class="number">0x10</span>,
+    FUNCFLAG_FDEFAULTBIND = <span class="number">0x20</span>,
+    FUNCFLAG_FHIDDEN = <span class="number">0x40</span>,
+    FUNCFLAG_FUSESGETLASTERROR = <span class="number">0x80</span>,
+    FUNCFLAG_FDEFAULTCOLLELEM = <span class="number">0x100</span>,
+    FUNCFLAG_FUIDEFAULT = <span class="number">0x200</span>,
+    FUNCFLAG_FNONBROWSABLE = <span class="number">0x400</span>,
+    FUNCFLAG_FREPLACEABLE = <span class="number">0x800</span>,
+    FUNCFLAG_FIMMEDIATEBIND = <span class="number">0x1000</span>,
 }}
-<span class="macro">ENUM!</span>{<span class="kw">enum</span> <span class="ident">VARFLAGS</span> {
-    <span class="ident">VARFLAG_FREADONLY</span> <span class="op">=</span> <span class="number">0x1</span>,
-    <span class="ident">VARFLAG_FSOURCE</span> <span class="op">=</span> <span class="number">0x2</span>,
-    <span class="ident">VARFLAG_FBINDABLE</span> <span class="op">=</span> <span class="number">0x4</span>,
-    <span class="ident">VARFLAG_FREQUESTEDIT</span> <span class="op">=</span> <span class="number">0x8</span>,
-    <span class="ident">VARFLAG_FDISPLAYBIND</span> <span class="op">=</span> <span class="number">0x10</span>,
-    <span class="ident">VARFLAG_FDEFAULTBIND</span> <span class="op">=</span> <span class="number">0x20</span>,
-    <span class="ident">VARFLAG_FHIDDEN</span> <span class="op">=</span> <span class="number">0x40</span>,
-    <span class="ident">VARFLAG_FRESTRICTED</span> <span class="op">=</span> <span class="number">0x80</span>,
-    <span class="ident">VARFLAG_FDEFAULTCOLLELEM</span> <span class="op">=</span> <span class="number">0x100</span>,
-    <span class="ident">VARFLAG_FUIDEFAULT</span> <span class="op">=</span> <span class="number">0x200</span>,
-    <span class="ident">VARFLAG_FNONBROWSABLE</span> <span class="op">=</span> <span class="number">0x400</span>,
-    <span class="ident">VARFLAG_FREPLACEABLE</span> <span class="op">=</span> <span class="number">0x800</span>,
-    <span class="ident">VARFLAG_FIMMEDIATEBIND</span> <span class="op">=</span> <span class="number">0x1000</span>,
+<span class="macro">ENUM!</span>{<span class="kw">enum </span>VARFLAGS {
+    VARFLAG_FREADONLY = <span class="number">0x1</span>,
+    VARFLAG_FSOURCE = <span class="number">0x2</span>,
+    VARFLAG_FBINDABLE = <span class="number">0x4</span>,
+    VARFLAG_FREQUESTEDIT = <span class="number">0x8</span>,
+    VARFLAG_FDISPLAYBIND = <span class="number">0x10</span>,
+    VARFLAG_FDEFAULTBIND = <span class="number">0x20</span>,
+    VARFLAG_FHIDDEN = <span class="number">0x40</span>,
+    VARFLAG_FRESTRICTED = <span class="number">0x80</span>,
+    VARFLAG_FDEFAULTCOLLELEM = <span class="number">0x100</span>,
+    VARFLAG_FUIDEFAULT = <span class="number">0x200</span>,
+    VARFLAG_FNONBROWSABLE = <span class="number">0x400</span>,
+    VARFLAG_FREPLACEABLE = <span class="number">0x800</span>,
+    VARFLAG_FIMMEDIATEBIND = <span class="number">0x1000</span>,
 }}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">CLEANLOCALSTORAGE</span> {
-    <span class="ident">pInterface</span>: <span class="kw-2">*mut</span> <span class="ident">IUnknown</span>,
-    <span class="ident">pStorage</span>: <span class="ident">PVOID</span>,
-    <span class="ident">flags</span>: <span class="ident">DWORD</span>,
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>CLEANLOCALSTORAGE {
+    pInterface: <span class="kw-2">*mut </span>IUnknown,
+    pStorage: PVOID,
+    flags: DWORD,
 }}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">CUSTDATAITEM</span> {
-    <span class="ident">guid</span>: <span class="ident">GUID</span>,
-    <span class="ident">varValue</span>: <span class="ident">VARIANTARG</span>,
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>CUSTDATAITEM {
+    guid: GUID,
+    varValue: VARIANTARG,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LPCUSTDATAITEM</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">CUSTDATAITEM</span>;
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">CUSTDATA</span> {
-    <span class="ident">cCustData</span>: <span class="ident">DWORD</span>,
-    <span class="ident">prgCustData</span>: <span class="ident">LPCUSTDATAITEM</span>,
+<span class="kw">pub type </span>LPCUSTDATAITEM = <span class="kw-2">*mut </span>CUSTDATAITEM;
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>CUSTDATA {
+    cCustData: DWORD,
+    prgCustData: LPCUSTDATAITEM,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LPCUSTDATA</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">CUSTDATA</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LPCREATETYPEINFO</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">ICreateTypeInfo</span>;
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x00020405</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]</span>
-<span class="ident">interface</span> <span class="ident">ICreateTypeInfo</span>(<span class="ident">ICreateTypeInfoVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">SetGuid</span>(
-        <span class="ident">guid</span>: <span class="ident">REFGUID</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">SetTypeFlags</span>(
-        <span class="ident">uTypeFlags</span>: <span class="ident">UINT</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">SetDocString</span>(
-        <span class="ident">pStrDoc</span>: <span class="ident">LPOLESTR</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">SetHelpContext</span>(
-        <span class="ident">dwHelpContext</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">SetVersion</span>(
-        <span class="ident">wMajorVerNum</span>: <span class="ident">WORD</span>,
-        <span class="ident">wMinorVerNum</span>: <span class="ident">WORD</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">AddRefTypeInfo</span>(
-        <span class="ident">pTInfo</span>: <span class="kw-2">*mut</span> <span class="ident">ITypeInfo</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">AddFuncDesc</span>(
-        <span class="ident">index</span>: <span class="ident">UINT</span>,
-        <span class="ident">pFuncDesc</span>: <span class="kw-2">*mut</span> <span class="ident">FUNCDESC</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">SetImplTypeFlags</span>(
-        <span class="ident">index</span>: <span class="ident">UINT</span>,
-        <span class="ident">implTypeFlags</span>: <span class="ident">INT</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">SetAlignment</span>(
-        <span class="ident">cbAlignment</span>: <span class="ident">WORD</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">SetSchema</span>(
-        <span class="ident">pStrSchema</span>: <span class="ident">LPOLESTR</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">AddVarDesc</span>(
-        <span class="ident">index</span>: <span class="ident">UINT</span>,
-        <span class="ident">pVarDesc</span>: <span class="kw-2">*mut</span> <span class="ident">VARDESC</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">SetFuncAndParamNames</span>(
-        <span class="ident">index</span>: <span class="ident">UINT</span>,
-        <span class="ident">rgszNames</span>: <span class="kw-2">*mut</span> <span class="ident">LPOLESTR</span>,
-        <span class="ident">cNames</span>: <span class="ident">UINT</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">SetVarName</span>(
-        <span class="ident">index</span>: <span class="ident">UINT</span>,
-        <span class="ident">szName</span>: <span class="ident">LPOLESTR</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">SetTypeDescAlias</span>(
-        <span class="ident">pTDescAlias</span>: <span class="kw-2">*mut</span> <span class="ident">TYPEDESC</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">DefineFuncAsDllEntry</span>(
-        <span class="ident">index</span>: <span class="ident">UINT</span>,
-        <span class="ident">szDllName</span>: <span class="ident">LPOLESTR</span>,
-        <span class="ident">szProcName</span>: <span class="ident">LPOLESTR</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">SetFuncDocString</span>(
-        <span class="ident">index</span>: <span class="ident">UINT</span>,
-        <span class="ident">szDocString</span>: <span class="ident">LPOLESTR</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">SetVarDocString</span>(
-        <span class="ident">index</span>: <span class="ident">UINT</span>,
-        <span class="ident">szDocString</span>: <span class="ident">LPOLESTR</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">SetFuncHelpContext</span>(
-        <span class="ident">index</span>: <span class="ident">UINT</span>,
-        <span class="ident">dwHelpContext</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">SetVarHelpContext</span>(
-        <span class="ident">index</span>: <span class="ident">UINT</span>,
-        <span class="ident">dwHelpContext</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">SetMops</span>(
-        <span class="ident">index</span>: <span class="ident">UINT</span>,
-        <span class="ident">bstrMops</span>: <span class="ident">BSTR</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">SetTypeIdldesc</span>(
-        <span class="ident">pIdlDesc</span>: <span class="kw-2">*mut</span> <span class="ident">IDLDESC</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">LayOut</span>() -&gt; <span class="ident">HRESULT</span>,
+<span class="kw">pub type </span>LPCUSTDATA = <span class="kw-2">*mut </span>CUSTDATA;
+<span class="kw">pub type </span>LPCREATETYPEINFO = <span class="kw-2">*mut </span>ICreateTypeInfo;
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x00020405</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]
+</span>interface ICreateTypeInfo(ICreateTypeInfoVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>SetGuid(
+        guid: REFGUID,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>SetTypeFlags(
+        uTypeFlags: UINT,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>SetDocString(
+        pStrDoc: LPOLESTR,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>SetHelpContext(
+        dwHelpContext: DWORD,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>SetVersion(
+        wMajorVerNum: WORD,
+        wMinorVerNum: WORD,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>AddRefTypeInfo(
+        pTInfo: <span class="kw-2">*mut </span>ITypeInfo,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>AddFuncDesc(
+        index: UINT,
+        pFuncDesc: <span class="kw-2">*mut </span>FUNCDESC,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>SetImplTypeFlags(
+        index: UINT,
+        implTypeFlags: INT,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>SetAlignment(
+        cbAlignment: WORD,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>SetSchema(
+        pStrSchema: LPOLESTR,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>AddVarDesc(
+        index: UINT,
+        pVarDesc: <span class="kw-2">*mut </span>VARDESC,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>SetFuncAndParamNames(
+        index: UINT,
+        rgszNames: <span class="kw-2">*mut </span>LPOLESTR,
+        cNames: UINT,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>SetVarName(
+        index: UINT,
+        szName: LPOLESTR,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>SetTypeDescAlias(
+        pTDescAlias: <span class="kw-2">*mut </span>TYPEDESC,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>DefineFuncAsDllEntry(
+        index: UINT,
+        szDllName: LPOLESTR,
+        szProcName: LPOLESTR,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>SetFuncDocString(
+        index: UINT,
+        szDocString: LPOLESTR,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>SetVarDocString(
+        index: UINT,
+        szDocString: LPOLESTR,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>SetFuncHelpContext(
+        index: UINT,
+        dwHelpContext: DWORD,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>SetVarHelpContext(
+        index: UINT,
+        dwHelpContext: DWORD,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>SetMops(
+        index: UINT,
+        bstrMops: BSTR,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>SetTypeIdldesc(
+        pIdlDesc: <span class="kw-2">*mut </span>IDLDESC,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>LayOut() -&gt; HRESULT,
 }}
-<span class="comment">// LPCREATETYPEINFO2</span>
-<span class="comment">// ICreateTypeInfo2</span>
-<span class="comment">// LPCREATETYPELIB</span>
-<span class="comment">// ICreateTypeLib</span>
-<span class="comment">// LPCREATETYPELIB2</span>
-<span class="comment">// ICreateTypeLib2</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LPDISPATCH</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">IDispatch</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DISPID_UNKNOWN</span>: <span class="ident">INT</span> <span class="op">=</span> <span class="op">-</span><span class="number">1</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DISPID_VALUE</span>: <span class="ident">INT</span> <span class="op">=</span> <span class="number">0</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DISPID_PROPERTYPUT</span>: <span class="ident">INT</span> <span class="op">=</span> <span class="op">-</span><span class="number">3</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DISPID_NEWENUM</span>: <span class="ident">INT</span> <span class="op">=</span> <span class="op">-</span><span class="number">4</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DISPID_EVALUATE</span>: <span class="ident">INT</span> <span class="op">=</span> <span class="op">-</span><span class="number">5</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DISPID_CONSTRUCTOR</span>: <span class="ident">INT</span> <span class="op">=</span> <span class="op">-</span><span class="number">6</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DISPID_DESTRUCTOR</span>: <span class="ident">INT</span> <span class="op">=</span> <span class="op">-</span><span class="number">7</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DISPID_COLLECT</span>: <span class="ident">INT</span> <span class="op">=</span> <span class="op">-</span><span class="number">8</span>;
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x00020400</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IDispatch</span>(<span class="ident">IDispatchVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">GetTypeInfoCount</span>(
-        <span class="ident">pctinfo</span>: <span class="kw-2">*mut</span> <span class="ident">UINT</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">GetTypeInfo</span>(
-        <span class="ident">iTInfo</span>: <span class="ident">UINT</span>,
-        <span class="ident">lcid</span>: <span class="ident">LCID</span>,
-        <span class="ident">ppTInfo</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">ITypeInfo</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">GetIDsOfNames</span>(
-        <span class="ident">riid</span>: <span class="ident">REFIID</span>,
-        <span class="ident">rgszNames</span>: <span class="kw-2">*mut</span> <span class="ident">LPOLESTR</span>,
-        <span class="ident">cNames</span>: <span class="ident">UINT</span>,
-        <span class="ident">lcid</span>: <span class="ident">LCID</span>,
-        <span class="ident">rgDispId</span>: <span class="kw-2">*mut</span> <span class="ident">DISPID</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Invoke</span>(
-        <span class="ident">dispIdMember</span>: <span class="ident">DISPID</span>,
-        <span class="ident">riid</span>: <span class="ident">REFIID</span>,
-        <span class="ident">lcid</span>: <span class="ident">LCID</span>,
-        <span class="ident">wFlags</span>: <span class="ident">WORD</span>,
-        <span class="ident">pDispParams</span>: <span class="kw-2">*mut</span> <span class="ident">DISPPARAMS</span>,
-        <span class="ident">pVarResult</span>: <span class="kw-2">*mut</span> <span class="ident">VARIANT</span>,
-        <span class="ident">pExcepInfo</span>: <span class="kw-2">*mut</span> <span class="ident">EXCEPINFO</span>,
-        <span class="ident">puArgErr</span>: <span class="kw-2">*mut</span> <span class="ident">UINT</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
+<span class="comment">// LPCREATETYPEINFO2
+// ICreateTypeInfo2
+// LPCREATETYPELIB
+// ICreateTypeLib
+// LPCREATETYPELIB2
+// ICreateTypeLib2
+</span><span class="kw">pub type </span>LPDISPATCH = <span class="kw-2">*mut </span>IDispatch;
+<span class="kw">pub const </span>DISPID_UNKNOWN: INT = -<span class="number">1</span>;
+<span class="kw">pub const </span>DISPID_VALUE: INT = <span class="number">0</span>;
+<span class="kw">pub const </span>DISPID_PROPERTYPUT: INT = -<span class="number">3</span>;
+<span class="kw">pub const </span>DISPID_NEWENUM: INT = -<span class="number">4</span>;
+<span class="kw">pub const </span>DISPID_EVALUATE: INT = -<span class="number">5</span>;
+<span class="kw">pub const </span>DISPID_CONSTRUCTOR: INT = -<span class="number">6</span>;
+<span class="kw">pub const </span>DISPID_DESTRUCTOR: INT = -<span class="number">7</span>;
+<span class="kw">pub const </span>DISPID_COLLECT: INT = -<span class="number">8</span>;
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x00020400</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]
+</span>interface IDispatch(IDispatchVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>GetTypeInfoCount(
+        pctinfo: <span class="kw-2">*mut </span>UINT,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>GetTypeInfo(
+        iTInfo: UINT,
+        lcid: LCID,
+        ppTInfo: <span class="kw-2">*mut *mut </span>ITypeInfo,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>GetIDsOfNames(
+        riid: REFIID,
+        rgszNames: <span class="kw-2">*mut </span>LPOLESTR,
+        cNames: UINT,
+        lcid: LCID,
+        rgDispId: <span class="kw-2">*mut </span>DISPID,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>Invoke(
+        dispIdMember: DISPID,
+        riid: REFIID,
+        lcid: LCID,
+        wFlags: WORD,
+        pDispParams: <span class="kw-2">*mut </span>DISPPARAMS,
+        pVarResult: <span class="kw-2">*mut </span>VARIANT,
+        pExcepInfo: <span class="kw-2">*mut </span>EXCEPINFO,
+        puArgErr: <span class="kw-2">*mut </span>UINT,
+    ) -&gt; HRESULT,
 }}
-<span class="comment">// IDispatch_RemoteInvoke_Proxy</span>
-<span class="comment">// IDispatch_RemoteInvoke_Stub</span>
-<span class="comment">// LPENUMVARIANT</span>
-<span class="comment">// IEnumVARIANT</span>
-<span class="comment">// IEnumVARIANT_RemoteNext_Proxy</span>
-<span class="comment">// IEnumVARIANT_RemoteNext_Stub</span>
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x0000002F</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xC0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IRecordInfo</span>(<span class="ident">IRecordInfoVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">RecordInit</span>(
-        <span class="ident">pvNew</span>: <span class="ident">PVOID</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">RecordClear</span>(
-        <span class="ident">pvExisting</span>: <span class="ident">PVOID</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">RecordCopy</span>(
-        <span class="ident">pvExisting</span>: <span class="ident">PVOID</span>,
-        <span class="ident">pvNew</span>: <span class="ident">PVOID</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">GetGuid</span>(
-        <span class="ident">pguid</span>: <span class="kw-2">*mut</span> <span class="ident">GUID</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">GetName</span>(
-        <span class="ident">pbstrName</span>: <span class="kw-2">*mut</span> <span class="ident">BSTR</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">GetSize</span>(
-        <span class="ident">pcbSize</span>: <span class="kw-2">*mut</span> <span class="ident">ULONG</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">GetTypeInfo</span>(
-        <span class="ident">ppTypeInfo</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">ITypeInfo</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">GetField</span>(
-        <span class="ident">pvData</span>: <span class="ident">PVOID</span>,
-        <span class="ident">szFieldName</span>: <span class="ident">LPCOLESTR</span>,
-        <span class="ident">pvarField</span>: <span class="kw-2">*mut</span> <span class="ident">VARIANT</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">GetFieldNoCopy</span>(
-        <span class="ident">pvData</span>: <span class="ident">PVOID</span>,
-        <span class="ident">szFieldName</span>: <span class="ident">LPCOLESTR</span>,
-        <span class="ident">pvarField</span>: <span class="kw-2">*mut</span> <span class="ident">VARIANT</span>,
-        <span class="ident">ppvDataCArray</span>: <span class="kw-2">*mut</span> <span class="ident">PVOID</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">PutField</span>(
-        <span class="ident">wFlags</span>: <span class="ident">ULONG</span>,
-        <span class="ident">pvData</span>: <span class="ident">PVOID</span>,
-        <span class="ident">szFieldName</span>: <span class="ident">LPCOLESTR</span>,
-        <span class="ident">pvarField</span>: <span class="kw-2">*mut</span> <span class="ident">VARIANT</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">PutFieldNoCopy</span>(
-        <span class="ident">wFlags</span>: <span class="ident">ULONG</span>,
-        <span class="ident">pvData</span>: <span class="ident">PVOID</span>,
-        <span class="ident">szFieldName</span>: <span class="ident">LPCOLESTR</span>,
-        <span class="ident">pvarField</span>: <span class="kw-2">*mut</span> <span class="ident">VARIANT</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">GetFieldNames</span>(
-        <span class="ident">pcNames</span>: <span class="kw-2">*mut</span> <span class="ident">ULONG</span>,
-        <span class="ident">rgBstrNames</span>: <span class="kw-2">*mut</span> <span class="ident">BSTR</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">IsMatchingType</span>(
-        <span class="ident">pRecordInfo</span>: <span class="kw-2">*mut</span> <span class="ident">IRecordInfo</span>,
-    ) -&gt; <span class="ident">BOOL</span>,
-    <span class="kw">fn</span> <span class="ident">RecordCreate</span>() -&gt; <span class="ident">PVOID</span>,
-    <span class="kw">fn</span> <span class="ident">RecordCreateCopy</span>(
-        <span class="ident">pvSource</span>: <span class="ident">PVOID</span>,
-        <span class="ident">ppvDest</span>: <span class="kw-2">*mut</span> <span class="ident">PVOID</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">RecordDestroy</span>(
-        <span class="ident">pvRecord</span>: <span class="ident">PVOID</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
+<span class="comment">// IDispatch_RemoteInvoke_Proxy
+// IDispatch_RemoteInvoke_Stub
+// LPENUMVARIANT
+// IEnumVARIANT
+// IEnumVARIANT_RemoteNext_Proxy
+// IEnumVARIANT_RemoteNext_Stub
+</span><span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x0000002F</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xC0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]
+</span>interface IRecordInfo(IRecordInfoVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>RecordInit(
+        pvNew: PVOID,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>RecordClear(
+        pvExisting: PVOID,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>RecordCopy(
+        pvExisting: PVOID,
+        pvNew: PVOID,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>GetGuid(
+        pguid: <span class="kw-2">*mut </span>GUID,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>GetName(
+        pbstrName: <span class="kw-2">*mut </span>BSTR,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>GetSize(
+        pcbSize: <span class="kw-2">*mut </span>ULONG,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>GetTypeInfo(
+        ppTypeInfo: <span class="kw-2">*mut *mut </span>ITypeInfo,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>GetField(
+        pvData: PVOID,
+        szFieldName: LPCOLESTR,
+        pvarField: <span class="kw-2">*mut </span>VARIANT,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>GetFieldNoCopy(
+        pvData: PVOID,
+        szFieldName: LPCOLESTR,
+        pvarField: <span class="kw-2">*mut </span>VARIANT,
+        ppvDataCArray: <span class="kw-2">*mut </span>PVOID,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>PutField(
+        wFlags: ULONG,
+        pvData: PVOID,
+        szFieldName: LPCOLESTR,
+        pvarField: <span class="kw-2">*mut </span>VARIANT,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>PutFieldNoCopy(
+        wFlags: ULONG,
+        pvData: PVOID,
+        szFieldName: LPCOLESTR,
+        pvarField: <span class="kw-2">*mut </span>VARIANT,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>GetFieldNames(
+        pcNames: <span class="kw-2">*mut </span>ULONG,
+        rgBstrNames: <span class="kw-2">*mut </span>BSTR,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>IsMatchingType(
+        pRecordInfo: <span class="kw-2">*mut </span>IRecordInfo,
+    ) -&gt; BOOL,
+    <span class="kw">fn </span>RecordCreate() -&gt; PVOID,
+    <span class="kw">fn </span>RecordCreateCopy(
+        pvSource: PVOID,
+        ppvDest: <span class="kw-2">*mut </span>PVOID,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>RecordDestroy(
+        pvRecord: PVOID,
+    ) -&gt; HRESULT,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LPTYPECOMP</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">ITypeComp</span>;
-<span class="macro">ENUM!</span>{<span class="kw">enum</span> <span class="ident">DESCKIND</span> {
-    <span class="ident">DESCKIND_NONE</span> <span class="op">=</span> <span class="number">0</span>,
-    <span class="ident">DESCKIND_FUNCDESC</span> <span class="op">=</span> <span class="ident">DESCKIND_NONE</span> <span class="op">+</span> <span class="number">1</span>,
-    <span class="ident">DESCKIND_VARDESC</span> <span class="op">=</span> <span class="ident">DESCKIND_FUNCDESC</span> <span class="op">+</span> <span class="number">1</span>,
-    <span class="ident">DESCKIND_TYPECOMP</span> <span class="op">=</span> <span class="ident">DESCKIND_VARDESC</span> <span class="op">+</span> <span class="number">1</span>,
-    <span class="ident">DESCKIND_IMPLICITAPPOBJ</span> <span class="op">=</span> <span class="ident">DESCKIND_TYPECOMP</span> <span class="op">+</span> <span class="number">1</span>,
-    <span class="ident">DESCKIND_MAX</span> <span class="op">=</span> <span class="ident">DESCKIND_IMPLICITAPPOBJ</span> <span class="op">+</span> <span class="number">1</span>,
+<span class="kw">pub type </span>LPTYPECOMP = <span class="kw-2">*mut </span>ITypeComp;
+<span class="macro">ENUM!</span>{<span class="kw">enum </span>DESCKIND {
+    DESCKIND_NONE = <span class="number">0</span>,
+    DESCKIND_FUNCDESC = DESCKIND_NONE + <span class="number">1</span>,
+    DESCKIND_VARDESC = DESCKIND_FUNCDESC + <span class="number">1</span>,
+    DESCKIND_TYPECOMP = DESCKIND_VARDESC + <span class="number">1</span>,
+    DESCKIND_IMPLICITAPPOBJ = DESCKIND_TYPECOMP + <span class="number">1</span>,
+    DESCKIND_MAX = DESCKIND_IMPLICITAPPOBJ + <span class="number">1</span>,
 }}
-<span class="macro">UNION!</span>{<span class="kw">union</span> <span class="ident">BINDPTR</span> {
-    [<span class="ident">usize</span>; <span class="number">1</span>],
-    <span class="ident">lpfuncdesc</span> <span class="ident">lpfuncdesc_mut</span>: <span class="kw-2">*mut</span> <span class="ident">FUNCDESC</span>,
-    <span class="ident">lpvardesc</span> <span class="ident">lpvardesc_mut</span>: <span class="kw-2">*mut</span> <span class="ident">VARDESC</span>,
-    <span class="ident">lptcomp</span> <span class="ident">lptcomp_mut</span>: <span class="kw-2">*mut</span> <span class="ident">ITypeComp</span>,
+<span class="macro">UNION!</span>{<span class="kw">union </span>BINDPTR {
+    [usize; <span class="number">1</span>],
+    lpfuncdesc lpfuncdesc_mut: <span class="kw-2">*mut </span>FUNCDESC,
+    lpvardesc lpvardesc_mut: <span class="kw-2">*mut </span>VARDESC,
+    lptcomp lptcomp_mut: <span class="kw-2">*mut </span>ITypeComp,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LPBINDPTR</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">BINDPTR</span>;
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x00020403</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xC0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]</span>
-<span class="ident">interface</span> <span class="ident">ITypeComp</span>(<span class="ident">ITypeCompVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">Bind</span>(
-        <span class="ident">szName</span>: <span class="ident">LPOLESTR</span>,
-        <span class="ident">lHashVal</span>: <span class="ident">ULONG</span>,
-        <span class="ident">wFlags</span>: <span class="ident">WORD</span>,
-        <span class="ident">ppTInfo</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">ITypeInfo</span>,
-        <span class="ident">pDescKind</span>: <span class="kw-2">*mut</span> <span class="ident">DESCKIND</span>,
-        <span class="ident">pBindPtr</span>: <span class="kw-2">*mut</span> <span class="ident">BINDPTR</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">BindType</span>(
-        <span class="ident">szName</span>: <span class="ident">LPOLESTR</span>,
-        <span class="ident">lHashVal</span>: <span class="ident">ULONG</span>,
-        <span class="ident">ppTInfo</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">ITypeInfo</span>,
-        <span class="ident">ppTComp</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">ITypeComp</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
+<span class="kw">pub type </span>LPBINDPTR = <span class="kw-2">*mut </span>BINDPTR;
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x00020403</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xC0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]
+</span>interface ITypeComp(ITypeCompVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>Bind(
+        szName: LPOLESTR,
+        lHashVal: ULONG,
+        wFlags: WORD,
+        ppTInfo: <span class="kw-2">*mut *mut </span>ITypeInfo,
+        pDescKind: <span class="kw-2">*mut </span>DESCKIND,
+        pBindPtr: <span class="kw-2">*mut </span>BINDPTR,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>BindType(
+        szName: LPOLESTR,
+        lHashVal: ULONG,
+        ppTInfo: <span class="kw-2">*mut *mut </span>ITypeInfo,
+        ppTComp: <span class="kw-2">*mut *mut </span>ITypeComp,
+    ) -&gt; HRESULT,
 }}
-<span class="macro">ENUM!</span>{<span class="kw">enum</span> <span class="ident">SYSKIND</span> {
-    <span class="ident">SYS_WIN16</span> <span class="op">=</span> <span class="number">0</span>,
-    <span class="ident">SYS_WIN32</span>,
-    <span class="ident">SYS_MAC</span>,
-    <span class="ident">SYS_WIN64</span>,
+<span class="macro">ENUM!</span>{<span class="kw">enum </span>SYSKIND {
+    SYS_WIN16 = <span class="number">0</span>,
+    SYS_WIN32,
+    SYS_MAC,
+    SYS_WIN64,
 }}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">TLIBATTR</span> {
-    <span class="ident">guid</span>: <span class="ident">GUID</span>,
-    <span class="ident">lcid</span>: <span class="ident">LCID</span>,
-    <span class="ident">syskind</span>: <span class="ident">SYSKIND</span>,
-    <span class="ident">wMajorVerNum</span>: <span class="ident">WORD</span>,
-    <span class="ident">wMinorVerNum</span>: <span class="ident">WORD</span>,
-    <span class="ident">wLibFlags</span>: <span class="ident">WORD</span>,
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>TLIBATTR {
+    guid: GUID,
+    lcid: LCID,
+    syskind: SYSKIND,
+    wMajorVerNum: WORD,
+    wMinorVerNum: WORD,
+    wLibFlags: WORD,
 }}
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x00020402</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]</span>
-<span class="ident">interface</span> <span class="ident">ITypeLib</span>(<span class="ident">ITypeLibVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">GetTypeInfoCount</span>() -&gt; <span class="ident">UINT</span>,
-    <span class="kw">fn</span> <span class="ident">GetTypeInfo</span>(
-        <span class="ident">index</span>: <span class="ident">UINT</span>,
-        <span class="ident">ppTInfo</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">ITypeInfo</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">GetTypeInfoType</span>(
-        <span class="ident">index</span>: <span class="ident">UINT</span>,
-        <span class="ident">pTKind</span>: <span class="kw-2">*mut</span> <span class="ident">TYPEKIND</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">GetTypeInfoOfGuid</span>(
-        <span class="ident">guid</span>: <span class="ident">REFGUID</span>,
-        <span class="ident">ppTInfo</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">ITypeInfo</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">GetLibAttr</span>(
-        <span class="ident">ppTLibAttr</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">TLIBATTR</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">GetTypeComp</span>(
-        <span class="ident">ppTComp</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">ITypeComp</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">GetDocumentation</span>(
-        <span class="ident">index</span>: <span class="ident">INT</span>,
-        <span class="ident">pbstrName</span>: <span class="kw-2">*mut</span> <span class="ident">BSTR</span>,
-        <span class="ident">pBstrDocString</span>: <span class="kw-2">*mut</span> <span class="ident">BSTR</span>,
-        <span class="ident">pdwHelpContext</span>: <span class="kw-2">*mut</span> <span class="ident">DWORD</span>,
-        <span class="ident">pBstrHelpFile</span>: <span class="kw-2">*mut</span> <span class="ident">BSTR</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">IsName</span>(
-        <span class="ident">szNameBuf</span>: <span class="ident">LPOLESTR</span>,
-        <span class="ident">lHashVal</span>: <span class="ident">ULONG</span>,
-        <span class="ident">pfName</span>: <span class="kw-2">*mut</span> <span class="ident">BOOL</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">FindName</span>(
-        <span class="ident">szNameBuf</span>: <span class="ident">LPOLESTR</span>,
-        <span class="ident">lHashVal</span>: <span class="ident">ULONG</span>,
-        <span class="ident">ppTInfo</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">ITypeInfo</span>,
-        <span class="ident">rgMemId</span>: <span class="kw-2">*mut</span> <span class="ident">MEMBERID</span>,
-        <span class="ident">pcFound</span>: <span class="kw-2">*mut</span> <span class="ident">USHORT</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">ReleaseTLibAttr</span>(
-        <span class="ident">pTLibAttr</span>: <span class="kw-2">*const</span> <span class="ident">TLIBATTR</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x00020402</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]
+</span>interface ITypeLib(ITypeLibVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>GetTypeInfoCount() -&gt; UINT,
+    <span class="kw">fn </span>GetTypeInfo(
+        index: UINT,
+        ppTInfo: <span class="kw-2">*mut *mut </span>ITypeInfo,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>GetTypeInfoType(
+        index: UINT,
+        pTKind: <span class="kw-2">*mut </span>TYPEKIND,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>GetTypeInfoOfGuid(
+        guid: REFGUID,
+        ppTInfo: <span class="kw-2">*mut *mut </span>ITypeInfo,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>GetLibAttr(
+        ppTLibAttr: <span class="kw-2">*mut *mut </span>TLIBATTR,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>GetTypeComp(
+        ppTComp: <span class="kw-2">*mut *mut </span>ITypeComp,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>GetDocumentation(
+        index: INT,
+        pbstrName: <span class="kw-2">*mut </span>BSTR,
+        pBstrDocString: <span class="kw-2">*mut </span>BSTR,
+        pdwHelpContext: <span class="kw-2">*mut </span>DWORD,
+        pBstrHelpFile: <span class="kw-2">*mut </span>BSTR,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>IsName(
+        szNameBuf: LPOLESTR,
+        lHashVal: ULONG,
+        pfName: <span class="kw-2">*mut </span>BOOL,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>FindName(
+        szNameBuf: LPOLESTR,
+        lHashVal: ULONG,
+        ppTInfo: <span class="kw-2">*mut *mut </span>ITypeInfo,
+        rgMemId: <span class="kw-2">*mut </span>MEMBERID,
+        pcFound: <span class="kw-2">*mut </span>USHORT,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>ReleaseTLibAttr(
+        pTLibAttr: <span class="kw-2">*const </span>TLIBATTR,
+    ) -&gt; HRESULT,
 }}
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x00020401</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]</span>
-<span class="ident">interface</span> <span class="ident">ITypeInfo</span>(<span class="ident">ITypeInfoVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">GetTypeAttr</span>(
-        <span class="ident">ppTypeAttr</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">TYPEATTR</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">GetTypeComp</span>(
-        <span class="ident">ppTComp</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">ITypeComp</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">GetFuncDesc</span>(
-        <span class="ident">index</span>: <span class="ident">UINT</span>,
-        <span class="ident">ppFunDesc</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">FUNCDESC</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">GetVarDesc</span>(
-        <span class="ident">index</span>: <span class="ident">UINT</span>,
-        <span class="ident">pPVarDesc</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">VARDESC</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">GetNames</span>(
-        <span class="ident">memid</span>: <span class="ident">MEMBERID</span>,
-        <span class="ident">rgBstrNames</span>: <span class="kw-2">*mut</span> <span class="ident">BSTR</span>,
-        <span class="ident">cMaxNames</span>: <span class="ident">UINT</span>,
-        <span class="ident">pcNames</span>: <span class="kw-2">*mut</span> <span class="ident">UINT</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">GetRefTypeOfImplType</span>(
-        <span class="ident">index</span>: <span class="ident">UINT</span>,
-        <span class="ident">pRefType</span>: <span class="kw-2">*mut</span> <span class="ident">HREFTYPE</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">GetImplTypeFlags</span>(
-        <span class="ident">index</span>: <span class="ident">UINT</span>,
-        <span class="ident">pImplTypeFlags</span>: <span class="kw-2">*mut</span> <span class="ident">INT</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">GetIDsOfNames</span>(
-        <span class="ident">rgszNames</span>: <span class="kw-2">*mut</span> <span class="ident">LPOLESTR</span>,
-        <span class="ident">cNames</span>: <span class="ident">UINT</span>,
-        <span class="ident">pMemId</span>: <span class="kw-2">*mut</span> <span class="ident">MEMBERID</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">Invoke</span>(
-        <span class="ident">pvInstance</span>: <span class="ident">PVOID</span>,
-        <span class="ident">memid</span>: <span class="ident">MEMBERID</span>,
-        <span class="ident">wFlags</span>: <span class="ident">WORD</span>,
-        <span class="ident">pDispParams</span>: <span class="kw-2">*mut</span> <span class="ident">DISPPARAMS</span>,
-        <span class="ident">pVarResult</span>: <span class="kw-2">*mut</span> <span class="ident">VARIANT</span>,
-        <span class="ident">pExcepInfo</span>: <span class="kw-2">*mut</span> <span class="ident">EXCEPINFO</span>,
-        <span class="ident">puArgErr</span>: <span class="kw-2">*mut</span> <span class="ident">UINT</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">GetDocumentation</span>(
-        <span class="ident">memid</span>: <span class="ident">MEMBERID</span>,
-        <span class="ident">pBstrName</span>: <span class="kw-2">*mut</span> <span class="ident">BSTR</span>,
-        <span class="ident">pBstrDocString</span>: <span class="kw-2">*mut</span> <span class="ident">BSTR</span>,
-        <span class="ident">pdwHelpContext</span>: <span class="kw-2">*mut</span> <span class="ident">DWORD</span>,
-        <span class="ident">pBstrHelpFile</span>: <span class="kw-2">*mut</span> <span class="ident">BSTR</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">GetDllEntry</span>(
-        <span class="ident">memid</span>: <span class="ident">MEMBERID</span>,
-        <span class="ident">invKind</span>: <span class="ident">INVOKEKIND</span>,
-        <span class="ident">pBstrDllName</span>: <span class="kw-2">*mut</span> <span class="ident">BSTR</span>,
-        <span class="ident">pBstrName</span>: <span class="kw-2">*mut</span> <span class="ident">BSTR</span>,
-        <span class="ident">pwOrdinal</span>: <span class="kw-2">*mut</span> <span class="ident">WORD</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">GetRefTypeInfo</span>(
-        <span class="ident">hRefType</span>: <span class="ident">HREFTYPE</span>,
-        <span class="ident">ppTInfo</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">ITypeInfo</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">AddressOfMember</span>(
-        <span class="ident">memid</span>: <span class="ident">MEMBERID</span>,
-        <span class="ident">invKind</span>: <span class="ident">INVOKEKIND</span>,
-        <span class="ident">ppv</span>: <span class="kw-2">*mut</span> <span class="ident">PVOID</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">CreateInstance</span>(
-        <span class="ident">pUnkOuter</span>: <span class="kw-2">*mut</span> <span class="ident">IUnknown</span>,
-        <span class="ident">riid</span>: <span class="ident">REFIID</span>,
-        <span class="ident">ppvObj</span>: <span class="kw-2">*mut</span> <span class="ident">PVOID</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">GetMops</span>(
-        <span class="ident">memid</span>: <span class="ident">MEMBERID</span>,
-        <span class="ident">pBstrMops</span>: <span class="kw-2">*mut</span> <span class="ident">BSTR</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">GetContainingTypeLib</span>(
-        <span class="ident">ppTLib</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="ident">ITypeLib</span>,
-        <span class="ident">pIndex</span>: <span class="kw-2">*mut</span> <span class="ident">UINT</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">ReleaseTypeAttr</span>(
-        <span class="ident">pTypeAttr</span>: <span class="kw-2">*mut</span> <span class="ident">TYPEATTR</span>,
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x00020401</span>, <span class="number">0x0000</span>, <span class="number">0x0000</span>, <span class="number">0xc0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x46</span>)]
+</span>interface ITypeInfo(ITypeInfoVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>GetTypeAttr(
+        ppTypeAttr: <span class="kw-2">*mut *mut </span>TYPEATTR,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>GetTypeComp(
+        ppTComp: <span class="kw-2">*mut *mut </span>ITypeComp,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>GetFuncDesc(
+        index: UINT,
+        ppFunDesc: <span class="kw-2">*mut *mut </span>FUNCDESC,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>GetVarDesc(
+        index: UINT,
+        pPVarDesc: <span class="kw-2">*mut *mut </span>VARDESC,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>GetNames(
+        memid: MEMBERID,
+        rgBstrNames: <span class="kw-2">*mut </span>BSTR,
+        cMaxNames: UINT,
+        pcNames: <span class="kw-2">*mut </span>UINT,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>GetRefTypeOfImplType(
+        index: UINT,
+        pRefType: <span class="kw-2">*mut </span>HREFTYPE,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>GetImplTypeFlags(
+        index: UINT,
+        pImplTypeFlags: <span class="kw-2">*mut </span>INT,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>GetIDsOfNames(
+        rgszNames: <span class="kw-2">*mut </span>LPOLESTR,
+        cNames: UINT,
+        pMemId: <span class="kw-2">*mut </span>MEMBERID,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>Invoke(
+        pvInstance: PVOID,
+        memid: MEMBERID,
+        wFlags: WORD,
+        pDispParams: <span class="kw-2">*mut </span>DISPPARAMS,
+        pVarResult: <span class="kw-2">*mut </span>VARIANT,
+        pExcepInfo: <span class="kw-2">*mut </span>EXCEPINFO,
+        puArgErr: <span class="kw-2">*mut </span>UINT,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>GetDocumentation(
+        memid: MEMBERID,
+        pBstrName: <span class="kw-2">*mut </span>BSTR,
+        pBstrDocString: <span class="kw-2">*mut </span>BSTR,
+        pdwHelpContext: <span class="kw-2">*mut </span>DWORD,
+        pBstrHelpFile: <span class="kw-2">*mut </span>BSTR,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>GetDllEntry(
+        memid: MEMBERID,
+        invKind: INVOKEKIND,
+        pBstrDllName: <span class="kw-2">*mut </span>BSTR,
+        pBstrName: <span class="kw-2">*mut </span>BSTR,
+        pwOrdinal: <span class="kw-2">*mut </span>WORD,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>GetRefTypeInfo(
+        hRefType: HREFTYPE,
+        ppTInfo: <span class="kw-2">*mut *mut </span>ITypeInfo,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>AddressOfMember(
+        memid: MEMBERID,
+        invKind: INVOKEKIND,
+        ppv: <span class="kw-2">*mut </span>PVOID,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>CreateInstance(
+        pUnkOuter: <span class="kw-2">*mut </span>IUnknown,
+        riid: REFIID,
+        ppvObj: <span class="kw-2">*mut </span>PVOID,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>GetMops(
+        memid: MEMBERID,
+        pBstrMops: <span class="kw-2">*mut </span>BSTR,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>GetContainingTypeLib(
+        ppTLib: <span class="kw-2">*mut *mut </span>ITypeLib,
+        pIndex: <span class="kw-2">*mut </span>UINT,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>ReleaseTypeAttr(
+        pTypeAttr: <span class="kw-2">*mut </span>TYPEATTR,
     ) -&gt; (),
-    <span class="kw">fn</span> <span class="ident">ReleaseFuncDesc</span>(
-        <span class="ident">pFuncDesc</span>: <span class="kw-2">*mut</span> <span class="ident">FUNCDESC</span>,
+    <span class="kw">fn </span>ReleaseFuncDesc(
+        pFuncDesc: <span class="kw-2">*mut </span>FUNCDESC,
     ) -&gt; (),
-    <span class="kw">fn</span> <span class="ident">ReleaseVarDesc</span>(
-        <span class="ident">pVarDesc</span>: <span class="kw-2">*mut</span> <span class="ident">VARDESC</span>,
+    <span class="kw">fn </span>ReleaseVarDesc(
+        pVarDesc: <span class="kw-2">*mut </span>VARDESC,
     ) -&gt; (),
 }}
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x1cf2b120</span>, <span class="number">0x547d</span>, <span class="number">0x101b</span>, <span class="number">0x8e</span>, <span class="number">0x65</span>, <span class="number">0x08</span>, <span class="number">0x00</span>, <span class="number">0x2b</span>, <span class="number">0x2b</span>, <span class="number">0xd1</span>, <span class="number">0x19</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IErrorInfo</span>(<span class="ident">IErrorInfoVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">GetGUID</span>(
-        <span class="ident">pGUID</span>: <span class="kw-2">*mut</span> <span class="ident">GUID</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">GetSource</span>(
-        <span class="ident">pBstrSource</span>: <span class="kw-2">*mut</span> <span class="ident">BSTR</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">GetDescription</span>(
-        <span class="ident">pBstrDescription</span>: <span class="kw-2">*mut</span> <span class="ident">BSTR</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">GetHelpFile</span>(
-        <span class="ident">pBstrHelpFile</span>: <span class="kw-2">*mut</span> <span class="ident">BSTR</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">GetHelpContext</span>(
-        <span class="ident">pdwHelpContext</span>: <span class="kw-2">*mut</span> <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x1cf2b120</span>, <span class="number">0x547d</span>, <span class="number">0x101b</span>, <span class="number">0x8e</span>, <span class="number">0x65</span>, <span class="number">0x08</span>, <span class="number">0x00</span>, <span class="number">0x2b</span>, <span class="number">0x2b</span>, <span class="number">0xd1</span>, <span class="number">0x19</span>)]
+</span>interface IErrorInfo(IErrorInfoVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>GetGUID(
+        pGUID: <span class="kw-2">*mut </span>GUID,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>GetSource(
+        pBstrSource: <span class="kw-2">*mut </span>BSTR,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>GetDescription(
+        pBstrDescription: <span class="kw-2">*mut </span>BSTR,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>GetHelpFile(
+        pBstrHelpFile: <span class="kw-2">*mut </span>BSTR,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>GetHelpContext(
+        pdwHelpContext: <span class="kw-2">*mut </span>DWORD,
+    ) -&gt; HRESULT,
 }}
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x22f03340</span>, <span class="number">0x547d</span>, <span class="number">0x101b</span>, <span class="number">0x8e</span>, <span class="number">0x65</span>, <span class="number">0x08</span>, <span class="number">0x00</span>, <span class="number">0x2b</span>, <span class="number">0x2b</span>, <span class="number">0xd1</span>, <span class="number">0x19</span>)]</span>
-<span class="ident">interface</span> <span class="ident">ICreateErrorInfo</span>(<span class="ident">ICreateErrorInfoVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">SetGUID</span>(
-        <span class="ident">rguid</span>: <span class="ident">REFGUID</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">SetSource</span>(
-        <span class="ident">szSource</span>: <span class="ident">LPOLESTR</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">SetDescription</span>(
-        <span class="ident">szDescription</span>: <span class="ident">LPOLESTR</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">SetHelpFile</span>(
-        <span class="ident">szHelpFile</span>: <span class="ident">LPOLESTR</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
-    <span class="kw">fn</span> <span class="ident">SetHelpContext</span>(
-        <span class="ident">dwHelpContext</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x22f03340</span>, <span class="number">0x547d</span>, <span class="number">0x101b</span>, <span class="number">0x8e</span>, <span class="number">0x65</span>, <span class="number">0x08</span>, <span class="number">0x00</span>, <span class="number">0x2b</span>, <span class="number">0x2b</span>, <span class="number">0xd1</span>, <span class="number">0x19</span>)]
+</span>interface ICreateErrorInfo(ICreateErrorInfoVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>SetGUID(
+        rguid: REFGUID,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>SetSource(
+        szSource: LPOLESTR,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>SetDescription(
+        szDescription: LPOLESTR,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>SetHelpFile(
+        szHelpFile: LPOLESTR,
+    ) -&gt; HRESULT,
+    <span class="kw">fn </span>SetHelpContext(
+        dwHelpContext: DWORD,
+    ) -&gt; HRESULT,
 }}
-<span class="macro">RIDL!</span>{<span class="attribute">#[<span class="ident">uuid</span>(<span class="number">0x3127ca40</span>, <span class="number">0x446e</span>, <span class="number">0x11ce</span>, <span class="number">0x81</span>, <span class="number">0x35</span>, <span class="number">0x00</span>, <span class="number">0xaa</span>, <span class="number">0x00</span>, <span class="number">0x4b</span>, <span class="number">0xb8</span>, <span class="number">0x51</span>)]</span>
-<span class="ident">interface</span> <span class="ident">IErrorLog</span>(<span class="ident">IErrorLogVtbl</span>): <span class="ident">IUnknown</span>(<span class="ident">IUnknownVtbl</span>) {
-    <span class="kw">fn</span> <span class="ident">AddError</span>(
-        <span class="ident">pszPropName</span>: <span class="ident">LPCOLESTR</span>,
-        <span class="ident">pExcepInfo</span>: <span class="kw-2">*const</span> <span class="ident">EXCEPINFO</span>,
-    ) -&gt; <span class="ident">HRESULT</span>,
+<span class="macro">RIDL!</span>{<span class="attribute">#[uuid(<span class="number">0x3127ca40</span>, <span class="number">0x446e</span>, <span class="number">0x11ce</span>, <span class="number">0x81</span>, <span class="number">0x35</span>, <span class="number">0x00</span>, <span class="number">0xaa</span>, <span class="number">0x00</span>, <span class="number">0x4b</span>, <span class="number">0xb8</span>, <span class="number">0x51</span>)]
+</span>interface IErrorLog(IErrorLogVtbl): IUnknown(IUnknownVtbl) {
+    <span class="kw">fn </span>AddError(
+        pszPropName: LPCOLESTR,
+        pExcepInfo: <span class="kw-2">*const </span>EXCEPINFO,
+    ) -&gt; HRESULT,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LPERRORLOG</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">IErrorLog</span>;
+<span class="kw">pub type </span>LPERRORLOG = <span class="kw-2">*mut </span>IErrorLog;
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="winapi" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="winapi" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.0 (69f9c33d7 2022-12-12)" ></div></body></html>

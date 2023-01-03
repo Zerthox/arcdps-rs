@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\winapi-0.3.9\src\shared\devpropdef.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>devpropdef.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../winapi/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../winapi/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../winapi/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\winapi-0.3.9\src\shared\devpropdef.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>devpropdef.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../normalize.css"><link rel="stylesheet" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../ayu.css" disabled><link rel="stylesheet" href="../../../dark.css" disabled><link rel="stylesheet" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../../winapi/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -81,88 +81,88 @@
 <span id="81">81</span>
 <span id="82">82</span>
 <span id="83">83</span>
-</pre><pre class="rust"><code><span class="comment">// Licensed under the Apache License, Version 2.0</span>
-<span class="comment">// &lt;LICENSE-APACHE or http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license</span>
-<span class="comment">// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your option.</span>
-<span class="comment">// All files in the project carrying such notice may not be copied, modified, or distributed</span>
-<span class="comment">// except according to those terms.</span>
-<span class="doccomment">//! Defines property types and keys for the Plug and Play Device Property API</span>
-<span class="kw">use</span> <span class="ident">shared::guiddef</span>::{<span class="ident">GUID</span>, <span class="ident">IsEqualGUID</span>};
-<span class="kw">use</span> <span class="ident">shared::minwindef::ULONG</span>;
-<span class="kw">use</span> <span class="ident">um::winnt</span>::{<span class="ident">CHAR</span>, <span class="ident">PCWSTR</span>, <span class="ident">PVOID</span>};
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">DEVPROPTYPE</span> <span class="op">=</span> <span class="ident">ULONG</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PDEVPROPTYPE</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">ULONG</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DEVPROP_TYPEMOD_ARRAY</span>: <span class="ident">DEVPROPTYPE</span> <span class="op">=</span> <span class="number">0x00001000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DEVPROP_TYPEMOD_LIST</span>: <span class="ident">DEVPROPTYPE</span> <span class="op">=</span> <span class="number">0x00002000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DEVPROP_TYPE_EMPTY</span>: <span class="ident">DEVPROPTYPE</span> <span class="op">=</span> <span class="number">0x00000000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DEVPROP_TYPE_NULL</span>: <span class="ident">DEVPROPTYPE</span> <span class="op">=</span> <span class="number">0x00000001</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DEVPROP_TYPE_SBYTE</span>: <span class="ident">DEVPROPTYPE</span> <span class="op">=</span> <span class="number">0x00000002</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DEVPROP_TYPE_BYTE</span>: <span class="ident">DEVPROPTYPE</span> <span class="op">=</span> <span class="number">0x00000003</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DEVPROP_TYPE_INT16</span>: <span class="ident">DEVPROPTYPE</span> <span class="op">=</span> <span class="number">0x00000004</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DEVPROP_TYPE_UINT16</span>: <span class="ident">DEVPROPTYPE</span> <span class="op">=</span> <span class="number">0x00000005</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DEVPROP_TYPE_INT32</span>: <span class="ident">DEVPROPTYPE</span> <span class="op">=</span> <span class="number">0x00000006</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DEVPROP_TYPE_UINT32</span>: <span class="ident">DEVPROPTYPE</span> <span class="op">=</span> <span class="number">0x00000007</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DEVPROP_TYPE_INT64</span>: <span class="ident">DEVPROPTYPE</span> <span class="op">=</span> <span class="number">0x00000008</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DEVPROP_TYPE_UINT64</span>: <span class="ident">DEVPROPTYPE</span> <span class="op">=</span> <span class="number">0x00000009</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DEVPROP_TYPE_FLOAT</span>: <span class="ident">DEVPROPTYPE</span> <span class="op">=</span> <span class="number">0x0000000A</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DEVPROP_TYPE_DOUBLE</span>: <span class="ident">DEVPROPTYPE</span> <span class="op">=</span> <span class="number">0x0000000B</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DEVPROP_TYPE_DECIMAL</span>: <span class="ident">DEVPROPTYPE</span> <span class="op">=</span> <span class="number">0x0000000C</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DEVPROP_TYPE_GUID</span>: <span class="ident">DEVPROPTYPE</span> <span class="op">=</span> <span class="number">0x0000000D</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DEVPROP_TYPE_CURRENCY</span>: <span class="ident">DEVPROPTYPE</span> <span class="op">=</span> <span class="number">0x0000000E</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DEVPROP_TYPE_DATE</span>: <span class="ident">DEVPROPTYPE</span> <span class="op">=</span> <span class="number">0x0000000F</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DEVPROP_TYPE_FILETIME</span>: <span class="ident">DEVPROPTYPE</span> <span class="op">=</span> <span class="number">0x00000010</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DEVPROP_TYPE_BOOLEAN</span>: <span class="ident">DEVPROPTYPE</span> <span class="op">=</span> <span class="number">0x00000011</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DEVPROP_TYPE_STRING</span>: <span class="ident">DEVPROPTYPE</span> <span class="op">=</span> <span class="number">0x00000012</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DEVPROP_TYPE_STRING_LIST</span>: <span class="ident">DEVPROPTYPE</span> <span class="op">=</span> <span class="ident">DEVPROP_TYPE_STRING</span> <span class="op">|</span> <span class="ident">DEVPROP_TYPEMOD_LIST</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DEVPROP_TYPE_SECURITY_DESCRIPTOR</span>: <span class="ident">DEVPROPTYPE</span> <span class="op">=</span> <span class="number">0x00000013</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DEVPROP_TYPE_SECURITY_DESCRIPTOR_STRING</span>: <span class="ident">DEVPROPTYPE</span> <span class="op">=</span> <span class="number">0x00000014</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DEVPROP_TYPE_DEVPROPKEY</span>: <span class="ident">DEVPROPTYPE</span> <span class="op">=</span> <span class="number">0x00000015</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DEVPROP_TYPE_DEVPROPTYPE</span>: <span class="ident">DEVPROPTYPE</span> <span class="op">=</span> <span class="number">0x00000016</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DEVPROP_TYPE_BINARY</span>: <span class="ident">DEVPROPTYPE</span> <span class="op">=</span> <span class="ident">DEVPROP_TYPE_BYTE</span> <span class="op">|</span> <span class="ident">DEVPROP_TYPEMOD_ARRAY</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DEVPROP_TYPE_ERROR</span>: <span class="ident">DEVPROPTYPE</span> <span class="op">=</span> <span class="number">0x00000017</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DEVPROP_TYPE_NTSTATUS</span>: <span class="ident">DEVPROPTYPE</span> <span class="op">=</span> <span class="number">0x00000018</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DEVPROP_TYPE_STRING_INDIRECT</span>: <span class="ident">DEVPROPTYPE</span> <span class="op">=</span> <span class="number">0x00000019</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">MAX_DEVPROP_TYPE</span>: <span class="ident">DEVPROPTYPE</span> <span class="op">=</span> <span class="number">0x00000019</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">MAX_DEVPROP_TYPEMOD</span>: <span class="ident">DEVPROPTYPE</span> <span class="op">=</span> <span class="number">0x00002000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DEVPROP_MASK_TYPE</span>: <span class="ident">DEVPROPTYPE</span> <span class="op">=</span> <span class="number">0x00000FFF</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DEVPROP_MASK_TYPEMOD</span>: <span class="ident">DEVPROPTYPE</span> <span class="op">=</span> <span class="number">0x0000F000</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">DEVPROP_BOOLEAN</span> <span class="op">=</span> <span class="ident">CHAR</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PDEVPROP_BOOLEAN</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">CHAR</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DEVPROP_TRUE</span>: <span class="ident">DEVPROP_BOOLEAN</span> <span class="op">=</span> <span class="op">-</span><span class="number">1</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DEVPROP_FALSE</span>: <span class="ident">DEVPROP_BOOLEAN</span> <span class="op">=</span> <span class="number">0</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">DEVPROPGUID</span> <span class="op">=</span> <span class="ident">GUID</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PDEVPROPGUID</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">GUID</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">DEVPROPID</span> <span class="op">=</span> <span class="ident">ULONG</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PDEVPROPID</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">ULONG</span>;
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">DEVPROPKEY</span> {
-    <span class="ident">fmtid</span>: <span class="ident">DEVPROPGUID</span>,
-    <span class="ident">pid</span>: <span class="ident">DEVPROPID</span>,
+</pre><pre class="rust"><code><span class="comment">// Licensed under the Apache License, Version 2.0
+// &lt;LICENSE-APACHE or http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license
+// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your option.
+// All files in the project carrying such notice may not be copied, modified, or distributed
+// except according to those terms.
+</span><span class="doccomment">//! Defines property types and keys for the Plug and Play Device Property API
+</span><span class="kw">use </span>shared::guiddef::{GUID, IsEqualGUID};
+<span class="kw">use </span>shared::minwindef::ULONG;
+<span class="kw">use </span>um::winnt::{CHAR, PCWSTR, PVOID};
+<span class="kw">pub type </span>DEVPROPTYPE = ULONG;
+<span class="kw">pub type </span>PDEVPROPTYPE = <span class="kw-2">*mut </span>ULONG;
+<span class="kw">pub const </span>DEVPROP_TYPEMOD_ARRAY: DEVPROPTYPE = <span class="number">0x00001000</span>;
+<span class="kw">pub const </span>DEVPROP_TYPEMOD_LIST: DEVPROPTYPE = <span class="number">0x00002000</span>;
+<span class="kw">pub const </span>DEVPROP_TYPE_EMPTY: DEVPROPTYPE = <span class="number">0x00000000</span>;
+<span class="kw">pub const </span>DEVPROP_TYPE_NULL: DEVPROPTYPE = <span class="number">0x00000001</span>;
+<span class="kw">pub const </span>DEVPROP_TYPE_SBYTE: DEVPROPTYPE = <span class="number">0x00000002</span>;
+<span class="kw">pub const </span>DEVPROP_TYPE_BYTE: DEVPROPTYPE = <span class="number">0x00000003</span>;
+<span class="kw">pub const </span>DEVPROP_TYPE_INT16: DEVPROPTYPE = <span class="number">0x00000004</span>;
+<span class="kw">pub const </span>DEVPROP_TYPE_UINT16: DEVPROPTYPE = <span class="number">0x00000005</span>;
+<span class="kw">pub const </span>DEVPROP_TYPE_INT32: DEVPROPTYPE = <span class="number">0x00000006</span>;
+<span class="kw">pub const </span>DEVPROP_TYPE_UINT32: DEVPROPTYPE = <span class="number">0x00000007</span>;
+<span class="kw">pub const </span>DEVPROP_TYPE_INT64: DEVPROPTYPE = <span class="number">0x00000008</span>;
+<span class="kw">pub const </span>DEVPROP_TYPE_UINT64: DEVPROPTYPE = <span class="number">0x00000009</span>;
+<span class="kw">pub const </span>DEVPROP_TYPE_FLOAT: DEVPROPTYPE = <span class="number">0x0000000A</span>;
+<span class="kw">pub const </span>DEVPROP_TYPE_DOUBLE: DEVPROPTYPE = <span class="number">0x0000000B</span>;
+<span class="kw">pub const </span>DEVPROP_TYPE_DECIMAL: DEVPROPTYPE = <span class="number">0x0000000C</span>;
+<span class="kw">pub const </span>DEVPROP_TYPE_GUID: DEVPROPTYPE = <span class="number">0x0000000D</span>;
+<span class="kw">pub const </span>DEVPROP_TYPE_CURRENCY: DEVPROPTYPE = <span class="number">0x0000000E</span>;
+<span class="kw">pub const </span>DEVPROP_TYPE_DATE: DEVPROPTYPE = <span class="number">0x0000000F</span>;
+<span class="kw">pub const </span>DEVPROP_TYPE_FILETIME: DEVPROPTYPE = <span class="number">0x00000010</span>;
+<span class="kw">pub const </span>DEVPROP_TYPE_BOOLEAN: DEVPROPTYPE = <span class="number">0x00000011</span>;
+<span class="kw">pub const </span>DEVPROP_TYPE_STRING: DEVPROPTYPE = <span class="number">0x00000012</span>;
+<span class="kw">pub const </span>DEVPROP_TYPE_STRING_LIST: DEVPROPTYPE = DEVPROP_TYPE_STRING | DEVPROP_TYPEMOD_LIST;
+<span class="kw">pub const </span>DEVPROP_TYPE_SECURITY_DESCRIPTOR: DEVPROPTYPE = <span class="number">0x00000013</span>;
+<span class="kw">pub const </span>DEVPROP_TYPE_SECURITY_DESCRIPTOR_STRING: DEVPROPTYPE = <span class="number">0x00000014</span>;
+<span class="kw">pub const </span>DEVPROP_TYPE_DEVPROPKEY: DEVPROPTYPE = <span class="number">0x00000015</span>;
+<span class="kw">pub const </span>DEVPROP_TYPE_DEVPROPTYPE: DEVPROPTYPE = <span class="number">0x00000016</span>;
+<span class="kw">pub const </span>DEVPROP_TYPE_BINARY: DEVPROPTYPE = DEVPROP_TYPE_BYTE | DEVPROP_TYPEMOD_ARRAY;
+<span class="kw">pub const </span>DEVPROP_TYPE_ERROR: DEVPROPTYPE = <span class="number">0x00000017</span>;
+<span class="kw">pub const </span>DEVPROP_TYPE_NTSTATUS: DEVPROPTYPE = <span class="number">0x00000018</span>;
+<span class="kw">pub const </span>DEVPROP_TYPE_STRING_INDIRECT: DEVPROPTYPE = <span class="number">0x00000019</span>;
+<span class="kw">pub const </span>MAX_DEVPROP_TYPE: DEVPROPTYPE = <span class="number">0x00000019</span>;
+<span class="kw">pub const </span>MAX_DEVPROP_TYPEMOD: DEVPROPTYPE = <span class="number">0x00002000</span>;
+<span class="kw">pub const </span>DEVPROP_MASK_TYPE: DEVPROPTYPE = <span class="number">0x00000FFF</span>;
+<span class="kw">pub const </span>DEVPROP_MASK_TYPEMOD: DEVPROPTYPE = <span class="number">0x0000F000</span>;
+<span class="kw">pub type </span>DEVPROP_BOOLEAN = CHAR;
+<span class="kw">pub type </span>PDEVPROP_BOOLEAN = <span class="kw-2">*mut </span>CHAR;
+<span class="kw">pub const </span>DEVPROP_TRUE: DEVPROP_BOOLEAN = -<span class="number">1</span>;
+<span class="kw">pub const </span>DEVPROP_FALSE: DEVPROP_BOOLEAN = <span class="number">0</span>;
+<span class="kw">pub type </span>DEVPROPGUID = GUID;
+<span class="kw">pub type </span>PDEVPROPGUID = <span class="kw-2">*mut </span>GUID;
+<span class="kw">pub type </span>DEVPROPID = ULONG;
+<span class="kw">pub type </span>PDEVPROPID = <span class="kw-2">*mut </span>ULONG;
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>DEVPROPKEY {
+    fmtid: DEVPROPGUID,
+    pid: DEVPROPID,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PDEVPROPKEY</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">DEVPROPKEY</span>;
-<span class="attribute">#[<span class="ident">inline</span>]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">IsEqualDevPropKey</span>(<span class="ident">a</span>: <span class="kw-2">&amp;</span><span class="ident">DEVPROPKEY</span>, <span class="ident">b</span>: <span class="kw-2">&amp;</span><span class="ident">DEVPROPKEY</span>) -&gt; <span class="ident">bool</span> {
-    (<span class="ident">a</span>.<span class="ident">pid</span> <span class="op">==</span> <span class="ident">b</span>.<span class="ident">pid</span>) <span class="op">&amp;&amp;</span> <span class="ident">IsEqualGUID</span>(<span class="kw-2">&amp;</span><span class="ident">a</span>.<span class="ident">fmtid</span>, <span class="kw-2">&amp;</span><span class="ident">b</span>.<span class="ident">fmtid</span>)
+<span class="kw">pub type </span>PDEVPROPKEY = <span class="kw-2">*mut </span>DEVPROPKEY;
+<span class="attribute">#[inline]
+</span><span class="kw">pub fn </span>IsEqualDevPropKey(a: <span class="kw-2">&amp;</span>DEVPROPKEY, b: <span class="kw-2">&amp;</span>DEVPROPKEY) -&gt; bool {
+    (a.pid == b.pid) &amp;&amp; IsEqualGUID(<span class="kw-2">&amp;</span>a.fmtid, <span class="kw-2">&amp;</span>b.fmtid)
 }
-<span class="macro">ENUM!</span>{<span class="kw">enum</span> <span class="ident">DEVPROPSTORE</span> {
-    <span class="ident">DEVPROP_STORE_SYSTEM</span>,
-    <span class="ident">DEVPROP_STORE_USER</span>,
+<span class="macro">ENUM!</span>{<span class="kw">enum </span>DEVPROPSTORE {
+    DEVPROP_STORE_SYSTEM,
+    DEVPROP_STORE_USER,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PDEVPROPSTORE</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">DEVPROPSTORE</span>;
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">DEVPROPCOMPKEY</span> {
-    <span class="ident">Key</span>: <span class="ident">DEVPROPKEY</span>,
-    <span class="ident">Store</span>: <span class="ident">DEVPROPSTORE</span>,
-    <span class="ident">LocaleName</span>: <span class="ident">PCWSTR</span>,
+<span class="kw">pub type </span>PDEVPROPSTORE = <span class="kw-2">*mut </span>DEVPROPSTORE;
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>DEVPROPCOMPKEY {
+    Key: DEVPROPKEY,
+    Store: DEVPROPSTORE,
+    LocaleName: PCWSTR,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PDEVPROPCOMPKEY</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">DEVPROPCOMPKEY</span>;
-<span class="comment">// IsEqualLocaleName</span>
-<span class="comment">// IsEqualDevPropCompKey</span>
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">DEVPROPERTY</span> {
-    <span class="ident">CompKey</span>: <span class="ident">DEVPROPCOMPKEY</span>,
-    <span class="ident">Type</span>: <span class="ident">DEVPROPTYPE</span>,
-    <span class="ident">BufferSize</span>: <span class="ident">ULONG</span>,
-    <span class="ident">Buffer</span>: <span class="ident">PVOID</span>,
+<span class="kw">pub type </span>PDEVPROPCOMPKEY = <span class="kw-2">*mut </span>DEVPROPCOMPKEY;
+<span class="comment">// IsEqualLocaleName
+// IsEqualDevPropCompKey
+</span><span class="macro">STRUCT!</span>{<span class="kw">struct </span>DEVPROPERTY {
+    CompKey: DEVPROPCOMPKEY,
+    Type: DEVPROPTYPE,
+    BufferSize: ULONG,
+    Buffer: PVOID,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PDEVPROPERTY</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">DEVPROPERTY</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DEVPROPID_FIRST_USABLE</span>: <span class="ident">DEVPROPID</span> <span class="op">=</span> <span class="number">2</span>;
+<span class="kw">pub type </span>PDEVPROPERTY = <span class="kw-2">*mut </span>DEVPROPERTY;
+<span class="kw">pub const </span>DEVPROPID_FIRST_USABLE: DEVPROPID = <span class="number">2</span>;
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="winapi" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="winapi" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.0 (69f9c33d7 2022-12-12)" ></div></body></html>

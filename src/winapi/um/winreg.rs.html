@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\winapi-0.3.9\src\um\winreg.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>winreg.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../winapi/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../winapi/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../winapi/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\winapi-0.3.9\src\um\winreg.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>winreg.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../normalize.css"><link rel="stylesheet" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../ayu.css" disabled><link rel="stylesheet" href="../../../dark.css" disabled><link rel="stylesheet" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../../winapi/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -682,689 +682,689 @@
 <span id="682">682</span>
 <span id="683">683</span>
 <span id="684">684</span>
-</pre><pre class="rust"><code><span class="comment">// Licensed under the Apache License, Version 2.0</span>
-<span class="comment">// &lt;LICENSE-APACHE or http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license</span>
-<span class="comment">// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your option.</span>
-<span class="comment">// All files in the project carrying such notice may not be copied, modified, or distributed</span>
-<span class="comment">// except according to those terms.</span>
-<span class="kw">use</span> <span class="ident">shared::basetsd::DWORD_PTR</span>;
-<span class="kw">use</span> <span class="ident">shared::minwindef</span>::{
-    <span class="ident">BOOL</span>, <span class="ident">BYTE</span>, <span class="ident">DWORD</span>, <span class="ident">HKEY</span>, <span class="ident">LPBYTE</span>, <span class="ident">LPCVOID</span>, <span class="ident">LPDWORD</span>, <span class="ident">PFILETIME</span>, <span class="ident">PHKEY</span>, <span class="ident">ULONG</span>
+</pre><pre class="rust"><code><span class="comment">// Licensed under the Apache License, Version 2.0
+// &lt;LICENSE-APACHE or http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license
+// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your option.
+// All files in the project carrying such notice may not be copied, modified, or distributed
+// except according to those terms.
+</span><span class="kw">use </span>shared::basetsd::DWORD_PTR;
+<span class="kw">use </span>shared::minwindef::{
+    BOOL, BYTE, DWORD, HKEY, LPBYTE, LPCVOID, LPDWORD, PFILETIME, PHKEY, ULONG
 };
-<span class="kw">use</span> <span class="ident">um::minwinbase::LPSECURITY_ATTRIBUTES</span>;
-<span class="kw">use</span> <span class="ident">um::reason</span>::{
-    <span class="ident">SHTDN_REASON_FLAG_PLANNED</span>, <span class="ident">SHTDN_REASON_LEGACY_API</span>, <span class="ident">SHTDN_REASON_MAJOR_HARDWARE</span>,
-    <span class="ident">SHTDN_REASON_MAJOR_OTHER</span>, <span class="ident">SHTDN_REASON_MAJOR_SOFTWARE</span>, <span class="ident">SHTDN_REASON_MAJOR_SYSTEM</span>,
-    <span class="ident">SHTDN_REASON_MINOR_HUNG</span>, <span class="ident">SHTDN_REASON_MINOR_INSTALLATION</span>, <span class="ident">SHTDN_REASON_MINOR_OTHER</span>,
-    <span class="ident">SHTDN_REASON_MINOR_RECONFIG</span>, <span class="ident">SHTDN_REASON_MINOR_UNSTABLE</span>, <span class="ident">SHTDN_REASON_UNKNOWN</span>,
+<span class="kw">use </span>um::minwinbase::LPSECURITY_ATTRIBUTES;
+<span class="kw">use </span>um::reason::{
+    SHTDN_REASON_FLAG_PLANNED, SHTDN_REASON_LEGACY_API, SHTDN_REASON_MAJOR_HARDWARE,
+    SHTDN_REASON_MAJOR_OTHER, SHTDN_REASON_MAJOR_SOFTWARE, SHTDN_REASON_MAJOR_SYSTEM,
+    SHTDN_REASON_MINOR_HUNG, SHTDN_REASON_MINOR_INSTALLATION, SHTDN_REASON_MINOR_OTHER,
+    SHTDN_REASON_MINOR_RECONFIG, SHTDN_REASON_MINOR_UNSTABLE, SHTDN_REASON_UNKNOWN,
 };
-<span class="kw">use</span> <span class="ident">um::winnt</span>::{
-    <span class="ident">ACCESS_MASK</span>, <span class="ident">BOOLEAN</span>, <span class="ident">HANDLE</span>, <span class="ident">LONG</span>, <span class="ident">LPCSTR</span>, <span class="ident">LPCWSTR</span>, <span class="ident">LPSTR</span>, <span class="ident">LPWSTR</span>, <span class="ident">PBOOLEAN</span>, <span class="ident">PLONG</span>,
-    <span class="ident">PSECURITY_DESCRIPTOR</span>, <span class="ident">PVOID</span>, <span class="ident">SECURITY_INFORMATION</span>,
+<span class="kw">use </span>um::winnt::{
+    ACCESS_MASK, BOOLEAN, HANDLE, LONG, LPCSTR, LPCWSTR, LPSTR, LPWSTR, PBOOLEAN, PLONG,
+    PSECURITY_DESCRIPTOR, PVOID, SECURITY_INFORMATION,
 };
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LSTATUS</span> <span class="op">=</span> <span class="ident">LONG</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">RRF_RT_REG_NONE</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000001</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">RRF_RT_REG_SZ</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000002</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">RRF_RT_REG_EXPAND_SZ</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000004</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">RRF_RT_REG_BINARY</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000008</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">RRF_RT_REG_DWORD</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000010</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">RRF_RT_REG_MULTI_SZ</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000020</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">RRF_RT_REG_QWORD</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000040</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">RRF_RT_DWORD</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="ident">RRF_RT_REG_BINARY</span> <span class="op">|</span> <span class="ident">RRF_RT_REG_DWORD</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">RRF_RT_QWORD</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="ident">RRF_RT_REG_BINARY</span> <span class="op">|</span> <span class="ident">RRF_RT_REG_QWORD</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">RRF_RT_ANY</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0000ffff</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">RRF_SUBKEY_WOW6464KEY</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00010000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">RRF_SUBKEY_WOW6432KEY</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00020000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">RRF_WOW64_MASK</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00030000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">RRF_NOEXPAND</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x10000000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">RRF_ZEROONFAILURE</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x20000000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">REG_PROCESS_APPKEY</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000001</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">REGSAM</span> <span class="op">=</span> <span class="ident">ACCESS_MASK</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">HKEY_CLASSES_ROOT</span>: <span class="ident">HKEY</span> <span class="op">=</span> <span class="number">0x80000000i32</span> <span class="kw">as</span> <span class="ident">usize</span> <span class="kw">as</span> <span class="ident">HKEY</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">HKEY_CURRENT_USER</span>: <span class="ident">HKEY</span> <span class="op">=</span> <span class="number">0x80000001i32</span> <span class="kw">as</span> <span class="ident">usize</span> <span class="kw">as</span> <span class="ident">HKEY</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">HKEY_LOCAL_MACHINE</span>: <span class="ident">HKEY</span> <span class="op">=</span> <span class="number">0x80000002i32</span> <span class="kw">as</span> <span class="ident">usize</span> <span class="kw">as</span> <span class="ident">HKEY</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">HKEY_USERS</span>: <span class="ident">HKEY</span> <span class="op">=</span> <span class="number">0x80000003i32</span> <span class="kw">as</span> <span class="ident">usize</span> <span class="kw">as</span> <span class="ident">HKEY</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">HKEY_PERFORMANCE_DATA</span>: <span class="ident">HKEY</span> <span class="op">=</span> <span class="number">0x80000004i32</span> <span class="kw">as</span> <span class="ident">usize</span> <span class="kw">as</span> <span class="ident">HKEY</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">HKEY_PERFORMANCE_TEXT</span>: <span class="ident">HKEY</span> <span class="op">=</span> <span class="number">0x80000050i32</span> <span class="kw">as</span> <span class="ident">usize</span> <span class="kw">as</span> <span class="ident">HKEY</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">HKEY_PERFORMANCE_NLSTEXT</span>: <span class="ident">HKEY</span> <span class="op">=</span> <span class="number">0x80000060i32</span> <span class="kw">as</span> <span class="ident">usize</span> <span class="kw">as</span> <span class="ident">HKEY</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">HKEY_CURRENT_CONFIG</span>: <span class="ident">HKEY</span> <span class="op">=</span> <span class="number">0x80000005i32</span> <span class="kw">as</span> <span class="ident">usize</span> <span class="kw">as</span> <span class="ident">HKEY</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">HKEY_DYN_DATA</span>: <span class="ident">HKEY</span> <span class="op">=</span> <span class="number">0x80000006i32</span> <span class="kw">as</span> <span class="ident">usize</span> <span class="kw">as</span> <span class="ident">HKEY</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">HKEY_CURRENT_USER_LOCAL_SETTINGS</span>: <span class="ident">HKEY</span> <span class="op">=</span> <span class="number">0x80000007i32</span> <span class="kw">as</span> <span class="ident">usize</span> <span class="kw">as</span> <span class="ident">HKEY</span>;
-<span class="comment">// PROVIDER_KEEPS_VALUE_LENGTH</span>
-<span class="comment">// val_context</span>
-<span class="comment">// PVALUEA</span>
-<span class="comment">// PVALUEW</span>
-<span class="comment">// QUERYHANDLER</span>
-<span class="comment">// REG_PROVIDER</span>
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">VALENTA</span> {
-    <span class="ident">ve_valuename</span>: <span class="ident">LPSTR</span>,
-    <span class="ident">ve_valuelen</span>: <span class="ident">DWORD</span>,
-    <span class="ident">ve_valueptr</span>: <span class="ident">DWORD_PTR</span>,
-    <span class="ident">ve_type</span>: <span class="ident">DWORD</span>,
+<span class="kw">pub type </span>LSTATUS = LONG;
+<span class="kw">pub const </span>RRF_RT_REG_NONE: DWORD = <span class="number">0x00000001</span>;
+<span class="kw">pub const </span>RRF_RT_REG_SZ: DWORD = <span class="number">0x00000002</span>;
+<span class="kw">pub const </span>RRF_RT_REG_EXPAND_SZ: DWORD = <span class="number">0x00000004</span>;
+<span class="kw">pub const </span>RRF_RT_REG_BINARY: DWORD = <span class="number">0x00000008</span>;
+<span class="kw">pub const </span>RRF_RT_REG_DWORD: DWORD = <span class="number">0x00000010</span>;
+<span class="kw">pub const </span>RRF_RT_REG_MULTI_SZ: DWORD = <span class="number">0x00000020</span>;
+<span class="kw">pub const </span>RRF_RT_REG_QWORD: DWORD = <span class="number">0x00000040</span>;
+<span class="kw">pub const </span>RRF_RT_DWORD: DWORD = RRF_RT_REG_BINARY | RRF_RT_REG_DWORD;
+<span class="kw">pub const </span>RRF_RT_QWORD: DWORD = RRF_RT_REG_BINARY | RRF_RT_REG_QWORD;
+<span class="kw">pub const </span>RRF_RT_ANY: DWORD = <span class="number">0x0000ffff</span>;
+<span class="kw">pub const </span>RRF_SUBKEY_WOW6464KEY: DWORD = <span class="number">0x00010000</span>;
+<span class="kw">pub const </span>RRF_SUBKEY_WOW6432KEY: DWORD = <span class="number">0x00020000</span>;
+<span class="kw">pub const </span>RRF_WOW64_MASK: DWORD = <span class="number">0x00030000</span>;
+<span class="kw">pub const </span>RRF_NOEXPAND: DWORD = <span class="number">0x10000000</span>;
+<span class="kw">pub const </span>RRF_ZEROONFAILURE: DWORD = <span class="number">0x20000000</span>;
+<span class="kw">pub const </span>REG_PROCESS_APPKEY: DWORD = <span class="number">0x00000001</span>;
+<span class="kw">pub type </span>REGSAM = ACCESS_MASK;
+<span class="kw">pub const </span>HKEY_CLASSES_ROOT: HKEY = <span class="number">0x80000000i32 </span><span class="kw">as </span>usize <span class="kw">as </span>HKEY;
+<span class="kw">pub const </span>HKEY_CURRENT_USER: HKEY = <span class="number">0x80000001i32 </span><span class="kw">as </span>usize <span class="kw">as </span>HKEY;
+<span class="kw">pub const </span>HKEY_LOCAL_MACHINE: HKEY = <span class="number">0x80000002i32 </span><span class="kw">as </span>usize <span class="kw">as </span>HKEY;
+<span class="kw">pub const </span>HKEY_USERS: HKEY = <span class="number">0x80000003i32 </span><span class="kw">as </span>usize <span class="kw">as </span>HKEY;
+<span class="kw">pub const </span>HKEY_PERFORMANCE_DATA: HKEY = <span class="number">0x80000004i32 </span><span class="kw">as </span>usize <span class="kw">as </span>HKEY;
+<span class="kw">pub const </span>HKEY_PERFORMANCE_TEXT: HKEY = <span class="number">0x80000050i32 </span><span class="kw">as </span>usize <span class="kw">as </span>HKEY;
+<span class="kw">pub const </span>HKEY_PERFORMANCE_NLSTEXT: HKEY = <span class="number">0x80000060i32 </span><span class="kw">as </span>usize <span class="kw">as </span>HKEY;
+<span class="kw">pub const </span>HKEY_CURRENT_CONFIG: HKEY = <span class="number">0x80000005i32 </span><span class="kw">as </span>usize <span class="kw">as </span>HKEY;
+<span class="kw">pub const </span>HKEY_DYN_DATA: HKEY = <span class="number">0x80000006i32 </span><span class="kw">as </span>usize <span class="kw">as </span>HKEY;
+<span class="kw">pub const </span>HKEY_CURRENT_USER_LOCAL_SETTINGS: HKEY = <span class="number">0x80000007i32 </span><span class="kw">as </span>usize <span class="kw">as </span>HKEY;
+<span class="comment">// PROVIDER_KEEPS_VALUE_LENGTH
+// val_context
+// PVALUEA
+// PVALUEW
+// QUERYHANDLER
+// REG_PROVIDER
+</span><span class="macro">STRUCT!</span>{<span class="kw">struct </span>VALENTA {
+    ve_valuename: LPSTR,
+    ve_valuelen: DWORD,
+    ve_valueptr: DWORD_PTR,
+    ve_type: DWORD,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PVALENTA</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">VALENTA</span>;
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">VALENTW</span> {
-    <span class="ident">ve_valuename</span>: <span class="ident">LPWSTR</span>,
-    <span class="ident">ve_valuelen</span>: <span class="ident">DWORD</span>,
-    <span class="ident">ve_valueptr</span>: <span class="ident">DWORD_PTR</span>,
-    <span class="ident">ve_type</span>: <span class="ident">DWORD</span>,
+<span class="kw">pub type </span>PVALENTA = <span class="kw-2">*mut </span>VALENTA;
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>VALENTW {
+    ve_valuename: LPWSTR,
+    ve_valuelen: DWORD,
+    ve_valueptr: DWORD_PTR,
+    ve_type: DWORD,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PVALENTW</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">VALENTW</span>;
-<span class="comment">// WIN31_CLASS</span>
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">REG_MUI_STRING_TRUNCATE</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000001</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">REG_SECURE_CONNECTION</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">1</span>;
-<span class="kw">extern</span> <span class="string">&quot;system&quot;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegCloseKey</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegOverridePredefKey</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">hNewHKey</span>: <span class="ident">HKEY</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegOpenUserClassesRoot</span>(
-        <span class="ident">hToken</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">dwOptions</span>: <span class="ident">DWORD</span>,
-        <span class="ident">samDesired</span>: <span class="ident">REGSAM</span>,
-        <span class="ident">phkResult</span>: <span class="ident">PHKEY</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegOpenCurrentUser</span>(
-        <span class="ident">samDesired</span>: <span class="ident">REGSAM</span>,
-        <span class="ident">phkResult</span>: <span class="ident">PHKEY</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegDisablePredefinedCache</span>() -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegDisablePredefinedCacheEx</span>() -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegConnectRegistryA</span>(
-        <span class="ident">lpMachineName</span>: <span class="ident">LPCSTR</span>,
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">phkResult</span>: <span class="ident">PHKEY</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegConnectRegistryW</span>(
-        <span class="ident">lpMachineName</span>: <span class="ident">LPCWSTR</span>,
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">phkResult</span>: <span class="ident">PHKEY</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegConnectRegistryExA</span>(
-        <span class="ident">lpMachineName</span>: <span class="ident">LPCSTR</span>,
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">flags</span>: <span class="ident">ULONG</span>,
-        <span class="ident">phkResult</span>: <span class="ident">PHKEY</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegConnectRegistryExW</span>(
-        <span class="ident">lpMachineName</span>: <span class="ident">LPCWSTR</span>,
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">flags</span>: <span class="ident">ULONG</span>,
-        <span class="ident">phkResult</span>: <span class="ident">PHKEY</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegCreateKeyA</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">lpSubKey</span>: <span class="ident">LPCSTR</span>,
-        <span class="ident">phkResult</span>: <span class="ident">PHKEY</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegCreateKeyW</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">lpSubKey</span>: <span class="ident">LPCWSTR</span>,
-        <span class="ident">phkResult</span>: <span class="ident">PHKEY</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegCreateKeyExA</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">lpSubKey</span>: <span class="ident">LPCSTR</span>,
-        <span class="ident">Reserved</span>: <span class="ident">DWORD</span>,
-        <span class="ident">lpClass</span>: <span class="ident">LPSTR</span>,
-        <span class="ident">dwOptions</span>: <span class="ident">DWORD</span>,
-        <span class="ident">samDesired</span>: <span class="ident">REGSAM</span>,
-        <span class="ident">lpSecurityAttributes</span>: <span class="ident">LPSECURITY_ATTRIBUTES</span>,
-        <span class="ident">phkResult</span>: <span class="ident">PHKEY</span>,
-        <span class="ident">lpdwDisposition</span>: <span class="ident">LPDWORD</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegCreateKeyExW</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">lpSubKey</span>: <span class="ident">LPCWSTR</span>,
-        <span class="ident">Reserved</span>: <span class="ident">DWORD</span>,
-        <span class="ident">lpClass</span>: <span class="ident">LPWSTR</span>,
-        <span class="ident">dwOptions</span>: <span class="ident">DWORD</span>,
-        <span class="ident">samDesired</span>: <span class="ident">REGSAM</span>,
-        <span class="ident">lpSecurityAttributes</span>: <span class="ident">LPSECURITY_ATTRIBUTES</span>,
-        <span class="ident">phkResult</span>: <span class="ident">PHKEY</span>,
-        <span class="ident">lpdwDisposition</span>: <span class="ident">LPDWORD</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegCreateKeyTransactedA</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">lpSubKey</span>: <span class="ident">LPCSTR</span>,
-        <span class="ident">Reserved</span>: <span class="ident">DWORD</span>,
-        <span class="ident">lpClass</span>: <span class="ident">LPSTR</span>,
-        <span class="ident">dwOptions</span>: <span class="ident">DWORD</span>,
-        <span class="ident">samDesired</span>: <span class="ident">REGSAM</span>,
-        <span class="ident">lpSecurityAttributes</span>: <span class="ident">LPSECURITY_ATTRIBUTES</span>,
-        <span class="ident">phkResult</span>: <span class="ident">PHKEY</span>,
-        <span class="ident">lpdwDisposition</span>: <span class="ident">LPDWORD</span>,
-        <span class="ident">hTransaction</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">pExtendedParemeter</span>: <span class="ident">PVOID</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegCreateKeyTransactedW</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">lpSubKey</span>: <span class="ident">LPCWSTR</span>,
-        <span class="ident">Reserved</span>: <span class="ident">DWORD</span>,
-        <span class="ident">lpClass</span>: <span class="ident">LPWSTR</span>,
-        <span class="ident">dwOptions</span>: <span class="ident">DWORD</span>,
-        <span class="ident">samDesired</span>: <span class="ident">REGSAM</span>,
-        <span class="ident">lpSecurityAttributes</span>: <span class="ident">LPSECURITY_ATTRIBUTES</span>,
-        <span class="ident">phkResult</span>: <span class="ident">PHKEY</span>,
-        <span class="ident">lpdwDisposition</span>: <span class="ident">LPDWORD</span>,
-        <span class="ident">hTransaction</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">pExtendedParemeter</span>: <span class="ident">PVOID</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegDeleteKeyA</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">lpSubKey</span>: <span class="ident">LPCSTR</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegDeleteKeyW</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">lpSubKey</span>: <span class="ident">LPCWSTR</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegDeleteKeyExA</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">lpSubKey</span>: <span class="ident">LPCSTR</span>,
-        <span class="ident">samDesired</span>: <span class="ident">REGSAM</span>,
-        <span class="ident">Reserved</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegDeleteKeyExW</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">lpSubKey</span>: <span class="ident">LPCWSTR</span>,
-        <span class="ident">samDesired</span>: <span class="ident">REGSAM</span>,
-        <span class="ident">Reserved</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegDeleteKeyTransactedA</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">lpSubKey</span>: <span class="ident">LPCSTR</span>,
-        <span class="ident">samDesired</span>: <span class="ident">REGSAM</span>,
-        <span class="ident">Reserved</span>: <span class="ident">DWORD</span>,
-        <span class="ident">hTransaction</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">pExtendedParemeter</span>: <span class="ident">PVOID</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegDeleteKeyTransactedW</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">lpSubKey</span>: <span class="ident">LPCWSTR</span>,
-        <span class="ident">samDesired</span>: <span class="ident">REGSAM</span>,
-        <span class="ident">Reserved</span>: <span class="ident">DWORD</span>,
-        <span class="ident">hTransaction</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">pExtendedParemeter</span>: <span class="ident">PVOID</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegDisableReflectionKey</span>(
-        <span class="ident">hBase</span>: <span class="ident">HKEY</span>,
-    ) -&gt; <span class="ident">LONG</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegEnableReflectionKey</span>(
-        <span class="ident">hBase</span>: <span class="ident">HKEY</span>,
-    ) -&gt; <span class="ident">LONG</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegQueryReflectionKey</span>(
-        <span class="ident">hBase</span>: <span class="ident">HKEY</span>,
-        <span class="ident">bIsReflectionDisabled</span>: <span class="kw-2">*mut</span> <span class="ident">BOOL</span>,
-    ) -&gt; <span class="ident">LONG</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegDeleteValueA</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">lpValueName</span>: <span class="ident">LPCSTR</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegDeleteValueW</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">lpValueName</span>: <span class="ident">LPCWSTR</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegEnumKeyA</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">dwIndex</span>: <span class="ident">DWORD</span>,
-        <span class="ident">lpName</span>: <span class="ident">LPSTR</span>,
-        <span class="ident">cchName</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegEnumKeyW</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">dwIndex</span>: <span class="ident">DWORD</span>,
-        <span class="ident">lpName</span>: <span class="ident">LPWSTR</span>,
-        <span class="ident">cchName</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegEnumKeyExA</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">dwIndex</span>: <span class="ident">DWORD</span>,
-        <span class="ident">lpName</span>: <span class="ident">LPSTR</span>,
-        <span class="ident">lpcName</span>: <span class="ident">LPDWORD</span>,
-        <span class="ident">lpReserved</span>: <span class="ident">LPDWORD</span>,
-        <span class="ident">lpClass</span>: <span class="ident">LPSTR</span>,
-        <span class="ident">lpcClass</span>: <span class="ident">LPDWORD</span>,
-        <span class="ident">lpftLastWriteTime</span>: <span class="ident">PFILETIME</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegEnumKeyExW</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">dwIndex</span>: <span class="ident">DWORD</span>,
-        <span class="ident">lpName</span>: <span class="ident">LPWSTR</span>,
-        <span class="ident">lpcName</span>: <span class="ident">LPDWORD</span>,
-        <span class="ident">lpReserved</span>: <span class="ident">LPDWORD</span>,
-        <span class="ident">lpClass</span>: <span class="ident">LPWSTR</span>,
-        <span class="ident">lpcClass</span>: <span class="ident">LPDWORD</span>,
-        <span class="ident">lpftLastWriteTime</span>: <span class="ident">PFILETIME</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegEnumValueA</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">dwIndex</span>: <span class="ident">DWORD</span>,
-        <span class="ident">lpValueName</span>: <span class="ident">LPSTR</span>,
-        <span class="ident">lpcchValueName</span>: <span class="ident">LPDWORD</span>,
-        <span class="ident">lpReserved</span>: <span class="ident">LPDWORD</span>,
-        <span class="ident">lpType</span>: <span class="ident">LPDWORD</span>,
-        <span class="ident">lpData</span>: <span class="ident">LPBYTE</span>,
-        <span class="ident">lpcbData</span>: <span class="ident">LPDWORD</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegEnumValueW</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">dwIndex</span>: <span class="ident">DWORD</span>,
-        <span class="ident">lpValueName</span>: <span class="ident">LPWSTR</span>,
-        <span class="ident">lpcchValueName</span>: <span class="ident">LPDWORD</span>,
-        <span class="ident">lpReserved</span>: <span class="ident">LPDWORD</span>,
-        <span class="ident">lpType</span>: <span class="ident">LPDWORD</span>,
-        <span class="ident">lpData</span>: <span class="ident">LPBYTE</span>,
-        <span class="ident">lpcbData</span>: <span class="ident">LPDWORD</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegFlushKey</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegGetKeySecurity</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">SecurityInformation</span>: <span class="ident">SECURITY_INFORMATION</span>,
-        <span class="ident">pSecurityDescriptor</span>: <span class="ident">PSECURITY_DESCRIPTOR</span>,
-        <span class="ident">lpcbSecurityDescriptor</span>: <span class="ident">LPDWORD</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegLoadKeyA</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">lpSubKey</span>: <span class="ident">LPCSTR</span>,
-        <span class="ident">lpFile</span>: <span class="ident">LPCSTR</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegLoadKeyW</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">lpSubKey</span>: <span class="ident">LPCWSTR</span>,
-        <span class="ident">lpFile</span>: <span class="ident">LPCWSTR</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegNotifyChangeKeyValue</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">bWatchSubtree</span>: <span class="ident">BOOL</span>,
-        <span class="ident">dwNotifyFilter</span>: <span class="ident">DWORD</span>,
-        <span class="ident">hEvent</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">fAsynchronous</span>: <span class="ident">BOOL</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegOpenKeyA</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">lpSubKey</span>: <span class="ident">LPCSTR</span>,
-        <span class="ident">phkResult</span>: <span class="ident">PHKEY</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegOpenKeyW</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">lpSubKey</span>: <span class="ident">LPCWSTR</span>,
-        <span class="ident">phkResult</span>: <span class="ident">PHKEY</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegOpenKeyExA</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">lpSubKey</span>: <span class="ident">LPCSTR</span>,
-        <span class="ident">ulOptions</span>: <span class="ident">DWORD</span>,
-        <span class="ident">samDesired</span>: <span class="ident">REGSAM</span>,
-        <span class="ident">phkResult</span>: <span class="ident">PHKEY</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegOpenKeyExW</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">lpSubKey</span>: <span class="ident">LPCWSTR</span>,
-        <span class="ident">ulOptions</span>: <span class="ident">DWORD</span>,
-        <span class="ident">samDesired</span>: <span class="ident">REGSAM</span>,
-        <span class="ident">phkResult</span>: <span class="ident">PHKEY</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegOpenKeyTransactedA</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">lpSubKey</span>: <span class="ident">LPCSTR</span>,
-        <span class="ident">ulOptions</span>: <span class="ident">DWORD</span>,
-        <span class="ident">samDesired</span>: <span class="ident">REGSAM</span>,
-        <span class="ident">phkResult</span>: <span class="ident">PHKEY</span>,
-        <span class="ident">hTransaction</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">pExtendedParemeter</span>: <span class="ident">PVOID</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegOpenKeyTransactedW</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">lpSubKey</span>: <span class="ident">LPCWSTR</span>,
-        <span class="ident">ulOptions</span>: <span class="ident">DWORD</span>,
-        <span class="ident">samDesired</span>: <span class="ident">REGSAM</span>,
-        <span class="ident">phkResult</span>: <span class="ident">PHKEY</span>,
-        <span class="ident">hTransaction</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">pExtendedParemeter</span>: <span class="ident">PVOID</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegQueryInfoKeyA</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">lpClass</span>: <span class="ident">LPSTR</span>,
-        <span class="ident">lpcClass</span>: <span class="ident">LPDWORD</span>,
-        <span class="ident">lpReserved</span>: <span class="ident">LPDWORD</span>,
-        <span class="ident">lpcSubKeys</span>: <span class="ident">LPDWORD</span>,
-        <span class="ident">lpcMaxSubKeyLen</span>: <span class="ident">LPDWORD</span>,
-        <span class="ident">lpcMaxClassLen</span>: <span class="ident">LPDWORD</span>,
-        <span class="ident">lpcValues</span>: <span class="ident">LPDWORD</span>,
-        <span class="ident">lpcMaxValueNameLen</span>: <span class="ident">LPDWORD</span>,
-        <span class="ident">lpcMaxValueLen</span>: <span class="ident">LPDWORD</span>,
-        <span class="ident">lpcbSecurityDescriptor</span>: <span class="ident">LPDWORD</span>,
-        <span class="ident">lpftLastWriteTime</span>: <span class="ident">PFILETIME</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegQueryInfoKeyW</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">lpClass</span>: <span class="ident">LPWSTR</span>,
-        <span class="ident">lpcClass</span>: <span class="ident">LPDWORD</span>,
-        <span class="ident">lpReserved</span>: <span class="ident">LPDWORD</span>,
-        <span class="ident">lpcSubKeys</span>: <span class="ident">LPDWORD</span>,
-        <span class="ident">lpcMaxSubKeyLen</span>: <span class="ident">LPDWORD</span>,
-        <span class="ident">lpcMaxClassLen</span>: <span class="ident">LPDWORD</span>,
-        <span class="ident">lpcValues</span>: <span class="ident">LPDWORD</span>,
-        <span class="ident">lpcMaxValueNameLen</span>: <span class="ident">LPDWORD</span>,
-        <span class="ident">lpcMaxValueLen</span>: <span class="ident">LPDWORD</span>,
-        <span class="ident">lpcbSecurityDescriptor</span>: <span class="ident">LPDWORD</span>,
-        <span class="ident">lpftLastWriteTime</span>: <span class="ident">PFILETIME</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegQueryValueA</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">lpSubKey</span>: <span class="ident">LPCSTR</span>,
-        <span class="ident">lpData</span>: <span class="ident">LPSTR</span>,
-        <span class="ident">lpcbData</span>: <span class="ident">PLONG</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegQueryValueW</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">lpSubKey</span>: <span class="ident">LPCWSTR</span>,
-        <span class="ident">lpData</span>: <span class="ident">LPWSTR</span>,
-        <span class="ident">lpcbData</span>: <span class="ident">PLONG</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegQueryMultipleValuesA</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">val_list</span>: <span class="ident">PVALENTA</span>,
-        <span class="ident">num_vals</span>: <span class="ident">DWORD</span>,
-        <span class="ident">lpValueBuf</span>: <span class="ident">LPSTR</span>,
-        <span class="ident">ldwTotsize</span>: <span class="ident">LPDWORD</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegQueryMultipleValuesW</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">val_list</span>: <span class="ident">PVALENTW</span>,
-        <span class="ident">num_vals</span>: <span class="ident">DWORD</span>,
-        <span class="ident">lpValueBuf</span>: <span class="ident">LPWSTR</span>,
-        <span class="ident">ldwTotsize</span>: <span class="ident">LPDWORD</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegQueryValueExA</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">lpValueName</span>: <span class="ident">LPCSTR</span>,
-        <span class="ident">lpReserved</span>: <span class="ident">LPDWORD</span>,
-        <span class="ident">lpType</span>: <span class="ident">LPDWORD</span>,
-        <span class="ident">lpData</span>: <span class="ident">LPBYTE</span>,
-        <span class="ident">lpcbData</span>: <span class="ident">LPDWORD</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegQueryValueExW</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">lpValueName</span>: <span class="ident">LPCWSTR</span>,
-        <span class="ident">lpReserved</span>: <span class="ident">LPDWORD</span>,
-        <span class="ident">lpType</span>: <span class="ident">LPDWORD</span>,
-        <span class="ident">lpData</span>: <span class="ident">LPBYTE</span>,
-        <span class="ident">lpcbData</span>: <span class="ident">LPDWORD</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegReplaceKeyA</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">lpSubKey</span>: <span class="ident">LPCSTR</span>,
-        <span class="ident">lpNewFile</span>: <span class="ident">LPCSTR</span>,
-        <span class="ident">lpOldFile</span>: <span class="ident">LPCSTR</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegReplaceKeyW</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">lpSubKey</span>: <span class="ident">LPCWSTR</span>,
-        <span class="ident">lpNewFile</span>: <span class="ident">LPCWSTR</span>,
-        <span class="ident">lpOldFile</span>: <span class="ident">LPCWSTR</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegRestoreKeyA</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">lpFile</span>: <span class="ident">LPCSTR</span>,
-        <span class="ident">dwFlags</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegRestoreKeyW</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">lpFile</span>: <span class="ident">LPCWSTR</span>,
-        <span class="ident">dwFlags</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegRenameKey</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">lpSubKeyName</span>: <span class="ident">LPCWSTR</span>,
-        <span class="ident">lpNewKeyName</span>: <span class="ident">LPCWSTR</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegSaveKeyA</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">lpFile</span>: <span class="ident">LPCSTR</span>,
-        <span class="ident">lpSecurityAttributes</span>: <span class="ident">LPSECURITY_ATTRIBUTES</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegSaveKeyW</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">lpFile</span>: <span class="ident">LPCWSTR</span>,
-        <span class="ident">lpSecurityAttributes</span>: <span class="ident">LPSECURITY_ATTRIBUTES</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegSetKeySecurity</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">SecurityInformation</span>: <span class="ident">SECURITY_INFORMATION</span>,
-        <span class="ident">pSecurityDescriptor</span>: <span class="ident">PSECURITY_DESCRIPTOR</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegSetValueA</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">lpSubKey</span>: <span class="ident">LPCSTR</span>,
-        <span class="ident">dwType</span>: <span class="ident">DWORD</span>,
-        <span class="ident">lpData</span>: <span class="ident">LPCSTR</span>,
-        <span class="ident">cbData</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegSetValueW</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">lpSubKey</span>: <span class="ident">LPCWSTR</span>,
-        <span class="ident">dwType</span>: <span class="ident">DWORD</span>,
-        <span class="ident">lpData</span>: <span class="ident">LPCWSTR</span>,
-        <span class="ident">cbData</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegSetValueExA</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">lpValueName</span>: <span class="ident">LPCSTR</span>,
-        <span class="ident">Reserved</span>: <span class="ident">DWORD</span>,
-        <span class="ident">dwType</span>: <span class="ident">DWORD</span>,
-        <span class="ident">lpData</span>: <span class="kw-2">*const</span> <span class="ident">BYTE</span>,
-        <span class="ident">cbData</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegSetValueExW</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">lpValueName</span>: <span class="ident">LPCWSTR</span>,
-        <span class="ident">Reserved</span>: <span class="ident">DWORD</span>,
-        <span class="ident">dwType</span>: <span class="ident">DWORD</span>,
-        <span class="ident">lpData</span>: <span class="kw-2">*const</span> <span class="ident">BYTE</span>,
-        <span class="ident">cbData</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegUnLoadKeyA</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">lpSubKey</span>: <span class="ident">LPCSTR</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegUnLoadKeyW</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">lpSubKey</span>: <span class="ident">LPCWSTR</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegDeleteKeyValueA</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">lpSubKey</span>: <span class="ident">LPCSTR</span>,
-        <span class="ident">lpValueName</span>: <span class="ident">LPCSTR</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegDeleteKeyValueW</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">lpSubKey</span>: <span class="ident">LPCWSTR</span>,
-        <span class="ident">lpValueName</span>: <span class="ident">LPCWSTR</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegSetKeyValueA</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">lpSubKey</span>: <span class="ident">LPCSTR</span>,
-        <span class="ident">lpValueName</span>: <span class="ident">LPCSTR</span>,
-        <span class="ident">dwType</span>: <span class="ident">DWORD</span>,
-        <span class="ident">lpData</span>: <span class="ident">LPCVOID</span>,
-        <span class="ident">cbData</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegSetKeyValueW</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">lpSubKey</span>: <span class="ident">LPCWSTR</span>,
-        <span class="ident">lpValueName</span>: <span class="ident">LPCWSTR</span>,
-        <span class="ident">dwType</span>: <span class="ident">DWORD</span>,
-        <span class="ident">lpData</span>: <span class="ident">LPCVOID</span>,
-        <span class="ident">cbData</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegDeleteTreeA</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">lpSubKey</span>: <span class="ident">LPCSTR</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegDeleteTreeW</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">lpSubKey</span>: <span class="ident">LPCWSTR</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegCopyTreeA</span>(
-        <span class="ident">hKeySrc</span>: <span class="ident">HKEY</span>,
-        <span class="ident">lpSubKey</span>: <span class="ident">LPCSTR</span>,
-        <span class="ident">hKeyDest</span>: <span class="ident">HKEY</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegGetValueA</span>(
-        <span class="ident">hkey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">lpSubKey</span>: <span class="ident">LPCSTR</span>,
-        <span class="ident">lpValue</span>: <span class="ident">LPCSTR</span>,
-        <span class="ident">dwFlags</span>: <span class="ident">DWORD</span>,
-        <span class="ident">pdwType</span>: <span class="ident">LPDWORD</span>,
-        <span class="ident">pvData</span>: <span class="ident">PVOID</span>,
-        <span class="ident">pcbData</span>: <span class="ident">LPDWORD</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegGetValueW</span>(
-        <span class="ident">hkey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">lpSubKey</span>: <span class="ident">LPCWSTR</span>,
-        <span class="ident">lpValue</span>: <span class="ident">LPCWSTR</span>,
-        <span class="ident">dwFlags</span>: <span class="ident">DWORD</span>,
-        <span class="ident">pdwType</span>: <span class="ident">LPDWORD</span>,
-        <span class="ident">pvData</span>: <span class="ident">PVOID</span>,
-        <span class="ident">pcbData</span>: <span class="ident">LPDWORD</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegCopyTreeW</span>(
-        <span class="ident">hKeySrc</span>: <span class="ident">HKEY</span>,
-        <span class="ident">lpSubKey</span>: <span class="ident">LPCWSTR</span>,
-        <span class="ident">hKeyDest</span>: <span class="ident">HKEY</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegLoadMUIStringA</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">pszValue</span>: <span class="ident">LPCSTR</span>,
-        <span class="ident">pszOutBuf</span>: <span class="ident">LPSTR</span>,
-        <span class="ident">cbOutBuf</span>: <span class="ident">DWORD</span>,
-        <span class="ident">pcbData</span>: <span class="ident">LPDWORD</span>,
-        <span class="ident">Flags</span>: <span class="ident">DWORD</span>,
-        <span class="ident">pszDirectory</span>: <span class="ident">LPCSTR</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegLoadMUIStringW</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">pszValue</span>: <span class="ident">LPCWSTR</span>,
-        <span class="ident">pszOutBuf</span>: <span class="ident">LPWSTR</span>,
-        <span class="ident">cbOutBuf</span>: <span class="ident">DWORD</span>,
-        <span class="ident">pcbData</span>: <span class="ident">LPDWORD</span>,
-        <span class="ident">Flags</span>: <span class="ident">DWORD</span>,
-        <span class="ident">pszDirectory</span>: <span class="ident">LPCWSTR</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegLoadAppKeyA</span>(
-        <span class="ident">lpFile</span>: <span class="ident">LPCSTR</span>,
-        <span class="ident">phkResult</span>: <span class="ident">PHKEY</span>,
-        <span class="ident">samDesired</span>: <span class="ident">REGSAM</span>,
-        <span class="ident">dwOptions</span>: <span class="ident">DWORD</span>,
-        <span class="ident">Reserved</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegLoadAppKeyW</span>(
-        <span class="ident">lpFile</span>: <span class="ident">LPCWSTR</span>,
-        <span class="ident">phkResult</span>: <span class="ident">PHKEY</span>,
-        <span class="ident">samDesired</span>: <span class="ident">REGSAM</span>,
-        <span class="ident">dwOptions</span>: <span class="ident">DWORD</span>,
-        <span class="ident">Reserved</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">InitiateSystemShutdownA</span>(
-        <span class="ident">lpMachineName</span>: <span class="ident">LPSTR</span>,
-        <span class="ident">lpMessage</span>: <span class="ident">LPSTR</span>,
-        <span class="ident">dwTimeout</span>: <span class="ident">DWORD</span>,
-        <span class="ident">bForceAppsClosed</span>: <span class="ident">BOOL</span>,
-        <span class="ident">bRebootAfterShutdown</span>: <span class="ident">BOOL</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">InitiateSystemShutdownW</span>(
-        <span class="ident">lpMachineName</span>: <span class="ident">LPWSTR</span>,
-        <span class="ident">lpMessage</span>: <span class="ident">LPWSTR</span>,
-        <span class="ident">dwTimeout</span>: <span class="ident">DWORD</span>,
-        <span class="ident">bForceAppsClosed</span>: <span class="ident">BOOL</span>,
-        <span class="ident">bRebootAfterShutdown</span>: <span class="ident">BOOL</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">AbortSystemShutdownA</span>(
-        <span class="ident">lpMachineName</span>: <span class="ident">LPSTR</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">AbortSystemShutdownW</span>(
-        <span class="ident">lpMachineName</span>: <span class="ident">LPWSTR</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
+<span class="kw">pub type </span>PVALENTW = <span class="kw-2">*mut </span>VALENTW;
+<span class="comment">// WIN31_CLASS
+</span><span class="kw">pub const </span>REG_MUI_STRING_TRUNCATE: DWORD = <span class="number">0x00000001</span>;
+<span class="kw">pub const </span>REG_SECURE_CONNECTION: DWORD = <span class="number">1</span>;
+<span class="kw">extern </span><span class="string">&quot;system&quot; </span>{
+    <span class="kw">pub fn </span>RegCloseKey(
+        hKey: HKEY,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegOverridePredefKey(
+        hKey: HKEY,
+        hNewHKey: HKEY,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegOpenUserClassesRoot(
+        hToken: HANDLE,
+        dwOptions: DWORD,
+        samDesired: REGSAM,
+        phkResult: PHKEY,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegOpenCurrentUser(
+        samDesired: REGSAM,
+        phkResult: PHKEY,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegDisablePredefinedCache() -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegDisablePredefinedCacheEx() -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegConnectRegistryA(
+        lpMachineName: LPCSTR,
+        hKey: HKEY,
+        phkResult: PHKEY,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegConnectRegistryW(
+        lpMachineName: LPCWSTR,
+        hKey: HKEY,
+        phkResult: PHKEY,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegConnectRegistryExA(
+        lpMachineName: LPCSTR,
+        hKey: HKEY,
+        flags: ULONG,
+        phkResult: PHKEY,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegConnectRegistryExW(
+        lpMachineName: LPCWSTR,
+        hKey: HKEY,
+        flags: ULONG,
+        phkResult: PHKEY,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegCreateKeyA(
+        hKey: HKEY,
+        lpSubKey: LPCSTR,
+        phkResult: PHKEY,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegCreateKeyW(
+        hKey: HKEY,
+        lpSubKey: LPCWSTR,
+        phkResult: PHKEY,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegCreateKeyExA(
+        hKey: HKEY,
+        lpSubKey: LPCSTR,
+        Reserved: DWORD,
+        lpClass: LPSTR,
+        dwOptions: DWORD,
+        samDesired: REGSAM,
+        lpSecurityAttributes: LPSECURITY_ATTRIBUTES,
+        phkResult: PHKEY,
+        lpdwDisposition: LPDWORD,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegCreateKeyExW(
+        hKey: HKEY,
+        lpSubKey: LPCWSTR,
+        Reserved: DWORD,
+        lpClass: LPWSTR,
+        dwOptions: DWORD,
+        samDesired: REGSAM,
+        lpSecurityAttributes: LPSECURITY_ATTRIBUTES,
+        phkResult: PHKEY,
+        lpdwDisposition: LPDWORD,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegCreateKeyTransactedA(
+        hKey: HKEY,
+        lpSubKey: LPCSTR,
+        Reserved: DWORD,
+        lpClass: LPSTR,
+        dwOptions: DWORD,
+        samDesired: REGSAM,
+        lpSecurityAttributes: LPSECURITY_ATTRIBUTES,
+        phkResult: PHKEY,
+        lpdwDisposition: LPDWORD,
+        hTransaction: HANDLE,
+        pExtendedParemeter: PVOID,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegCreateKeyTransactedW(
+        hKey: HKEY,
+        lpSubKey: LPCWSTR,
+        Reserved: DWORD,
+        lpClass: LPWSTR,
+        dwOptions: DWORD,
+        samDesired: REGSAM,
+        lpSecurityAttributes: LPSECURITY_ATTRIBUTES,
+        phkResult: PHKEY,
+        lpdwDisposition: LPDWORD,
+        hTransaction: HANDLE,
+        pExtendedParemeter: PVOID,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegDeleteKeyA(
+        hKey: HKEY,
+        lpSubKey: LPCSTR,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegDeleteKeyW(
+        hKey: HKEY,
+        lpSubKey: LPCWSTR,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegDeleteKeyExA(
+        hKey: HKEY,
+        lpSubKey: LPCSTR,
+        samDesired: REGSAM,
+        Reserved: DWORD,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegDeleteKeyExW(
+        hKey: HKEY,
+        lpSubKey: LPCWSTR,
+        samDesired: REGSAM,
+        Reserved: DWORD,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegDeleteKeyTransactedA(
+        hKey: HKEY,
+        lpSubKey: LPCSTR,
+        samDesired: REGSAM,
+        Reserved: DWORD,
+        hTransaction: HANDLE,
+        pExtendedParemeter: PVOID,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegDeleteKeyTransactedW(
+        hKey: HKEY,
+        lpSubKey: LPCWSTR,
+        samDesired: REGSAM,
+        Reserved: DWORD,
+        hTransaction: HANDLE,
+        pExtendedParemeter: PVOID,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegDisableReflectionKey(
+        hBase: HKEY,
+    ) -&gt; LONG;
+    <span class="kw">pub fn </span>RegEnableReflectionKey(
+        hBase: HKEY,
+    ) -&gt; LONG;
+    <span class="kw">pub fn </span>RegQueryReflectionKey(
+        hBase: HKEY,
+        bIsReflectionDisabled: <span class="kw-2">*mut </span>BOOL,
+    ) -&gt; LONG;
+    <span class="kw">pub fn </span>RegDeleteValueA(
+        hKey: HKEY,
+        lpValueName: LPCSTR,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegDeleteValueW(
+        hKey: HKEY,
+        lpValueName: LPCWSTR,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegEnumKeyA(
+        hKey: HKEY,
+        dwIndex: DWORD,
+        lpName: LPSTR,
+        cchName: DWORD,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegEnumKeyW(
+        hKey: HKEY,
+        dwIndex: DWORD,
+        lpName: LPWSTR,
+        cchName: DWORD,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegEnumKeyExA(
+        hKey: HKEY,
+        dwIndex: DWORD,
+        lpName: LPSTR,
+        lpcName: LPDWORD,
+        lpReserved: LPDWORD,
+        lpClass: LPSTR,
+        lpcClass: LPDWORD,
+        lpftLastWriteTime: PFILETIME,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegEnumKeyExW(
+        hKey: HKEY,
+        dwIndex: DWORD,
+        lpName: LPWSTR,
+        lpcName: LPDWORD,
+        lpReserved: LPDWORD,
+        lpClass: LPWSTR,
+        lpcClass: LPDWORD,
+        lpftLastWriteTime: PFILETIME,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegEnumValueA(
+        hKey: HKEY,
+        dwIndex: DWORD,
+        lpValueName: LPSTR,
+        lpcchValueName: LPDWORD,
+        lpReserved: LPDWORD,
+        lpType: LPDWORD,
+        lpData: LPBYTE,
+        lpcbData: LPDWORD,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegEnumValueW(
+        hKey: HKEY,
+        dwIndex: DWORD,
+        lpValueName: LPWSTR,
+        lpcchValueName: LPDWORD,
+        lpReserved: LPDWORD,
+        lpType: LPDWORD,
+        lpData: LPBYTE,
+        lpcbData: LPDWORD,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegFlushKey(
+        hKey: HKEY,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegGetKeySecurity(
+        hKey: HKEY,
+        SecurityInformation: SECURITY_INFORMATION,
+        pSecurityDescriptor: PSECURITY_DESCRIPTOR,
+        lpcbSecurityDescriptor: LPDWORD,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegLoadKeyA(
+        hKey: HKEY,
+        lpSubKey: LPCSTR,
+        lpFile: LPCSTR,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegLoadKeyW(
+        hKey: HKEY,
+        lpSubKey: LPCWSTR,
+        lpFile: LPCWSTR,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegNotifyChangeKeyValue(
+        hKey: HKEY,
+        bWatchSubtree: BOOL,
+        dwNotifyFilter: DWORD,
+        hEvent: HANDLE,
+        fAsynchronous: BOOL,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegOpenKeyA(
+        hKey: HKEY,
+        lpSubKey: LPCSTR,
+        phkResult: PHKEY,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegOpenKeyW(
+        hKey: HKEY,
+        lpSubKey: LPCWSTR,
+        phkResult: PHKEY,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegOpenKeyExA(
+        hKey: HKEY,
+        lpSubKey: LPCSTR,
+        ulOptions: DWORD,
+        samDesired: REGSAM,
+        phkResult: PHKEY,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegOpenKeyExW(
+        hKey: HKEY,
+        lpSubKey: LPCWSTR,
+        ulOptions: DWORD,
+        samDesired: REGSAM,
+        phkResult: PHKEY,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegOpenKeyTransactedA(
+        hKey: HKEY,
+        lpSubKey: LPCSTR,
+        ulOptions: DWORD,
+        samDesired: REGSAM,
+        phkResult: PHKEY,
+        hTransaction: HANDLE,
+        pExtendedParemeter: PVOID,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegOpenKeyTransactedW(
+        hKey: HKEY,
+        lpSubKey: LPCWSTR,
+        ulOptions: DWORD,
+        samDesired: REGSAM,
+        phkResult: PHKEY,
+        hTransaction: HANDLE,
+        pExtendedParemeter: PVOID,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegQueryInfoKeyA(
+        hKey: HKEY,
+        lpClass: LPSTR,
+        lpcClass: LPDWORD,
+        lpReserved: LPDWORD,
+        lpcSubKeys: LPDWORD,
+        lpcMaxSubKeyLen: LPDWORD,
+        lpcMaxClassLen: LPDWORD,
+        lpcValues: LPDWORD,
+        lpcMaxValueNameLen: LPDWORD,
+        lpcMaxValueLen: LPDWORD,
+        lpcbSecurityDescriptor: LPDWORD,
+        lpftLastWriteTime: PFILETIME,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegQueryInfoKeyW(
+        hKey: HKEY,
+        lpClass: LPWSTR,
+        lpcClass: LPDWORD,
+        lpReserved: LPDWORD,
+        lpcSubKeys: LPDWORD,
+        lpcMaxSubKeyLen: LPDWORD,
+        lpcMaxClassLen: LPDWORD,
+        lpcValues: LPDWORD,
+        lpcMaxValueNameLen: LPDWORD,
+        lpcMaxValueLen: LPDWORD,
+        lpcbSecurityDescriptor: LPDWORD,
+        lpftLastWriteTime: PFILETIME,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegQueryValueA(
+        hKey: HKEY,
+        lpSubKey: LPCSTR,
+        lpData: LPSTR,
+        lpcbData: PLONG,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegQueryValueW(
+        hKey: HKEY,
+        lpSubKey: LPCWSTR,
+        lpData: LPWSTR,
+        lpcbData: PLONG,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegQueryMultipleValuesA(
+        hKey: HKEY,
+        val_list: PVALENTA,
+        num_vals: DWORD,
+        lpValueBuf: LPSTR,
+        ldwTotsize: LPDWORD,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegQueryMultipleValuesW(
+        hKey: HKEY,
+        val_list: PVALENTW,
+        num_vals: DWORD,
+        lpValueBuf: LPWSTR,
+        ldwTotsize: LPDWORD,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegQueryValueExA(
+        hKey: HKEY,
+        lpValueName: LPCSTR,
+        lpReserved: LPDWORD,
+        lpType: LPDWORD,
+        lpData: LPBYTE,
+        lpcbData: LPDWORD,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegQueryValueExW(
+        hKey: HKEY,
+        lpValueName: LPCWSTR,
+        lpReserved: LPDWORD,
+        lpType: LPDWORD,
+        lpData: LPBYTE,
+        lpcbData: LPDWORD,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegReplaceKeyA(
+        hKey: HKEY,
+        lpSubKey: LPCSTR,
+        lpNewFile: LPCSTR,
+        lpOldFile: LPCSTR,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegReplaceKeyW(
+        hKey: HKEY,
+        lpSubKey: LPCWSTR,
+        lpNewFile: LPCWSTR,
+        lpOldFile: LPCWSTR,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegRestoreKeyA(
+        hKey: HKEY,
+        lpFile: LPCSTR,
+        dwFlags: DWORD,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegRestoreKeyW(
+        hKey: HKEY,
+        lpFile: LPCWSTR,
+        dwFlags: DWORD,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegRenameKey(
+        hKey: HKEY,
+        lpSubKeyName: LPCWSTR,
+        lpNewKeyName: LPCWSTR,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegSaveKeyA(
+        hKey: HKEY,
+        lpFile: LPCSTR,
+        lpSecurityAttributes: LPSECURITY_ATTRIBUTES,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegSaveKeyW(
+        hKey: HKEY,
+        lpFile: LPCWSTR,
+        lpSecurityAttributes: LPSECURITY_ATTRIBUTES,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegSetKeySecurity(
+        hKey: HKEY,
+        SecurityInformation: SECURITY_INFORMATION,
+        pSecurityDescriptor: PSECURITY_DESCRIPTOR,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegSetValueA(
+        hKey: HKEY,
+        lpSubKey: LPCSTR,
+        dwType: DWORD,
+        lpData: LPCSTR,
+        cbData: DWORD,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegSetValueW(
+        hKey: HKEY,
+        lpSubKey: LPCWSTR,
+        dwType: DWORD,
+        lpData: LPCWSTR,
+        cbData: DWORD,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegSetValueExA(
+        hKey: HKEY,
+        lpValueName: LPCSTR,
+        Reserved: DWORD,
+        dwType: DWORD,
+        lpData: <span class="kw-2">*const </span>BYTE,
+        cbData: DWORD,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegSetValueExW(
+        hKey: HKEY,
+        lpValueName: LPCWSTR,
+        Reserved: DWORD,
+        dwType: DWORD,
+        lpData: <span class="kw-2">*const </span>BYTE,
+        cbData: DWORD,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegUnLoadKeyA(
+        hKey: HKEY,
+        lpSubKey: LPCSTR,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegUnLoadKeyW(
+        hKey: HKEY,
+        lpSubKey: LPCWSTR,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegDeleteKeyValueA(
+        hKey: HKEY,
+        lpSubKey: LPCSTR,
+        lpValueName: LPCSTR,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegDeleteKeyValueW(
+        hKey: HKEY,
+        lpSubKey: LPCWSTR,
+        lpValueName: LPCWSTR,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegSetKeyValueA(
+        hKey: HKEY,
+        lpSubKey: LPCSTR,
+        lpValueName: LPCSTR,
+        dwType: DWORD,
+        lpData: LPCVOID,
+        cbData: DWORD,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegSetKeyValueW(
+        hKey: HKEY,
+        lpSubKey: LPCWSTR,
+        lpValueName: LPCWSTR,
+        dwType: DWORD,
+        lpData: LPCVOID,
+        cbData: DWORD,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegDeleteTreeA(
+        hKey: HKEY,
+        lpSubKey: LPCSTR,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegDeleteTreeW(
+        hKey: HKEY,
+        lpSubKey: LPCWSTR,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegCopyTreeA(
+        hKeySrc: HKEY,
+        lpSubKey: LPCSTR,
+        hKeyDest: HKEY,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegGetValueA(
+        hkey: HKEY,
+        lpSubKey: LPCSTR,
+        lpValue: LPCSTR,
+        dwFlags: DWORD,
+        pdwType: LPDWORD,
+        pvData: PVOID,
+        pcbData: LPDWORD,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegGetValueW(
+        hkey: HKEY,
+        lpSubKey: LPCWSTR,
+        lpValue: LPCWSTR,
+        dwFlags: DWORD,
+        pdwType: LPDWORD,
+        pvData: PVOID,
+        pcbData: LPDWORD,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegCopyTreeW(
+        hKeySrc: HKEY,
+        lpSubKey: LPCWSTR,
+        hKeyDest: HKEY,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegLoadMUIStringA(
+        hKey: HKEY,
+        pszValue: LPCSTR,
+        pszOutBuf: LPSTR,
+        cbOutBuf: DWORD,
+        pcbData: LPDWORD,
+        Flags: DWORD,
+        pszDirectory: LPCSTR,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegLoadMUIStringW(
+        hKey: HKEY,
+        pszValue: LPCWSTR,
+        pszOutBuf: LPWSTR,
+        cbOutBuf: DWORD,
+        pcbData: LPDWORD,
+        Flags: DWORD,
+        pszDirectory: LPCWSTR,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegLoadAppKeyA(
+        lpFile: LPCSTR,
+        phkResult: PHKEY,
+        samDesired: REGSAM,
+        dwOptions: DWORD,
+        Reserved: DWORD,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegLoadAppKeyW(
+        lpFile: LPCWSTR,
+        phkResult: PHKEY,
+        samDesired: REGSAM,
+        dwOptions: DWORD,
+        Reserved: DWORD,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>InitiateSystemShutdownA(
+        lpMachineName: LPSTR,
+        lpMessage: LPSTR,
+        dwTimeout: DWORD,
+        bForceAppsClosed: BOOL,
+        bRebootAfterShutdown: BOOL,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>InitiateSystemShutdownW(
+        lpMachineName: LPWSTR,
+        lpMessage: LPWSTR,
+        dwTimeout: DWORD,
+        bForceAppsClosed: BOOL,
+        bRebootAfterShutdown: BOOL,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>AbortSystemShutdownA(
+        lpMachineName: LPSTR,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>AbortSystemShutdownW(
+        lpMachineName: LPWSTR,
+    ) -&gt; BOOL;
 }
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">REASON_SWINSTALL</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="ident">SHTDN_REASON_MAJOR_SOFTWARE</span> <span class="op">|</span> <span class="ident">SHTDN_REASON_MINOR_INSTALLATION</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">REASON_HWINSTALL</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="ident">SHTDN_REASON_MAJOR_HARDWARE</span> <span class="op">|</span> <span class="ident">SHTDN_REASON_MINOR_INSTALLATION</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">REASON_SERVICEHANG</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="ident">SHTDN_REASON_MAJOR_SOFTWARE</span> <span class="op">|</span> <span class="ident">SHTDN_REASON_MINOR_HUNG</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">REASON_UNSTABLE</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="ident">SHTDN_REASON_MAJOR_SYSTEM</span> <span class="op">|</span> <span class="ident">SHTDN_REASON_MINOR_UNSTABLE</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">REASON_SWHWRECONF</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="ident">SHTDN_REASON_MAJOR_SOFTWARE</span> <span class="op">|</span> <span class="ident">SHTDN_REASON_MINOR_RECONFIG</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">REASON_OTHER</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="ident">SHTDN_REASON_MAJOR_OTHER</span> <span class="op">|</span> <span class="ident">SHTDN_REASON_MINOR_OTHER</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">REASON_UNKNOWN</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="ident">SHTDN_REASON_UNKNOWN</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">REASON_LEGACY_API</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="ident">SHTDN_REASON_LEGACY_API</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">REASON_PLANNED_FLAG</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="ident">SHTDN_REASON_FLAG_PLANNED</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">MAX_SHUTDOWN_TIMEOUT</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">10</span> <span class="op">*</span> <span class="number">365</span> <span class="op">*</span> <span class="number">24</span> <span class="op">*</span> <span class="number">60</span> <span class="op">*</span> <span class="number">60</span>;
-<span class="kw">extern</span> <span class="string">&quot;system&quot;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">InitiateSystemShutdownExA</span>(
-        <span class="ident">lpMachineName</span>: <span class="ident">LPSTR</span>,
-        <span class="ident">lpMessage</span>: <span class="ident">LPSTR</span>,
-        <span class="ident">dwTimeout</span>: <span class="ident">DWORD</span>,
-        <span class="ident">bForceAppsClosed</span>: <span class="ident">BOOL</span>,
-        <span class="ident">bRebootAfterShutdown</span>: <span class="ident">BOOL</span>,
-        <span class="ident">dwReason</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">InitiateSystemShutdownExW</span>(
-        <span class="ident">lpMachineName</span>: <span class="ident">LPWSTR</span>,
-        <span class="ident">lpMessage</span>: <span class="ident">LPWSTR</span>,
-        <span class="ident">dwTimeout</span>: <span class="ident">DWORD</span>,
-        <span class="ident">bForceAppsClosed</span>: <span class="ident">BOOL</span>,
-        <span class="ident">bRebootAfterShutdown</span>: <span class="ident">BOOL</span>,
-        <span class="ident">dwReason</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
+<span class="kw">pub const </span>REASON_SWINSTALL: DWORD = SHTDN_REASON_MAJOR_SOFTWARE | SHTDN_REASON_MINOR_INSTALLATION;
+<span class="kw">pub const </span>REASON_HWINSTALL: DWORD = SHTDN_REASON_MAJOR_HARDWARE | SHTDN_REASON_MINOR_INSTALLATION;
+<span class="kw">pub const </span>REASON_SERVICEHANG: DWORD = SHTDN_REASON_MAJOR_SOFTWARE | SHTDN_REASON_MINOR_HUNG;
+<span class="kw">pub const </span>REASON_UNSTABLE: DWORD = SHTDN_REASON_MAJOR_SYSTEM | SHTDN_REASON_MINOR_UNSTABLE;
+<span class="kw">pub const </span>REASON_SWHWRECONF: DWORD = SHTDN_REASON_MAJOR_SOFTWARE | SHTDN_REASON_MINOR_RECONFIG;
+<span class="kw">pub const </span>REASON_OTHER: DWORD = SHTDN_REASON_MAJOR_OTHER | SHTDN_REASON_MINOR_OTHER;
+<span class="kw">pub const </span>REASON_UNKNOWN: DWORD = SHTDN_REASON_UNKNOWN;
+<span class="kw">pub const </span>REASON_LEGACY_API: DWORD = SHTDN_REASON_LEGACY_API;
+<span class="kw">pub const </span>REASON_PLANNED_FLAG: DWORD = SHTDN_REASON_FLAG_PLANNED;
+<span class="kw">pub const </span>MAX_SHUTDOWN_TIMEOUT: DWORD = <span class="number">10 </span>* <span class="number">365 </span>* <span class="number">24 </span>* <span class="number">60 </span>* <span class="number">60</span>;
+<span class="kw">extern </span><span class="string">&quot;system&quot; </span>{
+    <span class="kw">pub fn </span>InitiateSystemShutdownExA(
+        lpMachineName: LPSTR,
+        lpMessage: LPSTR,
+        dwTimeout: DWORD,
+        bForceAppsClosed: BOOL,
+        bRebootAfterShutdown: BOOL,
+        dwReason: DWORD,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>InitiateSystemShutdownExW(
+        lpMachineName: LPWSTR,
+        lpMessage: LPWSTR,
+        dwTimeout: DWORD,
+        bForceAppsClosed: BOOL,
+        bRebootAfterShutdown: BOOL,
+        dwReason: DWORD,
+    ) -&gt; BOOL;
 }
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHUTDOWN_FORCE_OTHERS</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000001</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHUTDOWN_FORCE_SELF</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000002</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHUTDOWN_RESTART</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000004</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHUTDOWN_POWEROFF</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000008</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHUTDOWN_NOREBOOT</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000010</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHUTDOWN_GRACE_OVERRIDE</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000020</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHUTDOWN_INSTALL_UPDATES</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000040</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHUTDOWN_RESTARTAPPS</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000080</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHUTDOWN_SKIP_SVC_PRESHUTDOWN</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000100</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHUTDOWN_HYBRID</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000200</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHUTDOWN_RESTART_BOOTOPTIONS</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000400</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHUTDOWN_SOFT_REBOOT</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000800</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHUTDOWN_MOBILE_UI</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00001000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHUTDOWN_ARSO</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00002000</span>;
-<span class="kw">extern</span> <span class="string">&quot;system&quot;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">InitiateShutdownA</span>(
-        <span class="ident">lpMachineName</span>: <span class="ident">LPSTR</span>,
-        <span class="ident">lpMessage</span>: <span class="ident">LPSTR</span>,
-        <span class="ident">dwGracePeriod</span>: <span class="ident">DWORD</span>,
-        <span class="ident">dwShutdownFlags</span>: <span class="ident">DWORD</span>,
-        <span class="ident">dwReason</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">DWORD</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">InitiateShutdownW</span>(
-        <span class="ident">lpMachineName</span>: <span class="ident">LPWSTR</span>,
-        <span class="ident">lpMessage</span>: <span class="ident">LPWSTR</span>,
-        <span class="ident">dwGracePeriod</span>: <span class="ident">DWORD</span>,
-        <span class="ident">dwShutdownFlags</span>: <span class="ident">DWORD</span>,
-        <span class="ident">dwReason</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">DWORD</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">CheckForHiberboot</span>(
-        <span class="ident">pHiberboot</span>: <span class="ident">PBOOLEAN</span>,
-        <span class="ident">bClearFlag</span>: <span class="ident">BOOLEAN</span>,
-    ) -&gt; <span class="ident">DWORD</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegSaveKeyExA</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">lpFile</span>: <span class="ident">LPCSTR</span>,
-        <span class="ident">lpSecurityAttributes</span>: <span class="ident">LPSECURITY_ATTRIBUTES</span>,
-        <span class="ident">Flags</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RegSaveKeyExW</span>(
-        <span class="ident">hKey</span>: <span class="ident">HKEY</span>,
-        <span class="ident">lpFile</span>: <span class="ident">LPCWSTR</span>,
-        <span class="ident">lpSecurityAttributes</span>: <span class="ident">LPSECURITY_ATTRIBUTES</span>,
-        <span class="ident">Flags</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">LSTATUS</span>;
+<span class="kw">pub const </span>SHUTDOWN_FORCE_OTHERS: DWORD = <span class="number">0x00000001</span>;
+<span class="kw">pub const </span>SHUTDOWN_FORCE_SELF: DWORD = <span class="number">0x00000002</span>;
+<span class="kw">pub const </span>SHUTDOWN_RESTART: DWORD = <span class="number">0x00000004</span>;
+<span class="kw">pub const </span>SHUTDOWN_POWEROFF: DWORD = <span class="number">0x00000008</span>;
+<span class="kw">pub const </span>SHUTDOWN_NOREBOOT: DWORD = <span class="number">0x00000010</span>;
+<span class="kw">pub const </span>SHUTDOWN_GRACE_OVERRIDE: DWORD = <span class="number">0x00000020</span>;
+<span class="kw">pub const </span>SHUTDOWN_INSTALL_UPDATES: DWORD = <span class="number">0x00000040</span>;
+<span class="kw">pub const </span>SHUTDOWN_RESTARTAPPS: DWORD = <span class="number">0x00000080</span>;
+<span class="kw">pub const </span>SHUTDOWN_SKIP_SVC_PRESHUTDOWN: DWORD = <span class="number">0x00000100</span>;
+<span class="kw">pub const </span>SHUTDOWN_HYBRID: DWORD = <span class="number">0x00000200</span>;
+<span class="kw">pub const </span>SHUTDOWN_RESTART_BOOTOPTIONS: DWORD = <span class="number">0x00000400</span>;
+<span class="kw">pub const </span>SHUTDOWN_SOFT_REBOOT: DWORD = <span class="number">0x00000800</span>;
+<span class="kw">pub const </span>SHUTDOWN_MOBILE_UI: DWORD = <span class="number">0x00001000</span>;
+<span class="kw">pub const </span>SHUTDOWN_ARSO: DWORD = <span class="number">0x00002000</span>;
+<span class="kw">extern </span><span class="string">&quot;system&quot; </span>{
+    <span class="kw">pub fn </span>InitiateShutdownA(
+        lpMachineName: LPSTR,
+        lpMessage: LPSTR,
+        dwGracePeriod: DWORD,
+        dwShutdownFlags: DWORD,
+        dwReason: DWORD,
+    ) -&gt; DWORD;
+    <span class="kw">pub fn </span>InitiateShutdownW(
+        lpMachineName: LPWSTR,
+        lpMessage: LPWSTR,
+        dwGracePeriod: DWORD,
+        dwShutdownFlags: DWORD,
+        dwReason: DWORD,
+    ) -&gt; DWORD;
+    <span class="kw">pub fn </span>CheckForHiberboot(
+        pHiberboot: PBOOLEAN,
+        bClearFlag: BOOLEAN,
+    ) -&gt; DWORD;
+    <span class="kw">pub fn </span>RegSaveKeyExA(
+        hKey: HKEY,
+        lpFile: LPCSTR,
+        lpSecurityAttributes: LPSECURITY_ATTRIBUTES,
+        Flags: DWORD,
+    ) -&gt; LSTATUS;
+    <span class="kw">pub fn </span>RegSaveKeyExW(
+        hKey: HKEY,
+        lpFile: LPCWSTR,
+        lpSecurityAttributes: LPSECURITY_ATTRIBUTES,
+        Flags: DWORD,
+    ) -&gt; LSTATUS;
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="winapi" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="winapi" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.0 (69f9c33d7 2022-12-12)" ></div></body></html>

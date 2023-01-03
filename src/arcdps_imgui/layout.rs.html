@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\arcdps-imgui-0.8.0\src\layout.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>layout.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script><script defer src="../../main.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../arcdps_imgui/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../arcdps_imgui/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../arcdps_imgui/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\arcdps-imgui-0.8.0\src\layout.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>layout.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../normalize.css"><link rel="stylesheet" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../ayu.css" disabled><link rel="stylesheet" href="../../dark.css" disabled><link rel="stylesheet" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script><script defer src="../../main.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../arcdps_imgui/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -174,181 +174,181 @@
 <span id="174">174</span>
 <span id="175">175</span>
 <span id="176">176</span>
-</pre><pre class="rust"><code><span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::sys</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::Ui</span>;
+</pre><pre class="rust"><code><span class="kw">use </span><span class="kw">crate</span>::sys;
+<span class="kw">use </span><span class="kw">crate</span>::Ui;
 
 <span class="macro">create_token!</span>(
-    <span class="doccomment">/// Tracks a layout group that can be ended with `end` or by dropping.</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">GroupToken</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>;
+    <span class="doccomment">/// Tracks a layout group that can be ended with `end` or by dropping.
+    </span><span class="kw">pub struct </span>GroupToken&lt;<span class="lifetime">&#39;ui</span>&gt;;
 
-    <span class="doccomment">/// Drops the layout group manually. You can also just allow this token</span>
-    <span class="doccomment">/// to drop on its own.</span>
-    <span class="ident">drop</span> { <span class="ident">sys::igEndGroup</span>() }
+    <span class="doccomment">/// Drops the layout group manually. You can also just allow this token
+    /// to drop on its own.
+    </span>drop { sys::igEndGroup() }
 );
 
-<span class="doccomment">/// # Cursor / Layout</span>
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> <span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Renders a separator (generally horizontal).</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This becomes a vertical separator inside a menu bar or in horizontal layout mode.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;Separator&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">separator</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igSeparator</span>() }
+<span class="doccomment">/// # Cursor / Layout
+</span><span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>&gt; Ui&lt;<span class="lifetime">&#39;ui</span>&gt; {
+    <span class="doccomment">/// Renders a separator (generally horizontal).
+    ///
+    /// This becomes a vertical separator inside a menu bar or in horizontal layout mode.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;Separator&quot;</span>)]
+    </span><span class="kw">pub fn </span>separator(<span class="kw-2">&amp;</span><span class="self">self</span>) {
+        <span class="kw">unsafe </span>{ sys::igSeparator() }
     }
 
-    <span class="doccomment">/// Call between widgets or groups to layout them horizontally.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// X position is given in window coordinates.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This is equivalent to calling [same_line_with_pos](Self::same_line_with_pos)</span>
-    <span class="doccomment">/// with the `pos` set to 0.0, which uses `Style::item_spacing`.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;SameLine&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">same_line</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) {
-        <span class="self">self</span>.<span class="ident">same_line_with_pos</span>(<span class="number">0.0</span>);
+    <span class="doccomment">/// Call between widgets or groups to layout them horizontally.
+    ///
+    /// X position is given in window coordinates.
+    ///
+    /// This is equivalent to calling [same_line_with_pos](Self::same_line_with_pos)
+    /// with the `pos` set to 0.0, which uses `Style::item_spacing`.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;SameLine&quot;</span>)]
+    </span><span class="kw">pub fn </span>same_line(<span class="kw-2">&amp;</span><span class="self">self</span>) {
+        <span class="self">self</span>.same_line_with_pos(<span class="number">0.0</span>);
     }
 
-    <span class="doccomment">/// Call between widgets or groups to layout them horizontally.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// X position is given in window coordinates.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This is equivalent to calling [same_line_with_spacing](Self::same_line_with_spacing)</span>
-    <span class="doccomment">/// with the `spacing` set to -1.0, which means no extra spacing.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;SameLine&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">same_line_with_pos</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">pos_x</span>: <span class="ident">f32</span>) {
-        <span class="self">self</span>.<span class="ident">same_line_with_spacing</span>(<span class="ident">pos_x</span>, <span class="op">-</span><span class="number">1.0</span>)
+    <span class="doccomment">/// Call between widgets or groups to layout them horizontally.
+    ///
+    /// X position is given in window coordinates.
+    ///
+    /// This is equivalent to calling [same_line_with_spacing](Self::same_line_with_spacing)
+    /// with the `spacing` set to -1.0, which means no extra spacing.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;SameLine&quot;</span>)]
+    </span><span class="kw">pub fn </span>same_line_with_pos(<span class="kw-2">&amp;</span><span class="self">self</span>, pos_x: f32) {
+        <span class="self">self</span>.same_line_with_spacing(pos_x, -<span class="number">1.0</span>)
     }
 
-    <span class="doccomment">/// Call between widgets or groups to layout them horizontally.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// X position is given in window coordinates.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;SameLine&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">same_line_with_spacing</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">pos_x</span>: <span class="ident">f32</span>, <span class="ident">spacing_w</span>: <span class="ident">f32</span>) {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igSameLine</span>(<span class="ident">pos_x</span>, <span class="ident">spacing_w</span>) }
+    <span class="doccomment">/// Call between widgets or groups to layout them horizontally.
+    ///
+    /// X position is given in window coordinates.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;SameLine&quot;</span>)]
+    </span><span class="kw">pub fn </span>same_line_with_spacing(<span class="kw-2">&amp;</span><span class="self">self</span>, pos_x: f32, spacing_w: f32) {
+        <span class="kw">unsafe </span>{ sys::igSameLine(pos_x, spacing_w) }
     }
 
-    <span class="doccomment">/// Undo a `same_line` call or force a new line when in horizontal layout mode</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;NewLine&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new_line</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igNewLine</span>() }
+    <span class="doccomment">/// Undo a `same_line` call or force a new line when in horizontal layout mode
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;NewLine&quot;</span>)]
+    </span><span class="kw">pub fn </span>new_line(<span class="kw-2">&amp;</span><span class="self">self</span>) {
+        <span class="kw">unsafe </span>{ sys::igNewLine() }
     }
-    <span class="doccomment">/// Adds vertical spacing</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;Spacing&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">spacing</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igSpacing</span>() }
+    <span class="doccomment">/// Adds vertical spacing
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;Spacing&quot;</span>)]
+    </span><span class="kw">pub fn </span>spacing(<span class="kw-2">&amp;</span><span class="self">self</span>) {
+        <span class="kw">unsafe </span>{ sys::igSpacing() }
     }
-    <span class="doccomment">/// Fills a space of `size` in pixels with nothing on the current window.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Can be used to move the cursor on the window.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;Dummy&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">dummy</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">size</span>: [<span class="ident">f32</span>; <span class="number">2</span>]) {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igDummy</span>(<span class="ident">size</span>.<span class="ident">into</span>()) }
-    }
-
-    <span class="doccomment">/// Moves content position to the right by `Style::indent_spacing`</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This is equivalent to [indent_by](Self::indent_by) with `width` set to</span>
-    <span class="doccomment">/// `Style::ident_spacing`.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;Indent&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">indent</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) {
-        <span class="self">self</span>.<span class="ident">indent_by</span>(<span class="number">0.0</span>)
+    <span class="doccomment">/// Fills a space of `size` in pixels with nothing on the current window.
+    ///
+    /// Can be used to move the cursor on the window.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;Dummy&quot;</span>)]
+    </span><span class="kw">pub fn </span>dummy(<span class="kw-2">&amp;</span><span class="self">self</span>, size: [f32; <span class="number">2</span>]) {
+        <span class="kw">unsafe </span>{ sys::igDummy(size.into()) }
     }
 
-    <span class="doccomment">/// Moves content position to the right by `width`</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;Indent&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">indent_by</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">width</span>: <span class="ident">f32</span>) {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igIndent</span>(<span class="ident">width</span>) };
+    <span class="doccomment">/// Moves content position to the right by `Style::indent_spacing`
+    ///
+    /// This is equivalent to [indent_by](Self::indent_by) with `width` set to
+    /// `Style::ident_spacing`.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;Indent&quot;</span>)]
+    </span><span class="kw">pub fn </span>indent(<span class="kw-2">&amp;</span><span class="self">self</span>) {
+        <span class="self">self</span>.indent_by(<span class="number">0.0</span>)
     }
-    <span class="doccomment">/// Moves content position to the left by `Style::indent_spacing`</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This is equivalent to [unindent_by](Self::unindent_by) with `width` set to</span>
-    <span class="doccomment">/// `Style::ident_spacing`.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;Unindent&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">unindent</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) {
-        <span class="self">self</span>.<span class="ident">unindent_by</span>(<span class="number">0.0</span>)
+
+    <span class="doccomment">/// Moves content position to the right by `width`
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;Indent&quot;</span>)]
+    </span><span class="kw">pub fn </span>indent_by(<span class="kw-2">&amp;</span><span class="self">self</span>, width: f32) {
+        <span class="kw">unsafe </span>{ sys::igIndent(width) };
     }
-    <span class="doccomment">/// Moves content position to the left by `width`</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;Unindent&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">unindent_by</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">width</span>: <span class="ident">f32</span>) {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igUnindent</span>(<span class="ident">width</span>) };
+    <span class="doccomment">/// Moves content position to the left by `Style::indent_spacing`
+    ///
+    /// This is equivalent to [unindent_by](Self::unindent_by) with `width` set to
+    /// `Style::ident_spacing`.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;Unindent&quot;</span>)]
+    </span><span class="kw">pub fn </span>unindent(<span class="kw-2">&amp;</span><span class="self">self</span>) {
+        <span class="self">self</span>.unindent_by(<span class="number">0.0</span>)
     }
-    <span class="doccomment">/// Groups items together as a single item.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// May be useful to handle the same mouse event on a group of items, for example.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Returns a `GroupToken` that must be ended by calling `.end()`</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;BeginGroup&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">begin_group</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">GroupToken</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igBeginGroup</span>() };
-        <span class="ident">GroupToken::new</span>(<span class="self">self</span>)
+    <span class="doccomment">/// Moves content position to the left by `width`
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;Unindent&quot;</span>)]
+    </span><span class="kw">pub fn </span>unindent_by(<span class="kw-2">&amp;</span><span class="self">self</span>, width: f32) {
+        <span class="kw">unsafe </span>{ sys::igUnindent(width) };
     }
-    <span class="doccomment">/// Creates a layout group and runs a closure to construct the contents.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// May be useful to handle the same mouse event on a group of items, for example.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;BeginGroup&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">group</span><span class="op">&lt;</span><span class="ident">R</span>, <span class="ident">F</span>: <span class="ident">FnOnce</span>() -&gt; <span class="ident">R</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="ident">F</span>) -&gt; <span class="ident">R</span> {
-        <span class="kw">let</span> <span class="ident">group</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">begin_group</span>();
-        <span class="kw">let</span> <span class="ident">result</span> <span class="op">=</span> <span class="ident">f</span>();
-        <span class="ident">group</span>.<span class="ident">end</span>();
-        <span class="ident">result</span>
+    <span class="doccomment">/// Groups items together as a single item.
+    ///
+    /// May be useful to handle the same mouse event on a group of items, for example.
+    ///
+    /// Returns a `GroupToken` that must be ended by calling `.end()`
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;BeginGroup&quot;</span>)]
+    </span><span class="kw">pub fn </span>begin_group(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; GroupToken&lt;<span class="lifetime">&#39;_</span>&gt; {
+        <span class="kw">unsafe </span>{ sys::igBeginGroup() };
+        GroupToken::new(<span class="self">self</span>)
     }
-    <span class="doccomment">/// Returns the cursor position (in window coordinates)</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GetCursorPos&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cursor_pos</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; [<span class="ident">f32</span>; <span class="number">2</span>] {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">out</span> <span class="op">=</span> <span class="ident">sys::ImVec2::zero</span>();
-        <span class="kw">unsafe</span> { <span class="ident">sys::igGetCursorPos</span>(<span class="kw-2">&amp;mut</span> <span class="ident">out</span>) };
-        <span class="ident">out</span>.<span class="ident">into</span>()
+    <span class="doccomment">/// Creates a layout group and runs a closure to construct the contents.
+    ///
+    /// May be useful to handle the same mouse event on a group of items, for example.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;BeginGroup&quot;</span>)]
+    </span><span class="kw">pub fn </span>group&lt;R, F: FnOnce() -&gt; R&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; R {
+        <span class="kw">let </span>group = <span class="self">self</span>.begin_group();
+        <span class="kw">let </span>result = f();
+        group.end();
+        result
     }
-    <span class="doccomment">/// Sets the cursor position (in window coordinates).</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This sets the point on which the next widget will be drawn.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;SetCursorPos&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_cursor_pos</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">pos</span>: [<span class="ident">f32</span>; <span class="number">2</span>]) {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igSetCursorPos</span>(<span class="ident">pos</span>.<span class="ident">into</span>()) };
+    <span class="doccomment">/// Returns the cursor position (in window coordinates)
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;GetCursorPos&quot;</span>)]
+    </span><span class="kw">pub fn </span>cursor_pos(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; [f32; <span class="number">2</span>] {
+        <span class="kw">let </span><span class="kw-2">mut </span>out = sys::ImVec2::zero();
+        <span class="kw">unsafe </span>{ sys::igGetCursorPos(<span class="kw-2">&amp;mut </span>out) };
+        out.into()
     }
-    <span class="doccomment">/// Returns the initial cursor position (in window coordinates)</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GetCursorStartPos&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cursor_start_pos</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; [<span class="ident">f32</span>; <span class="number">2</span>] {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">out</span> <span class="op">=</span> <span class="ident">sys::ImVec2::zero</span>();
-        <span class="kw">unsafe</span> { <span class="ident">sys::igGetCursorStartPos</span>(<span class="kw-2">&amp;mut</span> <span class="ident">out</span>) };
-        <span class="ident">out</span>.<span class="ident">into</span>()
+    <span class="doccomment">/// Sets the cursor position (in window coordinates).
+    ///
+    /// This sets the point on which the next widget will be drawn.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;SetCursorPos&quot;</span>)]
+    </span><span class="kw">pub fn </span>set_cursor_pos(<span class="kw-2">&amp;</span><span class="self">self</span>, pos: [f32; <span class="number">2</span>]) {
+        <span class="kw">unsafe </span>{ sys::igSetCursorPos(pos.into()) };
     }
-    <span class="doccomment">/// Returns the cursor position (in absolute screen coordinates).</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This is especially useful for drawing, as the drawing API uses screen coordinates.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GetCursorScreenPos&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cursor_screen_pos</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; [<span class="ident">f32</span>; <span class="number">2</span>] {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">out</span> <span class="op">=</span> <span class="ident">sys::ImVec2::zero</span>();
-        <span class="kw">unsafe</span> { <span class="ident">sys::igGetCursorScreenPos</span>(<span class="kw-2">&amp;mut</span> <span class="ident">out</span>) };
-        <span class="ident">out</span>.<span class="ident">into</span>()
+    <span class="doccomment">/// Returns the initial cursor position (in window coordinates)
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;GetCursorStartPos&quot;</span>)]
+    </span><span class="kw">pub fn </span>cursor_start_pos(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; [f32; <span class="number">2</span>] {
+        <span class="kw">let </span><span class="kw-2">mut </span>out = sys::ImVec2::zero();
+        <span class="kw">unsafe </span>{ sys::igGetCursorStartPos(<span class="kw-2">&amp;mut </span>out) };
+        out.into()
     }
-    <span class="doccomment">/// Sets the cursor position (in absolute screen coordinates)</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;SetCursorScreenPos&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_cursor_screen_pos</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">pos</span>: [<span class="ident">f32</span>; <span class="number">2</span>]) {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igSetCursorScreenPos</span>(<span class="ident">pos</span>.<span class="ident">into</span>()) }
+    <span class="doccomment">/// Returns the cursor position (in absolute screen coordinates).
+    ///
+    /// This is especially useful for drawing, as the drawing API uses screen coordinates.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;GetCursorScreenPos&quot;</span>)]
+    </span><span class="kw">pub fn </span>cursor_screen_pos(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; [f32; <span class="number">2</span>] {
+        <span class="kw">let </span><span class="kw-2">mut </span>out = sys::ImVec2::zero();
+        <span class="kw">unsafe </span>{ sys::igGetCursorScreenPos(<span class="kw-2">&amp;mut </span>out) };
+        out.into()
     }
-    <span class="doccomment">/// Vertically aligns text baseline so that it will align properly to regularly frame items.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Call this if you have text on a line before a framed item.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;AlignTextToFramePadding&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">align_text_to_frame_padding</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igAlignTextToFramePadding</span>() };
+    <span class="doccomment">/// Sets the cursor position (in absolute screen coordinates)
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;SetCursorScreenPos&quot;</span>)]
+    </span><span class="kw">pub fn </span>set_cursor_screen_pos(<span class="kw-2">&amp;</span><span class="self">self</span>, pos: [f32; <span class="number">2</span>]) {
+        <span class="kw">unsafe </span>{ sys::igSetCursorScreenPos(pos.into()) }
     }
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GetTextLineHeight&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">text_line_height</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">f32</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igGetTextLineHeight</span>() }
+    <span class="doccomment">/// Vertically aligns text baseline so that it will align properly to regularly frame items.
+    ///
+    /// Call this if you have text on a line before a framed item.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;AlignTextToFramePadding&quot;</span>)]
+    </span><span class="kw">pub fn </span>align_text_to_frame_padding(<span class="kw-2">&amp;</span><span class="self">self</span>) {
+        <span class="kw">unsafe </span>{ sys::igAlignTextToFramePadding() };
     }
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GetTextLineHeightWithSpacing&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">text_line_height_with_spacing</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">f32</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igGetTextLineHeightWithSpacing</span>() }
+    <span class="attribute">#[doc(alias = <span class="string">&quot;GetTextLineHeight&quot;</span>)]
+    </span><span class="kw">pub fn </span>text_line_height(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; f32 {
+        <span class="kw">unsafe </span>{ sys::igGetTextLineHeight() }
     }
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GetFrameHeight&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">frame_height</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">f32</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igGetFrameHeight</span>() }
+    <span class="attribute">#[doc(alias = <span class="string">&quot;GetTextLineHeightWithSpacing&quot;</span>)]
+    </span><span class="kw">pub fn </span>text_line_height_with_spacing(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; f32 {
+        <span class="kw">unsafe </span>{ sys::igGetTextLineHeightWithSpacing() }
     }
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GetFrameLineHeightWithSpacing&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">frame_height_with_spacing</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">f32</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igGetFrameHeightWithSpacing</span>() }
+    <span class="attribute">#[doc(alias = <span class="string">&quot;GetFrameHeight&quot;</span>)]
+    </span><span class="kw">pub fn </span>frame_height(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; f32 {
+        <span class="kw">unsafe </span>{ sys::igGetFrameHeight() }
+    }
+    <span class="attribute">#[doc(alias = <span class="string">&quot;GetFrameLineHeightWithSpacing&quot;</span>)]
+    </span><span class="kw">pub fn </span>frame_height_with_spacing(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; f32 {
+        <span class="kw">unsafe </span>{ sys::igGetFrameHeightWithSpacing() }
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="arcdps_imgui" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="arcdps_imgui" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.0 (69f9c33d7 2022-12-12)" ></div></body></html>

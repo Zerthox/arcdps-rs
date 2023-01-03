@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\arcdps-imgui-0.8.0\src\widget\image.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>image.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../arcdps_imgui/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../arcdps_imgui/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../arcdps_imgui/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\arcdps-imgui-0.8.0\src\widget\image.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>image.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../normalize.css"><link rel="stylesheet" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../ayu.css" disabled><link rel="stylesheet" href="../../../dark.css" disabled><link rel="stylesheet" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../../arcdps_imgui/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -145,152 +145,152 @@
 <span id="145">145</span>
 <span id="146">146</span>
 <span id="147">147</span>
-</pre><pre class="rust"><code><span class="kw">use</span> <span class="ident">std::os::raw::c_void</span>;
+</pre><pre class="rust"><code><span class="kw">use </span>std::os::raw::c_void;
 
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::render::renderer::TextureId</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::sys</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::Ui</span>;
+<span class="kw">use </span><span class="kw">crate</span>::render::renderer::TextureId;
+<span class="kw">use </span><span class="kw">crate</span>::sys;
+<span class="kw">use </span><span class="kw">crate</span>::Ui;
 
-<span class="doccomment">/// Builder for an image widget</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Debug</span>)]</span>
-<span class="attribute">#[<span class="ident">must_use</span>]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Image</span> {
-    <span class="ident">texture_id</span>: <span class="ident">TextureId</span>,
-    <span class="ident">size</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-    <span class="ident">uv0</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-    <span class="ident">uv1</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-    <span class="ident">tint_col</span>: [<span class="ident">f32</span>; <span class="number">4</span>],
-    <span class="ident">border_col</span>: [<span class="ident">f32</span>; <span class="number">4</span>],
+<span class="doccomment">/// Builder for an image widget
+</span><span class="attribute">#[derive(Copy, Clone, Debug)]
+#[must_use]
+</span><span class="kw">pub struct </span>Image {
+    texture_id: TextureId,
+    size: [f32; <span class="number">2</span>],
+    uv0: [f32; <span class="number">2</span>],
+    uv1: [f32; <span class="number">2</span>],
+    tint_col: [f32; <span class="number">4</span>],
+    border_col: [f32; <span class="number">4</span>],
 }
 
-<span class="kw">impl</span> <span class="ident">Image</span> {
-    <span class="doccomment">/// Creates a new image builder with the given texture and size</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;Image&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">texture_id</span>: <span class="ident">TextureId</span>, <span class="ident">size</span>: [<span class="ident">f32</span>; <span class="number">2</span>]) -&gt; <span class="ident">Image</span> {
-        <span class="ident">Image</span> {
-            <span class="ident">texture_id</span>,
-            <span class="ident">size</span>,
-            <span class="ident">uv0</span>: [<span class="number">0.0</span>, <span class="number">0.0</span>],
-            <span class="ident">uv1</span>: [<span class="number">1.0</span>, <span class="number">1.0</span>],
-            <span class="ident">tint_col</span>: [<span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>],
-            <span class="ident">border_col</span>: [<span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>],
+<span class="kw">impl </span>Image {
+    <span class="doccomment">/// Creates a new image builder with the given texture and size
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;Image&quot;</span>)]
+    </span><span class="kw">pub const fn </span>new(texture_id: TextureId, size: [f32; <span class="number">2</span>]) -&gt; Image {
+        Image {
+            texture_id,
+            size,
+            uv0: [<span class="number">0.0</span>, <span class="number">0.0</span>],
+            uv1: [<span class="number">1.0</span>, <span class="number">1.0</span>],
+            tint_col: [<span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>],
+            border_col: [<span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>],
         }
     }
-    <span class="doccomment">/// Sets the image size</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">size</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">size</span>: [<span class="ident">f32</span>; <span class="number">2</span>]) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">size</span> <span class="op">=</span> <span class="ident">size</span>;
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Sets uv0 (default `[0.0, 0.0]`)</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">uv0</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">uv0</span>: [<span class="ident">f32</span>; <span class="number">2</span>]) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">uv0</span> <span class="op">=</span> <span class="ident">uv0</span>;
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Sets uv1 (default `[1.0, 1.0]`)</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">uv1</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">uv1</span>: [<span class="ident">f32</span>; <span class="number">2</span>]) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">uv1</span> <span class="op">=</span> <span class="ident">uv1</span>;
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Sets the tint color (default: no tint color)</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">tint_col</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">tint_col</span>: [<span class="ident">f32</span>; <span class="number">4</span>]) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">tint_col</span> <span class="op">=</span> <span class="ident">tint_col</span>;
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Sets the border color (default: no border)</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">border_col</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">border_col</span>: [<span class="ident">f32</span>; <span class="number">4</span>]) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">border_col</span> <span class="op">=</span> <span class="ident">border_col</span>;
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Builds the image</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build</span>(<span class="self">self</span>, <span class="kw">_</span>: <span class="kw-2">&amp;</span><span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) {
-        <span class="kw">unsafe</span> {
-            <span class="ident">sys::igImage</span>(
-                <span class="self">self</span>.<span class="ident">texture_id</span>.<span class="ident">id</span>() <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-                <span class="self">self</span>.<span class="ident">size</span>.<span class="ident">into</span>(),
-                <span class="self">self</span>.<span class="ident">uv0</span>.<span class="ident">into</span>(),
-                <span class="self">self</span>.<span class="ident">uv1</span>.<span class="ident">into</span>(),
-                <span class="self">self</span>.<span class="ident">tint_col</span>.<span class="ident">into</span>(),
-                <span class="self">self</span>.<span class="ident">border_col</span>.<span class="ident">into</span>(),
+    <span class="doccomment">/// Sets the image size
+    </span><span class="kw">pub const fn </span>size(<span class="kw-2">mut </span><span class="self">self</span>, size: [f32; <span class="number">2</span>]) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.size = size;
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Sets uv0 (default `[0.0, 0.0]`)
+    </span><span class="kw">pub const fn </span>uv0(<span class="kw-2">mut </span><span class="self">self</span>, uv0: [f32; <span class="number">2</span>]) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.uv0 = uv0;
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Sets uv1 (default `[1.0, 1.0]`)
+    </span><span class="kw">pub const fn </span>uv1(<span class="kw-2">mut </span><span class="self">self</span>, uv1: [f32; <span class="number">2</span>]) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.uv1 = uv1;
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Sets the tint color (default: no tint color)
+    </span><span class="kw">pub const fn </span>tint_col(<span class="kw-2">mut </span><span class="self">self</span>, tint_col: [f32; <span class="number">4</span>]) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.tint_col = tint_col;
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Sets the border color (default: no border)
+    </span><span class="kw">pub const fn </span>border_col(<span class="kw-2">mut </span><span class="self">self</span>, border_col: [f32; <span class="number">4</span>]) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.border_col = border_col;
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Builds the image
+    </span><span class="kw">pub fn </span>build(<span class="self">self</span>, <span class="kw">_</span>: <span class="kw-2">&amp;</span>Ui&lt;<span class="lifetime">&#39;_</span>&gt;) {
+        <span class="kw">unsafe </span>{
+            sys::igImage(
+                <span class="self">self</span>.texture_id.id() <span class="kw">as </span><span class="kw-2">*mut </span>c_void,
+                <span class="self">self</span>.size.into(),
+                <span class="self">self</span>.uv0.into(),
+                <span class="self">self</span>.uv1.into(),
+                <span class="self">self</span>.tint_col.into(),
+                <span class="self">self</span>.border_col.into(),
             );
         }
     }
 }
 
-<span class="doccomment">/// Builder for an image button widget</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Debug</span>)]</span>
-<span class="attribute">#[<span class="ident">must_use</span>]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">ImageButton</span> {
-    <span class="ident">texture_id</span>: <span class="ident">TextureId</span>,
-    <span class="ident">size</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-    <span class="ident">uv0</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-    <span class="ident">uv1</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-    <span class="ident">frame_padding</span>: <span class="ident">i32</span>,
-    <span class="ident">bg_col</span>: [<span class="ident">f32</span>; <span class="number">4</span>],
-    <span class="ident">tint_col</span>: [<span class="ident">f32</span>; <span class="number">4</span>],
+<span class="doccomment">/// Builder for an image button widget
+</span><span class="attribute">#[derive(Copy, Clone, Debug)]
+#[must_use]
+</span><span class="kw">pub struct </span>ImageButton {
+    texture_id: TextureId,
+    size: [f32; <span class="number">2</span>],
+    uv0: [f32; <span class="number">2</span>],
+    uv1: [f32; <span class="number">2</span>],
+    frame_padding: i32,
+    bg_col: [f32; <span class="number">4</span>],
+    tint_col: [f32; <span class="number">4</span>],
 }
 
-<span class="kw">impl</span> <span class="ident">ImageButton</span> {
-    <span class="doccomment">/// Creates a new image button builder with the given texture and size</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;ImageButton&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">texture_id</span>: <span class="ident">TextureId</span>, <span class="ident">size</span>: [<span class="ident">f32</span>; <span class="number">2</span>]) -&gt; <span class="ident">ImageButton</span> {
-        <span class="ident">ImageButton</span> {
-            <span class="ident">texture_id</span>,
-            <span class="ident">size</span>,
-            <span class="ident">uv0</span>: [<span class="number">0.0</span>, <span class="number">0.0</span>],
-            <span class="ident">uv1</span>: [<span class="number">1.0</span>, <span class="number">1.0</span>],
-            <span class="ident">frame_padding</span>: <span class="op">-</span><span class="number">1</span>,
-            <span class="ident">bg_col</span>: [<span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>],
-            <span class="ident">tint_col</span>: [<span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>],
+<span class="kw">impl </span>ImageButton {
+    <span class="doccomment">/// Creates a new image button builder with the given texture and size
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;ImageButton&quot;</span>)]
+    </span><span class="kw">pub fn </span>new(texture_id: TextureId, size: [f32; <span class="number">2</span>]) -&gt; ImageButton {
+        ImageButton {
+            texture_id,
+            size,
+            uv0: [<span class="number">0.0</span>, <span class="number">0.0</span>],
+            uv1: [<span class="number">1.0</span>, <span class="number">1.0</span>],
+            frame_padding: -<span class="number">1</span>,
+            bg_col: [<span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>],
+            tint_col: [<span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>],
         }
     }
-    <span class="doccomment">/// Sets the image button size</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">size</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">size</span>: [<span class="ident">f32</span>; <span class="number">2</span>]) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">size</span> <span class="op">=</span> <span class="ident">size</span>;
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Sets uv0 (default `[0.0, 0.0]`)</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">uv0</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">uv0</span>: [<span class="ident">f32</span>; <span class="number">2</span>]) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">uv0</span> <span class="op">=</span> <span class="ident">uv0</span>;
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Sets uv1 (default `[1.0, 1.0]`)</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">uv1</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">uv1</span>: [<span class="ident">f32</span>; <span class="number">2</span>]) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">uv1</span> <span class="op">=</span> <span class="ident">uv1</span>;
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Sets the frame padding (default: uses frame padding from style).</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// - `&lt; 0`: uses frame padding from style (default)</span>
-    <span class="doccomment">/// - `= 0`: no framing</span>
-    <span class="doccomment">/// - `&gt; 0`: set framing size</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">frame_padding</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">frame_padding</span>: <span class="ident">i32</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">frame_padding</span> <span class="op">=</span> <span class="ident">frame_padding</span>;
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Sets the background color (default: no background color)</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">background_col</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">bg_col</span>: [<span class="ident">f32</span>; <span class="number">4</span>]) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">bg_col</span> <span class="op">=</span> <span class="ident">bg_col</span>;
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Sets the tint color (default: no tint color)</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">tint_col</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">tint_col</span>: [<span class="ident">f32</span>; <span class="number">4</span>]) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">tint_col</span> <span class="op">=</span> <span class="ident">tint_col</span>;
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Builds the image button</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build</span>(<span class="self">self</span>, <span class="kw">_</span>: <span class="kw-2">&amp;</span><span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> {
-            <span class="ident">sys::igImageButton</span>(
-                <span class="self">self</span>.<span class="ident">texture_id</span>.<span class="ident">id</span>() <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-                <span class="self">self</span>.<span class="ident">size</span>.<span class="ident">into</span>(),
-                <span class="self">self</span>.<span class="ident">uv0</span>.<span class="ident">into</span>(),
-                <span class="self">self</span>.<span class="ident">uv1</span>.<span class="ident">into</span>(),
-                <span class="self">self</span>.<span class="ident">frame_padding</span>,
-                <span class="self">self</span>.<span class="ident">bg_col</span>.<span class="ident">into</span>(),
-                <span class="self">self</span>.<span class="ident">tint_col</span>.<span class="ident">into</span>(),
+    <span class="doccomment">/// Sets the image button size
+    </span><span class="kw">pub fn </span>size(<span class="kw-2">mut </span><span class="self">self</span>, size: [f32; <span class="number">2</span>]) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.size = size;
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Sets uv0 (default `[0.0, 0.0]`)
+    </span><span class="kw">pub fn </span>uv0(<span class="kw-2">mut </span><span class="self">self</span>, uv0: [f32; <span class="number">2</span>]) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.uv0 = uv0;
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Sets uv1 (default `[1.0, 1.0]`)
+    </span><span class="kw">pub fn </span>uv1(<span class="kw-2">mut </span><span class="self">self</span>, uv1: [f32; <span class="number">2</span>]) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.uv1 = uv1;
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Sets the frame padding (default: uses frame padding from style).
+    ///
+    /// - `&lt; 0`: uses frame padding from style (default)
+    /// - `= 0`: no framing
+    /// - `&gt; 0`: set framing size
+    </span><span class="kw">pub fn </span>frame_padding(<span class="kw-2">mut </span><span class="self">self</span>, frame_padding: i32) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.frame_padding = frame_padding;
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Sets the background color (default: no background color)
+    </span><span class="kw">pub fn </span>background_col(<span class="kw-2">mut </span><span class="self">self</span>, bg_col: [f32; <span class="number">4</span>]) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.bg_col = bg_col;
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Sets the tint color (default: no tint color)
+    </span><span class="kw">pub fn </span>tint_col(<span class="kw-2">mut </span><span class="self">self</span>, tint_col: [f32; <span class="number">4</span>]) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.tint_col = tint_col;
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Builds the image button
+    </span><span class="kw">pub fn </span>build(<span class="self">self</span>, <span class="kw">_</span>: <span class="kw-2">&amp;</span>Ui&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; bool {
+        <span class="kw">unsafe </span>{
+            sys::igImageButton(
+                <span class="self">self</span>.texture_id.id() <span class="kw">as </span><span class="kw-2">*mut </span>c_void,
+                <span class="self">self</span>.size.into(),
+                <span class="self">self</span>.uv0.into(),
+                <span class="self">self</span>.uv1.into(),
+                <span class="self">self</span>.frame_padding,
+                <span class="self">self</span>.bg_col.into(),
+                <span class="self">self</span>.tint_col.into(),
             )
         }
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="arcdps_imgui" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="arcdps_imgui" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.0 (69f9c33d7 2022-12-12)" ></div></body></html>

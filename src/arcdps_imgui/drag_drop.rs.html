@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\arcdps-imgui-0.8.0\src\drag_drop.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>drag_drop.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script><script defer src="../../main.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../arcdps_imgui/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../arcdps_imgui/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../arcdps_imgui/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\arcdps-imgui-0.8.0\src\drag_drop.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>drag_drop.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../normalize.css"><link rel="stylesheet" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../ayu.css" disabled><link rel="stylesheet" href="../../dark.css" disabled><link rel="stylesheet" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script><script defer src="../../main.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../arcdps_imgui/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -592,599 +592,599 @@
 <span id="592">592</span>
 <span id="593">593</span>
 <span id="594">594</span>
-</pre><pre class="rust"><code><span class="doccomment">//! Structs to create a Drag and Drop sequence. Almost all structs are re-exported</span>
-<span class="doccomment">//! and can be accessed from the crate root; some additional utilities can be found in here.</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! A DragDrop is a UI mechanism where users can appear to &quot;drag&quot;</span>
-<span class="doccomment">//! some data from one [source](DragDropSource) to one [target](DragDropTarget).</span>
-<span class="doccomment">//! A source and a target must both have some `name` identifier, which is declared when they</span>
-<span class="doccomment">//! are created. If these names are equal, then a `payload` of some kind</span>
-<span class="doccomment">//! will be given to the target caller whne the user releases their mouse button over</span>
-<span class="doccomment">//! the target (additionally, the UI will reflect that the payload *can* be deposited</span>
-<span class="doccomment">//! in the target).</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! The complexity of this implementation is primarily in managing this payload. Users</span>
-<span class="doccomment">//! can provide three different kinds of payloads:</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! 1.  Users can give an [empty payload](DragDropPayloadEmpty) with [begin](DragDropSource::begin).</span>
-<span class="doccomment">//!     This payload type is essentially just a notification system, but using some shared state,</span>
-<span class="doccomment">//!     this can be reasonably powerful, and is the safest way to transfer non-Copy data offered</span>
-<span class="doccomment">//!     right now.</span>
-<span class="doccomment">//! 2.  Users can give a [simple Copy payload](DragDropPayloadPod) with [begin](DragDropSource::begin_payload).</span>
-<span class="doccomment">//!     This allows users to copy data to Dear ImGui, which will take ownership over it, and then be given</span>
-<span class="doccomment">//!     it back to the Target. Please note: users are of course free to not drop any drag (cancel a drag),</span>
-<span class="doccomment">//!     so this data could easily be lost forever. Our `&#39;static + Copy` bound is intended to keep users</span>
-<span class="doccomment">//!     to simplistic types.</span>
-<span class="doccomment">//! 3.  An unsafe implementation is provided which allows for any data to be unsafely copied. Note that once</span>
-<span class="doccomment">//!     you use this method, the safe implementations in #1 and #2 can create memory unsafety problems; notably,</span>
-<span class="doccomment">//!     they both assume that a payload has certain header information within it.</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! For examples of each payload type, see [DragDropSource].</span>
-<span class="kw">use</span> <span class="ident">std</span>::{<span class="ident">any</span>, <span class="ident">ffi</span>, <span class="ident">marker::PhantomData</span>};
+</pre><pre class="rust"><code><span class="doccomment">//! Structs to create a Drag and Drop sequence. Almost all structs are re-exported
+//! and can be accessed from the crate root; some additional utilities can be found in here.
+//!
+//! A DragDrop is a UI mechanism where users can appear to &quot;drag&quot;
+//! some data from one [source](DragDropSource) to one [target](DragDropTarget).
+//! A source and a target must both have some `name` identifier, which is declared when they
+//! are created. If these names are equal, then a `payload` of some kind
+//! will be given to the target caller whne the user releases their mouse button over
+//! the target (additionally, the UI will reflect that the payload *can* be deposited
+//! in the target).
+//!
+//! The complexity of this implementation is primarily in managing this payload. Users
+//! can provide three different kinds of payloads:
+//!
+//! 1.  Users can give an [empty payload](DragDropPayloadEmpty) with [begin](DragDropSource::begin).
+//!     This payload type is essentially just a notification system, but using some shared state,
+//!     this can be reasonably powerful, and is the safest way to transfer non-Copy data offered
+//!     right now.
+//! 2.  Users can give a [simple Copy payload](DragDropPayloadPod) with [begin](DragDropSource::begin_payload).
+//!     This allows users to copy data to Dear ImGui, which will take ownership over it, and then be given
+//!     it back to the Target. Please note: users are of course free to not drop any drag (cancel a drag),
+//!     so this data could easily be lost forever. Our `&#39;static + Copy` bound is intended to keep users
+//!     to simplistic types.
+//! 3.  An unsafe implementation is provided which allows for any data to be unsafely copied. Note that once
+//!     you use this method, the safe implementations in #1 and #2 can create memory unsafety problems; notably,
+//!     they both assume that a payload has certain header information within it.
+//!
+//! For examples of each payload type, see [DragDropSource].
+</span><span class="kw">use </span>std::{any, ffi, marker::PhantomData};
 
-<span class="kw">use</span> <span class="kw">crate</span>::{<span class="ident">sys</span>, <span class="ident">Condition</span>, <span class="ident">Ui</span>};
-<span class="kw">use</span> <span class="ident">bitflags::bitflags</span>;
+<span class="kw">use crate</span>::{sys, Condition, Ui};
+<span class="kw">use </span>bitflags::bitflags;
 
 <span class="macro">bitflags!</span>(
-    <span class="doccomment">/// Flags for igBeginDragDropSource(), igAcceptDragDropPayload()</span>
-    <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">transparent</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">DragDropFlags</span>: <span class="ident">u32</span> {
-        <span class="doccomment">/// By default, a successful call to igBeginDragDropSource opens a tooltip so you can</span>
-        <span class="doccomment">/// display a preview or description of the source contents. This flag disable this</span>
-        <span class="doccomment">/// behavior.</span>
-        <span class="kw">const</span> <span class="ident">SOURCE_NO_PREVIEW_TOOLTIP</span> <span class="op">=</span> <span class="ident">sys::ImGuiDragDropFlags_SourceNoPreviewTooltip</span>;
-        <span class="doccomment">/// By default, when dragging we clear data so that igIsItemHovered() will return false, to</span>
-        <span class="doccomment">/// avoid subsequent user code submitting tooltips. This flag disable this behavior so you</span>
-        <span class="doccomment">/// can still call igIsItemHovered() on the source item.</span>
-        <span class="kw">const</span> <span class="ident">SOURCE_NO_DISABLE_HOVER</span> <span class="op">=</span> <span class="ident">sys::ImGuiDragDropFlags_SourceNoDisableHover</span>;
-        <span class="doccomment">/// Disable the behavior that allows to open tree nodes and collapsing header by holding</span>
-        <span class="doccomment">/// over them while dragging a source item.</span>
-        <span class="kw">const</span> <span class="ident">SOURCE_NO_HOLD_TO_OPEN_OTHERS</span> <span class="op">=</span> <span class="ident">sys::ImGuiDragDropFlags_SourceNoHoldToOpenOthers</span>;
-        <span class="doccomment">/// Allow items such as igText(), igImage() that have no unique identifier to be used as</span>
-        <span class="doccomment">/// drag source, by manufacturing a temporary identifier based on their window-relative</span>
-        <span class="doccomment">/// position. This is extremely unusual within the dear imgui ecosystem and so we made it</span>
-        <span class="doccomment">/// explicit.</span>
-        <span class="kw">const</span> <span class="ident">SOURCE_ALLOW_NULL_ID</span> <span class="op">=</span> <span class="ident">sys::ImGuiDragDropFlags_SourceAllowNullID</span>;
-        <span class="doccomment">/// External source (from outside of imgui), won&#39;t attempt to read current item/window</span>
-        <span class="doccomment">/// info. Will always return true. Only one Extern source can be active simultaneously.</span>
-        <span class="kw">const</span> <span class="ident">SOURCE_EXTERN</span> <span class="op">=</span> <span class="ident">sys::ImGuiDragDropFlags_SourceExtern</span>;
-        <span class="doccomment">/// Automatically expire the payload if the source ceases to be submitted (otherwise</span>
-        <span class="doccomment">/// payloads are persisting while being dragged)</span>
-        <span class="kw">const</span> <span class="ident">SOURCE_AUTO_EXPIRE_PAYLOAD</span> <span class="op">=</span> <span class="ident">sys::ImGuiDragDropFlags_SourceAutoExpirePayload</span>;
-        <span class="doccomment">/// igAcceptDragDropPayload() will returns true even before the mouse button is released.</span>
-        <span class="doccomment">/// You can then call igIsDelivery() to test if the payload needs to be delivered.</span>
-        <span class="kw">const</span> <span class="ident">ACCEPT_BEFORE_DELIVERY</span> <span class="op">=</span> <span class="ident">sys::ImGuiDragDropFlags_AcceptBeforeDelivery</span>;
-        <span class="doccomment">/// Do not draw the default highlight rectangle when hovering over target.</span>
-        <span class="kw">const</span> <span class="ident">ACCEPT_NO_DRAW_DEFAULT_RECT</span> <span class="op">=</span> <span class="ident">sys::ImGuiDragDropFlags_AcceptNoDrawDefaultRect</span>;
-        <span class="doccomment">/// Request hiding the igBeginDragDropSource tooltip from the igBeginDragDropTarget site.</span>
-        <span class="kw">const</span> <span class="ident">ACCEPT_NO_PREVIEW_TOOLTIP</span> <span class="op">=</span> <span class="ident">sys::ImGuiDragDropFlags_AcceptNoPreviewTooltip</span>;
-        <span class="doccomment">/// For peeking ahead and inspecting the payload before delivery. This is just a convenience</span>
-        <span class="doccomment">/// flag for the intersection of `ACCEPT_BEFORE_DELIVERY` and `ACCEPT_NO_DRAW_DEFAULT_RECT`</span>
-        <span class="kw">const</span> <span class="ident">ACCEPT_PEEK_ONLY</span> <span class="op">=</span> <span class="ident">sys::ImGuiDragDropFlags_AcceptPeekOnly</span>;
+    <span class="doccomment">/// Flags for igBeginDragDropSource(), igAcceptDragDropPayload()
+    </span><span class="attribute">#[repr(transparent)]
+    </span><span class="kw">pub struct </span>DragDropFlags: u32 {
+        <span class="doccomment">/// By default, a successful call to igBeginDragDropSource opens a tooltip so you can
+        /// display a preview or description of the source contents. This flag disable this
+        /// behavior.
+        </span><span class="kw">const </span>SOURCE_NO_PREVIEW_TOOLTIP = sys::ImGuiDragDropFlags_SourceNoPreviewTooltip;
+        <span class="doccomment">/// By default, when dragging we clear data so that igIsItemHovered() will return false, to
+        /// avoid subsequent user code submitting tooltips. This flag disable this behavior so you
+        /// can still call igIsItemHovered() on the source item.
+        </span><span class="kw">const </span>SOURCE_NO_DISABLE_HOVER = sys::ImGuiDragDropFlags_SourceNoDisableHover;
+        <span class="doccomment">/// Disable the behavior that allows to open tree nodes and collapsing header by holding
+        /// over them while dragging a source item.
+        </span><span class="kw">const </span>SOURCE_NO_HOLD_TO_OPEN_OTHERS = sys::ImGuiDragDropFlags_SourceNoHoldToOpenOthers;
+        <span class="doccomment">/// Allow items such as igText(), igImage() that have no unique identifier to be used as
+        /// drag source, by manufacturing a temporary identifier based on their window-relative
+        /// position. This is extremely unusual within the dear imgui ecosystem and so we made it
+        /// explicit.
+        </span><span class="kw">const </span>SOURCE_ALLOW_NULL_ID = sys::ImGuiDragDropFlags_SourceAllowNullID;
+        <span class="doccomment">/// External source (from outside of imgui), won&#39;t attempt to read current item/window
+        /// info. Will always return true. Only one Extern source can be active simultaneously.
+        </span><span class="kw">const </span>SOURCE_EXTERN = sys::ImGuiDragDropFlags_SourceExtern;
+        <span class="doccomment">/// Automatically expire the payload if the source ceases to be submitted (otherwise
+        /// payloads are persisting while being dragged)
+        </span><span class="kw">const </span>SOURCE_AUTO_EXPIRE_PAYLOAD = sys::ImGuiDragDropFlags_SourceAutoExpirePayload;
+        <span class="doccomment">/// igAcceptDragDropPayload() will returns true even before the mouse button is released.
+        /// You can then call igIsDelivery() to test if the payload needs to be delivered.
+        </span><span class="kw">const </span>ACCEPT_BEFORE_DELIVERY = sys::ImGuiDragDropFlags_AcceptBeforeDelivery;
+        <span class="doccomment">/// Do not draw the default highlight rectangle when hovering over target.
+        </span><span class="kw">const </span>ACCEPT_NO_DRAW_DEFAULT_RECT = sys::ImGuiDragDropFlags_AcceptNoDrawDefaultRect;
+        <span class="doccomment">/// Request hiding the igBeginDragDropSource tooltip from the igBeginDragDropTarget site.
+        </span><span class="kw">const </span>ACCEPT_NO_PREVIEW_TOOLTIP = sys::ImGuiDragDropFlags_AcceptNoPreviewTooltip;
+        <span class="doccomment">/// For peeking ahead and inspecting the payload before delivery. This is just a convenience
+        /// flag for the intersection of `ACCEPT_BEFORE_DELIVERY` and `ACCEPT_NO_DRAW_DEFAULT_RECT`
+        </span><span class="kw">const </span>ACCEPT_PEEK_ONLY = sys::ImGuiDragDropFlags_AcceptPeekOnly;
     }
 );
 
-<span class="doccomment">/// Creates a source for drag drop data out of the last ID created.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// ```no_run</span>
-<span class="doccomment">/// # use arcdps_imgui::*;</span>
-<span class="doccomment">/// fn show_ui(ui: &amp;Ui&lt;&#39;_&gt;) {</span>
-<span class="doccomment">///     ui.button(&quot;Hello, I am a drag source!&quot;);</span>
-<span class="doccomment">///     </span>
-<span class="doccomment">///     // Creates an empty DragSource with no tooltip</span>
-<span class="doccomment">///     DragDropSource::new(&quot;BUTTON_DRAG&quot;).begin(ui);</span>
-<span class="doccomment">/// }</span>
-<span class="doccomment">/// ```</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// Notice especially the `&quot;BUTTON_DRAG&quot;` name -- this is the identifier of this</span>
-<span class="doccomment">/// DragDropSource; [DragDropTarget]&#39;s will specify an identifier to *receive*, and these</span>
-<span class="doccomment">/// names must match up. A single item should only have one [DragDropSource], though</span>
-<span class="doccomment">/// a target may have multiple different targets.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// DropDropSources don&#39;t do anything until you use one of the three `begin_` methods</span>
-<span class="doccomment">/// on this struct. Each of these methods describes how you handle the Payload which ImGui</span>
-<span class="doccomment">/// will manage, and then give to a [DragDropTarget], which will received the payload. The</span>
-<span class="doccomment">/// simplest and safest Payload is the empty payload, created with [begin](Self::begin).</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">DragDropSource</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
-    <span class="ident">name</span>: <span class="ident">T</span>,
-    <span class="ident">flags</span>: <span class="ident">DragDropFlags</span>,
-    <span class="ident">cond</span>: <span class="ident">Condition</span>,
+<span class="doccomment">/// Creates a source for drag drop data out of the last ID created.
+///
+/// ```no_run
+/// # use arcdps_imgui::*;
+/// fn show_ui(ui: &amp;Ui&lt;&#39;_&gt;) {
+///     ui.button(&quot;Hello, I am a drag source!&quot;);
+///     
+///     // Creates an empty DragSource with no tooltip
+///     DragDropSource::new(&quot;BUTTON_DRAG&quot;).begin(ui);
+/// }
+/// ```
+///
+/// Notice especially the `&quot;BUTTON_DRAG&quot;` name -- this is the identifier of this
+/// DragDropSource; [DragDropTarget]&#39;s will specify an identifier to *receive*, and these
+/// names must match up. A single item should only have one [DragDropSource], though
+/// a target may have multiple different targets.
+///
+/// DropDropSources don&#39;t do anything until you use one of the three `begin_` methods
+/// on this struct. Each of these methods describes how you handle the Payload which ImGui
+/// will manage, and then give to a [DragDropTarget], which will received the payload. The
+/// simplest and safest Payload is the empty payload, created with [begin](Self::begin).
+</span><span class="attribute">#[derive(Debug)]
+</span><span class="kw">pub struct </span>DragDropSource&lt;T&gt; {
+    name: T,
+    flags: DragDropFlags,
+    cond: Condition,
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="ident">DragDropSource</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Creates a new [DragDropSource] with no flags and the `Condition::Always` with the given name.</span>
-    <span class="doccomment">/// ImGui refers to this `name` field as a `type`, but really it&#39;s just an identifier to match up</span>
-    <span class="doccomment">/// Source/Target for DragDrop.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">name</span>: <span class="ident">T</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">Self</span> {
-            <span class="ident">name</span>,
-            <span class="ident">flags</span>: <span class="ident">DragDropFlags::empty</span>(),
-            <span class="ident">cond</span>: <span class="ident">Condition::Always</span>,
+<span class="kw">impl</span>&lt;T: AsRef&lt;str&gt;&gt; DragDropSource&lt;T&gt; {
+    <span class="doccomment">/// Creates a new [DragDropSource] with no flags and the `Condition::Always` with the given name.
+    /// ImGui refers to this `name` field as a `type`, but really it&#39;s just an identifier to match up
+    /// Source/Target for DragDrop.
+    </span><span class="kw">pub fn </span>new(name: T) -&gt; <span class="self">Self </span>{
+        <span class="self">Self </span>{
+            name,
+            flags: DragDropFlags::empty(),
+            cond: Condition::Always,
         }
     }
 
-    <span class="doccomment">/// Sets the flags on the [DragDropSource]. Only the flags `SOURCE_NO_PREVIEW_TOOLTIP`,</span>
-    <span class="doccomment">/// `SOURCE_NO_DISABLE_HOVER`, `SOURCE_NO_HOLD_TO_OPEN_OTHERS`, `SOURCE_ALLOW_NULL_ID`,</span>
-    <span class="doccomment">/// `SOURCE_EXTERN`, `SOURCE_AUTO_EXPIRE_PAYLOAD` make semantic sense, but any other flags will</span>
-    <span class="doccomment">/// be accepted without panic.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">flags</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">flags</span>: <span class="ident">DragDropFlags</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span> <span class="op">=</span> <span class="ident">flags</span>;
-        <span class="self">self</span>
+    <span class="doccomment">/// Sets the flags on the [DragDropSource]. Only the flags `SOURCE_NO_PREVIEW_TOOLTIP`,
+    /// `SOURCE_NO_DISABLE_HOVER`, `SOURCE_NO_HOLD_TO_OPEN_OTHERS`, `SOURCE_ALLOW_NULL_ID`,
+    /// `SOURCE_EXTERN`, `SOURCE_AUTO_EXPIRE_PAYLOAD` make semantic sense, but any other flags will
+    /// be accepted without panic.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>flags(<span class="kw-2">mut </span><span class="self">self</span>, flags: DragDropFlags) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags = flags;
+        <span class="self">self
+    </span>}
+
+    <span class="doccomment">/// Sets the condition on the [DragDropSource]. Defaults to [Always](Condition::Always).
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>condition(<span class="kw-2">mut </span><span class="self">self</span>, cond: Condition) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.cond = cond;
+        <span class="self">self
+    </span>}
+
+    <span class="doccomment">/// Creates the source of a drag and returns a handle on the tooltip.
+    /// This handle can be immediately dropped without binding it, in which case a default empty
+    /// circle will be used for the &quot;blank&quot; tooltip as this item is being dragged around.
+    ///
+    /// Otherwise, use this tooltip to add data which will display as this item is dragged.
+    /// If `SOURCE_NO_PREVIEW_TOOLTIP` is enabled, however, no preview will be displayed
+    /// and this returned token does nothing. Additionally, a given target may use the flag
+    /// `ACCEPT_NO_PREVIEW_TOOLTIP`, which will also prevent this tooltip from being shown.
+    ///
+    /// This drag has no payload, but is still probably the most useful way in imgui-rs to handle payloads.
+    /// Using `once_cell` or some shared data, this pattern can be very powerful:
+    ///
+    /// ```no_run
+    /// # use arcdps_imgui::*;
+    /// fn show_ui(ui: &amp;Ui&lt;&#39;_&gt;, drop_message: &amp;mut Option&lt;String&gt;) {
+    ///     ui.button(&quot;Drag me!&quot;);
+    ///
+    ///     let drag_drop_name = &quot;Test Drag&quot;;
+    ///     
+    ///     // drag drop SOURCE
+    ///     if DragDropSource::new(drag_drop_name).begin(ui).is_some() {
+    ///         // warning -- this would allocate every frame if `DragDropSource` has
+    ///         // condition `Always`, which it does by default. We&#39;re okay with that for
+    ///         // this example, but real code probably wouldn&#39;t want to allocate so much.
+    ///         *drop_message = Some(&quot;Test Payload&quot;.to_string());
+    ///     }
+    ///
+    ///     ui.button(&quot;Target me!&quot;);
+    ///
+    ///     // drag drop TARGET
+    ///     if let Some(target) = arcdps_imgui::DragDropTarget::new(ui) {
+    ///         if target
+    ///             .accept_payload_empty(drag_drop_name, DragDropFlags::empty())
+    ///             .is_some()
+    ///         {
+    ///             let msg = drop_message.take().unwrap();
+    ///             assert_eq!(msg, &quot;Test Payload&quot;);
+    ///         }
+    ///
+    ///         target.pop();
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// In the above, you&#39;ll see how the payload is really just a message passing service.
+    /// If you want to pass a simple integer or other &quot;plain old data&quot;, take a look at
+    /// [begin_payload](Self::begin_payload).
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>begin&lt;<span class="lifetime">&#39;ui</span>&gt;(<span class="self">self</span>, ui: <span class="kw-2">&amp;</span>Ui&lt;<span class="lifetime">&#39;ui</span>&gt;) -&gt; <span class="prelude-ty">Option</span>&lt;DragDropSourceToolTip&lt;<span class="lifetime">&#39;ui</span>&gt;&gt; {
+        <span class="self">self</span>.begin_payload(ui, ())
     }
 
-    <span class="doccomment">/// Sets the condition on the [DragDropSource]. Defaults to [Always](Condition::Always).</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">condition</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">cond</span>: <span class="ident">Condition</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">cond</span> <span class="op">=</span> <span class="ident">cond</span>;
-        <span class="self">self</span>
-    }
-
-    <span class="doccomment">/// Creates the source of a drag and returns a handle on the tooltip.</span>
-    <span class="doccomment">/// This handle can be immediately dropped without binding it, in which case a default empty</span>
-    <span class="doccomment">/// circle will be used for the &quot;blank&quot; tooltip as this item is being dragged around.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Otherwise, use this tooltip to add data which will display as this item is dragged.</span>
-    <span class="doccomment">/// If `SOURCE_NO_PREVIEW_TOOLTIP` is enabled, however, no preview will be displayed</span>
-    <span class="doccomment">/// and this returned token does nothing. Additionally, a given target may use the flag</span>
-    <span class="doccomment">/// `ACCEPT_NO_PREVIEW_TOOLTIP`, which will also prevent this tooltip from being shown.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This drag has no payload, but is still probably the most useful way in imgui-rs to handle payloads.</span>
-    <span class="doccomment">/// Using `once_cell` or some shared data, this pattern can be very powerful:</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```no_run</span>
-    <span class="doccomment">/// # use arcdps_imgui::*;</span>
-    <span class="doccomment">/// fn show_ui(ui: &amp;Ui&lt;&#39;_&gt;, drop_message: &amp;mut Option&lt;String&gt;) {</span>
-    <span class="doccomment">///     ui.button(&quot;Drag me!&quot;);</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///     let drag_drop_name = &quot;Test Drag&quot;;</span>
-    <span class="doccomment">///     </span>
-    <span class="doccomment">///     // drag drop SOURCE</span>
-    <span class="doccomment">///     if DragDropSource::new(drag_drop_name).begin(ui).is_some() {</span>
-    <span class="doccomment">///         // warning -- this would allocate every frame if `DragDropSource` has</span>
-    <span class="doccomment">///         // condition `Always`, which it does by default. We&#39;re okay with that for</span>
-    <span class="doccomment">///         // this example, but real code probably wouldn&#39;t want to allocate so much.</span>
-    <span class="doccomment">///         *drop_message = Some(&quot;Test Payload&quot;.to_string());</span>
-    <span class="doccomment">///     }</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///     ui.button(&quot;Target me!&quot;);</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///     // drag drop TARGET</span>
-    <span class="doccomment">///     if let Some(target) = arcdps_imgui::DragDropTarget::new(ui) {</span>
-    <span class="doccomment">///         if target</span>
-    <span class="doccomment">///             .accept_payload_empty(drag_drop_name, DragDropFlags::empty())</span>
-    <span class="doccomment">///             .is_some()</span>
-    <span class="doccomment">///         {</span>
-    <span class="doccomment">///             let msg = drop_message.take().unwrap();</span>
-    <span class="doccomment">///             assert_eq!(msg, &quot;Test Payload&quot;);</span>
-    <span class="doccomment">///         }</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///         target.pop();</span>
-    <span class="doccomment">///     }</span>
-    <span class="doccomment">/// }</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// In the above, you&#39;ll see how the payload is really just a message passing service.</span>
-    <span class="doccomment">/// If you want to pass a simple integer or other &quot;plain old data&quot;, take a look at</span>
-    <span class="doccomment">/// [begin_payload](Self::begin_payload).</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">begin</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">ui</span>: <span class="kw-2">&amp;</span><span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">DragDropSourceToolTip</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="self">self</span>.<span class="ident">begin_payload</span>(<span class="ident">ui</span>, ())
-    }
-
-    <span class="doccomment">/// Creates the source of a drag and returns a handle on the tooltip.</span>
-    <span class="doccomment">/// This handle can be immediately dropped without binding it, in which case a default empty</span>
-    <span class="doccomment">/// circle will be used for the &quot;blank&quot; tooltip as this item is being dragged around.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Otherwise, use this tooltip to add data which will display as this item is dragged.</span>
-    <span class="doccomment">/// If `SOURCE_NO_PREVIEW_TOOLTIP` is enabled, however, no preview will be displayed</span>
-    <span class="doccomment">/// and this returned token does nothing. Additionally, a given target may use the flag</span>
-    <span class="doccomment">/// `ACCEPT_NO_PREVIEW_TOOLTIP`, which will also prevent this tooltip from being shown.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This function also takes a payload in the form of `T: Copy + &#39;static`. ImGui will</span>
-    <span class="doccomment">/// memcpy this data immediately to an internally held buffer, and will return the data</span>
-    <span class="doccomment">/// to [DragDropTarget].</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```no_run</span>
-    <span class="doccomment">/// # use arcdps_imgui::*;</span>
-    <span class="doccomment">/// fn show_ui(ui: &amp;Ui&lt;&#39;_&gt;) {</span>
-    <span class="doccomment">///     ui.button(&quot;Drag me!&quot;);</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///     let drag_drop_name = &quot;Test Drag&quot;;</span>
-    <span class="doccomment">///     let msg_to_send = &quot;hello there sailor&quot;;</span>
-    <span class="doccomment">///     </span>
-    <span class="doccomment">///     // drag drop SOURCE</span>
-    <span class="doccomment">///     if let Some(tooltip) = DragDropSource::new(drag_drop_name).begin_payload(ui, msg_to_send) {</span>
-    <span class="doccomment">///         ui.text(&quot;Sending message!&quot;);</span>
-    <span class="doccomment">///         tooltip.end();</span>
-    <span class="doccomment">///     }</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///     ui.button(&quot;Target me!&quot;);</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///     // drag drop TARGET</span>
-    <span class="doccomment">///     if let Some(target) = arcdps_imgui::DragDropTarget::new(ui) {</span>
-    <span class="doccomment">///         if let Some(Ok(payload_data)) = target</span>
-    <span class="doccomment">///             .accept_payload::&lt;&amp;&#39;static str, _&gt;(drag_drop_name, DragDropFlags::empty())</span>
-    <span class="doccomment">///         {</span>
-    <span class="doccomment">///             let msg = payload_data.data;</span>
-    <span class="doccomment">///             assert_eq!(msg, msg_to_send);</span>
-    <span class="doccomment">///         }</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///         target.pop();</span>
-    <span class="doccomment">///     }</span>
-    <span class="doccomment">/// }</span>
-    <span class="doccomment">/// ```</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">begin_payload</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span>, <span class="ident">P</span>: <span class="ident">Copy</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(
+    <span class="doccomment">/// Creates the source of a drag and returns a handle on the tooltip.
+    /// This handle can be immediately dropped without binding it, in which case a default empty
+    /// circle will be used for the &quot;blank&quot; tooltip as this item is being dragged around.
+    ///
+    /// Otherwise, use this tooltip to add data which will display as this item is dragged.
+    /// If `SOURCE_NO_PREVIEW_TOOLTIP` is enabled, however, no preview will be displayed
+    /// and this returned token does nothing. Additionally, a given target may use the flag
+    /// `ACCEPT_NO_PREVIEW_TOOLTIP`, which will also prevent this tooltip from being shown.
+    ///
+    /// This function also takes a payload in the form of `T: Copy + &#39;static`. ImGui will
+    /// memcpy this data immediately to an internally held buffer, and will return the data
+    /// to [DragDropTarget].
+    ///
+    /// ```no_run
+    /// # use arcdps_imgui::*;
+    /// fn show_ui(ui: &amp;Ui&lt;&#39;_&gt;) {
+    ///     ui.button(&quot;Drag me!&quot;);
+    ///
+    ///     let drag_drop_name = &quot;Test Drag&quot;;
+    ///     let msg_to_send = &quot;hello there sailor&quot;;
+    ///     
+    ///     // drag drop SOURCE
+    ///     if let Some(tooltip) = DragDropSource::new(drag_drop_name).begin_payload(ui, msg_to_send) {
+    ///         ui.text(&quot;Sending message!&quot;);
+    ///         tooltip.end();
+    ///     }
+    ///
+    ///     ui.button(&quot;Target me!&quot;);
+    ///
+    ///     // drag drop TARGET
+    ///     if let Some(target) = arcdps_imgui::DragDropTarget::new(ui) {
+    ///         if let Some(Ok(payload_data)) = target
+    ///             .accept_payload::&lt;&amp;&#39;static str, _&gt;(drag_drop_name, DragDropFlags::empty())
+    ///         {
+    ///             let msg = payload_data.data;
+    ///             assert_eq!(msg, msg_to_send);
+    ///         }
+    ///
+    ///         target.pop();
+    ///     }
+    /// }
+    /// ```
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>begin_payload&lt;<span class="lifetime">&#39;ui</span>, P: Copy + <span class="lifetime">&#39;static</span>&gt;(
         <span class="self">self</span>,
-        <span class="ident">ui</span>: <span class="kw-2">&amp;</span><span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>,
-        <span class="ident">payload</span>: <span class="ident">P</span>,
-    ) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">DragDropSourceToolTip</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="kw">unsafe</span> {
-            <span class="kw">let</span> <span class="ident">payload</span> <span class="op">=</span> <span class="ident">TypedPayload::new</span>(<span class="ident">payload</span>);
-            <span class="self">self</span>.<span class="ident">begin_payload_unchecked</span>(
-                <span class="ident">ui</span>,
-                <span class="kw-2">&amp;</span><span class="ident">payload</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="kw">_</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">ffi::c_void</span>,
-                <span class="ident">std::mem::size_of</span>::<span class="op">&lt;</span><span class="ident">TypedPayload</span><span class="op">&lt;</span><span class="ident">P</span><span class="op">&gt;</span><span class="op">&gt;</span>(),
+        ui: <span class="kw-2">&amp;</span>Ui&lt;<span class="lifetime">&#39;ui</span>&gt;,
+        payload: P,
+    ) -&gt; <span class="prelude-ty">Option</span>&lt;DragDropSourceToolTip&lt;<span class="lifetime">&#39;ui</span>&gt;&gt; {
+        <span class="kw">unsafe </span>{
+            <span class="kw">let </span>payload = TypedPayload::new(payload);
+            <span class="self">self</span>.begin_payload_unchecked(
+                ui,
+                <span class="kw-2">&amp;</span>payload <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_ as </span><span class="kw-2">*const </span>ffi::c_void,
+                std::mem::size_of::&lt;TypedPayload&lt;P&gt;&gt;(),
             )
         }
     }
 
-    <span class="doccomment">/// Creates the source of a drag and returns a handle on the tooltip.</span>
-    <span class="doccomment">/// This handle can be immediately dropped without binding it, in which case a default empty</span>
-    <span class="doccomment">/// circle will be used for the &quot;blank&quot; tooltip as this item is being dragged around.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Otherwise, use this tooltip to add data which will display as this item is dragged.</span>
-    <span class="doccomment">/// If `SOURCE_NO_PREVIEW_TOOLTIP` is enabled, however, no preview will be displayed</span>
-    <span class="doccomment">/// and this returned token does nothing. Additionally, a given target may use the flag</span>
-    <span class="doccomment">/// `ACCEPT_NO_PREVIEW_TOOLTIP`, which will also prevent this tooltip from being shown.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This function also takes a payload of any `*const T`. ImGui will</span>
-    <span class="doccomment">/// memcpy this data immediately to an internally held buffer, and will return the data</span>
-    <span class="doccomment">/// to [DragDropTarget].</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ## Safety</span>
-    <span class="doccomment">/// This function itself will not cause a panic, but using it directly opts you into</span>
-    <span class="doccomment">/// managing the lifetime of the pointer provided yourself. Dear ImGui will execute a memcpy on</span>
-    <span class="doccomment">/// the data passed in with the size (in bytes) given, but this is, of course, just a copy,</span>
-    <span class="doccomment">/// so if you pass in an `&amp;String`, for example, the underlying String data will not be cloned,</span>
-    <span class="doccomment">/// and could easily dangle if the `String` is dropped.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Moreover, if `Condition::Always` is set (as it is by default), you will be copying in your data</span>
-    <span class="doccomment">/// every time this function is ran in your update loop, which if it involves an allocating and then</span>
-    <span class="doccomment">/// handing the allocation to ImGui, would result in a significant amount of data created.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Overall, users should be very sure that this function is needed before they reach for it, and instead</span>
-    <span class="doccomment">/// should consider either [begin](Self::begin) or [begin_payload](Self::begin_payload).</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">begin_payload_unchecked</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>(
+    <span class="doccomment">/// Creates the source of a drag and returns a handle on the tooltip.
+    /// This handle can be immediately dropped without binding it, in which case a default empty
+    /// circle will be used for the &quot;blank&quot; tooltip as this item is being dragged around.
+    ///
+    /// Otherwise, use this tooltip to add data which will display as this item is dragged.
+    /// If `SOURCE_NO_PREVIEW_TOOLTIP` is enabled, however, no preview will be displayed
+    /// and this returned token does nothing. Additionally, a given target may use the flag
+    /// `ACCEPT_NO_PREVIEW_TOOLTIP`, which will also prevent this tooltip from being shown.
+    ///
+    /// This function also takes a payload of any `*const T`. ImGui will
+    /// memcpy this data immediately to an internally held buffer, and will return the data
+    /// to [DragDropTarget].
+    ///
+    /// ## Safety
+    /// This function itself will not cause a panic, but using it directly opts you into
+    /// managing the lifetime of the pointer provided yourself. Dear ImGui will execute a memcpy on
+    /// the data passed in with the size (in bytes) given, but this is, of course, just a copy,
+    /// so if you pass in an `&amp;String`, for example, the underlying String data will not be cloned,
+    /// and could easily dangle if the `String` is dropped.
+    ///
+    /// Moreover, if `Condition::Always` is set (as it is by default), you will be copying in your data
+    /// every time this function is ran in your update loop, which if it involves an allocating and then
+    /// handing the allocation to ImGui, would result in a significant amount of data created.
+    ///
+    /// Overall, users should be very sure that this function is needed before they reach for it, and instead
+    /// should consider either [begin](Self::begin) or [begin_payload](Self::begin_payload).
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub unsafe fn </span>begin_payload_unchecked&lt;<span class="lifetime">&#39;ui</span>&gt;(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">ui</span>: <span class="kw-2">&amp;</span><span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>,
-        <span class="ident">ptr</span>: <span class="kw-2">*const</span> <span class="ident">ffi::c_void</span>,
-        <span class="ident">size</span>: <span class="ident">usize</span>,
-    ) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">DragDropSourceToolTip</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="kw">let</span> <span class="ident">should_begin</span> <span class="op">=</span> <span class="ident">sys::igBeginDragDropSource</span>(<span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">bits</span>() <span class="kw">as</span> <span class="ident">i32</span>);
+        ui: <span class="kw-2">&amp;</span>Ui&lt;<span class="lifetime">&#39;ui</span>&gt;,
+        ptr: <span class="kw-2">*const </span>ffi::c_void,
+        size: usize,
+    ) -&gt; <span class="prelude-ty">Option</span>&lt;DragDropSourceToolTip&lt;<span class="lifetime">&#39;ui</span>&gt;&gt; {
+        <span class="kw">let </span>should_begin = sys::igBeginDragDropSource(<span class="self">self</span>.flags.bits() <span class="kw">as </span>i32);
 
-        <span class="kw">if</span> <span class="ident">should_begin</span> {
-            <span class="ident">sys::igSetDragDropPayload</span>(<span class="ident">ui</span>.<span class="ident">scratch_txt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">name</span>), <span class="ident">ptr</span>, <span class="ident">size</span>, <span class="self">self</span>.<span class="ident">cond</span> <span class="kw">as</span> <span class="ident">i32</span>);
+        <span class="kw">if </span>should_begin {
+            sys::igSetDragDropPayload(ui.scratch_txt(<span class="kw-2">&amp;</span><span class="self">self</span>.name), ptr, size, <span class="self">self</span>.cond <span class="kw">as </span>i32);
 
-            <span class="prelude-val">Some</span>(<span class="ident">DragDropSourceToolTip::push</span>())
-        } <span class="kw">else</span> {
-            <span class="prelude-val">None</span>
-        }
+            <span class="prelude-val">Some</span>(DragDropSourceToolTip::push())
+        } <span class="kw">else </span>{
+            <span class="prelude-val">None
+        </span>}
     }
 }
 
-<span class="doccomment">/// A helper struct for RAII drap-drop support.</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">DragDropSourceToolTip</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>(<span class="ident">PhantomData</span><span class="op">&lt;</span><span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span><span class="op">&gt;</span>);
+<span class="doccomment">/// A helper struct for RAII drap-drop support.
+</span><span class="kw">pub struct </span>DragDropSourceToolTip&lt;<span class="lifetime">&#39;ui</span>&gt;(PhantomData&lt;Ui&lt;<span class="lifetime">&#39;ui</span>&gt;&gt;);
 
-<span class="kw">impl</span> <span class="ident">DragDropSourceToolTip</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Creates a new tooltip internally.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">push</span>() -&gt; <span class="self">Self</span> {
-        <span class="self">Self</span>(<span class="ident">PhantomData</span>)
+<span class="kw">impl </span>DragDropSourceToolTip&lt;<span class="lifetime">&#39;_</span>&gt; {
+    <span class="doccomment">/// Creates a new tooltip internally.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">fn </span>push() -&gt; <span class="self">Self </span>{
+        <span class="self">Self</span>(PhantomData)
     }
 
-    <span class="doccomment">/// Ends the tooltip directly. You could choose to simply allow this to drop</span>
-    <span class="doccomment">/// by not calling this, which will also be fine.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">end</span>(<span class="self">self</span>) {
-        <span class="comment">// left empty to invoke drop...</span>
+    <span class="doccomment">/// Ends the tooltip directly. You could choose to simply allow this to drop
+    /// by not calling this, which will also be fine.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>end(<span class="self">self</span>) {
+        <span class="comment">// left empty to invoke drop...
+    </span>}
+}
+
+<span class="kw">impl </span>Drop <span class="kw">for </span>DragDropSourceToolTip&lt;<span class="lifetime">&#39;_</span>&gt; {
+    <span class="kw">fn </span>drop(<span class="kw-2">&amp;mut </span><span class="self">self</span>) {
+        <span class="kw">unsafe </span>{ sys::igEndDragDropSource() }
     }
 }
 
-<span class="kw">impl</span> <span class="ident">Drop</span> <span class="kw">for</span> <span class="ident">DragDropSourceToolTip</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igEndDragDropSource</span>() }
-    }
-}
+<span class="doccomment">/// Creates a target for drag drop data out of the last ID created.
+///
+/// ```no_run
+/// # use arcdps_imgui::*;
+/// fn show_ui(ui: &amp;Ui&lt;&#39;_&gt;) {
+///     // Drop something on this button please!
+///     ui.button(&quot;Hello, I am a drag Target!&quot;);
+///     
+///     if let Some(target) = DragDropTarget::new(ui) {
+///         // accepting an empty payload (which is really just raising an event)
+///         if let Some(_payload_data) = target.accept_payload_empty(&quot;BUTTON_DRAG&quot;, DragDropFlags::empty()) {
+///             println!(&quot;Nice job getting on the payload!&quot;);
+///         }
+///    
+///         // and we can accept multiple, different types of payloads with one drop target.
+///         // this is a good pattern for handling different kinds of drag/drop situations with
+///         // different kinds of data in them.
+///         if let Some(Ok(payload_data)) = target.accept_payload::&lt;usize, _&gt;(&quot;BUTTON_ID&quot;, DragDropFlags::empty()) {
+///             println!(&quot;Our payload&#39;s data was {}&quot;, payload_data.data);
+///         }
+///     }
+/// }
+/// ```
+///
+/// Notice especially the `&quot;BUTTON_DRAG&quot;` and `&quot;BUTTON_ID&quot;` name -- this is the identifier of this
+/// DragDropTarget; [DragDropSource]s will specify an identifier when they send a payload, and these
+/// names must match up. Notice how a target can have multiple acceptances on them -- this is a good
+/// pattern to handle multiple kinds of data which could be passed around.
+///
+/// DropDropTargets don&#39;t do anything until you use one of the three `accept_` methods
+/// on this struct. Each of these methods will spit out a _Payload struct with an increasing
+/// amount of information on the Payload. The absolute safest solution is [accept_payload_empty](Self::accept_payload_empty).
+</span><span class="attribute">#[derive(Debug)]
+</span><span class="kw">pub struct </span>DragDropTarget&lt;<span class="lifetime">&#39;ui</span>&gt;(<span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span>Ui&lt;<span class="lifetime">&#39;ui</span>&gt;);
 
-<span class="doccomment">/// Creates a target for drag drop data out of the last ID created.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// ```no_run</span>
-<span class="doccomment">/// # use arcdps_imgui::*;</span>
-<span class="doccomment">/// fn show_ui(ui: &amp;Ui&lt;&#39;_&gt;) {</span>
-<span class="doccomment">///     // Drop something on this button please!</span>
-<span class="doccomment">///     ui.button(&quot;Hello, I am a drag Target!&quot;);</span>
-<span class="doccomment">///     </span>
-<span class="doccomment">///     if let Some(target) = DragDropTarget::new(ui) {</span>
-<span class="doccomment">///         // accepting an empty payload (which is really just raising an event)</span>
-<span class="doccomment">///         if let Some(_payload_data) = target.accept_payload_empty(&quot;BUTTON_DRAG&quot;, DragDropFlags::empty()) {</span>
-<span class="doccomment">///             println!(&quot;Nice job getting on the payload!&quot;);</span>
-<span class="doccomment">///         }</span>
-<span class="doccomment">///    </span>
-<span class="doccomment">///         // and we can accept multiple, different types of payloads with one drop target.</span>
-<span class="doccomment">///         // this is a good pattern for handling different kinds of drag/drop situations with</span>
-<span class="doccomment">///         // different kinds of data in them.</span>
-<span class="doccomment">///         if let Some(Ok(payload_data)) = target.accept_payload::&lt;usize, _&gt;(&quot;BUTTON_ID&quot;, DragDropFlags::empty()) {</span>
-<span class="doccomment">///             println!(&quot;Our payload&#39;s data was {}&quot;, payload_data.data);</span>
-<span class="doccomment">///         }</span>
-<span class="doccomment">///     }</span>
-<span class="doccomment">/// }</span>
-<span class="doccomment">/// ```</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// Notice especially the `&quot;BUTTON_DRAG&quot;` and `&quot;BUTTON_ID&quot;` name -- this is the identifier of this</span>
-<span class="doccomment">/// DragDropTarget; [DragDropSource]s will specify an identifier when they send a payload, and these</span>
-<span class="doccomment">/// names must match up. Notice how a target can have multiple acceptances on them -- this is a good</span>
-<span class="doccomment">/// pattern to handle multiple kinds of data which could be passed around.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// DropDropTargets don&#39;t do anything until you use one of the three `accept_` methods</span>
-<span class="doccomment">/// on this struct. Each of these methods will spit out a _Payload struct with an increasing</span>
-<span class="doccomment">/// amount of information on the Payload. The absolute safest solution is [accept_payload_empty](Self::accept_payload_empty).</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">DragDropTarget</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>);
-
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> <span class="ident">DragDropTarget</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Creates a new DragDropTarget, holding the [Ui]&#39;s lifetime for the duration</span>
-    <span class="doccomment">/// of its existence. This is required since this struct runs some code on its Drop</span>
-    <span class="doccomment">/// to end the DragDropTarget code.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;BeginDragDropTarget&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">ui</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
-        <span class="kw">let</span> <span class="ident">should_begin</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">sys::igBeginDragDropTarget</span>() };
-        <span class="kw">if</span> <span class="ident">should_begin</span> {
-            <span class="prelude-val">Some</span>(<span class="self">Self</span>(<span class="ident">ui</span>))
-        } <span class="kw">else</span> {
-            <span class="prelude-val">None</span>
-        }
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>&gt; DragDropTarget&lt;<span class="lifetime">&#39;ui</span>&gt; {
+    <span class="doccomment">/// Creates a new DragDropTarget, holding the [Ui]&#39;s lifetime for the duration
+    /// of its existence. This is required since this struct runs some code on its Drop
+    /// to end the DragDropTarget code.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;BeginDragDropTarget&quot;</span>)]
+    </span><span class="kw">pub fn </span>new(ui: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span>Ui&lt;<span class="lifetime">&#39;ui</span>&gt;) -&gt; <span class="prelude-ty">Option</span>&lt;<span class="self">Self</span>&gt; {
+        <span class="kw">let </span>should_begin = <span class="kw">unsafe </span>{ sys::igBeginDragDropTarget() };
+        <span class="kw">if </span>should_begin {
+            <span class="prelude-val">Some</span>(<span class="self">Self</span>(ui))
+        } <span class="kw">else </span>{
+            <span class="prelude-val">None
+        </span>}
     }
 
-    <span class="doccomment">/// Accepts an empty payload. This is the safest option for raising named events</span>
-    <span class="doccomment">/// in the DragDrop API. See [DragDropSource::begin] for more information on how you</span>
-    <span class="doccomment">/// might use this pattern.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Note: If you began this operation with `begin_payload_unchecked` it always incorrect</span>
-    <span class="doccomment">/// to use this function. Use `accept_payload_unchecked` instead</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">accept_payload_empty</span>(
+    <span class="doccomment">/// Accepts an empty payload. This is the safest option for raising named events
+    /// in the DragDrop API. See [DragDropSource::begin] for more information on how you
+    /// might use this pattern.
+    ///
+    /// Note: If you began this operation with `begin_payload_unchecked` it always incorrect
+    /// to use this function. Use `accept_payload_unchecked` instead
+    </span><span class="kw">pub fn </span>accept_payload_empty(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">name</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>,
-        <span class="ident">flags</span>: <span class="ident">DragDropFlags</span>,
-    ) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">DragDropPayloadEmpty</span><span class="op">&gt;</span> {
-        <span class="self">self</span>.<span class="ident">accept_payload</span>(<span class="ident">name</span>, <span class="ident">flags</span>)<span class="question-mark">?</span>
-            .<span class="ident">ok</span>()
-            .<span class="ident">map</span>(<span class="op">|</span><span class="ident">payload_pod</span>: <span class="ident">DragDropPayloadPod</span><span class="op">&lt;</span>()<span class="op">&gt;</span><span class="op">|</span> <span class="ident">DragDropPayloadEmpty</span> {
-                <span class="ident">preview</span>: <span class="ident">payload_pod</span>.<span class="ident">preview</span>,
-                <span class="ident">delivery</span>: <span class="ident">payload_pod</span>.<span class="ident">delivery</span>,
+        name: <span class="kw">impl </span>AsRef&lt;str&gt;,
+        flags: DragDropFlags,
+    ) -&gt; <span class="prelude-ty">Option</span>&lt;DragDropPayloadEmpty&gt; {
+        <span class="self">self</span>.accept_payload(name, flags)<span class="question-mark">?
+            </span>.ok()
+            .map(|payload_pod: DragDropPayloadPod&lt;()&gt;| DragDropPayloadEmpty {
+                preview: payload_pod.preview,
+                delivery: payload_pod.delivery,
             })
     }
 
-    <span class="doccomment">/// Accepts a payload with plain old data in it. This returns a Result, since you can specify any</span>
-    <span class="doccomment">/// type. The sent type must match the return type (via TypeId) to receive an `Ok`.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Note: If you began this operation with `begin_payload_unchecked` it always incorrect</span>
-    <span class="doccomment">/// to use this function. Use `accept_payload_unchecked` instead</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">accept_payload</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="lifetime">&#39;static</span> <span class="op">+</span> <span class="ident">Copy</span>, <span class="ident">Name</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(
+    <span class="doccomment">/// Accepts a payload with plain old data in it. This returns a Result, since you can specify any
+    /// type. The sent type must match the return type (via TypeId) to receive an `Ok`.
+    ///
+    /// Note: If you began this operation with `begin_payload_unchecked` it always incorrect
+    /// to use this function. Use `accept_payload_unchecked` instead
+    </span><span class="kw">pub fn </span>accept_payload&lt;T: <span class="lifetime">&#39;static </span>+ Copy, Name: AsRef&lt;str&gt;&gt;(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">name</span>: <span class="ident">Name</span>,
-        <span class="ident">flags</span>: <span class="ident">DragDropFlags</span>,
-    ) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">DragDropPayloadPod</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>, <span class="ident">PayloadIsWrongType</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="kw">let</span> <span class="ident">output</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="self">self</span>.<span class="ident">accept_payload_unchecked</span>(<span class="ident">name</span>, <span class="ident">flags</span>) };
+        name: Name,
+        flags: DragDropFlags,
+    ) -&gt; <span class="prelude-ty">Option</span>&lt;<span class="prelude-ty">Result</span>&lt;DragDropPayloadPod&lt;T&gt;, PayloadIsWrongType&gt;&gt; {
+        <span class="kw">let </span>output = <span class="kw">unsafe </span>{ <span class="self">self</span>.accept_payload_unchecked(name, flags) };
 
-        <span class="comment">// convert the unsafe payload to our Result</span>
-        <span class="ident">output</span>.<span class="ident">map</span>(<span class="op">|</span><span class="ident">unsafe_payload</span><span class="op">|</span> {
-            <span class="comment">// sheering off the typeid...</span>
-            <span class="kw">let</span> <span class="ident">received</span> <span class="op">=</span>
-                <span class="kw">unsafe</span> { (<span class="ident">unsafe_payload</span>.<span class="ident">data</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">TypedPayloadHeader</span>).<span class="ident">read_unaligned</span>() };
-            <span class="kw">let</span> <span class="ident">expected</span> <span class="op">=</span> <span class="ident">any::TypeId::of</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>();
+        <span class="comment">// convert the unsafe payload to our Result
+        </span>output.map(|unsafe_payload| {
+            <span class="comment">// sheering off the typeid...
+            </span><span class="kw">let </span>received =
+                <span class="kw">unsafe </span>{ (unsafe_payload.data <span class="kw">as </span><span class="kw-2">*const </span>TypedPayloadHeader).read_unaligned() };
+            <span class="kw">let </span>expected = any::TypeId::of::&lt;T&gt;();
 
-            <span class="kw">if</span> <span class="ident">received</span>.<span class="ident">type_id</span> <span class="op">==</span> <span class="ident">expected</span> {
-                <span class="kw">let</span> <span class="ident">data</span> <span class="op">=</span>
-                    <span class="kw">unsafe</span> { (<span class="ident">unsafe_payload</span>.<span class="ident">data</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">TypedPayload</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>).<span class="ident">read_unaligned</span>() }
-                        .<span class="ident">data</span>;
-                <span class="prelude-val">Ok</span>(<span class="ident">DragDropPayloadPod</span> {
-                    <span class="ident">data</span>,
-                    <span class="ident">preview</span>: <span class="ident">unsafe_payload</span>.<span class="ident">preview</span>,
-                    <span class="ident">delivery</span>: <span class="ident">unsafe_payload</span>.<span class="ident">delivery</span>,
+            <span class="kw">if </span>received.type_id == expected {
+                <span class="kw">let </span>data =
+                    <span class="kw">unsafe </span>{ (unsafe_payload.data <span class="kw">as </span><span class="kw-2">*const </span>TypedPayload&lt;T&gt;).read_unaligned() }
+                        .data;
+                <span class="prelude-val">Ok</span>(DragDropPayloadPod {
+                    data,
+                    preview: unsafe_payload.preview,
+                    delivery: unsafe_payload.delivery,
                 })
-            } <span class="kw">else</span> {
-                <span class="prelude-val">Err</span>(<span class="ident">PayloadIsWrongType</span> {
-                    <span class="ident">received</span>,
-                    <span class="ident">expected</span>: <span class="ident">TypedPayloadHeader::new</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(),
+            } <span class="kw">else </span>{
+                <span class="prelude-val">Err</span>(PayloadIsWrongType {
+                    received,
+                    expected: TypedPayloadHeader::new::&lt;T&gt;(),
                 })
             }
         })
     }
 
-    <span class="doccomment">/// Accepts a drag and drop payload  which contains a raw pointer to [c_void](std::ffi::c_void)</span>
-    <span class="doccomment">/// and a size in bytes. Users should generally avoid using this function</span>
-    <span class="doccomment">/// if one of the safer variants is acceptable.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ## Safety</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Because this pointer comes from ImGui, absolutely no promises can be made on its</span>
-    <span class="doccomment">/// contents, alignment, or lifetime. Interacting with it is therefore extremely unsafe.</span>
-    <span class="doccomment">/// **Important:** a special note needs to be made to the [ACCEPT_BEFORE_DELIVERY](DragDropFlags::ACCEPT_BEFORE_DELIVERY) flag --</span>
-    <span class="doccomment">/// passing this flag will make this function return `Some(DragDropPayload)` **even before</span>
-    <span class="doccomment">/// the user has actually &quot;dropped&quot; the payload by release their mouse button.**</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// In safe functions, this works just fine, since the data can be freely copied</span>
-    <span class="doccomment">/// (or doesn&#39;t exist at all!). However, if you are working with your own data, you must</span>
-    <span class="doccomment">/// be extremely careful with this data, as you may, effectively, only have immutable access to it.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Moreover, if the `DragDropSource` has also used `Condition::Once` or similar when they sent the data,</span>
-    <span class="doccomment">/// ImGui will assume its data is still valid even after your preview, so corrupting that data could</span>
-    <span class="doccomment">/// lead to all sorts of unsafe behvaior on ImGui&#39;s side. In summary, using this function for any data</span>
-    <span class="doccomment">/// which isn&#39;t truly `Copy` or &quot;plain old data&quot; is difficult, and requires substantial knowledge</span>
-    <span class="doccomment">/// of the various edge cases.</span>
-    <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">accept_payload_unchecked</span>(
+    <span class="doccomment">/// Accepts a drag and drop payload  which contains a raw pointer to [c_void](std::ffi::c_void)
+    /// and a size in bytes. Users should generally avoid using this function
+    /// if one of the safer variants is acceptable.
+    ///
+    /// ## Safety
+    ///
+    /// Because this pointer comes from ImGui, absolutely no promises can be made on its
+    /// contents, alignment, or lifetime. Interacting with it is therefore extremely unsafe.
+    /// **Important:** a special note needs to be made to the [ACCEPT_BEFORE_DELIVERY](DragDropFlags::ACCEPT_BEFORE_DELIVERY) flag --
+    /// passing this flag will make this function return `Some(DragDropPayload)` **even before
+    /// the user has actually &quot;dropped&quot; the payload by release their mouse button.**
+    ///
+    /// In safe functions, this works just fine, since the data can be freely copied
+    /// (or doesn&#39;t exist at all!). However, if you are working with your own data, you must
+    /// be extremely careful with this data, as you may, effectively, only have immutable access to it.
+    ///
+    /// Moreover, if the `DragDropSource` has also used `Condition::Once` or similar when they sent the data,
+    /// ImGui will assume its data is still valid even after your preview, so corrupting that data could
+    /// lead to all sorts of unsafe behvaior on ImGui&#39;s side. In summary, using this function for any data
+    /// which isn&#39;t truly `Copy` or &quot;plain old data&quot; is difficult, and requires substantial knowledge
+    /// of the various edge cases.
+    </span><span class="kw">pub unsafe fn </span>accept_payload_unchecked(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">name</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>,
-        <span class="ident">flags</span>: <span class="ident">DragDropFlags</span>,
-    ) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">DragDropPayload</span><span class="op">&gt;</span> {
-        <span class="kw">let</span> <span class="ident">inner</span> <span class="op">=</span> <span class="ident">sys::igAcceptDragDropPayload</span>(<span class="self">self</span>.<span class="number">0</span>.<span class="ident">scratch_txt</span>(<span class="ident">name</span>), <span class="ident">flags</span>.<span class="ident">bits</span>() <span class="kw">as</span> <span class="ident">i32</span>);
-        <span class="kw">if</span> <span class="ident">inner</span>.<span class="ident">is_null</span>() {
-            <span class="prelude-val">None</span>
-        } <span class="kw">else</span> {
-            <span class="kw">let</span> <span class="ident">inner</span> <span class="op">=</span> <span class="kw-2">*</span><span class="ident">inner</span>;
+        name: <span class="kw">impl </span>AsRef&lt;str&gt;,
+        flags: DragDropFlags,
+    ) -&gt; <span class="prelude-ty">Option</span>&lt;DragDropPayload&gt; {
+        <span class="kw">let </span>inner = sys::igAcceptDragDropPayload(<span class="self">self</span>.<span class="number">0</span>.scratch_txt(name), flags.bits() <span class="kw">as </span>i32);
+        <span class="kw">if </span>inner.is_null() {
+            <span class="prelude-val">None
+        </span>} <span class="kw">else </span>{
+            <span class="kw">let </span>inner = <span class="kw-2">*</span>inner;
 
-            <span class="comment">// @fixme: there are actually other fields on `inner` which I have shorn -- they&#39;re</span>
-            <span class="comment">// considered internal to imgui (such as id of who sent this), so i&#39;ve left it for</span>
-            <span class="comment">// now this way.</span>
-            <span class="prelude-val">Some</span>(<span class="ident">DragDropPayload</span> {
-                <span class="ident">data</span>: <span class="ident">inner</span>.<span class="ident">Data</span>,
-                <span class="ident">size</span>: <span class="ident">inner</span>.<span class="ident">DataSize</span> <span class="kw">as</span> <span class="ident">usize</span>,
-                <span class="ident">preview</span>: <span class="ident">inner</span>.<span class="ident">Preview</span>,
-                <span class="ident">delivery</span>: <span class="ident">inner</span>.<span class="ident">Delivery</span>,
+            <span class="comment">// @fixme: there are actually other fields on `inner` which I have shorn -- they&#39;re
+            // considered internal to imgui (such as id of who sent this), so i&#39;ve left it for
+            // now this way.
+            </span><span class="prelude-val">Some</span>(DragDropPayload {
+                data: inner.Data,
+                size: inner.DataSize <span class="kw">as </span>usize,
+                preview: inner.Preview,
+                delivery: inner.Delivery,
             })
         }
     }
 
-    <span class="doccomment">/// Ends the current target. Ironically, this doesn&#39;t really do anything in ImGui</span>
-    <span class="doccomment">/// or in imgui-rs, but it might in the future.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">pop</span>(<span class="self">self</span>) {
-        <span class="comment">// omitted...exists just to run Drop.</span>
+    <span class="doccomment">/// Ends the current target. Ironically, this doesn&#39;t really do anything in ImGui
+    /// or in imgui-rs, but it might in the future.
+    </span><span class="kw">pub fn </span>pop(<span class="self">self</span>) {
+        <span class="comment">// omitted...exists just to run Drop.
+    </span>}
+}
+
+<span class="kw">impl </span>Drop <span class="kw">for </span>DragDropTarget&lt;<span class="lifetime">&#39;_</span>&gt; {
+    <span class="kw">fn </span>drop(<span class="kw-2">&amp;mut </span><span class="self">self</span>) {
+        <span class="kw">unsafe </span>{ sys::igEndDragDropTarget() }
     }
 }
 
-<span class="kw">impl</span> <span class="ident">Drop</span> <span class="kw">for</span> <span class="ident">DragDropTarget</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igEndDragDropTarget</span>() }
-    }
+<span class="doccomment">/// An empty DragDropPayload. It has no data in it, and just includes
+/// two bools with status information.
+</span><span class="attribute">#[derive(Debug, Clone, Copy)]
+#[non_exhaustive]
+</span><span class="kw">pub struct </span>DragDropPayloadEmpty {
+    <span class="doccomment">/// Set when [`accept_payload_empty`](DragDropTarget::accept_payload_empty) was called
+    /// and mouse has been hovering the target item.
+    </span><span class="kw">pub </span>preview: bool,
+
+    <span class="doccomment">/// Set when [`accept_payload_empty`](DragDropTarget::accept_payload_empty) was
+    /// called and mouse button is released over the target item.
+    </span><span class="kw">pub </span>delivery: bool,
 }
 
-<span class="doccomment">/// An empty DragDropPayload. It has no data in it, and just includes</span>
-<span class="doccomment">/// two bools with status information.</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>)]</span>
-<span class="attribute">#[<span class="ident">non_exhaustive</span>]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">DragDropPayloadEmpty</span> {
-    <span class="doccomment">/// Set when [`accept_payload_empty`](DragDropTarget::accept_payload_empty) was called</span>
-    <span class="doccomment">/// and mouse has been hovering the target item.</span>
-    <span class="kw">pub</span> <span class="ident">preview</span>: <span class="ident">bool</span>,
+<span class="doccomment">/// A DragDropPayload with status information and some POD, or plain old data,
+/// in it.
+</span><span class="attribute">#[derive(Debug, Copy, Clone)]
+#[non_exhaustive]
+</span><span class="kw">pub struct </span>DragDropPayloadPod&lt;T: <span class="lifetime">&#39;static </span>+ Copy&gt; {
+    <span class="doccomment">/// The kind data which was requested.
+    </span><span class="kw">pub </span>data: T,
 
-    <span class="doccomment">/// Set when [`accept_payload_empty`](DragDropTarget::accept_payload_empty) was</span>
-    <span class="doccomment">/// called and mouse button is released over the target item.</span>
-    <span class="kw">pub</span> <span class="ident">delivery</span>: <span class="ident">bool</span>,
+    <span class="doccomment">/// Set when [`accept_payload`](DragDropTarget::accept_payload) was called
+    /// and mouse has been hovering the target item.
+    </span><span class="kw">pub </span>preview: bool,
+
+    <span class="doccomment">/// Set when [`accept_payload`](DragDropTarget::accept_payload) was
+    /// called and mouse button is released over the target item.
+    </span><span class="kw">pub </span>delivery: bool,
 }
 
-<span class="doccomment">/// A DragDropPayload with status information and some POD, or plain old data,</span>
-<span class="doccomment">/// in it.</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Copy</span>, <span class="ident">Clone</span>)]</span>
-<span class="attribute">#[<span class="ident">non_exhaustive</span>]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">DragDropPayloadPod</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="lifetime">&#39;static</span> <span class="op">+</span> <span class="ident">Copy</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// The kind data which was requested.</span>
-    <span class="kw">pub</span> <span class="ident">data</span>: <span class="ident">T</span>,
+<span class="attribute">#[derive(Debug)]
+#[non_exhaustive]
+</span><span class="kw">pub struct </span>DragDropPayload {
+    <span class="doccomment">/// Data which is copied and owned by ImGui. If you have accepted the payload, you can
+    /// take ownership of the data; otherwise, view it immutably. Interacting with `data` is
+    /// very unsafe.
+    </span><span class="kw">pub </span>data: <span class="kw-2">*const </span>ffi::c_void,
 
-    <span class="doccomment">/// Set when [`accept_payload`](DragDropTarget::accept_payload) was called</span>
-    <span class="doccomment">/// and mouse has been hovering the target item.</span>
-    <span class="kw">pub</span> <span class="ident">preview</span>: <span class="ident">bool</span>,
+    <span class="doccomment">/// The size of the data in bytes.
+    </span><span class="kw">pub </span>size: usize,
 
-    <span class="doccomment">/// Set when [`accept_payload`](DragDropTarget::accept_payload) was</span>
-    <span class="doccomment">/// called and mouse button is released over the target item.</span>
-    <span class="kw">pub</span> <span class="ident">delivery</span>: <span class="ident">bool</span>,
+    <span class="doccomment">/// Set when [`accept_payload_unchecked`](DragDropTarget::accept_payload_unchecked) was called
+    /// and mouse has been hovering the target item.
+    </span><span class="kw">pub </span>preview: bool,
+
+    <span class="doccomment">/// Set when [`accept_payload_unchecked`](DragDropTarget::accept_payload_unchecked) was
+    /// called and mouse button is released over the target item. If this is set to false, then you
+    /// set DragDropFlags::ACCEPT_BEFORE_DELIVERY and shouldn&#39;t mutate `data`.
+    </span><span class="kw">pub </span>delivery: bool,
 }
 
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>)]</span>
-<span class="attribute">#[<span class="ident">non_exhaustive</span>]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">DragDropPayload</span> {
-    <span class="doccomment">/// Data which is copied and owned by ImGui. If you have accepted the payload, you can</span>
-    <span class="doccomment">/// take ownership of the data; otherwise, view it immutably. Interacting with `data` is</span>
-    <span class="doccomment">/// very unsafe.</span>
-    <span class="kw">pub</span> <span class="ident">data</span>: <span class="kw-2">*const</span> <span class="ident">ffi::c_void</span>,
-
-    <span class="doccomment">/// The size of the data in bytes.</span>
-    <span class="kw">pub</span> <span class="ident">size</span>: <span class="ident">usize</span>,
-
-    <span class="doccomment">/// Set when [`accept_payload_unchecked`](DragDropTarget::accept_payload_unchecked) was called</span>
-    <span class="doccomment">/// and mouse has been hovering the target item.</span>
-    <span class="kw">pub</span> <span class="ident">preview</span>: <span class="ident">bool</span>,
-
-    <span class="doccomment">/// Set when [`accept_payload_unchecked`](DragDropTarget::accept_payload_unchecked) was</span>
-    <span class="doccomment">/// called and mouse button is released over the target item. If this is set to false, then you</span>
-    <span class="doccomment">/// set DragDropFlags::ACCEPT_BEFORE_DELIVERY and shouldn&#39;t mutate `data`.</span>
-    <span class="kw">pub</span> <span class="ident">delivery</span>: <span class="ident">bool</span>,
+<span class="doccomment">/// A typed payload.
+</span><span class="attribute">#[derive(Debug, Clone, Copy)]
+#[repr(C)]
+</span><span class="kw">struct </span>TypedPayload&lt;T&gt; {
+    header: TypedPayloadHeader,
+    data: T,
 }
 
-<span class="doccomment">/// A typed payload.</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>)]</span>
-<span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
-<span class="kw">struct</span> <span class="ident">TypedPayload</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
-    <span class="ident">header</span>: <span class="ident">TypedPayloadHeader</span>,
-    <span class="ident">data</span>: <span class="ident">T</span>,
-}
-
-<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Copy</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span> <span class="ident">TypedPayload</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Creates a new typed payload which contains this data.</span>
-    <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">data</span>: <span class="ident">T</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">Self</span> {
-            <span class="ident">header</span>: <span class="ident">TypedPayloadHeader::new</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(),
-            <span class="ident">data</span>,
+<span class="kw">impl</span>&lt;T: Copy + <span class="lifetime">&#39;static</span>&gt; TypedPayload&lt;T&gt; {
+    <span class="doccomment">/// Creates a new typed payload which contains this data.
+    </span><span class="kw">fn </span>new(data: T) -&gt; <span class="self">Self </span>{
+        <span class="self">Self </span>{
+            header: TypedPayloadHeader::new::&lt;T&gt;(),
+            data,
         }
     }
 }
 
-<span class="doccomment">/// A header for a typed payload.</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Ord</span>, <span class="ident">PartialOrd</span>)]</span>
-<span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
-<span class="kw">struct</span> <span class="ident">TypedPayloadHeader</span> {
-    <span class="ident">type_id</span>: <span class="ident">any::TypeId</span>,
-    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">debug_assertions</span>)]</span>
-    <span class="ident">type_name</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>,
+<span class="doccomment">/// A header for a typed payload.
+</span><span class="attribute">#[derive(Debug, Clone, Copy, PartialEq, Eq, Ord, PartialOrd)]
+#[repr(C)]
+</span><span class="kw">struct </span>TypedPayloadHeader {
+    type_id: any::TypeId,
+    <span class="attribute">#[cfg(debug_assertions)]
+    </span>type_name: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str,
 }
 
-<span class="kw">impl</span> <span class="ident">TypedPayloadHeader</span> {
-    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">debug_assertions</span>)]</span>
-    <span class="kw">fn</span> <span class="ident">new</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="lifetime">&#39;static</span><span class="op">&gt;</span>() -&gt; <span class="self">Self</span> {
-        <span class="self">Self</span> {
-            <span class="ident">type_id</span>: <span class="ident">any::TypeId::of</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(),
-            <span class="ident">type_name</span>: <span class="ident">any::type_name</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(),
+<span class="kw">impl </span>TypedPayloadHeader {
+    <span class="attribute">#[cfg(debug_assertions)]
+    </span><span class="kw">fn </span>new&lt;T: <span class="lifetime">&#39;static</span>&gt;() -&gt; <span class="self">Self </span>{
+        <span class="self">Self </span>{
+            type_id: any::TypeId::of::&lt;T&gt;(),
+            type_name: any::type_name::&lt;T&gt;(),
         }
     }
 
-    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">debug_assertions</span>))]</span>
-    <span class="kw">fn</span> <span class="ident">new</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="lifetime">&#39;static</span><span class="op">&gt;</span>() -&gt; <span class="self">Self</span> {
-        <span class="self">Self</span> {
-            <span class="ident">type_id</span>: <span class="ident">any::TypeId::of</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(),
+    <span class="attribute">#[cfg(not(debug_assertions))]
+    </span><span class="kw">fn </span>new&lt;T: <span class="lifetime">&#39;static</span>&gt;() -&gt; <span class="self">Self </span>{
+        <span class="self">Self </span>{
+            type_id: any::TypeId::of::&lt;T&gt;(),
         }
     }
 }
 
-<span class="doccomment">/// Indicates that an incorrect payload type was received. It is opaque,</span>
-<span class="doccomment">/// but you can view useful information with Debug formatting when</span>
-<span class="doccomment">/// `debug_assertions` are enabled.</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Ord</span>, <span class="ident">PartialOrd</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">PayloadIsWrongType</span> {
-    <span class="ident">expected</span>: <span class="ident">TypedPayloadHeader</span>,
-    <span class="ident">received</span>: <span class="ident">TypedPayloadHeader</span>,
+<span class="doccomment">/// Indicates that an incorrect payload type was received. It is opaque,
+/// but you can view useful information with Debug formatting when
+/// `debug_assertions` are enabled.
+</span><span class="attribute">#[derive(Debug, Clone, Copy, PartialEq, Eq, Ord, PartialOrd)]
+</span><span class="kw">pub struct </span>PayloadIsWrongType {
+    expected: TypedPayloadHeader,
+    received: TypedPayloadHeader,
 }
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">debug_assertions</span>)]</span>
-<span class="kw">impl</span> <span class="ident">std::fmt::Display</span> <span class="kw">for</span> <span class="ident">PayloadIsWrongType</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;mut</span> <span class="ident">std::fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">std::fmt::Result</span> {
+<span class="attribute">#[cfg(debug_assertions)]
+</span><span class="kw">impl </span>std::fmt::Display <span class="kw">for </span>PayloadIsWrongType {
+    <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>std::fmt::Formatter&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; std::fmt::Result {
         <span class="macro">write!</span>(
-            <span class="ident">f</span>,
+            f,
             <span class="string">&quot;Payload is {} -- expected {}&quot;</span>,
-            <span class="self">self</span>.<span class="ident">received</span>.<span class="ident">type_name</span>, <span class="self">self</span>.<span class="ident">expected</span>.<span class="ident">type_name</span>
+            <span class="self">self</span>.received.type_name, <span class="self">self</span>.expected.type_name
         )
     }
 }
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">debug_assertions</span>))]</span>
-<span class="kw">impl</span> <span class="ident">std::fmt::Display</span> <span class="kw">for</span> <span class="ident">PayloadIsWrongType</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;mut</span> <span class="ident">std::fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">std::fmt::Result</span> {
-        <span class="ident">f</span>.<span class="ident">pad</span>(<span class="string">&quot;Payload is wrong type&quot;</span>)
+<span class="attribute">#[cfg(not(debug_assertions))]
+</span><span class="kw">impl </span>std::fmt::Display <span class="kw">for </span>PayloadIsWrongType {
+    <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>std::fmt::Formatter&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; std::fmt::Result {
+        f.pad(<span class="string">&quot;Payload is wrong type&quot;</span>)
     }
 }
 
-<span class="kw">impl</span> <span class="ident">std::error::Error</span> <span class="kw">for</span> <span class="ident">PayloadIsWrongType</span> {}
+<span class="kw">impl </span>std::error::Error <span class="kw">for </span>PayloadIsWrongType {}
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="arcdps_imgui" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="arcdps_imgui" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.0 (69f9c33d7 2022-12-12)" ></div></body></html>

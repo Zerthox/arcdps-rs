@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\arcdps-imgui-0.8.0\src\io.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>io.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script><script defer src="../../main.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../arcdps_imgui/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../arcdps_imgui/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../arcdps_imgui/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\arcdps-imgui-0.8.0\src\io.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>io.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../normalize.css"><link rel="stylesheet" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../ayu.css" disabled><link rel="stylesheet" href="../../dark.css" disabled><link rel="stylesheet" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script><script defer src="../../main.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../arcdps_imgui/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -487,494 +487,494 @@
 <span id="487">487</span>
 <span id="488">488</span>
 <span id="489">489</span>
-</pre><pre class="rust"><code><span class="kw">use</span> <span class="ident">bitflags::bitflags</span>;
-<span class="kw">use</span> <span class="ident">std::f32</span>;
-<span class="kw">use</span> <span class="ident">std::ops</span>::{<span class="ident">Index</span>, <span class="ident">IndexMut</span>};
-<span class="kw">use</span> <span class="ident">std::os::raw</span>::{<span class="ident">c_char</span>, <span class="ident">c_int</span>, <span class="ident">c_void</span>};
-<span class="kw">use</span> <span class="ident">std::time::Duration</span>;
+</pre><pre class="rust"><code><span class="kw">use </span>bitflags::bitflags;
+<span class="kw">use </span>std::f32;
+<span class="kw">use </span>std::ops::{Index, IndexMut};
+<span class="kw">use </span>std::os::raw::{c_char, c_int, c_void};
+<span class="kw">use </span>std::time::Duration;
 
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::fonts::atlas::FontAtlas</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::fonts::font::Font</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::input::keyboard::Key</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::input::mouse::MouseButton</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::internal</span>::{<span class="ident">ImVector</span>, <span class="ident">RawCast</span>};
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::sys</span>;
+<span class="kw">use </span><span class="kw">crate</span>::fonts::atlas::FontAtlas;
+<span class="kw">use </span><span class="kw">crate</span>::fonts::font::Font;
+<span class="kw">use </span><span class="kw">crate</span>::input::keyboard::Key;
+<span class="kw">use </span><span class="kw">crate</span>::input::mouse::MouseButton;
+<span class="kw">use </span><span class="kw">crate</span>::internal::{ImVector, RawCast};
+<span class="kw">use </span><span class="kw">crate</span>::sys;
 
-<span class="macro">bitflags!</span> {
-    <span class="doccomment">/// Configuration flags</span>
-    <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">transparent</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">ConfigFlags</span>: <span class="ident">u32</span> {
-        <span class="doccomment">/// Master keyboard navigation enable flag.</span>
-        <span class="doccomment">///</span>
-        <span class="doccomment">/// `frame()` will automatically fill `io.nav_inputs` based on `io.keys_down`.</span>
-        <span class="kw">const</span> <span class="ident">NAV_ENABLE_KEYBOARD</span> <span class="op">=</span> <span class="ident">sys::ImGuiConfigFlags_NavEnableKeyboard</span>;
-        <span class="doccomment">/// Master gamepad navigation enable flag.</span>
-        <span class="doccomment">///</span>
-        <span class="doccomment">/// This is mostly to instruct the backend to fill `io.nav_inputs`. The backend</span>
-        <span class="doccomment">/// also needs to set `BackendFlags::HasGamepad`.</span>
-        <span class="kw">const</span> <span class="ident">NAV_ENABLE_GAMEPAD</span> <span class="op">=</span> <span class="ident">sys::ImGuiConfigFlags_NavEnableGamepad</span>;
-        <span class="doccomment">/// Instruction navigation to move the mouse cursor.</span>
-        <span class="doccomment">///</span>
-        <span class="doccomment">/// May be useful on TV/console systems where moving a virtual mouse is awkward.</span>
-        <span class="doccomment">/// Will update `io.mouse_pos` and set `io.want_set_mouse_pos = true`. If enabled,</span>
-        <span class="doccomment">/// you *must* honor `io.want_set_mouse_pos`, or imgui-rs will react as if the mouse is</span>
-        <span class="doccomment">/// jumping around back and forth.</span>
-        <span class="kw">const</span> <span class="ident">NAV_ENABLE_SET_MOUSE_POS</span> <span class="op">=</span> <span class="ident">sys::ImGuiConfigFlags_NavEnableSetMousePos</span>;
-        <span class="doccomment">/// Instruction navigation to not set the `io.want_capture_keyboard` flag when</span>
-        <span class="doccomment">/// `io.nav_active` is set.</span>
-        <span class="kw">const</span> <span class="ident">NAV_NO_CAPTURE_KEYBOARD</span> <span class="op">=</span> <span class="ident">sys::ImGuiConfigFlags_NavNoCaptureKeyboard</span>;
-        <span class="doccomment">/// Instruction imgui-rs to clear mouse position/buttons in `frame()`.</span>
-        <span class="doccomment">///</span>
-        <span class="doccomment">/// This allows ignoring the mouse information set by the backend.</span>
-        <span class="kw">const</span> <span class="ident">NO_MOUSE</span> <span class="op">=</span> <span class="ident">sys::ImGuiConfigFlags_NoMouse</span>;
-        <span class="doccomment">/// Instruction backend to not alter mouse cursor shape and visibility.</span>
-        <span class="doccomment">///</span>
-        <span class="doccomment">/// Use if the backend cursor changes are interfering with yours and you don&#39;t want to use</span>
-        <span class="doccomment">/// `set_mouse_cursor` to change the mouse cursor. You may want to honor requests from</span>
-        <span class="doccomment">/// imgui-rs by reading `get_mouse_cursor` yourself instead.</span>
-        <span class="kw">const</span> <span class="ident">NO_MOUSE_CURSOR_CHANGE</span> <span class="op">=</span> <span class="ident">sys::ImGuiConfigFlags_NoMouseCursorChange</span>;
-        <span class="doccomment">/// Application is SRGB-aware.</span>
-        <span class="doccomment">///</span>
-        <span class="doccomment">/// Not used by core imgui-rs.</span>
-        <span class="kw">const</span> <span class="ident">IS_SRGB</span> <span class="op">=</span> <span class="ident">sys::ImGuiConfigFlags_IsSRGB</span>;
-        <span class="doccomment">/// Application is using a touch screen instead of a mouse.</span>
-        <span class="doccomment">///</span>
-        <span class="doccomment">/// Not used by core imgui-rs.</span>
-        <span class="kw">const</span> <span class="ident">IS_TOUCH_SCREEN</span> <span class="op">=</span> <span class="ident">sys::ImGuiConfigFlags_IsTouchScreen</span>;
+<span class="macro">bitflags! </span>{
+    <span class="doccomment">/// Configuration flags
+    </span><span class="attribute">#[repr(transparent)]
+    </span><span class="kw">pub struct </span>ConfigFlags: u32 {
+        <span class="doccomment">/// Master keyboard navigation enable flag.
+        ///
+        /// `frame()` will automatically fill `io.nav_inputs` based on `io.keys_down`.
+        </span><span class="kw">const </span>NAV_ENABLE_KEYBOARD = sys::ImGuiConfigFlags_NavEnableKeyboard;
+        <span class="doccomment">/// Master gamepad navigation enable flag.
+        ///
+        /// This is mostly to instruct the backend to fill `io.nav_inputs`. The backend
+        /// also needs to set `BackendFlags::HasGamepad`.
+        </span><span class="kw">const </span>NAV_ENABLE_GAMEPAD = sys::ImGuiConfigFlags_NavEnableGamepad;
+        <span class="doccomment">/// Instruction navigation to move the mouse cursor.
+        ///
+        /// May be useful on TV/console systems where moving a virtual mouse is awkward.
+        /// Will update `io.mouse_pos` and set `io.want_set_mouse_pos = true`. If enabled,
+        /// you *must* honor `io.want_set_mouse_pos`, or imgui-rs will react as if the mouse is
+        /// jumping around back and forth.
+        </span><span class="kw">const </span>NAV_ENABLE_SET_MOUSE_POS = sys::ImGuiConfigFlags_NavEnableSetMousePos;
+        <span class="doccomment">/// Instruction navigation to not set the `io.want_capture_keyboard` flag when
+        /// `io.nav_active` is set.
+        </span><span class="kw">const </span>NAV_NO_CAPTURE_KEYBOARD = sys::ImGuiConfigFlags_NavNoCaptureKeyboard;
+        <span class="doccomment">/// Instruction imgui-rs to clear mouse position/buttons in `frame()`.
+        ///
+        /// This allows ignoring the mouse information set by the backend.
+        </span><span class="kw">const </span>NO_MOUSE = sys::ImGuiConfigFlags_NoMouse;
+        <span class="doccomment">/// Instruction backend to not alter mouse cursor shape and visibility.
+        ///
+        /// Use if the backend cursor changes are interfering with yours and you don&#39;t want to use
+        /// `set_mouse_cursor` to change the mouse cursor. You may want to honor requests from
+        /// imgui-rs by reading `get_mouse_cursor` yourself instead.
+        </span><span class="kw">const </span>NO_MOUSE_CURSOR_CHANGE = sys::ImGuiConfigFlags_NoMouseCursorChange;
+        <span class="doccomment">/// Application is SRGB-aware.
+        ///
+        /// Not used by core imgui-rs.
+        </span><span class="kw">const </span>IS_SRGB = sys::ImGuiConfigFlags_IsSRGB;
+        <span class="doccomment">/// Application is using a touch screen instead of a mouse.
+        ///
+        /// Not used by core imgui-rs.
+        </span><span class="kw">const </span>IS_TOUCH_SCREEN = sys::ImGuiConfigFlags_IsTouchScreen;
     }
 }
 
-<span class="macro">bitflags!</span> {
-    <span class="doccomment">/// Backend capabilities</span>
-    <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">transparent</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">BackendFlags</span>: <span class="ident">u32</span> {
-        <span class="doccomment">/// Backend supports gamepad and currently has one connected</span>
-        <span class="kw">const</span> <span class="ident">HAS_GAMEPAD</span> <span class="op">=</span> <span class="ident">sys::ImGuiBackendFlags_HasGamepad</span>;
-        <span class="doccomment">/// Backend supports honoring `get_mouse_cursor` value to change the OS cursor shape</span>
-        <span class="kw">const</span> <span class="ident">HAS_MOUSE_CURSORS</span> <span class="op">=</span> <span class="ident">sys::ImGuiBackendFlags_HasMouseCursors</span>;
-        <span class="doccomment">/// Backend supports `io.want_set_mouse_pos` requests to reposition the OS mouse position.</span>
-        <span class="doccomment">///</span>
-        <span class="doccomment">/// Only used if `ConfigFlags::NavEnableSetMousePos` is set.</span>
-        <span class="kw">const</span> <span class="ident">HAS_SET_MOUSE_POS</span> <span class="op">=</span> <span class="ident">sys::ImGuiBackendFlags_HasSetMousePos</span>;
-        <span class="doccomment">/// Backend renderer supports DrawCmd::vtx_offset.</span>
-        <span class="doccomment">///</span>
-        <span class="doccomment">/// This enables output of large meshes (64K+ vertices) while still using 16-bits indices.</span>
-        <span class="kw">const</span> <span class="ident">RENDERER_HAS_VTX_OFFSET</span> <span class="op">=</span> <span class="ident">sys::ImGuiBackendFlags_RendererHasVtxOffset</span>;
+<span class="macro">bitflags! </span>{
+    <span class="doccomment">/// Backend capabilities
+    </span><span class="attribute">#[repr(transparent)]
+    </span><span class="kw">pub struct </span>BackendFlags: u32 {
+        <span class="doccomment">/// Backend supports gamepad and currently has one connected
+        </span><span class="kw">const </span>HAS_GAMEPAD = sys::ImGuiBackendFlags_HasGamepad;
+        <span class="doccomment">/// Backend supports honoring `get_mouse_cursor` value to change the OS cursor shape
+        </span><span class="kw">const </span>HAS_MOUSE_CURSORS = sys::ImGuiBackendFlags_HasMouseCursors;
+        <span class="doccomment">/// Backend supports `io.want_set_mouse_pos` requests to reposition the OS mouse position.
+        ///
+        /// Only used if `ConfigFlags::NavEnableSetMousePos` is set.
+        </span><span class="kw">const </span>HAS_SET_MOUSE_POS = sys::ImGuiBackendFlags_HasSetMousePos;
+        <span class="doccomment">/// Backend renderer supports DrawCmd::vtx_offset.
+        ///
+        /// This enables output of large meshes (64K+ vertices) while still using 16-bits indices.
+        </span><span class="kw">const </span>RENDERER_HAS_VTX_OFFSET = sys::ImGuiBackendFlags_RendererHasVtxOffset;
     }
 }
 
-<span class="doccomment">/// An input identifier for navigation</span>
-<span class="attribute">#[<span class="ident">repr</span>(<span class="ident">u32</span>)]</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">Hash</span>, <span class="ident">Eq</span>, <span class="ident">PartialEq</span>)]</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">NavInput</span> {
-    <span class="ident">Activate</span> <span class="op">=</span> <span class="ident">sys::ImGuiNavInput_Activate</span>,
-    <span class="ident">Cancel</span> <span class="op">=</span> <span class="ident">sys::ImGuiNavInput_Cancel</span>,
-    <span class="ident">Input</span> <span class="op">=</span> <span class="ident">sys::ImGuiNavInput_Input</span>,
-    <span class="ident">Menu</span> <span class="op">=</span> <span class="ident">sys::ImGuiNavInput_Menu</span>,
-    <span class="ident">DpadLeft</span> <span class="op">=</span> <span class="ident">sys::ImGuiNavInput_DpadLeft</span>,
-    <span class="ident">DpadRight</span> <span class="op">=</span> <span class="ident">sys::ImGuiNavInput_DpadRight</span>,
-    <span class="ident">DpadUp</span> <span class="op">=</span> <span class="ident">sys::ImGuiNavInput_DpadUp</span>,
-    <span class="ident">DpadDown</span> <span class="op">=</span> <span class="ident">sys::ImGuiNavInput_DpadDown</span>,
-    <span class="ident">LStickLeft</span> <span class="op">=</span> <span class="ident">sys::ImGuiNavInput_LStickLeft</span>,
-    <span class="ident">LStickRight</span> <span class="op">=</span> <span class="ident">sys::ImGuiNavInput_LStickRight</span>,
-    <span class="ident">LStickUp</span> <span class="op">=</span> <span class="ident">sys::ImGuiNavInput_LStickUp</span>,
-    <span class="ident">LStickDown</span> <span class="op">=</span> <span class="ident">sys::ImGuiNavInput_LStickDown</span>,
-    <span class="ident">FocusPrev</span> <span class="op">=</span> <span class="ident">sys::ImGuiNavInput_FocusPrev</span>,
-    <span class="ident">FocusNext</span> <span class="op">=</span> <span class="ident">sys::ImGuiNavInput_FocusNext</span>,
-    <span class="ident">TweakSlow</span> <span class="op">=</span> <span class="ident">sys::ImGuiNavInput_TweakSlow</span>,
-    <span class="ident">TweakFast</span> <span class="op">=</span> <span class="ident">sys::ImGuiNavInput_TweakFast</span>,
+<span class="doccomment">/// An input identifier for navigation
+</span><span class="attribute">#[repr(u32)]
+#[derive(Copy, Clone, Debug, Hash, Eq, PartialEq)]
+</span><span class="kw">pub enum </span>NavInput {
+    Activate = sys::ImGuiNavInput_Activate,
+    Cancel = sys::ImGuiNavInput_Cancel,
+    Input = sys::ImGuiNavInput_Input,
+    Menu = sys::ImGuiNavInput_Menu,
+    DpadLeft = sys::ImGuiNavInput_DpadLeft,
+    DpadRight = sys::ImGuiNavInput_DpadRight,
+    DpadUp = sys::ImGuiNavInput_DpadUp,
+    DpadDown = sys::ImGuiNavInput_DpadDown,
+    LStickLeft = sys::ImGuiNavInput_LStickLeft,
+    LStickRight = sys::ImGuiNavInput_LStickRight,
+    LStickUp = sys::ImGuiNavInput_LStickUp,
+    LStickDown = sys::ImGuiNavInput_LStickDown,
+    FocusPrev = sys::ImGuiNavInput_FocusPrev,
+    FocusNext = sys::ImGuiNavInput_FocusNext,
+    TweakSlow = sys::ImGuiNavInput_TweakSlow,
+    TweakFast = sys::ImGuiNavInput_TweakFast,
 }
 
-<span class="kw">impl</span> <span class="ident">NavInput</span> {
-    <span class="doccomment">/// All possible `NavInput` variants</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">VARIANTS</span>: [<span class="ident">NavInput</span>; <span class="ident">NavInput::COUNT</span>] <span class="op">=</span> [
-        <span class="ident">NavInput::Activate</span>,
-        <span class="ident">NavInput::Cancel</span>,
-        <span class="ident">NavInput::Input</span>,
-        <span class="ident">NavInput::Menu</span>,
-        <span class="ident">NavInput::DpadLeft</span>,
-        <span class="ident">NavInput::DpadRight</span>,
-        <span class="ident">NavInput::DpadUp</span>,
-        <span class="ident">NavInput::DpadDown</span>,
-        <span class="ident">NavInput::LStickLeft</span>,
-        <span class="ident">NavInput::LStickRight</span>,
-        <span class="ident">NavInput::LStickUp</span>,
-        <span class="ident">NavInput::LStickDown</span>,
-        <span class="ident">NavInput::FocusPrev</span>,
-        <span class="ident">NavInput::FocusNext</span>,
-        <span class="ident">NavInput::TweakSlow</span>,
-        <span class="ident">NavInput::TweakFast</span>,
+<span class="kw">impl </span>NavInput {
+    <span class="doccomment">/// All possible `NavInput` variants
+    </span><span class="kw">pub const </span>VARIANTS: [NavInput; NavInput::COUNT] = [
+        NavInput::Activate,
+        NavInput::Cancel,
+        NavInput::Input,
+        NavInput::Menu,
+        NavInput::DpadLeft,
+        NavInput::DpadRight,
+        NavInput::DpadUp,
+        NavInput::DpadDown,
+        NavInput::LStickLeft,
+        NavInput::LStickRight,
+        NavInput::LStickUp,
+        NavInput::LStickDown,
+        NavInput::FocusPrev,
+        NavInput::FocusNext,
+        NavInput::TweakSlow,
+        NavInput::TweakFast,
     ];
-    <span class="doccomment">/// Amount of internal/hidden variants (not exposed by imgui-rs)</span>
-    <span class="kw">const</span> <span class="ident">INTERNAL_COUNT</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="number">5</span>;
-    <span class="doccomment">/// Total count of `NavInput` variants</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">COUNT</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="ident">sys::ImGuiNavInput_COUNT</span> <span class="kw">as</span> <span class="ident">usize</span> <span class="op">-</span> <span class="ident">NavInput::INTERNAL_COUNT</span>;
+    <span class="doccomment">/// Amount of internal/hidden variants (not exposed by imgui-rs)
+    </span><span class="kw">const </span>INTERNAL_COUNT: usize = <span class="number">5</span>;
+    <span class="doccomment">/// Total count of `NavInput` variants
+    </span><span class="kw">pub const </span>COUNT: usize = sys::ImGuiNavInput_COUNT <span class="kw">as </span>usize - NavInput::INTERNAL_COUNT;
 }
 
-<span class="attribute">#[<span class="ident">test</span>]</span>
-<span class="kw">fn</span> <span class="ident">test_nav_input_variants</span>() {
-    <span class="kw">for</span> (<span class="ident">idx</span>, <span class="kw-2">&amp;</span><span class="ident">value</span>) <span class="kw">in</span> <span class="ident">NavInput::VARIANTS</span>.<span class="ident">iter</span>().<span class="ident">enumerate</span>() {
-        <span class="macro">assert_eq!</span>(<span class="ident">idx</span>, <span class="ident">value</span> <span class="kw">as</span> <span class="ident">usize</span>);
+<span class="attribute">#[test]
+</span><span class="kw">fn </span>test_nav_input_variants() {
+    <span class="kw">for </span>(idx, <span class="kw-2">&amp;</span>value) <span class="kw">in </span>NavInput::VARIANTS.iter().enumerate() {
+        <span class="macro">assert_eq!</span>(idx, value <span class="kw">as </span>usize);
     }
 }
 
-<span class="doccomment">/// Settings and inputs/outputs for imgui-rs</span>
-<span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Io</span> {
-    <span class="doccomment">/// Flags set by user/application</span>
-    <span class="kw">pub</span> <span class="ident">config_flags</span>: <span class="ident">ConfigFlags</span>,
-    <span class="doccomment">/// Flags set by backend</span>
-    <span class="kw">pub</span> <span class="ident">backend_flags</span>: <span class="ident">BackendFlags</span>,
-    <span class="doccomment">/// Main display size in pixels</span>
-    <span class="kw">pub</span> <span class="ident">display_size</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-    <span class="doccomment">/// Time elapsed since last frame, in seconds</span>
-    <span class="kw">pub</span> <span class="ident">delta_time</span>: <span class="ident">f32</span>,
-    <span class="doccomment">/// Minimum time between saving positions/sizes to .ini file, in seconds</span>
-    <span class="kw">pub</span> <span class="ident">ini_saving_rate</span>: <span class="ident">f32</span>,
+<span class="doccomment">/// Settings and inputs/outputs for imgui-rs
+</span><span class="attribute">#[repr(C)]
+</span><span class="kw">pub struct </span>Io {
+    <span class="doccomment">/// Flags set by user/application
+    </span><span class="kw">pub </span>config_flags: ConfigFlags,
+    <span class="doccomment">/// Flags set by backend
+    </span><span class="kw">pub </span>backend_flags: BackendFlags,
+    <span class="doccomment">/// Main display size in pixels
+    </span><span class="kw">pub </span>display_size: [f32; <span class="number">2</span>],
+    <span class="doccomment">/// Time elapsed since last frame, in seconds
+    </span><span class="kw">pub </span>delta_time: f32,
+    <span class="doccomment">/// Minimum time between saving positions/sizes to .ini file, in seconds
+    </span><span class="kw">pub </span>ini_saving_rate: f32,
 
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="ident">ini_filename</span>: <span class="kw-2">*const</span> <span class="ident">c_char</span>,
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="ident">log_filename</span>: <span class="kw-2">*const</span> <span class="ident">c_char</span>,
+    <span class="kw">pub</span>(<span class="kw">crate</span>) ini_filename: <span class="kw-2">*const </span>c_char,
+    <span class="kw">pub</span>(<span class="kw">crate</span>) log_filename: <span class="kw-2">*const </span>c_char,
 
-    <span class="doccomment">/// Time for a double-click, in seconds</span>
-    <span class="kw">pub</span> <span class="ident">mouse_double_click_time</span>: <span class="ident">f32</span>,
-    <span class="doccomment">/// Distance threshold to stay in to validate a double-click, in pixels</span>
-    <span class="kw">pub</span> <span class="ident">mouse_double_click_max_dist</span>: <span class="ident">f32</span>,
-    <span class="doccomment">/// Distance threshold before considering we are dragging</span>
-    <span class="kw">pub</span> <span class="ident">mouse_drag_threshold</span>: <span class="ident">f32</span>,
-    <span class="doccomment">/// Map of indices into the `keys_down` entries array, which represent your &quot;native&quot; keyboard</span>
-    <span class="doccomment">/// state</span>
-    <span class="kw">pub</span> <span class="ident">key_map</span>: [<span class="ident">u32</span>; <span class="ident">sys::ImGuiKey_COUNT</span> <span class="kw">as</span> <span class="ident">usize</span>],
-    <span class="doccomment">/// When holding a key/button, time before it starts repeating, in seconds</span>
-    <span class="kw">pub</span> <span class="ident">key_repeat_delay</span>: <span class="ident">f32</span>,
-    <span class="doccomment">/// When holding a key/button, rate at which it repeats, in seconds</span>
-    <span class="kw">pub</span> <span class="ident">key_repeat_rate</span>: <span class="ident">f32</span>,
+    <span class="doccomment">/// Time for a double-click, in seconds
+    </span><span class="kw">pub </span>mouse_double_click_time: f32,
+    <span class="doccomment">/// Distance threshold to stay in to validate a double-click, in pixels
+    </span><span class="kw">pub </span>mouse_double_click_max_dist: f32,
+    <span class="doccomment">/// Distance threshold before considering we are dragging
+    </span><span class="kw">pub </span>mouse_drag_threshold: f32,
+    <span class="doccomment">/// Map of indices into the `keys_down` entries array, which represent your &quot;native&quot; keyboard
+    /// state
+    </span><span class="kw">pub </span>key_map: [u32; sys::ImGuiKey_COUNT <span class="kw">as </span>usize],
+    <span class="doccomment">/// When holding a key/button, time before it starts repeating, in seconds
+    </span><span class="kw">pub </span>key_repeat_delay: f32,
+    <span class="doccomment">/// When holding a key/button, rate at which it repeats, in seconds
+    </span><span class="kw">pub </span>key_repeat_rate: f32,
 
-    <span class="ident">user_data</span>: <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="ident">fonts</span>: <span class="kw-2">*mut</span> <span class="ident">FontAtlas</span>,
+    user_data: <span class="kw-2">*mut </span>c_void,
+    <span class="kw">pub</span>(<span class="kw">crate</span>) fonts: <span class="kw-2">*mut </span>FontAtlas,
 
-    <span class="doccomment">/// Global scale for all fonts</span>
-    <span class="kw">pub</span> <span class="ident">font_global_scale</span>: <span class="ident">f32</span>,
-    <span class="doccomment">/// Allow user to scale text of individual window with CTRL+wheel</span>
-    <span class="kw">pub</span> <span class="ident">font_allow_user_scaling</span>: <span class="ident">bool</span>,
+    <span class="doccomment">/// Global scale for all fonts
+    </span><span class="kw">pub </span>font_global_scale: f32,
+    <span class="doccomment">/// Allow user to scale text of individual window with CTRL+wheel
+    </span><span class="kw">pub </span>font_allow_user_scaling: bool,
 
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="ident">font_default</span>: <span class="kw-2">*mut</span> <span class="ident">Font</span>,
+    <span class="kw">pub</span>(<span class="kw">crate</span>) font_default: <span class="kw-2">*mut </span>Font,
 
-    <span class="doccomment">/// For retina display or other situations where window coordinates are different from</span>
-    <span class="doccomment">/// framebuffer coordinates</span>
-    <span class="kw">pub</span> <span class="ident">display_framebuffer_scale</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
+    <span class="doccomment">/// For retina display or other situations where window coordinates are different from
+    /// framebuffer coordinates
+    </span><span class="kw">pub </span>display_framebuffer_scale: [f32; <span class="number">2</span>],
 
-    <span class="doccomment">/// Request imgui-rs to draw a mouse cursor for you</span>
-    <span class="kw">pub</span> <span class="ident">mouse_draw_cursor</span>: <span class="ident">bool</span>,
-    <span class="doccomment">/// macOS-style input behavior.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Defaults to true on Apple platforms. Changes in behavior:</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// * Text editing cursor movement using Alt instead of Ctrl</span>
-    <span class="doccomment">/// * Shortcuts using Cmd/Super instead of Ctrl</span>
-    <span class="doccomment">/// * Line/text start and end using Cmd+Arrows instead of Home/End</span>
-    <span class="doccomment">/// * Double-click selects by word instead of selecting the whole text</span>
-    <span class="doccomment">/// * Multi-selection in lists uses Cmd/Super instead of Ctrl</span>
-    <span class="kw">pub</span> <span class="ident">config_mac_os_behaviors</span>: <span class="ident">bool</span>,
-    <span class="doccomment">/// Set to false to disable blinking cursor</span>
-    <span class="kw">pub</span> <span class="ident">config_input_text_cursor_blink</span>: <span class="ident">bool</span>,
-    <span class="doccomment">/// Enable turning DragXXX widgets into text input with a simple mouse</span>
-    <span class="doccomment">/// click-release (without moving). Not desirable on devices without a</span>
-    <span class="doccomment">/// keyboard.</span>
-    <span class="kw">pub</span> <span class="ident">config_drag_click_to_input_text</span>: <span class="ident">bool</span>,
-    <span class="doccomment">/// Enable resizing of windows from their edges and from the lower-left corner.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Requires `HasMouserCursors` in `backend_flags`, because it needs mouse cursor feedback.</span>
-    <span class="kw">pub</span> <span class="ident">config_windows_resize_from_edges</span>: <span class="ident">bool</span>,
-    <span class="doccomment">/// Set to true to only allow moving windows when clicked+dragged from the title bar.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Windows without a title bar are not affected.</span>
-    <span class="kw">pub</span> <span class="ident">config_windows_move_from_title_bar_only</span>: <span class="ident">bool</span>,
-    <span class="doccomment">/// Compact memory usage when unused.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Set to -1.0 to disable.</span>
-    <span class="kw">pub</span> <span class="ident">config_memory_compact_timer</span>: <span class="ident">f32</span>,
+    <span class="doccomment">/// Request imgui-rs to draw a mouse cursor for you
+    </span><span class="kw">pub </span>mouse_draw_cursor: bool,
+    <span class="doccomment">/// macOS-style input behavior.
+    ///
+    /// Defaults to true on Apple platforms. Changes in behavior:
+    ///
+    /// * Text editing cursor movement using Alt instead of Ctrl
+    /// * Shortcuts using Cmd/Super instead of Ctrl
+    /// * Line/text start and end using Cmd+Arrows instead of Home/End
+    /// * Double-click selects by word instead of selecting the whole text
+    /// * Multi-selection in lists uses Cmd/Super instead of Ctrl
+    </span><span class="kw">pub </span>config_mac_os_behaviors: bool,
+    <span class="doccomment">/// Set to false to disable blinking cursor
+    </span><span class="kw">pub </span>config_input_text_cursor_blink: bool,
+    <span class="doccomment">/// Enable turning DragXXX widgets into text input with a simple mouse
+    /// click-release (without moving). Not desirable on devices without a
+    /// keyboard.
+    </span><span class="kw">pub </span>config_drag_click_to_input_text: bool,
+    <span class="doccomment">/// Enable resizing of windows from their edges and from the lower-left corner.
+    ///
+    /// Requires `HasMouserCursors` in `backend_flags`, because it needs mouse cursor feedback.
+    </span><span class="kw">pub </span>config_windows_resize_from_edges: bool,
+    <span class="doccomment">/// Set to true to only allow moving windows when clicked+dragged from the title bar.
+    ///
+    /// Windows without a title bar are not affected.
+    </span><span class="kw">pub </span>config_windows_move_from_title_bar_only: bool,
+    <span class="doccomment">/// Compact memory usage when unused.
+    ///
+    /// Set to -1.0 to disable.
+    </span><span class="kw">pub </span>config_memory_compact_timer: f32,
 
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="ident">backend_platform_name</span>: <span class="kw-2">*const</span> <span class="ident">c_char</span>,
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="ident">backend_renderer_name</span>: <span class="kw-2">*const</span> <span class="ident">c_char</span>,
-    <span class="ident">backend_platform_user_data</span>: <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-    <span class="ident">backend_renderer_user_data</span>: <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-    <span class="ident">backend_language_user_data</span>: <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="ident">get_clipboard_text_fn</span>:
-        <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span>(<span class="ident">user_data</span>: <span class="kw-2">*mut</span> <span class="ident">c_void</span>) -&gt; <span class="kw-2">*const</span> <span class="ident">c_char</span><span class="op">&gt;</span>,
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="ident">set_clipboard_text_fn</span>:
-        <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span>(<span class="ident">user_data</span>: <span class="kw-2">*mut</span> <span class="ident">c_void</span>, <span class="ident">text</span>: <span class="kw-2">*const</span> <span class="ident">c_char</span>)<span class="op">&gt;</span>,
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="ident">clipboard_user_data</span>: <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-    <span class="ident">ime_set_input_screen_pos_fn</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span>(<span class="ident">x</span>: <span class="ident">c_int</span>, <span class="ident">y</span>: <span class="ident">c_int</span>)<span class="op">&gt;</span>,
-    <span class="ident">ime_window_handle</span>: <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-    <span class="doccomment">/// Mouse position, in pixels.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Set to [f32::MAX, f32::MAX] if mouse is unavailable (on another screen, etc.).</span>
-    <span class="kw">pub</span> <span class="ident">mouse_pos</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-    <span class="doccomment">/// Mouse buttons: 0=left, 1=right, 2=middle + extras</span>
-    <span class="kw">pub</span> <span class="ident">mouse_down</span>: [<span class="ident">bool</span>; <span class="number">5</span>],
-    <span class="doccomment">/// Mouse wheel (vertical).</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// 1 unit scrolls about 5 lines of text.</span>
-    <span class="kw">pub</span> <span class="ident">mouse_wheel</span>: <span class="ident">f32</span>,
-    <span class="doccomment">/// Mouse wheel (horizontal).</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Most users don&#39;t have a mouse with a horizontal wheel, and may not be filled by all</span>
-    <span class="doccomment">/// backends.</span>
-    <span class="kw">pub</span> <span class="ident">mouse_wheel_h</span>: <span class="ident">f32</span>,
-    <span class="doccomment">/// Keyboard modifier pressed: Control</span>
-    <span class="kw">pub</span> <span class="ident">key_ctrl</span>: <span class="ident">bool</span>,
-    <span class="doccomment">/// Keyboard modifier pressed: Shift</span>
-    <span class="kw">pub</span> <span class="ident">key_shift</span>: <span class="ident">bool</span>,
-    <span class="doccomment">/// Keyboard modifier pressed: Alt</span>
-    <span class="kw">pub</span> <span class="ident">key_alt</span>: <span class="ident">bool</span>,
-    <span class="doccomment">/// Keyboard modifier pressed: Cmd/Super/Windows</span>
-    <span class="kw">pub</span> <span class="ident">key_super</span>: <span class="ident">bool</span>,
-    <span class="doccomment">/// Keyboard keys that are pressed (indexing defined by the user/application)</span>
-    <span class="kw">pub</span> <span class="ident">keys_down</span>: [<span class="ident">bool</span>; <span class="number">512</span>],
-    <span class="doccomment">/// Gamepad inputs.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Cleared back to zero after each frame. Keyboard keys will be auto-mapped and written</span>
-    <span class="doccomment">/// here by `frame()`.</span>
-    <span class="kw">pub</span> <span class="ident">nav_inputs</span>: [<span class="ident">f32</span>; <span class="ident">NavInput::COUNT</span> <span class="op">+</span> <span class="ident">NavInput::INTERNAL_COUNT</span>],
-    <span class="doccomment">/// When true, imgui-rs will use the mouse inputs, so do not dispatch them to your main</span>
-    <span class="doccomment">/// game/application</span>
-    <span class="kw">pub</span> <span class="ident">want_capture_mouse</span>: <span class="ident">bool</span>,
-    <span class="doccomment">/// When true, imgui-rs will use the keyboard inputs, so do not dispatch them to your main</span>
-    <span class="doccomment">/// game/application</span>
-    <span class="kw">pub</span> <span class="ident">want_capture_keyboard</span>: <span class="ident">bool</span>,
-    <span class="doccomment">/// Mobile/console: when true, you may display an on-screen keyboard.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This is set by imgui-rs when it wants textual keyboard input to happen.</span>
-    <span class="kw">pub</span> <span class="ident">want_text_input</span>: <span class="ident">bool</span>,
-    <span class="doccomment">/// Mouse position has been altered, so the backend should reposition the mouse on the next</span>
-    <span class="doccomment">/// frame.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Set only when `ConfigFlags::NavEnableSetMousePos` is enabled.</span>
-    <span class="kw">pub</span> <span class="ident">want_set_mouse_pos</span>: <span class="ident">bool</span>,
-    <span class="doccomment">/// When manual .ini load/save is active (`ini_filename` is `None`), this will be set to notify</span>
-    <span class="doccomment">/// your application that you can call `save_ini_settings` and save the settings yourself.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// *Important*: You need to clear this flag yourself</span>
-    <span class="kw">pub</span> <span class="ident">want_save_ini_settings</span>: <span class="ident">bool</span>,
-    <span class="doccomment">/// Keyboard/Gamepad navigation is currently allowed</span>
-    <span class="kw">pub</span> <span class="ident">nav_active</span>: <span class="ident">bool</span>,
-    <span class="doccomment">/// Keyboard/Gamepad navigation is visible and allowed</span>
-    <span class="kw">pub</span> <span class="ident">nav_visible</span>: <span class="ident">bool</span>,
-    <span class="doccomment">/// Application framerate estimation, in frames per second.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Rolling average estimation based on `io.delta_time` over 120 frames.</span>
-    <span class="kw">pub</span> <span class="ident">framerate</span>: <span class="ident">f32</span>,
-    <span class="doccomment">/// Vertices output during last rendering</span>
-    <span class="kw">pub</span> <span class="ident">metrics_render_vertices</span>: <span class="ident">i32</span>,
-    <span class="doccomment">/// Indices output during last rendering (= number of triangles * 3)</span>
-    <span class="kw">pub</span> <span class="ident">metrics_render_indices</span>: <span class="ident">i32</span>,
-    <span class="doccomment">/// Number of visible windows</span>
-    <span class="kw">pub</span> <span class="ident">metrics_render_windows</span>: <span class="ident">i32</span>,
-    <span class="doccomment">/// Number of active windows</span>
-    <span class="kw">pub</span> <span class="ident">metrics_active_windows</span>: <span class="ident">i32</span>,
-    <span class="doccomment">/// Number of active internal imgui-rs allocations</span>
-    <span class="kw">pub</span> <span class="ident">metrics_active_allocations</span>: <span class="ident">i32</span>,
-    <span class="doccomment">/// Mouse delta.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Note that this is zero if either current or previous position is invalid ([f32::MAX,</span>
-    <span class="doccomment">/// f32::MAX]), so a disappearing/reappearing mouse won&#39;t have a huge delta.</span>
-    <span class="kw">pub</span> <span class="ident">mouse_delta</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
+    <span class="kw">pub</span>(<span class="kw">crate</span>) backend_platform_name: <span class="kw-2">*const </span>c_char,
+    <span class="kw">pub</span>(<span class="kw">crate</span>) backend_renderer_name: <span class="kw-2">*const </span>c_char,
+    backend_platform_user_data: <span class="kw-2">*mut </span>c_void,
+    backend_renderer_user_data: <span class="kw-2">*mut </span>c_void,
+    backend_language_user_data: <span class="kw-2">*mut </span>c_void,
+    <span class="kw">pub</span>(<span class="kw">crate</span>) get_clipboard_text_fn:
+        <span class="prelude-ty">Option</span>&lt;<span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn</span>(user_data: <span class="kw-2">*mut </span>c_void) -&gt; <span class="kw-2">*const </span>c_char&gt;,
+    <span class="kw">pub</span>(<span class="kw">crate</span>) set_clipboard_text_fn:
+        <span class="prelude-ty">Option</span>&lt;<span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn</span>(user_data: <span class="kw-2">*mut </span>c_void, text: <span class="kw-2">*const </span>c_char)&gt;,
+    <span class="kw">pub</span>(<span class="kw">crate</span>) clipboard_user_data: <span class="kw-2">*mut </span>c_void,
+    ime_set_input_screen_pos_fn: <span class="prelude-ty">Option</span>&lt;<span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn</span>(x: c_int, y: c_int)&gt;,
+    ime_window_handle: <span class="kw-2">*mut </span>c_void,
+    <span class="doccomment">/// Mouse position, in pixels.
+    ///
+    /// Set to [f32::MAX, f32::MAX] if mouse is unavailable (on another screen, etc.).
+    </span><span class="kw">pub </span>mouse_pos: [f32; <span class="number">2</span>],
+    <span class="doccomment">/// Mouse buttons: 0=left, 1=right, 2=middle + extras
+    </span><span class="kw">pub </span>mouse_down: [bool; <span class="number">5</span>],
+    <span class="doccomment">/// Mouse wheel (vertical).
+    ///
+    /// 1 unit scrolls about 5 lines of text.
+    </span><span class="kw">pub </span>mouse_wheel: f32,
+    <span class="doccomment">/// Mouse wheel (horizontal).
+    ///
+    /// Most users don&#39;t have a mouse with a horizontal wheel, and may not be filled by all
+    /// backends.
+    </span><span class="kw">pub </span>mouse_wheel_h: f32,
+    <span class="doccomment">/// Keyboard modifier pressed: Control
+    </span><span class="kw">pub </span>key_ctrl: bool,
+    <span class="doccomment">/// Keyboard modifier pressed: Shift
+    </span><span class="kw">pub </span>key_shift: bool,
+    <span class="doccomment">/// Keyboard modifier pressed: Alt
+    </span><span class="kw">pub </span>key_alt: bool,
+    <span class="doccomment">/// Keyboard modifier pressed: Cmd/Super/Windows
+    </span><span class="kw">pub </span>key_super: bool,
+    <span class="doccomment">/// Keyboard keys that are pressed (indexing defined by the user/application)
+    </span><span class="kw">pub </span>keys_down: [bool; <span class="number">512</span>],
+    <span class="doccomment">/// Gamepad inputs.
+    ///
+    /// Cleared back to zero after each frame. Keyboard keys will be auto-mapped and written
+    /// here by `frame()`.
+    </span><span class="kw">pub </span>nav_inputs: [f32; NavInput::COUNT + NavInput::INTERNAL_COUNT],
+    <span class="doccomment">/// When true, imgui-rs will use the mouse inputs, so do not dispatch them to your main
+    /// game/application
+    </span><span class="kw">pub </span>want_capture_mouse: bool,
+    <span class="doccomment">/// When true, imgui-rs will use the keyboard inputs, so do not dispatch them to your main
+    /// game/application
+    </span><span class="kw">pub </span>want_capture_keyboard: bool,
+    <span class="doccomment">/// Mobile/console: when true, you may display an on-screen keyboard.
+    ///
+    /// This is set by imgui-rs when it wants textual keyboard input to happen.
+    </span><span class="kw">pub </span>want_text_input: bool,
+    <span class="doccomment">/// Mouse position has been altered, so the backend should reposition the mouse on the next
+    /// frame.
+    ///
+    /// Set only when `ConfigFlags::NavEnableSetMousePos` is enabled.
+    </span><span class="kw">pub </span>want_set_mouse_pos: bool,
+    <span class="doccomment">/// When manual .ini load/save is active (`ini_filename` is `None`), this will be set to notify
+    /// your application that you can call `save_ini_settings` and save the settings yourself.
+    ///
+    /// *Important*: You need to clear this flag yourself
+    </span><span class="kw">pub </span>want_save_ini_settings: bool,
+    <span class="doccomment">/// Keyboard/Gamepad navigation is currently allowed
+    </span><span class="kw">pub </span>nav_active: bool,
+    <span class="doccomment">/// Keyboard/Gamepad navigation is visible and allowed
+    </span><span class="kw">pub </span>nav_visible: bool,
+    <span class="doccomment">/// Application framerate estimation, in frames per second.
+    ///
+    /// Rolling average estimation based on `io.delta_time` over 120 frames.
+    </span><span class="kw">pub </span>framerate: f32,
+    <span class="doccomment">/// Vertices output during last rendering
+    </span><span class="kw">pub </span>metrics_render_vertices: i32,
+    <span class="doccomment">/// Indices output during last rendering (= number of triangles * 3)
+    </span><span class="kw">pub </span>metrics_render_indices: i32,
+    <span class="doccomment">/// Number of visible windows
+    </span><span class="kw">pub </span>metrics_render_windows: i32,
+    <span class="doccomment">/// Number of active windows
+    </span><span class="kw">pub </span>metrics_active_windows: i32,
+    <span class="doccomment">/// Number of active internal imgui-rs allocations
+    </span><span class="kw">pub </span>metrics_active_allocations: i32,
+    <span class="doccomment">/// Mouse delta.
+    ///
+    /// Note that this is zero if either current or previous position is invalid ([f32::MAX,
+    /// f32::MAX]), so a disappearing/reappearing mouse won&#39;t have a huge delta.
+    </span><span class="kw">pub </span>mouse_delta: [f32; <span class="number">2</span>],
 
-    <span class="ident">key_mods</span>: <span class="ident">sys::ImGuiKeyModFlags</span>,
-    <span class="ident">mouse_pos_prev</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-    <span class="ident">mouse_clicked_pos</span>: [[<span class="ident">f32</span>; <span class="number">2</span>]; <span class="number">5</span>],
-    <span class="ident">mouse_clicked_time</span>: [<span class="ident">f64</span>; <span class="number">5</span>],
-    <span class="ident">mouse_clicked</span>: [<span class="ident">bool</span>; <span class="number">5</span>],
-    <span class="ident">mouse_double_clicked</span>: [<span class="ident">bool</span>; <span class="number">5</span>],
-    <span class="ident">mouse_released</span>: [<span class="ident">bool</span>; <span class="number">5</span>],
-    <span class="ident">mouse_down_owned</span>: [<span class="ident">bool</span>; <span class="number">5</span>],
-    <span class="ident">mouse_down_was_double_click</span>: [<span class="ident">bool</span>; <span class="number">5</span>],
-    <span class="ident">mouse_down_duration</span>: [<span class="ident">f32</span>; <span class="number">5</span>],
-    <span class="ident">mouse_down_duration_prev</span>: [<span class="ident">f32</span>; <span class="number">5</span>],
-    <span class="ident">mouse_drag_max_distance_abs</span>: [[<span class="ident">f32</span>; <span class="number">2</span>]; <span class="number">5</span>],
-    <span class="ident">mouse_drag_max_distance_sqr</span>: [<span class="ident">f32</span>; <span class="number">5</span>],
-    <span class="ident">keys_down_duration</span>: [<span class="ident">f32</span>; <span class="number">512</span>],
-    <span class="ident">keys_down_duration_prev</span>: [<span class="ident">f32</span>; <span class="number">512</span>],
-    <span class="ident">nav_inputs_down_duration</span>: [<span class="ident">f32</span>; <span class="ident">NavInput::COUNT</span> <span class="op">+</span> <span class="ident">NavInput::INTERNAL_COUNT</span>],
-    <span class="ident">nav_inputs_down_duration_prev</span>: [<span class="ident">f32</span>; <span class="ident">NavInput::COUNT</span> <span class="op">+</span> <span class="ident">NavInput::INTERNAL_COUNT</span>],
-    <span class="ident">pen_pressure</span>: <span class="ident">f32</span>,
-    <span class="ident">input_queue_surrogate</span>: <span class="ident">sys::ImWchar16</span>,
-    <span class="ident">input_queue_characters</span>: <span class="ident">ImVector</span><span class="op">&lt;</span><span class="ident">sys::ImWchar</span><span class="op">&gt;</span>,
+    key_mods: sys::ImGuiKeyModFlags,
+    mouse_pos_prev: [f32; <span class="number">2</span>],
+    mouse_clicked_pos: [[f32; <span class="number">2</span>]; <span class="number">5</span>],
+    mouse_clicked_time: [f64; <span class="number">5</span>],
+    mouse_clicked: [bool; <span class="number">5</span>],
+    mouse_double_clicked: [bool; <span class="number">5</span>],
+    mouse_released: [bool; <span class="number">5</span>],
+    mouse_down_owned: [bool; <span class="number">5</span>],
+    mouse_down_was_double_click: [bool; <span class="number">5</span>],
+    mouse_down_duration: [f32; <span class="number">5</span>],
+    mouse_down_duration_prev: [f32; <span class="number">5</span>],
+    mouse_drag_max_distance_abs: [[f32; <span class="number">2</span>]; <span class="number">5</span>],
+    mouse_drag_max_distance_sqr: [f32; <span class="number">5</span>],
+    keys_down_duration: [f32; <span class="number">512</span>],
+    keys_down_duration_prev: [f32; <span class="number">512</span>],
+    nav_inputs_down_duration: [f32; NavInput::COUNT + NavInput::INTERNAL_COUNT],
+    nav_inputs_down_duration_prev: [f32; NavInput::COUNT + NavInput::INTERNAL_COUNT],
+    pen_pressure: f32,
+    input_queue_surrogate: sys::ImWchar16,
+    input_queue_characters: ImVector&lt;sys::ImWchar&gt;,
 }
 
-<span class="kw">unsafe</span> <span class="kw">impl</span> <span class="ident">RawCast</span><span class="op">&lt;</span><span class="ident">sys::ImGuiIO</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Io</span> {}
+<span class="kw">unsafe impl </span>RawCast&lt;sys::ImGuiIO&gt; <span class="kw">for </span>Io {}
 
-<span class="kw">impl</span> <span class="ident">Io</span> {
-    <span class="doccomment">/// Queue new character input</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;AddInputCharactersUTF8&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">add_input_character</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">character</span>: <span class="ident">char</span>) {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">buf</span> <span class="op">=</span> [<span class="number">0</span>; <span class="number">5</span>];
-        <span class="ident">character</span>.<span class="ident">encode_utf8</span>(<span class="kw-2">&amp;mut</span> <span class="ident">buf</span>);
-        <span class="kw">unsafe</span> {
-            <span class="ident">sys::ImGuiIO_AddInputCharactersUTF8</span>(<span class="self">self</span>.<span class="ident">raw_mut</span>(), <span class="ident">buf</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw-2">*const</span> <span class="kw">_</span>);
+<span class="kw">impl </span>Io {
+    <span class="doccomment">/// Queue new character input
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;AddInputCharactersUTF8&quot;</span>)]
+    </span><span class="kw">pub fn </span>add_input_character(<span class="kw-2">&amp;mut </span><span class="self">self</span>, character: char) {
+        <span class="kw">let </span><span class="kw-2">mut </span>buf = [<span class="number">0</span>; <span class="number">5</span>];
+        character.encode_utf8(<span class="kw-2">&amp;mut </span>buf);
+        <span class="kw">unsafe </span>{
+            sys::ImGuiIO_AddInputCharactersUTF8(<span class="self">self</span>.raw_mut(), buf.as_ptr() <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>);
         }
     }
-    <span class="doccomment">/// Clear character input buffer</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;ClearCharacters&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">clear_input_characters</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
-        <span class="kw">unsafe</span> {
-            <span class="ident">sys::ImGuiIO_ClearInputCharacters</span>(<span class="self">self</span>.<span class="ident">raw_mut</span>());
+    <span class="doccomment">/// Clear character input buffer
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;ClearCharacters&quot;</span>)]
+    </span><span class="kw">pub fn </span>clear_input_characters(<span class="kw-2">&amp;mut </span><span class="self">self</span>) {
+        <span class="kw">unsafe </span>{
+            sys::ImGuiIO_ClearInputCharacters(<span class="self">self</span>.raw_mut());
         }
     }
-    <span class="doccomment">/// Peek character input buffer, return a copy of entire buffer</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">peek_input_characters</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">String</span> {
-        <span class="kw">let</span> <span class="ident">c16_slice</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">input_queue_characters</span>.<span class="ident">as_slice</span>();
-        <span class="ident">String::from_utf16</span>(<span class="ident">c16_slice</span>).<span class="ident">unwrap</span>()
+    <span class="doccomment">/// Peek character input buffer, return a copy of entire buffer
+    </span><span class="kw">pub fn </span>peek_input_characters(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; String {
+        <span class="kw">let </span>c16_slice = <span class="self">self</span>.input_queue_characters.as_slice();
+        String::from_utf16(c16_slice).unwrap()
     }
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">update_delta_time</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">delta</span>: <span class="ident">Duration</span>) {
-        <span class="kw">let</span> <span class="ident">delta_s</span> <span class="op">=</span> <span class="ident">delta</span>.<span class="ident">as_secs</span>() <span class="kw">as</span> <span class="ident">f32</span> <span class="op">+</span> <span class="ident">delta</span>.<span class="ident">subsec_nanos</span>() <span class="kw">as</span> <span class="ident">f32</span> <span class="op">/</span> <span class="number">1_000_000_000.0</span>;
-        <span class="kw">if</span> <span class="ident">delta_s</span> <span class="op">&gt;</span> <span class="number">0.0</span> {
-            <span class="self">self</span>.<span class="ident">delta_time</span> <span class="op">=</span> <span class="ident">delta_s</span>;
-        } <span class="kw">else</span> {
-            <span class="self">self</span>.<span class="ident">delta_time</span> <span class="op">=</span> <span class="ident">f32::MIN_POSITIVE</span>;
+    <span class="kw">pub fn </span>update_delta_time(<span class="kw-2">&amp;mut </span><span class="self">self</span>, delta: Duration) {
+        <span class="kw">let </span>delta_s = delta.as_secs() <span class="kw">as </span>f32 + delta.subsec_nanos() <span class="kw">as </span>f32 / <span class="number">1_000_000_000.0</span>;
+        <span class="kw">if </span>delta_s &gt; <span class="number">0.0 </span>{
+            <span class="self">self</span>.delta_time = delta_s;
+        } <span class="kw">else </span>{
+            <span class="self">self</span>.delta_time = f32::MIN_POSITIVE;
         }
-        <span class="self">self</span>.<span class="ident">delta_time</span> <span class="op">=</span> <span class="ident">delta_s</span>;
+        <span class="self">self</span>.delta_time = delta_s;
     }
 }
 
-<span class="kw">impl</span> <span class="ident">Index</span><span class="op">&lt;</span><span class="ident">Key</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Io</span> {
-    <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="ident">u32</span>;
-    <span class="kw">fn</span> <span class="ident">index</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">index</span>: <span class="ident">Key</span>) -&gt; <span class="kw-2">&amp;</span><span class="ident">u32</span> {
-        <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">key_map</span>[<span class="ident">index</span> <span class="kw">as</span> <span class="ident">usize</span>]
+<span class="kw">impl </span>Index&lt;Key&gt; <span class="kw">for </span>Io {
+    <span class="kw">type </span>Output = u32;
+    <span class="kw">fn </span>index(<span class="kw-2">&amp;</span><span class="self">self</span>, index: Key) -&gt; <span class="kw-2">&amp;</span>u32 {
+        <span class="kw-2">&amp;</span><span class="self">self</span>.key_map[index <span class="kw">as </span>usize]
     }
 }
 
-<span class="kw">impl</span> <span class="ident">IndexMut</span><span class="op">&lt;</span><span class="ident">Key</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Io</span> {
-    <span class="kw">fn</span> <span class="ident">index_mut</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">index</span>: <span class="ident">Key</span>) -&gt; <span class="kw-2">&amp;mut</span> <span class="ident">u32</span> {
-        <span class="kw-2">&amp;mut</span> <span class="self">self</span>.<span class="ident">key_map</span>[<span class="ident">index</span> <span class="kw">as</span> <span class="ident">usize</span>]
+<span class="kw">impl </span>IndexMut&lt;Key&gt; <span class="kw">for </span>Io {
+    <span class="kw">fn </span>index_mut(<span class="kw-2">&amp;mut </span><span class="self">self</span>, index: Key) -&gt; <span class="kw-2">&amp;mut </span>u32 {
+        <span class="kw-2">&amp;mut </span><span class="self">self</span>.key_map[index <span class="kw">as </span>usize]
     }
 }
 
-<span class="kw">impl</span> <span class="ident">Index</span><span class="op">&lt;</span><span class="ident">NavInput</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Io</span> {
-    <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="ident">f32</span>;
-    <span class="kw">fn</span> <span class="ident">index</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">index</span>: <span class="ident">NavInput</span>) -&gt; <span class="kw-2">&amp;</span><span class="ident">f32</span> {
-        <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">nav_inputs</span>[<span class="ident">index</span> <span class="kw">as</span> <span class="ident">usize</span>]
+<span class="kw">impl </span>Index&lt;NavInput&gt; <span class="kw">for </span>Io {
+    <span class="kw">type </span>Output = f32;
+    <span class="kw">fn </span>index(<span class="kw-2">&amp;</span><span class="self">self</span>, index: NavInput) -&gt; <span class="kw-2">&amp;</span>f32 {
+        <span class="kw-2">&amp;</span><span class="self">self</span>.nav_inputs[index <span class="kw">as </span>usize]
     }
 }
 
-<span class="kw">impl</span> <span class="ident">IndexMut</span><span class="op">&lt;</span><span class="ident">NavInput</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Io</span> {
-    <span class="kw">fn</span> <span class="ident">index_mut</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">index</span>: <span class="ident">NavInput</span>) -&gt; <span class="kw-2">&amp;mut</span> <span class="ident">f32</span> {
-        <span class="kw-2">&amp;mut</span> <span class="self">self</span>.<span class="ident">nav_inputs</span>[<span class="ident">index</span> <span class="kw">as</span> <span class="ident">usize</span>]
+<span class="kw">impl </span>IndexMut&lt;NavInput&gt; <span class="kw">for </span>Io {
+    <span class="kw">fn </span>index_mut(<span class="kw-2">&amp;mut </span><span class="self">self</span>, index: NavInput) -&gt; <span class="kw-2">&amp;mut </span>f32 {
+        <span class="kw-2">&amp;mut </span><span class="self">self</span>.nav_inputs[index <span class="kw">as </span>usize]
     }
 }
 
-<span class="kw">impl</span> <span class="ident">Index</span><span class="op">&lt;</span><span class="ident">MouseButton</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Io</span> {
-    <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="ident">bool</span>;
-    <span class="kw">fn</span> <span class="ident">index</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">index</span>: <span class="ident">MouseButton</span>) -&gt; <span class="kw-2">&amp;</span><span class="ident">bool</span> {
-        <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">mouse_down</span>[<span class="ident">index</span> <span class="kw">as</span> <span class="ident">usize</span>]
+<span class="kw">impl </span>Index&lt;MouseButton&gt; <span class="kw">for </span>Io {
+    <span class="kw">type </span>Output = bool;
+    <span class="kw">fn </span>index(<span class="kw-2">&amp;</span><span class="self">self</span>, index: MouseButton) -&gt; <span class="kw-2">&amp;</span>bool {
+        <span class="kw-2">&amp;</span><span class="self">self</span>.mouse_down[index <span class="kw">as </span>usize]
     }
 }
 
-<span class="kw">impl</span> <span class="ident">IndexMut</span><span class="op">&lt;</span><span class="ident">MouseButton</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Io</span> {
-    <span class="kw">fn</span> <span class="ident">index_mut</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">index</span>: <span class="ident">MouseButton</span>) -&gt; <span class="kw-2">&amp;mut</span> <span class="ident">bool</span> {
-        <span class="kw-2">&amp;mut</span> <span class="self">self</span>.<span class="ident">mouse_down</span>[<span class="ident">index</span> <span class="kw">as</span> <span class="ident">usize</span>]
+<span class="kw">impl </span>IndexMut&lt;MouseButton&gt; <span class="kw">for </span>Io {
+    <span class="kw">fn </span>index_mut(<span class="kw-2">&amp;mut </span><span class="self">self</span>, index: MouseButton) -&gt; <span class="kw-2">&amp;mut </span>bool {
+        <span class="kw-2">&amp;mut </span><span class="self">self</span>.mouse_down[index <span class="kw">as </span>usize]
     }
 }
 
-<span class="attribute">#[<span class="ident">test</span>]</span>
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">test</span>)]</span>
-<span class="kw">fn</span> <span class="ident">test_io_memory_layout</span>() {
-    <span class="kw">use</span> <span class="ident">std::mem</span>;
-    <span class="macro">assert_eq!</span>(<span class="ident">mem::size_of</span>::<span class="op">&lt;</span><span class="ident">Io</span><span class="op">&gt;</span>(), <span class="ident">mem::size_of</span>::<span class="op">&lt;</span><span class="ident">sys::ImGuiIO</span><span class="op">&gt;</span>());
-    <span class="macro">assert_eq!</span>(<span class="ident">mem::align_of</span>::<span class="op">&lt;</span><span class="ident">Io</span><span class="op">&gt;</span>(), <span class="ident">mem::align_of</span>::<span class="op">&lt;</span><span class="ident">sys::ImGuiIO</span><span class="op">&gt;</span>());
-    <span class="kw">use</span> <span class="ident">sys::ImGuiIO</span>;
-    <span class="macro">macro_rules!</span> <span class="ident">assert_field_offset</span> {
-        (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">l</span>:<span class="ident">ident</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">r</span>:<span class="ident">ident</span>) =&gt; {
+<span class="attribute">#[test]
+#[cfg(test)]
+</span><span class="kw">fn </span>test_io_memory_layout() {
+    <span class="kw">use </span>std::mem;
+    <span class="macro">assert_eq!</span>(mem::size_of::&lt;Io&gt;(), mem::size_of::&lt;sys::ImGuiIO&gt;());
+    <span class="macro">assert_eq!</span>(mem::align_of::&lt;Io&gt;(), mem::align_of::&lt;sys::ImGuiIO&gt;());
+    <span class="kw">use </span>sys::ImGuiIO;
+    <span class="macro">macro_rules! </span>assert_field_offset {
+        (<span class="macro-nonterminal">$l</span>:ident, <span class="macro-nonterminal">$r</span>:ident) =&gt; {
             <span class="macro">assert_eq!</span>(
-                <span class="macro">memoffset::offset_of!</span>(<span class="ident">Io</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">l</span>),
-                <span class="macro">memoffset::offset_of!</span>(<span class="ident">ImGuiIO</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">r</span>)
+                <span class="macro">memoffset::offset_of!</span>(Io, <span class="macro-nonterminal">$l</span>),
+                <span class="macro">memoffset::offset_of!</span>(ImGuiIO, <span class="macro-nonterminal">$r</span>)
             );
         };
     }
-    <span class="macro">assert_field_offset!</span>(<span class="ident">config_flags</span>, <span class="ident">ConfigFlags</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">backend_flags</span>, <span class="ident">BackendFlags</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">display_size</span>, <span class="ident">DisplaySize</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">delta_time</span>, <span class="ident">DeltaTime</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">ini_saving_rate</span>, <span class="ident">IniSavingRate</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">ini_filename</span>, <span class="ident">IniFilename</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">log_filename</span>, <span class="ident">LogFilename</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">mouse_double_click_time</span>, <span class="ident">MouseDoubleClickTime</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">mouse_double_click_max_dist</span>, <span class="ident">MouseDoubleClickMaxDist</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">mouse_drag_threshold</span>, <span class="ident">MouseDragThreshold</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">key_map</span>, <span class="ident">KeyMap</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">key_repeat_delay</span>, <span class="ident">KeyRepeatDelay</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">key_repeat_rate</span>, <span class="ident">KeyRepeatRate</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">user_data</span>, <span class="ident">UserData</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">fonts</span>, <span class="ident">Fonts</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">font_global_scale</span>, <span class="ident">FontGlobalScale</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">font_allow_user_scaling</span>, <span class="ident">FontAllowUserScaling</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">font_default</span>, <span class="ident">FontDefault</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">display_framebuffer_scale</span>, <span class="ident">DisplayFramebufferScale</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">mouse_draw_cursor</span>, <span class="ident">MouseDrawCursor</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">config_mac_os_behaviors</span>, <span class="ident">ConfigMacOSXBehaviors</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">config_input_text_cursor_blink</span>, <span class="ident">ConfigInputTextCursorBlink</span>);
+    <span class="macro">assert_field_offset!</span>(config_flags, ConfigFlags);
+    <span class="macro">assert_field_offset!</span>(backend_flags, BackendFlags);
+    <span class="macro">assert_field_offset!</span>(display_size, DisplaySize);
+    <span class="macro">assert_field_offset!</span>(delta_time, DeltaTime);
+    <span class="macro">assert_field_offset!</span>(ini_saving_rate, IniSavingRate);
+    <span class="macro">assert_field_offset!</span>(ini_filename, IniFilename);
+    <span class="macro">assert_field_offset!</span>(log_filename, LogFilename);
+    <span class="macro">assert_field_offset!</span>(mouse_double_click_time, MouseDoubleClickTime);
+    <span class="macro">assert_field_offset!</span>(mouse_double_click_max_dist, MouseDoubleClickMaxDist);
+    <span class="macro">assert_field_offset!</span>(mouse_drag_threshold, MouseDragThreshold);
+    <span class="macro">assert_field_offset!</span>(key_map, KeyMap);
+    <span class="macro">assert_field_offset!</span>(key_repeat_delay, KeyRepeatDelay);
+    <span class="macro">assert_field_offset!</span>(key_repeat_rate, KeyRepeatRate);
+    <span class="macro">assert_field_offset!</span>(user_data, UserData);
+    <span class="macro">assert_field_offset!</span>(fonts, Fonts);
+    <span class="macro">assert_field_offset!</span>(font_global_scale, FontGlobalScale);
+    <span class="macro">assert_field_offset!</span>(font_allow_user_scaling, FontAllowUserScaling);
+    <span class="macro">assert_field_offset!</span>(font_default, FontDefault);
+    <span class="macro">assert_field_offset!</span>(display_framebuffer_scale, DisplayFramebufferScale);
+    <span class="macro">assert_field_offset!</span>(mouse_draw_cursor, MouseDrawCursor);
+    <span class="macro">assert_field_offset!</span>(config_mac_os_behaviors, ConfigMacOSXBehaviors);
+    <span class="macro">assert_field_offset!</span>(config_input_text_cursor_blink, ConfigInputTextCursorBlink);
     <span class="macro">assert_field_offset!</span>(
-        <span class="ident">config_windows_resize_from_edges</span>,
-        <span class="ident">ConfigWindowsResizeFromEdges</span>
+        config_windows_resize_from_edges,
+        ConfigWindowsResizeFromEdges
     );
     <span class="macro">assert_field_offset!</span>(
-        <span class="ident">config_windows_move_from_title_bar_only</span>,
-        <span class="ident">ConfigWindowsMoveFromTitleBarOnly</span>
+        config_windows_move_from_title_bar_only,
+        ConfigWindowsMoveFromTitleBarOnly
     );
-    <span class="macro">assert_field_offset!</span>(<span class="ident">backend_platform_name</span>, <span class="ident">BackendPlatformName</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">backend_renderer_name</span>, <span class="ident">BackendRendererName</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">backend_platform_user_data</span>, <span class="ident">BackendPlatformUserData</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">backend_renderer_user_data</span>, <span class="ident">BackendRendererUserData</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">backend_language_user_data</span>, <span class="ident">BackendLanguageUserData</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">get_clipboard_text_fn</span>, <span class="ident">GetClipboardTextFn</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">set_clipboard_text_fn</span>, <span class="ident">SetClipboardTextFn</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">clipboard_user_data</span>, <span class="ident">ClipboardUserData</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">ime_set_input_screen_pos_fn</span>, <span class="ident">ImeSetInputScreenPosFn</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">ime_window_handle</span>, <span class="ident">ImeWindowHandle</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">mouse_pos</span>, <span class="ident">MousePos</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">mouse_down</span>, <span class="ident">MouseDown</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">mouse_wheel</span>, <span class="ident">MouseWheel</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">mouse_wheel_h</span>, <span class="ident">MouseWheelH</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">key_ctrl</span>, <span class="ident">KeyCtrl</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">key_shift</span>, <span class="ident">KeyShift</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">key_alt</span>, <span class="ident">KeyAlt</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">key_super</span>, <span class="ident">KeySuper</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">keys_down</span>, <span class="ident">KeysDown</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">nav_inputs</span>, <span class="ident">NavInputs</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">want_capture_mouse</span>, <span class="ident">WantCaptureMouse</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">want_capture_keyboard</span>, <span class="ident">WantCaptureKeyboard</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">want_text_input</span>, <span class="ident">WantTextInput</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">want_set_mouse_pos</span>, <span class="ident">WantSetMousePos</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">want_save_ini_settings</span>, <span class="ident">WantSaveIniSettings</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">nav_active</span>, <span class="ident">NavActive</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">nav_visible</span>, <span class="ident">NavVisible</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">framerate</span>, <span class="ident">Framerate</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">metrics_render_vertices</span>, <span class="ident">MetricsRenderVertices</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">metrics_render_indices</span>, <span class="ident">MetricsRenderIndices</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">metrics_render_windows</span>, <span class="ident">MetricsRenderWindows</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">metrics_active_windows</span>, <span class="ident">MetricsActiveWindows</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">metrics_active_allocations</span>, <span class="ident">MetricsActiveAllocations</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">mouse_delta</span>, <span class="ident">MouseDelta</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">key_mods</span>, <span class="ident">KeyMods</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">mouse_pos_prev</span>, <span class="ident">MousePosPrev</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">mouse_clicked_pos</span>, <span class="ident">MouseClickedPos</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">mouse_clicked_time</span>, <span class="ident">MouseClickedTime</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">mouse_clicked</span>, <span class="ident">MouseClicked</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">mouse_double_clicked</span>, <span class="ident">MouseDoubleClicked</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">mouse_released</span>, <span class="ident">MouseReleased</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">mouse_down_owned</span>, <span class="ident">MouseDownOwned</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">mouse_down_was_double_click</span>, <span class="ident">MouseDownWasDoubleClick</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">mouse_down_duration</span>, <span class="ident">MouseDownDuration</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">mouse_down_duration_prev</span>, <span class="ident">MouseDownDurationPrev</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">mouse_drag_max_distance_abs</span>, <span class="ident">MouseDragMaxDistanceAbs</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">mouse_drag_max_distance_sqr</span>, <span class="ident">MouseDragMaxDistanceSqr</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">keys_down_duration</span>, <span class="ident">KeysDownDuration</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">keys_down_duration_prev</span>, <span class="ident">KeysDownDurationPrev</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">nav_inputs_down_duration</span>, <span class="ident">NavInputsDownDuration</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">nav_inputs_down_duration_prev</span>, <span class="ident">NavInputsDownDurationPrev</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">pen_pressure</span>, <span class="ident">PenPressure</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">input_queue_surrogate</span>, <span class="ident">InputQueueSurrogate</span>);
-    <span class="macro">assert_field_offset!</span>(<span class="ident">input_queue_characters</span>, <span class="ident">InputQueueCharacters</span>);
+    <span class="macro">assert_field_offset!</span>(backend_platform_name, BackendPlatformName);
+    <span class="macro">assert_field_offset!</span>(backend_renderer_name, BackendRendererName);
+    <span class="macro">assert_field_offset!</span>(backend_platform_user_data, BackendPlatformUserData);
+    <span class="macro">assert_field_offset!</span>(backend_renderer_user_data, BackendRendererUserData);
+    <span class="macro">assert_field_offset!</span>(backend_language_user_data, BackendLanguageUserData);
+    <span class="macro">assert_field_offset!</span>(get_clipboard_text_fn, GetClipboardTextFn);
+    <span class="macro">assert_field_offset!</span>(set_clipboard_text_fn, SetClipboardTextFn);
+    <span class="macro">assert_field_offset!</span>(clipboard_user_data, ClipboardUserData);
+    <span class="macro">assert_field_offset!</span>(ime_set_input_screen_pos_fn, ImeSetInputScreenPosFn);
+    <span class="macro">assert_field_offset!</span>(ime_window_handle, ImeWindowHandle);
+    <span class="macro">assert_field_offset!</span>(mouse_pos, MousePos);
+    <span class="macro">assert_field_offset!</span>(mouse_down, MouseDown);
+    <span class="macro">assert_field_offset!</span>(mouse_wheel, MouseWheel);
+    <span class="macro">assert_field_offset!</span>(mouse_wheel_h, MouseWheelH);
+    <span class="macro">assert_field_offset!</span>(key_ctrl, KeyCtrl);
+    <span class="macro">assert_field_offset!</span>(key_shift, KeyShift);
+    <span class="macro">assert_field_offset!</span>(key_alt, KeyAlt);
+    <span class="macro">assert_field_offset!</span>(key_super, KeySuper);
+    <span class="macro">assert_field_offset!</span>(keys_down, KeysDown);
+    <span class="macro">assert_field_offset!</span>(nav_inputs, NavInputs);
+    <span class="macro">assert_field_offset!</span>(want_capture_mouse, WantCaptureMouse);
+    <span class="macro">assert_field_offset!</span>(want_capture_keyboard, WantCaptureKeyboard);
+    <span class="macro">assert_field_offset!</span>(want_text_input, WantTextInput);
+    <span class="macro">assert_field_offset!</span>(want_set_mouse_pos, WantSetMousePos);
+    <span class="macro">assert_field_offset!</span>(want_save_ini_settings, WantSaveIniSettings);
+    <span class="macro">assert_field_offset!</span>(nav_active, NavActive);
+    <span class="macro">assert_field_offset!</span>(nav_visible, NavVisible);
+    <span class="macro">assert_field_offset!</span>(framerate, Framerate);
+    <span class="macro">assert_field_offset!</span>(metrics_render_vertices, MetricsRenderVertices);
+    <span class="macro">assert_field_offset!</span>(metrics_render_indices, MetricsRenderIndices);
+    <span class="macro">assert_field_offset!</span>(metrics_render_windows, MetricsRenderWindows);
+    <span class="macro">assert_field_offset!</span>(metrics_active_windows, MetricsActiveWindows);
+    <span class="macro">assert_field_offset!</span>(metrics_active_allocations, MetricsActiveAllocations);
+    <span class="macro">assert_field_offset!</span>(mouse_delta, MouseDelta);
+    <span class="macro">assert_field_offset!</span>(key_mods, KeyMods);
+    <span class="macro">assert_field_offset!</span>(mouse_pos_prev, MousePosPrev);
+    <span class="macro">assert_field_offset!</span>(mouse_clicked_pos, MouseClickedPos);
+    <span class="macro">assert_field_offset!</span>(mouse_clicked_time, MouseClickedTime);
+    <span class="macro">assert_field_offset!</span>(mouse_clicked, MouseClicked);
+    <span class="macro">assert_field_offset!</span>(mouse_double_clicked, MouseDoubleClicked);
+    <span class="macro">assert_field_offset!</span>(mouse_released, MouseReleased);
+    <span class="macro">assert_field_offset!</span>(mouse_down_owned, MouseDownOwned);
+    <span class="macro">assert_field_offset!</span>(mouse_down_was_double_click, MouseDownWasDoubleClick);
+    <span class="macro">assert_field_offset!</span>(mouse_down_duration, MouseDownDuration);
+    <span class="macro">assert_field_offset!</span>(mouse_down_duration_prev, MouseDownDurationPrev);
+    <span class="macro">assert_field_offset!</span>(mouse_drag_max_distance_abs, MouseDragMaxDistanceAbs);
+    <span class="macro">assert_field_offset!</span>(mouse_drag_max_distance_sqr, MouseDragMaxDistanceSqr);
+    <span class="macro">assert_field_offset!</span>(keys_down_duration, KeysDownDuration);
+    <span class="macro">assert_field_offset!</span>(keys_down_duration_prev, KeysDownDurationPrev);
+    <span class="macro">assert_field_offset!</span>(nav_inputs_down_duration, NavInputsDownDuration);
+    <span class="macro">assert_field_offset!</span>(nav_inputs_down_duration_prev, NavInputsDownDurationPrev);
+    <span class="macro">assert_field_offset!</span>(pen_pressure, PenPressure);
+    <span class="macro">assert_field_offset!</span>(input_queue_surrogate, InputQueueSurrogate);
+    <span class="macro">assert_field_offset!</span>(input_queue_characters, InputQueueCharacters);
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="arcdps_imgui" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="arcdps_imgui" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.0 (69f9c33d7 2022-12-12)" ></div></body></html>

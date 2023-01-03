@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `codegen\src\lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script><script defer src="../../main.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../arcdps_codegen/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../arcdps_codegen/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../arcdps_codegen/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `arcdps_codegen\src\lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../normalize.css"><link rel="stylesheet" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../ayu.css" disabled><link rel="stylesheet" href="../../dark.css" disabled><link rel="stylesheet" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script><script defer src="../../main.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../arcdps_codegen/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -172,179 +172,183 @@
 <span id="172">172</span>
 <span id="173">173</span>
 <span id="174">174</span>
-</pre><pre class="rust"><code><span class="kw">mod</span> <span class="ident">callbacks</span>;
-<span class="kw">mod</span> <span class="ident">export</span>;
-<span class="kw">mod</span> <span class="ident">parse</span>;
+<span id="175">175</span>
+<span id="176">176</span>
+</pre><pre class="rust"><code><span class="kw">mod </span>callbacks;
+<span class="kw">mod </span>export;
+<span class="kw">mod </span>parse;
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;extras&quot;</span>)]</span>
-<span class="kw">mod</span> <span class="ident">extras</span>;
+<span class="attribute">#[cfg(feature = <span class="string">&quot;extras&quot;</span>)]
+</span><span class="kw">mod </span>extras;
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;extras&quot;</span>)]</span>
-<span class="kw">use</span> <span class="ident">extras::ExtrasGen</span>;
+<span class="attribute">#[cfg(feature = <span class="string">&quot;extras&quot;</span>)]
+</span><span class="kw">use </span>extras::ExtrasGen;
 
-<span class="kw">use</span> <span class="ident">cfg_if::cfg_if</span>;
-<span class="kw">use</span> <span class="ident">proc_macro2</span>::{<span class="ident">Span</span>, <span class="ident">TokenStream</span>};
-<span class="kw">use</span> <span class="ident">quote</span>::{<span class="ident">quote</span>, <span class="ident">quote_spanned</span>};
-<span class="kw">use</span> <span class="ident">syn</span>::{<span class="ident">Expr</span>, <span class="ident">LitStr</span>};
+<span class="kw">use </span>cfg_if::cfg_if;
+<span class="kw">use </span>proc_macro2::{Span, TokenStream};
+<span class="kw">use </span>quote::{quote, quote_spanned};
+<span class="kw">use </span>syn::{Expr, LitStr};
 
-<span class="doccomment">/// Creates plugin exports for ArcDPS.</span>
-<span class="attribute">#[<span class="ident">proc_macro</span>]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">export</span>(<span class="ident">item</span>: <span class="ident">proc_macro::TokenStream</span>) -&gt; <span class="ident">proc_macro::TokenStream</span> {
-    <span class="kw">let</span> <span class="ident">input</span> <span class="op">=</span> <span class="macro">syn::parse_macro_input!</span>(<span class="ident">item</span> <span class="kw">as</span> <span class="ident">ArcDpsGen</span>);
+<span class="doccomment">/// Creates plugin exports for ArcDPS.
+</span><span class="attribute">#[proc_macro]
+</span><span class="kw">pub fn </span>export(item: proc_macro::TokenStream) -&gt; proc_macro::TokenStream {
+    <span class="kw">let </span>input = <span class="macro">syn::parse_macro_input!</span>(item <span class="kw">as </span>ArcDpsGen);
 
-    <span class="kw">let</span> <span class="ident">export</span> <span class="op">=</span> <span class="ident">input</span>.<span class="ident">build_export</span>();
+    <span class="kw">let </span>export = input.build_export();
 
-    <span class="kw">let</span> <span class="ident">extras_funcs</span> <span class="op">=</span> {
-        <span class="macro">cfg_if!</span> {
-            <span class="kw">if</span> <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;extras&quot;</span>)]</span> {
-                <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="ident">input</span>.<span class="ident">gen_name_cstr</span>();
-                <span class="ident">input</span>.<span class="ident">extras</span>.<span class="ident">build</span>(<span class="ident">name</span>)
-            } <span class="kw">else</span> {
-                <span class="macro">quote!</span> {}
+    <span class="kw">let </span>extras_funcs = {
+        <span class="macro">cfg_if! </span>{
+            <span class="kw">if </span><span class="attribute">#[cfg(feature = <span class="string">&quot;extras&quot;</span>)] </span>{
+                <span class="kw">let </span>name = input.gen_name_cstr();
+                input.extras.build(name)
+            } <span class="kw">else </span>{
+                <span class="macro">quote! </span>{}
             }
         }
     };
 
-    <span class="kw">let</span> <span class="ident">result</span> <span class="op">=</span> <span class="macro">quote!</span> {
-        <span class="kw">mod</span> <span class="ident">__arcdps_gen_export</span> {
-            <span class="kw">use</span> <span class="kw">super</span>::<span class="kw-2">*</span>;
-            <span class="kw">use</span> <span class="ident">::arcdps::__macro::prelude</span>::<span class="kw-2">*</span>;
+    <span class="kw">let </span>result = <span class="macro">quote! </span>{
+        <span class="kw">mod </span>__arcdps_gen_export {
+            <span class="kw">use super</span>::<span class="kw-2">*</span>;
+            <span class="kw">use </span>::arcdps::__macro::prelude::<span class="kw-2">*</span>;
 
-            #<span class="ident">export</span>
+            #export
 
-            #<span class="ident">extras_funcs</span>
+            #extras_funcs
         }
     };
 
-    <span class="ident">result</span>.<span class="ident">into</span>()
+    result.into()
 }
 
-<span class="doccomment">/// Helper to generate code.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// Holds information about macro input.</span>
-<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">struct</span> <span class="ident">ArcDpsGen</span> {
-    <span class="ident">name</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">LitStr</span><span class="op">&gt;</span>,
-    <span class="ident">sig</span>: <span class="ident">Expr</span>,
-    <span class="ident">init</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
-    <span class="ident">release</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
+<span class="doccomment">/// Helper to generate code.
+///
+/// Holds information about macro input.
+</span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">struct </span>ArcDpsGen {
+    name: <span class="prelude-ty">Option</span>&lt;LitStr&gt;,
+    sig: Expr,
+    init: <span class="prelude-ty">Option</span>&lt;Expr&gt;,
+    release: <span class="prelude-ty">Option</span>&lt;Expr&gt;,
+    update_url: <span class="prelude-ty">Option</span>&lt;Expr&gt;,
 
-    <span class="ident">raw_combat</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
-    <span class="ident">combat</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
+    raw_combat: <span class="prelude-ty">Option</span>&lt;Expr&gt;,
+    combat: <span class="prelude-ty">Option</span>&lt;Expr&gt;,
 
-    <span class="ident">raw_combat_local</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
-    <span class="ident">combat_local</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
+    raw_combat_local: <span class="prelude-ty">Option</span>&lt;Expr&gt;,
+    combat_local: <span class="prelude-ty">Option</span>&lt;Expr&gt;,
 
-    <span class="ident">raw_imgui</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
-    <span class="ident">imgui</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
+    raw_imgui: <span class="prelude-ty">Option</span>&lt;Expr&gt;,
+    imgui: <span class="prelude-ty">Option</span>&lt;Expr&gt;,
 
-    <span class="ident">raw_options_end</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
-    <span class="ident">options_end</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
+    raw_options_end: <span class="prelude-ty">Option</span>&lt;Expr&gt;,
+    options_end: <span class="prelude-ty">Option</span>&lt;Expr&gt;,
 
-    <span class="ident">raw_options_windows</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
-    <span class="ident">options_windows</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
+    raw_options_windows: <span class="prelude-ty">Option</span>&lt;Expr&gt;,
+    options_windows: <span class="prelude-ty">Option</span>&lt;Expr&gt;,
 
-    <span class="ident">raw_wnd_filter</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
-    <span class="ident">wnd_filter</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
+    raw_wnd_filter: <span class="prelude-ty">Option</span>&lt;Expr&gt;,
+    wnd_filter: <span class="prelude-ty">Option</span>&lt;Expr&gt;,
 
-    <span class="ident">raw_wnd_nofilter</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
-    <span class="ident">wnd_nofilter</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
+    raw_wnd_nofilter: <span class="prelude-ty">Option</span>&lt;Expr&gt;,
+    wnd_nofilter: <span class="prelude-ty">Option</span>&lt;Expr&gt;,
 
-    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;extras&quot;</span>)]</span>
-    <span class="ident">extras</span>: <span class="ident">ExtrasGen</span>,
+    <span class="attribute">#[cfg(feature = <span class="string">&quot;extras&quot;</span>)]
+    </span>extras: ExtrasGen,
 }
 
-<span class="kw">impl</span> <span class="ident">Default</span> <span class="kw">for</span> <span class="ident">ArcDpsGen</span> {
-    <span class="kw">fn</span> <span class="ident">default</span>() -&gt; <span class="self">Self</span> {
-        <span class="self">Self</span> {
-            <span class="ident">name</span>: <span class="prelude-val">None</span>,
-            <span class="ident">sig</span>: <span class="ident">Expr::Verbatim</span>(<span class="ident">TokenStream::new</span>()),
-            <span class="ident">init</span>: <span class="prelude-val">None</span>,
-            <span class="ident">release</span>: <span class="prelude-val">None</span>,
+<span class="kw">impl </span>Default <span class="kw">for </span>ArcDpsGen {
+    <span class="kw">fn </span>default() -&gt; <span class="self">Self </span>{
+        <span class="self">Self </span>{
+            name: <span class="prelude-val">None</span>,
+            sig: Expr::Verbatim(TokenStream::new()),
+            init: <span class="prelude-val">None</span>,
+            release: <span class="prelude-val">None</span>,
+            update_url: <span class="prelude-val">None</span>,
 
-            <span class="ident">raw_combat</span>: <span class="prelude-val">None</span>,
-            <span class="ident">combat</span>: <span class="prelude-val">None</span>,
+            raw_combat: <span class="prelude-val">None</span>,
+            combat: <span class="prelude-val">None</span>,
 
-            <span class="ident">raw_combat_local</span>: <span class="prelude-val">None</span>,
-            <span class="ident">combat_local</span>: <span class="prelude-val">None</span>,
+            raw_combat_local: <span class="prelude-val">None</span>,
+            combat_local: <span class="prelude-val">None</span>,
 
-            <span class="ident">raw_imgui</span>: <span class="prelude-val">None</span>,
-            <span class="ident">imgui</span>: <span class="prelude-val">None</span>,
+            raw_imgui: <span class="prelude-val">None</span>,
+            imgui: <span class="prelude-val">None</span>,
 
-            <span class="ident">raw_options_end</span>: <span class="prelude-val">None</span>,
-            <span class="ident">options_end</span>: <span class="prelude-val">None</span>,
+            raw_options_end: <span class="prelude-val">None</span>,
+            options_end: <span class="prelude-val">None</span>,
 
-            <span class="ident">raw_options_windows</span>: <span class="prelude-val">None</span>,
-            <span class="ident">options_windows</span>: <span class="prelude-val">None</span>,
+            raw_options_windows: <span class="prelude-val">None</span>,
+            options_windows: <span class="prelude-val">None</span>,
 
-            <span class="ident">raw_wnd_filter</span>: <span class="prelude-val">None</span>,
-            <span class="ident">wnd_filter</span>: <span class="prelude-val">None</span>,
+            raw_wnd_filter: <span class="prelude-val">None</span>,
+            wnd_filter: <span class="prelude-val">None</span>,
 
-            <span class="ident">raw_wnd_nofilter</span>: <span class="prelude-val">None</span>,
-            <span class="ident">wnd_nofilter</span>: <span class="prelude-val">None</span>,
+            raw_wnd_nofilter: <span class="prelude-val">None</span>,
+            wnd_nofilter: <span class="prelude-val">None</span>,
 
-            <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;extras&quot;</span>)]</span>
-            <span class="ident">extras</span>: <span class="ident">ExtrasGen::default</span>(),
+            <span class="attribute">#[cfg(feature = <span class="string">&quot;extras&quot;</span>)]
+            </span>extras: ExtrasGen::default(),
         }
     }
 }
 
-<span class="doccomment">/// Helper to represent callback information.</span>
-<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">struct</span> <span class="ident">CallbackInfo</span> {
-    <span class="kw">pub</span> <span class="ident">function</span>: <span class="ident">TokenStream</span>,
-    <span class="kw">pub</span> <span class="ident">value</span>: <span class="ident">TokenStream</span>,
+<span class="doccomment">/// Helper to represent callback information.
+</span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">struct </span>CallbackInfo {
+    <span class="kw">pub </span>function: TokenStream,
+    <span class="kw">pub </span>value: TokenStream,
 }
 
-<span class="kw">impl</span> <span class="ident">CallbackInfo</span> {
-    <span class="doccomment">/// Creates a new callback info from token streams.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">function</span>: <span class="ident">TokenStream</span>, <span class="ident">value</span>: <span class="ident">TokenStream</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">Self</span> { <span class="ident">function</span>, <span class="ident">value</span> }
+<span class="kw">impl </span>CallbackInfo {
+    <span class="doccomment">/// Creates a new callback info from token streams.
+    </span><span class="kw">pub fn </span>new(function: TokenStream, value: TokenStream) -&gt; <span class="self">Self </span>{
+        <span class="self">Self </span>{ function, value }
     }
 
-    <span class="doccomment">/// Helper to build a callback.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// `raw` is the value of the raw callback if passed to the macro.</span>
-    <span class="doccomment">/// `safe` is the value of the safe callback if passed to the macro.</span>
-    <span class="doccomment">/// `name` is the name of the abstract wrapper function for the safe version.</span>
-    <span class="doccomment">/// `wrapper` generates the abstract wrapper if needed.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build</span>(
-        <span class="ident">raw</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
-        <span class="ident">safe</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
-        <span class="ident">name</span>: <span class="ident">TokenStream</span>,
-        <span class="ident">wrapper</span>: <span class="kw">impl</span> <span class="ident">FnOnce</span>(<span class="kw-2">&amp;</span><span class="ident">Expr</span>, <span class="ident">Span</span>) -&gt; <span class="ident">TokenStream</span>,
-    ) -&gt; <span class="ident">CallbackInfo</span> {
-        <span class="ident"><span class="self">Self</span>::build_optional</span>(<span class="ident">raw</span>, <span class="ident">safe</span>, <span class="ident">name</span>, <span class="ident">wrapper</span>)
-            .<span class="ident">unwrap_or_else</span>(<span class="op">|</span><span class="op">|</span> <span class="ident">CallbackInfo::new</span>(<span class="macro">quote!</span> {}, <span class="macro">quote!</span> { <span class="prelude-val">None</span> }))
+    <span class="doccomment">/// Helper to build a callback.
+    ///
+    /// `raw` is the value of the raw callback if passed to the macro.
+    /// `safe` is the value of the safe callback if passed to the macro.
+    /// `name` is the name of the abstract wrapper function for the safe version.
+    /// `wrapper` generates the abstract wrapper if needed.
+    </span><span class="kw">pub fn </span>build(
+        raw: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>Expr&gt;,
+        safe: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>Expr&gt;,
+        name: TokenStream,
+        wrapper: <span class="kw">impl </span>FnOnce(<span class="kw-2">&amp;</span>Expr, Span) -&gt; TokenStream,
+    ) -&gt; CallbackInfo {
+        <span class="self">Self</span>::build_optional(raw, safe, name, wrapper)
+            .unwrap_or_else(|| CallbackInfo::new(<span class="macro">quote! </span>{}, <span class="macro">quote! </span>{ <span class="prelude-val">None </span>}))
     }
 
-    <span class="doccomment">/// Helper to build an optional callback.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// See `build` for more info.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build_optional</span>(
-        <span class="ident">raw</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
-        <span class="ident">safe</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">Expr</span><span class="op">&gt;</span>,
-        <span class="ident">name</span>: <span class="ident">TokenStream</span>,
-        <span class="ident">wrapper</span>: <span class="kw">impl</span> <span class="ident">FnOnce</span>(<span class="kw-2">&amp;</span><span class="ident">Expr</span>, <span class="ident">Span</span>) -&gt; <span class="ident">TokenStream</span>,
-    ) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">CallbackInfo</span><span class="op">&gt;</span> {
-        <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">raw</span>) <span class="op">=</span> <span class="ident">raw</span> {
-            <span class="kw">let</span> <span class="ident">span</span> <span class="op">=</span> <span class="ident">syn::Error::new_spanned</span>(<span class="kw-2">&amp;</span><span class="ident">raw</span>, <span class="string">&quot;&quot;</span>).<span class="ident">span</span>();
-            <span class="kw">let</span> <span class="ident">value</span> <span class="op">=</span> <span class="macro">quote_spanned!</span>(<span class="ident">span</span>=&gt; <span class="prelude-val">Some</span>((#<span class="ident">raw</span>) <span class="kw">as</span> <span class="kw">_</span>) );
+    <span class="doccomment">/// Helper to build an optional callback.
+    ///
+    /// See `build` for more info.
+    </span><span class="kw">pub fn </span>build_optional(
+        raw: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>Expr&gt;,
+        safe: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>Expr&gt;,
+        name: TokenStream,
+        wrapper: <span class="kw">impl </span>FnOnce(<span class="kw-2">&amp;</span>Expr, Span) -&gt; TokenStream,
+    ) -&gt; <span class="prelude-ty">Option</span>&lt;CallbackInfo&gt; {
+        <span class="kw">if let </span><span class="prelude-val">Some</span>(raw) = raw {
+            <span class="kw">let </span>span = syn::Error::new_spanned(raw, <span class="string">&quot;&quot;</span>).span();
+            <span class="kw">let </span>value = <span class="macro">quote_spanned!</span>(span=&gt; <span class="prelude-val">Some</span>((#raw) <span class="kw">as _</span>) );
 
-            <span class="prelude-val">Some</span>(<span class="ident">CallbackInfo::new</span>(<span class="macro">quote!</span> {}, <span class="ident">value</span>))
-        } <span class="kw">else</span> <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">safe</span>) <span class="op">=</span> <span class="ident">safe</span> {
-            <span class="kw">let</span> <span class="ident">span</span> <span class="op">=</span> <span class="ident">syn::Error::new_spanned</span>(<span class="kw-2">&amp;</span><span class="ident">safe</span>, <span class="string">&quot;&quot;</span>).<span class="ident">span</span>();
-            <span class="kw">let</span> <span class="ident">func</span> <span class="op">=</span> <span class="ident">wrapper</span>(<span class="ident">safe</span>, <span class="ident">span</span>);
-            <span class="kw">let</span> <span class="ident">value</span> <span class="op">=</span> <span class="macro">quote_spanned!</span>(<span class="ident">span</span>=&gt; <span class="prelude-val">Some</span>(<span class="self">self</span>::#<span class="ident">name</span> <span class="kw">as</span> <span class="kw">_</span>) );
+            <span class="prelude-val">Some</span>(CallbackInfo::new(<span class="macro">quote! </span>{}, value))
+        } <span class="kw">else if let </span><span class="prelude-val">Some</span>(safe) = safe {
+            <span class="kw">let </span>span = syn::Error::new_spanned(safe, <span class="string">&quot;&quot;</span>).span();
+            <span class="kw">let </span>func = wrapper(safe, span);
+            <span class="kw">let </span>value = <span class="macro">quote_spanned!</span>(span=&gt; <span class="prelude-val">Some</span>(<span class="self">self</span>::#name <span class="kw">as _</span>) );
 
-            <span class="prelude-val">Some</span>(<span class="ident">CallbackInfo::new</span>(<span class="ident">func</span>, <span class="ident">value</span>))
-        } <span class="kw">else</span> {
-            <span class="prelude-val">None</span>
-        }
+            <span class="prelude-val">Some</span>(CallbackInfo::new(func, value))
+        } <span class="kw">else </span>{
+            <span class="prelude-val">None
+        </span>}
     }
 
-    <span class="doccomment">/// Returns the callback info as tuple.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">into_tuple</span>(<span class="self">self</span>) -&gt; (<span class="ident">TokenStream</span>, <span class="ident">TokenStream</span>) {
-        (<span class="self">self</span>.<span class="ident">function</span>, <span class="self">self</span>.<span class="ident">value</span>)
+    <span class="doccomment">/// Returns the callback info as tuple.
+    </span><span class="kw">pub fn </span>into_tuple(<span class="self">self</span>) -&gt; (TokenStream, TokenStream) {
+        (<span class="self">self</span>.function, <span class="self">self</span>.value)
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="arcdps_codegen" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="arcdps_codegen" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.0 (69f9c33d7 2022-12-12)" ></div></body></html>

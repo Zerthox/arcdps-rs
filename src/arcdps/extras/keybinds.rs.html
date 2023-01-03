@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `core\src\extras\keybinds.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>keybinds.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../arcdps/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../arcdps/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../arcdps/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `arcdps\src\extras\keybinds.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>keybinds.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../normalize.css"><link rel="stylesheet" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../ayu.css" disabled><link rel="stylesheet" href="../../../dark.css" disabled><link rel="stylesheet" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../../arcdps/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -521,528 +521,588 @@
 <span id="521">521</span>
 <span id="522">522</span>
 <span id="523">523</span>
-</pre><pre class="rust"><code><span class="kw">use</span> <span class="ident">num_enum</span>::{<span class="ident">FromPrimitive</span>, <span class="ident">IntoPrimitive</span>, <span class="ident">TryFromPrimitive</span>};
+<span id="524">524</span>
+<span id="525">525</span>
+<span id="526">526</span>
+<span id="527">527</span>
+<span id="528">528</span>
+<span id="529">529</span>
+<span id="530">530</span>
+<span id="531">531</span>
+<span id="532">532</span>
+<span id="533">533</span>
+<span id="534">534</span>
+<span id="535">535</span>
+<span id="536">536</span>
+<span id="537">537</span>
+<span id="538">538</span>
+<span id="539">539</span>
+<span id="540">540</span>
+<span id="541">541</span>
+<span id="542">542</span>
+<span id="543">543</span>
+<span id="544">544</span>
+<span id="545">545</span>
+<span id="546">546</span>
+<span id="547">547</span>
+<span id="548">548</span>
+<span id="549">549</span>
+<span id="550">550</span>
+<span id="551">551</span>
+<span id="552">552</span>
+<span id="553">553</span>
+</pre><pre class="rust"><code><span class="kw">use </span>num_enum::{FromPrimitive, IntoPrimitive, TryFromPrimitive};
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>)]</span>
-<span class="kw">use</span> <span class="ident">serde</span>::{<span class="ident">Deserialize</span>, <span class="ident">Serialize</span>};
+<span class="attribute">#[cfg(feature = <span class="string">&quot;serde&quot;</span>)]
+</span><span class="kw">use </span>serde::{Deserialize, Serialize};
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;strum&quot;</span>)]</span>
-<span class="kw">use</span> <span class="ident">strum</span>::{<span class="ident">Display</span>, <span class="ident">EnumCount</span>, <span class="ident">EnumIter</span>, <span class="ident">EnumVariantNames</span>, <span class="ident">IntoStaticStr</span>};
+<span class="attribute">#[cfg(feature = <span class="string">&quot;strum&quot;</span>)]
+</span><span class="kw">use </span>strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
 
-<span class="doccomment">/// Keybind change event.</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>)]</span>
-<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>, <span class="ident">derive</span>(<span class="ident">Serialize</span>, <span class="ident">Deserialize</span>))]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">KeybindChange</span> {
-    <span class="doccomment">/// Game control which got changed.</span>
-    <span class="kw">pub</span> <span class="ident">control</span>: <span class="ident">Control</span>,
+<span class="doccomment">/// Keybind change event.
+</span><span class="attribute">#[derive(Debug, Clone)]
+#[cfg_attr(feature = <span class="string">&quot;serde&quot;</span>, derive(Serialize, Deserialize))]
+</span><span class="kw">pub struct </span>KeybindChange {
+    <span class="doccomment">/// Game control which got changed.
+    </span><span class="kw">pub </span>control: Control,
 
-    <span class="doccomment">/// Index of the key in settings.</span>
-    <span class="kw">pub</span> <span class="ident">index</span>: <span class="ident">i32</span>,
+    <span class="doccomment">/// Index of the key in settings.
+    </span><span class="kw">pub </span>index: i32,
 
-    <span class="doccomment">/// New key.</span>
-    <span class="kw">pub</span> <span class="ident">key</span>: <span class="ident">Key</span>,
+    <span class="doccomment">/// New key.
+    </span><span class="kw">pub </span>key: Key,
 
-    <span class="doccomment">/// Whether the Shift modifier is used.</span>
-    <span class="kw">pub</span> <span class="ident">mod_shift</span>: <span class="ident">bool</span>,
+    <span class="doccomment">/// Whether the Shift modifier is used.
+    </span><span class="kw">pub </span>mod_shift: bool,
 
-    <span class="doccomment">/// Whether the Ctrl modifier is used.</span>
-    <span class="kw">pub</span> <span class="ident">mod_ctrl</span>: <span class="ident">bool</span>,
+    <span class="doccomment">/// Whether the Ctrl modifier is used.
+    </span><span class="kw">pub </span>mod_ctrl: bool,
 
-    <span class="doccomment">/// Whether the Alt modifier is used.</span>
-    <span class="kw">pub</span> <span class="ident">mod_alt</span>: <span class="ident">bool</span>,
+    <span class="doccomment">/// Whether the Alt modifier is used.
+    </span><span class="kw">pub </span>mod_alt: bool,
 }
 
-<span class="kw">impl</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">RawKeybindChange</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">KeybindChange</span> {
-    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">raw</span>: <span class="ident">RawKeybindChange</span>) -&gt; <span class="self">Self</span> {
-        <span class="kw">let</span> <span class="ident">modifier</span> <span class="op">=</span> <span class="ident">raw</span>.<span class="ident">key</span>.<span class="ident">modifier</span>;
-        <span class="self">Self</span> {
-            <span class="ident">control</span>: <span class="ident">raw</span>.<span class="ident">control</span>,
-            <span class="ident">index</span>: <span class="ident">raw</span>.<span class="ident">index</span>,
-            <span class="ident">key</span>: <span class="ident">raw</span>.<span class="ident">key</span>.<span class="ident">into</span>(),
-            <span class="ident">mod_shift</span>: <span class="ident">modifier</span> <span class="op">&amp;</span> <span class="ident">Modifier::Shift</span> <span class="kw">as</span> <span class="ident">i32</span> <span class="op">==</span> <span class="number">1</span>,
-            <span class="ident">mod_ctrl</span>: <span class="ident">modifier</span> <span class="op">&amp;</span> <span class="ident">Modifier::Ctrl</span> <span class="kw">as</span> <span class="ident">i32</span> <span class="op">==</span> <span class="number">1</span>,
-            <span class="ident">mod_alt</span>: <span class="ident">modifier</span> <span class="op">&amp;</span> <span class="ident">Modifier::Alt</span> <span class="kw">as</span> <span class="ident">i32</span> <span class="op">==</span> <span class="number">1</span>,
+<span class="kw">impl </span>From&lt;RawKeybindChange&gt; <span class="kw">for </span>KeybindChange {
+    <span class="kw">fn </span>from(raw: RawKeybindChange) -&gt; <span class="self">Self </span>{
+        <span class="kw">let </span>modifier = raw.key.modifier;
+        <span class="self">Self </span>{
+            control: raw.control,
+            index: raw.index,
+            key: raw.key.into(),
+            mod_shift: modifier &amp; Modifier::Shift <span class="kw">as </span>i32 == <span class="number">1</span>,
+            mod_ctrl: modifier &amp; Modifier::Ctrl <span class="kw">as </span>i32 == <span class="number">1</span>,
+            mod_alt: modifier &amp; Modifier::Alt <span class="kw">as </span>i32 == <span class="number">1</span>,
         }
     }
 }
 
-<span class="doccomment">/// A key.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// This can be a [`MouseCode`], [`KeyCode`] or an [`Unknown`](Self::Unknown) code.</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>)]</span>
-<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>, <span class="ident">derive</span>(<span class="ident">Serialize</span>, <span class="ident">Deserialize</span>))]</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">Key</span> {
-    <span class="doccomment">/// An unknown type of key.</span>
-    <span class="ident">Unknown</span>(<span class="ident">i32</span>),
+<span class="doccomment">/// A key used by the game.
+///
+/// This can be a [`MouseCode`], [`KeyCode`] or an [`Unknown`](Self::Unknown) code.
+</span><span class="attribute">#[derive(Debug, Clone)]
+#[cfg_attr(feature = <span class="string">&quot;serde&quot;</span>, derive(Serialize, Deserialize))]
+</span><span class="kw">pub enum </span>Key {
+    <span class="doccomment">/// An unknown type of key.
+    </span>Unknown(i32),
 
-    <span class="doccomment">/// A mouse button.</span>
-    <span class="ident">Mouse</span>(<span class="ident">MouseCode</span>),
+    <span class="doccomment">/// A mouse button.
+    </span>Mouse(MouseCode),
 
-    <span class="doccomment">/// A keyboard key.</span>
-    <span class="ident">Key</span>(<span class="ident">KeyCode</span>),
+    <span class="doccomment">/// A keyboard key.
+    </span>Key(KeyCode),
 }
 
-<span class="kw">impl</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">RawKey</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Key</span> {
-    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">raw</span>: <span class="ident">RawKey</span>) -&gt; <span class="self">Self</span> {
-        <span class="kw">match</span> <span class="ident">raw</span>.<span class="ident">device_type</span> {
-            <span class="ident">DeviceType::Unset</span> =&gt; <span class="ident"><span class="self">Self</span>::Unknown</span>(<span class="ident">raw</span>.<span class="ident">code</span>),
-            <span class="ident">DeviceType::Mouse</span> =&gt; <span class="kw">match</span> <span class="ident">raw</span>.<span class="ident">code</span>.<span class="ident">try_into</span>() {
-                <span class="prelude-val">Ok</span>(<span class="ident">code</span>) =&gt; <span class="ident"><span class="self">Self</span>::Mouse</span>(<span class="ident">code</span>),
-                <span class="prelude-val">Err</span>(<span class="kw">_</span>) =&gt; <span class="ident"><span class="self">Self</span>::Unknown</span>(<span class="ident">raw</span>.<span class="ident">code</span>),
+<span class="kw">impl </span>From&lt;RawKey&gt; <span class="kw">for </span>Key {
+    <span class="kw">fn </span>from(raw: RawKey) -&gt; <span class="self">Self </span>{
+        <span class="kw">match </span>raw.device_type {
+            DeviceType::Unset =&gt; <span class="self">Self</span>::Unknown(raw.code),
+            DeviceType::Mouse =&gt; <span class="kw">match </span>raw.code.try_into() {
+                <span class="prelude-val">Ok</span>(code) =&gt; <span class="self">Self</span>::Mouse(code),
+                <span class="prelude-val">Err</span>(<span class="kw">_</span>) =&gt; <span class="self">Self</span>::Unknown(raw.code),
             },
-            <span class="ident">DeviceType::Keyboard</span> =&gt; <span class="kw">match</span> <span class="ident">raw</span>.<span class="ident">code</span>.<span class="ident">try_into</span>() {
-                <span class="prelude-val">Ok</span>(<span class="ident">code</span>) =&gt; <span class="ident"><span class="self">Self</span>::Key</span>(<span class="ident">code</span>),
-                <span class="prelude-val">Err</span>(<span class="kw">_</span>) =&gt; <span class="ident"><span class="self">Self</span>::Unknown</span>(<span class="ident">raw</span>.<span class="ident">code</span>),
+            DeviceType::Keyboard =&gt; <span class="kw">match </span>raw.code.try_into() {
+                <span class="prelude-val">Ok</span>(code) =&gt; <span class="self">Self</span>::Key(code),
+                <span class="prelude-val">Err</span>(<span class="kw">_</span>) =&gt; <span class="self">Self</span>::Unknown(raw.code),
             },
         }
     }
 }
 
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>)]</span>
-<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>, <span class="ident">derive</span>(<span class="ident">Serialize</span>, <span class="ident">Deserialize</span>))]</span>
-<span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">RawKeybindChange</span> {
-    <span class="kw">pub</span> <span class="ident">control</span>: <span class="ident">Control</span>,
-    <span class="kw">pub</span> <span class="ident">index</span>: <span class="ident">i32</span>,
-    <span class="kw">pub</span> <span class="ident">key</span>: <span class="ident">RawKey</span>,
+<span class="doccomment">/// A keybind used by the game.
+///
+/// This contains the `primary`as well as `secondary` [`Key`] for a [`Control`].
+</span><span class="attribute">#[derive(Debug, Clone)]
+#[cfg_attr(feature = <span class="string">&quot;serde&quot;</span>, derive(Serialize, Deserialize))]
+</span><span class="kw">pub struct </span>Keybind {
+    <span class="doccomment">/// Primary [`Key`] for this bind.
+    </span><span class="kw">pub </span>primary: Key,
+
+    <span class="doccomment">/// Secondary [`Key`] for this bind.
+    </span><span class="kw">pub </span>secondary: Key,
 }
 
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>)]</span>
-<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>, <span class="ident">derive</span>(<span class="ident">Serialize</span>, <span class="ident">Deserialize</span>))]</span>
-<span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">RawKey</span> {
-    <span class="kw">pub</span> <span class="ident">device_type</span>: <span class="ident">DeviceType</span>,
-    <span class="kw">pub</span> <span class="ident">code</span>: <span class="ident">i32</span>,
-    <span class="kw">pub</span> <span class="ident">modifier</span>: <span class="ident">i32</span>,
+<span class="kw">impl </span>From&lt;RawKeybind&gt; <span class="kw">for </span>Keybind {
+    <span class="kw">fn </span>from(raw: RawKeybind) -&gt; <span class="self">Self </span>{
+        <span class="self">Self </span>{
+            primary: raw.primary.into(),
+            secondary: raw.secondary.into(),
+        }
+    }
 }
 
-<span class="doccomment">/// A game control (keybind).</span>
-<span class="attribute">#[<span class="ident">derive</span>(
-    <span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>, <span class="ident">Hash</span>, <span class="ident">IntoPrimitive</span>, <span class="ident">TryFromPrimitive</span>,
-)]</span>
-<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>, <span class="ident">derive</span>(<span class="ident">Serialize</span>, <span class="ident">Deserialize</span>))]</span>
-<span class="attribute">#[<span class="ident">cfg_attr</span>(
-    <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;strum&quot;</span>,
-    <span class="ident">derive</span>(<span class="ident">Display</span>, <span class="ident">EnumCount</span>, <span class="ident">EnumIter</span>, <span class="ident">IntoStaticStr</span>, <span class="ident">EnumVariantNames</span>)
-)]</span>
-<span class="attribute">#[<span class="ident">repr</span>(<span class="ident">i32</span>)]</span>
-<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_camel_case_types</span>)]</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">Control</span> {
-    <span class="comment">// Movement tab</span>
-    <span class="ident">Movement_MoveForward</span> <span class="op">=</span> <span class="number">0</span>,
-    <span class="ident">Movement_MoveBackward</span> <span class="op">=</span> <span class="number">1</span>,
-    <span class="ident">Movement_StrafeLeft</span> <span class="op">=</span> <span class="number">2</span>,
-    <span class="ident">Movement_StrafeRight</span> <span class="op">=</span> <span class="number">3</span>,
-    <span class="ident">Movement_TurnLeft</span> <span class="op">=</span> <span class="number">4</span>,
-    <span class="ident">Movement_TurnRight</span> <span class="op">=</span> <span class="number">5</span>,
-    <span class="ident">Movement_Dodge</span> <span class="op">=</span> <span class="number">6</span>,
-    <span class="ident">Movement_Autorun</span> <span class="op">=</span> <span class="number">7</span>,
-    <span class="ident">Movement_Walk</span> <span class="op">=</span> <span class="number">8</span>,
-    <span class="ident">Movement_Jump</span> <span class="op">=</span> <span class="number">9</span>,
-    <span class="ident">Movement_SwimUp</span> <span class="op">=</span> <span class="number">10</span>,
-    <span class="ident">Movement_SwimDown</span> <span class="op">=</span> <span class="number">11</span>,
-    <span class="ident">Movement_AboutFace</span> <span class="op">=</span> <span class="number">12</span>,
-
-    <span class="comment">// Skills tab</span>
-    <span class="ident">Skills_SwapWeapons</span> <span class="op">=</span> <span class="number">20</span>,
-    <span class="ident">Skills_WeaponSkill1</span> <span class="op">=</span> <span class="number">21</span>,
-    <span class="ident">Skills_WeaponSkill2</span> <span class="op">=</span> <span class="number">22</span>,
-    <span class="ident">Skills_WeaponSkill3</span> <span class="op">=</span> <span class="number">23</span>,
-    <span class="ident">Skills_WeaponSkill4</span> <span class="op">=</span> <span class="number">24</span>,
-    <span class="ident">Skills_WeaponSkill5</span> <span class="op">=</span> <span class="number">25</span>,
-    <span class="ident">Skills_HealingSkill</span> <span class="op">=</span> <span class="number">26</span>,
-    <span class="ident">Skills_UtilitySkill1</span> <span class="op">=</span> <span class="number">27</span>,
-    <span class="ident">Skills_UtilitySkill2</span> <span class="op">=</span> <span class="number">28</span>,
-    <span class="ident">Skills_UtilitySkill3</span> <span class="op">=</span> <span class="number">29</span>,
-    <span class="ident">Skills_EliteSkill</span> <span class="op">=</span> <span class="number">30</span>,
-    <span class="ident">Skills_ProfessionSkill1</span> <span class="op">=</span> <span class="number">32</span>,
-    <span class="ident">Skills_ProfessionSkill2</span> <span class="op">=</span> <span class="number">33</span>,
-    <span class="ident">Skills_ProfessionSkill3</span> <span class="op">=</span> <span class="number">34</span>,
-    <span class="ident">Skills_ProfessionSkill4</span> <span class="op">=</span> <span class="number">35</span>,
-    <span class="ident">Skills_ProfessionSkill5</span> <span class="op">=</span> <span class="number">36</span>,
-    <span class="ident">Skills_ProfessionSkill6</span> <span class="op">=</span> <span class="number">37</span>,
-    <span class="ident">Skills_ProfessionSkill7</span> <span class="op">=</span> <span class="number">38</span>,
-    <span class="ident">Skills_SpecialAction</span> <span class="op">=</span> <span class="number">166</span>,
-
-    <span class="comment">// Targeting tab</span>
-    <span class="ident">Targeting_AlertTarget</span> <span class="op">=</span> <span class="number">39</span>,
-    <span class="ident">Targeting_CallTarget</span> <span class="op">=</span> <span class="number">40</span>,
-    <span class="ident">Targeting_TakeTarget</span> <span class="op">=</span> <span class="number">41</span>,
-    <span class="ident">Targeting_SetPersonalTarget</span> <span class="op">=</span> <span class="number">42</span>,
-    <span class="ident">Targeting_TakePersonalTarget</span> <span class="op">=</span> <span class="number">43</span>,
-    <span class="ident">Targeting_NearestEnemy</span> <span class="op">=</span> <span class="number">44</span>,
-    <span class="ident">Targeting_NextEnemy</span> <span class="op">=</span> <span class="number">45</span>,
-    <span class="ident">Targeting_PreviousEnemy</span> <span class="op">=</span> <span class="number">46</span>,
-    <span class="ident">Targeting_NearestAlly</span> <span class="op">=</span> <span class="number">47</span>,
-    <span class="ident">Targeting_NextAlly</span> <span class="op">=</span> <span class="number">48</span>,
-    <span class="ident">Targeting_PreviousAlly</span> <span class="op">=</span> <span class="number">49</span>,
-    <span class="ident">Targeting_LockAutotarget</span> <span class="op">=</span> <span class="number">50</span>,
-    <span class="ident">Targeting_SnapGroundTarget</span> <span class="op">=</span> <span class="number">51</span>,
-    <span class="ident">Targeting_ToggleSnapGroundTarget</span> <span class="op">=</span> <span class="number">52</span>,
-    <span class="ident">Targeting_DisableAutotargeting</span> <span class="op">=</span> <span class="number">53</span>,
-    <span class="ident">Targeting_ToggleAutotargeting</span> <span class="op">=</span> <span class="number">54</span>,
-    <span class="ident">Targeting_AllyTargetingMode</span> <span class="op">=</span> <span class="number">55</span>,
-    <span class="ident">Targeting_ToggleAllyTargetingMode</span> <span class="op">=</span> <span class="number">56</span>,
-
-    <span class="comment">// UI Tab</span>
-    <span class="ident">UI_BlackLionTradingDialog</span> <span class="op">=</span> <span class="number">57</span>,
-    <span class="ident">UI_ContactsDialog</span> <span class="op">=</span> <span class="number">58</span>,
-    <span class="ident">UI_GuildDialog</span> <span class="op">=</span> <span class="number">59</span>,
-    <span class="ident">UI_HeroDialog</span> <span class="op">=</span> <span class="number">60</span>,
-    <span class="ident">UI_InventoryDialog</span> <span class="op">=</span> <span class="number">61</span>,
-    <span class="ident">UI_PetDialog</span> <span class="op">=</span> <span class="number">62</span>,
-    <span class="ident">UI_LogOut</span> <span class="op">=</span> <span class="number">63</span>,
-    <span class="ident">UI_MailDialog</span> <span class="op">=</span> <span class="number">64</span>,
-    <span class="ident">UI_OptionsDialog</span> <span class="op">=</span> <span class="number">65</span>,
-    <span class="ident">UI_PartyDialog</span> <span class="op">=</span> <span class="number">66</span>,
-    <span class="ident">UI_PvPPanel</span> <span class="op">=</span> <span class="number">67</span>,
-    <span class="ident">UI_PvPBuild</span> <span class="op">=</span> <span class="number">68</span>,
-    <span class="ident">UI_Scoreboard</span> <span class="op">=</span> <span class="number">69</span>,
-    <span class="ident">UI_InformationDialog</span> <span class="op">=</span> <span class="number">70</span>,
-    <span class="ident">UI_Show_HideChat</span> <span class="op">=</span> <span class="number">71</span>,
-    <span class="ident">UI_ChatCommand</span> <span class="op">=</span> <span class="number">72</span>,
-    <span class="ident">UI_ChatMessage</span> <span class="op">=</span> <span class="number">73</span>,
-    <span class="ident">UI_ChatReply</span> <span class="op">=</span> <span class="number">74</span>,
-    <span class="ident">UI_ShowHideUI</span> <span class="op">=</span> <span class="number">75</span>,
-    <span class="ident">UI_ShowHideSquadBroadcastChat</span> <span class="op">=</span> <span class="number">167</span>,
-    <span class="ident">UI_SquadBroadcastChatCommand</span> <span class="op">=</span> <span class="number">168</span>,
-    <span class="ident">UI_SquadBroadcastMessage</span> <span class="op">=</span> <span class="number">169</span>,
-
-    <span class="comment">// Camera Tab</span>
-    <span class="ident">Camera_FreeCamera</span> <span class="op">=</span> <span class="number">14</span>,
-    <span class="ident">Camera_ZoomIn</span> <span class="op">=</span> <span class="number">15</span>,
-    <span class="ident">Camera_ZoomOut</span> <span class="op">=</span> <span class="number">16</span>,
-    <span class="ident">Camera_LookBehind</span> <span class="op">=</span> <span class="number">17</span>,
-    <span class="ident">Camera_ToggleActionCamera</span> <span class="op">=</span> <span class="number">18</span>,
-    <span class="ident">Camera_DisableActionCamera</span> <span class="op">=</span> <span class="number">19</span>,
-
-    <span class="comment">// Screenshot Tab</span>
-    <span class="ident">Screenshot_Normal</span> <span class="op">=</span> <span class="number">77</span>,
-    <span class="ident">Screenshot_Stereoscopic</span> <span class="op">=</span> <span class="number">78</span>,
-
-    <span class="comment">// Map Tab</span>
-    <span class="ident">Map_OpenClose</span> <span class="op">=</span> <span class="number">101</span>,
-    <span class="ident">Map_Recenter</span> <span class="op">=</span> <span class="number">102</span>,
-    <span class="ident">Map_FloorDown</span> <span class="op">=</span> <span class="number">103</span>,
-    <span class="ident">Map_FloorUp</span> <span class="op">=</span> <span class="number">104</span>,
-    <span class="ident">Map_ZoomIn</span> <span class="op">=</span> <span class="number">105</span>,
-    <span class="ident">Map_ZoomOut</span> <span class="op">=</span> <span class="number">106</span>,
-
-    <span class="comment">// Mounts Tab</span>
-    <span class="ident">Mounts_MountDismount</span> <span class="op">=</span> <span class="number">31</span>,
-    <span class="ident">Mounts_MountAbility1</span> <span class="op">=</span> <span class="number">118</span>,
-    <span class="ident">Mounts_MountAbility2</span> <span class="op">=</span> <span class="number">119</span>,
-    <span class="ident">Mounts_Raptor</span> <span class="op">=</span> <span class="number">120</span>,
-    <span class="ident">Mounts_Springer</span> <span class="op">=</span> <span class="number">121</span>,
-    <span class="ident">Mounts_Skimmer</span> <span class="op">=</span> <span class="number">122</span>,
-    <span class="ident">Mounts_Jackal</span> <span class="op">=</span> <span class="number">123</span>,
-    <span class="ident">Mounts_Griffon</span> <span class="op">=</span> <span class="number">124</span>,
-    <span class="ident">Mounts_RollerBeetle</span> <span class="op">=</span> <span class="number">125</span>,
-    <span class="ident">Mounts_Warclaw</span> <span class="op">=</span> <span class="number">126</span>,
-    <span class="ident">Mounts_Skyscale</span> <span class="op">=</span> <span class="number">127</span>,
-    <span class="ident">Mounts_Turtle</span> <span class="op">=</span> <span class="number">128</span>, <span class="comment">// TODO guessed, not confirmed yet</span>
-
-    <span class="comment">// Spectators Tab</span>
-    <span class="ident">Spectators_NearestFixedCamera</span> <span class="op">=</span> <span class="number">81</span>,
-    <span class="ident">Spectators_NearestPlayer</span> <span class="op">=</span> <span class="number">82</span>,
-    <span class="ident">Spectators_RedPlayer1</span> <span class="op">=</span> <span class="number">83</span>,
-    <span class="ident">Spectators_RedPlayer2</span> <span class="op">=</span> <span class="number">84</span>,
-    <span class="ident">Spectators_RedPlayer3</span> <span class="op">=</span> <span class="number">85</span>,
-    <span class="ident">Spectators_RedPlayer4</span> <span class="op">=</span> <span class="number">86</span>,
-    <span class="ident">Spectators_RedPlayer5</span> <span class="op">=</span> <span class="number">87</span>,
-    <span class="ident">Spectators_BluePlayer1</span> <span class="op">=</span> <span class="number">88</span>,
-    <span class="ident">Spectators_BluePlayer2</span> <span class="op">=</span> <span class="number">89</span>,
-    <span class="ident">Spectators_BluePlayer3</span> <span class="op">=</span> <span class="number">90</span>,
-    <span class="ident">Spectators_BluePlayer4</span> <span class="op">=</span> <span class="number">91</span>,
-    <span class="ident">Spectators_BluePlayer5</span> <span class="op">=</span> <span class="number">92</span>,
-    <span class="ident">Spectators_FreeCamera</span> <span class="op">=</span> <span class="number">93</span>,
-    <span class="ident">Spectators_FreeCameraBoost</span> <span class="op">=</span> <span class="number">94</span>,
-    <span class="ident">Spectators_FreeCameraForward</span> <span class="op">=</span> <span class="number">95</span>,
-    <span class="ident">Spectators_FreeCameraBackward</span> <span class="op">=</span> <span class="number">96</span>,
-    <span class="ident">Spectators_FreeCameraLeft</span> <span class="op">=</span> <span class="number">97</span>,
-    <span class="ident">Spectators_FreeCameraRight</span> <span class="op">=</span> <span class="number">98</span>,
-    <span class="ident">Spectators_FreeCameraUp</span> <span class="op">=</span> <span class="number">99</span>,
-    <span class="ident">Spectators_FreeCameraDown</span> <span class="op">=</span> <span class="number">100</span>,
-
-    <span class="comment">// Squad Tab</span>
-    <span class="ident">Squad_Location_Arrow</span> <span class="op">=</span> <span class="number">148</span>,
-    <span class="ident">Squad_Location_Circle</span> <span class="op">=</span> <span class="number">149</span>,
-    <span class="ident">Squad_Location_Heart</span> <span class="op">=</span> <span class="number">150</span>,
-    <span class="ident">Squad_Location_Square</span> <span class="op">=</span> <span class="number">151</span>,
-    <span class="ident">Squad_Location_Star</span> <span class="op">=</span> <span class="number">152</span>,
-    <span class="ident">Squad_Location_Spiral</span> <span class="op">=</span> <span class="number">153</span>,
-    <span class="ident">Squad_Location_Triangle</span> <span class="op">=</span> <span class="number">154</span>,
-    <span class="ident">Squad_Location_X</span> <span class="op">=</span> <span class="number">155</span>,
-    <span class="ident">Squad_ClearAllLocationMarkers</span> <span class="op">=</span> <span class="number">156</span>,
-    <span class="ident">Squad_Object_Arrow</span> <span class="op">=</span> <span class="number">157</span>,
-    <span class="ident">Squad_Object_Circle</span> <span class="op">=</span> <span class="number">158</span>,
-    <span class="ident">Squad_Object_Heart</span> <span class="op">=</span> <span class="number">159</span>,
-    <span class="ident">Squad_Object_Square</span> <span class="op">=</span> <span class="number">160</span>,
-    <span class="ident">Squad_Object_Star</span> <span class="op">=</span> <span class="number">161</span>,
-    <span class="ident">Squad_Object_Spiral</span> <span class="op">=</span> <span class="number">162</span>,
-    <span class="ident">Squad_Object_Triangle</span> <span class="op">=</span> <span class="number">163</span>,
-    <span class="ident">Squad_Object_X</span> <span class="op">=</span> <span class="number">164</span>,
-    <span class="ident">Squad_ClearAllObjectMarkers</span> <span class="op">=</span> <span class="number">165</span>,
-
-    <span class="comment">// Mastery Skills Tab</span>
-    <span class="ident">MasterySkills_ActivateMasterySkill</span> <span class="op">=</span> <span class="number">220</span>,
-    <span class="ident">MasterySkills_StartFishing</span> <span class="op">=</span> <span class="number">221</span>,
-    <span class="ident">MasterySkills_SummonSkiff</span> <span class="op">=</span> <span class="number">222</span>,
-    <span class="ident">MasterySkills_SetJadeBotWaypoint</span> <span class="op">=</span> <span class="number">223</span>,
-
-    <span class="comment">// Miscellaneous Tab</span>
-    <span class="ident">Miscellaneous_AoELoot</span> <span class="op">=</span> <span class="number">107</span>,
-    <span class="ident">Miscellaneous_Interact</span> <span class="op">=</span> <span class="number">108</span>,
-    <span class="ident">Miscellaneous_ShowEnemyNames</span> <span class="op">=</span> <span class="number">109</span>,
-    <span class="ident">Miscellaneous_ShowAllyNames</span> <span class="op">=</span> <span class="number">110</span>,
-    <span class="ident">Miscellaneous_StowDrawWeapon</span> <span class="op">=</span> <span class="number">111</span>,
-    <span class="ident">Miscellaneous_ToggleLanguage</span> <span class="op">=</span> <span class="number">112</span>,
-    <span class="ident">Miscellaneous_RangerPetCombatToggle</span> <span class="op">=</span> <span class="number">113</span>,
-    <span class="ident">Miscellaneous_ToggleFullScreen</span> <span class="op">=</span> <span class="number">115</span>,
-    <span class="ident">Miscellaneous_EquipUnequipNovelty</span> <span class="op">=</span> <span class="number">190</span>,
-    <span class="ident">Miscellaneous_ActivateChair</span> <span class="op">=</span> <span class="number">191</span>,
-    <span class="ident">Miscellaneous_ActivateMusicalInstrument</span> <span class="op">=</span> <span class="number">192</span>,
-    <span class="ident">Miscellaneous_ActivateHeldItem</span> <span class="op">=</span> <span class="number">193</span>,
-    <span class="ident">Miscellaneous_ActivateToy</span> <span class="op">=</span> <span class="number">194</span>,
-    <span class="ident">Miscellaneous_ActivateTonic</span> <span class="op">=</span> <span class="number">195</span>,
-
-    <span class="comment">// Templates Tab</span>
-    <span class="ident">Templates_BuildTemplate1</span> <span class="op">=</span> <span class="number">197</span>,
-    <span class="ident">Templates_BuildTemplate2</span> <span class="op">=</span> <span class="number">198</span>,
-    <span class="ident">Templates_BuildTemplate3</span> <span class="op">=</span> <span class="number">199</span>,
-    <span class="ident">Templates_BuildTemplate4</span> <span class="op">=</span> <span class="number">200</span>,
-    <span class="ident">Templates_BuildTemplate5</span> <span class="op">=</span> <span class="number">201</span>,
-    <span class="ident">Templates_BuildTemplate6</span> <span class="op">=</span> <span class="number">202</span>,
-    <span class="ident">Templates_BuildTemplate7</span> <span class="op">=</span> <span class="number">203</span>,
-    <span class="ident">Templates_BuildTemplate8</span> <span class="op">=</span> <span class="number">204</span>,
-    <span class="ident">Templates_EquipmentTemplate1</span> <span class="op">=</span> <span class="number">207</span>,
-    <span class="ident">Templates_EquipmentTemplate2</span> <span class="op">=</span> <span class="number">208</span>,
-    <span class="ident">Templates_EquipmentTemplate3</span> <span class="op">=</span> <span class="number">209</span>,
-    <span class="ident">Templates_EquipmentTemplate4</span> <span class="op">=</span> <span class="number">210</span>,
-    <span class="ident">Templates_EquipmentTemplate5</span> <span class="op">=</span> <span class="number">211</span>,
-    <span class="ident">Templates_EquipmentTemplate6</span> <span class="op">=</span> <span class="number">212</span>,
-    <span class="ident">Templates_EquipmentTemplate7</span> <span class="op">=</span> <span class="number">213</span>,
-    <span class="ident">Templates_EquipmentTemplate8</span> <span class="op">=</span> <span class="number">214</span>,
+<span class="attribute">#[derive(Debug, Clone)]
+#[cfg_attr(feature = <span class="string">&quot;serde&quot;</span>, derive(Serialize, Deserialize))]
+#[repr(C)]
+</span><span class="kw">pub struct </span>RawKeybindChange {
+    <span class="kw">pub </span>control: Control,
+    <span class="kw">pub </span>index: i32,
+    <span class="kw">pub </span>key: RawKey,
 }
 
-<span class="doccomment">/// Custom key codes.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// Some of them are not usable like [`F13`](Self::F32) to [`F35`](Self::F35) or [`Print`](Self::Print).</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// Names are based upon US keyboard layout.</span>
-<span class="doccomment">/// Site to translate it to other languages: &lt;http://kbdlayout.info&gt;</span>
-<span class="attribute">#[<span class="ident">derive</span>(
-    <span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>, <span class="ident">Hash</span>, <span class="ident">IntoPrimitive</span>, <span class="ident">TryFromPrimitive</span>,
-)]</span>
-<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>, <span class="ident">derive</span>(<span class="ident">Serialize</span>, <span class="ident">Deserialize</span>))]</span>
-<span class="attribute">#[<span class="ident">cfg_attr</span>(
-    <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;strum&quot;</span>,
-    <span class="ident">derive</span>(<span class="ident">Display</span>, <span class="ident">EnumCount</span>, <span class="ident">EnumIter</span>, <span class="ident">IntoStaticStr</span>, <span class="ident">EnumVariantNames</span>)
-)]</span>
-<span class="attribute">#[<span class="ident">repr</span>(<span class="ident">i32</span>)]</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">KeyCode</span> {
-    <span class="ident">LeftAlt</span> <span class="op">=</span> <span class="number">0</span>,
-    <span class="ident">LeftCtrl</span> <span class="op">=</span> <span class="number">1</span>,
-    <span class="ident">LeftShift</span> <span class="op">=</span> <span class="number">2</span>,
-    <span class="ident">Quote</span> <span class="op">=</span> <span class="number">3</span>,
-    <span class="ident">Hash</span> <span class="op">=</span> <span class="number">4</span>,
-    <span class="ident">CapsLock</span> <span class="op">=</span> <span class="number">5</span>,
-    <span class="ident">Colon</span> <span class="op">=</span> <span class="number">6</span>,
-    <span class="ident">Minus</span> <span class="op">=</span> <span class="number">7</span>,
-    <span class="ident">Equals</span> <span class="op">=</span> <span class="number">8</span>,
-    <span class="ident">Escape</span> <span class="op">=</span> <span class="number">9</span>,
-    <span class="ident">OpenBracket</span> <span class="op">=</span> <span class="number">10</span>,
-    <span class="ident">NumLock</span> <span class="op">=</span> <span class="number">11</span>,
-    <span class="ident">Period</span> <span class="op">=</span> <span class="number">12</span>,
-    <span class="ident">CloseBracket</span> <span class="op">=</span> <span class="number">13</span>,
-    <span class="ident">Semicolon</span> <span class="op">=</span> <span class="number">14</span>,
-    <span class="ident">Slash</span> <span class="op">=</span> <span class="number">15</span>,
-    <span class="ident">Print</span> <span class="op">=</span> <span class="number">16</span>,
-    <span class="ident">Tilde</span> <span class="op">=</span> <span class="number">17</span>,
-    <span class="ident">Backspace</span> <span class="op">=</span> <span class="number">18</span>,
-    <span class="ident">Delete</span> <span class="op">=</span> <span class="number">19</span>,
-    <span class="ident">Enter</span> <span class="op">=</span> <span class="number">20</span>,
-    <span class="ident">Space</span> <span class="op">=</span> <span class="number">21</span>,
-    <span class="ident">Tab</span> <span class="op">=</span> <span class="number">22</span>,
-    <span class="ident">End</span> <span class="op">=</span> <span class="number">23</span>,
-    <span class="ident">Home</span> <span class="op">=</span> <span class="number">24</span>,
-    <span class="ident">Insert</span> <span class="op">=</span> <span class="number">25</span>,
-    <span class="ident">Next</span> <span class="op">=</span> <span class="number">26</span>,
-    <span class="ident">Prior</span> <span class="op">=</span> <span class="number">27</span>,
-    <span class="ident">ArrowDown</span> <span class="op">=</span> <span class="number">28</span>,
-    <span class="ident">ArrowLeft</span> <span class="op">=</span> <span class="number">29</span>,
-    <span class="ident">ArrowRight</span> <span class="op">=</span> <span class="number">30</span>,
-    <span class="ident">ArrowUp</span> <span class="op">=</span> <span class="number">31</span>,
-    <span class="ident">F1</span> <span class="op">=</span> <span class="number">32</span>,
-    <span class="ident">F2</span> <span class="op">=</span> <span class="number">33</span>,
-    <span class="ident">F3</span> <span class="op">=</span> <span class="number">34</span>,
-    <span class="ident">F4</span> <span class="op">=</span> <span class="number">35</span>,
-    <span class="ident">F5</span> <span class="op">=</span> <span class="number">36</span>,
-    <span class="ident">F6</span> <span class="op">=</span> <span class="number">37</span>,
-    <span class="ident">F7</span> <span class="op">=</span> <span class="number">38</span>,
-    <span class="ident">F8</span> <span class="op">=</span> <span class="number">39</span>,
-    <span class="ident">F9</span> <span class="op">=</span> <span class="number">40</span>,
-    <span class="ident">F10</span> <span class="op">=</span> <span class="number">41</span>,
-    <span class="ident">F11</span> <span class="op">=</span> <span class="number">42</span>,
-    <span class="ident">F12</span> <span class="op">=</span> <span class="number">43</span>,
-    <span class="ident">Number0</span> <span class="op">=</span> <span class="number">48</span>,
-    <span class="ident">Number1</span> <span class="op">=</span> <span class="number">49</span>,
-    <span class="ident">Number2</span> <span class="op">=</span> <span class="number">50</span>,
-    <span class="ident">Number3</span> <span class="op">=</span> <span class="number">51</span>,
-    <span class="ident">Number4</span> <span class="op">=</span> <span class="number">52</span>,
-    <span class="ident">Number5</span> <span class="op">=</span> <span class="number">53</span>,
-    <span class="ident">Number6</span> <span class="op">=</span> <span class="number">54</span>,
-    <span class="ident">Number7</span> <span class="op">=</span> <span class="number">55</span>,
-    <span class="ident">Number8</span> <span class="op">=</span> <span class="number">56</span>,
-    <span class="ident">Number9</span> <span class="op">=</span> <span class="number">57</span>,
-    <span class="ident">A</span> <span class="op">=</span> <span class="number">65</span>,
-    <span class="ident">B</span> <span class="op">=</span> <span class="number">66</span>,
-    <span class="ident">C</span> <span class="op">=</span> <span class="number">67</span>,
-    <span class="ident">D</span> <span class="op">=</span> <span class="number">68</span>,
-    <span class="ident">E</span> <span class="op">=</span> <span class="number">69</span>,
-    <span class="ident">F</span> <span class="op">=</span> <span class="number">70</span>,
-    <span class="ident">G</span> <span class="op">=</span> <span class="number">71</span>,
-    <span class="ident">H</span> <span class="op">=</span> <span class="number">72</span>,
-    <span class="ident">I</span> <span class="op">=</span> <span class="number">73</span>,
-    <span class="ident">J</span> <span class="op">=</span> <span class="number">74</span>,
-    <span class="ident">K</span> <span class="op">=</span> <span class="number">75</span>,
-    <span class="ident">L</span> <span class="op">=</span> <span class="number">76</span>,
-    <span class="ident">M</span> <span class="op">=</span> <span class="number">77</span>,
-    <span class="ident">N</span> <span class="op">=</span> <span class="number">78</span>,
-    <span class="ident">O</span> <span class="op">=</span> <span class="number">79</span>,
-    <span class="ident">P</span> <span class="op">=</span> <span class="number">80</span>,
-    <span class="ident">Q</span> <span class="op">=</span> <span class="number">81</span>,
-    <span class="ident">R</span> <span class="op">=</span> <span class="number">82</span>,
-    <span class="ident">S</span> <span class="op">=</span> <span class="number">83</span>,
-    <span class="ident">T</span> <span class="op">=</span> <span class="number">84</span>,
-    <span class="ident">U</span> <span class="op">=</span> <span class="number">85</span>,
-    <span class="ident">V</span> <span class="op">=</span> <span class="number">86</span>,
-    <span class="ident">W</span> <span class="op">=</span> <span class="number">87</span>,
-    <span class="ident">X</span> <span class="op">=</span> <span class="number">88</span>,
-    <span class="ident">Y</span> <span class="op">=</span> <span class="number">89</span>,
-    <span class="ident">Z</span> <span class="op">=</span> <span class="number">90</span>,
-    <span class="ident">PlusNum</span> <span class="op">=</span> <span class="number">91</span>,
-    <span class="ident">DecimalNum</span> <span class="op">=</span> <span class="number">92</span>,
-    <span class="ident">DivideNum</span> <span class="op">=</span> <span class="number">93</span>,
-    <span class="ident">MultiplyNum</span> <span class="op">=</span> <span class="number">94</span>,
-    <span class="ident">Number0Num</span> <span class="op">=</span> <span class="number">95</span>,
-    <span class="ident">Number1Num</span> <span class="op">=</span> <span class="number">96</span>,
-    <span class="ident">Number2Num</span> <span class="op">=</span> <span class="number">97</span>,
-    <span class="ident">Number3Num</span> <span class="op">=</span> <span class="number">98</span>,
-    <span class="ident">Number4Num</span> <span class="op">=</span> <span class="number">99</span>,
-    <span class="ident">Number5Num</span> <span class="op">=</span> <span class="number">100</span>,
-    <span class="ident">Number6Num</span> <span class="op">=</span> <span class="number">101</span>,
-    <span class="ident">Number7Num</span> <span class="op">=</span> <span class="number">102</span>,
-    <span class="ident">Number8Num</span> <span class="op">=</span> <span class="number">103</span>,
-    <span class="ident">Number9Num</span> <span class="op">=</span> <span class="number">104</span>,
-    <span class="ident">EnterNum</span> <span class="op">=</span> <span class="number">105</span>,
-    <span class="ident">MinusNum</span> <span class="op">=</span> <span class="number">106</span>,
-    <span class="ident">ImeKey1</span> <span class="op">=</span> <span class="number">107</span>,
-    <span class="ident">ImeKey2</span> <span class="op">=</span> <span class="number">108</span>,
-    <span class="ident">RightAlt</span> <span class="op">=</span> <span class="number">109</span>,
-    <span class="ident">RightCtrl</span> <span class="op">=</span> <span class="number">110</span>,
-    <span class="ident">Backslash</span> <span class="op">=</span> <span class="number">111</span>,
-    <span class="ident">F13</span> <span class="op">=</span> <span class="number">112</span>,
-    <span class="ident">F14</span> <span class="op">=</span> <span class="number">113</span>,
-    <span class="ident">F15</span> <span class="op">=</span> <span class="number">114</span>,
-    <span class="ident">F16</span> <span class="op">=</span> <span class="number">115</span>,
-    <span class="ident">F17</span> <span class="op">=</span> <span class="number">116</span>,
-    <span class="ident">F18</span> <span class="op">=</span> <span class="number">117</span>,
-    <span class="ident">F19</span> <span class="op">=</span> <span class="number">118</span>,
-    <span class="ident">F20</span> <span class="op">=</span> <span class="number">119</span>,
-    <span class="ident">F21</span> <span class="op">=</span> <span class="number">120</span>,
-    <span class="ident">F22</span> <span class="op">=</span> <span class="number">121</span>,
-    <span class="ident">F23</span> <span class="op">=</span> <span class="number">122</span>,
-    <span class="ident">F24</span> <span class="op">=</span> <span class="number">123</span>,
-    <span class="ident">F25</span> <span class="op">=</span> <span class="number">124</span>,
-    <span class="ident">F26</span> <span class="op">=</span> <span class="number">125</span>,
-    <span class="ident">F27</span> <span class="op">=</span> <span class="number">126</span>,
-    <span class="ident">F28</span> <span class="op">=</span> <span class="number">127</span>,
-    <span class="ident">F29</span> <span class="op">=</span> <span class="number">128</span>,
-    <span class="ident">F30</span> <span class="op">=</span> <span class="number">129</span>,
-    <span class="ident">F31</span> <span class="op">=</span> <span class="number">130</span>,
-    <span class="ident">F32</span> <span class="op">=</span> <span class="number">131</span>,
-    <span class="ident">F33</span> <span class="op">=</span> <span class="number">132</span>,
-    <span class="ident">F34</span> <span class="op">=</span> <span class="number">133</span>,
-    <span class="ident">F35</span> <span class="op">=</span> <span class="number">134</span>,
-    <span class="ident">RightShift</span> <span class="op">=</span> <span class="number">135</span>,
-    <span class="ident">Eject</span> <span class="op">=</span> <span class="number">136</span>,
-    <span class="ident">EqualNum</span> <span class="op">=</span> <span class="number">137</span>,
-    <span class="ident">ClearNum</span> <span class="op">=</span> <span class="number">138</span>,
-    <span class="ident">LeftCmd</span> <span class="op">=</span> <span class="number">139</span>,
-    <span class="ident">Function</span> <span class="op">=</span> <span class="number">140</span>,
-    <span class="ident">RightCmd</span> <span class="op">=</span> <span class="number">141</span>,
-
-    <span class="comment">// additional, not used by GW2</span>
-    <span class="ident">Scroll</span> <span class="op">=</span> <span class="number">200</span>,
-    <span class="ident">Pause</span> <span class="op">=</span> <span class="number">201</span>,
-    <span class="ident">LeftWin</span> <span class="op">=</span> <span class="number">202</span>,
-    <span class="ident">RightWin</span> <span class="op">=</span> <span class="number">203</span>,
-    <span class="ident">Menu</span> <span class="op">=</span> <span class="number">204</span>,
+<span class="attribute">#[derive(Debug, Clone)]
+#[cfg_attr(feature = <span class="string">&quot;serde&quot;</span>, derive(Serialize, Deserialize))]
+#[repr(C)]
+</span><span class="kw">pub struct </span>RawKey {
+    <span class="kw">pub </span>device_type: DeviceType,
+    <span class="kw">pub </span>code: i32,
+    <span class="kw">pub </span>modifier: i32,
 }
 
-<span class="doccomment">/// Custom mouse codes.</span>
-<span class="attribute">#[<span class="ident">derive</span>(
-    <span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>, <span class="ident">Hash</span>, <span class="ident">IntoPrimitive</span>, <span class="ident">TryFromPrimitive</span>,
-)]</span>
-<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>, <span class="ident">derive</span>(<span class="ident">Serialize</span>, <span class="ident">Deserialize</span>))]</span>
-<span class="attribute">#[<span class="ident">cfg_attr</span>(
-    <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;strum&quot;</span>,
-    <span class="ident">derive</span>(<span class="ident">Display</span>, <span class="ident">EnumCount</span>, <span class="ident">EnumIter</span>, <span class="ident">IntoStaticStr</span>, <span class="ident">EnumVariantNames</span>)
-)]</span>
-<span class="attribute">#[<span class="ident">repr</span>(<span class="ident">i32</span>)]</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">MouseCode</span> {
-    <span class="ident">Mouse1</span> <span class="op">=</span> <span class="number">0</span>,
-    <span class="ident">Mouse3</span> <span class="op">=</span> <span class="number">1</span>,
-    <span class="ident">Mouse2</span> <span class="op">=</span> <span class="number">2</span>,
-    <span class="ident">Mouse4</span> <span class="op">=</span> <span class="number">3</span>,
-    <span class="ident">Mouse5</span> <span class="op">=</span> <span class="number">4</span>,
-    <span class="ident">Mouse6</span> <span class="op">=</span> <span class="number">5</span>,
-    <span class="ident">Mouse7</span> <span class="op">=</span> <span class="number">6</span>,
-    <span class="ident">Mouse8</span> <span class="op">=</span> <span class="number">7</span>,
-    <span class="ident">Mouse9</span> <span class="op">=</span> <span class="number">8</span>,
-    <span class="ident">Mouse10</span> <span class="op">=</span> <span class="number">9</span>,
-    <span class="ident">Mouse11</span> <span class="op">=</span> <span class="number">10</span>,
-    <span class="ident">Mouse12</span> <span class="op">=</span> <span class="number">11</span>,
-    <span class="ident">Mouse13</span> <span class="op">=</span> <span class="number">12</span>,
-    <span class="ident">Mouse14</span> <span class="op">=</span> <span class="number">13</span>,
-    <span class="ident">Mouse15</span> <span class="op">=</span> <span class="number">14</span>,
-    <span class="ident">Mouse16</span> <span class="op">=</span> <span class="number">15</span>,
-    <span class="ident">Mouse17</span> <span class="op">=</span> <span class="number">16</span>,
-    <span class="ident">Mouse18</span> <span class="op">=</span> <span class="number">17</span>,
-    <span class="ident">Mouse19</span> <span class="op">=</span> <span class="number">18</span>,
-    <span class="ident">Mouse20</span> <span class="op">=</span> <span class="number">19</span>,
+<span class="attribute">#[derive(Debug, Clone)]
+#[cfg_attr(feature = <span class="string">&quot;serde&quot;</span>, derive(Serialize, Deserialize))]
+#[repr(C)]
+</span><span class="kw">pub struct </span>RawKeybind {
+    <span class="kw">pub </span>primary: RawKey,
+    <span class="kw">pub </span>secondary: RawKey,
 }
 
-<span class="attribute">#[<span class="ident">derive</span>(
-    <span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>, <span class="ident">Hash</span>, <span class="ident">IntoPrimitive</span>, <span class="ident">FromPrimitive</span>,
-)]</span>
-<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>, <span class="ident">derive</span>(<span class="ident">Serialize</span>, <span class="ident">Deserialize</span>))]</span>
-<span class="attribute">#[<span class="ident">cfg_attr</span>(
-    <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;strum&quot;</span>,
-    <span class="ident">derive</span>(<span class="ident">Display</span>, <span class="ident">EnumCount</span>, <span class="ident">EnumIter</span>, <span class="ident">IntoStaticStr</span>, <span class="ident">EnumVariantNames</span>)
-)]</span>
-<span class="attribute">#[<span class="ident">repr</span>(<span class="ident">i32</span>)]</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">DeviceType</span> {
-    <span class="attribute">#[<span class="ident">num_enum</span>(<span class="ident">default</span>)]</span>
-    <span class="ident">Unset</span> <span class="op">=</span> <span class="number">0</span>,
-    <span class="ident">Mouse</span> <span class="op">=</span> <span class="number">1</span>,
-    <span class="ident">Keyboard</span> <span class="op">=</span> <span class="number">2</span>,
+<span class="doccomment">/// A control (player action) used by the game.
+</span><span class="attribute">#[derive(
+    Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, TryFromPrimitive,
+)]
+#[cfg_attr(feature = <span class="string">&quot;serde&quot;</span>, derive(Serialize, Deserialize))]
+#[cfg_attr(
+    feature = <span class="string">&quot;strum&quot;</span>,
+    derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames)
+)]
+#[repr(i32)]
+#[allow(non_camel_case_types)]
+</span><span class="kw">pub enum </span>Control {
+    <span class="comment">// Movement tab
+    </span>Movement_MoveForward = <span class="number">0</span>,
+    Movement_MoveBackward = <span class="number">1</span>,
+    Movement_StrafeLeft = <span class="number">2</span>,
+    Movement_StrafeRight = <span class="number">3</span>,
+    Movement_TurnLeft = <span class="number">4</span>,
+    Movement_TurnRight = <span class="number">5</span>,
+    Movement_Dodge = <span class="number">6</span>,
+    Movement_Autorun = <span class="number">7</span>,
+    Movement_Walk = <span class="number">8</span>,
+    Movement_Jump = <span class="number">9</span>,
+    Movement_SwimUp = <span class="number">10</span>,
+    Movement_SwimDown = <span class="number">11</span>,
+    Movement_AboutFace = <span class="number">12</span>,
+
+    <span class="comment">// Skills tab
+    </span>Skills_SwapWeapons = <span class="number">17</span>,
+    Skills_WeaponSkill1 = <span class="number">18</span>,
+    Skills_WeaponSkill2 = <span class="number">19</span>,
+    Skills_WeaponSkill3 = <span class="number">20</span>,
+    Skills_WeaponSkill4 = <span class="number">21</span>,
+    Skills_WeaponSkill5 = <span class="number">22</span>,
+    Skills_HealingSkill = <span class="number">23</span>,
+    Skills_UtilitySkill1 = <span class="number">24</span>,
+    Skills_UtilitySkill2 = <span class="number">25</span>,
+    Skills_UtilitySkill3 = <span class="number">26</span>,
+    Skills_EliteSkill = <span class="number">27</span>,
+    Skills_ProfessionSkill1 = <span class="number">28</span>,
+    Skills_ProfessionSkill2 = <span class="number">29</span>,
+    Skills_ProfessionSkill3 = <span class="number">30</span>,
+    Skills_ProfessionSkill4 = <span class="number">31</span>,
+    Skills_ProfessionSkill5 = <span class="number">79</span>,
+    Skills_ProfessionSkill6 = <span class="number">201</span>,
+    Skills_ProfessionSkill7 = <span class="number">202</span>,
+    Skills_SpecialAction = <span class="number">82</span>,
+
+    <span class="comment">// Targeting tab
+    </span>Targeting_AlertTarget = <span class="number">131</span>,
+    Targeting_CallTarget = <span class="number">32</span>,
+    Targeting_TakeTarget = <span class="number">33</span>,
+    Targeting_SetPersonalTarget = <span class="number">199</span>,
+    Targeting_TakePersonalTarget = <span class="number">200</span>,
+    Targeting_NearestEnemy = <span class="number">34</span>,
+    Targeting_NextEnemy = <span class="number">35</span>,
+    Targeting_PreviousEnemy = <span class="number">36</span>,
+    Targeting_NearestAlly = <span class="number">37</span>,
+    Targeting_NextAlly = <span class="number">38</span>,
+    Targeting_PreviousAlly = <span class="number">39</span>,
+    Targeting_LockAutotarget = <span class="number">40</span>,
+    Targeting_SnapGroundTarget = <span class="number">80</span>,
+    Targeting_ToggleSnapGroundTarget = <span class="number">115</span>,
+    Targeting_DisableAutotargeting = <span class="number">116</span>,
+    Targeting_ToggleAutotargeting = <span class="number">117</span>,
+    Targeting_AllyTargetingMode = <span class="number">197</span>,
+    Targeting_ToggleAllyTargetingMode = <span class="number">198</span>,
+
+    <span class="comment">// UI Tab
+    </span>UI_BlackLionTradingDialog = <span class="number">41</span>,
+    UI_ContactsDialog = <span class="number">42</span>,
+    UI_GuildDialog = <span class="number">43</span>,
+    UI_HeroDialog = <span class="number">44</span>,
+    UI_InventoryDialog = <span class="number">45</span>,
+    UI_PetDialog = <span class="number">46</span>,
+    UI_LogOut = <span class="number">47</span>,
+    UI_MailDialog = <span class="number">71</span>,
+    UI_OptionsDialog = <span class="number">48</span>,
+    UI_PartyDialog = <span class="number">49</span>,
+    UI_PvPPanel = <span class="number">73</span>,
+    UI_PvPBuild = <span class="number">75</span>,
+    UI_Scoreboard = <span class="number">50</span>,
+    UI_InformationDialog = <span class="number">51</span>,
+    UI_Show_HideChat = <span class="number">70</span>,
+    UI_ChatCommand = <span class="number">52</span>,
+    UI_ChatMessage = <span class="number">53</span>,
+    UI_ChatReply = <span class="number">54</span>,
+    UI_ShowHideUI = <span class="number">55</span>,
+    UI_ShowHideSquadBroadcastChat = <span class="number">85</span>,
+    UI_SquadBroadcastChatCommand = <span class="number">83</span>,
+    UI_SquadBroadcastMessage = <span class="number">84</span>,
+
+    <span class="comment">// Camera Tab
+    </span>Camera_FreeCamera = <span class="number">13</span>,
+    Camera_ZoomIn = <span class="number">14</span>,
+    Camera_ZoomOut = <span class="number">15</span>,
+    Camera_LookBehind = <span class="number">16</span>,
+    Camera_ToggleActionCamera = <span class="number">78</span>,
+    Camera_DisableActionCamera = <span class="number">114</span>,
+
+    <span class="comment">// Screenshot Tab
+    </span>Screenshot_Normal = <span class="number">56</span>,
+    Screenshot_Stereoscopic = <span class="number">57</span>,
+
+    <span class="comment">// Map Tab
+    </span>Map_OpenClose = <span class="number">59</span>,
+    Map_Recenter = <span class="number">60</span>,
+    Map_FloorDown = <span class="number">61</span>,
+    Map_FloorUp = <span class="number">62</span>,
+    Map_ZoomIn = <span class="number">63</span>,
+    Map_ZoomOut = <span class="number">64</span>,
+
+    <span class="comment">// Mounts Tab
+    </span>Mounts_MountDismount = <span class="number">152</span>,
+    Mounts_MountAbility1 = <span class="number">130</span>,
+    Mounts_MountAbility2 = <span class="number">153</span>,
+    Mounts_Raptor = <span class="number">155</span>,
+    Mounts_Springer = <span class="number">156</span>,
+    Mounts_Skimmer = <span class="number">157</span>,
+    Mounts_Jackal = <span class="number">158</span>,
+    Mounts_Griffon = <span class="number">159</span>,
+    Mounts_RollerBeetle = <span class="number">161</span>,
+    Mounts_Warclaw = <span class="number">169</span>,
+    Mounts_Skyscale = <span class="number">170</span>,
+    Mounts_Turtle = <span class="number">203</span>,
+
+    <span class="comment">// Spectators Tab
+    </span>Spectators_NearestFixedCamera = <span class="number">102</span>,
+    Spectators_NearestPlayer = <span class="number">103</span>,
+    Spectators_RedPlayer1 = <span class="number">104</span>,
+    Spectators_RedPlayer2 = <span class="number">105</span>,
+    Spectators_RedPlayer3 = <span class="number">106</span>,
+    Spectators_RedPlayer4 = <span class="number">107</span>,
+    Spectators_RedPlayer5 = <span class="number">108</span>,
+    Spectators_BluePlayer1 = <span class="number">109</span>,
+    Spectators_BluePlayer2 = <span class="number">110</span>,
+    Spectators_BluePlayer3 = <span class="number">111</span>,
+    Spectators_BluePlayer4 = <span class="number">112</span>,
+    Spectators_BluePlayer5 = <span class="number">113</span>,
+    Spectators_FreeCamera = <span class="number">120</span>,
+    Spectators_FreeCameraBoost = <span class="number">127</span>,
+    Spectators_FreeCameraForward = <span class="number">121</span>,
+    Spectators_FreeCameraBackward = <span class="number">122</span>,
+    Spectators_FreeCameraLeft = <span class="number">123</span>,
+    Spectators_FreeCameraRight = <span class="number">124</span>,
+    Spectators_FreeCameraUp = <span class="number">125</span>,
+    Spectators_FreeCameraDown = <span class="number">126</span>,
+
+    <span class="comment">// Squad Tab
+    </span>Squad_Location_Arrow = <span class="number">86</span>,
+    Squad_Location_Circle = <span class="number">87</span>,
+    Squad_Location_Heart = <span class="number">88</span>,
+    Squad_Location_Square = <span class="number">89</span>,
+    Squad_Location_Star = <span class="number">90</span>,
+    Squad_Location_Spiral = <span class="number">91</span>,
+    Squad_Location_Triangle = <span class="number">92</span>,
+    Squad_Location_X = <span class="number">93</span>,
+    Squad_ClearAllLocationMarkers = <span class="number">119</span>,
+    Squad_Object_Arrow = <span class="number">94</span>,
+    Squad_Object_Circle = <span class="number">95</span>,
+    Squad_Object_Heart = <span class="number">96</span>,
+    Squad_Object_Square = <span class="number">97</span>,
+    Squad_Object_Star = <span class="number">98</span>,
+    Squad_Object_Spiral = <span class="number">99</span>,
+    Squad_Object_Triangle = <span class="number">100</span>,
+    Squad_Object_X = <span class="number">101</span>,
+    Squad_ClearAllObjectMarkers = <span class="number">118</span>,
+
+    <span class="comment">// Mastery Skills Tab
+    </span>MasterySkills_ActivateMasterySkill = <span class="number">196</span>,
+    MasterySkills_StartFishing = <span class="number">204</span>,
+    MasterySkills_SummonSkiff = <span class="number">205</span>,
+    MasterySkills_SetJadeBotWaypoint = <span class="number">206</span>,
+
+    <span class="comment">// Miscellaneous Tab
+    </span>Miscellaneous_AoELoot = <span class="number">74</span>,
+    Miscellaneous_Interact = <span class="number">65</span>,
+    Miscellaneous_ShowEnemyNames = <span class="number">66</span>,
+    Miscellaneous_ShowAllyNames = <span class="number">67</span>,
+    Miscellaneous_StowDrawWeapon = <span class="number">68</span>,
+    Miscellaneous_ToggleLanguage = <span class="number">69</span>,
+    Miscellaneous_RangerPetCombatToggle = <span class="number">76</span>,
+    Miscellaneous_ToggleFullScreen = <span class="number">160</span>,
+    Miscellaneous_EquipUnequipNovelty = <span class="number">162</span>,
+    Miscellaneous_ActivateChair = <span class="number">163</span>,
+    Miscellaneous_ActivateMusicalInstrument = <span class="number">164</span>,
+    Miscellaneous_ActivateHeldItem = <span class="number">165</span>,
+    Miscellaneous_ActivateToy = <span class="number">166</span>,
+    Miscellaneous_ActivateTonic = <span class="number">167</span>,
+
+    <span class="comment">// Templates Tab
+    </span>Templates_BuildTemplate1 = <span class="number">171</span>,
+    Templates_BuildTemplate2 = <span class="number">172</span>,
+    Templates_BuildTemplate3 = <span class="number">173</span>,
+    Templates_BuildTemplate4 = <span class="number">174</span>,
+    Templates_BuildTemplate5 = <span class="number">175</span>,
+    Templates_BuildTemplate6 = <span class="number">176</span>,
+    Templates_BuildTemplate7 = <span class="number">177</span>,
+    Templates_BuildTemplate8 = <span class="number">178</span>,
+    Templates_EquipmentTemplate1 = <span class="number">182</span>,
+    Templates_EquipmentTemplate2 = <span class="number">183</span>,
+    Templates_EquipmentTemplate3 = <span class="number">184</span>,
+    Templates_EquipmentTemplate4 = <span class="number">185</span>,
+    Templates_EquipmentTemplate5 = <span class="number">186</span>,
+    Templates_EquipmentTemplate6 = <span class="number">187</span>,
+    Templates_EquipmentTemplate7 = <span class="number">188</span>,
+    Templates_EquipmentTemplate8 = <span class="number">189</span>,
 }
 
-<span class="attribute">#[<span class="ident">derive</span>(
-    <span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>, <span class="ident">Hash</span>, <span class="ident">IntoPrimitive</span>, <span class="ident">TryFromPrimitive</span>,
-)]</span>
-<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>, <span class="ident">derive</span>(<span class="ident">Serialize</span>, <span class="ident">Deserialize</span>))]</span>
-<span class="attribute">#[<span class="ident">cfg_attr</span>(
-    <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;strum&quot;</span>,
-    <span class="ident">derive</span>(<span class="ident">Display</span>, <span class="ident">EnumCount</span>, <span class="ident">EnumIter</span>, <span class="ident">IntoStaticStr</span>, <span class="ident">EnumVariantNames</span>)
-)]</span>
-<span class="attribute">#[<span class="ident">repr</span>(<span class="ident">i32</span>)]</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">Modifier</span> {
-    <span class="ident">Shift</span> <span class="op">=</span> <span class="number">1</span>,
-    <span class="ident">Ctrl</span> <span class="op">=</span> <span class="number">2</span>,
-    <span class="ident">Alt</span> <span class="op">=</span> <span class="number">4</span>,
+<span class="doccomment">/// Custom key codes.
+///
+/// Some of them are not usable like [`F13`](Self::F32) to [`F35`](Self::F35) or [`Print`](Self::Print).
+///
+/// Names are based upon US keyboard layout.
+/// Site to translate it to other languages: &lt;http://kbdlayout.info&gt;
+</span><span class="attribute">#[derive(
+    Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, TryFromPrimitive,
+)]
+#[cfg_attr(feature = <span class="string">&quot;serde&quot;</span>, derive(Serialize, Deserialize))]
+#[cfg_attr(
+    feature = <span class="string">&quot;strum&quot;</span>,
+    derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames)
+)]
+#[repr(i32)]
+</span><span class="kw">pub enum </span>KeyCode {
+    LeftAlt = <span class="number">0</span>,
+    LeftCtrl = <span class="number">1</span>,
+    LeftShift = <span class="number">2</span>,
+    Quote = <span class="number">3</span>,
+    Hash = <span class="number">4</span>,
+    CapsLock = <span class="number">5</span>,
+    Colon = <span class="number">6</span>,
+    Minus = <span class="number">7</span>,
+    Equals = <span class="number">8</span>,
+    Escape = <span class="number">9</span>,
+    OpenBracket = <span class="number">10</span>,
+    NumLock = <span class="number">11</span>,
+    Period = <span class="number">12</span>,
+    CloseBracket = <span class="number">13</span>,
+    Semicolon = <span class="number">14</span>,
+    Slash = <span class="number">15</span>,
+    Print = <span class="number">16</span>,
+    Tilde = <span class="number">17</span>,
+    Backspace = <span class="number">18</span>,
+    Delete = <span class="number">19</span>,
+    Enter = <span class="number">20</span>,
+    Space = <span class="number">21</span>,
+    Tab = <span class="number">22</span>,
+    End = <span class="number">23</span>,
+    Home = <span class="number">24</span>,
+    Insert = <span class="number">25</span>,
+    Next = <span class="number">26</span>,
+    Prior = <span class="number">27</span>,
+    ArrowDown = <span class="number">28</span>,
+    ArrowLeft = <span class="number">29</span>,
+    ArrowRight = <span class="number">30</span>,
+    ArrowUp = <span class="number">31</span>,
+    F1 = <span class="number">32</span>,
+    F2 = <span class="number">33</span>,
+    F3 = <span class="number">34</span>,
+    F4 = <span class="number">35</span>,
+    F5 = <span class="number">36</span>,
+    F6 = <span class="number">37</span>,
+    F7 = <span class="number">38</span>,
+    F8 = <span class="number">39</span>,
+    F9 = <span class="number">40</span>,
+    F10 = <span class="number">41</span>,
+    F11 = <span class="number">42</span>,
+    F12 = <span class="number">43</span>,
+    Number0 = <span class="number">48</span>,
+    Number1 = <span class="number">49</span>,
+    Number2 = <span class="number">50</span>,
+    Number3 = <span class="number">51</span>,
+    Number4 = <span class="number">52</span>,
+    Number5 = <span class="number">53</span>,
+    Number6 = <span class="number">54</span>,
+    Number7 = <span class="number">55</span>,
+    Number8 = <span class="number">56</span>,
+    Number9 = <span class="number">57</span>,
+    A = <span class="number">65</span>,
+    B = <span class="number">66</span>,
+    C = <span class="number">67</span>,
+    D = <span class="number">68</span>,
+    E = <span class="number">69</span>,
+    F = <span class="number">70</span>,
+    G = <span class="number">71</span>,
+    H = <span class="number">72</span>,
+    I = <span class="number">73</span>,
+    J = <span class="number">74</span>,
+    K = <span class="number">75</span>,
+    L = <span class="number">76</span>,
+    M = <span class="number">77</span>,
+    N = <span class="number">78</span>,
+    O = <span class="number">79</span>,
+    P = <span class="number">80</span>,
+    Q = <span class="number">81</span>,
+    R = <span class="number">82</span>,
+    S = <span class="number">83</span>,
+    T = <span class="number">84</span>,
+    U = <span class="number">85</span>,
+    V = <span class="number">86</span>,
+    W = <span class="number">87</span>,
+    X = <span class="number">88</span>,
+    Y = <span class="number">89</span>,
+    Z = <span class="number">90</span>,
+    PlusNum = <span class="number">91</span>,
+    DecimalNum = <span class="number">92</span>,
+    DivideNum = <span class="number">93</span>,
+    MultiplyNum = <span class="number">94</span>,
+    Number0Num = <span class="number">95</span>,
+    Number1Num = <span class="number">96</span>,
+    Number2Num = <span class="number">97</span>,
+    Number3Num = <span class="number">98</span>,
+    Number4Num = <span class="number">99</span>,
+    Number5Num = <span class="number">100</span>,
+    Number6Num = <span class="number">101</span>,
+    Number7Num = <span class="number">102</span>,
+    Number8Num = <span class="number">103</span>,
+    Number9Num = <span class="number">104</span>,
+    EnterNum = <span class="number">105</span>,
+    MinusNum = <span class="number">106</span>,
+    ImeKey1 = <span class="number">107</span>,
+    ImeKey2 = <span class="number">108</span>,
+    RightAlt = <span class="number">109</span>,
+    RightCtrl = <span class="number">110</span>,
+    Backslash = <span class="number">111</span>,
+    F13 = <span class="number">112</span>,
+    F14 = <span class="number">113</span>,
+    F15 = <span class="number">114</span>,
+    F16 = <span class="number">115</span>,
+    F17 = <span class="number">116</span>,
+    F18 = <span class="number">117</span>,
+    F19 = <span class="number">118</span>,
+    F20 = <span class="number">119</span>,
+    F21 = <span class="number">120</span>,
+    F22 = <span class="number">121</span>,
+    F23 = <span class="number">122</span>,
+    F24 = <span class="number">123</span>,
+    F25 = <span class="number">124</span>,
+    F26 = <span class="number">125</span>,
+    F27 = <span class="number">126</span>,
+    F28 = <span class="number">127</span>,
+    F29 = <span class="number">128</span>,
+    F30 = <span class="number">129</span>,
+    F31 = <span class="number">130</span>,
+    F32 = <span class="number">131</span>,
+    F33 = <span class="number">132</span>,
+    F34 = <span class="number">133</span>,
+    F35 = <span class="number">134</span>,
+    RightShift = <span class="number">135</span>,
+    Eject = <span class="number">136</span>,
+    EqualNum = <span class="number">137</span>,
+    ClearNum = <span class="number">138</span>,
+    LeftCmd = <span class="number">139</span>,
+    Function = <span class="number">140</span>,
+    RightCmd = <span class="number">141</span>,
+
+    <span class="comment">// additional, not used by GW2
+    </span>Scroll = <span class="number">200</span>,
+    Pause = <span class="number">201</span>,
+    LeftWin = <span class="number">202</span>,
+    RightWin = <span class="number">203</span>,
+    Menu = <span class="number">204</span>,
+}
+
+<span class="doccomment">/// Custom mouse codes.
+</span><span class="attribute">#[derive(
+    Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, TryFromPrimitive,
+)]
+#[cfg_attr(feature = <span class="string">&quot;serde&quot;</span>, derive(Serialize, Deserialize))]
+#[cfg_attr(
+    feature = <span class="string">&quot;strum&quot;</span>,
+    derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames)
+)]
+#[repr(i32)]
+</span><span class="kw">pub enum </span>MouseCode {
+    Mouse1 = <span class="number">0</span>,
+    Mouse3 = <span class="number">1</span>,
+    Mouse2 = <span class="number">2</span>,
+    Mouse4 = <span class="number">3</span>,
+    Mouse5 = <span class="number">4</span>,
+    Mouse6 = <span class="number">5</span>,
+    Mouse7 = <span class="number">6</span>,
+    Mouse8 = <span class="number">7</span>,
+    Mouse9 = <span class="number">8</span>,
+    Mouse10 = <span class="number">9</span>,
+    Mouse11 = <span class="number">10</span>,
+    Mouse12 = <span class="number">11</span>,
+    Mouse13 = <span class="number">12</span>,
+    Mouse14 = <span class="number">13</span>,
+    Mouse15 = <span class="number">14</span>,
+    Mouse16 = <span class="number">15</span>,
+    Mouse17 = <span class="number">16</span>,
+    Mouse18 = <span class="number">17</span>,
+    Mouse19 = <span class="number">18</span>,
+    Mouse20 = <span class="number">19</span>,
+}
+
+<span class="attribute">#[derive(
+    Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
+)]
+#[cfg_attr(feature = <span class="string">&quot;serde&quot;</span>, derive(Serialize, Deserialize))]
+#[cfg_attr(
+    feature = <span class="string">&quot;strum&quot;</span>,
+    derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames)
+)]
+#[repr(i32)]
+</span><span class="kw">pub enum </span>DeviceType {
+    <span class="attribute">#[num_enum(default)]
+    </span>Unset = <span class="number">0</span>,
+    Mouse = <span class="number">1</span>,
+    Keyboard = <span class="number">2</span>,
+}
+
+<span class="attribute">#[derive(
+    Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, TryFromPrimitive,
+)]
+#[cfg_attr(feature = <span class="string">&quot;serde&quot;</span>, derive(Serialize, Deserialize))]
+#[cfg_attr(
+    feature = <span class="string">&quot;strum&quot;</span>,
+    derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames)
+)]
+#[repr(i32)]
+</span><span class="kw">pub enum </span>Modifier {
+    Shift = <span class="number">1</span>,
+    Ctrl = <span class="number">2</span>,
+    Alt = <span class="number">4</span>,
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="arcdps" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="arcdps" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.0 (69f9c33d7 2022-12-12)" ></div></body></html>

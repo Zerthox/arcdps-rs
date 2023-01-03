@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\arcdps-imgui-0.8.0\src\clipboard.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>clipboard.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script><script defer src="../../main.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../arcdps_imgui/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../arcdps_imgui/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../arcdps_imgui/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\arcdps-imgui-0.8.0\src\clipboard.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>clipboard.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../normalize.css"><link rel="stylesheet" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../ayu.css" disabled><link rel="stylesheet" href="../../dark.css" disabled><link rel="stylesheet" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script><script defer src="../../main.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../arcdps_imgui/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -140,123 +140,123 @@
 <span id="140">140</span>
 <span id="141">141</span>
 <span id="142">142</span>
-</pre><pre class="rust"><code><span class="kw">use</span> <span class="ident">std::ffi</span>::{<span class="ident">CStr</span>, <span class="ident">CString</span>};
-<span class="kw">use</span> <span class="ident">std::fmt</span>;
-<span class="kw">use</span> <span class="ident">std::os::raw</span>::{<span class="ident">c_char</span>, <span class="ident">c_void</span>};
-<span class="kw">use</span> <span class="ident">std::panic::catch_unwind</span>;
-<span class="kw">use</span> <span class="ident">std::process</span>;
-<span class="kw">use</span> <span class="ident">std::ptr</span>;
+</pre><pre class="rust"><code><span class="kw">use </span>std::ffi::{CStr, CString};
+<span class="kw">use </span>std::fmt;
+<span class="kw">use </span>std::os::raw::{c_char, c_void};
+<span class="kw">use </span>std::panic::catch_unwind;
+<span class="kw">use </span>std::process;
+<span class="kw">use </span>std::ptr;
 
-<span class="comment">// use crate::string::{ImStr, ImString};</span>
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::Ui</span>;
+<span class="comment">// use crate::string::{ImStr, ImString};
+</span><span class="kw">use </span><span class="kw">crate</span>::Ui;
 
-<span class="doccomment">/// Trait for clipboard backends</span>
-<span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">ClipboardBackend</span>: <span class="lifetime">&#39;static</span> {
-    <span class="doccomment">/// Returns the current clipboard contents as an owned imgui-rs string, or None if the</span>
-    <span class="doccomment">/// clipboard is empty or inaccessible</span>
-    <span class="kw">fn</span> <span class="ident">get</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>;
-    <span class="doccomment">/// Sets the clipboard contents to the given imgui-rs string slice.</span>
-    <span class="kw">fn</span> <span class="ident">set</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>);
+<span class="doccomment">/// Trait for clipboard backends
+</span><span class="kw">pub trait </span>ClipboardBackend: <span class="lifetime">&#39;static </span>{
+    <span class="doccomment">/// Returns the current clipboard contents as an owned imgui-rs string, or None if the
+    /// clipboard is empty or inaccessible
+    </span><span class="kw">fn </span>get(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;String&gt;;
+    <span class="doccomment">/// Sets the clipboard contents to the given imgui-rs string slice.
+    </span><span class="kw">fn </span>set(<span class="kw-2">&amp;mut </span><span class="self">self</span>, value: <span class="kw-2">&amp;</span>str);
 }
 
-<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">struct</span> <span class="ident">ClipboardContext</span> {
-    <span class="ident">backend</span>: <span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">ClipboardBackend</span><span class="op">&gt;</span>,
-    <span class="comment">// this is needed to keep ownership of the value when the raw C callback is called</span>
-    <span class="ident">last_value</span>: <span class="ident">CString</span>,
+<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">struct </span>ClipboardContext {
+    backend: Box&lt;<span class="kw">dyn </span>ClipboardBackend&gt;,
+    <span class="comment">// this is needed to keep ownership of the value when the raw C callback is called
+    </span>last_value: CString,
 }
 
-<span class="kw">impl</span> <span class="ident">ClipboardContext</span> {
-    <span class="doccomment">/// Creates a new [ClipboardContext]. This function previously took a `Box`, but now</span>
-    <span class="doccomment">/// is generic over the T it takes and boxes itself (which should be less strange).</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">ClipboardBackend</span><span class="op">&gt;</span>(<span class="ident">backend</span>: <span class="ident">T</span>) -&gt; <span class="ident">ClipboardContext</span> {
-        <span class="ident">ClipboardContext</span> {
-            <span class="ident">backend</span>: <span class="ident">Box::new</span>(<span class="ident">backend</span>) <span class="kw">as</span> <span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">ClipboardBackend</span><span class="op">&gt;</span>,
-            <span class="ident">last_value</span>: <span class="ident">CString::default</span>(),
+<span class="kw">impl </span>ClipboardContext {
+    <span class="doccomment">/// Creates a new [ClipboardContext]. This function previously took a `Box`, but now
+    /// is generic over the T it takes and boxes itself (which should be less strange).
+    </span><span class="kw">pub fn </span>new&lt;T: ClipboardBackend&gt;(backend: T) -&gt; ClipboardContext {
+        ClipboardContext {
+            backend: Box::new(backend) <span class="kw">as </span>Box&lt;<span class="kw">dyn </span>ClipboardBackend&gt;,
+            last_value: CString::default(),
         }
     }
 
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">dummy</span>() -&gt; <span class="ident">ClipboardContext</span> {
-        <span class="self">Self</span> {
-            <span class="ident">backend</span>: <span class="ident">Box::new</span>(<span class="ident">DummyClipboardContext</span>),
-            <span class="ident">last_value</span>: <span class="ident">CString::default</span>(),
+    <span class="kw">pub fn </span>dummy() -&gt; ClipboardContext {
+        <span class="self">Self </span>{
+            backend: Box::new(DummyClipboardContext),
+            last_value: CString::default(),
         }
     }
 }
 
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">DummyClipboardContext</span>;
-<span class="kw">impl</span> <span class="ident">ClipboardBackend</span> <span class="kw">for</span> <span class="ident">DummyClipboardContext</span> {
-    <span class="kw">fn</span> <span class="ident">get</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
-        <span class="prelude-val">None</span>
-    }
+<span class="kw">pub struct </span>DummyClipboardContext;
+<span class="kw">impl </span>ClipboardBackend <span class="kw">for </span>DummyClipboardContext {
+    <span class="kw">fn </span>get(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;String&gt; {
+        <span class="prelude-val">None
+    </span>}
 
-    <span class="kw">fn</span> <span class="ident">set</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="kw">_</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) {
-        <span class="comment">// empty</span>
+    <span class="kw">fn </span>set(<span class="kw-2">&amp;mut </span><span class="self">self</span>, <span class="kw">_</span>: <span class="kw-2">&amp;</span>str) {
+        <span class="comment">// empty
+    </span>}
+}
+
+<span class="kw">impl </span>fmt::Debug <span class="kw">for </span>ClipboardContext {
+    <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; fmt::Result {
+        f.debug_struct(<span class="string">&quot;ClipboardContext&quot;</span>)
+            <span class="comment">// beautiful code, no?
+            </span>.field(<span class="string">&quot;backend&quot;</span>, <span class="kw-2">&amp;</span>(<span class="kw-2">&amp;</span>(<span class="kw-2">*</span><span class="self">self</span>.backend) <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>))
+            .field(<span class="string">&quot;last_value&quot;</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.last_value)
+            .finish()
     }
 }
 
-<span class="kw">impl</span> <span class="ident">fmt::Debug</span> <span class="kw">for</span> <span class="ident">ClipboardContext</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
-        <span class="ident">f</span>.<span class="ident">debug_struct</span>(<span class="string">&quot;ClipboardContext&quot;</span>)
-            <span class="comment">// beautiful code, no?</span>
-            .<span class="ident">field</span>(<span class="string">&quot;backend&quot;</span>, <span class="kw-2">&amp;</span>(<span class="kw-2">&amp;</span>(<span class="kw-2">*</span><span class="self">self</span>.<span class="ident">backend</span>) <span class="kw">as</span> <span class="kw-2">*const</span> <span class="kw">_</span>))
-            .<span class="ident">field</span>(<span class="string">&quot;last_value&quot;</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">last_value</span>)
-            .<span class="ident">finish</span>()
-    }
-}
-
-<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span> <span class="ident">get_clipboard_text</span>(<span class="ident">user_data</span>: <span class="kw-2">*mut</span> <span class="ident">c_void</span>) -&gt; <span class="kw-2">*const</span> <span class="ident">c_char</span> {
-    <span class="kw">let</span> <span class="ident">result</span> <span class="op">=</span> <span class="ident">catch_unwind</span>(<span class="op">|</span><span class="op">|</span> {
-        <span class="kw">let</span> <span class="ident">ctx</span> <span class="op">=</span> <span class="kw-2">&amp;mut</span> <span class="kw-2">*</span>(<span class="ident">user_data</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">ClipboardContext</span>);
-        <span class="kw">match</span> <span class="ident">ctx</span>.<span class="ident">backend</span>.<span class="ident">get</span>() {
-            <span class="prelude-val">Some</span>(<span class="ident">text</span>) =&gt; {
-                <span class="ident">ctx</span>.<span class="ident">last_value</span> <span class="op">=</span> <span class="ident">CString::new</span>(<span class="ident">text</span>).<span class="ident">unwrap</span>();
-                <span class="ident">ctx</span>.<span class="ident">last_value</span>.<span class="ident">as_ptr</span>()
+<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>get_clipboard_text(user_data: <span class="kw-2">*mut </span>c_void) -&gt; <span class="kw-2">*const </span>c_char {
+    <span class="kw">let </span>result = catch_unwind(|| {
+        <span class="kw">let </span>ctx = <span class="kw-2">&amp;mut *</span>(user_data <span class="kw">as </span><span class="kw-2">*mut </span>ClipboardContext);
+        <span class="kw">match </span>ctx.backend.get() {
+            <span class="prelude-val">Some</span>(text) =&gt; {
+                ctx.last_value = CString::new(text).unwrap();
+                ctx.last_value.as_ptr()
             }
-            <span class="prelude-val">None</span> =&gt; <span class="ident">ptr::null</span>(),
+            <span class="prelude-val">None </span>=&gt; ptr::null(),
         }
     });
-    <span class="ident">result</span>.<span class="ident">unwrap_or_else</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> {
+    result.unwrap_or_else(|<span class="kw">_</span>| {
         <span class="macro">eprintln!</span>(<span class="string">&quot;Clipboard getter panicked&quot;</span>);
-        <span class="ident">process::abort</span>();
+        process::abort();
     })
 }
 
-<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span> <span class="ident">set_clipboard_text</span>(<span class="ident">user_data</span>: <span class="kw-2">*mut</span> <span class="ident">c_void</span>, <span class="ident">text</span>: <span class="kw-2">*const</span> <span class="ident">c_char</span>) {
-    <span class="kw">let</span> <span class="ident">result</span> <span class="op">=</span> <span class="ident">catch_unwind</span>(<span class="op">|</span><span class="op">|</span> {
-        <span class="kw">let</span> <span class="ident">ctx</span> <span class="op">=</span> <span class="kw-2">&amp;mut</span> <span class="kw-2">*</span>(<span class="ident">user_data</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">ClipboardContext</span>);
-        <span class="kw">let</span> <span class="ident">text</span> <span class="op">=</span> <span class="ident">CStr::from_ptr</span>(<span class="ident">text</span>).<span class="ident">to_owned</span>();
-        <span class="ident">ctx</span>.<span class="ident">backend</span>.<span class="ident">set</span>(<span class="ident">text</span>.<span class="ident">to_str</span>().<span class="ident">unwrap</span>());
+<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>set_clipboard_text(user_data: <span class="kw-2">*mut </span>c_void, text: <span class="kw-2">*const </span>c_char) {
+    <span class="kw">let </span>result = catch_unwind(|| {
+        <span class="kw">let </span>ctx = <span class="kw-2">&amp;mut *</span>(user_data <span class="kw">as </span><span class="kw-2">*mut </span>ClipboardContext);
+        <span class="kw">let </span>text = CStr::from_ptr(text).to_owned();
+        ctx.backend.set(text.to_str().unwrap());
     });
-    <span class="ident">result</span>.<span class="ident">unwrap_or_else</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> {
+    result.unwrap_or_else(|<span class="kw">_</span>| {
         <span class="macro">eprintln!</span>(<span class="string">&quot;Clipboard setter panicked&quot;</span>);
-        <span class="ident">process::abort</span>();
+        process::abort();
     });
 }
 
-<span class="doccomment">/// # Clipboard</span>
-<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::fn_address_comparisons</span>)]</span> <span class="comment">// This is allowed because although function addresses wont be unique, we just care if its OURS</span>
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> <span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Returns the current clipboard contents as text, or None if the clipboard is empty or cannot</span>
-    <span class="doccomment">/// be accessed</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">clipboard_text</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
-        <span class="kw">let</span> <span class="ident">io</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">io</span>();
-        <span class="ident">io</span>.<span class="ident">get_clipboard_text_fn</span>.<span class="ident">and_then</span>(<span class="op">|</span><span class="ident">get_clipboard_text_fn</span><span class="op">|</span> {
-            <span class="comment">// Bypass FFI if we end up calling our own function anyway</span>
-            <span class="kw">if</span> <span class="ident">get_clipboard_text_fn</span> <span class="op">==</span> <span class="ident">get_clipboard_text</span> {
-                <span class="kw">let</span> <span class="ident">ctx</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="kw-2">&amp;mut</span> <span class="kw-2">*</span>(<span class="ident">io</span>.<span class="ident">clipboard_user_data</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">ClipboardContext</span>) };
-                <span class="ident">ctx</span>.<span class="ident">backend</span>.<span class="ident">get</span>()
-            } <span class="kw">else</span> {
-                <span class="kw">unsafe</span> {
-                    <span class="kw">let</span> <span class="ident">text_ptr</span> <span class="op">=</span> <span class="ident">get_clipboard_text_fn</span>(<span class="ident">io</span>.<span class="ident">clipboard_user_data</span>);
-                    <span class="kw">if</span> <span class="ident">text_ptr</span>.<span class="ident">is_null</span>() <span class="op">|</span><span class="op">|</span> <span class="kw-2">*</span><span class="ident">text_ptr</span> <span class="op">==</span> <span class="string">b&#39;\0&#39;</span> <span class="kw">as</span> <span class="ident">c_char</span> {
-                        <span class="prelude-val">None</span>
-                    } <span class="kw">else</span> {
+<span class="doccomment">/// # Clipboard
+</span><span class="attribute">#[allow(clippy::fn_address_comparisons)] </span><span class="comment">// This is allowed because although function addresses wont be unique, we just care if its OURS
+</span><span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>&gt; Ui&lt;<span class="lifetime">&#39;ui</span>&gt; {
+    <span class="doccomment">/// Returns the current clipboard contents as text, or None if the clipboard is empty or cannot
+    /// be accessed
+    </span><span class="kw">pub fn </span>clipboard_text(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;String&gt; {
+        <span class="kw">let </span>io = <span class="self">self</span>.io();
+        io.get_clipboard_text_fn.and_then(|get_clipboard_text_fn| {
+            <span class="comment">// Bypass FFI if we end up calling our own function anyway
+            </span><span class="kw">if </span>get_clipboard_text_fn == get_clipboard_text {
+                <span class="kw">let </span>ctx = <span class="kw">unsafe </span>{ <span class="kw-2">&amp;mut *</span>(io.clipboard_user_data <span class="kw">as </span><span class="kw-2">*mut </span>ClipboardContext) };
+                ctx.backend.get()
+            } <span class="kw">else </span>{
+                <span class="kw">unsafe </span>{
+                    <span class="kw">let </span>text_ptr = get_clipboard_text_fn(io.clipboard_user_data);
+                    <span class="kw">if </span>text_ptr.is_null() || <span class="kw-2">*</span>text_ptr == <span class="string">b&#39;\0&#39; </span><span class="kw">as </span>c_char {
+                        <span class="prelude-val">None
+                    </span>} <span class="kw">else </span>{
                         <span class="prelude-val">Some</span>(
-                            <span class="ident">CStr::from_ptr</span>(<span class="ident">text_ptr</span>)
-                                .<span class="ident">to_owned</span>()
-                                .<span class="ident">to_str</span>()
-                                .<span class="ident">ok</span>()<span class="question-mark">?</span>
-                                .<span class="ident">to_owned</span>(),
+                            CStr::from_ptr(text_ptr)
+                                .to_owned()
+                                .to_str()
+                                .ok()<span class="question-mark">?
+                                </span>.to_owned(),
                         )
                     }
                 }
@@ -264,23 +264,23 @@
         })
     }
 
-    <span class="doccomment">/// Sets the clipboard contents.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Does nothing if the clipboard cannot be accessed.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_clipboard_text</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">text</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>) {
-        <span class="kw">let</span> <span class="ident">io</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">io</span>();
-        <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">set_clipboard_text_fn</span>) <span class="op">=</span> <span class="ident">io</span>.<span class="ident">set_clipboard_text_fn</span> {
-            <span class="comment">// Bypass FFI if we end up calling our own function anyway</span>
-            <span class="kw">if</span> <span class="ident">set_clipboard_text_fn</span> <span class="op">==</span> <span class="ident">set_clipboard_text</span> {
-                <span class="kw">let</span> <span class="ident">ctx</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="kw-2">&amp;mut</span> <span class="kw-2">*</span>(<span class="ident">io</span>.<span class="ident">clipboard_user_data</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">ClipboardContext</span>) };
-                <span class="ident">ctx</span>.<span class="ident">backend</span>.<span class="ident">set</span>(<span class="ident">text</span>.<span class="ident">as_ref</span>());
-            } <span class="kw">else</span> {
-                <span class="kw">unsafe</span> {
-                    <span class="ident">set_clipboard_text_fn</span>(<span class="ident">io</span>.<span class="ident">clipboard_user_data</span>, <span class="self">self</span>.<span class="ident">scratch_txt</span>(<span class="ident">text</span>));
+    <span class="doccomment">/// Sets the clipboard contents.
+    ///
+    /// Does nothing if the clipboard cannot be accessed.
+    </span><span class="kw">pub fn </span>set_clipboard_text(<span class="kw-2">&amp;</span><span class="self">self</span>, text: <span class="kw">impl </span>AsRef&lt;str&gt;) {
+        <span class="kw">let </span>io = <span class="self">self</span>.io();
+        <span class="kw">if let </span><span class="prelude-val">Some</span>(set_clipboard_text_fn) = io.set_clipboard_text_fn {
+            <span class="comment">// Bypass FFI if we end up calling our own function anyway
+            </span><span class="kw">if </span>set_clipboard_text_fn == set_clipboard_text {
+                <span class="kw">let </span>ctx = <span class="kw">unsafe </span>{ <span class="kw-2">&amp;mut *</span>(io.clipboard_user_data <span class="kw">as </span><span class="kw-2">*mut </span>ClipboardContext) };
+                ctx.backend.set(text.as_ref());
+            } <span class="kw">else </span>{
+                <span class="kw">unsafe </span>{
+                    set_clipboard_text_fn(io.clipboard_user_data, <span class="self">self</span>.scratch_txt(text));
                 }
             }
         }
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="arcdps_imgui" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="arcdps_imgui" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.0 (69f9c33d7 2022-12-12)" ></div></body></html>

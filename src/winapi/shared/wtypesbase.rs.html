@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\winapi-0.3.9\src\shared\wtypesbase.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>wtypesbase.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../winapi/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../winapi/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../winapi/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\winapi-0.3.9\src\shared\wtypesbase.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>wtypesbase.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../normalize.css"><link rel="stylesheet" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../ayu.css" disabled><link rel="stylesheet" href="../../../dark.css" disabled><link rel="stylesheet" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../../winapi/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -159,166 +159,166 @@
 <span id="159">159</span>
 <span id="160">160</span>
 <span id="161">161</span>
-</pre><pre class="rust"><code><span class="comment">// Licensed under the Apache License, Version 2.0</span>
-<span class="comment">// &lt;LICENSE-APACHE or http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license</span>
-<span class="comment">// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your option.</span>
-<span class="comment">// All files in the project carrying such notice may not be copied, modified, or distributed</span>
-<span class="comment">// except according to those terms.</span>
-<span class="kw">use</span> <span class="ident">ctypes</span>::{<span class="ident">c_double</span>, <span class="ident">c_short</span>, <span class="ident">c_uchar</span>, <span class="ident">c_ushort</span>};
-<span class="kw">use</span> <span class="ident">shared::minwindef</span>::{<span class="ident">BYTE</span>, <span class="ident">DWORD</span>};
-<span class="kw">use</span> <span class="ident">shared::rpcndr</span>::{<span class="ident">boolean</span>, <span class="ident">byte</span>, <span class="ident">hyper</span>};
-<span class="kw">use</span> <span class="ident">um::winnt</span>::{<span class="ident">LONG</span>, <span class="ident">LPWSTR</span>, <span class="ident">WCHAR</span>};
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">OLECHAR</span> <span class="op">=</span> <span class="ident">WCHAR</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LPOLESTR</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">OLECHAR</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LPCOLESTR</span> <span class="op">=</span> <span class="kw-2">*const</span> <span class="ident">OLECHAR</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">UCHAR</span> <span class="op">=</span> <span class="ident">c_uchar</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">SHORT</span> <span class="op">=</span> <span class="ident">c_short</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">USHORT</span> <span class="op">=</span> <span class="ident">c_ushort</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">ULONG</span> <span class="op">=</span> <span class="ident">DWORD</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">DOUBLE</span> <span class="op">=</span> <span class="ident">c_double</span>;
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">COAUTHIDENTITY</span> {
-    <span class="ident">User</span>: <span class="kw-2">*mut</span> <span class="ident">USHORT</span>,
-    <span class="ident">UserLength</span>: <span class="ident">ULONG</span>,
-    <span class="ident">Domain</span>: <span class="kw-2">*mut</span> <span class="ident">USHORT</span>,
-    <span class="ident">DomainLength</span>: <span class="ident">ULONG</span>,
-    <span class="ident">Password</span>: <span class="kw-2">*mut</span> <span class="ident">USHORT</span>,
-    <span class="ident">PasswordLength</span>: <span class="ident">ULONG</span>,
-    <span class="ident">Flags</span>: <span class="ident">ULONG</span>,
+</pre><pre class="rust"><code><span class="comment">// Licensed under the Apache License, Version 2.0
+// &lt;LICENSE-APACHE or http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license
+// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your option.
+// All files in the project carrying such notice may not be copied, modified, or distributed
+// except according to those terms.
+</span><span class="kw">use </span>ctypes::{c_double, c_short, c_uchar, c_ushort};
+<span class="kw">use </span>shared::minwindef::{BYTE, DWORD};
+<span class="kw">use </span>shared::rpcndr::{boolean, byte, hyper};
+<span class="kw">use </span>um::winnt::{LONG, LPWSTR, WCHAR};
+<span class="kw">pub type </span>OLECHAR = WCHAR;
+<span class="kw">pub type </span>LPOLESTR = <span class="kw-2">*mut </span>OLECHAR;
+<span class="kw">pub type </span>LPCOLESTR = <span class="kw-2">*const </span>OLECHAR;
+<span class="kw">pub type </span>UCHAR = c_uchar;
+<span class="kw">pub type </span>SHORT = c_short;
+<span class="kw">pub type </span>USHORT = c_ushort;
+<span class="kw">pub type </span>ULONG = DWORD;
+<span class="kw">pub type </span>DOUBLE = c_double;
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>COAUTHIDENTITY {
+    User: <span class="kw-2">*mut </span>USHORT,
+    UserLength: ULONG,
+    Domain: <span class="kw-2">*mut </span>USHORT,
+    DomainLength: ULONG,
+    Password: <span class="kw-2">*mut </span>USHORT,
+    PasswordLength: ULONG,
+    Flags: ULONG,
 }}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">COAUTHINFO</span> {
-    <span class="ident">dwAuthnSvc</span>: <span class="ident">DWORD</span>,
-    <span class="ident">dwAuthzSvc</span>: <span class="ident">DWORD</span>,
-    <span class="ident">pwszServerPrincName</span>: <span class="ident">LPWSTR</span>,
-    <span class="ident">dwAuthnLevel</span>: <span class="ident">DWORD</span>,
-    <span class="ident">dwImpersonationLevel</span>: <span class="ident">DWORD</span>,
-    <span class="ident">pAuthIdentityData</span>: <span class="kw-2">*mut</span> <span class="ident">COAUTHIDENTITY</span>,
-    <span class="ident">dwCapabilities</span>: <span class="ident">DWORD</span>,
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>COAUTHINFO {
+    dwAuthnSvc: DWORD,
+    dwAuthzSvc: DWORD,
+    pwszServerPrincName: LPWSTR,
+    dwAuthnLevel: DWORD,
+    dwImpersonationLevel: DWORD,
+    pAuthIdentityData: <span class="kw-2">*mut </span>COAUTHIDENTITY,
+    dwCapabilities: DWORD,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">SCODE</span> <span class="op">=</span> <span class="ident">LONG</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PSCODE</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">SCODE</span>;
-<span class="macro">ENUM!</span>{<span class="kw">enum</span> <span class="ident">MEMCTX</span> {
-    <span class="ident">MEMCTX_TASK</span> <span class="op">=</span> <span class="number">1</span>,
-    <span class="ident">MEMCTX_SHARED</span> <span class="op">=</span> <span class="number">2</span>,
-    <span class="ident">MEMCTX_MACSYSTEM</span> <span class="op">=</span> <span class="number">3</span>,
-    <span class="ident">MEMCTX_UNKNOWN</span> <span class="op">=</span> <span class="op">-</span><span class="number">1i32</span> <span class="kw">as</span> <span class="ident">u32</span>,
-    <span class="ident">MEMCTX_SAME</span> <span class="op">=</span> <span class="op">-</span><span class="number">2i32</span> <span class="kw">as</span> <span class="ident">u32</span>,
+<span class="kw">pub type </span>SCODE = LONG;
+<span class="kw">pub type </span>PSCODE = <span class="kw-2">*mut </span>SCODE;
+<span class="macro">ENUM!</span>{<span class="kw">enum </span>MEMCTX {
+    MEMCTX_TASK = <span class="number">1</span>,
+    MEMCTX_SHARED = <span class="number">2</span>,
+    MEMCTX_MACSYSTEM = <span class="number">3</span>,
+    MEMCTX_UNKNOWN = -<span class="number">1i32 </span><span class="kw">as </span>u32,
+    MEMCTX_SAME = -<span class="number">2i32 </span><span class="kw">as </span>u32,
 }}
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">ROTREGFLAGS_ALLOWANYCLIENT</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x1</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">APPIDREGFLAGS_ACTIVATE_IUSERVER_INDESKTOP</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x1</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">APPIDREGFLAGS_SECURE_SERVER_PROCESS_SD_AND_BIND</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x2</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">APPIDREGFLAGS_ISSUE_ACTIVATION_RPC_AT_IDENTIFY</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x4</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">APPIDREGFLAGS_IUSERVER_UNMODIFIED_LOGON_TOKEN</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x8</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">APPIDREGFLAGS_IUSERVER_SELF_SID_IN_LAUNCH_PERMISSION</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x10</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">APPIDREGFLAGS_IUSERVER_ACTIVATE_IN_CLIENT_SESSION_ONLY</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x20</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">APPIDREGFLAGS_RESERVED1</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x40</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">APPIDREGFLAGS_RESERVED2</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x80</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">APPIDREGFLAGS_RESERVED3</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x100</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">APPIDREGFLAGS_RESERVED4</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x200</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">APPIDREGFLAGS_RESERVED5</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x400</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">APPIDREGFLAGS_RESERVED6</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x800</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DCOMSCM_ACTIVATION_USE_ALL_AUTHNSERVICES</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x1</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DCOMSCM_ACTIVATION_DISALLOW_UNSECURE_CALL</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x2</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DCOMSCM_RESOLVE_USE_ALL_AUTHNSERVICES</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x4</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DCOMSCM_RESOLVE_DISALLOW_UNSECURE_CALL</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x8</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DCOMSCM_PING_USE_MID_AUTHNSERVICE</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x10</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DCOMSCM_PING_DISALLOW_UNSECURE_CALL</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x20</span>;
-<span class="macro">ENUM!</span>{<span class="kw">enum</span> <span class="ident">CLSCTX</span> {
-    <span class="ident">CLSCTX_INPROC_SERVER</span> <span class="op">=</span> <span class="number">0x1</span>,
-    <span class="ident">CLSCTX_INPROC_HANDLER</span> <span class="op">=</span> <span class="number">0x2</span>,
-    <span class="ident">CLSCTX_LOCAL_SERVER</span> <span class="op">=</span> <span class="number">0x4</span>,
-    <span class="ident">CLSCTX_INPROC_SERVER16</span> <span class="op">=</span> <span class="number">0x8</span>,
-    <span class="ident">CLSCTX_REMOTE_SERVER</span> <span class="op">=</span> <span class="number">0x10</span>,
-    <span class="ident">CLSCTX_INPROC_HANDLER16</span> <span class="op">=</span> <span class="number">0x20</span>,
-    <span class="ident">CLSCTX_RESERVED1</span> <span class="op">=</span> <span class="number">0x40</span>,
-    <span class="ident">CLSCTX_RESERVED2</span> <span class="op">=</span> <span class="number">0x80</span>,
-    <span class="ident">CLSCTX_RESERVED3</span> <span class="op">=</span> <span class="number">0x100</span>,
-    <span class="ident">CLSCTX_RESERVED4</span> <span class="op">=</span> <span class="number">0x200</span>,
-    <span class="ident">CLSCTX_NO_CODE_DOWNLOAD</span> <span class="op">=</span> <span class="number">0x400</span>,
-    <span class="ident">CLSCTX_RESERVED5</span> <span class="op">=</span> <span class="number">0x800</span>,
-    <span class="ident">CLSCTX_NO_CUSTOM_MARSHAL</span> <span class="op">=</span> <span class="number">0x1000</span>,
-    <span class="ident">CLSCTX_ENABLE_CODE_DOWNLOAD</span> <span class="op">=</span> <span class="number">0x2000</span>,
-    <span class="ident">CLSCTX_NO_FAILURE_LOG</span> <span class="op">=</span> <span class="number">0x4000</span>,
-    <span class="ident">CLSCTX_DISABLE_AAA</span> <span class="op">=</span> <span class="number">0x8000</span>,
-    <span class="ident">CLSCTX_ENABLE_AAA</span> <span class="op">=</span> <span class="number">0x10000</span>,
-    <span class="ident">CLSCTX_FROM_DEFAULT_CONTEXT</span> <span class="op">=</span> <span class="number">0x20000</span>,
-    <span class="ident">CLSCTX_ACTIVATE_32_BIT_SERVER</span> <span class="op">=</span> <span class="number">0x40000</span>,
-    <span class="ident">CLSCTX_ACTIVATE_64_BIT_SERVER</span> <span class="op">=</span> <span class="number">0x80000</span>,
-    <span class="ident">CLSCTX_ENABLE_CLOAKING</span> <span class="op">=</span> <span class="number">0x100000</span>,
-    <span class="ident">CLSCTX_APPCONTAINER</span> <span class="op">=</span> <span class="number">0x400000</span>,
-    <span class="ident">CLSCTX_ACTIVATE_AAA_AS_IU</span> <span class="op">=</span> <span class="number">0x800000</span>,
-    <span class="ident">CLSCTX_PS_DLL</span> <span class="op">=</span> <span class="number">0x80000000</span>,
+<span class="kw">pub const </span>ROTREGFLAGS_ALLOWANYCLIENT: DWORD = <span class="number">0x1</span>;
+<span class="kw">pub const </span>APPIDREGFLAGS_ACTIVATE_IUSERVER_INDESKTOP: DWORD = <span class="number">0x1</span>;
+<span class="kw">pub const </span>APPIDREGFLAGS_SECURE_SERVER_PROCESS_SD_AND_BIND: DWORD = <span class="number">0x2</span>;
+<span class="kw">pub const </span>APPIDREGFLAGS_ISSUE_ACTIVATION_RPC_AT_IDENTIFY: DWORD = <span class="number">0x4</span>;
+<span class="kw">pub const </span>APPIDREGFLAGS_IUSERVER_UNMODIFIED_LOGON_TOKEN: DWORD = <span class="number">0x8</span>;
+<span class="kw">pub const </span>APPIDREGFLAGS_IUSERVER_SELF_SID_IN_LAUNCH_PERMISSION: DWORD = <span class="number">0x10</span>;
+<span class="kw">pub const </span>APPIDREGFLAGS_IUSERVER_ACTIVATE_IN_CLIENT_SESSION_ONLY: DWORD = <span class="number">0x20</span>;
+<span class="kw">pub const </span>APPIDREGFLAGS_RESERVED1: DWORD = <span class="number">0x40</span>;
+<span class="kw">pub const </span>APPIDREGFLAGS_RESERVED2: DWORD = <span class="number">0x80</span>;
+<span class="kw">pub const </span>APPIDREGFLAGS_RESERVED3: DWORD = <span class="number">0x100</span>;
+<span class="kw">pub const </span>APPIDREGFLAGS_RESERVED4: DWORD = <span class="number">0x200</span>;
+<span class="kw">pub const </span>APPIDREGFLAGS_RESERVED5: DWORD = <span class="number">0x400</span>;
+<span class="kw">pub const </span>APPIDREGFLAGS_RESERVED6: DWORD = <span class="number">0x800</span>;
+<span class="kw">pub const </span>DCOMSCM_ACTIVATION_USE_ALL_AUTHNSERVICES: DWORD = <span class="number">0x1</span>;
+<span class="kw">pub const </span>DCOMSCM_ACTIVATION_DISALLOW_UNSECURE_CALL: DWORD = <span class="number">0x2</span>;
+<span class="kw">pub const </span>DCOMSCM_RESOLVE_USE_ALL_AUTHNSERVICES: DWORD = <span class="number">0x4</span>;
+<span class="kw">pub const </span>DCOMSCM_RESOLVE_DISALLOW_UNSECURE_CALL: DWORD = <span class="number">0x8</span>;
+<span class="kw">pub const </span>DCOMSCM_PING_USE_MID_AUTHNSERVICE: DWORD = <span class="number">0x10</span>;
+<span class="kw">pub const </span>DCOMSCM_PING_DISALLOW_UNSECURE_CALL: DWORD = <span class="number">0x20</span>;
+<span class="macro">ENUM!</span>{<span class="kw">enum </span>CLSCTX {
+    CLSCTX_INPROC_SERVER = <span class="number">0x1</span>,
+    CLSCTX_INPROC_HANDLER = <span class="number">0x2</span>,
+    CLSCTX_LOCAL_SERVER = <span class="number">0x4</span>,
+    CLSCTX_INPROC_SERVER16 = <span class="number">0x8</span>,
+    CLSCTX_REMOTE_SERVER = <span class="number">0x10</span>,
+    CLSCTX_INPROC_HANDLER16 = <span class="number">0x20</span>,
+    CLSCTX_RESERVED1 = <span class="number">0x40</span>,
+    CLSCTX_RESERVED2 = <span class="number">0x80</span>,
+    CLSCTX_RESERVED3 = <span class="number">0x100</span>,
+    CLSCTX_RESERVED4 = <span class="number">0x200</span>,
+    CLSCTX_NO_CODE_DOWNLOAD = <span class="number">0x400</span>,
+    CLSCTX_RESERVED5 = <span class="number">0x800</span>,
+    CLSCTX_NO_CUSTOM_MARSHAL = <span class="number">0x1000</span>,
+    CLSCTX_ENABLE_CODE_DOWNLOAD = <span class="number">0x2000</span>,
+    CLSCTX_NO_FAILURE_LOG = <span class="number">0x4000</span>,
+    CLSCTX_DISABLE_AAA = <span class="number">0x8000</span>,
+    CLSCTX_ENABLE_AAA = <span class="number">0x10000</span>,
+    CLSCTX_FROM_DEFAULT_CONTEXT = <span class="number">0x20000</span>,
+    CLSCTX_ACTIVATE_32_BIT_SERVER = <span class="number">0x40000</span>,
+    CLSCTX_ACTIVATE_64_BIT_SERVER = <span class="number">0x80000</span>,
+    CLSCTX_ENABLE_CLOAKING = <span class="number">0x100000</span>,
+    CLSCTX_APPCONTAINER = <span class="number">0x400000</span>,
+    CLSCTX_ACTIVATE_AAA_AS_IU = <span class="number">0x800000</span>,
+    CLSCTX_PS_DLL = <span class="number">0x80000000</span>,
 }}
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CLSCTX_VALID_MASK</span>: <span class="ident">CLSCTX</span> <span class="op">=</span> <span class="ident">CLSCTX_INPROC_SERVER</span> <span class="op">|</span> <span class="ident">CLSCTX_INPROC_HANDLER</span>
-    <span class="op">|</span> <span class="ident">CLSCTX_LOCAL_SERVER</span> <span class="op">|</span> <span class="ident">CLSCTX_INPROC_SERVER16</span> <span class="op">|</span> <span class="ident">CLSCTX_REMOTE_SERVER</span>
-    <span class="op">|</span> <span class="ident">CLSCTX_NO_CODE_DOWNLOAD</span> <span class="op">|</span> <span class="ident">CLSCTX_NO_CUSTOM_MARSHAL</span> <span class="op">|</span> <span class="ident">CLSCTX_ENABLE_CODE_DOWNLOAD</span>
-    <span class="op">|</span> <span class="ident">CLSCTX_NO_FAILURE_LOG</span> <span class="op">|</span> <span class="ident">CLSCTX_DISABLE_AAA</span> <span class="op">|</span> <span class="ident">CLSCTX_ENABLE_AAA</span> <span class="op">|</span> <span class="ident">CLSCTX_FROM_DEFAULT_CONTEXT</span>
-    <span class="op">|</span> <span class="ident">CLSCTX_ACTIVATE_32_BIT_SERVER</span> <span class="op">|</span> <span class="ident">CLSCTX_ACTIVATE_64_BIT_SERVER</span> <span class="op">|</span> <span class="ident">CLSCTX_ENABLE_CLOAKING</span>
-    <span class="op">|</span> <span class="ident">CLSCTX_APPCONTAINER</span> <span class="op">|</span> <span class="ident">CLSCTX_ACTIVATE_AAA_AS_IU</span> <span class="op">|</span> <span class="ident">CLSCTX_PS_DLL</span>;
-<span class="macro">ENUM!</span>{<span class="kw">enum</span> <span class="ident">MSHLFLAGS</span> {
-    <span class="ident">MSHLFLAGS_NORMAL</span> <span class="op">=</span> <span class="number">0</span>,
-    <span class="ident">MSHLFLAGS_TABLESTRONG</span> <span class="op">=</span> <span class="number">1</span>,
-    <span class="ident">MSHLFLAGS_TABLEWEAK</span> <span class="op">=</span> <span class="number">2</span>,
-    <span class="ident">MSHLFLAGS_NOPING</span> <span class="op">=</span> <span class="number">4</span>,
-    <span class="ident">MSHLFLAGS_RESERVED1</span> <span class="op">=</span> <span class="number">8</span>,
-    <span class="ident">MSHLFLAGS_RESERVED2</span> <span class="op">=</span> <span class="number">16</span>,
-    <span class="ident">MSHLFLAGS_RESERVED3</span> <span class="op">=</span> <span class="number">32</span>,
-    <span class="ident">MSHLFLAGS_RESERVED4</span> <span class="op">=</span> <span class="number">64</span>,
+<span class="kw">pub const </span>CLSCTX_VALID_MASK: CLSCTX = CLSCTX_INPROC_SERVER | CLSCTX_INPROC_HANDLER
+    | CLSCTX_LOCAL_SERVER | CLSCTX_INPROC_SERVER16 | CLSCTX_REMOTE_SERVER
+    | CLSCTX_NO_CODE_DOWNLOAD | CLSCTX_NO_CUSTOM_MARSHAL | CLSCTX_ENABLE_CODE_DOWNLOAD
+    | CLSCTX_NO_FAILURE_LOG | CLSCTX_DISABLE_AAA | CLSCTX_ENABLE_AAA | CLSCTX_FROM_DEFAULT_CONTEXT
+    | CLSCTX_ACTIVATE_32_BIT_SERVER | CLSCTX_ACTIVATE_64_BIT_SERVER | CLSCTX_ENABLE_CLOAKING
+    | CLSCTX_APPCONTAINER | CLSCTX_ACTIVATE_AAA_AS_IU | CLSCTX_PS_DLL;
+<span class="macro">ENUM!</span>{<span class="kw">enum </span>MSHLFLAGS {
+    MSHLFLAGS_NORMAL = <span class="number">0</span>,
+    MSHLFLAGS_TABLESTRONG = <span class="number">1</span>,
+    MSHLFLAGS_TABLEWEAK = <span class="number">2</span>,
+    MSHLFLAGS_NOPING = <span class="number">4</span>,
+    MSHLFLAGS_RESERVED1 = <span class="number">8</span>,
+    MSHLFLAGS_RESERVED2 = <span class="number">16</span>,
+    MSHLFLAGS_RESERVED3 = <span class="number">32</span>,
+    MSHLFLAGS_RESERVED4 = <span class="number">64</span>,
 }}
-<span class="macro">ENUM!</span>{<span class="kw">enum</span> <span class="ident">MSHCTX</span> {
-    <span class="ident">MSHCTX_LOCAL</span> <span class="op">=</span> <span class="number">0</span>,
-    <span class="ident">MSHCTX_NOSHAREDMEM</span> <span class="op">=</span> <span class="number">1</span>,
-    <span class="ident">MSHCTX_DIFFERENTMACHINE</span> <span class="op">=</span> <span class="number">2</span>,
-    <span class="ident">MSHCTX_INPROC</span> <span class="op">=</span> <span class="number">3</span>,
-    <span class="ident">MSHCTX_CROSSCTX</span> <span class="op">=</span> <span class="number">4</span>,
+<span class="macro">ENUM!</span>{<span class="kw">enum </span>MSHCTX {
+    MSHCTX_LOCAL = <span class="number">0</span>,
+    MSHCTX_NOSHAREDMEM = <span class="number">1</span>,
+    MSHCTX_DIFFERENTMACHINE = <span class="number">2</span>,
+    MSHCTX_INPROC = <span class="number">3</span>,
+    MSHCTX_CROSSCTX = <span class="number">4</span>,
 }}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">BYTE_BLOB</span> {
-    <span class="ident">clSize</span>: <span class="ident">ULONG</span>,
-    <span class="ident">abData</span>: [<span class="ident">byte</span>; <span class="number">1</span>],
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>BYTE_BLOB {
+    clSize: ULONG,
+    abData: [byte; <span class="number">1</span>],
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">UP_BYTE_BLOB</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">BYTE_BLOB</span>;
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">WORD_BLOB</span> {
-    <span class="ident">clSize</span>: <span class="ident">ULONG</span>,
-    <span class="ident">asData</span>: [<span class="ident">c_ushort</span>; <span class="number">1</span>],
+<span class="kw">pub type </span>UP_BYTE_BLOB = <span class="kw-2">*mut </span>BYTE_BLOB;
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>WORD_BLOB {
+    clSize: ULONG,
+    asData: [c_ushort; <span class="number">1</span>],
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">UP_WORD_BLOB</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">WORD_BLOB</span>;
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">DWORD_BLOB</span> {
-    <span class="ident">clSize</span>: <span class="ident">ULONG</span>,
-    <span class="ident">alData</span>: [<span class="ident">ULONG</span>; <span class="number">1</span>],
+<span class="kw">pub type </span>UP_WORD_BLOB = <span class="kw-2">*mut </span>WORD_BLOB;
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>DWORD_BLOB {
+    clSize: ULONG,
+    alData: [ULONG; <span class="number">1</span>],
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">UP_DWORD_BLOB</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">DWORD_BLOB</span>;
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">FLAGGED_BYTE_BLOB</span> {
-    <span class="ident">fFlags</span>: <span class="ident">ULONG</span>,
-    <span class="ident">clSize</span>: <span class="ident">ULONG</span>,
-    <span class="ident">abData</span>: [<span class="ident">byte</span>; <span class="number">1</span>],
+<span class="kw">pub type </span>UP_DWORD_BLOB = <span class="kw-2">*mut </span>DWORD_BLOB;
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>FLAGGED_BYTE_BLOB {
+    fFlags: ULONG,
+    clSize: ULONG,
+    abData: [byte; <span class="number">1</span>],
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">UP_FLAGGED_BYTE_BLOB</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">FLAGGED_BYTE_BLOB</span>;
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">FLAGGED_WORD_BLOB</span> {
-    <span class="ident">fFlags</span>: <span class="ident">ULONG</span>,
-    <span class="ident">clSize</span>: <span class="ident">ULONG</span>,
-    <span class="ident">alData</span>: [<span class="ident">ULONG</span>; <span class="number">1</span>],
+<span class="kw">pub type </span>UP_FLAGGED_BYTE_BLOB = <span class="kw-2">*mut </span>FLAGGED_BYTE_BLOB;
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>FLAGGED_WORD_BLOB {
+    fFlags: ULONG,
+    clSize: ULONG,
+    alData: [ULONG; <span class="number">1</span>],
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">UP_FLAGGED_WORD_BLOB</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">FLAGGED_WORD_BLOB</span>;
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">BYTE_SIZEDARR</span> {
-    <span class="ident">clSize</span>: <span class="ident">ULONG</span>,
-    <span class="ident">pData</span>: <span class="kw-2">*mut</span> <span class="ident">byte</span>,
+<span class="kw">pub type </span>UP_FLAGGED_WORD_BLOB = <span class="kw-2">*mut </span>FLAGGED_WORD_BLOB;
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>BYTE_SIZEDARR {
+    clSize: ULONG,
+    pData: <span class="kw-2">*mut </span>byte,
 }}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">WORD_SIZEDARR</span> {
-    <span class="ident">clSize</span>: <span class="ident">ULONG</span>,
-    <span class="ident">pData</span>: <span class="kw-2">*mut</span> <span class="ident">c_ushort</span>,
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>WORD_SIZEDARR {
+    clSize: ULONG,
+    pData: <span class="kw-2">*mut </span>c_ushort,
 }}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">DWORD_SIZEDARR</span> {
-    <span class="ident">clSize</span>: <span class="ident">ULONG</span>,
-    <span class="ident">pData</span>: <span class="kw-2">*mut</span> <span class="ident">ULONG</span>,
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>DWORD_SIZEDARR {
+    clSize: ULONG,
+    pData: <span class="kw-2">*mut </span>ULONG,
 }}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">HYPER_SIZEDARR</span> {
-    <span class="ident">clSize</span>: <span class="ident">ULONG</span>,
-    <span class="ident">pData</span>: <span class="kw-2">*mut</span> <span class="ident">hyper</span>,
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>HYPER_SIZEDARR {
+    clSize: ULONG,
+    pData: <span class="kw-2">*mut </span>hyper,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">BOOLEAN</span> <span class="op">=</span> <span class="ident">boolean</span>;
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">BLOB</span> {
-    <span class="ident">cbSize</span>: <span class="ident">ULONG</span>,
-    <span class="ident">pBlobData</span>: <span class="kw-2">*mut</span> <span class="ident">BYTE</span>,
+<span class="kw">pub type </span>BOOLEAN = boolean;
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>BLOB {
+    cbSize: ULONG,
+    pBlobData: <span class="kw-2">*mut </span>BYTE,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">LPBLOB</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">BLOB</span>;
+<span class="kw">pub type </span>LPBLOB = <span class="kw-2">*mut </span>BLOB;
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="winapi" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="winapi" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.0 (69f9c33d7 2022-12-12)" ></div></body></html>

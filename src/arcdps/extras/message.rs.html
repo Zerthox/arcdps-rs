@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `core\src\extras\message.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>message.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../arcdps/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../arcdps/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../arcdps/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `arcdps\src\extras\message.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>message.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../normalize.css"><link rel="stylesheet" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../ayu.css" disabled><link rel="stylesheet" href="../../../dark.css" disabled><link rel="stylesheet" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../../arcdps/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -191,198 +191,204 @@
 <span id="191">191</span>
 <span id="192">192</span>
 <span id="193">193</span>
-</pre><pre class="rust"><code><span class="kw">use</span> <span class="kw">crate</span>::{<span class="ident">strip_account_prefix</span>, <span class="ident">util::str_from_cstr_len</span>};
-<span class="kw">use</span> <span class="ident">chrono</span>::{<span class="ident">DateTime</span>, <span class="ident">FixedOffset</span>};
-<span class="kw">use</span> <span class="ident">std::os::raw::c_char</span>;
+<span id="194">194</span>
+<span id="195">195</span>
+<span id="196">196</span>
+</pre><pre class="rust"><code><span class="kw">use crate</span>::{strip_account_prefix, util::str_from_cstr_len};
+<span class="kw">use </span>chrono::{DateTime, FixedOffset};
+<span class="kw">use </span>std::os::raw::c_char;
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>)]</span>
-<span class="kw">use</span> <span class="ident">serde</span>::{<span class="ident">Deserialize</span>, <span class="ident">Serialize</span>};
+<span class="attribute">#[cfg(feature = <span class="string">&quot;serde&quot;</span>)]
+</span><span class="kw">use </span>serde::{Deserialize, Serialize};
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;strum&quot;</span>)]</span>
-<span class="kw">use</span> <span class="ident">strum</span>::{<span class="ident">Display</span>, <span class="ident">EnumCount</span>, <span class="ident">EnumIter</span>, <span class="ident">EnumVariantNames</span>, <span class="ident">IntoStaticStr</span>};
+<span class="attribute">#[cfg(feature = <span class="string">&quot;strum&quot;</span>)]
+</span><span class="kw">use </span>strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
 
-<span class="doccomment">/// A [`ChatMessageInfo`] with owned [`String`] fields.</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>)]</span>
-<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>, <span class="ident">derive</span>(<span class="ident">Serialize</span>, <span class="ident">Deserialize</span>))]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">ChatMessageInfoOwned</span> {
-    <span class="doccomment">/// A unique identifier for the channel this chat message was sent over.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Can be used to, for example, differentiate between squad messages sent to different squads.</span>
-    <span class="kw">pub</span> <span class="ident">channel_id</span>: <span class="ident">u32</span>,
+<span class="doccomment">/// A [`ChatMessageInfo`] with owned [`String`] fields.
+</span><span class="attribute">#[derive(Debug, Clone)]
+#[cfg_attr(feature = <span class="string">&quot;serde&quot;</span>, derive(Serialize, Deserialize))]
+</span><span class="kw">pub struct </span>ChatMessageInfoOwned {
+    <span class="doccomment">/// A unique identifier for the channel this chat message was sent over.
+    ///
+    /// Can be used to, for example, differentiate between squad messages sent to different squads.
+    </span><span class="kw">pub </span>channel_id: u32,
 
-    <span class="doccomment">/// Whether the message is sent in a party or a squad.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Note that messages sent to the party chat while in a squad will have the type [`ChannelType::Squad`].</span>
-    <span class="kw">pub</span> <span class="ident">channel_type</span>: <span class="ident">ChannelType</span>,
+    <span class="doccomment">/// Whether the message is sent in a party or a squad.
+    ///
+    /// Note that messages sent to the party chat while in a squad will have the type [`ChannelType::Squad`].
+    </span><span class="kw">pub </span>channel_type: ChannelType,
 
-    <span class="doccomment">/// The subgroup the message was sent to, or `0` if it was sent to the entire squad.</span>
-    <span class="kw">pub</span> <span class="ident">subgroup</span>: <span class="ident">u8</span>,
+    <span class="doccomment">/// The subgroup the message was sent to, or `0` if it was sent to the entire squad.
+    </span><span class="kw">pub </span>subgroup: u8,
 
-    <span class="doccomment">/// Whether the message is a broadcast.</span>
-    <span class="kw">pub</span> <span class="ident">is_broadcast</span>: <span class="ident">bool</span>,
+    <span class="doccomment">/// Whether the message is a broadcast.
+    </span><span class="kw">pub </span>is_broadcast: bool,
 
-    <span class="doccomment">/// Timestamp when the message was received.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This is the &quot;absolute ordering&quot; for chat messages,</span>
-    <span class="doccomment">/// however the time can potentially differ several seconds between the client and server because of latency and clock skew.</span>
-    <span class="kw">pub</span> <span class="ident">timestamp</span>: <span class="ident">DateTime</span><span class="op">&lt;</span><span class="ident">FixedOffset</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Timestamp when the message was received.
+    ///
+    /// This is the &quot;absolute ordering&quot; for chat messages,
+    /// however the time can potentially differ several seconds between the client and server because of latency and clock skew.
+    </span><span class="kw">pub </span>timestamp: DateTime&lt;FixedOffset&gt;,
 
-    <span class="doccomment">/// Account name of the player that sent the message.</span>
-    <span class="kw">pub</span> <span class="ident">account_name</span>: <span class="ident">String</span>,
+    <span class="doccomment">/// Account name of the player that sent the message.
+    </span><span class="kw">pub </span>account_name: String,
 
-    <span class="doccomment">/// Character name of the player that sent the message.</span>
-    <span class="kw">pub</span> <span class="ident">character_name</span>: <span class="ident">String</span>,
+    <span class="doccomment">/// Character name of the player that sent the message.
+    </span><span class="kw">pub </span>character_name: String,
 
-    <span class="doccomment">/// Content of the message.</span>
-    <span class="kw">pub</span> <span class="ident">text</span>: <span class="ident">String</span>,
+    <span class="doccomment">/// Content of the message.
+    </span><span class="kw">pub </span>text: String,
 }
 
-<span class="kw">impl</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">ChatMessageInfo</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">ChatMessageInfoOwned</span> {
-    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">chat</span>: <span class="ident">ChatMessageInfo</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">Self</span> {
-            <span class="ident">channel_id</span>: <span class="ident">chat</span>.<span class="ident">channel_id</span>,
-            <span class="ident">channel_type</span>: <span class="ident">chat</span>.<span class="ident">channel_type</span>,
-            <span class="ident">subgroup</span>: <span class="ident">chat</span>.<span class="ident">subgroup</span>,
-            <span class="ident">is_broadcast</span>: <span class="ident">chat</span>.<span class="ident">is_broadcast</span>,
-            <span class="ident">timestamp</span>: <span class="ident">chat</span>.<span class="ident">timestamp</span>,
-            <span class="ident">account_name</span>: <span class="ident">chat</span>.<span class="ident">account_name</span>.<span class="ident">to_string</span>(),
-            <span class="ident">character_name</span>: <span class="ident">chat</span>.<span class="ident">character_name</span>.<span class="ident">to_string</span>(),
-            <span class="ident">text</span>: <span class="ident">chat</span>.<span class="ident">text</span>.<span class="ident">to_string</span>(),
+<span class="kw">impl </span>From&lt;ChatMessageInfo&lt;<span class="lifetime">&#39;_</span>&gt;&gt; <span class="kw">for </span>ChatMessageInfoOwned {
+    <span class="kw">fn </span>from(chat: ChatMessageInfo&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; <span class="self">Self </span>{
+        <span class="self">Self </span>{
+            channel_id: chat.channel_id,
+            channel_type: chat.channel_type,
+            subgroup: chat.subgroup,
+            is_broadcast: chat.is_broadcast,
+            timestamp: chat.timestamp,
+            account_name: chat.account_name.to_string(),
+            character_name: chat.character_name.to_string(),
+            text: chat.text.to_string(),
         }
     }
 }
 
-<span class="doccomment">/// A chat message.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// Strings are available for the duration of the call.</span>
-<span class="doccomment">/// If you need it for longer than that, consider converting it to [`ChatMessageInfoOwned`].</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// ```ignore</span>
-<span class="doccomment">/// let message: ChatMessageInfoOwned = message.into();</span>
-<span class="doccomment">/// ```</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">ChatMessageInfo</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// A unique identifier for the channel this chat message was sent over.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Can be used to, for example, differentiate between squad messages sent to different squads.</span>
-    <span class="kw">pub</span> <span class="ident">channel_id</span>: <span class="ident">u32</span>,
+<span class="doccomment">/// A chat message.
+///
+/// Strings are available for the duration of the call.
+/// If you need it for longer than that, consider converting it to [`ChatMessageInfoOwned`].
+///
+/// ```no_run
+/// # use arcdps::extras::message::{ChatMessageInfo, ChatMessageInfoOwned};
+/// # fn f(message: ChatMessageInfo) {
+/// let message: ChatMessageInfoOwned = message.into();
+/// # }
+/// ```
+</span><span class="attribute">#[derive(Debug, Clone)]
+</span><span class="kw">pub struct </span>ChatMessageInfo&lt;<span class="lifetime">&#39;a</span>&gt; {
+    <span class="doccomment">/// A unique identifier for the channel this chat message was sent over.
+    ///
+    /// Can be used to, for example, differentiate between squad messages sent to different squads.
+    </span><span class="kw">pub </span>channel_id: u32,
 
-    <span class="doccomment">/// Whether the message is sent in a party or a squad.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Note that messages sent to the party chat while in a squad will have the type [`ChannelType::Squad`].</span>
-    <span class="kw">pub</span> <span class="ident">channel_type</span>: <span class="ident">ChannelType</span>,
+    <span class="doccomment">/// Whether the message is sent in a party or a squad.
+    ///
+    /// Note that messages sent to the party chat while in a squad will have the type [`ChannelType::Squad`].
+    </span><span class="kw">pub </span>channel_type: ChannelType,
 
-    <span class="doccomment">/// The subgroup the message was sent to, or `0` if it was sent to the entire squad.</span>
-    <span class="kw">pub</span> <span class="ident">subgroup</span>: <span class="ident">u8</span>,
+    <span class="doccomment">/// The subgroup the message was sent to, or `0` if it was sent to the entire squad.
+    </span><span class="kw">pub </span>subgroup: u8,
 
-    <span class="doccomment">/// Whether the message is a broadcast.</span>
-    <span class="kw">pub</span> <span class="ident">is_broadcast</span>: <span class="ident">bool</span>,
+    <span class="doccomment">/// Whether the message is a broadcast.
+    </span><span class="kw">pub </span>is_broadcast: bool,
 
-    <span class="doccomment">/// Timestamp when the message was received.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This is the &quot;absolute ordering&quot; for chat messages,</span>
-    <span class="doccomment">/// however the time can potentially differ several seconds between the client and server because of latency and clock skew.</span>
-    <span class="kw">pub</span> <span class="ident">timestamp</span>: <span class="ident">DateTime</span><span class="op">&lt;</span><span class="ident">FixedOffset</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Timestamp when the message was received.
+    ///
+    /// This is the &quot;absolute ordering&quot; for chat messages,
+    /// however the time can potentially differ several seconds between the client and server because of latency and clock skew.
+    </span><span class="kw">pub </span>timestamp: DateTime&lt;FixedOffset&gt;,
 
-    <span class="doccomment">/// Account name of the player that sent the message.</span>
-    <span class="kw">pub</span> <span class="ident">account_name</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span>,
+    <span class="doccomment">/// Account name of the player that sent the message.
+    </span><span class="kw">pub </span>account_name: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>str,
 
-    <span class="doccomment">/// Character name of the player that sent the message.</span>
-    <span class="kw">pub</span> <span class="ident">character_name</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span>,
+    <span class="doccomment">/// Character name of the player that sent the message.
+    </span><span class="kw">pub </span>character_name: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>str,
 
-    <span class="doccomment">/// Content of the message.</span>
-    <span class="kw">pub</span> <span class="ident">text</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span>,
+    <span class="doccomment">/// Content of the message.
+    </span><span class="kw">pub </span>text: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>str,
 }
 
-<span class="kw">impl</span> <span class="ident">From</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">RawChatMessageInfo</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">ChatMessageInfo</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">raw</span>: <span class="kw-2">&amp;</span><span class="ident">RawChatMessageInfo</span>) -&gt; <span class="self">Self</span> {
-        <span class="kw">let</span> <span class="ident">timestamp</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">str_from_cstr_len</span>(<span class="ident">raw</span>.<span class="ident">timestamp</span>, <span class="ident">raw</span>.<span class="ident">timestamp_length</span>) };
-        <span class="kw">let</span> <span class="ident">timestamp</span> <span class="op">=</span>
-            <span class="ident">DateTime::parse_from_rfc3339</span>(<span class="ident">timestamp</span>).<span class="ident">expect</span>(<span class="string">&quot;failed to parse message timestamp&quot;</span>);
+<span class="kw">impl </span>From&lt;<span class="kw-2">&amp;</span>RawChatMessageInfo&gt; <span class="kw">for </span>ChatMessageInfo&lt;<span class="lifetime">&#39;_</span>&gt; {
+    <span class="kw">fn </span>from(raw: <span class="kw-2">&amp;</span>RawChatMessageInfo) -&gt; <span class="self">Self </span>{
+        <span class="kw">let </span>timestamp = <span class="kw">unsafe </span>{ str_from_cstr_len(raw.timestamp, raw.timestamp_length) };
+        <span class="kw">let </span>timestamp =
+            DateTime::parse_from_rfc3339(timestamp).expect(<span class="string">&quot;failed to parse message timestamp&quot;</span>);
 
-        <span class="kw">let</span> <span class="ident">account_name</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">str_from_cstr_len</span>(<span class="ident">raw</span>.<span class="ident">account_name</span>, <span class="ident">raw</span>.<span class="ident">account_name_length</span>) };
-        <span class="kw">let</span> <span class="ident">character_name</span> <span class="op">=</span>
-            <span class="kw">unsafe</span> { <span class="ident">str_from_cstr_len</span>(<span class="ident">raw</span>.<span class="ident">character_name</span>, <span class="ident">raw</span>.<span class="ident">character_name_length</span>) };
-        <span class="kw">let</span> <span class="ident">text</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">str_from_cstr_len</span>(<span class="ident">raw</span>.<span class="ident">text</span>, <span class="ident">raw</span>.<span class="ident">text_length</span>) };
+        <span class="kw">let </span>account_name = <span class="kw">unsafe </span>{ str_from_cstr_len(raw.account_name, raw.account_name_length) };
+        <span class="kw">let </span>character_name =
+            <span class="kw">unsafe </span>{ str_from_cstr_len(raw.character_name, raw.character_name_length) };
+        <span class="kw">let </span>text = <span class="kw">unsafe </span>{ str_from_cstr_len(raw.text, raw.text_length) };
 
-        <span class="kw">let</span> <span class="ident">is_broadcast</span> <span class="op">=</span> (<span class="ident">raw</span>.<span class="ident">is_broadcast</span> <span class="op">&amp;</span> <span class="number">0x01</span>) <span class="op">!</span><span class="op">=</span> <span class="number">0</span>;
+        <span class="kw">let </span>is_broadcast = (raw.is_broadcast &amp; <span class="number">0x01</span>) != <span class="number">0</span>;
 
-        <span class="self">Self</span> {
-            <span class="ident">channel_id</span>: <span class="ident">raw</span>.<span class="ident">channel_id</span>,
-            <span class="ident">channel_type</span>: <span class="ident">raw</span>.<span class="ident">channel_type</span>,
-            <span class="ident">subgroup</span>: <span class="ident">raw</span>.<span class="ident">subgroup</span>,
-            <span class="ident">is_broadcast</span>,
-            <span class="ident">timestamp</span>,
-            <span class="ident">account_name</span>: <span class="ident">strip_account_prefix</span>(<span class="ident">account_name</span>),
-            <span class="ident">character_name</span>,
-            <span class="ident">text</span>,
+        <span class="self">Self </span>{
+            channel_id: raw.channel_id,
+            channel_type: raw.channel_type,
+            subgroup: raw.subgroup,
+            is_broadcast,
+            timestamp,
+            account_name: strip_account_prefix(account_name),
+            character_name,
+            text,
         }
     }
 }
 
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>)]</span>
-<span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">RawChatMessageInfo</span> {
-    <span class="doccomment">/// A unique identifier for the channel this chat message was sent over.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Can be used to, for example, differentiate between squad messages sent to different squads.</span>
-    <span class="kw">pub</span> <span class="ident">channel_id</span>: <span class="ident">u32</span>,
+<span class="attribute">#[derive(Debug, Clone)]
+#[repr(C)]
+</span><span class="kw">pub struct </span>RawChatMessageInfo {
+    <span class="doccomment">/// A unique identifier for the channel this chat message was sent over.
+    ///
+    /// Can be used to, for example, differentiate between squad messages sent to different squads.
+    </span><span class="kw">pub </span>channel_id: u32,
 
-    <span class="doccomment">/// Whether the message is sent in a party or a squad.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Note that messages sent to the party chat while in a squad will have the type [`ChannelType::Squad`].</span>
-    <span class="kw">pub</span> <span class="ident">channel_type</span>: <span class="ident">ChannelType</span>,
+    <span class="doccomment">/// Whether the message is sent in a party or a squad.
+    ///
+    /// Note that messages sent to the party chat while in a squad will have the type [`ChannelType::Squad`].
+    </span><span class="kw">pub </span>channel_type: ChannelType,
 
-    <span class="doccomment">/// The subgroup the message was sent to, or `0` if it was sent to the entire squad.</span>
-    <span class="kw">pub</span> <span class="ident">subgroup</span>: <span class="ident">u8</span>,
+    <span class="doccomment">/// The subgroup the message was sent to, or `0` if it was sent to the entire squad.
+    </span><span class="kw">pub </span>subgroup: u8,
 
-    <span class="doccomment">/// The lowest bit of this field will be set to `1` if the message is a broadcast, and `0` if it is not a broadcast.</span>
-    <span class="doccomment">/// The upper bits of this field may be used in a later version and **must not** be interpreted.</span>
-    <span class="kw">pub</span> <span class="ident">is_broadcast</span>: <span class="ident">u8</span>,
+    <span class="doccomment">/// The lowest bit of this field will be set to `1` if the message is a broadcast, and `0` if it is not a broadcast.
+    /// The upper bits of this field may be used in a later version and **must not** be interpreted.
+    </span><span class="kw">pub </span>is_broadcast: u8,
 
-    <span class="doccomment">/// Unused padding.</span>
-    <span class="kw">pub</span> <span class="ident">_unused1</span>: <span class="ident">u8</span>,
+    <span class="doccomment">/// Unused padding.
+    </span><span class="kw">pub </span>_unused1: u8,
 
-    <span class="doccomment">/// Null terminated iso8601 formatted string denoting when this message was</span>
-    <span class="doccomment">/// received by the server, e.g. `&quot;2022-07-09T11:45:24.888Z&quot;`.</span>
-    <span class="doccomment">/// This is the &quot;absolute ordering&quot; for chat messages,</span>
-    <span class="doccomment">/// however the time can potentially differ several seconds between the client and server because of latency and clock skew.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// The string is only valid for the duration of the call.</span>
-    <span class="kw">pub</span> <span class="ident">timestamp</span>: <span class="kw-2">*const</span> <span class="ident">c_char</span>,
-    <span class="kw">pub</span> <span class="ident">timestamp_length</span>: <span class="ident">u64</span>,
+    <span class="doccomment">/// Null terminated iso8601 formatted string denoting when this message was
+    /// received by the server, e.g. `&quot;2022-07-09T11:45:24.888Z&quot;`.
+    /// This is the &quot;absolute ordering&quot; for chat messages,
+    /// however the time can potentially differ several seconds between the client and server because of latency and clock skew.
+    ///
+    /// The string is only valid for the duration of the call.
+    </span><span class="kw">pub </span>timestamp: <span class="kw-2">*const </span>c_char,
+    <span class="kw">pub </span>timestamp_length: u64,
 
-    <span class="doccomment">/// Null terminated account name of the player that sent the message, including leading &#39;:&#39;.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// The string is only valid for the duration of the call.</span>
-    <span class="kw">pub</span> <span class="ident">account_name</span>: <span class="kw-2">*const</span> <span class="ident">c_char</span>,
-    <span class="kw">pub</span> <span class="ident">account_name_length</span>: <span class="ident">u64</span>,
+    <span class="doccomment">/// Null terminated account name of the player that sent the message, including leading &#39;:&#39;.
+    ///
+    /// The string is only valid for the duration of the call.
+    </span><span class="kw">pub </span>account_name: <span class="kw-2">*const </span>c_char,
+    <span class="kw">pub </span>account_name_length: u64,
 
-    <span class="doccomment">/// Null terminated character name of the player that sent the message.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// The string is only valid for the duration of the call.</span>
-    <span class="kw">pub</span> <span class="ident">character_name</span>: <span class="kw-2">*const</span> <span class="ident">c_char</span>,
-    <span class="kw">pub</span> <span class="ident">character_name_length</span>: <span class="ident">u64</span>,
+    <span class="doccomment">/// Null terminated character name of the player that sent the message.
+    ///
+    /// The string is only valid for the duration of the call.
+    </span><span class="kw">pub </span>character_name: <span class="kw-2">*const </span>c_char,
+    <span class="kw">pub </span>character_name_length: u64,
 
-    <span class="doccomment">/// Null terminated string containing the content of the message that was sent.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// The string is only valid for the duration of the call.</span>
-    <span class="kw">pub</span> <span class="ident">text</span>: <span class="kw-2">*const</span> <span class="ident">c_char</span>,
-    <span class="kw">pub</span> <span class="ident">text_length</span>: <span class="ident">u64</span>,
+    <span class="doccomment">/// Null terminated string containing the content of the message that was sent.
+    ///
+    /// The string is only valid for the duration of the call.
+    </span><span class="kw">pub </span>text: <span class="kw-2">*const </span>c_char,
+    <span class="kw">pub </span>text_length: u64,
 }
 
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>, <span class="ident">Hash</span>)]</span>
-<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>, <span class="ident">derive</span>(<span class="ident">Serialize</span>, <span class="ident">Deserialize</span>))]</span>
-<span class="attribute">#[<span class="ident">cfg_attr</span>(
-    <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;strum&quot;</span>,
-    <span class="ident">derive</span>(<span class="ident">Display</span>, <span class="ident">EnumCount</span>, <span class="ident">EnumIter</span>, <span class="ident">IntoStaticStr</span>, <span class="ident">EnumVariantNames</span>)
-)]</span>
-<span class="attribute">#[<span class="ident">repr</span>(<span class="ident">u8</span>)]</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">ChannelType</span> {
-    <span class="ident">Party</span> <span class="op">=</span> <span class="number">0</span>,
-    <span class="ident">Squad</span> <span class="op">=</span> <span class="number">1</span>,
-    <span class="ident">Reserved</span> <span class="op">=</span> <span class="number">2</span>,
-    <span class="ident">Invalid</span> <span class="op">=</span> <span class="number">3</span>,
+<span class="attribute">#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[cfg_attr(feature = <span class="string">&quot;serde&quot;</span>, derive(Serialize, Deserialize))]
+#[cfg_attr(
+    feature = <span class="string">&quot;strum&quot;</span>,
+    derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames)
+)]
+#[repr(u8)]
+</span><span class="kw">pub enum </span>ChannelType {
+    Party = <span class="number">0</span>,
+    Squad = <span class="number">1</span>,
+    Reserved = <span class="number">2</span>,
+    Invalid = <span class="number">3</span>,
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="arcdps" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="arcdps" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.0 (69f9c33d7 2022-12-12)" ></div></body></html>

@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\parking_lot_core-0.8.5\src\thread_parker\windows\mod.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>mod.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../../storage.js"></script><script defer src="../../../../source-script.js"></script><script defer src="../../../../source-files.js"></script><script defer src="../../../../main.js"></script><noscript><link rel="stylesheet" href="../../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../../parking_lot_core/index.html"><div class="logo-container"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../../parking_lot_core/index.html"><div class="logo-container"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../../parking_lot_core/index.html"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\parking_lot_core-0.8.6\src\thread_parker\windows\mod.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>mod.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../../normalize.css"><link rel="stylesheet" href="../../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../../ayu.css" disabled><link rel="stylesheet" href="../../../../dark.css" disabled><link rel="stylesheet" href="../../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../../storage.js"></script><script defer src="../../../../source-script.js"></script><script defer src="../../../../source-files.js"></script><script defer src="../../../../main.js"></script><noscript><link rel="stylesheet" href="../../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../../../parking_lot_core/index.html"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../../wheel.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -186,193 +186,193 @@
 <span id="186">186</span>
 <span id="187">187</span>
 <span id="188">188</span>
-</pre><pre class="rust"><code><span class="comment">// Copyright 2016 Amanieu d&#39;Antras</span>
-<span class="comment">//</span>
-<span class="comment">// Licensed under the Apache License, Version 2.0, &lt;LICENSE-APACHE or</span>
-<span class="comment">// http://apache.org/licenses/LICENSE-2.0&gt; or the MIT license &lt;LICENSE-MIT or</span>
-<span class="comment">// http://opensource.org/licenses/MIT&gt;, at your option. This file may not be</span>
-<span class="comment">// copied, modified, or distributed except according to those terms.</span>
+</pre><pre class="rust"><code><span class="comment">// Copyright 2016 Amanieu d&#39;Antras
+//
+// Licensed under the Apache License, Version 2.0, &lt;LICENSE-APACHE or
+// http://apache.org/licenses/LICENSE-2.0&gt; or the MIT license &lt;LICENSE-MIT or
+// http://opensource.org/licenses/MIT&gt;, at your option. This file may not be
+// copied, modified, or distributed except according to those terms.
 
-<span class="kw">use</span> <span class="ident">core</span>::{
-    <span class="ident">ptr</span>,
-    <span class="ident">sync::atomic</span>::{<span class="ident">AtomicPtr</span>, <span class="ident">AtomicUsize</span>, <span class="ident">Ordering</span>},
+</span><span class="kw">use </span>core::{
+    ptr,
+    sync::atomic::{AtomicPtr, AtomicUsize, Ordering},
 };
-<span class="kw">use</span> <span class="ident">instant::Instant</span>;
+<span class="kw">use </span>instant::Instant;
 
-<span class="kw">mod</span> <span class="ident">keyed_event</span>;
-<span class="kw">mod</span> <span class="ident">waitaddress</span>;
+<span class="kw">mod </span>keyed_event;
+<span class="kw">mod </span>waitaddress;
 
-<span class="kw">enum</span> <span class="ident">Backend</span> {
-    <span class="ident">KeyedEvent</span>(<span class="ident">keyed_event::KeyedEvent</span>),
-    <span class="ident">WaitAddress</span>(<span class="ident">waitaddress::WaitAddress</span>),
+<span class="kw">enum </span>Backend {
+    KeyedEvent(keyed_event::KeyedEvent),
+    WaitAddress(waitaddress::WaitAddress),
 }
 
-<span class="kw">static</span> <span class="ident">BACKEND</span>: <span class="ident">AtomicPtr</span><span class="op">&lt;</span><span class="ident">Backend</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">AtomicPtr::new</span>(<span class="ident">ptr::null_mut</span>());
+<span class="kw">static </span>BACKEND: AtomicPtr&lt;Backend&gt; = AtomicPtr::new(ptr::null_mut());
 
-<span class="kw">impl</span> <span class="ident">Backend</span> {
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">get</span>() -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">Backend</span> {
-        <span class="comment">// Fast path: use the existing object</span>
-        <span class="kw">let</span> <span class="ident">backend_ptr</span> <span class="op">=</span> <span class="ident">BACKEND</span>.<span class="ident">load</span>(<span class="ident">Ordering::Acquire</span>);
-        <span class="kw">if</span> <span class="op">!</span><span class="ident">backend_ptr</span>.<span class="ident">is_null</span>() {
-            <span class="kw">return</span> <span class="kw">unsafe</span> { <span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="ident">backend_ptr</span> };
+<span class="kw">impl </span>Backend {
+    <span class="attribute">#[inline]
+    </span><span class="kw">fn </span>get() -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>Backend {
+        <span class="comment">// Fast path: use the existing object
+        </span><span class="kw">let </span>backend_ptr = BACKEND.load(Ordering::Acquire);
+        <span class="kw">if </span>!backend_ptr.is_null() {
+            <span class="kw">return unsafe </span>{ <span class="kw-2">&amp;*</span>backend_ptr };
         };
 
-        <span class="ident">Backend::create</span>()
+        Backend::create()
     }
 
-    <span class="attribute">#[<span class="ident">cold</span>]</span>
-    <span class="kw">fn</span> <span class="ident">create</span>() -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">Backend</span> {
-        <span class="comment">// Try to create a new Backend</span>
-        <span class="kw">let</span> <span class="ident">backend</span>;
-        <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">waitaddress</span>) <span class="op">=</span> <span class="ident">waitaddress::WaitAddress::create</span>() {
-            <span class="ident">backend</span> <span class="op">=</span> <span class="ident">Backend::WaitAddress</span>(<span class="ident">waitaddress</span>);
-        } <span class="kw">else</span> <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">keyed_event</span>) <span class="op">=</span> <span class="ident">keyed_event::KeyedEvent::create</span>() {
-            <span class="ident">backend</span> <span class="op">=</span> <span class="ident">Backend::KeyedEvent</span>(<span class="ident">keyed_event</span>);
-        } <span class="kw">else</span> {
+    <span class="attribute">#[cold]
+    </span><span class="kw">fn </span>create() -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>Backend {
+        <span class="comment">// Try to create a new Backend
+        </span><span class="kw">let </span>backend;
+        <span class="kw">if let </span><span class="prelude-val">Some</span>(waitaddress) = waitaddress::WaitAddress::create() {
+            backend = Backend::WaitAddress(waitaddress);
+        } <span class="kw">else if let </span><span class="prelude-val">Some</span>(keyed_event) = keyed_event::KeyedEvent::create() {
+            backend = Backend::KeyedEvent(keyed_event);
+        } <span class="kw">else </span>{
             <span class="macro">panic!</span>(
                 <span class="string">&quot;parking_lot requires either NT Keyed Events (WinXP+) or \
-                 WaitOnAddress/WakeByAddress (Win8+)&quot;</span>
-            );
+                 WaitOnAddress/WakeByAddress (Win8+)&quot;
+            </span>);
         }
 
-        <span class="comment">// Try to set our new Backend as the global one</span>
-        <span class="kw">let</span> <span class="ident">backend_ptr</span> <span class="op">=</span> <span class="ident">Box::into_raw</span>(<span class="ident">Box::new</span>(<span class="ident">backend</span>));
-        <span class="kw">match</span> <span class="ident">BACKEND</span>.<span class="ident">compare_exchange</span>(
-            <span class="ident">ptr::null_mut</span>(),
-            <span class="ident">backend_ptr</span>,
-            <span class="ident">Ordering::Release</span>,
-            <span class="ident">Ordering::Relaxed</span>,
+        <span class="comment">// Try to set our new Backend as the global one
+        </span><span class="kw">let </span>backend_ptr = Box::into_raw(Box::new(backend));
+        <span class="kw">match </span>BACKEND.compare_exchange(
+            ptr::null_mut(),
+            backend_ptr,
+            Ordering::Release,
+            Ordering::Relaxed,
         ) {
-            <span class="prelude-val">Ok</span>(<span class="kw">_</span>) =&gt; <span class="kw">unsafe</span> { <span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="ident">backend_ptr</span> },
-            <span class="prelude-val">Err</span>(<span class="ident">global_backend_ptr</span>) =&gt; {
-                <span class="kw">unsafe</span> {
-                    <span class="comment">// We lost the race, free our object and return the global one</span>
-                    <span class="ident">Box::from_raw</span>(<span class="ident">backend_ptr</span>);
-                    <span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="ident">global_backend_ptr</span>
+            <span class="prelude-val">Ok</span>(<span class="kw">_</span>) =&gt; <span class="kw">unsafe </span>{ <span class="kw-2">&amp;*</span>backend_ptr },
+            <span class="prelude-val">Err</span>(global_backend_ptr) =&gt; {
+                <span class="kw">unsafe </span>{
+                    <span class="comment">// We lost the race, free our object and return the global one
+                    </span>Box::from_raw(backend_ptr);
+                    <span class="kw-2">&amp;*</span>global_backend_ptr
                 }
             }
         }
     }
 }
 
-<span class="comment">// Helper type for putting a thread to sleep until some other thread wakes it up</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">ThreadParker</span> {
-    <span class="ident">key</span>: <span class="ident">AtomicUsize</span>,
-    <span class="ident">backend</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">Backend</span>,
+<span class="comment">// Helper type for putting a thread to sleep until some other thread wakes it up
+</span><span class="kw">pub struct </span>ThreadParker {
+    key: AtomicUsize,
+    backend: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>Backend,
 }
 
-<span class="kw">impl</span> <span class="ident">ThreadParker</span> {
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">IS_CHEAP_TO_CONSTRUCT</span>: <span class="ident">bool</span> <span class="op">=</span> <span class="bool-val">true</span>;
+<span class="kw">impl </span>ThreadParker {
+    <span class="kw">pub const </span>IS_CHEAP_TO_CONSTRUCT: bool = <span class="bool-val">true</span>;
 
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>() -&gt; <span class="ident">ThreadParker</span> {
-        <span class="comment">// Initialize the backend here to ensure we don&#39;t get any panics</span>
-        <span class="comment">// later on, which could leave synchronization primitives in a broken</span>
-        <span class="comment">// state.</span>
-        <span class="ident">ThreadParker</span> {
-            <span class="ident">key</span>: <span class="ident">AtomicUsize::new</span>(<span class="number">0</span>),
-            <span class="ident">backend</span>: <span class="ident">Backend::get</span>(),
+    <span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>new() -&gt; ThreadParker {
+        <span class="comment">// Initialize the backend here to ensure we don&#39;t get any panics
+        // later on, which could leave synchronization primitives in a broken
+        // state.
+        </span>ThreadParker {
+            key: AtomicUsize::new(<span class="number">0</span>),
+            backend: Backend::get(),
         }
     }
 
-    <span class="comment">// Prepares the parker. This should be called before adding it to the queue.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">prepare_park</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) {
-        <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span>.<span class="ident">backend</span> {
-            <span class="ident">Backend::KeyedEvent</span>(<span class="kw-2">ref</span> <span class="ident">x</span>) =&gt; <span class="ident">x</span>.<span class="ident">prepare_park</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">key</span>),
-            <span class="ident">Backend::WaitAddress</span>(<span class="kw-2">ref</span> <span class="ident">x</span>) =&gt; <span class="ident">x</span>.<span class="ident">prepare_park</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">key</span>),
+    <span class="comment">// Prepares the parker. This should be called before adding it to the queue.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>prepare_park(<span class="kw-2">&amp;</span><span class="self">self</span>) {
+        <span class="kw">match </span><span class="kw-2">*</span><span class="self">self</span>.backend {
+            Backend::KeyedEvent(<span class="kw-2">ref </span>x) =&gt; x.prepare_park(<span class="kw-2">&amp;</span><span class="self">self</span>.key),
+            Backend::WaitAddress(<span class="kw-2">ref </span>x) =&gt; x.prepare_park(<span class="kw-2">&amp;</span><span class="self">self</span>.key),
         }
     }
 
-    <span class="comment">// Checks if the park timed out. This should be called while holding the</span>
-    <span class="comment">// queue lock after park_until has returned false.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">timed_out</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
-        <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span>.<span class="ident">backend</span> {
-            <span class="ident">Backend::KeyedEvent</span>(<span class="kw-2">ref</span> <span class="ident">x</span>) =&gt; <span class="ident">x</span>.<span class="ident">timed_out</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">key</span>),
-            <span class="ident">Backend::WaitAddress</span>(<span class="kw-2">ref</span> <span class="ident">x</span>) =&gt; <span class="ident">x</span>.<span class="ident">timed_out</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">key</span>),
+    <span class="comment">// Checks if the park timed out. This should be called while holding the
+    // queue lock after park_until has returned false.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>timed_out(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        <span class="kw">match </span><span class="kw-2">*</span><span class="self">self</span>.backend {
+            Backend::KeyedEvent(<span class="kw-2">ref </span>x) =&gt; x.timed_out(<span class="kw-2">&amp;</span><span class="self">self</span>.key),
+            Backend::WaitAddress(<span class="kw-2">ref </span>x) =&gt; x.timed_out(<span class="kw-2">&amp;</span><span class="self">self</span>.key),
         }
     }
 
-    <span class="comment">// Parks the thread until it is unparked. This should be called after it has</span>
-    <span class="comment">// been added to the queue, after unlocking the queue.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">park</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) {
-        <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span>.<span class="ident">backend</span> {
-            <span class="ident">Backend::KeyedEvent</span>(<span class="kw-2">ref</span> <span class="ident">x</span>) =&gt; <span class="ident">x</span>.<span class="ident">park</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">key</span>),
-            <span class="ident">Backend::WaitAddress</span>(<span class="kw-2">ref</span> <span class="ident">x</span>) =&gt; <span class="ident">x</span>.<span class="ident">park</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">key</span>),
+    <span class="comment">// Parks the thread until it is unparked. This should be called after it has
+    // been added to the queue, after unlocking the queue.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub unsafe fn </span>park(<span class="kw-2">&amp;</span><span class="self">self</span>) {
+        <span class="kw">match </span><span class="kw-2">*</span><span class="self">self</span>.backend {
+            Backend::KeyedEvent(<span class="kw-2">ref </span>x) =&gt; x.park(<span class="kw-2">&amp;</span><span class="self">self</span>.key),
+            Backend::WaitAddress(<span class="kw-2">ref </span>x) =&gt; x.park(<span class="kw-2">&amp;</span><span class="self">self</span>.key),
         }
     }
 
-    <span class="comment">// Parks the thread until it is unparked or the timeout is reached. This</span>
-    <span class="comment">// should be called after it has been added to the queue, after unlocking</span>
-    <span class="comment">// the queue. Returns true if we were unparked and false if we timed out.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">park_until</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">timeout</span>: <span class="ident">Instant</span>) -&gt; <span class="ident">bool</span> {
-        <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span>.<span class="ident">backend</span> {
-            <span class="ident">Backend::KeyedEvent</span>(<span class="kw-2">ref</span> <span class="ident">x</span>) =&gt; <span class="ident">x</span>.<span class="ident">park_until</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">key</span>, <span class="ident">timeout</span>),
-            <span class="ident">Backend::WaitAddress</span>(<span class="kw-2">ref</span> <span class="ident">x</span>) =&gt; <span class="ident">x</span>.<span class="ident">park_until</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">key</span>, <span class="ident">timeout</span>),
+    <span class="comment">// Parks the thread until it is unparked or the timeout is reached. This
+    // should be called after it has been added to the queue, after unlocking
+    // the queue. Returns true if we were unparked and false if we timed out.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub unsafe fn </span>park_until(<span class="kw-2">&amp;</span><span class="self">self</span>, timeout: Instant) -&gt; bool {
+        <span class="kw">match </span><span class="kw-2">*</span><span class="self">self</span>.backend {
+            Backend::KeyedEvent(<span class="kw-2">ref </span>x) =&gt; x.park_until(<span class="kw-2">&amp;</span><span class="self">self</span>.key, timeout),
+            Backend::WaitAddress(<span class="kw-2">ref </span>x) =&gt; x.park_until(<span class="kw-2">&amp;</span><span class="self">self</span>.key, timeout),
         }
     }
 
-    <span class="comment">// Locks the parker to prevent the target thread from exiting. This is</span>
-    <span class="comment">// necessary to ensure that thread-local ThreadData objects remain valid.</span>
-    <span class="comment">// This should be called while holding the queue lock.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">unpark_lock</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">UnparkHandle</span> {
-        <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span>.<span class="ident">backend</span> {
-            <span class="ident">Backend::KeyedEvent</span>(<span class="kw-2">ref</span> <span class="ident">x</span>) =&gt; <span class="ident">UnparkHandle::KeyedEvent</span>(<span class="ident">x</span>.<span class="ident">unpark_lock</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">key</span>)),
-            <span class="ident">Backend::WaitAddress</span>(<span class="kw-2">ref</span> <span class="ident">x</span>) =&gt; <span class="ident">UnparkHandle::WaitAddress</span>(<span class="ident">x</span>.<span class="ident">unpark_lock</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">key</span>)),
-        }
-    }
-}
-
-<span class="comment">// Handle for a thread that is about to be unparked. We need to mark the thread</span>
-<span class="comment">// as unparked while holding the queue lock, but we delay the actual unparking</span>
-<span class="comment">// until after the queue lock is released.</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">UnparkHandle</span> {
-    <span class="ident">KeyedEvent</span>(<span class="ident">keyed_event::UnparkHandle</span>),
-    <span class="ident">WaitAddress</span>(<span class="ident">waitaddress::UnparkHandle</span>),
-}
-
-<span class="kw">impl</span> <span class="ident">UnparkHandle</span> {
-    <span class="comment">// Wakes up the parked thread. This should be called after the queue lock is</span>
-    <span class="comment">// released to avoid blocking the queue for too long.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">unpark</span>(<span class="self">self</span>) {
-        <span class="kw">match</span> <span class="self">self</span> {
-            <span class="ident">UnparkHandle::KeyedEvent</span>(<span class="ident">x</span>) =&gt; <span class="ident">x</span>.<span class="ident">unpark</span>(),
-            <span class="ident">UnparkHandle::WaitAddress</span>(<span class="ident">x</span>) =&gt; <span class="ident">x</span>.<span class="ident">unpark</span>(),
+    <span class="comment">// Locks the parker to prevent the target thread from exiting. This is
+    // necessary to ensure that thread-local ThreadData objects remain valid.
+    // This should be called while holding the queue lock.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub unsafe fn </span>unpark_lock(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; UnparkHandle {
+        <span class="kw">match </span><span class="kw-2">*</span><span class="self">self</span>.backend {
+            Backend::KeyedEvent(<span class="kw-2">ref </span>x) =&gt; UnparkHandle::KeyedEvent(x.unpark_lock(<span class="kw-2">&amp;</span><span class="self">self</span>.key)),
+            Backend::WaitAddress(<span class="kw-2">ref </span>x) =&gt; UnparkHandle::WaitAddress(x.unpark_lock(<span class="kw-2">&amp;</span><span class="self">self</span>.key)),
         }
     }
 }
 
-<span class="comment">// Yields the rest of the current timeslice to the OS</span>
-<span class="attribute">#[<span class="ident">inline</span>]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">thread_yield</span>() {
-    <span class="comment">// Note that this is manually defined here rather than using the definition</span>
-    <span class="comment">// through `winapi`. The `winapi` definition comes from the `synchapi`</span>
-    <span class="comment">// header which enables the &quot;synchronization.lib&quot; library. It turns out,</span>
-    <span class="comment">// however that `Sleep` comes from `kernel32.dll` so this activation isn&#39;t</span>
-    <span class="comment">// necessary.</span>
-    <span class="comment">//</span>
-    <span class="comment">// This was originally identified in rust-lang/rust where on MinGW the</span>
-    <span class="comment">// libsynchronization.a library pulls in a dependency on a newer DLL not</span>
-    <span class="comment">// present in older versions of Windows. (see rust-lang/rust#49438)</span>
-    <span class="comment">//</span>
-    <span class="comment">// This is a bit of a hack for now and ideally we&#39;d fix MinGW&#39;s own import</span>
-    <span class="comment">// libraries, but that&#39;ll probably take a lot longer than patching this here</span>
-    <span class="comment">// and avoiding the `synchapi` feature entirely.</span>
-    <span class="kw">extern</span> <span class="string">&quot;system&quot;</span> {
-        <span class="kw">fn</span> <span class="ident">Sleep</span>(<span class="ident">a</span>: <span class="ident">winapi::shared::minwindef::DWORD</span>);
+<span class="comment">// Handle for a thread that is about to be unparked. We need to mark the thread
+// as unparked while holding the queue lock, but we delay the actual unparking
+// until after the queue lock is released.
+</span><span class="kw">pub enum </span>UnparkHandle {
+    KeyedEvent(keyed_event::UnparkHandle),
+    WaitAddress(waitaddress::UnparkHandle),
+}
+
+<span class="kw">impl </span>UnparkHandle {
+    <span class="comment">// Wakes up the parked thread. This should be called after the queue lock is
+    // released to avoid blocking the queue for too long.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub unsafe fn </span>unpark(<span class="self">self</span>) {
+        <span class="kw">match </span><span class="self">self </span>{
+            UnparkHandle::KeyedEvent(x) =&gt; x.unpark(),
+            UnparkHandle::WaitAddress(x) =&gt; x.unpark(),
+        }
     }
-    <span class="kw">unsafe</span> {
-        <span class="comment">// We don&#39;t use SwitchToThread here because it doesn&#39;t consider all</span>
-        <span class="comment">// threads in the system and the thread we are waiting for may not get</span>
-        <span class="comment">// selected.</span>
-        <span class="ident">Sleep</span>(<span class="number">0</span>);
+}
+
+<span class="comment">// Yields the rest of the current timeslice to the OS
+</span><span class="attribute">#[inline]
+</span><span class="kw">pub fn </span>thread_yield() {
+    <span class="comment">// Note that this is manually defined here rather than using the definition
+    // through `winapi`. The `winapi` definition comes from the `synchapi`
+    // header which enables the &quot;synchronization.lib&quot; library. It turns out,
+    // however that `Sleep` comes from `kernel32.dll` so this activation isn&#39;t
+    // necessary.
+    //
+    // This was originally identified in rust-lang/rust where on MinGW the
+    // libsynchronization.a library pulls in a dependency on a newer DLL not
+    // present in older versions of Windows. (see rust-lang/rust#49438)
+    //
+    // This is a bit of a hack for now and ideally we&#39;d fix MinGW&#39;s own import
+    // libraries, but that&#39;ll probably take a lot longer than patching this here
+    // and avoiding the `synchapi` feature entirely.
+    </span><span class="kw">extern </span><span class="string">&quot;system&quot; </span>{
+        <span class="kw">fn </span>Sleep(a: winapi::shared::minwindef::DWORD);
+    }
+    <span class="kw">unsafe </span>{
+        <span class="comment">// We don&#39;t use SwitchToThread here because it doesn&#39;t consider all
+        // threads in the system and the thread we are waiting for may not get
+        // selected.
+        </span>Sleep(<span class="number">0</span>);
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../../" data-current-crate="parking_lot_core" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../../" data-current-crate="parking_lot_core" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.0 (69f9c33d7 2022-12-12)" ></div></body></html>

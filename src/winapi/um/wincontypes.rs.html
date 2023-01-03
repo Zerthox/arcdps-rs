@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\winapi-0.3.9\src\um\wincontypes.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>wincontypes.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../winapi/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../winapi/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../winapi/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\winapi-0.3.9\src\um\wincontypes.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>wincontypes.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../normalize.css"><link rel="stylesheet" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../ayu.css" disabled><link rel="stylesheet" href="../../../dark.css" disabled><link rel="stylesheet" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../../winapi/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -112,119 +112,119 @@
 <span id="112">112</span>
 <span id="113">113</span>
 <span id="114">114</span>
-</pre><pre class="rust"><code><span class="comment">// Licensed under the Apache License, Version 2.0</span>
-<span class="comment">// &lt;LICENSE-APACHE or http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license</span>
-<span class="comment">// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your option.</span>
-<span class="comment">// All files in the project carrying such notice may not be copied, modified, or distributed</span>
-<span class="comment">// except according to those terms.</span>
-<span class="doccomment">//! This module contains the public data structures, data types, and procedures exported by the NT</span>
-<span class="doccomment">//! console subsystem.</span>
-<span class="kw">use</span> <span class="ident">ctypes::c_void</span>;
-<span class="kw">use</span> <span class="ident">shared::minwindef</span>::{<span class="ident">BOOL</span>, <span class="ident">DWORD</span>, <span class="ident">UINT</span>, <span class="ident">WORD</span>};
-<span class="kw">use</span> <span class="ident">um::winnt</span>::{<span class="ident">CHAR</span>, <span class="ident">SHORT</span>, <span class="ident">WCHAR</span>};
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">COORD</span> {
-    <span class="ident">X</span>: <span class="ident">SHORT</span>,
-    <span class="ident">Y</span>: <span class="ident">SHORT</span>,
+</pre><pre class="rust"><code><span class="comment">// Licensed under the Apache License, Version 2.0
+// &lt;LICENSE-APACHE or http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license
+// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your option.
+// All files in the project carrying such notice may not be copied, modified, or distributed
+// except according to those terms.
+</span><span class="doccomment">//! This module contains the public data structures, data types, and procedures exported by the NT
+//! console subsystem.
+</span><span class="kw">use </span>ctypes::c_void;
+<span class="kw">use </span>shared::minwindef::{BOOL, DWORD, UINT, WORD};
+<span class="kw">use </span>um::winnt::{CHAR, SHORT, WCHAR};
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>COORD {
+    X: SHORT,
+    Y: SHORT,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PCOORD</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">COORD</span>;
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">SMALL_RECT</span> {
-    <span class="ident">Left</span>: <span class="ident">SHORT</span>,
-    <span class="ident">Top</span>: <span class="ident">SHORT</span>,
-    <span class="ident">Right</span>: <span class="ident">SHORT</span>,
-    <span class="ident">Bottom</span>: <span class="ident">SHORT</span>,
+<span class="kw">pub type </span>PCOORD = <span class="kw-2">*mut </span>COORD;
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>SMALL_RECT {
+    Left: SHORT,
+    Top: SHORT,
+    Right: SHORT,
+    Bottom: SHORT,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PSMALL_RECT</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">SMALL_RECT</span>;
-<span class="macro">UNION!</span>{<span class="kw">union</span> <span class="ident">KEY_EVENT_RECORD_uChar</span> {
-    [<span class="ident">u16</span>; <span class="number">1</span>],
-    <span class="ident">UnicodeChar</span> <span class="ident">UnicodeChar_mut</span>: <span class="ident">WCHAR</span>,
-    <span class="ident">AsciiChar</span> <span class="ident">AsciiChar_mut</span>: <span class="ident">CHAR</span>,
+<span class="kw">pub type </span>PSMALL_RECT = <span class="kw-2">*mut </span>SMALL_RECT;
+<span class="macro">UNION!</span>{<span class="kw">union </span>KEY_EVENT_RECORD_uChar {
+    [u16; <span class="number">1</span>],
+    UnicodeChar UnicodeChar_mut: WCHAR,
+    AsciiChar AsciiChar_mut: CHAR,
 }}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">KEY_EVENT_RECORD</span> {
-    <span class="ident">bKeyDown</span>: <span class="ident">BOOL</span>,
-    <span class="ident">wRepeatCount</span>: <span class="ident">WORD</span>,
-    <span class="ident">wVirtualKeyCode</span>: <span class="ident">WORD</span>,
-    <span class="ident">wVirtualScanCode</span>: <span class="ident">WORD</span>,
-    <span class="ident">uChar</span>: <span class="ident">KEY_EVENT_RECORD_uChar</span>,
-    <span class="ident">dwControlKeyState</span>: <span class="ident">DWORD</span>,
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>KEY_EVENT_RECORD {
+    bKeyDown: BOOL,
+    wRepeatCount: WORD,
+    wVirtualKeyCode: WORD,
+    wVirtualScanCode: WORD,
+    uChar: KEY_EVENT_RECORD_uChar,
+    dwControlKeyState: DWORD,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PKEY_EVENT_RECORD</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">KEY_EVENT_RECORD</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">RIGHT_ALT_PRESSED</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0001</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">LEFT_ALT_PRESSED</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0002</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">RIGHT_CTRL_PRESSED</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0004</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">LEFT_CTRL_PRESSED</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0008</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SHIFT_PRESSED</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0010</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">NUMLOCK_ON</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0020</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SCROLLLOCK_ON</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0040</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CAPSLOCK_ON</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0080</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">ENHANCED_KEY</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0100</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">NLS_DBCSCHAR</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00010000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">NLS_ALPHANUMERIC</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">NLS_KATAKANA</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00020000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">NLS_HIRAGANA</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00040000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">NLS_ROMAN</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00400000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">NLS_IME_CONVERSION</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00800000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">NLS_IME_DISABLE</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x20000000</span>;
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">MOUSE_EVENT_RECORD</span> {
-    <span class="ident">dwMousePosition</span>: <span class="ident">COORD</span>,
-    <span class="ident">dwButtonState</span>: <span class="ident">DWORD</span>,
-    <span class="ident">dwControlKeyState</span>: <span class="ident">DWORD</span>,
-    <span class="ident">dwEventFlags</span>: <span class="ident">DWORD</span>,
+<span class="kw">pub type </span>PKEY_EVENT_RECORD = <span class="kw-2">*mut </span>KEY_EVENT_RECORD;
+<span class="kw">pub const </span>RIGHT_ALT_PRESSED: DWORD = <span class="number">0x0001</span>;
+<span class="kw">pub const </span>LEFT_ALT_PRESSED: DWORD = <span class="number">0x0002</span>;
+<span class="kw">pub const </span>RIGHT_CTRL_PRESSED: DWORD = <span class="number">0x0004</span>;
+<span class="kw">pub const </span>LEFT_CTRL_PRESSED: DWORD = <span class="number">0x0008</span>;
+<span class="kw">pub const </span>SHIFT_PRESSED: DWORD = <span class="number">0x0010</span>;
+<span class="kw">pub const </span>NUMLOCK_ON: DWORD = <span class="number">0x0020</span>;
+<span class="kw">pub const </span>SCROLLLOCK_ON: DWORD = <span class="number">0x0040</span>;
+<span class="kw">pub const </span>CAPSLOCK_ON: DWORD = <span class="number">0x0080</span>;
+<span class="kw">pub const </span>ENHANCED_KEY: DWORD = <span class="number">0x0100</span>;
+<span class="kw">pub const </span>NLS_DBCSCHAR: DWORD = <span class="number">0x00010000</span>;
+<span class="kw">pub const </span>NLS_ALPHANUMERIC: DWORD = <span class="number">0x00000000</span>;
+<span class="kw">pub const </span>NLS_KATAKANA: DWORD = <span class="number">0x00020000</span>;
+<span class="kw">pub const </span>NLS_HIRAGANA: DWORD = <span class="number">0x00040000</span>;
+<span class="kw">pub const </span>NLS_ROMAN: DWORD = <span class="number">0x00400000</span>;
+<span class="kw">pub const </span>NLS_IME_CONVERSION: DWORD = <span class="number">0x00800000</span>;
+<span class="kw">pub const </span>NLS_IME_DISABLE: DWORD = <span class="number">0x20000000</span>;
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>MOUSE_EVENT_RECORD {
+    dwMousePosition: COORD,
+    dwButtonState: DWORD,
+    dwControlKeyState: DWORD,
+    dwEventFlags: DWORD,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PMOUSE_EVENT_RECORD</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">MOUSE_EVENT_RECORD</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">FROM_LEFT_1ST_BUTTON_PRESSED</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0001</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">RIGHTMOST_BUTTON_PRESSED</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0002</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">FROM_LEFT_2ND_BUTTON_PRESSED</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0004</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">FROM_LEFT_3RD_BUTTON_PRESSED</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0008</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">FROM_LEFT_4TH_BUTTON_PRESSED</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0010</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">MOUSE_MOVED</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0001</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DOUBLE_CLICK</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0002</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">MOUSE_WHEELED</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0004</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">MOUSE_HWHEELED</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x0008</span>;
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">WINDOW_BUFFER_SIZE_RECORD</span> {
-    <span class="ident">dwSize</span>: <span class="ident">COORD</span>,
+<span class="kw">pub type </span>PMOUSE_EVENT_RECORD = <span class="kw-2">*mut </span>MOUSE_EVENT_RECORD;
+<span class="kw">pub const </span>FROM_LEFT_1ST_BUTTON_PRESSED: DWORD = <span class="number">0x0001</span>;
+<span class="kw">pub const </span>RIGHTMOST_BUTTON_PRESSED: DWORD = <span class="number">0x0002</span>;
+<span class="kw">pub const </span>FROM_LEFT_2ND_BUTTON_PRESSED: DWORD = <span class="number">0x0004</span>;
+<span class="kw">pub const </span>FROM_LEFT_3RD_BUTTON_PRESSED: DWORD = <span class="number">0x0008</span>;
+<span class="kw">pub const </span>FROM_LEFT_4TH_BUTTON_PRESSED: DWORD = <span class="number">0x0010</span>;
+<span class="kw">pub const </span>MOUSE_MOVED: DWORD = <span class="number">0x0001</span>;
+<span class="kw">pub const </span>DOUBLE_CLICK: DWORD = <span class="number">0x0002</span>;
+<span class="kw">pub const </span>MOUSE_WHEELED: DWORD = <span class="number">0x0004</span>;
+<span class="kw">pub const </span>MOUSE_HWHEELED: DWORD = <span class="number">0x0008</span>;
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>WINDOW_BUFFER_SIZE_RECORD {
+    dwSize: COORD,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PWINDOW_BUFFER_SIZE_RECORD</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">WINDOW_BUFFER_SIZE_RECORD</span>;
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">MENU_EVENT_RECORD</span> {
-    <span class="ident">dwCommandId</span>: <span class="ident">UINT</span>,
+<span class="kw">pub type </span>PWINDOW_BUFFER_SIZE_RECORD = <span class="kw-2">*mut </span>WINDOW_BUFFER_SIZE_RECORD;
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>MENU_EVENT_RECORD {
+    dwCommandId: UINT,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PMENU_EVENT_RECORD</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">MENU_EVENT_RECORD</span>;
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">FOCUS_EVENT_RECORD</span> {
-    <span class="ident">bSetFocus</span>: <span class="ident">BOOL</span>,
+<span class="kw">pub type </span>PMENU_EVENT_RECORD = <span class="kw-2">*mut </span>MENU_EVENT_RECORD;
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>FOCUS_EVENT_RECORD {
+    bSetFocus: BOOL,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PFOCUS_EVENT_RECORD</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">FOCUS_EVENT_RECORD</span>;
-<span class="macro">UNION!</span>{<span class="kw">union</span> <span class="ident">INPUT_RECORD_Event</span> {
-    [<span class="ident">u32</span>; <span class="number">4</span>],
-    <span class="ident">KeyEvent</span> <span class="ident">KeyEvent_mut</span>: <span class="ident">KEY_EVENT_RECORD</span>,
-    <span class="ident">MouseEvent</span> <span class="ident">MouseEvent_mut</span>: <span class="ident">MOUSE_EVENT_RECORD</span>,
-    <span class="ident">WindowBufferSizeEvent</span> <span class="ident">WindowBufferSizeEvent_mut</span>: <span class="ident">WINDOW_BUFFER_SIZE_RECORD</span>,
-    <span class="ident">MenuEvent</span> <span class="ident">MenuEvent_mut</span>: <span class="ident">MENU_EVENT_RECORD</span>,
-    <span class="ident">FocusEvent</span> <span class="ident">FocusEvent_mut</span>: <span class="ident">FOCUS_EVENT_RECORD</span>,
+<span class="kw">pub type </span>PFOCUS_EVENT_RECORD = <span class="kw-2">*mut </span>FOCUS_EVENT_RECORD;
+<span class="macro">UNION!</span>{<span class="kw">union </span>INPUT_RECORD_Event {
+    [u32; <span class="number">4</span>],
+    KeyEvent KeyEvent_mut: KEY_EVENT_RECORD,
+    MouseEvent MouseEvent_mut: MOUSE_EVENT_RECORD,
+    WindowBufferSizeEvent WindowBufferSizeEvent_mut: WINDOW_BUFFER_SIZE_RECORD,
+    MenuEvent MenuEvent_mut: MENU_EVENT_RECORD,
+    FocusEvent FocusEvent_mut: FOCUS_EVENT_RECORD,
 }}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">INPUT_RECORD</span> {
-    <span class="ident">EventType</span>: <span class="ident">WORD</span>,
-    <span class="ident">Event</span>: <span class="ident">INPUT_RECORD_Event</span>,
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>INPUT_RECORD {
+    EventType: WORD,
+    Event: INPUT_RECORD_Event,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PINPUT_RECORD</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">INPUT_RECORD</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">KEY_EVENT</span>: <span class="ident">WORD</span> <span class="op">=</span> <span class="number">0x0001</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">MOUSE_EVENT</span>: <span class="ident">WORD</span> <span class="op">=</span> <span class="number">0x0002</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">WINDOW_BUFFER_SIZE_EVENT</span>: <span class="ident">WORD</span> <span class="op">=</span> <span class="number">0x0004</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">MENU_EVENT</span>: <span class="ident">WORD</span> <span class="op">=</span> <span class="number">0x0008</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">FOCUS_EVENT</span>: <span class="ident">WORD</span> <span class="op">=</span> <span class="number">0x0010</span>;
-<span class="macro">UNION!</span>{<span class="kw">union</span> <span class="ident">CHAR_INFO_Char</span> {
-    [<span class="ident">u16</span>; <span class="number">1</span>],
-    <span class="ident">UnicodeChar</span> <span class="ident">UnicodeChar_mut</span>: <span class="ident">WCHAR</span>,
-    <span class="ident">AsciiChar</span> <span class="ident">AsciiChar_mut</span>: <span class="ident">CHAR</span>,
+<span class="kw">pub type </span>PINPUT_RECORD = <span class="kw-2">*mut </span>INPUT_RECORD;
+<span class="kw">pub const </span>KEY_EVENT: WORD = <span class="number">0x0001</span>;
+<span class="kw">pub const </span>MOUSE_EVENT: WORD = <span class="number">0x0002</span>;
+<span class="kw">pub const </span>WINDOW_BUFFER_SIZE_EVENT: WORD = <span class="number">0x0004</span>;
+<span class="kw">pub const </span>MENU_EVENT: WORD = <span class="number">0x0008</span>;
+<span class="kw">pub const </span>FOCUS_EVENT: WORD = <span class="number">0x0010</span>;
+<span class="macro">UNION!</span>{<span class="kw">union </span>CHAR_INFO_Char {
+    [u16; <span class="number">1</span>],
+    UnicodeChar UnicodeChar_mut: WCHAR,
+    AsciiChar AsciiChar_mut: CHAR,
 }}
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">CHAR_INFO</span> {
-    <span class="ident">Char</span>: <span class="ident">CHAR_INFO_Char</span>,
-    <span class="ident">Attributes</span>: <span class="ident">WORD</span>,
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>CHAR_INFO {
+    Char: CHAR_INFO_Char,
+    Attributes: WORD,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PCHAR_INFO</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">CHAR_INFO</span>;
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">CONSOLE_FONT_INFO</span> {
-    <span class="ident">nFont</span>: <span class="ident">DWORD</span>,
-    <span class="ident">dwFontSize</span>: <span class="ident">COORD</span>,
+<span class="kw">pub type </span>PCHAR_INFO = <span class="kw-2">*mut </span>CHAR_INFO;
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>CONSOLE_FONT_INFO {
+    nFont: DWORD,
+    dwFontSize: COORD,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PCONSOLE_FONT_INFO</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">CONSOLE_FONT_INFO</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">HPCON</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">c_void</span>;
+<span class="kw">pub type </span>PCONSOLE_FONT_INFO = <span class="kw-2">*mut </span>CONSOLE_FONT_INFO;
+<span class="kw">pub type </span>HPCON = <span class="kw-2">*mut </span>c_void;
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="winapi" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="winapi" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.0 (69f9c33d7 2022-12-12)" ></div></body></html>

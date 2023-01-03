@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\arcdps-imgui-0.8.0\src\widget\combo_box.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>combo_box.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../arcdps_imgui/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../arcdps_imgui/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../arcdps_imgui/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\arcdps-imgui-0.8.0\src\widget\combo_box.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>combo_box.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../normalize.css"><link rel="stylesheet" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../ayu.css" disabled><link rel="stylesheet" href="../../../dark.css" disabled><link rel="stylesheet" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../../arcdps_imgui/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -315,322 +315,322 @@
 <span id="315">315</span>
 <span id="316">316</span>
 <span id="317">317</span>
-</pre><pre class="rust"><code><span class="kw">use</span> <span class="ident">bitflags::bitflags</span>;
-<span class="kw">use</span> <span class="ident">std::borrow::Cow</span>;
+</pre><pre class="rust"><code><span class="kw">use </span>bitflags::bitflags;
+<span class="kw">use </span>std::borrow::Cow;
 
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::sys</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::Ui</span>;
+<span class="kw">use </span><span class="kw">crate</span>::sys;
+<span class="kw">use </span><span class="kw">crate</span>::Ui;
 
-<span class="comment">// TODO: support size constraints</span>
+<span class="comment">// TODO: support size constraints
 
-<span class="doccomment">/// Combo box height mode.</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>)]</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">ComboBoxHeight</span> {
-    <span class="doccomment">/// Max ~4 items visible.</span>
-    <span class="ident">Small</span>,
-    <span class="doccomment">/// Max ~8 items visible.</span>
-    <span class="ident">Regular</span>,
-    <span class="doccomment">/// Max ~20 items visible.</span>
-    <span class="ident">Large</span>,
-    <span class="doccomment">/// As many fitting items as possible visible.</span>
-    <span class="ident">Largest</span>,
+</span><span class="doccomment">/// Combo box height mode.
+</span><span class="attribute">#[derive(Copy, Clone, Debug, PartialEq, Eq)]
+</span><span class="kw">pub enum </span>ComboBoxHeight {
+    <span class="doccomment">/// Max ~4 items visible.
+    </span>Small,
+    <span class="doccomment">/// Max ~8 items visible.
+    </span>Regular,
+    <span class="doccomment">/// Max ~20 items visible.
+    </span>Large,
+    <span class="doccomment">/// As many fitting items as possible visible.
+    </span>Largest,
 }
 
-<span class="doccomment">/// Combo box preview mode.</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>)]</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">ComboBoxPreviewMode</span> {
-    <span class="doccomment">/// Show only a box with the preview value</span>
-    <span class="ident">Label</span>,
-    <span class="doccomment">/// Show only an arrow button</span>
-    <span class="ident">ArrowButton</span>,
-    <span class="doccomment">/// Show a box with the preview value and an arrow button</span>
-    <span class="ident">Full</span>,
+<span class="doccomment">/// Combo box preview mode.
+</span><span class="attribute">#[derive(Copy, Clone, Debug, PartialEq, Eq)]
+</span><span class="kw">pub enum </span>ComboBoxPreviewMode {
+    <span class="doccomment">/// Show only a box with the preview value
+    </span>Label,
+    <span class="doccomment">/// Show only an arrow button
+    </span>ArrowButton,
+    <span class="doccomment">/// Show a box with the preview value and an arrow button
+    </span>Full,
 }
 
 <span class="macro">bitflags!</span>(
-<span class="doccomment">/// Flags for combo boxes</span>
-<span class="attribute">#[<span class="ident">repr</span>(<span class="ident">transparent</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">ComboBoxFlags</span>: <span class="ident">u32</span> {
-    <span class="doccomment">/// Align the popup toward the left by default</span>
-    <span class="kw">const</span> <span class="ident">POPUP_ALIGN_LEFT</span> <span class="op">=</span> <span class="ident">sys::ImGuiComboFlags_PopupAlignLeft</span>;
-    <span class="doccomment">/// Max ~4 items visible.</span>
-    <span class="kw">const</span> <span class="ident">HEIGHT_SMALL</span> <span class="op">=</span> <span class="ident">sys::ImGuiComboFlags_HeightSmall</span>;
-    <span class="doccomment">/// Max ~8 items visible (default)</span>
-    <span class="kw">const</span> <span class="ident">HEIGHT_REGULAR</span> <span class="op">=</span> <span class="ident">sys::ImGuiComboFlags_HeightRegular</span>;
-    <span class="doccomment">/// Max ~20 items visible</span>
-    <span class="kw">const</span> <span class="ident">HEIGHT_LARGE</span> <span class="op">=</span> <span class="ident">sys::ImGuiComboFlags_HeightLarge</span>;
-    <span class="doccomment">/// As many fitting items as possible</span>
-    <span class="kw">const</span> <span class="ident">HEIGHT_LARGEST</span> <span class="op">=</span> <span class="ident">sys::ImGuiComboFlags_HeightLargest</span>;
-    <span class="doccomment">/// Display on the preview box without the square arrow button</span>
-    <span class="kw">const</span> <span class="ident">NO_ARROW_BUTTON</span> <span class="op">=</span> <span class="ident">sys::ImGuiComboFlags_NoArrowButton</span>;
-    <span class="doccomment">/// Display only a square arrow button</span>
-    <span class="kw">const</span> <span class="ident">NO_PREVIEW</span> <span class="op">=</span> <span class="ident">sys::ImGuiComboFlags_NoPreview</span>;
+<span class="doccomment">/// Flags for combo boxes
+</span><span class="attribute">#[repr(transparent)]
+</span><span class="kw">pub struct </span>ComboBoxFlags: u32 {
+    <span class="doccomment">/// Align the popup toward the left by default
+    </span><span class="kw">const </span>POPUP_ALIGN_LEFT = sys::ImGuiComboFlags_PopupAlignLeft;
+    <span class="doccomment">/// Max ~4 items visible.
+    </span><span class="kw">const </span>HEIGHT_SMALL = sys::ImGuiComboFlags_HeightSmall;
+    <span class="doccomment">/// Max ~8 items visible (default)
+    </span><span class="kw">const </span>HEIGHT_REGULAR = sys::ImGuiComboFlags_HeightRegular;
+    <span class="doccomment">/// Max ~20 items visible
+    </span><span class="kw">const </span>HEIGHT_LARGE = sys::ImGuiComboFlags_HeightLarge;
+    <span class="doccomment">/// As many fitting items as possible
+    </span><span class="kw">const </span>HEIGHT_LARGEST = sys::ImGuiComboFlags_HeightLargest;
+    <span class="doccomment">/// Display on the preview box without the square arrow button
+    </span><span class="kw">const </span>NO_ARROW_BUTTON = sys::ImGuiComboFlags_NoArrowButton;
+    <span class="doccomment">/// Display only a square arrow button
+    </span><span class="kw">const </span>NO_PREVIEW = sys::ImGuiComboFlags_NoPreview;
 }
 );
 
-<span class="doccomment">/// Builder for a combo box widget</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Debug</span>)]</span>
-<span class="attribute">#[<span class="ident">must_use</span>]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">ComboBox</span><span class="op">&lt;</span><span class="ident">Label</span>, <span class="ident">Preview</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span><span class="op">&gt;</span> {
-    <span class="ident">label</span>: <span class="ident">Label</span>,
-    <span class="ident">preview_value</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Preview</span><span class="op">&gt;</span>,
-    <span class="ident">flags</span>: <span class="ident">ComboBoxFlags</span>,
+<span class="doccomment">/// Builder for a combo box widget
+</span><span class="attribute">#[derive(Copy, Clone, Debug)]
+#[must_use]
+</span><span class="kw">pub struct </span>ComboBox&lt;Label, Preview = <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str&gt; {
+    label: Label,
+    preview_value: <span class="prelude-ty">Option</span>&lt;Preview&gt;,
+    flags: ComboBoxFlags,
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">Label</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="ident">ComboBox</span><span class="op">&lt;</span><span class="ident">Label</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Constructs a new combo box builder.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;BeginCombo&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">label</span>: <span class="ident">Label</span>) -&gt; <span class="self">Self</span> {
-        <span class="ident">ComboBox</span> {
-            <span class="ident">label</span>,
-            <span class="ident">preview_value</span>: <span class="prelude-val">None</span>,
-            <span class="ident">flags</span>: <span class="ident">ComboBoxFlags::empty</span>(),
+<span class="kw">impl</span>&lt;Label: AsRef&lt;str&gt;&gt; ComboBox&lt;Label&gt; {
+    <span class="doccomment">/// Constructs a new combo box builder.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;BeginCombo&quot;</span>)]
+    </span><span class="kw">pub fn </span>new(label: Label) -&gt; <span class="self">Self </span>{
+        ComboBox {
+            label,
+            preview_value: <span class="prelude-val">None</span>,
+            flags: ComboBoxFlags::empty(),
         }
     }
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>, <span class="ident">Preview</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="ident">ComboBox</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">Preview</span><span class="op">&gt;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">preview_value</span><span class="op">&lt;</span><span class="ident">Preview2</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(
+<span class="kw">impl</span>&lt;T: AsRef&lt;str&gt;, Preview: AsRef&lt;str&gt;&gt; ComboBox&lt;T, Preview&gt; {
+    <span class="kw">pub fn </span>preview_value&lt;Preview2: AsRef&lt;str&gt;&gt;(
         <span class="self">self</span>,
-        <span class="ident">preview_value</span>: <span class="ident">Preview2</span>,
-    ) -&gt; <span class="ident">ComboBox</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">Preview2</span><span class="op">&gt;</span> {
-        <span class="ident">ComboBox</span> {
-            <span class="ident">label</span>: <span class="self">self</span>.<span class="ident">label</span>,
-            <span class="ident">preview_value</span>: <span class="prelude-val">Some</span>(<span class="ident">preview_value</span>),
-            <span class="ident">flags</span>: <span class="self">self</span>.<span class="ident">flags</span>,
+        preview_value: Preview2,
+    ) -&gt; ComboBox&lt;T, Preview2&gt; {
+        ComboBox {
+            label: <span class="self">self</span>.label,
+            preview_value: <span class="prelude-val">Some</span>(preview_value),
+            flags: <span class="self">self</span>.flags,
         }
     }
 
-    <span class="doccomment">/// Replaces all current settings with the given flags.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">flags</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">flags</span>: <span class="ident">ComboBoxFlags</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span> <span class="op">=</span> <span class="ident">flags</span>;
-        <span class="self">self</span>
-    }
+    <span class="doccomment">/// Replaces all current settings with the given flags.
+    </span><span class="kw">pub fn </span>flags(<span class="kw-2">mut </span><span class="self">self</span>, flags: ComboBoxFlags) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags = flags;
+        <span class="self">self
+    </span>}
 
-    <span class="doccomment">/// Enables/disables aligning the combo box popup toward the left.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Disabled by default.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">popup_align_left</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">popup_align_left</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>
-            .<span class="ident">set</span>(<span class="ident">ComboBoxFlags::POPUP_ALIGN_LEFT</span>, <span class="ident">popup_align_left</span>);
-        <span class="self">self</span>
-    }
+    <span class="doccomment">/// Enables/disables aligning the combo box popup toward the left.
+    ///
+    /// Disabled by default.
+    </span><span class="kw">pub fn </span>popup_align_left(<span class="kw-2">mut </span><span class="self">self</span>, popup_align_left: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags
+            .set(ComboBoxFlags::POPUP_ALIGN_LEFT, popup_align_left);
+        <span class="self">self
+    </span>}
 
-    <span class="doccomment">/// Sets the combo box height.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Default: `ComboBoxHeight::Regular`</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">height</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">height</span>: <span class="ident">ComboBoxHeight</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>
-            .<span class="ident">set</span>(<span class="ident">ComboBoxFlags::HEIGHT_SMALL</span>, <span class="ident">height</span> <span class="op">==</span> <span class="ident">ComboBoxHeight::Small</span>);
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(
-            <span class="ident">ComboBoxFlags::HEIGHT_REGULAR</span>,
-            <span class="ident">height</span> <span class="op">==</span> <span class="ident">ComboBoxHeight::Regular</span>,
+    <span class="doccomment">/// Sets the combo box height.
+    ///
+    /// Default: `ComboBoxHeight::Regular`
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>height(<span class="kw-2">mut </span><span class="self">self</span>, height: ComboBoxHeight) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags
+            .set(ComboBoxFlags::HEIGHT_SMALL, height == ComboBoxHeight::Small);
+        <span class="self">self</span>.flags.set(
+            ComboBoxFlags::HEIGHT_REGULAR,
+            height == ComboBoxHeight::Regular,
         );
-        <span class="self">self</span>.<span class="ident">flags</span>
-            .<span class="ident">set</span>(<span class="ident">ComboBoxFlags::HEIGHT_LARGE</span>, <span class="ident">height</span> <span class="op">==</span> <span class="ident">ComboBoxHeight::Large</span>);
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(
-            <span class="ident">ComboBoxFlags::HEIGHT_LARGEST</span>,
-            <span class="ident">height</span> <span class="op">==</span> <span class="ident">ComboBoxHeight::Largest</span>,
+        <span class="self">self</span>.flags
+            .set(ComboBoxFlags::HEIGHT_LARGE, height == ComboBoxHeight::Large);
+        <span class="self">self</span>.flags.set(
+            ComboBoxFlags::HEIGHT_LARGEST,
+            height == ComboBoxHeight::Largest,
         );
-        <span class="self">self</span>
-    }
+        <span class="self">self
+    </span>}
 
-    <span class="doccomment">/// Sets the combo box preview mode.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Default: `ComboBoxPreviewMode::Full`</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">preview_mode</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">preview_mode</span>: <span class="ident">ComboBoxPreviewMode</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(
-            <span class="ident">ComboBoxFlags::NO_ARROW_BUTTON</span>,
-            <span class="ident">preview_mode</span> <span class="op">==</span> <span class="ident">ComboBoxPreviewMode::Label</span>,
+    <span class="doccomment">/// Sets the combo box preview mode.
+    ///
+    /// Default: `ComboBoxPreviewMode::Full`
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>preview_mode(<span class="kw-2">mut </span><span class="self">self</span>, preview_mode: ComboBoxPreviewMode) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(
+            ComboBoxFlags::NO_ARROW_BUTTON,
+            preview_mode == ComboBoxPreviewMode::Label,
         );
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(
-            <span class="ident">ComboBoxFlags::NO_PREVIEW</span>,
-            <span class="ident">preview_mode</span> <span class="op">==</span> <span class="ident">ComboBoxPreviewMode::ArrowButton</span>,
+        <span class="self">self</span>.flags.set(
+            ComboBoxFlags::NO_PREVIEW,
+            preview_mode == ComboBoxPreviewMode::ArrowButton,
         );
-        <span class="self">self</span>
-    }
+        <span class="self">self
+    </span>}
 
-    <span class="doccomment">/// Creates a combo box and starts appending to it.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Returns `Some(ComboBoxToken)` if the combo box is open. After content has been</span>
-    <span class="doccomment">/// rendered, the token must be ended by calling `.end()`.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Returns `None` if the combo box is not open and no content should be rendered.</span>
-    <span class="attribute">#[<span class="ident">must_use</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">begin</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">ui</span>: <span class="kw-2">&amp;</span><span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ComboBoxToken</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="kw">let</span> <span class="ident">should_render</span> <span class="op">=</span> <span class="kw">unsafe</span> {
-            <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">preview_value</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">preview_value</span> {
-                <span class="kw">let</span> (<span class="ident">ptr_one</span>, <span class="ident">ptr_two</span>) <span class="op">=</span> <span class="ident">ui</span>.<span class="ident">scratch_txt_two</span>(<span class="self">self</span>.<span class="ident">label</span>, <span class="ident">preview_value</span>);
-                <span class="ident">sys::igBeginCombo</span>(<span class="ident">ptr_one</span>, <span class="ident">ptr_two</span>, <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">bits</span>() <span class="kw">as</span> <span class="ident">i32</span>)
-            } <span class="kw">else</span> {
-                <span class="kw">let</span> <span class="ident">ptr_one</span> <span class="op">=</span> <span class="ident">ui</span>.<span class="ident">scratch_txt</span>(<span class="self">self</span>.<span class="ident">label</span>);
-                <span class="ident">sys::igBeginCombo</span>(<span class="ident">ptr_one</span>, <span class="ident">std::ptr::null</span>(), <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">bits</span>() <span class="kw">as</span> <span class="ident">i32</span>)
+    <span class="doccomment">/// Creates a combo box and starts appending to it.
+    ///
+    /// Returns `Some(ComboBoxToken)` if the combo box is open. After content has been
+    /// rendered, the token must be ended by calling `.end()`.
+    ///
+    /// Returns `None` if the combo box is not open and no content should be rendered.
+    </span><span class="attribute">#[must_use]
+    </span><span class="kw">pub fn </span>begin&lt;<span class="lifetime">&#39;ui</span>&gt;(<span class="self">self</span>, ui: <span class="kw-2">&amp;</span>Ui&lt;<span class="lifetime">&#39;ui</span>&gt;) -&gt; <span class="prelude-ty">Option</span>&lt;ComboBoxToken&lt;<span class="lifetime">&#39;ui</span>&gt;&gt; {
+        <span class="kw">let </span>should_render = <span class="kw">unsafe </span>{
+            <span class="kw">if let </span><span class="prelude-val">Some</span>(preview_value) = <span class="self">self</span>.preview_value {
+                <span class="kw">let </span>(ptr_one, ptr_two) = ui.scratch_txt_two(<span class="self">self</span>.label, preview_value);
+                sys::igBeginCombo(ptr_one, ptr_two, <span class="self">self</span>.flags.bits() <span class="kw">as </span>i32)
+            } <span class="kw">else </span>{
+                <span class="kw">let </span>ptr_one = ui.scratch_txt(<span class="self">self</span>.label);
+                sys::igBeginCombo(ptr_one, std::ptr::null(), <span class="self">self</span>.flags.bits() <span class="kw">as </span>i32)
             }
         };
-        <span class="kw">if</span> <span class="ident">should_render</span> {
-            <span class="prelude-val">Some</span>(<span class="ident">ComboBoxToken::new</span>(<span class="ident">ui</span>))
-        } <span class="kw">else</span> {
-            <span class="prelude-val">None</span>
-        }
+        <span class="kw">if </span>should_render {
+            <span class="prelude-val">Some</span>(ComboBoxToken::new(ui))
+        } <span class="kw">else </span>{
+            <span class="prelude-val">None
+        </span>}
     }
-    <span class="doccomment">/// Creates a combo box and runs a closure to construct the popup contents.</span>
-    <span class="doccomment">/// Returns the result of the closure, if it is called.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Note: the closure is not called if the combo box is not open.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build</span><span class="op">&lt;</span><span class="ident">R</span>, <span class="ident">F</span>: <span class="ident">FnOnce</span>() -&gt; <span class="ident">R</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">ui</span>: <span class="kw-2">&amp;</span><span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>, <span class="ident">f</span>: <span class="ident">F</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">R</span><span class="op">&gt;</span> {
-        <span class="self">self</span>.<span class="ident">begin</span>(<span class="ident">ui</span>).<span class="ident">map</span>(<span class="op">|</span><span class="ident">_combo</span><span class="op">|</span> <span class="ident">f</span>())
+    <span class="doccomment">/// Creates a combo box and runs a closure to construct the popup contents.
+    /// Returns the result of the closure, if it is called.
+    ///
+    /// Note: the closure is not called if the combo box is not open.
+    </span><span class="kw">pub fn </span>build&lt;R, F: FnOnce() -&gt; R&gt;(<span class="self">self</span>, ui: <span class="kw-2">&amp;</span>Ui&lt;<span class="lifetime">&#39;_</span>&gt;, f: F) -&gt; <span class="prelude-ty">Option</span>&lt;R&gt; {
+        <span class="self">self</span>.begin(ui).map(|_combo| f())
     }
 }
 
 <span class="macro">create_token!</span>(
-    <span class="doccomment">/// Tracks a combo box that can be ended by calling `.end()`</span>
-    <span class="doccomment">/// or by dropping.</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">ComboBoxToken</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>;
+    <span class="doccomment">/// Tracks a combo box that can be ended by calling `.end()`
+    /// or by dropping.
+    </span><span class="kw">pub struct </span>ComboBoxToken&lt;<span class="lifetime">&#39;ui</span>&gt;;
 
-    <span class="doccomment">/// Ends a combo box</span>
-    <span class="ident">drop</span> { <span class="ident">sys::igEndCombo</span>() }
+    <span class="doccomment">/// Ends a combo box
+    </span>drop { sys::igEndCombo() }
 );
 
-<span class="doccomment">/// # Convenience functions</span>
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> <span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Creates a combo box which can be appended to with `Selectable::new`.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// If you do not want to provide a preview, use [`begin_combo_no_preview`]. If you want</span>
-    <span class="doccomment">/// to pass flags, use [`begin_combo_with_flags`].</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Returns `None` if the combo box is not open and no content should be rendered.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [`begin_combo_no_preview`]: Ui::begin_combo_no_preview</span>
-    <span class="doccomment">/// [`begin_combo_with_flags`]: Ui::begin_combo_with_flags</span>
-    <span class="attribute">#[<span class="ident">must_use</span>]</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;BeginCombo&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">begin_combo</span>(
+<span class="doccomment">/// # Convenience functions
+</span><span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>&gt; Ui&lt;<span class="lifetime">&#39;ui</span>&gt; {
+    <span class="doccomment">/// Creates a combo box which can be appended to with `Selectable::new`.
+    ///
+    /// If you do not want to provide a preview, use [`begin_combo_no_preview`]. If you want
+    /// to pass flags, use [`begin_combo_with_flags`].
+    ///
+    /// Returns `None` if the combo box is not open and no content should be rendered.
+    ///
+    /// [`begin_combo_no_preview`]: Ui::begin_combo_no_preview
+    /// [`begin_combo_with_flags`]: Ui::begin_combo_with_flags
+    </span><span class="attribute">#[must_use]
+    #[doc(alias = <span class="string">&quot;BeginCombo&quot;</span>)]
+    </span><span class="kw">pub fn </span>begin_combo(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">label</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>,
-        <span class="ident">preview_value</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>,
-    ) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ComboBoxToken</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="self">self</span>.<span class="ident">begin_combo_with_flags</span>(<span class="ident">label</span>, <span class="ident">preview_value</span>, <span class="ident">ComboBoxFlags::empty</span>())
+        label: <span class="kw">impl </span>AsRef&lt;str&gt;,
+        preview_value: <span class="kw">impl </span>AsRef&lt;str&gt;,
+    ) -&gt; <span class="prelude-ty">Option</span>&lt;ComboBoxToken&lt;<span class="lifetime">&#39;ui</span>&gt;&gt; {
+        <span class="self">self</span>.begin_combo_with_flags(label, preview_value, ComboBoxFlags::empty())
     }
 
-    <span class="doccomment">/// Creates a combo box which can be appended to with `Selectable::new`.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// If you do not want to provide a preview, use [begin_combo_no_preview].</span>
-    <span class="doccomment">/// Returns `Some(ComboBoxToken)` if the combo box is open. After content has been</span>
-    <span class="doccomment">/// rendered, the token must be ended by calling `.end()`.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Returns `None` if the combo box is not open and no content should be rendered.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [begin_combo_no_preview]: Ui::begin_combo_no_preview</span>
-    <span class="attribute">#[<span class="ident">must_use</span>]</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;BeginCombo&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">begin_combo_with_flags</span>(
+    <span class="doccomment">/// Creates a combo box which can be appended to with `Selectable::new`.
+    ///
+    /// If you do not want to provide a preview, use [begin_combo_no_preview].
+    /// Returns `Some(ComboBoxToken)` if the combo box is open. After content has been
+    /// rendered, the token must be ended by calling `.end()`.
+    ///
+    /// Returns `None` if the combo box is not open and no content should be rendered.
+    ///
+    /// [begin_combo_no_preview]: Ui::begin_combo_no_preview
+    </span><span class="attribute">#[must_use]
+    #[doc(alias = <span class="string">&quot;BeginCombo&quot;</span>)]
+    </span><span class="kw">pub fn </span>begin_combo_with_flags(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">label</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>,
-        <span class="ident">preview_value</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>,
-        <span class="ident">flags</span>: <span class="ident">ComboBoxFlags</span>,
-    ) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ComboBoxToken</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="self">self</span>.<span class="ident">_begin_combo</span>(<span class="ident">label</span>, <span class="prelude-val">Some</span>(<span class="ident">preview_value</span>), <span class="ident">flags</span>)
+        label: <span class="kw">impl </span>AsRef&lt;str&gt;,
+        preview_value: <span class="kw">impl </span>AsRef&lt;str&gt;,
+        flags: ComboBoxFlags,
+    ) -&gt; <span class="prelude-ty">Option</span>&lt;ComboBoxToken&lt;<span class="lifetime">&#39;ui</span>&gt;&gt; {
+        <span class="self">self</span>._begin_combo(label, <span class="prelude-val">Some</span>(preview_value), flags)
     }
 
-    <span class="doccomment">/// Creates a combo box which can be appended to with `Selectable::new`.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// If you want to provide a preview, use [begin_combo]. If you want</span>
-    <span class="doccomment">/// to pass flags, use [begin_combo_no_preview_with_flags].</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Returns `Some(ComboBoxToken)` if the combo box is open. After content has been</span>
-    <span class="doccomment">/// rendered, the token must be ended by calling `.end()`.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Returns `None` if the combo box is not open and no content should be rendered.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [begin_combo]: Ui::begin_combo</span>
-    <span class="doccomment">/// [begin_combo_no_preview_with_flags]: Ui::begin_combo_no_preview_with_flags</span>
-    <span class="attribute">#[<span class="ident">must_use</span>]</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;BeginCombo&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">begin_combo_no_preview</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">label</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ComboBoxToken</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="self">self</span>.<span class="ident">begin_combo_no_preview_with_flags</span>(<span class="ident">label</span>, <span class="ident">ComboBoxFlags::empty</span>())
+    <span class="doccomment">/// Creates a combo box which can be appended to with `Selectable::new`.
+    ///
+    /// If you want to provide a preview, use [begin_combo]. If you want
+    /// to pass flags, use [begin_combo_no_preview_with_flags].
+    ///
+    /// Returns `Some(ComboBoxToken)` if the combo box is open. After content has been
+    /// rendered, the token must be ended by calling `.end()`.
+    ///
+    /// Returns `None` if the combo box is not open and no content should be rendered.
+    ///
+    /// [begin_combo]: Ui::begin_combo
+    /// [begin_combo_no_preview_with_flags]: Ui::begin_combo_no_preview_with_flags
+    </span><span class="attribute">#[must_use]
+    #[doc(alias = <span class="string">&quot;BeginCombo&quot;</span>)]
+    </span><span class="kw">pub fn </span>begin_combo_no_preview(<span class="kw-2">&amp;</span><span class="self">self</span>, label: <span class="kw">impl </span>AsRef&lt;str&gt;) -&gt; <span class="prelude-ty">Option</span>&lt;ComboBoxToken&lt;<span class="lifetime">&#39;ui</span>&gt;&gt; {
+        <span class="self">self</span>.begin_combo_no_preview_with_flags(label, ComboBoxFlags::empty())
     }
 
-    <span class="doccomment">/// Creates a combo box which can be appended to with `Selectable::new`.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// If you do not want to provide a preview, use [begin_combo_no_preview].</span>
-    <span class="doccomment">/// Returns `Some(ComboBoxToken)` if the combo box is open. After content has been</span>
-    <span class="doccomment">/// rendered, the token must be ended by calling `.end()`.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Returns `None` if the combo box is not open and no content should be rendered.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [begin_combo_no_preview]: Ui::begin_combo_no_preview</span>
-    <span class="attribute">#[<span class="ident">must_use</span>]</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;BeginCombo&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">begin_combo_no_preview_with_flags</span>(
+    <span class="doccomment">/// Creates a combo box which can be appended to with `Selectable::new`.
+    ///
+    /// If you do not want to provide a preview, use [begin_combo_no_preview].
+    /// Returns `Some(ComboBoxToken)` if the combo box is open. After content has been
+    /// rendered, the token must be ended by calling `.end()`.
+    ///
+    /// Returns `None` if the combo box is not open and no content should be rendered.
+    ///
+    /// [begin_combo_no_preview]: Ui::begin_combo_no_preview
+    </span><span class="attribute">#[must_use]
+    #[doc(alias = <span class="string">&quot;BeginCombo&quot;</span>)]
+    </span><span class="kw">pub fn </span>begin_combo_no_preview_with_flags(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">label</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>,
-        <span class="ident">flags</span>: <span class="ident">ComboBoxFlags</span>,
-    ) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ComboBoxToken</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="self">self</span>.<span class="ident">_begin_combo</span>(<span class="ident">label</span>, <span class="prelude-ty">Option</span>::<span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span><span class="op">&gt;</span><span class="ident">::None</span>, <span class="ident">flags</span>)
+        label: <span class="kw">impl </span>AsRef&lt;str&gt;,
+        flags: ComboBoxFlags,
+    ) -&gt; <span class="prelude-ty">Option</span>&lt;ComboBoxToken&lt;<span class="lifetime">&#39;ui</span>&gt;&gt; {
+        <span class="self">self</span>._begin_combo(label, <span class="prelude-ty">Option</span>::&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str&gt;::None, flags)
     }
 
-    <span class="doccomment">/// This is the internal begin combo method that they all...eventually call.</span>
-    <span class="kw">fn</span> <span class="ident">_begin_combo</span>(
+    <span class="doccomment">/// This is the internal begin combo method that they all...eventually call.
+    </span><span class="kw">fn </span>_begin_combo(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">label</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>,
-        <span class="ident">preview_value</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>,
-        <span class="ident">flags</span>: <span class="ident">ComboBoxFlags</span>,
-    ) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ComboBoxToken</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="kw">let</span> <span class="ident">should_render</span> <span class="op">=</span> <span class="kw">unsafe</span> {
-            <span class="kw">let</span> (<span class="ident">ptr_one</span>, <span class="ident">ptr_two</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">scratch_txt_with_opt</span>(<span class="ident">label</span>, <span class="ident">preview_value</span>);
-            <span class="ident">sys::igBeginCombo</span>(<span class="ident">ptr_one</span>, <span class="ident">ptr_two</span>, <span class="ident">flags</span>.<span class="ident">bits</span>() <span class="kw">as</span> <span class="ident">i32</span>)
+        label: <span class="kw">impl </span>AsRef&lt;str&gt;,
+        preview_value: <span class="prelude-ty">Option</span>&lt;<span class="kw">impl </span>AsRef&lt;str&gt;&gt;,
+        flags: ComboBoxFlags,
+    ) -&gt; <span class="prelude-ty">Option</span>&lt;ComboBoxToken&lt;<span class="lifetime">&#39;ui</span>&gt;&gt; {
+        <span class="kw">let </span>should_render = <span class="kw">unsafe </span>{
+            <span class="kw">let </span>(ptr_one, ptr_two) = <span class="self">self</span>.scratch_txt_with_opt(label, preview_value);
+            sys::igBeginCombo(ptr_one, ptr_two, flags.bits() <span class="kw">as </span>i32)
         };
-        <span class="kw">if</span> <span class="ident">should_render</span> {
-            <span class="prelude-val">Some</span>(<span class="ident">ComboBoxToken::new</span>(<span class="self">self</span>))
-        } <span class="kw">else</span> {
-            <span class="prelude-val">None</span>
-        }
+        <span class="kw">if </span>should_render {
+            <span class="prelude-val">Some</span>(ComboBoxToken::new(<span class="self">self</span>))
+        } <span class="kw">else </span>{
+            <span class="prelude-val">None
+        </span>}
     }
-    <span class="doccomment">/// Builds a simple combo box for choosing from a slice of values</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;Combo&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">combo</span><span class="op">&lt;</span><span class="ident">V</span>, <span class="ident">L</span><span class="op">&gt;</span>(
+    <span class="doccomment">/// Builds a simple combo box for choosing from a slice of values
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;Combo&quot;</span>)]
+    </span><span class="kw">pub fn </span>combo&lt;V, L&gt;(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">label</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>,
-        <span class="ident">current_item</span>: <span class="kw-2">&amp;mut</span> <span class="ident">usize</span>,
-        <span class="ident">items</span>: <span class="kw-2">&amp;</span>[<span class="ident">V</span>],
-        <span class="ident">label_fn</span>: <span class="ident">L</span>,
-    ) -&gt; <span class="ident">bool</span>
-    <span class="kw">where</span>
-        <span class="kw">for</span><span class="op">&lt;</span><span class="lifetime">&#39;b</span><span class="op">&gt;</span> <span class="ident">L</span>: <span class="ident">Fn</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;b</span> <span class="ident">V</span>) -&gt; <span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;b</span>, <span class="ident">str</span><span class="op">&gt;</span>,
+        label: <span class="kw">impl </span>AsRef&lt;str&gt;,
+        current_item: <span class="kw-2">&amp;mut </span>usize,
+        items: <span class="kw-2">&amp;</span>[V],
+        label_fn: L,
+    ) -&gt; bool
+    <span class="kw">where
+        for</span>&lt;<span class="lifetime">&#39;b</span>&gt; L: Fn(<span class="kw-2">&amp;</span><span class="lifetime">&#39;b </span>V) -&gt; Cow&lt;<span class="lifetime">&#39;b</span>, str&gt;,
     {
-        <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::widget::selectable::Selectable</span>;
-        <span class="kw">let</span> <span class="ident">label_fn</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">label_fn</span>;
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">result</span> <span class="op">=</span> <span class="bool-val">false</span>;
-        <span class="kw">let</span> <span class="ident">preview_value</span> <span class="op">=</span> <span class="ident">items</span>.<span class="ident">get</span>(<span class="kw-2">*</span><span class="ident">current_item</span>).<span class="ident">map</span>(<span class="ident">label_fn</span>);
+        <span class="kw">use </span><span class="kw">crate</span>::widget::selectable::Selectable;
+        <span class="kw">let </span>label_fn = <span class="kw-2">&amp;</span>label_fn;
+        <span class="kw">let </span><span class="kw-2">mut </span>result = <span class="bool-val">false</span>;
+        <span class="kw">let </span>preview_value = items.get(<span class="kw-2">*</span>current_item).map(label_fn);
 
-        <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">_cb</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">_begin_combo</span>(<span class="ident">label</span>, <span class="ident">preview_value</span>, <span class="ident">ComboBoxFlags::empty</span>()) {
-            <span class="kw">for</span> (<span class="ident">idx</span>, <span class="ident">item</span>) <span class="kw">in</span> <span class="ident">items</span>.<span class="ident">iter</span>().<span class="ident">enumerate</span>() {
-                <span class="kw">let</span> <span class="ident">text</span> <span class="op">=</span> <span class="ident">label_fn</span>(<span class="ident">item</span>);
-                <span class="kw">let</span> <span class="ident">selected</span> <span class="op">=</span> <span class="ident">idx</span> <span class="op">==</span> <span class="kw-2">*</span><span class="ident">current_item</span>;
-                <span class="kw">if</span> <span class="ident">Selectable::new</span>(<span class="kw-2">&amp;</span><span class="ident">text</span>).<span class="ident">selected</span>(<span class="ident">selected</span>).<span class="ident">build</span>(<span class="self">self</span>) {
-                    <span class="kw-2">*</span><span class="ident">current_item</span> <span class="op">=</span> <span class="ident">idx</span>;
-                    <span class="ident">result</span> <span class="op">=</span> <span class="bool-val">true</span>;
+        <span class="kw">if let </span><span class="prelude-val">Some</span>(_cb) = <span class="self">self</span>._begin_combo(label, preview_value, ComboBoxFlags::empty()) {
+            <span class="kw">for </span>(idx, item) <span class="kw">in </span>items.iter().enumerate() {
+                <span class="kw">let </span>text = label_fn(item);
+                <span class="kw">let </span>selected = idx == <span class="kw-2">*</span>current_item;
+                <span class="kw">if </span>Selectable::new(<span class="kw-2">&amp;</span>text).selected(selected).build(<span class="self">self</span>) {
+                    <span class="kw-2">*</span>current_item = idx;
+                    result = <span class="bool-val">true</span>;
                 }
-                <span class="kw">if</span> <span class="ident">selected</span> {
-                    <span class="self">self</span>.<span class="ident">set_item_default_focus</span>();
+                <span class="kw">if </span>selected {
+                    <span class="self">self</span>.set_item_default_focus();
                 }
             }
         }
-        <span class="ident">result</span>
+        result
     }
 
-    <span class="doccomment">/// Builds a simple combo box for choosing from a slice of values</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;Combo&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">combo_simple_string</span>(
+    <span class="doccomment">/// Builds a simple combo box for choosing from a slice of values
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;Combo&quot;</span>)]
+    </span><span class="kw">pub fn </span>combo_simple_string(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">label</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>,
-        <span class="ident">current_item</span>: <span class="kw-2">&amp;mut</span> <span class="ident">usize</span>,
-        <span class="ident">items</span>: <span class="kw-2">&amp;</span>[<span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>],
-    ) -&gt; <span class="ident">bool</span> {
-        <span class="self">self</span>.<span class="ident">combo</span>(<span class="ident">label</span>, <span class="ident">current_item</span>, <span class="ident">items</span>, <span class="op">|</span><span class="ident">s</span><span class="op">|</span> <span class="ident">Cow::Borrowed</span>(<span class="ident">s</span>.<span class="ident">as_ref</span>()))
+        label: <span class="kw">impl </span>AsRef&lt;str&gt;,
+        current_item: <span class="kw-2">&amp;mut </span>usize,
+        items: <span class="kw-2">&amp;</span>[<span class="kw">impl </span>AsRef&lt;str&gt;],
+    ) -&gt; bool {
+        <span class="self">self</span>.combo(label, current_item, items, |s| Cow::Borrowed(s.as_ref()))
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="arcdps_imgui" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="arcdps_imgui" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.0 (69f9c33d7 2022-12-12)" ></div></body></html>

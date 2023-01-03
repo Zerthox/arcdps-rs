@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\winapi-0.3.9\src\shared\ktmtypes.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>ktmtypes.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../winapi/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../winapi/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../winapi/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\winapi-0.3.9\src\shared\ktmtypes.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>ktmtypes.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../normalize.css"><link rel="stylesheet" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../ayu.css" disabled><link rel="stylesheet" href="../../../dark.css" disabled><link rel="stylesheet" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../../winapi/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -136,143 +136,143 @@
 <span id="136">136</span>
 <span id="137">137</span>
 <span id="138">138</span>
-</pre><pre class="rust"><code><span class="comment">// Licensed under the Apache License, Version 2.0</span>
-<span class="comment">// &lt;LICENSE-APACHE or http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license</span>
-<span class="comment">// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your option.</span>
-<span class="comment">// All files in the project carrying such notice may not be copied, modified, or distributed</span>
-<span class="comment">// except according to those terms.</span>
-<span class="doccomment">//! Common types for KTM exposed at both the Nt- and Win32-layer</span>
-<span class="kw">use</span> <span class="ident">shared::guiddef::GUID</span>;
-<span class="kw">use</span> <span class="ident">shared::minwindef</span>::{<span class="ident">DWORD</span>, <span class="ident">ULONG</span>};
-<span class="kw">use</span> <span class="ident">um::winnt</span>::{<span class="ident">LARGE_INTEGER</span>, <span class="ident">PVOID</span>, <span class="ident">WCHAR</span>};
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">UOW</span> <span class="op">=</span> <span class="ident">GUID</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PUOW</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">GUID</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">CRM_PROTOCOL_ID</span> <span class="op">=</span> <span class="ident">GUID</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PCRM_PROTOCOL_ID</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">GUID</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TRANSACTION_MANAGER_VOLATILE</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">0x00000001</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TRANSACTION_MANAGER_COMMIT_DEFAULT</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">0x00000000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TRANSACTION_MANAGER_COMMIT_SYSTEM_VOLUME</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">0x00000002</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TRANSACTION_MANAGER_COMMIT_SYSTEM_HIVES</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">0x00000004</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TRANSACTION_MANAGER_COMMIT_LOWEST</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">0x00000008</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TRANSACTION_MANAGER_CORRUPT_FOR_RECOVERY</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">0x00000010</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TRANSACTION_MANAGER_CORRUPT_FOR_PROGRESS</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">0x00000020</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TRANSACTION_MANAGER_MAXIMUM_OPTION</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">0x0000003F</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TRANSACTION_DO_NOT_PROMOTE</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000001</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TRANSACTION_MAXIMUM_OPTION</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000001</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">RESOURCE_MANAGER_VOLATILE</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000001</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">RESOURCE_MANAGER_COMMUNICATION</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000002</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">RESOURCE_MANAGER_MAXIMUM_OPTION</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000003</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CRM_PROTOCOL_EXPLICIT_MARSHAL_ONLY</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000001</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CRM_PROTOCOL_DYNAMIC_MARSHAL_INFO</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000002</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CRM_PROTOCOL_MAXIMUM_OPTION</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000003</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">ENLISTMENT_SUPERIOR</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">0x00000001</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">ENLISTMENT_MAXIMUM_OPTION</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">0x00000001</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">NOTIFICATION_MASK</span> <span class="op">=</span> <span class="ident">ULONG</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TRANSACTION_NOTIFY_MASK</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">0x3FFFFFFF</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TRANSACTION_NOTIFY_PREPREPARE</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">0x00000001</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TRANSACTION_NOTIFY_PREPARE</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">0x00000002</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TRANSACTION_NOTIFY_COMMIT</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">0x00000004</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TRANSACTION_NOTIFY_ROLLBACK</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">0x00000008</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TRANSACTION_NOTIFY_PREPREPARE_COMPLETE</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">0x00000010</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TRANSACTION_NOTIFY_PREPARE_COMPLETE</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">0x00000020</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TRANSACTION_NOTIFY_COMMIT_COMPLETE</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">0x00000040</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TRANSACTION_NOTIFY_ROLLBACK_COMPLETE</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">0x00000080</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TRANSACTION_NOTIFY_RECOVER</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">0x00000100</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TRANSACTION_NOTIFY_SINGLE_PHASE_COMMIT</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">0x00000200</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TRANSACTION_NOTIFY_DELEGATE_COMMIT</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">0x00000400</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TRANSACTION_NOTIFY_RECOVER_QUERY</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">0x00000800</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TRANSACTION_NOTIFY_ENLIST_PREPREPARE</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">0x00001000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TRANSACTION_NOTIFY_LAST_RECOVER</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">0x00002000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TRANSACTION_NOTIFY_INDOUBT</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">0x00004000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TRANSACTION_NOTIFY_PROPAGATE_PULL</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">0x00008000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TRANSACTION_NOTIFY_PROPAGATE_PUSH</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">0x00010000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TRANSACTION_NOTIFY_MARSHAL</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">0x00020000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TRANSACTION_NOTIFY_ENLIST_MASK</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">0x00040000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TRANSACTION_NOTIFY_RM_DISCONNECTED</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">0x01000000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TRANSACTION_NOTIFY_TM_ONLINE</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">0x02000000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TRANSACTION_NOTIFY_COMMIT_REQUEST</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">0x04000000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TRANSACTION_NOTIFY_PROMOTE</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">0x08000000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TRANSACTION_NOTIFY_PROMOTE_NEW</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">0x10000000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TRANSACTION_NOTIFY_REQUEST_OUTCOME</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">0x20000000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TRANSACTION_NOTIFY_COMMIT_FINALIZE</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">0x40000000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TRANSACTIONMANAGER_OBJECT_PATH</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span> <span class="op">=</span> <span class="string">&quot;\\TransactionManager\\&quot;</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TRANSACTION_OBJECT_PATH</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span> <span class="op">=</span> <span class="string">&quot;\\Transaction\\&quot;</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">ENLISTMENT_OBJECT_PATH</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span> <span class="op">=</span> <span class="string">&quot;\\Enlistment\\&quot;</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">RESOURCE_MANAGER_OBJECT_PATH</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span> <span class="op">=</span> <span class="string">&quot;\\ResourceManager\\&quot;</span>;
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">TRANSACTION_NOTIFICATION</span> {
-    <span class="ident">TransactionKey</span>: <span class="ident">PVOID</span>,
-    <span class="ident">TransactionNotification</span>: <span class="ident">ULONG</span>,
-    <span class="ident">TmVirtualClock</span>: <span class="ident">LARGE_INTEGER</span>,
-    <span class="ident">ArgumentLength</span>: <span class="ident">ULONG</span>,
+</pre><pre class="rust"><code><span class="comment">// Licensed under the Apache License, Version 2.0
+// &lt;LICENSE-APACHE or http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license
+// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your option.
+// All files in the project carrying such notice may not be copied, modified, or distributed
+// except according to those terms.
+</span><span class="doccomment">//! Common types for KTM exposed at both the Nt- and Win32-layer
+</span><span class="kw">use </span>shared::guiddef::GUID;
+<span class="kw">use </span>shared::minwindef::{DWORD, ULONG};
+<span class="kw">use </span>um::winnt::{LARGE_INTEGER, PVOID, WCHAR};
+<span class="kw">pub type </span>UOW = GUID;
+<span class="kw">pub type </span>PUOW = <span class="kw-2">*mut </span>GUID;
+<span class="kw">pub type </span>CRM_PROTOCOL_ID = GUID;
+<span class="kw">pub type </span>PCRM_PROTOCOL_ID = <span class="kw-2">*mut </span>GUID;
+<span class="kw">pub const </span>TRANSACTION_MANAGER_VOLATILE: ULONG = <span class="number">0x00000001</span>;
+<span class="kw">pub const </span>TRANSACTION_MANAGER_COMMIT_DEFAULT: ULONG = <span class="number">0x00000000</span>;
+<span class="kw">pub const </span>TRANSACTION_MANAGER_COMMIT_SYSTEM_VOLUME: ULONG = <span class="number">0x00000002</span>;
+<span class="kw">pub const </span>TRANSACTION_MANAGER_COMMIT_SYSTEM_HIVES: ULONG = <span class="number">0x00000004</span>;
+<span class="kw">pub const </span>TRANSACTION_MANAGER_COMMIT_LOWEST: ULONG = <span class="number">0x00000008</span>;
+<span class="kw">pub const </span>TRANSACTION_MANAGER_CORRUPT_FOR_RECOVERY: ULONG = <span class="number">0x00000010</span>;
+<span class="kw">pub const </span>TRANSACTION_MANAGER_CORRUPT_FOR_PROGRESS: ULONG = <span class="number">0x00000020</span>;
+<span class="kw">pub const </span>TRANSACTION_MANAGER_MAXIMUM_OPTION: ULONG = <span class="number">0x0000003F</span>;
+<span class="kw">pub const </span>TRANSACTION_DO_NOT_PROMOTE: DWORD = <span class="number">0x00000001</span>;
+<span class="kw">pub const </span>TRANSACTION_MAXIMUM_OPTION: DWORD = <span class="number">0x00000001</span>;
+<span class="kw">pub const </span>RESOURCE_MANAGER_VOLATILE: DWORD = <span class="number">0x00000001</span>;
+<span class="kw">pub const </span>RESOURCE_MANAGER_COMMUNICATION: DWORD = <span class="number">0x00000002</span>;
+<span class="kw">pub const </span>RESOURCE_MANAGER_MAXIMUM_OPTION: DWORD = <span class="number">0x00000003</span>;
+<span class="kw">pub const </span>CRM_PROTOCOL_EXPLICIT_MARSHAL_ONLY: DWORD = <span class="number">0x00000001</span>;
+<span class="kw">pub const </span>CRM_PROTOCOL_DYNAMIC_MARSHAL_INFO: DWORD = <span class="number">0x00000002</span>;
+<span class="kw">pub const </span>CRM_PROTOCOL_MAXIMUM_OPTION: DWORD = <span class="number">0x00000003</span>;
+<span class="kw">pub const </span>ENLISTMENT_SUPERIOR: ULONG = <span class="number">0x00000001</span>;
+<span class="kw">pub const </span>ENLISTMENT_MAXIMUM_OPTION: ULONG = <span class="number">0x00000001</span>;
+<span class="kw">pub type </span>NOTIFICATION_MASK = ULONG;
+<span class="kw">pub const </span>TRANSACTION_NOTIFY_MASK: ULONG = <span class="number">0x3FFFFFFF</span>;
+<span class="kw">pub const </span>TRANSACTION_NOTIFY_PREPREPARE: ULONG = <span class="number">0x00000001</span>;
+<span class="kw">pub const </span>TRANSACTION_NOTIFY_PREPARE: ULONG = <span class="number">0x00000002</span>;
+<span class="kw">pub const </span>TRANSACTION_NOTIFY_COMMIT: ULONG = <span class="number">0x00000004</span>;
+<span class="kw">pub const </span>TRANSACTION_NOTIFY_ROLLBACK: ULONG = <span class="number">0x00000008</span>;
+<span class="kw">pub const </span>TRANSACTION_NOTIFY_PREPREPARE_COMPLETE: ULONG = <span class="number">0x00000010</span>;
+<span class="kw">pub const </span>TRANSACTION_NOTIFY_PREPARE_COMPLETE: ULONG = <span class="number">0x00000020</span>;
+<span class="kw">pub const </span>TRANSACTION_NOTIFY_COMMIT_COMPLETE: ULONG = <span class="number">0x00000040</span>;
+<span class="kw">pub const </span>TRANSACTION_NOTIFY_ROLLBACK_COMPLETE: ULONG = <span class="number">0x00000080</span>;
+<span class="kw">pub const </span>TRANSACTION_NOTIFY_RECOVER: ULONG = <span class="number">0x00000100</span>;
+<span class="kw">pub const </span>TRANSACTION_NOTIFY_SINGLE_PHASE_COMMIT: ULONG = <span class="number">0x00000200</span>;
+<span class="kw">pub const </span>TRANSACTION_NOTIFY_DELEGATE_COMMIT: ULONG = <span class="number">0x00000400</span>;
+<span class="kw">pub const </span>TRANSACTION_NOTIFY_RECOVER_QUERY: ULONG = <span class="number">0x00000800</span>;
+<span class="kw">pub const </span>TRANSACTION_NOTIFY_ENLIST_PREPREPARE: ULONG = <span class="number">0x00001000</span>;
+<span class="kw">pub const </span>TRANSACTION_NOTIFY_LAST_RECOVER: ULONG = <span class="number">0x00002000</span>;
+<span class="kw">pub const </span>TRANSACTION_NOTIFY_INDOUBT: ULONG = <span class="number">0x00004000</span>;
+<span class="kw">pub const </span>TRANSACTION_NOTIFY_PROPAGATE_PULL: ULONG = <span class="number">0x00008000</span>;
+<span class="kw">pub const </span>TRANSACTION_NOTIFY_PROPAGATE_PUSH: ULONG = <span class="number">0x00010000</span>;
+<span class="kw">pub const </span>TRANSACTION_NOTIFY_MARSHAL: ULONG = <span class="number">0x00020000</span>;
+<span class="kw">pub const </span>TRANSACTION_NOTIFY_ENLIST_MASK: ULONG = <span class="number">0x00040000</span>;
+<span class="kw">pub const </span>TRANSACTION_NOTIFY_RM_DISCONNECTED: ULONG = <span class="number">0x01000000</span>;
+<span class="kw">pub const </span>TRANSACTION_NOTIFY_TM_ONLINE: ULONG = <span class="number">0x02000000</span>;
+<span class="kw">pub const </span>TRANSACTION_NOTIFY_COMMIT_REQUEST: ULONG = <span class="number">0x04000000</span>;
+<span class="kw">pub const </span>TRANSACTION_NOTIFY_PROMOTE: ULONG = <span class="number">0x08000000</span>;
+<span class="kw">pub const </span>TRANSACTION_NOTIFY_PROMOTE_NEW: ULONG = <span class="number">0x10000000</span>;
+<span class="kw">pub const </span>TRANSACTION_NOTIFY_REQUEST_OUTCOME: ULONG = <span class="number">0x20000000</span>;
+<span class="kw">pub const </span>TRANSACTION_NOTIFY_COMMIT_FINALIZE: ULONG = <span class="number">0x40000000</span>;
+<span class="kw">pub const </span>TRANSACTIONMANAGER_OBJECT_PATH: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str = <span class="string">&quot;\\TransactionManager\\&quot;</span>;
+<span class="kw">pub const </span>TRANSACTION_OBJECT_PATH: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str = <span class="string">&quot;\\Transaction\\&quot;</span>;
+<span class="kw">pub const </span>ENLISTMENT_OBJECT_PATH: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str = <span class="string">&quot;\\Enlistment\\&quot;</span>;
+<span class="kw">pub const </span>RESOURCE_MANAGER_OBJECT_PATH: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str = <span class="string">&quot;\\ResourceManager\\&quot;</span>;
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>TRANSACTION_NOTIFICATION {
+    TransactionKey: PVOID,
+    TransactionNotification: ULONG,
+    TmVirtualClock: LARGE_INTEGER,
+    ArgumentLength: ULONG,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PTRANSACTION_NOTIFICATION</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">TRANSACTION_NOTIFICATION</span>;
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">TRANSACTION_NOTIFICATION_RECOVERY_ARGUMENT</span> {
-    <span class="ident">EnlistmentId</span>: <span class="ident">GUID</span>,
-    <span class="ident">UOW</span>: <span class="ident">UOW</span>,
+<span class="kw">pub type </span>PTRANSACTION_NOTIFICATION = <span class="kw-2">*mut </span>TRANSACTION_NOTIFICATION;
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>TRANSACTION_NOTIFICATION_RECOVERY_ARGUMENT {
+    EnlistmentId: GUID,
+    UOW: UOW,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PTRANSACTION_NOTIFICATION_RECOVERY_ARGUMENT</span>
-    <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">TRANSACTION_NOTIFICATION_RECOVERY_ARGUMENT</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TRANSACTION_NOTIFICATION_TM_ONLINE_FLAG_IS_CLUSTERED</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">0x1</span>;
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">TRANSACTION_NOTIFICATION_TM_ONLINE_ARGUMENT</span> {
-    <span class="ident">TmIdentity</span>: <span class="ident">GUID</span>,
-    <span class="ident">Flags</span>: <span class="ident">ULONG</span>,
+<span class="kw">pub type </span>PTRANSACTION_NOTIFICATION_RECOVERY_ARGUMENT
+    = <span class="kw-2">*mut </span>TRANSACTION_NOTIFICATION_RECOVERY_ARGUMENT;
+<span class="kw">pub const </span>TRANSACTION_NOTIFICATION_TM_ONLINE_FLAG_IS_CLUSTERED: ULONG = <span class="number">0x1</span>;
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>TRANSACTION_NOTIFICATION_TM_ONLINE_ARGUMENT {
+    TmIdentity: GUID,
+    Flags: ULONG,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PTRANSACTION_NOTIFICATION_TM_ONLINE_ARGUMENT</span>
-    <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">TRANSACTION_NOTIFICATION_TM_ONLINE_ARGUMENT</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">SAVEPOINT_ID</span> <span class="op">=</span> <span class="ident">ULONG</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PSAVEPOINT_ID</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">ULONG</span>;
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">TRANSACTION_NOTIFICATION_SAVEPOINT_ARGUMENT</span> {
-    <span class="ident">SavepointId</span>: <span class="ident">SAVEPOINT_ID</span>,
+<span class="kw">pub type </span>PTRANSACTION_NOTIFICATION_TM_ONLINE_ARGUMENT
+    = <span class="kw-2">*mut </span>TRANSACTION_NOTIFICATION_TM_ONLINE_ARGUMENT;
+<span class="kw">pub type </span>SAVEPOINT_ID = ULONG;
+<span class="kw">pub type </span>PSAVEPOINT_ID = <span class="kw-2">*mut </span>ULONG;
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>TRANSACTION_NOTIFICATION_SAVEPOINT_ARGUMENT {
+    SavepointId: SAVEPOINT_ID,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PTRANSACTION_NOTIFICATION_SAVEPOINT_ARGUMENT</span>
-    <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">TRANSACTION_NOTIFICATION_SAVEPOINT_ARGUMENT</span>;
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">TRANSACTION_NOTIFICATION_PROPAGATE_ARGUMENT</span> {
-    <span class="ident">PropagationCookie</span>: <span class="ident">ULONG</span>,
-    <span class="ident">UOW</span>: <span class="ident">GUID</span>,
-    <span class="ident">TmIdentity</span>: <span class="ident">GUID</span>,
-    <span class="ident">BufferLength</span>: <span class="ident">ULONG</span>,
+<span class="kw">pub type </span>PTRANSACTION_NOTIFICATION_SAVEPOINT_ARGUMENT
+    = <span class="kw-2">*mut </span>TRANSACTION_NOTIFICATION_SAVEPOINT_ARGUMENT;
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>TRANSACTION_NOTIFICATION_PROPAGATE_ARGUMENT {
+    PropagationCookie: ULONG,
+    UOW: GUID,
+    TmIdentity: GUID,
+    BufferLength: ULONG,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PTRANSACTION_NOTIFICATION_PROPAGATE_ARGUMENT</span>
-    <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">TRANSACTION_NOTIFICATION_PROPAGATE_ARGUMENT</span>;
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">TRANSACTION_NOTIFICATION_MARSHAL_ARGUMENT</span> {
-    <span class="ident">MarshalCookie</span>: <span class="ident">ULONG</span>,
-    <span class="ident">UOW</span>: <span class="ident">GUID</span>,
+<span class="kw">pub type </span>PTRANSACTION_NOTIFICATION_PROPAGATE_ARGUMENT
+    = <span class="kw-2">*mut </span>TRANSACTION_NOTIFICATION_PROPAGATE_ARGUMENT;
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>TRANSACTION_NOTIFICATION_MARSHAL_ARGUMENT {
+    MarshalCookie: ULONG,
+    UOW: GUID,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PTRANSACTION_NOTIFICATION_MARSHAL_ARGUMENT</span>
-    <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">TRANSACTION_NOTIFICATION_MARSHAL_ARGUMENT</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">TRANSACTION_NOTIFICATION_PROMOTE_ARGUMENT</span> <span class="op">=</span> <span class="ident">TRANSACTION_NOTIFICATION_PROPAGATE_ARGUMENT</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PTRANSACTION_NOTIFICATION_PROMOTE_ARGUMENT</span>
-    <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">TRANSACTION_NOTIFICATION_PROPAGATE_ARGUMENT</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">KTM_MARSHAL_BLOB_VERSION_MAJOR</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">1</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">KTM_MARSHAL_BLOB_VERSION_MINOR</span>: <span class="ident">ULONG</span> <span class="op">=</span> <span class="number">1</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">MAX_TRANSACTION_DESCRIPTION_LENGTH</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="number">64</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">MAX_RESOURCEMANAGER_DESCRIPTION_LENGTH</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="number">64</span>;
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">KCRM_MARSHAL_HEADER</span> {
-    <span class="ident">VersionMajor</span>: <span class="ident">ULONG</span>,
-    <span class="ident">VersionMinor</span>: <span class="ident">ULONG</span>,
-    <span class="ident">NumProtocols</span>: <span class="ident">ULONG</span>,
-    <span class="ident">Unused</span>: <span class="ident">ULONG</span>,
+<span class="kw">pub type </span>PTRANSACTION_NOTIFICATION_MARSHAL_ARGUMENT
+    = <span class="kw-2">*mut </span>TRANSACTION_NOTIFICATION_MARSHAL_ARGUMENT;
+<span class="kw">pub type </span>TRANSACTION_NOTIFICATION_PROMOTE_ARGUMENT = TRANSACTION_NOTIFICATION_PROPAGATE_ARGUMENT;
+<span class="kw">pub type </span>PTRANSACTION_NOTIFICATION_PROMOTE_ARGUMENT
+    = <span class="kw-2">*mut </span>TRANSACTION_NOTIFICATION_PROPAGATE_ARGUMENT;
+<span class="kw">pub const </span>KTM_MARSHAL_BLOB_VERSION_MAJOR: ULONG = <span class="number">1</span>;
+<span class="kw">pub const </span>KTM_MARSHAL_BLOB_VERSION_MINOR: ULONG = <span class="number">1</span>;
+<span class="kw">pub const </span>MAX_TRANSACTION_DESCRIPTION_LENGTH: usize = <span class="number">64</span>;
+<span class="kw">pub const </span>MAX_RESOURCEMANAGER_DESCRIPTION_LENGTH: usize = <span class="number">64</span>;
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>KCRM_MARSHAL_HEADER {
+    VersionMajor: ULONG,
+    VersionMinor: ULONG,
+    NumProtocols: ULONG,
+    Unused: ULONG,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PKCRM_MARSHAL_HEADER</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">KCRM_MARSHAL_HEADER</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PRKCRM_MARSHAL_HEADER</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">KCRM_MARSHAL_HEADER</span>;
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">KCRM_TRANSACTION_BLOB</span> {
-    <span class="ident">UOW</span>: <span class="ident">UOW</span>,
-    <span class="ident">TmIdentity</span>: <span class="ident">GUID</span>,
-    <span class="ident">IsolationLevel</span>: <span class="ident">ULONG</span>,
-    <span class="ident">IsolationFlags</span>: <span class="ident">ULONG</span>,
-    <span class="ident">Timeout</span>: <span class="ident">ULONG</span>,
-    <span class="ident">Description</span>: [<span class="ident">WCHAR</span>; <span class="ident">MAX_TRANSACTION_DESCRIPTION_LENGTH</span>],
+<span class="kw">pub type </span>PKCRM_MARSHAL_HEADER = <span class="kw-2">*mut </span>KCRM_MARSHAL_HEADER;
+<span class="kw">pub type </span>PRKCRM_MARSHAL_HEADER = <span class="kw-2">*mut </span>KCRM_MARSHAL_HEADER;
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>KCRM_TRANSACTION_BLOB {
+    UOW: UOW,
+    TmIdentity: GUID,
+    IsolationLevel: ULONG,
+    IsolationFlags: ULONG,
+    Timeout: ULONG,
+    Description: [WCHAR; MAX_TRANSACTION_DESCRIPTION_LENGTH],
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PKCRM_TRANSACTION_BLOB</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">KCRM_TRANSACTION_BLOB</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PRKCRM_TRANSACTION_BLOB</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">KCRM_TRANSACTION_BLOB</span>;
-<span class="macro">STRUCT!</span>{<span class="kw">struct</span> <span class="ident">KCRM_PROTOCOL_BLOB</span> {
-    <span class="ident">ProtocolId</span>: <span class="ident">CRM_PROTOCOL_ID</span>,
-    <span class="ident">StaticInfoLength</span>: <span class="ident">ULONG</span>,
-    <span class="ident">TransactionIdInfoLength</span>: <span class="ident">ULONG</span>,
-    <span class="ident">Unused1</span>: <span class="ident">ULONG</span>,
-    <span class="ident">Unused2</span>: <span class="ident">ULONG</span>,
+<span class="kw">pub type </span>PKCRM_TRANSACTION_BLOB = <span class="kw-2">*mut </span>KCRM_TRANSACTION_BLOB;
+<span class="kw">pub type </span>PRKCRM_TRANSACTION_BLOB = <span class="kw-2">*mut </span>KCRM_TRANSACTION_BLOB;
+<span class="macro">STRUCT!</span>{<span class="kw">struct </span>KCRM_PROTOCOL_BLOB {
+    ProtocolId: CRM_PROTOCOL_ID,
+    StaticInfoLength: ULONG,
+    TransactionIdInfoLength: ULONG,
+    Unused1: ULONG,
+    Unused2: ULONG,
 }}
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PKCRM_PROTOCOL_BLOB</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">KCRM_PROTOCOL_BLOB</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PRKCRM_PROTOCOL_BLOB</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">KCRM_PROTOCOL_BLOB</span>;
+<span class="kw">pub type </span>PKCRM_PROTOCOL_BLOB = <span class="kw-2">*mut </span>KCRM_PROTOCOL_BLOB;
+<span class="kw">pub type </span>PRKCRM_PROTOCOL_BLOB = <span class="kw-2">*mut </span>KCRM_PROTOCOL_BLOB;
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="winapi" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="winapi" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.0 (69f9c33d7 2022-12-12)" ></div></body></html>

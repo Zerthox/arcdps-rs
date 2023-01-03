@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\arcdps-imgui-0.8.0\src\draw_list.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>draw_list.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script><script defer src="../../main.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../arcdps_imgui/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../arcdps_imgui/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../arcdps_imgui/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\arcdps-imgui-0.8.0\src\draw_list.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>draw_list.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../normalize.css"><link rel="stylesheet" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../ayu.css" disabled><link rel="stylesheet" href="../../dark.css" disabled><link rel="stylesheet" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script><script defer src="../../main.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../arcdps_imgui/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -1040,1047 +1040,1047 @@
 <span id="1040">1040</span>
 <span id="1041">1041</span>
 <span id="1042">1042</span>
-</pre><pre class="rust"><code><span class="doccomment">//! The draw list lets you create custom graphics within a window.</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! Each dear imgui window contains its own draw list. You can use</span>
-<span class="doccomment">//! [`Ui::get_window_draw_list`] to access the current window draw</span>
-<span class="doccomment">//! list and draw custom primitives. You can interleave normal widget</span>
-<span class="doccomment">//! calls and adding primitives to the current draw list.</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! Interaction is mostly through the mtehods [`DrawListMut`] struct,</span>
-<span class="doccomment">//! such as [`DrawListMut::add_line`], however you can also construct</span>
-<span class="doccomment">//!  structs like [`Line`] directly, then call</span>
-<span class="doccomment">//!  `Line::build` with a reference to your draw list</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! There are examples such as `draw_list.rs` and `custom_textures.rs`</span>
-<span class="doccomment">//! within the `imgui-examples` directory</span>
+</pre><pre class="rust"><code><span class="doccomment">//! The draw list lets you create custom graphics within a window.
+//!
+//! Each dear imgui window contains its own draw list. You can use
+//! [`Ui::get_window_draw_list`] to access the current window draw
+//! list and draw custom primitives. You can interleave normal widget
+//! calls and adding primitives to the current draw list.
+//!
+//! Interaction is mostly through the mtehods [`DrawListMut`] struct,
+//! such as [`DrawListMut::add_line`], however you can also construct
+//!  structs like [`Line`] directly, then call
+//!  `Line::build` with a reference to your draw list
+//!
+//! There are examples such as `draw_list.rs` and `custom_textures.rs`
+//! within the `imgui-examples` directory
 
-<span class="kw">use</span> <span class="ident">bitflags::bitflags</span>;
+</span><span class="kw">use </span>bitflags::bitflags;
 
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::ImColor32</span>;
-<span class="kw">use</span> <span class="ident">sys::ImDrawList</span>;
+<span class="kw">use </span><span class="kw">crate</span>::ImColor32;
+<span class="kw">use </span>sys::ImDrawList;
 
-<span class="kw">use</span> <span class="ident"><span class="kw">super</span>::Ui</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::render::renderer::TextureId</span>;
+<span class="kw">use </span><span class="kw">super</span>::Ui;
+<span class="kw">use </span><span class="kw">crate</span>::render::renderer::TextureId;
 
-<span class="kw">use</span> <span class="ident">std::marker::PhantomData</span>;
+<span class="kw">use </span>std::marker::PhantomData;
 
 <span class="macro">bitflags!</span>(
-    <span class="doccomment">/// Draw list flags</span>
-    <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">DrawListFlags</span>: <span class="ident">u32</span> {
-        <span class="kw">const</span> <span class="ident">NONE</span> <span class="op">=</span> <span class="ident">sys::ImDrawListFlags_None</span>;
-        <span class="doccomment">/// Enable anti-aliased lines/borders (*2 the number of triangles for 1.0f wide line or lines</span>
-        <span class="doccomment">/// thin enough to be drawn using textures, otherwise *3 the number of triangles)</span>
-        <span class="kw">const</span> <span class="ident">ANTI_ALIASED_LINES</span> <span class="op">=</span> <span class="ident">sys::ImDrawListFlags_AntiAliasedLines</span>;
-        <span class="doccomment">/// Enable anti-aliased lines/borders using textures when possible. Require backend to render</span>
-        <span class="doccomment">/// with bilinear filtering.</span>
-        <span class="kw">const</span> <span class="ident">ANTI_ALIASED_LINES_USE_TEX</span> <span class="op">=</span> <span class="ident">sys::ImDrawListFlags_AntiAliasedLinesUseTex</span>;
-        <span class="doccomment">/// Enable anti-aliased edge around filled shapes (rounded rectangles, circles).</span>
-        <span class="kw">const</span> <span class="ident">ANTI_ALIASED_FILL</span> <span class="op">=</span> <span class="ident">sys::ImDrawListFlags_AntiAliasedFill</span>;
-        <span class="doccomment">/// Can emit &#39;VtxOffset &gt; 0&#39; to allow large meshes. Set when</span>
-        <span class="doccomment">/// [`BackendFlags::RENDERER_HAS_VTX_OFFSET`] is enabled.</span>
-        <span class="kw">const</span> <span class="ident">ALLOW_VTX_OFFSET</span> <span class="op">=</span> <span class="ident">sys::ImDrawListFlags_AllowVtxOffset</span>;
+    <span class="doccomment">/// Draw list flags
+    </span><span class="attribute">#[repr(C)]
+    </span><span class="kw">pub struct </span>DrawListFlags: u32 {
+        <span class="kw">const </span>NONE = sys::ImDrawListFlags_None;
+        <span class="doccomment">/// Enable anti-aliased lines/borders (*2 the number of triangles for 1.0f wide line or lines
+        /// thin enough to be drawn using textures, otherwise *3 the number of triangles)
+        </span><span class="kw">const </span>ANTI_ALIASED_LINES = sys::ImDrawListFlags_AntiAliasedLines;
+        <span class="doccomment">/// Enable anti-aliased lines/borders using textures when possible. Require backend to render
+        /// with bilinear filtering.
+        </span><span class="kw">const </span>ANTI_ALIASED_LINES_USE_TEX = sys::ImDrawListFlags_AntiAliasedLinesUseTex;
+        <span class="doccomment">/// Enable anti-aliased edge around filled shapes (rounded rectangles, circles).
+        </span><span class="kw">const </span>ANTI_ALIASED_FILL = sys::ImDrawListFlags_AntiAliasedFill;
+        <span class="doccomment">/// Can emit &#39;VtxOffset &gt; 0&#39; to allow large meshes. Set when
+        /// [`BackendFlags::RENDERER_HAS_VTX_OFFSET`] is enabled.
+        </span><span class="kw">const </span>ALLOW_VTX_OFFSET = sys::ImDrawListFlags_AllowVtxOffset;
     }
 );
 
-<span class="kw">enum</span> <span class="ident">DrawListType</span> {
-    <span class="ident">Window</span>,
-    <span class="ident">Background</span>,
-    <span class="ident">Foreground</span>,
+<span class="kw">enum </span>DrawListType {
+    Window,
+    Background,
+    Foreground,
 }
 
-<span class="doccomment">/// Object implementing the custom draw API.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// Called from [`Ui::get_window_draw_list`], [`Ui::get_background_draw_list`] or [`Ui::get_foreground_draw_list`].</span>
-<span class="doccomment">/// No more than one instance of this structure can live in a program at the same time.</span>
-<span class="doccomment">/// The program will panic on creating a second instance.</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">DrawListMut</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> {
-    <span class="ident">draw_list_type</span>: <span class="ident">DrawListType</span>,
-    <span class="ident">draw_list</span>: <span class="kw-2">*mut</span> <span class="ident">ImDrawList</span>,
-    <span class="ident">_phantom</span>: <span class="ident">PhantomData</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span><span class="op">&gt;</span>,
+<span class="doccomment">/// Object implementing the custom draw API.
+///
+/// Called from [`Ui::get_window_draw_list`], [`Ui::get_background_draw_list`] or [`Ui::get_foreground_draw_list`].
+/// No more than one instance of this structure can live in a program at the same time.
+/// The program will panic on creating a second instance.
+</span><span class="kw">pub struct </span>DrawListMut&lt;<span class="lifetime">&#39;ui</span>&gt; {
+    draw_list_type: DrawListType,
+    draw_list: <span class="kw-2">*mut </span>ImDrawList,
+    _phantom: PhantomData&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span>Ui&lt;<span class="lifetime">&#39;ui</span>&gt;&gt;,
 }
 
-<span class="comment">// Lock for each variant of draw list. See https://github.com/imgui-rs/imgui-rs/issues/488</span>
-<span class="kw">static</span> <span class="ident">DRAW_LIST_LOADED_WINDOW</span>: <span class="ident">std::sync::atomic::AtomicBool</span> <span class="op">=</span>
-    <span class="ident">std::sync::atomic::AtomicBool::new</span>(<span class="bool-val">false</span>);
-<span class="kw">static</span> <span class="ident">DRAW_LIST_LOADED_BACKGROUND</span>: <span class="ident">std::sync::atomic::AtomicBool</span> <span class="op">=</span>
-    <span class="ident">std::sync::atomic::AtomicBool::new</span>(<span class="bool-val">false</span>);
-<span class="kw">static</span> <span class="ident">DRAW_LIST_LOADED_FOREGROUND</span>: <span class="ident">std::sync::atomic::AtomicBool</span> <span class="op">=</span>
-    <span class="ident">std::sync::atomic::AtomicBool::new</span>(<span class="bool-val">false</span>);
+<span class="comment">// Lock for each variant of draw list. See https://github.com/imgui-rs/imgui-rs/issues/488
+</span><span class="kw">static </span>DRAW_LIST_LOADED_WINDOW: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(<span class="bool-val">false</span>);
+<span class="kw">static </span>DRAW_LIST_LOADED_BACKGROUND: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(<span class="bool-val">false</span>);
+<span class="kw">static </span>DRAW_LIST_LOADED_FOREGROUND: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(<span class="bool-val">false</span>);
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> <span class="ident">Drop</span> <span class="kw">for</span> <span class="ident">DrawListMut</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
-        <span class="kw">match</span> <span class="self">self</span>.<span class="ident">draw_list_type</span> {
-            <span class="ident">DrawListType::Window</span> =&gt; <span class="kw-2">&amp;</span><span class="ident">DRAW_LIST_LOADED_WINDOW</span>,
-            <span class="ident">DrawListType::Background</span> =&gt; <span class="kw-2">&amp;</span><span class="ident">DRAW_LIST_LOADED_BACKGROUND</span>,
-            <span class="ident">DrawListType::Foreground</span> =&gt; <span class="kw-2">&amp;</span><span class="ident">DRAW_LIST_LOADED_FOREGROUND</span>,
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>&gt; Drop <span class="kw">for </span>DrawListMut&lt;<span class="lifetime">&#39;ui</span>&gt; {
+    <span class="kw">fn </span>drop(<span class="kw-2">&amp;mut </span><span class="self">self</span>) {
+        <span class="kw">match </span><span class="self">self</span>.draw_list_type {
+            DrawListType::Window =&gt; <span class="kw-2">&amp;</span>DRAW_LIST_LOADED_WINDOW,
+            DrawListType::Background =&gt; <span class="kw-2">&amp;</span>DRAW_LIST_LOADED_BACKGROUND,
+            DrawListType::Foreground =&gt; <span class="kw-2">&amp;</span>DRAW_LIST_LOADED_FOREGROUND,
         }
-        .<span class="ident">store</span>(<span class="bool-val">false</span>, <span class="ident">std::sync::atomic::Ordering::Release</span>);
+        .store(<span class="bool-val">false</span>, std::sync::atomic::Ordering::Release);
     }
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> <span class="ident">DrawListMut</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">lock_draw_list</span>(<span class="ident">t</span>: <span class="ident">DrawListType</span>) {
-        <span class="kw">let</span> <span class="ident">lock</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">t</span> {
-            <span class="ident">DrawListType::Window</span> =&gt; <span class="kw-2">&amp;</span><span class="ident">DRAW_LIST_LOADED_WINDOW</span>,
-            <span class="ident">DrawListType::Background</span> =&gt; <span class="kw-2">&amp;</span><span class="ident">DRAW_LIST_LOADED_BACKGROUND</span>,
-            <span class="ident">DrawListType::Foreground</span> =&gt; <span class="kw-2">&amp;</span><span class="ident">DRAW_LIST_LOADED_FOREGROUND</span>,
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>&gt; DrawListMut&lt;<span class="lifetime">&#39;ui</span>&gt; {
+    <span class="kw">fn </span>lock_draw_list(t: DrawListType) {
+        <span class="kw">let </span>lock = <span class="kw">match </span>t {
+            DrawListType::Window =&gt; <span class="kw-2">&amp;</span>DRAW_LIST_LOADED_WINDOW,
+            DrawListType::Background =&gt; <span class="kw-2">&amp;</span>DRAW_LIST_LOADED_BACKGROUND,
+            DrawListType::Foreground =&gt; <span class="kw-2">&amp;</span>DRAW_LIST_LOADED_FOREGROUND,
         };
 
-        <span class="kw">let</span> <span class="ident">already_loaded</span> <span class="op">=</span> <span class="ident">lock</span>
-            .<span class="ident">compare_exchange</span>(
+        <span class="kw">let </span>already_loaded = lock
+            .compare_exchange(
                 <span class="bool-val">false</span>,
                 <span class="bool-val">true</span>,
-                <span class="ident">std::sync::atomic::Ordering::Acquire</span>,
-                <span class="ident">std::sync::atomic::Ordering::Relaxed</span>,
+                std::sync::atomic::Ordering::Acquire,
+                std::sync::atomic::Ordering::Relaxed,
             )
-            .<span class="ident">is_err</span>();
-        <span class="kw">if</span> <span class="ident">already_loaded</span> {
-            <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">t</span> {
-                <span class="ident">DrawListType::Window</span> =&gt; <span class="string">&quot;window&quot;</span>,
-                <span class="ident">DrawListType::Background</span> =&gt; <span class="string">&quot;background&quot;</span>,
-                <span class="ident">DrawListType::Foreground</span> =&gt; <span class="string">&quot;foreground&quot;</span>,
+            .is_err();
+        <span class="kw">if </span>already_loaded {
+            <span class="kw">let </span>name = <span class="kw">match </span>t {
+                DrawListType::Window =&gt; <span class="string">&quot;window&quot;</span>,
+                DrawListType::Background =&gt; <span class="string">&quot;background&quot;</span>,
+                DrawListType::Foreground =&gt; <span class="string">&quot;foreground&quot;</span>,
             };
-            <span class="macro">panic!</span>(<span class="string">&quot;The DrawListMut instance for the {} draw list is already loaded! You can only load one instance of it!&quot;</span>, <span class="ident">name</span>)
+            <span class="macro">panic!</span>(<span class="string">&quot;The DrawListMut instance for the {} draw list is already loaded! You can only load one instance of it!&quot;</span>, name)
         }
     }
 
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GetWindowDrawList&quot;</span>)]</span>
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">window</span>(<span class="kw">_</span>: <span class="kw-2">&amp;</span><span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>) -&gt; <span class="self">Self</span> {
-        <span class="ident"><span class="self">Self</span>::lock_draw_list</span>(<span class="ident">DrawListType::Window</span>);
+    <span class="attribute">#[doc(alias = <span class="string">&quot;GetWindowDrawList&quot;</span>)]
+    </span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>window(<span class="kw">_</span>: <span class="kw-2">&amp;</span>Ui&lt;<span class="lifetime">&#39;ui</span>&gt;) -&gt; <span class="self">Self </span>{
+        <span class="self">Self</span>::lock_draw_list(DrawListType::Window);
 
-        <span class="self">Self</span> {
-            <span class="ident">draw_list</span>: <span class="kw">unsafe</span> { <span class="ident">sys::igGetWindowDrawList</span>() },
-            <span class="ident">draw_list_type</span>: <span class="ident">DrawListType::Window</span>,
-            <span class="ident">_phantom</span>: <span class="ident">PhantomData</span>,
+        <span class="self">Self </span>{
+            draw_list: <span class="kw">unsafe </span>{ sys::igGetWindowDrawList() },
+            draw_list_type: DrawListType::Window,
+            _phantom: PhantomData,
         }
     }
 
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GetBackgroundDrawList&quot;</span>)]</span>
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">background</span>(<span class="kw">_</span>: <span class="kw-2">&amp;</span><span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>) -&gt; <span class="self">Self</span> {
-        <span class="ident"><span class="self">Self</span>::lock_draw_list</span>(<span class="ident">DrawListType::Background</span>);
-        <span class="self">Self</span> {
-            <span class="ident">draw_list</span>: <span class="kw">unsafe</span> { <span class="ident">sys::igGetBackgroundDrawList</span>() },
-            <span class="ident">draw_list_type</span>: <span class="ident">DrawListType::Background</span>,
-            <span class="ident">_phantom</span>: <span class="ident">PhantomData</span>,
+    <span class="attribute">#[doc(alias = <span class="string">&quot;GetBackgroundDrawList&quot;</span>)]
+    </span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>background(<span class="kw">_</span>: <span class="kw-2">&amp;</span>Ui&lt;<span class="lifetime">&#39;ui</span>&gt;) -&gt; <span class="self">Self </span>{
+        <span class="self">Self</span>::lock_draw_list(DrawListType::Background);
+        <span class="self">Self </span>{
+            draw_list: <span class="kw">unsafe </span>{ sys::igGetBackgroundDrawList() },
+            draw_list_type: DrawListType::Background,
+            _phantom: PhantomData,
         }
     }
 
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GetForegroundDrawList&quot;</span>)]</span>
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">foreground</span>(<span class="kw">_</span>: <span class="kw-2">&amp;</span><span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>) -&gt; <span class="self">Self</span> {
-        <span class="ident"><span class="self">Self</span>::lock_draw_list</span>(<span class="ident">DrawListType::Foreground</span>);
-        <span class="self">Self</span> {
-            <span class="ident">draw_list</span>: <span class="kw">unsafe</span> { <span class="ident">sys::igGetForegroundDrawList</span>() },
-            <span class="ident">draw_list_type</span>: <span class="ident">DrawListType::Foreground</span>,
-            <span class="ident">_phantom</span>: <span class="ident">PhantomData</span>,
+    <span class="attribute">#[doc(alias = <span class="string">&quot;GetForegroundDrawList&quot;</span>)]
+    </span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>foreground(<span class="kw">_</span>: <span class="kw-2">&amp;</span>Ui&lt;<span class="lifetime">&#39;ui</span>&gt;) -&gt; <span class="self">Self </span>{
+        <span class="self">Self</span>::lock_draw_list(DrawListType::Foreground);
+        <span class="self">Self </span>{
+            draw_list: <span class="kw">unsafe </span>{ sys::igGetForegroundDrawList() },
+            draw_list_type: DrawListType::Foreground,
+            _phantom: PhantomData,
         }
     }
 
-    <span class="doccomment">/// Split into *channels_count* drawing channels.</span>
-    <span class="doccomment">/// At the end of the closure, the channels are merged. The objects</span>
-    <span class="doccomment">/// are then drawn in the increasing order of their channel number, and not</span>
-    <span class="doccomment">/// in the order they were called.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Example</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```rust,no_run</span>
-    <span class="doccomment">/// # use arcdps_imgui::*;</span>
-    <span class="doccomment">/// fn custom_drawing(ui: &amp;Ui) {</span>
-    <span class="doccomment">///     let draw_list = ui.get_window_draw_list();</span>
-    <span class="doccomment">///     draw_list.channels_split(2, |channels| {</span>
-    <span class="doccomment">///         channels.set_current(1);</span>
-    <span class="doccomment">///         // ... Draw channel 1</span>
-    <span class="doccomment">///         channels.set_current(0);</span>
-    <span class="doccomment">///         // ... Draw channel 0</span>
-    <span class="doccomment">///     });</span>
-    <span class="doccomment">/// }</span>
-    <span class="doccomment">/// ```</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;ChannelsSplit&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">channels_split</span><span class="op">&lt;</span><span class="ident">F</span>: <span class="ident">FnOnce</span>(<span class="kw-2">&amp;</span><span class="ident">ChannelsSplit</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>)<span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">channels_count</span>: <span class="ident">u32</span>, <span class="ident">f</span>: <span class="ident">F</span>) {
-        <span class="kw">unsafe</span> { <span class="ident">sys::ImDrawList_ChannelsSplit</span>(<span class="self">self</span>.<span class="ident">draw_list</span>, <span class="ident">channels_count</span> <span class="kw">as</span> <span class="ident">i32</span>) };
-        <span class="ident">f</span>(<span class="kw-2">&amp;</span><span class="ident">ChannelsSplit</span> {
-            <span class="ident">draw_list</span>: <span class="self">self</span>,
-            <span class="ident">channels_count</span>,
+    <span class="doccomment">/// Split into *channels_count* drawing channels.
+    /// At the end of the closure, the channels are merged. The objects
+    /// are then drawn in the increasing order of their channel number, and not
+    /// in the order they were called.
+    ///
+    /// # Example
+    ///
+    /// ```rust,no_run
+    /// # use arcdps_imgui::*;
+    /// fn custom_drawing(ui: &amp;Ui) {
+    ///     let draw_list = ui.get_window_draw_list();
+    ///     draw_list.channels_split(2, |channels| {
+    ///         channels.set_current(1);
+    ///         // ... Draw channel 1
+    ///         channels.set_current(0);
+    ///         // ... Draw channel 0
+    ///     });
+    /// }
+    /// ```
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;ChannelsSplit&quot;</span>)]
+    </span><span class="kw">pub fn </span>channels_split&lt;F: FnOnce(<span class="kw-2">&amp;</span>ChannelsSplit&lt;<span class="lifetime">&#39;_</span>&gt;)&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, channels_count: u32, f: F) {
+        <span class="kw">unsafe </span>{ sys::ImDrawList_ChannelsSplit(<span class="self">self</span>.draw_list, channels_count <span class="kw">as </span>i32) };
+        f(<span class="kw-2">&amp;</span>ChannelsSplit {
+            draw_list: <span class="self">self</span>,
+            channels_count,
         });
-        <span class="kw">unsafe</span> { <span class="ident">sys::ImDrawList_ChannelsMerge</span>(<span class="self">self</span>.<span class="ident">draw_list</span>) };
+        <span class="kw">unsafe </span>{ sys::ImDrawList_ChannelsMerge(<span class="self">self</span>.draw_list) };
     }
 }
 
-<span class="doccomment">/// Represent the drawing interface within a call to [`channels_split`].</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// [`channels_split`]: DrawListMut::channels_split</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">ChannelsSplit</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> {
-    <span class="ident">draw_list</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="ident">DrawListMut</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>,
-    <span class="ident">channels_count</span>: <span class="ident">u32</span>,
+<span class="doccomment">/// Represent the drawing interface within a call to [`channels_split`].
+///
+/// [`channels_split`]: DrawListMut::channels_split
+</span><span class="kw">pub struct </span>ChannelsSplit&lt;<span class="lifetime">&#39;ui</span>&gt; {
+    draw_list: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span>DrawListMut&lt;<span class="lifetime">&#39;ui</span>&gt;,
+    channels_count: u32,
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> <span class="ident">ChannelsSplit</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Change current channel.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Panic if channel_index overflows the number of channels.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;ChannelsSetCurrent&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_current</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">channel_index</span>: <span class="ident">u32</span>) {
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>&gt; ChannelsSplit&lt;<span class="lifetime">&#39;ui</span>&gt; {
+    <span class="doccomment">/// Change current channel.
+    ///
+    /// Panic if channel_index overflows the number of channels.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;ChannelsSetCurrent&quot;</span>)]
+    </span><span class="kw">pub fn </span>set_current(<span class="kw-2">&amp;</span><span class="self">self</span>, channel_index: u32) {
         <span class="macro">assert!</span>(
-            <span class="ident">channel_index</span> <span class="op">&lt;</span> <span class="self">self</span>.<span class="ident">channels_count</span>,
+            channel_index &lt; <span class="self">self</span>.channels_count,
             <span class="string">&quot;Channel cannot be set! Provided channel index ({}) is higher than channel count ({}).&quot;</span>,
-            <span class="ident">channel_index</span>,
-            <span class="self">self</span>.<span class="ident">channels_count</span>
+            channel_index,
+            <span class="self">self</span>.channels_count
         );
-        <span class="kw">unsafe</span> {
-            <span class="ident">sys::ImDrawList_ChannelsSetCurrent</span>(<span class="self">self</span>.<span class="ident">draw_list</span>.<span class="ident">draw_list</span>, <span class="ident">channel_index</span> <span class="kw">as</span> <span class="ident">i32</span>)
+        <span class="kw">unsafe </span>{
+            sys::ImDrawList_ChannelsSetCurrent(<span class="self">self</span>.draw_list.draw_list, channel_index <span class="kw">as </span>i32)
         };
     }
 }
 
-<span class="doccomment">/// Drawing functions</span>
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> <span class="ident">DrawListMut</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Returns a line from point `p1` to `p2` with color `c`.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;AddLine&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">add_line</span><span class="op">&lt;</span><span class="ident">C</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="self">self</span>, <span class="ident">p1</span>: [<span class="ident">f32</span>; <span class="number">2</span>], <span class="ident">p2</span>: [<span class="ident">f32</span>; <span class="number">2</span>], <span class="ident">c</span>: <span class="ident">C</span>) -&gt; <span class="ident">Line</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>
-    <span class="kw">where</span>
-        <span class="ident">C</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">ImColor32</span><span class="op">&gt;</span>,
+<span class="doccomment">/// Drawing functions
+</span><span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>&gt; DrawListMut&lt;<span class="lifetime">&#39;ui</span>&gt; {
+    <span class="doccomment">/// Returns a line from point `p1` to `p2` with color `c`.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;AddLine&quot;</span>)]
+    </span><span class="kw">pub fn </span>add_line&lt;C&gt;(<span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span><span class="self">self</span>, p1: [f32; <span class="number">2</span>], p2: [f32; <span class="number">2</span>], c: C) -&gt; Line&lt;<span class="lifetime">&#39;ui</span>&gt;
+    <span class="kw">where
+        </span>C: Into&lt;ImColor32&gt;,
     {
-        <span class="ident">Line::new</span>(<span class="self">self</span>, <span class="ident">p1</span>, <span class="ident">p2</span>, <span class="ident">c</span>)
+        Line::new(<span class="self">self</span>, p1, p2, c)
     }
 
-    <span class="doccomment">/// Returns a rectangle whose upper-left corner is at point `p1`</span>
-    <span class="doccomment">/// and lower-right corner is at point `p2`, with color `c`.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;AddRectFilled&quot;</span>, <span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;AddRect&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">add_rect</span><span class="op">&lt;</span><span class="ident">C</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="self">self</span>, <span class="ident">p1</span>: [<span class="ident">f32</span>; <span class="number">2</span>], <span class="ident">p2</span>: [<span class="ident">f32</span>; <span class="number">2</span>], <span class="ident">c</span>: <span class="ident">C</span>) -&gt; <span class="ident">Rect</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>
-    <span class="kw">where</span>
-        <span class="ident">C</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">ImColor32</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Returns a rectangle whose upper-left corner is at point `p1`
+    /// and lower-right corner is at point `p2`, with color `c`.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;AddRectFilled&quot;</span>, alias = <span class="string">&quot;AddRect&quot;</span>)]
+    </span><span class="kw">pub fn </span>add_rect&lt;C&gt;(<span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span><span class="self">self</span>, p1: [f32; <span class="number">2</span>], p2: [f32; <span class="number">2</span>], c: C) -&gt; Rect&lt;<span class="lifetime">&#39;ui</span>&gt;
+    <span class="kw">where
+        </span>C: Into&lt;ImColor32&gt;,
     {
-        <span class="ident">Rect::new</span>(<span class="self">self</span>, <span class="ident">p1</span>, <span class="ident">p2</span>, <span class="ident">c</span>)
+        Rect::new(<span class="self">self</span>, p1, p2, c)
     }
 
-    <span class="doccomment">/// Draw a rectangle whose upper-left corner is at point `p1`</span>
-    <span class="doccomment">/// and lower-right corner is at point `p2`.</span>
-    <span class="doccomment">/// The remains parameters are the respective color of the corners</span>
-    <span class="doccomment">/// in the counter-clockwise starting from the upper-left corner</span>
-    <span class="doccomment">/// first.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;AddRectFilledMultiColor&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">add_rect_filled_multicolor</span><span class="op">&lt;</span><span class="ident">C1</span>, <span class="ident">C2</span>, <span class="ident">C3</span>, <span class="ident">C4</span><span class="op">&gt;</span>(
+    <span class="doccomment">/// Draw a rectangle whose upper-left corner is at point `p1`
+    /// and lower-right corner is at point `p2`.
+    /// The remains parameters are the respective color of the corners
+    /// in the counter-clockwise starting from the upper-left corner
+    /// first.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;AddRectFilledMultiColor&quot;</span>)]
+    </span><span class="kw">pub fn </span>add_rect_filled_multicolor&lt;C1, C2, C3, C4&gt;(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">p1</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-        <span class="ident">p2</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-        <span class="ident">col_upr_left</span>: <span class="ident">C1</span>,
-        <span class="ident">col_upr_right</span>: <span class="ident">C2</span>,
-        <span class="ident">col_bot_right</span>: <span class="ident">C3</span>,
-        <span class="ident">col_bot_left</span>: <span class="ident">C4</span>,
-    ) <span class="kw">where</span>
-        <span class="ident">C1</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">ImColor32</span><span class="op">&gt;</span>,
-        <span class="ident">C2</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">ImColor32</span><span class="op">&gt;</span>,
-        <span class="ident">C3</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">ImColor32</span><span class="op">&gt;</span>,
-        <span class="ident">C4</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">ImColor32</span><span class="op">&gt;</span>,
+        p1: [f32; <span class="number">2</span>],
+        p2: [f32; <span class="number">2</span>],
+        col_upr_left: C1,
+        col_upr_right: C2,
+        col_bot_right: C3,
+        col_bot_left: C4,
+    ) <span class="kw">where
+        </span>C1: Into&lt;ImColor32&gt;,
+        C2: Into&lt;ImColor32&gt;,
+        C3: Into&lt;ImColor32&gt;,
+        C4: Into&lt;ImColor32&gt;,
     {
-        <span class="kw">unsafe</span> {
-            <span class="ident">sys::ImDrawList_AddRectFilledMultiColor</span>(
-                <span class="self">self</span>.<span class="ident">draw_list</span>,
-                <span class="ident">p1</span>.<span class="ident">into</span>(),
-                <span class="ident">p2</span>.<span class="ident">into</span>(),
-                <span class="ident">col_upr_left</span>.<span class="ident">into</span>().<span class="ident">into</span>(),
-                <span class="ident">col_upr_right</span>.<span class="ident">into</span>().<span class="ident">into</span>(),
-                <span class="ident">col_bot_right</span>.<span class="ident">into</span>().<span class="ident">into</span>(),
-                <span class="ident">col_bot_left</span>.<span class="ident">into</span>().<span class="ident">into</span>(),
+        <span class="kw">unsafe </span>{
+            sys::ImDrawList_AddRectFilledMultiColor(
+                <span class="self">self</span>.draw_list,
+                p1.into(),
+                p2.into(),
+                col_upr_left.into().into(),
+                col_upr_right.into().into(),
+                col_bot_right.into().into(),
+                col_bot_left.into().into(),
             );
         }
     }
 
-    <span class="doccomment">/// Returns a triangle with the given 3 vertices `p1`, `p2` and `p3`</span>
-    <span class="doccomment">/// and color `c`.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;AddTriangleFilled&quot;</span>, <span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;AddTriangle&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">add_triangle</span><span class="op">&lt;</span><span class="ident">C</span><span class="op">&gt;</span>(
-        <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="self">self</span>,
-        <span class="ident">p1</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-        <span class="ident">p2</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-        <span class="ident">p3</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-        <span class="ident">c</span>: <span class="ident">C</span>,
-    ) -&gt; <span class="ident">Triangle</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>
-    <span class="kw">where</span>
-        <span class="ident">C</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">ImColor32</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Returns a triangle with the given 3 vertices `p1`, `p2` and `p3`
+    /// and color `c`.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;AddTriangleFilled&quot;</span>, alias = <span class="string">&quot;AddTriangle&quot;</span>)]
+    </span><span class="kw">pub fn </span>add_triangle&lt;C&gt;(
+        <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span><span class="self">self</span>,
+        p1: [f32; <span class="number">2</span>],
+        p2: [f32; <span class="number">2</span>],
+        p3: [f32; <span class="number">2</span>],
+        c: C,
+    ) -&gt; Triangle&lt;<span class="lifetime">&#39;ui</span>&gt;
+    <span class="kw">where
+        </span>C: Into&lt;ImColor32&gt;,
     {
-        <span class="ident">Triangle::new</span>(<span class="self">self</span>, <span class="ident">p1</span>, <span class="ident">p2</span>, <span class="ident">p3</span>, <span class="ident">c</span>)
+        Triangle::new(<span class="self">self</span>, p1, p2, p3, c)
     }
 
-    <span class="doccomment">/// Returns a circle with the given `center`, `radius` and `color`.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;AddCircleFilled&quot;</span>, <span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;AddCircle&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">add_circle</span><span class="op">&lt;</span><span class="ident">C</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="self">self</span>, <span class="ident">center</span>: [<span class="ident">f32</span>; <span class="number">2</span>], <span class="ident">radius</span>: <span class="ident">f32</span>, <span class="ident">color</span>: <span class="ident">C</span>) -&gt; <span class="ident">Circle</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>
-    <span class="kw">where</span>
-        <span class="ident">C</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">ImColor32</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Returns a circle with the given `center`, `radius` and `color`.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;AddCircleFilled&quot;</span>, alias = <span class="string">&quot;AddCircle&quot;</span>)]
+    </span><span class="kw">pub fn </span>add_circle&lt;C&gt;(<span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span><span class="self">self</span>, center: [f32; <span class="number">2</span>], radius: f32, color: C) -&gt; Circle&lt;<span class="lifetime">&#39;ui</span>&gt;
+    <span class="kw">where
+        </span>C: Into&lt;ImColor32&gt;,
     {
-        <span class="ident">Circle::new</span>(<span class="self">self</span>, <span class="ident">center</span>, <span class="ident">radius</span>, <span class="ident">color</span>)
+        Circle::new(<span class="self">self</span>, center, radius, color)
     }
 
-    <span class="doccomment">/// Draw a text whose upper-left corner is at point `pos`.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;AddText&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">add_text</span><span class="op">&lt;</span><span class="ident">C</span>, <span class="ident">T</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">pos</span>: [<span class="ident">f32</span>; <span class="number">2</span>], <span class="ident">col</span>: <span class="ident">C</span>, <span class="ident">text</span>: <span class="ident">T</span>)
-    <span class="kw">where</span>
-        <span class="ident">C</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">ImColor32</span><span class="op">&gt;</span>,
-        <span class="ident">T</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Draw a text whose upper-left corner is at point `pos`.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;AddText&quot;</span>)]
+    </span><span class="kw">pub fn </span>add_text&lt;C, T&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, pos: [f32; <span class="number">2</span>], col: C, text: T)
+    <span class="kw">where
+        </span>C: Into&lt;ImColor32&gt;,
+        T: AsRef&lt;str&gt;,
     {
-        <span class="kw">use</span> <span class="ident">std::os::raw::c_char</span>;
+        <span class="kw">use </span>std::os::raw::c_char;
 
-        <span class="kw">let</span> <span class="ident">text</span> <span class="op">=</span> <span class="ident">text</span>.<span class="ident">as_ref</span>();
-        <span class="kw">unsafe</span> {
-            <span class="kw">let</span> <span class="ident">start</span> <span class="op">=</span> <span class="ident">text</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">c_char</span>;
-            <span class="kw">let</span> <span class="ident">end</span> <span class="op">=</span> (<span class="ident">start</span> <span class="kw">as</span> <span class="ident">usize</span> <span class="op">+</span> <span class="ident">text</span>.<span class="ident">len</span>()) <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">c_char</span>;
-            <span class="ident">sys::ImDrawList_AddText_Vec2</span>(<span class="self">self</span>.<span class="ident">draw_list</span>, <span class="ident">pos</span>.<span class="ident">into</span>(), <span class="ident">col</span>.<span class="ident">into</span>().<span class="ident">into</span>(), <span class="ident">start</span>, <span class="ident">end</span>)
+        <span class="kw">let </span>text = text.as_ref();
+        <span class="kw">unsafe </span>{
+            <span class="kw">let </span>start = text.as_ptr() <span class="kw">as </span><span class="kw-2">*const </span>c_char;
+            <span class="kw">let </span>end = (start <span class="kw">as </span>usize + text.len()) <span class="kw">as </span><span class="kw-2">*const </span>c_char;
+            sys::ImDrawList_AddText_Vec2(<span class="self">self</span>.draw_list, pos.into(), col.into().into(), start, end)
         }
     }
 
-    <span class="doccomment">/// Returns a Bezier curve stretching from `pos0` to `pos1`, whose</span>
-    <span class="doccomment">/// curvature is defined by `cp0` and `cp1`.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;AddBezier&quot;</span>, <span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;AddBezierCubic&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">add_bezier_curve</span><span class="op">&lt;</span><span class="ident">C</span><span class="op">&gt;</span>(
-        <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="self">self</span>,
-        <span class="ident">pos0</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-        <span class="ident">cp0</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-        <span class="ident">cp1</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-        <span class="ident">pos1</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-        <span class="ident">color</span>: <span class="ident">C</span>,
-    ) -&gt; <span class="ident">BezierCurve</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>
-    <span class="kw">where</span>
-        <span class="ident">C</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">ImColor32</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Returns a Bezier curve stretching from `pos0` to `pos1`, whose
+    /// curvature is defined by `cp0` and `cp1`.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;AddBezier&quot;</span>, alias = <span class="string">&quot;AddBezierCubic&quot;</span>)]
+    </span><span class="kw">pub fn </span>add_bezier_curve&lt;C&gt;(
+        <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span><span class="self">self</span>,
+        pos0: [f32; <span class="number">2</span>],
+        cp0: [f32; <span class="number">2</span>],
+        cp1: [f32; <span class="number">2</span>],
+        pos1: [f32; <span class="number">2</span>],
+        color: C,
+    ) -&gt; BezierCurve&lt;<span class="lifetime">&#39;ui</span>&gt;
+    <span class="kw">where
+        </span>C: Into&lt;ImColor32&gt;,
     {
-        <span class="ident">BezierCurve::new</span>(<span class="self">self</span>, <span class="ident">pos0</span>, <span class="ident">cp0</span>, <span class="ident">cp1</span>, <span class="ident">pos1</span>, <span class="ident">color</span>)
+        BezierCurve::new(<span class="self">self</span>, pos0, cp0, cp1, pos1, color)
     }
 
-    <span class="doccomment">/// Push a clipping rectangle on the stack, run `f` and pop it.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Clip all drawings done within the closure `f` in the given</span>
-    <span class="doccomment">/// rectangle.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PushClipRect&quot;</span>, <span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PopClipRect&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">with_clip_rect</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">min</span>: [<span class="ident">f32</span>; <span class="number">2</span>], <span class="ident">max</span>: [<span class="ident">f32</span>; <span class="number">2</span>], <span class="ident">f</span>: <span class="ident">F</span>)
-    <span class="kw">where</span>
-        <span class="ident">F</span>: <span class="ident">FnOnce</span>(),
+    <span class="doccomment">/// Push a clipping rectangle on the stack, run `f` and pop it.
+    ///
+    /// Clip all drawings done within the closure `f` in the given
+    /// rectangle.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;PushClipRect&quot;</span>, alias = <span class="string">&quot;PopClipRect&quot;</span>)]
+    </span><span class="kw">pub fn </span>with_clip_rect&lt;F&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, min: [f32; <span class="number">2</span>], max: [f32; <span class="number">2</span>], f: F)
+    <span class="kw">where
+        </span>F: FnOnce(),
     {
-        <span class="kw">unsafe</span> { <span class="ident">sys::ImDrawList_PushClipRect</span>(<span class="self">self</span>.<span class="ident">draw_list</span>, <span class="ident">min</span>.<span class="ident">into</span>(), <span class="ident">max</span>.<span class="ident">into</span>(), <span class="bool-val">false</span>) }
-        <span class="ident">f</span>();
-        <span class="kw">unsafe</span> { <span class="ident">sys::ImDrawList_PopClipRect</span>(<span class="self">self</span>.<span class="ident">draw_list</span>) }
+        <span class="kw">unsafe </span>{ sys::ImDrawList_PushClipRect(<span class="self">self</span>.draw_list, min.into(), max.into(), <span class="bool-val">false</span>) }
+        f();
+        <span class="kw">unsafe </span>{ sys::ImDrawList_PopClipRect(<span class="self">self</span>.draw_list) }
     }
 
-    <span class="doccomment">/// Push a clipping rectangle on the stack, run `f` and pop it.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Clip all drawings done within the closure `f` in the given</span>
-    <span class="doccomment">/// rectangle. Intersect with all clipping rectangle previously on</span>
-    <span class="doccomment">/// the stack.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PushClipRect&quot;</span>, <span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PopClipRect&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">with_clip_rect_intersect</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">min</span>: [<span class="ident">f32</span>; <span class="number">2</span>], <span class="ident">max</span>: [<span class="ident">f32</span>; <span class="number">2</span>], <span class="ident">f</span>: <span class="ident">F</span>)
-    <span class="kw">where</span>
-        <span class="ident">F</span>: <span class="ident">FnOnce</span>(),
+    <span class="doccomment">/// Push a clipping rectangle on the stack, run `f` and pop it.
+    ///
+    /// Clip all drawings done within the closure `f` in the given
+    /// rectangle. Intersect with all clipping rectangle previously on
+    /// the stack.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;PushClipRect&quot;</span>, alias = <span class="string">&quot;PopClipRect&quot;</span>)]
+    </span><span class="kw">pub fn </span>with_clip_rect_intersect&lt;F&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, min: [f32; <span class="number">2</span>], max: [f32; <span class="number">2</span>], f: F)
+    <span class="kw">where
+        </span>F: FnOnce(),
     {
-        <span class="kw">unsafe</span> { <span class="ident">sys::ImDrawList_PushClipRect</span>(<span class="self">self</span>.<span class="ident">draw_list</span>, <span class="ident">min</span>.<span class="ident">into</span>(), <span class="ident">max</span>.<span class="ident">into</span>(), <span class="bool-val">true</span>) }
-        <span class="ident">f</span>();
-        <span class="kw">unsafe</span> { <span class="ident">sys::ImDrawList_PopClipRect</span>(<span class="self">self</span>.<span class="ident">draw_list</span>) }
+        <span class="kw">unsafe </span>{ sys::ImDrawList_PushClipRect(<span class="self">self</span>.draw_list, min.into(), max.into(), <span class="bool-val">true</span>) }
+        f();
+        <span class="kw">unsafe </span>{ sys::ImDrawList_PopClipRect(<span class="self">self</span>.draw_list) }
     }
 }
 
-<span class="doccomment">/// # Images</span>
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> <span class="ident">DrawListMut</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Draw the specified image in the rect specified by `p_min` to</span>
-    <span class="doccomment">/// `p_max`.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">/// # use arcdps_imgui::*;</span>
-    <span class="doccomment">/// fn custom_button(ui: &amp;Ui, img_id: TextureId) {</span>
-    <span class="doccomment">///     // Invisible button is good widget to customise with image</span>
-    <span class="doccomment">///     ui.invisible_button(im_str!(&quot;custom_button&quot;), [100.0, 20.0]);</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///     // Get draw list and draw image over invisible button</span>
-    <span class="doccomment">///     let draw_list = ui.get_window_draw_list();</span>
-    <span class="doccomment">///     draw_list</span>
-    <span class="doccomment">///         .add_image(img_id, ui.item_rect_min(), ui.item_rect_max())</span>
-    <span class="doccomment">///         .build();</span>
-    <span class="doccomment">/// }</span>
-    <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">add_image</span>(
-        <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="self">self</span>,
-        <span class="ident">texture_id</span>: <span class="ident">TextureId</span>,
-        <span class="ident">p_min</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-        <span class="ident">p_max</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-    ) -&gt; <span class="ident">Image</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span> {
-        <span class="ident">Image::new</span>(<span class="self">self</span>, <span class="ident">texture_id</span>, <span class="ident">p_min</span>, <span class="ident">p_max</span>)
+<span class="doccomment">/// # Images
+</span><span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>&gt; DrawListMut&lt;<span class="lifetime">&#39;ui</span>&gt; {
+    <span class="doccomment">/// Draw the specified image in the rect specified by `p_min` to
+    /// `p_max`.
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// # use arcdps_imgui::*;
+    /// fn custom_button(ui: &amp;Ui, img_id: TextureId) {
+    ///     // Invisible button is good widget to customise with image
+    ///     ui.invisible_button(im_str!(&quot;custom_button&quot;), [100.0, 20.0]);
+    ///
+    ///     // Get draw list and draw image over invisible button
+    ///     let draw_list = ui.get_window_draw_list();
+    ///     draw_list
+    ///         .add_image(img_id, ui.item_rect_min(), ui.item_rect_max())
+    ///         .build();
+    /// }
+    /// ```
+    </span><span class="kw">pub fn </span>add_image(
+        <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span><span class="self">self</span>,
+        texture_id: TextureId,
+        p_min: [f32; <span class="number">2</span>],
+        p_max: [f32; <span class="number">2</span>],
+    ) -&gt; Image&lt;<span class="lifetime">&#39;_</span>&gt; {
+        Image::new(<span class="self">self</span>, texture_id, p_min, p_max)
     }
 
-    <span class="doccomment">/// Draw the specified image to a quad with the specified</span>
-    <span class="doccomment">/// coordinates. Similar to [`DrawListMut::add_image`] but this</span>
-    <span class="doccomment">/// method is able to draw non-rectangle images.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">add_image_quad</span>(
-        <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="self">self</span>,
-        <span class="ident">texture_id</span>: <span class="ident">TextureId</span>,
-        <span class="ident">p1</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-        <span class="ident">p2</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-        <span class="ident">p3</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-        <span class="ident">p4</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-    ) -&gt; <span class="ident">ImageQuad</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span> {
-        <span class="ident">ImageQuad::new</span>(<span class="self">self</span>, <span class="ident">texture_id</span>, <span class="ident">p1</span>, <span class="ident">p2</span>, <span class="ident">p3</span>, <span class="ident">p4</span>)
+    <span class="doccomment">/// Draw the specified image to a quad with the specified
+    /// coordinates. Similar to [`DrawListMut::add_image`] but this
+    /// method is able to draw non-rectangle images.
+    </span><span class="kw">pub fn </span>add_image_quad(
+        <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span><span class="self">self</span>,
+        texture_id: TextureId,
+        p1: [f32; <span class="number">2</span>],
+        p2: [f32; <span class="number">2</span>],
+        p3: [f32; <span class="number">2</span>],
+        p4: [f32; <span class="number">2</span>],
+    ) -&gt; ImageQuad&lt;<span class="lifetime">&#39;_</span>&gt; {
+        ImageQuad::new(<span class="self">self</span>, texture_id, p1, p2, p3, p4)
     }
 
-    <span class="doccomment">/// Draw the speciied image, with rounded corners</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">add_image_rounded</span>(
-        <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="self">self</span>,
-        <span class="ident">texture_id</span>: <span class="ident">TextureId</span>,
-        <span class="ident">p_min</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-        <span class="ident">p_max</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-        <span class="ident">rounding</span>: <span class="ident">f32</span>,
-    ) -&gt; <span class="ident">ImageRounded</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span> {
-        <span class="ident">ImageRounded::new</span>(<span class="self">self</span>, <span class="ident">texture_id</span>, <span class="ident">p_min</span>, <span class="ident">p_max</span>, <span class="ident">rounding</span>)
+    <span class="doccomment">/// Draw the speciied image, with rounded corners
+    </span><span class="kw">pub fn </span>add_image_rounded(
+        <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span><span class="self">self</span>,
+        texture_id: TextureId,
+        p_min: [f32; <span class="number">2</span>],
+        p_max: [f32; <span class="number">2</span>],
+        rounding: f32,
+    ) -&gt; ImageRounded&lt;<span class="lifetime">&#39;_</span>&gt; {
+        ImageRounded::new(<span class="self">self</span>, texture_id, p_min, p_max, rounding)
     }
 }
 
-<span class="doccomment">/// Represents a line about to be drawn</span>
-<span class="attribute">#[<span class="ident">must_use</span> <span class="op">=</span> <span class="string">&quot;should call .build() to draw the object&quot;</span>]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Line</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> {
-    <span class="ident">p1</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-    <span class="ident">p2</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-    <span class="ident">color</span>: <span class="ident">ImColor32</span>,
-    <span class="ident">thickness</span>: <span class="ident">f32</span>,
-    <span class="ident">draw_list</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="ident">DrawListMut</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>,
+<span class="doccomment">/// Represents a line about to be drawn
+</span><span class="attribute">#[must_use = <span class="string">&quot;should call .build() to draw the object&quot;</span>]
+</span><span class="kw">pub struct </span>Line&lt;<span class="lifetime">&#39;ui</span>&gt; {
+    p1: [f32; <span class="number">2</span>],
+    p2: [f32; <span class="number">2</span>],
+    color: ImColor32,
+    thickness: f32,
+    draw_list: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span>DrawListMut&lt;<span class="lifetime">&#39;ui</span>&gt;,
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> <span class="ident">Line</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">new</span><span class="op">&lt;</span><span class="ident">C</span><span class="op">&gt;</span>(<span class="ident">draw_list</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="ident">DrawListMut</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>, <span class="ident">p1</span>: [<span class="ident">f32</span>; <span class="number">2</span>], <span class="ident">p2</span>: [<span class="ident">f32</span>; <span class="number">2</span>], <span class="ident">c</span>: <span class="ident">C</span>) -&gt; <span class="self">Self</span>
-    <span class="kw">where</span>
-        <span class="ident">C</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">ImColor32</span><span class="op">&gt;</span>,
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>&gt; Line&lt;<span class="lifetime">&#39;ui</span>&gt; {
+    <span class="kw">fn </span>new&lt;C&gt;(draw_list: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span>DrawListMut&lt;<span class="lifetime">&#39;_</span>&gt;, p1: [f32; <span class="number">2</span>], p2: [f32; <span class="number">2</span>], c: C) -&gt; <span class="self">Self
+    </span><span class="kw">where
+        </span>C: Into&lt;ImColor32&gt;,
     {
-        <span class="self">Self</span> {
-            <span class="ident">p1</span>,
-            <span class="ident">p2</span>,
-            <span class="ident">color</span>: <span class="ident">c</span>.<span class="ident">into</span>(),
-            <span class="ident">thickness</span>: <span class="number">1.0</span>,
-            <span class="ident">draw_list</span>,
+        <span class="self">Self </span>{
+            p1,
+            p2,
+            color: c.into(),
+            thickness: <span class="number">1.0</span>,
+            draw_list,
         }
     }
 
-    <span class="doccomment">/// Set line&#39;s thickness (default to 1.0 pixel)</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">thickness</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">thickness</span>: <span class="ident">f32</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">thickness</span> <span class="op">=</span> <span class="ident">thickness</span>;
-        <span class="self">self</span>
-    }
+    <span class="doccomment">/// Set line&#39;s thickness (default to 1.0 pixel)
+    </span><span class="kw">pub fn </span>thickness(<span class="kw-2">mut </span><span class="self">self</span>, thickness: f32) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.thickness = thickness;
+        <span class="self">self
+    </span>}
 
-    <span class="doccomment">/// Draw the line on the window</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build</span>(<span class="self">self</span>) {
-        <span class="kw">unsafe</span> {
-            <span class="ident">sys::ImDrawList_AddLine</span>(
-                <span class="self">self</span>.<span class="ident">draw_list</span>.<span class="ident">draw_list</span>,
-                <span class="self">self</span>.<span class="ident">p1</span>.<span class="ident">into</span>(),
-                <span class="self">self</span>.<span class="ident">p2</span>.<span class="ident">into</span>(),
-                <span class="self">self</span>.<span class="ident">color</span>.<span class="ident">into</span>(),
-                <span class="self">self</span>.<span class="ident">thickness</span>,
+    <span class="doccomment">/// Draw the line on the window
+    </span><span class="kw">pub fn </span>build(<span class="self">self</span>) {
+        <span class="kw">unsafe </span>{
+            sys::ImDrawList_AddLine(
+                <span class="self">self</span>.draw_list.draw_list,
+                <span class="self">self</span>.p1.into(),
+                <span class="self">self</span>.p2.into(),
+                <span class="self">self</span>.color.into(),
+                <span class="self">self</span>.thickness,
             )
         }
     }
 }
 
 <span class="macro">bitflags!</span>(
-    <span class="doccomment">/// Flags for indicating which corner of a rectangle should be rounded</span>
-    <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">ImDrawCornerFlags</span>: <span class="ident">u32</span> {
-        <span class="kw">const</span> <span class="ident">TOP_LEFT</span> <span class="op">=</span> <span class="number">1</span>;
-        <span class="kw">const</span> <span class="ident">TOP_RIGHT</span> <span class="op">=</span> <span class="number">1</span> <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">1</span>;
-        <span class="kw">const</span> <span class="ident">BOT_LEFT</span> <span class="op">=</span> <span class="number">1</span> <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">2</span>;
-        <span class="kw">const</span> <span class="ident">BOT_RIGHT</span> <span class="op">=</span> <span class="number">1</span> <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">3</span>;
-        <span class="kw">const</span> <span class="ident">TOP</span> <span class="op">=</span> <span class="ident">ImDrawCornerFlags::TOP_LEFT</span>.<span class="ident">bits</span>
-            <span class="op">|</span> <span class="ident">ImDrawCornerFlags::TOP_RIGHT</span>.<span class="ident">bits</span>;
-        <span class="kw">const</span> <span class="ident">BOT</span> <span class="op">=</span> <span class="ident">ImDrawCornerFlags::BOT_LEFT</span>.<span class="ident">bits</span>
-            <span class="op">|</span> <span class="ident">ImDrawCornerFlags::BOT_RIGHT</span>.<span class="ident">bits</span>;
-        <span class="kw">const</span> <span class="ident">LEFT</span> <span class="op">=</span> <span class="ident">ImDrawCornerFlags::TOP_LEFT</span>.<span class="ident">bits</span>
-            <span class="op">|</span> <span class="ident">ImDrawCornerFlags::BOT_LEFT</span>.<span class="ident">bits</span>;
-        <span class="kw">const</span> <span class="ident">RIGHT</span> <span class="op">=</span> <span class="ident">ImDrawCornerFlags::TOP_RIGHT</span>.<span class="ident">bits</span>
-            <span class="op">|</span> <span class="ident">ImDrawCornerFlags::BOT_RIGHT</span>.<span class="ident">bits</span>;
-        <span class="kw">const</span> <span class="ident">ALL</span> <span class="op">=</span> <span class="number">0xF</span>;
+    <span class="doccomment">/// Flags for indicating which corner of a rectangle should be rounded
+    </span><span class="attribute">#[repr(C)]
+    </span><span class="kw">pub struct </span>ImDrawCornerFlags: u32 {
+        <span class="kw">const </span>TOP_LEFT = <span class="number">1</span>;
+        <span class="kw">const </span>TOP_RIGHT = <span class="number">1 </span>&lt;&lt; <span class="number">1</span>;
+        <span class="kw">const </span>BOT_LEFT = <span class="number">1 </span>&lt;&lt; <span class="number">2</span>;
+        <span class="kw">const </span>BOT_RIGHT = <span class="number">1 </span>&lt;&lt; <span class="number">3</span>;
+        <span class="kw">const </span>TOP = ImDrawCornerFlags::TOP_LEFT.bits
+            | ImDrawCornerFlags::TOP_RIGHT.bits;
+        <span class="kw">const </span>BOT = ImDrawCornerFlags::BOT_LEFT.bits
+            | ImDrawCornerFlags::BOT_RIGHT.bits;
+        <span class="kw">const </span>LEFT = ImDrawCornerFlags::TOP_LEFT.bits
+            | ImDrawCornerFlags::BOT_LEFT.bits;
+        <span class="kw">const </span>RIGHT = ImDrawCornerFlags::TOP_RIGHT.bits
+            | ImDrawCornerFlags::BOT_RIGHT.bits;
+        <span class="kw">const </span>ALL = <span class="number">0xF</span>;
     }
 );
 
-<span class="doccomment">/// Represents a rectangle about to be drawn</span>
-<span class="attribute">#[<span class="ident">must_use</span> <span class="op">=</span> <span class="string">&quot;should call .build() to draw the object&quot;</span>]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Rect</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> {
-    <span class="ident">p1</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-    <span class="ident">p2</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-    <span class="ident">color</span>: <span class="ident">ImColor32</span>,
-    <span class="ident">rounding</span>: <span class="ident">f32</span>,
-    <span class="ident">flags</span>: <span class="ident">ImDrawCornerFlags</span>,
-    <span class="ident">thickness</span>: <span class="ident">f32</span>,
-    <span class="ident">filled</span>: <span class="ident">bool</span>,
-    <span class="ident">draw_list</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="ident">DrawListMut</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>,
+<span class="doccomment">/// Represents a rectangle about to be drawn
+</span><span class="attribute">#[must_use = <span class="string">&quot;should call .build() to draw the object&quot;</span>]
+</span><span class="kw">pub struct </span>Rect&lt;<span class="lifetime">&#39;ui</span>&gt; {
+    p1: [f32; <span class="number">2</span>],
+    p2: [f32; <span class="number">2</span>],
+    color: ImColor32,
+    rounding: f32,
+    flags: ImDrawCornerFlags,
+    thickness: f32,
+    filled: bool,
+    draw_list: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span>DrawListMut&lt;<span class="lifetime">&#39;ui</span>&gt;,
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> <span class="ident">Rect</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">new</span><span class="op">&lt;</span><span class="ident">C</span><span class="op">&gt;</span>(<span class="ident">draw_list</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="ident">DrawListMut</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>, <span class="ident">p1</span>: [<span class="ident">f32</span>; <span class="number">2</span>], <span class="ident">p2</span>: [<span class="ident">f32</span>; <span class="number">2</span>], <span class="ident">c</span>: <span class="ident">C</span>) -&gt; <span class="self">Self</span>
-    <span class="kw">where</span>
-        <span class="ident">C</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">ImColor32</span><span class="op">&gt;</span>,
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>&gt; Rect&lt;<span class="lifetime">&#39;ui</span>&gt; {
+    <span class="kw">fn </span>new&lt;C&gt;(draw_list: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span>DrawListMut&lt;<span class="lifetime">&#39;_</span>&gt;, p1: [f32; <span class="number">2</span>], p2: [f32; <span class="number">2</span>], c: C) -&gt; <span class="self">Self
+    </span><span class="kw">where
+        </span>C: Into&lt;ImColor32&gt;,
     {
-        <span class="self">Self</span> {
-            <span class="ident">p1</span>,
-            <span class="ident">p2</span>,
-            <span class="ident">color</span>: <span class="ident">c</span>.<span class="ident">into</span>(),
-            <span class="ident">rounding</span>: <span class="number">0.0</span>,
-            <span class="ident">flags</span>: <span class="ident">ImDrawCornerFlags::ALL</span>,
-            <span class="ident">thickness</span>: <span class="number">1.0</span>,
-            <span class="ident">filled</span>: <span class="bool-val">false</span>,
-            <span class="ident">draw_list</span>,
+        <span class="self">Self </span>{
+            p1,
+            p2,
+            color: c.into(),
+            rounding: <span class="number">0.0</span>,
+            flags: ImDrawCornerFlags::ALL,
+            thickness: <span class="number">1.0</span>,
+            filled: <span class="bool-val">false</span>,
+            draw_list,
         }
     }
 
-    <span class="doccomment">/// Set rectangle&#39;s corner rounding (default to 0.0: no rounding).</span>
-    <span class="doccomment">/// By default all corners are rounded if this value is set.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">rounding</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">rounding</span>: <span class="ident">f32</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">rounding</span> <span class="op">=</span> <span class="ident">rounding</span>;
-        <span class="self">self</span>
-    }
+    <span class="doccomment">/// Set rectangle&#39;s corner rounding (default to 0.0: no rounding).
+    /// By default all corners are rounded if this value is set.
+    </span><span class="kw">pub fn </span>rounding(<span class="kw-2">mut </span><span class="self">self</span>, rounding: f32) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.rounding = rounding;
+        <span class="self">self
+    </span>}
 
-    <span class="doccomment">/// Set flag to indicate if rectangle&#39;s top-left corner will be rounded.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">round_top_left</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">ImDrawCornerFlags::TOP_LEFT</span>, <span class="ident">value</span>);
-        <span class="self">self</span>
-    }
+    <span class="doccomment">/// Set flag to indicate if rectangle&#39;s top-left corner will be rounded.
+    </span><span class="kw">pub fn </span>round_top_left(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(ImDrawCornerFlags::TOP_LEFT, value);
+        <span class="self">self
+    </span>}
 
-    <span class="doccomment">/// Set flag to indicate if rectangle&#39;s top-right corner will be rounded.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">round_top_right</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">ImDrawCornerFlags::TOP_RIGHT</span>, <span class="ident">value</span>);
-        <span class="self">self</span>
-    }
+    <span class="doccomment">/// Set flag to indicate if rectangle&#39;s top-right corner will be rounded.
+    </span><span class="kw">pub fn </span>round_top_right(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(ImDrawCornerFlags::TOP_RIGHT, value);
+        <span class="self">self
+    </span>}
 
-    <span class="doccomment">/// Set flag to indicate if rectangle&#39;s bottom-left corner will be rounded.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">round_bot_left</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">ImDrawCornerFlags::BOT_LEFT</span>, <span class="ident">value</span>);
-        <span class="self">self</span>
-    }
+    <span class="doccomment">/// Set flag to indicate if rectangle&#39;s bottom-left corner will be rounded.
+    </span><span class="kw">pub fn </span>round_bot_left(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(ImDrawCornerFlags::BOT_LEFT, value);
+        <span class="self">self
+    </span>}
 
-    <span class="doccomment">/// Set flag to indicate if rectangle&#39;s bottom-right corner will be rounded.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">round_bot_right</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">ImDrawCornerFlags::BOT_RIGHT</span>, <span class="ident">value</span>);
-        <span class="self">self</span>
-    }
+    <span class="doccomment">/// Set flag to indicate if rectangle&#39;s bottom-right corner will be rounded.
+    </span><span class="kw">pub fn </span>round_bot_right(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(ImDrawCornerFlags::BOT_RIGHT, value);
+        <span class="self">self
+    </span>}
 
-    <span class="doccomment">/// Set rectangle&#39;s thickness (default to 1.0 pixel).</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">thickness</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">thickness</span>: <span class="ident">f32</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">thickness</span> <span class="op">=</span> <span class="ident">thickness</span>;
-        <span class="self">self</span>
-    }
+    <span class="doccomment">/// Set rectangle&#39;s thickness (default to 1.0 pixel).
+    </span><span class="kw">pub fn </span>thickness(<span class="kw-2">mut </span><span class="self">self</span>, thickness: f32) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.thickness = thickness;
+        <span class="self">self
+    </span>}
 
-    <span class="doccomment">/// Set to `true` to make a filled rectangle (default to `false`).</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">filled</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">filled</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">filled</span> <span class="op">=</span> <span class="ident">filled</span>;
-        <span class="self">self</span>
-    }
+    <span class="doccomment">/// Set to `true` to make a filled rectangle (default to `false`).
+    </span><span class="kw">pub fn </span>filled(<span class="kw-2">mut </span><span class="self">self</span>, filled: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.filled = filled;
+        <span class="self">self
+    </span>}
 
-    <span class="doccomment">/// Draw the rectangle on the window.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build</span>(<span class="self">self</span>) {
-        <span class="kw">if</span> <span class="self">self</span>.<span class="ident">filled</span> {
-            <span class="kw">unsafe</span> {
-                <span class="ident">sys::ImDrawList_AddRectFilled</span>(
-                    <span class="self">self</span>.<span class="ident">draw_list</span>.<span class="ident">draw_list</span>,
-                    <span class="self">self</span>.<span class="ident">p1</span>.<span class="ident">into</span>(),
-                    <span class="self">self</span>.<span class="ident">p2</span>.<span class="ident">into</span>(),
-                    <span class="self">self</span>.<span class="ident">color</span>.<span class="ident">into</span>(),
-                    <span class="self">self</span>.<span class="ident">rounding</span>,
-                    <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">bits</span>() <span class="kw">as</span> <span class="ident">i32</span>,
+    <span class="doccomment">/// Draw the rectangle on the window.
+    </span><span class="kw">pub fn </span>build(<span class="self">self</span>) {
+        <span class="kw">if </span><span class="self">self</span>.filled {
+            <span class="kw">unsafe </span>{
+                sys::ImDrawList_AddRectFilled(
+                    <span class="self">self</span>.draw_list.draw_list,
+                    <span class="self">self</span>.p1.into(),
+                    <span class="self">self</span>.p2.into(),
+                    <span class="self">self</span>.color.into(),
+                    <span class="self">self</span>.rounding,
+                    <span class="self">self</span>.flags.bits() <span class="kw">as </span>i32,
                 );
             }
-        } <span class="kw">else</span> {
-            <span class="kw">unsafe</span> {
-                <span class="ident">sys::ImDrawList_AddRect</span>(
-                    <span class="self">self</span>.<span class="ident">draw_list</span>.<span class="ident">draw_list</span>,
-                    <span class="self">self</span>.<span class="ident">p1</span>.<span class="ident">into</span>(),
-                    <span class="self">self</span>.<span class="ident">p2</span>.<span class="ident">into</span>(),
-                    <span class="self">self</span>.<span class="ident">color</span>.<span class="ident">into</span>(),
-                    <span class="self">self</span>.<span class="ident">rounding</span>,
-                    <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">bits</span>() <span class="kw">as</span> <span class="ident">i32</span>,
-                    <span class="self">self</span>.<span class="ident">thickness</span>,
+        } <span class="kw">else </span>{
+            <span class="kw">unsafe </span>{
+                sys::ImDrawList_AddRect(
+                    <span class="self">self</span>.draw_list.draw_list,
+                    <span class="self">self</span>.p1.into(),
+                    <span class="self">self</span>.p2.into(),
+                    <span class="self">self</span>.color.into(),
+                    <span class="self">self</span>.rounding,
+                    <span class="self">self</span>.flags.bits() <span class="kw">as </span>i32,
+                    <span class="self">self</span>.thickness,
                 );
             }
         }
     }
 }
 
-<span class="doccomment">/// Represents a triangle about to be drawn on the window</span>
-<span class="attribute">#[<span class="ident">must_use</span> <span class="op">=</span> <span class="string">&quot;should call .build() to draw the object&quot;</span>]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Triangle</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> {
-    <span class="ident">p1</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-    <span class="ident">p2</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-    <span class="ident">p3</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-    <span class="ident">color</span>: <span class="ident">ImColor32</span>,
-    <span class="ident">thickness</span>: <span class="ident">f32</span>,
-    <span class="ident">filled</span>: <span class="ident">bool</span>,
-    <span class="ident">draw_list</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="ident">DrawListMut</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>,
+<span class="doccomment">/// Represents a triangle about to be drawn on the window
+</span><span class="attribute">#[must_use = <span class="string">&quot;should call .build() to draw the object&quot;</span>]
+</span><span class="kw">pub struct </span>Triangle&lt;<span class="lifetime">&#39;ui</span>&gt; {
+    p1: [f32; <span class="number">2</span>],
+    p2: [f32; <span class="number">2</span>],
+    p3: [f32; <span class="number">2</span>],
+    color: ImColor32,
+    thickness: f32,
+    filled: bool,
+    draw_list: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span>DrawListMut&lt;<span class="lifetime">&#39;ui</span>&gt;,
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> <span class="ident">Triangle</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">new</span><span class="op">&lt;</span><span class="ident">C</span><span class="op">&gt;</span>(
-        <span class="ident">draw_list</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="ident">DrawListMut</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>,
-        <span class="ident">p1</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-        <span class="ident">p2</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-        <span class="ident">p3</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-        <span class="ident">c</span>: <span class="ident">C</span>,
-    ) -&gt; <span class="self">Self</span>
-    <span class="kw">where</span>
-        <span class="ident">C</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">ImColor32</span><span class="op">&gt;</span>,
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>&gt; Triangle&lt;<span class="lifetime">&#39;ui</span>&gt; {
+    <span class="kw">fn </span>new&lt;C&gt;(
+        draw_list: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span>DrawListMut&lt;<span class="lifetime">&#39;_</span>&gt;,
+        p1: [f32; <span class="number">2</span>],
+        p2: [f32; <span class="number">2</span>],
+        p3: [f32; <span class="number">2</span>],
+        c: C,
+    ) -&gt; <span class="self">Self
+    </span><span class="kw">where
+        </span>C: Into&lt;ImColor32&gt;,
     {
-        <span class="self">Self</span> {
-            <span class="ident">p1</span>,
-            <span class="ident">p2</span>,
-            <span class="ident">p3</span>,
-            <span class="ident">color</span>: <span class="ident">c</span>.<span class="ident">into</span>(),
-            <span class="ident">thickness</span>: <span class="number">1.0</span>,
-            <span class="ident">filled</span>: <span class="bool-val">false</span>,
-            <span class="ident">draw_list</span>,
+        <span class="self">Self </span>{
+            p1,
+            p2,
+            p3,
+            color: c.into(),
+            thickness: <span class="number">1.0</span>,
+            filled: <span class="bool-val">false</span>,
+            draw_list,
         }
     }
 
-    <span class="doccomment">/// Set triangle&#39;s thickness (default to 1.0 pixel)</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">thickness</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">thickness</span>: <span class="ident">f32</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">thickness</span> <span class="op">=</span> <span class="ident">thickness</span>;
-        <span class="self">self</span>
-    }
+    <span class="doccomment">/// Set triangle&#39;s thickness (default to 1.0 pixel)
+    </span><span class="kw">pub fn </span>thickness(<span class="kw-2">mut </span><span class="self">self</span>, thickness: f32) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.thickness = thickness;
+        <span class="self">self
+    </span>}
 
-    <span class="doccomment">/// Set to `true` to make a filled triangle (default to `false`).</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">filled</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">filled</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">filled</span> <span class="op">=</span> <span class="ident">filled</span>;
-        <span class="self">self</span>
-    }
+    <span class="doccomment">/// Set to `true` to make a filled triangle (default to `false`).
+    </span><span class="kw">pub fn </span>filled(<span class="kw-2">mut </span><span class="self">self</span>, filled: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.filled = filled;
+        <span class="self">self
+    </span>}
 
-    <span class="doccomment">/// Draw the triangle on the window.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build</span>(<span class="self">self</span>) {
-        <span class="kw">if</span> <span class="self">self</span>.<span class="ident">filled</span> {
-            <span class="kw">unsafe</span> {
-                <span class="ident">sys::ImDrawList_AddTriangleFilled</span>(
-                    <span class="self">self</span>.<span class="ident">draw_list</span>.<span class="ident">draw_list</span>,
-                    <span class="self">self</span>.<span class="ident">p1</span>.<span class="ident">into</span>(),
-                    <span class="self">self</span>.<span class="ident">p2</span>.<span class="ident">into</span>(),
-                    <span class="self">self</span>.<span class="ident">p3</span>.<span class="ident">into</span>(),
-                    <span class="self">self</span>.<span class="ident">color</span>.<span class="ident">into</span>(),
+    <span class="doccomment">/// Draw the triangle on the window.
+    </span><span class="kw">pub fn </span>build(<span class="self">self</span>) {
+        <span class="kw">if </span><span class="self">self</span>.filled {
+            <span class="kw">unsafe </span>{
+                sys::ImDrawList_AddTriangleFilled(
+                    <span class="self">self</span>.draw_list.draw_list,
+                    <span class="self">self</span>.p1.into(),
+                    <span class="self">self</span>.p2.into(),
+                    <span class="self">self</span>.p3.into(),
+                    <span class="self">self</span>.color.into(),
                 )
             }
-        } <span class="kw">else</span> {
-            <span class="kw">unsafe</span> {
-                <span class="ident">sys::ImDrawList_AddTriangle</span>(
-                    <span class="self">self</span>.<span class="ident">draw_list</span>.<span class="ident">draw_list</span>,
-                    <span class="self">self</span>.<span class="ident">p1</span>.<span class="ident">into</span>(),
-                    <span class="self">self</span>.<span class="ident">p2</span>.<span class="ident">into</span>(),
-                    <span class="self">self</span>.<span class="ident">p3</span>.<span class="ident">into</span>(),
-                    <span class="self">self</span>.<span class="ident">color</span>.<span class="ident">into</span>(),
-                    <span class="self">self</span>.<span class="ident">thickness</span>,
+        } <span class="kw">else </span>{
+            <span class="kw">unsafe </span>{
+                sys::ImDrawList_AddTriangle(
+                    <span class="self">self</span>.draw_list.draw_list,
+                    <span class="self">self</span>.p1.into(),
+                    <span class="self">self</span>.p2.into(),
+                    <span class="self">self</span>.p3.into(),
+                    <span class="self">self</span>.color.into(),
+                    <span class="self">self</span>.thickness,
                 )
             }
         }
     }
 }
 
-<span class="doccomment">/// Represents a circle about to be drawn</span>
-<span class="attribute">#[<span class="ident">must_use</span> <span class="op">=</span> <span class="string">&quot;should call .build() to draw the object&quot;</span>]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Circle</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> {
-    <span class="ident">center</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-    <span class="ident">radius</span>: <span class="ident">f32</span>,
-    <span class="ident">color</span>: <span class="ident">ImColor32</span>,
-    <span class="ident">num_segments</span>: <span class="ident">u32</span>,
-    <span class="ident">thickness</span>: <span class="ident">f32</span>,
-    <span class="ident">filled</span>: <span class="ident">bool</span>,
-    <span class="ident">draw_list</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="ident">DrawListMut</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>,
+<span class="doccomment">/// Represents a circle about to be drawn
+</span><span class="attribute">#[must_use = <span class="string">&quot;should call .build() to draw the object&quot;</span>]
+</span><span class="kw">pub struct </span>Circle&lt;<span class="lifetime">&#39;ui</span>&gt; {
+    center: [f32; <span class="number">2</span>],
+    radius: f32,
+    color: ImColor32,
+    num_segments: u32,
+    thickness: f32,
+    filled: bool,
+    draw_list: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span>DrawListMut&lt;<span class="lifetime">&#39;ui</span>&gt;,
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> <span class="ident">Circle</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Typically constructed by [`DrawListMut::add_circle`]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span><span class="op">&lt;</span><span class="ident">C</span><span class="op">&gt;</span>(<span class="ident">draw_list</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="ident">DrawListMut</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>, <span class="ident">center</span>: [<span class="ident">f32</span>; <span class="number">2</span>], <span class="ident">radius</span>: <span class="ident">f32</span>, <span class="ident">color</span>: <span class="ident">C</span>) -&gt; <span class="self">Self</span>
-    <span class="kw">where</span>
-        <span class="ident">C</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">ImColor32</span><span class="op">&gt;</span>,
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>&gt; Circle&lt;<span class="lifetime">&#39;ui</span>&gt; {
+    <span class="doccomment">/// Typically constructed by [`DrawListMut::add_circle`]
+    </span><span class="kw">pub fn </span>new&lt;C&gt;(draw_list: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span>DrawListMut&lt;<span class="lifetime">&#39;_</span>&gt;, center: [f32; <span class="number">2</span>], radius: f32, color: C) -&gt; <span class="self">Self
+    </span><span class="kw">where
+        </span>C: Into&lt;ImColor32&gt;,
     {
-        <span class="self">Self</span> {
-            <span class="ident">center</span>,
-            <span class="ident">radius</span>,
-            <span class="ident">color</span>: <span class="ident">color</span>.<span class="ident">into</span>(),
-            <span class="ident">num_segments</span>: <span class="number">0</span>,
-            <span class="ident">thickness</span>: <span class="number">1.0</span>,
-            <span class="ident">filled</span>: <span class="bool-val">false</span>,
-            <span class="ident">draw_list</span>,
+        <span class="self">Self </span>{
+            center,
+            radius,
+            color: color.into(),
+            num_segments: <span class="number">0</span>,
+            thickness: <span class="number">1.0</span>,
+            filled: <span class="bool-val">false</span>,
+            draw_list,
         }
     }
 
-    <span class="doccomment">/// Set number of segment used to draw the circle, default to 0.</span>
-    <span class="doccomment">/// Add more segments if you want a smoother circle.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">num_segments</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">num_segments</span>: <span class="ident">u32</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">num_segments</span> <span class="op">=</span> <span class="ident">num_segments</span>;
-        <span class="self">self</span>
-    }
+    <span class="doccomment">/// Set number of segment used to draw the circle, default to 0.
+    /// Add more segments if you want a smoother circle.
+    </span><span class="kw">pub fn </span>num_segments(<span class="kw-2">mut </span><span class="self">self</span>, num_segments: u32) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.num_segments = num_segments;
+        <span class="self">self
+    </span>}
 
-    <span class="doccomment">/// Set circle&#39;s thickness (default to 1.0 pixel)</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">thickness</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">thickness</span>: <span class="ident">f32</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">thickness</span> <span class="op">=</span> <span class="ident">thickness</span>;
-        <span class="self">self</span>
-    }
+    <span class="doccomment">/// Set circle&#39;s thickness (default to 1.0 pixel)
+    </span><span class="kw">pub fn </span>thickness(<span class="kw-2">mut </span><span class="self">self</span>, thickness: f32) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.thickness = thickness;
+        <span class="self">self
+    </span>}
 
-    <span class="doccomment">/// Set to `true` to make a filled circle (default to `false`).</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">filled</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">filled</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">filled</span> <span class="op">=</span> <span class="ident">filled</span>;
-        <span class="self">self</span>
-    }
+    <span class="doccomment">/// Set to `true` to make a filled circle (default to `false`).
+    </span><span class="kw">pub fn </span>filled(<span class="kw-2">mut </span><span class="self">self</span>, filled: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.filled = filled;
+        <span class="self">self
+    </span>}
 
-    <span class="doccomment">/// Draw the circle on the window.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build</span>(<span class="self">self</span>) {
-        <span class="kw">if</span> <span class="self">self</span>.<span class="ident">filled</span> {
-            <span class="kw">unsafe</span> {
-                <span class="ident">sys::ImDrawList_AddCircleFilled</span>(
-                    <span class="self">self</span>.<span class="ident">draw_list</span>.<span class="ident">draw_list</span>,
-                    <span class="self">self</span>.<span class="ident">center</span>.<span class="ident">into</span>(),
-                    <span class="self">self</span>.<span class="ident">radius</span>,
-                    <span class="self">self</span>.<span class="ident">color</span>.<span class="ident">into</span>(),
-                    <span class="self">self</span>.<span class="ident">num_segments</span> <span class="kw">as</span> <span class="ident">i32</span>,
+    <span class="doccomment">/// Draw the circle on the window.
+    </span><span class="kw">pub fn </span>build(<span class="self">self</span>) {
+        <span class="kw">if </span><span class="self">self</span>.filled {
+            <span class="kw">unsafe </span>{
+                sys::ImDrawList_AddCircleFilled(
+                    <span class="self">self</span>.draw_list.draw_list,
+                    <span class="self">self</span>.center.into(),
+                    <span class="self">self</span>.radius,
+                    <span class="self">self</span>.color.into(),
+                    <span class="self">self</span>.num_segments <span class="kw">as </span>i32,
                 )
             }
-        } <span class="kw">else</span> {
-            <span class="kw">unsafe</span> {
-                <span class="ident">sys::ImDrawList_AddCircle</span>(
-                    <span class="self">self</span>.<span class="ident">draw_list</span>.<span class="ident">draw_list</span>,
-                    <span class="self">self</span>.<span class="ident">center</span>.<span class="ident">into</span>(),
-                    <span class="self">self</span>.<span class="ident">radius</span>,
-                    <span class="self">self</span>.<span class="ident">color</span>.<span class="ident">into</span>(),
-                    <span class="self">self</span>.<span class="ident">num_segments</span> <span class="kw">as</span> <span class="ident">i32</span>,
-                    <span class="self">self</span>.<span class="ident">thickness</span>,
+        } <span class="kw">else </span>{
+            <span class="kw">unsafe </span>{
+                sys::ImDrawList_AddCircle(
+                    <span class="self">self</span>.draw_list.draw_list,
+                    <span class="self">self</span>.center.into(),
+                    <span class="self">self</span>.radius,
+                    <span class="self">self</span>.color.into(),
+                    <span class="self">self</span>.num_segments <span class="kw">as </span>i32,
+                    <span class="self">self</span>.thickness,
                 )
             }
         }
     }
 }
 
-<span class="doccomment">/// Represents a Bezier curve about to be drawn</span>
-<span class="attribute">#[<span class="ident">must_use</span> <span class="op">=</span> <span class="string">&quot;should call .build() to draw the object&quot;</span>]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">BezierCurve</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> {
-    <span class="ident">pos0</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-    <span class="ident">cp0</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-    <span class="ident">pos1</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-    <span class="ident">cp1</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-    <span class="ident">color</span>: <span class="ident">ImColor32</span>,
-    <span class="ident">thickness</span>: <span class="ident">f32</span>,
-    <span class="doccomment">/// If num_segments is not set, the bezier curve is auto-tessalated.</span>
-    <span class="ident">num_segments</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">u32</span><span class="op">&gt;</span>,
-    <span class="ident">draw_list</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="ident">DrawListMut</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>,
+<span class="doccomment">/// Represents a Bezier curve about to be drawn
+</span><span class="attribute">#[must_use = <span class="string">&quot;should call .build() to draw the object&quot;</span>]
+</span><span class="kw">pub struct </span>BezierCurve&lt;<span class="lifetime">&#39;ui</span>&gt; {
+    pos0: [f32; <span class="number">2</span>],
+    cp0: [f32; <span class="number">2</span>],
+    pos1: [f32; <span class="number">2</span>],
+    cp1: [f32; <span class="number">2</span>],
+    color: ImColor32,
+    thickness: f32,
+    <span class="doccomment">/// If num_segments is not set, the bezier curve is auto-tessalated.
+    </span>num_segments: <span class="prelude-ty">Option</span>&lt;u32&gt;,
+    draw_list: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span>DrawListMut&lt;<span class="lifetime">&#39;ui</span>&gt;,
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> <span class="ident">BezierCurve</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Typically constructed by [`DrawListMut::add_bezier_curve`]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span><span class="op">&lt;</span><span class="ident">C</span><span class="op">&gt;</span>(
-        <span class="ident">draw_list</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="ident">DrawListMut</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>,
-        <span class="ident">pos0</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-        <span class="ident">cp0</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-        <span class="ident">cp1</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-        <span class="ident">pos1</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-        <span class="ident">c</span>: <span class="ident">C</span>,
-    ) -&gt; <span class="self">Self</span>
-    <span class="kw">where</span>
-        <span class="ident">C</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">ImColor32</span><span class="op">&gt;</span>,
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>&gt; BezierCurve&lt;<span class="lifetime">&#39;ui</span>&gt; {
+    <span class="doccomment">/// Typically constructed by [`DrawListMut::add_bezier_curve`]
+    </span><span class="kw">pub fn </span>new&lt;C&gt;(
+        draw_list: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span>DrawListMut&lt;<span class="lifetime">&#39;_</span>&gt;,
+        pos0: [f32; <span class="number">2</span>],
+        cp0: [f32; <span class="number">2</span>],
+        cp1: [f32; <span class="number">2</span>],
+        pos1: [f32; <span class="number">2</span>],
+        c: C,
+    ) -&gt; <span class="self">Self
+    </span><span class="kw">where
+        </span>C: Into&lt;ImColor32&gt;,
     {
-        <span class="self">Self</span> {
-            <span class="ident">pos0</span>,
-            <span class="ident">cp0</span>,
-            <span class="ident">cp1</span>,
-            <span class="ident">pos1</span>,
-            <span class="ident">color</span>: <span class="ident">c</span>.<span class="ident">into</span>(),
-            <span class="ident">thickness</span>: <span class="number">1.0</span>,
-            <span class="ident">num_segments</span>: <span class="prelude-val">None</span>,
-            <span class="ident">draw_list</span>,
+        <span class="self">Self </span>{
+            pos0,
+            cp0,
+            cp1,
+            pos1,
+            color: c.into(),
+            thickness: <span class="number">1.0</span>,
+            num_segments: <span class="prelude-val">None</span>,
+            draw_list,
         }
     }
 
-    <span class="doccomment">/// Set curve&#39;s thickness (default to 1.0 pixel)</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">thickness</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">thickness</span>: <span class="ident">f32</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">thickness</span> <span class="op">=</span> <span class="ident">thickness</span>;
-        <span class="self">self</span>
-    }
+    <span class="doccomment">/// Set curve&#39;s thickness (default to 1.0 pixel)
+    </span><span class="kw">pub fn </span>thickness(<span class="kw-2">mut </span><span class="self">self</span>, thickness: f32) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.thickness = thickness;
+        <span class="self">self
+    </span>}
 
-    <span class="doccomment">/// Set number of segments used to draw the Bezier curve. If not set, the</span>
-    <span class="doccomment">/// bezier curve is auto-tessalated.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">num_segments</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">num_segments</span>: <span class="ident">u32</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">num_segments</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">num_segments</span>);
-        <span class="self">self</span>
-    }
+    <span class="doccomment">/// Set number of segments used to draw the Bezier curve. If not set, the
+    /// bezier curve is auto-tessalated.
+    </span><span class="kw">pub fn </span>num_segments(<span class="kw-2">mut </span><span class="self">self</span>, num_segments: u32) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.num_segments = <span class="prelude-val">Some</span>(num_segments);
+        <span class="self">self
+    </span>}
 
-    <span class="doccomment">/// Draw the curve on the window.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build</span>(<span class="self">self</span>) {
-        <span class="kw">unsafe</span> {
-            <span class="ident">sys::ImDrawList_AddBezierCubic</span>(
-                <span class="self">self</span>.<span class="ident">draw_list</span>.<span class="ident">draw_list</span>,
-                <span class="self">self</span>.<span class="ident">pos0</span>.<span class="ident">into</span>(),
-                <span class="self">self</span>.<span class="ident">cp0</span>.<span class="ident">into</span>(),
-                <span class="self">self</span>.<span class="ident">cp1</span>.<span class="ident">into</span>(),
-                <span class="self">self</span>.<span class="ident">pos1</span>.<span class="ident">into</span>(),
-                <span class="self">self</span>.<span class="ident">color</span>.<span class="ident">into</span>(),
-                <span class="self">self</span>.<span class="ident">thickness</span>,
-                <span class="self">self</span>.<span class="ident">num_segments</span>.<span class="ident">unwrap_or</span>(<span class="number">0</span>) <span class="kw">as</span> <span class="ident">i32</span>,
+    <span class="doccomment">/// Draw the curve on the window.
+    </span><span class="kw">pub fn </span>build(<span class="self">self</span>) {
+        <span class="kw">unsafe </span>{
+            sys::ImDrawList_AddBezierCubic(
+                <span class="self">self</span>.draw_list.draw_list,
+                <span class="self">self</span>.pos0.into(),
+                <span class="self">self</span>.cp0.into(),
+                <span class="self">self</span>.cp1.into(),
+                <span class="self">self</span>.pos1.into(),
+                <span class="self">self</span>.color.into(),
+                <span class="self">self</span>.thickness,
+                <span class="self">self</span>.num_segments.unwrap_or(<span class="number">0</span>) <span class="kw">as </span>i32,
             )
         }
     }
 }
 
-<span class="doccomment">/// Image draw list primitive, not to be confused with the widget</span>
-<span class="doccomment">/// [`imgui::Image`](crate::Image).</span>
-<span class="attribute">#[<span class="ident">must_use</span> <span class="op">=</span> <span class="string">&quot;should call .build() to draw the object&quot;</span>]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Image</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> {
-    <span class="ident">texture_id</span>: <span class="ident">TextureId</span>,
-    <span class="ident">p_min</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-    <span class="ident">p_max</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-    <span class="ident">uv_min</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-    <span class="ident">uv_max</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-    <span class="ident">col</span>: <span class="ident">ImColor32</span>,
-    <span class="ident">draw_list</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="ident">DrawListMut</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>,
+<span class="doccomment">/// Image draw list primitive, not to be confused with the widget
+/// [`imgui::Image`](crate::Image).
+</span><span class="attribute">#[must_use = <span class="string">&quot;should call .build() to draw the object&quot;</span>]
+</span><span class="kw">pub struct </span>Image&lt;<span class="lifetime">&#39;ui</span>&gt; {
+    texture_id: TextureId,
+    p_min: [f32; <span class="number">2</span>],
+    p_max: [f32; <span class="number">2</span>],
+    uv_min: [f32; <span class="number">2</span>],
+    uv_max: [f32; <span class="number">2</span>],
+    col: ImColor32,
+    draw_list: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span>DrawListMut&lt;<span class="lifetime">&#39;ui</span>&gt;,
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> <span class="ident">Image</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Typically constructed by [`DrawListMut::add_image`]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(
-        <span class="ident">draw_list</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="ident">DrawListMut</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>,
-        <span class="ident">texture_id</span>: <span class="ident">TextureId</span>,
-        <span class="ident">p_min</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-        <span class="ident">p_max</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-    ) -&gt; <span class="self">Self</span> {
-        <span class="self">Self</span> {
-            <span class="ident">texture_id</span>,
-            <span class="ident">p_min</span>,
-            <span class="ident">p_max</span>,
-            <span class="ident">uv_min</span>: [<span class="number">0.0</span>, <span class="number">0.0</span>],
-            <span class="ident">uv_max</span>: [<span class="number">1.0</span>, <span class="number">1.0</span>],
-            <span class="ident">col</span>: [<span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>].<span class="ident">into</span>(),
-            <span class="ident">draw_list</span>,
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>&gt; Image&lt;<span class="lifetime">&#39;ui</span>&gt; {
+    <span class="doccomment">/// Typically constructed by [`DrawListMut::add_image`]
+    </span><span class="kw">pub fn </span>new(
+        draw_list: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span>DrawListMut&lt;<span class="lifetime">&#39;_</span>&gt;,
+        texture_id: TextureId,
+        p_min: [f32; <span class="number">2</span>],
+        p_max: [f32; <span class="number">2</span>],
+    ) -&gt; <span class="self">Self </span>{
+        <span class="self">Self </span>{
+            texture_id,
+            p_min,
+            p_max,
+            uv_min: [<span class="number">0.0</span>, <span class="number">0.0</span>],
+            uv_max: [<span class="number">1.0</span>, <span class="number">1.0</span>],
+            col: [<span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>].into(),
+            draw_list,
         }
     }
 
-    <span class="doccomment">/// Set uv_min (default `[0.0, 0.0]`)</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">uv_min</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">uv_min</span>: [<span class="ident">f32</span>; <span class="number">2</span>]) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">uv_min</span> <span class="op">=</span> <span class="ident">uv_min</span>;
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Set uv_max (default `[1.0, 1.0]`)</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">uv_max</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">uv_max</span>: [<span class="ident">f32</span>; <span class="number">2</span>]) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">uv_max</span> <span class="op">=</span> <span class="ident">uv_max</span>;
-        <span class="self">self</span>
-    }
+    <span class="doccomment">/// Set uv_min (default `[0.0, 0.0]`)
+    </span><span class="kw">pub fn </span>uv_min(<span class="kw-2">mut </span><span class="self">self</span>, uv_min: [f32; <span class="number">2</span>]) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.uv_min = uv_min;
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Set uv_max (default `[1.0, 1.0]`)
+    </span><span class="kw">pub fn </span>uv_max(<span class="kw-2">mut </span><span class="self">self</span>, uv_max: [f32; <span class="number">2</span>]) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.uv_max = uv_max;
+        <span class="self">self
+    </span>}
 
-    <span class="doccomment">/// Set color tint (default: no tint/white `[1.0, 1.0, 1.0, 1.0]`)</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">col</span><span class="op">&lt;</span><span class="ident">C</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">col</span>: <span class="ident">C</span>) -&gt; <span class="self">Self</span>
-    <span class="kw">where</span>
-        <span class="ident">C</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">ImColor32</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Set color tint (default: no tint/white `[1.0, 1.0, 1.0, 1.0]`)
+    </span><span class="kw">pub fn </span>col&lt;C&gt;(<span class="kw-2">mut </span><span class="self">self</span>, col: C) -&gt; <span class="self">Self
+    </span><span class="kw">where
+        </span>C: Into&lt;ImColor32&gt;,
     {
-        <span class="self">self</span>.<span class="ident">col</span> <span class="op">=</span> <span class="ident">col</span>.<span class="ident">into</span>();
-        <span class="self">self</span>
-    }
+        <span class="self">self</span>.col = col.into();
+        <span class="self">self
+    </span>}
 
-    <span class="doccomment">/// Draw the image on the window.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build</span>(<span class="self">self</span>) {
-        <span class="kw">use</span> <span class="ident">std::os::raw::c_void</span>;
+    <span class="doccomment">/// Draw the image on the window.
+    </span><span class="kw">pub fn </span>build(<span class="self">self</span>) {
+        <span class="kw">use </span>std::os::raw::c_void;
 
-        <span class="kw">unsafe</span> {
-            <span class="ident">sys::ImDrawList_AddImage</span>(
-                <span class="self">self</span>.<span class="ident">draw_list</span>.<span class="ident">draw_list</span>,
-                <span class="self">self</span>.<span class="ident">texture_id</span>.<span class="ident">id</span>() <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-                <span class="self">self</span>.<span class="ident">p_min</span>.<span class="ident">into</span>(),
-                <span class="self">self</span>.<span class="ident">p_max</span>.<span class="ident">into</span>(),
-                <span class="self">self</span>.<span class="ident">uv_min</span>.<span class="ident">into</span>(),
-                <span class="self">self</span>.<span class="ident">uv_max</span>.<span class="ident">into</span>(),
-                <span class="self">self</span>.<span class="ident">col</span>.<span class="ident">into</span>(),
+        <span class="kw">unsafe </span>{
+            sys::ImDrawList_AddImage(
+                <span class="self">self</span>.draw_list.draw_list,
+                <span class="self">self</span>.texture_id.id() <span class="kw">as </span><span class="kw-2">*mut </span>c_void,
+                <span class="self">self</span>.p_min.into(),
+                <span class="self">self</span>.p_max.into(),
+                <span class="self">self</span>.uv_min.into(),
+                <span class="self">self</span>.uv_max.into(),
+                <span class="self">self</span>.col.into(),
             );
         }
     }
 }
 
-<span class="doccomment">/// Represents a image about to be drawn</span>
-<span class="attribute">#[<span class="ident">must_use</span> <span class="op">=</span> <span class="string">&quot;should call .build() to draw the object&quot;</span>]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">ImageQuad</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> {
-    <span class="ident">texture_id</span>: <span class="ident">TextureId</span>,
-    <span class="ident">p1</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-    <span class="ident">p2</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-    <span class="ident">p3</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-    <span class="ident">p4</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-    <span class="ident">uv1</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-    <span class="ident">uv2</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-    <span class="ident">uv3</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-    <span class="ident">uv4</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-    <span class="ident">col</span>: <span class="ident">ImColor32</span>,
-    <span class="ident">draw_list</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="ident">DrawListMut</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>,
+<span class="doccomment">/// Represents a image about to be drawn
+</span><span class="attribute">#[must_use = <span class="string">&quot;should call .build() to draw the object&quot;</span>]
+</span><span class="kw">pub struct </span>ImageQuad&lt;<span class="lifetime">&#39;ui</span>&gt; {
+    texture_id: TextureId,
+    p1: [f32; <span class="number">2</span>],
+    p2: [f32; <span class="number">2</span>],
+    p3: [f32; <span class="number">2</span>],
+    p4: [f32; <span class="number">2</span>],
+    uv1: [f32; <span class="number">2</span>],
+    uv2: [f32; <span class="number">2</span>],
+    uv3: [f32; <span class="number">2</span>],
+    uv4: [f32; <span class="number">2</span>],
+    col: ImColor32,
+    draw_list: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span>DrawListMut&lt;<span class="lifetime">&#39;ui</span>&gt;,
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> <span class="ident">ImageQuad</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Typically constructed by [`DrawListMut::add_image_quad`]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(
-        <span class="ident">draw_list</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="ident">DrawListMut</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>,
-        <span class="ident">texture_id</span>: <span class="ident">TextureId</span>,
-        <span class="ident">p1</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-        <span class="ident">p2</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-        <span class="ident">p3</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-        <span class="ident">p4</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-    ) -&gt; <span class="self">Self</span> {
-        <span class="self">Self</span> {
-            <span class="ident">texture_id</span>,
-            <span class="ident">p1</span>,
-            <span class="ident">p2</span>,
-            <span class="ident">p3</span>,
-            <span class="ident">p4</span>,
-            <span class="ident">uv1</span>: [<span class="number">0.0</span>, <span class="number">0.0</span>],
-            <span class="ident">uv2</span>: [<span class="number">1.0</span>, <span class="number">0.0</span>],
-            <span class="ident">uv3</span>: [<span class="number">1.0</span>, <span class="number">1.0</span>],
-            <span class="ident">uv4</span>: [<span class="number">0.0</span>, <span class="number">1.0</span>],
-            <span class="ident">col</span>: [<span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>].<span class="ident">into</span>(),
-            <span class="ident">draw_list</span>,
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>&gt; ImageQuad&lt;<span class="lifetime">&#39;ui</span>&gt; {
+    <span class="doccomment">/// Typically constructed by [`DrawListMut::add_image_quad`]
+    </span><span class="kw">pub fn </span>new(
+        draw_list: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span>DrawListMut&lt;<span class="lifetime">&#39;_</span>&gt;,
+        texture_id: TextureId,
+        p1: [f32; <span class="number">2</span>],
+        p2: [f32; <span class="number">2</span>],
+        p3: [f32; <span class="number">2</span>],
+        p4: [f32; <span class="number">2</span>],
+    ) -&gt; <span class="self">Self </span>{
+        <span class="self">Self </span>{
+            texture_id,
+            p1,
+            p2,
+            p3,
+            p4,
+            uv1: [<span class="number">0.0</span>, <span class="number">0.0</span>],
+            uv2: [<span class="number">1.0</span>, <span class="number">0.0</span>],
+            uv3: [<span class="number">1.0</span>, <span class="number">1.0</span>],
+            uv4: [<span class="number">0.0</span>, <span class="number">1.0</span>],
+            col: [<span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>].into(),
+            draw_list,
         }
     }
 
-    <span class="doccomment">/// Set uv coordinates of each point of the quad. If not called, defaults are:</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```text</span>
-    <span class="doccomment">/// uv1: [0.0, 0.0],</span>
-    <span class="doccomment">/// uv2: [1, 0],</span>
-    <span class="doccomment">/// uv3: [1, 1],</span>
-    <span class="doccomment">/// uv4: [0, 1],</span>
-    <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">uv</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">uv1</span>: [<span class="ident">f32</span>; <span class="number">2</span>], <span class="ident">uv2</span>: [<span class="ident">f32</span>; <span class="number">2</span>], <span class="ident">uv3</span>: [<span class="ident">f32</span>; <span class="number">2</span>], <span class="ident">uv4</span>: [<span class="ident">f32</span>; <span class="number">2</span>]) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">uv1</span> <span class="op">=</span> <span class="ident">uv1</span>;
-        <span class="self">self</span>.<span class="ident">uv2</span> <span class="op">=</span> <span class="ident">uv2</span>;
-        <span class="self">self</span>.<span class="ident">uv3</span> <span class="op">=</span> <span class="ident">uv3</span>;
-        <span class="self">self</span>.<span class="ident">uv4</span> <span class="op">=</span> <span class="ident">uv4</span>;
-        <span class="self">self</span>
-    }
+    <span class="doccomment">/// Set uv coordinates of each point of the quad. If not called, defaults are:
+    ///
+    /// ```text
+    /// uv1: [0.0, 0.0],
+    /// uv2: [1, 0],
+    /// uv3: [1, 1],
+    /// uv4: [0, 1],
+    /// ```
+    </span><span class="kw">pub fn </span>uv(<span class="kw-2">mut </span><span class="self">self</span>, uv1: [f32; <span class="number">2</span>], uv2: [f32; <span class="number">2</span>], uv3: [f32; <span class="number">2</span>], uv4: [f32; <span class="number">2</span>]) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.uv1 = uv1;
+        <span class="self">self</span>.uv2 = uv2;
+        <span class="self">self</span>.uv3 = uv3;
+        <span class="self">self</span>.uv4 = uv4;
+        <span class="self">self
+    </span>}
 
-    <span class="doccomment">/// Set color tint (default: no tint/white `[1.0, 1.0, 1.0, 1.0]`)</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">col</span><span class="op">&lt;</span><span class="ident">C</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">col</span>: <span class="ident">C</span>) -&gt; <span class="self">Self</span>
-    <span class="kw">where</span>
-        <span class="ident">C</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">ImColor32</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Set color tint (default: no tint/white `[1.0, 1.0, 1.0, 1.0]`)
+    </span><span class="kw">pub fn </span>col&lt;C&gt;(<span class="kw-2">mut </span><span class="self">self</span>, col: C) -&gt; <span class="self">Self
+    </span><span class="kw">where
+        </span>C: Into&lt;ImColor32&gt;,
     {
-        <span class="self">self</span>.<span class="ident">col</span> <span class="op">=</span> <span class="ident">col</span>.<span class="ident">into</span>();
-        <span class="self">self</span>
-    }
+        <span class="self">self</span>.col = col.into();
+        <span class="self">self
+    </span>}
 
-    <span class="doccomment">/// Draw the image on the window.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build</span>(<span class="self">self</span>) {
-        <span class="kw">use</span> <span class="ident">std::os::raw::c_void</span>;
+    <span class="doccomment">/// Draw the image on the window.
+    </span><span class="kw">pub fn </span>build(<span class="self">self</span>) {
+        <span class="kw">use </span>std::os::raw::c_void;
 
-        <span class="kw">unsafe</span> {
-            <span class="ident">sys::ImDrawList_AddImageQuad</span>(
-                <span class="self">self</span>.<span class="ident">draw_list</span>.<span class="ident">draw_list</span>,
-                <span class="self">self</span>.<span class="ident">texture_id</span>.<span class="ident">id</span>() <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-                <span class="self">self</span>.<span class="ident">p1</span>.<span class="ident">into</span>(),
-                <span class="self">self</span>.<span class="ident">p2</span>.<span class="ident">into</span>(),
-                <span class="self">self</span>.<span class="ident">p3</span>.<span class="ident">into</span>(),
-                <span class="self">self</span>.<span class="ident">p4</span>.<span class="ident">into</span>(),
-                <span class="self">self</span>.<span class="ident">uv1</span>.<span class="ident">into</span>(),
-                <span class="self">self</span>.<span class="ident">uv2</span>.<span class="ident">into</span>(),
-                <span class="self">self</span>.<span class="ident">uv3</span>.<span class="ident">into</span>(),
-                <span class="self">self</span>.<span class="ident">uv4</span>.<span class="ident">into</span>(),
-                <span class="self">self</span>.<span class="ident">col</span>.<span class="ident">into</span>(),
+        <span class="kw">unsafe </span>{
+            sys::ImDrawList_AddImageQuad(
+                <span class="self">self</span>.draw_list.draw_list,
+                <span class="self">self</span>.texture_id.id() <span class="kw">as </span><span class="kw-2">*mut </span>c_void,
+                <span class="self">self</span>.p1.into(),
+                <span class="self">self</span>.p2.into(),
+                <span class="self">self</span>.p3.into(),
+                <span class="self">self</span>.p4.into(),
+                <span class="self">self</span>.uv1.into(),
+                <span class="self">self</span>.uv2.into(),
+                <span class="self">self</span>.uv3.into(),
+                <span class="self">self</span>.uv4.into(),
+                <span class="self">self</span>.col.into(),
             );
         }
     }
 }
 
-<span class="doccomment">/// Represents a image about to be drawn. Similar to [`Image`] but</span>
-<span class="doccomment">/// with corners rounded with a given radius</span>
-<span class="attribute">#[<span class="ident">must_use</span> <span class="op">=</span> <span class="string">&quot;should call .build() to draw the object&quot;</span>]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">ImageRounded</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> {
-    <span class="ident">texture_id</span>: <span class="ident">TextureId</span>,
-    <span class="ident">p_min</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-    <span class="ident">p_max</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-    <span class="ident">uv_min</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-    <span class="ident">uv_max</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-    <span class="ident">col</span>: <span class="ident">ImColor32</span>,
-    <span class="ident">rounding</span>: <span class="ident">f32</span>,
-    <span class="ident">draw_flags</span>: <span class="ident">ImDrawCornerFlags</span>,
-    <span class="ident">draw_list</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="ident">DrawListMut</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>,
+<span class="doccomment">/// Represents a image about to be drawn. Similar to [`Image`] but
+/// with corners rounded with a given radius
+</span><span class="attribute">#[must_use = <span class="string">&quot;should call .build() to draw the object&quot;</span>]
+</span><span class="kw">pub struct </span>ImageRounded&lt;<span class="lifetime">&#39;ui</span>&gt; {
+    texture_id: TextureId,
+    p_min: [f32; <span class="number">2</span>],
+    p_max: [f32; <span class="number">2</span>],
+    uv_min: [f32; <span class="number">2</span>],
+    uv_max: [f32; <span class="number">2</span>],
+    col: ImColor32,
+    rounding: f32,
+    draw_flags: ImDrawCornerFlags,
+    draw_list: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span>DrawListMut&lt;<span class="lifetime">&#39;ui</span>&gt;,
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> <span class="ident">ImageRounded</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Typically constructed by [`DrawListMut::add_image_rounded`]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(
-        <span class="ident">draw_list</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="ident">DrawListMut</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>,
-        <span class="ident">texture_id</span>: <span class="ident">TextureId</span>,
-        <span class="ident">p_min</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-        <span class="ident">p_max</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-        <span class="ident">rounding</span>: <span class="ident">f32</span>,
-    ) -&gt; <span class="self">Self</span> {
-        <span class="self">Self</span> {
-            <span class="ident">texture_id</span>,
-            <span class="ident">p_min</span>,
-            <span class="ident">p_max</span>,
-            <span class="ident">uv_min</span>: [<span class="number">0.0</span>, <span class="number">0.0</span>],
-            <span class="ident">uv_max</span>: [<span class="number">1.0</span>, <span class="number">1.0</span>],
-            <span class="ident">col</span>: [<span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>].<span class="ident">into</span>(),
-            <span class="ident">rounding</span>,
-            <span class="ident">draw_flags</span>: <span class="ident">ImDrawCornerFlags::ALL</span>,
-            <span class="ident">draw_list</span>,
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>&gt; ImageRounded&lt;<span class="lifetime">&#39;ui</span>&gt; {
+    <span class="doccomment">/// Typically constructed by [`DrawListMut::add_image_rounded`]
+    </span><span class="kw">pub fn </span>new(
+        draw_list: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span>DrawListMut&lt;<span class="lifetime">&#39;_</span>&gt;,
+        texture_id: TextureId,
+        p_min: [f32; <span class="number">2</span>],
+        p_max: [f32; <span class="number">2</span>],
+        rounding: f32,
+    ) -&gt; <span class="self">Self </span>{
+        <span class="self">Self </span>{
+            texture_id,
+            p_min,
+            p_max,
+            uv_min: [<span class="number">0.0</span>, <span class="number">0.0</span>],
+            uv_max: [<span class="number">1.0</span>, <span class="number">1.0</span>],
+            col: [<span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>].into(),
+            rounding,
+            draw_flags: ImDrawCornerFlags::ALL,
+            draw_list,
         }
     }
 
-    <span class="doccomment">/// Set uv_min (default `[0.0, 0.0]`)</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">uv_min</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">uv_min</span>: [<span class="ident">f32</span>; <span class="number">2</span>]) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">uv_min</span> <span class="op">=</span> <span class="ident">uv_min</span>;
-        <span class="self">self</span>
-    }
-    <span class="doccomment">/// Set uv_max (default `[1.0, 1.0]`)</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">uv_max</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">uv_max</span>: [<span class="ident">f32</span>; <span class="number">2</span>]) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">uv_max</span> <span class="op">=</span> <span class="ident">uv_max</span>;
-        <span class="self">self</span>
-    }
+    <span class="doccomment">/// Set uv_min (default `[0.0, 0.0]`)
+    </span><span class="kw">pub fn </span>uv_min(<span class="kw-2">mut </span><span class="self">self</span>, uv_min: [f32; <span class="number">2</span>]) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.uv_min = uv_min;
+        <span class="self">self
+    </span>}
+    <span class="doccomment">/// Set uv_max (default `[1.0, 1.0]`)
+    </span><span class="kw">pub fn </span>uv_max(<span class="kw-2">mut </span><span class="self">self</span>, uv_max: [f32; <span class="number">2</span>]) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.uv_max = uv_max;
+        <span class="self">self
+    </span>}
 
-    <span class="doccomment">/// Set color tint (default: no tint/white `[1.0, 1.0, 1.0, 1.0]`)</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">col</span><span class="op">&lt;</span><span class="ident">C</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">col</span>: <span class="ident">C</span>) -&gt; <span class="self">Self</span>
-    <span class="kw">where</span>
-        <span class="ident">C</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">ImColor32</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Set color tint (default: no tint/white `[1.0, 1.0, 1.0, 1.0]`)
+    </span><span class="kw">pub fn </span>col&lt;C&gt;(<span class="kw-2">mut </span><span class="self">self</span>, col: C) -&gt; <span class="self">Self
+    </span><span class="kw">where
+        </span>C: Into&lt;ImColor32&gt;,
     {
-        <span class="self">self</span>.<span class="ident">col</span> <span class="op">=</span> <span class="ident">col</span>.<span class="ident">into</span>();
-        <span class="self">self</span>
-    }
+        <span class="self">self</span>.col = col.into();
+        <span class="self">self
+    </span>}
 
-    <span class="doccomment">/// Set flag to indicate rounding on all all corners.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">round_all</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">draw_flags</span>.<span class="ident">set</span>(<span class="ident">ImDrawCornerFlags::ALL</span>, <span class="ident">value</span>);
-        <span class="self">self</span>
-    }
+    <span class="doccomment">/// Set flag to indicate rounding on all all corners.
+    </span><span class="kw">pub fn </span>round_all(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.draw_flags.set(ImDrawCornerFlags::ALL, value);
+        <span class="self">self
+    </span>}
 
-    <span class="doccomment">/// Set flag to indicate if image&#39;s top-left corner will be rounded.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">round_top_left</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">draw_flags</span>
-            .<span class="ident">set</span>(<span class="ident">ImDrawCornerFlags::TOP_LEFT</span>, <span class="ident">value</span>);
-        <span class="self">self</span>
-    }
+    <span class="doccomment">/// Set flag to indicate if image&#39;s top-left corner will be rounded.
+    </span><span class="kw">pub fn </span>round_top_left(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.draw_flags
+            .set(ImDrawCornerFlags::TOP_LEFT, value);
+        <span class="self">self
+    </span>}
 
-    <span class="doccomment">/// Set flag to indicate if image&#39;s top-right corner will be rounded.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">round_top_right</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">draw_flags</span>
-            .<span class="ident">set</span>(<span class="ident">ImDrawCornerFlags::TOP_RIGHT</span>, <span class="ident">value</span>);
-        <span class="self">self</span>
-    }
+    <span class="doccomment">/// Set flag to indicate if image&#39;s top-right corner will be rounded.
+    </span><span class="kw">pub fn </span>round_top_right(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.draw_flags
+            .set(ImDrawCornerFlags::TOP_RIGHT, value);
+        <span class="self">self
+    </span>}
 
-    <span class="doccomment">/// Set flag to indicate if image&#39;s bottom-left corner will be rounded.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">round_bot_left</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">draw_flags</span>
-            .<span class="ident">set</span>(<span class="ident">ImDrawCornerFlags::BOT_LEFT</span>, <span class="ident">value</span>);
-        <span class="self">self</span>
-    }
+    <span class="doccomment">/// Set flag to indicate if image&#39;s bottom-left corner will be rounded.
+    </span><span class="kw">pub fn </span>round_bot_left(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.draw_flags
+            .set(ImDrawCornerFlags::BOT_LEFT, value);
+        <span class="self">self
+    </span>}
 
-    <span class="doccomment">/// Set flag to indicate if image&#39;s bottom-right corner will be rounded.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">round_bot_right</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">draw_flags</span>
-            .<span class="ident">set</span>(<span class="ident">ImDrawCornerFlags::BOT_RIGHT</span>, <span class="ident">value</span>);
-        <span class="self">self</span>
-    }
+    <span class="doccomment">/// Set flag to indicate if image&#39;s bottom-right corner will be rounded.
+    </span><span class="kw">pub fn </span>round_bot_right(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.draw_flags
+            .set(ImDrawCornerFlags::BOT_RIGHT, value);
+        <span class="self">self
+    </span>}
 
-    <span class="doccomment">/// Draw the image on the window.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build</span>(<span class="self">self</span>) {
-        <span class="kw">use</span> <span class="ident">std::os::raw::c_void</span>;
+    <span class="doccomment">/// Draw the image on the window.
+    </span><span class="kw">pub fn </span>build(<span class="self">self</span>) {
+        <span class="kw">use </span>std::os::raw::c_void;
 
-        <span class="kw">unsafe</span> {
-            <span class="ident">sys::ImDrawList_AddImageRounded</span>(
-                <span class="self">self</span>.<span class="ident">draw_list</span>.<span class="ident">draw_list</span>,
-                <span class="self">self</span>.<span class="ident">texture_id</span>.<span class="ident">id</span>() <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">c_void</span>,
-                <span class="self">self</span>.<span class="ident">p_min</span>.<span class="ident">into</span>(),
-                <span class="self">self</span>.<span class="ident">p_max</span>.<span class="ident">into</span>(),
-                <span class="self">self</span>.<span class="ident">uv_min</span>.<span class="ident">into</span>(),
-                <span class="self">self</span>.<span class="ident">uv_max</span>.<span class="ident">into</span>(),
-                <span class="self">self</span>.<span class="ident">col</span>.<span class="ident">into</span>(),
-                <span class="self">self</span>.<span class="ident">rounding</span>,
-                <span class="self">self</span>.<span class="ident">draw_flags</span>.<span class="ident">bits</span>() <span class="kw">as</span> <span class="ident">i32</span>,
+        <span class="kw">unsafe </span>{
+            sys::ImDrawList_AddImageRounded(
+                <span class="self">self</span>.draw_list.draw_list,
+                <span class="self">self</span>.texture_id.id() <span class="kw">as </span><span class="kw-2">*mut </span>c_void,
+                <span class="self">self</span>.p_min.into(),
+                <span class="self">self</span>.p_max.into(),
+                <span class="self">self</span>.uv_min.into(),
+                <span class="self">self</span>.uv_max.into(),
+                <span class="self">self</span>.col.into(),
+                <span class="self">self</span>.rounding,
+                <span class="self">self</span>.draw_flags.bits() <span class="kw">as </span>i32,
             );
         }
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="arcdps_imgui" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="arcdps_imgui" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.0 (69f9c33d7 2022-12-12)" ></div></body></html>

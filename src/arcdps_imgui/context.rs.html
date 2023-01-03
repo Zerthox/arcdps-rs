@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\arcdps-imgui-0.8.0\src\context.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>context.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script><script defer src="../../main.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../arcdps_imgui/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../arcdps_imgui/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../arcdps_imgui/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\arcdps-imgui-0.8.0\src\context.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>context.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../normalize.css"><link rel="stylesheet" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../ayu.css" disabled><link rel="stylesheet" href="../../dark.css" disabled><link rel="stylesheet" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script><script defer src="../../main.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../arcdps_imgui/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -553,560 +553,560 @@
 <span id="553">553</span>
 <span id="554">554</span>
 <span id="555">555</span>
-</pre><pre class="rust"><code><span class="kw">use</span> <span class="ident">parking_lot::ReentrantMutex</span>;
-<span class="kw">use</span> <span class="ident">std::cell</span>::{<span class="ident">RefCell</span>, <span class="ident">UnsafeCell</span>};
-<span class="kw">use</span> <span class="ident">std::ffi</span>::{<span class="ident">CStr</span>, <span class="ident">CString</span>};
-<span class="kw">use</span> <span class="ident">std::ops::Drop</span>;
-<span class="kw">use</span> <span class="ident">std::path::PathBuf</span>;
-<span class="kw">use</span> <span class="ident">std::ptr</span>;
-<span class="kw">use</span> <span class="ident">std::rc::Rc</span>;
+</pre><pre class="rust"><code><span class="kw">use </span>parking_lot::ReentrantMutex;
+<span class="kw">use </span>std::cell::{RefCell, UnsafeCell};
+<span class="kw">use </span>std::ffi::{CStr, CString};
+<span class="kw">use </span>std::ops::Drop;
+<span class="kw">use </span>std::path::PathBuf;
+<span class="kw">use </span>std::ptr;
+<span class="kw">use </span>std::rc::Rc;
 
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::clipboard</span>::{<span class="ident">ClipboardBackend</span>, <span class="ident">ClipboardContext</span>};
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::fonts::atlas</span>::{<span class="ident">FontAtlas</span>, <span class="ident">FontAtlasRefMut</span>, <span class="ident">FontId</span>, <span class="ident">SharedFontAtlas</span>};
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::io::Io</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::style::Style</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::sys</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::Ui</span>;
+<span class="kw">use </span><span class="kw">crate</span>::clipboard::{ClipboardBackend, ClipboardContext};
+<span class="kw">use </span><span class="kw">crate</span>::fonts::atlas::{FontAtlas, FontAtlasRefMut, FontId, SharedFontAtlas};
+<span class="kw">use </span><span class="kw">crate</span>::io::Io;
+<span class="kw">use </span><span class="kw">crate</span>::style::Style;
+<span class="kw">use </span><span class="kw">crate</span>::sys;
+<span class="kw">use </span><span class="kw">crate</span>::Ui;
 
-<span class="doccomment">/// An imgui-rs context.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// A context needs to be created to access most library functions. Due to current Dear ImGui</span>
-<span class="doccomment">/// design choices, at most one active Context can exist at any time. This limitation will likely</span>
-<span class="doccomment">/// be removed in a future Dear ImGui version.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// If you need more than one context, you can use suspended contexts. As long as only one context</span>
-<span class="doccomment">/// is active at a time, it&#39;s possible to have multiple independent contexts.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # Examples</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// Creating a new active context:</span>
-<span class="doccomment">/// ```</span>
-<span class="doccomment">/// let ctx = arcdps_imgui::Context::create();</span>
-<span class="doccomment">/// // ctx is dropped naturally when it goes out of scope, which deactivates and destroys the</span>
-<span class="doccomment">/// // context</span>
-<span class="doccomment">/// ```</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// Never try to create an active context when another one is active:</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// ```should_panic</span>
-<span class="doccomment">/// let ctx1 = arcdps_imgui::Context::create();</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// let ctx2 = arcdps_imgui::Context::create(); // PANIC</span>
-<span class="doccomment">/// ```</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// Suspending an active context allows you to create another active context:</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// ```</span>
-<span class="doccomment">/// let ctx1 = arcdps_imgui::Context::create();</span>
-<span class="doccomment">/// let suspended1 = ctx1.suspend();</span>
-<span class="doccomment">/// let ctx2 = arcdps_imgui::Context::create(); // this is now OK</span>
-<span class="doccomment">/// ```</span>
+<span class="doccomment">/// An imgui-rs context.
+///
+/// A context needs to be created to access most library functions. Due to current Dear ImGui
+/// design choices, at most one active Context can exist at any time. This limitation will likely
+/// be removed in a future Dear ImGui version.
+///
+/// If you need more than one context, you can use suspended contexts. As long as only one context
+/// is active at a time, it&#39;s possible to have multiple independent contexts.
+///
+/// # Examples
+///
+/// Creating a new active context:
+/// ```
+/// let ctx = arcdps_imgui::Context::create();
+/// // ctx is dropped naturally when it goes out of scope, which deactivates and destroys the
+/// // context
+/// ```
+///
+/// Never try to create an active context when another one is active:
+///
+/// ```should_panic
+/// let ctx1 = arcdps_imgui::Context::create();
+///
+/// let ctx2 = arcdps_imgui::Context::create(); // PANIC
+/// ```
+///
+/// Suspending an active context allows you to create another active context:
+///
+/// ```
+/// let ctx1 = arcdps_imgui::Context::create();
+/// let suspended1 = ctx1.suspend();
+/// let ctx2 = arcdps_imgui::Context::create(); // this is now OK
+/// ```
 
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Context</span> {
-    <span class="ident">raw</span>: <span class="kw-2">*mut</span> <span class="ident">sys::ImGuiContext</span>,
-    <span class="ident">shared_font_atlas</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Rc</span><span class="op">&lt;</span><span class="ident">RefCell</span><span class="op">&lt;</span><span class="ident">SharedFontAtlas</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span>,
-    <span class="ident">ini_filename</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">CString</span><span class="op">&gt;</span>,
-    <span class="ident">log_filename</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">CString</span><span class="op">&gt;</span>,
-    <span class="ident">platform_name</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">CString</span><span class="op">&gt;</span>,
-    <span class="ident">renderer_name</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">CString</span><span class="op">&gt;</span>,
-    <span class="comment">// we need to box this because we hand imgui a pointer to it,</span>
-    <span class="comment">// and we don&#39;t want to deal with finding `clipboard_ctx`.</span>
-    <span class="comment">// we also put it in an unsafecell since we&#39;re going to give</span>
-    <span class="comment">// imgui a mutable pointer to it.</span>
-    <span class="ident">clipboard_ctx</span>: <span class="ident">Box</span><span class="op">&lt;</span><span class="ident">UnsafeCell</span><span class="op">&lt;</span><span class="ident">ClipboardContext</span><span class="op">&gt;</span><span class="op">&gt;</span>,
+</span><span class="attribute">#[derive(Debug)]
+</span><span class="kw">pub struct </span>Context {
+    raw: <span class="kw-2">*mut </span>sys::ImGuiContext,
+    shared_font_atlas: <span class="prelude-ty">Option</span>&lt;Rc&lt;RefCell&lt;SharedFontAtlas&gt;&gt;&gt;,
+    ini_filename: <span class="prelude-ty">Option</span>&lt;CString&gt;,
+    log_filename: <span class="prelude-ty">Option</span>&lt;CString&gt;,
+    platform_name: <span class="prelude-ty">Option</span>&lt;CString&gt;,
+    renderer_name: <span class="prelude-ty">Option</span>&lt;CString&gt;,
+    <span class="comment">// we need to box this because we hand imgui a pointer to it,
+    // and we don&#39;t want to deal with finding `clipboard_ctx`.
+    // we also put it in an unsafecell since we&#39;re going to give
+    // imgui a mutable pointer to it.
+    </span>clipboard_ctx: Box&lt;UnsafeCell&lt;ClipboardContext&gt;&gt;,
 }
 
-<span class="comment">// This mutex needs to be used to guard all public functions that can affect the underlying</span>
-<span class="comment">// Dear ImGui active context</span>
-<span class="kw">static</span> <span class="ident">CTX_MUTEX</span>: <span class="ident">ReentrantMutex</span><span class="op">&lt;</span>()<span class="op">&gt;</span> <span class="op">=</span> <span class="ident">parking_lot::const_reentrant_mutex</span>(());
+<span class="comment">// This mutex needs to be used to guard all public functions that can affect the underlying
+// Dear ImGui active context
+</span><span class="kw">static </span>CTX_MUTEX: ReentrantMutex&lt;()&gt; = parking_lot::const_reentrant_mutex(());
 
-<span class="kw">fn</span> <span class="ident">clear_current_context</span>() {
-    <span class="kw">unsafe</span> {
-        <span class="ident">sys::igSetCurrentContext</span>(<span class="ident">ptr::null_mut</span>());
+<span class="kw">fn </span>clear_current_context() {
+    <span class="kw">unsafe </span>{
+        sys::igSetCurrentContext(ptr::null_mut());
     }
 }
-<span class="kw">fn</span> <span class="ident">no_current_context</span>() -&gt; <span class="ident">bool</span> {
-    <span class="kw">let</span> <span class="ident">ctx</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">sys::igGetCurrentContext</span>() };
-    <span class="ident">ctx</span>.<span class="ident">is_null</span>()
+<span class="kw">fn </span>no_current_context() -&gt; bool {
+    <span class="kw">let </span>ctx = <span class="kw">unsafe </span>{ sys::igGetCurrentContext() };
+    ctx.is_null()
 }
 
-<span class="kw">impl</span> <span class="ident">Context</span> {
-    <span class="doccomment">/// Creates a new active imgui-rs context.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Panics</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Panics if an active context already exists</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;CreateContext&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">create</span>() -&gt; <span class="self">Self</span> {
-        <span class="ident"><span class="self">Self</span>::create_internal</span>(<span class="prelude-val">None</span>)
+<span class="kw">impl </span>Context {
+    <span class="doccomment">/// Creates a new active imgui-rs context.
+    ///
+    /// # Panics
+    ///
+    /// Panics if an active context already exists
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;CreateContext&quot;</span>)]
+    </span><span class="kw">pub fn </span>create() -&gt; <span class="self">Self </span>{
+        <span class="self">Self</span>::create_internal(<span class="prelude-val">None</span>)
     }
-    <span class="doccomment">/// Creates a new active imgui-rs context with a shared font atlas.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Panics</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Panics if an active context already exists</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;CreateContext&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">create_with_shared_font_atlas</span>(<span class="ident">shared_font_atlas</span>: <span class="ident">Rc</span><span class="op">&lt;</span><span class="ident">RefCell</span><span class="op">&lt;</span><span class="ident">SharedFontAtlas</span><span class="op">&gt;</span><span class="op">&gt;</span>) -&gt; <span class="self">Self</span> {
-        <span class="ident"><span class="self">Self</span>::create_internal</span>(<span class="prelude-val">Some</span>(<span class="ident">shared_font_atlas</span>))
+    <span class="doccomment">/// Creates a new active imgui-rs context with a shared font atlas.
+    ///
+    /// # Panics
+    ///
+    /// Panics if an active context already exists
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;CreateContext&quot;</span>)]
+    </span><span class="kw">pub fn </span>create_with_shared_font_atlas(shared_font_atlas: Rc&lt;RefCell&lt;SharedFontAtlas&gt;&gt;) -&gt; <span class="self">Self </span>{
+        <span class="self">Self</span>::create_internal(<span class="prelude-val">Some</span>(shared_font_atlas))
     }
-    <span class="doccomment">/// Gets the current context</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">current</span>() -&gt; <span class="self">Self</span> {
-        <span class="kw">let</span> <span class="ident">ctx</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">sys::igGetCurrentContext</span>() };
-        <span class="self">Self</span> {
-            <span class="ident">raw</span>: <span class="ident">ctx</span>,
-            <span class="ident">shared_font_atlas</span>: <span class="prelude-val">None</span>,
-            <span class="ident">ini_filename</span>: <span class="prelude-val">None</span>,
-            <span class="ident">log_filename</span>: <span class="prelude-val">None</span>,
-            <span class="ident">platform_name</span>: <span class="prelude-val">None</span>,
-            <span class="ident">renderer_name</span>: <span class="prelude-val">None</span>,
-            <span class="ident">clipboard_ctx</span>: <span class="ident">Box::new</span>(<span class="ident">ClipboardContext::dummy</span>().<span class="ident">into</span>()),
+    <span class="doccomment">/// Gets the current context
+    </span><span class="kw">pub fn </span>current() -&gt; <span class="self">Self </span>{
+        <span class="kw">let </span>ctx = <span class="kw">unsafe </span>{ sys::igGetCurrentContext() };
+        <span class="self">Self </span>{
+            raw: ctx,
+            shared_font_atlas: <span class="prelude-val">None</span>,
+            ini_filename: <span class="prelude-val">None</span>,
+            log_filename: <span class="prelude-val">None</span>,
+            platform_name: <span class="prelude-val">None</span>,
+            renderer_name: <span class="prelude-val">None</span>,
+            clipboard_ctx: Box::new(ClipboardContext::dummy().into()),
         }
     }
-    <span class="doccomment">/// Suspends this context so another context can be the active context.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;CreateContext&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">suspend</span>(<span class="self">self</span>) -&gt; <span class="ident">SuspendedContext</span> {
-        <span class="kw">let</span> <span class="ident">_guard</span> <span class="op">=</span> <span class="ident">CTX_MUTEX</span>.<span class="ident">lock</span>();
+    <span class="doccomment">/// Suspends this context so another context can be the active context.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;CreateContext&quot;</span>)]
+    </span><span class="kw">pub fn </span>suspend(<span class="self">self</span>) -&gt; SuspendedContext {
+        <span class="kw">let </span>_guard = CTX_MUTEX.lock();
         <span class="macro">assert!</span>(
-            <span class="self">self</span>.<span class="ident">is_current_context</span>(),
-            <span class="string">&quot;context to be suspended is not the active context&quot;</span>
-        );
-        <span class="ident">clear_current_context</span>();
-        <span class="ident">SuspendedContext</span>(<span class="self">self</span>)
+            <span class="self">self</span>.is_current_context(),
+            <span class="string">&quot;context to be suspended is not the active context&quot;
+        </span>);
+        clear_current_context();
+        SuspendedContext(<span class="self">self</span>)
     }
-    <span class="doccomment">/// Returns the path to the ini file, or None if not set</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ini_filename</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">PathBuf</span><span class="op">&gt;</span> {
-        <span class="kw">let</span> <span class="ident">io</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">io</span>();
-        <span class="kw">if</span> <span class="ident">io</span>.<span class="ident">ini_filename</span>.<span class="ident">is_null</span>() {
-            <span class="prelude-val">None</span>
-        } <span class="kw">else</span> {
-            <span class="kw">let</span> <span class="ident">s</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">CStr::from_ptr</span>(<span class="ident">io</span>.<span class="ident">ini_filename</span>) };
-            <span class="prelude-val">Some</span>(<span class="ident">PathBuf::from</span>(<span class="ident">s</span>.<span class="ident">to_str</span>().<span class="ident">ok</span>()<span class="question-mark">?</span>))
+    <span class="doccomment">/// Returns the path to the ini file, or None if not set
+    </span><span class="kw">pub fn </span>ini_filename(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;PathBuf&gt; {
+        <span class="kw">let </span>io = <span class="self">self</span>.io();
+        <span class="kw">if </span>io.ini_filename.is_null() {
+            <span class="prelude-val">None
+        </span>} <span class="kw">else </span>{
+            <span class="kw">let </span>s = <span class="kw">unsafe </span>{ CStr::from_ptr(io.ini_filename) };
+            <span class="prelude-val">Some</span>(PathBuf::from(s.to_str().ok()<span class="question-mark">?</span>))
         }
     }
-    <span class="doccomment">/// Sets the path to the ini file (default is &quot;imgui.ini&quot;)</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Pass None to disable automatic .Ini saving.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_ini_filename</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">PathBuf</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">ini_filename</span>: <span class="ident">T</span>) {
-        <span class="kw">let</span> <span class="ident">ini_filename</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">PathBuf</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">ini_filename</span>.<span class="ident">into</span>();
-        <span class="kw">let</span> <span class="ident">ini_filename</span> <span class="op">=</span> <span class="ident">ini_filename</span>.<span class="ident">and_then</span>(<span class="op">|</span><span class="ident">v</span><span class="op">|</span> <span class="ident">CString::new</span>(<span class="ident">v</span>.<span class="ident">to_str</span>()<span class="question-mark">?</span>).<span class="ident">ok</span>());
+    <span class="doccomment">/// Sets the path to the ini file (default is &quot;imgui.ini&quot;)
+    ///
+    /// Pass None to disable automatic .Ini saving.
+    </span><span class="kw">pub fn </span>set_ini_filename&lt;T: Into&lt;<span class="prelude-ty">Option</span>&lt;PathBuf&gt;&gt;&gt;(<span class="kw-2">&amp;mut </span><span class="self">self</span>, ini_filename: T) {
+        <span class="kw">let </span>ini_filename: <span class="prelude-ty">Option</span>&lt;PathBuf&gt; = ini_filename.into();
+        <span class="kw">let </span>ini_filename = ini_filename.and_then(|v| CString::new(v.to_str()<span class="question-mark">?</span>).ok());
 
-        <span class="self">self</span>.<span class="ident">io_mut</span>().<span class="ident">ini_filename</span> <span class="op">=</span> <span class="ident">ini_filename</span>
-            .<span class="ident">as_ref</span>()
-            .<span class="ident">map</span>(<span class="op">|</span><span class="ident">x</span><span class="op">|</span> <span class="ident">x</span>.<span class="ident">as_ptr</span>())
-            .<span class="ident">unwrap_or</span>(<span class="ident">ptr::null</span>());
-        <span class="self">self</span>.<span class="ident">ini_filename</span> <span class="op">=</span> <span class="ident">ini_filename</span>;
+        <span class="self">self</span>.io_mut().ini_filename = ini_filename
+            .as_ref()
+            .map(|x| x.as_ptr())
+            .unwrap_or(ptr::null());
+        <span class="self">self</span>.ini_filename = ini_filename;
     }
-    <span class="doccomment">/// Returns the path to the log file, or None if not set</span>
-    <span class="comment">// TODO: why do we return an `Option&lt;PathBuf&gt;` instead of an `Option&lt;&amp;Path&gt;`?</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">log_filename</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">PathBuf</span><span class="op">&gt;</span> {
-        <span class="kw">let</span> <span class="ident">io</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">io</span>();
-        <span class="kw">if</span> <span class="ident">io</span>.<span class="ident">log_filename</span>.<span class="ident">is_null</span>() {
-            <span class="prelude-val">None</span>
-        } <span class="kw">else</span> {
-            <span class="kw">let</span> <span class="ident">cstr</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">CStr::from_ptr</span>(<span class="ident">io</span>.<span class="ident">log_filename</span>) };
-            <span class="prelude-val">Some</span>(<span class="ident">PathBuf::from</span>(<span class="ident">cstr</span>.<span class="ident">to_str</span>().<span class="ident">ok</span>()<span class="question-mark">?</span>))
+    <span class="doccomment">/// Returns the path to the log file, or None if not set
+    </span><span class="comment">// TODO: why do we return an `Option&lt;PathBuf&gt;` instead of an `Option&lt;&amp;Path&gt;`?
+    </span><span class="kw">pub fn </span>log_filename(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;PathBuf&gt; {
+        <span class="kw">let </span>io = <span class="self">self</span>.io();
+        <span class="kw">if </span>io.log_filename.is_null() {
+            <span class="prelude-val">None
+        </span>} <span class="kw">else </span>{
+            <span class="kw">let </span>cstr = <span class="kw">unsafe </span>{ CStr::from_ptr(io.log_filename) };
+            <span class="prelude-val">Some</span>(PathBuf::from(cstr.to_str().ok()<span class="question-mark">?</span>))
         }
     }
-    <span class="doccomment">/// Sets the log filename (default is &quot;imgui_log.txt&quot;).</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_log_filename</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">PathBuf</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">log_filename</span>: <span class="ident">T</span>) {
-        <span class="kw">let</span> <span class="ident">log_filename</span> <span class="op">=</span> <span class="ident">log_filename</span>
-            .<span class="ident">into</span>()
-            .<span class="ident">and_then</span>(<span class="op">|</span><span class="ident">v</span><span class="op">|</span> <span class="ident">CString::new</span>(<span class="ident">v</span>.<span class="ident">to_str</span>()<span class="question-mark">?</span>).<span class="ident">ok</span>());
+    <span class="doccomment">/// Sets the log filename (default is &quot;imgui_log.txt&quot;).
+    </span><span class="kw">pub fn </span>set_log_filename&lt;T: Into&lt;<span class="prelude-ty">Option</span>&lt;PathBuf&gt;&gt;&gt;(<span class="kw-2">&amp;mut </span><span class="self">self</span>, log_filename: T) {
+        <span class="kw">let </span>log_filename = log_filename
+            .into()
+            .and_then(|v| CString::new(v.to_str()<span class="question-mark">?</span>).ok());
 
-        <span class="self">self</span>.<span class="ident">io_mut</span>().<span class="ident">log_filename</span> <span class="op">=</span> <span class="ident">log_filename</span>
-            .<span class="ident">as_ref</span>()
-            .<span class="ident">map</span>(<span class="op">|</span><span class="ident">x</span><span class="op">|</span> <span class="ident">x</span>.<span class="ident">as_ptr</span>())
-            .<span class="ident">unwrap_or</span>(<span class="ident">ptr::null</span>());
-        <span class="self">self</span>.<span class="ident">log_filename</span> <span class="op">=</span> <span class="ident">log_filename</span>;
+        <span class="self">self</span>.io_mut().log_filename = log_filename
+            .as_ref()
+            .map(|x| x.as_ptr())
+            .unwrap_or(ptr::null());
+        <span class="self">self</span>.log_filename = log_filename;
     }
-    <span class="doccomment">/// Returns the backend platform name, or None if not set</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">platform_name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">&gt;</span> {
-        <span class="kw">let</span> <span class="ident">io</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">io</span>();
-        <span class="kw">if</span> <span class="ident">io</span>.<span class="ident">backend_platform_name</span>.<span class="ident">is_null</span>() {
-            <span class="prelude-val">None</span>
-        } <span class="kw">else</span> {
-            <span class="kw">let</span> <span class="ident">cstr</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">CStr::from_ptr</span>(<span class="ident">io</span>.<span class="ident">backend_platform_name</span>) };
-            <span class="ident">cstr</span>.<span class="ident">to_str</span>().<span class="ident">ok</span>()
+    <span class="doccomment">/// Returns the backend platform name, or None if not set
+    </span><span class="kw">pub fn </span>platform_name(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>str&gt; {
+        <span class="kw">let </span>io = <span class="self">self</span>.io();
+        <span class="kw">if </span>io.backend_platform_name.is_null() {
+            <span class="prelude-val">None
+        </span>} <span class="kw">else </span>{
+            <span class="kw">let </span>cstr = <span class="kw">unsafe </span>{ CStr::from_ptr(io.backend_platform_name) };
+            cstr.to_str().ok()
         }
     }
-    <span class="doccomment">/// Sets the backend platform name</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_platform_name</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">platform_name</span>: <span class="ident">T</span>) {
-        <span class="kw">let</span> <span class="ident">platform_name</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">CString</span><span class="op">&gt;</span> <span class="op">=</span>
-            <span class="ident">platform_name</span>.<span class="ident">into</span>().<span class="ident">and_then</span>(<span class="op">|</span><span class="ident">v</span><span class="op">|</span> <span class="ident">CString::new</span>(<span class="ident">v</span>).<span class="ident">ok</span>());
-        <span class="self">self</span>.<span class="ident">io_mut</span>().<span class="ident">backend_platform_name</span> <span class="op">=</span> <span class="ident">platform_name</span>
-            .<span class="ident">as_ref</span>()
-            .<span class="ident">map</span>(<span class="op">|</span><span class="ident">x</span><span class="op">|</span> <span class="ident">x</span>.<span class="ident">as_ptr</span>())
-            .<span class="ident">unwrap_or</span>(<span class="ident">ptr::null</span>());
-        <span class="self">self</span>.<span class="ident">platform_name</span> <span class="op">=</span> <span class="ident">platform_name</span>;
+    <span class="doccomment">/// Sets the backend platform name
+    </span><span class="kw">pub fn </span>set_platform_name&lt;T: Into&lt;<span class="prelude-ty">Option</span>&lt;String&gt;&gt;&gt;(<span class="kw-2">&amp;mut </span><span class="self">self</span>, platform_name: T) {
+        <span class="kw">let </span>platform_name: <span class="prelude-ty">Option</span>&lt;CString&gt; =
+            platform_name.into().and_then(|v| CString::new(v).ok());
+        <span class="self">self</span>.io_mut().backend_platform_name = platform_name
+            .as_ref()
+            .map(|x| x.as_ptr())
+            .unwrap_or(ptr::null());
+        <span class="self">self</span>.platform_name = platform_name;
     }
-    <span class="doccomment">/// Returns the backend renderer name, or None if not set</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">renderer_name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">&gt;</span> {
-        <span class="kw">let</span> <span class="ident">io</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">io</span>();
-        <span class="kw">if</span> <span class="ident">io</span>.<span class="ident">backend_renderer_name</span>.<span class="ident">is_null</span>() {
-            <span class="prelude-val">None</span>
-        } <span class="kw">else</span> {
-            <span class="kw">let</span> <span class="ident">cstr</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">CStr::from_ptr</span>(<span class="ident">io</span>.<span class="ident">backend_renderer_name</span>) };
-            <span class="ident">cstr</span>.<span class="ident">to_str</span>().<span class="ident">ok</span>()
+    <span class="doccomment">/// Returns the backend renderer name, or None if not set
+    </span><span class="kw">pub fn </span>renderer_name(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>str&gt; {
+        <span class="kw">let </span>io = <span class="self">self</span>.io();
+        <span class="kw">if </span>io.backend_renderer_name.is_null() {
+            <span class="prelude-val">None
+        </span>} <span class="kw">else </span>{
+            <span class="kw">let </span>cstr = <span class="kw">unsafe </span>{ CStr::from_ptr(io.backend_renderer_name) };
+            cstr.to_str().ok()
         }
     }
-    <span class="doccomment">/// Sets the backend renderer name</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_renderer_name</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">renderer_name</span>: <span class="ident">T</span>) {
-        <span class="kw">let</span> <span class="ident">renderer_name</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">CString</span><span class="op">&gt;</span> <span class="op">=</span>
-            <span class="ident">renderer_name</span>.<span class="ident">into</span>().<span class="ident">and_then</span>(<span class="op">|</span><span class="ident">v</span><span class="op">|</span> <span class="ident">CString::new</span>(<span class="ident">v</span>).<span class="ident">ok</span>());
+    <span class="doccomment">/// Sets the backend renderer name
+    </span><span class="kw">pub fn </span>set_renderer_name&lt;T: Into&lt;<span class="prelude-ty">Option</span>&lt;String&gt;&gt;&gt;(<span class="kw-2">&amp;mut </span><span class="self">self</span>, renderer_name: T) {
+        <span class="kw">let </span>renderer_name: <span class="prelude-ty">Option</span>&lt;CString&gt; =
+            renderer_name.into().and_then(|v| CString::new(v).ok());
 
-        <span class="self">self</span>.<span class="ident">io_mut</span>().<span class="ident">backend_renderer_name</span> <span class="op">=</span> <span class="ident">renderer_name</span>
-            .<span class="ident">as_ref</span>()
-            .<span class="ident">map</span>(<span class="op">|</span><span class="ident">x</span><span class="op">|</span> <span class="ident">x</span>.<span class="ident">as_ptr</span>())
-            .<span class="ident">unwrap_or</span>(<span class="ident">ptr::null</span>());
+        <span class="self">self</span>.io_mut().backend_renderer_name = renderer_name
+            .as_ref()
+            .map(|x| x.as_ptr())
+            .unwrap_or(ptr::null());
 
-        <span class="self">self</span>.<span class="ident">renderer_name</span> <span class="op">=</span> <span class="ident">renderer_name</span>;
+        <span class="self">self</span>.renderer_name = renderer_name;
     }
-    <span class="doccomment">/// Loads settings from a string slice containing settings in .Ini file format</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;LoadIniSettingsFromMemory&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">load_ini_settings</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">data</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igLoadIniSettingsFromMemory</span>(<span class="ident">data</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw-2">*const</span> <span class="kw">_</span>, <span class="ident">data</span>.<span class="ident">len</span>()) }
+    <span class="doccomment">/// Loads settings from a string slice containing settings in .Ini file format
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;LoadIniSettingsFromMemory&quot;</span>)]
+    </span><span class="kw">pub fn </span>load_ini_settings(<span class="kw-2">&amp;mut </span><span class="self">self</span>, data: <span class="kw-2">&amp;</span>str) {
+        <span class="kw">unsafe </span>{ sys::igLoadIniSettingsFromMemory(data.as_ptr() <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>, data.len()) }
     }
-    <span class="doccomment">/// Saves settings to a mutable string buffer in .Ini file format</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;SaveInitSettingsToMemory&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">save_ini_settings</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">buf</span>: <span class="kw-2">&amp;mut</span> <span class="ident">String</span>) {
-        <span class="kw">let</span> <span class="ident">data</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">CStr::from_ptr</span>(<span class="ident">sys::igSaveIniSettingsToMemory</span>(<span class="ident">ptr::null_mut</span>())) };
-        <span class="ident">buf</span>.<span class="ident">push_str</span>(<span class="kw-2">&amp;</span><span class="ident">data</span>.<span class="ident">to_string_lossy</span>());
+    <span class="doccomment">/// Saves settings to a mutable string buffer in .Ini file format
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;SaveInitSettingsToMemory&quot;</span>)]
+    </span><span class="kw">pub fn </span>save_ini_settings(<span class="kw-2">&amp;mut </span><span class="self">self</span>, buf: <span class="kw-2">&amp;mut </span>String) {
+        <span class="kw">let </span>data = <span class="kw">unsafe </span>{ CStr::from_ptr(sys::igSaveIniSettingsToMemory(ptr::null_mut())) };
+        buf.push_str(<span class="kw-2">&amp;</span>data.to_string_lossy());
     }
-    <span class="doccomment">/// Sets the clipboard backend used for clipboard operations</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_clipboard_backend</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">ClipboardBackend</span><span class="op">&gt;</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">backend</span>: <span class="ident">T</span>) {
-        <span class="kw">let</span> <span class="ident">clipboard_ctx</span>: <span class="ident">Box</span><span class="op">&lt;</span><span class="ident">UnsafeCell</span><span class="op">&lt;</span><span class="kw">_</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">Box::new</span>(<span class="ident">ClipboardContext::new</span>(<span class="ident">backend</span>).<span class="ident">into</span>());
-        <span class="kw">let</span> <span class="ident">io</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">io_mut</span>();
-        <span class="ident">io</span>.<span class="ident">set_clipboard_text_fn</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident"><span class="kw">crate</span>::clipboard::set_clipboard_text</span>);
-        <span class="ident">io</span>.<span class="ident">get_clipboard_text_fn</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident"><span class="kw">crate</span>::clipboard::get_clipboard_text</span>);
+    <span class="doccomment">/// Sets the clipboard backend used for clipboard operations
+    </span><span class="kw">pub fn </span>set_clipboard_backend&lt;T: ClipboardBackend&gt;(<span class="kw-2">&amp;mut </span><span class="self">self</span>, backend: T) {
+        <span class="kw">let </span>clipboard_ctx: Box&lt;UnsafeCell&lt;<span class="kw">_</span>&gt;&gt; = Box::new(ClipboardContext::new(backend).into());
+        <span class="kw">let </span>io = <span class="self">self</span>.io_mut();
+        io.set_clipboard_text_fn = <span class="prelude-val">Some</span>(<span class="kw">crate</span>::clipboard::set_clipboard_text);
+        io.get_clipboard_text_fn = <span class="prelude-val">Some</span>(<span class="kw">crate</span>::clipboard::get_clipboard_text);
 
-        <span class="ident">io</span>.<span class="ident">clipboard_user_data</span> <span class="op">=</span> <span class="ident">clipboard_ctx</span>.<span class="ident">get</span>() <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="kw">_</span>;
-        <span class="self">self</span>.<span class="ident">clipboard_ctx</span> <span class="op">=</span> <span class="ident">clipboard_ctx</span>;
+        io.clipboard_user_data = clipboard_ctx.get() <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>;
+        <span class="self">self</span>.clipboard_ctx = clipboard_ctx;
     }
-    <span class="kw">fn</span> <span class="ident">create_internal</span>(<span class="ident">shared_font_atlas</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Rc</span><span class="op">&lt;</span><span class="ident">RefCell</span><span class="op">&lt;</span><span class="ident">SharedFontAtlas</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span>) -&gt; <span class="self">Self</span> {
-        <span class="kw">let</span> <span class="ident">_guard</span> <span class="op">=</span> <span class="ident">CTX_MUTEX</span>.<span class="ident">lock</span>();
+    <span class="kw">fn </span>create_internal(shared_font_atlas: <span class="prelude-ty">Option</span>&lt;Rc&lt;RefCell&lt;SharedFontAtlas&gt;&gt;&gt;) -&gt; <span class="self">Self </span>{
+        <span class="kw">let </span>_guard = CTX_MUTEX.lock();
         <span class="macro">assert!</span>(
-            <span class="ident">no_current_context</span>(),
-            <span class="string">&quot;A new active context cannot be created, because another one already exists&quot;</span>
-        );
+            no_current_context(),
+            <span class="string">&quot;A new active context cannot be created, because another one already exists&quot;
+        </span>);
 
-        <span class="kw">let</span> <span class="ident">shared_font_atlas_ptr</span> <span class="op">=</span> <span class="kw">match</span> <span class="kw-2">&amp;</span><span class="ident">shared_font_atlas</span> {
-            <span class="prelude-val">Some</span>(<span class="ident">shared_font_atlas</span>) =&gt; {
-                <span class="kw">let</span> <span class="ident">borrowed_font_atlas</span> <span class="op">=</span> <span class="ident">shared_font_atlas</span>.<span class="ident">borrow</span>();
-                <span class="ident">borrowed_font_atlas</span>.<span class="number">0</span>
-            }
-            <span class="prelude-val">None</span> =&gt; <span class="ident">ptr::null_mut</span>(),
+        <span class="kw">let </span>shared_font_atlas_ptr = <span class="kw">match </span><span class="kw-2">&amp;</span>shared_font_atlas {
+            <span class="prelude-val">Some</span>(shared_font_atlas) =&gt; {
+                <span class="kw">let </span>borrowed_font_atlas = shared_font_atlas.borrow();
+                borrowed_font_atlas.<span class="number">0
+            </span>}
+            <span class="prelude-val">None </span>=&gt; ptr::null_mut(),
         };
-        <span class="comment">// Dear ImGui implicitly sets the current context during igCreateContext if the current</span>
-        <span class="comment">// context doesn&#39;t exist</span>
-        <span class="kw">let</span> <span class="ident">raw</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">sys::igCreateContext</span>(<span class="ident">shared_font_atlas_ptr</span>) };
+        <span class="comment">// Dear ImGui implicitly sets the current context during igCreateContext if the current
+        // context doesn&#39;t exist
+        </span><span class="kw">let </span>raw = <span class="kw">unsafe </span>{ sys::igCreateContext(shared_font_atlas_ptr) };
 
-        <span class="ident">Context</span> {
-            <span class="ident">raw</span>,
-            <span class="ident">shared_font_atlas</span>,
-            <span class="ident">ini_filename</span>: <span class="prelude-val">None</span>,
-            <span class="ident">log_filename</span>: <span class="prelude-val">None</span>,
-            <span class="ident">platform_name</span>: <span class="prelude-val">None</span>,
-            <span class="ident">renderer_name</span>: <span class="prelude-val">None</span>,
-            <span class="ident">clipboard_ctx</span>: <span class="ident">Box::new</span>(<span class="ident">ClipboardContext::dummy</span>().<span class="ident">into</span>()),
+        Context {
+            raw,
+            shared_font_atlas,
+            ini_filename: <span class="prelude-val">None</span>,
+            log_filename: <span class="prelude-val">None</span>,
+            platform_name: <span class="prelude-val">None</span>,
+            renderer_name: <span class="prelude-val">None</span>,
+            clipboard_ctx: Box::new(ClipboardContext::dummy().into()),
         }
     }
-    <span class="kw">fn</span> <span class="ident">is_current_context</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
-        <span class="kw">let</span> <span class="ident">ctx</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">sys::igGetCurrentContext</span>() };
-        <span class="self">self</span>.<span class="ident">raw</span> <span class="op">==</span> <span class="ident">ctx</span>
+    <span class="kw">fn </span>is_current_context(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        <span class="kw">let </span>ctx = <span class="kw">unsafe </span>{ sys::igGetCurrentContext() };
+        <span class="self">self</span>.raw == ctx
     }
 }
 
-<span class="kw">impl</span> <span class="ident">Drop</span> <span class="kw">for</span> <span class="ident">Context</span> {
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;DestroyContext&quot;</span>)]</span>
-    <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
-        <span class="kw">let</span> <span class="ident">_guard</span> <span class="op">=</span> <span class="ident">CTX_MUTEX</span>.<span class="ident">lock</span>();
-        <span class="comment">// If this context is the active context, Dear ImGui automatically deactivates it during</span>
-        <span class="comment">// destruction</span>
-        <span class="kw">unsafe</span> {
-            <span class="ident">sys::igDestroyContext</span>(<span class="self">self</span>.<span class="ident">raw</span>);
+<span class="kw">impl </span>Drop <span class="kw">for </span>Context {
+    <span class="attribute">#[doc(alias = <span class="string">&quot;DestroyContext&quot;</span>)]
+    </span><span class="kw">fn </span>drop(<span class="kw-2">&amp;mut </span><span class="self">self</span>) {
+        <span class="kw">let </span>_guard = CTX_MUTEX.lock();
+        <span class="comment">// If this context is the active context, Dear ImGui automatically deactivates it during
+        // destruction
+        </span><span class="kw">unsafe </span>{
+            sys::igDestroyContext(<span class="self">self</span>.raw);
         }
     }
 }
 
-<span class="doccomment">/// A suspended imgui-rs context.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// A suspended context retains its state, but is not usable without activating it first.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # Examples</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// Suspended contexts are not directly very useful, but you can activate them:</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// ```</span>
-<span class="doccomment">/// let suspended = arcdps_imgui::SuspendedContext::create();</span>
-<span class="doccomment">/// match suspended.activate() {</span>
-<span class="doccomment">///   Ok(ctx) =&gt; {</span>
-<span class="doccomment">///     // ctx is now the active context</span>
-<span class="doccomment">///   },</span>
-<span class="doccomment">///   Err(suspended) =&gt; {</span>
-<span class="doccomment">///     // activation failed, so you get the suspended context back</span>
-<span class="doccomment">///   }</span>
-<span class="doccomment">/// }</span>
-<span class="doccomment">/// ```</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">SuspendedContext</span>(<span class="ident">Context</span>);
+<span class="doccomment">/// A suspended imgui-rs context.
+///
+/// A suspended context retains its state, but is not usable without activating it first.
+///
+/// # Examples
+///
+/// Suspended contexts are not directly very useful, but you can activate them:
+///
+/// ```
+/// let suspended = arcdps_imgui::SuspendedContext::create();
+/// match suspended.activate() {
+///   Ok(ctx) =&gt; {
+///     // ctx is now the active context
+///   },
+///   Err(suspended) =&gt; {
+///     // activation failed, so you get the suspended context back
+///   }
+/// }
+/// ```
+</span><span class="attribute">#[derive(Debug)]
+</span><span class="kw">pub struct </span>SuspendedContext(Context);
 
-<span class="kw">impl</span> <span class="ident">SuspendedContext</span> {
-    <span class="doccomment">/// Creates a new suspended imgui-rs context.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;CreateContext&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">create</span>() -&gt; <span class="self">Self</span> {
-        <span class="ident"><span class="self">Self</span>::create_internal</span>(<span class="prelude-val">None</span>)
+<span class="kw">impl </span>SuspendedContext {
+    <span class="doccomment">/// Creates a new suspended imgui-rs context.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;CreateContext&quot;</span>)]
+    </span><span class="kw">pub fn </span>create() -&gt; <span class="self">Self </span>{
+        <span class="self">Self</span>::create_internal(<span class="prelude-val">None</span>)
     }
-    <span class="doccomment">/// Creates a new suspended imgui-rs context with a shared font atlas.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">create_with_shared_font_atlas</span>(<span class="ident">shared_font_atlas</span>: <span class="ident">Rc</span><span class="op">&lt;</span><span class="ident">RefCell</span><span class="op">&lt;</span><span class="ident">SharedFontAtlas</span><span class="op">&gt;</span><span class="op">&gt;</span>) -&gt; <span class="self">Self</span> {
-        <span class="ident"><span class="self">Self</span>::create_internal</span>(<span class="prelude-val">Some</span>(<span class="ident">shared_font_atlas</span>))
+    <span class="doccomment">/// Creates a new suspended imgui-rs context with a shared font atlas.
+    </span><span class="kw">pub fn </span>create_with_shared_font_atlas(shared_font_atlas: Rc&lt;RefCell&lt;SharedFontAtlas&gt;&gt;) -&gt; <span class="self">Self </span>{
+        <span class="self">Self</span>::create_internal(<span class="prelude-val">Some</span>(shared_font_atlas))
     }
-    <span class="doccomment">/// Attempts to activate this suspended context.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// If there is no active context, this suspended context is activated and `Ok` is returned,</span>
-    <span class="doccomment">/// containing the activated context.</span>
-    <span class="doccomment">/// If there is already an active context, nothing happens and `Err` is returned, containing</span>
-    <span class="doccomment">/// the original suspended context.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;SetCurrentContext&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">activate</span>(<span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Context</span>, <span class="ident">SuspendedContext</span><span class="op">&gt;</span> {
-        <span class="kw">let</span> <span class="ident">_guard</span> <span class="op">=</span> <span class="ident">CTX_MUTEX</span>.<span class="ident">lock</span>();
-        <span class="kw">if</span> <span class="ident">no_current_context</span>() {
-            <span class="kw">unsafe</span> {
-                <span class="ident">sys::igSetCurrentContext</span>(<span class="self">self</span>.<span class="number">0</span>.<span class="ident">raw</span>);
+    <span class="doccomment">/// Attempts to activate this suspended context.
+    ///
+    /// If there is no active context, this suspended context is activated and `Ok` is returned,
+    /// containing the activated context.
+    /// If there is already an active context, nothing happens and `Err` is returned, containing
+    /// the original suspended context.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;SetCurrentContext&quot;</span>)]
+    </span><span class="kw">pub fn </span>activate(<span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;Context, SuspendedContext&gt; {
+        <span class="kw">let </span>_guard = CTX_MUTEX.lock();
+        <span class="kw">if </span>no_current_context() {
+            <span class="kw">unsafe </span>{
+                sys::igSetCurrentContext(<span class="self">self</span>.<span class="number">0</span>.raw);
             }
             <span class="prelude-val">Ok</span>(<span class="self">self</span>.<span class="number">0</span>)
-        } <span class="kw">else</span> {
+        } <span class="kw">else </span>{
             <span class="prelude-val">Err</span>(<span class="self">self</span>)
         }
     }
-    <span class="kw">fn</span> <span class="ident">create_internal</span>(<span class="ident">shared_font_atlas</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Rc</span><span class="op">&lt;</span><span class="ident">RefCell</span><span class="op">&lt;</span><span class="ident">SharedFontAtlas</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span>) -&gt; <span class="self">Self</span> {
-        <span class="kw">let</span> <span class="ident">_guard</span> <span class="op">=</span> <span class="ident">CTX_MUTEX</span>.<span class="ident">lock</span>();
-        <span class="kw">let</span> <span class="ident">raw</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">sys::igCreateContext</span>(<span class="ident">ptr::null_mut</span>()) };
-        <span class="kw">let</span> <span class="ident">ctx</span> <span class="op">=</span> <span class="ident">Context</span> {
-            <span class="ident">raw</span>,
-            <span class="ident">shared_font_atlas</span>,
-            <span class="ident">ini_filename</span>: <span class="prelude-val">None</span>,
-            <span class="ident">log_filename</span>: <span class="prelude-val">None</span>,
-            <span class="ident">platform_name</span>: <span class="prelude-val">None</span>,
-            <span class="ident">renderer_name</span>: <span class="prelude-val">None</span>,
-            <span class="ident">clipboard_ctx</span>: <span class="ident">Box::new</span>(<span class="ident">ClipboardContext::dummy</span>().<span class="ident">into</span>()),
+    <span class="kw">fn </span>create_internal(shared_font_atlas: <span class="prelude-ty">Option</span>&lt;Rc&lt;RefCell&lt;SharedFontAtlas&gt;&gt;&gt;) -&gt; <span class="self">Self </span>{
+        <span class="kw">let </span>_guard = CTX_MUTEX.lock();
+        <span class="kw">let </span>raw = <span class="kw">unsafe </span>{ sys::igCreateContext(ptr::null_mut()) };
+        <span class="kw">let </span>ctx = Context {
+            raw,
+            shared_font_atlas,
+            ini_filename: <span class="prelude-val">None</span>,
+            log_filename: <span class="prelude-val">None</span>,
+            platform_name: <span class="prelude-val">None</span>,
+            renderer_name: <span class="prelude-val">None</span>,
+            clipboard_ctx: Box::new(ClipboardContext::dummy().into()),
         };
-        <span class="kw">if</span> <span class="ident">ctx</span>.<span class="ident">is_current_context</span>() {
-            <span class="comment">// Oops, the context was activated -&gt; deactivate</span>
-            <span class="ident">clear_current_context</span>();
+        <span class="kw">if </span>ctx.is_current_context() {
+            <span class="comment">// Oops, the context was activated -&gt; deactivate
+            </span>clear_current_context();
         }
-        <span class="ident">SuspendedContext</span>(<span class="ident">ctx</span>)
+        SuspendedContext(ctx)
     }
 }
 
-<span class="attribute">#[<span class="ident">test</span>]</span>
-<span class="kw">fn</span> <span class="ident">test_one_context</span>() {
-    <span class="kw">let</span> <span class="ident">_guard</span> <span class="op">=</span> <span class="ident"><span class="kw">crate</span>::test::TEST_MUTEX</span>.<span class="ident">lock</span>();
-    <span class="kw">let</span> <span class="ident">_ctx</span> <span class="op">=</span> <span class="ident">Context::create</span>();
-    <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">no_current_context</span>());
+<span class="attribute">#[test]
+</span><span class="kw">fn </span>test_one_context() {
+    <span class="kw">let </span>_guard = <span class="kw">crate</span>::test::TEST_MUTEX.lock();
+    <span class="kw">let </span>_ctx = Context::create();
+    <span class="macro">assert!</span>(!no_current_context());
 }
 
-<span class="attribute">#[<span class="ident">test</span>]</span>
-<span class="kw">fn</span> <span class="ident">test_drop_clears_current_context</span>() {
-    <span class="kw">let</span> <span class="ident">_guard</span> <span class="op">=</span> <span class="ident"><span class="kw">crate</span>::test::TEST_MUTEX</span>.<span class="ident">lock</span>();
+<span class="attribute">#[test]
+</span><span class="kw">fn </span>test_drop_clears_current_context() {
+    <span class="kw">let </span>_guard = <span class="kw">crate</span>::test::TEST_MUTEX.lock();
     {
-        <span class="kw">let</span> <span class="ident">_ctx1</span> <span class="op">=</span> <span class="ident">Context::create</span>();
-        <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">no_current_context</span>());
+        <span class="kw">let </span>_ctx1 = Context::create();
+        <span class="macro">assert!</span>(!no_current_context());
     }
-    <span class="macro">assert!</span>(<span class="ident">no_current_context</span>());
+    <span class="macro">assert!</span>(no_current_context());
     {
-        <span class="kw">let</span> <span class="ident">_ctx2</span> <span class="op">=</span> <span class="ident">Context::create</span>();
-        <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">no_current_context</span>());
+        <span class="kw">let </span>_ctx2 = Context::create();
+        <span class="macro">assert!</span>(!no_current_context());
     }
-    <span class="macro">assert!</span>(<span class="ident">no_current_context</span>());
+    <span class="macro">assert!</span>(no_current_context());
 }
 
-<span class="attribute">#[<span class="ident">test</span>]</span>
-<span class="kw">fn</span> <span class="ident">test_new_suspended</span>() {
-    <span class="kw">let</span> <span class="ident">_guard</span> <span class="op">=</span> <span class="ident"><span class="kw">crate</span>::test::TEST_MUTEX</span>.<span class="ident">lock</span>();
-    <span class="kw">let</span> <span class="ident">ctx</span> <span class="op">=</span> <span class="ident">Context::create</span>();
-    <span class="kw">let</span> <span class="ident">_suspended</span> <span class="op">=</span> <span class="ident">SuspendedContext::create</span>();
-    <span class="macro">assert!</span>(<span class="ident">ctx</span>.<span class="ident">is_current_context</span>());
-    <span class="ident">::std::mem::drop</span>(<span class="ident">_suspended</span>);
-    <span class="macro">assert!</span>(<span class="ident">ctx</span>.<span class="ident">is_current_context</span>());
+<span class="attribute">#[test]
+</span><span class="kw">fn </span>test_new_suspended() {
+    <span class="kw">let </span>_guard = <span class="kw">crate</span>::test::TEST_MUTEX.lock();
+    <span class="kw">let </span>ctx = Context::create();
+    <span class="kw">let </span>_suspended = SuspendedContext::create();
+    <span class="macro">assert!</span>(ctx.is_current_context());
+    ::std::mem::drop(_suspended);
+    <span class="macro">assert!</span>(ctx.is_current_context());
 }
 
-<span class="attribute">#[<span class="ident">test</span>]</span>
-<span class="kw">fn</span> <span class="ident">test_suspend</span>() {
-    <span class="kw">let</span> <span class="ident">_guard</span> <span class="op">=</span> <span class="ident"><span class="kw">crate</span>::test::TEST_MUTEX</span>.<span class="ident">lock</span>();
-    <span class="kw">let</span> <span class="ident">ctx</span> <span class="op">=</span> <span class="ident">Context::create</span>();
-    <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">no_current_context</span>());
-    <span class="kw">let</span> <span class="ident">_suspended</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">suspend</span>();
-    <span class="macro">assert!</span>(<span class="ident">no_current_context</span>());
-    <span class="kw">let</span> <span class="ident">_ctx2</span> <span class="op">=</span> <span class="ident">Context::create</span>();
+<span class="attribute">#[test]
+</span><span class="kw">fn </span>test_suspend() {
+    <span class="kw">let </span>_guard = <span class="kw">crate</span>::test::TEST_MUTEX.lock();
+    <span class="kw">let </span>ctx = Context::create();
+    <span class="macro">assert!</span>(!no_current_context());
+    <span class="kw">let </span>_suspended = ctx.suspend();
+    <span class="macro">assert!</span>(no_current_context());
+    <span class="kw">let </span>_ctx2 = Context::create();
 }
 
-<span class="attribute">#[<span class="ident">test</span>]</span>
-<span class="kw">fn</span> <span class="ident">test_drop_suspended</span>() {
-    <span class="kw">let</span> <span class="ident">_guard</span> <span class="op">=</span> <span class="ident"><span class="kw">crate</span>::test::TEST_MUTEX</span>.<span class="ident">lock</span>();
-    <span class="kw">let</span> <span class="ident">suspended</span> <span class="op">=</span> <span class="ident">Context::create</span>().<span class="ident">suspend</span>();
-    <span class="macro">assert!</span>(<span class="ident">no_current_context</span>());
-    <span class="kw">let</span> <span class="ident">ctx2</span> <span class="op">=</span> <span class="ident">Context::create</span>();
-    <span class="ident">::std::mem::drop</span>(<span class="ident">suspended</span>);
-    <span class="macro">assert!</span>(<span class="ident">ctx2</span>.<span class="ident">is_current_context</span>());
+<span class="attribute">#[test]
+</span><span class="kw">fn </span>test_drop_suspended() {
+    <span class="kw">let </span>_guard = <span class="kw">crate</span>::test::TEST_MUTEX.lock();
+    <span class="kw">let </span>suspended = Context::create().suspend();
+    <span class="macro">assert!</span>(no_current_context());
+    <span class="kw">let </span>ctx2 = Context::create();
+    ::std::mem::drop(suspended);
+    <span class="macro">assert!</span>(ctx2.is_current_context());
 }
 
-<span class="attribute">#[<span class="ident">test</span>]</span>
-<span class="kw">fn</span> <span class="ident">test_suspend_activate</span>() {
-    <span class="kw">let</span> <span class="ident">_guard</span> <span class="op">=</span> <span class="ident"><span class="kw">crate</span>::test::TEST_MUTEX</span>.<span class="ident">lock</span>();
-    <span class="kw">let</span> <span class="ident">suspended</span> <span class="op">=</span> <span class="ident">Context::create</span>().<span class="ident">suspend</span>();
-    <span class="macro">assert!</span>(<span class="ident">no_current_context</span>());
-    <span class="kw">let</span> <span class="ident">ctx</span> <span class="op">=</span> <span class="ident">suspended</span>.<span class="ident">activate</span>().<span class="ident">unwrap</span>();
-    <span class="macro">assert!</span>(<span class="ident">ctx</span>.<span class="ident">is_current_context</span>());
+<span class="attribute">#[test]
+</span><span class="kw">fn </span>test_suspend_activate() {
+    <span class="kw">let </span>_guard = <span class="kw">crate</span>::test::TEST_MUTEX.lock();
+    <span class="kw">let </span>suspended = Context::create().suspend();
+    <span class="macro">assert!</span>(no_current_context());
+    <span class="kw">let </span>ctx = suspended.activate().unwrap();
+    <span class="macro">assert!</span>(ctx.is_current_context());
 }
 
-<span class="attribute">#[<span class="ident">test</span>]</span>
-<span class="kw">fn</span> <span class="ident">test_suspend_failure</span>() {
-    <span class="kw">let</span> <span class="ident">_guard</span> <span class="op">=</span> <span class="ident"><span class="kw">crate</span>::test::TEST_MUTEX</span>.<span class="ident">lock</span>();
-    <span class="kw">let</span> <span class="ident">suspended</span> <span class="op">=</span> <span class="ident">Context::create</span>().<span class="ident">suspend</span>();
-    <span class="kw">let</span> <span class="ident">_ctx</span> <span class="op">=</span> <span class="ident">Context::create</span>();
-    <span class="macro">assert!</span>(<span class="ident">suspended</span>.<span class="ident">activate</span>().<span class="ident">is_err</span>());
+<span class="attribute">#[test]
+</span><span class="kw">fn </span>test_suspend_failure() {
+    <span class="kw">let </span>_guard = <span class="kw">crate</span>::test::TEST_MUTEX.lock();
+    <span class="kw">let </span>suspended = Context::create().suspend();
+    <span class="kw">let </span>_ctx = Context::create();
+    <span class="macro">assert!</span>(suspended.activate().is_err());
 }
 
-<span class="attribute">#[<span class="ident">test</span>]</span>
-<span class="kw">fn</span> <span class="ident">test_shared_font_atlas</span>() {
-    <span class="kw">let</span> <span class="ident">_guard</span> <span class="op">=</span> <span class="ident"><span class="kw">crate</span>::test::TEST_MUTEX</span>.<span class="ident">lock</span>();
-    <span class="kw">let</span> <span class="ident">atlas</span> <span class="op">=</span> <span class="ident">Rc::new</span>(<span class="ident">RefCell::new</span>(<span class="ident">SharedFontAtlas::create</span>()));
-    <span class="kw">let</span> <span class="ident">suspended1</span> <span class="op">=</span> <span class="ident">SuspendedContext::create_with_shared_font_atlas</span>(<span class="ident">atlas</span>.<span class="ident">clone</span>());
-    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">ctx2</span> <span class="op">=</span> <span class="ident">Context::create_with_shared_font_atlas</span>(<span class="ident">atlas</span>);
+<span class="attribute">#[test]
+</span><span class="kw">fn </span>test_shared_font_atlas() {
+    <span class="kw">let </span>_guard = <span class="kw">crate</span>::test::TEST_MUTEX.lock();
+    <span class="kw">let </span>atlas = Rc::new(RefCell::new(SharedFontAtlas::create()));
+    <span class="kw">let </span>suspended1 = SuspendedContext::create_with_shared_font_atlas(atlas.clone());
+    <span class="kw">let </span><span class="kw-2">mut </span>ctx2 = Context::create_with_shared_font_atlas(atlas);
     {
-        <span class="kw">let</span> <span class="ident">_borrow</span> <span class="op">=</span> <span class="ident">ctx2</span>.<span class="ident">fonts</span>();
+        <span class="kw">let </span>_borrow = ctx2.fonts();
     }
-    <span class="kw">let</span> <span class="ident">_suspended2</span> <span class="op">=</span> <span class="ident">ctx2</span>.<span class="ident">suspend</span>();
-    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">ctx</span> <span class="op">=</span> <span class="ident">suspended1</span>.<span class="ident">activate</span>().<span class="ident">unwrap</span>();
-    <span class="kw">let</span> <span class="ident">_borrow</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">fonts</span>();
+    <span class="kw">let </span>_suspended2 = ctx2.suspend();
+    <span class="kw">let </span><span class="kw-2">mut </span>ctx = suspended1.activate().unwrap();
+    <span class="kw">let </span>_borrow = ctx.fonts();
 }
 
-<span class="attribute">#[<span class="ident">test</span>]</span>
-<span class="attribute">#[<span class="ident">should_panic</span>]</span>
-<span class="kw">fn</span> <span class="ident">test_shared_font_atlas_borrow_panic</span>() {
-    <span class="kw">let</span> <span class="ident">_guard</span> <span class="op">=</span> <span class="ident"><span class="kw">crate</span>::test::TEST_MUTEX</span>.<span class="ident">lock</span>();
-    <span class="kw">let</span> <span class="ident">atlas</span> <span class="op">=</span> <span class="ident">Rc::new</span>(<span class="ident">RefCell::new</span>(<span class="ident">SharedFontAtlas::create</span>()));
-    <span class="kw">let</span> <span class="ident">_suspended</span> <span class="op">=</span> <span class="ident">SuspendedContext::create_with_shared_font_atlas</span>(<span class="ident">atlas</span>.<span class="ident">clone</span>());
-    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">ctx</span> <span class="op">=</span> <span class="ident">Context::create_with_shared_font_atlas</span>(<span class="ident">atlas</span>.<span class="ident">clone</span>());
-    <span class="kw">let</span> <span class="ident">_borrow1</span> <span class="op">=</span> <span class="ident">atlas</span>.<span class="ident">borrow</span>();
-    <span class="kw">let</span> <span class="ident">_borrow2</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">fonts</span>();
+<span class="attribute">#[test]
+#[should_panic]
+</span><span class="kw">fn </span>test_shared_font_atlas_borrow_panic() {
+    <span class="kw">let </span>_guard = <span class="kw">crate</span>::test::TEST_MUTEX.lock();
+    <span class="kw">let </span>atlas = Rc::new(RefCell::new(SharedFontAtlas::create()));
+    <span class="kw">let </span>_suspended = SuspendedContext::create_with_shared_font_atlas(atlas.clone());
+    <span class="kw">let </span><span class="kw-2">mut </span>ctx = Context::create_with_shared_font_atlas(atlas.clone());
+    <span class="kw">let </span>_borrow1 = atlas.borrow();
+    <span class="kw">let </span>_borrow2 = ctx.fonts();
 }
 
-<span class="attribute">#[<span class="ident">test</span>]</span>
-<span class="kw">fn</span> <span class="ident">test_ini_load_save</span>() {
-    <span class="kw">let</span> (<span class="ident">_guard</span>, <span class="kw-2">mut</span> <span class="ident">ctx</span>) <span class="op">=</span> <span class="ident"><span class="kw">crate</span>::test::test_ctx</span>();
-    <span class="kw">let</span> <span class="ident">data</span> <span class="op">=</span> <span class="string">&quot;[Window][Debug##Default]
+<span class="attribute">#[test]
+</span><span class="kw">fn </span>test_ini_load_save() {
+    <span class="kw">let </span>(_guard, <span class="kw-2">mut </span>ctx) = <span class="kw">crate</span>::test::test_ctx();
+    <span class="kw">let </span>data = <span class="string">&quot;[Window][Debug##Default]
 Pos=60,60
 Size=400,400
 Collapsed=0&quot;</span>;
-    <span class="ident">ctx</span>.<span class="ident">load_ini_settings</span>(<span class="ident">data</span>);
-    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">buf</span> <span class="op">=</span> <span class="ident">String::new</span>();
-    <span class="ident">ctx</span>.<span class="ident">save_ini_settings</span>(<span class="kw-2">&amp;mut</span> <span class="ident">buf</span>);
-    <span class="macro">assert_eq!</span>(<span class="ident">data</span>.<span class="ident">trim</span>(), <span class="ident">buf</span>.<span class="ident">trim</span>());
+    ctx.load_ini_settings(data);
+    <span class="kw">let </span><span class="kw-2">mut </span>buf = String::new();
+    ctx.save_ini_settings(<span class="kw-2">&amp;mut </span>buf);
+    <span class="macro">assert_eq!</span>(data.trim(), buf.trim());
 }
 
-<span class="attribute">#[<span class="ident">test</span>]</span>
-<span class="kw">fn</span> <span class="ident">test_default_ini_filename</span>() {
-    <span class="kw">let</span> <span class="ident">_guard</span> <span class="op">=</span> <span class="ident"><span class="kw">crate</span>::test::TEST_MUTEX</span>.<span class="ident">lock</span>();
-    <span class="kw">let</span> <span class="ident">ctx</span> <span class="op">=</span> <span class="ident">Context::create</span>();
-    <span class="macro">assert_eq!</span>(<span class="ident">ctx</span>.<span class="ident">ini_filename</span>(), <span class="prelude-val">Some</span>(<span class="ident">PathBuf::from</span>(<span class="string">&quot;imgui.ini&quot;</span>)));
+<span class="attribute">#[test]
+</span><span class="kw">fn </span>test_default_ini_filename() {
+    <span class="kw">let </span>_guard = <span class="kw">crate</span>::test::TEST_MUTEX.lock();
+    <span class="kw">let </span>ctx = Context::create();
+    <span class="macro">assert_eq!</span>(ctx.ini_filename(), <span class="prelude-val">Some</span>(PathBuf::from(<span class="string">&quot;imgui.ini&quot;</span>)));
 }
 
-<span class="attribute">#[<span class="ident">test</span>]</span>
-<span class="kw">fn</span> <span class="ident">test_set_ini_filename</span>() {
-    <span class="kw">let</span> (<span class="ident">_guard</span>, <span class="kw-2">mut</span> <span class="ident">ctx</span>) <span class="op">=</span> <span class="ident"><span class="kw">crate</span>::test::test_ctx</span>();
-    <span class="ident">ctx</span>.<span class="ident">set_ini_filename</span>(<span class="prelude-val">Some</span>(<span class="ident">PathBuf::from</span>(<span class="string">&quot;test.ini&quot;</span>)));
-    <span class="macro">assert_eq!</span>(<span class="ident">ctx</span>.<span class="ident">ini_filename</span>(), <span class="prelude-val">Some</span>(<span class="ident">PathBuf::from</span>(<span class="string">&quot;test.ini&quot;</span>)));
+<span class="attribute">#[test]
+</span><span class="kw">fn </span>test_set_ini_filename() {
+    <span class="kw">let </span>(_guard, <span class="kw-2">mut </span>ctx) = <span class="kw">crate</span>::test::test_ctx();
+    ctx.set_ini_filename(<span class="prelude-val">Some</span>(PathBuf::from(<span class="string">&quot;test.ini&quot;</span>)));
+    <span class="macro">assert_eq!</span>(ctx.ini_filename(), <span class="prelude-val">Some</span>(PathBuf::from(<span class="string">&quot;test.ini&quot;</span>)));
 }
 
-<span class="attribute">#[<span class="ident">test</span>]</span>
-<span class="kw">fn</span> <span class="ident">test_default_log_filename</span>() {
-    <span class="kw">let</span> <span class="ident">_guard</span> <span class="op">=</span> <span class="ident"><span class="kw">crate</span>::test::TEST_MUTEX</span>.<span class="ident">lock</span>();
-    <span class="kw">let</span> <span class="ident">ctx</span> <span class="op">=</span> <span class="ident">Context::create</span>();
-    <span class="macro">assert_eq!</span>(<span class="ident">ctx</span>.<span class="ident">log_filename</span>(), <span class="prelude-val">Some</span>(<span class="ident">PathBuf::from</span>(<span class="string">&quot;imgui_log.txt&quot;</span>)));
+<span class="attribute">#[test]
+</span><span class="kw">fn </span>test_default_log_filename() {
+    <span class="kw">let </span>_guard = <span class="kw">crate</span>::test::TEST_MUTEX.lock();
+    <span class="kw">let </span>ctx = Context::create();
+    <span class="macro">assert_eq!</span>(ctx.log_filename(), <span class="prelude-val">Some</span>(PathBuf::from(<span class="string">&quot;imgui_log.txt&quot;</span>)));
 }
 
-<span class="attribute">#[<span class="ident">test</span>]</span>
-<span class="kw">fn</span> <span class="ident">test_set_log_filename</span>() {
-    <span class="kw">let</span> (<span class="ident">_guard</span>, <span class="kw-2">mut</span> <span class="ident">ctx</span>) <span class="op">=</span> <span class="ident"><span class="kw">crate</span>::test::test_ctx</span>();
-    <span class="ident">ctx</span>.<span class="ident">set_log_filename</span>(<span class="prelude-val">Some</span>(<span class="ident">PathBuf::from</span>(<span class="string">&quot;test.log&quot;</span>)));
-    <span class="macro">assert_eq!</span>(<span class="ident">ctx</span>.<span class="ident">log_filename</span>(), <span class="prelude-val">Some</span>(<span class="ident">PathBuf::from</span>(<span class="string">&quot;test.log&quot;</span>)));
+<span class="attribute">#[test]
+</span><span class="kw">fn </span>test_set_log_filename() {
+    <span class="kw">let </span>(_guard, <span class="kw-2">mut </span>ctx) = <span class="kw">crate</span>::test::test_ctx();
+    ctx.set_log_filename(<span class="prelude-val">Some</span>(PathBuf::from(<span class="string">&quot;test.log&quot;</span>)));
+    <span class="macro">assert_eq!</span>(ctx.log_filename(), <span class="prelude-val">Some</span>(PathBuf::from(<span class="string">&quot;test.log&quot;</span>)));
 }
 
-<span class="kw">impl</span> <span class="ident">Context</span> {
-    <span class="doccomment">/// Returns an immutable reference to the inputs/outputs object</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">io</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="ident">Io</span> {
-        <span class="kw">unsafe</span> {
-            <span class="comment">// safe because Io is a transparent wrapper around sys::ImGuiIO</span>
-            <span class="kw-2">&amp;</span><span class="kw-2">*</span>(<span class="ident">sys::igGetIO</span>() <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">Io</span>)
+<span class="kw">impl </span>Context {
+    <span class="doccomment">/// Returns an immutable reference to the inputs/outputs object
+    </span><span class="kw">pub fn </span>io(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>Io {
+        <span class="kw">unsafe </span>{
+            <span class="comment">// safe because Io is a transparent wrapper around sys::ImGuiIO
+            </span><span class="kw-2">&amp;*</span>(sys::igGetIO() <span class="kw">as </span><span class="kw-2">*const </span>Io)
         }
     }
-    <span class="doccomment">/// Returns a mutable reference to the inputs/outputs object</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">io_mut</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="kw-2">&amp;mut</span> <span class="ident">Io</span> {
-        <span class="kw">unsafe</span> {
-            <span class="comment">// safe because Io is a transparent wrapper around sys::ImGuiIO</span>
-            <span class="kw-2">&amp;mut</span> <span class="kw-2">*</span>(<span class="ident">sys::igGetIO</span>() <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">Io</span>)
+    <span class="doccomment">/// Returns a mutable reference to the inputs/outputs object
+    </span><span class="kw">pub fn </span>io_mut(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;mut </span>Io {
+        <span class="kw">unsafe </span>{
+            <span class="comment">// safe because Io is a transparent wrapper around sys::ImGuiIO
+            </span><span class="kw-2">&amp;mut *</span>(sys::igGetIO() <span class="kw">as </span><span class="kw-2">*mut </span>Io)
         }
     }
-    <span class="doccomment">/// Returns an immutable reference to the user interface style</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GetStyle&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">style</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="ident">Style</span> {
-        <span class="kw">unsafe</span> {
-            <span class="comment">// safe because Style is a transparent wrapper around sys::ImGuiStyle</span>
-            <span class="kw-2">&amp;</span><span class="kw-2">*</span>(<span class="ident">sys::igGetStyle</span>() <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">Style</span>)
+    <span class="doccomment">/// Returns an immutable reference to the user interface style
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;GetStyle&quot;</span>)]
+    </span><span class="kw">pub fn </span>style(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>Style {
+        <span class="kw">unsafe </span>{
+            <span class="comment">// safe because Style is a transparent wrapper around sys::ImGuiStyle
+            </span><span class="kw-2">&amp;*</span>(sys::igGetStyle() <span class="kw">as </span><span class="kw-2">*const </span>Style)
         }
     }
-    <span class="doccomment">/// Returns a mutable reference to the user interface style</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GetStyle&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">style_mut</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="kw-2">&amp;mut</span> <span class="ident">Style</span> {
-        <span class="kw">unsafe</span> {
-            <span class="comment">// safe because Style is a transparent wrapper around sys::ImGuiStyle</span>
-            <span class="kw-2">&amp;mut</span> <span class="kw-2">*</span>(<span class="ident">sys::igGetStyle</span>() <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">Style</span>)
+    <span class="doccomment">/// Returns a mutable reference to the user interface style
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;GetStyle&quot;</span>)]
+    </span><span class="kw">pub fn </span>style_mut(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;mut </span>Style {
+        <span class="kw">unsafe </span>{
+            <span class="comment">// safe because Style is a transparent wrapper around sys::ImGuiStyle
+            </span><span class="kw-2">&amp;mut *</span>(sys::igGetStyle() <span class="kw">as </span><span class="kw-2">*mut </span>Style)
         }
     }
-    <span class="doccomment">/// Returns a mutable reference to the font atlas.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Panics</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Panics if the context uses a shared font atlas that is already borrowed</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">fonts</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="ident">FontAtlasRefMut</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span> {
-        <span class="kw">match</span> <span class="self">self</span>.<span class="ident">shared_font_atlas</span> {
-            <span class="prelude-val">Some</span>(<span class="kw-2">ref</span> <span class="ident">font_atlas</span>) =&gt; <span class="ident">FontAtlasRefMut::Shared</span>(<span class="ident">font_atlas</span>.<span class="ident">borrow_mut</span>()),
-            <span class="prelude-val">None</span> =&gt; <span class="kw">unsafe</span> {
-                <span class="comment">// safe because FontAtlas is a transparent wrapper around sys::ImFontAtlas</span>
-                <span class="kw">let</span> <span class="ident">fonts</span> <span class="op">=</span> <span class="kw-2">&amp;mut</span> <span class="kw-2">*</span>(<span class="self">self</span>.<span class="ident">io_mut</span>().<span class="ident">fonts</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">FontAtlas</span>);
-                <span class="ident">FontAtlasRefMut::Owned</span>(<span class="ident">fonts</span>)
+    <span class="doccomment">/// Returns a mutable reference to the font atlas.
+    ///
+    /// # Panics
+    ///
+    /// Panics if the context uses a shared font atlas that is already borrowed
+    </span><span class="kw">pub fn </span>fonts(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; FontAtlasRefMut&lt;<span class="lifetime">&#39;_</span>&gt; {
+        <span class="kw">match </span><span class="self">self</span>.shared_font_atlas {
+            <span class="prelude-val">Some</span>(<span class="kw-2">ref </span>font_atlas) =&gt; FontAtlasRefMut::Shared(font_atlas.borrow_mut()),
+            <span class="prelude-val">None </span>=&gt; <span class="kw">unsafe </span>{
+                <span class="comment">// safe because FontAtlas is a transparent wrapper around sys::ImFontAtlas
+                </span><span class="kw">let </span>fonts = <span class="kw-2">&amp;mut *</span>(<span class="self">self</span>.io_mut().fonts <span class="kw">as </span><span class="kw-2">*mut </span>FontAtlas);
+                FontAtlasRefMut::Owned(fonts)
             },
         }
     }
-    <span class="doccomment">/// Starts a new frame and returns an `Ui` instance for constructing a user interface.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Panics</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Panics if the context uses a shared font atlas that is already borrowed</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;NewFame&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">frame</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span> {
-        <span class="comment">// Clear default font if it no longer exists. This could be an error in the future</span>
-        <span class="kw">let</span> <span class="ident">default_font</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">io</span>().<span class="ident">font_default</span>;
-        <span class="kw">if</span> <span class="op">!</span><span class="ident">default_font</span>.<span class="ident">is_null</span>() <span class="op">&amp;&amp;</span> <span class="self">self</span>.<span class="ident">fonts</span>().<span class="ident">get_font</span>(<span class="ident">FontId</span>(<span class="ident">default_font</span>)).<span class="ident">is_none</span>() {
-            <span class="self">self</span>.<span class="ident">io_mut</span>().<span class="ident">font_default</span> <span class="op">=</span> <span class="ident">ptr::null_mut</span>();
+    <span class="doccomment">/// Starts a new frame and returns an `Ui` instance for constructing a user interface.
+    ///
+    /// # Panics
+    ///
+    /// Panics if the context uses a shared font atlas that is already borrowed
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;NewFame&quot;</span>)]
+    </span><span class="kw">pub fn </span>frame(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; Ui&lt;<span class="lifetime">&#39;_</span>&gt; {
+        <span class="comment">// Clear default font if it no longer exists. This could be an error in the future
+        </span><span class="kw">let </span>default_font = <span class="self">self</span>.io().font_default;
+        <span class="kw">if </span>!default_font.is_null() &amp;&amp; <span class="self">self</span>.fonts().get_font(FontId(default_font)).is_none() {
+            <span class="self">self</span>.io_mut().font_default = ptr::null_mut();
         }
-        <span class="comment">// NewFrame/Render/EndFrame mutate the font atlas so we need exclusive access to it</span>
-        <span class="kw">let</span> <span class="ident">font_atlas</span> <span class="op">=</span> <span class="self">self</span>
-            .<span class="ident">shared_font_atlas</span>
-            .<span class="ident">as_ref</span>()
-            .<span class="ident">map</span>(<span class="op">|</span><span class="ident">font_atlas</span><span class="op">|</span> <span class="ident">font_atlas</span>.<span class="ident">borrow_mut</span>());
-        <span class="comment">// TODO: precondition checks</span>
-        <span class="kw">unsafe</span> {
-            <span class="ident">sys::igNewFrame</span>();
+        <span class="comment">// NewFrame/Render/EndFrame mutate the font atlas so we need exclusive access to it
+        </span><span class="kw">let </span>font_atlas = <span class="self">self
+            </span>.shared_font_atlas
+            .as_ref()
+            .map(|font_atlas| font_atlas.borrow_mut());
+        <span class="comment">// TODO: precondition checks
+        </span><span class="kw">unsafe </span>{
+            sys::igNewFrame();
         }
-        <span class="ident">Ui</span> {
-            <span class="ident">ctx</span>: <span class="self">self</span>,
-            <span class="ident">font_atlas</span>,
-            <span class="ident">buffer</span>: <span class="ident"><span class="kw">crate</span>::UiBuffer::new</span>(<span class="number">1024</span>).<span class="ident">into</span>(),
+        Ui {
+            ctx: <span class="self">self</span>,
+            font_atlas,
+            buffer: <span class="kw">crate</span>::UiBuffer::new(<span class="number">1024</span>).into(),
         }
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="arcdps_imgui" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="arcdps_imgui" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.0 (69f9c33d7 2022-12-12)" ></div></body></html>

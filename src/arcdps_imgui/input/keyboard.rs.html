@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\arcdps-imgui-0.8.0\src\input\keyboard.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>keyboard.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../arcdps_imgui/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../arcdps_imgui/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../arcdps_imgui/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\arcdps-imgui-0.8.0\src\input\keyboard.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>keyboard.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../normalize.css"><link rel="stylesheet" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../ayu.css" disabled><link rel="stylesheet" href="../../../dark.css" disabled><link rel="stylesheet" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../../arcdps_imgui/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -213,220 +213,220 @@
 <span id="213">213</span>
 <span id="214">214</span>
 <span id="215">215</span>
-</pre><pre class="rust"><code><span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::sys</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::Ui</span>;
+</pre><pre class="rust"><code><span class="kw">use </span><span class="kw">crate</span>::sys;
+<span class="kw">use </span><span class="kw">crate</span>::Ui;
 
-<span class="doccomment">/// A key identifier</span>
-<span class="attribute">#[<span class="ident">repr</span>(<span class="ident">u32</span>)]</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">Hash</span>, <span class="ident">Eq</span>, <span class="ident">PartialEq</span>)]</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">Key</span> {
-    <span class="ident">Tab</span> <span class="op">=</span> <span class="ident">sys::ImGuiKey_Tab</span>,
-    <span class="ident">LeftArrow</span> <span class="op">=</span> <span class="ident">sys::ImGuiKey_LeftArrow</span>,
-    <span class="ident">RightArrow</span> <span class="op">=</span> <span class="ident">sys::ImGuiKey_RightArrow</span>,
-    <span class="ident">UpArrow</span> <span class="op">=</span> <span class="ident">sys::ImGuiKey_UpArrow</span>,
-    <span class="ident">DownArrow</span> <span class="op">=</span> <span class="ident">sys::ImGuiKey_DownArrow</span>,
-    <span class="ident">PageUp</span> <span class="op">=</span> <span class="ident">sys::ImGuiKey_PageUp</span>,
-    <span class="ident">PageDown</span> <span class="op">=</span> <span class="ident">sys::ImGuiKey_PageDown</span>,
-    <span class="ident">Home</span> <span class="op">=</span> <span class="ident">sys::ImGuiKey_Home</span>,
-    <span class="ident">End</span> <span class="op">=</span> <span class="ident">sys::ImGuiKey_End</span>,
-    <span class="ident">Insert</span> <span class="op">=</span> <span class="ident">sys::ImGuiKey_Insert</span>,
-    <span class="ident">Delete</span> <span class="op">=</span> <span class="ident">sys::ImGuiKey_Delete</span>,
-    <span class="ident">Backspace</span> <span class="op">=</span> <span class="ident">sys::ImGuiKey_Backspace</span>,
-    <span class="ident">Space</span> <span class="op">=</span> <span class="ident">sys::ImGuiKey_Space</span>,
-    <span class="ident">Enter</span> <span class="op">=</span> <span class="ident">sys::ImGuiKey_Enter</span>,
-    <span class="ident">Escape</span> <span class="op">=</span> <span class="ident">sys::ImGuiKey_Escape</span>,
-    <span class="ident">KeyPadEnter</span> <span class="op">=</span> <span class="ident">sys::ImGuiKey_KeyPadEnter</span>,
-    <span class="ident">A</span> <span class="op">=</span> <span class="ident">sys::ImGuiKey_A</span>,
-    <span class="ident">C</span> <span class="op">=</span> <span class="ident">sys::ImGuiKey_C</span>,
-    <span class="ident">V</span> <span class="op">=</span> <span class="ident">sys::ImGuiKey_V</span>,
-    <span class="ident">X</span> <span class="op">=</span> <span class="ident">sys::ImGuiKey_X</span>,
-    <span class="ident">Y</span> <span class="op">=</span> <span class="ident">sys::ImGuiKey_Y</span>,
-    <span class="ident">Z</span> <span class="op">=</span> <span class="ident">sys::ImGuiKey_Z</span>,
+<span class="doccomment">/// A key identifier
+</span><span class="attribute">#[repr(u32)]
+#[derive(Copy, Clone, Debug, Hash, Eq, PartialEq)]
+</span><span class="kw">pub enum </span>Key {
+    Tab = sys::ImGuiKey_Tab,
+    LeftArrow = sys::ImGuiKey_LeftArrow,
+    RightArrow = sys::ImGuiKey_RightArrow,
+    UpArrow = sys::ImGuiKey_UpArrow,
+    DownArrow = sys::ImGuiKey_DownArrow,
+    PageUp = sys::ImGuiKey_PageUp,
+    PageDown = sys::ImGuiKey_PageDown,
+    Home = sys::ImGuiKey_Home,
+    End = sys::ImGuiKey_End,
+    Insert = sys::ImGuiKey_Insert,
+    Delete = sys::ImGuiKey_Delete,
+    Backspace = sys::ImGuiKey_Backspace,
+    Space = sys::ImGuiKey_Space,
+    Enter = sys::ImGuiKey_Enter,
+    Escape = sys::ImGuiKey_Escape,
+    KeyPadEnter = sys::ImGuiKey_KeyPadEnter,
+    A = sys::ImGuiKey_A,
+    C = sys::ImGuiKey_C,
+    V = sys::ImGuiKey_V,
+    X = sys::ImGuiKey_X,
+    Y = sys::ImGuiKey_Y,
+    Z = sys::ImGuiKey_Z,
 }
 
-<span class="kw">impl</span> <span class="ident">Key</span> {
-    <span class="doccomment">/// All possible `Key` variants</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">VARIANTS</span>: [<span class="ident">Key</span>; <span class="ident">Key::COUNT</span>] <span class="op">=</span> [
-        <span class="ident">Key::Tab</span>,
-        <span class="ident">Key::LeftArrow</span>,
-        <span class="ident">Key::RightArrow</span>,
-        <span class="ident">Key::UpArrow</span>,
-        <span class="ident">Key::DownArrow</span>,
-        <span class="ident">Key::PageUp</span>,
-        <span class="ident">Key::PageDown</span>,
-        <span class="ident">Key::Home</span>,
-        <span class="ident">Key::End</span>,
-        <span class="ident">Key::Insert</span>,
-        <span class="ident">Key::Delete</span>,
-        <span class="ident">Key::Backspace</span>,
-        <span class="ident">Key::Space</span>,
-        <span class="ident">Key::Enter</span>,
-        <span class="ident">Key::Escape</span>,
-        <span class="ident">Key::KeyPadEnter</span>,
-        <span class="ident">Key::A</span>,
-        <span class="ident">Key::C</span>,
-        <span class="ident">Key::V</span>,
-        <span class="ident">Key::X</span>,
-        <span class="ident">Key::Y</span>,
-        <span class="ident">Key::Z</span>,
+<span class="kw">impl </span>Key {
+    <span class="doccomment">/// All possible `Key` variants
+    </span><span class="kw">pub const </span>VARIANTS: [Key; Key::COUNT] = [
+        Key::Tab,
+        Key::LeftArrow,
+        Key::RightArrow,
+        Key::UpArrow,
+        Key::DownArrow,
+        Key::PageUp,
+        Key::PageDown,
+        Key::Home,
+        Key::End,
+        Key::Insert,
+        Key::Delete,
+        Key::Backspace,
+        Key::Space,
+        Key::Enter,
+        Key::Escape,
+        Key::KeyPadEnter,
+        Key::A,
+        Key::C,
+        Key::V,
+        Key::X,
+        Key::Y,
+        Key::Z,
     ];
-    <span class="doccomment">/// Total count of `Key` variants</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">COUNT</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="ident">sys::ImGuiKey_COUNT</span> <span class="kw">as</span> <span class="ident">usize</span>;
+    <span class="doccomment">/// Total count of `Key` variants
+    </span><span class="kw">pub const </span>COUNT: usize = sys::ImGuiKey_COUNT <span class="kw">as </span>usize;
 }
 
-<span class="attribute">#[<span class="ident">test</span>]</span>
-<span class="kw">fn</span> <span class="ident">test_key_variants</span>() {
-    <span class="kw">for</span> (<span class="ident">idx</span>, <span class="kw-2">&amp;</span><span class="ident">value</span>) <span class="kw">in</span> <span class="ident">Key::VARIANTS</span>.<span class="ident">iter</span>().<span class="ident">enumerate</span>() {
-        <span class="macro">assert_eq!</span>(<span class="ident">idx</span>, <span class="ident">value</span> <span class="kw">as</span> <span class="ident">usize</span>);
+<span class="attribute">#[test]
+</span><span class="kw">fn </span>test_key_variants() {
+    <span class="kw">for </span>(idx, <span class="kw-2">&amp;</span>value) <span class="kw">in </span>Key::VARIANTS.iter().enumerate() {
+        <span class="macro">assert_eq!</span>(idx, value <span class="kw">as </span>usize);
     }
 }
 
-<span class="doccomment">/// Target widget selection for keyboard focus</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">Hash</span>, <span class="ident">Eq</span>, <span class="ident">PartialEq</span>)]</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">FocusedWidget</span> {
-    <span class="doccomment">/// Previous widget</span>
-    <span class="ident">Previous</span>,
-    <span class="doccomment">/// Next widget</span>
-    <span class="ident">Next</span>,
-    <span class="doccomment">/// Widget using a relative positive offset (0 is the next widget).</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Use this to access sub components of a multiple component widget.</span>
-    <span class="ident">Offset</span>(<span class="ident">u32</span>),
+<span class="doccomment">/// Target widget selection for keyboard focus
+</span><span class="attribute">#[derive(Copy, Clone, Debug, Hash, Eq, PartialEq)]
+</span><span class="kw">pub enum </span>FocusedWidget {
+    <span class="doccomment">/// Previous widget
+    </span>Previous,
+    <span class="doccomment">/// Next widget
+    </span>Next,
+    <span class="doccomment">/// Widget using a relative positive offset (0 is the next widget).
+    ///
+    /// Use this to access sub components of a multiple component widget.
+    </span>Offset(u32),
 }
 
-<span class="kw">impl</span> <span class="ident">FocusedWidget</span> {
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">as_offset</span>(<span class="self">self</span>) -&gt; <span class="ident">i32</span> {
-        <span class="kw">match</span> <span class="self">self</span> {
-            <span class="ident">FocusedWidget::Previous</span> =&gt; <span class="op">-</span><span class="number">1</span>,
-            <span class="ident">FocusedWidget::Next</span> =&gt; <span class="number">0</span>,
-            <span class="ident">FocusedWidget::Offset</span>(<span class="ident">offset</span>) =&gt; <span class="ident">offset</span> <span class="kw">as</span> <span class="ident">i32</span>,
+<span class="kw">impl </span>FocusedWidget {
+    <span class="attribute">#[inline]
+    </span><span class="kw">fn </span>as_offset(<span class="self">self</span>) -&gt; i32 {
+        <span class="kw">match </span><span class="self">self </span>{
+            FocusedWidget::Previous =&gt; -<span class="number">1</span>,
+            FocusedWidget::Next =&gt; <span class="number">0</span>,
+            FocusedWidget::Offset(offset) =&gt; offset <span class="kw">as </span>i32,
         }
     }
 }
 
-<span class="doccomment">/// # Input: Keyboard</span>
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> <span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Returns the key index of the given key identifier.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Equivalent to indexing the Io struct `key_map` field: `ui.io().key_map[key]`</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GetKeyIndex&quot;</span>)]</span>
-    <span class="kw">fn</span> <span class="ident">key_index</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">key</span>: <span class="ident">Key</span>) -&gt; <span class="ident">i32</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igGetKeyIndex</span>(<span class="ident">key</span> <span class="kw">as</span> <span class="ident">i32</span>) }
+<span class="doccomment">/// # Input: Keyboard
+</span><span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>&gt; Ui&lt;<span class="lifetime">&#39;ui</span>&gt; {
+    <span class="doccomment">/// Returns the key index of the given key identifier.
+    ///
+    /// Equivalent to indexing the Io struct `key_map` field: `ui.io().key_map[key]`
+    </span><span class="attribute">#[inline]
+    #[doc(alias = <span class="string">&quot;GetKeyIndex&quot;</span>)]
+    </span><span class="kw">fn </span>key_index(<span class="kw-2">&amp;</span><span class="self">self</span>, key: Key) -&gt; i32 {
+        <span class="kw">unsafe </span>{ sys::igGetKeyIndex(key <span class="kw">as </span>i32) }
     }
-    <span class="doccomment">/// Returns true if the key is being held.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Equivalent to indexing the Io struct `keys_down` field: `ui.io().keys_down[key_index]`</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;IsKeyDown&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_key_down</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">key</span>: <span class="ident">Key</span>) -&gt; <span class="ident">bool</span> {
-        <span class="kw">let</span> <span class="ident">key_index</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">key_index</span>(<span class="ident">key</span>);
-        <span class="self">self</span>.<span class="ident">is_key_index_down</span>(<span class="ident">key_index</span>)
-    }
-
-    <span class="doccomment">/// Same as [`is_key_down`](Self::is_key_down) but takes a key index. The meaning of</span>
-    <span class="doccomment">/// index is defined by your backend implementation.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;IsKeyDown&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_key_index_down</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">key_index</span>: <span class="ident">i32</span>) -&gt; <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igIsKeyDown</span>(<span class="ident">key_index</span>) }
+    <span class="doccomment">/// Returns true if the key is being held.
+    ///
+    /// Equivalent to indexing the Io struct `keys_down` field: `ui.io().keys_down[key_index]`
+    </span><span class="attribute">#[inline]
+    #[doc(alias = <span class="string">&quot;IsKeyDown&quot;</span>)]
+    </span><span class="kw">pub fn </span>is_key_down(<span class="kw-2">&amp;</span><span class="self">self</span>, key: Key) -&gt; bool {
+        <span class="kw">let </span>key_index = <span class="self">self</span>.key_index(key);
+        <span class="self">self</span>.is_key_index_down(key_index)
     }
 
-    <span class="doccomment">/// Returns true if the key was pressed (went from !down to down).</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Affected by key repeat settings (`io.key_repeat_delay`, `io.key_repeat_rate`)</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;IsKeyPressed&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_key_pressed</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">key</span>: <span class="ident">Key</span>) -&gt; <span class="ident">bool</span> {
-        <span class="kw">let</span> <span class="ident">key_index</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">key_index</span>(<span class="ident">key</span>);
-        <span class="self">self</span>.<span class="ident">is_key_index_pressed</span>(<span class="ident">key_index</span>)
+    <span class="doccomment">/// Same as [`is_key_down`](Self::is_key_down) but takes a key index. The meaning of
+    /// index is defined by your backend implementation.
+    </span><span class="attribute">#[inline]
+    #[doc(alias = <span class="string">&quot;IsKeyDown&quot;</span>)]
+    </span><span class="kw">pub fn </span>is_key_index_down(<span class="kw-2">&amp;</span><span class="self">self</span>, key_index: i32) -&gt; bool {
+        <span class="kw">unsafe </span>{ sys::igIsKeyDown(key_index) }
     }
 
-    <span class="doccomment">/// Same as [`is_key_pressed`](Self::is_key_pressed) but takes a key index.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// The meaning of index is defined by your backend</span>
-    <span class="doccomment">/// implementation.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;IsKeyPressed&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_key_index_pressed</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">key_index</span>: <span class="ident">i32</span>) -&gt; <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igIsKeyPressed</span>(<span class="ident">key_index</span>, <span class="bool-val">true</span>) }
+    <span class="doccomment">/// Returns true if the key was pressed (went from !down to down).
+    ///
+    /// Affected by key repeat settings (`io.key_repeat_delay`, `io.key_repeat_rate`)
+    </span><span class="attribute">#[inline]
+    #[doc(alias = <span class="string">&quot;IsKeyPressed&quot;</span>)]
+    </span><span class="kw">pub fn </span>is_key_pressed(<span class="kw-2">&amp;</span><span class="self">self</span>, key: Key) -&gt; bool {
+        <span class="kw">let </span>key_index = <span class="self">self</span>.key_index(key);
+        <span class="self">self</span>.is_key_index_pressed(key_index)
     }
 
-    <span class="doccomment">/// Returns true if the key was pressed (went from !down to down).</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Is **not** affected by key repeat settings (`io.key_repeat_delay`, `io.key_repeat_rate`)</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;IsKeyPressed&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_key_pressed_no_repeat</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">key</span>: <span class="ident">Key</span>) -&gt; <span class="ident">bool</span> {
-        <span class="kw">let</span> <span class="ident">key_index</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">key_index</span>(<span class="ident">key</span>);
-        <span class="self">self</span>.<span class="ident">is_key_index_pressed_no_repeat</span>(<span class="ident">key_index</span>)
+    <span class="doccomment">/// Same as [`is_key_pressed`](Self::is_key_pressed) but takes a key index.
+    ///
+    /// The meaning of index is defined by your backend
+    /// implementation.
+    </span><span class="attribute">#[inline]
+    #[doc(alias = <span class="string">&quot;IsKeyPressed&quot;</span>)]
+    </span><span class="kw">pub fn </span>is_key_index_pressed(<span class="kw-2">&amp;</span><span class="self">self</span>, key_index: i32) -&gt; bool {
+        <span class="kw">unsafe </span>{ sys::igIsKeyPressed(key_index, <span class="bool-val">true</span>) }
     }
 
-    <span class="doccomment">/// Same as [`is_key_pressed_no_repeat`](Self::is_key_pressed_no_repeat)</span>
-    <span class="doccomment">/// but takes a key index.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// The meaning of index is defined by your backend</span>
-    <span class="doccomment">/// implementation.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;IsKeyPressed&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_key_index_pressed_no_repeat</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">key_index</span>: <span class="ident">i32</span>) -&gt; <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igIsKeyPressed</span>(<span class="ident">key_index</span>, <span class="bool-val">false</span>) }
+    <span class="doccomment">/// Returns true if the key was pressed (went from !down to down).
+    ///
+    /// Is **not** affected by key repeat settings (`io.key_repeat_delay`, `io.key_repeat_rate`)
+    </span><span class="attribute">#[inline]
+    #[doc(alias = <span class="string">&quot;IsKeyPressed&quot;</span>)]
+    </span><span class="kw">pub fn </span>is_key_pressed_no_repeat(<span class="kw-2">&amp;</span><span class="self">self</span>, key: Key) -&gt; bool {
+        <span class="kw">let </span>key_index = <span class="self">self</span>.key_index(key);
+        <span class="self">self</span>.is_key_index_pressed_no_repeat(key_index)
     }
 
-    <span class="doccomment">/// Returns true if the key was released (went from down to !down)</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;IsKeyReleased&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_key_released</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">key</span>: <span class="ident">Key</span>) -&gt; <span class="ident">bool</span> {
-        <span class="kw">let</span> <span class="ident">key_index</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">key_index</span>(<span class="ident">key</span>);
-        <span class="self">self</span>.<span class="ident">is_key_index_released</span>(<span class="ident">key_index</span>)
+    <span class="doccomment">/// Same as [`is_key_pressed_no_repeat`](Self::is_key_pressed_no_repeat)
+    /// but takes a key index.
+    ///
+    /// The meaning of index is defined by your backend
+    /// implementation.
+    </span><span class="attribute">#[inline]
+    #[doc(alias = <span class="string">&quot;IsKeyPressed&quot;</span>)]
+    </span><span class="kw">pub fn </span>is_key_index_pressed_no_repeat(<span class="kw-2">&amp;</span><span class="self">self</span>, key_index: i32) -&gt; bool {
+        <span class="kw">unsafe </span>{ sys::igIsKeyPressed(key_index, <span class="bool-val">false</span>) }
     }
 
-    <span class="doccomment">/// Same as [`is_key_released`](Self::is_key_released) but takes a key index.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// The meaning of index is defined by your backend</span>
-    <span class="doccomment">/// implementation.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;IsKeyReleased&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_key_index_released</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">key_index</span>: <span class="ident">i32</span>) -&gt; <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igIsKeyReleased</span>(<span class="ident">key_index</span>) }
+    <span class="doccomment">/// Returns true if the key was released (went from down to !down)
+    </span><span class="attribute">#[inline]
+    #[doc(alias = <span class="string">&quot;IsKeyReleased&quot;</span>)]
+    </span><span class="kw">pub fn </span>is_key_released(<span class="kw-2">&amp;</span><span class="self">self</span>, key: Key) -&gt; bool {
+        <span class="kw">let </span>key_index = <span class="self">self</span>.key_index(key);
+        <span class="self">self</span>.is_key_index_released(key_index)
     }
 
-    <span class="doccomment">/// Returns a count of key presses using the given repeat rate/delay settings.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Usually returns 0 or 1, but might be &gt;1 if `rate` is small enough that `io.delta_time` &gt;</span>
-    <span class="doccomment">/// `rate`.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GetKeyPressedAmount&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">key_pressed_amount</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">key</span>: <span class="ident">Key</span>, <span class="ident">repeat_delay</span>: <span class="ident">f32</span>, <span class="ident">rate</span>: <span class="ident">f32</span>) -&gt; <span class="ident">u32</span> {
-        <span class="kw">let</span> <span class="ident">key_index</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">key_index</span>(<span class="ident">key</span>);
-        <span class="self">self</span>.<span class="ident">key_index_pressed_amount</span>(<span class="ident">key_index</span>, <span class="ident">repeat_delay</span>, <span class="ident">rate</span>)
+    <span class="doccomment">/// Same as [`is_key_released`](Self::is_key_released) but takes a key index.
+    ///
+    /// The meaning of index is defined by your backend
+    /// implementation.
+    </span><span class="attribute">#[inline]
+    #[doc(alias = <span class="string">&quot;IsKeyReleased&quot;</span>)]
+    </span><span class="kw">pub fn </span>is_key_index_released(<span class="kw-2">&amp;</span><span class="self">self</span>, key_index: i32) -&gt; bool {
+        <span class="kw">unsafe </span>{ sys::igIsKeyReleased(key_index) }
     }
 
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GetKeyPressedAmount&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">key_index_pressed_amount</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">key_index</span>: <span class="ident">i32</span>, <span class="ident">repeat_delay</span>: <span class="ident">f32</span>, <span class="ident">rate</span>: <span class="ident">f32</span>) -&gt; <span class="ident">u32</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igGetKeyPressedAmount</span>(<span class="ident">key_index</span>, <span class="ident">repeat_delay</span>, <span class="ident">rate</span>) <span class="kw">as</span> <span class="ident">u32</span> }
+    <span class="doccomment">/// Returns a count of key presses using the given repeat rate/delay settings.
+    ///
+    /// Usually returns 0 or 1, but might be &gt;1 if `rate` is small enough that `io.delta_time` &gt;
+    /// `rate`.
+    </span><span class="attribute">#[inline]
+    #[doc(alias = <span class="string">&quot;GetKeyPressedAmount&quot;</span>)]
+    </span><span class="kw">pub fn </span>key_pressed_amount(<span class="kw-2">&amp;</span><span class="self">self</span>, key: Key, repeat_delay: f32, rate: f32) -&gt; u32 {
+        <span class="kw">let </span>key_index = <span class="self">self</span>.key_index(key);
+        <span class="self">self</span>.key_index_pressed_amount(key_index, repeat_delay, rate)
     }
 
-    <span class="doccomment">/// Focuses keyboard on the next widget.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This is the equivalent to [set_keyboard_focus_here_with_offset](Self::set_keyboard_focus_here_with_offset)</span>
-    <span class="doccomment">/// with `target_widget` set to `FocusedWidget::Next`.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;SetKeyboardFocusHere&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_keyboard_focus_here</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) {
-        <span class="self">self</span>.<span class="ident">set_keyboard_focus_here_with_offset</span>(<span class="ident">FocusedWidget::Next</span>);
+    <span class="attribute">#[inline]
+    #[doc(alias = <span class="string">&quot;GetKeyPressedAmount&quot;</span>)]
+    </span><span class="kw">pub fn </span>key_index_pressed_amount(<span class="kw-2">&amp;</span><span class="self">self</span>, key_index: i32, repeat_delay: f32, rate: f32) -&gt; u32 {
+        <span class="kw">unsafe </span>{ sys::igGetKeyPressedAmount(key_index, repeat_delay, rate) <span class="kw">as </span>u32 }
     }
 
-    <span class="doccomment">/// Focuses keyboard on a widget relative to current position.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;SetKeyboardFocusHere&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_keyboard_focus_here_with_offset</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">target_widget</span>: <span class="ident">FocusedWidget</span>) {
-        <span class="kw">unsafe</span> {
-            <span class="ident">sys::igSetKeyboardFocusHere</span>(<span class="ident">target_widget</span>.<span class="ident">as_offset</span>());
+    <span class="doccomment">/// Focuses keyboard on the next widget.
+    ///
+    /// This is the equivalent to [set_keyboard_focus_here_with_offset](Self::set_keyboard_focus_here_with_offset)
+    /// with `target_widget` set to `FocusedWidget::Next`.
+    </span><span class="attribute">#[inline]
+    #[doc(alias = <span class="string">&quot;SetKeyboardFocusHere&quot;</span>)]
+    </span><span class="kw">pub fn </span>set_keyboard_focus_here(<span class="kw-2">&amp;</span><span class="self">self</span>) {
+        <span class="self">self</span>.set_keyboard_focus_here_with_offset(FocusedWidget::Next);
+    }
+
+    <span class="doccomment">/// Focuses keyboard on a widget relative to current position.
+    </span><span class="attribute">#[inline]
+    #[doc(alias = <span class="string">&quot;SetKeyboardFocusHere&quot;</span>)]
+    </span><span class="kw">pub fn </span>set_keyboard_focus_here_with_offset(<span class="kw-2">&amp;</span><span class="self">self</span>, target_widget: FocusedWidget) {
+        <span class="kw">unsafe </span>{
+            sys::igSetKeyboardFocusHere(target_widget.as_offset());
         }
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="arcdps_imgui" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="arcdps_imgui" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.0 (69f9c33d7 2022-12-12)" ></div></body></html>

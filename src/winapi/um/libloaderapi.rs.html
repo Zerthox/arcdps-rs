@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\winapi-0.3.9\src\um\libloaderapi.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>libloaderapi.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../winapi/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../winapi/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../winapi/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\winapi-0.3.9\src\um\libloaderapi.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>libloaderapi.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../normalize.css"><link rel="stylesheet" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../ayu.css" disabled><link rel="stylesheet" href="../../../dark.css" disabled><link rel="stylesheet" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../../winapi/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -234,241 +234,241 @@
 <span id="234">234</span>
 <span id="235">235</span>
 <span id="236">236</span>
-</pre><pre class="rust"><code><span class="comment">// Licensed under the Apache License, Version 2.0</span>
-<span class="comment">// &lt;LICENSE-APACHE or http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license</span>
-<span class="comment">// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your option.</span>
-<span class="comment">// All files in the project carrying such notice may not be copied, modified, or distributed</span>
-<span class="comment">// except according to those terms.</span>
-<span class="doccomment">//! ApiSet Contract for api-ms-win-core-libraryloader-l1</span>
-<span class="kw">use</span> <span class="ident">ctypes::c_int</span>;
-<span class="kw">use</span> <span class="ident">shared::basetsd::LONG_PTR</span>;
-<span class="kw">use</span> <span class="ident">shared::minwindef</span>::{
-    <span class="ident">BOOL</span>, <span class="ident">DWORD</span>, <span class="ident">FARPROC</span>, <span class="ident">HGLOBAL</span>, <span class="ident">HINSTANCE</span>, <span class="ident">HMODULE</span>, <span class="ident">HRSRC</span>, <span class="ident">LPVOID</span>, <span class="ident">UINT</span>, <span class="ident">WORD</span>
+</pre><pre class="rust"><code><span class="comment">// Licensed under the Apache License, Version 2.0
+// &lt;LICENSE-APACHE or http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license
+// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your option.
+// All files in the project carrying such notice may not be copied, modified, or distributed
+// except according to those terms.
+</span><span class="doccomment">//! ApiSet Contract for api-ms-win-core-libraryloader-l1
+</span><span class="kw">use </span>ctypes::c_int;
+<span class="kw">use </span>shared::basetsd::LONG_PTR;
+<span class="kw">use </span>shared::minwindef::{
+    BOOL, DWORD, FARPROC, HGLOBAL, HINSTANCE, HMODULE, HRSRC, LPVOID, UINT, WORD
 };
-<span class="kw">use</span> <span class="ident">um::winnt</span>::{<span class="ident">HANDLE</span>, <span class="ident">LANGID</span>, <span class="ident">LPCSTR</span>, <span class="ident">LPCWSTR</span>, <span class="ident">LPSTR</span>, <span class="ident">LPWSTR</span>, <span class="ident">PCWSTR</span>, <span class="ident">PVOID</span>};
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">GET_MODULE_HANDLE_EX_FLAG_PIN</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000001</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">GET_MODULE_HANDLE_EX_FLAG_UNCHANGED_REFCOUNT</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000002</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000004</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DONT_RESOLVE_DLL_REFERENCES</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000001</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">LOAD_LIBRARY_AS_DATAFILE</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000002</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">LOAD_WITH_ALTERED_SEARCH_PATH</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000008</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">LOAD_IGNORE_CODE_AUTHZ_LEVEL</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000010</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">LOAD_LIBRARY_AS_IMAGE_RESOURCE</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000020</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">LOAD_LIBRARY_AS_DATAFILE_EXCLUSIVE</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000040</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">LOAD_LIBRARY_REQUIRE_SIGNED_TARGET</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000080</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">LOAD_LIBRARY_SEARCH_DLL_LOAD_DIR</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000100</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">LOAD_LIBRARY_SEARCH_APPLICATION_DIR</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000200</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">LOAD_LIBRARY_SEARCH_USER_DIRS</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000400</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">LOAD_LIBRARY_SEARCH_SYSTEM32</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00000800</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">LOAD_LIBRARY_SEARCH_DEFAULT_DIRS</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00001000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">LOAD_LIBRARY_SAFE_CURRENT_DIRS</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00002000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">LOAD_LIBRARY_SEARCH_SYSTEM32_NO_FORWARDER</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00004000</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">LOAD_LIBRARY_OS_INTEGRITY_CONTINUITY</span>: <span class="ident">DWORD</span> <span class="op">=</span> <span class="number">0x00008000</span>;
-<span class="macro">FN!</span>{<span class="ident">stdcall</span> <span class="ident">ENUMRESLANGPROCA</span>(
-    <span class="ident">hModule</span>: <span class="ident">HMODULE</span>,
-    <span class="ident">lpType</span>: <span class="ident">LPCSTR</span>,
-    <span class="ident">lpName</span>: <span class="ident">LPCSTR</span>,
-    <span class="ident">wLanguage</span>: <span class="ident">WORD</span>,
-    <span class="ident">lParam</span>: <span class="ident">LONG_PTR</span>,
-) -&gt; <span class="ident">BOOL</span>}
-<span class="macro">FN!</span>{<span class="ident">stdcall</span> <span class="ident">ENUMRESLANGPROCW</span>(
-    <span class="ident">hModule</span>: <span class="ident">HMODULE</span>,
-    <span class="ident">lpType</span>: <span class="ident">LPCWSTR</span>,
-    <span class="ident">lpName</span>: <span class="ident">LPCWSTR</span>,
-    <span class="ident">wLanguage</span>: <span class="ident">WORD</span>,
-    <span class="ident">lParam</span>: <span class="ident">LONG_PTR</span>,
-) -&gt; <span class="ident">BOOL</span>}
-<span class="macro">FN!</span>{<span class="ident">stdcall</span> <span class="ident">ENUMRESNAMEPROCA</span>(
-    <span class="ident">hModule</span>: <span class="ident">HMODULE</span>,
-    <span class="ident">lpType</span>: <span class="ident">LPCSTR</span>,
-    <span class="ident">lpName</span>: <span class="ident">LPSTR</span>,
-    <span class="ident">lParam</span>: <span class="ident">LONG_PTR</span>,
-) -&gt; <span class="ident">BOOL</span>}
-<span class="macro">FN!</span>{<span class="ident">stdcall</span> <span class="ident">ENUMRESNAMEPROCW</span>(
-    <span class="ident">hModule</span>: <span class="ident">HMODULE</span>,
-    <span class="ident">lpType</span>: <span class="ident">LPCWSTR</span>,
-    <span class="ident">lpName</span>: <span class="ident">LPWSTR</span>,
-    <span class="ident">lParam</span>: <span class="ident">LONG_PTR</span>,
-) -&gt; <span class="ident">BOOL</span>}
-<span class="macro">FN!</span>{<span class="ident">stdcall</span> <span class="ident">ENUMRESTYPEPROCA</span>(
-    <span class="ident">hModule</span>: <span class="ident">HMODULE</span>,
-    <span class="ident">lpType</span>: <span class="ident">LPSTR</span>,
-    <span class="ident">lParam</span>: <span class="ident">LONG_PTR</span>,
-) -&gt; <span class="ident">BOOL</span>}
-<span class="macro">FN!</span>{<span class="ident">stdcall</span> <span class="ident">ENUMRESTYPEPROCW</span>(
-    <span class="ident">hModule</span>: <span class="ident">HMODULE</span>,
-    <span class="ident">lpType</span>: <span class="ident">LPWSTR</span>,
-    <span class="ident">lParam</span>: <span class="ident">LONG_PTR</span>,
-) -&gt; <span class="ident">BOOL</span>}
-<span class="kw">extern</span> <span class="string">&quot;system&quot;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">DisableThreadLibraryCalls</span>(
-        <span class="ident">hLibModule</span>: <span class="ident">HMODULE</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">FindResourceExW</span>(
-        <span class="ident">hModule</span>: <span class="ident">HMODULE</span>,
-        <span class="ident">lpName</span>: <span class="ident">LPCWSTR</span>,
-        <span class="ident">lpType</span>: <span class="ident">LPCWSTR</span>,
-        <span class="ident">wLanguage</span>: <span class="ident">WORD</span>,
-    ) -&gt; <span class="ident">HRSRC</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">FindStringOrdinal</span>(
-        <span class="ident">dwFindStringOrdinalFlags</span>: <span class="ident">DWORD</span>,
-        <span class="ident">lpStringSource</span>: <span class="ident">LPCWSTR</span>,
-        <span class="ident">cchSource</span>: <span class="ident">c_int</span>,
-        <span class="ident">lpStringValue</span>: <span class="ident">LPCWSTR</span>,
-        <span class="ident">cchValue</span>: <span class="ident">c_int</span>,
-        <span class="ident">bIgnoreCase</span>: <span class="ident">BOOL</span>,
-    ) -&gt; <span class="ident">c_int</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">FreeLibrary</span>(
-        <span class="ident">hLibModule</span>: <span class="ident">HMODULE</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">FreeLibraryAndExitThread</span>(
-        <span class="ident">hLibModule</span>: <span class="ident">HMODULE</span>,
-        <span class="ident">dwExitCode</span>: <span class="ident">DWORD</span>,
+<span class="kw">use </span>um::winnt::{HANDLE, LANGID, LPCSTR, LPCWSTR, LPSTR, LPWSTR, PCWSTR, PVOID};
+<span class="kw">pub const </span>GET_MODULE_HANDLE_EX_FLAG_PIN: DWORD = <span class="number">0x00000001</span>;
+<span class="kw">pub const </span>GET_MODULE_HANDLE_EX_FLAG_UNCHANGED_REFCOUNT: DWORD = <span class="number">0x00000002</span>;
+<span class="kw">pub const </span>GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS: DWORD = <span class="number">0x00000004</span>;
+<span class="kw">pub const </span>DONT_RESOLVE_DLL_REFERENCES: DWORD = <span class="number">0x00000001</span>;
+<span class="kw">pub const </span>LOAD_LIBRARY_AS_DATAFILE: DWORD = <span class="number">0x00000002</span>;
+<span class="kw">pub const </span>LOAD_WITH_ALTERED_SEARCH_PATH: DWORD = <span class="number">0x00000008</span>;
+<span class="kw">pub const </span>LOAD_IGNORE_CODE_AUTHZ_LEVEL: DWORD = <span class="number">0x00000010</span>;
+<span class="kw">pub const </span>LOAD_LIBRARY_AS_IMAGE_RESOURCE: DWORD = <span class="number">0x00000020</span>;
+<span class="kw">pub const </span>LOAD_LIBRARY_AS_DATAFILE_EXCLUSIVE: DWORD = <span class="number">0x00000040</span>;
+<span class="kw">pub const </span>LOAD_LIBRARY_REQUIRE_SIGNED_TARGET: DWORD = <span class="number">0x00000080</span>;
+<span class="kw">pub const </span>LOAD_LIBRARY_SEARCH_DLL_LOAD_DIR: DWORD = <span class="number">0x00000100</span>;
+<span class="kw">pub const </span>LOAD_LIBRARY_SEARCH_APPLICATION_DIR: DWORD = <span class="number">0x00000200</span>;
+<span class="kw">pub const </span>LOAD_LIBRARY_SEARCH_USER_DIRS: DWORD = <span class="number">0x00000400</span>;
+<span class="kw">pub const </span>LOAD_LIBRARY_SEARCH_SYSTEM32: DWORD = <span class="number">0x00000800</span>;
+<span class="kw">pub const </span>LOAD_LIBRARY_SEARCH_DEFAULT_DIRS: DWORD = <span class="number">0x00001000</span>;
+<span class="kw">pub const </span>LOAD_LIBRARY_SAFE_CURRENT_DIRS: DWORD = <span class="number">0x00002000</span>;
+<span class="kw">pub const </span>LOAD_LIBRARY_SEARCH_SYSTEM32_NO_FORWARDER: DWORD = <span class="number">0x00004000</span>;
+<span class="kw">pub const </span>LOAD_LIBRARY_OS_INTEGRITY_CONTINUITY: DWORD = <span class="number">0x00008000</span>;
+<span class="macro">FN!</span>{stdcall ENUMRESLANGPROCA(
+    hModule: HMODULE,
+    lpType: LPCSTR,
+    lpName: LPCSTR,
+    wLanguage: WORD,
+    lParam: LONG_PTR,
+) -&gt; BOOL}
+<span class="macro">FN!</span>{stdcall ENUMRESLANGPROCW(
+    hModule: HMODULE,
+    lpType: LPCWSTR,
+    lpName: LPCWSTR,
+    wLanguage: WORD,
+    lParam: LONG_PTR,
+) -&gt; BOOL}
+<span class="macro">FN!</span>{stdcall ENUMRESNAMEPROCA(
+    hModule: HMODULE,
+    lpType: LPCSTR,
+    lpName: LPSTR,
+    lParam: LONG_PTR,
+) -&gt; BOOL}
+<span class="macro">FN!</span>{stdcall ENUMRESNAMEPROCW(
+    hModule: HMODULE,
+    lpType: LPCWSTR,
+    lpName: LPWSTR,
+    lParam: LONG_PTR,
+) -&gt; BOOL}
+<span class="macro">FN!</span>{stdcall ENUMRESTYPEPROCA(
+    hModule: HMODULE,
+    lpType: LPSTR,
+    lParam: LONG_PTR,
+) -&gt; BOOL}
+<span class="macro">FN!</span>{stdcall ENUMRESTYPEPROCW(
+    hModule: HMODULE,
+    lpType: LPWSTR,
+    lParam: LONG_PTR,
+) -&gt; BOOL}
+<span class="kw">extern </span><span class="string">&quot;system&quot; </span>{
+    <span class="kw">pub fn </span>DisableThreadLibraryCalls(
+        hLibModule: HMODULE,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>FindResourceExW(
+        hModule: HMODULE,
+        lpName: LPCWSTR,
+        lpType: LPCWSTR,
+        wLanguage: WORD,
+    ) -&gt; HRSRC;
+    <span class="kw">pub fn </span>FindStringOrdinal(
+        dwFindStringOrdinalFlags: DWORD,
+        lpStringSource: LPCWSTR,
+        cchSource: c_int,
+        lpStringValue: LPCWSTR,
+        cchValue: c_int,
+        bIgnoreCase: BOOL,
+    ) -&gt; c_int;
+    <span class="kw">pub fn </span>FreeLibrary(
+        hLibModule: HMODULE,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>FreeLibraryAndExitThread(
+        hLibModule: HMODULE,
+        dwExitCode: DWORD,
     );
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">FreeResource</span>(
-        <span class="ident">hResData</span>: <span class="ident">HGLOBAL</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetModuleFileNameA</span>(
-        <span class="ident">hModule</span>: <span class="ident">HMODULE</span>,
-        <span class="ident">lpFilename</span>: <span class="ident">LPSTR</span>,
-        <span class="ident">nSize</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">DWORD</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetModuleFileNameW</span>(
-        <span class="ident">hModule</span>: <span class="ident">HMODULE</span>,
-        <span class="ident">lpFilename</span>: <span class="ident">LPWSTR</span>,
-        <span class="ident">nSize</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">DWORD</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetModuleHandleA</span>(
-        <span class="ident">lpModuleName</span>: <span class="ident">LPCSTR</span>,
-    ) -&gt; <span class="ident">HMODULE</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetModuleHandleW</span>(
-        <span class="ident">lpModuleName</span>: <span class="ident">LPCWSTR</span>,
-    ) -&gt; <span class="ident">HMODULE</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetModuleHandleExA</span>(
-        <span class="ident">dwFlags</span>: <span class="ident">DWORD</span>,
-        <span class="ident">lpModuleName</span>: <span class="ident">LPCSTR</span>,
-        <span class="ident">phModule</span>: <span class="kw-2">*mut</span> <span class="ident">HMODULE</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetModuleHandleExW</span>(
-        <span class="ident">dwFlags</span>: <span class="ident">DWORD</span>,
-        <span class="ident">lpModuleName</span>: <span class="ident">LPCWSTR</span>,
-        <span class="ident">phModule</span>: <span class="kw-2">*mut</span> <span class="ident">HMODULE</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GetProcAddress</span>(
-        <span class="ident">hModule</span>: <span class="ident">HMODULE</span>,
-        <span class="ident">lpProcName</span>: <span class="ident">LPCSTR</span>,
-    ) -&gt; <span class="ident">FARPROC</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">LoadLibraryExA</span>(
-        <span class="ident">lpLibFileName</span>: <span class="ident">LPCSTR</span>,
-        <span class="ident">hFile</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">dwFlags</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">HMODULE</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">LoadLibraryExW</span>(
-        <span class="ident">lpLibFileName</span>: <span class="ident">LPCWSTR</span>,
-        <span class="ident">hFile</span>: <span class="ident">HANDLE</span>,
-        <span class="ident">dwFlags</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">HMODULE</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">LoadResource</span>(
-        <span class="ident">hModule</span>: <span class="ident">HMODULE</span>,
-        <span class="ident">hResInfo</span>: <span class="ident">HRSRC</span>,
-    ) -&gt; <span class="ident">HGLOBAL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">LoadStringA</span>(
-        <span class="ident">hInstance</span>: <span class="ident">HINSTANCE</span>,
-        <span class="ident">uID</span>: <span class="ident">UINT</span>,
-        <span class="ident">lpBuffer</span>: <span class="ident">LPSTR</span>,
-        <span class="ident">cchBufferMax</span>: <span class="ident">c_int</span>,
-    ) -&gt; <span class="ident">c_int</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">LoadStringW</span>(
-        <span class="ident">hInstance</span>: <span class="ident">HINSTANCE</span>,
-        <span class="ident">uID</span>: <span class="ident">UINT</span>,
-        <span class="ident">lpBuffer</span>: <span class="ident">LPWSTR</span>,
-        <span class="ident">cchBufferMax</span>: <span class="ident">c_int</span>,
-    ) -&gt; <span class="ident">c_int</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">LockResource</span>(
-        <span class="ident">hResData</span>: <span class="ident">HGLOBAL</span>,
-    ) -&gt; <span class="ident">LPVOID</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">SizeofResource</span>(
-        <span class="ident">hModule</span>: <span class="ident">HMODULE</span>,
-        <span class="ident">hResInfo</span>: <span class="ident">HRSRC</span>,
-    ) -&gt; <span class="ident">DWORD</span>;
+    <span class="kw">pub fn </span>FreeResource(
+        hResData: HGLOBAL,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>GetModuleFileNameA(
+        hModule: HMODULE,
+        lpFilename: LPSTR,
+        nSize: DWORD,
+    ) -&gt; DWORD;
+    <span class="kw">pub fn </span>GetModuleFileNameW(
+        hModule: HMODULE,
+        lpFilename: LPWSTR,
+        nSize: DWORD,
+    ) -&gt; DWORD;
+    <span class="kw">pub fn </span>GetModuleHandleA(
+        lpModuleName: LPCSTR,
+    ) -&gt; HMODULE;
+    <span class="kw">pub fn </span>GetModuleHandleW(
+        lpModuleName: LPCWSTR,
+    ) -&gt; HMODULE;
+    <span class="kw">pub fn </span>GetModuleHandleExA(
+        dwFlags: DWORD,
+        lpModuleName: LPCSTR,
+        phModule: <span class="kw-2">*mut </span>HMODULE,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>GetModuleHandleExW(
+        dwFlags: DWORD,
+        lpModuleName: LPCWSTR,
+        phModule: <span class="kw-2">*mut </span>HMODULE,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>GetProcAddress(
+        hModule: HMODULE,
+        lpProcName: LPCSTR,
+    ) -&gt; FARPROC;
+    <span class="kw">pub fn </span>LoadLibraryExA(
+        lpLibFileName: LPCSTR,
+        hFile: HANDLE,
+        dwFlags: DWORD,
+    ) -&gt; HMODULE;
+    <span class="kw">pub fn </span>LoadLibraryExW(
+        lpLibFileName: LPCWSTR,
+        hFile: HANDLE,
+        dwFlags: DWORD,
+    ) -&gt; HMODULE;
+    <span class="kw">pub fn </span>LoadResource(
+        hModule: HMODULE,
+        hResInfo: HRSRC,
+    ) -&gt; HGLOBAL;
+    <span class="kw">pub fn </span>LoadStringA(
+        hInstance: HINSTANCE,
+        uID: UINT,
+        lpBuffer: LPSTR,
+        cchBufferMax: c_int,
+    ) -&gt; c_int;
+    <span class="kw">pub fn </span>LoadStringW(
+        hInstance: HINSTANCE,
+        uID: UINT,
+        lpBuffer: LPWSTR,
+        cchBufferMax: c_int,
+    ) -&gt; c_int;
+    <span class="kw">pub fn </span>LockResource(
+        hResData: HGLOBAL,
+    ) -&gt; LPVOID;
+    <span class="kw">pub fn </span>SizeofResource(
+        hModule: HMODULE,
+        hResInfo: HRSRC,
+    ) -&gt; DWORD;
 }
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">DLL_DIRECTORY_COOKIE</span> <span class="op">=</span> <span class="ident">PVOID</span>;
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PDLL_DIRECTORY_COOKIE</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">PVOID</span>;
-<span class="kw">extern</span> <span class="string">&quot;system&quot;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">AddDllDirectory</span>(
-        <span class="ident">NewDirectory</span>: <span class="ident">PCWSTR</span>,
-    ) -&gt; <span class="ident">DLL_DIRECTORY_COOKIE</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">RemoveDllDirectory</span>(
-        <span class="ident">Cookie</span>: <span class="ident">DLL_DIRECTORY_COOKIE</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">SetDefaultDllDirectories</span>(
-        <span class="ident">DirectoryFlags</span>: <span class="ident">DWORD</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">EnumResourceLanguagesExA</span>(
-        <span class="ident">hModule</span>: <span class="ident">HMODULE</span>,
-        <span class="ident">lpType</span>: <span class="ident">LPCSTR</span>,
-        <span class="ident">lpName</span>: <span class="ident">LPCSTR</span>,
-        <span class="ident">lpEnumFunc</span>: <span class="ident">ENUMRESLANGPROCA</span>,
-        <span class="ident">lParam</span>: <span class="ident">LONG_PTR</span>,
-        <span class="ident">dwFlags</span>: <span class="ident">DWORD</span>,
-        <span class="ident">LangId</span>: <span class="ident">LANGID</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">EnumResourceLanguagesExW</span>(
-        <span class="ident">hModule</span>: <span class="ident">HMODULE</span>,
-        <span class="ident">lpType</span>: <span class="ident">LPCWSTR</span>,
-        <span class="ident">lpName</span>: <span class="ident">LPCWSTR</span>,
-        <span class="ident">lpEnumFunc</span>: <span class="ident">ENUMRESLANGPROCW</span>,
-        <span class="ident">lParam</span>: <span class="ident">LONG_PTR</span>,
-        <span class="ident">dwFlags</span>: <span class="ident">DWORD</span>,
-        <span class="ident">LangId</span>: <span class="ident">LANGID</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">EnumResourceNamesExA</span>(
-        <span class="ident">hModule</span>: <span class="ident">HMODULE</span>,
-        <span class="ident">lpType</span>: <span class="ident">LPCSTR</span>,
-        <span class="ident">lpEnumFunc</span>: <span class="ident">ENUMRESNAMEPROCA</span>,
-        <span class="ident">lParam</span>: <span class="ident">LONG_PTR</span>,
-        <span class="ident">dwFlags</span>: <span class="ident">DWORD</span>,
-        <span class="ident">LangId</span>: <span class="ident">LANGID</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">EnumResourceNamesExW</span>(
-        <span class="ident">hModule</span>: <span class="ident">HMODULE</span>,
-        <span class="ident">lpType</span>: <span class="ident">LPCWSTR</span>,
-        <span class="ident">lpEnumFunc</span>: <span class="ident">ENUMRESNAMEPROCW</span>,
-        <span class="ident">lParam</span>: <span class="ident">LONG_PTR</span>,
-        <span class="ident">dwFlags</span>: <span class="ident">DWORD</span>,
-        <span class="ident">LangId</span>: <span class="ident">LANGID</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">EnumResourceTypesExA</span>(
-        <span class="ident">hModule</span>: <span class="ident">HMODULE</span>,
-        <span class="ident">lpEnumFunc</span>: <span class="ident">ENUMRESTYPEPROCA</span>,
-        <span class="ident">lParam</span>: <span class="ident">LONG_PTR</span>,
-        <span class="ident">dwFlags</span>: <span class="ident">DWORD</span>,
-        <span class="ident">LangId</span>: <span class="ident">LANGID</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">EnumResourceTypesExW</span>(
-        <span class="ident">hModule</span>: <span class="ident">HMODULE</span>,
-        <span class="ident">lpEnumFunc</span>: <span class="ident">ENUMRESTYPEPROCW</span>,
-        <span class="ident">lParam</span>: <span class="ident">LONG_PTR</span>,
-        <span class="ident">dwFlags</span>: <span class="ident">DWORD</span>,
-        <span class="ident">LangId</span>: <span class="ident">LANGID</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">FindResourceW</span>(
-        <span class="ident">hModule</span>: <span class="ident">HMODULE</span>,
-        <span class="ident">lpName</span>: <span class="ident">LPCWSTR</span>,
-        <span class="ident">lpType</span>: <span class="ident">LPCWSTR</span>,
-    ) -&gt; <span class="ident">HRSRC</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">LoadLibraryA</span>(
-        <span class="ident">lpFileName</span>: <span class="ident">LPCSTR</span>,
-    ) -&gt; <span class="ident">HMODULE</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">LoadLibraryW</span>(
-        <span class="ident">lpFileName</span>: <span class="ident">LPCWSTR</span>,
-    ) -&gt; <span class="ident">HMODULE</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">EnumResourceNamesW</span>(
-        <span class="ident">hModule</span>: <span class="ident">HMODULE</span>,
-        <span class="ident">lpType</span>: <span class="ident">LPCWSTR</span>,
-        <span class="ident">lpEnumFunc</span>: <span class="ident">ENUMRESNAMEPROCW</span>,
-        <span class="ident">lParam</span>: <span class="ident">LONG_PTR</span>,
-    ) -&gt; <span class="ident">BOOL</span>;
+<span class="kw">pub type </span>DLL_DIRECTORY_COOKIE = PVOID;
+<span class="kw">pub type </span>PDLL_DIRECTORY_COOKIE = <span class="kw-2">*mut </span>PVOID;
+<span class="kw">extern </span><span class="string">&quot;system&quot; </span>{
+    <span class="kw">pub fn </span>AddDllDirectory(
+        NewDirectory: PCWSTR,
+    ) -&gt; DLL_DIRECTORY_COOKIE;
+    <span class="kw">pub fn </span>RemoveDllDirectory(
+        Cookie: DLL_DIRECTORY_COOKIE,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>SetDefaultDllDirectories(
+        DirectoryFlags: DWORD,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>EnumResourceLanguagesExA(
+        hModule: HMODULE,
+        lpType: LPCSTR,
+        lpName: LPCSTR,
+        lpEnumFunc: ENUMRESLANGPROCA,
+        lParam: LONG_PTR,
+        dwFlags: DWORD,
+        LangId: LANGID,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>EnumResourceLanguagesExW(
+        hModule: HMODULE,
+        lpType: LPCWSTR,
+        lpName: LPCWSTR,
+        lpEnumFunc: ENUMRESLANGPROCW,
+        lParam: LONG_PTR,
+        dwFlags: DWORD,
+        LangId: LANGID,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>EnumResourceNamesExA(
+        hModule: HMODULE,
+        lpType: LPCSTR,
+        lpEnumFunc: ENUMRESNAMEPROCA,
+        lParam: LONG_PTR,
+        dwFlags: DWORD,
+        LangId: LANGID,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>EnumResourceNamesExW(
+        hModule: HMODULE,
+        lpType: LPCWSTR,
+        lpEnumFunc: ENUMRESNAMEPROCW,
+        lParam: LONG_PTR,
+        dwFlags: DWORD,
+        LangId: LANGID,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>EnumResourceTypesExA(
+        hModule: HMODULE,
+        lpEnumFunc: ENUMRESTYPEPROCA,
+        lParam: LONG_PTR,
+        dwFlags: DWORD,
+        LangId: LANGID,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>EnumResourceTypesExW(
+        hModule: HMODULE,
+        lpEnumFunc: ENUMRESTYPEPROCW,
+        lParam: LONG_PTR,
+        dwFlags: DWORD,
+        LangId: LANGID,
+    ) -&gt; BOOL;
+    <span class="kw">pub fn </span>FindResourceW(
+        hModule: HMODULE,
+        lpName: LPCWSTR,
+        lpType: LPCWSTR,
+    ) -&gt; HRSRC;
+    <span class="kw">pub fn </span>LoadLibraryA(
+        lpFileName: LPCSTR,
+    ) -&gt; HMODULE;
+    <span class="kw">pub fn </span>LoadLibraryW(
+        lpFileName: LPCWSTR,
+    ) -&gt; HMODULE;
+    <span class="kw">pub fn </span>EnumResourceNamesW(
+        hModule: HMODULE,
+        lpType: LPCWSTR,
+        lpEnumFunc: ENUMRESNAMEPROCW,
+        lParam: LONG_PTR,
+    ) -&gt; BOOL;
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="winapi" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="winapi" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.0 (69f9c33d7 2022-12-12)" ></div></body></html>

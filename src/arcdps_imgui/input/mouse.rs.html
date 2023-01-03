@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\arcdps-imgui-0.8.0\src\input\mouse.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>mouse.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../arcdps_imgui/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../arcdps_imgui/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../arcdps_imgui/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\arcdps-imgui-0.8.0\src\input\mouse.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>mouse.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../normalize.css"><link rel="stylesheet" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../ayu.css" disabled><link rel="stylesheet" href="../../../dark.css" disabled><link rel="stylesheet" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../../arcdps_imgui/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -476,483 +476,483 @@
 <span id="476">476</span>
 <span id="477">477</span>
 <span id="478">478</span>
-</pre><pre class="rust"><code><span class="kw">use</span> <span class="ident">std::ptr</span>;
+</pre><pre class="rust"><code><span class="kw">use </span>std::ptr;
 
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::sys</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::Ui</span>;
+<span class="kw">use </span><span class="kw">crate</span>::sys;
+<span class="kw">use </span><span class="kw">crate</span>::Ui;
 
-<span class="doccomment">/// Represents one of the supported mouse buttons</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Eq</span>, <span class="ident">PartialEq</span>, <span class="ident">Debug</span>)]</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">MouseButton</span> {
-    <span class="ident">Left</span> <span class="op">=</span> <span class="number">0</span>,
-    <span class="ident">Right</span> <span class="op">=</span> <span class="number">1</span>,
-    <span class="ident">Middle</span> <span class="op">=</span> <span class="number">2</span>,
-    <span class="ident">Extra1</span> <span class="op">=</span> <span class="number">3</span>,
-    <span class="ident">Extra2</span> <span class="op">=</span> <span class="number">4</span>,
+<span class="doccomment">/// Represents one of the supported mouse buttons
+</span><span class="attribute">#[derive(Copy, Clone, Eq, PartialEq, Debug)]
+</span><span class="kw">pub enum </span>MouseButton {
+    Left = <span class="number">0</span>,
+    Right = <span class="number">1</span>,
+    Middle = <span class="number">2</span>,
+    Extra1 = <span class="number">3</span>,
+    Extra2 = <span class="number">4</span>,
 }
 
-<span class="kw">impl</span> <span class="ident">MouseButton</span> {
-    <span class="doccomment">/// All possible `MouseButton` varirants</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">VARIANTS</span>: [<span class="ident">MouseButton</span>; <span class="ident">MouseButton::COUNT</span>] <span class="op">=</span> [
-        <span class="ident">MouseButton::Left</span>,
-        <span class="ident">MouseButton::Right</span>,
-        <span class="ident">MouseButton::Middle</span>,
-        <span class="ident">MouseButton::Extra1</span>,
-        <span class="ident">MouseButton::Extra2</span>,
+<span class="kw">impl </span>MouseButton {
+    <span class="doccomment">/// All possible `MouseButton` varirants
+    </span><span class="kw">pub const </span>VARIANTS: [MouseButton; MouseButton::COUNT] = [
+        MouseButton::Left,
+        MouseButton::Right,
+        MouseButton::Middle,
+        MouseButton::Extra1,
+        MouseButton::Extra2,
     ];
-    <span class="doccomment">/// Total count of `MouseButton` variants</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">COUNT</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="number">5</span>;
+    <span class="doccomment">/// Total count of `MouseButton` variants
+    </span><span class="kw">pub const </span>COUNT: usize = <span class="number">5</span>;
 }
 
-<span class="attribute">#[<span class="ident">test</span>]</span>
-<span class="kw">fn</span> <span class="ident">test_mouse_button_variants</span>() {
-    <span class="kw">for</span> (<span class="ident">idx</span>, <span class="kw-2">&amp;</span><span class="ident">value</span>) <span class="kw">in</span> <span class="ident">MouseButton::VARIANTS</span>.<span class="ident">iter</span>().<span class="ident">enumerate</span>() {
-        <span class="macro">assert_eq!</span>(<span class="ident">idx</span>, <span class="ident">value</span> <span class="kw">as</span> <span class="ident">usize</span>);
+<span class="attribute">#[test]
+</span><span class="kw">fn </span>test_mouse_button_variants() {
+    <span class="kw">for </span>(idx, <span class="kw-2">&amp;</span>value) <span class="kw">in </span>MouseButton::VARIANTS.iter().enumerate() {
+        <span class="macro">assert_eq!</span>(idx, value <span class="kw">as </span>usize);
     }
 }
 
-<span class="doccomment">/// Mouse cursor type identifier</span>
-<span class="attribute">#[<span class="ident">repr</span>(<span class="ident">i32</span>)]</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">Hash</span>, <span class="ident">Eq</span>, <span class="ident">PartialEq</span>)]</span>
-<span class="comment">// TODO: this should just be `#[allow(clippy::upper_case_acronyms)]`, but doing</span>
-<span class="comment">// so in a way that works before it stabilizes is a pain (in part because</span>
-<span class="comment">// `unknown_clippy_lints` was renamed to unknown_lints). Oh well, it&#39;s over a</span>
-<span class="comment">// small amount of code.</span>
-<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">warnings</span>)]</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">MouseCursor</span> {
-    <span class="ident">Arrow</span> <span class="op">=</span> <span class="ident">sys::ImGuiMouseCursor_Arrow</span>,
-    <span class="doccomment">/// Automatically used when hovering over text inputs, etc.</span>
-    <span class="ident">TextInput</span> <span class="op">=</span> <span class="ident">sys::ImGuiMouseCursor_TextInput</span>,
-    <span class="doccomment">/// Not used automatically</span>
-    <span class="ident">ResizeAll</span> <span class="op">=</span> <span class="ident">sys::ImGuiMouseCursor_ResizeAll</span>,
-    <span class="doccomment">/// Automatically used when hovering over a horizontal border</span>
-    <span class="ident">ResizeNS</span> <span class="op">=</span> <span class="ident">sys::ImGuiMouseCursor_ResizeNS</span>,
-    <span class="doccomment">/// Automatically used when hovering over a vertical border or a column</span>
-    <span class="ident">ResizeEW</span> <span class="op">=</span> <span class="ident">sys::ImGuiMouseCursor_ResizeEW</span>,
-    <span class="doccomment">/// Automatically used when hovering over the bottom-left corner of a window</span>
-    <span class="ident">ResizeNESW</span> <span class="op">=</span> <span class="ident">sys::ImGuiMouseCursor_ResizeNESW</span>,
-    <span class="doccomment">/// Automatically used when hovering over the bottom-right corner of a window</span>
-    <span class="ident">ResizeNWSE</span> <span class="op">=</span> <span class="ident">sys::ImGuiMouseCursor_ResizeNWSE</span>,
-    <span class="doccomment">/// Not used automatically, use for e.g. hyperlinks</span>
-    <span class="ident">Hand</span> <span class="op">=</span> <span class="ident">sys::ImGuiMouseCursor_Hand</span>,
-    <span class="doccomment">/// When hovering something with disallowed interactions.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Usually a crossed circle.</span>
-    <span class="ident">NotAllowed</span> <span class="op">=</span> <span class="ident">sys::ImGuiMouseCursor_NotAllowed</span>,
+<span class="doccomment">/// Mouse cursor type identifier
+</span><span class="attribute">#[repr(i32)]
+#[derive(Copy, Clone, Debug, Hash, Eq, PartialEq)]
+</span><span class="comment">// TODO: this should just be `#[allow(clippy::upper_case_acronyms)]`, but doing
+// so in a way that works before it stabilizes is a pain (in part because
+// `unknown_clippy_lints` was renamed to unknown_lints). Oh well, it&#39;s over a
+// small amount of code.
+</span><span class="attribute">#[allow(warnings)]
+</span><span class="kw">pub enum </span>MouseCursor {
+    Arrow = sys::ImGuiMouseCursor_Arrow,
+    <span class="doccomment">/// Automatically used when hovering over text inputs, etc.
+    </span>TextInput = sys::ImGuiMouseCursor_TextInput,
+    <span class="doccomment">/// Not used automatically
+    </span>ResizeAll = sys::ImGuiMouseCursor_ResizeAll,
+    <span class="doccomment">/// Automatically used when hovering over a horizontal border
+    </span>ResizeNS = sys::ImGuiMouseCursor_ResizeNS,
+    <span class="doccomment">/// Automatically used when hovering over a vertical border or a column
+    </span>ResizeEW = sys::ImGuiMouseCursor_ResizeEW,
+    <span class="doccomment">/// Automatically used when hovering over the bottom-left corner of a window
+    </span>ResizeNESW = sys::ImGuiMouseCursor_ResizeNESW,
+    <span class="doccomment">/// Automatically used when hovering over the bottom-right corner of a window
+    </span>ResizeNWSE = sys::ImGuiMouseCursor_ResizeNWSE,
+    <span class="doccomment">/// Not used automatically, use for e.g. hyperlinks
+    </span>Hand = sys::ImGuiMouseCursor_Hand,
+    <span class="doccomment">/// When hovering something with disallowed interactions.
+    ///
+    /// Usually a crossed circle.
+    </span>NotAllowed = sys::ImGuiMouseCursor_NotAllowed,
 }
 
-<span class="kw">impl</span> <span class="ident">MouseCursor</span> {
-    <span class="doccomment">/// All possible `MouseCursor` varirants</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">VARIANTS</span>: [<span class="ident">MouseCursor</span>; <span class="ident">MouseCursor::COUNT</span>] <span class="op">=</span> [
-        <span class="ident">MouseCursor::Arrow</span>,
-        <span class="ident">MouseCursor::TextInput</span>,
-        <span class="ident">MouseCursor::ResizeAll</span>,
-        <span class="ident">MouseCursor::ResizeNS</span>,
-        <span class="ident">MouseCursor::ResizeEW</span>,
-        <span class="ident">MouseCursor::ResizeNESW</span>,
-        <span class="ident">MouseCursor::ResizeNWSE</span>,
-        <span class="ident">MouseCursor::Hand</span>,
-        <span class="ident">MouseCursor::NotAllowed</span>,
+<span class="kw">impl </span>MouseCursor {
+    <span class="doccomment">/// All possible `MouseCursor` varirants
+    </span><span class="kw">pub const </span>VARIANTS: [MouseCursor; MouseCursor::COUNT] = [
+        MouseCursor::Arrow,
+        MouseCursor::TextInput,
+        MouseCursor::ResizeAll,
+        MouseCursor::ResizeNS,
+        MouseCursor::ResizeEW,
+        MouseCursor::ResizeNESW,
+        MouseCursor::ResizeNWSE,
+        MouseCursor::Hand,
+        MouseCursor::NotAllowed,
     ];
-    <span class="doccomment">/// Total count of `MouseCursor` variants</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">COUNT</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="ident">sys::ImGuiMouseCursor_COUNT</span> <span class="kw">as</span> <span class="ident">usize</span>;
+    <span class="doccomment">/// Total count of `MouseCursor` variants
+    </span><span class="kw">pub const </span>COUNT: usize = sys::ImGuiMouseCursor_COUNT <span class="kw">as </span>usize;
 }
 
-<span class="attribute">#[<span class="ident">test</span>]</span>
-<span class="kw">fn</span> <span class="ident">test_mouse_cursor_variants</span>() {
-    <span class="kw">for</span> (<span class="ident">idx</span>, <span class="kw-2">&amp;</span><span class="ident">value</span>) <span class="kw">in</span> <span class="ident">MouseCursor::VARIANTS</span>.<span class="ident">iter</span>().<span class="ident">enumerate</span>() {
-        <span class="macro">assert_eq!</span>(<span class="ident">idx</span>, <span class="ident">value</span> <span class="kw">as</span> <span class="ident">usize</span>);
+<span class="attribute">#[test]
+</span><span class="kw">fn </span>test_mouse_cursor_variants() {
+    <span class="kw">for </span>(idx, <span class="kw-2">&amp;</span>value) <span class="kw">in </span>MouseCursor::VARIANTS.iter().enumerate() {
+        <span class="macro">assert_eq!</span>(idx, value <span class="kw">as </span>usize);
     }
 }
 
-<span class="doccomment">/// # Input: Mouse</span>
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> <span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Returns true if the given mouse button is held down.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Equivalent to indexing the Io struct with the button, e.g. `ui.io()[button]`.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;IsMouseDown&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_mouse_down</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">button</span>: <span class="ident">MouseButton</span>) -&gt; <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igIsMouseDown</span>(<span class="ident">button</span> <span class="kw">as</span> <span class="ident">i32</span>) }
+<span class="doccomment">/// # Input: Mouse
+</span><span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>&gt; Ui&lt;<span class="lifetime">&#39;ui</span>&gt; {
+    <span class="doccomment">/// Returns true if the given mouse button is held down.
+    ///
+    /// Equivalent to indexing the Io struct with the button, e.g. `ui.io()[button]`.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;IsMouseDown&quot;</span>)]
+    </span><span class="kw">pub fn </span>is_mouse_down(<span class="kw-2">&amp;</span><span class="self">self</span>, button: MouseButton) -&gt; bool {
+        <span class="kw">unsafe </span>{ sys::igIsMouseDown(button <span class="kw">as </span>i32) }
     }
-    <span class="doccomment">/// Returns true if any mouse button is held down</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;IsAnyMouseDown&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_any_mouse_down</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igIsAnyMouseDown</span>() }
+    <span class="doccomment">/// Returns true if any mouse button is held down
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;IsAnyMouseDown&quot;</span>)]
+    </span><span class="kw">pub fn </span>is_any_mouse_down(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        <span class="kw">unsafe </span>{ sys::igIsAnyMouseDown() }
     }
-    <span class="doccomment">/// Returns true if the given mouse button was clicked (went from !down to down)</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;IsMouseClicked&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_mouse_clicked</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">button</span>: <span class="ident">MouseButton</span>) -&gt; <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igIsMouseClicked</span>(<span class="ident">button</span> <span class="kw">as</span> <span class="ident">i32</span>, <span class="bool-val">false</span>) }
+    <span class="doccomment">/// Returns true if the given mouse button was clicked (went from !down to down)
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;IsMouseClicked&quot;</span>)]
+    </span><span class="kw">pub fn </span>is_mouse_clicked(<span class="kw-2">&amp;</span><span class="self">self</span>, button: MouseButton) -&gt; bool {
+        <span class="kw">unsafe </span>{ sys::igIsMouseClicked(button <span class="kw">as </span>i32, <span class="bool-val">false</span>) }
     }
-    <span class="doccomment">/// Returns true if the given mouse button was double-clicked</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;IsMouseDoubleClicked&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_mouse_double_clicked</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">button</span>: <span class="ident">MouseButton</span>) -&gt; <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igIsMouseDoubleClicked</span>(<span class="ident">button</span> <span class="kw">as</span> <span class="ident">i32</span>) }
+    <span class="doccomment">/// Returns true if the given mouse button was double-clicked
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;IsMouseDoubleClicked&quot;</span>)]
+    </span><span class="kw">pub fn </span>is_mouse_double_clicked(<span class="kw-2">&amp;</span><span class="self">self</span>, button: MouseButton) -&gt; bool {
+        <span class="kw">unsafe </span>{ sys::igIsMouseDoubleClicked(button <span class="kw">as </span>i32) }
     }
-    <span class="doccomment">/// Returns true if the given mouse button was released (went from down to !down)</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;IsMouseReleased&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_mouse_released</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">button</span>: <span class="ident">MouseButton</span>) -&gt; <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igIsMouseReleased</span>(<span class="ident">button</span> <span class="kw">as</span> <span class="ident">i32</span>) }
+    <span class="doccomment">/// Returns true if the given mouse button was released (went from down to !down)
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;IsMouseReleased&quot;</span>)]
+    </span><span class="kw">pub fn </span>is_mouse_released(<span class="kw-2">&amp;</span><span class="self">self</span>, button: MouseButton) -&gt; bool {
+        <span class="kw">unsafe </span>{ sys::igIsMouseReleased(button <span class="kw">as </span>i32) }
     }
-    <span class="doccomment">/// Returns true if the mouse is currently dragging with the given mouse button held down</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;IsMouseDragging&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_mouse_dragging</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">button</span>: <span class="ident">MouseButton</span>) -&gt; <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igIsMouseDragging</span>(<span class="ident">button</span> <span class="kw">as</span> <span class="ident">i32</span>, <span class="op">-</span><span class="number">1.0</span>) }
+    <span class="doccomment">/// Returns true if the mouse is currently dragging with the given mouse button held down
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;IsMouseDragging&quot;</span>)]
+    </span><span class="kw">pub fn </span>is_mouse_dragging(<span class="kw-2">&amp;</span><span class="self">self</span>, button: MouseButton) -&gt; bool {
+        <span class="kw">unsafe </span>{ sys::igIsMouseDragging(button <span class="kw">as </span>i32, -<span class="number">1.0</span>) }
     }
-    <span class="doccomment">/// Returns true if the mouse is currently dragging with the given mouse button held down.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// If the given threshold is invalid or negative, the global distance threshold is used</span>
-    <span class="doccomment">/// (`io.mouse_drag_threshold`).</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;IsMouseDragging&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_mouse_dragging_with_threshold</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">button</span>: <span class="ident">MouseButton</span>, <span class="ident">threshold</span>: <span class="ident">f32</span>) -&gt; <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igIsMouseDragging</span>(<span class="ident">button</span> <span class="kw">as</span> <span class="ident">i32</span>, <span class="ident">threshold</span>) }
+    <span class="doccomment">/// Returns true if the mouse is currently dragging with the given mouse button held down.
+    ///
+    /// If the given threshold is invalid or negative, the global distance threshold is used
+    /// (`io.mouse_drag_threshold`).
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;IsMouseDragging&quot;</span>)]
+    </span><span class="kw">pub fn </span>is_mouse_dragging_with_threshold(<span class="kw-2">&amp;</span><span class="self">self</span>, button: MouseButton, threshold: f32) -&gt; bool {
+        <span class="kw">unsafe </span>{ sys::igIsMouseDragging(button <span class="kw">as </span>i32, threshold) }
     }
-    <span class="doccomment">/// Returns true if the mouse is hovering over the given bounding rect.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Clipped by current clipping settings, but disregards other factors like focus, window</span>
-    <span class="doccomment">/// ordering, modal popup blocking.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_mouse_hovering_rect</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">r_min</span>: [<span class="ident">f32</span>; <span class="number">2</span>], <span class="ident">r_max</span>: [<span class="ident">f32</span>; <span class="number">2</span>]) -&gt; <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igIsMouseHoveringRect</span>(<span class="ident">r_min</span>.<span class="ident">into</span>(), <span class="ident">r_max</span>.<span class="ident">into</span>(), <span class="bool-val">true</span>) }
+    <span class="doccomment">/// Returns true if the mouse is hovering over the given bounding rect.
+    ///
+    /// Clipped by current clipping settings, but disregards other factors like focus, window
+    /// ordering, modal popup blocking.
+    </span><span class="kw">pub fn </span>is_mouse_hovering_rect(<span class="kw-2">&amp;</span><span class="self">self</span>, r_min: [f32; <span class="number">2</span>], r_max: [f32; <span class="number">2</span>]) -&gt; bool {
+        <span class="kw">unsafe </span>{ sys::igIsMouseHoveringRect(r_min.into(), r_max.into(), <span class="bool-val">true</span>) }
     }
-    <span class="doccomment">/// Returns the mouse position backed up at the time of opening a popup</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GetMousePosOnOpeningCurrentPopup&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">mouse_pos_on_opening_current_popup</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; [<span class="ident">f32</span>; <span class="number">2</span>] {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">out</span> <span class="op">=</span> <span class="ident">sys::ImVec2::zero</span>();
-        <span class="kw">unsafe</span> { <span class="ident">sys::igGetMousePosOnOpeningCurrentPopup</span>(<span class="kw-2">&amp;mut</span> <span class="ident">out</span>) };
-        <span class="ident">out</span>.<span class="ident">into</span>()
-    }
-
-    <span class="doccomment">/// Returns the delta from the initial position when the left mouse button clicked.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This is locked and returns [0.0, 0.0] until the mouse has moved past the global distance</span>
-    <span class="doccomment">/// threshold (`io.mouse_drag_threshold`).</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This is the same as [mouse_drag_delta_with_button](Self::mouse_drag_delta_with_button) with</span>
-    <span class="doccomment">/// `button` set to `MouseButton::Left`.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GetMouseDragDelta&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">mouse_drag_delta</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; [<span class="ident">f32</span>; <span class="number">2</span>] {
-        <span class="self">self</span>.<span class="ident">mouse_drag_delta_with_button</span>(<span class="ident">MouseButton::Left</span>)
+    <span class="doccomment">/// Returns the mouse position backed up at the time of opening a popup
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;GetMousePosOnOpeningCurrentPopup&quot;</span>)]
+    </span><span class="kw">pub fn </span>mouse_pos_on_opening_current_popup(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; [f32; <span class="number">2</span>] {
+        <span class="kw">let </span><span class="kw-2">mut </span>out = sys::ImVec2::zero();
+        <span class="kw">unsafe </span>{ sys::igGetMousePosOnOpeningCurrentPopup(<span class="kw-2">&amp;mut </span>out) };
+        out.into()
     }
 
-    <span class="doccomment">/// Returns the delta from the initial position when the given button was clicked.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This is locked and returns [0.0, 0.0] until the mouse has moved past the global distance</span>
-    <span class="doccomment">/// threshold (`io.mouse_drag_threshold`).</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This is the same as [mouse_drag_delta_with_threshold](Self::mouse_drag_delta_with_threshold) with</span>
-    <span class="doccomment">/// `threshold` set to `-1.0`, which uses the global threshold `io.mouse_drag_threshold`.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GetMouseDragDelta&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">mouse_drag_delta_with_button</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">button</span>: <span class="ident">MouseButton</span>) -&gt; [<span class="ident">f32</span>; <span class="number">2</span>] {
-        <span class="self">self</span>.<span class="ident">mouse_drag_delta_with_threshold</span>(<span class="ident">button</span>, <span class="op">-</span><span class="number">1.0</span>)
+    <span class="doccomment">/// Returns the delta from the initial position when the left mouse button clicked.
+    ///
+    /// This is locked and returns [0.0, 0.0] until the mouse has moved past the global distance
+    /// threshold (`io.mouse_drag_threshold`).
+    ///
+    /// This is the same as [mouse_drag_delta_with_button](Self::mouse_drag_delta_with_button) with
+    /// `button` set to `MouseButton::Left`.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;GetMouseDragDelta&quot;</span>)]
+    </span><span class="kw">pub fn </span>mouse_drag_delta(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; [f32; <span class="number">2</span>] {
+        <span class="self">self</span>.mouse_drag_delta_with_button(MouseButton::Left)
     }
-    <span class="doccomment">/// Returns the delta from the initial clicking position.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This is locked and returns [0.0, 0.0] until the mouse has moved past the given threshold.</span>
-    <span class="doccomment">/// If the given threshold is invalid or negative, the global distance threshold is used</span>
-    <span class="doccomment">/// (`io.mouse_drag_threshold`).</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GetMouseDragDelta&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">mouse_drag_delta_with_threshold</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">button</span>: <span class="ident">MouseButton</span>, <span class="ident">threshold</span>: <span class="ident">f32</span>) -&gt; [<span class="ident">f32</span>; <span class="number">2</span>] {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">out</span> <span class="op">=</span> <span class="ident">sys::ImVec2::zero</span>();
-        <span class="kw">unsafe</span> { <span class="ident">sys::igGetMouseDragDelta</span>(<span class="kw-2">&amp;mut</span> <span class="ident">out</span>, <span class="ident">button</span> <span class="kw">as</span> <span class="ident">i32</span>, <span class="ident">threshold</span>) };
-        <span class="ident">out</span>.<span class="ident">into</span>()
+
+    <span class="doccomment">/// Returns the delta from the initial position when the given button was clicked.
+    ///
+    /// This is locked and returns [0.0, 0.0] until the mouse has moved past the global distance
+    /// threshold (`io.mouse_drag_threshold`).
+    ///
+    /// This is the same as [mouse_drag_delta_with_threshold](Self::mouse_drag_delta_with_threshold) with
+    /// `threshold` set to `-1.0`, which uses the global threshold `io.mouse_drag_threshold`.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;GetMouseDragDelta&quot;</span>)]
+    </span><span class="kw">pub fn </span>mouse_drag_delta_with_button(<span class="kw-2">&amp;</span><span class="self">self</span>, button: MouseButton) -&gt; [f32; <span class="number">2</span>] {
+        <span class="self">self</span>.mouse_drag_delta_with_threshold(button, -<span class="number">1.0</span>)
     }
-    <span class="doccomment">/// Resets the current delta from initial clicking position.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;ResetMouseDragDelta&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">reset_mouse_drag_delta</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">button</span>: <span class="ident">MouseButton</span>) {
-        <span class="comment">// This mutates the Io struct, but targets an internal field so there can&#39;t be any</span>
-        <span class="comment">// references to it</span>
-        <span class="kw">unsafe</span> { <span class="ident">sys::igResetMouseDragDelta</span>(<span class="ident">button</span> <span class="kw">as</span> <span class="ident">i32</span>) }
+    <span class="doccomment">/// Returns the delta from the initial clicking position.
+    ///
+    /// This is locked and returns [0.0, 0.0] until the mouse has moved past the given threshold.
+    /// If the given threshold is invalid or negative, the global distance threshold is used
+    /// (`io.mouse_drag_threshold`).
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;GetMouseDragDelta&quot;</span>)]
+    </span><span class="kw">pub fn </span>mouse_drag_delta_with_threshold(<span class="kw-2">&amp;</span><span class="self">self</span>, button: MouseButton, threshold: f32) -&gt; [f32; <span class="number">2</span>] {
+        <span class="kw">let </span><span class="kw-2">mut </span>out = sys::ImVec2::zero();
+        <span class="kw">unsafe </span>{ sys::igGetMouseDragDelta(<span class="kw-2">&amp;mut </span>out, button <span class="kw">as </span>i32, threshold) };
+        out.into()
     }
-    <span class="doccomment">/// Returns the currently desired mouse cursor type.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Returns `None` if no cursor should be displayed</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GetMouseCursor&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">mouse_cursor</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">MouseCursor</span><span class="op">&gt;</span> {
-        <span class="kw">match</span> <span class="kw">unsafe</span> { <span class="ident">sys::igGetMouseCursor</span>() } {
-            <span class="ident">sys::ImGuiMouseCursor_Arrow</span> =&gt; <span class="prelude-val">Some</span>(<span class="ident">MouseCursor::Arrow</span>),
-            <span class="ident">sys::ImGuiMouseCursor_TextInput</span> =&gt; <span class="prelude-val">Some</span>(<span class="ident">MouseCursor::TextInput</span>),
-            <span class="ident">sys::ImGuiMouseCursor_ResizeAll</span> =&gt; <span class="prelude-val">Some</span>(<span class="ident">MouseCursor::ResizeAll</span>),
-            <span class="ident">sys::ImGuiMouseCursor_ResizeNS</span> =&gt; <span class="prelude-val">Some</span>(<span class="ident">MouseCursor::ResizeNS</span>),
-            <span class="ident">sys::ImGuiMouseCursor_ResizeEW</span> =&gt; <span class="prelude-val">Some</span>(<span class="ident">MouseCursor::ResizeEW</span>),
-            <span class="ident">sys::ImGuiMouseCursor_ResizeNESW</span> =&gt; <span class="prelude-val">Some</span>(<span class="ident">MouseCursor::ResizeNESW</span>),
-            <span class="ident">sys::ImGuiMouseCursor_ResizeNWSE</span> =&gt; <span class="prelude-val">Some</span>(<span class="ident">MouseCursor::ResizeNWSE</span>),
-            <span class="ident">sys::ImGuiMouseCursor_Hand</span> =&gt; <span class="prelude-val">Some</span>(<span class="ident">MouseCursor::Hand</span>),
-            <span class="ident">sys::ImGuiMouseCursor_NotAllowed</span> =&gt; <span class="prelude-val">Some</span>(<span class="ident">MouseCursor::NotAllowed</span>),
-            <span class="kw">_</span> =&gt; <span class="prelude-val">None</span>,
+    <span class="doccomment">/// Resets the current delta from initial clicking position.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;ResetMouseDragDelta&quot;</span>)]
+    </span><span class="kw">pub fn </span>reset_mouse_drag_delta(<span class="kw-2">&amp;</span><span class="self">self</span>, button: MouseButton) {
+        <span class="comment">// This mutates the Io struct, but targets an internal field so there can&#39;t be any
+        // references to it
+        </span><span class="kw">unsafe </span>{ sys::igResetMouseDragDelta(button <span class="kw">as </span>i32) }
+    }
+    <span class="doccomment">/// Returns the currently desired mouse cursor type.
+    ///
+    /// Returns `None` if no cursor should be displayed
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;GetMouseCursor&quot;</span>)]
+    </span><span class="kw">pub fn </span>mouse_cursor(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;MouseCursor&gt; {
+        <span class="kw">match unsafe </span>{ sys::igGetMouseCursor() } {
+            sys::ImGuiMouseCursor_Arrow =&gt; <span class="prelude-val">Some</span>(MouseCursor::Arrow),
+            sys::ImGuiMouseCursor_TextInput =&gt; <span class="prelude-val">Some</span>(MouseCursor::TextInput),
+            sys::ImGuiMouseCursor_ResizeAll =&gt; <span class="prelude-val">Some</span>(MouseCursor::ResizeAll),
+            sys::ImGuiMouseCursor_ResizeNS =&gt; <span class="prelude-val">Some</span>(MouseCursor::ResizeNS),
+            sys::ImGuiMouseCursor_ResizeEW =&gt; <span class="prelude-val">Some</span>(MouseCursor::ResizeEW),
+            sys::ImGuiMouseCursor_ResizeNESW =&gt; <span class="prelude-val">Some</span>(MouseCursor::ResizeNESW),
+            sys::ImGuiMouseCursor_ResizeNWSE =&gt; <span class="prelude-val">Some</span>(MouseCursor::ResizeNWSE),
+            sys::ImGuiMouseCursor_Hand =&gt; <span class="prelude-val">Some</span>(MouseCursor::Hand),
+            sys::ImGuiMouseCursor_NotAllowed =&gt; <span class="prelude-val">Some</span>(MouseCursor::NotAllowed),
+            <span class="kw">_ </span>=&gt; <span class="prelude-val">None</span>,
         }
     }
-    <span class="doccomment">/// Sets the desired mouse cursor type.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Passing `None` hides the mouse cursor.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;SetMouseCursor&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_mouse_cursor</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">cursor_type</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">MouseCursor</span><span class="op">&gt;</span>) {
-        <span class="kw">unsafe</span> {
-            <span class="ident">sys::igSetMouseCursor</span>(
-                <span class="ident">cursor_type</span>
-                    .<span class="ident">map</span>(<span class="op">|</span><span class="ident">x</span><span class="op">|</span> <span class="ident">x</span> <span class="kw">as</span> <span class="ident">i32</span>)
-                    .<span class="ident">unwrap_or</span>(<span class="ident">sys::ImGuiMouseCursor_None</span>),
+    <span class="doccomment">/// Sets the desired mouse cursor type.
+    ///
+    /// Passing `None` hides the mouse cursor.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;SetMouseCursor&quot;</span>)]
+    </span><span class="kw">pub fn </span>set_mouse_cursor(<span class="kw-2">&amp;</span><span class="self">self</span>, cursor_type: <span class="prelude-ty">Option</span>&lt;MouseCursor&gt;) {
+        <span class="kw">unsafe </span>{
+            sys::igSetMouseCursor(
+                cursor_type
+                    .map(|x| x <span class="kw">as </span>i32)
+                    .unwrap_or(sys::ImGuiMouseCursor_None),
             );
         }
     }
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;IsMousePosValid&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_current_mouse_pos_valid</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igIsMousePosValid</span>(<span class="ident">ptr::null</span>()) }
+    <span class="attribute">#[doc(alias = <span class="string">&quot;IsMousePosValid&quot;</span>)]
+    </span><span class="kw">pub fn </span>is_current_mouse_pos_valid(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        <span class="kw">unsafe </span>{ sys::igIsMousePosValid(ptr::null()) }
     }
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;IsMousePosValid&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_mouse_pos_valid</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">mouse_pos</span>: [<span class="ident">f32</span>; <span class="number">2</span>]) -&gt; <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igIsMousePosValid</span>(<span class="kw-2">&amp;</span><span class="ident">mouse_pos</span>.<span class="ident">into</span>()) }
-    }
-}
-
-<span class="attribute">#[<span class="ident">test</span>]</span>
-<span class="kw">fn</span> <span class="ident">test_mouse_down_clicked_released</span>() {
-    <span class="kw">for</span> <span class="kw-2">&amp;</span><span class="ident">button</span> <span class="kw">in</span> <span class="ident">MouseButton::VARIANTS</span>.<span class="ident">iter</span>() {
-        <span class="kw">let</span> (<span class="ident">_guard</span>, <span class="kw-2">mut</span> <span class="ident">ctx</span>) <span class="op">=</span> <span class="ident"><span class="kw">crate</span>::test::test_ctx_initialized</span>();
-        {
-            <span class="ident">ctx</span>.<span class="ident">io_mut</span>().<span class="ident">mouse_down</span> <span class="op">=</span> [<span class="bool-val">false</span>; <span class="number">5</span>];
-            <span class="kw">let</span> <span class="ident">ui</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">frame</span>();
-            <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ui</span>.<span class="ident">is_mouse_down</span>(<span class="ident">button</span>));
-            <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ui</span>.<span class="ident">is_any_mouse_down</span>());
-            <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ui</span>.<span class="ident">is_mouse_clicked</span>(<span class="ident">button</span>));
-            <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ui</span>.<span class="ident">is_mouse_released</span>(<span class="ident">button</span>));
-        }
-        {
-            <span class="ident">ctx</span>.<span class="ident">io_mut</span>()[<span class="ident">button</span>] <span class="op">=</span> <span class="bool-val">true</span>;
-            <span class="kw">let</span> <span class="ident">ui</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">frame</span>();
-            <span class="macro">assert!</span>(<span class="ident">ui</span>.<span class="ident">is_mouse_down</span>(<span class="ident">button</span>));
-            <span class="macro">assert!</span>(<span class="ident">ui</span>.<span class="ident">is_any_mouse_down</span>());
-            <span class="macro">assert!</span>(<span class="ident">ui</span>.<span class="ident">is_mouse_clicked</span>(<span class="ident">button</span>));
-            <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ui</span>.<span class="ident">is_mouse_released</span>(<span class="ident">button</span>));
-        }
-        {
-            <span class="kw">let</span> <span class="ident">ui</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">frame</span>();
-            <span class="macro">assert!</span>(<span class="ident">ui</span>.<span class="ident">is_mouse_down</span>(<span class="ident">button</span>));
-            <span class="macro">assert!</span>(<span class="ident">ui</span>.<span class="ident">is_any_mouse_down</span>());
-            <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ui</span>.<span class="ident">is_mouse_clicked</span>(<span class="ident">button</span>));
-            <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ui</span>.<span class="ident">is_mouse_released</span>(<span class="ident">button</span>));
-        }
-        {
-            <span class="ident">ctx</span>.<span class="ident">io_mut</span>()[<span class="ident">button</span>] <span class="op">=</span> <span class="bool-val">false</span>;
-            <span class="kw">let</span> <span class="ident">ui</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">frame</span>();
-            <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ui</span>.<span class="ident">is_mouse_down</span>(<span class="ident">button</span>));
-            <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ui</span>.<span class="ident">is_any_mouse_down</span>());
-            <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ui</span>.<span class="ident">is_mouse_clicked</span>(<span class="ident">button</span>));
-            <span class="macro">assert!</span>(<span class="ident">ui</span>.<span class="ident">is_mouse_released</span>(<span class="ident">button</span>));
-        }
-        {
-            <span class="kw">let</span> <span class="ident">ui</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">frame</span>();
-            <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ui</span>.<span class="ident">is_mouse_down</span>(<span class="ident">button</span>));
-            <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ui</span>.<span class="ident">is_any_mouse_down</span>());
-            <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ui</span>.<span class="ident">is_mouse_clicked</span>(<span class="ident">button</span>));
-            <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ui</span>.<span class="ident">is_mouse_released</span>(<span class="ident">button</span>));
-        }
+    <span class="attribute">#[doc(alias = <span class="string">&quot;IsMousePosValid&quot;</span>)]
+    </span><span class="kw">pub fn </span>is_mouse_pos_valid(<span class="kw-2">&amp;</span><span class="self">self</span>, mouse_pos: [f32; <span class="number">2</span>]) -&gt; bool {
+        <span class="kw">unsafe </span>{ sys::igIsMousePosValid(<span class="kw-2">&amp;</span>mouse_pos.into()) }
     }
 }
 
-<span class="attribute">#[<span class="ident">test</span>]</span>
-<span class="kw">fn</span> <span class="ident">test_mouse_double_click</span>() {
-    <span class="kw">let</span> (<span class="ident">_guard</span>, <span class="kw-2">mut</span> <span class="ident">ctx</span>) <span class="op">=</span> <span class="ident"><span class="kw">crate</span>::test::test_ctx_initialized</span>();
-    <span class="comment">// Workaround for dear imgui bug/feature:</span>
-    <span class="comment">// If a button is clicked before io.mouse_double_click_time seconds has passed after the</span>
-    <span class="comment">// context is initialized, the single click is interpreted as a double-click.  This happens</span>
-    <span class="comment">// because internally g.IO.MouseClickedTime is set to 0.0, so the context creation is</span>
-    <span class="comment">// considered a &quot;click&quot;.</span>
-    {
-        <span class="comment">// Pass one second of time</span>
-        <span class="ident">ctx</span>.<span class="ident">io_mut</span>().<span class="ident">delta_time</span> <span class="op">=</span> <span class="number">1.0</span>;
-        <span class="kw">let</span> <span class="kw">_</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">frame</span>();
-    }
-    <span class="comment">// Fast clicks</span>
-    <span class="ident">ctx</span>.<span class="ident">io_mut</span>().<span class="ident">delta_time</span> <span class="op">=</span> <span class="number">1.0</span> <span class="op">/</span> <span class="number">60.0</span>;
-    <span class="kw">for</span> <span class="kw-2">&amp;</span><span class="ident">button</span> <span class="kw">in</span> <span class="ident">MouseButton::VARIANTS</span>.<span class="ident">iter</span>() {
+<span class="attribute">#[test]
+</span><span class="kw">fn </span>test_mouse_down_clicked_released() {
+    <span class="kw">for </span><span class="kw-2">&amp;</span>button <span class="kw">in </span>MouseButton::VARIANTS.iter() {
+        <span class="kw">let </span>(_guard, <span class="kw-2">mut </span>ctx) = <span class="kw">crate</span>::test::test_ctx_initialized();
         {
-            <span class="ident">ctx</span>.<span class="ident">io_mut</span>().<span class="ident">mouse_down</span> <span class="op">=</span> [<span class="bool-val">false</span>; <span class="number">5</span>];
-            <span class="kw">let</span> <span class="ident">ui</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">frame</span>();
-            <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ui</span>.<span class="ident">is_mouse_clicked</span>(<span class="ident">button</span>));
-            <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ui</span>.<span class="ident">is_mouse_double_clicked</span>(<span class="ident">button</span>));
+            ctx.io_mut().mouse_down = [<span class="bool-val">false</span>; <span class="number">5</span>];
+            <span class="kw">let </span>ui = ctx.frame();
+            <span class="macro">assert!</span>(!ui.is_mouse_down(button));
+            <span class="macro">assert!</span>(!ui.is_any_mouse_down());
+            <span class="macro">assert!</span>(!ui.is_mouse_clicked(button));
+            <span class="macro">assert!</span>(!ui.is_mouse_released(button));
         }
         {
-            <span class="ident">ctx</span>.<span class="ident">io_mut</span>()[<span class="ident">button</span>] <span class="op">=</span> <span class="bool-val">true</span>;
-            <span class="kw">let</span> <span class="ident">ui</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">frame</span>();
-            <span class="macro">assert!</span>(<span class="ident">ui</span>.<span class="ident">is_mouse_clicked</span>(<span class="ident">button</span>));
-            <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ui</span>.<span class="ident">is_mouse_double_clicked</span>(<span class="ident">button</span>));
+            ctx.io_mut()[button] = <span class="bool-val">true</span>;
+            <span class="kw">let </span>ui = ctx.frame();
+            <span class="macro">assert!</span>(ui.is_mouse_down(button));
+            <span class="macro">assert!</span>(ui.is_any_mouse_down());
+            <span class="macro">assert!</span>(ui.is_mouse_clicked(button));
+            <span class="macro">assert!</span>(!ui.is_mouse_released(button));
         }
         {
-            <span class="kw">let</span> <span class="ident">ui</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">frame</span>();
-            <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ui</span>.<span class="ident">is_mouse_clicked</span>(<span class="ident">button</span>));
-            <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ui</span>.<span class="ident">is_mouse_double_clicked</span>(<span class="ident">button</span>));
+            <span class="kw">let </span>ui = ctx.frame();
+            <span class="macro">assert!</span>(ui.is_mouse_down(button));
+            <span class="macro">assert!</span>(ui.is_any_mouse_down());
+            <span class="macro">assert!</span>(!ui.is_mouse_clicked(button));
+            <span class="macro">assert!</span>(!ui.is_mouse_released(button));
         }
         {
-            <span class="ident">ctx</span>.<span class="ident">io_mut</span>()[<span class="ident">button</span>] <span class="op">=</span> <span class="bool-val">false</span>;
-            <span class="kw">let</span> <span class="ident">ui</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">frame</span>();
-            <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ui</span>.<span class="ident">is_mouse_clicked</span>(<span class="ident">button</span>));
-            <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ui</span>.<span class="ident">is_mouse_double_clicked</span>(<span class="ident">button</span>));
+            ctx.io_mut()[button] = <span class="bool-val">false</span>;
+            <span class="kw">let </span>ui = ctx.frame();
+            <span class="macro">assert!</span>(!ui.is_mouse_down(button));
+            <span class="macro">assert!</span>(!ui.is_any_mouse_down());
+            <span class="macro">assert!</span>(!ui.is_mouse_clicked(button));
+            <span class="macro">assert!</span>(ui.is_mouse_released(button));
         }
         {
-            <span class="ident">ctx</span>.<span class="ident">io_mut</span>()[<span class="ident">button</span>] <span class="op">=</span> <span class="bool-val">true</span>;
-            <span class="kw">let</span> <span class="ident">ui</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">frame</span>();
-            <span class="macro">assert!</span>(<span class="ident">ui</span>.<span class="ident">is_mouse_clicked</span>(<span class="ident">button</span>));
-            <span class="macro">assert!</span>(<span class="ident">ui</span>.<span class="ident">is_mouse_double_clicked</span>(<span class="ident">button</span>));
-        }
-        {
-            <span class="kw">let</span> <span class="ident">ui</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">frame</span>();
-            <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ui</span>.<span class="ident">is_mouse_clicked</span>(<span class="ident">button</span>));
-            <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ui</span>.<span class="ident">is_mouse_double_clicked</span>(<span class="ident">button</span>));
-        }
-    }
-    <span class="comment">// Slow clicks</span>
-    <span class="ident">ctx</span>.<span class="ident">io_mut</span>().<span class="ident">delta_time</span> <span class="op">=</span> <span class="number">1.0</span>;
-    <span class="kw">for</span> <span class="kw-2">&amp;</span><span class="ident">button</span> <span class="kw">in</span> <span class="ident">MouseButton::VARIANTS</span>.<span class="ident">iter</span>() {
-        {
-            <span class="ident">ctx</span>.<span class="ident">io_mut</span>().<span class="ident">mouse_down</span> <span class="op">=</span> [<span class="bool-val">false</span>; <span class="number">5</span>];
-            <span class="kw">let</span> <span class="ident">ui</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">frame</span>();
-            <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ui</span>.<span class="ident">is_mouse_clicked</span>(<span class="ident">button</span>));
-            <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ui</span>.<span class="ident">is_mouse_double_clicked</span>(<span class="ident">button</span>));
-        }
-        {
-            <span class="ident">ctx</span>.<span class="ident">io_mut</span>()[<span class="ident">button</span>] <span class="op">=</span> <span class="bool-val">true</span>;
-            <span class="kw">let</span> <span class="ident">ui</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">frame</span>();
-            <span class="macro">assert!</span>(<span class="ident">ui</span>.<span class="ident">is_mouse_clicked</span>(<span class="ident">button</span>));
-            <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ui</span>.<span class="ident">is_mouse_double_clicked</span>(<span class="ident">button</span>));
-        }
-        {
-            <span class="kw">let</span> <span class="ident">ui</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">frame</span>();
-            <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ui</span>.<span class="ident">is_mouse_clicked</span>(<span class="ident">button</span>));
-            <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ui</span>.<span class="ident">is_mouse_double_clicked</span>(<span class="ident">button</span>));
-        }
-        {
-            <span class="ident">ctx</span>.<span class="ident">io_mut</span>()[<span class="ident">button</span>] <span class="op">=</span> <span class="bool-val">false</span>;
-            <span class="kw">let</span> <span class="ident">ui</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">frame</span>();
-            <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ui</span>.<span class="ident">is_mouse_clicked</span>(<span class="ident">button</span>));
-            <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ui</span>.<span class="ident">is_mouse_double_clicked</span>(<span class="ident">button</span>));
-        }
-        {
-            <span class="ident">ctx</span>.<span class="ident">io_mut</span>()[<span class="ident">button</span>] <span class="op">=</span> <span class="bool-val">true</span>;
-            <span class="kw">let</span> <span class="ident">ui</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">frame</span>();
-            <span class="macro">assert!</span>(<span class="ident">ui</span>.<span class="ident">is_mouse_clicked</span>(<span class="ident">button</span>));
-            <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ui</span>.<span class="ident">is_mouse_double_clicked</span>(<span class="ident">button</span>));
-        }
-        {
-            <span class="kw">let</span> <span class="ident">ui</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">frame</span>();
-            <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ui</span>.<span class="ident">is_mouse_clicked</span>(<span class="ident">button</span>));
-            <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ui</span>.<span class="ident">is_mouse_double_clicked</span>(<span class="ident">button</span>));
+            <span class="kw">let </span>ui = ctx.frame();
+            <span class="macro">assert!</span>(!ui.is_mouse_down(button));
+            <span class="macro">assert!</span>(!ui.is_any_mouse_down());
+            <span class="macro">assert!</span>(!ui.is_mouse_clicked(button));
+            <span class="macro">assert!</span>(!ui.is_mouse_released(button));
         }
     }
 }
 
-<span class="attribute">#[<span class="ident">test</span>]</span>
-<span class="kw">fn</span> <span class="ident">test_set_get_mouse_cursor</span>() {
-    <span class="kw">let</span> (<span class="ident">_guard</span>, <span class="kw-2">mut</span> <span class="ident">ctx</span>) <span class="op">=</span> <span class="ident"><span class="kw">crate</span>::test::test_ctx_initialized</span>();
-    <span class="kw">let</span> <span class="ident">ui</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">frame</span>();
-    <span class="ident">ui</span>.<span class="ident">set_mouse_cursor</span>(<span class="prelude-val">None</span>);
-    <span class="macro">assert_eq!</span>(<span class="prelude-val">None</span>, <span class="ident">ui</span>.<span class="ident">mouse_cursor</span>());
-    <span class="ident">ui</span>.<span class="ident">set_mouse_cursor</span>(<span class="prelude-val">Some</span>(<span class="ident">MouseCursor::Hand</span>));
-    <span class="macro">assert_eq!</span>(<span class="prelude-val">Some</span>(<span class="ident">MouseCursor::Hand</span>), <span class="ident">ui</span>.<span class="ident">mouse_cursor</span>());
+<span class="attribute">#[test]
+</span><span class="kw">fn </span>test_mouse_double_click() {
+    <span class="kw">let </span>(_guard, <span class="kw-2">mut </span>ctx) = <span class="kw">crate</span>::test::test_ctx_initialized();
+    <span class="comment">// Workaround for dear imgui bug/feature:
+    // If a button is clicked before io.mouse_double_click_time seconds has passed after the
+    // context is initialized, the single click is interpreted as a double-click.  This happens
+    // because internally g.IO.MouseClickedTime is set to 0.0, so the context creation is
+    // considered a &quot;click&quot;.
+    </span>{
+        <span class="comment">// Pass one second of time
+        </span>ctx.io_mut().delta_time = <span class="number">1.0</span>;
+        <span class="kw">let _ </span>= ctx.frame();
+    }
+    <span class="comment">// Fast clicks
+    </span>ctx.io_mut().delta_time = <span class="number">1.0 </span>/ <span class="number">60.0</span>;
+    <span class="kw">for </span><span class="kw-2">&amp;</span>button <span class="kw">in </span>MouseButton::VARIANTS.iter() {
+        {
+            ctx.io_mut().mouse_down = [<span class="bool-val">false</span>; <span class="number">5</span>];
+            <span class="kw">let </span>ui = ctx.frame();
+            <span class="macro">assert!</span>(!ui.is_mouse_clicked(button));
+            <span class="macro">assert!</span>(!ui.is_mouse_double_clicked(button));
+        }
+        {
+            ctx.io_mut()[button] = <span class="bool-val">true</span>;
+            <span class="kw">let </span>ui = ctx.frame();
+            <span class="macro">assert!</span>(ui.is_mouse_clicked(button));
+            <span class="macro">assert!</span>(!ui.is_mouse_double_clicked(button));
+        }
+        {
+            <span class="kw">let </span>ui = ctx.frame();
+            <span class="macro">assert!</span>(!ui.is_mouse_clicked(button));
+            <span class="macro">assert!</span>(!ui.is_mouse_double_clicked(button));
+        }
+        {
+            ctx.io_mut()[button] = <span class="bool-val">false</span>;
+            <span class="kw">let </span>ui = ctx.frame();
+            <span class="macro">assert!</span>(!ui.is_mouse_clicked(button));
+            <span class="macro">assert!</span>(!ui.is_mouse_double_clicked(button));
+        }
+        {
+            ctx.io_mut()[button] = <span class="bool-val">true</span>;
+            <span class="kw">let </span>ui = ctx.frame();
+            <span class="macro">assert!</span>(ui.is_mouse_clicked(button));
+            <span class="macro">assert!</span>(ui.is_mouse_double_clicked(button));
+        }
+        {
+            <span class="kw">let </span>ui = ctx.frame();
+            <span class="macro">assert!</span>(!ui.is_mouse_clicked(button));
+            <span class="macro">assert!</span>(!ui.is_mouse_double_clicked(button));
+        }
+    }
+    <span class="comment">// Slow clicks
+    </span>ctx.io_mut().delta_time = <span class="number">1.0</span>;
+    <span class="kw">for </span><span class="kw-2">&amp;</span>button <span class="kw">in </span>MouseButton::VARIANTS.iter() {
+        {
+            ctx.io_mut().mouse_down = [<span class="bool-val">false</span>; <span class="number">5</span>];
+            <span class="kw">let </span>ui = ctx.frame();
+            <span class="macro">assert!</span>(!ui.is_mouse_clicked(button));
+            <span class="macro">assert!</span>(!ui.is_mouse_double_clicked(button));
+        }
+        {
+            ctx.io_mut()[button] = <span class="bool-val">true</span>;
+            <span class="kw">let </span>ui = ctx.frame();
+            <span class="macro">assert!</span>(ui.is_mouse_clicked(button));
+            <span class="macro">assert!</span>(!ui.is_mouse_double_clicked(button));
+        }
+        {
+            <span class="kw">let </span>ui = ctx.frame();
+            <span class="macro">assert!</span>(!ui.is_mouse_clicked(button));
+            <span class="macro">assert!</span>(!ui.is_mouse_double_clicked(button));
+        }
+        {
+            ctx.io_mut()[button] = <span class="bool-val">false</span>;
+            <span class="kw">let </span>ui = ctx.frame();
+            <span class="macro">assert!</span>(!ui.is_mouse_clicked(button));
+            <span class="macro">assert!</span>(!ui.is_mouse_double_clicked(button));
+        }
+        {
+            ctx.io_mut()[button] = <span class="bool-val">true</span>;
+            <span class="kw">let </span>ui = ctx.frame();
+            <span class="macro">assert!</span>(ui.is_mouse_clicked(button));
+            <span class="macro">assert!</span>(!ui.is_mouse_double_clicked(button));
+        }
+        {
+            <span class="kw">let </span>ui = ctx.frame();
+            <span class="macro">assert!</span>(!ui.is_mouse_clicked(button));
+            <span class="macro">assert!</span>(!ui.is_mouse_double_clicked(button));
+        }
+    }
 }
 
-<span class="attribute">#[<span class="ident">test</span>]</span>
-<span class="kw">fn</span> <span class="ident">test_mouse_drags</span>() {
-    <span class="kw">for</span> <span class="kw-2">&amp;</span><span class="ident">button</span> <span class="kw">in</span> <span class="ident">MouseButton::VARIANTS</span>.<span class="ident">iter</span>() {
-        <span class="kw">let</span> (<span class="ident">_guard</span>, <span class="kw-2">mut</span> <span class="ident">ctx</span>) <span class="op">=</span> <span class="ident"><span class="kw">crate</span>::test::test_ctx_initialized</span>();
+<span class="attribute">#[test]
+</span><span class="kw">fn </span>test_set_get_mouse_cursor() {
+    <span class="kw">let </span>(_guard, <span class="kw-2">mut </span>ctx) = <span class="kw">crate</span>::test::test_ctx_initialized();
+    <span class="kw">let </span>ui = ctx.frame();
+    ui.set_mouse_cursor(<span class="prelude-val">None</span>);
+    <span class="macro">assert_eq!</span>(<span class="prelude-val">None</span>, ui.mouse_cursor());
+    ui.set_mouse_cursor(<span class="prelude-val">Some</span>(MouseCursor::Hand));
+    <span class="macro">assert_eq!</span>(<span class="prelude-val">Some</span>(MouseCursor::Hand), ui.mouse_cursor());
+}
+
+<span class="attribute">#[test]
+</span><span class="kw">fn </span>test_mouse_drags() {
+    <span class="kw">for </span><span class="kw-2">&amp;</span>button <span class="kw">in </span>MouseButton::VARIANTS.iter() {
+        <span class="kw">let </span>(_guard, <span class="kw-2">mut </span>ctx) = <span class="kw">crate</span>::test::test_ctx_initialized();
         {
-            <span class="ident">ctx</span>.<span class="ident">io_mut</span>().<span class="ident">mouse_pos</span> <span class="op">=</span> [<span class="number">0.0</span>, <span class="number">0.0</span>];
-            <span class="ident">ctx</span>.<span class="ident">io_mut</span>().<span class="ident">mouse_down</span> <span class="op">=</span> [<span class="bool-val">false</span>; <span class="number">5</span>];
-            <span class="kw">let</span> <span class="ident">ui</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">frame</span>();
-            <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ui</span>.<span class="ident">is_mouse_dragging</span>(<span class="ident">button</span>));
-            <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ui</span>.<span class="ident">is_mouse_dragging_with_threshold</span>(<span class="ident">button</span>, <span class="number">200.0</span>));
-            <span class="macro">assert_eq!</span>(<span class="ident">ui</span>.<span class="ident">mouse_drag_delta_with_button</span>(<span class="ident">button</span>), [<span class="number">0.0</span>, <span class="number">0.0</span>]);
+            ctx.io_mut().mouse_pos = [<span class="number">0.0</span>, <span class="number">0.0</span>];
+            ctx.io_mut().mouse_down = [<span class="bool-val">false</span>; <span class="number">5</span>];
+            <span class="kw">let </span>ui = ctx.frame();
+            <span class="macro">assert!</span>(!ui.is_mouse_dragging(button));
+            <span class="macro">assert!</span>(!ui.is_mouse_dragging_with_threshold(button, <span class="number">200.0</span>));
+            <span class="macro">assert_eq!</span>(ui.mouse_drag_delta_with_button(button), [<span class="number">0.0</span>, <span class="number">0.0</span>]);
             <span class="macro">assert_eq!</span>(
-                <span class="ident">ui</span>.<span class="ident">mouse_drag_delta_with_threshold</span>(<span class="ident">button</span>, <span class="number">200.0</span>),
+                ui.mouse_drag_delta_with_threshold(button, <span class="number">200.0</span>),
                 [<span class="number">0.0</span>, <span class="number">0.0</span>]
             );
         }
         {
-            <span class="ident">ctx</span>.<span class="ident">io_mut</span>()[<span class="ident">button</span>] <span class="op">=</span> <span class="bool-val">true</span>;
-            <span class="kw">let</span> <span class="ident">ui</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">frame</span>();
-            <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ui</span>.<span class="ident">is_mouse_dragging</span>(<span class="ident">button</span>));
-            <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ui</span>.<span class="ident">is_mouse_dragging_with_threshold</span>(<span class="ident">button</span>, <span class="number">200.0</span>));
-            <span class="macro">assert_eq!</span>(<span class="ident">ui</span>.<span class="ident">mouse_drag_delta_with_button</span>(<span class="ident">button</span>), [<span class="number">0.0</span>, <span class="number">0.0</span>]);
+            ctx.io_mut()[button] = <span class="bool-val">true</span>;
+            <span class="kw">let </span>ui = ctx.frame();
+            <span class="macro">assert!</span>(!ui.is_mouse_dragging(button));
+            <span class="macro">assert!</span>(!ui.is_mouse_dragging_with_threshold(button, <span class="number">200.0</span>));
+            <span class="macro">assert_eq!</span>(ui.mouse_drag_delta_with_button(button), [<span class="number">0.0</span>, <span class="number">0.0</span>]);
             <span class="macro">assert_eq!</span>(
-                <span class="ident">ui</span>.<span class="ident">mouse_drag_delta_with_threshold</span>(<span class="ident">button</span>, <span class="number">200.0</span>),
+                ui.mouse_drag_delta_with_threshold(button, <span class="number">200.0</span>),
                 [<span class="number">0.0</span>, <span class="number">0.0</span>]
             );
         }
         {
-            <span class="ident">ctx</span>.<span class="ident">io_mut</span>().<span class="ident">mouse_pos</span> <span class="op">=</span> [<span class="number">0.0</span>, <span class="number">100.0</span>];
-            <span class="kw">let</span> <span class="ident">ui</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">frame</span>();
-            <span class="macro">assert!</span>(<span class="ident">ui</span>.<span class="ident">is_mouse_dragging</span>(<span class="ident">button</span>));
-            <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ui</span>.<span class="ident">is_mouse_dragging_with_threshold</span>(<span class="ident">button</span>, <span class="number">200.0</span>));
-            <span class="macro">assert_eq!</span>(<span class="ident">ui</span>.<span class="ident">mouse_drag_delta_with_button</span>(<span class="ident">button</span>), [<span class="number">0.0</span>, <span class="number">100.0</span>]);
+            ctx.io_mut().mouse_pos = [<span class="number">0.0</span>, <span class="number">100.0</span>];
+            <span class="kw">let </span>ui = ctx.frame();
+            <span class="macro">assert!</span>(ui.is_mouse_dragging(button));
+            <span class="macro">assert!</span>(!ui.is_mouse_dragging_with_threshold(button, <span class="number">200.0</span>));
+            <span class="macro">assert_eq!</span>(ui.mouse_drag_delta_with_button(button), [<span class="number">0.0</span>, <span class="number">100.0</span>]);
             <span class="macro">assert_eq!</span>(
-                <span class="ident">ui</span>.<span class="ident">mouse_drag_delta_with_threshold</span>(<span class="ident">button</span>, <span class="number">200.0</span>),
+                ui.mouse_drag_delta_with_threshold(button, <span class="number">200.0</span>),
                 [<span class="number">0.0</span>, <span class="number">0.0</span>]
             );
         }
         {
-            <span class="ident">ctx</span>.<span class="ident">io_mut</span>().<span class="ident">mouse_pos</span> <span class="op">=</span> [<span class="number">0.0</span>, <span class="number">200.0</span>];
-            <span class="kw">let</span> <span class="ident">ui</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">frame</span>();
-            <span class="macro">assert!</span>(<span class="ident">ui</span>.<span class="ident">is_mouse_dragging</span>(<span class="ident">button</span>));
-            <span class="macro">assert!</span>(<span class="ident">ui</span>.<span class="ident">is_mouse_dragging_with_threshold</span>(<span class="ident">button</span>, <span class="number">200.0</span>));
-            <span class="macro">assert_eq!</span>(<span class="ident">ui</span>.<span class="ident">mouse_drag_delta_with_button</span>(<span class="ident">button</span>), [<span class="number">0.0</span>, <span class="number">200.0</span>]);
+            ctx.io_mut().mouse_pos = [<span class="number">0.0</span>, <span class="number">200.0</span>];
+            <span class="kw">let </span>ui = ctx.frame();
+            <span class="macro">assert!</span>(ui.is_mouse_dragging(button));
+            <span class="macro">assert!</span>(ui.is_mouse_dragging_with_threshold(button, <span class="number">200.0</span>));
+            <span class="macro">assert_eq!</span>(ui.mouse_drag_delta_with_button(button), [<span class="number">0.0</span>, <span class="number">200.0</span>]);
             <span class="macro">assert_eq!</span>(
-                <span class="ident">ui</span>.<span class="ident">mouse_drag_delta_with_threshold</span>(<span class="ident">button</span>, <span class="number">200.0</span>),
+                ui.mouse_drag_delta_with_threshold(button, <span class="number">200.0</span>),
                 [<span class="number">0.0</span>, <span class="number">200.0</span>]
             );
         }
         {
-            <span class="ident">ctx</span>.<span class="ident">io_mut</span>().<span class="ident">mouse_pos</span> <span class="op">=</span> [<span class="number">10.0</span>, <span class="number">10.0</span>];
-            <span class="ident">ctx</span>.<span class="ident">io_mut</span>()[<span class="ident">button</span>] <span class="op">=</span> <span class="bool-val">false</span>;
-            <span class="kw">let</span> <span class="ident">ui</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">frame</span>();
-            <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ui</span>.<span class="ident">is_mouse_dragging</span>(<span class="ident">button</span>));
-            <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ui</span>.<span class="ident">is_mouse_dragging_with_threshold</span>(<span class="ident">button</span>, <span class="number">200.0</span>));
-            <span class="macro">assert_eq!</span>(<span class="ident">ui</span>.<span class="ident">mouse_drag_delta_with_button</span>(<span class="ident">button</span>), [<span class="number">10.0</span>, <span class="number">10.0</span>]);
+            ctx.io_mut().mouse_pos = [<span class="number">10.0</span>, <span class="number">10.0</span>];
+            ctx.io_mut()[button] = <span class="bool-val">false</span>;
+            <span class="kw">let </span>ui = ctx.frame();
+            <span class="macro">assert!</span>(!ui.is_mouse_dragging(button));
+            <span class="macro">assert!</span>(!ui.is_mouse_dragging_with_threshold(button, <span class="number">200.0</span>));
+            <span class="macro">assert_eq!</span>(ui.mouse_drag_delta_with_button(button), [<span class="number">10.0</span>, <span class="number">10.0</span>]);
             <span class="macro">assert_eq!</span>(
-                <span class="ident">ui</span>.<span class="ident">mouse_drag_delta_with_threshold</span>(<span class="ident">button</span>, <span class="number">200.0</span>),
+                ui.mouse_drag_delta_with_threshold(button, <span class="number">200.0</span>),
                 [<span class="number">10.0</span>, <span class="number">10.0</span>]
             );
         }
         {
-            <span class="ident">ctx</span>.<span class="ident">io_mut</span>()[<span class="ident">button</span>] <span class="op">=</span> <span class="bool-val">true</span>;
-            <span class="kw">let</span> <span class="ident">ui</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">frame</span>();
-            <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ui</span>.<span class="ident">is_mouse_dragging</span>(<span class="ident">button</span>));
-            <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ui</span>.<span class="ident">is_mouse_dragging_with_threshold</span>(<span class="ident">button</span>, <span class="number">200.0</span>));
-            <span class="macro">assert_eq!</span>(<span class="ident">ui</span>.<span class="ident">mouse_drag_delta_with_button</span>(<span class="ident">button</span>), [<span class="number">0.0</span>, <span class="number">0.0</span>]);
+            ctx.io_mut()[button] = <span class="bool-val">true</span>;
+            <span class="kw">let </span>ui = ctx.frame();
+            <span class="macro">assert!</span>(!ui.is_mouse_dragging(button));
+            <span class="macro">assert!</span>(!ui.is_mouse_dragging_with_threshold(button, <span class="number">200.0</span>));
+            <span class="macro">assert_eq!</span>(ui.mouse_drag_delta_with_button(button), [<span class="number">0.0</span>, <span class="number">0.0</span>]);
             <span class="macro">assert_eq!</span>(
-                <span class="ident">ui</span>.<span class="ident">mouse_drag_delta_with_threshold</span>(<span class="ident">button</span>, <span class="number">200.0</span>),
+                ui.mouse_drag_delta_with_threshold(button, <span class="number">200.0</span>),
                 [<span class="number">0.0</span>, <span class="number">0.0</span>]
             );
         }
         {
-            <span class="ident">ctx</span>.<span class="ident">io_mut</span>().<span class="ident">mouse_pos</span> <span class="op">=</span> [<span class="number">180.0</span>, <span class="number">180.0</span>];
-            <span class="kw">let</span> <span class="ident">ui</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">frame</span>();
-            <span class="macro">assert!</span>(<span class="ident">ui</span>.<span class="ident">is_mouse_dragging</span>(<span class="ident">button</span>));
-            <span class="macro">assert!</span>(<span class="ident">ui</span>.<span class="ident">is_mouse_dragging_with_threshold</span>(<span class="ident">button</span>, <span class="number">200.0</span>));
-            <span class="macro">assert_eq!</span>(<span class="ident">ui</span>.<span class="ident">mouse_drag_delta_with_button</span>(<span class="ident">button</span>), [<span class="number">170.0</span>, <span class="number">170.0</span>]);
+            ctx.io_mut().mouse_pos = [<span class="number">180.0</span>, <span class="number">180.0</span>];
+            <span class="kw">let </span>ui = ctx.frame();
+            <span class="macro">assert!</span>(ui.is_mouse_dragging(button));
+            <span class="macro">assert!</span>(ui.is_mouse_dragging_with_threshold(button, <span class="number">200.0</span>));
+            <span class="macro">assert_eq!</span>(ui.mouse_drag_delta_with_button(button), [<span class="number">170.0</span>, <span class="number">170.0</span>]);
             <span class="macro">assert_eq!</span>(
-                <span class="ident">ui</span>.<span class="ident">mouse_drag_delta_with_threshold</span>(<span class="ident">button</span>, <span class="number">200.0</span>),
+                ui.mouse_drag_delta_with_threshold(button, <span class="number">200.0</span>),
                 [<span class="number">170.0</span>, <span class="number">170.0</span>]
             );
-            <span class="ident">ui</span>.<span class="ident">reset_mouse_drag_delta</span>(<span class="ident">button</span>);
-            <span class="macro">assert!</span>(<span class="ident">ui</span>.<span class="ident">is_mouse_dragging</span>(<span class="ident">button</span>));
-            <span class="macro">assert!</span>(<span class="ident">ui</span>.<span class="ident">is_mouse_dragging_with_threshold</span>(<span class="ident">button</span>, <span class="number">200.0</span>));
-            <span class="macro">assert_eq!</span>(<span class="ident">ui</span>.<span class="ident">mouse_drag_delta_with_button</span>(<span class="ident">button</span>), [<span class="number">0.0</span>, <span class="number">0.0</span>]);
+            ui.reset_mouse_drag_delta(button);
+            <span class="macro">assert!</span>(ui.is_mouse_dragging(button));
+            <span class="macro">assert!</span>(ui.is_mouse_dragging_with_threshold(button, <span class="number">200.0</span>));
+            <span class="macro">assert_eq!</span>(ui.mouse_drag_delta_with_button(button), [<span class="number">0.0</span>, <span class="number">0.0</span>]);
             <span class="macro">assert_eq!</span>(
-                <span class="ident">ui</span>.<span class="ident">mouse_drag_delta_with_threshold</span>(<span class="ident">button</span>, <span class="number">200.0</span>),
+                ui.mouse_drag_delta_with_threshold(button, <span class="number">200.0</span>),
                 [<span class="number">0.0</span>, <span class="number">0.0</span>]
             );
         }
         {
-            <span class="ident">ctx</span>.<span class="ident">io_mut</span>().<span class="ident">mouse_pos</span> <span class="op">=</span> [<span class="number">200.0</span>, <span class="number">200.0</span>];
-            <span class="kw">let</span> <span class="ident">ui</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">frame</span>();
-            <span class="macro">assert!</span>(<span class="ident">ui</span>.<span class="ident">is_mouse_dragging</span>(<span class="ident">button</span>));
-            <span class="macro">assert!</span>(<span class="ident">ui</span>.<span class="ident">is_mouse_dragging_with_threshold</span>(<span class="ident">button</span>, <span class="number">200.0</span>));
-            <span class="macro">assert_eq!</span>(<span class="ident">ui</span>.<span class="ident">mouse_drag_delta_with_button</span>(<span class="ident">button</span>), [<span class="number">20.0</span>, <span class="number">20.0</span>]);
+            ctx.io_mut().mouse_pos = [<span class="number">200.0</span>, <span class="number">200.0</span>];
+            <span class="kw">let </span>ui = ctx.frame();
+            <span class="macro">assert!</span>(ui.is_mouse_dragging(button));
+            <span class="macro">assert!</span>(ui.is_mouse_dragging_with_threshold(button, <span class="number">200.0</span>));
+            <span class="macro">assert_eq!</span>(ui.mouse_drag_delta_with_button(button), [<span class="number">20.0</span>, <span class="number">20.0</span>]);
             <span class="macro">assert_eq!</span>(
-                <span class="ident">ui</span>.<span class="ident">mouse_drag_delta_with_threshold</span>(<span class="ident">button</span>, <span class="number">200.0</span>),
+                ui.mouse_drag_delta_with_threshold(button, <span class="number">200.0</span>),
                 [<span class="number">20.0</span>, <span class="number">20.0</span>]
             );
         }
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="arcdps_imgui" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="arcdps_imgui" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.0 (69f9c33d7 2022-12-12)" ></div></body></html>

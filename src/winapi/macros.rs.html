@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\winapi-0.3.9\src\macros.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>macros.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script><script defer src="../../main.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../winapi/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../winapi/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../winapi/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\winapi-0.3.9\src\macros.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>macros.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../normalize.css"><link rel="stylesheet" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../ayu.css" disabled><link rel="stylesheet" href="../../dark.css" disabled><link rel="stylesheet" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script><script defer src="../../main.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../winapi/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -438,445 +438,445 @@
 <span id="438">438</span>
 <span id="439">439</span>
 <span id="440">440</span>
-</pre><pre class="rust"><code><span class="comment">// Licensed under the Apache License, Version 2.0</span>
-<span class="comment">// &lt;LICENSE-APACHE or http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license</span>
-<span class="comment">// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your option.</span>
-<span class="comment">// All files in the project carrying such notice may not be copied, modified, or distributed</span>
-<span class="comment">// except according to those terms.</span>
-<span class="doccomment">//! Macros to make things easier to define</span>
-<span class="macro">macro_rules!</span> <span class="ident">DECLARE_HANDLE</span> {
-    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">ident</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">inner</span>:<span class="ident">ident</span>) =&gt; {
-        <span class="kw">pub</span> <span class="kw">enum</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">inner</span> {}
-        <span class="kw">pub</span> <span class="kw">type</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">inner</span>;
+</pre><pre class="rust"><code><span class="comment">// Licensed under the Apache License, Version 2.0
+// &lt;LICENSE-APACHE or http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license
+// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your option.
+// All files in the project carrying such notice may not be copied, modified, or distributed
+// except according to those terms.
+</span><span class="doccomment">//! Macros to make things easier to define
+</span><span class="macro">macro_rules! </span>DECLARE_HANDLE {
+    (<span class="macro-nonterminal">$name</span>:ident, <span class="macro-nonterminal">$inner</span>:ident) =&gt; {
+        <span class="kw">pub enum </span><span class="macro-nonterminal">$inner </span>{}
+        <span class="kw">pub type </span><span class="macro-nonterminal">$name </span>= <span class="kw-2">*mut </span><span class="macro-nonterminal">$inner</span>;
     };
 }
-<span class="macro">macro_rules!</span> <span class="ident">MAKE_HRESULT</span> {
-    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">sev</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">fac</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">code</span>:<span class="ident">expr</span>) =&gt; {
-        (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">sev</span> <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">31</span>) <span class="op">|</span> (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">fac</span> <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">16</span>) <span class="op">|</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">code</span>
+<span class="macro">macro_rules! </span>MAKE_HRESULT {
+    (<span class="macro-nonterminal">$sev</span>:expr, <span class="macro-nonterminal">$fac</span>:expr, <span class="macro-nonterminal">$code</span>:expr) =&gt; {
+        (<span class="macro-nonterminal">$sev </span>&lt;&lt; <span class="number">31</span>) | (<span class="macro-nonterminal">$fac </span>&lt;&lt; <span class="number">16</span>) | <span class="macro-nonterminal">$code
+    </span>}
+}
+<span class="macro">macro_rules! </span>MAKE_SCODE {
+    (<span class="macro-nonterminal">$sev</span>:expr, <span class="macro-nonterminal">$fac</span>:expr, <span class="macro-nonterminal">$code</span>:expr) =&gt; {
+        (<span class="macro-nonterminal">$sev </span>&lt;&lt; <span class="number">31</span>) | (<span class="macro-nonterminal">$fac </span>&lt;&lt; <span class="number">16</span>) | <span class="macro-nonterminal">$code
+    </span>}
+}
+<span class="macro">macro_rules! </span>HIDP_ERROR_CODES {
+    (<span class="macro-nonterminal">$sev</span>:expr, <span class="macro-nonterminal">$code</span>:expr) =&gt; {
+        (<span class="macro-nonterminal">$sev </span>&lt;&lt; <span class="number">28</span>) | (FACILITY_HID_ERROR_CODE &lt;&lt; <span class="number">16</span>) | <span class="macro-nonterminal">$code
+    </span>}
+}
+<span class="macro">macro_rules! </span>MAKEFOURCC {
+    (<span class="macro-nonterminal">$a</span>:expr, <span class="macro-nonterminal">$b</span>:expr, <span class="macro-nonterminal">$c</span>:expr, <span class="macro-nonterminal">$d</span>:expr) =&gt; {
+        (<span class="macro-nonterminal">$a </span><span class="kw">as </span>u32) | ((<span class="macro-nonterminal">$b </span><span class="kw">as </span>u32) &lt;&lt; <span class="number">8</span>) | ((<span class="macro-nonterminal">$c </span><span class="kw">as </span>u32) &lt;&lt; <span class="number">16</span>) | ((<span class="macro-nonterminal">$d </span><span class="kw">as </span>u32) &lt;&lt; <span class="number">24</span>)
     }
 }
-<span class="macro">macro_rules!</span> <span class="ident">MAKE_SCODE</span> {
-    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">sev</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">fac</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">code</span>:<span class="ident">expr</span>) =&gt; {
-        (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">sev</span> <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">31</span>) <span class="op">|</span> (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">fac</span> <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">16</span>) <span class="op">|</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">code</span>
-    }
-}
-<span class="macro">macro_rules!</span> <span class="ident">HIDP_ERROR_CODES</span> {
-    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">sev</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">code</span>:<span class="ident">expr</span>) =&gt; {
-        (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">sev</span> <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">28</span>) <span class="op">|</span> (<span class="ident">FACILITY_HID_ERROR_CODE</span> <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">16</span>) <span class="op">|</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">code</span>
-    }
-}
-<span class="macro">macro_rules!</span> <span class="ident">MAKEFOURCC</span> {
-    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">a</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">c</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">d</span>:<span class="ident">expr</span>) =&gt; {
-        (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">a</span> <span class="kw">as</span> <span class="ident">u32</span>) <span class="op">|</span> ((<span class="macro-nonterminal">$</span><span class="macro-nonterminal">b</span> <span class="kw">as</span> <span class="ident">u32</span>) <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">8</span>) <span class="op">|</span> ((<span class="macro-nonterminal">$</span><span class="macro-nonterminal">c</span> <span class="kw">as</span> <span class="ident">u32</span>) <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">16</span>) <span class="op">|</span> ((<span class="macro-nonterminal">$</span><span class="macro-nonterminal">d</span> <span class="kw">as</span> <span class="ident">u32</span>) <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">24</span>)
-    }
-}
-<span class="attribute">#[<span class="ident">macro_export</span>]</span>
-<span class="macro">macro_rules!</span> <span class="ident">DEFINE_GUID</span> {
+<span class="attribute">#[macro_export]
+</span><span class="macro">macro_rules! </span>DEFINE_GUID {
     (
-        <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">ident</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">l</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">w1</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">w2</span>:<span class="ident">expr</span>,
-        <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b1</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b2</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b3</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b4</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b5</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b6</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b7</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b8</span>:<span class="ident">expr</span>
+        <span class="macro-nonterminal">$name</span>:ident, <span class="macro-nonterminal">$l</span>:expr, <span class="macro-nonterminal">$w1</span>:expr, <span class="macro-nonterminal">$w2</span>:expr,
+        <span class="macro-nonterminal">$b1</span>:expr, <span class="macro-nonterminal">$b2</span>:expr, <span class="macro-nonterminal">$b3</span>:expr, <span class="macro-nonterminal">$b4</span>:expr, <span class="macro-nonterminal">$b5</span>:expr, <span class="macro-nonterminal">$b6</span>:expr, <span class="macro-nonterminal">$b7</span>:expr, <span class="macro-nonterminal">$b8</span>:expr
     ) =&gt; {
-        <span class="kw">pub</span> <span class="kw">const</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::shared::guiddef::GUID</span> <span class="op">=</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::shared::guiddef::GUID</span> {
-            <span class="ident">Data1</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">l</span>,
-            <span class="ident">Data2</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">w1</span>,
-            <span class="ident">Data3</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">w2</span>,
-            <span class="ident">Data4</span>: [<span class="macro-nonterminal">$</span><span class="macro-nonterminal">b1</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b2</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b3</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b4</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b5</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b6</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b7</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b8</span>],
+        <span class="kw">pub const </span><span class="macro-nonterminal">$name</span>: <span class="macro-nonterminal">$crate::shared::guiddef::GUID </span>= <span class="macro-nonterminal">$crate::shared::guiddef::GUID </span>{
+            Data1: <span class="macro-nonterminal">$l</span>,
+            Data2: <span class="macro-nonterminal">$w1</span>,
+            Data3: <span class="macro-nonterminal">$w2</span>,
+            Data4: [<span class="macro-nonterminal">$b1</span>, <span class="macro-nonterminal">$b2</span>, <span class="macro-nonterminal">$b3</span>, <span class="macro-nonterminal">$b4</span>, <span class="macro-nonterminal">$b5</span>, <span class="macro-nonterminal">$b6</span>, <span class="macro-nonterminal">$b7</span>, <span class="macro-nonterminal">$b8</span>],
         };
     }
 }
-<span class="macro">macro_rules!</span> <span class="ident">DEFINE_BLUETOOTH_UUID128</span> {
-    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">ident</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">shortId</span>:<span class="ident">expr</span>) =&gt; {
-        <span class="macro">DEFINE_GUID!</span>{<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>,
-            <span class="macro-nonterminal">$</span><span class="macro-nonterminal">shortId</span> <span class="kw">as</span> <span class="ident">u32</span>, <span class="number">0x0000</span>, <span class="number">0x1000</span>, <span class="number">0x80</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x80</span>, <span class="number">0x5F</span>, <span class="number">0x9B</span>, <span class="number">0x34</span>, <span class="number">0xFB</span>}
+<span class="macro">macro_rules! </span>DEFINE_BLUETOOTH_UUID128 {
+    (<span class="macro-nonterminal">$name</span>:ident, <span class="macro-nonterminal">$shortId</span>:expr) =&gt; {
+        <span class="macro">DEFINE_GUID!</span>{<span class="macro-nonterminal">$name</span>,
+            <span class="macro-nonterminal">$shortId </span><span class="kw">as </span>u32, <span class="number">0x0000</span>, <span class="number">0x1000</span>, <span class="number">0x80</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x80</span>, <span class="number">0x5F</span>, <span class="number">0x9B</span>, <span class="number">0x34</span>, <span class="number">0xFB</span>}
     }
 }
-<span class="attribute">#[<span class="ident">macro_export</span>]</span>
-<span class="macro">macro_rules!</span> <span class="ident">DEFINE_PROPERTYKEY</span> {
+<span class="attribute">#[macro_export]
+</span><span class="macro">macro_rules! </span>DEFINE_PROPERTYKEY {
     (
-        <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">ident</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">l</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">w1</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">w2</span>:<span class="ident">expr</span>,
-        <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b1</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b2</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b3</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b4</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b5</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b6</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b7</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b8</span>:<span class="ident">expr</span>,
-        <span class="macro-nonterminal">$</span><span class="macro-nonterminal">pid</span>:<span class="ident">expr</span>
+        <span class="macro-nonterminal">$name</span>:ident, <span class="macro-nonterminal">$l</span>:expr, <span class="macro-nonterminal">$w1</span>:expr, <span class="macro-nonterminal">$w2</span>:expr,
+        <span class="macro-nonterminal">$b1</span>:expr, <span class="macro-nonterminal">$b2</span>:expr, <span class="macro-nonterminal">$b3</span>:expr, <span class="macro-nonterminal">$b4</span>:expr, <span class="macro-nonterminal">$b5</span>:expr, <span class="macro-nonterminal">$b6</span>:expr, <span class="macro-nonterminal">$b7</span>:expr, <span class="macro-nonterminal">$b8</span>:expr,
+        <span class="macro-nonterminal">$pid</span>:expr
     ) =&gt; {
-        <span class="kw">pub</span> <span class="kw">const</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>: <span class="ident">PROPERTYKEY</span>
-            <span class="op">=</span> <span class="ident">PROPERTYKEY</span> {
-            <span class="ident">fmtid</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::shared::guiddef::GUID</span> {
-                <span class="ident">Data1</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">l</span>,
-                <span class="ident">Data2</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">w1</span>,
-                <span class="ident">Data3</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">w2</span>,
-                <span class="ident">Data4</span>: [<span class="macro-nonterminal">$</span><span class="macro-nonterminal">b1</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b2</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b3</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b4</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b5</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b6</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b7</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b8</span>],
+        <span class="kw">pub const </span><span class="macro-nonterminal">$name</span>: PROPERTYKEY
+            = PROPERTYKEY {
+            fmtid: <span class="macro-nonterminal">$crate::shared::guiddef::GUID </span>{
+                Data1: <span class="macro-nonterminal">$l</span>,
+                Data2: <span class="macro-nonterminal">$w1</span>,
+                Data3: <span class="macro-nonterminal">$w2</span>,
+                Data4: [<span class="macro-nonterminal">$b1</span>, <span class="macro-nonterminal">$b2</span>, <span class="macro-nonterminal">$b3</span>, <span class="macro-nonterminal">$b4</span>, <span class="macro-nonterminal">$b5</span>, <span class="macro-nonterminal">$b6</span>, <span class="macro-nonterminal">$b7</span>, <span class="macro-nonterminal">$b8</span>],
             },
-            <span class="ident">pid</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">pid</span>,
+            pid: <span class="macro-nonterminal">$pid</span>,
         };
     }
 }
-<span class="attribute">#[<span class="ident">macro_export</span>]</span>
-<span class="macro">macro_rules!</span> <span class="ident">DEFINE_DEVPROPKEY</span> {
+<span class="attribute">#[macro_export]
+</span><span class="macro">macro_rules! </span>DEFINE_DEVPROPKEY {
     (
-        <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">ident</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">l</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">w1</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">w2</span>:<span class="ident">expr</span>,
-        <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b1</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b2</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b3</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b4</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b5</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b6</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b7</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b8</span>:<span class="ident">expr</span>,
-        <span class="macro-nonterminal">$</span><span class="macro-nonterminal">pid</span>:<span class="ident">expr</span>
+        <span class="macro-nonterminal">$name</span>:ident, <span class="macro-nonterminal">$l</span>:expr, <span class="macro-nonterminal">$w1</span>:expr, <span class="macro-nonterminal">$w2</span>:expr,
+        <span class="macro-nonterminal">$b1</span>:expr, <span class="macro-nonterminal">$b2</span>:expr, <span class="macro-nonterminal">$b3</span>:expr, <span class="macro-nonterminal">$b4</span>:expr, <span class="macro-nonterminal">$b5</span>:expr, <span class="macro-nonterminal">$b6</span>:expr, <span class="macro-nonterminal">$b7</span>:expr, <span class="macro-nonterminal">$b8</span>:expr,
+        <span class="macro-nonterminal">$pid</span>:expr
     ) =&gt; {
-        <span class="kw">pub</span> <span class="kw">const</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>: <span class="ident">DEVPROPKEY</span> <span class="op">=</span> <span class="ident">DEVPROPKEY</span> {
-            <span class="ident">fmtid</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::shared::guiddef::GUID</span> {
-                <span class="ident">Data1</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">l</span>,
-                <span class="ident">Data2</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">w1</span>,
-                <span class="ident">Data3</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">w2</span>,
-                <span class="ident">Data4</span>: [<span class="macro-nonterminal">$</span><span class="macro-nonterminal">b1</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b2</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b3</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b4</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b5</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b6</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b7</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b8</span>],
+        <span class="kw">pub const </span><span class="macro-nonterminal">$name</span>: DEVPROPKEY = DEVPROPKEY {
+            fmtid: <span class="macro-nonterminal">$crate::shared::guiddef::GUID </span>{
+                Data1: <span class="macro-nonterminal">$l</span>,
+                Data2: <span class="macro-nonterminal">$w1</span>,
+                Data3: <span class="macro-nonterminal">$w2</span>,
+                Data4: [<span class="macro-nonterminal">$b1</span>, <span class="macro-nonterminal">$b2</span>, <span class="macro-nonterminal">$b3</span>, <span class="macro-nonterminal">$b4</span>, <span class="macro-nonterminal">$b5</span>, <span class="macro-nonterminal">$b6</span>, <span class="macro-nonterminal">$b7</span>, <span class="macro-nonterminal">$b8</span>],
             },
-            <span class="ident">pid</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">pid</span>,
+            pid: <span class="macro-nonterminal">$pid</span>,
         };
     }
 }
-<span class="macro">macro_rules!</span> <span class="ident">CTL_CODE</span> {
-    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">DeviceType</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">Function</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">Method</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">Access</span>:<span class="ident">expr</span>) =&gt; {
-        (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">DeviceType</span> <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">16</span>) <span class="op">|</span> (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">Access</span> <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">14</span>) <span class="op">|</span> (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">Function</span> <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">2</span>) <span class="op">|</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">Method</span>
-    }
+<span class="macro">macro_rules! </span>CTL_CODE {
+    (<span class="macro-nonterminal">$DeviceType</span>:expr, <span class="macro-nonterminal">$Function</span>:expr, <span class="macro-nonterminal">$Method</span>:expr, <span class="macro-nonterminal">$Access</span>:expr) =&gt; {
+        (<span class="macro-nonterminal">$DeviceType </span>&lt;&lt; <span class="number">16</span>) | (<span class="macro-nonterminal">$Access </span>&lt;&lt; <span class="number">14</span>) | (<span class="macro-nonterminal">$Function </span>&lt;&lt; <span class="number">2</span>) | <span class="macro-nonterminal">$Method
+    </span>}
 }
-<span class="macro">macro_rules!</span> <span class="ident">BTH_CTL</span> {
-    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">id</span>:<span class="ident">expr</span>) =&gt; {
-        <span class="macro">CTL_CODE!</span>(<span class="ident">FILE_DEVICE_BLUETOOTH</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">id</span>, <span class="ident">METHOD_BUFFERED</span>, <span class="ident">FILE_ANY_ACCESS</span>)
+<span class="macro">macro_rules! </span>BTH_CTL {
+    (<span class="macro-nonterminal">$id</span>:expr) =&gt; {
+        <span class="macro">CTL_CODE!</span>(FILE_DEVICE_BLUETOOTH, <span class="macro-nonterminal">$id</span>, METHOD_BUFFERED, FILE_ANY_ACCESS)
     };
 }
-<span class="macro">macro_rules!</span> <span class="ident">BTH_KERNEL_CTL</span> {
-    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">id</span>:<span class="ident">expr</span>) =&gt; {
-        <span class="macro">CTL_CODE!</span>(<span class="ident">FILE_DEVICE_BLUETOOTH</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">id</span>, <span class="ident">METHOD_NEITHER</span>, <span class="ident">FILE_ANY_ACCESS</span>)
+<span class="macro">macro_rules! </span>BTH_KERNEL_CTL {
+    (<span class="macro-nonterminal">$id</span>:expr) =&gt; {
+        <span class="macro">CTL_CODE!</span>(FILE_DEVICE_BLUETOOTH, <span class="macro-nonterminal">$id</span>, METHOD_NEITHER, FILE_ANY_ACCESS)
     };
 }
-<span class="macro">macro_rules!</span> <span class="ident">HID_CTL_CODE</span> {
-    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">id</span>:<span class="ident">expr</span>) =&gt; {
-        <span class="macro">CTL_CODE!</span>(<span class="ident">FILE_DEVICE_KEYBOARD</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">id</span>, <span class="ident">METHOD_NEITHER</span>, <span class="ident">FILE_ANY_ACCESS</span>)
+<span class="macro">macro_rules! </span>HID_CTL_CODE {
+    (<span class="macro-nonterminal">$id</span>:expr) =&gt; {
+        <span class="macro">CTL_CODE!</span>(FILE_DEVICE_KEYBOARD, <span class="macro-nonterminal">$id</span>, METHOD_NEITHER, FILE_ANY_ACCESS)
     }
 }
-<span class="macro">macro_rules!</span> <span class="ident">HID_BUFFER_CTL_CODE</span> {
-    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">id</span>:<span class="ident">expr</span>) =&gt; {
-        <span class="macro">CTL_CODE!</span>(<span class="ident">FILE_DEVICE_KEYBOARD</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">id</span>, <span class="ident">METHOD_BUFFERED</span>, <span class="ident">FILE_ANY_ACCESS</span>)
+<span class="macro">macro_rules! </span>HID_BUFFER_CTL_CODE {
+    (<span class="macro-nonterminal">$id</span>:expr) =&gt; {
+        <span class="macro">CTL_CODE!</span>(FILE_DEVICE_KEYBOARD, <span class="macro-nonterminal">$id</span>, METHOD_BUFFERED, FILE_ANY_ACCESS)
     }
 }
-<span class="macro">macro_rules!</span> <span class="ident">HID_IN_CTL_CODE</span> {
-    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">id</span>:<span class="ident">expr</span>) =&gt; {
-        <span class="macro">CTL_CODE!</span>(<span class="ident">FILE_DEVICE_KEYBOARD</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">id</span>, <span class="ident">METHOD_IN_DIRECT</span>, <span class="ident">FILE_ANY_ACCESS</span>)
+<span class="macro">macro_rules! </span>HID_IN_CTL_CODE {
+    (<span class="macro-nonterminal">$id</span>:expr) =&gt; {
+        <span class="macro">CTL_CODE!</span>(FILE_DEVICE_KEYBOARD, <span class="macro-nonterminal">$id</span>, METHOD_IN_DIRECT, FILE_ANY_ACCESS)
     }
 }
-<span class="macro">macro_rules!</span> <span class="ident">HID_OUT_CTL_CODE</span> {
-    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">id</span>:<span class="ident">expr</span>) =&gt; {
-        <span class="macro">CTL_CODE!</span>(<span class="ident">FILE_DEVICE_KEYBOARD</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">id</span>, <span class="ident">METHOD_OUT_DIRECT</span>, <span class="ident">FILE_ANY_ACCESS</span>)
+<span class="macro">macro_rules! </span>HID_OUT_CTL_CODE {
+    (<span class="macro-nonterminal">$id</span>:expr) =&gt; {
+        <span class="macro">CTL_CODE!</span>(FILE_DEVICE_KEYBOARD, <span class="macro-nonterminal">$id</span>, METHOD_OUT_DIRECT, FILE_ANY_ACCESS)
     }
 }
-<span class="macro">macro_rules!</span> <span class="ident">AUDCLNT_ERR</span> {
-    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">n</span>:<span class="ident">expr</span>) =&gt; {
-        <span class="macro">MAKE_HRESULT!</span>(<span class="ident">SEVERITY_ERROR</span>, <span class="ident">FACILITY_AUDCLNT</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">n</span>)
+<span class="macro">macro_rules! </span>AUDCLNT_ERR {
+    (<span class="macro-nonterminal">$n</span>:expr) =&gt; {
+        <span class="macro">MAKE_HRESULT!</span>(SEVERITY_ERROR, FACILITY_AUDCLNT, <span class="macro-nonterminal">$n</span>)
     };
 }
-<span class="macro">macro_rules!</span> <span class="ident">AUDCLNT_SUCCESS</span> {
-    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">n</span>:<span class="ident">expr</span>) =&gt; {
-        <span class="macro">MAKE_SCODE!</span>(<span class="ident">SEVERITY_SUCCESS</span>, <span class="ident">FACILITY_AUDCLNT</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">n</span>)
+<span class="macro">macro_rules! </span>AUDCLNT_SUCCESS {
+    (<span class="macro-nonterminal">$n</span>:expr) =&gt; {
+        <span class="macro">MAKE_SCODE!</span>(SEVERITY_SUCCESS, FACILITY_AUDCLNT, <span class="macro-nonterminal">$n</span>)
     };
 }
-<span class="macro">macro_rules!</span> <span class="ident">BCRYPT_MAKE_INTERFACE_VERSION</span> {
-    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">major</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">minor</span>:<span class="ident">expr</span>) =&gt; {
-        <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::shared::bcrypt::BCRYPT_INTERFACE_VERSION</span> {
-            <span class="ident">MajorVersion</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">major</span>, <span class="ident">MinorVersion</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">minor</span>,
+<span class="macro">macro_rules! </span>BCRYPT_MAKE_INTERFACE_VERSION {
+    (<span class="macro-nonterminal">$major</span>:expr, <span class="macro-nonterminal">$minor</span>:expr) =&gt; {
+        <span class="macro-nonterminal">$crate::shared::bcrypt::BCRYPT_INTERFACE_VERSION </span>{
+            MajorVersion: <span class="macro-nonterminal">$major</span>, MinorVersion: <span class="macro-nonterminal">$minor</span>,
         }
     }
 }
-<span class="macro">macro_rules!</span> <span class="ident">MAKEINTRESOURCE</span> {
-    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">i</span>:<span class="ident">expr</span>) =&gt; { <span class="macro-nonterminal">$</span><span class="macro-nonterminal">i</span> <span class="kw">as</span> <span class="ident">u16</span> <span class="kw">as</span> <span class="ident">usize</span> <span class="kw">as</span> <span class="ident">LPWSTR</span> }
+<span class="macro">macro_rules! </span>MAKEINTRESOURCE {
+    (<span class="macro-nonterminal">$i</span>:expr) =&gt; { <span class="macro-nonterminal">$i </span><span class="kw">as </span>u16 <span class="kw">as </span>usize <span class="kw">as </span>LPWSTR }
 }
-<span class="attribute">#[<span class="ident">macro_export</span>]</span>
-<span class="macro">macro_rules!</span> <span class="ident">RIDL</span> {
-    (<span class="attribute">#[<span class="ident">uuid</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">l</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">w1</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">w2</span>:<span class="ident">expr</span>,
-        <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b1</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b2</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b3</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b4</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b5</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b6</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b7</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b8</span>:<span class="ident">expr</span>)]</span>
-    <span class="ident">class</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">class</span>:<span class="ident">ident</span>;) =&gt; (
-        <span class="kw">pub</span> <span class="kw">enum</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">class</span> {}
-        <span class="kw">impl</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::Class</span> <span class="kw">for</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">class</span> {
-            <span class="attribute">#[<span class="ident">inline</span>]</span>
-            <span class="kw">fn</span> <span class="ident">uuidof</span>() -&gt; <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::shared::guiddef::GUID</span> {
-                <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::shared::guiddef::GUID</span> {
-                    <span class="ident">Data1</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">l</span>,
-                    <span class="ident">Data2</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">w1</span>,
-                    <span class="ident">Data3</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">w2</span>,
-                    <span class="ident">Data4</span>: [<span class="macro-nonterminal">$</span><span class="macro-nonterminal">b1</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b2</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b3</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b4</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b5</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b6</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b7</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b8</span>],
+<span class="attribute">#[macro_export]
+</span><span class="macro">macro_rules! </span>RIDL {
+    (<span class="attribute">#[uuid(<span class="macro-nonterminal">$l</span>:expr, <span class="macro-nonterminal">$w1</span>:expr, <span class="macro-nonterminal">$w2</span>:expr,
+        <span class="macro-nonterminal">$b1</span>:expr, <span class="macro-nonterminal">$b2</span>:expr, <span class="macro-nonterminal">$b3</span>:expr, <span class="macro-nonterminal">$b4</span>:expr, <span class="macro-nonterminal">$b5</span>:expr, <span class="macro-nonterminal">$b6</span>:expr, <span class="macro-nonterminal">$b7</span>:expr, <span class="macro-nonterminal">$b8</span>:expr)]
+    </span>class <span class="macro-nonterminal">$class</span>:ident;) =&gt; (
+        <span class="kw">pub enum </span><span class="macro-nonterminal">$class </span>{}
+        <span class="kw">impl </span><span class="macro-nonterminal">$crate::Class </span><span class="kw">for </span><span class="macro-nonterminal">$class </span>{
+            <span class="attribute">#[inline]
+            </span><span class="kw">fn </span>uuidof() -&gt; <span class="macro-nonterminal">$crate::shared::guiddef::GUID </span>{
+                <span class="macro-nonterminal">$crate::shared::guiddef::GUID </span>{
+                    Data1: <span class="macro-nonterminal">$l</span>,
+                    Data2: <span class="macro-nonterminal">$w1</span>,
+                    Data3: <span class="macro-nonterminal">$w2</span>,
+                    Data4: [<span class="macro-nonterminal">$b1</span>, <span class="macro-nonterminal">$b2</span>, <span class="macro-nonterminal">$b3</span>, <span class="macro-nonterminal">$b4</span>, <span class="macro-nonterminal">$b5</span>, <span class="macro-nonterminal">$b6</span>, <span class="macro-nonterminal">$b7</span>, <span class="macro-nonterminal">$b8</span>],
                 }
             }
         }
     );
-    (<span class="attribute">#[<span class="ident">uuid</span>($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">uuid</span>:<span class="ident">expr</span>),<span class="op">+</span>)]</span>
-    <span class="ident">interface</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">interface</span>:<span class="ident">ident</span> (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">vtbl</span>:<span class="ident">ident</span>) {$(
-        $(<span class="attribute">#[$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">attrs</span>:<span class="ident">tt</span>)<span class="kw-2">*</span>]</span>)<span class="op">*</span> <span class="kw">fn</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">method</span>:<span class="ident">ident</span>($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">p</span>:<span class="ident">ident</span> : <span class="macro-nonterminal">$</span><span class="macro-nonterminal">t</span>:<span class="ident">ty</span>,)<span class="kw-2">*</span>) -&gt; <span class="macro-nonterminal">$</span><span class="macro-nonterminal">rtr</span>:<span class="ident">ty</span>,
-    )<span class="op">+</span>}) =&gt; (
-        <span class="macro">RIDL!</span>{@<span class="ident">vtbl</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">interface</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">vtbl</span> () $(
-            $(<span class="attribute">#[$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">attrs</span>)<span class="kw-2">*</span>]</span>)<span class="op">*</span> <span class="kw">fn</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">method</span>($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">p</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">t</span>,)<span class="kw-2">*</span>) -&gt; <span class="macro-nonterminal">$</span><span class="macro-nonterminal">rtr</span>,
-        )<span class="op">+</span>}
-        <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
-        <span class="kw">pub</span> <span class="kw">struct</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">interface</span> {
-            <span class="kw">pub</span> <span class="ident">lpVtbl</span>: <span class="kw-2">*const</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">vtbl</span>,
+    (<span class="attribute">#[uuid($(<span class="macro-nonterminal">$uuid</span>:expr),+)]
+    </span>interface <span class="macro-nonterminal">$interface</span>:ident (<span class="macro-nonterminal">$vtbl</span>:ident) {$(
+        $(<span class="attribute">#[$(<span class="macro-nonterminal">$attrs</span>:tt)<span class="kw-2">*</span>]</span>)* <span class="kw">fn </span><span class="macro-nonterminal">$method</span>:ident($(<span class="macro-nonterminal">$p</span>:ident : <span class="macro-nonterminal">$t</span>:ty,)<span class="kw-2">*</span>) -&gt; <span class="macro-nonterminal">$rtr</span>:ty,
+    )+}) =&gt; (
+        <span class="macro">RIDL!</span>{@vtbl <span class="macro-nonterminal">$interface $vtbl </span>() $(
+            $(<span class="attribute">#[$(<span class="macro-nonterminal">$attrs</span>)<span class="kw-2">*</span>]</span>)* <span class="kw">fn </span><span class="macro-nonterminal">$method</span>($(<span class="macro-nonterminal">$p</span>: <span class="macro-nonterminal">$t</span>,)<span class="kw-2">*</span>) -&gt; <span class="macro-nonterminal">$rtr</span>,
+        )+}
+        <span class="attribute">#[repr(C)]
+        </span><span class="kw">pub struct </span><span class="macro-nonterminal">$interface </span>{
+            <span class="kw">pub </span>lpVtbl: <span class="kw-2">*const </span><span class="macro-nonterminal">$vtbl</span>,
         }
-        <span class="kw">impl</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">interface</span> {
-            $(<span class="macro">RIDL!</span>{@<span class="ident">method</span> $(<span class="attribute">#[$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">attrs</span>)<span class="kw-2">*</span>]</span>)<span class="op">*</span> <span class="kw">fn</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">method</span>($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">p</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">t</span>,)<span class="kw-2">*</span>) -&gt; <span class="macro-nonterminal">$</span><span class="macro-nonterminal">rtr</span>})<span class="op">+</span>
+        <span class="kw">impl </span><span class="macro-nonterminal">$interface </span>{
+            $(<span class="macro">RIDL!</span>{@method $(<span class="attribute">#[$(<span class="macro-nonterminal">$attrs</span>)<span class="kw-2">*</span>]</span>)* <span class="kw">fn </span><span class="macro-nonterminal">$method</span>($(<span class="macro-nonterminal">$p</span>: <span class="macro-nonterminal">$t</span>,)<span class="kw-2">*</span>) -&gt; <span class="macro-nonterminal">$rtr</span>})+
         }
-        <span class="macro">RIDL!</span>{@<span class="ident">uuid</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">interface</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">uuid</span>),<span class="op">+</span>}
+        <span class="macro">RIDL!</span>{@uuid <span class="macro-nonterminal">$interface </span>$(<span class="macro-nonterminal">$uuid</span>),+}
     );
-    (<span class="attribute">#[<span class="ident">uuid</span>($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">uuid</span>:<span class="ident">expr</span>),<span class="op">+</span>)]</span>
-    <span class="ident">interface</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">interface</span>:<span class="ident">ident</span> (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">vtbl</span>:<span class="ident">ident</span>) : <span class="macro-nonterminal">$</span><span class="macro-nonterminal">pinterface</span>:<span class="ident">ident</span> (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">pvtbl</span>:<span class="ident">ident</span>) {}) =&gt; (
-        <span class="macro">RIDL!</span>{@<span class="ident">vtbl</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">interface</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">vtbl</span> (<span class="kw">pub</span> <span class="ident">parent</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">pvtbl</span>,)}
-        <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
-        <span class="kw">pub</span> <span class="kw">struct</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">interface</span> {
-            <span class="kw">pub</span> <span class="ident">lpVtbl</span>: <span class="kw-2">*const</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">vtbl</span>,
+    (<span class="attribute">#[uuid($(<span class="macro-nonterminal">$uuid</span>:expr),+)]
+    </span>interface <span class="macro-nonterminal">$interface</span>:ident (<span class="macro-nonterminal">$vtbl</span>:ident) : <span class="macro-nonterminal">$pinterface</span>:ident (<span class="macro-nonterminal">$pvtbl</span>:ident) {}) =&gt; (
+        <span class="macro">RIDL!</span>{@vtbl <span class="macro-nonterminal">$interface $vtbl </span>(<span class="kw">pub </span>parent: <span class="macro-nonterminal">$pvtbl</span>,)}
+        <span class="attribute">#[repr(C)]
+        </span><span class="kw">pub struct </span><span class="macro-nonterminal">$interface </span>{
+            <span class="kw">pub </span>lpVtbl: <span class="kw-2">*const </span><span class="macro-nonterminal">$vtbl</span>,
         }
-        <span class="macro">RIDL!</span>{@<span class="ident">deref</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">interface</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">pinterface</span>}
-        <span class="macro">RIDL!</span>{@<span class="ident">uuid</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">interface</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">uuid</span>),<span class="op">+</span>}
+        <span class="macro">RIDL!</span>{@deref <span class="macro-nonterminal">$interface $pinterface</span>}
+        <span class="macro">RIDL!</span>{@uuid <span class="macro-nonterminal">$interface </span>$(<span class="macro-nonterminal">$uuid</span>),+}
     );
-    (<span class="attribute">#[<span class="ident">uuid</span>($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">uuid</span>:<span class="ident">expr</span>),<span class="op">+</span>)]</span>
-    <span class="ident">interface</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">interface</span>:<span class="ident">ident</span> (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">vtbl</span>:<span class="ident">ident</span>) : <span class="macro-nonterminal">$</span><span class="macro-nonterminal">pinterface</span>:<span class="ident">ident</span> (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">pvtbl</span>:<span class="ident">ident</span>) {$(
-        $(<span class="attribute">#[$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">attrs</span>:<span class="ident">tt</span>)<span class="kw-2">*</span>]</span>)<span class="op">*</span> <span class="kw">fn</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">method</span>:<span class="ident">ident</span>($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">p</span>:<span class="ident">ident</span> : <span class="macro-nonterminal">$</span><span class="macro-nonterminal">t</span>:<span class="ident">ty</span>,)<span class="kw-2">*</span>) -&gt; <span class="macro-nonterminal">$</span><span class="macro-nonterminal">rtr</span>:<span class="ident">ty</span>,
-    )<span class="op">+</span>}) =&gt; (
-        <span class="macro">RIDL!</span>{@<span class="ident">vtbl</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">interface</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">vtbl</span> (<span class="kw">pub</span> <span class="ident">parent</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">pvtbl</span>,) $(
-            $(<span class="attribute">#[$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">attrs</span>)<span class="kw-2">*</span>]</span>)<span class="op">*</span> <span class="kw">fn</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">method</span>($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">p</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">t</span>,)<span class="kw-2">*</span>) -&gt; <span class="macro-nonterminal">$</span><span class="macro-nonterminal">rtr</span>,
-        )<span class="op">+</span>}
-        <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
-        <span class="kw">pub</span> <span class="kw">struct</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">interface</span> {
-            <span class="kw">pub</span> <span class="ident">lpVtbl</span>: <span class="kw-2">*const</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">vtbl</span>,
+    (<span class="attribute">#[uuid($(<span class="macro-nonterminal">$uuid</span>:expr),+)]
+    </span>interface <span class="macro-nonterminal">$interface</span>:ident (<span class="macro-nonterminal">$vtbl</span>:ident) : <span class="macro-nonterminal">$pinterface</span>:ident (<span class="macro-nonterminal">$pvtbl</span>:ident) {$(
+        $(<span class="attribute">#[$(<span class="macro-nonterminal">$attrs</span>:tt)<span class="kw-2">*</span>]</span>)* <span class="kw">fn </span><span class="macro-nonterminal">$method</span>:ident($(<span class="macro-nonterminal">$p</span>:ident : <span class="macro-nonterminal">$t</span>:ty,)<span class="kw-2">*</span>) -&gt; <span class="macro-nonterminal">$rtr</span>:ty,
+    )+}) =&gt; (
+        <span class="macro">RIDL!</span>{@vtbl <span class="macro-nonterminal">$interface $vtbl </span>(<span class="kw">pub </span>parent: <span class="macro-nonterminal">$pvtbl</span>,) $(
+            $(<span class="attribute">#[$(<span class="macro-nonterminal">$attrs</span>)<span class="kw-2">*</span>]</span>)* <span class="kw">fn </span><span class="macro-nonterminal">$method</span>($(<span class="macro-nonterminal">$p</span>: <span class="macro-nonterminal">$t</span>,)<span class="kw-2">*</span>) -&gt; <span class="macro-nonterminal">$rtr</span>,
+        )+}
+        <span class="attribute">#[repr(C)]
+        </span><span class="kw">pub struct </span><span class="macro-nonterminal">$interface </span>{
+            <span class="kw">pub </span>lpVtbl: <span class="kw-2">*const </span><span class="macro-nonterminal">$vtbl</span>,
         }
-        <span class="kw">impl</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">interface</span> {
-            $(<span class="macro">RIDL!</span>{@<span class="ident">method</span> $(<span class="attribute">#[$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">attrs</span>)<span class="kw-2">*</span>]</span>)<span class="op">*</span> <span class="kw">fn</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">method</span>($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">p</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">t</span>,)<span class="kw-2">*</span>) -&gt; <span class="macro-nonterminal">$</span><span class="macro-nonterminal">rtr</span>})<span class="op">+</span>
+        <span class="kw">impl </span><span class="macro-nonterminal">$interface </span>{
+            $(<span class="macro">RIDL!</span>{@method $(<span class="attribute">#[$(<span class="macro-nonterminal">$attrs</span>)<span class="kw-2">*</span>]</span>)* <span class="kw">fn </span><span class="macro-nonterminal">$method</span>($(<span class="macro-nonterminal">$p</span>: <span class="macro-nonterminal">$t</span>,)<span class="kw-2">*</span>) -&gt; <span class="macro-nonterminal">$rtr</span>})+
         }
-        <span class="macro">RIDL!</span>{@<span class="ident">deref</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">interface</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">pinterface</span>}
-        <span class="macro">RIDL!</span>{@<span class="ident">uuid</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">interface</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">uuid</span>),<span class="op">+</span>}
+        <span class="macro">RIDL!</span>{@deref <span class="macro-nonterminal">$interface $pinterface</span>}
+        <span class="macro">RIDL!</span>{@uuid <span class="macro-nonterminal">$interface </span>$(<span class="macro-nonterminal">$uuid</span>),+}
     );
-    (@<span class="ident">deref</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">interface</span>:<span class="ident">ident</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">pinterface</span>:<span class="ident">ident</span>) =&gt; (
-        <span class="kw">impl</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::_core::ops::Deref</span> <span class="kw">for</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">interface</span> {
-            <span class="kw">type</span> <span class="ident">Target</span> <span class="op">=</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">pinterface</span>;
-            <span class="attribute">#[<span class="ident">inline</span>]</span>
-            <span class="kw">fn</span> <span class="ident">deref</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="macro-nonterminal">$</span><span class="macro-nonterminal">pinterface</span> {
-                <span class="kw">unsafe</span> { <span class="kw-2">&amp;</span><span class="kw-2">*</span>(<span class="self">self</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">interface</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">pinterface</span>) }
+    (@deref <span class="macro-nonterminal">$interface</span>:ident <span class="macro-nonterminal">$pinterface</span>:ident) =&gt; (
+        <span class="kw">impl </span><span class="macro-nonterminal">$crate::_core::ops::Deref </span><span class="kw">for </span><span class="macro-nonterminal">$interface </span>{
+            <span class="kw">type </span>Target = <span class="macro-nonterminal">$pinterface</span>;
+            <span class="attribute">#[inline]
+            </span><span class="kw">fn </span>deref(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="macro-nonterminal">$pinterface </span>{
+                <span class="kw">unsafe </span>{ <span class="kw-2">&amp;*</span>(<span class="self">self </span><span class="kw">as </span><span class="kw-2">*const </span><span class="macro-nonterminal">$interface </span><span class="kw">as </span><span class="kw-2">*const </span><span class="macro-nonterminal">$pinterface</span>) }
             }
         }
     );
-    (@<span class="ident">method</span> <span class="kw">fn</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">method</span>:<span class="ident">ident</span>($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">p</span>:<span class="ident">ident</span> : <span class="macro-nonterminal">$</span><span class="macro-nonterminal">t</span>:<span class="ident">ty</span>,)<span class="kw-2">*</span>) -&gt; <span class="macro-nonterminal">$</span><span class="macro-nonterminal">rtr</span>:<span class="ident">ty</span>) =&gt; (
-        <span class="attribute">#[<span class="ident">inline</span>]</span> <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">method</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">p</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">t</span>,)<span class="kw-2">*</span>) -&gt; <span class="macro-nonterminal">$</span><span class="macro-nonterminal">rtr</span> {
-            ((<span class="kw-2">*</span><span class="self">self</span>.<span class="ident">lpVtbl</span>).<span class="macro-nonterminal">$</span><span class="macro-nonterminal">method</span>)(<span class="self">self</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="kw">_</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="kw">_</span>, $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">p</span>,)<span class="kw-2">*</span>)
+    (@method <span class="kw">fn </span><span class="macro-nonterminal">$method</span>:ident($(<span class="macro-nonterminal">$p</span>:ident : <span class="macro-nonterminal">$t</span>:ty,)<span class="kw-2">*</span>) -&gt; <span class="macro-nonterminal">$rtr</span>:ty) =&gt; (
+        <span class="attribute">#[inline] </span><span class="kw">pub unsafe fn </span><span class="macro-nonterminal">$method</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, $(<span class="macro-nonterminal">$p</span>: <span class="macro-nonterminal">$t</span>,)<span class="kw-2">*</span>) -&gt; <span class="macro-nonterminal">$rtr </span>{
+            ((<span class="kw-2">*</span><span class="self">self</span>.lpVtbl).<span class="macro-nonterminal">$method</span>)(<span class="self">self </span><span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_ as </span><span class="kw-2">*mut </span><span class="kw">_</span>, $(<span class="macro-nonterminal">$p</span>,)<span class="kw-2">*</span>)
         }
     );
-    (@<span class="ident">method</span> <span class="attribute">#[<span class="ident">fixme</span>]</span> <span class="kw">fn</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">method</span>:<span class="ident">ident</span>($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">p</span>:<span class="ident">ident</span> : <span class="macro-nonterminal">$</span><span class="macro-nonterminal">t</span>:<span class="ident">ty</span>,)<span class="kw-2">*</span>) -&gt; <span class="macro-nonterminal">$</span><span class="macro-nonterminal">rtr</span>:<span class="ident">ty</span>) =&gt; (
-        <span class="attribute">#[<span class="ident">inline</span>]</span> <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">method</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">p</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">t</span>,)<span class="kw-2">*</span>) -&gt; <span class="macro-nonterminal">$</span><span class="macro-nonterminal">rtr</span> {
-            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">ret</span> <span class="op">=</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::_core::mem::uninitialized</span>();
-            ((<span class="kw-2">*</span><span class="self">self</span>.<span class="ident">lpVtbl</span>).<span class="macro-nonterminal">$</span><span class="macro-nonterminal">method</span>)(<span class="self">self</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="kw">_</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="kw">_</span>, <span class="kw-2">&amp;mut</span> <span class="ident">ret</span>, $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">p</span>,)<span class="kw-2">*</span>);
-            <span class="ident">ret</span>
+    (@method <span class="attribute">#[fixme] </span><span class="kw">fn </span><span class="macro-nonterminal">$method</span>:ident($(<span class="macro-nonterminal">$p</span>:ident : <span class="macro-nonterminal">$t</span>:ty,)<span class="kw-2">*</span>) -&gt; <span class="macro-nonterminal">$rtr</span>:ty) =&gt; (
+        <span class="attribute">#[inline] </span><span class="kw">pub unsafe fn </span><span class="macro-nonterminal">$method</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, $(<span class="macro-nonterminal">$p</span>: <span class="macro-nonterminal">$t</span>,)<span class="kw-2">*</span>) -&gt; <span class="macro-nonterminal">$rtr </span>{
+            <span class="kw">let </span><span class="kw-2">mut </span>ret = <span class="macro-nonterminal">$crate::_core::mem::uninitialized</span>();
+            ((<span class="kw-2">*</span><span class="self">self</span>.lpVtbl).<span class="macro-nonterminal">$method</span>)(<span class="self">self </span><span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_ as </span><span class="kw-2">*mut </span><span class="kw">_</span>, <span class="kw-2">&amp;mut </span>ret, $(<span class="macro-nonterminal">$p</span>,)<span class="kw-2">*</span>);
+            ret
         }
     );
-    (@<span class="ident">vtbl</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">interface</span>:<span class="ident">ident</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">vtbl</span>:<span class="ident">ident</span> ($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">fields</span>:<span class="ident">tt</span>)<span class="kw-2">*</span>)
-        $(<span class="kw">fn</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">method</span>:<span class="ident">ident</span>($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">p</span>:<span class="ident">ident</span> : <span class="macro-nonterminal">$</span><span class="macro-nonterminal">t</span>:<span class="ident">ty</span>,)<span class="kw-2">*</span>) -&gt; <span class="macro-nonterminal">$</span><span class="macro-nonterminal">rtr</span>:<span class="ident">ty</span>,)<span class="op">*</span>
+    (@vtbl <span class="macro-nonterminal">$interface</span>:ident <span class="macro-nonterminal">$vtbl</span>:ident ($(<span class="macro-nonterminal">$fields</span>:tt)<span class="kw-2">*</span>)
+        $(<span class="kw">fn </span><span class="macro-nonterminal">$method</span>:ident($(<span class="macro-nonterminal">$p</span>:ident : <span class="macro-nonterminal">$t</span>:ty,)<span class="kw-2">*</span>) -&gt; <span class="macro-nonterminal">$rtr</span>:ty,)*
     ) =&gt; (
-        <span class="macro">RIDL!</span>{@<span class="ident">item</span> <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
-        <span class="kw">pub</span> <span class="kw">struct</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">vtbl</span> {
-            $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">fields</span>)<span class="op">*</span>
-            $(<span class="kw">pub</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">method</span>: <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;system&quot;</span> <span class="kw">fn</span>(
-                <span class="ident">This</span>: <span class="kw-2">*mut</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">interface</span>,
-                $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">p</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">t</span>,)<span class="op">*</span>
-            ) -&gt; <span class="macro-nonterminal">$</span><span class="macro-nonterminal">rtr</span>,)<span class="op">*</span>
+        <span class="macro">RIDL!</span>{@item <span class="attribute">#[repr(C)]
+        </span><span class="kw">pub struct </span><span class="macro-nonterminal">$vtbl </span>{
+            $(<span class="macro-nonterminal">$fields</span>)*
+            $(<span class="kw">pub </span><span class="macro-nonterminal">$method</span>: <span class="kw">unsafe extern </span><span class="string">&quot;system&quot; </span><span class="kw">fn</span>(
+                This: <span class="kw-2">*mut </span><span class="macro-nonterminal">$interface</span>,
+                $(<span class="macro-nonterminal">$p</span>: <span class="macro-nonterminal">$t</span>,)*
+            ) -&gt; <span class="macro-nonterminal">$rtr</span>,)*
         }}
     );
-    (@<span class="ident">vtbl</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">interface</span>:<span class="ident">ident</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">vtbl</span>:<span class="ident">ident</span> ($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">fields</span>:<span class="ident">tt</span>)<span class="kw-2">*</span>)
-        <span class="kw">fn</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">method</span>:<span class="ident">ident</span>($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">p</span>:<span class="ident">ident</span> : <span class="macro-nonterminal">$</span><span class="macro-nonterminal">t</span>:<span class="ident">ty</span>,)<span class="kw-2">*</span>) -&gt; <span class="macro-nonterminal">$</span><span class="macro-nonterminal">rtr</span>:<span class="ident">ty</span>,
-    $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">tail</span>:<span class="ident">tt</span>)<span class="kw-2">*</span>) =&gt; (
-        <span class="macro">RIDL!</span>{@<span class="ident">vtbl</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">interface</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">vtbl</span> (
-            $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">fields</span>)<span class="op">*</span>
-            <span class="kw">pub</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">method</span>: <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;system&quot;</span> <span class="kw">fn</span>(
-                <span class="ident">This</span>: <span class="kw-2">*mut</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">interface</span>,
-                $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">p</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">t</span>,)<span class="op">*</span>
-            ) -&gt; <span class="macro-nonterminal">$</span><span class="macro-nonterminal">rtr</span>,
-        ) $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">tail</span>)<span class="kw-2">*</span>}
+    (@vtbl <span class="macro-nonterminal">$interface</span>:ident <span class="macro-nonterminal">$vtbl</span>:ident ($(<span class="macro-nonterminal">$fields</span>:tt)<span class="kw-2">*</span>)
+        <span class="kw">fn </span><span class="macro-nonterminal">$method</span>:ident($(<span class="macro-nonterminal">$p</span>:ident : <span class="macro-nonterminal">$t</span>:ty,)<span class="kw-2">*</span>) -&gt; <span class="macro-nonterminal">$rtr</span>:ty,
+    $(<span class="macro-nonterminal">$tail</span>:tt)<span class="kw-2">*</span>) =&gt; (
+        <span class="macro">RIDL!</span>{@vtbl <span class="macro-nonterminal">$interface $vtbl </span>(
+            $(<span class="macro-nonterminal">$fields</span>)*
+            <span class="kw">pub </span><span class="macro-nonterminal">$method</span>: <span class="kw">unsafe extern </span><span class="string">&quot;system&quot; </span><span class="kw">fn</span>(
+                This: <span class="kw-2">*mut </span><span class="macro-nonterminal">$interface</span>,
+                $(<span class="macro-nonterminal">$p</span>: <span class="macro-nonterminal">$t</span>,)*
+            ) -&gt; <span class="macro-nonterminal">$rtr</span>,
+        ) $(<span class="macro-nonterminal">$tail</span>)<span class="kw-2">*</span>}
     );
-    (@<span class="ident">vtbl</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">interface</span>:<span class="ident">ident</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">vtbl</span>:<span class="ident">ident</span> ($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">fields</span>:<span class="ident">tt</span>)<span class="kw-2">*</span>)
-        <span class="attribute">#[<span class="ident">fixme</span>]</span> <span class="kw">fn</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">method</span>:<span class="ident">ident</span>($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">p</span>:<span class="ident">ident</span> : <span class="macro-nonterminal">$</span><span class="macro-nonterminal">t</span>:<span class="ident">ty</span>,)<span class="kw-2">*</span>) -&gt; <span class="macro-nonterminal">$</span><span class="macro-nonterminal">rtr</span>:<span class="ident">ty</span>,
-    $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">tail</span>:<span class="ident">tt</span>)<span class="kw-2">*</span>) =&gt; (
-        <span class="macro">RIDL!</span>{@<span class="ident">vtbl</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">interface</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">vtbl</span> (
-            $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">fields</span>)<span class="op">*</span>
-            <span class="kw">pub</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">method</span>: <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;system&quot;</span> <span class="kw">fn</span>(
-                <span class="ident">This</span>: <span class="kw-2">*mut</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">interface</span>,
-                <span class="ident">ret</span>: <span class="kw-2">*mut</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">rtr</span>,
-                $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">p</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">t</span>,)<span class="op">*</span>
-            ) -&gt; <span class="kw-2">*mut</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">rtr</span>,
-        ) $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">tail</span>)<span class="kw-2">*</span>}
+    (@vtbl <span class="macro-nonterminal">$interface</span>:ident <span class="macro-nonterminal">$vtbl</span>:ident ($(<span class="macro-nonterminal">$fields</span>:tt)<span class="kw-2">*</span>)
+        <span class="attribute">#[fixme] </span><span class="kw">fn </span><span class="macro-nonterminal">$method</span>:ident($(<span class="macro-nonterminal">$p</span>:ident : <span class="macro-nonterminal">$t</span>:ty,)<span class="kw-2">*</span>) -&gt; <span class="macro-nonterminal">$rtr</span>:ty,
+    $(<span class="macro-nonterminal">$tail</span>:tt)<span class="kw-2">*</span>) =&gt; (
+        <span class="macro">RIDL!</span>{@vtbl <span class="macro-nonterminal">$interface $vtbl </span>(
+            $(<span class="macro-nonterminal">$fields</span>)*
+            <span class="kw">pub </span><span class="macro-nonterminal">$method</span>: <span class="kw">unsafe extern </span><span class="string">&quot;system&quot; </span><span class="kw">fn</span>(
+                This: <span class="kw-2">*mut </span><span class="macro-nonterminal">$interface</span>,
+                ret: <span class="kw-2">*mut </span><span class="macro-nonterminal">$rtr</span>,
+                $(<span class="macro-nonterminal">$p</span>: <span class="macro-nonterminal">$t</span>,)*
+            ) -&gt; <span class="kw-2">*mut </span><span class="macro-nonterminal">$rtr</span>,
+        ) $(<span class="macro-nonterminal">$tail</span>)<span class="kw-2">*</span>}
     );
-    (@<span class="ident">uuid</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">interface</span>:<span class="ident">ident</span>
-        <span class="macro-nonterminal">$</span><span class="macro-nonterminal">l</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">w1</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">w2</span>:<span class="ident">expr</span>,
-        <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b1</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b2</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b3</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b4</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b5</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b6</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b7</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b8</span>:<span class="ident">expr</span>
+    (@uuid <span class="macro-nonterminal">$interface</span>:ident
+        <span class="macro-nonterminal">$l</span>:expr, <span class="macro-nonterminal">$w1</span>:expr, <span class="macro-nonterminal">$w2</span>:expr,
+        <span class="macro-nonterminal">$b1</span>:expr, <span class="macro-nonterminal">$b2</span>:expr, <span class="macro-nonterminal">$b3</span>:expr, <span class="macro-nonterminal">$b4</span>:expr, <span class="macro-nonterminal">$b5</span>:expr, <span class="macro-nonterminal">$b6</span>:expr, <span class="macro-nonterminal">$b7</span>:expr, <span class="macro-nonterminal">$b8</span>:expr
     ) =&gt; (
-        <span class="kw">impl</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::Interface</span> <span class="kw">for</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">interface</span> {
-            <span class="attribute">#[<span class="ident">inline</span>]</span>
-            <span class="kw">fn</span> <span class="ident">uuidof</span>() -&gt; <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::shared::guiddef::GUID</span> {
-                <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::shared::guiddef::GUID</span> {
-                    <span class="ident">Data1</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">l</span>,
-                    <span class="ident">Data2</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">w1</span>,
-                    <span class="ident">Data3</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">w2</span>,
-                    <span class="ident">Data4</span>: [<span class="macro-nonterminal">$</span><span class="macro-nonterminal">b1</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b2</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b3</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b4</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b5</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b6</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b7</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">b8</span>],
+        <span class="kw">impl </span><span class="macro-nonterminal">$crate::Interface </span><span class="kw">for </span><span class="macro-nonterminal">$interface </span>{
+            <span class="attribute">#[inline]
+            </span><span class="kw">fn </span>uuidof() -&gt; <span class="macro-nonterminal">$crate::shared::guiddef::GUID </span>{
+                <span class="macro-nonterminal">$crate::shared::guiddef::GUID </span>{
+                    Data1: <span class="macro-nonterminal">$l</span>,
+                    Data2: <span class="macro-nonterminal">$w1</span>,
+                    Data3: <span class="macro-nonterminal">$w2</span>,
+                    Data4: [<span class="macro-nonterminal">$b1</span>, <span class="macro-nonterminal">$b2</span>, <span class="macro-nonterminal">$b3</span>, <span class="macro-nonterminal">$b4</span>, <span class="macro-nonterminal">$b5</span>, <span class="macro-nonterminal">$b6</span>, <span class="macro-nonterminal">$b7</span>, <span class="macro-nonterminal">$b8</span>],
                 }
             }
         }
     );
-    (@<span class="ident">item</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">thing</span>:<span class="ident">item</span>) =&gt; (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">thing</span>);
+    (@item <span class="macro-nonterminal">$thing</span>:item) =&gt; (<span class="macro-nonterminal">$thing</span>);
 }
-<span class="macro">macro_rules!</span> <span class="ident">UNION</span> {
-    ($(<span class="attribute">#[<span class="macro-nonterminal">$</span><span class="macro-nonterminal">attrs</span>:<span class="ident">meta</span>]</span>)<span class="op">*</span> <span class="ident">union</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">ident</span> {
-        [<span class="macro-nonterminal">$</span><span class="macro-nonterminal">stype</span>:<span class="ident">ty</span>; <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ssize</span>:<span class="ident">expr</span>],
-        $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">variant</span>:<span class="ident">ident</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">variant_mut</span>:<span class="ident">ident</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ftype</span>:<span class="ident">ty</span>,)<span class="op">+</span>
+<span class="macro">macro_rules! </span>UNION {
+    ($(<span class="attribute">#[<span class="macro-nonterminal">$attrs</span>:meta]</span>)* union <span class="macro-nonterminal">$name</span>:ident {
+        [<span class="macro-nonterminal">$stype</span>:ty; <span class="macro-nonterminal">$ssize</span>:expr],
+        $(<span class="macro-nonterminal">$variant</span>:ident <span class="macro-nonterminal">$variant_mut</span>:ident: <span class="macro-nonterminal">$ftype</span>:ty,)+
     }) =&gt; (
-        <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span> $(<span class="attribute">#[<span class="macro-nonterminal">$</span><span class="macro-nonterminal">attrs</span>]</span>)<span class="op">*</span>
-        <span class="kw">pub</span> <span class="kw">struct</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>([<span class="macro-nonterminal">$</span><span class="macro-nonterminal">stype</span>; <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ssize</span>]);
-        <span class="kw">impl</span> <span class="ident">Copy</span> <span class="kw">for</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> {}
-        <span class="kw">impl</span> <span class="ident">Clone</span> <span class="kw">for</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> {
-            <span class="attribute">#[<span class="ident">inline</span>]</span>
-            <span class="kw">fn</span> <span class="ident">clone</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> { <span class="kw-2">*</span><span class="self">self</span> }
+        <span class="attribute">#[repr(C)] </span>$(<span class="attribute">#[<span class="macro-nonterminal">$attrs</span>]</span>)*
+        <span class="kw">pub struct </span><span class="macro-nonterminal">$name</span>([<span class="macro-nonterminal">$stype</span>; <span class="macro-nonterminal">$ssize</span>]);
+        <span class="kw">impl </span>Copy <span class="kw">for </span><span class="macro-nonterminal">$name </span>{}
+        <span class="kw">impl </span>Clone <span class="kw">for </span><span class="macro-nonterminal">$name </span>{
+            <span class="attribute">#[inline]
+            </span><span class="kw">fn </span>clone(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="macro-nonterminal">$name </span>{ <span class="kw-2">*</span><span class="self">self </span>}
         }
-        <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;impl-default&quot;</span>)]</span>
-        <span class="kw">impl</span> <span class="ident">Default</span> <span class="kw">for</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> {
-            <span class="attribute">#[<span class="ident">inline</span>]</span>
-            <span class="kw">fn</span> <span class="ident">default</span>() -&gt; <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> { <span class="kw">unsafe</span> { <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::_core::mem::zeroed</span>() } }
+        <span class="attribute">#[cfg(feature = <span class="string">&quot;impl-default&quot;</span>)]
+        </span><span class="kw">impl </span>Default <span class="kw">for </span><span class="macro-nonterminal">$name </span>{
+            <span class="attribute">#[inline]
+            </span><span class="kw">fn </span>default() -&gt; <span class="macro-nonterminal">$name </span>{ <span class="kw">unsafe </span>{ <span class="macro-nonterminal">$crate::_core::mem::zeroed</span>() } }
         }
-        <span class="kw">impl</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> {$(
-            <span class="attribute">#[<span class="ident">inline</span>]</span>
-            <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">variant</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="macro-nonterminal">$</span><span class="macro-nonterminal">ftype</span> {
-                <span class="kw-2">&amp;</span><span class="kw-2">*</span>(<span class="self">self</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="kw">_</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ftype</span>)
+        <span class="kw">impl </span><span class="macro-nonterminal">$name </span>{$(
+            <span class="attribute">#[inline]
+            </span><span class="kw">pub unsafe fn </span><span class="macro-nonterminal">$variant</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="macro-nonterminal">$ftype </span>{
+                <span class="kw-2">&amp;*</span>(<span class="self">self </span><span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_ as </span><span class="kw-2">*const </span><span class="macro-nonterminal">$ftype</span>)
             }
-            <span class="attribute">#[<span class="ident">inline</span>]</span>
-            <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">variant_mut</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="kw-2">&amp;mut</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ftype</span> {
-                <span class="kw-2">&amp;mut</span> <span class="kw-2">*</span>(<span class="self">self</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="kw">_</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ftype</span>)
+            <span class="attribute">#[inline]
+            </span><span class="kw">pub unsafe fn </span><span class="macro-nonterminal">$variant_mut</span>(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;mut </span><span class="macro-nonterminal">$ftype </span>{
+                <span class="kw-2">&amp;mut *</span>(<span class="self">self </span><span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_ as </span><span class="kw-2">*mut </span><span class="macro-nonterminal">$ftype</span>)
             }
-        )<span class="op">+</span>}
+        )+}
     );
-    ($(<span class="attribute">#[<span class="macro-nonterminal">$</span><span class="macro-nonterminal">attrs</span>:<span class="ident">meta</span>]</span>)<span class="op">*</span> <span class="ident">union</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">ident</span> {
-        [<span class="macro-nonterminal">$</span><span class="macro-nonterminal">stype32</span>:<span class="ident">ty</span>; <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ssize32</span>:<span class="ident">expr</span>] [<span class="macro-nonterminal">$</span><span class="macro-nonterminal">stype64</span>:<span class="ident">ty</span>; <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ssize64</span>:<span class="ident">expr</span>],
-        $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">variant</span>:<span class="ident">ident</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">variant_mut</span>:<span class="ident">ident</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ftype</span>:<span class="ident">ty</span>,)<span class="op">+</span>
+    ($(<span class="attribute">#[<span class="macro-nonterminal">$attrs</span>:meta]</span>)* union <span class="macro-nonterminal">$name</span>:ident {
+        [<span class="macro-nonterminal">$stype32</span>:ty; <span class="macro-nonterminal">$ssize32</span>:expr] [<span class="macro-nonterminal">$stype64</span>:ty; <span class="macro-nonterminal">$ssize64</span>:expr],
+        $(<span class="macro-nonterminal">$variant</span>:ident <span class="macro-nonterminal">$variant_mut</span>:ident: <span class="macro-nonterminal">$ftype</span>:ty,)+
     }) =&gt; (
-        <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span> $(<span class="attribute">#[<span class="macro-nonterminal">$</span><span class="macro-nonterminal">attrs</span>]</span>)<span class="op">*</span> <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">target_pointer_width</span> <span class="op">=</span> <span class="string">&quot;32&quot;</span>)]</span>
-        <span class="kw">pub</span> <span class="kw">struct</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>([<span class="macro-nonterminal">$</span><span class="macro-nonterminal">stype32</span>; <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ssize32</span>]);
-        <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span> $(<span class="attribute">#[<span class="macro-nonterminal">$</span><span class="macro-nonterminal">attrs</span>]</span>)<span class="op">*</span> <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">target_pointer_width</span> <span class="op">=</span> <span class="string">&quot;64&quot;</span>)]</span>
-        <span class="kw">pub</span> <span class="kw">struct</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>([<span class="macro-nonterminal">$</span><span class="macro-nonterminal">stype64</span>; <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ssize64</span>]);
-        <span class="kw">impl</span> <span class="ident">Copy</span> <span class="kw">for</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> {}
-        <span class="kw">impl</span> <span class="ident">Clone</span> <span class="kw">for</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> {
-            <span class="attribute">#[<span class="ident">inline</span>]</span>
-            <span class="kw">fn</span> <span class="ident">clone</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> { <span class="kw-2">*</span><span class="self">self</span> }
+        <span class="attribute">#[repr(C)] </span>$(<span class="attribute">#[<span class="macro-nonterminal">$attrs</span>]</span>)* <span class="attribute">#[cfg(target_pointer_width = <span class="string">&quot;32&quot;</span>)]
+        </span><span class="kw">pub struct </span><span class="macro-nonterminal">$name</span>([<span class="macro-nonterminal">$stype32</span>; <span class="macro-nonterminal">$ssize32</span>]);
+        <span class="attribute">#[repr(C)] </span>$(<span class="attribute">#[<span class="macro-nonterminal">$attrs</span>]</span>)* <span class="attribute">#[cfg(target_pointer_width = <span class="string">&quot;64&quot;</span>)]
+        </span><span class="kw">pub struct </span><span class="macro-nonterminal">$name</span>([<span class="macro-nonterminal">$stype64</span>; <span class="macro-nonterminal">$ssize64</span>]);
+        <span class="kw">impl </span>Copy <span class="kw">for </span><span class="macro-nonterminal">$name </span>{}
+        <span class="kw">impl </span>Clone <span class="kw">for </span><span class="macro-nonterminal">$name </span>{
+            <span class="attribute">#[inline]
+            </span><span class="kw">fn </span>clone(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="macro-nonterminal">$name </span>{ <span class="kw-2">*</span><span class="self">self </span>}
         }
-        <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;impl-default&quot;</span>)]</span>
-        <span class="kw">impl</span> <span class="ident">Default</span> <span class="kw">for</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> {
-            <span class="attribute">#[<span class="ident">inline</span>]</span>
-            <span class="kw">fn</span> <span class="ident">default</span>() -&gt; <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> { <span class="kw">unsafe</span> { <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::_core::mem::zeroed</span>() } }
+        <span class="attribute">#[cfg(feature = <span class="string">&quot;impl-default&quot;</span>)]
+        </span><span class="kw">impl </span>Default <span class="kw">for </span><span class="macro-nonterminal">$name </span>{
+            <span class="attribute">#[inline]
+            </span><span class="kw">fn </span>default() -&gt; <span class="macro-nonterminal">$name </span>{ <span class="kw">unsafe </span>{ <span class="macro-nonterminal">$crate::_core::mem::zeroed</span>() } }
         }
-        <span class="kw">impl</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> {$(
-            <span class="attribute">#[<span class="ident">inline</span>]</span>
-            <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">variant</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="macro-nonterminal">$</span><span class="macro-nonterminal">ftype</span> {
-                <span class="kw-2">&amp;</span><span class="kw-2">*</span>(<span class="self">self</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="kw">_</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ftype</span>)
+        <span class="kw">impl </span><span class="macro-nonterminal">$name </span>{$(
+            <span class="attribute">#[inline]
+            </span><span class="kw">pub unsafe fn </span><span class="macro-nonterminal">$variant</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="macro-nonterminal">$ftype </span>{
+                <span class="kw-2">&amp;*</span>(<span class="self">self </span><span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_ as </span><span class="kw-2">*const </span><span class="macro-nonterminal">$ftype</span>)
             }
-            <span class="attribute">#[<span class="ident">inline</span>]</span>
-            <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">variant_mut</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="kw-2">&amp;mut</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ftype</span> {
-                <span class="kw-2">&amp;mut</span> <span class="kw-2">*</span>(<span class="self">self</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="kw">_</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ftype</span>)
+            <span class="attribute">#[inline]
+            </span><span class="kw">pub unsafe fn </span><span class="macro-nonterminal">$variant_mut</span>(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;mut </span><span class="macro-nonterminal">$ftype </span>{
+                <span class="kw-2">&amp;mut *</span>(<span class="self">self </span><span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_ as </span><span class="kw-2">*mut </span><span class="macro-nonterminal">$ftype</span>)
             }
-        )<span class="op">+</span>}
+        )+}
     );
 }
-<span class="macro">macro_rules!</span> <span class="ident">BITFIELD</span> {
-    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">base</span>:<span class="ident">ident</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">field</span>:<span class="ident">ident</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">fieldtype</span>:<span class="ident">ty</span> [
-        $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">thing</span>:<span class="ident">ident</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">set_thing</span>:<span class="ident">ident</span>[<span class="macro-nonterminal">$</span><span class="macro-nonterminal">r</span>:<span class="ident">expr</span>],)<span class="op">+</span>
+<span class="macro">macro_rules! </span>BITFIELD {
+    (<span class="macro-nonterminal">$base</span>:ident <span class="macro-nonterminal">$field</span>:ident: <span class="macro-nonterminal">$fieldtype</span>:ty [
+        $(<span class="macro-nonterminal">$thing</span>:ident <span class="macro-nonterminal">$set_thing</span>:ident[<span class="macro-nonterminal">$r</span>:expr],)+
     ]) =&gt; {
-        <span class="kw">impl</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">base</span> {$(
-            <span class="attribute">#[<span class="ident">inline</span>]</span>
-            <span class="kw">pub</span> <span class="kw">fn</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">thing</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="macro-nonterminal">$</span><span class="macro-nonterminal">fieldtype</span> {
-                <span class="kw">let</span> <span class="ident">size</span> <span class="op">=</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::core::mem::size_of</span>::<span class="op">&lt;</span><span class="macro-nonterminal">$</span><span class="macro-nonterminal">fieldtype</span><span class="op">&gt;</span>() <span class="op">*</span> <span class="number">8</span>;
-                <span class="self">self</span>.<span class="macro-nonterminal">$</span><span class="macro-nonterminal">field</span> <span class="op">&lt;</span><span class="op">&lt;</span> (<span class="ident">size</span> <span class="op">-</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">r</span>.<span class="ident">end</span>) <span class="op">&gt;</span><span class="op">&gt;</span> (<span class="ident">size</span> <span class="op">-</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">r</span>.<span class="ident">end</span> <span class="op">+</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">r</span>.<span class="ident">start</span>)
+        <span class="kw">impl </span><span class="macro-nonterminal">$base </span>{$(
+            <span class="attribute">#[inline]
+            </span><span class="kw">pub fn </span><span class="macro-nonterminal">$thing</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="macro-nonterminal">$fieldtype </span>{
+                <span class="kw">let </span>size = <span class="macro-nonterminal">$crate::core::mem::size_of</span>::&lt;<span class="macro-nonterminal">$fieldtype</span>&gt;() * <span class="number">8</span>;
+                <span class="self">self</span>.<span class="macro-nonterminal">$field </span>&lt;&lt; (size - <span class="macro-nonterminal">$r</span>.end) &gt;&gt; (size - <span class="macro-nonterminal">$r</span>.end + <span class="macro-nonterminal">$r</span>.start)
             }
-            <span class="attribute">#[<span class="ident">inline</span>]</span>
-            <span class="kw">pub</span> <span class="kw">fn</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">set_thing</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">val</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">fieldtype</span>) {
-                <span class="kw">let</span> <span class="ident">mask</span> <span class="op">=</span> ((<span class="number">1</span> <span class="op">&lt;</span><span class="op">&lt;</span> (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">r</span>.<span class="ident">end</span> <span class="op">-</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">r</span>.<span class="ident">start</span>)) <span class="op">-</span> <span class="number">1</span>) <span class="op">&lt;</span><span class="op">&lt;</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">r</span>.<span class="ident">start</span>;
-                <span class="self">self</span>.<span class="macro-nonterminal">$</span><span class="macro-nonterminal">field</span> <span class="op">&amp;=</span> <span class="op">!</span><span class="ident">mask</span>;
-                <span class="self">self</span>.<span class="macro-nonterminal">$</span><span class="macro-nonterminal">field</span> <span class="op">|</span><span class="op">=</span> (<span class="ident">val</span> <span class="op">&lt;</span><span class="op">&lt;</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">r</span>.<span class="ident">start</span>) <span class="op">&amp;</span> <span class="ident">mask</span>;
+            <span class="attribute">#[inline]
+            </span><span class="kw">pub fn </span><span class="macro-nonterminal">$set_thing</span>(<span class="kw-2">&amp;mut </span><span class="self">self</span>, val: <span class="macro-nonterminal">$fieldtype</span>) {
+                <span class="kw">let </span>mask = ((<span class="number">1 </span>&lt;&lt; (<span class="macro-nonterminal">$r</span>.end - <span class="macro-nonterminal">$r</span>.start)) - <span class="number">1</span>) &lt;&lt; <span class="macro-nonterminal">$r</span>.start;
+                <span class="self">self</span>.<span class="macro-nonterminal">$field </span>&amp;= !mask;
+                <span class="self">self</span>.<span class="macro-nonterminal">$field </span>|= (val &lt;&lt; <span class="macro-nonterminal">$r</span>.start) &amp; mask;
             }
-        )<span class="op">+</span>}
+        )+}
     }
 }
-<span class="attribute">#[<span class="ident">macro_export</span>]</span>
-<span class="macro">macro_rules!</span> <span class="ident">ENUM</span> {
-    {<span class="kw">enum</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">ident</span> { $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">variant</span>:<span class="ident">ident</span> <span class="op">=</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">value</span>:<span class="ident">expr</span>,)<span class="op">+</span> }} =&gt; {
-        <span class="kw">pub</span> <span class="kw">type</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> <span class="op">=</span> <span class="ident">u32</span>;
-        $(<span class="kw">pub</span> <span class="kw">const</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">variant</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> <span class="op">=</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">value</span>;)<span class="op">+</span>
+<span class="attribute">#[macro_export]
+</span><span class="macro">macro_rules! </span>ENUM {
+    {<span class="kw">enum </span><span class="macro-nonterminal">$name</span>:ident { $(<span class="macro-nonterminal">$variant</span>:ident = <span class="macro-nonterminal">$value</span>:expr,)+ }} =&gt; {
+        <span class="kw">pub type </span><span class="macro-nonterminal">$name </span>= u32;
+        $(<span class="kw">pub const </span><span class="macro-nonterminal">$variant</span>: <span class="macro-nonterminal">$name </span>= <span class="macro-nonterminal">$value</span>;)+
     };
-    {<span class="kw">enum</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">ident</span> { <span class="macro-nonterminal">$</span><span class="macro-nonterminal">variant</span>:<span class="ident">ident</span> <span class="op">=</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">value</span>:<span class="ident">expr</span>, $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>:<span class="ident">tt</span>)<span class="op">*</span> }} =&gt; {
-        <span class="kw">pub</span> <span class="kw">type</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> <span class="op">=</span> <span class="ident">u32</span>;
-        <span class="kw">pub</span> <span class="kw">const</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">variant</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> <span class="op">=</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">value</span>;
-        <span class="macro">ENUM!</span>{@<span class="ident">gen</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">variant</span>, $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>)<span class="kw-2">*</span>}
+    {<span class="kw">enum </span><span class="macro-nonterminal">$name</span>:ident { <span class="macro-nonterminal">$variant</span>:ident = <span class="macro-nonterminal">$value</span>:expr, $(<span class="macro-nonterminal">$rest</span>:tt)* }} =&gt; {
+        <span class="kw">pub type </span><span class="macro-nonterminal">$name </span>= u32;
+        <span class="kw">pub const </span><span class="macro-nonterminal">$variant</span>: <span class="macro-nonterminal">$name </span>= <span class="macro-nonterminal">$value</span>;
+        <span class="macro">ENUM!</span>{@gen <span class="macro-nonterminal">$name $variant</span>, $(<span class="macro-nonterminal">$rest</span>)<span class="kw-2">*</span>}
     };
-    {<span class="kw">enum</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">ident</span> { <span class="macro-nonterminal">$</span><span class="macro-nonterminal">variant</span>:<span class="ident">ident</span>, $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>:<span class="ident">tt</span>)<span class="op">*</span> }} =&gt; {
-        <span class="macro">ENUM!</span>{<span class="kw">enum</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> { <span class="macro-nonterminal">$</span><span class="macro-nonterminal">variant</span> <span class="op">=</span> <span class="number">0</span>, $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>)<span class="op">*</span> }}
+    {<span class="kw">enum </span><span class="macro-nonterminal">$name</span>:ident { <span class="macro-nonterminal">$variant</span>:ident, $(<span class="macro-nonterminal">$rest</span>:tt)* }} =&gt; {
+        <span class="macro">ENUM!</span>{<span class="kw">enum </span><span class="macro-nonterminal">$name </span>{ <span class="macro-nonterminal">$variant </span>= <span class="number">0</span>, $(<span class="macro-nonterminal">$rest</span>)* }}
     };
-    {@<span class="ident">gen</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">ident</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">base</span>:<span class="ident">ident</span>,} =&gt; {};
-    {@<span class="ident">gen</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">ident</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">base</span>:<span class="ident">ident</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">variant</span>:<span class="ident">ident</span> <span class="op">=</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">value</span>:<span class="ident">expr</span>, $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>:<span class="ident">tt</span>)<span class="kw-2">*</span>} =&gt; {
-        <span class="kw">pub</span> <span class="kw">const</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">variant</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> <span class="op">=</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">value</span>;
-        <span class="macro">ENUM!</span>{@<span class="ident">gen</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">variant</span>, $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>)<span class="kw-2">*</span>}
+    {@gen <span class="macro-nonterminal">$name</span>:ident <span class="macro-nonterminal">$base</span>:ident,} =&gt; {};
+    {@gen <span class="macro-nonterminal">$name</span>:ident <span class="macro-nonterminal">$base</span>:ident, <span class="macro-nonterminal">$variant</span>:ident = <span class="macro-nonterminal">$value</span>:expr, $(<span class="macro-nonterminal">$rest</span>:tt)<span class="kw-2">*</span>} =&gt; {
+        <span class="kw">pub const </span><span class="macro-nonterminal">$variant</span>: <span class="macro-nonterminal">$name </span>= <span class="macro-nonterminal">$value</span>;
+        <span class="macro">ENUM!</span>{@gen <span class="macro-nonterminal">$name $variant</span>, $(<span class="macro-nonterminal">$rest</span>)<span class="kw-2">*</span>}
     };
-    {@<span class="ident">gen</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">ident</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">base</span>:<span class="ident">ident</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">variant</span>:<span class="ident">ident</span>, $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>:<span class="ident">tt</span>)<span class="kw-2">*</span>} =&gt; {
-        <span class="kw">pub</span> <span class="kw">const</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">variant</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> <span class="op">=</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">base</span> <span class="op">+</span> <span class="number">1u32</span>;
-        <span class="macro">ENUM!</span>{@<span class="ident">gen</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">variant</span>, $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>)<span class="kw-2">*</span>}
+    {@gen <span class="macro-nonterminal">$name</span>:ident <span class="macro-nonterminal">$base</span>:ident, <span class="macro-nonterminal">$variant</span>:ident, $(<span class="macro-nonterminal">$rest</span>:tt)<span class="kw-2">*</span>} =&gt; {
+        <span class="kw">pub const </span><span class="macro-nonterminal">$variant</span>: <span class="macro-nonterminal">$name </span>= <span class="macro-nonterminal">$base </span>+ <span class="number">1u32</span>;
+        <span class="macro">ENUM!</span>{@gen <span class="macro-nonterminal">$name $variant</span>, $(<span class="macro-nonterminal">$rest</span>)<span class="kw-2">*</span>}
     };
 }
-<span class="attribute">#[<span class="ident">macro_export</span>]</span>
-<span class="macro">macro_rules!</span> <span class="ident">STRUCT</span> {
-    (<span class="attribute">#[<span class="ident">debug</span>]</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>:<span class="ident">tt</span>)<span class="kw-2">*</span>) =&gt; (
-        <span class="macro">STRUCT!</span>{<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;impl-debug&quot;</span>, <span class="ident">derive</span>(<span class="ident">Debug</span>))]</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">rest</span>)<span class="kw-2">*</span>}
+<span class="attribute">#[macro_export]
+</span><span class="macro">macro_rules! </span>STRUCT {
+    (<span class="attribute">#[debug] </span>$(<span class="macro-nonterminal">$rest</span>:tt)<span class="kw-2">*</span>) =&gt; (
+        <span class="macro">STRUCT!</span>{<span class="attribute">#[cfg_attr(feature = <span class="string">&quot;impl-debug&quot;</span>, derive(Debug))] </span>$(<span class="macro-nonterminal">$rest</span>)<span class="kw-2">*</span>}
     );
-    ($(<span class="attribute">#[<span class="macro-nonterminal">$</span><span class="macro-nonterminal">attrs</span>:<span class="ident">meta</span>]</span>)<span class="op">*</span> <span class="kw">struct</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">ident</span> {
-        $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">field</span>:<span class="ident">ident</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ftype</span>:<span class="ident">ty</span>,)<span class="op">+</span>
+    ($(<span class="attribute">#[<span class="macro-nonterminal">$attrs</span>:meta]</span>)* <span class="kw">struct </span><span class="macro-nonterminal">$name</span>:ident {
+        $(<span class="macro-nonterminal">$field</span>:ident: <span class="macro-nonterminal">$ftype</span>:ty,)+
     }) =&gt; (
-        <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span> <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>)]</span> $(<span class="attribute">#[<span class="macro-nonterminal">$</span><span class="macro-nonterminal">attrs</span>]</span>)<span class="op">*</span>
-        <span class="kw">pub</span> <span class="kw">struct</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> {
-            $(<span class="kw">pub</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">field</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ftype</span>,)<span class="op">+</span>
+        <span class="attribute">#[repr(C)] #[derive(Copy)] </span>$(<span class="attribute">#[<span class="macro-nonterminal">$attrs</span>]</span>)*
+        <span class="kw">pub struct </span><span class="macro-nonterminal">$name </span>{
+            $(<span class="kw">pub </span><span class="macro-nonterminal">$field</span>: <span class="macro-nonterminal">$ftype</span>,)+
         }
-        <span class="kw">impl</span> <span class="ident">Clone</span> <span class="kw">for</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> {
-            <span class="attribute">#[<span class="ident">inline</span>]</span>
-            <span class="kw">fn</span> <span class="ident">clone</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> { <span class="kw-2">*</span><span class="self">self</span> }
+        <span class="kw">impl </span>Clone <span class="kw">for </span><span class="macro-nonterminal">$name </span>{
+            <span class="attribute">#[inline]
+            </span><span class="kw">fn </span>clone(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="macro-nonterminal">$name </span>{ <span class="kw-2">*</span><span class="self">self </span>}
         }
-        <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;impl-default&quot;</span>)]</span>
-        <span class="kw">impl</span> <span class="ident">Default</span> <span class="kw">for</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> {
-            <span class="attribute">#[<span class="ident">inline</span>]</span>
-            <span class="kw">fn</span> <span class="ident">default</span>() -&gt; <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> { <span class="kw">unsafe</span> { <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::_core::mem::zeroed</span>() } }
+        <span class="attribute">#[cfg(feature = <span class="string">&quot;impl-default&quot;</span>)]
+        </span><span class="kw">impl </span>Default <span class="kw">for </span><span class="macro-nonterminal">$name </span>{
+            <span class="attribute">#[inline]
+            </span><span class="kw">fn </span>default() -&gt; <span class="macro-nonterminal">$name </span>{ <span class="kw">unsafe </span>{ <span class="macro-nonterminal">$crate::_core::mem::zeroed</span>() } }
         }
     );
 }
-<span class="macro">macro_rules!</span> <span class="ident">IFDEF</span> {
-    ($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">thing</span>:<span class="ident">item</span>)<span class="kw-2">*</span>) =&gt; ($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">thing</span>)<span class="kw-2">*</span>)
+<span class="macro">macro_rules! </span>IFDEF {
+    ($(<span class="macro-nonterminal">$thing</span>:item)<span class="kw-2">*</span>) =&gt; ($(<span class="macro-nonterminal">$thing</span>)<span class="kw-2">*</span>)
 }
-<span class="macro">macro_rules!</span> <span class="ident">FN</span> {
-    (<span class="ident">stdcall</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">func</span>:<span class="ident">ident</span>($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">t</span>:<span class="ident">ty</span>,)<span class="kw-2">*</span>) -&gt; <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ret</span>:<span class="ident">ty</span>) =&gt; (
-        <span class="kw">pub</span> <span class="kw">type</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">func</span> <span class="op">=</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;system&quot;</span> <span class="kw">fn</span>($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">t</span>,)<span class="kw-2">*</span>) -&gt; <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ret</span><span class="op">&gt;</span>;
+<span class="macro">macro_rules! </span>FN {
+    (stdcall <span class="macro-nonterminal">$func</span>:ident($(<span class="macro-nonterminal">$t</span>:ty,)<span class="kw-2">*</span>) -&gt; <span class="macro-nonterminal">$ret</span>:ty) =&gt; (
+        <span class="kw">pub type </span><span class="macro-nonterminal">$func </span>= <span class="prelude-ty">Option</span>&lt;<span class="kw">unsafe extern </span><span class="string">&quot;system&quot; </span><span class="kw">fn</span>($(<span class="macro-nonterminal">$t</span>,)<span class="kw-2">*</span>) -&gt; <span class="macro-nonterminal">$ret</span>&gt;;
     );
-    (<span class="ident">stdcall</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">func</span>:<span class="ident">ident</span>($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">p</span>:<span class="ident">ident</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">t</span>:<span class="ident">ty</span>,)<span class="kw-2">*</span>) -&gt; <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ret</span>:<span class="ident">ty</span>) =&gt; (
-        <span class="kw">pub</span> <span class="kw">type</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">func</span> <span class="op">=</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;system&quot;</span> <span class="kw">fn</span>($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">p</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">t</span>,)<span class="kw-2">*</span>) -&gt; <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ret</span><span class="op">&gt;</span>;
+    (stdcall <span class="macro-nonterminal">$func</span>:ident($(<span class="macro-nonterminal">$p</span>:ident: <span class="macro-nonterminal">$t</span>:ty,)<span class="kw-2">*</span>) -&gt; <span class="macro-nonterminal">$ret</span>:ty) =&gt; (
+        <span class="kw">pub type </span><span class="macro-nonterminal">$func </span>= <span class="prelude-ty">Option</span>&lt;<span class="kw">unsafe extern </span><span class="string">&quot;system&quot; </span><span class="kw">fn</span>($(<span class="macro-nonterminal">$p</span>: <span class="macro-nonterminal">$t</span>,)<span class="kw-2">*</span>) -&gt; <span class="macro-nonterminal">$ret</span>&gt;;
     );
-    (<span class="ident">cdecl</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">func</span>:<span class="ident">ident</span>($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">t</span>:<span class="ident">ty</span>,)<span class="kw-2">*</span>) -&gt; <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ret</span>:<span class="ident">ty</span>) =&gt; (
-        <span class="kw">pub</span> <span class="kw">type</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">func</span> <span class="op">=</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span>($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">t</span>,)<span class="kw-2">*</span>) -&gt; <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ret</span><span class="op">&gt;</span>;
+    (cdecl <span class="macro-nonterminal">$func</span>:ident($(<span class="macro-nonterminal">$t</span>:ty,)<span class="kw-2">*</span>) -&gt; <span class="macro-nonterminal">$ret</span>:ty) =&gt; (
+        <span class="kw">pub type </span><span class="macro-nonterminal">$func </span>= <span class="prelude-ty">Option</span>&lt;<span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn</span>($(<span class="macro-nonterminal">$t</span>,)<span class="kw-2">*</span>) -&gt; <span class="macro-nonterminal">$ret</span>&gt;;
     );
-    (<span class="ident">cdecl</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">func</span>:<span class="ident">ident</span>($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">p</span>:<span class="ident">ident</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">t</span>:<span class="ident">ty</span>,)<span class="kw-2">*</span>) -&gt; <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ret</span>:<span class="ident">ty</span>) =&gt; (
-        <span class="kw">pub</span> <span class="kw">type</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">func</span> <span class="op">=</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span>($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">p</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">t</span>,)<span class="kw-2">*</span>) -&gt; <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ret</span><span class="op">&gt;</span>;
+    (cdecl <span class="macro-nonterminal">$func</span>:ident($(<span class="macro-nonterminal">$p</span>:ident: <span class="macro-nonterminal">$t</span>:ty,)<span class="kw-2">*</span>) -&gt; <span class="macro-nonterminal">$ret</span>:ty) =&gt; (
+        <span class="kw">pub type </span><span class="macro-nonterminal">$func </span>= <span class="prelude-ty">Option</span>&lt;<span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn</span>($(<span class="macro-nonterminal">$p</span>: <span class="macro-nonterminal">$t</span>,)<span class="kw-2">*</span>) -&gt; <span class="macro-nonterminal">$ret</span>&gt;;
     );
 }
-<span class="macro">macro_rules!</span> <span class="ident">_WSAIO</span> {
-    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">x</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">y</span>:<span class="ident">expr</span>) =&gt; {
-        <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::shared::ws2def::IOC_VOID</span> <span class="op">|</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">x</span> <span class="op">|</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">y</span>
-    }
+<span class="macro">macro_rules! </span>_WSAIO {
+    (<span class="macro-nonterminal">$x</span>:expr, <span class="macro-nonterminal">$y</span>:expr) =&gt; {
+        <span class="macro-nonterminal">$crate::shared::ws2def::IOC_VOID </span>| <span class="macro-nonterminal">$x </span>| <span class="macro-nonterminal">$y
+    </span>}
 }
-<span class="macro">macro_rules!</span> <span class="ident">_WSAIOR</span> {
-    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">x</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">y</span>:<span class="ident">expr</span>) =&gt; {
-        <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::shared::ws2def::IOC_OUT</span> <span class="op">|</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">x</span> <span class="op">|</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">y</span>
-    }
+<span class="macro">macro_rules! </span>_WSAIOR {
+    (<span class="macro-nonterminal">$x</span>:expr, <span class="macro-nonterminal">$y</span>:expr) =&gt; {
+        <span class="macro-nonterminal">$crate::shared::ws2def::IOC_OUT </span>| <span class="macro-nonterminal">$x </span>| <span class="macro-nonterminal">$y
+    </span>}
 }
-<span class="macro">macro_rules!</span> <span class="ident">_WSAIOW</span> {
-    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">x</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">y</span>:<span class="ident">expr</span>) =&gt; {
-        <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::shared::ws2def::IOC_IN</span> <span class="op">|</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">x</span> <span class="op">|</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">y</span>
-    }
+<span class="macro">macro_rules! </span>_WSAIOW {
+    (<span class="macro-nonterminal">$x</span>:expr, <span class="macro-nonterminal">$y</span>:expr) =&gt; {
+        <span class="macro-nonterminal">$crate::shared::ws2def::IOC_IN </span>| <span class="macro-nonterminal">$x </span>| <span class="macro-nonterminal">$y
+    </span>}
 }
-<span class="macro">macro_rules!</span> <span class="ident">_WSAIORW</span> {
-    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">x</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">y</span>:<span class="ident">expr</span>) =&gt; {
-        <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::shared::ws2def::IOC_INOUT</span> <span class="op">|</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">x</span> <span class="op">|</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">y</span>
-    }
+<span class="macro">macro_rules! </span>_WSAIORW {
+    (<span class="macro-nonterminal">$x</span>:expr, <span class="macro-nonterminal">$y</span>:expr) =&gt; {
+        <span class="macro-nonterminal">$crate::shared::ws2def::IOC_INOUT </span>| <span class="macro-nonterminal">$x </span>| <span class="macro-nonterminal">$y
+    </span>}
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="winapi" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="winapi" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.0 (69f9c33d7 2022-12-12)" ></div></body></html>

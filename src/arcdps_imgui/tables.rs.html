@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\arcdps-imgui-0.8.0\src\tables.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>tables.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script><script defer src="../../main.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../arcdps_imgui/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../arcdps_imgui/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../arcdps_imgui/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\arcdps-imgui-0.8.0\src\tables.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>tables.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../normalize.css"><link rel="stylesheet" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../ayu.css" disabled><link rel="stylesheet" href="../../dark.css" disabled><link rel="stylesheet" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script><script defer src="../../main.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../arcdps_imgui/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -856,863 +856,863 @@
 <span id="856">856</span>
 <span id="857">857</span>
 <span id="858">858</span>
-</pre><pre class="rust"><code><span class="kw">use</span> <span class="ident">std::ffi::CStr</span>;
-<span class="kw">use</span> <span class="ident">std::marker::PhantomData</span>;
+</pre><pre class="rust"><code><span class="kw">use </span>std::ffi::CStr;
+<span class="kw">use </span>std::marker::PhantomData;
 
-<span class="kw">use</span> <span class="ident">bitflags::bitflags</span>;
+<span class="kw">use </span>bitflags::bitflags;
 
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::sys</span>;
-<span class="kw">use</span> <span class="kw">crate</span>::{<span class="ident">Id</span>, <span class="ident">ImColor32</span>, <span class="ident">Ui</span>};
+<span class="kw">use </span><span class="kw">crate</span>::sys;
+<span class="kw">use crate</span>::{Id, ImColor32, Ui};
 
-<span class="macro">bitflags!</span> {
-    <span class="doccomment">/// Flags passed to `begin_table` methods.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Important! Sizing policies have complex and subtle side effects, more so than you would expect.</span>
-    <span class="doccomment">/// Read comments/demos carefully + experiment with live demos to get acquainted with them.</span>
-    <span class="doccomment">/// - The DEFAULT sizing policies are:</span>
-    <span class="doccomment">///    - Default to [SizingFixedFit]    if [ScrollX] is on, or if host window has (WindowFlags::AlwaysAutoResize)[crate::WindowFlags::AlwaysAutoResize].</span>
-    <span class="doccomment">///    - Default to [SizingStretchSame] if [ScrollX] is off.</span>
-    <span class="doccomment">/// - When [ScrollX] is off:</span>
-    <span class="doccomment">///    - Table defaults to [SizingStretchSame] -&gt; all Columns defaults to [TableColumnFlags::WidthStretch] with same weight.</span>
-    <span class="doccomment">///    - Columns sizing policy allowed: [Stretch] (default), [Fixed]/Auto.</span>
-    <span class="doccomment">///    - [Fixed] Columns will generally obtain their requested width (unless the table cannot fit them all).</span>
-    <span class="doccomment">///    - [Stretch] Columns will share the remaining width.</span>
-    <span class="doccomment">///    - Mixed [Fixed]/[Stretch] columns is possible but has various side-effects on resizing behaviors.</span>
-    <span class="doccomment">///      The typical use of mixing sizing policies is: any number of LEADING [Fixed] columns, followed by one or two TRAILING [Stretch] columns.</span>
-    <span class="doccomment">///      (this is because the visible order of columns have subtle but necessary effects on how they react to manual resizing).</span>
-    <span class="doccomment">/// - When [ScrollX] is on:</span>
-    <span class="doccomment">///    - Table defaults to [SizingFixedFit] -&gt; all Columns defaults to [TableColumnFlags::WidthFixed]</span>
-    <span class="doccomment">///    - Columns sizing policy allowed: [Fixed]/Auto mostly.</span>
-    <span class="doccomment">///    - [Fixed] Columns can be enlarged as needed. Table will show an horizontal scrollbar if needed.</span>
-    <span class="doccomment">///    - When using auto-resizing (non-resizable) fixed columns, querying the content width to use item right-alignment e.g. SetNextItemWidth(-FLT_MIN) doesn&#39;t make sense, would create a feedback loop.</span>
-    <span class="doccomment">///    - Using [Stretch] columns OFTEN DOES NOT MAKE SENSE if [ScrollX] is on, UNLESS you have specified a value for `inner_width` in BeginTable().</span>
-    <span class="doccomment">///      If you specify a value for `inner_width` then effectively the scrolling space is known and [Stretch] or mixed [Fixed]/[Stretch] columns become meaningful again.</span>
-    <span class="doccomment">/// - Read on documentation at the top of imgui_tables.cpp for more details.</span>
-    <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">transparent</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">TableFlags</span>: <span class="ident">u32</span> {
-        <span class="comment">// Features</span>
+<span class="macro">bitflags! </span>{
+    <span class="doccomment">/// Flags passed to `begin_table` methods.
+    ///
+    /// Important! Sizing policies have complex and subtle side effects, more so than you would expect.
+    /// Read comments/demos carefully + experiment with live demos to get acquainted with them.
+    /// - The DEFAULT sizing policies are:
+    ///    - Default to [SizingFixedFit]    if [ScrollX] is on, or if host window has (WindowFlags::AlwaysAutoResize)[crate::WindowFlags::AlwaysAutoResize].
+    ///    - Default to [SizingStretchSame] if [ScrollX] is off.
+    /// - When [ScrollX] is off:
+    ///    - Table defaults to [SizingStretchSame] -&gt; all Columns defaults to [TableColumnFlags::WidthStretch] with same weight.
+    ///    - Columns sizing policy allowed: [Stretch] (default), [Fixed]/Auto.
+    ///    - [Fixed] Columns will generally obtain their requested width (unless the table cannot fit them all).
+    ///    - [Stretch] Columns will share the remaining width.
+    ///    - Mixed [Fixed]/[Stretch] columns is possible but has various side-effects on resizing behaviors.
+    ///      The typical use of mixing sizing policies is: any number of LEADING [Fixed] columns, followed by one or two TRAILING [Stretch] columns.
+    ///      (this is because the visible order of columns have subtle but necessary effects on how they react to manual resizing).
+    /// - When [ScrollX] is on:
+    ///    - Table defaults to [SizingFixedFit] -&gt; all Columns defaults to [TableColumnFlags::WidthFixed]
+    ///    - Columns sizing policy allowed: [Fixed]/Auto mostly.
+    ///    - [Fixed] Columns can be enlarged as needed. Table will show an horizontal scrollbar if needed.
+    ///    - When using auto-resizing (non-resizable) fixed columns, querying the content width to use item right-alignment e.g. SetNextItemWidth(-FLT_MIN) doesn&#39;t make sense, would create a feedback loop.
+    ///    - Using [Stretch] columns OFTEN DOES NOT MAKE SENSE if [ScrollX] is on, UNLESS you have specified a value for `inner_width` in BeginTable().
+    ///      If you specify a value for `inner_width` then effectively the scrolling space is known and [Stretch] or mixed [Fixed]/[Stretch] columns become meaningful again.
+    /// - Read on documentation at the top of imgui_tables.cpp for more details.
+    </span><span class="attribute">#[repr(transparent)]
+    </span><span class="kw">pub struct </span>TableFlags: u32 {
+        <span class="comment">// Features
 
-        <span class="doccomment">/// Enable resizing columns.</span>
-        <span class="kw">const</span> <span class="ident">RESIZABLE</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableFlags_Resizable</span>;
-        <span class="doccomment">/// Enable reordering columns in header row, though you must set up a header row</span>
-        <span class="doccomment">/// with `begin_table_header` or `table_setup_column`.</span>
-        <span class="kw">const</span> <span class="ident">REORDERABLE</span> <span class="op">=</span><span class="ident">sys::ImGuiTableFlags_Reorderable</span>;
-        <span class="doccomment">/// Enable hiding/disabling columns in context menu.</span>
-        <span class="kw">const</span> <span class="ident">HIDEABLE</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableFlags_Hideable</span>;
-        <span class="doccomment">/// Enable sorting. See `table_get_sort_specs` to object sort specs. Also see [SortMulti]</span>
-        <span class="doccomment">/// and [SortTristate].</span>
-        <span class="kw">const</span> <span class="ident">SORTABLE</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableFlags_Sortable</span>;
-        <span class="doccomment">/// Disable persisting columns order, width, and sort settings in the .ini file.</span>
-        <span class="kw">const</span> <span class="ident">NO_SAVED_SETTINGS</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableFlags_NoSavedSettings</span>;
-        <span class="doccomment">/// Right-click on columns body/contents will display table context menu.</span>
-        <span class="doccomment">/// By default you can only right click in a headers row.</span>
-        <span class="kw">const</span> <span class="ident">CONTEXT_MENU_IN_BODY</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableFlags_ContextMenuInBody</span>;
+        </span><span class="doccomment">/// Enable resizing columns.
+        </span><span class="kw">const </span>RESIZABLE = sys::ImGuiTableFlags_Resizable;
+        <span class="doccomment">/// Enable reordering columns in header row, though you must set up a header row
+        /// with `begin_table_header` or `table_setup_column`.
+        </span><span class="kw">const </span>REORDERABLE =sys::ImGuiTableFlags_Reorderable;
+        <span class="doccomment">/// Enable hiding/disabling columns in context menu.
+        </span><span class="kw">const </span>HIDEABLE = sys::ImGuiTableFlags_Hideable;
+        <span class="doccomment">/// Enable sorting. See `table_get_sort_specs` to object sort specs. Also see [SortMulti]
+        /// and [SortTristate].
+        </span><span class="kw">const </span>SORTABLE = sys::ImGuiTableFlags_Sortable;
+        <span class="doccomment">/// Disable persisting columns order, width, and sort settings in the .ini file.
+        </span><span class="kw">const </span>NO_SAVED_SETTINGS = sys::ImGuiTableFlags_NoSavedSettings;
+        <span class="doccomment">/// Right-click on columns body/contents will display table context menu.
+        /// By default you can only right click in a headers row.
+        </span><span class="kw">const </span>CONTEXT_MENU_IN_BODY = sys::ImGuiTableFlags_ContextMenuInBody;
 
-        <span class="comment">// Decorations</span>
+        <span class="comment">// Decorations
 
-        <span class="doccomment">/// Set each RowBg color with [table_row_bg] or [table_row_bg_alt] (equivalent of calling</span>
-        <span class="doccomment">/// `table_set_bg_color` with `ROW_BG0` on each row manually)</span>
-        <span class="kw">const</span> <span class="ident">ROW_BG</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableFlags_RowBg</span>;
-        <span class="doccomment">/// Draw horizontal borders between rows.</span>
-        <span class="kw">const</span> <span class="ident">BORDERS_INNER_H</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableFlags_BordersInnerH</span>;
-        <span class="doccomment">/// Draw horizontal borders at the top and bottom.</span>
-        <span class="kw">const</span> <span class="ident">BORDERS_OUTER_H</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableFlags_BordersOuterH</span>;
-        <span class="doccomment">/// Draw vertical borders between columns.</span>
-        <span class="kw">const</span> <span class="ident">BORDERS_INNER_V</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableFlags_BordersInnerV</span>;
-        <span class="doccomment">/// Draw vertical borders on the left and right sides.</span>
-        <span class="kw">const</span> <span class="ident">BORDERS_OUTER_V</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableFlags_BordersOuterV</span>;
-        <span class="doccomment">/// Draw all horizontal borders (this is just [BORDERS_INNER_H] | [BORDERS_OUTER_H]).</span>
-        <span class="kw">const</span> <span class="ident">BORDERS_H</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableFlags_BordersH</span>;
-        <span class="doccomment">/// Draw all vertical borders (this is just [BORDERS_INNER_V] | [BORDERS_OUTER_V]).</span>
-        <span class="kw">const</span> <span class="ident">BORDERS_V</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableFlags_BordersV</span>;
-        <span class="doccomment">/// Draw all inner borders (this is just [BORDERS_INNER_H] | [BORDERS_INNER_V]).</span>
-        <span class="kw">const</span> <span class="ident">BORDERS_INNER</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableFlags_BordersInner</span>;
-        <span class="doccomment">/// Draw all outer borders (this is just [BORDERS_OUTER_H] | [BORDERS_OUTER_V]).</span>
-        <span class="kw">const</span> <span class="ident">BORDERS_OUTER</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableFlags_BordersOuter</span>;
-        <span class="doccomment">/// Draw all borders (this is just [BORDERS_INNER] | [BORDERS_OUTER]).</span>
-        <span class="kw">const</span> <span class="ident">BORDERS</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableFlags_Borders</span>;
-        <span class="doccomment">/// **ALPHA** Disable vertical borders in columns Body (borders will always appears in Headers).</span>
-        <span class="doccomment">/// May move to Style</span>
-        <span class="kw">const</span> <span class="ident">NO_BORDERS_IN_BODY</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableFlags_NoBordersInBody</span>;
-        <span class="doccomment">/// **ALPHA** Disable vertical borders in columns Body until hovered for resize (borders will always appears in Headers).</span>
-        <span class="doccomment">/// May move to style</span>
-        <span class="kw">const</span> <span class="ident">NO_BORDERS_IN_BODY_UNTIL_RESIZE</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableFlags_NoBordersInBodyUntilResize</span>;
+        </span><span class="doccomment">/// Set each RowBg color with [table_row_bg] or [table_row_bg_alt] (equivalent of calling
+        /// `table_set_bg_color` with `ROW_BG0` on each row manually)
+        </span><span class="kw">const </span>ROW_BG = sys::ImGuiTableFlags_RowBg;
+        <span class="doccomment">/// Draw horizontal borders between rows.
+        </span><span class="kw">const </span>BORDERS_INNER_H = sys::ImGuiTableFlags_BordersInnerH;
+        <span class="doccomment">/// Draw horizontal borders at the top and bottom.
+        </span><span class="kw">const </span>BORDERS_OUTER_H = sys::ImGuiTableFlags_BordersOuterH;
+        <span class="doccomment">/// Draw vertical borders between columns.
+        </span><span class="kw">const </span>BORDERS_INNER_V = sys::ImGuiTableFlags_BordersInnerV;
+        <span class="doccomment">/// Draw vertical borders on the left and right sides.
+        </span><span class="kw">const </span>BORDERS_OUTER_V = sys::ImGuiTableFlags_BordersOuterV;
+        <span class="doccomment">/// Draw all horizontal borders (this is just [BORDERS_INNER_H] | [BORDERS_OUTER_H]).
+        </span><span class="kw">const </span>BORDERS_H = sys::ImGuiTableFlags_BordersH;
+        <span class="doccomment">/// Draw all vertical borders (this is just [BORDERS_INNER_V] | [BORDERS_OUTER_V]).
+        </span><span class="kw">const </span>BORDERS_V = sys::ImGuiTableFlags_BordersV;
+        <span class="doccomment">/// Draw all inner borders (this is just [BORDERS_INNER_H] | [BORDERS_INNER_V]).
+        </span><span class="kw">const </span>BORDERS_INNER = sys::ImGuiTableFlags_BordersInner;
+        <span class="doccomment">/// Draw all outer borders (this is just [BORDERS_OUTER_H] | [BORDERS_OUTER_V]).
+        </span><span class="kw">const </span>BORDERS_OUTER = sys::ImGuiTableFlags_BordersOuter;
+        <span class="doccomment">/// Draw all borders (this is just [BORDERS_INNER] | [BORDERS_OUTER]).
+        </span><span class="kw">const </span>BORDERS = sys::ImGuiTableFlags_Borders;
+        <span class="doccomment">/// **ALPHA** Disable vertical borders in columns Body (borders will always appears in Headers).
+        /// May move to Style
+        </span><span class="kw">const </span>NO_BORDERS_IN_BODY = sys::ImGuiTableFlags_NoBordersInBody;
+        <span class="doccomment">/// **ALPHA** Disable vertical borders in columns Body until hovered for resize (borders will always appears in Headers).
+        /// May move to style
+        </span><span class="kw">const </span>NO_BORDERS_IN_BODY_UNTIL_RESIZE = sys::ImGuiTableFlags_NoBordersInBodyUntilResize;
 
-        <span class="comment">// Sizing Policy (read above for defaults)</span>
+        <span class="comment">// Sizing Policy (read above for defaults)
 
-        <span class="doccomment">/// Columns default to [WidthFixed] or [WidthAuto] (if resizable or not resizable),</span>
-        <span class="doccomment">/// matching contents width.</span>
-        <span class="kw">const</span> <span class="ident">SIZING_FIXED_FIT</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableFlags_SizingFixedFit</span>;
-        <span class="doccomment">/// Columns default to [WidthFixed] or [WidthAuto] (if resizable or not resizable),</span>
-        <span class="doccomment">/// matching the maximum contents width of all columns.</span>
-        <span class="doccomment">/// Implicitly enable [NoKeepColumnsVisible].</span>
-        <span class="kw">const</span> <span class="ident">SIZING_FIXED_SAME</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableFlags_SizingFixedSame</span>;
-        <span class="doccomment">/// Columns default to [WidthStretch] with default weights proportional to each columns</span>
-        <span class="doccomment">/// contents widths.</span>
-        <span class="kw">const</span> <span class="ident">SIZING_STRETCH_PROP</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableFlags_SizingStretchProp</span>;
-        <span class="doccomment">/// Columns default to [WidthStretch] with default weights all equal, unless overridden by</span>
-        <span class="doccomment">/// a column&#39;s `TableHeader`.</span>
-        <span class="kw">const</span> <span class="ident">SIZING_STRETCH_SAME</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableFlags_SizingStretchSame</span>;
+        </span><span class="doccomment">/// Columns default to [WidthFixed] or [WidthAuto] (if resizable or not resizable),
+        /// matching contents width.
+        </span><span class="kw">const </span>SIZING_FIXED_FIT = sys::ImGuiTableFlags_SizingFixedFit;
+        <span class="doccomment">/// Columns default to [WidthFixed] or [WidthAuto] (if resizable or not resizable),
+        /// matching the maximum contents width of all columns.
+        /// Implicitly enable [NoKeepColumnsVisible].
+        </span><span class="kw">const </span>SIZING_FIXED_SAME = sys::ImGuiTableFlags_SizingFixedSame;
+        <span class="doccomment">/// Columns default to [WidthStretch] with default weights proportional to each columns
+        /// contents widths.
+        </span><span class="kw">const </span>SIZING_STRETCH_PROP = sys::ImGuiTableFlags_SizingStretchProp;
+        <span class="doccomment">/// Columns default to [WidthStretch] with default weights all equal, unless overridden by
+        /// a column&#39;s `TableHeader`.
+        </span><span class="kw">const </span>SIZING_STRETCH_SAME = sys::ImGuiTableFlags_SizingStretchSame;
 
-        <span class="comment">// Sizing Extra Options</span>
+        <span class="comment">// Sizing Extra Options
 
-        <span class="doccomment">/// Make outer width auto-fit to columns, overriding outer_size.x value. Only available when</span>
-        <span class="doccomment">/// [ScrollX]/[ScrollY] are disabled and [Stretch] columns are not used.</span>
-        <span class="kw">const</span> <span class="ident">NO_HOST_EXTEND_X</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableFlags_NoHostExtendX</span>;
-        <span class="doccomment">/// Make outer height stop exactly at outer_size.y (prevent auto-extending table past the limit).</span>
-        <span class="doccomment">/// Only available when [ScrollX]/[ScrollY] are disabled.</span>
-        <span class="doccomment">/// Data below the limit will be clipped and not visible.</span>
-        <span class="kw">const</span> <span class="ident">NO_HOST_EXTEND_Y</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableFlags_NoHostExtendY</span>;
-        <span class="doccomment">/// Disable keeping column always minimally visible when [ScrollX] is off and table</span>
-        <span class="doccomment">/// gets too small. Not recommended if columns are resizable.</span>
-        <span class="kw">const</span> <span class="ident">NO_KEEP_COLUMNS_VISIBLE</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableFlags_NoKeepColumnsVisible</span>;
-        <span class="doccomment">/// Disable distributing remainder width to stretched columns (width allocation on a 100-wide</span>
-        <span class="doccomment">/// table with 3 columns: Without this flag: 33,33,34. With this flag: 33,33,33).</span>
-        <span class="doccomment">/// With larger number of columns, resizing will appear to be less smooth.</span>
-        <span class="kw">const</span> <span class="ident">PRECISE_WIDTHS</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableFlags_PreciseWidths</span>;
+        </span><span class="doccomment">/// Make outer width auto-fit to columns, overriding outer_size.x value. Only available when
+        /// [ScrollX]/[ScrollY] are disabled and [Stretch] columns are not used.
+        </span><span class="kw">const </span>NO_HOST_EXTEND_X = sys::ImGuiTableFlags_NoHostExtendX;
+        <span class="doccomment">/// Make outer height stop exactly at outer_size.y (prevent auto-extending table past the limit).
+        /// Only available when [ScrollX]/[ScrollY] are disabled.
+        /// Data below the limit will be clipped and not visible.
+        </span><span class="kw">const </span>NO_HOST_EXTEND_Y = sys::ImGuiTableFlags_NoHostExtendY;
+        <span class="doccomment">/// Disable keeping column always minimally visible when [ScrollX] is off and table
+        /// gets too small. Not recommended if columns are resizable.
+        </span><span class="kw">const </span>NO_KEEP_COLUMNS_VISIBLE = sys::ImGuiTableFlags_NoKeepColumnsVisible;
+        <span class="doccomment">/// Disable distributing remainder width to stretched columns (width allocation on a 100-wide
+        /// table with 3 columns: Without this flag: 33,33,34. With this flag: 33,33,33).
+        /// With larger number of columns, resizing will appear to be less smooth.
+        </span><span class="kw">const </span>PRECISE_WIDTHS = sys::ImGuiTableFlags_PreciseWidths;
 
-        <span class="comment">// Clipping</span>
+        <span class="comment">// Clipping
 
-        <span class="doccomment">/// Disable clipping rectangle for every individual columns (reduce draw command count, items will</span>
-        <span class="doccomment">/// be able to overflow into other columns). Generally incompatible with [table_setup_scroll_freeze].</span>
-        <span class="kw">const</span> <span class="ident">NO_CLIP</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableFlags_NoClip</span>;
+        </span><span class="doccomment">/// Disable clipping rectangle for every individual columns (reduce draw command count, items will
+        /// be able to overflow into other columns). Generally incompatible with [table_setup_scroll_freeze].
+        </span><span class="kw">const </span>NO_CLIP = sys::ImGuiTableFlags_NoClip;
 
-        <span class="comment">// Padding</span>
+        <span class="comment">// Padding
 
-        <span class="doccomment">/// Default if [BordersOuterV] is on. Enable outer-most padding. Generally desirable if you have headers.</span>
-        <span class="kw">const</span> <span class="ident">PAD_OUTER_X</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableFlags_PadOuterX</span>;
-        <span class="doccomment">/// Default if [BordersOuterV] is off. Disable outer-most padding.</span>
-        <span class="kw">const</span> <span class="ident">NO_PAD_OUTER_X</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableFlags_NoPadOuterX</span>;
-        <span class="doccomment">/// Disable inner padding between columns (double inner padding if [BordersOuterV] is on, single</span>
-        <span class="doccomment">/// inner padding if BordersOuterV is off).</span>
-        <span class="kw">const</span> <span class="ident">NO_PAD_INNER_X</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableFlags_NoPadInnerX</span>;
+        </span><span class="doccomment">/// Default if [BordersOuterV] is on. Enable outer-most padding. Generally desirable if you have headers.
+        </span><span class="kw">const </span>PAD_OUTER_X = sys::ImGuiTableFlags_PadOuterX;
+        <span class="doccomment">/// Default if [BordersOuterV] is off. Disable outer-most padding.
+        </span><span class="kw">const </span>NO_PAD_OUTER_X = sys::ImGuiTableFlags_NoPadOuterX;
+        <span class="doccomment">/// Disable inner padding between columns (double inner padding if [BordersOuterV] is on, single
+        /// inner padding if BordersOuterV is off).
+        </span><span class="kw">const </span>NO_PAD_INNER_X = sys::ImGuiTableFlags_NoPadInnerX;
 
-        <span class="comment">// Scrolling</span>
+        <span class="comment">// Scrolling
 
-        <span class="doccomment">/// Enable horizontal scrolling. Require &#39;outer_size&#39; parameter of [begin_table] to specify the</span>
-        <span class="doccomment">/// container size. Changes default sizing policy. Because this create a child window,</span>
-        <span class="doccomment">/// [ScrollY] is currently generally recommended when using [ScrollX].</span>
-        <span class="kw">const</span> <span class="ident">SCROLL_X</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableFlags_ScrollX</span>;
-        <span class="doccomment">/// Enable vertical scrolling. Require &#39;outer_size&#39; parameter of [begin_table] to specify the</span>
-        <span class="doccomment">/// container size.</span>
-        <span class="kw">const</span> <span class="ident">SCROLL_Y</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableFlags_ScrollY</span>;
+        </span><span class="doccomment">/// Enable horizontal scrolling. Require &#39;outer_size&#39; parameter of [begin_table] to specify the
+        /// container size. Changes default sizing policy. Because this create a child window,
+        /// [ScrollY] is currently generally recommended when using [ScrollX].
+        </span><span class="kw">const </span>SCROLL_X = sys::ImGuiTableFlags_ScrollX;
+        <span class="doccomment">/// Enable vertical scrolling. Require &#39;outer_size&#39; parameter of [begin_table] to specify the
+        /// container size.
+        </span><span class="kw">const </span>SCROLL_Y = sys::ImGuiTableFlags_ScrollY;
 
-        <span class="comment">// Sorting</span>
+        <span class="comment">// Sorting
 
-        <span class="doccomment">/// Hold shift when clicking headers to sort on multiple column. [table_get_sort_specs] may return specs where `[spec_count] &gt; 1`.</span>
-        <span class="kw">const</span> <span class="ident">SORT_MULTI</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableFlags_SortMulti</span>;
-        <span class="doccomment">/// Allow no sorting, disable default sorting. `table_get_sort_specs` may return specs where `[specs_count] == 0`.</span>
-        <span class="kw">const</span> <span class="ident">SORT_TRISTATE</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableFlags_SortTristate</span>;
+        </span><span class="doccomment">/// Hold shift when clicking headers to sort on multiple column. [table_get_sort_specs] may return specs where `[spec_count] &gt; 1`.
+        </span><span class="kw">const </span>SORT_MULTI = sys::ImGuiTableFlags_SortMulti;
+        <span class="doccomment">/// Allow no sorting, disable default sorting. `table_get_sort_specs` may return specs where `[specs_count] == 0`.
+        </span><span class="kw">const </span>SORT_TRISTATE = sys::ImGuiTableFlags_SortTristate;
     }
 }
 
-<span class="macro">bitflags!</span> {
-    <span class="doccomment">/// Flags for [table_next_row_with_flags].</span>
-    <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">transparent</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">TableRowFlags</span>: <span class="ident">u32</span> {
-        <span class="doccomment">/// Identify header row (set default background color + width of its contents</span>
-        <span class="doccomment">/// accounted different for auto column width)</span>
-        <span class="kw">const</span> <span class="ident">HEADERS</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableRowFlags_Headers</span>;
+<span class="macro">bitflags! </span>{
+    <span class="doccomment">/// Flags for [table_next_row_with_flags].
+    </span><span class="attribute">#[repr(transparent)]
+    </span><span class="kw">pub struct </span>TableRowFlags: u32 {
+        <span class="doccomment">/// Identify header row (set default background color + width of its contents
+        /// accounted different for auto column width)
+        </span><span class="kw">const </span>HEADERS = sys::ImGuiTableRowFlags_Headers;
     }
 }
 
-<span class="macro">bitflags!</span> {
-    <span class="doccomment">/// Flags for [TableColumnSetup] and [table_setup_column_with].</span>
-    <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">transparent</span>)]</span>
-    <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Default</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">TableColumnFlags</span>: <span class="ident">u32</span> {
-        <span class="comment">// Input configuration flags</span>
+<span class="macro">bitflags! </span>{
+    <span class="doccomment">/// Flags for [TableColumnSetup] and [table_setup_column_with].
+    </span><span class="attribute">#[repr(transparent)]
+    #[derive(Default)]
+    </span><span class="kw">pub struct </span>TableColumnFlags: u32 {
+        <span class="comment">// Input configuration flags
 
-        <span class="doccomment">/// Default as a hidden/disabled column.</span>
-        <span class="kw">const</span> <span class="ident">DEFAULT_HIDE</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableColumnFlags_DefaultHide</span>;
-        <span class="doccomment">/// Default as a sorting column.</span>
-        <span class="kw">const</span> <span class="ident">DEFAULT_SORT</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableColumnFlags_DefaultSort</span>;
-        <span class="doccomment">/// Column will stretch. Preferable with horizontal scrolling disabled (default</span>
-        <span class="doccomment">/// if table sizing policy is [ImGuiTableFlags::SizingStretchSame] or</span>
-        <span class="doccomment">/// [ImGuiTableFlags::SizingStretchProp]).</span>
-        <span class="kw">const</span> <span class="ident">WIDTH_STRETCH</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableColumnFlags_WidthStretch</span>;
-        <span class="doccomment">/// Column will not stretch. Preferable with horizontal scrolling enabled (default</span>
-        <span class="doccomment">/// if table sizing policy is [ImGuiTableFlags::SizingFixedFit] and table is resizable).</span>
-        <span class="kw">const</span> <span class="ident">WIDTH_FIXED</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableColumnFlags_WidthFixed</span>;
-        <span class="doccomment">/// Disable manual resizing.</span>
-        <span class="kw">const</span> <span class="ident">NO_RESIZE</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableColumnFlags_NoResize</span>;
-        <span class="doccomment">/// Disable manual reordering this column, this will also prevent other columns from</span>
-        <span class="doccomment">/// crossing over this column.</span>
-        <span class="kw">const</span> <span class="ident">NO_REORDER</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableColumnFlags_NoReorder</span>;
-        <span class="doccomment">/// Disable ability to hide/disable this column.</span>
-        <span class="kw">const</span> <span class="ident">NO_HIDE</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableColumnFlags_NoHide</span>;
-        <span class="doccomment">/// Disable clipping for this column (all [NO_CLIP] columns will render in a same</span>
-        <span class="doccomment">/// draw command).</span>
-        <span class="kw">const</span> <span class="ident">NO_CLIP</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableColumnFlags_NoClip</span>;
-        <span class="doccomment">/// Disable ability to sort on this field (even if [ImGuiTableFlags::Sortable] is</span>
-        <span class="doccomment">/// set on the table).</span>
-        <span class="kw">const</span> <span class="ident">NO_SORT</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableColumnFlags_NoSort</span>;
-        <span class="doccomment">/// Disable ability to sort in the ascending direction.</span>
-        <span class="kw">const</span> <span class="ident">NO_SORT_ASCENDING</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableColumnFlags_NoSortAscending</span>;
-        <span class="doccomment">/// Disable ability to sort in the descending direction.</span>
-        <span class="kw">const</span> <span class="ident">NO_SORT_DESCENDING</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableColumnFlags_NoSortDescending</span>;
-        <span class="doccomment">/// Disable header text width contribution to automatic column width.</span>
-        <span class="kw">const</span> <span class="ident">NO_HEADER_WIDTH</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableColumnFlags_NoHeaderWidth</span>;
-        <span class="doccomment">/// Make the initial sort direction Ascending when first sorting on this column (default).</span>
-        <span class="kw">const</span> <span class="ident">PREFER_SORT_ASCENDING</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableColumnFlags_PreferSortAscending</span>;
-        <span class="doccomment">/// Make the initial sort direction Descending when first sorting on this column.</span>
-        <span class="kw">const</span> <span class="ident">PREFER_SORT_DESCENDING</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableColumnFlags_PreferSortDescending</span>;
-        <span class="doccomment">/// Use current Indent value when entering cell (default for column 0).</span>
-        <span class="kw">const</span> <span class="ident">INDENT_ENABLE</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableColumnFlags_IndentEnable</span>;
-        <span class="doccomment">/// Ignore current Indent value when entering cell (default for columns &gt; 0).</span>
-        <span class="doccomment">/// Indentation changes _within_ the cell will still be honored.</span>
-        <span class="kw">const</span> <span class="ident">INDENT_DISABLE</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableColumnFlags_IndentDisable</span>;
+        </span><span class="doccomment">/// Default as a hidden/disabled column.
+        </span><span class="kw">const </span>DEFAULT_HIDE = sys::ImGuiTableColumnFlags_DefaultHide;
+        <span class="doccomment">/// Default as a sorting column.
+        </span><span class="kw">const </span>DEFAULT_SORT = sys::ImGuiTableColumnFlags_DefaultSort;
+        <span class="doccomment">/// Column will stretch. Preferable with horizontal scrolling disabled (default
+        /// if table sizing policy is [ImGuiTableFlags::SizingStretchSame] or
+        /// [ImGuiTableFlags::SizingStretchProp]).
+        </span><span class="kw">const </span>WIDTH_STRETCH = sys::ImGuiTableColumnFlags_WidthStretch;
+        <span class="doccomment">/// Column will not stretch. Preferable with horizontal scrolling enabled (default
+        /// if table sizing policy is [ImGuiTableFlags::SizingFixedFit] and table is resizable).
+        </span><span class="kw">const </span>WIDTH_FIXED = sys::ImGuiTableColumnFlags_WidthFixed;
+        <span class="doccomment">/// Disable manual resizing.
+        </span><span class="kw">const </span>NO_RESIZE = sys::ImGuiTableColumnFlags_NoResize;
+        <span class="doccomment">/// Disable manual reordering this column, this will also prevent other columns from
+        /// crossing over this column.
+        </span><span class="kw">const </span>NO_REORDER = sys::ImGuiTableColumnFlags_NoReorder;
+        <span class="doccomment">/// Disable ability to hide/disable this column.
+        </span><span class="kw">const </span>NO_HIDE = sys::ImGuiTableColumnFlags_NoHide;
+        <span class="doccomment">/// Disable clipping for this column (all [NO_CLIP] columns will render in a same
+        /// draw command).
+        </span><span class="kw">const </span>NO_CLIP = sys::ImGuiTableColumnFlags_NoClip;
+        <span class="doccomment">/// Disable ability to sort on this field (even if [ImGuiTableFlags::Sortable] is
+        /// set on the table).
+        </span><span class="kw">const </span>NO_SORT = sys::ImGuiTableColumnFlags_NoSort;
+        <span class="doccomment">/// Disable ability to sort in the ascending direction.
+        </span><span class="kw">const </span>NO_SORT_ASCENDING = sys::ImGuiTableColumnFlags_NoSortAscending;
+        <span class="doccomment">/// Disable ability to sort in the descending direction.
+        </span><span class="kw">const </span>NO_SORT_DESCENDING = sys::ImGuiTableColumnFlags_NoSortDescending;
+        <span class="doccomment">/// Disable header text width contribution to automatic column width.
+        </span><span class="kw">const </span>NO_HEADER_WIDTH = sys::ImGuiTableColumnFlags_NoHeaderWidth;
+        <span class="doccomment">/// Make the initial sort direction Ascending when first sorting on this column (default).
+        </span><span class="kw">const </span>PREFER_SORT_ASCENDING = sys::ImGuiTableColumnFlags_PreferSortAscending;
+        <span class="doccomment">/// Make the initial sort direction Descending when first sorting on this column.
+        </span><span class="kw">const </span>PREFER_SORT_DESCENDING = sys::ImGuiTableColumnFlags_PreferSortDescending;
+        <span class="doccomment">/// Use current Indent value when entering cell (default for column 0).
+        </span><span class="kw">const </span>INDENT_ENABLE = sys::ImGuiTableColumnFlags_IndentEnable;
+        <span class="doccomment">/// Ignore current Indent value when entering cell (default for columns &gt; 0).
+        /// Indentation changes _within_ the cell will still be honored.
+        </span><span class="kw">const </span>INDENT_DISABLE = sys::ImGuiTableColumnFlags_IndentDisable;
 
-        <span class="comment">// Output status flags, read-only via [table_get_column_flags]</span>
+        <span class="comment">// Output status flags, read-only via [table_get_column_flags]
 
-        <span class="doccomment">/// Status: is enabled == not hidden by user/api (referred to as &quot;Hide&quot; in</span>
-        <span class="doccomment">/// [DefaultHide] and [NoHide]) flags.</span>
-        <span class="kw">const</span> <span class="ident">IS_ENABLED</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableColumnFlags_IsEnabled</span>;
-        <span class="doccomment">/// Status: is visible == is enabled AND not clipped by scrolling.</span>
-        <span class="kw">const</span> <span class="ident">IS_VISIBLE</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableColumnFlags_IsVisible</span>;
-        <span class="doccomment">/// Status: is currently part of the sort specs</span>
-        <span class="kw">const</span> <span class="ident">IS_SORTED</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableColumnFlags_IsSorted</span>;
-        <span class="doccomment">/// Status: is hovered by mouse</span>
-        <span class="kw">const</span> <span class="ident">IS_HOVERED</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableColumnFlags_IsHovered</span>;
+        </span><span class="doccomment">/// Status: is enabled == not hidden by user/api (referred to as &quot;Hide&quot; in
+        /// [DefaultHide] and [NoHide]) flags.
+        </span><span class="kw">const </span>IS_ENABLED = sys::ImGuiTableColumnFlags_IsEnabled;
+        <span class="doccomment">/// Status: is visible == is enabled AND not clipped by scrolling.
+        </span><span class="kw">const </span>IS_VISIBLE = sys::ImGuiTableColumnFlags_IsVisible;
+        <span class="doccomment">/// Status: is currently part of the sort specs
+        </span><span class="kw">const </span>IS_SORTED = sys::ImGuiTableColumnFlags_IsSorted;
+        <span class="doccomment">/// Status: is hovered by mouse
+        </span><span class="kw">const </span>IS_HOVERED = sys::ImGuiTableColumnFlags_IsHovered;
     }
 }
 
-<span class="macro">bitflags!</span> {
-    <span class="doccomment">/// Enum for [table_set_bg_color].</span>
-    <span class="doccomment">/// Background colors are rendering in 3 layers:</span>
-    <span class="doccomment">///  - Layer 0: draw with RowBg0 color if set, otherwise draw with ColumnBg0 if set.</span>
-    <span class="doccomment">///  - Layer 1: draw with RowBg1 color if set, otherwise draw with ColumnBg1 if set.</span>
-    <span class="doccomment">///  - Layer 2: draw with CellBg color if set.</span>
-    <span class="doccomment">/// The purpose of the two row/columns layers is to let you decide if a background color</span>
-    <span class="doccomment">/// changes should override or blend with the existing color.</span>
-    <span class="doccomment">/// When using [TableFlags::RowBg] on the table, each row has the RowBg0 color automatically</span>
-    <span class="doccomment">/// set for odd/even rows.</span>
-    <span class="doccomment">/// If you set the color of RowBg0 target, your color will override the existing RowBg0 color.</span>
-    <span class="doccomment">/// If you set the color of RowBg1 or ColumnBg1 target, your color will blend over the RowBg0 color.</span>
-    <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">transparent</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">TableBgTarget</span>: <span class="ident">u32</span> {
-        <span class="doccomment">/// Set row background color 0 (generally used for background, automatically set when</span>
-        <span class="doccomment">/// [TableFlags::RowBg] is used)</span>
-        <span class="kw">const</span> <span class="ident">ROW_BG0</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableBgTarget_RowBg0</span>;
-        <span class="doccomment">/// Set row background color 1 (generally used for selection marking)</span>
-        <span class="kw">const</span> <span class="ident">ROW_BG1</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableBgTarget_RowBg1</span>;
-        <span class="doccomment">/// Set cell background color (top-most color)</span>
-        <span class="kw">const</span> <span class="ident">CELL_BG</span> <span class="op">=</span> <span class="ident">sys::ImGuiTableBgTarget_CellBg</span>;
+<span class="macro">bitflags! </span>{
+    <span class="doccomment">/// Enum for [table_set_bg_color].
+    /// Background colors are rendering in 3 layers:
+    ///  - Layer 0: draw with RowBg0 color if set, otherwise draw with ColumnBg0 if set.
+    ///  - Layer 1: draw with RowBg1 color if set, otherwise draw with ColumnBg1 if set.
+    ///  - Layer 2: draw with CellBg color if set.
+    /// The purpose of the two row/columns layers is to let you decide if a background color
+    /// changes should override or blend with the existing color.
+    /// When using [TableFlags::RowBg] on the table, each row has the RowBg0 color automatically
+    /// set for odd/even rows.
+    /// If you set the color of RowBg0 target, your color will override the existing RowBg0 color.
+    /// If you set the color of RowBg1 or ColumnBg1 target, your color will blend over the RowBg0 color.
+    </span><span class="attribute">#[repr(transparent)]
+    </span><span class="kw">pub struct </span>TableBgTarget: u32 {
+        <span class="doccomment">/// Set row background color 0 (generally used for background, automatically set when
+        /// [TableFlags::RowBg] is used)
+        </span><span class="kw">const </span>ROW_BG0 = sys::ImGuiTableBgTarget_RowBg0;
+        <span class="doccomment">/// Set row background color 1 (generally used for selection marking)
+        </span><span class="kw">const </span>ROW_BG1 = sys::ImGuiTableBgTarget_RowBg1;
+        <span class="doccomment">/// Set cell background color (top-most color)
+        </span><span class="kw">const </span>CELL_BG = sys::ImGuiTableBgTarget_CellBg;
     }
 }
 
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">Eq</span>, <span class="ident">PartialEq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>)]</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">TableSortDirection</span> {
-    <span class="ident">Ascending</span>,
-    <span class="ident">Descending</span>,
+<span class="attribute">#[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd, Ord)]
+</span><span class="kw">pub enum </span>TableSortDirection {
+    Ascending,
+    Descending,
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> <span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Begins a table with no flags and with standard sizing contraints.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This does no work on styling the headers (the top row) -- see either</span>
-    <span class="doccomment">/// [begin_table_header](Self::begin_table_header) or the more complex</span>
-    <span class="doccomment">/// [table_setup_column](Self::table_setup_column).</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Nb: we take `column` as a usize, but it will be converted with `as i32` to an i32.</span>
-    <span class="doccomment">/// If this makes a difference to you, you are probably trying to make too many columns.</span>
-    <span class="attribute">#[<span class="ident">must_use</span> <span class="op">=</span> <span class="string">&quot;if return is dropped immediately, table is ended immediately.&quot;</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">begin_table</span>(
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>&gt; Ui&lt;<span class="lifetime">&#39;ui</span>&gt; {
+    <span class="doccomment">/// Begins a table with no flags and with standard sizing contraints.
+    ///
+    /// This does no work on styling the headers (the top row) -- see either
+    /// [begin_table_header](Self::begin_table_header) or the more complex
+    /// [table_setup_column](Self::table_setup_column).
+    ///
+    /// Nb: we take `column` as a usize, but it will be converted with `as i32` to an i32.
+    /// If this makes a difference to you, you are probably trying to make too many columns.
+    </span><span class="attribute">#[must_use = <span class="string">&quot;if return is dropped immediately, table is ended immediately.&quot;</span>]
+    </span><span class="kw">pub fn </span>begin_table(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">str_id</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>,
-        <span class="ident">column_count</span>: <span class="ident">usize</span>,
-    ) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">TableToken</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="self">self</span>.<span class="ident">begin_table_with_flags</span>(<span class="ident">str_id</span>, <span class="ident">column_count</span>, <span class="ident">TableFlags::empty</span>())
+        str_id: <span class="kw">impl </span>AsRef&lt;str&gt;,
+        column_count: usize,
+    ) -&gt; <span class="prelude-ty">Option</span>&lt;TableToken&lt;<span class="lifetime">&#39;ui</span>&gt;&gt; {
+        <span class="self">self</span>.begin_table_with_flags(str_id, column_count, TableFlags::empty())
     }
 
-    <span class="doccomment">/// Begins a table with flags and standard sizing contraints.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This does no work on styling the headers (the top row) -- see either</span>
-    <span class="doccomment">/// [begin_table_header](Self::begin_table_header) or the more complex</span>
-    <span class="doccomment">/// [table_setup_column](Self::table_setup_column).</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Nb: we take `column` as a usize, but it will be converted with `as i32` to an i32.</span>
-    <span class="doccomment">/// If this makes a difference to you, you are probably trying to make too many columns.</span>
-    <span class="attribute">#[<span class="ident">must_use</span> <span class="op">=</span> <span class="string">&quot;if return is dropped immediately, table is ended immediately.&quot;</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">begin_table_with_flags</span>(
+    <span class="doccomment">/// Begins a table with flags and standard sizing contraints.
+    ///
+    /// This does no work on styling the headers (the top row) -- see either
+    /// [begin_table_header](Self::begin_table_header) or the more complex
+    /// [table_setup_column](Self::table_setup_column).
+    ///
+    /// Nb: we take `column` as a usize, but it will be converted with `as i32` to an i32.
+    /// If this makes a difference to you, you are probably trying to make too many columns.
+    </span><span class="attribute">#[must_use = <span class="string">&quot;if return is dropped immediately, table is ended immediately.&quot;</span>]
+    </span><span class="kw">pub fn </span>begin_table_with_flags(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">str_id</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>,
-        <span class="ident">column_count</span>: <span class="ident">usize</span>,
-        <span class="ident">flags</span>: <span class="ident">TableFlags</span>,
-    ) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">TableToken</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="self">self</span>.<span class="ident">begin_table_with_sizing</span>(<span class="ident">str_id</span>, <span class="ident">column_count</span>, <span class="ident">flags</span>, [<span class="number">0.0</span>, <span class="number">0.0</span>], <span class="number">0.0</span>)
+        str_id: <span class="kw">impl </span>AsRef&lt;str&gt;,
+        column_count: usize,
+        flags: TableFlags,
+    ) -&gt; <span class="prelude-ty">Option</span>&lt;TableToken&lt;<span class="lifetime">&#39;ui</span>&gt;&gt; {
+        <span class="self">self</span>.begin_table_with_sizing(str_id, column_count, flags, [<span class="number">0.0</span>, <span class="number">0.0</span>], <span class="number">0.0</span>)
     }
 
-    <span class="doccomment">/// Begins a table with all flags and sizing contraints. This is the base method,</span>
-    <span class="doccomment">/// and gives users the most flexibility.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This does no work on styling the headers (the top row) -- see either</span>
-    <span class="doccomment">/// [begin_table_header](Self::begin_table_header) or the more complex</span>
-    <span class="doccomment">/// [table_setup_column](Self::table_setup_column).</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Nb: we take `column` as a usize, but it will be converted with `as i32` to an i32.</span>
-    <span class="doccomment">/// If this makes a difference to you, you are probably trying to make too many columns.</span>
-    <span class="attribute">#[<span class="ident">must_use</span> <span class="op">=</span> <span class="string">&quot;if return is dropped immediately, table is ended immediately.&quot;</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">begin_table_with_sizing</span>(
+    <span class="doccomment">/// Begins a table with all flags and sizing contraints. This is the base method,
+    /// and gives users the most flexibility.
+    ///
+    /// This does no work on styling the headers (the top row) -- see either
+    /// [begin_table_header](Self::begin_table_header) or the more complex
+    /// [table_setup_column](Self::table_setup_column).
+    ///
+    /// Nb: we take `column` as a usize, but it will be converted with `as i32` to an i32.
+    /// If this makes a difference to you, you are probably trying to make too many columns.
+    </span><span class="attribute">#[must_use = <span class="string">&quot;if return is dropped immediately, table is ended immediately.&quot;</span>]
+    </span><span class="kw">pub fn </span>begin_table_with_sizing(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">str_id</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>,
-        <span class="ident">column</span>: <span class="ident">usize</span>,
-        <span class="ident">flags</span>: <span class="ident">TableFlags</span>,
-        <span class="ident">outer_size</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-        <span class="ident">inner_width</span>: <span class="ident">f32</span>,
-    ) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">TableToken</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="kw">let</span> <span class="ident">should_render</span> <span class="op">=</span> <span class="kw">unsafe</span> {
-            <span class="ident">sys::igBeginTable</span>(
-                <span class="self">self</span>.<span class="ident">scratch_txt</span>(<span class="ident">str_id</span>),
-                <span class="ident">column</span> <span class="kw">as</span> <span class="ident">i32</span>,
-                <span class="ident">flags</span>.<span class="ident">bits</span>() <span class="kw">as</span> <span class="ident">i32</span>,
-                <span class="ident">outer_size</span>.<span class="ident">into</span>(),
-                <span class="ident">inner_width</span>,
+        str_id: <span class="kw">impl </span>AsRef&lt;str&gt;,
+        column: usize,
+        flags: TableFlags,
+        outer_size: [f32; <span class="number">2</span>],
+        inner_width: f32,
+    ) -&gt; <span class="prelude-ty">Option</span>&lt;TableToken&lt;<span class="lifetime">&#39;ui</span>&gt;&gt; {
+        <span class="kw">let </span>should_render = <span class="kw">unsafe </span>{
+            sys::igBeginTable(
+                <span class="self">self</span>.scratch_txt(str_id),
+                column <span class="kw">as </span>i32,
+                flags.bits() <span class="kw">as </span>i32,
+                outer_size.into(),
+                inner_width,
             )
         };
 
-        <span class="comment">// todo: once msrv is 1.54, convert this to .then(||)</span>
-        <span class="kw">if</span> <span class="ident">should_render</span> {
-            <span class="prelude-val">Some</span>(<span class="ident">TableToken::new</span>(<span class="self">self</span>))
-        } <span class="kw">else</span> {
-            <span class="prelude-val">None</span>
-        }
+        <span class="comment">// todo: once msrv is 1.54, convert this to .then(||)
+        </span><span class="kw">if </span>should_render {
+            <span class="prelude-val">Some</span>(TableToken::new(<span class="self">self</span>))
+        } <span class="kw">else </span>{
+            <span class="prelude-val">None
+        </span>}
     }
 
-    <span class="doccomment">/// Begins a table with no flags and with standard sizing contraints.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Takes an array of table header information, the length of which determines</span>
-    <span class="doccomment">/// how many columns will be created.</span>
-    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;min-const-generics&quot;</span>)]</span>
-    <span class="attribute">#[<span class="ident">must_use</span> <span class="op">=</span> <span class="string">&quot;if return is dropped immediately, table is ended immediately.&quot;</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">begin_table_header</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">Name</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>, <span class="kw">const</span> <span class="ident">N</span>: <span class="ident">usize</span><span class="op">&gt;</span>(
+    <span class="doccomment">/// Begins a table with no flags and with standard sizing contraints.
+    ///
+    /// Takes an array of table header information, the length of which determines
+    /// how many columns will be created.
+    </span><span class="attribute">#[cfg(feature = <span class="string">&quot;min-const-generics&quot;</span>)]
+    #[must_use = <span class="string">&quot;if return is dropped immediately, table is ended immediately.&quot;</span>]
+    </span><span class="kw">pub fn </span>begin_table_header&lt;<span class="lifetime">&#39;a</span>, Name: AsRef&lt;str&gt;, <span class="kw">const </span>N: usize&gt;(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">str_id</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>,
-        <span class="ident">column_data</span>: [<span class="ident">TableColumnSetup</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">Name</span><span class="op">&gt;</span>; <span class="ident">N</span>],
-    ) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">TableToken</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="self">self</span>.<span class="ident">begin_table_header_with_flags</span>(<span class="ident">str_id</span>, <span class="ident">column_data</span>, <span class="ident">TableFlags::empty</span>())
+        str_id: <span class="kw">impl </span>AsRef&lt;str&gt;,
+        column_data: [TableColumnSetup&lt;<span class="lifetime">&#39;a</span>, Name&gt;; N],
+    ) -&gt; <span class="prelude-ty">Option</span>&lt;TableToken&lt;<span class="lifetime">&#39;ui</span>&gt;&gt; {
+        <span class="self">self</span>.begin_table_header_with_flags(str_id, column_data, TableFlags::empty())
     }
 
-    <span class="doccomment">/// Begins a table with flags and standard sizing contraints.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Takes an array of table header information, the length of which determines</span>
-    <span class="doccomment">/// how many columns will be created.</span>
-    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;min-const-generics&quot;</span>)]</span>
-    <span class="attribute">#[<span class="ident">must_use</span> <span class="op">=</span> <span class="string">&quot;if return is dropped immediately, table is ended immediately.&quot;</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">begin_table_header_with_flags</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">Name</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>, <span class="kw">const</span> <span class="ident">N</span>: <span class="ident">usize</span><span class="op">&gt;</span>(
+    <span class="doccomment">/// Begins a table with flags and standard sizing contraints.
+    ///
+    /// Takes an array of table header information, the length of which determines
+    /// how many columns will be created.
+    </span><span class="attribute">#[cfg(feature = <span class="string">&quot;min-const-generics&quot;</span>)]
+    #[must_use = <span class="string">&quot;if return is dropped immediately, table is ended immediately.&quot;</span>]
+    </span><span class="kw">pub fn </span>begin_table_header_with_flags&lt;<span class="lifetime">&#39;a</span>, Name: AsRef&lt;str&gt;, <span class="kw">const </span>N: usize&gt;(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">str_id</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>,
-        <span class="ident">column_data</span>: [<span class="ident">TableColumnSetup</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">Name</span><span class="op">&gt;</span>; <span class="ident">N</span>],
-        <span class="ident">flags</span>: <span class="ident">TableFlags</span>,
-    ) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">TableToken</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="self">self</span>.<span class="ident">begin_table_header_with_sizing</span>(<span class="ident">str_id</span>, <span class="ident">column_data</span>, <span class="ident">flags</span>, [<span class="number">0.0</span>, <span class="number">0.0</span>], <span class="number">0.0</span>)
+        str_id: <span class="kw">impl </span>AsRef&lt;str&gt;,
+        column_data: [TableColumnSetup&lt;<span class="lifetime">&#39;a</span>, Name&gt;; N],
+        flags: TableFlags,
+    ) -&gt; <span class="prelude-ty">Option</span>&lt;TableToken&lt;<span class="lifetime">&#39;ui</span>&gt;&gt; {
+        <span class="self">self</span>.begin_table_header_with_sizing(str_id, column_data, flags, [<span class="number">0.0</span>, <span class="number">0.0</span>], <span class="number">0.0</span>)
     }
 
-    <span class="doccomment">/// Begins a table with all flags and sizing contraints. This is the base method,</span>
-    <span class="doccomment">/// and gives users the most flexibility.</span>
-    <span class="doccomment">/// Takes an array of table header information, the length of which determines</span>
-    <span class="doccomment">/// how many columns will be created.</span>
-    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;min-const-generics&quot;</span>)]</span>
-    <span class="attribute">#[<span class="ident">must_use</span> <span class="op">=</span> <span class="string">&quot;if return is dropped immediately, table is ended immediately.&quot;</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">begin_table_header_with_sizing</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">Name</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>, <span class="kw">const</span> <span class="ident">N</span>: <span class="ident">usize</span><span class="op">&gt;</span>(
+    <span class="doccomment">/// Begins a table with all flags and sizing contraints. This is the base method,
+    /// and gives users the most flexibility.
+    /// Takes an array of table header information, the length of which determines
+    /// how many columns will be created.
+    </span><span class="attribute">#[cfg(feature = <span class="string">&quot;min-const-generics&quot;</span>)]
+    #[must_use = <span class="string">&quot;if return is dropped immediately, table is ended immediately.&quot;</span>]
+    </span><span class="kw">pub fn </span>begin_table_header_with_sizing&lt;<span class="lifetime">&#39;a</span>, Name: AsRef&lt;str&gt;, <span class="kw">const </span>N: usize&gt;(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">str_id</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>,
-        <span class="ident">column_data</span>: [<span class="ident">TableColumnSetup</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">Name</span><span class="op">&gt;</span>; <span class="ident">N</span>],
-        <span class="ident">flags</span>: <span class="ident">TableFlags</span>,
-        <span class="ident">outer_size</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-        <span class="ident">inner_width</span>: <span class="ident">f32</span>,
-    ) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">TableToken</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="self">self</span>.<span class="ident">begin_table_with_sizing</span>(<span class="ident">str_id</span>, <span class="ident">N</span>, <span class="ident">flags</span>, <span class="ident">outer_size</span>, <span class="ident">inner_width</span>)
-            .<span class="ident">map</span>(<span class="op">|</span><span class="ident">data</span><span class="op">|</span> {
-                <span class="kw">for</span> <span class="ident">value</span> <span class="kw">in</span> <span class="ident">column_data</span> {
-                    <span class="self">self</span>.<span class="ident">table_setup_column_with</span>(<span class="ident">value</span>);
+        str_id: <span class="kw">impl </span>AsRef&lt;str&gt;,
+        column_data: [TableColumnSetup&lt;<span class="lifetime">&#39;a</span>, Name&gt;; N],
+        flags: TableFlags,
+        outer_size: [f32; <span class="number">2</span>],
+        inner_width: f32,
+    ) -&gt; <span class="prelude-ty">Option</span>&lt;TableToken&lt;<span class="lifetime">&#39;ui</span>&gt;&gt; {
+        <span class="self">self</span>.begin_table_with_sizing(str_id, N, flags, outer_size, inner_width)
+            .map(|data| {
+                <span class="kw">for </span>value <span class="kw">in </span>column_data {
+                    <span class="self">self</span>.table_setup_column_with(value);
                 }
-                <span class="self">self</span>.<span class="ident">table_headers_row</span>();
+                <span class="self">self</span>.table_headers_row();
 
-                <span class="ident">data</span>
+                data
             })
     }
 
-    <span class="doccomment">/// Moves a table to the next row (ie, down) with no flags,</span>
-    <span class="doccomment">/// and with the next row having a standard computed height.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// If your table was made with [begin_table], this **must** be called</span>
-    <span class="doccomment">/// before rendering any cells (along with [table_next_column]).</span>
-    <span class="doccomment">/// If your table was made with [begin_table_header], this does not need to be called,</span>
-    <span class="doccomment">/// though [table_next_column] still should be.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [begin_table]: Self::begin_table</span>
-    <span class="doccomment">/// [begin_table_header]: Self::begin_table_header</span>
-    <span class="doccomment">/// [table_next_column]: Self::table_next_column</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">table_next_row</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) {
-        <span class="self">self</span>.<span class="ident">table_next_row_with_flags</span>(<span class="ident">TableRowFlags::empty</span>());
+    <span class="doccomment">/// Moves a table to the next row (ie, down) with no flags,
+    /// and with the next row having a standard computed height.
+    ///
+    /// If your table was made with [begin_table], this **must** be called
+    /// before rendering any cells (along with [table_next_column]).
+    /// If your table was made with [begin_table_header], this does not need to be called,
+    /// though [table_next_column] still should be.
+    ///
+    /// [begin_table]: Self::begin_table
+    /// [begin_table_header]: Self::begin_table_header
+    /// [table_next_column]: Self::table_next_column
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>table_next_row(<span class="kw-2">&amp;</span><span class="self">self</span>) {
+        <span class="self">self</span>.table_next_row_with_flags(TableRowFlags::empty());
     }
 
-    <span class="doccomment">/// Moves a  table to the next row (ie, down), with the given flags,</span>
-    <span class="doccomment">/// and with the next row having a standard computed height.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Setting a flag here will make the next row a &quot;header&quot; now, which may</span>
-    <span class="doccomment">/// require setup of column data.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// See [table_next_row](Self::table_next_row) for information on how moving rows work. To set the row</span>
-    <span class="doccomment">/// with a given height, see [table_next_row_with_height](Self::table_next_row_with_height).</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">table_next_row_with_flags</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">flags</span>: <span class="ident">TableRowFlags</span>) {
-        <span class="self">self</span>.<span class="ident">table_next_row_with_height</span>(<span class="ident">flags</span>, <span class="number">0.0</span>);
+    <span class="doccomment">/// Moves a  table to the next row (ie, down), with the given flags,
+    /// and with the next row having a standard computed height.
+    ///
+    /// Setting a flag here will make the next row a &quot;header&quot; now, which may
+    /// require setup of column data.
+    ///
+    /// See [table_next_row](Self::table_next_row) for information on how moving rows work. To set the row
+    /// with a given height, see [table_next_row_with_height](Self::table_next_row_with_height).
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>table_next_row_with_flags(<span class="kw-2">&amp;</span><span class="self">self</span>, flags: TableRowFlags) {
+        <span class="self">self</span>.table_next_row_with_height(flags, <span class="number">0.0</span>);
     }
 
-    <span class="doccomment">/// Moves a  table to the next row (ie, down), with the given flags,</span>
-    <span class="doccomment">/// and with the given minimum height.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// See [table_next_row](Self::table_next_row) for information on how moving rows work.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">table_next_row_with_height</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">flags</span>: <span class="ident">TableRowFlags</span>, <span class="ident">min_row_height</span>: <span class="ident">f32</span>) {
-        <span class="kw">unsafe</span> {
-            <span class="ident">sys::igTableNextRow</span>(<span class="ident">flags</span>.<span class="ident">bits</span>() <span class="kw">as</span> <span class="ident">i32</span>, <span class="ident">min_row_height</span>);
+    <span class="doccomment">/// Moves a  table to the next row (ie, down), with the given flags,
+    /// and with the given minimum height.
+    ///
+    /// See [table_next_row](Self::table_next_row) for information on how moving rows work.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub fn </span>table_next_row_with_height(<span class="kw-2">&amp;</span><span class="self">self</span>, flags: TableRowFlags, min_row_height: f32) {
+        <span class="kw">unsafe </span>{
+            sys::igTableNextRow(flags.bits() <span class="kw">as </span>i32, min_row_height);
         }
     }
 
-    <span class="doccomment">/// Moves onto the next column. If at `column_count`, this will move to the next row.</span>
-    <span class="doccomment">/// In this way, you can use this function as an iterator over each cell in the table.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Example</span>
-    <span class="doccomment">/// ```no_run</span>
-    <span class="doccomment">/// # let mut ctx = arcdps_imgui::Context::create();</span>
-    <span class="doccomment">/// # { let ui = ctx.frame();</span>
-    <span class="doccomment">/// if let Some(_t) = ui.begin_table(&quot;Basic-Table&quot;, 2) {</span>
-    <span class="doccomment">///     // we have to call next_row because we didn&#39;t make headers..</span>
-    <span class="doccomment">///     ui.table_next_row();</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///     // you always have to call this to start...</span>
-    <span class="doccomment">///     // take advantage of this in loops!</span>
-    <span class="doccomment">///     ui.table_next_column();</span>
-    <span class="doccomment">///     ui.text(&quot;x: 0, y: 0&quot;);</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///     ui.table_next_column();</span>
-    <span class="doccomment">///     ui.text(&quot;x: 1, y: 0&quot;);</span>
-    <span class="doccomment">///     </span>
-    <span class="doccomment">///     // notice that we go down a row here too.</span>
-    <span class="doccomment">///     ui.table_next_column();</span>
-    <span class="doccomment">///     ui.text(&quot;x: 0, y: 1&quot;);</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///     ui.table_next_column();</span>
-    <span class="doccomment">///     ui.text(&quot;x: 1, y: 1&quot;);</span>
-    <span class="doccomment">/// }</span>
-    <span class="doccomment">/// # };</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This functions returns true if the given column is **visible.** It is not</span>
-    <span class="doccomment">/// marked as must use, as you can still render commands into the not-visible column,</span>
-    <span class="doccomment">/// though you can choose to not as an optimization.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">table_next_column</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igTableNextColumn</span>() }
+    <span class="doccomment">/// Moves onto the next column. If at `column_count`, this will move to the next row.
+    /// In this way, you can use this function as an iterator over each cell in the table.
+    ///
+    /// # Example
+    /// ```no_run
+    /// # let mut ctx = arcdps_imgui::Context::create();
+    /// # { let ui = ctx.frame();
+    /// if let Some(_t) = ui.begin_table(&quot;Basic-Table&quot;, 2) {
+    ///     // we have to call next_row because we didn&#39;t make headers..
+    ///     ui.table_next_row();
+    ///
+    ///     // you always have to call this to start...
+    ///     // take advantage of this in loops!
+    ///     ui.table_next_column();
+    ///     ui.text(&quot;x: 0, y: 0&quot;);
+    ///
+    ///     ui.table_next_column();
+    ///     ui.text(&quot;x: 1, y: 0&quot;);
+    ///     
+    ///     // notice that we go down a row here too.
+    ///     ui.table_next_column();
+    ///     ui.text(&quot;x: 0, y: 1&quot;);
+    ///
+    ///     ui.table_next_column();
+    ///     ui.text(&quot;x: 1, y: 1&quot;);
+    /// }
+    /// # };
+    /// ```
+    ///
+    /// This functions returns true if the given column is **visible.** It is not
+    /// marked as must use, as you can still render commands into the not-visible column,
+    /// though you can choose to not as an optimization.
+    </span><span class="kw">pub fn </span>table_next_column(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        <span class="kw">unsafe </span>{ sys::igTableNextColumn() }
     }
 
-    <span class="doccomment">/// Moves onto the given column.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Example</span>
-    <span class="doccomment">/// ```no_run</span>
-    <span class="doccomment">/// # let mut ctx = arcdps_imgui::Context::create();</span>
-    <span class="doccomment">/// # { let ui = ctx.frame();</span>
-    <span class="doccomment">/// if let Some(_t) = ui.begin_table(&quot;Basic-Table&quot;, 2) {</span>
-    <span class="doccomment">///     // we have to call next_row because we didn&#39;t make headers..</span>
-    <span class="doccomment">///     ui.table_next_row();</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///     for i in 0..2 {</span>
-    <span class="doccomment">///         ui.table_set_column_index(i);</span>
-    <span class="doccomment">///         ui.text(format!(&quot;x: {}&quot;, i));</span>
-    <span class="doccomment">///     }</span>
-    <span class="doccomment">///     </span>
-    <span class="doccomment">///     // oops I just remembered, i need to add something on idx 0!</span>
-    <span class="doccomment">///     ui.table_set_column_index(0);</span>
-    <span class="doccomment">///     // if i uncomment this line, we&#39;ll write on top of our previous &quot;x: 0&quot;</span>
-    <span class="doccomment">///     // line:</span>
-    <span class="doccomment">///     // ui.text(&quot;hello from the future on top of the past&quot;);</span>
-    <span class="doccomment">///     // so we do a .newline();</span>
-    <span class="doccomment">///     ui.new_line();</span>
-    <span class="doccomment">///     ui.text(&quot;hello from the future&quot;);</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///     // imgui will understand this and row spacing will be adjusted automatically.</span>
-    <span class="doccomment">/// }</span>
-    <span class="doccomment">/// # };</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This functions returns true if the given column is **visible.** It is not</span>
-    <span class="doccomment">/// marked as must use, as you can still render commands into the not-visible column,</span>
-    <span class="doccomment">/// though you can choose to not as an optimization.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Panics</span>
-    <span class="doccomment">/// If `column_index &gt;= ui.table_columm_count`, this function will panic. In `debug` releases,</span>
-    <span class="doccomment">/// we will panic on the Rust side, for a nicer error message, though in release, we will</span>
-    <span class="doccomment">/// panic in C++, which will result in an ugly stack overflow.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">table_set_column_index</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">column_index</span>: <span class="ident">usize</span>) -&gt; <span class="ident">bool</span> {
-        <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">debug_assertions</span>)]</span>
-        {
-            <span class="kw">let</span> <span class="ident">size</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">table_column_count</span>() <span class="kw">as</span> <span class="ident">usize</span>;
-            <span class="kw">if</span> <span class="ident">column_index</span> <span class="op">&gt;</span><span class="op">=</span> <span class="ident">size</span> {
+    <span class="doccomment">/// Moves onto the given column.
+    ///
+    /// # Example
+    /// ```no_run
+    /// # let mut ctx = arcdps_imgui::Context::create();
+    /// # { let ui = ctx.frame();
+    /// if let Some(_t) = ui.begin_table(&quot;Basic-Table&quot;, 2) {
+    ///     // we have to call next_row because we didn&#39;t make headers..
+    ///     ui.table_next_row();
+    ///
+    ///     for i in 0..2 {
+    ///         ui.table_set_column_index(i);
+    ///         ui.text(format!(&quot;x: {}&quot;, i));
+    ///     }
+    ///     
+    ///     // oops I just remembered, i need to add something on idx 0!
+    ///     ui.table_set_column_index(0);
+    ///     // if i uncomment this line, we&#39;ll write on top of our previous &quot;x: 0&quot;
+    ///     // line:
+    ///     // ui.text(&quot;hello from the future on top of the past&quot;);
+    ///     // so we do a .newline();
+    ///     ui.new_line();
+    ///     ui.text(&quot;hello from the future&quot;);
+    ///
+    ///     // imgui will understand this and row spacing will be adjusted automatically.
+    /// }
+    /// # };
+    /// ```
+    ///
+    /// This functions returns true if the given column is **visible.** It is not
+    /// marked as must use, as you can still render commands into the not-visible column,
+    /// though you can choose to not as an optimization.
+    ///
+    /// # Panics
+    /// If `column_index &gt;= ui.table_columm_count`, this function will panic. In `debug` releases,
+    /// we will panic on the Rust side, for a nicer error message, though in release, we will
+    /// panic in C++, which will result in an ugly stack overflow.
+    </span><span class="kw">pub fn </span>table_set_column_index(<span class="kw-2">&amp;</span><span class="self">self</span>, column_index: usize) -&gt; bool {
+        <span class="attribute">#[cfg(debug_assertions)]
+        </span>{
+            <span class="kw">let </span>size = <span class="self">self</span>.table_column_count() <span class="kw">as </span>usize;
+            <span class="kw">if </span>column_index &gt;= size {
                 <span class="macro">panic!</span>(
                     <span class="string">&quot;column_index &gt;= self.table_get_column_count().\
                 Requested {}, but only have {} columns.&quot;</span>,
-                    <span class="ident">column_index</span>, <span class="ident">size</span>
+                    column_index, size
                 );
             }
         }
 
-        <span class="kw">unsafe</span> { <span class="ident">sys::igTableSetColumnIndex</span>(<span class="ident">column_index</span> <span class="kw">as</span> <span class="ident">i32</span>) }
+        <span class="kw">unsafe </span>{ sys::igTableSetColumnIndex(column_index <span class="kw">as </span>i32) }
     }
 
-    <span class="doccomment">/// Specify label per column, with no flags and default sizing. You can avoid calling</span>
-    <span class="doccomment">/// this method entirely by using [begin_table_header](Self::begin_table_header).</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Example</span>
-    <span class="doccomment">/// ```no_run</span>
-    <span class="doccomment">/// # let mut ctx = arcdps_imgui::Context::create();</span>
-    <span class="doccomment">/// # { let ui = ctx.frame();</span>
-    <span class="doccomment">/// if let Some(_t) = ui.begin_table(&quot;My Table&quot;, 2) {</span>
-    <span class="doccomment">///     ui.table_setup_column(&quot;One&quot;);</span>
-    <span class="doccomment">///     ui.table_setup_column(&quot;Two&quot;);</span>
-    <span class="doccomment">///     ui.table_setup_column(&quot;Three&quot;);</span>
-    <span class="doccomment">///     ui.table_headers_row();</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///     // call next_column/set_column_index and proceed like normal.</span>
-    <span class="doccomment">///     // the above code is the equivalent of just using `begin_table_header`</span>
-    <span class="doccomment">///     // but does allow for some columns to have headers and others to not</span>
-    <span class="doccomment">/// }</span>
-    <span class="doccomment">/// # };</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Along with [table_headers_row](Self::table_headers_row), this method is used to create a header</span>
-    <span class="doccomment">/// row and automatically submit a table header for each column.</span>
-    <span class="doccomment">/// Headers are required to perform: reordering, sorting, and opening the context menu (though,</span>
-    <span class="doccomment">/// the context menu can also be made available in columns body using [TableFlags::CONTEXT_MENU_IN_BODY].</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">table_setup_column</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">str_id</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>) {
-        <span class="self">self</span>.<span class="ident">table_setup_column_with</span>(<span class="ident">TableColumnSetup::new</span>(<span class="ident">str_id</span>))
+    <span class="doccomment">/// Specify label per column, with no flags and default sizing. You can avoid calling
+    /// this method entirely by using [begin_table_header](Self::begin_table_header).
+    ///
+    /// # Example
+    /// ```no_run
+    /// # let mut ctx = arcdps_imgui::Context::create();
+    /// # { let ui = ctx.frame();
+    /// if let Some(_t) = ui.begin_table(&quot;My Table&quot;, 2) {
+    ///     ui.table_setup_column(&quot;One&quot;);
+    ///     ui.table_setup_column(&quot;Two&quot;);
+    ///     ui.table_setup_column(&quot;Three&quot;);
+    ///     ui.table_headers_row();
+    ///
+    ///     // call next_column/set_column_index and proceed like normal.
+    ///     // the above code is the equivalent of just using `begin_table_header`
+    ///     // but does allow for some columns to have headers and others to not
+    /// }
+    /// # };
+    /// ```
+    ///
+    /// Along with [table_headers_row](Self::table_headers_row), this method is used to create a header
+    /// row and automatically submit a table header for each column.
+    /// Headers are required to perform: reordering, sorting, and opening the context menu (though,
+    /// the context menu can also be made available in columns body using [TableFlags::CONTEXT_MENU_IN_BODY].
+    </span><span class="kw">pub fn </span>table_setup_column(<span class="kw-2">&amp;</span><span class="self">self</span>, str_id: <span class="kw">impl </span>AsRef&lt;str&gt;) {
+        <span class="self">self</span>.table_setup_column_with(TableColumnSetup::new(str_id))
     }
 
-    <span class="doccomment">/// Specify label per column, with data given in [TableColumnSetup]. You can avoid calling</span>
-    <span class="doccomment">/// this method entirely by using [begin_table_header](Self::begin_table_header).</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// See [table_setup_column](Self::table_setup_column) for an example of how to setup columns</span>
-    <span class="doccomment">/// yourself.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Along with [table_headers_row](Self::table_headers_row), this method is used to create a header</span>
-    <span class="doccomment">/// row and automatically submit a table header for each column.</span>
-    <span class="doccomment">/// Headers are required to perform: reordering, sorting, and opening the context menu (though,</span>
-    <span class="doccomment">/// the context menu can also be made available in columns body using [TableFlags::CONTEXT_MENU_IN_BODY].</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">table_setup_column_with</span><span class="op">&lt;</span><span class="ident">N</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">data</span>: <span class="ident">TableColumnSetup</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span>, <span class="ident">N</span><span class="op">&gt;</span>) {
-        <span class="kw">unsafe</span> {
-            <span class="ident">sys::igTableSetupColumn</span>(
-                <span class="self">self</span>.<span class="ident">scratch_txt</span>(<span class="ident">data</span>.<span class="ident">name</span>),
-                <span class="ident">data</span>.<span class="ident">flags</span>.<span class="ident">bits</span>() <span class="kw">as</span> <span class="ident">i32</span>,
-                <span class="ident">data</span>.<span class="ident">init_width_or_weight</span>,
-                <span class="ident">data</span>.<span class="ident">user_id</span>.<span class="ident">as_imgui_id</span>(),
+    <span class="doccomment">/// Specify label per column, with data given in [TableColumnSetup]. You can avoid calling
+    /// this method entirely by using [begin_table_header](Self::begin_table_header).
+    ///
+    /// See [table_setup_column](Self::table_setup_column) for an example of how to setup columns
+    /// yourself.
+    ///
+    /// Along with [table_headers_row](Self::table_headers_row), this method is used to create a header
+    /// row and automatically submit a table header for each column.
+    /// Headers are required to perform: reordering, sorting, and opening the context menu (though,
+    /// the context menu can also be made available in columns body using [TableFlags::CONTEXT_MENU_IN_BODY].
+    </span><span class="kw">pub fn </span>table_setup_column_with&lt;N: AsRef&lt;str&gt;&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, data: TableColumnSetup&lt;<span class="lifetime">&#39;_</span>, N&gt;) {
+        <span class="kw">unsafe </span>{
+            sys::igTableSetupColumn(
+                <span class="self">self</span>.scratch_txt(data.name),
+                data.flags.bits() <span class="kw">as </span>i32,
+                data.init_width_or_weight,
+                data.user_id.as_imgui_id(),
             )
         }
     }
 
-    <span class="doccomment">/// Locks columns/rows so they stay visible when scrolled. Generally, you will be calling this</span>
-    <span class="doccomment">/// so that the header column is always visible (though go wild if you want). You can avoid</span>
-    <span class="doccomment">/// calling this entirely by passing `true` to [begin_table_header](Self::begin_table_header).</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Example</span>
-    <span class="doccomment">/// ```no_run</span>
-    <span class="doccomment">/// # let mut ctx = arcdps_imgui::Context::create();</span>
-    <span class="doccomment">/// # { let ui = ctx.frame();</span>
-    <span class="doccomment">/// const COLUMN_COUNT: usize = 3;</span>
-    <span class="doccomment">/// if let Some(_t) = ui.begin_table(&quot;scroll-freeze-example&quot;, COLUMN_COUNT) {</span>
-    <span class="doccomment">///     // locks the header row. Notice how we need to call it BEFORE `table_headers_row`.</span>
-    <span class="doccomment">///     ui.table_setup_scroll_freeze(1, COLUMN_COUNT);</span>
-    <span class="doccomment">///     ui.table_setup_column(&quot;One&quot;);</span>
-    <span class="doccomment">///     ui.table_setup_column(&quot;Two&quot;);</span>
-    <span class="doccomment">///     ui.table_setup_column(&quot;Three&quot;);</span>
-    <span class="doccomment">///     ui.table_headers_row();</span>
-    <span class="doccomment">/// }</span>
-    <span class="doccomment">/// # };</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Nb: we take `locked_columns` and `locked_rows` as a `usize`, but it will be converted</span>
-    <span class="doccomment">/// with `as i32` to an i32. If this makes a difference to you, you are probably</span>
-    <span class="doccomment">/// trying to make too many columns.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">table_setup_scroll_freeze</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">locked_columns</span>: <span class="ident">usize</span>, <span class="ident">locked_rows</span>: <span class="ident">usize</span>) {
-        <span class="kw">unsafe</span> {
-            <span class="ident">sys::igTableSetupScrollFreeze</span>(<span class="ident">locked_columns</span> <span class="kw">as</span> <span class="ident">i32</span>, <span class="ident">locked_rows</span> <span class="kw">as</span> <span class="ident">i32</span>);
+    <span class="doccomment">/// Locks columns/rows so they stay visible when scrolled. Generally, you will be calling this
+    /// so that the header column is always visible (though go wild if you want). You can avoid
+    /// calling this entirely by passing `true` to [begin_table_header](Self::begin_table_header).
+    ///
+    /// # Example
+    /// ```no_run
+    /// # let mut ctx = arcdps_imgui::Context::create();
+    /// # { let ui = ctx.frame();
+    /// const COLUMN_COUNT: usize = 3;
+    /// if let Some(_t) = ui.begin_table(&quot;scroll-freeze-example&quot;, COLUMN_COUNT) {
+    ///     // locks the header row. Notice how we need to call it BEFORE `table_headers_row`.
+    ///     ui.table_setup_scroll_freeze(1, COLUMN_COUNT);
+    ///     ui.table_setup_column(&quot;One&quot;);
+    ///     ui.table_setup_column(&quot;Two&quot;);
+    ///     ui.table_setup_column(&quot;Three&quot;);
+    ///     ui.table_headers_row();
+    /// }
+    /// # };
+    /// ```
+    ///
+    /// Nb: we take `locked_columns` and `locked_rows` as a `usize`, but it will be converted
+    /// with `as i32` to an i32. If this makes a difference to you, you are probably
+    /// trying to make too many columns.
+    </span><span class="kw">pub fn </span>table_setup_scroll_freeze(<span class="kw-2">&amp;</span><span class="self">self</span>, locked_columns: usize, locked_rows: usize) {
+        <span class="kw">unsafe </span>{
+            sys::igTableSetupScrollFreeze(locked_columns <span class="kw">as </span>i32, locked_rows <span class="kw">as </span>i32);
         }
     }
 
-    <span class="doccomment">/// Along with [table_setup_column](Self::table_setup_column), this method is used</span>
-    <span class="doccomment">/// to create a header row and automatically submit a table header for each column.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// For an example of using this method, see [table_setup_column](Self::table_setup_column).</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Headers are required to perform: reordering, sorting, and opening the context menu (though,</span>
-    <span class="doccomment">/// the context menu can also be made available in columns body using [TableFlags::CONTEXT_MENU_IN_BODY].</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// You may manually submit headers using [table_next_column] + [table_header] calls, but this is</span>
-    <span class="doccomment">///  only useful in some advanced use cases (e.g. adding custom widgets in header row).</span>
-    <span class="doccomment">/// See [table_header](Self::table_header) for more information.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [table_next_column]: Self::table_next_column</span>
-    <span class="doccomment">/// [table_header]: Self::table_header</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">table_headers_row</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) {
-        <span class="kw">unsafe</span> {
-            <span class="ident">sys::igTableHeadersRow</span>();
+    <span class="doccomment">/// Along with [table_setup_column](Self::table_setup_column), this method is used
+    /// to create a header row and automatically submit a table header for each column.
+    ///
+    /// For an example of using this method, see [table_setup_column](Self::table_setup_column).
+    ///
+    /// Headers are required to perform: reordering, sorting, and opening the context menu (though,
+    /// the context menu can also be made available in columns body using [TableFlags::CONTEXT_MENU_IN_BODY].
+    ///
+    /// You may manually submit headers using [table_next_column] + [table_header] calls, but this is
+    ///  only useful in some advanced use cases (e.g. adding custom widgets in header row).
+    /// See [table_header](Self::table_header) for more information.
+    ///
+    /// [table_next_column]: Self::table_next_column
+    /// [table_header]: Self::table_header
+    </span><span class="kw">pub fn </span>table_headers_row(<span class="kw-2">&amp;</span><span class="self">self</span>) {
+        <span class="kw">unsafe </span>{
+            sys::igTableHeadersRow();
         }
     }
 
-    <span class="doccomment">/// Use this function to manually declare a column cell to be a header.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// You generally should avoid using this outside of specific cases,</span>
-    <span class="doccomment">/// such as custom widgets. Instead, use [table_headers_row](Self::table_headers_row)</span>
-    <span class="doccomment">/// and [table_setup_column](Self::table_setup_column).</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">table_header</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">label</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>) {
-        <span class="kw">unsafe</span> {
-            <span class="ident">sys::igTableHeader</span>(<span class="self">self</span>.<span class="ident">scratch_txt</span>(<span class="ident">label</span>));
+    <span class="doccomment">/// Use this function to manually declare a column cell to be a header.
+    ///
+    /// You generally should avoid using this outside of specific cases,
+    /// such as custom widgets. Instead, use [table_headers_row](Self::table_headers_row)
+    /// and [table_setup_column](Self::table_setup_column).
+    </span><span class="kw">pub fn </span>table_header(<span class="kw-2">&amp;</span><span class="self">self</span>, label: <span class="kw">impl </span>AsRef&lt;str&gt;) {
+        <span class="kw">unsafe </span>{
+            sys::igTableHeader(<span class="self">self</span>.scratch_txt(label));
         }
     }
 
-    <span class="doccomment">/// Gets the numbers of columns in the current table.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">table_column_count</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">usize</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igTableGetColumnCount</span>() <span class="kw">as</span> <span class="ident">usize</span> }
+    <span class="doccomment">/// Gets the numbers of columns in the current table.
+    </span><span class="kw">pub fn </span>table_column_count(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; usize {
+        <span class="kw">unsafe </span>{ sys::igTableGetColumnCount() <span class="kw">as </span>usize }
     }
 
-    <span class="doccomment">/// Gets the current column index in the current table.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">table_column_index</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">usize</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igTableGetColumnIndex</span>() <span class="kw">as</span> <span class="ident">usize</span> }
+    <span class="doccomment">/// Gets the current column index in the current table.
+    </span><span class="kw">pub fn </span>table_column_index(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; usize {
+        <span class="kw">unsafe </span>{ sys::igTableGetColumnIndex() <span class="kw">as </span>usize }
     }
 
-    <span class="doccomment">/// Gets the current row index in the current table.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">table_row_index</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">usize</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igTableGetRowIndex</span>() <span class="kw">as</span> <span class="ident">usize</span> }
+    <span class="doccomment">/// Gets the current row index in the current table.
+    </span><span class="kw">pub fn </span>table_row_index(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; usize {
+        <span class="kw">unsafe </span>{ sys::igTableGetRowIndex() <span class="kw">as </span>usize }
     }
 
-    <span class="doccomment">/// Gets the name of the current column. If there is no currently bound name</span>
-    <span class="doccomment">/// for this column, we will return an empty string.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Use [table_column_name_with_column](Self::table_column_name_with_column)</span>
-    <span class="doccomment">/// for arbitrary indices.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">table_column_name</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="ident">str</span> {
-        <span class="kw">unsafe</span> {
-            <span class="comment">// imgui uses utf8...though that is a continuous process there.</span>
-            <span class="ident">CStr::from_ptr</span>(<span class="ident">sys::igTableGetColumnName</span>(<span class="op">-</span><span class="number">1</span>))
-                .<span class="ident">to_str</span>()
-                .<span class="ident">unwrap</span>()
+    <span class="doccomment">/// Gets the name of the current column. If there is no currently bound name
+    /// for this column, we will return an empty string.
+    ///
+    /// Use [table_column_name_with_column](Self::table_column_name_with_column)
+    /// for arbitrary indices.
+    </span><span class="kw">pub fn </span>table_column_name(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>str {
+        <span class="kw">unsafe </span>{
+            <span class="comment">// imgui uses utf8...though that is a continuous process there.
+            </span>CStr::from_ptr(sys::igTableGetColumnName(-<span class="number">1</span>))
+                .to_str()
+                .unwrap()
         }
     }
 
-    <span class="doccomment">/// Gets the name of a given column. If there is no currently bound name</span>
-    <span class="doccomment">/// for this column, we will return an empty string.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Use [table_column_name](Self::table_column_name) for the current column.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">table_column_name_with_column</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">column</span>: <span class="ident">usize</span>) -&gt; <span class="kw-2">&amp;</span><span class="ident">str</span> {
-        <span class="kw">unsafe</span> {
-            <span class="comment">// imgui uses utf8...though that is a continuous process there.</span>
-            <span class="ident">CStr::from_ptr</span>(<span class="ident">sys::igTableGetColumnName</span>(<span class="ident">column</span> <span class="kw">as</span> <span class="ident">i32</span>))
-                .<span class="ident">to_str</span>()
-                .<span class="ident">unwrap</span>()
+    <span class="doccomment">/// Gets the name of a given column. If there is no currently bound name
+    /// for this column, we will return an empty string.
+    ///
+    /// Use [table_column_name](Self::table_column_name) for the current column.
+    </span><span class="kw">pub fn </span>table_column_name_with_column(<span class="kw-2">&amp;mut </span><span class="self">self</span>, column: usize) -&gt; <span class="kw-2">&amp;</span>str {
+        <span class="kw">unsafe </span>{
+            <span class="comment">// imgui uses utf8...though that is a continuous process there.
+            </span>CStr::from_ptr(sys::igTableGetColumnName(column <span class="kw">as </span>i32))
+                .to_str()
+                .unwrap()
         }
     }
 
-    <span class="doccomment">/// Gets the flags on the current column in the current table.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">table_column_flags</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">TableColumnFlags</span> {
-        <span class="kw">unsafe</span> {
-            <span class="ident">TableColumnFlags::from_bits</span>(<span class="ident">sys::igTableGetColumnFlags</span>(<span class="op">-</span><span class="number">1</span>) <span class="kw">as</span> <span class="ident">u32</span>)
-                .<span class="ident">expect</span>(<span class="string">&quot;bad column flags&quot;</span>)
+    <span class="doccomment">/// Gets the flags on the current column in the current table.
+    </span><span class="kw">pub fn </span>table_column_flags(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; TableColumnFlags {
+        <span class="kw">unsafe </span>{
+            TableColumnFlags::from_bits(sys::igTableGetColumnFlags(-<span class="number">1</span>) <span class="kw">as </span>u32)
+                .expect(<span class="string">&quot;bad column flags&quot;</span>)
         }
     }
 
-    <span class="doccomment">/// Gets the flags on the given column in the current table. To get the current column&#39;s</span>
-    <span class="doccomment">/// flags without having to call [table_column_index](Self::table_column_index), use</span>
-    <span class="doccomment">/// [table_column_flags](Self::table_column_flags).</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">table_column_flags_with_column</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">column_n</span>: <span class="ident">usize</span>) -&gt; <span class="ident">TableColumnFlags</span> {
-        <span class="kw">unsafe</span> {
-            <span class="ident">TableColumnFlags::from_bits</span>(<span class="ident">sys::igTableGetColumnFlags</span>(<span class="ident">column_n</span> <span class="kw">as</span> <span class="ident">i32</span>) <span class="kw">as</span> <span class="ident">u32</span>)
-                .<span class="ident">expect</span>(<span class="string">&quot;bad column flags&quot;</span>)
+    <span class="doccomment">/// Gets the flags on the given column in the current table. To get the current column&#39;s
+    /// flags without having to call [table_column_index](Self::table_column_index), use
+    /// [table_column_flags](Self::table_column_flags).
+    </span><span class="kw">pub fn </span>table_column_flags_with_column(<span class="kw-2">&amp;</span><span class="self">self</span>, column_n: usize) -&gt; TableColumnFlags {
+        <span class="kw">unsafe </span>{
+            TableColumnFlags::from_bits(sys::igTableGetColumnFlags(column_n <span class="kw">as </span>i32) <span class="kw">as </span>u32)
+                .expect(<span class="string">&quot;bad column flags&quot;</span>)
         }
     }
 
-    <span class="doccomment">/// Sets the given background color for this column. See [TableBgTarget]</span>
-    <span class="doccomment">/// for more information on how colors work for tables.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Use [table_set_bg_color_with_column](Self::table_set_bg_color_with_column) to set</span>
-    <span class="doccomment">/// for arbitrary indices.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">table_set_bg_color</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">target</span>: <span class="ident">TableBgTarget</span>, <span class="ident">color</span>: <span class="kw">impl</span> <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">ImColor32</span><span class="op">&gt;</span>) {
-        <span class="kw">unsafe</span> {
-            <span class="ident">sys::igTableSetBgColor</span>(<span class="ident">target</span>.<span class="ident">bits</span>() <span class="kw">as</span> <span class="ident">i32</span>, <span class="ident">color</span>.<span class="ident">into</span>().<span class="ident">into</span>(), <span class="op">-</span><span class="number">1</span>);
+    <span class="doccomment">/// Sets the given background color for this column. See [TableBgTarget]
+    /// for more information on how colors work for tables.
+    ///
+    /// Use [table_set_bg_color_with_column](Self::table_set_bg_color_with_column) to set
+    /// for arbitrary indices.
+    </span><span class="kw">pub fn </span>table_set_bg_color(<span class="kw-2">&amp;</span><span class="self">self</span>, target: TableBgTarget, color: <span class="kw">impl </span>Into&lt;ImColor32&gt;) {
+        <span class="kw">unsafe </span>{
+            sys::igTableSetBgColor(target.bits() <span class="kw">as </span>i32, color.into().into(), -<span class="number">1</span>);
         }
     }
 
-    <span class="doccomment">/// Sets the given background color for any column. See [TableBgTarget]</span>
-    <span class="doccomment">/// for more information on how colors work for tables.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Use [table_set_bg_color](Self::table_set_bg_color) for the current column.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">table_set_bg_color_with_column</span>(
+    <span class="doccomment">/// Sets the given background color for any column. See [TableBgTarget]
+    /// for more information on how colors work for tables.
+    ///
+    /// Use [table_set_bg_color](Self::table_set_bg_color) for the current column.
+    </span><span class="kw">pub fn </span>table_set_bg_color_with_column(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">target</span>: <span class="ident">TableBgTarget</span>,
-        <span class="ident">color</span>: <span class="kw">impl</span> <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">ImColor32</span><span class="op">&gt;</span>,
-        <span class="ident">column_index</span>: <span class="ident">usize</span>,
+        target: TableBgTarget,
+        color: <span class="kw">impl </span>Into&lt;ImColor32&gt;,
+        column_index: usize,
     ) {
-        <span class="kw">unsafe</span> {
-            <span class="ident">sys::igTableSetBgColor</span>(
-                <span class="ident">target</span>.<span class="ident">bits</span>() <span class="kw">as</span> <span class="ident">i32</span>,
-                <span class="ident">color</span>.<span class="ident">into</span>().<span class="ident">into</span>(),
-                <span class="ident">column_index</span> <span class="kw">as</span> <span class="ident">i32</span>,
+        <span class="kw">unsafe </span>{
+            sys::igTableSetBgColor(
+                target.bits() <span class="kw">as </span>i32,
+                color.into().into(),
+                column_index <span class="kw">as </span>i32,
             );
         }
     }
 
-    <span class="doccomment">/// Gets the sorting data for a table. This will be `None` when not sorting.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// See the examples folder for how to use the sorting API.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">table_sort_specs_mut</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">TableSortSpecsMut</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="kw">unsafe</span> {
-            <span class="kw">let</span> <span class="ident">value</span> <span class="op">=</span> <span class="ident">sys::igTableGetSortSpecs</span>();
-            <span class="kw">if</span> <span class="ident">value</span>.<span class="ident">is_null</span>() {
-                <span class="prelude-val">None</span>
-            } <span class="kw">else</span> {
-                <span class="prelude-val">Some</span>(<span class="ident">TableSortSpecsMut</span>(<span class="ident">value</span>, <span class="ident">PhantomData</span>))
+    <span class="doccomment">/// Gets the sorting data for a table. This will be `None` when not sorting.
+    ///
+    /// See the examples folder for how to use the sorting API.
+    </span><span class="kw">pub fn </span>table_sort_specs_mut(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;TableSortSpecsMut&lt;<span class="lifetime">&#39;_</span>&gt;&gt; {
+        <span class="kw">unsafe </span>{
+            <span class="kw">let </span>value = sys::igTableGetSortSpecs();
+            <span class="kw">if </span>value.is_null() {
+                <span class="prelude-val">None
+            </span>} <span class="kw">else </span>{
+                <span class="prelude-val">Some</span>(TableSortSpecsMut(value, PhantomData))
             }
         }
     }
 }
 
-<span class="doccomment">/// A struct containing all the data needed to setup a table column header</span>
-<span class="doccomment">/// via [begin_table_header](Ui::begin_table_header) or [table_setup_column](Ui::table_setup_column).</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Default</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">TableColumnSetup</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">Name</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// The name of column to be displayed to users.</span>
-    <span class="kw">pub</span> <span class="ident">name</span>: <span class="ident">Name</span>,
-    <span class="doccomment">/// The flags this column will have.</span>
-    <span class="kw">pub</span> <span class="ident">flags</span>: <span class="ident">TableColumnFlags</span>,
-    <span class="doccomment">/// The width or weight of the given column.</span>
-    <span class="kw">pub</span> <span class="ident">init_width_or_weight</span>: <span class="ident">f32</span>,
-    <span class="doccomment">/// A user_id, primarily used in sorting operations.</span>
-    <span class="kw">pub</span> <span class="ident">user_id</span>: <span class="ident">Id</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>,
+<span class="doccomment">/// A struct containing all the data needed to setup a table column header
+/// via [begin_table_header](Ui::begin_table_header) or [table_setup_column](Ui::table_setup_column).
+</span><span class="attribute">#[derive(Debug, Default)]
+</span><span class="kw">pub struct </span>TableColumnSetup&lt;<span class="lifetime">&#39;a</span>, Name&gt; {
+    <span class="doccomment">/// The name of column to be displayed to users.
+    </span><span class="kw">pub </span>name: Name,
+    <span class="doccomment">/// The flags this column will have.
+    </span><span class="kw">pub </span>flags: TableColumnFlags,
+    <span class="doccomment">/// The width or weight of the given column.
+    </span><span class="kw">pub </span>init_width_or_weight: f32,
+    <span class="doccomment">/// A user_id, primarily used in sorting operations.
+    </span><span class="kw">pub </span>user_id: Id&lt;<span class="lifetime">&#39;a</span>&gt;,
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">Name</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="ident">TableColumnSetup</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">Name</span><span class="op">&gt;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">name</span>: <span class="ident">Name</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">Self</span> {
-            <span class="ident">name</span>,
-            <span class="ident">flags</span>: <span class="ident">TableColumnFlags::empty</span>(),
-            <span class="ident">init_width_or_weight</span>: <span class="number">0.0</span>,
-            <span class="ident">user_id</span>: <span class="ident">Id::Int</span>(<span class="number">0</span>),
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>, Name: AsRef&lt;str&gt;&gt; TableColumnSetup&lt;<span class="lifetime">&#39;a</span>, Name&gt; {
+    <span class="kw">pub fn </span>new(name: Name) -&gt; <span class="self">Self </span>{
+        <span class="self">Self </span>{
+            name,
+            flags: TableColumnFlags::empty(),
+            init_width_or_weight: <span class="number">0.0</span>,
+            user_id: Id::Int(<span class="number">0</span>),
         }
     }
 }
 
-<span class="doccomment">/// A wrapper around table sort specs.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// To use this simply, use [conditional_sort] and provide a closure --</span>
-<span class="doccomment">/// if you should sort your data, then the closure will be ran and imgui</span>
-<span class="doccomment">/// will be informed that your data is sorted.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// For manual control (such as if sorting can fail), use [should_sort] to</span>
-<span class="doccomment">/// check if you should sort your data, sort your data using [specs] for information</span>
-<span class="doccomment">/// on how to sort it, and then [set_sorted] to indicate that the data is sorted.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// [conditional_sort]: Self::conditional_sort</span>
-<span class="doccomment">/// [should_sort]: Self::should_sort</span>
-<span class="doccomment">/// [specs]: Self::specs</span>
-<span class="doccomment">/// [set_sorted]: Self::set_sorted</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">TableSortSpecsMut</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>(<span class="kw-2">*mut</span> <span class="ident">sys::ImGuiTableSortSpecs</span>, <span class="ident">PhantomData</span><span class="op">&lt;</span><span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span><span class="op">&gt;</span>);
+<span class="doccomment">/// A wrapper around table sort specs.
+///
+/// To use this simply, use [conditional_sort] and provide a closure --
+/// if you should sort your data, then the closure will be ran and imgui
+/// will be informed that your data is sorted.
+///
+/// For manual control (such as if sorting can fail), use [should_sort] to
+/// check if you should sort your data, sort your data using [specs] for information
+/// on how to sort it, and then [set_sorted] to indicate that the data is sorted.
+///
+/// [conditional_sort]: Self::conditional_sort
+/// [should_sort]: Self::should_sort
+/// [specs]: Self::specs
+/// [set_sorted]: Self::set_sorted
+</span><span class="kw">pub struct </span>TableSortSpecsMut&lt;<span class="lifetime">&#39;ui</span>&gt;(<span class="kw-2">*mut </span>sys::ImGuiTableSortSpecs, PhantomData&lt;Ui&lt;<span class="lifetime">&#39;ui</span>&gt;&gt;);
 
-<span class="kw">impl</span> <span class="ident">TableSortSpecsMut</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Gets the specs for a given sort. In most scenarios, this will be a slice of 1 entry.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">specs</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Specs</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span> {
-        <span class="kw">let</span> <span class="ident">value</span> <span class="op">=</span>
-            <span class="kw">unsafe</span> { <span class="ident">std::slice::from_raw_parts</span>((<span class="kw-2">*</span><span class="self">self</span>.<span class="number">0</span>).<span class="ident">Specs</span>, (<span class="kw-2">*</span><span class="self">self</span>.<span class="number">0</span>).<span class="ident">SpecsCount</span> <span class="kw">as</span> <span class="ident">usize</span>) };
+<span class="kw">impl </span>TableSortSpecsMut&lt;<span class="lifetime">&#39;_</span>&gt; {
+    <span class="doccomment">/// Gets the specs for a given sort. In most scenarios, this will be a slice of 1 entry.
+    </span><span class="kw">pub fn </span>specs(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Specs&lt;<span class="lifetime">&#39;_</span>&gt; {
+        <span class="kw">let </span>value =
+            <span class="kw">unsafe </span>{ std::slice::from_raw_parts((<span class="kw-2">*</span><span class="self">self</span>.<span class="number">0</span>).Specs, (<span class="kw-2">*</span><span class="self">self</span>.<span class="number">0</span>).SpecsCount <span class="kw">as </span>usize) };
 
-        <span class="ident">Specs</span>(<span class="ident">value</span>)
+        Specs(value)
     }
 
-    <span class="doccomment">/// Returns true if the data should be sorted.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">should_sort</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> { (<span class="kw-2">*</span><span class="self">self</span>.<span class="number">0</span>).<span class="ident">SpecsDirty</span> }
+    <span class="doccomment">/// Returns true if the data should be sorted.
+    </span><span class="kw">pub fn </span>should_sort(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        <span class="kw">unsafe </span>{ (<span class="kw-2">*</span><span class="self">self</span>.<span class="number">0</span>).SpecsDirty }
     }
 
-    <span class="doccomment">/// Sets the internal flag that the data has been sorted.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_sorted</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
-        <span class="kw">unsafe</span> {
-            (<span class="kw-2">*</span><span class="self">self</span>.<span class="number">0</span>).<span class="ident">SpecsDirty</span> <span class="op">=</span> <span class="bool-val">false</span>;
+    <span class="doccomment">/// Sets the internal flag that the data has been sorted.
+    </span><span class="kw">pub fn </span>set_sorted(<span class="kw-2">&amp;mut </span><span class="self">self</span>) {
+        <span class="kw">unsafe </span>{
+            (<span class="kw-2">*</span><span class="self">self</span>.<span class="number">0</span>).SpecsDirty = <span class="bool-val">false</span>;
         }
     }
 
-    <span class="doccomment">/// Provide a closure, which will receive the Specs for a sort.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// If you should sort the data, the closure will run, and ImGui will be</span>
-    <span class="doccomment">/// told that the data has been sorted.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// If you need manual control over sorting, consider using [should_sort], [specs],</span>
-    <span class="doccomment">/// and [set_sorted] youself.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [should_sort]: Self::should_sort</span>
-    <span class="doccomment">/// [specs]: Self::specs</span>
-    <span class="doccomment">/// [set_sorted]: Self::set_sorted</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">conditional_sort</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="kw-2">mut</span> <span class="ident">f</span>: <span class="kw">impl</span> <span class="ident">FnMut</span>(<span class="ident">Specs</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>)) {
-        <span class="kw">let</span> <span class="ident">is_dirty</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">should_sort</span>();
+    <span class="doccomment">/// Provide a closure, which will receive the Specs for a sort.
+    ///
+    /// If you should sort the data, the closure will run, and ImGui will be
+    /// told that the data has been sorted.
+    ///
+    /// If you need manual control over sorting, consider using [should_sort], [specs],
+    /// and [set_sorted] youself.
+    ///
+    /// [should_sort]: Self::should_sort
+    /// [specs]: Self::specs
+    /// [set_sorted]: Self::set_sorted
+    </span><span class="kw">pub fn </span>conditional_sort(<span class="kw-2">mut </span><span class="self">self</span>, <span class="kw-2">mut </span>f: <span class="kw">impl </span>FnMut(Specs&lt;<span class="lifetime">&#39;_</span>&gt;)) {
+        <span class="kw">let </span>is_dirty = <span class="self">self</span>.should_sort();
 
-        <span class="kw">if</span> <span class="ident">is_dirty</span> {
-            <span class="ident">f</span>(<span class="self">self</span>.<span class="ident">specs</span>());
+        <span class="kw">if </span>is_dirty {
+            f(<span class="self">self</span>.specs());
         }
 
-        <span class="self">self</span>.<span class="ident">set_sorted</span>();
+        <span class="self">self</span>.set_sorted();
     }
 }
 
-<span class="doccomment">/// A wrapper around a slice of [TableColumnSortSpecs].</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// This slice may be 0 if [TableFlags::SORT_TRISTATE] is true, may be &gt; 1 is [TableFlags::SORT_MULTI] is true,</span>
-<span class="doccomment">/// but is generally == 1.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// Consume this struct as an iterator.</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Specs</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> [<span class="ident">sys::ImGuiTableColumnSortSpecs</span>]);
+<span class="doccomment">/// A wrapper around a slice of [TableColumnSortSpecs].
+///
+/// This slice may be 0 if [TableFlags::SORT_TRISTATE] is true, may be &gt; 1 is [TableFlags::SORT_MULTI] is true,
+/// but is generally == 1.
+///
+/// Consume this struct as an iterator.
+</span><span class="kw">pub struct </span>Specs&lt;<span class="lifetime">&#39;a</span>&gt;(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>[sys::ImGuiTableColumnSortSpecs]);
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">Specs</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">iter</span>(<span class="self">self</span>) -&gt; <span class="kw">impl</span> <span class="ident">Iterator</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="ident">TableColumnSortSpecs</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="self">self</span>.<span class="number">0</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">v</span><span class="op">|</span> <span class="ident">TableColumnSortSpecs</span>(<span class="ident">v</span>))
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; Specs&lt;<span class="lifetime">&#39;a</span>&gt; {
+    <span class="kw">pub fn </span>iter(<span class="self">self</span>) -&gt; <span class="kw">impl </span>Iterator&lt;Item = TableColumnSortSpecs&lt;<span class="lifetime">&#39;a</span>&gt;&gt; {
+        <span class="self">self</span>.<span class="number">0</span>.iter().map(|v| TableColumnSortSpecs(v))
     }
 }
 
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">TableColumnSortSpecs</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">sys::ImGuiTableColumnSortSpecs</span>);
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">TableColumnSortSpecs</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// User id of the column (if specified by a TableSetupColumn() call)</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">column_user_id</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">sys::ImGuiID</span> {
-        <span class="self">self</span>.<span class="number">0</span>.<span class="ident">ColumnUserID</span>
+<span class="kw">pub struct </span>TableColumnSortSpecs&lt;<span class="lifetime">&#39;a</span>&gt;(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>sys::ImGuiTableColumnSortSpecs);
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; TableColumnSortSpecs&lt;<span class="lifetime">&#39;a</span>&gt; {
+    <span class="doccomment">/// User id of the column (if specified by a TableSetupColumn() call)
+    </span><span class="kw">pub fn </span>column_user_id(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; sys::ImGuiID {
+        <span class="self">self</span>.<span class="number">0</span>.ColumnUserID
     }
 
-    <span class="doccomment">/// Index of the column</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">column_idx</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">usize</span> {
-        <span class="self">self</span>.<span class="number">0</span>.<span class="ident">ColumnIndex</span> <span class="kw">as</span> <span class="ident">usize</span>
+    <span class="doccomment">/// Index of the column
+    </span><span class="kw">pub fn </span>column_idx(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; usize {
+        <span class="self">self</span>.<span class="number">0</span>.ColumnIndex <span class="kw">as </span>usize
     }
 
-    <span class="doccomment">/// Index within parent [Specs] slice where this was found -- always stored in order starting</span>
-    <span class="doccomment">/// from 0, tables sorted on a single criteria will always have a 0 here.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Generally, you don&#39;t need to access this, as it&#39;s the same as calling `specs.iter().enumerate()`.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sort_order</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">usize</span> {
-        <span class="self">self</span>.<span class="number">0</span>.<span class="ident">SortOrder</span> <span class="kw">as</span> <span class="ident">usize</span>
+    <span class="doccomment">/// Index within parent [Specs] slice where this was found -- always stored in order starting
+    /// from 0, tables sorted on a single criteria will always have a 0 here.
+    ///
+    /// Generally, you don&#39;t need to access this, as it&#39;s the same as calling `specs.iter().enumerate()`.
+    </span><span class="kw">pub fn </span>sort_order(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; usize {
+        <span class="self">self</span>.<span class="number">0</span>.SortOrder <span class="kw">as </span>usize
     }
 
-    <span class="doccomment">/// Gets the sort direction for the given column. This will nearly always be `Some` if you</span>
-    <span class="doccomment">/// can access it.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sort_direction</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">TableSortDirection</span><span class="op">&gt;</span> {
-        <span class="kw">match</span> <span class="self">self</span>.<span class="number">0</span>.<span class="ident">SortDirection</span>() {
-            <span class="number">0</span> =&gt; <span class="prelude-val">None</span>,
-            <span class="number">1</span> =&gt; <span class="prelude-val">Some</span>(<span class="ident">TableSortDirection::Ascending</span>),
-            <span class="number">2</span> =&gt; <span class="prelude-val">Some</span>(<span class="ident">TableSortDirection::Descending</span>),
-            <span class="kw">_</span> =&gt; <span class="macro">unimplemented!</span>(),
+    <span class="doccomment">/// Gets the sort direction for the given column. This will nearly always be `Some` if you
+    /// can access it.
+    </span><span class="kw">pub fn </span>sort_direction(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;TableSortDirection&gt; {
+        <span class="kw">match </span><span class="self">self</span>.<span class="number">0</span>.SortDirection() {
+            <span class="number">0 </span>=&gt; <span class="prelude-val">None</span>,
+            <span class="number">1 </span>=&gt; <span class="prelude-val">Some</span>(TableSortDirection::Ascending),
+            <span class="number">2 </span>=&gt; <span class="prelude-val">Some</span>(TableSortDirection::Descending),
+            <span class="kw">_ </span>=&gt; <span class="macro">unimplemented!</span>(),
         }
     }
 }
 
 <span class="macro">create_token!</span>(
-    <span class="doccomment">/// Tracks a table which can be rendered onto, ending with `.end()`</span>
-    <span class="doccomment">/// or by dropping.</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">TableToken</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>;
+    <span class="doccomment">/// Tracks a table which can be rendered onto, ending with `.end()`
+    /// or by dropping.
+    </span><span class="kw">pub struct </span>TableToken&lt;<span class="lifetime">&#39;ui</span>&gt;;
 
-    <span class="doccomment">/// Ends the table.</span>
-    <span class="ident">drop</span> { <span class="ident">sys::igEndTable</span>() }
+    <span class="doccomment">/// Ends the table.
+    </span>drop { sys::igEndTable() }
 );
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="arcdps_imgui" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="arcdps_imgui" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.0 (69f9c33d7 2022-12-12)" ></div></body></html>

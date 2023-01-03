@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\arcdps-imgui-0.8.0\src\popups.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>popups.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script><script defer src="../../main.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../arcdps_imgui/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../arcdps_imgui/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../arcdps_imgui/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\arcdps-imgui-0.8.0\src\popups.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>popups.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../normalize.css"><link rel="stylesheet" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../ayu.css" disabled><link rel="stylesheet" href="../../dark.css" disabled><link rel="stylesheet" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script><script defer src="../../main.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../arcdps_imgui/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -212,219 +212,219 @@
 <span id="212">212</span>
 <span id="213">213</span>
 <span id="214">214</span>
-</pre><pre class="rust"><code><span class="kw">use</span> <span class="ident">std::ptr</span>;
+</pre><pre class="rust"><code><span class="kw">use </span>std::ptr;
 
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::sys</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::window::WindowFlags</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::Ui</span>;
+<span class="kw">use </span><span class="kw">crate</span>::sys;
+<span class="kw">use </span><span class="kw">crate</span>::window::WindowFlags;
+<span class="kw">use </span><span class="kw">crate</span>::Ui;
 
-<span class="doccomment">/// Create a modal pop-up.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # Example</span>
-<span class="doccomment">/// ```rust,no_run</span>
-<span class="doccomment">/// # use arcdps_imgui::*;</span>
-<span class="doccomment">/// # let mut imgui = Context::create();</span>
-<span class="doccomment">/// # let ui = imgui.frame();</span>
-<span class="doccomment">/// if ui.button(im_str!(&quot;Show modal&quot;)) {</span>
-<span class="doccomment">///     ui.open_popup(im_str!(&quot;modal&quot;));</span>
-<span class="doccomment">/// }</span>
-<span class="doccomment">/// if let Some(_token) = PopupModal::new(im_str!(&quot;modal&quot;)).begin_popup(&amp;ui) {</span>
-<span class="doccomment">///     ui.text(&quot;Content of my modal&quot;);</span>
-<span class="doccomment">///     if ui.button(im_str!(&quot;OK&quot;)) {</span>
-<span class="doccomment">///         ui.close_current_popup();</span>
-<span class="doccomment">///     }</span>
-<span class="doccomment">/// };</span>
-<span class="doccomment">/// ```</span>
-<span class="attribute">#[<span class="ident">must_use</span>]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">PopupModal</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span>, <span class="ident">Label</span><span class="op">&gt;</span> {
-    <span class="ident">label</span>: <span class="ident">Label</span>,
-    <span class="ident">opened</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> <span class="kw-2">mut</span> <span class="ident">bool</span><span class="op">&gt;</span>,
-    <span class="ident">flags</span>: <span class="ident">WindowFlags</span>,
+<span class="doccomment">/// Create a modal pop-up.
+///
+/// # Example
+/// ```rust,no_run
+/// # use arcdps_imgui::*;
+/// # let mut imgui = Context::create();
+/// # let ui = imgui.frame();
+/// if ui.button(im_str!(&quot;Show modal&quot;)) {
+///     ui.open_popup(im_str!(&quot;modal&quot;));
+/// }
+/// if let Some(_token) = PopupModal::new(im_str!(&quot;modal&quot;)).begin_popup(&amp;ui) {
+///     ui.text(&quot;Content of my modal&quot;);
+///     if ui.button(im_str!(&quot;OK&quot;)) {
+///         ui.close_current_popup();
+///     }
+/// };
+/// ```
+</span><span class="attribute">#[must_use]
+</span><span class="kw">pub struct </span>PopupModal&lt;<span class="lifetime">&#39;p</span>, Label&gt; {
+    label: Label,
+    opened: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;p </span><span class="kw-2">mut </span>bool&gt;,
+    flags: WindowFlags,
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span>, <span class="ident">Label</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="ident">PopupModal</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span>, <span class="ident">Label</span><span class="op">&gt;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">label</span>: <span class="ident">Label</span>) -&gt; <span class="self">Self</span> {
-        <span class="ident">PopupModal</span> {
-            <span class="ident">label</span>,
-            <span class="ident">opened</span>: <span class="prelude-val">None</span>,
-            <span class="ident">flags</span>: <span class="ident">WindowFlags::empty</span>(),
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;p</span>, Label: AsRef&lt;str&gt;&gt; PopupModal&lt;<span class="lifetime">&#39;p</span>, Label&gt; {
+    <span class="kw">pub fn </span>new(label: Label) -&gt; <span class="self">Self </span>{
+        PopupModal {
+            label,
+            opened: <span class="prelude-val">None</span>,
+            flags: WindowFlags::empty(),
         }
     }
-    <span class="doccomment">/// Pass a mutable boolean which will be updated to refer to the current</span>
-    <span class="doccomment">/// &quot;open&quot; state of the modal.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">opened</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">opened</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> <span class="kw-2">mut</span> <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">opened</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">opened</span>);
-        <span class="self">self</span>
-    }
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">flags</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">flags</span>: <span class="ident">WindowFlags</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span> <span class="op">=</span> <span class="ident">flags</span>;
-        <span class="self">self</span>
-    }
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">title_bar</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">WindowFlags::NO_TITLE_BAR</span>, <span class="op">!</span><span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">resizable</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">WindowFlags::NO_RESIZE</span>, <span class="op">!</span><span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">movable</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">WindowFlags::NO_MOVE</span>, <span class="op">!</span><span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">scroll_bar</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">WindowFlags::NO_SCROLLBAR</span>, <span class="op">!</span><span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">scrollable</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">WindowFlags::NO_SCROLL_WITH_MOUSE</span>, <span class="op">!</span><span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">collapsible</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">WindowFlags::NO_COLLAPSE</span>, <span class="op">!</span><span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">always_auto_resize</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">WindowFlags::ALWAYS_AUTO_RESIZE</span>, <span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">save_settings</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">WindowFlags::NO_SAVED_SETTINGS</span>, <span class="op">!</span><span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">inputs</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">WindowFlags::NO_INPUTS</span>, <span class="op">!</span><span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">menu_bar</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">WindowFlags::MENU_BAR</span>, <span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">horizontal_scrollbar</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">WindowFlags::HORIZONTAL_SCROLLBAR</span>, <span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">no_focus_on_appearing</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">set</span>(<span class="ident">WindowFlags::NO_FOCUS_ON_APPEARING</span>, <span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">no_bring_to_front_on_focus</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>
-            .<span class="ident">set</span>(<span class="ident">WindowFlags::NO_BRING_TO_FRONT_ON_FOCUS</span>, <span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">always_vertical_scrollbar</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>
-            .<span class="ident">set</span>(<span class="ident">WindowFlags::ALWAYS_VERTICAL_SCROLLBAR</span>, <span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">always_horizontal_scrollbar</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>
-            .<span class="ident">set</span>(<span class="ident">WindowFlags::ALWAYS_HORIZONTAL_SCROLLBAR</span>, <span class="ident">value</span>);
-        <span class="self">self</span>
-    }
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">always_use_window_padding</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">value</span>: <span class="ident">bool</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">flags</span>
-            .<span class="ident">set</span>(<span class="ident">WindowFlags::ALWAYS_USE_WINDOW_PADDING</span>, <span class="ident">value</span>);
-        <span class="self">self</span>
+    <span class="doccomment">/// Pass a mutable boolean which will be updated to refer to the current
+    /// &quot;open&quot; state of the modal.
+    </span><span class="kw">pub fn </span>opened(<span class="kw-2">mut </span><span class="self">self</span>, opened: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p </span><span class="kw-2">mut </span>bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.opened = <span class="prelude-val">Some</span>(opened);
+        <span class="self">self
+    </span>}
+    <span class="kw">pub fn </span>flags(<span class="kw-2">mut </span><span class="self">self</span>, flags: WindowFlags) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags = flags;
+        <span class="self">self
+    </span>}
+    <span class="kw">pub fn </span>title_bar(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(WindowFlags::NO_TITLE_BAR, !value);
+        <span class="self">self
+    </span>}
+    <span class="kw">pub fn </span>resizable(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(WindowFlags::NO_RESIZE, !value);
+        <span class="self">self
+    </span>}
+    <span class="kw">pub fn </span>movable(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(WindowFlags::NO_MOVE, !value);
+        <span class="self">self
+    </span>}
+    <span class="kw">pub fn </span>scroll_bar(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(WindowFlags::NO_SCROLLBAR, !value);
+        <span class="self">self
+    </span>}
+    <span class="kw">pub fn </span>scrollable(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(WindowFlags::NO_SCROLL_WITH_MOUSE, !value);
+        <span class="self">self
+    </span>}
+    <span class="kw">pub fn </span>collapsible(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(WindowFlags::NO_COLLAPSE, !value);
+        <span class="self">self
+    </span>}
+    <span class="kw">pub fn </span>always_auto_resize(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(WindowFlags::ALWAYS_AUTO_RESIZE, value);
+        <span class="self">self
+    </span>}
+    <span class="kw">pub fn </span>save_settings(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(WindowFlags::NO_SAVED_SETTINGS, !value);
+        <span class="self">self
+    </span>}
+    <span class="kw">pub fn </span>inputs(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(WindowFlags::NO_INPUTS, !value);
+        <span class="self">self
+    </span>}
+    <span class="kw">pub fn </span>menu_bar(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(WindowFlags::MENU_BAR, value);
+        <span class="self">self
+    </span>}
+    <span class="kw">pub fn </span>horizontal_scrollbar(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(WindowFlags::HORIZONTAL_SCROLLBAR, value);
+        <span class="self">self
+    </span>}
+    <span class="kw">pub fn </span>no_focus_on_appearing(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags.set(WindowFlags::NO_FOCUS_ON_APPEARING, value);
+        <span class="self">self
+    </span>}
+    <span class="kw">pub fn </span>no_bring_to_front_on_focus(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags
+            .set(WindowFlags::NO_BRING_TO_FRONT_ON_FOCUS, value);
+        <span class="self">self
+    </span>}
+    <span class="kw">pub fn </span>always_vertical_scrollbar(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags
+            .set(WindowFlags::ALWAYS_VERTICAL_SCROLLBAR, value);
+        <span class="self">self
+    </span>}
+    <span class="kw">pub fn </span>always_horizontal_scrollbar(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags
+            .set(WindowFlags::ALWAYS_HORIZONTAL_SCROLLBAR, value);
+        <span class="self">self
+    </span>}
+    <span class="kw">pub fn </span>always_use_window_padding(<span class="kw-2">mut </span><span class="self">self</span>, value: bool) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.flags
+            .set(WindowFlags::ALWAYS_USE_WINDOW_PADDING, value);
+        <span class="self">self
+    </span>}
+
+    <span class="doccomment">/// Consume and draw the PopupModal.
+    /// Returns the result of the closure, if it is called.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;BeginPopupModal&quot;</span>)]
+    </span><span class="kw">pub fn </span>build&lt;T, F: FnOnce() -&gt; T&gt;(<span class="self">self</span>, ui: <span class="kw-2">&amp;</span>Ui&lt;<span class="lifetime">&#39;_</span>&gt;, f: F) -&gt; <span class="prelude-ty">Option</span>&lt;T&gt; {
+        <span class="self">self</span>.begin_popup(ui).map(|_popup| f())
     }
 
-    <span class="doccomment">/// Consume and draw the PopupModal.</span>
-    <span class="doccomment">/// Returns the result of the closure, if it is called.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;BeginPopupModal&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">F</span>: <span class="ident">FnOnce</span>() -&gt; <span class="ident">T</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">ui</span>: <span class="kw-2">&amp;</span><span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>, <span class="ident">f</span>: <span class="ident">F</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
-        <span class="self">self</span>.<span class="ident">begin_popup</span>(<span class="ident">ui</span>).<span class="ident">map</span>(<span class="op">|</span><span class="ident">_popup</span><span class="op">|</span> <span class="ident">f</span>())
-    }
-
-    <span class="doccomment">/// Consume and draw the PopupModal.</span>
-    <span class="doccomment">/// Construct a popup that can have any kind of content.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This should be called *per frame*, whereas [`Ui::open_popup`]</span>
-    <span class="doccomment">/// should be called *once* when you want to actual create the popup.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;BeginPopupModal&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">begin_popup</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">ui</span>: <span class="kw-2">&amp;</span><span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">PopupToken</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="kw">let</span> <span class="ident">render</span> <span class="op">=</span> <span class="kw">unsafe</span> {
-            <span class="ident">sys::igBeginPopupModal</span>(
-                <span class="ident">ui</span>.<span class="ident">scratch_txt</span>(<span class="self">self</span>.<span class="ident">label</span>),
-                <span class="self">self</span>.<span class="ident">opened</span>
-                    .<span class="ident">map</span>(<span class="op">|</span><span class="ident">x</span><span class="op">|</span> <span class="ident">x</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">bool</span>)
-                    .<span class="ident">unwrap_or</span>(<span class="ident">ptr::null_mut</span>()),
-                <span class="self">self</span>.<span class="ident">flags</span>.<span class="ident">bits</span>() <span class="kw">as</span> <span class="ident">i32</span>,
+    <span class="doccomment">/// Consume and draw the PopupModal.
+    /// Construct a popup that can have any kind of content.
+    ///
+    /// This should be called *per frame*, whereas [`Ui::open_popup`]
+    /// should be called *once* when you want to actual create the popup.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;BeginPopupModal&quot;</span>)]
+    </span><span class="kw">pub fn </span>begin_popup&lt;<span class="lifetime">&#39;ui</span>&gt;(<span class="self">self</span>, ui: <span class="kw-2">&amp;</span>Ui&lt;<span class="lifetime">&#39;ui</span>&gt;) -&gt; <span class="prelude-ty">Option</span>&lt;PopupToken&lt;<span class="lifetime">&#39;ui</span>&gt;&gt; {
+        <span class="kw">let </span>render = <span class="kw">unsafe </span>{
+            sys::igBeginPopupModal(
+                ui.scratch_txt(<span class="self">self</span>.label),
+                <span class="self">self</span>.opened
+                    .map(|x| x <span class="kw">as </span><span class="kw-2">*mut </span>bool)
+                    .unwrap_or(ptr::null_mut()),
+                <span class="self">self</span>.flags.bits() <span class="kw">as </span>i32,
             )
         };
 
-        <span class="kw">if</span> <span class="ident">render</span> {
-            <span class="prelude-val">Some</span>(<span class="ident">PopupToken::new</span>(<span class="ident">ui</span>))
-        } <span class="kw">else</span> {
-            <span class="prelude-val">None</span>
-        }
+        <span class="kw">if </span>render {
+            <span class="prelude-val">Some</span>(PopupToken::new(ui))
+        } <span class="kw">else </span>{
+            <span class="prelude-val">None
+        </span>}
     }
 }
 
-<span class="comment">// Widgets: Popups</span>
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> <span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Instructs ImGui to open a popup, which must be began with either [`begin_popup`](Self::begin_popup)</span>
-    <span class="doccomment">/// or [`popup`](Self::popup). You also use this function to begin [PopupModal].</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// The confusing aspect to popups is that ImGui holds &quot;control&quot; over the popup fundamentally, so that ImGui</span>
-    <span class="doccomment">/// can also force close a popup when a user clicks outside a popup. If you do not want users to be</span>
-    <span class="doccomment">/// able to close a popup without selected an option, use [`PopupModal`].</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;OpenPopup&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">open_popup</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">str_id</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>) {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igOpenPopup</span>(<span class="self">self</span>.<span class="ident">scratch_txt</span>(<span class="ident">str_id</span>), <span class="number">0</span>) };
+<span class="comment">// Widgets: Popups
+</span><span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>&gt; Ui&lt;<span class="lifetime">&#39;ui</span>&gt; {
+    <span class="doccomment">/// Instructs ImGui to open a popup, which must be began with either [`begin_popup`](Self::begin_popup)
+    /// or [`popup`](Self::popup). You also use this function to begin [PopupModal].
+    ///
+    /// The confusing aspect to popups is that ImGui holds &quot;control&quot; over the popup fundamentally, so that ImGui
+    /// can also force close a popup when a user clicks outside a popup. If you do not want users to be
+    /// able to close a popup without selected an option, use [`PopupModal`].
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;OpenPopup&quot;</span>)]
+    </span><span class="kw">pub fn </span>open_popup(<span class="kw-2">&amp;</span><span class="self">self</span>, str_id: <span class="kw">impl </span>AsRef&lt;str&gt;) {
+        <span class="kw">unsafe </span>{ sys::igOpenPopup(<span class="self">self</span>.scratch_txt(str_id), <span class="number">0</span>) };
     }
 
-    <span class="doccomment">/// Construct a popup that can have any kind of content.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This should be called *per frame*, whereas [`open_popup`](Self::open_popup) should be called *once*</span>
-    <span class="doccomment">/// when you want to actual create the popup.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;BeginPopup&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">begin_popup</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">str_id</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">PopupToken</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="kw">let</span> <span class="ident">render</span> <span class="op">=</span> <span class="kw">unsafe</span> {
-            <span class="ident">sys::igBeginPopup</span>(<span class="self">self</span>.<span class="ident">scratch_txt</span>(<span class="ident">str_id</span>), <span class="ident">WindowFlags::empty</span>().<span class="ident">bits</span>() <span class="kw">as</span> <span class="ident">i32</span>)
+    <span class="doccomment">/// Construct a popup that can have any kind of content.
+    ///
+    /// This should be called *per frame*, whereas [`open_popup`](Self::open_popup) should be called *once*
+    /// when you want to actual create the popup.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;BeginPopup&quot;</span>)]
+    </span><span class="kw">pub fn </span>begin_popup(<span class="kw-2">&amp;</span><span class="self">self</span>, str_id: <span class="kw">impl </span>AsRef&lt;str&gt;) -&gt; <span class="prelude-ty">Option</span>&lt;PopupToken&lt;<span class="lifetime">&#39;_</span>&gt;&gt; {
+        <span class="kw">let </span>render = <span class="kw">unsafe </span>{
+            sys::igBeginPopup(<span class="self">self</span>.scratch_txt(str_id), WindowFlags::empty().bits() <span class="kw">as </span>i32)
         };
 
-        <span class="kw">if</span> <span class="ident">render</span> {
-            <span class="prelude-val">Some</span>(<span class="ident">PopupToken::new</span>(<span class="self">self</span>))
-        } <span class="kw">else</span> {
-            <span class="prelude-val">None</span>
-        }
+        <span class="kw">if </span>render {
+            <span class="prelude-val">Some</span>(PopupToken::new(<span class="self">self</span>))
+        } <span class="kw">else </span>{
+            <span class="prelude-val">None
+        </span>}
     }
 
-    <span class="doccomment">/// Construct a popup that can have any kind of content.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This should be called *per frame*, whereas [`open_popup`](Self::open_popup) should be called *once*</span>
-    <span class="doccomment">/// when you want to actual create the popup.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;BeginPopup&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">popup</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">str_id</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>, <span class="ident">f</span>: <span class="ident">F</span>)
-    <span class="kw">where</span>
-        <span class="ident">F</span>: <span class="ident">FnOnce</span>(),
+    <span class="doccomment">/// Construct a popup that can have any kind of content.
+    ///
+    /// This should be called *per frame*, whereas [`open_popup`](Self::open_popup) should be called *once*
+    /// when you want to actual create the popup.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;BeginPopup&quot;</span>)]
+    </span><span class="kw">pub fn </span>popup&lt;F&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, str_id: <span class="kw">impl </span>AsRef&lt;str&gt;, f: F)
+    <span class="kw">where
+        </span>F: FnOnce(),
     {
-        <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">_t</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">begin_popup</span>(<span class="ident">str_id</span>) {
-            <span class="ident">f</span>();
+        <span class="kw">if let </span><span class="prelude-val">Some</span>(_t) = <span class="self">self</span>.begin_popup(str_id) {
+            f();
         }
     }
 
-    <span class="doccomment">/// Creates a PopupModal directly.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">popup_modal</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span>, <span class="ident">Label</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">str_id</span>: <span class="ident">Label</span>) -&gt; <span class="ident">PopupModal</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span>, <span class="ident">Label</span><span class="op">&gt;</span> {
-        <span class="ident">PopupModal::new</span>(<span class="ident">str_id</span>)
+    <span class="doccomment">/// Creates a PopupModal directly.
+    </span><span class="kw">pub fn </span>popup_modal&lt;<span class="lifetime">&#39;p</span>, Label: AsRef&lt;str&gt;&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, str_id: Label) -&gt; PopupModal&lt;<span class="lifetime">&#39;p</span>, Label&gt; {
+        PopupModal::new(str_id)
     }
 
-    <span class="doccomment">/// Close a popup. Should be called within the closure given as argument to</span>
-    <span class="doccomment">/// [`Ui::popup`] or [`Ui::popup_modal`].</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;CloseCurrentPopup&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">close_current_popup</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igCloseCurrentPopup</span>() };
+    <span class="doccomment">/// Close a popup. Should be called within the closure given as argument to
+    /// [`Ui::popup`] or [`Ui::popup_modal`].
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;CloseCurrentPopup&quot;</span>)]
+    </span><span class="kw">pub fn </span>close_current_popup(<span class="kw-2">&amp;</span><span class="self">self</span>) {
+        <span class="kw">unsafe </span>{ sys::igCloseCurrentPopup() };
     }
 }
 
 <span class="macro">create_token!</span>(
-    <span class="doccomment">/// Tracks a popup token that can be ended with `end` or by dropping.</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">PopupToken</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>;
+    <span class="doccomment">/// Tracks a popup token that can be ended with `end` or by dropping.
+    </span><span class="kw">pub struct </span>PopupToken&lt;<span class="lifetime">&#39;ui</span>&gt;;
 
-    <span class="doccomment">/// Drops the popup token manually. You can also just allow this token</span>
-    <span class="doccomment">/// to drop on its own.</span>
-    <span class="ident">drop</span> { <span class="ident">sys::igEndPopup</span>() }
+    <span class="doccomment">/// Drops the popup token manually. You can also just allow this token
+    /// to drop on its own.
+    </span>drop { sys::igEndPopup() }
 );
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="arcdps_imgui" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="arcdps_imgui" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.0 (69f9c33d7 2022-12-12)" ></div></body></html>

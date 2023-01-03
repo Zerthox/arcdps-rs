@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\arcdps-imgui-0.8.0\src\lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script><script defer src="../../main.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../arcdps_imgui/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../arcdps_imgui/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../arcdps_imgui/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\arcdps-imgui-0.8.0\src\lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../normalize.css"><link rel="stylesheet" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../ayu.css" disabled><link rel="stylesheet" href="../../dark.css" disabled><link rel="stylesheet" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script><script defer src="../../main.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../arcdps_imgui/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -685,692 +685,692 @@
 <span id="685">685</span>
 <span id="686">686</span>
 <span id="687">687</span>
-</pre><pre class="rust"><code><span class="attribute">#![<span class="ident">cfg_attr</span>(<span class="ident">test</span>, <span class="ident">allow</span>(<span class="ident">clippy::float_cmp</span>))]</span>
-<span class="attribute">#![<span class="ident">deny</span>(<span class="ident">rust_2018_idioms</span>)]</span>
-<span class="comment">// #![deny(missing_docs)]</span>
+</pre><pre class="rust"><code><span class="attribute">#![cfg_attr(test, allow(clippy::float_cmp))]
+#![deny(rust_2018_idioms)]
+</span><span class="comment">// #![deny(missing_docs)]
 
-<span class="kw">pub</span> <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">imgui_sys</span> <span class="kw">as</span> <span class="ident">sys</span>;
+</span><span class="kw">pub extern crate </span>imgui_sys <span class="kw">as </span>sys;
 
-<span class="kw">use</span> <span class="ident">std::cell</span>;
-<span class="kw">use</span> <span class="ident">std::ffi::CStr</span>;
-<span class="kw">use</span> <span class="ident">std::os::raw</span>::{<span class="ident">c_char</span>, <span class="ident">c_void</span>};
-<span class="kw">use</span> <span class="ident">std::ptr</span>;
-<span class="kw">use</span> <span class="ident">std::str</span>;
-<span class="kw">use</span> <span class="ident">std::thread</span>;
+<span class="kw">use </span>std::cell;
+<span class="kw">use </span>std::ffi::CStr;
+<span class="kw">use </span>std::os::raw::{c_char, c_void};
+<span class="kw">use </span>std::ptr;
+<span class="kw">use </span>std::str;
+<span class="kw">use </span>std::thread;
 
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::clipboard</span>::<span class="kw-2">*</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::color::ImColor32</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::context</span>::<span class="kw-2">*</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::drag_drop</span>::{<span class="ident">DragDropFlags</span>, <span class="ident">DragDropSource</span>, <span class="ident">DragDropTarget</span>};
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::draw_list</span>::{<span class="ident">ChannelsSplit</span>, <span class="ident">DrawListMut</span>};
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::fonts::atlas</span>::<span class="kw-2">*</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::fonts::font</span>::<span class="kw-2">*</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::fonts::glyph</span>::<span class="kw-2">*</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::fonts::glyph_ranges</span>::<span class="kw-2">*</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::input::keyboard</span>::<span class="kw-2">*</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::input::mouse</span>::<span class="kw-2">*</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::input_widget</span>::<span class="kw-2">*</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::io</span>::<span class="kw-2">*</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::layout</span>::<span class="kw-2">*</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::list_clipper::ListClipper</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::plothistogram::PlotHistogram</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::plotlines::PlotLines</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::popups</span>::<span class="kw-2">*</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::render::draw_data</span>::<span class="kw-2">*</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::render::renderer</span>::<span class="kw-2">*</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::stacks</span>::<span class="kw-2">*</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::string</span>::<span class="kw-2">*</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::style</span>::<span class="kw-2">*</span>;
+<span class="kw">pub use </span><span class="self">self</span>::clipboard::<span class="kw-2">*</span>;
+<span class="kw">pub use </span><span class="self">self</span>::color::ImColor32;
+<span class="kw">pub use </span><span class="self">self</span>::context::<span class="kw-2">*</span>;
+<span class="kw">pub use </span><span class="self">self</span>::drag_drop::{DragDropFlags, DragDropSource, DragDropTarget};
+<span class="kw">pub use </span><span class="self">self</span>::draw_list::{ChannelsSplit, DrawListMut};
+<span class="kw">pub use </span><span class="self">self</span>::fonts::atlas::<span class="kw-2">*</span>;
+<span class="kw">pub use </span><span class="self">self</span>::fonts::font::<span class="kw-2">*</span>;
+<span class="kw">pub use </span><span class="self">self</span>::fonts::glyph::<span class="kw-2">*</span>;
+<span class="kw">pub use </span><span class="self">self</span>::fonts::glyph_ranges::<span class="kw-2">*</span>;
+<span class="kw">pub use </span><span class="self">self</span>::input::keyboard::<span class="kw-2">*</span>;
+<span class="kw">pub use </span><span class="self">self</span>::input::mouse::<span class="kw-2">*</span>;
+<span class="kw">pub use </span><span class="self">self</span>::input_widget::<span class="kw-2">*</span>;
+<span class="kw">pub use </span><span class="self">self</span>::io::<span class="kw-2">*</span>;
+<span class="kw">pub use </span><span class="self">self</span>::layout::<span class="kw-2">*</span>;
+<span class="kw">pub use </span><span class="self">self</span>::list_clipper::ListClipper;
+<span class="kw">pub use </span><span class="self">self</span>::plothistogram::PlotHistogram;
+<span class="kw">pub use </span><span class="self">self</span>::plotlines::PlotLines;
+<span class="kw">pub use </span><span class="self">self</span>::popups::<span class="kw-2">*</span>;
+<span class="kw">pub use </span><span class="self">self</span>::render::draw_data::<span class="kw-2">*</span>;
+<span class="kw">pub use </span><span class="self">self</span>::render::renderer::<span class="kw-2">*</span>;
+<span class="kw">pub use </span><span class="self">self</span>::stacks::<span class="kw-2">*</span>;
+<span class="kw">pub use </span><span class="self">self</span>::string::<span class="kw-2">*</span>;
+<span class="kw">pub use </span><span class="self">self</span>::style::<span class="kw-2">*</span>;
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;tables-api&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::tables</span>::<span class="kw-2">*</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::utils</span>::<span class="kw-2">*</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::widget::color_editors</span>::<span class="kw-2">*</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::widget::combo_box</span>::<span class="kw-2">*</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::widget::drag</span>::<span class="kw-2">*</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::widget::image</span>::<span class="kw-2">*</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::widget::list_box</span>::<span class="kw-2">*</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::widget::menu</span>::<span class="kw-2">*</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::widget::misc</span>::<span class="kw-2">*</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::widget::progress_bar</span>::<span class="kw-2">*</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::widget::selectable</span>::<span class="kw-2">*</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::widget::slider</span>::<span class="kw-2">*</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::widget::tab</span>::<span class="kw-2">*</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::widget::tree</span>::<span class="kw-2">*</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::window::child_window</span>::<span class="kw-2">*</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::window</span>::<span class="kw-2">*</span>;
-<span class="kw">use</span> <span class="ident">internal::RawCast</span>;
+<span class="attribute">#[cfg(feature = <span class="string">&quot;tables-api&quot;</span>)]
+</span><span class="kw">pub use </span><span class="self">self</span>::tables::<span class="kw-2">*</span>;
+<span class="kw">pub use </span><span class="self">self</span>::utils::<span class="kw-2">*</span>;
+<span class="kw">pub use </span><span class="self">self</span>::widget::color_editors::<span class="kw-2">*</span>;
+<span class="kw">pub use </span><span class="self">self</span>::widget::combo_box::<span class="kw-2">*</span>;
+<span class="kw">pub use </span><span class="self">self</span>::widget::drag::<span class="kw-2">*</span>;
+<span class="kw">pub use </span><span class="self">self</span>::widget::image::<span class="kw-2">*</span>;
+<span class="kw">pub use </span><span class="self">self</span>::widget::list_box::<span class="kw-2">*</span>;
+<span class="kw">pub use </span><span class="self">self</span>::widget::menu::<span class="kw-2">*</span>;
+<span class="kw">pub use </span><span class="self">self</span>::widget::misc::<span class="kw-2">*</span>;
+<span class="kw">pub use </span><span class="self">self</span>::widget::progress_bar::<span class="kw-2">*</span>;
+<span class="kw">pub use </span><span class="self">self</span>::widget::selectable::<span class="kw-2">*</span>;
+<span class="kw">pub use </span><span class="self">self</span>::widget::slider::<span class="kw-2">*</span>;
+<span class="kw">pub use </span><span class="self">self</span>::widget::tab::<span class="kw-2">*</span>;
+<span class="kw">pub use </span><span class="self">self</span>::widget::tree::<span class="kw-2">*</span>;
+<span class="kw">pub use </span><span class="self">self</span>::window::child_window::<span class="kw-2">*</span>;
+<span class="kw">pub use </span><span class="self">self</span>::window::<span class="kw-2">*</span>;
+<span class="kw">use </span>internal::RawCast;
 
-<span class="attribute">#[<span class="ident">macro_use</span>]</span>
-<span class="kw">mod</span> <span class="ident">string</span>;
+<span class="attribute">#[macro_use]
+</span><span class="kw">mod </span>string;
 
-<span class="attribute">#[<span class="ident">macro_use</span>]</span>
-<span class="kw">mod</span> <span class="ident">tokens</span>;
+<span class="attribute">#[macro_use]
+</span><span class="kw">mod </span>tokens;
 
-<span class="kw">mod</span> <span class="ident">clipboard</span>;
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">color</span>;
-<span class="kw">mod</span> <span class="ident">columns</span>;
-<span class="kw">mod</span> <span class="ident">context</span>;
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">drag_drop</span>;
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">draw_list</span>;
-<span class="kw">mod</span> <span class="ident">fonts</span>;
-<span class="kw">mod</span> <span class="ident">input</span>;
-<span class="kw">mod</span> <span class="ident">input_widget</span>;
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">internal</span>;
-<span class="kw">mod</span> <span class="ident">io</span>;
-<span class="kw">mod</span> <span class="ident">layout</span>;
-<span class="kw">mod</span> <span class="ident">list_clipper</span>;
-<span class="kw">mod</span> <span class="ident">plothistogram</span>;
-<span class="kw">mod</span> <span class="ident">plotlines</span>;
-<span class="kw">mod</span> <span class="ident">popups</span>;
-<span class="kw">mod</span> <span class="ident">render</span>;
-<span class="kw">mod</span> <span class="ident">stacks</span>;
-<span class="kw">mod</span> <span class="ident">style</span>;
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;tables-api&quot;</span>)]</span>
-<span class="kw">mod</span> <span class="ident">tables</span>;
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">test</span>)]</span>
-<span class="kw">mod</span> <span class="ident">test</span>;
-<span class="kw">mod</span> <span class="ident">utils</span>;
-<span class="kw">mod</span> <span class="ident">widget</span>;
-<span class="kw">mod</span> <span class="ident">window</span>;
+<span class="kw">mod </span>clipboard;
+<span class="kw">pub mod </span>color;
+<span class="kw">mod </span>columns;
+<span class="kw">mod </span>context;
+<span class="kw">pub mod </span>drag_drop;
+<span class="kw">pub mod </span>draw_list;
+<span class="kw">mod </span>fonts;
+<span class="kw">mod </span>input;
+<span class="kw">mod </span>input_widget;
+<span class="kw">pub mod </span>internal;
+<span class="kw">mod </span>io;
+<span class="kw">mod </span>layout;
+<span class="kw">mod </span>list_clipper;
+<span class="kw">mod </span>plothistogram;
+<span class="kw">mod </span>plotlines;
+<span class="kw">mod </span>popups;
+<span class="kw">mod </span>render;
+<span class="kw">mod </span>stacks;
+<span class="kw">mod </span>style;
+<span class="attribute">#[cfg(feature = <span class="string">&quot;tables-api&quot;</span>)]
+</span><span class="kw">mod </span>tables;
+<span class="attribute">#[cfg(test)]
+</span><span class="kw">mod </span>test;
+<span class="kw">mod </span>utils;
+<span class="kw">mod </span>widget;
+<span class="kw">mod </span>window;
 
-<span class="comment">// Used by macros. Underscores are just to make it clear it&#39;s not part of the</span>
-<span class="comment">// public API.</span>
-<span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">core</span> <span class="kw">as</span> <span class="ident">__core</span>;
+<span class="comment">// Used by macros. Underscores are just to make it clear it&#39;s not part of the
+// public API.
+</span><span class="attribute">#[doc(hidden)]
+</span><span class="kw">pub use </span>core <span class="kw">as </span>__core;
 
-<span class="doccomment">/// Returns the underlying Dear ImGui library version</span>
-<span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GetVersion&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">dear_imgui_version</span>() -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span> {
-    <span class="kw">unsafe</span> {
-        <span class="kw">let</span> <span class="ident">bytes</span> <span class="op">=</span> <span class="ident">CStr::from_ptr</span>(<span class="ident">sys::igGetVersion</span>()).<span class="ident">to_bytes</span>();
-        <span class="ident">str::from_utf8_unchecked</span>(<span class="ident">bytes</span>)
+<span class="doccomment">/// Returns the underlying Dear ImGui library version
+</span><span class="attribute">#[doc(alias = <span class="string">&quot;GetVersion&quot;</span>)]
+</span><span class="kw">pub fn </span>dear_imgui_version() -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str {
+    <span class="kw">unsafe </span>{
+        <span class="kw">let </span>bytes = CStr::from_ptr(sys::igGetVersion()).to_bytes();
+        str::from_utf8_unchecked(bytes)
     }
 }
 
-<span class="kw">impl</span> <span class="ident">Context</span> {
-    <span class="doccomment">/// Returns the global imgui-rs time.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Incremented by Io::delta_time every frame.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GetTime&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">time</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">f64</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igGetTime</span>() }
+<span class="kw">impl </span>Context {
+    <span class="doccomment">/// Returns the global imgui-rs time.
+    ///
+    /// Incremented by Io::delta_time every frame.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;GetTime&quot;</span>)]
+    </span><span class="kw">pub fn </span>time(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; f64 {
+        <span class="kw">unsafe </span>{ sys::igGetTime() }
     }
-    <span class="doccomment">/// Returns the global imgui-rs frame count.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Incremented by 1 every frame.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GetFrameCount&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">frame_count</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">i32</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igGetFrameCount</span>() }
+    <span class="doccomment">/// Returns the global imgui-rs frame count.
+    ///
+    /// Incremented by 1 every frame.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;GetFrameCount&quot;</span>)]
+    </span><span class="kw">pub fn </span>frame_count(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; i32 {
+        <span class="kw">unsafe </span>{ sys::igGetFrameCount() }
     }
 }
 
-<span class="doccomment">/// A temporary reference for building the user interface for one frame</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> {
-    <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="ident">Context</span>,
-    <span class="ident">font_atlas</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">cell::RefMut</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span>, <span class="ident">SharedFontAtlas</span><span class="op">&gt;</span><span class="op">&gt;</span>,
-    <span class="comment">// imgui isn&#39;t mutli-threaded -- so no one will ever access twice.</span>
-    <span class="ident">buffer</span>: <span class="ident">cell::UnsafeCell</span><span class="op">&lt;</span><span class="ident">string::UiBuffer</span><span class="op">&gt;</span>,
+<span class="doccomment">/// A temporary reference for building the user interface for one frame
+</span><span class="attribute">#[derive(Debug)]
+</span><span class="kw">pub struct </span>Ui&lt;<span class="lifetime">&#39;ui</span>&gt; {
+    ctx: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span>Context,
+    font_atlas: <span class="prelude-ty">Option</span>&lt;cell::RefMut&lt;<span class="lifetime">&#39;ui</span>, SharedFontAtlas&gt;&gt;,
+    <span class="comment">// imgui isn&#39;t mutli-threaded -- so no one will ever access twice.
+    </span>buffer: cell::UnsafeCell&lt;string::UiBuffer&gt;,
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> <span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Creates an Ui object with a given context</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_ctx</span>(<span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="ident">Context</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">Self</span> {
-            <span class="ident">ctx</span>,
-            <span class="ident">font_atlas</span>: <span class="prelude-val">None</span>,
-            <span class="ident">buffer</span>: <span class="ident"><span class="kw">crate</span>::UiBuffer::new</span>(<span class="number">1024</span>).<span class="ident">into</span>(),
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>&gt; Ui&lt;<span class="lifetime">&#39;ui</span>&gt; {
+    <span class="doccomment">/// Creates an Ui object with a given context
+    </span><span class="kw">pub fn </span>from_ctx(ctx: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span>Context) -&gt; <span class="self">Self </span>{
+        <span class="self">Self </span>{
+            ctx,
+            font_atlas: <span class="prelude-val">None</span>,
+            buffer: <span class="kw">crate</span>::UiBuffer::new(<span class="number">1024</span>).into(),
         }
     }
 
-    <span class="doccomment">/// Internal method to push a single text to our scratch buffer.</span>
-    <span class="kw">fn</span> <span class="ident">scratch_txt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">txt</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>) -&gt; <span class="kw-2">*const</span> <span class="ident">sys::cty::c_char</span> {
-        <span class="kw">unsafe</span> {
-            <span class="kw">let</span> <span class="ident">handle</span> <span class="op">=</span> <span class="kw-2">&amp;mut</span> <span class="kw-2">*</span><span class="self">self</span>.<span class="ident">buffer</span>.<span class="ident">get</span>();
-            <span class="ident">handle</span>.<span class="ident">scratch_txt</span>(<span class="ident">txt</span>)
+    <span class="doccomment">/// Internal method to push a single text to our scratch buffer.
+    </span><span class="kw">fn </span>scratch_txt(<span class="kw-2">&amp;</span><span class="self">self</span>, txt: <span class="kw">impl </span>AsRef&lt;str&gt;) -&gt; <span class="kw-2">*const </span>sys::cty::c_char {
+        <span class="kw">unsafe </span>{
+            <span class="kw">let </span>handle = <span class="kw-2">&amp;mut *</span><span class="self">self</span>.buffer.get();
+            handle.scratch_txt(txt)
         }
     }
 
-    <span class="doccomment">/// Internal method to push an option text to our scratch buffer.</span>
-    <span class="kw">fn</span> <span class="ident">scratch_txt_opt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">txt</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>) -&gt; <span class="kw-2">*const</span> <span class="ident">sys::cty::c_char</span> {
-        <span class="kw">unsafe</span> {
-            <span class="kw">let</span> <span class="ident">handle</span> <span class="op">=</span> <span class="kw-2">&amp;mut</span> <span class="kw-2">*</span><span class="self">self</span>.<span class="ident">buffer</span>.<span class="ident">get</span>();
-            <span class="ident">handle</span>.<span class="ident">scratch_txt_opt</span>(<span class="ident">txt</span>)
+    <span class="doccomment">/// Internal method to push an option text to our scratch buffer.
+    </span><span class="kw">fn </span>scratch_txt_opt(<span class="kw-2">&amp;</span><span class="self">self</span>, txt: <span class="prelude-ty">Option</span>&lt;<span class="kw">impl </span>AsRef&lt;str&gt;&gt;) -&gt; <span class="kw-2">*const </span>sys::cty::c_char {
+        <span class="kw">unsafe </span>{
+            <span class="kw">let </span>handle = <span class="kw-2">&amp;mut *</span><span class="self">self</span>.buffer.get();
+            handle.scratch_txt_opt(txt)
         }
     }
 
-    <span class="kw">fn</span> <span class="ident">scratch_txt_two</span>(
+    <span class="kw">fn </span>scratch_txt_two(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">txt_0</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>,
-        <span class="ident">txt_1</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>,
-    ) -&gt; (<span class="kw-2">*const</span> <span class="ident">sys::cty::c_char</span>, <span class="kw-2">*const</span> <span class="ident">sys::cty::c_char</span>) {
-        <span class="kw">unsafe</span> {
-            <span class="kw">let</span> <span class="ident">handle</span> <span class="op">=</span> <span class="kw-2">&amp;mut</span> <span class="kw-2">*</span><span class="self">self</span>.<span class="ident">buffer</span>.<span class="ident">get</span>();
-            <span class="ident">handle</span>.<span class="ident">scratch_txt_two</span>(<span class="ident">txt_0</span>, <span class="ident">txt_1</span>)
+        txt_0: <span class="kw">impl </span>AsRef&lt;str&gt;,
+        txt_1: <span class="kw">impl </span>AsRef&lt;str&gt;,
+    ) -&gt; (<span class="kw-2">*const </span>sys::cty::c_char, <span class="kw-2">*const </span>sys::cty::c_char) {
+        <span class="kw">unsafe </span>{
+            <span class="kw">let </span>handle = <span class="kw-2">&amp;mut *</span><span class="self">self</span>.buffer.get();
+            handle.scratch_txt_two(txt_0, txt_1)
         }
     }
 
-    <span class="kw">fn</span> <span class="ident">scratch_txt_with_opt</span>(
+    <span class="kw">fn </span>scratch_txt_with_opt(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">txt_0</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>,
-        <span class="ident">txt_1</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>,
-    ) -&gt; (<span class="kw-2">*const</span> <span class="ident">sys::cty::c_char</span>, <span class="kw-2">*const</span> <span class="ident">sys::cty::c_char</span>) {
-        <span class="kw">unsafe</span> {
-            <span class="kw">let</span> <span class="ident">handle</span> <span class="op">=</span> <span class="kw-2">&amp;mut</span> <span class="kw-2">*</span><span class="self">self</span>.<span class="ident">buffer</span>.<span class="ident">get</span>();
-            <span class="ident">handle</span>.<span class="ident">scratch_txt_with_opt</span>(<span class="ident">txt_0</span>, <span class="ident">txt_1</span>)
+        txt_0: <span class="kw">impl </span>AsRef&lt;str&gt;,
+        txt_1: <span class="prelude-ty">Option</span>&lt;<span class="kw">impl </span>AsRef&lt;str&gt;&gt;,
+    ) -&gt; (<span class="kw-2">*const </span>sys::cty::c_char, <span class="kw-2">*const </span>sys::cty::c_char) {
+        <span class="kw">unsafe </span>{
+            <span class="kw">let </span>handle = <span class="kw-2">&amp;mut *</span><span class="self">self</span>.buffer.get();
+            handle.scratch_txt_with_opt(txt_0, txt_1)
         }
     }
 
-    <span class="doccomment">/// Returns an immutable reference to the inputs/outputs object</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GetIO&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">io</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="ident">Io</span> {
-        <span class="kw">unsafe</span> { <span class="kw-2">&amp;</span><span class="kw-2">*</span>(<span class="ident">sys::igGetIO</span>() <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">Io</span>) }
+    <span class="doccomment">/// Returns an immutable reference to the inputs/outputs object
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;GetIO&quot;</span>)]
+    </span><span class="kw">pub fn </span>io(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>Io {
+        <span class="kw">unsafe </span>{ <span class="kw-2">&amp;*</span>(sys::igGetIO() <span class="kw">as </span><span class="kw-2">*const </span>Io) }
     }
 
-    <span class="doccomment">/// Returns an immutable reference to the font atlas</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">fonts</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">FontAtlasRef</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span> {
-        <span class="kw">match</span> <span class="self">self</span>.<span class="ident">font_atlas</span> {
-            <span class="prelude-val">Some</span>(<span class="kw-2">ref</span> <span class="ident">font_atlas</span>) =&gt; <span class="ident">FontAtlasRef::Shared</span>(<span class="ident">font_atlas</span>),
-            <span class="prelude-val">None</span> =&gt; <span class="kw">unsafe</span> {
-                <span class="kw">let</span> <span class="ident">fonts</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="kw-2">*</span>(<span class="self">self</span>.<span class="ident">io</span>().<span class="ident">fonts</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">FontAtlas</span>);
-                <span class="ident">FontAtlasRef::Owned</span>(<span class="ident">fonts</span>)
+    <span class="doccomment">/// Returns an immutable reference to the font atlas
+    </span><span class="kw">pub fn </span>fonts(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; FontAtlasRef&lt;<span class="lifetime">&#39;_</span>&gt; {
+        <span class="kw">match </span><span class="self">self</span>.font_atlas {
+            <span class="prelude-val">Some</span>(<span class="kw-2">ref </span>font_atlas) =&gt; FontAtlasRef::Shared(font_atlas),
+            <span class="prelude-val">None </span>=&gt; <span class="kw">unsafe </span>{
+                <span class="kw">let </span>fonts = <span class="kw-2">&amp;*</span>(<span class="self">self</span>.io().fonts <span class="kw">as </span><span class="kw-2">*const </span>FontAtlas);
+                FontAtlasRef::Owned(fonts)
             },
         }
     }
-    <span class="doccomment">/// Returns a clone of the user interface style</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">clone_style</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Style</span> {
-        <span class="kw-2">*</span><span class="self">self</span>.<span class="ident">ctx</span>.<span class="ident">style</span>()
+    <span class="doccomment">/// Returns a clone of the user interface style
+    </span><span class="kw">pub fn </span>clone_style(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Style {
+        <span class="kw-2">*</span><span class="self">self</span>.ctx.style()
     }
-    <span class="doccomment">/// Renders the frame and returns a reference to the resulting draw data</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;Render&quot;</span>, <span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GetDrawData&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">render</span>(<span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="ident">DrawData</span> {
-        <span class="kw">unsafe</span> {
-            <span class="ident">sys::igRender</span>();
-            <span class="kw-2">&amp;</span><span class="kw-2">*</span>(<span class="ident">sys::igGetDrawData</span>() <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">DrawData</span>)
+    <span class="doccomment">/// Renders the frame and returns a reference to the resulting draw data
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;Render&quot;</span>, alias = <span class="string">&quot;GetDrawData&quot;</span>)]
+    </span><span class="kw">pub fn </span>render(<span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span>DrawData {
+        <span class="kw">unsafe </span>{
+            sys::igRender();
+            <span class="kw-2">&amp;*</span>(sys::igGetDrawData() <span class="kw">as </span><span class="kw-2">*mut </span>DrawData)
         }
     }
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">Drop</span> <span class="kw">for</span> <span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;EndFrame&quot;</span>)]</span>
-    <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
-        <span class="kw">if</span> <span class="op">!</span><span class="ident">thread::panicking</span>() {
-            <span class="kw">unsafe</span> {
-                <span class="ident">sys::igEndFrame</span>();
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; Drop <span class="kw">for </span>Ui&lt;<span class="lifetime">&#39;a</span>&gt; {
+    <span class="attribute">#[doc(alias = <span class="string">&quot;EndFrame&quot;</span>)]
+    </span><span class="kw">fn </span>drop(<span class="kw-2">&amp;mut </span><span class="self">self</span>) {
+        <span class="kw">if </span>!thread::panicking() {
+            <span class="kw">unsafe </span>{
+                sys::igEndFrame();
             }
         }
     }
 }
 
-<span class="doccomment">/// # Demo, debug, information</span>
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> <span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Renders a demo window (previously called a test window), which demonstrates most</span>
-    <span class="doccomment">/// Dear Imgui features.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;ShowDemoWindow&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">show_demo_window</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">opened</span>: <span class="kw-2">&amp;mut</span> <span class="ident">bool</span>) {
-        <span class="kw">unsafe</span> {
-            <span class="ident">sys::igShowDemoWindow</span>(<span class="ident">opened</span>);
+<span class="doccomment">/// # Demo, debug, information
+</span><span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>&gt; Ui&lt;<span class="lifetime">&#39;ui</span>&gt; {
+    <span class="doccomment">/// Renders a demo window (previously called a test window), which demonstrates most
+    /// Dear Imgui features.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;ShowDemoWindow&quot;</span>)]
+    </span><span class="kw">pub fn </span>show_demo_window(<span class="kw-2">&amp;</span><span class="self">self</span>, opened: <span class="kw-2">&amp;mut </span>bool) {
+        <span class="kw">unsafe </span>{
+            sys::igShowDemoWindow(opened);
         }
     }
-    <span class="doccomment">/// Renders an about window.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Displays the Dear ImGui version/credits, and build/system information.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;ShowAboutWindow&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">show_about_window</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">opened</span>: <span class="kw-2">&amp;mut</span> <span class="ident">bool</span>) {
-        <span class="kw">unsafe</span> {
-            <span class="ident">sys::igShowAboutWindow</span>(<span class="ident">opened</span>);
+    <span class="doccomment">/// Renders an about window.
+    ///
+    /// Displays the Dear ImGui version/credits, and build/system information.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;ShowAboutWindow&quot;</span>)]
+    </span><span class="kw">pub fn </span>show_about_window(<span class="kw-2">&amp;</span><span class="self">self</span>, opened: <span class="kw-2">&amp;mut </span>bool) {
+        <span class="kw">unsafe </span>{
+            sys::igShowAboutWindow(opened);
         }
     }
-    <span class="doccomment">/// Renders a metrics/debug window.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Displays Dear ImGui internals: draw commands (with individual draw calls and vertices),</span>
-    <span class="doccomment">/// window list, basic internal state, etc.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;ShowMetricsWindow&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">show_metrics_window</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">opened</span>: <span class="kw-2">&amp;mut</span> <span class="ident">bool</span>) {
-        <span class="kw">unsafe</span> {
-            <span class="ident">sys::igShowMetricsWindow</span>(<span class="ident">opened</span>);
+    <span class="doccomment">/// Renders a metrics/debug window.
+    ///
+    /// Displays Dear ImGui internals: draw commands (with individual draw calls and vertices),
+    /// window list, basic internal state, etc.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;ShowMetricsWindow&quot;</span>)]
+    </span><span class="kw">pub fn </span>show_metrics_window(<span class="kw-2">&amp;</span><span class="self">self</span>, opened: <span class="kw-2">&amp;mut </span>bool) {
+        <span class="kw">unsafe </span>{
+            sys::igShowMetricsWindow(opened);
         }
     }
-    <span class="doccomment">/// Renders a style editor block (not a window) for the given `Style` structure</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;ShowStyleEditor&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">show_style_editor</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">style</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Style</span>) {
-        <span class="kw">unsafe</span> {
-            <span class="ident">sys::igShowStyleEditor</span>(<span class="ident">style</span>.<span class="ident">raw_mut</span>());
+    <span class="doccomment">/// Renders a style editor block (not a window) for the given `Style` structure
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;ShowStyleEditor&quot;</span>)]
+    </span><span class="kw">pub fn </span>show_style_editor(<span class="kw-2">&amp;</span><span class="self">self</span>, style: <span class="kw-2">&amp;mut </span>Style) {
+        <span class="kw">unsafe </span>{
+            sys::igShowStyleEditor(style.raw_mut());
         }
     }
-    <span class="doccomment">/// Renders a style editor block (not a window) for the currently active style</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;ShowStyleEditor&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">show_default_style_editor</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igShowStyleEditor</span>(<span class="ident">ptr::null_mut</span>()) };
+    <span class="doccomment">/// Renders a style editor block (not a window) for the currently active style
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;ShowStyleEditor&quot;</span>)]
+    </span><span class="kw">pub fn </span>show_default_style_editor(<span class="kw-2">&amp;</span><span class="self">self</span>) {
+        <span class="kw">unsafe </span>{ sys::igShowStyleEditor(ptr::null_mut()) };
     }
-    <span class="doccomment">/// Renders a basic help/info block (not a window)</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;ShowUserGuide&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">show_user_guide</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igShowUserGuide</span>() };
-    }
-}
-
-<span class="doccomment">/// Unique ID used by widgets</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">Eq</span>, <span class="ident">PartialEq</span>)]</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">Id</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
-    <span class="ident">Int</span>(<span class="ident">i32</span>),
-    <span class="ident">Str</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span>),
-    <span class="ident">Ptr</span>(<span class="kw-2">*const</span> <span class="ident">c_void</span>),
-}
-
-<span class="kw">impl</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">i32</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Id</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span><span class="op">&gt;</span> {
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">i</span>: <span class="ident">i32</span>) -&gt; <span class="self">Self</span> {
-        <span class="ident">Id::Int</span>(<span class="ident">i</span>)
+    <span class="doccomment">/// Renders a basic help/info block (not a window)
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;ShowUserGuide&quot;</span>)]
+    </span><span class="kw">pub fn </span>show_user_guide(<span class="kw-2">&amp;</span><span class="self">self</span>) {
+        <span class="kw">unsafe </span>{ sys::igShowUserGuide() };
     }
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span>: <span class="question-mark">?</span><span class="ident">Sized</span> <span class="op">+</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="ident">From</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">T</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Id</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">T</span>) -&gt; <span class="self">Self</span> {
-        <span class="ident">Id::Str</span>(<span class="ident">s</span>.<span class="ident">as_ref</span>())
+<span class="doccomment">/// Unique ID used by widgets
+</span><span class="attribute">#[derive(Copy, Clone, Debug, Eq, PartialEq)]
+</span><span class="kw">pub enum </span>Id&lt;<span class="lifetime">&#39;a</span>&gt; {
+    Int(i32),
+    Str(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>str),
+    Ptr(<span class="kw-2">*const </span>c_void),
+}
+
+<span class="kw">impl </span>From&lt;i32&gt; <span class="kw">for </span>Id&lt;<span class="lifetime">&#39;static</span>&gt; {
+    <span class="attribute">#[inline]
+    </span><span class="kw">fn </span>from(i: i32) -&gt; <span class="self">Self </span>{
+        Id::Int(i)
     }
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> <span class="ident">From</span><span class="op">&lt;</span><span class="kw-2">*const</span> <span class="ident">T</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Id</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span><span class="op">&gt;</span> {
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">p</span>: <span class="kw-2">*const</span> <span class="ident">T</span>) -&gt; <span class="self">Self</span> {
-        <span class="ident">Id::Ptr</span>(<span class="ident">p</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">c_void</span>)
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>, T: <span class="question-mark">?</span>Sized + AsRef&lt;str&gt;&gt; From&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>T&gt; <span class="kw">for </span>Id&lt;<span class="lifetime">&#39;a</span>&gt; {
+    <span class="attribute">#[inline]
+    </span><span class="kw">fn </span>from(s: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>T) -&gt; <span class="self">Self </span>{
+        Id::Str(s.as_ref())
     }
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> <span class="ident">From</span><span class="op">&lt;</span><span class="kw-2">*mut</span> <span class="ident">T</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Id</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span><span class="op">&gt;</span> {
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">p</span>: <span class="kw-2">*mut</span> <span class="ident">T</span>) -&gt; <span class="self">Self</span> {
-        <span class="ident">Id::Ptr</span>(<span class="ident">p</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">T</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">c_void</span>)
+<span class="kw">impl</span>&lt;T&gt; From&lt;<span class="kw-2">*const </span>T&gt; <span class="kw">for </span>Id&lt;<span class="lifetime">&#39;static</span>&gt; {
+    <span class="attribute">#[inline]
+    </span><span class="kw">fn </span>from(p: <span class="kw-2">*const </span>T) -&gt; <span class="self">Self </span>{
+        Id::Ptr(p <span class="kw">as </span><span class="kw-2">*const </span>c_void)
     }
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">Id</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
-    <span class="comment">// this is used in the tables-api and possibly elsewhere,</span>
-    <span class="comment">// but not with just default features...</span>
-    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">dead_code</span>)]</span>
-    <span class="kw">fn</span> <span class="ident">as_imgui_id</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">sys::ImGuiID</span> {
-        <span class="kw">unsafe</span> {
-            <span class="kw">match</span> <span class="self">self</span> {
-                <span class="ident">Id::Ptr</span>(<span class="ident">p</span>) =&gt; <span class="ident">sys::igGetID_Ptr</span>(<span class="kw-2">*</span><span class="ident">p</span>),
-                <span class="ident">Id::Str</span>(<span class="ident">s</span>) =&gt; {
-                    <span class="kw">let</span> <span class="ident">s1</span> <span class="op">=</span> <span class="ident">s</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">std::os::raw::c_char</span>;
-                    <span class="kw">let</span> <span class="ident">s2</span> <span class="op">=</span> <span class="ident">s1</span>.<span class="ident">add</span>(<span class="ident">s</span>.<span class="ident">len</span>());
-                    <span class="ident">sys::igGetID_StrStr</span>(<span class="ident">s1</span>, <span class="ident">s2</span>)
+<span class="kw">impl</span>&lt;T&gt; From&lt;<span class="kw-2">*mut </span>T&gt; <span class="kw">for </span>Id&lt;<span class="lifetime">&#39;static</span>&gt; {
+    <span class="attribute">#[inline]
+    </span><span class="kw">fn </span>from(p: <span class="kw-2">*mut </span>T) -&gt; <span class="self">Self </span>{
+        Id::Ptr(p <span class="kw">as </span><span class="kw-2">*const </span>T <span class="kw">as </span><span class="kw-2">*const </span>c_void)
+    }
+}
+
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; Id&lt;<span class="lifetime">&#39;a</span>&gt; {
+    <span class="comment">// this is used in the tables-api and possibly elsewhere,
+    // but not with just default features...
+    </span><span class="attribute">#[allow(dead_code)]
+    </span><span class="kw">fn </span>as_imgui_id(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; sys::ImGuiID {
+        <span class="kw">unsafe </span>{
+            <span class="kw">match </span><span class="self">self </span>{
+                Id::Ptr(p) =&gt; sys::igGetID_Ptr(<span class="kw-2">*</span>p),
+                Id::Str(s) =&gt; {
+                    <span class="kw">let </span>s1 = s.as_ptr() <span class="kw">as </span><span class="kw-2">*const </span>std::os::raw::c_char;
+                    <span class="kw">let </span>s2 = s1.add(s.len());
+                    sys::igGetID_StrStr(s1, s2)
                 }
-                <span class="ident">Id::Int</span>(<span class="ident">i</span>) =&gt; {
-                    <span class="kw">let</span> <span class="ident">p</span> <span class="op">=</span> <span class="kw-2">*</span><span class="ident">i</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">std::os::raw::c_void</span>;
-                    <span class="ident">sys::igGetID_Ptr</span>(<span class="ident">p</span>)
-                } <span class="comment">// Id::ImGuiID(n) =&gt; *n,</span>
-            }
+                Id::Int(i) =&gt; {
+                    <span class="kw">let </span>p = <span class="kw-2">*</span>i <span class="kw">as </span><span class="kw-2">*const </span>std::os::raw::c_void;
+                    sys::igGetID_Ptr(p)
+                } <span class="comment">// Id::ImGuiID(n) =&gt; *n,
+            </span>}
         }
     }
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">Default</span> <span class="kw">for</span> <span class="ident">Id</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">default</span>() -&gt; <span class="self">Self</span> {
-        <span class="ident"><span class="self">Self</span>::Int</span>(<span class="number">0</span>)
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; Default <span class="kw">for </span>Id&lt;<span class="lifetime">&#39;a</span>&gt; {
+    <span class="kw">fn </span>default() -&gt; <span class="self">Self </span>{
+        <span class="self">Self</span>::Int(<span class="number">0</span>)
     }
 }
 
-<span class="comment">// Widgets: Input</span>
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> <span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> {
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;InputText&quot;</span>, <span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;InputTextWithHint&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">input_text</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span>, <span class="ident">L</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(
-        <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="self">self</span>,
-        <span class="ident">label</span>: <span class="ident">L</span>,
-        <span class="ident">buf</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> <span class="kw-2">mut</span> <span class="ident">String</span>,
-    ) -&gt; <span class="ident">InputText</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, <span class="ident">L</span><span class="op">&gt;</span> {
-        <span class="ident">InputText::new</span>(<span class="self">self</span>, <span class="ident">label</span>, <span class="ident">buf</span>)
+<span class="comment">// Widgets: Input
+</span><span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>&gt; Ui&lt;<span class="lifetime">&#39;ui</span>&gt; {
+    <span class="attribute">#[doc(alias = <span class="string">&quot;InputText&quot;</span>, alias = <span class="string">&quot;InputTextWithHint&quot;</span>)]
+    </span><span class="kw">pub fn </span>input_text&lt;<span class="lifetime">&#39;p</span>, L: AsRef&lt;str&gt;&gt;(
+        <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span><span class="self">self</span>,
+        label: L,
+        buf: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p </span><span class="kw-2">mut </span>String,
+    ) -&gt; InputText&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, L&gt; {
+        InputText::new(<span class="self">self</span>, label, buf)
     }
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;InputText&quot;</span>, <span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;InputTextMultiline&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">input_text_multiline</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span>, <span class="ident">L</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(
-        <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="self">self</span>,
-        <span class="ident">label</span>: <span class="ident">L</span>,
-        <span class="ident">buf</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> <span class="kw-2">mut</span> <span class="ident">String</span>,
-        <span class="ident">size</span>: [<span class="ident">f32</span>; <span class="number">2</span>],
-    ) -&gt; <span class="ident">InputTextMultiline</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, <span class="ident">L</span><span class="op">&gt;</span> {
-        <span class="ident">InputTextMultiline::new</span>(<span class="self">self</span>, <span class="ident">label</span>, <span class="ident">buf</span>, <span class="ident">size</span>)
+    <span class="attribute">#[doc(alias = <span class="string">&quot;InputText&quot;</span>, alias = <span class="string">&quot;InputTextMultiline&quot;</span>)]
+    </span><span class="kw">pub fn </span>input_text_multiline&lt;<span class="lifetime">&#39;p</span>, L: AsRef&lt;str&gt;&gt;(
+        <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span><span class="self">self</span>,
+        label: L,
+        buf: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p </span><span class="kw-2">mut </span>String,
+        size: [f32; <span class="number">2</span>],
+    ) -&gt; InputTextMultiline&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, L&gt; {
+        InputTextMultiline::new(<span class="self">self</span>, label, buf, size)
     }
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;InputFloat2&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">input_float</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span>, <span class="ident">L</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(
-        <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="self">self</span>,
-        <span class="ident">label</span>: <span class="ident">L</span>,
-        <span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> <span class="kw-2">mut</span> <span class="ident">f32</span>,
-    ) -&gt; <span class="ident">InputFloat</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, <span class="ident">L</span><span class="op">&gt;</span> {
-        <span class="ident">InputFloat::new</span>(<span class="self">self</span>, <span class="ident">label</span>, <span class="ident">value</span>)
+    <span class="attribute">#[doc(alias = <span class="string">&quot;InputFloat2&quot;</span>)]
+    </span><span class="kw">pub fn </span>input_float&lt;<span class="lifetime">&#39;p</span>, L: AsRef&lt;str&gt;&gt;(
+        <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span><span class="self">self</span>,
+        label: L,
+        value: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p </span><span class="kw-2">mut </span>f32,
+    ) -&gt; InputFloat&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, L&gt; {
+        InputFloat::new(<span class="self">self</span>, label, value)
     }
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">input_float2</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span>, <span class="ident">L</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(
-        <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="self">self</span>,
-        <span class="ident">label</span>: <span class="ident">L</span>,
-        <span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> <span class="kw-2">mut</span> [<span class="ident">f32</span>; <span class="number">2</span>],
-    ) -&gt; <span class="ident">InputFloat2</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, <span class="ident">L</span><span class="op">&gt;</span> {
-        <span class="ident">InputFloat2::new</span>(<span class="self">self</span>, <span class="ident">label</span>, <span class="ident">value</span>)
+    <span class="kw">pub fn </span>input_float2&lt;<span class="lifetime">&#39;p</span>, L: AsRef&lt;str&gt;&gt;(
+        <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span><span class="self">self</span>,
+        label: L,
+        value: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p </span><span class="kw-2">mut </span>[f32; <span class="number">2</span>],
+    ) -&gt; InputFloat2&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, L&gt; {
+        InputFloat2::new(<span class="self">self</span>, label, value)
     }
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;InputFloat3&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">input_float3</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span>, <span class="ident">L</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(
-        <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="self">self</span>,
-        <span class="ident">label</span>: <span class="ident">L</span>,
-        <span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> <span class="kw-2">mut</span> [<span class="ident">f32</span>; <span class="number">3</span>],
-    ) -&gt; <span class="ident">InputFloat3</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, <span class="ident">L</span><span class="op">&gt;</span> {
-        <span class="ident">InputFloat3::new</span>(<span class="self">self</span>, <span class="ident">label</span>, <span class="ident">value</span>)
+    <span class="attribute">#[doc(alias = <span class="string">&quot;InputFloat3&quot;</span>)]
+    </span><span class="kw">pub fn </span>input_float3&lt;<span class="lifetime">&#39;p</span>, L: AsRef&lt;str&gt;&gt;(
+        <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span><span class="self">self</span>,
+        label: L,
+        value: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p </span><span class="kw-2">mut </span>[f32; <span class="number">3</span>],
+    ) -&gt; InputFloat3&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, L&gt; {
+        InputFloat3::new(<span class="self">self</span>, label, value)
     }
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;InputFloat4&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">input_float4</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span>, <span class="ident">L</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(
-        <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="self">self</span>,
-        <span class="ident">label</span>: <span class="ident">L</span>,
-        <span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> <span class="kw-2">mut</span> [<span class="ident">f32</span>; <span class="number">4</span>],
-    ) -&gt; <span class="ident">InputFloat4</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, <span class="ident">L</span><span class="op">&gt;</span> {
-        <span class="ident">InputFloat4::new</span>(<span class="self">self</span>, <span class="ident">label</span>, <span class="ident">value</span>)
+    <span class="attribute">#[doc(alias = <span class="string">&quot;InputFloat4&quot;</span>)]
+    </span><span class="kw">pub fn </span>input_float4&lt;<span class="lifetime">&#39;p</span>, L: AsRef&lt;str&gt;&gt;(
+        <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span><span class="self">self</span>,
+        label: L,
+        value: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p </span><span class="kw-2">mut </span>[f32; <span class="number">4</span>],
+    ) -&gt; InputFloat4&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, L&gt; {
+        InputFloat4::new(<span class="self">self</span>, label, value)
     }
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;InputInt&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">input_int</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span>, <span class="ident">L</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(
-        <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="self">self</span>,
-        <span class="ident">label</span>: <span class="ident">L</span>,
-        <span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> <span class="kw-2">mut</span> <span class="ident">i32</span>,
-    ) -&gt; <span class="ident">InputInt</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, <span class="ident">L</span><span class="op">&gt;</span> {
-        <span class="ident">InputInt::new</span>(<span class="self">self</span>, <span class="ident">label</span>, <span class="ident">value</span>)
+    <span class="attribute">#[doc(alias = <span class="string">&quot;InputInt&quot;</span>)]
+    </span><span class="kw">pub fn </span>input_int&lt;<span class="lifetime">&#39;p</span>, L: AsRef&lt;str&gt;&gt;(
+        <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span><span class="self">self</span>,
+        label: L,
+        value: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p </span><span class="kw-2">mut </span>i32,
+    ) -&gt; InputInt&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, L&gt; {
+        InputInt::new(<span class="self">self</span>, label, value)
     }
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;InputInt2&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">input_int2</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span>, <span class="ident">L</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(
-        <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="self">self</span>,
-        <span class="ident">label</span>: <span class="ident">L</span>,
-        <span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> <span class="kw-2">mut</span> [<span class="ident">i32</span>; <span class="number">2</span>],
-    ) -&gt; <span class="ident">InputInt2</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, <span class="ident">L</span><span class="op">&gt;</span> {
-        <span class="ident">InputInt2::new</span>(<span class="self">self</span>, <span class="ident">label</span>, <span class="ident">value</span>)
+    <span class="attribute">#[doc(alias = <span class="string">&quot;InputInt2&quot;</span>)]
+    </span><span class="kw">pub fn </span>input_int2&lt;<span class="lifetime">&#39;p</span>, L: AsRef&lt;str&gt;&gt;(
+        <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span><span class="self">self</span>,
+        label: L,
+        value: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p </span><span class="kw-2">mut </span>[i32; <span class="number">2</span>],
+    ) -&gt; InputInt2&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, L&gt; {
+        InputInt2::new(<span class="self">self</span>, label, value)
     }
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;InputInt3&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">input_int3</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span>, <span class="ident">L</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(
-        <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="self">self</span>,
-        <span class="ident">label</span>: <span class="ident">L</span>,
-        <span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> <span class="kw-2">mut</span> [<span class="ident">i32</span>; <span class="number">3</span>],
-    ) -&gt; <span class="ident">InputInt3</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, <span class="ident">L</span><span class="op">&gt;</span> {
-        <span class="ident">InputInt3::new</span>(<span class="self">self</span>, <span class="ident">label</span>, <span class="ident">value</span>)
+    <span class="attribute">#[doc(alias = <span class="string">&quot;InputInt3&quot;</span>)]
+    </span><span class="kw">pub fn </span>input_int3&lt;<span class="lifetime">&#39;p</span>, L: AsRef&lt;str&gt;&gt;(
+        <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span><span class="self">self</span>,
+        label: L,
+        value: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p </span><span class="kw-2">mut </span>[i32; <span class="number">3</span>],
+    ) -&gt; InputInt3&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, L&gt; {
+        InputInt3::new(<span class="self">self</span>, label, value)
     }
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;InputInt4&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">input_int4</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span>, <span class="ident">L</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(
-        <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="self">self</span>,
-        <span class="ident">label</span>: <span class="ident">L</span>,
-        <span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> <span class="kw-2">mut</span> [<span class="ident">i32</span>; <span class="number">4</span>],
-    ) -&gt; <span class="ident">InputInt4</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, <span class="ident">L</span><span class="op">&gt;</span> {
-        <span class="ident">InputInt4::new</span>(<span class="self">self</span>, <span class="ident">label</span>, <span class="ident">value</span>)
+    <span class="attribute">#[doc(alias = <span class="string">&quot;InputInt4&quot;</span>)]
+    </span><span class="kw">pub fn </span>input_int4&lt;<span class="lifetime">&#39;p</span>, L: AsRef&lt;str&gt;&gt;(
+        <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span><span class="self">self</span>,
+        label: L,
+        value: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p </span><span class="kw-2">mut </span>[i32; <span class="number">4</span>],
+    ) -&gt; InputInt4&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, L&gt; {
+        InputInt4::new(<span class="self">self</span>, label, value)
     }
 }
 
 <span class="macro">create_token!</span>(
-    <span class="doccomment">/// Tracks a layout tooltip that can be ended by calling `.end()` or by dropping.</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">TooltipToken</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span>;
+    <span class="doccomment">/// Tracks a layout tooltip that can be ended by calling `.end()` or by dropping.
+    </span><span class="kw">pub struct </span>TooltipToken&lt;<span class="lifetime">&#39;ui</span>&gt;;
 
-    <span class="doccomment">/// Drops the layout tooltip manually. You can also just allow this token</span>
-    <span class="doccomment">/// to drop on its own.</span>
-    <span class="ident">drop</span> { <span class="ident">sys::igEndTooltip</span>() }
+    <span class="doccomment">/// Drops the layout tooltip manually. You can also just allow this token
+    /// to drop on its own.
+    </span>drop { sys::igEndTooltip() }
 );
 
-<span class="doccomment">/// # Tooltips</span>
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> <span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Construct a tooltip window that can have any kind of content.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Typically used with `Ui::is_item_hovered()` or some other conditional check.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">/// # use arcdps_imgui::*;</span>
-    <span class="doccomment">/// fn user_interface(ui: &amp;Ui) {</span>
-    <span class="doccomment">///     ui.text(&quot;Hover over me&quot;);</span>
-    <span class="doccomment">///     if ui.is_item_hovered() {</span>
-    <span class="doccomment">///         ui.tooltip(|| {</span>
-    <span class="doccomment">///             ui.text_colored([1.0, 0.0, 0.0, 1.0], im_str!(&quot;I&#39;m red!&quot;));</span>
-    <span class="doccomment">///         });</span>
-    <span class="doccomment">///     }</span>
-    <span class="doccomment">/// }</span>
-    <span class="doccomment">/// ```</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;BeginTooltip&quot;</span>, <span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;EndTootip&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">tooltip</span><span class="op">&lt;</span><span class="ident">F</span>: <span class="ident">FnOnce</span>()<span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="ident">F</span>) {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igBeginTooltip</span>() };
-        <span class="ident">f</span>();
-        <span class="kw">unsafe</span> { <span class="ident">sys::igEndTooltip</span>() };
+<span class="doccomment">/// # Tooltips
+</span><span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>&gt; Ui&lt;<span class="lifetime">&#39;ui</span>&gt; {
+    <span class="doccomment">/// Construct a tooltip window that can have any kind of content.
+    ///
+    /// Typically used with `Ui::is_item_hovered()` or some other conditional check.
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// # use arcdps_imgui::*;
+    /// fn user_interface(ui: &amp;Ui) {
+    ///     ui.text(&quot;Hover over me&quot;);
+    ///     if ui.is_item_hovered() {
+    ///         ui.tooltip(|| {
+    ///             ui.text_colored([1.0, 0.0, 0.0, 1.0], im_str!(&quot;I&#39;m red!&quot;));
+    ///         });
+    ///     }
+    /// }
+    /// ```
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;BeginTooltip&quot;</span>, alias = <span class="string">&quot;EndTootip&quot;</span>)]
+    </span><span class="kw">pub fn </span>tooltip&lt;F: FnOnce()&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) {
+        <span class="kw">unsafe </span>{ sys::igBeginTooltip() };
+        f();
+        <span class="kw">unsafe </span>{ sys::igEndTooltip() };
     }
-    <span class="doccomment">/// Construct a tooltip window that can have any kind of content.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Returns a `TooltipToken` that must be ended by calling `.end()`</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;BeginTooltip&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">begin_tooltip</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">TooltipToken</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span> {
-        <span class="kw">unsafe</span> { <span class="ident">sys::igBeginTooltip</span>() };
-        <span class="ident">TooltipToken::new</span>(<span class="self">self</span>)
+    <span class="doccomment">/// Construct a tooltip window that can have any kind of content.
+    ///
+    /// Returns a `TooltipToken` that must be ended by calling `.end()`
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;BeginTooltip&quot;</span>)]
+    </span><span class="kw">pub fn </span>begin_tooltip(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; TooltipToken&lt;<span class="lifetime">&#39;_</span>&gt; {
+        <span class="kw">unsafe </span>{ sys::igBeginTooltip() };
+        TooltipToken::new(<span class="self">self</span>)
     }
-    <span class="doccomment">/// Construct a tooltip window with simple text content.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Typically used with `Ui::is_item_hovered()` or some other conditional check.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">/// # use arcdps_imgui::*;</span>
-    <span class="doccomment">/// fn user_interface(ui: &amp;Ui) {</span>
-    <span class="doccomment">///     ui.text(&quot;Hover over me&quot;);</span>
-    <span class="doccomment">///     if ui.is_item_hovered() {</span>
-    <span class="doccomment">///         ui.tooltip_text(&quot;I&#39;m a tooltip!&quot;);</span>
-    <span class="doccomment">///     }</span>
-    <span class="doccomment">/// }</span>
-    <span class="doccomment">/// ```</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;BeginTooltip&quot;</span>, <span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;EndTootip&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">tooltip_text</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">text</span>: <span class="ident">T</span>) {
-        <span class="self">self</span>.<span class="ident">tooltip</span>(<span class="op">|</span><span class="op">|</span> <span class="self">self</span>.<span class="ident">text</span>(<span class="ident">text</span>));
+    <span class="doccomment">/// Construct a tooltip window with simple text content.
+    ///
+    /// Typically used with `Ui::is_item_hovered()` or some other conditional check.
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// # use arcdps_imgui::*;
+    /// fn user_interface(ui: &amp;Ui) {
+    ///     ui.text(&quot;Hover over me&quot;);
+    ///     if ui.is_item_hovered() {
+    ///         ui.tooltip_text(&quot;I&#39;m a tooltip!&quot;);
+    ///     }
+    /// }
+    /// ```
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;BeginTooltip&quot;</span>, alias = <span class="string">&quot;EndTootip&quot;</span>)]
+    </span><span class="kw">pub fn </span>tooltip_text&lt;T: AsRef&lt;str&gt;&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, text: T) {
+        <span class="self">self</span>.tooltip(|| <span class="self">self</span>.text(text));
     }
 }
 
-<span class="comment">// Widgets: ListBox</span>
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> <span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> {
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;ListBox&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">list_box</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span>, <span class="ident">StringType</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span> <span class="op">+</span> <span class="question-mark">?</span><span class="ident">Sized</span><span class="op">&gt;</span>(
+<span class="comment">// Widgets: ListBox
+</span><span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>&gt; Ui&lt;<span class="lifetime">&#39;ui</span>&gt; {
+    <span class="attribute">#[doc(alias = <span class="string">&quot;ListBox&quot;</span>)]
+    </span><span class="kw">pub fn </span>list_box&lt;<span class="lifetime">&#39;p</span>, StringType: AsRef&lt;str&gt; + <span class="question-mark">?</span>Sized&gt;(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">label</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>,
-        <span class="ident">current_item</span>: <span class="kw-2">&amp;mut</span> <span class="ident">i32</span>,
-        <span class="ident">items</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> [<span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> <span class="ident">StringType</span>],
-        <span class="ident">height_in_items</span>: <span class="ident">i32</span>,
-    ) -&gt; <span class="ident">bool</span> {
-        <span class="kw">let</span> (<span class="ident">label_ptr</span>, <span class="ident">items_inner</span>) <span class="op">=</span> <span class="kw">unsafe</span> {
-            <span class="kw">let</span> <span class="ident">handle</span> <span class="op">=</span> <span class="kw-2">&amp;mut</span> <span class="kw-2">*</span><span class="self">self</span>.<span class="ident">buffer</span>.<span class="ident">get</span>();
+        label: <span class="kw">impl </span>AsRef&lt;str&gt;,
+        current_item: <span class="kw-2">&amp;mut </span>i32,
+        items: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p </span>[<span class="kw-2">&amp;</span><span class="lifetime">&#39;p </span>StringType],
+        height_in_items: i32,
+    ) -&gt; bool {
+        <span class="kw">let </span>(label_ptr, items_inner) = <span class="kw">unsafe </span>{
+            <span class="kw">let </span>handle = <span class="kw-2">&amp;mut *</span><span class="self">self</span>.buffer.get();
 
-            <span class="ident">handle</span>.<span class="ident">refresh_buffer</span>();
-            <span class="kw">let</span> <span class="ident">label_ptr</span> <span class="op">=</span> <span class="ident">handle</span>.<span class="ident">push</span>(<span class="ident">label</span>);
+            handle.refresh_buffer();
+            <span class="kw">let </span>label_ptr = handle.push(label);
 
-            <span class="kw">let</span> <span class="ident">items_inner</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="kw">_</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">items</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="kw-2">&amp;</span><span class="ident">v</span><span class="op">|</span> <span class="ident">handle</span>.<span class="ident">push</span>(<span class="ident">v</span>)).<span class="ident">collect</span>();
+            <span class="kw">let </span>items_inner: Vec&lt;<span class="kw">_</span>&gt; = items.iter().map(|<span class="kw-2">&amp;</span>v| handle.push(v)).collect();
 
-            (<span class="ident">label_ptr</span>, <span class="ident">items_inner</span>)
+            (label_ptr, items_inner)
         };
 
-        <span class="kw">unsafe</span> {
-            <span class="ident">sys::igListBox_Str_arr</span>(
-                <span class="ident">label_ptr</span>,
-                <span class="ident">current_item</span>,
-                <span class="ident">items_inner</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="kw-2">*const</span> <span class="ident">c_char</span>,
-                <span class="ident">items_inner</span>.<span class="ident">len</span>() <span class="kw">as</span> <span class="ident">i32</span>,
-                <span class="ident">height_in_items</span>,
+        <span class="kw">unsafe </span>{
+            sys::igListBox_Str_arr(
+                label_ptr,
+                current_item,
+                items_inner.as_ptr() <span class="kw">as </span><span class="kw-2">*mut *const </span>c_char,
+                items_inner.len() <span class="kw">as </span>i32,
+                height_in_items,
             )
         }
     }
 
-    <span class="comment">// written out for the future times...</span>
-    <span class="comment">// #[doc(alias = &quot;ListBox&quot;)]</span>
-    <span class="comment">// pub fn list_box_const&lt;&#39;p, StringType: AsRef&lt;str&gt; + ?Sized, const N: usize&gt;(</span>
-    <span class="comment">//     &amp;self,</span>
-    <span class="comment">//     label: impl AsRef&lt;str&gt;,</span>
-    <span class="comment">//     current_item: &amp;mut i32,</span>
-    <span class="comment">//     items: [&amp;&#39;p StringType; N],</span>
-    <span class="comment">//     height_in_items: i32,</span>
-    <span class="comment">// ) -&gt; bool {</span>
-    <span class="comment">//     let (label_ptr, items_inner) = unsafe {</span>
-    <span class="comment">//         let handle = &amp;mut *self.buffer.get();</span>
+    <span class="comment">// written out for the future times...
+    // #[doc(alias = &quot;ListBox&quot;)]
+    // pub fn list_box_const&lt;&#39;p, StringType: AsRef&lt;str&gt; + ?Sized, const N: usize&gt;(
+    //     &amp;self,
+    //     label: impl AsRef&lt;str&gt;,
+    //     current_item: &amp;mut i32,
+    //     items: [&amp;&#39;p StringType; N],
+    //     height_in_items: i32,
+    // ) -&gt; bool {
+    //     let (label_ptr, items_inner) = unsafe {
+    //         let handle = &amp;mut *self.buffer.get();
 
-    <span class="comment">//         handle.refresh_buffer();</span>
-    <span class="comment">//         let label_ptr = handle.push(label);</span>
+    //         handle.refresh_buffer();
+    //         let label_ptr = handle.push(label);
 
-    <span class="comment">//         let mut items_inner: [*const i8; N] = [std::ptr::null(); N];</span>
+    //         let mut items_inner: [*const i8; N] = [std::ptr::null(); N];
 
-    <span class="comment">//         for (i, item) in items.iter().enumerate() {</span>
-    <span class="comment">//             items_inner[i] = handle.push(item);</span>
-    <span class="comment">//         }</span>
+    //         for (i, item) in items.iter().enumerate() {
+    //             items_inner[i] = handle.push(item);
+    //         }
 
-    <span class="comment">//         (label_ptr, items_inner)</span>
-    <span class="comment">//     };</span>
+    //         (label_ptr, items_inner)
+    //     };
 
-    <span class="comment">//     unsafe {</span>
-    <span class="comment">//         sys::igListBoxStr_arr(</span>
-    <span class="comment">//             label_ptr,</span>
-    <span class="comment">//             current_item,</span>
-    <span class="comment">//             items_inner.as_ptr() as *mut *const c_char,</span>
-    <span class="comment">//             items_inner.len() as i32,</span>
-    <span class="comment">//             height_in_items,</span>
-    <span class="comment">//         )</span>
-    <span class="comment">//     }</span>
-    <span class="comment">// }</span>
-}
+    //     unsafe {
+    //         sys::igListBoxStr_arr(
+    //             label_ptr,
+    //             current_item,
+    //             items_inner.as_ptr() as *mut *const c_char,
+    //             items_inner.len() as i32,
+    //             height_in_items,
+    //         )
+    //     }
+    // }
+</span>}
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> <span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> {
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PlotLines&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">plot_lines</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span>, <span class="ident">Label</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(
-        <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="self">self</span>,
-        <span class="ident">label</span>: <span class="ident">Label</span>,
-        <span class="ident">values</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> [<span class="ident">f32</span>],
-    ) -&gt; <span class="ident">PlotLines</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, <span class="ident">Label</span><span class="op">&gt;</span> {
-        <span class="ident">PlotLines::new</span>(<span class="self">self</span>, <span class="ident">label</span>, <span class="ident">values</span>)
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>&gt; Ui&lt;<span class="lifetime">&#39;ui</span>&gt; {
+    <span class="attribute">#[doc(alias = <span class="string">&quot;PlotLines&quot;</span>)]
+    </span><span class="kw">pub fn </span>plot_lines&lt;<span class="lifetime">&#39;p</span>, Label: AsRef&lt;str&gt;&gt;(
+        <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span><span class="self">self</span>,
+        label: Label,
+        values: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p </span>[f32],
+    ) -&gt; PlotLines&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, Label&gt; {
+        PlotLines::new(<span class="self">self</span>, label, values)
     }
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> <span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> {
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PlotHistogram&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">plot_histogram</span><span class="op">&lt;</span><span class="lifetime">&#39;p</span>, <span class="ident">Label</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(
-        <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="self">self</span>,
-        <span class="ident">label</span>: <span class="ident">Label</span>,
-        <span class="ident">values</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p</span> [<span class="ident">f32</span>],
-    ) -&gt; <span class="ident">PlotHistogram</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, <span class="ident">Label</span><span class="op">&gt;</span> {
-        <span class="ident">PlotHistogram::new</span>(<span class="self">self</span>, <span class="ident">label</span>, <span class="ident">values</span>)
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>&gt; Ui&lt;<span class="lifetime">&#39;ui</span>&gt; {
+    <span class="attribute">#[doc(alias = <span class="string">&quot;PlotHistogram&quot;</span>)]
+    </span><span class="kw">pub fn </span>plot_histogram&lt;<span class="lifetime">&#39;p</span>, Label: AsRef&lt;str&gt;&gt;(
+        <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span><span class="self">self</span>,
+        label: Label,
+        values: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p </span>[f32],
+    ) -&gt; PlotHistogram&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, Label&gt; {
+        PlotHistogram::new(<span class="self">self</span>, label, values)
     }
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> <span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Calculate the size required for a given text string.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This is the same as [calc_text_size_with_opts](Self::calc_text_size_with_opts)</span>
-    <span class="doccomment">/// with `hide_text_after_double_hash` set to false and `wrap_width` set to `-1.0`.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;CalcTextSize&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">calc_text_size</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">text</span>: <span class="ident">T</span>) -&gt; [<span class="ident">f32</span>; <span class="number">2</span>] {
-        <span class="self">self</span>.<span class="ident">calc_text_size_with_opts</span>(<span class="ident">text</span>, <span class="bool-val">false</span>, <span class="op">-</span><span class="number">1.0</span>)
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>&gt; Ui&lt;<span class="lifetime">&#39;ui</span>&gt; {
+    <span class="doccomment">/// Calculate the size required for a given text string.
+    ///
+    /// This is the same as [calc_text_size_with_opts](Self::calc_text_size_with_opts)
+    /// with `hide_text_after_double_hash` set to false and `wrap_width` set to `-1.0`.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;CalcTextSize&quot;</span>)]
+    </span><span class="kw">pub fn </span>calc_text_size&lt;T: AsRef&lt;str&gt;&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, text: T) -&gt; [f32; <span class="number">2</span>] {
+        <span class="self">self</span>.calc_text_size_with_opts(text, <span class="bool-val">false</span>, -<span class="number">1.0</span>)
     }
 
-    <span class="doccomment">/// Calculate the size required for a given text string.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// hide_text_after_double_hash allows the user to insert comments into their text, using a double hash-tag prefix.</span>
-    <span class="doccomment">/// This is a feature of imgui.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// wrap_width allows you to request a width at which to wrap the text to a newline for the calculation.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;CalcTextSize&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">calc_text_size_with_opts</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(
+    <span class="doccomment">/// Calculate the size required for a given text string.
+    ///
+    /// hide_text_after_double_hash allows the user to insert comments into their text, using a double hash-tag prefix.
+    /// This is a feature of imgui.
+    ///
+    /// wrap_width allows you to request a width at which to wrap the text to a newline for the calculation.
+    </span><span class="attribute">#[doc(alias = <span class="string">&quot;CalcTextSize&quot;</span>)]
+    </span><span class="kw">pub fn </span>calc_text_size_with_opts&lt;T: AsRef&lt;str&gt;&gt;(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">text</span>: <span class="ident">T</span>,
-        <span class="ident">hide_text_after_double_hash</span>: <span class="ident">bool</span>,
-        <span class="ident">wrap_width</span>: <span class="ident">f32</span>,
-    ) -&gt; [<span class="ident">f32</span>; <span class="number">2</span>] {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">out</span> <span class="op">=</span> <span class="ident">sys::ImVec2::zero</span>();
-        <span class="kw">let</span> <span class="ident">text</span> <span class="op">=</span> <span class="ident">text</span>.<span class="ident">as_ref</span>();
+        text: T,
+        hide_text_after_double_hash: bool,
+        wrap_width: f32,
+    ) -&gt; [f32; <span class="number">2</span>] {
+        <span class="kw">let </span><span class="kw-2">mut </span>out = sys::ImVec2::zero();
+        <span class="kw">let </span>text = text.as_ref();
 
-        <span class="kw">unsafe</span> {
-            <span class="kw">let</span> <span class="ident">start</span> <span class="op">=</span> <span class="ident">text</span>.<span class="ident">as_ptr</span>();
-            <span class="kw">let</span> <span class="ident">end</span> <span class="op">=</span> <span class="ident">start</span>.<span class="ident">add</span>(<span class="ident">text</span>.<span class="ident">len</span>());
+        <span class="kw">unsafe </span>{
+            <span class="kw">let </span>start = text.as_ptr();
+            <span class="kw">let </span>end = start.add(text.len());
 
-            <span class="ident">sys::igCalcTextSize</span>(
-                <span class="kw-2">&amp;mut</span> <span class="ident">out</span>,
-                <span class="ident">start</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">c_char</span>,
-                <span class="ident">end</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">c_char</span>,
-                <span class="ident">hide_text_after_double_hash</span>,
-                <span class="ident">wrap_width</span>,
+            sys::igCalcTextSize(
+                <span class="kw-2">&amp;mut </span>out,
+                start <span class="kw">as </span><span class="kw-2">*const </span>c_char,
+                end <span class="kw">as </span><span class="kw-2">*const </span>c_char,
+                hide_text_after_double_hash,
+                wrap_width,
             )
         };
-        <span class="ident">out</span>.<span class="ident">into</span>()
+        out.into()
     }
 }
 
-<span class="doccomment">/// # Draw list for custom drawing</span>
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> <span class="ident">Ui</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Get access to drawing API</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```rust,no_run</span>
-    <span class="doccomment">/// # use arcdps_imgui::*;</span>
-    <span class="doccomment">/// fn custom_draw(ui: &amp;Ui) {</span>
-    <span class="doccomment">///     let draw_list = ui.get_window_draw_list();</span>
-    <span class="doccomment">///     // Draw a line</span>
-    <span class="doccomment">///     const WHITE: [f32; 3] = [1.0, 1.0, 1.0];</span>
-    <span class="doccomment">///     draw_list.add_line([100.0, 100.0], [200.0, 200.0], WHITE).build();</span>
-    <span class="doccomment">///     // Continue drawing ...</span>
-    <span class="doccomment">/// }</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This function will panic if several instances of [`DrawListMut`]</span>
-    <span class="doccomment">/// coexist. Before a new instance is got, a previous instance should be</span>
-    <span class="doccomment">/// dropped.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```rust</span>
-    <span class="doccomment">/// # use arcdps_imgui::*;</span>
-    <span class="doccomment">/// fn custom_draw(ui: &amp;Ui) {</span>
-    <span class="doccomment">///     let draw_list = ui.get_window_draw_list();</span>
-    <span class="doccomment">///     // Draw something...</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///     // This second call will panic!</span>
-    <span class="doccomment">///     let draw_list = ui.get_window_draw_list();</span>
-    <span class="doccomment">/// }</span>
-    <span class="doccomment">/// ```</span>
-    <span class="attribute">#[<span class="ident">must_use</span>]</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GetWindowDrawList&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_window_draw_list</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="self">self</span>) -&gt; <span class="ident">DrawListMut</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> {
-        <span class="ident">DrawListMut::window</span>(<span class="self">self</span>)
+<span class="doccomment">/// # Draw list for custom drawing
+</span><span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>&gt; Ui&lt;<span class="lifetime">&#39;ui</span>&gt; {
+    <span class="doccomment">/// Get access to drawing API
+    ///
+    /// # Examples
+    ///
+    /// ```rust,no_run
+    /// # use arcdps_imgui::*;
+    /// fn custom_draw(ui: &amp;Ui) {
+    ///     let draw_list = ui.get_window_draw_list();
+    ///     // Draw a line
+    ///     const WHITE: [f32; 3] = [1.0, 1.0, 1.0];
+    ///     draw_list.add_line([100.0, 100.0], [200.0, 200.0], WHITE).build();
+    ///     // Continue drawing ...
+    /// }
+    /// ```
+    ///
+    /// This function will panic if several instances of [`DrawListMut`]
+    /// coexist. Before a new instance is got, a previous instance should be
+    /// dropped.
+    ///
+    /// ```rust
+    /// # use arcdps_imgui::*;
+    /// fn custom_draw(ui: &amp;Ui) {
+    ///     let draw_list = ui.get_window_draw_list();
+    ///     // Draw something...
+    ///
+    ///     // This second call will panic!
+    ///     let draw_list = ui.get_window_draw_list();
+    /// }
+    /// ```
+    </span><span class="attribute">#[must_use]
+    #[doc(alias = <span class="string">&quot;GetWindowDrawList&quot;</span>)]
+    </span><span class="kw">pub fn </span>get_window_draw_list(<span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span><span class="self">self</span>) -&gt; DrawListMut&lt;<span class="lifetime">&#39;ui</span>&gt; {
+        DrawListMut::window(<span class="self">self</span>)
     }
 
-    <span class="attribute">#[<span class="ident">must_use</span>]</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GetBackgroundDrawList&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_background_draw_list</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="self">self</span>) -&gt; <span class="ident">DrawListMut</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> {
-        <span class="ident">DrawListMut::background</span>(<span class="self">self</span>)
+    <span class="attribute">#[must_use]
+    #[doc(alias = <span class="string">&quot;GetBackgroundDrawList&quot;</span>)]
+    </span><span class="kw">pub fn </span>get_background_draw_list(<span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span><span class="self">self</span>) -&gt; DrawListMut&lt;<span class="lifetime">&#39;ui</span>&gt; {
+        DrawListMut::background(<span class="self">self</span>)
     }
 
-    <span class="attribute">#[<span class="ident">must_use</span>]</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GetForegroundDrawList&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_foreground_draw_list</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;ui</span> <span class="self">self</span>) -&gt; <span class="ident">DrawListMut</span><span class="op">&lt;</span><span class="lifetime">&#39;ui</span><span class="op">&gt;</span> {
-        <span class="ident">DrawListMut::foreground</span>(<span class="self">self</span>)
+    <span class="attribute">#[must_use]
+    #[doc(alias = <span class="string">&quot;GetForegroundDrawList&quot;</span>)]
+    </span><span class="kw">pub fn </span>get_foreground_draw_list(<span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span><span class="self">self</span>) -&gt; DrawListMut&lt;<span class="lifetime">&#39;ui</span>&gt; {
+        DrawListMut::foreground(<span class="self">self</span>)
     }
 }
 
-<span class="doccomment">/// Condition for applying a setting</span>
-<span class="attribute">#[<span class="ident">repr</span>(<span class="ident">i8</span>)]</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">Eq</span>, <span class="ident">PartialEq</span>)]</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">Condition</span> {
-    <span class="doccomment">/// Never apply the setting</span>
-    <span class="ident">Never</span> <span class="op">=</span> <span class="op">-</span><span class="number">1</span>,
-    <span class="doccomment">/// Always apply the setting</span>
-    <span class="ident">Always</span> <span class="op">=</span> <span class="ident">sys::ImGuiCond_Always</span> <span class="kw">as</span> <span class="ident">i8</span>,
-    <span class="doccomment">/// Apply the setting once per runtime session (only the first call will succeed)</span>
-    <span class="ident">Once</span> <span class="op">=</span> <span class="ident">sys::ImGuiCond_Once</span> <span class="kw">as</span> <span class="ident">i8</span>,
-    <span class="doccomment">/// Apply the setting if the object/window has no persistently saved data (no entry in .ini</span>
-    <span class="doccomment">/// file)</span>
-    <span class="ident">FirstUseEver</span> <span class="op">=</span> <span class="ident">sys::ImGuiCond_FirstUseEver</span> <span class="kw">as</span> <span class="ident">i8</span>,
-    <span class="doccomment">/// Apply the setting if the object/window is appearing after being hidden/inactive (or the</span>
-    <span class="doccomment">/// first time)</span>
-    <span class="ident">Appearing</span> <span class="op">=</span> <span class="ident">sys::ImGuiCond_Appearing</span> <span class="kw">as</span> <span class="ident">i8</span>,
+<span class="doccomment">/// Condition for applying a setting
+</span><span class="attribute">#[repr(i8)]
+#[derive(Copy, Clone, Debug, Eq, PartialEq)]
+</span><span class="kw">pub enum </span>Condition {
+    <span class="doccomment">/// Never apply the setting
+    </span>Never = -<span class="number">1</span>,
+    <span class="doccomment">/// Always apply the setting
+    </span>Always = sys::ImGuiCond_Always <span class="kw">as </span>i8,
+    <span class="doccomment">/// Apply the setting once per runtime session (only the first call will succeed)
+    </span>Once = sys::ImGuiCond_Once <span class="kw">as </span>i8,
+    <span class="doccomment">/// Apply the setting if the object/window has no persistently saved data (no entry in .ini
+    /// file)
+    </span>FirstUseEver = sys::ImGuiCond_FirstUseEver <span class="kw">as </span>i8,
+    <span class="doccomment">/// Apply the setting if the object/window is appearing after being hidden/inactive (or the
+    /// first time)
+    </span>Appearing = sys::ImGuiCond_Appearing <span class="kw">as </span>i8,
 }
 
-<span class="doccomment">/// A cardinal direction</span>
-<span class="attribute">#[<span class="ident">repr</span>(<span class="ident">i32</span>)]</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">Eq</span>, <span class="ident">PartialEq</span>)]</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">Direction</span> {
-    <span class="prelude-val">None</span> <span class="op">=</span> <span class="ident">sys::ImGuiDir_None</span>,
-    <span class="ident">Left</span> <span class="op">=</span> <span class="ident">sys::ImGuiDir_Left</span>,
-    <span class="ident">Right</span> <span class="op">=</span> <span class="ident">sys::ImGuiDir_Right</span>,
-    <span class="ident">Up</span> <span class="op">=</span> <span class="ident">sys::ImGuiDir_Up</span>,
-    <span class="ident">Down</span> <span class="op">=</span> <span class="ident">sys::ImGuiDir_Down</span>,
+<span class="doccomment">/// A cardinal direction
+</span><span class="attribute">#[repr(i32)]
+#[derive(Copy, Clone, Debug, Eq, PartialEq)]
+</span><span class="kw">pub enum </span>Direction {
+    <span class="prelude-val">None </span>= sys::ImGuiDir_None,
+    Left = sys::ImGuiDir_Left,
+    Right = sys::ImGuiDir_Right,
+    Up = sys::ImGuiDir_Up,
+    Down = sys::ImGuiDir_Down,
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="arcdps_imgui" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="arcdps_imgui" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.0 (69f9c33d7 2022-12-12)" ></div></body></html>
