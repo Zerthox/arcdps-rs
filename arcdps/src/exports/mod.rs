@@ -23,6 +23,7 @@ use std::{
 };
 
 /// Retrieves the ArcDPS version as string.
+#[inline]
 pub fn version() -> Option<&'static str> {
     unsafe { ARC_GLOBALS.version }
 }

@@ -15,6 +15,7 @@ pub mod raw {
 
     /// Retrieves [`RawKey`] for a given [`Control`] from Unofficial Extras.
     /// `key_index` can be `0` or `1` for primary/secondary keybind respectively.
+    #[inline]
     pub unsafe fn get_key(control: Control, key_index: u32) -> RawKey {
         EXTRAS_GLOBALS
             .get_key
@@ -22,6 +23,7 @@ pub mod raw {
     }
 
     /// Retrieves [`RawKeybind`] for a given [`Control`] from Unofficial Extras.
+    #[inline]
     pub unsafe fn get_keybind(control: Control) -> RawKeybind {
         EXTRAS_GLOBALS
             .get_keybind
