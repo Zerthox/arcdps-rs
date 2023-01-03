@@ -6,7 +6,7 @@ pub mod raw;
 
 use crate::{
     api::{CombatEvent, Profession},
-    globals::ARC_INSTANCE,
+    globals::ARC_GLOBALS,
     imgui::sys::ImVec4,
 };
 use raw::{
@@ -24,7 +24,7 @@ use std::{
 
 /// Retrieves the ArcDPS version as string.
 pub fn version() -> Option<&'static str> {
-    unsafe { ARC_INSTANCE.version }
+    unsafe { ARC_GLOBALS.version }
 }
 
 /// Retrieves the config path from ArcDPS.

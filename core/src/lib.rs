@@ -291,7 +291,7 @@ pub mod __macro {
     pub use crate::util::{str_from_cstr, str_to_wide, strip_account_prefix};
 
     use crate::{
-        globals::{init_imgui, ARC_INSTANCE},
+        globals::{init_imgui, ARC_GLOBALS},
         imgui,
         panic::init_panic_hook,
     };
@@ -313,16 +313,16 @@ pub mod __macro {
     ) {
         // arc exports have to be retrieved before panic hook & logging
         init_imgui(imgui_ctx, malloc, free);
-        ARC_INSTANCE.init(arc_handle, str_from_cstr(arc_version));
+        ARC_GLOBALS.init(arc_handle, str_from_cstr(arc_version));
 
         // only set panic hook if export e3 was found
-        if ARC_INSTANCE.e3.is_some() {
+        if ARC_GLOBALS.e3.is_some() {
             init_panic_hook(name);
         }
 
         // only set logger if export e8 was found
         #[cfg(feature = "log")]
-        if ARC_INSTANCE.e8.is_some() {
+        if ARC_GLOBALS.e8.is_some() {
             let result = log::set_boxed_logger(Box::new(WindowLogger::new(name)));
             if result.is_ok() {
                 log::set_max_level(log::LevelFilter::Trace);
@@ -333,6 +333,6 @@ pub mod __macro {
     /// Internally used function to retrieve the [`imgui::Ui`].
     #[inline]
     pub unsafe fn ui() -> &'static imgui::Ui<'static> {
-        ARC_INSTANCE.ui.as_ref().unwrap()
+        ARC_GLOBALS.ui.as_ref().unwrap()
     }
 }

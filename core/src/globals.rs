@@ -8,13 +8,13 @@ use crate::{
 use std::{ffi::c_void, mem::transmute, ptr};
 use windows::Win32::Foundation::HINSTANCE;
 
-/// Global instance of Arc handle & exported functions.
-pub static mut ARC_INSTANCE: ArcInstance = ArcInstance::empty();
+/// Global instance of ArcDPS handle & exported functions.
+pub static mut ARC_GLOBALS: ArcGlobals = ArcGlobals::empty();
 
-/// Arc handle & exported functions.
+/// ArcDPS handle & exported functions.
 // TODO: should we move other globals from codegen here? or move this to codegen?
 #[derive(Debug)]
-pub struct ArcInstance {
+pub struct ArcGlobals {
     /// Handle to ArcDPS dll.
     pub handle: HINSTANCE,
 
@@ -46,8 +46,9 @@ pub struct ArcInstance {
     pub e9: Option<Export9>,
 }
 
-impl ArcInstance {
-    pub const fn empty() -> Self {
+impl ArcGlobals {
+    /// Creates an empty version of ArcDPS globals.
+    const fn empty() -> Self {
         Self {
             handle: HINSTANCE(0),
             version: None,
@@ -62,9 +63,9 @@ impl ArcInstance {
         }
     }
 
-    /// Creates a new Arc handle & exports instance.
-    pub unsafe fn new(handle: HINSTANCE, version: Option<&'static str>) -> Self {
-        Self {
+    /// Initializes the ArcDPS globals.
+    pub unsafe fn init(&mut self, handle: HINSTANCE, version: Option<&'static str>) {
+        *self = Self {
             handle,
             version,
             ui: IG_CONTEXT.as_ref().map(imgui::Ui::from_ctx),
@@ -75,12 +76,7 @@ impl ArcInstance {
             e7: transmute(exported_proc(handle, "e7\0")),
             e8: transmute(exported_proc(handle, "e8\0")),
             e9: transmute(exported_proc(handle, "e9\0")),
-        }
-    }
-
-    /// Initializes the Arc handle & exports.
-    pub unsafe fn init(&mut self, handle: HINSTANCE, version: Option<&'static str>) {
-        *self = Self::new(handle, version);
+        };
     }
 }
 
