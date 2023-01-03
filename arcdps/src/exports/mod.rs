@@ -29,6 +29,18 @@ pub fn version() -> Option<&'static str> {
 }
 
 /// Retrieves the config path from ArcDPS.
+///
+/// # Examples
+/// ```no_run
+/// use std::fs;
+/// use arcdps::exports;
+///
+/// # fn foo() -> Option<()> {
+/// let config_path = exports::config_path()?;
+/// let config_dir = config_path.parent()?;
+/// fs::write(config_dir.join("foo.txt"), "lorem ipsum");
+/// # None }
+/// ```
 pub fn config_path() -> Option<PathBuf> {
     let ptr = unsafe { e0_config_path() };
     if !ptr.is_null() {
@@ -50,6 +62,13 @@ pub fn config_path() -> Option<PathBuf> {
 /// Logs a message to ArcDPS' log file `arcdps.log`.
 ///
 /// Returns an error if the passed message could not be converted to a C-compatible string.
+///
+/// # Examples
+/// ```no_run
+/// use arcdps::exports;
+///
+/// exports::log_to_file("message from my plugin");
+/// ```
 pub fn log_to_file(message: impl Into<String>) -> Result<(), NulError> {
     let string = CString::new(message.into())?;
     unsafe { e3_log_file(string.as_ptr()) };
@@ -159,6 +178,14 @@ impl Colors {
 }
 
 /// Retrieves the color settings from ArcDPS.
+///
+/// # Examples
+/// ```no_run
+/// use arcdps::{api::Profession, exports};
+///
+/// let colors = exports::colors();
+/// let guard = colors.prof_base(Profession::Guardian);
+/// ```
 pub fn colors() -> Colors {
     // zeroing this is important for our null pointer checks later
     let mut colors = MaybeUninit::zeroed();
@@ -190,6 +217,17 @@ pub struct UISettings {
 }
 
 /// Retrieves the UI settings from ArcDPS.
+///
+/// # Examples
+/// ```no_run
+/// use arcdps::exports;
+///
+/// let ui_settings = exports::ui_settings();
+/// if !ui_settings.hidden {
+///     # let ui: arcdps::imgui::Ui = todo!();
+///     ui.text("hello world");
+/// }
+/// ```
 pub fn ui_settings() -> UISettings {
     let raw = unsafe { e6_ui_settings() };
     UISettings {
@@ -215,6 +253,14 @@ pub struct Modifiers {
 }
 
 /// Retrieves the modifier keybinds from ArcDPS.
+///
+/// # Examples
+/// ```no_run
+/// use arcdps::exports;
+///
+/// let modifiers = exports::modifiers();
+/// let multi = modifiers.modifier_multi;
+/// ```
 pub fn modifiers() -> Modifiers {
     let raw = unsafe { e7_modifiers() };
     Modifiers {
@@ -228,6 +274,13 @@ pub fn modifiers() -> Modifiers {
 /// Text can be colored in a HTML-like way: `<c=#aaaaaa>colored text</c>`.
 ///
 /// Returns an error if the passed message could not be converted to a C-compatible string.
+///
+/// # Examples
+/// ```no_run
+/// use arcdps::exports;
+///
+/// exports::log_to_window("message from my plugin");
+/// ```
 pub fn log_to_window(message: impl Into<String>) -> Result<(), NulError> {
     let string = CString::new(message.into())?;
     unsafe { e8_log_window(string.as_ptr()) };
