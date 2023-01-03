@@ -43,7 +43,7 @@ impl From<RawKeybindChange> for KeybindChange {
     }
 }
 
-/// A key.
+/// A key used by the game.
 ///
 /// This can be a [`MouseCode`], [`KeyCode`] or an [`Unknown`](Self::Unknown) code.
 #[derive(Debug, Clone)]
@@ -75,6 +75,28 @@ impl From<RawKey> for Key {
     }
 }
 
+/// A keybind used by the game.
+///
+/// This contains the `primary`as well as `secondary` [`Key`] for a [`Control`].
+#[derive(Debug, Clone)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
+pub struct Keybind {
+    /// Primary [`Key`] for this bind.
+    pub primary: Key,
+
+    /// Secondary [`Key`] for this bind.
+    pub secondary: Key,
+}
+
+impl From<RawKeybind> for Keybind {
+    fn from(raw: RawKeybind) -> Self {
+        Self {
+            primary: raw.primary.into(),
+            secondary: raw.secondary.into(),
+        }
+    }
+}
+
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[repr(C)]
@@ -101,7 +123,7 @@ pub struct RawKeybind {
     pub secondary: RawKey,
 }
 
-/// A game control (keybind).
+/// A control (player action) used by the game.
 #[derive(
     Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, TryFromPrimitive,
 )]
