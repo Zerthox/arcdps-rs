@@ -4,6 +4,7 @@
 
 pub mod callbacks;
 pub mod exports;
+pub mod globals;
 pub mod keybinds;
 pub mod message;
 
@@ -17,13 +18,14 @@ use callbacks::{
     RawExtrasChatMessageCallback, RawExtrasKeybindChangedCallback,
     RawExtrasLanguageChangedCallback, RawExtrasSquadUpdateCallback,
 };
+use globals::EXTRAS_GLOBALS;
 use std::{ops::RangeInclusive, os::raw::c_char};
 use windows::Win32::Foundation::HINSTANCE;
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
 
-/// Supported extras API version.
+/// Supported Unofficial Extras API version.
 const API_VERSION: u32 = 2;
 
 /// Supported [`ExtrasSubscriberInfo`] version range.
@@ -61,12 +63,12 @@ pub struct ExtrasAddonInfo {
 }
 
 impl ExtrasAddonInfo {
-    /// Checks compatibility with the extras addon.
+    /// Checks compatibility with the Unofficial Extras addon.
     pub fn is_compatible(&self) -> bool {
         check_compat(self.api_version, self.max_info_version)
     }
 
-    /// Whether the extras addon supports the chat message callback.
+    /// Whether the Unofficial Extras addon supports the chat message callback.
     pub fn supports_chat_message_callback(&self) -> bool {
         self.max_info_version >= 2
     }
@@ -118,12 +120,12 @@ pub struct RawExtrasAddonInfo {
 }
 
 impl RawExtrasAddonInfo {
-    /// Checks compatibility with the extras addon.
+    /// Checks compatibility with the Unofficial Extras addon.
     pub fn is_compatible(&self) -> bool {
         check_compat(self.api_version, self.max_info_version)
     }
 
-    /// Whether the extras addon supports the message callback.
+    /// Whether the Unofficial Extras addon supports the message callback.
     pub fn supports_chat_message_callback(&self) -> bool {
         self.max_info_version >= 2
     }
@@ -195,6 +197,12 @@ impl ExtrasSubscriberInfo {
         chat_message: Option<RawExtrasChatMessageCallback>,
     ) {
         if extras_addon.is_compatible() {
+            // initialize globals
+            EXTRAS_GLOBALS.init(
+                extras_addon.extras_handle,
+                str_from_cstr(extras_addon.string_version),
+            );
+
             // we simply use the max version
             self.header.info_version = extras_addon.max_info_version;
 

@@ -93,6 +93,14 @@ pub struct RawKey {
     pub modifier: i32,
 }
 
+#[derive(Debug, Clone)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
+#[repr(C)]
+pub struct RawKeybind {
+    pub primary: RawKey,
+    pub secondary: RawKey,
+}
+
 /// A game control (keybind).
 #[derive(
     Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, TryFromPrimitive,
