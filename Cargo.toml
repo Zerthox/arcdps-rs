@@ -2,4 +2,9 @@
 members = [
     "arcdps",
     "arcdps_codegen",
+    "example_plugin",
+]
+default-members = [
+    "arcdps",
+    "arcdps_codegen",
 ]
