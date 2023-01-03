@@ -10,7 +10,7 @@ keywords = ["arcdps", "guild-wars-2", "ffi", "addon", "framework"]
 license = "MIT/Apache-2.0"
 
 [dependencies]
-arcdps-codegen = { path = "../codegen" }
+arcdps_codegen = { path = "../arcdps_codegen" }
 arcdps-imgui = { version = "0.8", features = ["tables-api"] }
 chrono = "0.4"
 log = { version = "0.4", features = ["std"], optional = true }
@@ -29,5 +29,5 @@ features = [
 
 [features]
 default = []
-extras = ["arcdps-codegen/extras"]
+extras = ["arcdps_codegen/extras"]
 serde = ["dep:serde", "chrono/serde"]

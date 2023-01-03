@@ -1,5 +1,5 @@
 [workspace]
 members = [
-    "codegen",
-    "core",
+    "arcdps",
+    "arcdps_codegen",
 ]
