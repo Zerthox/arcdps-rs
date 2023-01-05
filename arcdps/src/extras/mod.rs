@@ -11,6 +11,7 @@ pub mod user;
 mod globals;
 
 pub use keybinds::{Control, Key, KeyCode, Keybind, KeybindChange, MouseCode};
+pub use message::{ChannelType, ChatMessageInfo, ChatMessageInfoOwned};
 pub use user::{UserInfo, UserInfoIter, UserInfoOwned, UserRole};
 
 use crate::util::str_from_cstr;
