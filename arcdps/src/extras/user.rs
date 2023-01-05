@@ -2,8 +2,7 @@
 
 use crate::util::{str_from_cstr, strip_account_prefix};
 use num_enum::{IntoPrimitive, TryFromPrimitive};
-use std::os::raw::c_char;
-use std::{iter::Map, slice};
+use std::{iter::Map, os::raw::c_char, slice};
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
@@ -73,8 +72,8 @@ pub struct UserInfo<'a> {
     pub ready_status: bool,
 }
 
-impl From<RawUserInfo> for UserInfo<'_> {
-    fn from(raw: RawUserInfo) -> Self {
+impl<'a> From<&'a RawUserInfo> for UserInfo<'a> {
+    fn from(raw: &RawUserInfo) -> Self {
         Self {
             account_name: unsafe { str_from_cstr(raw.account_name).map(strip_account_prefix) },
             join_time: raw.join_time,
@@ -146,7 +145,7 @@ pub type UserConvert = for<'r> fn(&'r RawUserInfo) -> UserInfo<'r>;
 
 /// Helper to convert a [`RawUserInfo`] pointer and a length to an iterator over [`UserInfo`].
 pub unsafe fn to_user_info_iter<'a>(ptr: *const RawUserInfo, len: u64) -> UserInfoIter<'a> {
-    std::slice::from_raw_parts(ptr, len as usize)
+    slice::from_raw_parts(ptr, len as usize)
         .iter()
-        .map(|raw| raw.clone().into())
+        .map(|raw| raw.into())
 }

@@ -185,8 +185,8 @@ impl ArcDpsGen {
 
                 safe(
                     event.cloned().map(Into::into),
-                    src.cloned().map(Into::into),
-                    dst.cloned().map(Into::into),
+                    src.map(Into::into),
+                    dst.map(Into::into),
                     ::arcdps::__macro::str_from_cstr(skill_name),
                     id,
                     revision

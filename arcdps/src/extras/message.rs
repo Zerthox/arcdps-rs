@@ -106,7 +106,7 @@ pub struct ChatMessageInfo<'a> {
     pub text: &'a str,
 }
 
-impl From<&RawChatMessageInfo> for ChatMessageInfo<'_> {
+impl<'a> From<&'a RawChatMessageInfo> for ChatMessageInfo<'a> {
     fn from(raw: &RawChatMessageInfo) -> Self {
         let timestamp = unsafe { str_from_cstr_len(raw.timestamp, raw.timestamp_length) };
         let timestamp =

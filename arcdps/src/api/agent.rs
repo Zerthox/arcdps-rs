@@ -37,8 +37,8 @@ pub struct Agent<'a> {
     pub team: u16,
 }
 
-impl From<RawAgent> for Agent<'_> {
-    fn from(agent: RawAgent) -> Self {
+impl<'a> From<&'a RawAgent> for Agent<'a> {
+    fn from(agent: &RawAgent) -> Self {
         Self {
             name: unsafe { str_from_cstr(agent.name) },
             id: agent.id,
