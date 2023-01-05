@@ -12,9 +12,9 @@ use serde::{Deserialize, Serialize};
 ///
 /// ```no_run
 /// # use arcdps::{Agent, AgentOwned};
-/// # fn f(agent: Agent) {
-/// let agent: AgentOwned = agent.into();
-/// # }
+/// # let agent: arcdps::Agent = todo!();
+/// let owned = agent.to_owned();
+/// let owned: AgentOwned = agent.into();
 /// ```
 #[derive(Debug, Clone)]
 pub struct Agent<'a> {
@@ -37,6 +37,13 @@ pub struct Agent<'a> {
     pub team: u16,
 }
 
+impl Agent<'_> {
+    /// Converts the [`Agent`] to the owned version [`AgentOwned`].
+    pub fn to_owned(self) -> AgentOwned {
+        self.into()
+    }
+}
+
 impl<'a> From<&'a RawAgent> for Agent<'a> {
     fn from(agent: &RawAgent) -> Self {
         Self {
@@ -50,7 +57,7 @@ impl<'a> From<&'a RawAgent> for Agent<'a> {
     }
 }
 
-/// An [`Agent`] with an owned [`String`].
+/// [`Agent`] with an owned [`String`] name.
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct AgentOwned {

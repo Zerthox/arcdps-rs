@@ -10,7 +10,85 @@ use serde::{Deserialize, Serialize};
 #[cfg(feature = "strum")]
 use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
 
-/// A [`ChatMessageInfo`] with owned [`String`] fields.
+/// A chat message.
+///
+/// Strings are available for the duration of the call.
+/// If you need it for longer than that, consider converting it to [`ChatMessageInfoOwned`].
+///
+/// ```no_run
+/// # use arcdps::extras::{ChatMessageInfo, ChatMessageInfoOwned};
+/// # let message: ChatMessageInfo = todo!();
+/// let owned = message.to_owned();
+/// let owned: ChatMessageInfoOwned = message.into();
+/// ```
+#[derive(Debug, Clone)]
+pub struct ChatMessageInfo<'a> {
+    /// A unique identifier for the channel this chat message was sent over.
+    ///
+    /// Can be used to for example differentiate between squad messages sent to different squads.
+    pub channel_id: u32,
+
+    /// Whether the message is sent in a party or a squad.
+    ///
+    /// Note that messages sent to the party chat while in a squad will have the type [`ChannelType::Squad`].
+    pub channel_type: ChannelType,
+
+    /// The subgroup the message was sent to, or `0` if it was sent to the entire squad.
+    pub subgroup: u8,
+
+    /// Whether the message is a broadcast.
+    pub is_broadcast: bool,
+
+    /// Timestamp when the message was received.
+    ///
+    /// This is the "absolute ordering" for chat messages,
+    /// however the time can potentially differ several seconds between the client and server because of latency and clock skew.
+    pub timestamp: DateTime<FixedOffset>,
+
+    /// Account name of the player that sent the message.
+    pub account_name: &'a str,
+
+    /// Character name of the player that sent the message.
+    pub character_name: &'a str,
+
+    /// Content of the message.
+    pub text: &'a str,
+}
+
+impl ChatMessageInfo<'_> {
+    /// Converts the [`ChatMessageInfo`] to the owned version [`ChatMessageInfoOwned`].
+    pub fn to_owned(self) -> ChatMessageInfoOwned {
+        self.into()
+    }
+}
+
+impl<'a> From<&'a RawChatMessageInfo> for ChatMessageInfo<'a> {
+    fn from(raw: &RawChatMessageInfo) -> Self {
+        let timestamp = unsafe { str_from_cstr_len(raw.timestamp, raw.timestamp_length) };
+        let timestamp =
+            DateTime::parse_from_rfc3339(timestamp).expect("failed to parse message timestamp");
+
+        let account_name = unsafe { str_from_cstr_len(raw.account_name, raw.account_name_length) };
+        let character_name =
+            unsafe { str_from_cstr_len(raw.character_name, raw.character_name_length) };
+        let text = unsafe { str_from_cstr_len(raw.text, raw.text_length) };
+
+        let is_broadcast = (raw.is_broadcast & 0x01) != 0;
+
+        Self {
+            channel_id: raw.channel_id,
+            channel_type: raw.channel_type,
+            subgroup: raw.subgroup,
+            is_broadcast,
+            timestamp,
+            account_name: strip_account_prefix(account_name),
+            character_name,
+            text,
+        }
+    }
+}
+
+/// [`ChatMessageInfo`] with owned [`String`] fields.
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct ChatMessageInfoOwned {
@@ -57,77 +135,6 @@ impl From<ChatMessageInfo<'_>> for ChatMessageInfoOwned {
             account_name: chat.account_name.to_string(),
             character_name: chat.character_name.to_string(),
             text: chat.text.to_string(),
-        }
-    }
-}
-
-/// A chat message.
-///
-/// Strings are available for the duration of the call.
-/// If you need it for longer than that, consider converting it to [`ChatMessageInfoOwned`].
-///
-/// ```no_run
-/// # use arcdps::extras::message::{ChatMessageInfo, ChatMessageInfoOwned};
-/// # fn f(message: ChatMessageInfo) {
-/// let message: ChatMessageInfoOwned = message.into();
-/// # }
-/// ```
-#[derive(Debug, Clone)]
-pub struct ChatMessageInfo<'a> {
-    /// A unique identifier for the channel this chat message was sent over.
-    ///
-    /// Can be used to, for example, differentiate between squad messages sent to different squads.
-    pub channel_id: u32,
-
-    /// Whether the message is sent in a party or a squad.
-    ///
-    /// Note that messages sent to the party chat while in a squad will have the type [`ChannelType::Squad`].
-    pub channel_type: ChannelType,
-
-    /// The subgroup the message was sent to, or `0` if it was sent to the entire squad.
-    pub subgroup: u8,
-
-    /// Whether the message is a broadcast.
-    pub is_broadcast: bool,
-
-    /// Timestamp when the message was received.
-    ///
-    /// This is the "absolute ordering" for chat messages,
-    /// however the time can potentially differ several seconds between the client and server because of latency and clock skew.
-    pub timestamp: DateTime<FixedOffset>,
-
-    /// Account name of the player that sent the message.
-    pub account_name: &'a str,
-
-    /// Character name of the player that sent the message.
-    pub character_name: &'a str,
-
-    /// Content of the message.
-    pub text: &'a str,
-}
-
-impl<'a> From<&'a RawChatMessageInfo> for ChatMessageInfo<'a> {
-    fn from(raw: &RawChatMessageInfo) -> Self {
-        let timestamp = unsafe { str_from_cstr_len(raw.timestamp, raw.timestamp_length) };
-        let timestamp =
-            DateTime::parse_from_rfc3339(timestamp).expect("failed to parse message timestamp");
-
-        let account_name = unsafe { str_from_cstr_len(raw.account_name, raw.account_name_length) };
-        let character_name =
-            unsafe { str_from_cstr_len(raw.character_name, raw.character_name_length) };
-        let text = unsafe { str_from_cstr_len(raw.text, raw.text_length) };
-
-        let is_broadcast = (raw.is_broadcast & 0x01) != 0;
-
-        Self {
-            channel_id: raw.channel_id,
-            channel_type: raw.channel_type,
-            subgroup: raw.subgroup,
-            is_broadcast,
-            timestamp,
-            account_name: strip_account_prefix(account_name),
-            character_name,
-            text,
         }
     }
 }
@@ -183,6 +190,7 @@ pub struct RawChatMessageInfo {
     pub text_length: u64,
 }
 
+/// Type of message channel.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[cfg_attr(

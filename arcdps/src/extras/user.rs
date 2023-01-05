@@ -44,6 +44,16 @@ pub enum UserRole {
 }
 
 /// Information about a player related to the squad.
+///
+/// Strings are available for the duration of the call.
+/// If you need it for longer than that, consider converting it to [`UserInfoOwned`].
+///
+/// ```no_run
+/// # use arcdps::extras::{UserInfo, UserInfoOwned};
+/// # let user: UserInfo = todo!();
+/// let owned = user.to_owned();
+/// let owned: UserInfoOwned = user.into();
+/// ```
 #[derive(Debug, Clone)]
 pub struct UserInfo<'a> {
     /// Account name, without leading ':'.
@@ -72,6 +82,13 @@ pub struct UserInfo<'a> {
     pub ready_status: bool,
 }
 
+impl UserInfo<'_> {
+    /// Converts the [`UserInfo`] to the owned version [`UserInfoOwned`].
+    pub fn to_owned(self) -> UserInfoOwned {
+        self.into()
+    }
+}
+
 impl<'a> From<&'a RawUserInfo> for UserInfo<'a> {
     fn from(raw: &RawUserInfo) -> Self {
         Self {
@@ -84,7 +101,7 @@ impl<'a> From<&'a RawUserInfo> for UserInfo<'a> {
     }
 }
 
-/// Information about a user with owned [`String`].
+/// [`UserInfo`] with an owned [`String`] name.
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct UserInfoOwned {
