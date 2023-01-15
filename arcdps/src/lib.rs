@@ -298,7 +298,7 @@ pub mod __macro {
     use prelude::*;
 
     #[cfg(feature = "log")]
-    use crate::log::WindowLogger;
+    use crate::log::ArcdpsLogger;
 
     /// Internally used function to initialize with information received from Arc.
     #[inline]
@@ -323,7 +323,7 @@ pub mod __macro {
         // only set logger if export e8 was found
         #[cfg(feature = "log")]
         if ARC_GLOBALS.e8.is_some() {
-            let result = log::set_boxed_logger(Box::new(WindowLogger::new(name)));
+            let result = log::set_boxed_logger(Box::new(ArcdpsLogger::new(name)));
             if result.is_ok() {
                 log::set_max_level(log::LevelFilter::Trace);
             }
