@@ -5,17 +5,19 @@
 use crate::exports::{log_to_file, log_to_window};
 use log::{Log, Metadata, Record};
 
-pub(crate) struct ArcdpsLogger {
+/// A logger logging to ArcDPS' log window or file depending on the set log target.
+pub struct ArcDpsLogger {
     name: &'static str,
 }
 
-impl ArcdpsLogger {
-    pub(crate) fn new(name: &'static str) -> Self {
+impl ArcDpsLogger {
+    /// Creates a new ArcDPS logger.
+    pub const fn new(name: &'static str) -> Self {
         Self { name }
     }
 }
 
-impl Log for ArcdpsLogger {
+impl Log for ArcDpsLogger {
     fn enabled(&self, _metadata: &Metadata) -> bool {
         true
     }
@@ -29,8 +31,15 @@ impl Log for ArcdpsLogger {
 }
 
 /// A logger logging to ArcDPS' log window.
-struct WindowLogger {
+pub struct WindowLogger {
     name: &'static str,
+}
+
+impl WindowLogger {
+    /// Creates a new window logger.
+    pub const fn new(name: &'static str) -> Self {
+        Self { name }
+    }
 }
 
 impl Log for WindowLogger {
@@ -56,8 +65,15 @@ impl Log for WindowLogger {
 }
 
 /// A logger logging to ArcDPS' log file.
-struct FileLogger {
+pub struct FileLogger {
     name: &'static str,
+}
+
+impl FileLogger {
+    /// Creates a new file logger.
+    pub const fn new(name: &'static str) -> Self {
+        Self { name }
+    }
 }
 
 impl Log for FileLogger {
