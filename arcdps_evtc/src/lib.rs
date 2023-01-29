@@ -187,7 +187,7 @@ impl CustomSkill {
     pub const DODGE: u32 = 65001;
 }
 
-/// Content local for effects & markers.
+/// Content local for [`StateChange::IdToGUID`] events.
 #[derive(
     Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, TryFromPrimitive,
 )]
@@ -198,6 +198,9 @@ impl CustomSkill {
 )]
 #[repr(u32)]
 pub enum ContentLocal {
+    /// Content is an effect.
     Effect,
+
+    /// Content is a marker.
     Marker,
 }

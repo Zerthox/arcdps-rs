@@ -146,7 +146,7 @@ pub enum StateChange {
     /// Source agent is now an attack target.
     ///
     /// `dst_agent` is the parent agent (gadget type).
-    /// Value contains the current targetable state.
+    /// `value` contains the current targetable state.
     ///
     /// *Not used in realtime API.*
     AttackTarget,
@@ -181,7 +181,7 @@ pub enum StateChange {
 
     /// Source agent is in guild.
     ///
-    /// `dst_agent` until `buff_dmg` is 16 byte (`u8`) guid.
+    /// `dst_agent` until `buff_dmg` is [`u128`] (16 byte) guid.
     ///
     /// Given in client form, needs minor rearrange for API form.
     Guild,
@@ -191,7 +191,7 @@ pub enum StateChange {
     /// If `is_flanking` probably invulnerable.
     /// If `is_shields` probably invert.
     ///
-    /// Offcycle contains the category.
+    /// `is_off_cycle` contains the category.
     /// `pad61` contains the stacking type.
     /// `pad62` contains the probably resistance.
     /// `src_master_instid` contains the max stacks.
@@ -202,8 +202,8 @@ pub enum StateChange {
 
     /// Buff formula.
     ///
-    /// Time contains `type`, `attr1`, `attr2`, `param1`, `param2`, `param3`, `trait_src` and `trait_self` as array of 8 floats.
-    /// Source instance id contains `buff_src` and `buff_self` as array of 2 floats.
+    /// `time` contains `type`, `attr1`, `attr2`, `param1`, `param2`, `param3`, `trait_src` and `trait_self` as `[f32; 8]`.
+    /// `src_instance_id` contains `buff_src` and `buff_self` as `[f32; 2]`.
     ///
     /// If `is_flanking` not NPC.
     /// If `is_shields` not player.
@@ -218,7 +218,7 @@ pub enum StateChange {
 
     /// Skill information.
     ///
-    /// Time contains `recharge`, `range0`, `range1` and `tooltiptime` as array of 4 floats.
+    /// `time` contains `recharge`, `range0`, `range1` and `tooltiptime` as `[f32; 4]`.
     ///
     /// *Not used in realtime API.*
     SkillInfo,
@@ -301,17 +301,18 @@ pub enum StateChange {
     /// Effect created.
     ///
     /// `src_agent` is owner.
-    /// `dst_agent` if at agent, else `&value = float[3] xyz`, `&iff = float[2] xy` orient, `&pad61 = float[1] z` orient, `skillid = effectid`.
-    /// If `is_flanking`: `duration = trackingid`.
-    /// `&is_shields = uint16` duration.
-    /// If `effectid == 0`, end `&is_shields = trackingid`.
+    /// `dst_agent` if located at agent.
+    /// Otherwise `value` contains `[f32; 3]` XYZ, `affinity` contains `[f32; 2]` XY orientation, `pad61` contains [`f32`] Z orientation and `skill_id` contains the effect_id.
+    /// If `is_flanking`, `duration` contains the tracking id.
+    /// `is_shields` contains duration as [`u16`].
+    /// If `effectid == 0`, end `is_shields` contains tracking id.
     ///
     /// *Not used in realtime API.*
     Effect,
 
     /// Id to GUID.
     ///
-    /// `&src_agent = 16byte` persistent content guid, `overstack_value` is a variant of [`ContentLocal`], `skillid` is content id.
+    /// `src_agent` contains [`u128`] (16 byte) persistent content guid, `overstack_value` is a variant of [`ContentLocal`](crate::ContentLocal), `skill_id` is content id.
     ///
     /// *Not used in realtime API.*
     IdToGUID,

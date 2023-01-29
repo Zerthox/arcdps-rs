@@ -1,4 +1,4 @@
-use super::{Activation, Affinity, BuffRemove, StateChange};
+use crate::{Activation, Affinity, BuffRemove, StateChange};
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};

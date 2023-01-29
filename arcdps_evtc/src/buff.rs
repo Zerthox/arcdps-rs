@@ -78,6 +78,8 @@ pub enum BuffCycle {
 }
 
 /// Buff info category.
+///
+/// Used in [`StateChange::BuffInfo`](crate::StateChange::BuffInfo) events.
 #[derive(
     Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, TryFromPrimitive,
 )]
@@ -95,7 +97,9 @@ pub enum BuffCategory {
     Stance = 16,
 }
 
-/// Attributes used in buff formulas.
+/// Attributes for buff formulas.
+///
+/// Used in [`StateChange::BuffFormula`](crate::StateChange::BuffFormula) events.
 #[derive(
     Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
 )]
