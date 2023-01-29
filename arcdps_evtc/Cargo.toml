@@ -1,0 +1,12 @@
+[package]
+name = "arcdps_evtc"
+version = "0.1.0"
+authors = ["Zerthox"]
+edition = "2021"
+description = "Rust bindings for ArcDPS' EVTC API."
+repository = "https://github.com/zerthox/arcdps-bindings"
+
+[dependencies]
+num_enum = "0.5"
+serde = { version = "1.0", features = ["derive"], optional = true }
+strum = { version = "0.24", features = ["derive"], optional = true }

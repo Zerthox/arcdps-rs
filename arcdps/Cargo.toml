@@ -11,6 +11,7 @@ license = "MIT/Apache-2.0"
 
 [dependencies]
 arcdps_codegen = { path = "../arcdps_codegen" }
+arcdps_evtc = { path = "../arcdps_evtc" }
 arcdps-imgui = { version = "0.8", features = ["tables-api"] }
 chrono = "0.4"
 log = { version = "0.4", features = ["std"], optional = true }
