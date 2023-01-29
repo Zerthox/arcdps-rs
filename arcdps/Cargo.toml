@@ -7,7 +7,7 @@ description = "Rust bindings for the Guild Wars 2 DPS-meter."
 repository = "https://github.com/zerthox/arcdps-bindings"
 categories = ["api-bindings"]
 keywords = ["arcdps", "guild-wars-2", "ffi", "addon", "framework"]
-license = "MIT/Apache-2.0"
+license = "MIT"
 
 [dependencies]
 arcdps_codegen = { path = "../arcdps_codegen" }

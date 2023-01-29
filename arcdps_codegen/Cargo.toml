@@ -5,7 +5,6 @@ authors = ["Zerthox", "Greaka"]
 edition = "2021"
 description = "Macros to generate code for ArcDPS plugins."
 repository = "https://github.com/zerthox/arcdps-bindings"
-license = "MIT/Apache-2.0"
 
 [lib]
 proc-macro = true
