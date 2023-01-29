@@ -31,4 +31,5 @@ features = [
 [features]
 default = []
 extras = ["arcdps_codegen/extras"]
-serde = ["dep:serde", "chrono/serde"]
+serde = ["dep:serde", "arcdps_evtc/serde", "chrono/serde"]
+strum = ["dep:strum", "arcdps_evtc/strum"]
