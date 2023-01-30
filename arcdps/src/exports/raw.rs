@@ -6,6 +6,11 @@ use crate::{
 use std::os::raw::c_char;
 use windows::Win32::Foundation::HINSTANCE;
 
+/// Returns the handle to the ArcDPS dll.
+pub unsafe fn handle() -> HINSTANCE {
+    ARC_GLOBALS.handle
+}
+
 /// Signature of the `e0` export. See [`e0_config_path`] for details.
 pub type Export0 = unsafe extern "C" fn() -> *const u16;
 

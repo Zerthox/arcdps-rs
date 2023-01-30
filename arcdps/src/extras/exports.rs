@@ -51,6 +51,12 @@ pub mod raw {
         keybinds::{RawKey, RawKeybind},
         Control,
     };
+    use windows::Win32::Foundation::HINSTANCE;
+
+    /// Returns the handle to the Unofficial Extras dll.
+    pub unsafe fn handle() -> HINSTANCE {
+        EXTRAS_GLOBALS.handle
+    }
 
     /// Signature of the [`get_key`] export.
     pub type ExportGetKey = unsafe extern "C" fn(control: Control, key_index: u32) -> RawKey;
