@@ -9,6 +9,7 @@ use crate::{
     globals::ARC_GLOBALS,
     imgui::sys::ImVec4,
 };
+use num_enum::{IntoPrimitive, TryFromPrimitive};
 use raw::{
     e0_config_path, e3_log_file, e5_colors, e6_ui_settings, e7_modifiers, e8_log_window,
     e9_add_event,
@@ -21,6 +22,12 @@ use std::{
     path::PathBuf,
     slice,
 };
+
+#[cfg(feature = "serde")]
+use serde::{Deserialize, Serialize};
+
+#[cfg(feature = "strum")]
+use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
 
 /// Retrieves the ArcDPS version as string.
 #[inline]
@@ -293,4 +300,42 @@ pub fn log_to_window(message: impl Into<String>) -> Result<(), NulError> {
 /// Event will end up processed like ArcDPS events and logged to EVTC.
 pub fn add_event(event: CombatEvent, sig: u32) {
     unsafe { e9_add_event(&event.into(), sig) }
+}
+
+/// Result of an `add_extension` operation.
+#[derive(
+    Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, TryFromPrimitive,
+)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
+#[cfg_attr(
+    feature = "strum",
+    derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames)
+)]
+#[repr(u32)]
+pub enum AddExtensionResult {
+    /// Extension was loaded successfully.
+    Ok,
+
+    /// Extension-specific error.
+    ExtensionError,
+
+    /// ImGui version did not match.
+    ImGuiError,
+
+    /// Obsolete ArcDPS module.
+    Obsolete,
+
+    /// An extension with the same `sig` already exists.
+    SigExists,
+
+    /// Extension did not provide callback function table.
+    NoExport,
+
+    /// Extension did not provide an `init` function.
+    NoInit,
+
+    /// Failed to load extension module with `LoadLibrary`.
+    ///
+    /// Safe to call `GetLastError`.
+    LoadError,
 }

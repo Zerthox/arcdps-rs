@@ -52,8 +52,8 @@ pub mod raw {
         Control,
     };
 
+    /// Signature of the [`get_key`] export.
     pub type ExportGetKey = unsafe extern "C" fn(control: Control, key_index: u32) -> RawKey;
-    pub type ExportGetKeybind = unsafe extern "C" fn(control: Control) -> RawKeybind;
 
     /// Retrieves the [`RawKey`] for a given game [`Control`] from Unofficial Extras.
     /// `key_index` can be `0` or `1` for primary/secondary keybind respectively.
@@ -63,6 +63,9 @@ pub mod raw {
             .get_key
             .expect("failed to find extras export get_key")(control, key_index)
     }
+
+    /// Signature of the [`get_keybind`] export.
+    pub type ExportGetKeybind = unsafe extern "C" fn(control: Control) -> RawKeybind;
 
     /// Retrieves the [`RawKeybind`] for a given game [`Control`] from Unofficial Extras.
     #[inline]

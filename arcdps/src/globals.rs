@@ -1,7 +1,10 @@
 //! Global instance with ArcDPS information.
-
+#[allow(deprecated)]
 use crate::{
-    exports::raw::{Export0, Export3, Export5, Export6, Export7, Export8, Export9},
+    exports::raw::{
+        Export0, Export3, Export5, Export6, Export7, Export8, Export9, ExportAddExtension,
+        ExportAddExtensionOld, ExportFreeExtension, ExportFreeExtensionOld,
+    },
     imgui,
     util::exported_proc,
 };
@@ -44,6 +47,20 @@ pub struct ArcGlobals {
 
     /// Add event export.
     pub e9: Option<Export9>,
+
+    /// Old add extension export.
+    #[allow(deprecated)]
+    pub add_extension_old: Option<ExportAddExtensionOld>,
+
+    /// Old free extension export.
+    #[allow(deprecated)]
+    pub free_extension_old: Option<ExportFreeExtensionOld>,
+
+    /// Add extension export.
+    pub add_extension: Option<ExportAddExtension>,
+
+    /// Free extension export.
+    pub free_extension: Option<ExportFreeExtension>,
 }
 
 impl ArcGlobals {
@@ -60,6 +77,10 @@ impl ArcGlobals {
             e7: None,
             e8: None,
             e9: None,
+            add_extension_old: None,
+            free_extension_old: None,
+            add_extension: None,
+            free_extension: None,
         }
     }
 
@@ -76,6 +97,10 @@ impl ArcGlobals {
             e7: transmute(exported_proc(handle, "e7\0")),
             e8: transmute(exported_proc(handle, "e8\0")),
             e9: transmute(exported_proc(handle, "e9\0")),
+            add_extension_old: transmute(exported_proc(handle, "addextension\0")),
+            free_extension_old: transmute(exported_proc(handle, "freeextension\0")),
+            add_extension: transmute(exported_proc(handle, "addextension2\0")),
+            free_extension: transmute(exported_proc(handle, "freeextension2\0")),
         };
     }
 }
