@@ -3,7 +3,7 @@ name = "arcdps_evtc"
 version = "0.1.0"
 authors = ["Zerthox"]
 edition = "2021"
-description = "Rust bindings for ArcDPS' EVTC API."
+description = "Rust bindings for the ArcDPS EVTC API"
 repository = "https://github.com/zerthox/arcdps-bindings"
 
 [dependencies]
