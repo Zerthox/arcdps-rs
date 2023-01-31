@@ -1,6 +1,6 @@
 use crate::{util::Endian, CombatEvent, Parse};
 use byteorder::ReadBytesExt;
-use std::io::{self};
+use std::io;
 
 impl Parse for CombatEvent {
     type Error = io::Error;

@@ -44,19 +44,17 @@ impl Parse for Agent {
         // padding added by c
         input.read_u32::<Endian>()?;
 
-        Ok({
-            Self {
-                name,
-                address,
-                profession,
-                is_elite,
-                hitbox_width,
-                hitbox_height,
-                toughness,
-                concentration,
-                healing,
-                condition,
-            }
+        Ok(Self {
+            name,
+            address,
+            profession,
+            is_elite,
+            hitbox_width,
+            hitbox_height,
+            toughness,
+            concentration,
+            healing,
+            condition,
         })
     }
 }
