@@ -6,7 +6,7 @@ ArcDPS is an addon for [Guild Wars 2](https://guildwars2.com).
 
 This project is split into multiple crates covering different parts of ArcDPS.
 
-|||
+| Crate | Purpose |
 |---|---|
 | [arcdps](./arcdps) | Bindings for ArcDPS plugins.
 | [arcdps_evtc](./arcdps_evtc) | Bindings for the ArcDPS EVTC API.
