@@ -12,7 +12,10 @@ use serde::{Deserialize, Serialize};
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct Skill {
+    /// Id of the skill.
     pub id: u32,
+
+    /// Name of the skill.
     pub name: String,
 }
 

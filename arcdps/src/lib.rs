@@ -1,4 +1,4 @@
-//! [ArcDPS](https://www.deltaconnected.com/arcdps/) bindings for Rust plugins.
+//! Bindings for [ArcDPS](https://www.deltaconnected.com/arcdps/) plugins.
 //!
 //! # Usage
 //! Plugins export information for ArcDPS via the [`export!`] macro.

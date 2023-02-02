@@ -1,3 +1,7 @@
+//! Bindings for the ArcDPS EVTC API.
+//!
+//! Includes everything shared between Arc's realtime API used by plugins and Arc's log API consumed by parsers.
+
 // workaround for strum derives on deprecated custom skill enum
 #![allow(deprecated)]
 
@@ -6,10 +10,10 @@ mod event;
 mod game;
 mod state_change;
 
-pub use buff::*;
-pub use event::*;
-pub use game::*;
-pub use state_change::*;
+pub use self::buff::*;
+pub use self::event::*;
+pub use self::game::*;
+pub use self::state_change::*;
 
 use num_enum::{FromPrimitive, IntoPrimitive, TryFromPrimitive};
 

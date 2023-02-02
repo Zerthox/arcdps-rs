@@ -1,3 +1,22 @@
+//! Parsing for ArcDPS EVTC logs.
+//!
+//! # Usage
+//! A [`Log`] can be parsed from any input implementing [`Read`](io::Read).
+//! ```no_run
+//! use arcdps_parse::{Log, Parse};
+//! use std::fs::File;
+//!
+//! # fn main() -> Result<(), arcdps_parse::ParseError> {
+//! let mut file = File::open("log.evtc")?;
+//! let log = Log::parse(&mut file)?;
+//! assert_eq!(log.header.revision, 1);
+//! # Ok(())
+//! # }
+//! ```
+//!
+//! Note that ArcDPS may save zipped log files with the `.zevtc` extension.
+//! Reading those can be realized using for example the [zip](https://docs.rs/zip/) crate.
+
 mod agent;
 mod error;
 mod event;
@@ -5,15 +24,15 @@ mod log;
 mod skill;
 mod util;
 
-pub use agent::*;
+pub use self::agent::*;
+pub use self::error::*;
+pub use self::log::*;
+pub use self::skill::*;
 pub use arcdps_evtc::*;
-pub use error::*;
-pub use log::*;
-pub use skill::*;
 
 use std::io;
 
-/// Interface for parsing a value from a [`Read`] input.
+/// Interface for parsing a value from a [`Read`](io::Read) input.
 pub trait Parse: Sized {
     /// Associated error which can happen during parsing.
     type Error;

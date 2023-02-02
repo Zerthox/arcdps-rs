@@ -4,15 +4,27 @@ use crate::{
 };
 use arcdps_evtc::CombatEvent;
 use byteorder::ReadBytesExt;
-use serde::{Deserialize, Serialize};
 use std::io;
 
-/// An EVTC log file.
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[cfg(feature = "serde")]
+use serde::{Deserialize, Serialize};
+
+/// An EVTC log.
+#[derive(Debug, Clone)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct Log {
+    /// The log header with meta information.
     pub header: Header,
+
+    /// Agents (entities) present in the log.
     pub agents: Vec<Agent>,
+
+    /// Information about skills used in the log.
     pub skills: Vec<Skill>,
+
+    /// Every [`CombatEvent`] occurring in the log.
+    ///
+    /// Some events may also hold meta information, for example [`StateChange::BuffFormula`](crate::StateChange::BuffFormula).
     pub events: Vec<CombatEvent>,
 }
 
@@ -48,10 +60,19 @@ impl Parse for Log {
 }
 
 /// An EVTC log header.
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct Header {
+    /// Date this log was recorded.
     pub date: String,
+
+    /// EVTC API revision used.
     pub revision: u8,
+
+    /// Boss id of the log target.
+    ///
+    /// An id of `1` indicates a WvW log.
+    /// An id of `2` indicates a map log.
     pub boss_id: u16,
 }
 
