@@ -128,9 +128,8 @@ impl Colors {
     unsafe fn read_color(&self, first_index: usize, second_index: usize) -> Option<Color> {
         let ptr = self.raw[first_index];
         if !ptr.is_null() {
-            // we do not need the full length slice
-            let slice = slice::from_raw_parts(ptr, second_index + 1);
-            Some(slice[second_index].into())
+            let color = *ptr.add(second_index);
+            Some(color.into())
         } else {
             None
         }
