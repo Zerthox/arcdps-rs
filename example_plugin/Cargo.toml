@@ -3,7 +3,7 @@ name = "arcdps_example_plugin"
 version = "0.1.0"
 authors = ["Zerthox"]
 edition = "2021"
-description = "Example ArcDPS plugin."
+description = "Example ArcDPS plugin"
 repository = "https://github.com/zerthox/arcdps-bindings"
 
 [dependencies]
@@ -11,4 +11,4 @@ arcdps = { path = "../arcdps", features = ["extras", "log"] }
 log = "0.4.17"
 
 [lib]
-crate-type = ["cdylib"]
+crate-type = ["cdylib"] # arcdps plugins are dynamic system libraries (dll)
