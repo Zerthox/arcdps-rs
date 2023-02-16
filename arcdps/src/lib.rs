@@ -315,25 +315,27 @@ pub mod __macro {
         d3d_version: u32,
         name: &'static str,
     ) {
+        // initialize imgui context
+        init_imgui(imgui_ctx, malloc, free);
+
         // arc exports have to be retrieved before panic hook & logging
         ARC_GLOBALS.init(arc_handle, str_from_cstr(arc_version));
 
         // only set panic hook if export e3 was found
         if ARC_GLOBALS.e3.is_some() {
             init_panic_hook(name);
-        }
 
-        // only set logger if export e8 was found
-        #[cfg(feature = "log")]
-        if ARC_GLOBALS.e8.is_some() {
-            let result = log::set_boxed_logger(Box::new(ArcDpsLogger::new(name)));
-            if result.is_ok() {
-                log::set_max_level(log::LevelFilter::Trace);
+            // only set logger if export e3 & e8 were found
+            #[cfg(feature = "log")]
+            if ARC_GLOBALS.e8.is_some() {
+                let result = log::set_boxed_logger(Box::new(ArcDpsLogger::new(name)));
+                if result.is_ok() {
+                    log::set_max_level(log::LevelFilter::Trace);
+                }
             }
         }
 
-        // initialize imgui context & dxgi device
-        init_imgui(imgui_ctx, malloc, free);
+        // initialize dxgi device
         init_dxgi(id3d, d3d_version);
     }
 
