@@ -132,7 +132,8 @@ pub static mut D3D11_DEVICE: Option<ID3D11Device> = None;
 /// Helper to initialize DirectX device(s).
 pub unsafe fn init_dxgi(id3d: *mut c_void, d3d_version: u32) {
     if !id3d.is_null() && d3d_version == 11 {
-        let swap_chain: IDXGISwapChain = unsafe { transmute(id3d) };
+        // referencing here prevents a crash due to drop
+        let swap_chain: &IDXGISwapChain = unsafe { transmute(&id3d) };
         match swap_chain.GetDevice() {
             Ok(device) => D3D11_DEVICE = Some(device),
             Err(err) => error!(target: "both", "failed to get d3d11 device: {err}"),
