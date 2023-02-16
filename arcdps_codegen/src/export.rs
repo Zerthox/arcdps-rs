@@ -111,8 +111,9 @@ impl ArcDpsGen {
                 arc_dll: HINSTANCE,
                 malloc: Option<MallocFn>,
                 free: Option<FreeFn>,
+                d3d_version: u32,
             ) -> fn() -> &'static ArcDpsExport {
-                ::arcdps::__macro::init(arc_version, arc_dll, imgui_ctx, malloc, free, id3d, #name);
+                ::arcdps::__macro::init(arc_version, arc_dll, imgui_ctx, malloc, free, id3d, d3d_version, #name);
                 load
             }
 
