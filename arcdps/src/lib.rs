@@ -293,7 +293,7 @@ pub mod __macro {
     pub use crate::util::{str_from_cstr, str_to_wide, strip_account_prefix};
 
     use crate::{
-        globals::{init_dxgi, init_imgui, ARC_GLOBALS},
+        globals::{init_dxgi, init_imgui, ARC_GLOBALS, IG_UI},
         imgui,
         panic::init_panic_hook,
     };
@@ -315,9 +315,6 @@ pub mod __macro {
         d3d_version: u32,
         name: &'static str,
     ) {
-        // initialize imgui context
-        init_imgui(imgui_ctx, malloc, free);
-
         // arc exports have to be retrieved before panic hook & logging
         ARC_GLOBALS.init(arc_handle, str_from_cstr(arc_version));
 
@@ -335,14 +332,15 @@ pub mod __macro {
             }
         }
 
-        // initialize dxgi device
+        // initialize imgui & dxgi
+        init_imgui(imgui_ctx, malloc, free);
         init_dxgi(id3d, d3d_version);
     }
 
     /// Internally used function to retrieve the [`imgui::Ui`].
     #[inline]
     pub unsafe fn ui() -> &'static imgui::Ui<'static> {
-        ARC_GLOBALS.ui.as_ref().unwrap()
+        IG_UI.as_ref().unwrap()
     }
 }
 

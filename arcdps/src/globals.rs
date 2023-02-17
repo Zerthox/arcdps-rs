@@ -28,9 +28,6 @@ pub struct ArcGlobals {
     /// ArcDPS version as string.
     pub version: Option<&'static str>,
 
-    /// [`imgui::Ui`] kept in memory between renders.
-    pub ui: Option<imgui::Ui<'static>>,
-
     /// Config path export.
     pub e0: Option<Export0>,
 
@@ -73,7 +70,7 @@ impl ArcGlobals {
         Self {
             handle: HINSTANCE(0),
             version: None,
-            ui: None,
+
             e0: None,
             e3: None,
             e5: None,
@@ -93,7 +90,6 @@ impl ArcGlobals {
         *self = Self {
             handle,
             version,
-            ui: IG_CONTEXT.as_ref().map(imgui::Ui::from_ctx),
             e0: transmute(exported_proc(handle, "e0\0")),
             e3: transmute(exported_proc(handle, "e3\0")),
             e5: transmute(exported_proc(handle, "e5\0")),
@@ -115,6 +111,9 @@ pub type FreeFn = unsafe extern "C" fn(ptr: *mut c_void, user_data: *mut c_void)
 /// ImGui context.
 pub static mut IG_CONTEXT: Option<imgui::Context> = None;
 
+/// [`imgui::Ui`] kept in memory between renders.
+pub static mut IG_UI: Option<imgui::Ui<'static>> = None;
+
 /// Helper to initialize ImGui.
 pub unsafe fn init_imgui(
     ctx: *mut imgui::sys::ImGuiContext,
@@ -124,6 +123,7 @@ pub unsafe fn init_imgui(
     imgui::sys::igSetCurrentContext(ctx);
     imgui::sys::igSetAllocatorFunctions(malloc, free, ptr::null_mut());
     IG_CONTEXT = Some(imgui::Context::current());
+    IG_UI = Some(imgui::Ui::from_ctx(IG_CONTEXT.as_ref().unwrap_unchecked()));
 }
 
 /// Available DirectX 11 device.
