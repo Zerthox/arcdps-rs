@@ -1,14 +1,16 @@
 //! Global instance with ArcDPS information.
 #[allow(deprecated)]
 use crate::{
-    exports::raw::{
-        Export0, Export3, Export5, Export6, Export7, Export8, Export9, ExportAddExtension,
-        ExportAddExtensionOld, ExportFreeExtension, ExportFreeExtensionOld,
+    exports::{
+        log_to_file, log_to_window,
+        raw::{
+            Export0, Export3, Export5, Export6, Export7, Export8, Export9, ExportAddExtension,
+            ExportAddExtensionOld, ExportFreeExtension, ExportFreeExtensionOld,
+        },
     },
     imgui,
     util::exported_proc,
 };
-use log::error;
 use std::{ffi::c_void, mem::transmute, ptr};
 use windows::Win32::{
     Foundation::HINSTANCE,
@@ -130,13 +132,21 @@ pub unsafe fn init_imgui(
 pub static mut D3D11_DEVICE: Option<ID3D11Device> = None;
 
 /// Helper to initialize DirectX device(s).
-pub unsafe fn init_dxgi(id3d: *mut c_void, d3d_version: u32) {
+pub unsafe fn init_dxgi(id3d: *mut c_void, d3d_version: u32, name: &'static str) {
     if !id3d.is_null() && d3d_version == 11 {
         // referencing here prevents a crash due to drop
         let swap_chain: &IDXGISwapChain = unsafe { transmute(&id3d) };
         match swap_chain.GetDevice() {
             Ok(device) => D3D11_DEVICE = Some(device),
-            Err(err) => error!(target: "both", "failed to get d3d11 device: {err}"),
+            Err(err) => {
+                let msg = &format!("{name} error: failed to get d3d11 device: {err}");
+                if ARC_GLOBALS.e3.is_some() {
+                    let _ = log_to_file(msg);
+                }
+                if ARC_GLOBALS.e8.is_some() {
+                    let _ = log_to_window(msg);
+                }
+            }
         }
     }
 }

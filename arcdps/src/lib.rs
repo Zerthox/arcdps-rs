@@ -334,13 +334,13 @@ pub mod __macro {
 
         // initialize imgui & dxgi
         init_imgui(imgui_ctx, malloc, free);
-        init_dxgi(id3d, d3d_version);
+        init_dxgi(id3d, d3d_version, name);
     }
 
     /// Internally used function to retrieve the [`imgui::Ui`].
     #[inline]
     pub unsafe fn ui() -> &'static imgui::Ui<'static> {
-        IG_UI.as_ref().unwrap()
+        IG_UI.as_ref().expect("imgui ui not initialized")
     }
 }
 
