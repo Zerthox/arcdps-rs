@@ -5,11 +5,13 @@
 // workaround for strum derives on deprecated custom skill enum
 #![allow(deprecated)]
 
+mod agent;
 mod buff;
 mod event;
 mod game;
 mod state_change;
 
+pub use self::agent::*;
 pub use self::buff::*;
 pub use self::event::*;
 pub use self::game::*;

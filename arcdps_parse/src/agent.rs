@@ -2,6 +2,7 @@ use crate::{
     util::{read_string_buffer, Endian},
     Parse,
 };
+use arcdps_evtc::AgentKind;
 use byteorder::ReadBytesExt;
 use std::io;
 
@@ -52,6 +53,13 @@ pub struct Agent {
 
     /// Normalized Condition Damage attribute of the agent.
     pub condition: u16,
+}
+
+impl Agent {
+    /// Determines the kind of agent.
+    pub const fn kind(&self) -> AgentKind {
+        AgentKind::new(self.profession, self.is_elite)
+    }
 }
 
 impl Parse for Agent {
