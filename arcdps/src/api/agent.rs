@@ -1,8 +1,11 @@
 use crate::util::str_from_cstr;
-use std::os::raw::c_char;
+use std::{mem, os::raw::c_char};
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
+
+#[cfg(feature = "strum")]
+use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
 
 /// Represents an agent in a combat event.
 ///
@@ -42,6 +45,44 @@ impl Agent<'_> {
     pub fn to_owned(self) -> AgentOwned {
         self.into()
     }
+
+    /// Determines the kind of agent.
+    pub fn kind(&self) -> AgentKind {
+        if self.elite == u32::MAX {
+            let (lower, upper): (u16, u16) = unsafe { mem::transmute(self.prof) };
+            if upper == u16::MAX {
+                AgentKind::Gadget(lower)
+            } else {
+                AgentKind::Npc(lower)
+            }
+        } else {
+            AgentKind::Player
+        }
+    }
+}
+
+/// Possible [`Agent`] kinds.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[cfg_attr(feature = "strum", derive(Serialize, Deserialize))]
+#[cfg_attr(
+    feature = "strum",
+    derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames)
+)]
+pub enum AgentKind {
+    /// Agent is a player.
+    ///
+    /// `prof` contains the Profession and `elite` the Elite-Specialization.
+    Player,
+
+    /// Agent is an NPC.
+    ///
+    /// The included id is the (reliable) species id.
+    Npc(u16),
+
+    /// Agent is a gadget.
+    ///
+    /// The included id is a volatile pseudo id.
+    Gadget(u16),
 }
 
 impl<'a> From<&'a RawAgent> for Agent<'a> {

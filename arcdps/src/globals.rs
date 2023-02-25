@@ -135,7 +135,7 @@ pub static mut D3D11_DEVICE: Option<ID3D11Device> = None;
 pub unsafe fn init_dxgi(id3d: *mut c_void, d3d_version: u32, name: &'static str) {
     if !id3d.is_null() && d3d_version == 11 {
         // referencing here prevents a crash due to drop
-        let swap_chain: &IDXGISwapChain = unsafe { transmute(&id3d) };
+        let swap_chain: &IDXGISwapChain = transmute(&id3d);
         match swap_chain.GetDevice() {
             Ok(device) => D3D11_DEVICE = Some(device),
             Err(err) => {
