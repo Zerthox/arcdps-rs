@@ -3,6 +3,9 @@ use crate::{Activation, Affinity, BuffRemove, StateChange};
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
 
+#[cfg(feature = "strum")]
+use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
+
 /// ArcDPS combat event.
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
@@ -115,6 +118,44 @@ pub struct CombatEvent {
     ///
     /// May contain information depending on the kind of event.
     pub pad64: u8,
+}
+
+// TODO: conversion to rust-like enum?
+impl CombatEvent {
+    /// Determines the kind of event.
+    pub fn kind(&self) -> EventKind {
+        if self.is_statechange != StateChange::None {
+            EventKind::StateChange
+        } else if self.is_activation != Activation::None {
+            EventKind::Activation
+        } else if self.is_buff_remove != BuffRemove::None {
+            EventKind::BuffRemove
+        } else if self.buff != 0 {
+            if self.buff_dmg == 0 {
+                EventKind::BuffApply
+            } else {
+                EventKind::BuffDamage
+            }
+        } else {
+            EventKind::DirectDamage
+        }
+    }
+}
+
+/// Possible [`CombatEvent`] kinds.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
+#[cfg_attr(
+    feature = "strum",
+    derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames)
+)]
+pub enum EventKind {
+    StateChange,
+    Activation,
+    BuffRemove,
+    BuffApply,
+    BuffDamage,
+    DirectDamage,
 }
 
 impl From<RawCombatEvent> for CombatEvent {
