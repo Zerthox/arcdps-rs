@@ -12,7 +12,7 @@
 //! error!(target: "window", "window target will only log to window");
 //! error!(target: "file", "file target will only log to file");
 //! info!("below error/warn level will only log to window");
-//! info!(target: "both" "target both/all will log to window & file");
+//! info!(target: "both", "target both/all will log to window & file");
 //! ```
 //!
 //! *Requires the `"log"` feature.*
