@@ -16,7 +16,7 @@ arcdps::export! {
 
 fn init() -> Result<(), Box<dyn Error>> {
     info!("plugin has been started");
-    // target: "window" is the same as not specifying target
+    // for info level target "window" is the same as not specifying target
     info!(target: "window", "only window logging");
     info!(target: "file", "only file logging");
     info!(target: "both", "logging to file and window");
