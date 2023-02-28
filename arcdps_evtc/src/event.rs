@@ -91,6 +91,8 @@ pub struct CombatEvent {
     pub is_statechange: StateChange,
 
     /// Whether `src_agent` is flanking at time of event.
+    ///
+    /// The value lies in a range of `1` to `135` degrees where `135` is rear.
     pub is_flanking: u8,
 
     /// Shields, if relevant to the event.
