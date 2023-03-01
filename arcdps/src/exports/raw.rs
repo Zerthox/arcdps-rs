@@ -3,7 +3,7 @@
 use crate::{
     api::RawCombatEvent, callbacks::ArcDpsExport, globals::ARC_GLOBALS, imgui::sys::ImVec4,
 };
-use std::os::raw::c_char;
+use std::{ffi::c_void, os::raw::c_char};
 use windows::Win32::Foundation::HINSTANCE;
 
 /// Returns the handle to the ArcDPS dll.
@@ -67,16 +67,30 @@ pub unsafe fn e8_log_window(string: *const c_char) {
     ARC_GLOBALS.e8.expect("failed to find arc export e8")(string)
 }
 
-/// Signature of the `e8` export. See [`e9_add_event`] for details.
+/// Signature of the `e9` export. See [`e9_add_event`] for details.
 pub type Export9 = unsafe extern "C" fn(event: *const RawCombatEvent, sig: u32);
 
 /// Adds a [`RawCombatEvent`] to ArcDPS' event processing.
 ///
-/// `is_statechange` will be set to extension, pad61-64 will be set to `sig`.
+/// `is_statechange` will be set to [`StateChange::Extension`](crate::api::StateChange::Extension), pad61-64 will be set to `sig`.
 /// Event will end up processed like ArcDPS events and logged to EVTC.
 #[inline]
 pub unsafe fn e9_add_event(event: *const RawCombatEvent, sig: u32) {
     ARC_GLOBALS.e9.expect("failed to find arc export e9")(event, sig)
+}
+
+/// Signature of the `e10` export. See [`e10_add_event_skill] for details.
+pub type Export10 = unsafe extern "C" fn(event: *const RawCombatEvent, sig: u32);
+
+/// Adds a [`RawCombatEvent`] to ArcDPS' event processing.
+///
+/// `is_statechange` will be set to [`StateChange::ExtensionCombat`](crate::api::StateChange::ExtensionCombat), pad61-64 will be set to `sig`.
+/// Event will end up processed like ArcDPS events and logged to EVTC.
+///
+/// Contrary to [`e9_add_event`], the `skill_id` is treated as skill id and will be added to the EVTC skill table.
+#[inline]
+pub unsafe fn e10_add_event_combat(event: *const RawCombatEvent, sig: u32) {
+    ARC_GLOBALS.e10.expect("failed to find arc export e10")(event, sig)
 }
 
 /// Signature of the old `addextension` export. See [`add_extension_old`] for details.
@@ -147,4 +161,18 @@ pub unsafe fn free_extension(sig: u32) -> HINSTANCE {
     ARC_GLOBALS
         .free_extension
         .expect("failed to find arc export freeextension2")(sig)
+}
+
+/// Signature of the `listextension` export. See [`list_extension`] for details.
+pub type ExportListExtension = unsafe extern "C" fn(callback_fn: *const c_void);
+
+/// Retrieves a list of extensions via callback.
+///
+/// `callback_fn` is a callback of type `void callback_fn(arcdps_exports* exp)`.
+/// Callback is called once for each extension current loaded.
+#[inline]
+pub unsafe fn list_extension(callback_fn: *const c_void) {
+    ARC_GLOBALS
+        .list_extension
+        .expect("failed to find arc export listextension")(callback_fn)
 }

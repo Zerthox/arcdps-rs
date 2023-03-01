@@ -1,11 +1,13 @@
 //! Global instance with ArcDPS information.
+
 #[allow(deprecated)]
+use crate::exports::raw::{ExportAddExtensionOld, ExportFreeExtensionOld};
 use crate::{
     exports::{
         has_e3_log_file, has_e8_log_window, log_to_file, log_to_window,
         raw::{
-            Export0, Export3, Export5, Export6, Export7, Export8, Export9, ExportAddExtension,
-            ExportAddExtensionOld, ExportFreeExtension, ExportFreeExtensionOld,
+            Export0, Export10, Export3, Export5, Export6, Export7, Export8, Export9,
+            ExportAddExtension, ExportFreeExtension, ExportListExtension,
         },
     },
     imgui,
@@ -51,6 +53,9 @@ pub struct ArcGlobals {
     /// Add event export.
     pub e9: Option<Export9>,
 
+    /// Add event combat/skill export.
+    pub e10: Option<Export10>,
+
     /// Old add extension export.
     #[allow(deprecated)]
     pub add_extension_old: Option<ExportAddExtensionOld>,
@@ -64,6 +69,9 @@ pub struct ArcGlobals {
 
     /// Free extension export.
     pub free_extension: Option<ExportFreeExtension>,
+
+    /// List extension export.
+    pub list_extension: Option<ExportListExtension>,
 }
 
 impl ArcGlobals {
@@ -72,7 +80,6 @@ impl ArcGlobals {
         Self {
             handle: HINSTANCE(0),
             version: None,
-
             e0: None,
             e3: None,
             e5: None,
@@ -80,10 +87,12 @@ impl ArcGlobals {
             e7: None,
             e8: None,
             e9: None,
+            e10: None,
             add_extension_old: None,
             free_extension_old: None,
             add_extension: None,
             free_extension: None,
+            list_extension: None,
         }
     }
 
@@ -99,10 +108,12 @@ impl ArcGlobals {
             e7: transmute(exported_proc(handle, "e7\0")),
             e8: transmute(exported_proc(handle, "e8\0")),
             e9: transmute(exported_proc(handle, "e9\0")),
+            e10: transmute(exported_proc(handle, "e10\0")),
             add_extension_old: transmute(exported_proc(handle, "addextension\0")),
             free_extension_old: transmute(exported_proc(handle, "freeextension\0")),
             add_extension: transmute(exported_proc(handle, "addextension2\0")),
             free_extension: transmute(exported_proc(handle, "freeextension2\0")),
+            list_extension: transmute(exported_proc(handle, "listextension\0")),
         };
     }
 }
