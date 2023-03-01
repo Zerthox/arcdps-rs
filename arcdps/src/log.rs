@@ -37,15 +37,15 @@ impl ArcDpsLogger {
 
     /// Checks whether window logging is enabled for the given [`Metadata`].
     fn window_enabled(metadata: &Metadata) -> bool {
-        matches!(metadata.target(), "" | "window" | "both" | "all")
+        metadata.target() != "file"
     }
 
     /// Checks whether file logging is enabled for the given [`Metadata`].
     fn file_enabled(metadata: &Metadata) -> bool {
         match metadata.target() {
             "file" | "both" | "all" => true,
-            "" => matches!(metadata.level(), Level::Warn | Level::Error),
-            _ => false,
+            "window" => false,
+            _ => matches!(metadata.level(), Level::Warn | Level::Error),
         }
     }
 }
