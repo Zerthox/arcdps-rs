@@ -2,7 +2,7 @@
 #[allow(deprecated)]
 use crate::{
     exports::{
-        log_to_file, log_to_window,
+        has_e3_log_file, has_e8_log_window, log_to_file, log_to_window,
         raw::{
             Export0, Export3, Export5, Export6, Export7, Export8, Export9, ExportAddExtension,
             ExportAddExtensionOld, ExportFreeExtension, ExportFreeExtensionOld,
@@ -128,22 +128,51 @@ pub unsafe fn init_imgui(
     IG_UI = Some(imgui::Ui::from_ctx(IG_CONTEXT.as_ref().unwrap_unchecked()));
 }
 
+/// Current DirectX version.
+pub static mut D3D_VERSION: u32 = 0;
+
+/// Returns the current DirectX version.
+///
+/// `11` for DirectX 11 and `9` for legacy DirectX 9 mode.
+#[inline]
+pub fn d3d_version() -> u32 {
+    unsafe { D3D_VERSION }
+}
+
+/// DirectX 11 swap chain.
+pub static mut DXGI_SWAP_CHAIN: Option<IDXGISwapChain> = None;
+
+/// Returns the DirectX swap chain, if available.
+#[inline]
+pub fn dxgi_swap_chain() -> Option<&'static IDXGISwapChain> {
+    unsafe { DXGI_SWAP_CHAIN.as_ref() }
+}
+
 /// Available DirectX 11 device.
 pub static mut D3D11_DEVICE: Option<ID3D11Device> = None;
 
-/// Helper to initialize DirectX device(s).
+/// Returns the DirectX 11 device, if available.
+#[inline]
+pub fn d3d11_device() -> Option<&'static ID3D11Device> {
+    unsafe { D3D11_DEVICE.as_ref() }
+}
+
+/// Helper to initialize DirectX information.
 pub unsafe fn init_dxgi(id3d: *mut c_void, d3d_version: u32, name: &'static str) {
+    D3D_VERSION = d3d_version;
     if !id3d.is_null() && d3d_version == 11 {
         // referencing here prevents a crash due to drop
         let swap_chain: &IDXGISwapChain = transmute(&id3d);
+        DXGI_SWAP_CHAIN = Some(swap_chain.clone());
+
         match swap_chain.GetDevice() {
             Ok(device) => D3D11_DEVICE = Some(device),
             Err(err) => {
                 let msg = &format!("{name} error: failed to get d3d11 device: {err}");
-                if ARC_GLOBALS.e3.is_some() {
+                if has_e3_log_file() {
                     let _ = log_to_file(msg);
                 }
-                if ARC_GLOBALS.e8.is_some() {
+                if has_e8_log_window() {
                     let _ = log_to_window(msg);
                 }
             }

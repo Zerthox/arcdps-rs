@@ -83,11 +83,10 @@ pub use api::{
 };
 pub use arcdps_codegen::export;
 pub use arcdps_imgui as imgui;
+pub use globals::{d3d11_device, d3d_version, dxgi_swap_chain};
 pub use util::strip_account_prefix;
 
 use callbacks::*;
-use globals::D3D11_DEVICE;
-use windows::Win32::Graphics::Direct3D11::ID3D11Device;
 
 #[cfg(feature = "extras")]
 use extras::callbacks::*;
@@ -293,6 +292,7 @@ pub mod __macro {
     pub use crate::util::{str_from_cstr, str_to_wide, strip_account_prefix};
 
     use crate::{
+        exports::{has_e3_log_file, has_e8_log_window},
         globals::{init_dxgi, init_imgui, ARC_GLOBALS, IG_UI},
         imgui,
         panic::init_panic_hook,
@@ -318,13 +318,13 @@ pub mod __macro {
         // arc exports have to be retrieved before panic hook & logging
         ARC_GLOBALS.init(arc_handle, str_from_cstr(arc_version));
 
-        // only set panic hook if export e3 was found
-        if ARC_GLOBALS.e3.is_some() {
+        // only set panic hook if log file export was found
+        if has_e3_log_file() {
             init_panic_hook(name);
 
-            // only set logger if export e3 & e8 were found
+            // only set logger if log file & window exports were found
             #[cfg(feature = "log")]
-            if ARC_GLOBALS.e8.is_some() {
+            if has_e8_log_window() {
                 let result = log::set_boxed_logger(Box::new(ArcDpsLogger::new(name)));
                 if result.is_ok() {
                     log::set_max_level(log::LevelFilter::Trace);
@@ -342,10 +342,4 @@ pub mod __macro {
     pub unsafe fn ui() -> &'static imgui::Ui<'static> {
         IG_UI.as_ref().expect("imgui ui not initialized")
     }
-}
-
-/// Returns the DirectX 11 device, if available.
-#[inline]
-pub fn d3d11_device() -> Option<&'static ID3D11Device> {
-    unsafe { D3D11_DEVICE.as_ref() }
 }
