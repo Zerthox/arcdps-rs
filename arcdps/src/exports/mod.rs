@@ -2,7 +2,10 @@
 //!
 //! Calling an export before ArcDPS calls `init` will cause a panic.
 
+mod has;
 pub mod raw;
+
+pub use self::has::*;
 
 use crate::{
     api::{CombatEvent, Profession},
