@@ -13,10 +13,6 @@ use crate::{
     imgui::sys::ImVec4,
 };
 use num_enum::{IntoPrimitive, TryFromPrimitive};
-use raw::{
-    e0_config_path, e3_log_file, e5_colors, e6_ui_settings, e7_modifiers, e8_log_window,
-    e9_add_event,
-};
 use std::{
     ffi::{CString, NulError, OsString},
     mem::MaybeUninit,
@@ -25,6 +21,7 @@ use std::{
     path::PathBuf,
     slice,
 };
+use windows::Win32::Foundation::HINSTANCE;
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
@@ -51,8 +48,9 @@ pub fn version() -> Option<&'static str> {
 /// fs::write(config_dir.join("foo.txt"), "lorem ipsum");
 /// # None }
 /// ```
+#[inline]
 pub fn config_path() -> Option<PathBuf> {
-    let ptr = unsafe { e0_config_path() };
+    let ptr = unsafe { raw::e0_config_path() };
     if !ptr.is_null() {
         // calculate length
         let mut len = 0;
@@ -79,9 +77,10 @@ pub fn config_path() -> Option<PathBuf> {
 ///
 /// exports::log_to_file("message from my plugin");
 /// ```
+#[inline]
 pub fn log_to_file(message: impl Into<String>) -> Result<(), NulError> {
     let string = CString::new(message.into())?;
-    unsafe { e3_log_file(string.as_ptr()) };
+    unsafe { raw::e3_log_file(string.as_ptr()) };
     Ok(())
 }
 
@@ -141,6 +140,7 @@ impl Colors {
     /// Returns the base color for a specific [`CoreColor`].
     ///
     /// This will return [`None`] if ArcDPS did not yield the requested color when the [`Colors`] struct was retrieved.
+    #[inline]
     pub fn core(&self, color: CoreColor) -> Option<Color> {
         unsafe { self.read_color(0, color as usize) }
     }
@@ -148,6 +148,7 @@ impl Colors {
     /// Returns the base color for a specific [`Profession`].
     ///
     /// This will return [`None`] if ArcDPS did not yield the requested color when the [`Colors`] struct was retrieved.
+    #[inline]
     pub fn prof_base(&self, prof: Profession) -> Option<Color> {
         unsafe { self.read_color(1, prof as usize) }
     }
@@ -155,6 +156,7 @@ impl Colors {
     /// Returns the highlight color for a specific [`Profession`].
     ///
     /// This will return [`None`] if ArcDPS did not yield the requested color when the [`Colors`] struct was retrieved.
+    #[inline]
     pub fn prof_highlight(&self, prof: Profession) -> Option<Color> {
         unsafe { self.read_color(2, prof as usize) }
     }
@@ -163,6 +165,7 @@ impl Colors {
     ///
     /// This will return [`None`] if ArcDPS did not yield the requested color when the [`Colors`] struct was retrieved.
     /// Also returns [`None`] if the subgroup is out of the game subgroup range.
+    #[inline]
     pub fn sub_base(&self, sub: usize) -> Option<Color> {
         // range check
         if Self::SUB_RANGE.contains(&sub) {
@@ -176,6 +179,7 @@ impl Colors {
     ///
     /// This will return [`None`] if ArcDPS did not yield the requested color when the [`Colors`] struct was retrieved.
     /// Also returns [`None`] if the subgroup is out of the game subgroup range.
+    #[inline]
     pub fn sub_highlight(&self, sub: usize) -> Option<Color> {
         // range check
         if Self::SUB_RANGE.contains(&sub) {
@@ -195,10 +199,11 @@ impl Colors {
 /// let colors = exports::colors();
 /// let guard = colors.prof_base(Profession::Guardian);
 /// ```
+#[inline]
 pub fn colors() -> Colors {
     // zeroing this is important for our null pointer checks later
     let mut colors = MaybeUninit::zeroed();
-    unsafe { e5_colors(colors.as_mut_ptr()) };
+    unsafe { raw::e5_colors(colors.as_mut_ptr()) };
     Colors {
         raw: unsafe { colors.assume_init() },
     }
@@ -238,7 +243,7 @@ pub struct UISettings {
 /// }
 /// ```
 pub fn ui_settings() -> UISettings {
-    let raw = unsafe { e6_ui_settings() };
+    let raw = unsafe { raw::e6_ui_settings() };
     UISettings {
         hidden: raw & 1 == 1,
         draw_always: (raw >> 1) & 1 == 1,
@@ -270,14 +275,16 @@ pub struct Modifiers {
 /// let modifiers = exports::modifiers();
 /// let multi = modifiers.modifier_multi;
 /// ```
+#[inline]
 pub fn modifiers() -> Modifiers {
-    let raw = unsafe { e7_modifiers() };
+    let raw = unsafe { raw::e7_modifiers() };
     Modifiers {
         modifier1: raw as u16,
         modifier2: (raw >> 16) as u16,
         modifier_multi: (raw >> 32) as u16,
     }
 }
+
 /// Logs a message to ArcDPS' logger window.
 ///
 /// Text can be colored in a HTML-like way: `<c=#aaaaaa>colored text</c>`.
@@ -290,9 +297,10 @@ pub fn modifiers() -> Modifiers {
 ///
 /// exports::log_to_window("message from my plugin");
 /// ```
+#[inline]
 pub fn log_to_window(message: impl Into<String>) -> Result<(), NulError> {
     let string = CString::new(message.into())?;
-    unsafe { e8_log_window(string.as_ptr()) };
+    unsafe { raw::e8_log_window(string.as_ptr()) };
     Ok(())
 }
 
@@ -300,11 +308,25 @@ pub fn log_to_window(message: impl Into<String>) -> Result<(), NulError> {
 ///
 /// `is_statechange` will be set to [`StateChange::Extension`](crate::StateChange::Extension), padding will be set to contain `sig`.
 /// Event will end up processed like ArcDPS events and logged to EVTC.
+#[inline]
 pub fn add_event(event: CombatEvent, sig: u32) {
-    unsafe { e9_add_event(&event.into(), sig) }
+    unsafe { raw::e9_add_event(&event.into(), sig) }
 }
 
-/// Result of an `add_extension` operation.
+/// Requests to load an extension (plugin/addon).
+///
+/// ArcDPS will `LoadLibrary` the `handle` to increment the reference count, call `get_init_addr` and call its returned function.
+/// Returns [`AddExtensionResult`] indicating success or failure.
+///
+/// This uses version 2 (`addextension2`) of the extension API.
+#[inline]
+pub fn add_extension(handle: HINSTANCE) -> AddExtensionResult {
+    unsafe { raw::add_extension(handle) }
+        .try_into()
+        .expect("unexpected add extension result")
+}
+
+/// Result of an [`add_extension`] operation.
 #[derive(
     Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, TryFromPrimitive,
 )]
@@ -340,4 +362,20 @@ pub enum AddExtensionResult {
     ///
     /// Safe to call `GetLastError`.
     LoadError,
+}
+
+/// Requests to free a loaded extension (plugin/addon).
+///
+/// ArcDPS will call `get_release_addr` and its returned function.
+/// Upon returning from [`free_extension`] there will be no more pending callbacks.
+/// However, the caller must ensure to callbacks are executing before freeing.
+/// Returns the [`HINSTANCE`] handle of the module if the extension was found.
+///
+/// This uses version 2 (`freeextension2`) of the extension API.
+#[inline]
+pub fn free_extension(sig: u32) -> Option<HINSTANCE> {
+    match unsafe { raw::free_extension(sig) } {
+        HINSTANCE(0) => None,
+        handle => Some(handle),
+    }
 }

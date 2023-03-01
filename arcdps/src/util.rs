@@ -28,7 +28,6 @@ pub unsafe fn str_from_cstr<'a>(ptr: *const c_char) -> Option<&'a str> {
 ///
 /// The pointer needs to be non-null. Panics if the string is invalid UTF-8.
 #[inline]
-#[allow(unused)]
 pub unsafe fn str_from_cstr_len<'a>(ptr: *const c_char, len: u64) -> &'a str {
     let slice = slice::from_raw_parts(ptr as *const u8, len as usize);
     str::from_utf8(slice).expect("cstr with invalid utf8")
