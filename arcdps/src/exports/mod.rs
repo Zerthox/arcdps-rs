@@ -313,6 +313,17 @@ pub fn add_event(event: CombatEvent, sig: u32) {
     unsafe { raw::e9_add_event(&event.into(), sig) }
 }
 
+/// Adds a [`CombatEvent`] to ArcDPS' event processing.
+///
+/// `is_statechange` will be set to [`StateChange::ExtensionCombat`](crate::StateChange::ExtensionCombat), padding will be set to contain `sig`.
+/// Event will end up processed like ArcDPS events and logged to EVTC.
+///
+/// Contrary to [`add_event`], the `skill_id` is treated as skill id and will be added to the EVTC skill table.
+#[inline]
+pub fn add_event_combat(event: CombatEvent, sig: u32) {
+    unsafe { raw::e10_add_event_combat(&event.into(), sig) }
+}
+
 /// Requests to load an extension (plugin/addon).
 ///
 /// ArcDPS will `LoadLibrary` the `handle` to increment the reference count, call `get_init_addr` and call its returned function.
