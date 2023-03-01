@@ -275,10 +275,10 @@ pub enum StateChange {
     /// *Not used in log EVTC.*
     StatReset,
 
-    /// Combat event with state change byte set to this.
+    /// A custom event created by an extension (addon/plugin).
     Extension,
 
-    /// Combat event with state change byte set to this.
+    /// Delayed combat event.
     ApiDelayed,
 
     /// Instance started.
@@ -324,6 +324,15 @@ pub enum StateChange {
     ///
     /// `src_agent` is species id.
     LogNPCUpdate,
+
+    /// Used internally by ArcDPS.
+    /// Should not appear anywhere.
+    IdleEvent,
+
+    /// A custom combat event created by an extension (addon/plugin).
+    ///
+    /// `skill_id` is treated as skill id and will be added to the EVTC skill table.
+    ExtensionCombat,
 
     /// Unknown or invalid.
     #[num_enum(default)]
