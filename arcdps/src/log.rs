@@ -36,12 +36,12 @@ impl ArcDpsLogger {
     }
 
     /// Checks whether window logging is enabled for the given [`Metadata`].
-    fn window_enabled(&self, metadata: &Metadata) -> bool {
+    fn window_enabled(metadata: &Metadata) -> bool {
         matches!(metadata.target(), "" | "window" | "both" | "all")
     }
 
     /// Checks whether file logging is enabled for the given [`Metadata`].
-    fn file_enabled(&self, metadata: &Metadata) -> bool {
+    fn file_enabled(metadata: &Metadata) -> bool {
         match metadata.target() {
             "file" | "both" | "all" => true,
             "" => matches!(metadata.level(), Level::Warn | Level::Error),
@@ -52,15 +52,15 @@ impl ArcDpsLogger {
 
 impl Log for ArcDpsLogger {
     fn enabled(&self, metadata: &Metadata) -> bool {
-        self.window_enabled(metadata) || self.file_enabled(metadata)
+        Self::window_enabled(metadata) || Self::file_enabled(metadata)
     }
 
     fn log(&self, record: &Record) {
         let metadata = record.metadata();
-        if self.window_enabled(metadata) {
+        if Self::window_enabled(metadata) {
             WindowLogger { name: self.name }.log(record);
         }
-        if self.file_enabled(metadata) {
+        if Self::file_enabled(metadata) {
             FileLogger { name: self.name }.log(record);
         }
     }
@@ -127,4 +127,39 @@ fn format_message(name: &'static str, record: &Record) -> String {
         record.level().to_string().to_lowercase(),
         record.args()
     )
+}
+
+#[cfg(test)]
+mod tests {
+    use super::ArcDpsLogger;
+    use log::{Level, Metadata};
+
+    #[test]
+    fn enabled() {
+        fn meta(target: &str, level: Level) -> Metadata {
+            Metadata::builder().target(target).level(level).build()
+        }
+
+        const MOD: &str = module_path!();
+
+        let info = meta(MOD, Level::Info);
+        assert!(ArcDpsLogger::window_enabled(&info));
+        assert!(!ArcDpsLogger::file_enabled(&info));
+
+        let warn = meta(MOD, Level::Warn);
+        assert!(ArcDpsLogger::window_enabled(&warn));
+        assert!(ArcDpsLogger::file_enabled(&warn));
+
+        let error = meta(MOD, Level::Error);
+        assert!(ArcDpsLogger::window_enabled(&error));
+        assert!(ArcDpsLogger::file_enabled(&error));
+
+        let info_file = meta("file", Level::Info);
+        assert!(!ArcDpsLogger::window_enabled(&info_file));
+        assert!(ArcDpsLogger::file_enabled(&info_file));
+
+        let info_both = meta("both", Level::Info);
+        assert!(ArcDpsLogger::window_enabled(&info_both));
+        assert!(ArcDpsLogger::file_enabled(&info_both));
+    }
 }
