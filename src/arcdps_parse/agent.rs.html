@@ -86,10 +86,19 @@
 <a href="#86" id="86">86</a>
 <a href="#87" id="87">87</a>
 <a href="#88" id="88">88</a>
+<a href="#89" id="89">89</a>
+<a href="#90" id="90">90</a>
+<a href="#91" id="91">91</a>
+<a href="#92" id="92">92</a>
+<a href="#93" id="93">93</a>
+<a href="#94" id="94">94</a>
+<a href="#95" id="95">95</a>
+<a href="#96" id="96">96</a>
 </pre><pre class="rust"><code><span class="kw">use crate</span>::{
     util::{read_string_buffer, Endian},
     Parse,
 };
+<span class="kw">use </span>arcdps_evtc::AgentKind;
 <span class="kw">use </span>byteorder::ReadBytesExt;
 <span class="kw">use </span>std::io;
 
@@ -142,6 +151,13 @@
     </span><span class="kw">pub </span>condition: u16,
 }
 
+<span class="kw">impl </span>Agent {
+    <span class="doccomment">/// Determines the kind of agent.
+    </span><span class="kw">pub const fn </span>kind(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; AgentKind {
+        AgentKind::new(<span class="self">self</span>.profession, <span class="self">self</span>.is_elite)
+    }
+}
+
 <span class="kw">impl </span>Parse <span class="kw">for </span>Agent {
     <span class="kw">type </span>Error = <span class="kw">crate</span>::ParseError;
 
@@ -175,4 +191,4 @@
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="arcdps_parse" data-themes="" data-resource-suffix="" data-rustdoc-version="1.67.0 (fc594f156 2023-01-24)" data-search-js="search-444266647c4dba98.js" data-settings-js="settings-bebeae96e00e4617.js" data-settings-css="settings-af96d9e2fc13e081.css" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="arcdps_parse" data-themes="" data-resource-suffix="" data-rustdoc-version="1.67.1 (d5a82bbd2 2023-02-07)" data-search-js="search-444266647c4dba98.js" data-settings-js="settings-bebeae96e00e4617.js" data-settings-css="settings-af96d9e2fc13e081.css" ></div></body></html>

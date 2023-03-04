@@ -336,6 +336,19 @@
 <a href="#336" id="336">336</a>
 <a href="#337" id="337">337</a>
 <a href="#338" id="338">338</a>
+<a href="#339" id="339">339</a>
+<a href="#340" id="340">340</a>
+<a href="#341" id="341">341</a>
+<a href="#342" id="342">342</a>
+<a href="#343" id="343">343</a>
+<a href="#344" id="344">344</a>
+<a href="#345" id="345">345</a>
+<a href="#346" id="346">346</a>
+<a href="#347" id="347">347</a>
+<a href="#348" id="348">348</a>
+<a href="#349" id="349">349</a>
+<a href="#350" id="350">350</a>
+<a href="#351" id="351">351</a>
 </pre><pre class="rust"><code><span class="doccomment">//! Bindings for [ArcDPS](https://www.deltaconnected.com/arcdps/) plugins.
 //!
 //! # Usage
@@ -424,6 +437,8 @@
 <span class="kw">pub use </span>util::strip_account_prefix;
 
 <span class="kw">use </span>callbacks::<span class="kw-2">*</span>;
+<span class="kw">use </span>globals::D3D11_DEVICE;
+<span class="kw">use </span>windows::Win32::Graphics::Direct3D11::ID3D11Device;
 
 <span class="attr">#[cfg(feature = <span class="string">&quot;extras&quot;</span>)]
 </span><span class="kw">use </span>extras::callbacks::<span class="kw-2">*</span>;
@@ -629,7 +644,7 @@
     <span class="kw">pub use </span><span class="kw">crate</span>::util::{str_from_cstr, str_to_wide, strip_account_prefix};
 
     <span class="kw">use crate</span>::{
-        globals::{init_imgui, ARC_GLOBALS},
+        globals::{init_dxgi, init_imgui, ARC_GLOBALS, IG_UI},
         imgui,
         panic::init_panic_hook,
     };
@@ -640,39 +655,50 @@
 
     <span class="doccomment">/// Internally used function to initialize with information received from Arc.
     </span><span class="attr">#[inline]
+    #[allow(clippy::too_many_arguments)]
     </span><span class="kw">pub unsafe fn </span>init(
         arc_version: <span class="kw-2">*const </span>c_char,
         arc_handle: HINSTANCE,
         imgui_ctx: <span class="kw-2">*mut </span>imgui::sys::ImGuiContext,
         malloc: <span class="prelude-ty">Option</span>&lt;MallocFn&gt;,
         free: <span class="prelude-ty">Option</span>&lt;FreeFn&gt;,
-        _id3d: <span class="kw-2">*mut </span>c_void,
+        id3d: <span class="kw-2">*mut </span>c_void,
+        d3d_version: u32,
         name: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str,
     ) {
         <span class="comment">// arc exports have to be retrieved before panic hook &amp; logging
-        </span>init_imgui(imgui_ctx, malloc, free);
-        ARC_GLOBALS.init(arc_handle, str_from_cstr(arc_version));
+        </span>ARC_GLOBALS.init(arc_handle, str_from_cstr(arc_version));
 
         <span class="comment">// only set panic hook if export e3 was found
         </span><span class="kw">if </span>ARC_GLOBALS.e3.is_some() {
             init_panic_hook(name);
-        }
 
-        <span class="comment">// only set logger if export e8 was found
-        </span><span class="attr">#[cfg(feature = <span class="string">&quot;log&quot;</span>)]
-        </span><span class="kw">if </span>ARC_GLOBALS.e8.is_some() {
-            <span class="kw">let </span>result = log::set_boxed_logger(Box::new(ArcDpsLogger::new(name)));
-            <span class="kw">if </span>result.is_ok() {
-                log::set_max_level(log::LevelFilter::Trace);
+            <span class="comment">// only set logger if export e3 &amp; e8 were found
+            </span><span class="attr">#[cfg(feature = <span class="string">&quot;log&quot;</span>)]
+            </span><span class="kw">if </span>ARC_GLOBALS.e8.is_some() {
+                <span class="kw">let </span>result = log::set_boxed_logger(Box::new(ArcDpsLogger::new(name)));
+                <span class="kw">if </span>result.is_ok() {
+                    log::set_max_level(log::LevelFilter::Trace);
+                }
             }
         }
+
+        <span class="comment">// initialize imgui &amp; dxgi
+        </span>init_imgui(imgui_ctx, malloc, free);
+        init_dxgi(id3d, d3d_version, name);
     }
 
     <span class="doccomment">/// Internally used function to retrieve the [`imgui::Ui`].
     </span><span class="attr">#[inline]
     </span><span class="kw">pub unsafe fn </span>ui() -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>imgui::Ui&lt;<span class="lifetime">&#39;static</span>&gt; {
-        ARC_GLOBALS.ui.as_ref().unwrap()
+        IG_UI.as_ref().expect(<span class="string">&quot;imgui ui not initialized&quot;</span>)
     }
 }
+
+<span class="doccomment">/// Returns the DirectX 11 device, if available.
+</span><span class="attr">#[inline]
+</span><span class="kw">pub fn </span>d3d11_device() -&gt; <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>ID3D11Device&gt; {
+    <span class="kw">unsafe </span>{ D3D11_DEVICE.as_ref() }
+}
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="arcdps" data-themes="" data-resource-suffix="" data-rustdoc-version="1.67.0 (fc594f156 2023-01-24)" data-search-js="search-444266647c4dba98.js" data-settings-js="settings-bebeae96e00e4617.js" data-settings-css="settings-af96d9e2fc13e081.css" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="arcdps" data-themes="" data-resource-suffix="" data-rustdoc-version="1.67.1 (d5a82bbd2 2023-02-07)" data-search-js="search-444266647c4dba98.js" data-settings-js="settings-bebeae96e00e4617.js" data-settings-css="settings-af96d9e2fc13e081.css" ></div></body></html>

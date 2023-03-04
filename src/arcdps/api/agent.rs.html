@@ -103,9 +103,16 @@
 <a href="#103" id="103">103</a>
 <a href="#104" id="104">104</a>
 <a href="#105" id="105">105</a>
+<a href="#106" id="106">106</a>
+<a href="#107" id="107">107</a>
+<a href="#108" id="108">108</a>
+<a href="#109" id="109">109</a>
+<a href="#110" id="110">110</a>
+<a href="#111" id="111">111</a>
 </pre><pre class="rust"><code><span class="kw">use </span><span class="kw">crate</span>::util::str_from_cstr;
 <span class="kw">use </span>std::os::raw::c_char;
 
+<span class="kw">use </span>arcdps_evtc::AgentKind;
 <span class="attr">#[cfg(feature = <span class="string">&quot;serde&quot;</span>)]
 </span><span class="kw">use </span>serde::{Deserialize, Serialize};
 
@@ -146,6 +153,11 @@
     <span class="doccomment">/// Converts the [`Agent`] to the owned version [`AgentOwned`].
     </span><span class="kw">pub fn </span>to_owned(<span class="self">self</span>) -&gt; AgentOwned {
         <span class="self">self</span>.into()
+    }
+
+    <span class="doccomment">/// Determines the kind of agent.
+    </span><span class="kw">pub const fn </span>kind(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; AgentKind {
+        AgentKind::new(<span class="self">self</span>.prof, <span class="self">self</span>.elite)
     }
 }
 
@@ -209,4 +221,4 @@
     <span class="kw">pub </span>team: u16,
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="arcdps" data-themes="" data-resource-suffix="" data-rustdoc-version="1.67.0 (fc594f156 2023-01-24)" data-search-js="search-444266647c4dba98.js" data-settings-js="settings-bebeae96e00e4617.js" data-settings-css="settings-af96d9e2fc13e081.css" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="arcdps" data-themes="" data-resource-suffix="" data-rustdoc-version="1.67.1 (d5a82bbd2 2023-02-07)" data-search-js="search-444266647c4dba98.js" data-settings-js="settings-bebeae96e00e4617.js" data-settings-css="settings-af96d9e2fc13e081.css" ></div></body></html>

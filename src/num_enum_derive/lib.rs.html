@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\num_enum_derive-0.5.9\src\lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-1f7d512b176f0f72.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-124a1ca42af929b6.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-6827029ac823cab7.css" id="mainThemeStyle"><link rel="stylesheet" id="themeStyle" href="../../static.files/light-ebce58d0a40c3431.css"><link rel="stylesheet" disabled href="../../static.files/dark-f23faae4a2daf9a6.css"><link rel="stylesheet" disabled href="../../static.files/ayu-8af5e100b21cd173.css"><script id="default-settings" ></script><script src="../../static.files/storage-d43fa987303ecbbb.js"></script><script defer src="../../static.files/source-script-5cf2e01a42cc9858.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-c55e1eb52e1886b4.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../num_enum_derive/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-5ec35bf9ca753509.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\github.com-1ecc6299db9ec823\num_enum_derive-0.5.11\src\lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-1f7d512b176f0f72.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-124a1ca42af929b6.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-6827029ac823cab7.css" id="mainThemeStyle"><link rel="stylesheet" id="themeStyle" href="../../static.files/light-ebce58d0a40c3431.css"><link rel="stylesheet" disabled href="../../static.files/dark-f23faae4a2daf9a6.css"><link rel="stylesheet" disabled href="../../static.files/ayu-8af5e100b21cd173.css"><script id="default-settings" ></script><script src="../../static.files/storage-d43fa987303ecbbb.js"></script><script defer src="../../static.files/source-script-5cf2e01a42cc9858.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-c55e1eb52e1886b4.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../num_enum_derive/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-5ec35bf9ca753509.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -979,7 +979,95 @@
 <a href="#979" id="979">979</a>
 <a href="#980" id="980">980</a>
 <a href="#981" id="981">981</a>
-</pre><pre class="rust"><code><span class="kw">extern crate </span>proc_macro;
+<a href="#982" id="982">982</a>
+<a href="#983" id="983">983</a>
+<a href="#984" id="984">984</a>
+<a href="#985" id="985">985</a>
+<a href="#986" id="986">986</a>
+<a href="#987" id="987">987</a>
+<a href="#988" id="988">988</a>
+<a href="#989" id="989">989</a>
+<a href="#990" id="990">990</a>
+<a href="#991" id="991">991</a>
+<a href="#992" id="992">992</a>
+<a href="#993" id="993">993</a>
+<a href="#994" id="994">994</a>
+<a href="#995" id="995">995</a>
+<a href="#996" id="996">996</a>
+<a href="#997" id="997">997</a>
+<a href="#998" id="998">998</a>
+<a href="#999" id="999">999</a>
+<a href="#1000" id="1000">1000</a>
+<a href="#1001" id="1001">1001</a>
+<a href="#1002" id="1002">1002</a>
+<a href="#1003" id="1003">1003</a>
+<a href="#1004" id="1004">1004</a>
+<a href="#1005" id="1005">1005</a>
+<a href="#1006" id="1006">1006</a>
+<a href="#1007" id="1007">1007</a>
+<a href="#1008" id="1008">1008</a>
+<a href="#1009" id="1009">1009</a>
+<a href="#1010" id="1010">1010</a>
+<a href="#1011" id="1011">1011</a>
+<a href="#1012" id="1012">1012</a>
+<a href="#1013" id="1013">1013</a>
+<a href="#1014" id="1014">1014</a>
+<a href="#1015" id="1015">1015</a>
+<a href="#1016" id="1016">1016</a>
+<a href="#1017" id="1017">1017</a>
+<a href="#1018" id="1018">1018</a>
+<a href="#1019" id="1019">1019</a>
+<a href="#1020" id="1020">1020</a>
+<a href="#1021" id="1021">1021</a>
+<a href="#1022" id="1022">1022</a>
+<a href="#1023" id="1023">1023</a>
+<a href="#1024" id="1024">1024</a>
+<a href="#1025" id="1025">1025</a>
+<a href="#1026" id="1026">1026</a>
+<a href="#1027" id="1027">1027</a>
+<a href="#1028" id="1028">1028</a>
+<a href="#1029" id="1029">1029</a>
+<a href="#1030" id="1030">1030</a>
+<a href="#1031" id="1031">1031</a>
+<a href="#1032" id="1032">1032</a>
+<a href="#1033" id="1033">1033</a>
+<a href="#1034" id="1034">1034</a>
+<a href="#1035" id="1035">1035</a>
+<a href="#1036" id="1036">1036</a>
+<a href="#1037" id="1037">1037</a>
+<a href="#1038" id="1038">1038</a>
+<a href="#1039" id="1039">1039</a>
+<a href="#1040" id="1040">1040</a>
+<a href="#1041" id="1041">1041</a>
+<a href="#1042" id="1042">1042</a>
+<a href="#1043" id="1043">1043</a>
+<a href="#1044" id="1044">1044</a>
+<a href="#1045" id="1045">1045</a>
+<a href="#1046" id="1046">1046</a>
+<a href="#1047" id="1047">1047</a>
+<a href="#1048" id="1048">1048</a>
+<a href="#1049" id="1049">1049</a>
+<a href="#1050" id="1050">1050</a>
+<a href="#1051" id="1051">1051</a>
+<a href="#1052" id="1052">1052</a>
+<a href="#1053" id="1053">1053</a>
+<a href="#1054" id="1054">1054</a>
+<a href="#1055" id="1055">1055</a>
+<a href="#1056" id="1056">1056</a>
+<a href="#1057" id="1057">1057</a>
+<a href="#1058" id="1058">1058</a>
+<a href="#1059" id="1059">1059</a>
+<a href="#1060" id="1060">1060</a>
+<a href="#1061" id="1061">1061</a>
+<a href="#1062" id="1062">1062</a>
+<a href="#1063" id="1063">1063</a>
+<a href="#1064" id="1064">1064</a>
+<a href="#1065" id="1065">1065</a>
+<a href="#1066" id="1066">1066</a>
+</pre><pre class="rust"><code><span class="comment">// Not supported by MSRV
+</span><span class="attr">#![allow(clippy::uninlined_format_args)]
+
+</span><span class="kw">extern crate </span>proc_macro;
 
 <span class="kw">use </span>proc_macro::TokenStream;
 <span class="kw">use </span>proc_macro2::Span;
@@ -1042,6 +1130,63 @@
     } <span class="kw">else </span>{
         <span class="prelude-val">Ok</span>(DiscriminantValue::Expr(val_exp.clone()))
     }
+}
+
+<span class="attr">#[cfg(feature = <span class="string">&quot;complex-expressions&quot;</span>)]
+</span><span class="kw">fn </span>parse_alternative_values(val_expr: <span class="kw-2">&amp;</span>Expr) -&gt; <span class="prelude-ty">Result</span>&lt;Vec&lt;DiscriminantValue&gt;&gt; {
+    <span class="kw">fn </span>range_expr_value_to_number(
+        parent_range_expr: <span class="kw-2">&amp;</span>Expr,
+        range_bound_value: <span class="kw-2">&amp;</span><span class="prelude-ty">Option</span>&lt;Box&lt;Expr&gt;&gt;,
+    ) -&gt; <span class="prelude-ty">Result</span>&lt;i128&gt; {
+        <span class="comment">// Avoid needing to calculate what the lower and upper bound would be - these are type dependent,
+        // and also may not be obvious in context (e.g. an omitted bound could reasonably mean &quot;from the last discriminant&quot; or &quot;from the lower bound of the type&quot;).
+        </span><span class="kw">if let </span><span class="prelude-val">Some</span>(range_bound_value) = range_bound_value {
+            <span class="kw">let </span>range_bound_value = parse_discriminant(range_bound_value.as_ref())<span class="question-mark">?</span>;
+            <span class="comment">// If non-literals are used, we can&#39;t expand to the mapped values, so can&#39;t write a nice match statement or do exhaustiveness checking.
+            // Require literals instead.
+            </span><span class="kw">if let </span>DiscriminantValue::Literal(value) = range_bound_value {
+                <span class="kw">return </span><span class="prelude-val">Ok</span>(value);
+            }
+        }
+        <span class="macro">die!</span>(parent_range_expr =&gt; <span class="string">&quot;When ranges are used for alternate values, both bounds most be explicitly specified numeric literals&quot;</span>)
+    }
+
+    <span class="kw">if let </span>Expr::Range(syn::ExprRange {
+        from, to, limits, ..
+    }) = val_expr
+    {
+        <span class="kw">let </span>lower = range_expr_value_to_number(val_expr, from)<span class="question-mark">?</span>;
+        <span class="kw">let </span>upper = range_expr_value_to_number(val_expr, to)<span class="question-mark">?</span>;
+        <span class="comment">// While this is technically allowed in Rust, and results in an empty range, it&#39;s almost certainly a mistake in this context.
+        </span><span class="kw">if </span>lower &gt; upper {
+            <span class="macro">die!</span>(val_expr =&gt; <span class="string">&quot;When using ranges for alternate values, upper bound must not be less than lower bound&quot;</span>);
+        }
+        <span class="kw">let </span><span class="kw-2">mut </span>values = Vec::with_capacity((upper - lower) <span class="kw">as </span>usize);
+        <span class="kw">let </span><span class="kw-2">mut </span>next = lower;
+        <span class="kw">loop </span>{
+            <span class="kw">match </span>limits {
+                syn::RangeLimits::HalfOpen(..) =&gt; {
+                    <span class="kw">if </span>next == upper {
+                        <span class="kw">break</span>;
+                    }
+                }
+                syn::RangeLimits::Closed(..) =&gt; {
+                    <span class="kw">if </span>next &gt; upper {
+                        <span class="kw">break</span>;
+                    }
+                }
+            }
+            values.push(DiscriminantValue::Literal(next));
+            next += <span class="number">1</span>;
+        }
+        <span class="kw">return </span><span class="prelude-val">Ok</span>(values);
+    }
+    parse_discriminant(val_expr).map(|v| <span class="macro">vec!</span>[v])
+}
+
+<span class="attr">#[cfg(not(feature = <span class="string">&quot;complex-expressions&quot;</span>))]
+</span><span class="kw">fn </span>parse_alternative_values(val_expr: <span class="kw-2">&amp;</span>Expr) -&gt; <span class="prelude-ty">Result</span>&lt;Vec&lt;DiscriminantValue&gt;&gt; {
+    parse_discriminant(val_expr).map(|v| <span class="macro">vec!</span>[v])
 }
 
 <span class="kw">mod </span>kw {
@@ -1190,8 +1335,15 @@
                 .strip_prefix(<span class="string">&#39;i&#39;</span>)
                 .or_else(|| repr_str.strip_prefix(<span class="string">&#39;u&#39;</span>));
             <span class="kw">if let </span><span class="prelude-val">Some</span>(suffix) = suffix {
-                <span class="kw">if let </span><span class="prelude-val">Ok</span>(bits) = suffix.parse::&lt;u8&gt;() {
-                    <span class="kw">return </span><span class="prelude-val">Ok</span>(<span class="number">1 </span>&lt;&lt; bits == <span class="self">self</span>.variants.len());
+                <span class="kw">if let </span><span class="prelude-val">Ok</span>(bits) = suffix.parse::&lt;u32&gt;() {
+                    <span class="kw">let </span>variants = <span class="number">1usize</span>.checked_shl(bits);
+                    <span class="kw">return </span><span class="prelude-val">Ok</span>(variants.map_or(<span class="bool-val">false</span>, |v| {
+                        v == <span class="self">self
+                            </span>.variants
+                            .iter()
+                            .map(|v| v.alternative_values.len() + <span class="number">1</span>)
+                            .sum()
+                    }));
                 }
             }
         }
@@ -1407,6 +1559,15 @@
                                 }
                             }
                             <span class="prelude-val">Err</span>(err) =&gt; {
+                                <span class="kw">if </span><span class="macro">cfg!</span>(not(feature = <span class="string">&quot;complex-expressions&quot;</span>)) {
+                                    <span class="kw">let </span>attribute_str = <span class="macro">format!</span>(<span class="string">&quot;{}&quot;</span>, attribute.tokens);
+                                    <span class="kw">if </span>attribute_str.contains(<span class="string">&quot;alternatives&quot;</span>)
+                                        &amp;&amp; attribute_str.contains(<span class="string">&quot;..&quot;</span>)
+                                    {
+                                        <span class="comment">// Give a nice error message suggesting how to fix the problem.
+                                        </span><span class="macro">die!</span>(attribute =&gt; <span class="string">&quot;Ranges are only supported as num_enum alternate values if the `complex-expressions` feature of the crate `num_enum` is enabled&quot;</span>.to_string())
+                                    }
+                                }
                                 <span class="macro">die!</span>(attribute =&gt;
                                     <span class="macro">format!</span>(<span class="string">&quot;Invalid attribute: {}&quot;</span>, err)
                                 );
@@ -1438,25 +1599,34 @@
                 }
 
                 <span class="comment">// Deal with the alternative values.
-                </span><span class="kw">let </span>alternate_values = raw_alternative_values
-                    .iter()
-                    .map(parse_discriminant)
-                    .collect::&lt;<span class="prelude-ty">Result</span>&lt;Vec&lt;<span class="kw">_</span>&gt;&gt;&gt;()<span class="question-mark">?</span>;
+                </span><span class="kw">let </span><span class="kw-2">mut </span>flattened_alternative_values = Vec::new();
+                <span class="kw">let </span><span class="kw-2">mut </span>flattened_raw_alternative_values = Vec::new();
+                <span class="kw">for </span>raw_alternative_value <span class="kw">in </span>raw_alternative_values {
+                    <span class="kw">let </span>expanded_values = parse_alternative_values(<span class="kw-2">&amp;</span>raw_alternative_value)<span class="question-mark">?</span>;
+                    <span class="kw">for </span>expanded_value <span class="kw">in </span>expanded_values {
+                        flattened_alternative_values.push(expanded_value);
+                        flattened_raw_alternative_values.push(raw_alternative_value.clone())
+                    }
+                }
 
-                <span class="macro">debug_assert_eq!</span>(alternate_values.len(), raw_alternative_values.len());
-
-                <span class="kw">if </span>!alternate_values.is_empty() {
-                    <span class="kw">let </span>alternate_int_values = alternate_values
+                <span class="kw">if </span>!flattened_alternative_values.is_empty() {
+                    <span class="kw">let </span>alternate_int_values = flattened_alternative_values
                         .into_iter()
                         .map(|v| {
                             <span class="kw">match </span>v {
                                 DiscriminantValue::Literal(value) =&gt; <span class="prelude-val">Ok</span>(value),
                                 DiscriminantValue::Expr(expr) =&gt; {
+                                    <span class="kw">if let </span>Expr::Range(<span class="kw">_</span>) = expr {
+                                        <span class="kw">if </span><span class="macro">cfg!</span>(not(feature = <span class="string">&quot;complex-expressions&quot;</span>)) {
+                                            <span class="comment">// Give a nice error message suggesting how to fix the problem.
+                                            </span><span class="macro">die!</span>(expr =&gt; <span class="string">&quot;Ranges are only supported as num_enum alternate values if the `complex-expressions` feature of the crate `num_enum` is enabled&quot;</span>.to_string())
+                                        }
+                                    }
                                     <span class="comment">// We can&#39;t do uniqueness checking on non-literals, so we don&#39;t allow them as alternate values.
                                     // We could probably allow them, but there doesn&#39;t seem to be much of a use-case,
                                     // and it&#39;s easier to give good error messages about duplicate values this way,
                                     // rather than rustc errors on conflicting match branches.
-                                    </span><span class="macro">die!</span>(expr =&gt; <span class="macro">format!</span>(<span class="string">&quot;Only literals are allowed as num_enum alternate values&quot;</span>))
+                                    </span><span class="macro">die!</span>(expr =&gt; <span class="string">&quot;Only literals are allowed as num_enum alternate values&quot;</span>.to_string())
                                 },
                             }
                         })
@@ -1471,7 +1641,7 @@
                             .iter()
                             .position(|<span class="kw-2">&amp;</span>x| x == canonical_value_int)
                         {
-                            <span class="macro">die!</span>(<span class="kw-2">&amp;</span>raw_alternative_values[index] =&gt; <span class="macro">format!</span>(<span class="string">&quot;&#39;{}&#39; in the alternative values is already attributed as the discriminant of this variant&quot;</span>, canonical_value_int));
+                            <span class="macro">die!</span>(<span class="kw-2">&amp;</span>flattened_raw_alternative_values[index] =&gt; <span class="macro">format!</span>(<span class="string">&quot;&#39;{}&#39; in the alternative values is already attributed as the discriminant of this variant&quot;</span>, canonical_value_int));
                         }
                     }
 
@@ -1488,14 +1658,14 @@
                         <span class="kw">if </span>sorted_alternate_int_values.first().unwrap() &lt;= last_upper_val {
                             <span class="kw">for </span>(index, val) <span class="kw">in </span>alternate_int_values.iter().enumerate() {
                                 <span class="kw">if </span>discriminant_int_val_set.contains(val) {
-                                    <span class="macro">die!</span>(<span class="kw-2">&amp;</span>raw_alternative_values[index] =&gt; <span class="macro">format!</span>(<span class="string">&quot;&#39;{}&#39; in the alternative values is already attributed to a previous variant&quot;</span>, val));
+                                    <span class="macro">die!</span>(<span class="kw-2">&amp;</span>flattened_raw_alternative_values[index] =&gt; <span class="macro">format!</span>(<span class="string">&quot;&#39;{}&#39; in the alternative values is already attributed to a previous variant&quot;</span>, val));
                                 }
                             }
                         }
                     }
 
                     <span class="comment">// Reconstruct the alternative_values vec of Expr but sorted.
-                    </span>raw_alternative_values = sorted_alternate_int_values
+                    </span>flattened_raw_alternative_values = sorted_alternate_int_values
                         .iter()
                         .map(|val| literal(val.to_owned()))
                         .collect();
@@ -1515,7 +1685,7 @@
                     is_default,
                     is_catch_all,
                     canonical_value: discriminant,
-                    alternative_values: raw_alternative_values,
+                    alternative_values: flattened_raw_alternative_values,
                 });
 
                 <span class="comment">// Get the next value for the discriminant.
@@ -1961,4 +2131,4 @@ Transmutes `number: {repr}` into a [`{name}`].
     })
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="num_enum_derive" data-themes="" data-resource-suffix="" data-rustdoc-version="1.67.0 (fc594f156 2023-01-24)" data-search-js="search-444266647c4dba98.js" data-settings-js="settings-bebeae96e00e4617.js" data-settings-css="settings-af96d9e2fc13e081.css" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="num_enum_derive" data-themes="" data-resource-suffix="" data-rustdoc-version="1.67.1 (d5a82bbd2 2023-02-07)" data-search-js="search-444266647c4dba98.js" data-settings-js="settings-bebeae96e00e4617.js" data-settings-css="settings-af96d9e2fc13e081.css" ></div></body></html>

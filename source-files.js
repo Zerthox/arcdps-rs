@@ -1,7 +1,7 @@
 var sourcesIndex = JSON.parse('{\
 "arcdps":["",[["api",[],["agent.rs","mod.rs"]],["exports",[],["mod.rs","raw.rs"]],["extras",[],["callbacks.rs","exports.rs","globals.rs","keybinds.rs","message.rs","mod.rs","user.rs"]]],["callbacks.rs","globals.rs","lib.rs","log.rs","panic.rs","util.rs"]],\
 "arcdps_codegen":["",[],["callbacks.rs","export.rs","extras.rs","lib.rs","parse.rs"]],\
-"arcdps_evtc":["",[],["buff.rs","event.rs","game.rs","lib.rs","state_change.rs"]],\
+"arcdps_evtc":["",[],["agent.rs","buff.rs","event.rs","game.rs","lib.rs","state_change.rs"]],\
 "arcdps_example_plugin":["",[],["lib.rs"]],\
 "arcdps_imgui":["",[["fonts",[],["atlas.rs","font.rs","glyph.rs","glyph_ranges.rs","mod.rs"]],["input",[],["keyboard.rs","mod.rs","mouse.rs"]],["render",[],["draw_data.rs","mod.rs","renderer.rs"]],["widget",[],["color_editors.rs","combo_box.rs","drag.rs","image.rs","list_box.rs","menu.rs","misc.rs","mod.rs","progress_bar.rs","selectable.rs","slider.rs","tab.rs","text.rs","tree.rs"]],["window",[],["child_window.rs","content_region.rs","mod.rs","scroll.rs"]]],["clipboard.rs","color.rs","columns.rs","context.rs","drag_drop.rs","draw_list.rs","input_widget.rs","internal.rs","io.rs","layout.rs","lib.rs","list_clipper.rs","plothistogram.rs","plotlines.rs","popups.rs","stacks.rs","string.rs","style.rs","tables.rs","tokens.rs","utils.rs"]],\
 "arcdps_imgui_sys":["",[],["bindings.rs","lib.rs"]],\
@@ -19,8 +19,6 @@ var sourcesIndex = JSON.parse('{\
 "libc":["",[["windows",[["msvc",[],["mod.rs"]]],["mod.rs"]]],["fixed_width_ints.rs","lib.rs","macros.rs"]],\
 "lock_api":["",[],["lib.rs","mutex.rs","remutex.rs","rwlock.rs"]],\
 "log":["",[],["lib.rs","macros.rs"]],\
-"memchr":["",[["memchr",[["x86",[],["avx.rs","mod.rs","sse2.rs"]]],["fallback.rs","iter.rs","mod.rs","naive.rs"]],["memmem",[["prefilter",[["x86",[],["avx.rs","mod.rs","sse.rs"]]],["fallback.rs","genericsimd.rs","mod.rs"]],["x86",[],["avx.rs","mod.rs","sse.rs"]]],["byte_frequencies.rs","genericsimd.rs","mod.rs","rabinkarp.rs","rarebytes.rs","twoway.rs","util.rs","vector.rs"]]],["cow.rs","lib.rs"]],\
-"nom8":["",[["bits",[],["complete.rs","mod.rs","streaming.rs"]],["branch",[],["mod.rs"]],["bytes",[],["complete.rs","mod.rs","streaming.rs"]],["character",[],["complete.rs","mod.rs","streaming.rs"]],["combinator",[],["mod.rs"]],["multi",[],["mod.rs"]],["number",[],["complete.rs","mod.rs","streaming.rs"]],["sequence",[],["mod.rs"]]],["error.rs","input.rs","lib.rs","macros.rs","parser.rs","str.rs"]],\
 "num_enum":["",[],["lib.rs"]],\
 "num_enum_derive":["",[],["lib.rs"]],\
 "num_integer":["",[],["average.rs","lib.rs","roots.rs"]],\
@@ -48,6 +46,7 @@ var sourcesIndex = JSON.parse('{\
 "unicode_ident":["",[],["lib.rs","tables.rs"]],\
 "winapi":["",[["km",[],["mod.rs"]],["shared",[],["basetsd.rs","cfg.rs","devpropdef.rs","guiddef.rs","ktmtypes.rs","minwindef.rs","mod.rs","ntdef.rs","ntstatus.rs","rpc.rs","rpcdce.rs","rpcndr.rs","windef.rs","winerror.rs","wtypes.rs","wtypesbase.rs"]],["ucrt",[],["mod.rs"]],["um",[["gl",[],["mod.rs"]]],["cfgmgr32.rs","combaseapi.rs","consoleapi.rs","errhandlingapi.rs","fileapi.rs","handleapi.rs","libloaderapi.rs","minwinbase.rs","mod.rs","oaidl.rs","objbase.rs","objidl.rs","objidlbase.rs","processenv.rs","processthreadsapi.rs","profileapi.rs","propidl.rs","reason.rs","sysinfoapi.rs","timezoneapi.rs","unknwnbase.rs","winbase.rs","wincon.rs","wincontypes.rs","wingdi.rs","winnt.rs","winreg.rs"]],["vc",[],["excpt.rs","mod.rs","vadefs.rs","vcruntime.rs"]],["winrt",[],["activation.rs","hstring.rs","inspectable.rs","mod.rs","roapi.rs","winstring.rs"]]],["lib.rs","macros.rs"]],\
 "windows_targets":["",[],["lib.rs"]],\
-"windows_x86_64_msvc":["",[],["lib.rs"]]\
+"windows_x86_64_msvc":["",[],["lib.rs"]],\
+"winnow":["",[["bits",[],["complete.rs","mod.rs","streaming.rs"]],["branch",[],["mod.rs"]],["bytes",[],["complete.rs","mod.rs","streaming.rs"]],["character",[],["complete.rs","mod.rs","streaming.rs"]],["combinator",[],["mod.rs"]],["multi",[],["mod.rs"]],["number",[],["complete.rs","mod.rs","streaming.rs"]],["sequence",[],["mod.rs"]],["stream",[],["impls.rs","mod.rs"]],["trace",[],["mod.rs"]]],["error.rs","lib.rs","macros.rs","parser.rs"]]\
 }');
 createSourceSidebar();
