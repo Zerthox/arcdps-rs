@@ -148,12 +148,40 @@
 <a href="#148" id="148">148</a>
 <a href="#149" id="149">149</a>
 <a href="#150" id="150">150</a>
+<a href="#151" id="151">151</a>
+<a href="#152" id="152">152</a>
+<a href="#153" id="153">153</a>
+<a href="#154" id="154">154</a>
+<a href="#155" id="155">155</a>
+<a href="#156" id="156">156</a>
+<a href="#157" id="157">157</a>
+<a href="#158" id="158">158</a>
+<a href="#159" id="159">159</a>
+<a href="#160" id="160">160</a>
+<a href="#161" id="161">161</a>
+<a href="#162" id="162">162</a>
+<a href="#163" id="163">163</a>
+<a href="#164" id="164">164</a>
+<a href="#165" id="165">165</a>
+<a href="#166" id="166">166</a>
+<a href="#167" id="167">167</a>
+<a href="#168" id="168">168</a>
+<a href="#169" id="169">169</a>
+<a href="#170" id="170">170</a>
+<a href="#171" id="171">171</a>
+<a href="#172" id="172">172</a>
+<a href="#173" id="173">173</a>
+<a href="#174" id="174">174</a>
+<a href="#175" id="175">175</a>
+<a href="#176" id="176">176</a>
+<a href="#177" id="177">177</a>
+<a href="#178" id="178">178</a>
 </pre><pre class="rust"><code><span class="doccomment">//! Raw ArcDPS exports.
 
 </span><span class="kw">use crate</span>::{
     api::RawCombatEvent, callbacks::ArcDpsExport, globals::ARC_GLOBALS, imgui::sys::ImVec4,
 };
-<span class="kw">use </span>std::os::raw::c_char;
+<span class="kw">use </span>std::{ffi::c_void, os::raw::c_char};
 <span class="kw">use </span>windows::Win32::Foundation::HINSTANCE;
 
 <span class="doccomment">/// Returns the handle to the ArcDPS dll.
@@ -217,16 +245,30 @@
     ARC_GLOBALS.e8.expect(<span class="string">&quot;failed to find arc export e8&quot;</span>)(string)
 }
 
-<span class="doccomment">/// Signature of the `e8` export. See [`e9_add_event`] for details.
+<span class="doccomment">/// Signature of the `e9` export. See [`e9_add_event`] for details.
 </span><span class="kw">pub type </span>Export9 = <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn</span>(event: <span class="kw-2">*const </span>RawCombatEvent, sig: u32);
 
 <span class="doccomment">/// Adds a [`RawCombatEvent`] to ArcDPS&#39; event processing.
 ///
-/// `is_statechange` will be set to extension, pad61-64 will be set to `sig`.
+/// `is_statechange` will be set to [`StateChange::Extension`](crate::api::StateChange::Extension), pad61-64 will be set to `sig`.
 /// Event will end up processed like ArcDPS events and logged to EVTC.
 </span><span class="attr">#[inline]
 </span><span class="kw">pub unsafe fn </span>e9_add_event(event: <span class="kw-2">*const </span>RawCombatEvent, sig: u32) {
     ARC_GLOBALS.e9.expect(<span class="string">&quot;failed to find arc export e9&quot;</span>)(event, sig)
+}
+
+<span class="doccomment">/// Signature of the `e10` export. See [`e10_add_event_skill] for details.
+</span><span class="kw">pub type </span>Export10 = <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn</span>(event: <span class="kw-2">*const </span>RawCombatEvent, sig: u32);
+
+<span class="doccomment">/// Adds a [`RawCombatEvent`] to ArcDPS&#39; event processing.
+///
+/// `is_statechange` will be set to [`StateChange::ExtensionCombat`](crate::api::StateChange::ExtensionCombat), pad61-64 will be set to `sig`.
+/// Event will end up processed like ArcDPS events and logged to EVTC.
+///
+/// Contrary to [`e9_add_event`], the `skill_id` is treated as skill id and will be added to the EVTC skill table.
+</span><span class="attr">#[inline]
+</span><span class="kw">pub unsafe fn </span>e10_add_event_combat(event: <span class="kw-2">*const </span>RawCombatEvent, sig: u32) {
+    ARC_GLOBALS.e10.expect(<span class="string">&quot;failed to find arc export e10&quot;</span>)(event, sig)
 }
 
 <span class="doccomment">/// Signature of the old `addextension` export. See [`add_extension_old`] for details.
@@ -297,6 +339,20 @@
     ARC_GLOBALS
         .free_extension
         .expect(<span class="string">&quot;failed to find arc export freeextension2&quot;</span>)(sig)
+}
+
+<span class="doccomment">/// Signature of the `listextension` export. See [`list_extension`] for details.
+</span><span class="kw">pub type </span>ExportListExtension = <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn</span>(callback_fn: <span class="kw-2">*const </span>c_void);
+
+<span class="doccomment">/// Retrieves a list of extensions via callback.
+///
+/// `callback_fn` is a callback of type `void callback_fn(arcdps_exports* exp)`.
+/// Callback is called once for each extension current loaded.
+</span><span class="attr">#[inline]
+</span><span class="kw">pub unsafe fn </span>list_extension(callback_fn: <span class="kw-2">*const </span>c_void) {
+    ARC_GLOBALS
+        .list_extension
+        .expect(<span class="string">&quot;failed to find arc export listextension&quot;</span>)(callback_fn)
 }
 </code></pre></div>
 </section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="arcdps" data-themes="" data-resource-suffix="" data-rustdoc-version="1.67.1 (d5a82bbd2 2023-02-07)" data-search-js="search-444266647c4dba98.js" data-settings-js="settings-bebeae96e00e4617.js" data-settings-css="settings-af96d9e2fc13e081.css" ></div></body></html>

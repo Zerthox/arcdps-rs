@@ -1,5 +1,5 @@
 var sourcesIndex = JSON.parse('{\
-"arcdps":["",[["api",[],["agent.rs","mod.rs"]],["exports",[],["mod.rs","raw.rs"]],["extras",[],["callbacks.rs","exports.rs","globals.rs","keybinds.rs","message.rs","mod.rs","user.rs"]]],["callbacks.rs","globals.rs","lib.rs","log.rs","panic.rs","util.rs"]],\
+"arcdps":["",[["api",[],["agent.rs","mod.rs"]],["exports",[],["has.rs","mod.rs","raw.rs"]],["extras",[],["callbacks.rs","exports.rs","globals.rs","keybinds.rs","message.rs","mod.rs","user.rs"]]],["callbacks.rs","globals.rs","lib.rs","log.rs","panic.rs","util.rs"]],\
 "arcdps_codegen":["",[],["callbacks.rs","export.rs","extras.rs","lib.rs","parse.rs"]],\
 "arcdps_evtc":["",[],["agent.rs","buff.rs","event.rs","game.rs","lib.rs","state_change.rs"]],\
 "arcdps_example_plugin":["",[],["lib.rs"]],\

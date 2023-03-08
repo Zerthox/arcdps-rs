@@ -343,12 +343,6 @@
 <a href="#343" id="343">343</a>
 <a href="#344" id="344">344</a>
 <a href="#345" id="345">345</a>
-<a href="#346" id="346">346</a>
-<a href="#347" id="347">347</a>
-<a href="#348" id="348">348</a>
-<a href="#349" id="349">349</a>
-<a href="#350" id="350">350</a>
-<a href="#351" id="351">351</a>
 </pre><pre class="rust"><code><span class="doccomment">//! Bindings for [ArcDPS](https://www.deltaconnected.com/arcdps/) plugins.
 //!
 //! # Usage
@@ -434,11 +428,10 @@
 };
 <span class="kw">pub use </span>arcdps_codegen::export;
 <span class="kw">pub use </span>arcdps_imgui <span class="kw">as </span>imgui;
+<span class="kw">pub use </span>globals::{d3d11_device, d3d_version, dxgi_swap_chain};
 <span class="kw">pub use </span>util::strip_account_prefix;
 
 <span class="kw">use </span>callbacks::<span class="kw-2">*</span>;
-<span class="kw">use </span>globals::D3D11_DEVICE;
-<span class="kw">use </span>windows::Win32::Graphics::Direct3D11::ID3D11Device;
 
 <span class="attr">#[cfg(feature = <span class="string">&quot;extras&quot;</span>)]
 </span><span class="kw">use </span>extras::callbacks::<span class="kw-2">*</span>;
@@ -644,6 +637,7 @@
     <span class="kw">pub use </span><span class="kw">crate</span>::util::{str_from_cstr, str_to_wide, strip_account_prefix};
 
     <span class="kw">use crate</span>::{
+        exports::{has_e3_log_file, has_e8_log_window},
         globals::{init_dxgi, init_imgui, ARC_GLOBALS, IG_UI},
         imgui,
         panic::init_panic_hook,
@@ -669,13 +663,13 @@
         <span class="comment">// arc exports have to be retrieved before panic hook &amp; logging
         </span>ARC_GLOBALS.init(arc_handle, str_from_cstr(arc_version));
 
-        <span class="comment">// only set panic hook if export e3 was found
-        </span><span class="kw">if </span>ARC_GLOBALS.e3.is_some() {
+        <span class="comment">// only set panic hook if log file export was found
+        </span><span class="kw">if </span>has_e3_log_file() {
             init_panic_hook(name);
 
-            <span class="comment">// only set logger if export e3 &amp; e8 were found
+            <span class="comment">// only set logger if log file &amp; window exports were found
             </span><span class="attr">#[cfg(feature = <span class="string">&quot;log&quot;</span>)]
-            </span><span class="kw">if </span>ARC_GLOBALS.e8.is_some() {
+            </span><span class="kw">if </span>has_e8_log_window() {
                 <span class="kw">let </span>result = log::set_boxed_logger(Box::new(ArcDpsLogger::new(name)));
                 <span class="kw">if </span>result.is_ok() {
                     log::set_max_level(log::LevelFilter::Trace);
@@ -693,12 +687,6 @@
     </span><span class="kw">pub unsafe fn </span>ui() -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>imgui::Ui&lt;<span class="lifetime">&#39;static</span>&gt; {
         IG_UI.as_ref().expect(<span class="string">&quot;imgui ui not initialized&quot;</span>)
     }
-}
-
-<span class="doccomment">/// Returns the DirectX 11 device, if available.
-</span><span class="attr">#[inline]
-</span><span class="kw">pub fn </span>d3d11_device() -&gt; <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>ID3D11Device&gt; {
-    <span class="kw">unsafe </span>{ D3D11_DEVICE.as_ref() }
 }
 </code></pre></div>
 </section></div></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="arcdps" data-themes="" data-resource-suffix="" data-rustdoc-version="1.67.1 (d5a82bbd2 2023-02-07)" data-search-js="search-444266647c4dba98.js" data-settings-js="settings-bebeae96e00e4617.js" data-settings-css="settings-af96d9e2fc13e081.css" ></div></body></html>

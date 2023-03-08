@@ -78,7 +78,7 @@
 
 <span class="kw">fn </span>init() -&gt; <span class="prelude-ty">Result</span>&lt;(), Box&lt;<span class="kw">dyn </span>Error&gt;&gt; {
     <span class="macro">info!</span>(<span class="string">&quot;plugin has been started&quot;</span>);
-    <span class="comment">// target: &quot;window&quot; is the same as not specifying target
+    <span class="comment">// for info level target &quot;window&quot; is the same as not specifying target
     </span><span class="macro">info!</span>(target: <span class="string">&quot;window&quot;</span>, <span class="string">&quot;only window logging&quot;</span>);
     <span class="macro">info!</span>(target: <span class="string">&quot;file&quot;</span>, <span class="string">&quot;only file logging&quot;</span>);
     <span class="macro">info!</span>(target: <span class="string">&quot;both&quot;</span>, <span class="string">&quot;logging to file and window&quot;</span>);

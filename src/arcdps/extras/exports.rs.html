@@ -81,6 +81,20 @@
 <a href="#81" id="81">81</a>
 <a href="#82" id="82">82</a>
 <a href="#83" id="83">83</a>
+<a href="#84" id="84">84</a>
+<a href="#85" id="85">85</a>
+<a href="#86" id="86">86</a>
+<a href="#87" id="87">87</a>
+<a href="#88" id="88">88</a>
+<a href="#89" id="89">89</a>
+<a href="#90" id="90">90</a>
+<a href="#91" id="91">91</a>
+<a href="#92" id="92">92</a>
+<a href="#93" id="93">93</a>
+<a href="#94" id="94">94</a>
+<a href="#95" id="95">95</a>
+<a href="#96" id="96">96</a>
+<a href="#97" id="97">97</a>
 </pre><pre class="rust"><code><span class="doccomment">//! Unofficial Extras exports.
 //!
 //! Calling an export before Unofficial Extras calls `extras_init` will cause a panic.
@@ -91,6 +105,12 @@
 </span><span class="attr">#[inline]
 </span><span class="kw">pub fn </span>version() -&gt; <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str&gt; {
     <span class="kw">unsafe </span>{ EXTRAS_GLOBALS.version }
+}
+
+<span class="doccomment">/// Checks whether the `get_key` export was found.
+</span><span class="attr">#[inline]
+</span><span class="kw">pub fn </span>has_get_key() -&gt; bool {
+    <span class="kw">unsafe </span>{ EXTRAS_GLOBALS.get_key }.is_some()
 }
 
 <span class="doccomment">/// Retrieves the [`Key`] for a given game [`Control`] from Unofficial Extras.
@@ -106,8 +126,15 @@
 /// let primary = get_key(Control::Skills_EliteSkill, false);
 /// let secondary = get_key(Control::Skills_EliteSkill, true);
 /// ```
+</span><span class="attr">#[inline]
 </span><span class="kw">pub fn </span>get_key(control: Control, secondary: bool) -&gt; Key {
     <span class="kw">unsafe </span>{ raw::get_key(control, secondary <span class="kw">as </span>u32) }.into()
+}
+
+<span class="doccomment">/// Checks whether the `get_keybind` export was found.
+</span><span class="attr">#[inline]
+</span><span class="kw">pub fn </span>has_get_keybind() -&gt; bool {
+    <span class="kw">unsafe </span>{ EXTRAS_GLOBALS.get_keybind }.is_some()
 }
 
 <span class="doccomment">/// Retrieves the [`Keybind`] for a given game [`Control`] from Unofficial Extras.
@@ -123,6 +150,7 @@
 /// let primary = keybind.primary;
 /// let secondary = keybind.secondary;
 /// ```
+</span><span class="attr">#[inline]
 </span><span class="kw">pub fn </span>get_keybind(control: Control) -&gt; Keybind {
     <span class="kw">unsafe </span>{ raw::get_keybind(control) }.into()
 }

@@ -96,14 +96,100 @@
 <a href="#96" id="96">96</a>
 <a href="#97" id="97">97</a>
 <a href="#98" id="98">98</a>
+<a href="#99" id="99">99</a>
+<a href="#100" id="100">100</a>
+<a href="#101" id="101">101</a>
+<a href="#102" id="102">102</a>
+<a href="#103" id="103">103</a>
+<a href="#104" id="104">104</a>
+<a href="#105" id="105">105</a>
+<a href="#106" id="106">106</a>
+<a href="#107" id="107">107</a>
+<a href="#108" id="108">108</a>
+<a href="#109" id="109">109</a>
+<a href="#110" id="110">110</a>
+<a href="#111" id="111">111</a>
+<a href="#112" id="112">112</a>
+<a href="#113" id="113">113</a>
+<a href="#114" id="114">114</a>
+<a href="#115" id="115">115</a>
+<a href="#116" id="116">116</a>
+<a href="#117" id="117">117</a>
+<a href="#118" id="118">118</a>
+<a href="#119" id="119">119</a>
+<a href="#120" id="120">120</a>
+<a href="#121" id="121">121</a>
+<a href="#122" id="122">122</a>
+<a href="#123" id="123">123</a>
+<a href="#124" id="124">124</a>
+<a href="#125" id="125">125</a>
+<a href="#126" id="126">126</a>
+<a href="#127" id="127">127</a>
+<a href="#128" id="128">128</a>
+<a href="#129" id="129">129</a>
+<a href="#130" id="130">130</a>
+<a href="#131" id="131">131</a>
+<a href="#132" id="132">132</a>
+<a href="#133" id="133">133</a>
+<a href="#134" id="134">134</a>
+<a href="#135" id="135">135</a>
+<a href="#136" id="136">136</a>
+<a href="#137" id="137">137</a>
+<a href="#138" id="138">138</a>
+<a href="#139" id="139">139</a>
+<a href="#140" id="140">140</a>
+<a href="#141" id="141">141</a>
+<a href="#142" id="142">142</a>
+<a href="#143" id="143">143</a>
+<a href="#144" id="144">144</a>
+<a href="#145" id="145">145</a>
+<a href="#146" id="146">146</a>
+<a href="#147" id="147">147</a>
+<a href="#148" id="148">148</a>
+<a href="#149" id="149">149</a>
+<a href="#150" id="150">150</a>
+<a href="#151" id="151">151</a>
+<a href="#152" id="152">152</a>
+<a href="#153" id="153">153</a>
+<a href="#154" id="154">154</a>
+<a href="#155" id="155">155</a>
+<a href="#156" id="156">156</a>
+<a href="#157" id="157">157</a>
+<a href="#158" id="158">158</a>
+<a href="#159" id="159">159</a>
+<a href="#160" id="160">160</a>
+<a href="#161" id="161">161</a>
+<a href="#162" id="162">162</a>
+<a href="#163" id="163">163</a>
+<a href="#164" id="164">164</a>
+<a href="#165" id="165">165</a>
 </pre><pre class="rust"><code><span class="doccomment">//! Logging via the [`log`] crate.
+//!
+//! # Usage
+//! With the `&quot;log&quot;` feature enabled, [`ArcDpsLogger`] is set as logger before your `init` function is called.
+//! By default all messages are logged to ArcDPS&#39; log window and only warnings &amp; errors are logged to the log file.
+//! You can specify `&quot;window&quot;`, `&quot;file&quot;` or `&quot;both&quot;`/`&quot;all&quot;` as log target to control where the messages should be logged.
+//!
+//! ```no_run
+//! use log::{error, info};
+//!
+//! error!(&quot;an error will log to window &amp; file&quot;);
+//! error!(target: &quot;window&quot;, &quot;window target will only log to window&quot;);
+//! error!(target: &quot;file&quot;, &quot;file target will only log to file&quot;);
+//! info!(&quot;below error/warn level will only log to window&quot;);
+//! info!(target: &quot;both&quot;, &quot;target both/all will log to window &amp; file&quot;);
+//! ```
 //!
 //! *Requires the `&quot;log&quot;` feature.*
 
 </span><span class="kw">use </span><span class="kw">crate</span>::exports::{log_to_file, log_to_window};
-<span class="kw">use </span>log::{Log, Metadata, Record};
+<span class="kw">use </span>log::{Level, Log, Metadata, Record};
 
-<span class="doccomment">/// A logger logging to ArcDPS&#39; log window or file depending on the set log target.
+<span class="doccomment">/// A logger logging to ArcDPS&#39; log window and/or file.
+///
+/// By default all messages are logged to ArcDPS&#39; log window and only warnings &amp; errors are logged to the log file.
+/// You can specify `&quot;window&quot;`, `&quot;file&quot;` or `&quot;both&quot;`/`&quot;all&quot;` as log target to control where the messages should be logged.
+</span><span class="attr">#[derive(Debug, Clone)]
 </span><span class="kw">pub struct </span>ArcDpsLogger {
     name: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str,
 }
@@ -113,22 +199,42 @@
     </span><span class="kw">pub const fn </span>new(name: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str) -&gt; <span class="self">Self </span>{
         <span class="self">Self </span>{ name }
     }
+
+    <span class="doccomment">/// Checks whether window logging is enabled for the given [`Metadata`].
+    </span><span class="kw">fn </span>window_enabled(metadata: <span class="kw-2">&amp;</span>Metadata) -&gt; bool {
+        metadata.target() != <span class="string">&quot;file&quot;
+    </span>}
+
+    <span class="doccomment">/// Checks whether file logging is enabled for the given [`Metadata`].
+    </span><span class="kw">fn </span>file_enabled(metadata: <span class="kw-2">&amp;</span>Metadata) -&gt; bool {
+        <span class="kw">match </span>metadata.target() {
+            <span class="string">&quot;file&quot; </span>| <span class="string">&quot;both&quot; </span>| <span class="string">&quot;all&quot; </span>=&gt; <span class="bool-val">true</span>,
+            <span class="string">&quot;window&quot; </span>=&gt; <span class="bool-val">false</span>,
+            <span class="kw">_ </span>=&gt; <span class="macro">matches!</span>(metadata.level(), Level::Warn | Level::Error),
+        }
+    }
 }
 
 <span class="kw">impl </span>Log <span class="kw">for </span>ArcDpsLogger {
-    <span class="kw">fn </span>enabled(<span class="kw-2">&amp;</span><span class="self">self</span>, _metadata: <span class="kw-2">&amp;</span>Metadata) -&gt; bool {
-        <span class="bool-val">true
-    </span>}
+    <span class="kw">fn </span>enabled(<span class="kw-2">&amp;</span><span class="self">self</span>, metadata: <span class="kw-2">&amp;</span>Metadata) -&gt; bool {
+        <span class="self">Self</span>::window_enabled(metadata) || <span class="self">Self</span>::file_enabled(metadata)
+    }
 
     <span class="kw">fn </span>log(<span class="kw-2">&amp;</span><span class="self">self</span>, record: <span class="kw-2">&amp;</span>Record) {
-        FileLogger::log(<span class="kw-2">&amp;</span>FileLogger { name: <span class="self">self</span>.name }, record);
-        WindowLogger::log(<span class="kw-2">&amp;</span>WindowLogger { name: <span class="self">self</span>.name }, record);
+        <span class="kw">let </span>metadata = record.metadata();
+        <span class="kw">if </span><span class="self">Self</span>::window_enabled(metadata) {
+            WindowLogger { name: <span class="self">self</span>.name }.log(record);
+        }
+        <span class="kw">if </span><span class="self">Self</span>::file_enabled(metadata) {
+            FileLogger { name: <span class="self">self</span>.name }.log(record);
+        }
     }
 
     <span class="kw">fn </span>flush(<span class="kw-2">&amp;</span><span class="self">self</span>) {}
 }
 
 <span class="doccomment">/// A logger logging to ArcDPS&#39; log window.
+</span><span class="attr">#[derive(Debug, Clone)]
 </span><span class="kw">pub struct </span>WindowLogger {
     name: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str,
 }
@@ -141,28 +247,20 @@
 }
 
 <span class="kw">impl </span>Log <span class="kw">for </span>WindowLogger {
-    <span class="kw">fn </span>enabled(<span class="kw-2">&amp;</span><span class="self">self</span>, metadata: <span class="kw-2">&amp;</span>Metadata) -&gt; bool {
-        metadata.target() != <span class="string">&quot;file&quot; </span><span class="comment">// by default log to window
+    <span class="kw">fn </span>enabled(<span class="kw-2">&amp;</span><span class="self">self</span>, _metadata: <span class="kw-2">&amp;</span>Metadata) -&gt; bool {
+        <span class="bool-val">true
     </span>}
 
     <span class="kw">fn </span>log(<span class="kw-2">&amp;</span><span class="self">self</span>, record: <span class="kw-2">&amp;</span>Record) {
-        <span class="kw">if </span>!<span class="self">self</span>.enabled(record.metadata()) {
-            <span class="kw">return</span>;
-        }
-        <span class="comment">// TODO: coloring
-        </span><span class="kw">let </span>message = <span class="macro">format!</span>(
-            <span class="string">&quot;{} {}: {}&quot;</span>,
-            <span class="self">self</span>.name,
-            record.level().to_string().to_lowercase(),
-            record.args()
-        );
-        <span class="kw">let _ </span>= log_to_window(message);
+        <span class="comment">// TODO: coloring?
+        </span><span class="kw">let _ </span>= log_to_window(format_message(<span class="self">self</span>.name, record));
     }
 
     <span class="kw">fn </span>flush(<span class="kw-2">&amp;</span><span class="self">self</span>) {}
 }
 
 <span class="doccomment">/// A logger logging to ArcDPS&#39; log file.
+</span><span class="attr">#[derive(Debug, Clone)]
 </span><span class="kw">pub struct </span>FileLogger {
     name: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str,
 }
@@ -175,24 +273,60 @@
 }
 
 <span class="kw">impl </span>Log <span class="kw">for </span>FileLogger {
-    <span class="kw">fn </span>enabled(<span class="kw-2">&amp;</span><span class="self">self</span>, metadata: <span class="kw-2">&amp;</span>Metadata) -&gt; bool {
-        [<span class="string">&quot;file&quot;</span>, <span class="string">&quot;both&quot;</span>].contains(<span class="kw-2">&amp;</span>metadata.target())
-    }
+    <span class="kw">fn </span>enabled(<span class="kw-2">&amp;</span><span class="self">self</span>, _metadata: <span class="kw-2">&amp;</span>Metadata) -&gt; bool {
+        <span class="bool-val">true
+    </span>}
 
     <span class="kw">fn </span>log(<span class="kw-2">&amp;</span><span class="self">self</span>, record: <span class="kw-2">&amp;</span>Record) {
-        <span class="kw">if </span>!<span class="self">self</span>.enabled(record.metadata()) {
-            <span class="kw">return</span>;
-        }
-        <span class="kw">let </span>message = <span class="macro">format!</span>(
-            <span class="string">&quot;{} {}: {}&quot;</span>,
-            <span class="self">self</span>.name,
-            record.level().to_string().to_lowercase(),
-            record.args()
-        );
-        <span class="kw">let _ </span>= log_to_file(message);
+        <span class="kw">let _ </span>= log_to_file(format_message(<span class="self">self</span>.name, record));
     }
 
     <span class="kw">fn </span>flush(<span class="kw-2">&amp;</span><span class="self">self</span>) {}
+}
+
+<span class="doccomment">/// Formats a log message.
+</span><span class="kw">fn </span>format_message(name: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str, record: <span class="kw-2">&amp;</span>Record) -&gt; String {
+    <span class="macro">format!</span>(
+        <span class="string">&quot;{} {}: {}&quot;</span>,
+        name,
+        record.level().to_string().to_lowercase(),
+        record.args()
+    )
+}
+
+<span class="attr">#[cfg(test)]
+</span><span class="kw">mod </span>tests {
+    <span class="kw">use </span><span class="kw">super</span>::ArcDpsLogger;
+    <span class="kw">use </span>log::{Level, Metadata};
+
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>enabled() {
+        <span class="kw">fn </span>meta(target: <span class="kw-2">&amp;</span>str, level: Level) -&gt; Metadata {
+            Metadata::builder().target(target).level(level).build()
+        }
+
+        <span class="kw">const </span>MOD: <span class="kw-2">&amp;</span>str = <span class="macro">module_path!</span>();
+
+        <span class="kw">let </span>info = meta(MOD, Level::Info);
+        <span class="macro">assert!</span>(ArcDpsLogger::window_enabled(<span class="kw-2">&amp;</span>info));
+        <span class="macro">assert!</span>(!ArcDpsLogger::file_enabled(<span class="kw-2">&amp;</span>info));
+
+        <span class="kw">let </span>warn = meta(MOD, Level::Warn);
+        <span class="macro">assert!</span>(ArcDpsLogger::window_enabled(<span class="kw-2">&amp;</span>warn));
+        <span class="macro">assert!</span>(ArcDpsLogger::file_enabled(<span class="kw-2">&amp;</span>warn));
+
+        <span class="kw">let </span>error = meta(MOD, Level::Error);
+        <span class="macro">assert!</span>(ArcDpsLogger::window_enabled(<span class="kw-2">&amp;</span>error));
+        <span class="macro">assert!</span>(ArcDpsLogger::file_enabled(<span class="kw-2">&amp;</span>error));
+
+        <span class="kw">let </span>info_file = meta(<span class="string">&quot;file&quot;</span>, Level::Info);
+        <span class="macro">assert!</span>(!ArcDpsLogger::window_enabled(<span class="kw-2">&amp;</span>info_file));
+        <span class="macro">assert!</span>(ArcDpsLogger::file_enabled(<span class="kw-2">&amp;</span>info_file));
+
+        <span class="kw">let </span>info_both = meta(<span class="string">&quot;both&quot;</span>, Level::Info);
+        <span class="macro">assert!</span>(ArcDpsLogger::window_enabled(<span class="kw-2">&amp;</span>info_both));
+        <span class="macro">assert!</span>(ArcDpsLogger::file_enabled(<span class="kw-2">&amp;</span>info_both));
+    }
 }
 </code></pre></div>
 </section></div></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="arcdps" data-themes="" data-resource-suffix="" data-rustdoc-version="1.67.1 (d5a82bbd2 2023-02-07)" data-search-js="search-444266647c4dba98.js" data-settings-js="settings-bebeae96e00e4617.js" data-settings-css="settings-af96d9e2fc13e081.css" ></div></body></html>
