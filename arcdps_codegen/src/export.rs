@@ -88,7 +88,7 @@ impl ArcDpsGen {
                 let result: Result<(), Box<dyn ::std::error::Error>> = #init;
                 if let Err(err) = result {
                     unsafe {
-                        ERROR_STRING = err.to_string();
+                        ERROR_STRING = err.to_string() + "\0";
                         EXPORT_ERROR.size = ERROR_STRING.as_ptr() as _;
                         &EXPORT_ERROR
                     }
