@@ -10,6 +10,12 @@ pub fn version() -> Option<&'static str> {
     unsafe { EXTRAS_GLOBALS.version }
 }
 
+/// Checks whether the `get_key` export was found.
+#[inline]
+pub fn has_get_key() -> bool {
+    unsafe { EXTRAS_GLOBALS.get_key }.is_some()
+}
+
 /// Retrieves the [`Key`] for a given game [`Control`] from Unofficial Extras.
 /// `secondary` determines whether the primary or secondary bind.
 ///
@@ -23,8 +29,15 @@ pub fn version() -> Option<&'static str> {
 /// let primary = get_key(Control::Skills_EliteSkill, false);
 /// let secondary = get_key(Control::Skills_EliteSkill, true);
 /// ```
+#[inline]
 pub fn get_key(control: Control, secondary: bool) -> Key {
     unsafe { raw::get_key(control, secondary as u32) }.into()
+}
+
+/// Checks whether the `get_keybind` export was found.
+#[inline]
+pub fn has_get_keybind() -> bool {
+    unsafe { EXTRAS_GLOBALS.get_keybind }.is_some()
 }
 
 /// Retrieves the [`Keybind`] for a given game [`Control`] from Unofficial Extras.
@@ -40,6 +53,7 @@ pub fn get_key(control: Control, secondary: bool) -> Key {
 /// let primary = keybind.primary;
 /// let secondary = keybind.secondary;
 /// ```
+#[inline]
 pub fn get_keybind(control: Control) -> Keybind {
     unsafe { raw::get_keybind(control) }.into()
 }
