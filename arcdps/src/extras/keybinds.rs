@@ -524,7 +524,7 @@ pub enum MouseCode {
 }
 
 #[derive(
-    Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
+    Debug, Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
 )]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[cfg_attr(
@@ -533,7 +533,7 @@ pub enum MouseCode {
 )]
 #[repr(i32)]
 pub enum DeviceType {
-    #[num_enum(default)]
+    #[default]
     Unset = 0,
     Mouse = 1,
     Keyboard = 2,

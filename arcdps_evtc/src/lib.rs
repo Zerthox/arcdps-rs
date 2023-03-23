@@ -29,7 +29,7 @@ use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
 ///
 /// *Arc calls this "iff" for if friend/foe.*
 #[derive(
-    Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
+    Debug, Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
 )]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[cfg_attr(
@@ -45,7 +45,7 @@ pub enum Affinity {
     Foe,
 
     /// Uncertain whether ally or enemy.
-    #[num_enum(default)]
+    #[default]
     Unknown,
 }
 
@@ -53,7 +53,7 @@ pub enum Affinity {
 ///
 /// *Arc calls this "combat result".*
 #[derive(
-    Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
+    Debug, Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
 )]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[cfg_attr(
@@ -119,7 +119,7 @@ pub enum Strike {
     Activation,
 
     /// Unknown or invalid.
-    #[num_enum(default)]
+    #[default]
     Unknown,
 }
 
@@ -127,7 +127,7 @@ pub enum Strike {
 ///
 /// *Arc calls this "combat activation".*
 #[derive(
-    Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
+    Debug, Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
 )]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[repr(u8)]
@@ -151,7 +151,7 @@ pub enum Activation {
     Reset,
 
     /// Unknown or invalid.
-    #[num_enum(default)]
+    #[default]
     Unknown,
 }
 

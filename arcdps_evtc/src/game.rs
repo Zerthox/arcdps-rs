@@ -8,7 +8,7 @@ use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
 
 /// Player profession.
 #[derive(
-    Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
+    Debug, Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
 )]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[cfg_attr(
@@ -18,7 +18,7 @@ use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
 #[repr(u32)]
 pub enum Profession {
     /// Unknown or invalid.
-    #[num_enum(default)]
+    #[default]
     Unknown = 0,
 
     Guardian = 1,
@@ -34,7 +34,7 @@ pub enum Profession {
 
 /// Player specialization.
 #[derive(
-    Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
+    Debug, Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
 )]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[cfg_attr(
@@ -44,7 +44,7 @@ pub enum Profession {
 #[repr(u32)]
 pub enum Specialization {
     /// Unknown or invalid.
-    #[num_enum(default)]
+    #[default]
     Unknown = 0,
 
     // mesmer
