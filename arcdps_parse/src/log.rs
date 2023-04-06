@@ -84,7 +84,7 @@ impl Save for Log {
 }
 
 /// An EVTC log header.
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq, Eq)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct Header {
     /// Date this log was recorded.
@@ -130,6 +130,29 @@ impl Save for Header {
     fn save(&self, output: &mut impl io::Write) -> Result<(), Self::Error> {
         write_string_buffer::<{ Self::DATE_SIZE }>(output, &self.date)?;
         output.write_u8(self.revision)?;
-        output.write_u16::<Endian>(self.boss_id)
+        output.write_u16::<Endian>(self.boss_id)?;
+
+        // unused byte
+        output.write_u8(0)
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn header() {
+        let header = Header {
+            date: "EVTC20230328".into(),
+            revision: 1,
+            boss_id: 123,
+        };
+
+        let mut vec = Vec::with_capacity(64);
+        header.save(&mut vec).unwrap();
+
+        let parsed = Header::parse(&mut vec.as_slice()).unwrap();
+        assert_eq!(parsed, header);
     }
 }
