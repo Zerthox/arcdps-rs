@@ -108,6 +108,7 @@ impl Save for Agent {
         output.write_u16::<Endian>(self.hitbox_width)?;
         output.write_u16::<Endian>(self.condition)?;
         output.write_u16::<Endian>(self.hitbox_height)?;
+        output.write_all(self.name.as_bytes())?;
 
         // padding added by c
         output.write_u32::<Endian>(0)
