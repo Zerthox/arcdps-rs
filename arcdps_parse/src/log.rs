@@ -1,5 +1,5 @@
 use crate::{
-    util::{read_string_buffer, Endian},
+    util::{read_string_buffer, write_string_buffer, Endian},
     Agent, Parse, ParseError, Save, Skill,
 };
 use arcdps_evtc::CombatEvent;
@@ -100,11 +100,16 @@ pub struct Header {
     pub boss_id: u16,
 }
 
+impl Header {
+    /// Size of the date string.
+    pub const DATE_SIZE: usize = 12;
+}
+
 impl Parse for Header {
     type Error = ParseError;
 
     fn parse(input: &mut impl io::Read) -> Result<Self, Self::Error> {
-        let date = read_string_buffer::<12>(input)?;
+        let date = read_string_buffer::<{ Self::DATE_SIZE }>(input)?;
         let revision = input.read_u8()?;
         let boss_id = input.read_u16::<Endian>()?;
 
@@ -123,7 +128,7 @@ impl Save for Header {
     type Error = io::Error;
 
     fn save(&self, output: &mut impl io::Write) -> Result<(), Self::Error> {
-        output.write_all(self.date.as_bytes())?;
+        write_string_buffer::<{ Self::DATE_SIZE }>(output, &self.date)?;
         output.write_u8(self.revision)?;
         output.write_u16::<Endian>(self.boss_id)
     }

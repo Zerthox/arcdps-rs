@@ -1,5 +1,5 @@
 use crate::{
-    util::{read_string_buffer, Endian},
+    util::{read_string_buffer, write_string_buffer, Endian},
     Parse, Save,
 };
 use arcdps_evtc::AgentKind;
@@ -56,6 +56,9 @@ pub struct Agent {
 }
 
 impl Agent {
+    /// Size of the name combo string.
+    pub const NAME_SIZE: usize = 64;
+
     /// Determines the kind of agent.
     pub const fn kind(&self) -> AgentKind {
         AgentKind::new(self.profession, self.is_elite)
@@ -75,7 +78,7 @@ impl Parse for Agent {
         let hitbox_width = input.read_u16::<Endian>()?;
         let condition = input.read_u16::<Endian>()?;
         let hitbox_height = input.read_u16::<Endian>()?;
-        let name = read_string_buffer::<64>(input)?;
+        let name = read_string_buffer::<{ Self::NAME_SIZE }>(input)?;
 
         // padding added by c
         input.read_u32::<Endian>()?;
@@ -108,9 +111,32 @@ impl Save for Agent {
         output.write_u16::<Endian>(self.hitbox_width)?;
         output.write_u16::<Endian>(self.condition)?;
         output.write_u16::<Endian>(self.hitbox_height)?;
-        output.write_all(self.name.as_bytes())?;
+        write_string_buffer::<{ Self::NAME_SIZE }>(output, &self.name)?;
 
         // padding added by c
         output.write_u32::<Endian>(0)
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn agent_name() {
+        let name = "Character\0:Account.1234\x001\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0";
+        let bytes = name.as_bytes();
+
+        let parsed = read_string_buffer::<{ Agent::NAME_SIZE }>(io::Cursor::new(bytes).get_mut())
+            .expect("failed to read agent name");
+        assert_eq!(name, parsed, "incorrect agent name");
+
+        let mut saved = [123u8; Agent::NAME_SIZE];
+        write_string_buffer::<{ Agent::NAME_SIZE }>(
+            io::Cursor::new(saved.as_mut_slice()).get_mut(),
+            parsed,
+        )
+        .expect("failed to write agent name");
+        assert_eq!(saved, bytes);
     }
 }

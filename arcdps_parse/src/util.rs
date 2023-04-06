@@ -21,3 +21,15 @@ pub fn read_string_buffer<const SIZE: usize>(
     let buffer = read_buffer::<SIZE>(input)?;
     Ok(String::from_utf8(buffer.to_vec())?)
 }
+
+/// Reads a UTF-8 string from a char buffer.
+pub fn write_string_buffer<const SIZE: usize>(
+    output: &mut impl io::Write,
+    string: impl AsRef<str>,
+) -> Result<(), io::Error> {
+    let bytes = string.as_ref().as_bytes();
+    let mut buffer = [0; SIZE];
+    buffer.copy_from_slice(bytes);
+    output.write_all(&buffer)?;
+    Ok(())
+}
