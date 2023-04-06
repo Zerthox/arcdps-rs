@@ -1,9 +1,9 @@
 use crate::{
     util::{read_string_buffer, Endian},
-    Parse,
+    Parse, Save,
 };
 use arcdps_evtc::AgentKind;
-use byteorder::ReadBytesExt;
+use byteorder::{ReadBytesExt, WriteBytesExt};
 use std::io;
 
 #[cfg(feature = "serde")]
@@ -92,5 +92,24 @@ impl Parse for Agent {
             healing,
             condition,
         })
+    }
+}
+
+impl Save for Agent {
+    type Error = io::Error;
+
+    fn save(&self, output: &mut impl io::Write) -> Result<(), Self::Error> {
+        output.write_u64::<Endian>(self.address)?;
+        output.write_u32::<Endian>(self.profession)?;
+        output.write_u32::<Endian>(self.is_elite)?;
+        output.write_u16::<Endian>(self.toughness)?;
+        output.write_u16::<Endian>(self.concentration)?;
+        output.write_u16::<Endian>(self.healing)?;
+        output.write_u16::<Endian>(self.hitbox_width)?;
+        output.write_u16::<Endian>(self.condition)?;
+        output.write_u16::<Endian>(self.hitbox_height)?;
+
+        // padding added by c
+        output.write_u32::<Endian>(0)
     }
 }

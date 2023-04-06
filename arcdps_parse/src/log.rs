@@ -1,9 +1,9 @@
 use crate::{
     util::{read_string_buffer, Endian},
-    Agent, Parse, ParseError, Skill,
+    Agent, Parse, ParseError, Save, Skill,
 };
 use arcdps_evtc::CombatEvent;
-use byteorder::ReadBytesExt;
+use byteorder::{ReadBytesExt, WriteBytesExt};
 use std::io;
 
 #[cfg(feature = "serde")]
@@ -59,6 +59,30 @@ impl Parse for Log {
     }
 }
 
+impl Save for Log {
+    type Error = io::Error;
+
+    fn save(&self, output: &mut impl io::Write) -> Result<(), Self::Error> {
+        self.header.save(output)?;
+
+        output.write_u32::<Endian>(self.agents.len() as u32)?;
+        for agent in &self.agents {
+            agent.save(output)?;
+        }
+
+        output.write_u32::<Endian>(self.skills.len() as u32)?;
+        for skill in &self.skills {
+            skill.save(output)?;
+        }
+
+        for event in &self.events {
+            event.save(output)?;
+        }
+
+        Ok(())
+    }
+}
+
 /// An EVTC log header.
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
@@ -92,5 +116,15 @@ impl Parse for Header {
             revision,
             boss_id,
         })
+    }
+}
+
+impl Save for Header {
+    type Error = io::Error;
+
+    fn save(&self, output: &mut impl io::Write) -> Result<(), Self::Error> {
+        output.write_all(self.date.as_bytes())?;
+        output.write_u8(self.revision)?;
+        output.write_u16::<Endian>(self.boss_id)
     }
 }

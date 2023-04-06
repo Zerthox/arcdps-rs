@@ -45,3 +45,12 @@ pub trait Parse: Sized {
         (0..count).map(|_| Self::parse(input)).collect()
     }
 }
+
+/// Interface for writing a value into a [`Write`](io::Write) output.
+pub trait Save: Sized {
+    /// Associated error which can happen during saving.
+    type Error;
+
+    /// Saves the value to the output.
+    fn save(&self, output: &mut impl io::Write) -> Result<(), Self::Error>;
+}
