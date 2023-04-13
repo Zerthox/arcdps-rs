@@ -4,21 +4,31 @@ use quote::{quote, quote_spanned};
 use syn::Expr;
 
 impl ArcDpsGen {
-    /// Generates the init function.
+    /// Generates the init function contents.
     pub fn build_init(&self) -> TokenStream {
         if let Some(init) = &self.init {
             let span = syn::Error::new_spanned(init, "").span();
-            quote_spanned!(span=> ((#init) as InitFunc)())
+            quote_spanned! {span=>
+                {
+                    const SAFE: InitFunc = #init;
+                    SAFE()
+                }
+            }
         } else {
             quote! { Ok(()) }
         }
     }
 
-    /// Generates the release function.
+    /// Generates the release function contents.
     pub fn build_release(&self) -> TokenStream {
         if let Some(release) = &self.release {
             let span = syn::Error::new_spanned(release, "").span();
-            quote_spanned!(span=> ((#release) as ReleaseFunc)())
+            quote_spanned! {span=>
+                {
+                    const SAFE: ReleaseFunc = #release;
+                    SAFE()
+                }
+            }
         } else {
             quote! {}
         }
@@ -28,13 +38,14 @@ impl ArcDpsGen {
     pub fn build_update_url(&self) -> TokenStream {
         if let Some(update_url) = &self.update_url {
             let span = syn::Error::new_spanned(update_url, "").span();
-            let call = quote_spanned!(span=> ((#update_url) as UpdateUrlFunc)());
-            quote! {
+            quote_spanned! {span=>
                 static mut UPDATE_URL: Vec<u16> = Vec::new();
 
                 #[no_mangle]
                 pub unsafe extern "system" fn get_update_url() -> *const u16 {
-                    if let Some(url) = #call {
+                    const SAFE: UpdateUrlFunc = #update_url;
+
+                    if let Some(url) = SAFE() {
                         UPDATE_URL = ::arcdps::__macro::str_to_wide(url);
                         UPDATE_URL.as_ptr()
                     } else {
@@ -78,14 +89,14 @@ impl ArcDpsGen {
                 w_param: WPARAM,
                 l_param: LPARAM,
             ) -> u32 {
-                let safe = (#safe) as WndProcCallback;
+                const SAFE: WndProcCallback = #safe;
 
                 match u_msg {
                     WM_KEYDOWN | WM_KEYUP | WM_SYSKEYDOWN | WM_SYSKEYUP => {
                         let key_down = u_msg & 1 == 0;
                         let prev_key_down = (l_param.0 >> 30) & 1 == 1;
 
-                        if safe(w_param.0, key_down, prev_key_down) {
+                        if SAFE(w_param.0, key_down, prev_key_down) {
                             u_msg
                         } else {
                             0
@@ -106,8 +117,9 @@ impl ArcDpsGen {
             |safe, span| {
                 quote_spanned! {span=>
                     unsafe extern "C" fn abstract_options_windows(window_name: *const c_char) -> bool {
-                        let safe = (#safe) as OptionsWindowsCallback;
-                        safe(::arcdps::__macro::ui(), ::arcdps::__macro::str_from_cstr(window_name))
+                        const SAFE:  OptionsWindowsCallback = #safe;
+
+                        SAFE(::arcdps::__macro::ui(), ::arcdps::__macro::str_from_cstr(window_name))
                     }
                 }
             },
@@ -123,8 +135,9 @@ impl ArcDpsGen {
             |safe, span| {
                 quote_spanned! {span=>
                     unsafe extern "C" fn abstract_options_end() {
-                        let safe = (#safe) as OptionsCallback;
-                        safe(::arcdps::__macro::ui())
+                        const SAFE: OptionsCallback = #safe;
+
+                        SAFE(::arcdps::__macro::ui())
                     }
                 }
             },
@@ -140,8 +153,9 @@ impl ArcDpsGen {
             |safe, span| {
                 quote_spanned! {span=>
                     unsafe extern "C" fn abstract_imgui(loading: u32) {
-                        let safe = (#safe) as ImguiCallback;
-                        safe(::arcdps::__macro::ui(), loading != 0)
+                        const SAFE: ImguiCallback = #safe;
+
+                        SAFE(::arcdps::__macro::ui(), loading != 0)
                     }
                 }
             },
@@ -181,9 +195,9 @@ impl ArcDpsGen {
                 id: u64,
                 revision: u64,
             ) {
-                let safe = (#safe) as CombatCallback;
+                const SAFE: CombatCallback = #safe;
 
-                safe(
+                SAFE(
                     event.as_ref().cloned().map(Into::into),
                     src.as_ref().map(Into::into),
                     dst.as_ref().map(Into::into),
