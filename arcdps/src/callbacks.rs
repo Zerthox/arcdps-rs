@@ -4,7 +4,7 @@ use crate::{
     api::{Agent, CombatEvent, RawAgent, RawCombatEvent},
     imgui,
 };
-use std::{error::Error, os::raw::c_char};
+use std::os::raw::c_char;
 use windows::Win32::Foundation::{HWND, LPARAM, WPARAM};
 
 /// Exported struct for ArcDPS plugins.
@@ -70,7 +70,7 @@ unsafe impl Sync for ArcDpsExport {}
 
 // TODO: should references in raw callbacks be pointers instead?
 
-pub type InitFunc = fn() -> Result<(), Box<dyn Error>>;
+pub type InitFunc = fn() -> Result<(), String>;
 
 pub type ReleaseFunc = fn();
 

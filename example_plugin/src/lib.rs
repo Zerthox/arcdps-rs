@@ -3,7 +3,6 @@ use arcdps::{
     Agent, CombatEvent, StateChange,
 };
 use log::info;
-use std::error::Error;
 
 arcdps::export! {
     name: "Example Plugin",
@@ -14,7 +13,7 @@ arcdps::export! {
     extras_squad_update,
 }
 
-fn init() -> Result<(), Box<dyn Error>> {
+fn init() -> Result<(), String> {
     info!("plugin has been started");
     // for info level target "window" is the same as not specifying target
     info!(target: "window", "only window logging");
