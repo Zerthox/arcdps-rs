@@ -1,13 +1,11 @@
 //! Raw ArcDPS exports.
 
-use crate::{
-    api::RawCombatEvent, callbacks::ArcDpsExport, globals::ARC_GLOBALS, imgui::sys::ImVec4,
-};
+use crate::{api::RawCombatEvent, globals::ARC_GLOBALS, imgui::sys::ImVec4};
 use std::{ffi::c_void, os::raw::c_char};
-use windows::Win32::Foundation::HINSTANCE;
+use windows::Win32::Foundation::HMODULE;
 
 /// Returns the handle to the ArcDPS dll.
-pub unsafe fn handle() -> HINSTANCE {
+pub unsafe fn handle() -> HMODULE {
     ARC_GLOBALS.handle
 }
 
@@ -94,7 +92,7 @@ pub unsafe fn e10_add_event_combat(event: *const RawCombatEvent, sig: u32) {
 }
 
 /// Signature of the `addextension2` export. See [`add_extension`] for details.
-pub type ExportAddExtension = unsafe extern "C" fn(handle: HINSTANCE) -> u32;
+pub type ExportAddExtension = unsafe extern "C" fn(handle: HMODULE) -> u32;
 
 /// Requests to load an extension (plugin/addon).
 ///
@@ -103,25 +101,25 @@ pub type ExportAddExtension = unsafe extern "C" fn(handle: HINSTANCE) -> u32;
 ///
 /// This uses version 2 (`addextension2`) of the extension API.
 #[inline]
-pub unsafe fn add_extension(handle: HINSTANCE) -> u32 {
+pub unsafe fn add_extension(handle: HMODULE) -> u32 {
     ARC_GLOBALS
         .add_extension
         .expect("failed to find arc export addextension2")(handle)
 }
 
 /// Signature of the `freeextension2` export. See [`free_extension`] for details.
-pub type ExportFreeExtension = unsafe extern "C" fn(sig: u32) -> HINSTANCE;
+pub type ExportFreeExtension = unsafe extern "C" fn(sig: u32) -> HMODULE;
 
 /// Requests to free a loaded extension (plugin/addon).
 ///
 /// ArcDPS will call `get_release_addr` and its returned function.
 /// Upon returning from [`free_extension`] there will be no more pending callbacks.
 /// However, the caller must ensure to callbacks are executing before freeing.
-/// Returns `0` if extension was not found or [`HINSTANCE`] handle of the module otherwise.
+/// Returns `0` if extension was not found or [`HMODULE`] handle of the module otherwise.
 ///
 /// This uses version 2 (`freeextension2`) of the extension API.
 #[inline]
-pub unsafe fn free_extension(sig: u32) -> HINSTANCE {
+pub unsafe fn free_extension(sig: u32) -> HMODULE {
     ARC_GLOBALS
         .free_extension
         .expect("failed to find arc export freeextension2")(sig)
@@ -136,6 +134,8 @@ pub type ExportListExtension = unsafe extern "C" fn(callback_fn: *const c_void);
 /// Callback is called once for each extension current loaded.
 #[inline]
 pub unsafe fn list_extension(callback_fn: *const c_void) {
+    // TODO: is this sync?
+    // TODO: bindings should check for uninitialized
     ARC_GLOBALS
         .list_extension
         .expect("failed to find arc export listextension")(callback_fn)

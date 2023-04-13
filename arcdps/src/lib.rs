@@ -281,7 +281,7 @@ pub mod __macro {
         };
         pub use std::os::raw::{c_char, c_void};
         pub use windows::Win32::{
-            Foundation::{HINSTANCE, HWND, LPARAM, WPARAM},
+            Foundation::{HMODULE, HWND, LPARAM, WPARAM},
             UI::WindowsAndMessaging::{WM_KEYDOWN, WM_KEYUP, WM_SYSKEYDOWN, WM_SYSKEYUP},
         };
 
@@ -307,7 +307,7 @@ pub mod __macro {
     #[allow(clippy::too_many_arguments)]
     pub unsafe fn init(
         arc_version: *const c_char,
-        arc_handle: HINSTANCE,
+        arc_handle: HMODULE,
         imgui_ctx: *mut imgui::sys::ImGuiContext,
         malloc: Option<MallocFn>,
         free: Option<FreeFn>,

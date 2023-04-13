@@ -21,7 +21,7 @@ use callbacks::{
 };
 use globals::EXTRAS_GLOBALS;
 use std::{ops::RangeInclusive, os::raw::c_char};
-use windows::Win32::Foundation::HINSTANCE;
+use windows::Win32::Foundation::HMODULE;
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
@@ -117,7 +117,7 @@ pub struct RawExtrasAddonInfo {
     /// The handle to the Unofficial Extras module.
     ///
     /// Use this to call the exports of the DLL.
-    pub extras_handle: HINSTANCE,
+    pub extras_handle: HMODULE,
 }
 
 impl RawExtrasAddonInfo {

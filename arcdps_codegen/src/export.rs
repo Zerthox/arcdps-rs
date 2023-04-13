@@ -50,6 +50,8 @@ impl ArcDpsGen {
         let (wnd_filter_func, wnd_filter_value) = self.build_wnd_filter().into_tuple();
         let (wnd_nofilter_func, wnd_nofilter_value) = self.build_wnd_nofilter().into_tuple();
 
+        // TODO: instantiate unused supported fields for intellisense & type checking?
+
         quote! {
             /// ArcDPS export struct with plugin information.
             static EXPORT: ArcDpsExport = ArcDpsExport {
@@ -108,7 +110,7 @@ impl ArcDpsGen {
                 arc_version: *mut c_char,
                 imgui_ctx: *mut ::arcdps::imgui::sys::ImGuiContext,
                 id3d: *mut c_void,
-                arc_dll: HINSTANCE,
+                arc_dll: HMODULE,
                 malloc: Option<MallocFn>,
                 free: Option<FreeFn>,
                 d3d_version: u32,

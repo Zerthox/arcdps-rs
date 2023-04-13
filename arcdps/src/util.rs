@@ -9,7 +9,7 @@ use std::{
 use windows::{
     core::PCSTR,
     Win32::{
-        Foundation::{FARPROC, HINSTANCE},
+        Foundation::{FARPROC, HMODULE},
         System::LibraryLoader::GetProcAddress,
     },
 };
@@ -42,7 +42,7 @@ pub fn strip_account_prefix(account_name: &str) -> &str {
 /// Helper to retrieve an exported function.
 /// Name needs to be null-terminated.
 #[inline]
-pub unsafe fn exported_proc(handle: HINSTANCE, name: &'static str) -> FARPROC {
+pub unsafe fn exported_proc(handle: HMODULE, name: &'static str) -> FARPROC {
     GetProcAddress(handle, PCSTR(name.as_ptr()))
 }
 

@@ -21,7 +21,7 @@ use std::{
     path::PathBuf,
     slice,
 };
-use windows::Win32::Foundation::HINSTANCE;
+use windows::Win32::Foundation::HMODULE;
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
@@ -331,7 +331,7 @@ pub fn add_event_combat(event: CombatEvent, sig: u32) {
 ///
 /// This uses version 2 (`addextension2`) of the extension API.
 #[inline]
-pub fn add_extension(handle: HINSTANCE) -> AddExtensionResult {
+pub fn add_extension(handle: HMODULE) -> AddExtensionResult {
     unsafe { raw::add_extension(handle) }
         .try_into()
         .expect("unexpected add extension result")
@@ -380,13 +380,13 @@ pub enum AddExtensionResult {
 /// ArcDPS will call `get_release_addr` and its returned function.
 /// Upon returning from [`free_extension`] there will be no more pending callbacks.
 /// However, the caller must ensure to callbacks are executing before freeing.
-/// Returns the [`HINSTANCE`] handle of the module if the extension was found.
+/// Returns the [`HMODULE`] handle of the module if the extension was found.
 ///
 /// This uses version 2 (`freeextension2`) of the extension API.
 #[inline]
-pub fn free_extension(sig: u32) -> Option<HINSTANCE> {
+pub fn free_extension(sig: u32) -> Option<HMODULE> {
     match unsafe { raw::free_extension(sig) } {
-        HINSTANCE(0) => None,
+        HMODULE(0) => None,
         handle => Some(handle),
     }
 }

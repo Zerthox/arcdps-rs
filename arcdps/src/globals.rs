@@ -13,7 +13,7 @@ use crate::{
 };
 use std::{ffi::c_void, mem::transmute, ptr};
 use windows::Win32::{
-    Foundation::HINSTANCE,
+    Foundation::HMODULE,
     Graphics::{Direct3D11::ID3D11Device, Dxgi::IDXGISwapChain},
 };
 
@@ -25,7 +25,7 @@ pub static mut ARC_GLOBALS: ArcGlobals = ArcGlobals::empty();
 #[derive(Debug)]
 pub struct ArcGlobals {
     /// Handle to ArcDPS dll.
-    pub handle: HINSTANCE,
+    pub handle: HMODULE,
 
     /// ArcDPS version as string.
     pub version: Option<&'static str>,
@@ -68,7 +68,7 @@ impl ArcGlobals {
     /// Creates an empty version of ArcDPS globals.
     const fn empty() -> Self {
         Self {
-            handle: HINSTANCE(0),
+            handle: HMODULE(0),
             version: None,
             e0: None,
             e3: None,
@@ -85,7 +85,7 @@ impl ArcGlobals {
     }
 
     /// Initializes the ArcDPS globals.
-    pub unsafe fn init(&mut self, handle: HINSTANCE, version: Option<&'static str>) {
+    pub unsafe fn init(&mut self, handle: HMODULE, version: Option<&'static str>) {
         *self = Self {
             handle,
             version,

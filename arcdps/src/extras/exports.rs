@@ -65,10 +65,10 @@ pub mod raw {
         keybinds::{RawKey, RawKeybind},
         Control,
     };
-    use windows::Win32::Foundation::HINSTANCE;
+    use windows::Win32::Foundation::HMODULE;
 
     /// Returns the handle to the Unofficial Extras dll.
-    pub unsafe fn handle() -> HINSTANCE {
+    pub unsafe fn handle() -> HMODULE {
         EXTRAS_GLOBALS.handle
     }
 
