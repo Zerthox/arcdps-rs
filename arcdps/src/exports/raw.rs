@@ -93,42 +93,6 @@ pub unsafe fn e10_add_event_combat(event: *const RawCombatEvent, sig: u32) {
     ARC_GLOBALS.e10.expect("failed to find arc export e10")(event, sig)
 }
 
-/// Signature of the old `addextension` export. See [`add_extension_old`] for details.
-#[deprecated = "use new add extension"]
-pub type ExportAddExtensionOld =
-    unsafe extern "C" fn(exports: *const ArcDpsExport, size: u32, handle: HINSTANCE) -> u32;
-
-/// Requests to load an extension (plugin/addon).
-///
-/// ArcDPS will call the `get_init_addr` and returned function on `handle`.
-/// `size` is a pointer to a buffer of size `size` containing ArcDPS exports callback data.
-/// Returns `1` on success and `0` on fail.
-#[deprecated = "use new add extension"]
-#[inline]
-pub unsafe fn add_extension_old(exports: *const ArcDpsExport, size: u32, handle: HINSTANCE) -> u32 {
-    ARC_GLOBALS
-        .add_extension_old
-        .expect("failed to find arc export addextension (old)")(exports, size, handle)
-}
-
-/// Signature of the old `freeextension` export. See [`free_extension_old`] for details.
-#[deprecated = "use new free extension"]
-pub type ExportFreeExtensionOld = unsafe extern "C" fn(sig: u32) -> u32;
-
-/// Requests to free a loaded extension (plugin/addon).
-///
-/// ArcDPS will call the `get_release_addr` and returned function.
-/// Upon returning from [`free_extension`] there will be no more pending callbacks.
-/// However, the caller must ensure to callbacks are executing before freeing.
-/// Returns `0` if extension with `sig` does not exist and `1` if succeeded.
-#[deprecated = "use new free extension"]
-#[inline]
-pub unsafe fn free_extension_old(sig: u32) -> u32 {
-    (ARC_GLOBALS
-        .free_extension_old
-        .expect("failed to find arc export freeextension (old)"))(sig)
-}
-
 /// Signature of the `addextension2` export. See [`add_extension`] for details.
 pub type ExportAddExtension = unsafe extern "C" fn(handle: HINSTANCE) -> u32;
 

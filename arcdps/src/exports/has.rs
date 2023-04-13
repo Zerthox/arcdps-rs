@@ -48,18 +48,6 @@ pub fn has_e10_add_event_combat() -> bool {
     unsafe { ARC_GLOBALS.e10 }.is_some()
 }
 
-/// Checks whether export `addextension` (old) was found.
-#[inline]
-pub fn has_add_extension_old() -> bool {
-    unsafe { ARC_GLOBALS.add_extension_old }.is_some()
-}
-
-/// Checks whether export `freeextension` (old) was found.
-#[inline]
-pub fn has_free_extension_old() -> bool {
-    unsafe { ARC_GLOBALS.free_extension_old }.is_some()
-}
-
 /// Checks whether export `addextension2` was found.
 #[inline]
 pub fn has_add_extension() -> bool {

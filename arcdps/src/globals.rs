@@ -1,7 +1,5 @@
 //! Global instance with ArcDPS information.
 
-#[allow(deprecated)]
-use crate::exports::raw::{ExportAddExtensionOld, ExportFreeExtensionOld};
 use crate::{
     exports::{
         has_e3_log_file, has_e8_log_window, log_to_file, log_to_window,
@@ -56,14 +54,6 @@ pub struct ArcGlobals {
     /// Add event combat/skill export.
     pub e10: Option<Export10>,
 
-    /// Old add extension export.
-    #[allow(deprecated)]
-    pub add_extension_old: Option<ExportAddExtensionOld>,
-
-    /// Old free extension export.
-    #[allow(deprecated)]
-    pub free_extension_old: Option<ExportFreeExtensionOld>,
-
     /// Add extension export.
     pub add_extension: Option<ExportAddExtension>,
 
@@ -88,8 +78,6 @@ impl ArcGlobals {
             e8: None,
             e9: None,
             e10: None,
-            add_extension_old: None,
-            free_extension_old: None,
             add_extension: None,
             free_extension: None,
             list_extension: None,
@@ -109,8 +97,6 @@ impl ArcGlobals {
             e8: transmute(exported_proc(handle, "e8\0")),
             e9: transmute(exported_proc(handle, "e9\0")),
             e10: transmute(exported_proc(handle, "e10\0")),
-            add_extension_old: transmute(exported_proc(handle, "addextension\0")),
-            free_extension_old: transmute(exported_proc(handle, "freeextension\0")),
             add_extension: transmute(exported_proc(handle, "addextension2\0")),
             free_extension: transmute(exported_proc(handle, "freeextension2\0")),
             list_extension: transmute(exported_proc(handle, "listextension\0")),
