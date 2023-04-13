@@ -1,6 +1,6 @@
 [package]
 name = "arcdps_parse"
-version = "0.2.0"
+version = "0.3.0"
 authors = ["Zerthox"]
 edition = "2021"
 description = "Parsing for ArcDPS EVTC logs"
@@ -9,7 +9,7 @@ repository = "https://github.com/zerthox/arcdps-bindings"
 [dependencies]
 arcdps_evtc = { path = "../arcdps_evtc" }
 byteorder = "1.4.3"
-serde = { version = "1.0", features = ["derive"], optional = true }
+serde = { version = "1.0.160", features = ["derive"], optional = true }
 thiserror = "1.0.38"
 
 [features]
