@@ -14,10 +14,10 @@ pub struct CombatEvent {
     pub time: u64,
 
     /// Agent that caused the event.
-    pub src_agent: usize,
+    pub src_agent: u64,
 
     /// Agent the event happened to.
-    pub dst_agent: usize,
+    pub dst_agent: u64,
 
     /// Value, if relevant to the event.
     pub value: i32,
@@ -199,8 +199,8 @@ impl From<RawCombatEvent> for CombatEvent {
 #[repr(C)]
 pub struct RawCombatEvent {
     pub time: u64,
-    pub src_agent: usize,
-    pub dst_agent: usize,
+    pub src_agent: u64,
+    pub dst_agent: u64,
     pub value: i32,
     pub buff_dmg: i32,
     pub overstack_value: u32,

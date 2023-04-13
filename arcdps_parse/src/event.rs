@@ -8,8 +8,8 @@ impl Parse for CombatEvent {
     fn parse(input: &mut impl io::Read) -> Result<Self, Self::Error> {
         Ok(Self {
             time: input.read_u64::<Endian>()?,
-            src_agent: input.read_u64::<Endian>()? as usize,
-            dst_agent: input.read_u64::<Endian>()? as usize,
+            src_agent: input.read_u64::<Endian>()?,
+            dst_agent: input.read_u64::<Endian>()?,
             value: input.read_i32::<Endian>()?,
             buff_dmg: input.read_i32::<Endian>()?,
             overstack_value: input.read_u32::<Endian>()?,
@@ -43,8 +43,8 @@ impl Save for CombatEvent {
 
     fn save(&self, output: &mut impl io::Write) -> Result<(), Self::Error> {
         output.write_u64::<Endian>(self.time)?;
-        output.write_u64::<Endian>(self.src_agent as u64)?;
-        output.write_u64::<Endian>(self.dst_agent as u64)?;
+        output.write_u64::<Endian>(self.src_agent)?;
+        output.write_u64::<Endian>(self.dst_agent)?;
         output.write_i32::<Endian>(self.value)?;
         output.write_i32::<Endian>(self.buff_dmg)?;
         output.write_u32::<Endian>(self.overstack_value)?;
