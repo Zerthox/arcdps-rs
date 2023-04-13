@@ -156,25 +156,7 @@ pub enum Activation {
 }
 
 /// ArcDPS custom skill ids.
-#[derive(
-    Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, TryFromPrimitive,
-)]
-#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
-#[cfg_attr(
-    feature = "strum",
-    derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames)
-)]
-#[repr(u16)]
-pub enum CustomSkill {
-    #[deprecated = "use `CustomSkill::RESURRECT` constant instead"]
-    Resurrect = CustomSkill::RESURRECT as u16,
-
-    #[deprecated = "use `CustomSkill::BANDAGE` constant instead"]
-    Bandage = CustomSkill::BANDAGE as u16,
-
-    #[deprecated = "use `CustomSkill::DODGE` constant instead"]
-    Dodge = CustomSkill::DODGE as u16,
-}
+pub enum CustomSkill {}
 
 impl CustomSkill {
     /// Resurrect skill.
