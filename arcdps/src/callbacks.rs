@@ -68,8 +68,6 @@ pub struct ArcDpsExport {
 
 unsafe impl Sync for ArcDpsExport {}
 
-// TODO: should references in raw callbacks be pointers instead?
-
 pub type InitFunc = fn() -> Result<(), String>;
 
 pub type ReleaseFunc = fn();
@@ -78,16 +76,18 @@ pub type UpdateUrlFunc = fn() -> Option<String>;
 
 pub type RawWndProcCallback =
     unsafe extern "C" fn(h_wnd: HWND, u_msg: u32, w_param: WPARAM, l_param: LPARAM) -> u32;
+
 pub type WndProcCallback = fn(key: usize, key_down: bool, prev_key_down: bool) -> bool;
 
 pub type RawCombatCallback = unsafe extern "C" fn(
-    event: Option<&RawCombatEvent>,
-    src: Option<&RawAgent>,
-    dst: Option<&RawAgent>,
-    skill_name: *mut c_char,
+    event: *const RawCombatEvent,
+    src: *const RawAgent,
+    dst: *const RawAgent,
+    skill_name: *const c_char,
     id: u64,
     revision: u64,
 );
+
 pub type CombatCallback = fn(
     event: Option<CombatEvent>,
     src: Option<Agent>,
@@ -98,10 +98,13 @@ pub type CombatCallback = fn(
 );
 
 pub type RawImguiCallback = unsafe extern "C" fn(not_character_select_or_loading: u32);
+
 pub type ImguiCallback = fn(ui: &imgui::Ui, not_character_select_or_loading: bool);
 
 pub type RawOptionsCallback = unsafe extern "C" fn();
+
 pub type OptionsCallback = fn(ui: &imgui::Ui);
 
-pub type RawOptionsWindowsCallback = unsafe extern "C" fn(window_name: *mut c_char) -> bool;
+pub type RawOptionsWindowsCallback = unsafe extern "C" fn(window_name: *const c_char) -> bool;
+
 pub type OptionsWindowsCallback = fn(ui: &imgui::Ui, window_name: Option<&str>) -> bool;

@@ -86,7 +86,7 @@ impl ArcDpsGen {
             };
             static mut ERROR_STRING: String = String::new();
 
-            fn load() -> &'static ArcDpsExport {
+            fn load() -> *const ArcDpsExport {
                 let result: Result<(), String> = #init;
                 if let Err(err) = result {
                     unsafe {
@@ -107,14 +107,14 @@ impl ArcDpsGen {
             /// If you need any of the ignored values, create an issue with your use case.
             #[no_mangle]
             pub unsafe extern "system" fn get_init_addr(
-                arc_version: *mut c_char,
+                arc_version: *const c_char,
                 imgui_ctx: *mut ::arcdps::imgui::sys::ImGuiContext,
                 id3d: *mut c_void,
                 arc_dll: HMODULE,
                 malloc: Option<MallocFn>,
                 free: Option<FreeFn>,
                 d3d_version: u32,
-            ) -> fn() -> &'static ArcDpsExport {
+            ) -> fn() -> *const ArcDpsExport {
                 ::arcdps::__macro::init(arc_version, arc_dll, imgui_ctx, malloc, free, id3d, d3d_version, #name);
                 load
             }

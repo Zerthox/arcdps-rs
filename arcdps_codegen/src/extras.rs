@@ -72,8 +72,13 @@ impl ExtrasGen {
         let keybind_callback = keybind_changed.unwrap_or(quote! { None });
         let chat_callback = chat_message.unwrap_or(quote! { None });
 
+        let convert_addon = quote! {
+            let addon = addon.as_ref().expect("unofficial extras did not provide addon info in init");
+        };
         let subscribe = quote! {
-            sub.subscribe(addon, #name, #squad_callback, #lang_callback, #keybind_callback, #chat_callback);
+            sub.as_mut()
+                .expect("unofficial extras did not provide subscriber info in init")
+                .subscribe(addon, #name, #squad_callback, #lang_callback, #keybind_callback, #chat_callback);
         };
 
         let content = if let Some(raw) = &self.raw_extras_init {
@@ -87,15 +92,16 @@ impl ExtrasGen {
             quote_spanned! {span=>
                 let safe = (#safe) as ExtrasInitFunc;
 
+                #convert_addon
                 #subscribe
 
                 let user = ::arcdps::__macro::str_from_cstr(addon.self_account_name as _)
                     .map(::arcdps::__macro::strip_account_prefix);
-
                 safe(addon.clone().into(), user);
             }
         } else if has_callback {
             quote! {
+                #convert_addon
                 #subscribe
             }
         } else {
@@ -106,8 +112,8 @@ impl ExtrasGen {
         quote_spanned! {content.span()=>
             #[no_mangle]
             unsafe extern "system" fn arcdps_unofficial_extras_subscriber_init(
-                addon: &::arcdps::extras::RawExtrasAddonInfo,
-                sub: &mut ::arcdps::extras::ExtrasSubscriberInfo
+                addon: *const ::arcdps::extras::RawExtrasAddonInfo,
+                sub: *mut ::arcdps::extras::ExtrasSubscriberInfo
             ) {
                 #content
             }
@@ -178,7 +184,11 @@ impl ExtrasGen {
                 quote_spanned! {span=>
                     unsafe extern "C" fn abstract_extras_chat_message(info: *const ::arcdps::extras::message::RawChatMessageInfo) {
                         let safe = (#safe) as ExtrasChatMessageCallback;
-                        safe(&::arcdps::extras::message::ChatMessageInfo::from(&*info))
+
+                        let info = info.as_ref()
+                            .expect("unofficial extras did not provide message info in chat message callback")
+                            .into();
+                        safe(&info)
                     }
                 }
             },

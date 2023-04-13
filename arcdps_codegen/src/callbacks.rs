@@ -105,7 +105,7 @@ impl ArcDpsGen {
             quote! { abstract_options_windows },
             |safe, span| {
                 quote_spanned! {span=>
-                    unsafe extern "C" fn abstract_options_windows(window_name: *mut c_char) -> bool {
+                    unsafe extern "C" fn abstract_options_windows(window_name: *const c_char) -> bool {
                         let safe = (#safe) as OptionsWindowsCallback;
                         safe(::arcdps::__macro::ui(), ::arcdps::__macro::str_from_cstr(window_name))
                     }
@@ -174,19 +174,19 @@ impl ArcDpsGen {
     fn combat_wrapper(name: TokenStream, safe: &Expr, span: Span) -> TokenStream {
         quote_spanned! {span=>
             unsafe extern "C" fn #name(
-                event: Option<&::arcdps::api::RawCombatEvent>,
-                src: Option<&::arcdps::api::RawAgent>,
-                dst: Option<&::arcdps::api::RawAgent>,
-                skill_name: *mut c_char,
+                event: *const ::arcdps::api::RawCombatEvent,
+                src: *const ::arcdps::api::RawAgent,
+                dst: *const ::arcdps::api::RawAgent,
+                skill_name: *const c_char,
                 id: u64,
                 revision: u64,
             ) {
                 let safe = (#safe) as CombatCallback;
 
                 safe(
-                    event.cloned().map(Into::into),
-                    src.map(Into::into),
-                    dst.map(Into::into),
+                    event.as_ref().cloned().map(Into::into),
+                    src.as_ref().map(Into::into),
+                    dst.as_ref().map(Into::into),
                     ::arcdps::__macro::str_from_cstr(skill_name),
                     id,
                     revision

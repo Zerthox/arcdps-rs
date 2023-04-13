@@ -32,6 +32,9 @@ const API_VERSION: u32 = 2;
 /// Supported [`ExtrasSubscriberInfo`] version range.
 const SUB_INFO_RANGE: RangeInclusive<u32> = 1..=2;
 
+/// Version with message callback addition.
+const MESSAGE_CALLBACK: u32 = 2;
+
 /// Helper to check compatibility.
 #[inline]
 fn check_compat(api_version: u32, sub_info_version: u32) -> bool {
@@ -71,7 +74,7 @@ impl ExtrasAddonInfo {
 
     /// Whether the Unofficial Extras addon supports the chat message callback.
     pub fn supports_chat_message_callback(&self) -> bool {
-        self.max_info_version >= 2
+        self.max_info_version >= MESSAGE_CALLBACK
     }
 }
 
@@ -128,7 +131,7 @@ impl RawExtrasAddonInfo {
 
     /// Whether the Unofficial Extras addon supports the message callback.
     pub fn supports_chat_message_callback(&self) -> bool {
-        self.max_info_version >= 2
+        self.max_info_version >= MESSAGE_CALLBACK
     }
 }
 

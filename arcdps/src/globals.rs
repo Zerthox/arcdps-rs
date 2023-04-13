@@ -155,7 +155,7 @@ pub fn d3d11_device() -> Option<&'static ID3D11Device> {
 }
 
 /// Helper to initialize DirectX information.
-pub unsafe fn init_dxgi(id3d: *mut c_void, d3d_version: u32, name: &'static str) {
+pub unsafe fn init_dxgi(id3d: *const c_void, d3d_version: u32, name: &'static str) {
     D3D_VERSION = d3d_version;
     if !id3d.is_null() && d3d_version == 11 {
         // referencing here prevents a crash due to drop

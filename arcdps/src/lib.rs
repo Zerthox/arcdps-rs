@@ -311,7 +311,7 @@ pub mod __macro {
         imgui_ctx: *mut imgui::sys::ImGuiContext,
         malloc: Option<MallocFn>,
         free: Option<FreeFn>,
-        id3d: *mut c_void,
+        id3d: *const c_void,
         d3d_version: u32,
         name: &'static str,
     ) {
