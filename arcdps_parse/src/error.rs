@@ -15,4 +15,8 @@ pub enum ParseError {
     /// Unsupported EVTC revision.
     #[error("unsupported evtc revision {0}")]
     UnsupportedRevision(u8),
+
+    /// Data is not in EVTC format.
+    #[error("not in evtc format")]
+    NotEvtc,
 }

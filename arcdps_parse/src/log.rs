@@ -109,7 +109,12 @@ impl Parse for Header {
     type Error = ParseError;
 
     fn parse(input: &mut impl io::Read) -> Result<Self, Self::Error> {
-        let date = read_string_buffer::<{ Self::DATE_SIZE }>(input)?;
+        let evtc = read_string_buffer::<4>(input)?;
+        if evtc != "EVTC" {
+            return Err(ParseError::NotEvtc);
+        }
+
+        let date = read_string_buffer::<{ Self::DATE_SIZE - 4 }>(input)?;
         let revision = input.read_u8()?;
         let boss_id = input.read_u16::<Endian>()?;
 
@@ -117,7 +122,7 @@ impl Parse for Header {
         input.read_u8()?;
 
         Ok(Self {
-            date,
+            date: evtc + &date,
             revision,
             boss_id,
         })
