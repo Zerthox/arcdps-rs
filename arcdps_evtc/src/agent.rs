@@ -8,7 +8,7 @@ use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
 
 /// Possible [`Agent`] kinds.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
-#[cfg_attr(feature = "strum", derive(Serialize, Deserialize))]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[cfg_attr(
     feature = "strum",
     derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames)
