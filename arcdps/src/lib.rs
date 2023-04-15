@@ -16,7 +16,7 @@
 //!     combat: custom_combat_name,
 //! }
 //!
-//! fn init() -> Result<(), Box<dyn Error>> {
+//! fn init() -> Result<(), String> {
 //!     // may return an error to indicate load failure
 //!     Ok(())
 //! }
