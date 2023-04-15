@@ -29,7 +29,7 @@ pub fn write_string_buffer<const SIZE: usize>(
 ) -> Result<(), io::Error> {
     let bytes = string.as_ref().as_bytes();
     let mut buffer = [0; SIZE];
-    buffer.copy_from_slice(bytes);
+    buffer[..bytes.len()].copy_from_slice(bytes);
     output.write_all(&buffer)?;
     Ok(())
 }
