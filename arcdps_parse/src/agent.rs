@@ -1,6 +1,6 @@
 use crate::{
     util::{read_string_buffer, write_string_buffer, Endian},
-    Parse, Save,
+    Parse, ParseError, Save,
 };
 use arcdps_evtc::AgentKind;
 use byteorder::{ReadBytesExt, WriteBytesExt};
@@ -22,13 +22,13 @@ use serde::{Deserialize, Serialize};
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct Agent {
-    /// Name of the agent.
-    ///
-    /// This is a combo string for players: `character name \0 account name \0 subgroup \0`.
-    pub name: String,
-
     /// Address (id) of the agent.
     pub address: u64,
+
+    /// Name information for the agent.
+    ///
+    /// For players this is a combo string containing the character name, account name and subgroup.
+    pub name: Vec<String>,
 
     /// Profession for player agents
     pub profession: u32,
@@ -63,10 +63,26 @@ impl Agent {
     pub const fn kind(&self) -> AgentKind {
         AgentKind::new(self.profession, self.is_elite)
     }
+
+    /// Parses name information from the input.
+    fn parse_name(input: &mut impl io::Read) -> Result<Vec<String>, ParseError> {
+        let string = read_string_buffer::<{ Self::NAME_SIZE }>(input)?;
+        Ok(string
+            .split('\0')
+            .filter(|part| !part.is_empty())
+            .map(|part| part.to_string())
+            .collect())
+    }
+
+    /// Saves name information to the output.
+    fn save_name(&self, output: &mut impl io::Write) -> Result<(), io::Error> {
+        let string = self.name.join("\0");
+        write_string_buffer::<{ Self::NAME_SIZE }>(output, &string)
+    }
 }
 
 impl Parse for Agent {
-    type Error = crate::ParseError;
+    type Error = ParseError;
 
     fn parse(input: &mut impl io::Read) -> Result<Self, Self::Error> {
         let address = input.read_u64::<Endian>()?;
@@ -78,7 +94,8 @@ impl Parse for Agent {
         let hitbox_width = input.read_u16::<Endian>()?;
         let condition = input.read_u16::<Endian>()?;
         let hitbox_height = input.read_u16::<Endian>()?;
-        let name = read_string_buffer::<{ Self::NAME_SIZE }>(input)?;
+
+        let name = Self::parse_name(input)?;
 
         // padding added by c
         input.read_u32::<Endian>()?;
@@ -111,7 +128,8 @@ impl Save for Agent {
         output.write_u16::<Endian>(self.hitbox_width)?;
         output.write_u16::<Endian>(self.condition)?;
         output.write_u16::<Endian>(self.hitbox_height)?;
-        write_string_buffer::<{ Self::NAME_SIZE }>(output, &self.name)?;
+
+        self.save_name(output)?;
 
         // padding added by c
         output.write_u32::<Endian>(0)
@@ -124,19 +142,30 @@ mod tests {
 
     #[test]
     fn agent_name() {
-        let name = "Character\0:Account.1234\x001\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0";
-        let bytes = name.as_bytes();
+        let name: Vec<String> = vec!["Character".into(), ":Account.1234".into(), "1".into()];
+        let data: &[u8; Agent::NAME_SIZE] = b"Character\0:Account.1234\x001\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0";
 
-        let parsed = read_string_buffer::<{ Agent::NAME_SIZE }>(io::Cursor::new(bytes).get_mut())
-            .expect("failed to read agent name");
+        let parsed = Agent::parse_name(io::Cursor::new(data.as_slice()).get_mut())
+            .expect("failed to parse agent name");
         assert_eq!(name, parsed, "incorrect agent name");
 
-        let mut saved = [123u8; Agent::NAME_SIZE];
-        write_string_buffer::<{ Agent::NAME_SIZE }>(
-            io::Cursor::new(saved.as_mut_slice()).get_mut(),
-            parsed,
-        )
-        .expect("failed to write agent name");
-        assert_eq!(saved, bytes);
+        let agent = Agent {
+            address: 0,
+            name,
+            profession: 0,
+            is_elite: 0,
+            hitbox_width: 0,
+            hitbox_height: 0,
+            toughness: 0,
+            concentration: 0,
+            healing: 0,
+            condition: 0,
+        };
+
+        let mut buffer = [123u8; Agent::NAME_SIZE];
+        agent
+            .save_name(&mut buffer.as_mut_slice())
+            .expect("failed to save agent");
+        assert_eq!(data, &buffer, "incorrect saved data");
     }
 }

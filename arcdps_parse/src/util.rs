@@ -7,6 +7,14 @@ use std::io;
 /// EVTC logs will be written on Windows and Windows uses little endian.
 pub type Endian = LittleEndian;
 
+/// Truncates the string to remove trailing null character.
+pub fn truncate_null(mut string: String) -> String {
+    if let Some(end) = string.find('\0') {
+        string.truncate(end);
+    }
+    string
+}
+
 /// Reads a fixed amount of bytes from the input into a buffer.
 pub fn read_buffer<const SIZE: usize>(input: &mut impl io::Read) -> io::Result<[u8; SIZE]> {
     let mut buffer = [0; SIZE];

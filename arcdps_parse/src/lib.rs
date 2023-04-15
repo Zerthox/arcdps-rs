@@ -46,7 +46,7 @@ pub trait Parse: Sized {
     }
 }
 
-/// Interface for writing a value into a [`Write`](io::Write) output.
+/// Interface for saving a value into a [`Write`](io::Write) output.
 pub trait Save: Sized {
     /// Associated error which can happen during saving.
     type Error;
