@@ -1,7 +1,7 @@
 //! Callback types.
 
 use crate::{
-    api::{Agent, CombatEvent, RawAgent, RawCombatEvent},
+    evtc::{Agent, CombatEvent, RawAgent, RawCombatEvent},
     imgui,
 };
 use std::os::raw::c_char;

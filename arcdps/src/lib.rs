@@ -63,8 +63,8 @@
 
 #![allow(clippy::missing_safety_doc)]
 
-pub mod api;
 pub mod callbacks;
+pub mod evtc;
 pub mod exports;
 
 #[cfg(feature = "extras")]
@@ -77,12 +77,12 @@ mod globals;
 mod panic;
 mod util;
 
-pub use api::{
+pub use arcdps_codegen::export;
+pub use arcdps_imgui as imgui;
+pub use evtc::{
     Activation, Affinity, Agent, AgentOwned, Attribute, BuffCategory, BuffCycle, BuffRemove,
     CombatEvent, CustomSkill, Language, Profession, Specialization, StateChange, Strike,
 };
-pub use arcdps_codegen::export;
-pub use arcdps_imgui as imgui;
 pub use globals::{d3d11_device, d3d_version, dxgi_swap_chain};
 pub use util::strip_account_prefix;
 

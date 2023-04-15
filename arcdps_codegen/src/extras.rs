@@ -149,7 +149,7 @@ impl ExtrasGen {
             quote! { abstract_extras_language_changed },
             |safe, span| {
                 quote_spanned! {span=>
-                    unsafe extern "C" fn abstract_extras_language_changed(language: ::arcdps::api::Language) {
+                    unsafe extern "C" fn abstract_extras_language_changed(language: ::arcdps::evtc::Language) {
                         const SAFE: ExtrasLanguageChangedCallback = #safe;
 
                         SAFE(language)

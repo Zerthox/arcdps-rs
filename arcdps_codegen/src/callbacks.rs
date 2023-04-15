@@ -188,9 +188,9 @@ impl ArcDpsGen {
     fn combat_wrapper(name: TokenStream, safe: &Expr, span: Span) -> TokenStream {
         quote_spanned! {span=>
             unsafe extern "C" fn #name(
-                event: *const ::arcdps::api::RawCombatEvent,
-                src: *const ::arcdps::api::RawAgent,
-                dst: *const ::arcdps::api::RawAgent,
+                event: *const ::arcdps::evtc::RawCombatEvent,
+                src: *const ::arcdps::evtc::RawAgent,
+                dst: *const ::arcdps::evtc::RawAgent,
                 skill_name: *const c_char,
                 id: u64,
                 revision: u64,

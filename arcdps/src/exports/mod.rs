@@ -8,7 +8,7 @@ pub mod raw;
 pub use self::has::*;
 
 use crate::{
-    api::{CombatEvent, Profession},
+    evtc::{CombatEvent, Profession},
     globals::ARC_GLOBALS,
     imgui::sys::ImVec4,
 };
@@ -194,7 +194,7 @@ impl Colors {
 ///
 /// # Examples
 /// ```no_run
-/// use arcdps::{api::Profession, exports};
+/// use arcdps::{Profession, exports};
 ///
 /// let colors = exports::colors();
 /// let guard = colors.prof_base(Profession::Guardian);

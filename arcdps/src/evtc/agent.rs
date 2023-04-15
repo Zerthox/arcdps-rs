@@ -1,7 +1,7 @@
 use crate::util::str_from_cstr;
+use arcdps_evtc::AgentKind;
 use std::os::raw::c_char;
 
-use arcdps_evtc::AgentKind;
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
 

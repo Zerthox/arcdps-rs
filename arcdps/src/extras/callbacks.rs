@@ -6,7 +6,7 @@ use super::{
     user::{RawUserInfo, UserInfoIter},
     ExtrasAddonInfo, ExtrasSubscriberInfo, RawExtrasAddonInfo,
 };
-use crate::api::Language;
+use crate::evtc::Language;
 
 pub type RawExtrasSubscriberInit = unsafe extern "C" fn(
     extras_info: *const RawExtrasAddonInfo,

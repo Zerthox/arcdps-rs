@@ -1,6 +1,6 @@
 //! Raw ArcDPS exports.
 
-use crate::{api::RawCombatEvent, globals::ARC_GLOBALS, imgui::sys::ImVec4};
+use crate::{evtc::RawCombatEvent, globals::ARC_GLOBALS, imgui::sys::ImVec4};
 use std::{ffi::c_void, os::raw::c_char};
 use windows::Win32::Foundation::HMODULE;
 
@@ -70,7 +70,7 @@ pub type Export9 = unsafe extern "C" fn(event: *const RawCombatEvent, sig: u32);
 
 /// Adds a [`RawCombatEvent`] to ArcDPS' event processing.
 ///
-/// `is_statechange` will be set to [`StateChange::Extension`](crate::api::StateChange::Extension), pad61-64 will be set to `sig`.
+/// `is_statechange` will be set to [`StateChange::Extension`](crate::evtc::StateChange::Extension), pad61-64 will be set to `sig`.
 /// Event will end up processed like ArcDPS events and logged to EVTC.
 #[inline]
 pub unsafe fn e9_add_event(event: *const RawCombatEvent, sig: u32) {
@@ -82,7 +82,7 @@ pub type Export10 = unsafe extern "C" fn(event: *const RawCombatEvent, sig: u32)
 
 /// Adds a [`RawCombatEvent`] to ArcDPS' event processing.
 ///
-/// `is_statechange` will be set to [`StateChange::ExtensionCombat`](crate::api::StateChange::ExtensionCombat), pad61-64 will be set to `sig`.
+/// `is_statechange` will be set to [`StateChange::ExtensionCombat`](crate::evtc::StateChange::ExtensionCombat), pad61-64 will be set to `sig`.
 /// Event will end up processed like ArcDPS events and logged to EVTC.
 ///
 /// Contrary to [`e9_add_event`], the `skill_id` is treated as skill id and will be added to the EVTC skill table.
