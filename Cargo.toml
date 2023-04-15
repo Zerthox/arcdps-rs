@@ -6,8 +6,3 @@ members = [
     "arcdps_parse",
     "example_plugin",
 ]
-default-members = [
-    "arcdps",
-    "arcdps_codegen",
-    "arcdps_evtc",
-]
