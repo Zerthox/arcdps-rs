@@ -1,5 +1,5 @@
 var sourcesIndex = JSON.parse('{\
-"arcdps":["",[["api",[],["agent.rs","mod.rs"]],["exports",[],["has.rs","mod.rs","raw.rs"]],["extras",[],["callbacks.rs","exports.rs","globals.rs","keybinds.rs","message.rs","mod.rs","user.rs"]]],["callbacks.rs","globals.rs","lib.rs","log.rs","panic.rs","util.rs"]],\
+"arcdps":["",[["evtc",[],["agent.rs","mod.rs"]],["exports",[],["has.rs","mod.rs","raw.rs"]],["extras",[],["callbacks.rs","exports.rs","globals.rs","keybinds.rs","message.rs","mod.rs","user.rs"]]],["callbacks.rs","globals.rs","lib.rs","log.rs","panic.rs","util.rs"]],\
 "arcdps_codegen":["",[],["callbacks.rs","export.rs","extras.rs","lib.rs","parse.rs"]],\
 "arcdps_evtc":["",[],["agent.rs","buff.rs","event.rs","game.rs","lib.rs","state_change.rs"]],\
 "arcdps_example_plugin":["",[],["lib.rs"]],\
@@ -13,7 +13,6 @@ var sourcesIndex = JSON.parse('{\
 "chrono":["",[["datetime",[],["mod.rs","serde.rs"]],["format",[],["mod.rs","parse.rs","parsed.rs","scan.rs","strftime.rs"]],["naive",[["datetime",[],["mod.rs","serde.rs"]],["time",[],["mod.rs","serde.rs"]]],["date.rs","internals.rs","isoweek.rs","mod.rs"]],["offset",[["local",[],["mod.rs","windows.rs"]]],["fixed.rs","mod.rs","utc.rs"]]],["date.rs","lib.rs","month.rs","round.rs","traits.rs","weekday.rs"]],\
 "hashbrown":["",[["external_trait_impls",[],["mod.rs"]],["raw",[],["alloc.rs","bitmask.rs","mod.rs","sse2.rs"]]],["lib.rs","macros.rs","map.rs","scopeguard.rs","set.rs"]],\
 "heck":["",[],["kebab.rs","lib.rs","lower_camel.rs","shouty_kebab.rs","shouty_snake.rs","snake.rs","title.rs","train.rs","upper_camel.rs"]],\
-"iana_time_zone":["",[],["ffi_utils.rs","lib.rs","tz_windows.rs"]],\
 "indexmap":["",[["map",[["core",[],["raw.rs"]]],["core.rs"]]],["arbitrary.rs","equivalent.rs","lib.rs","macros.rs","map.rs","mutable_keys.rs","set.rs","util.rs"]],\
 "instant":["",[],["lib.rs","native.rs"]],\
 "libc":["",[["windows",[["msvc",[],["mod.rs"]]],["mod.rs"]]],["fixed_width_ints.rs","lib.rs","macros.rs"]],\
@@ -27,7 +26,7 @@ var sourcesIndex = JSON.parse('{\
 "parking_lot":["",[],["condvar.rs","deadlock.rs","elision.rs","fair_mutex.rs","lib.rs","mutex.rs","once.rs","raw_fair_mutex.rs","raw_mutex.rs","raw_rwlock.rs","remutex.rs","rwlock.rs","util.rs"]],\
 "parking_lot_core":["",[["thread_parker",[["windows",[],["keyed_event.rs","mod.rs","waitaddress.rs"]]],["mod.rs"]]],["lib.rs","parking_lot.rs","spinwait.rs","util.rs","word_lock.rs"]],\
 "paste":["",[],["attr.rs","error.rs","lib.rs","segment.rs"]],\
-"proc_macro2":["",[],["detection.rs","fallback.rs","lib.rs","location.rs","marker.rs","parse.rs","rcvec.rs","wrapper.rs"]],\
+"proc_macro2":["",[],["convert.rs","detection.rs","extra.rs","fallback.rs","lib.rs","location.rs","marker.rs","parse.rs","rcvec.rs","wrapper.rs"]],\
 "proc_macro_crate":["",[],["lib.rs"]],\
 "quote":["",[],["ext.rs","format.rs","ident_fragment.rs","lib.rs","runtime.rs","spanned.rs","to_tokens.rs"]],\
 "rustversion":["",[],["attr.rs","bound.rs","constfn.rs","date.rs","error.rs","expand.rs","expr.rs","iter.rs","lib.rs","release.rs","time.rs","token.rs","version.rs"]],\
@@ -37,16 +36,15 @@ var sourcesIndex = JSON.parse('{\
 "smallvec":["",[],["lib.rs"]],\
 "strum":["",[],["additional_attributes.rs","lib.rs"]],\
 "strum_macros":["",[["helpers",[],["case_style.rs","metadata.rs","mod.rs","type_props.rs","variant_props.rs"]],["macros",[["strings",[],["as_ref_str.rs","display.rs","from_string.rs","mod.rs","to_string.rs"]]],["enum_count.rs","enum_discriminants.rs","enum_iter.rs","enum_messages.rs","enum_properties.rs","enum_variant_names.rs","from_repr.rs","mod.rs"]]],["lib.rs"]],\
-"syn":["",[["gen",[],["clone.rs","debug.rs","eq.rs","gen_helper.rs","hash.rs","visit.rs"]]],["attr.rs","await.rs","bigint.rs","buffer.rs","custom_keyword.rs","custom_punctuation.rs","data.rs","derive.rs","discouraged.rs","drops.rs","error.rs","export.rs","expr.rs","ext.rs","file.rs","generics.rs","group.rs","ident.rs","item.rs","lib.rs","lifetime.rs","lit.rs","lookahead.rs","mac.rs","macros.rs","op.rs","parse.rs","parse_macro_input.rs","parse_quote.rs","pat.rs","path.rs","print.rs","punctuated.rs","reserved.rs","sealed.rs","span.rs","spanned.rs","stmt.rs","thread.rs","token.rs","tt.rs","ty.rs","verbatim.rs","whitespace.rs"]],\
 "thiserror":["",[],["aserror.rs","display.rs","lib.rs"]],\
 "thiserror_impl":["",[],["ast.rs","attr.rs","expand.rs","fmt.rs","generics.rs","lib.rs","prop.rs","valid.rs"]],\
 "time":["",[],["display.rs","duration.rs","lib.rs","parse.rs","sys.rs"]],\
 "toml_datetime":["",[],["datetime.rs","lib.rs"]],\
 "toml_edit":["",[["parser",[],["array.rs","datetime.rs","document.rs","errors.rs","inline_table.rs","key.rs","macros.rs","mod.rs","numbers.rs","state.rs","strings.rs","table.rs","trivia.rs","value.rs"]]],["array.rs","array_of_tables.rs","document.rs","encode.rs","index.rs","inline_table.rs","internal_string.rs","item.rs","key.rs","lib.rs","raw_string.rs","repr.rs","table.rs","value.rs","visit.rs","visit_mut.rs"]],\
 "unicode_ident":["",[],["lib.rs","tables.rs"]],\
-"winapi":["",[["km",[],["mod.rs"]],["shared",[],["basetsd.rs","cfg.rs","devpropdef.rs","guiddef.rs","ktmtypes.rs","minwindef.rs","mod.rs","ntdef.rs","ntstatus.rs","rpc.rs","rpcdce.rs","rpcndr.rs","windef.rs","winerror.rs","wtypes.rs","wtypesbase.rs"]],["ucrt",[],["mod.rs"]],["um",[["gl",[],["mod.rs"]]],["cfgmgr32.rs","combaseapi.rs","consoleapi.rs","errhandlingapi.rs","fileapi.rs","handleapi.rs","libloaderapi.rs","minwinbase.rs","mod.rs","oaidl.rs","objbase.rs","objidl.rs","objidlbase.rs","processenv.rs","processthreadsapi.rs","profileapi.rs","propidl.rs","reason.rs","sysinfoapi.rs","timezoneapi.rs","unknwnbase.rs","winbase.rs","wincon.rs","wincontypes.rs","wingdi.rs","winnt.rs","winreg.rs"]],["vc",[],["excpt.rs","mod.rs","vadefs.rs","vcruntime.rs"]],["winrt",[],["activation.rs","hstring.rs","inspectable.rs","mod.rs","roapi.rs","winstring.rs"]]],["lib.rs","macros.rs"]],\
+"winapi":["",[["km",[],["mod.rs"]],["shared",[],["basetsd.rs","cfg.rs","devpropdef.rs","guiddef.rs","ktmtypes.rs","minwindef.rs","mod.rs","ntdef.rs","ntstatus.rs","rpcndr.rs","windef.rs","winerror.rs","wtypesbase.rs"]],["ucrt",[],["mod.rs"]],["um",[["gl",[],["mod.rs"]]],["cfgmgr32.rs","consoleapi.rs","errhandlingapi.rs","fileapi.rs","handleapi.rs","libloaderapi.rs","minwinbase.rs","mod.rs","processenv.rs","processthreadsapi.rs","profileapi.rs","reason.rs","sysinfoapi.rs","timezoneapi.rs","winbase.rs","wincon.rs","wincontypes.rs","wingdi.rs","winnt.rs","winreg.rs"]],["vc",[],["excpt.rs","mod.rs","vadefs.rs","vcruntime.rs"]],["winrt",[],["mod.rs"]]],["lib.rs","macros.rs"]],\
 "windows_targets":["",[],["lib.rs"]],\
 "windows_x86_64_msvc":["",[],["lib.rs"]],\
-"winnow":["",[["bits",[],["complete.rs","mod.rs","streaming.rs"]],["branch",[],["mod.rs"]],["bytes",[],["complete.rs","mod.rs","streaming.rs"]],["character",[],["complete.rs","mod.rs","streaming.rs"]],["combinator",[],["mod.rs"]],["multi",[],["mod.rs"]],["number",[],["complete.rs","mod.rs","streaming.rs"]],["sequence",[],["mod.rs"]],["stream",[],["impls.rs","mod.rs"]],["trace",[],["mod.rs"]]],["error.rs","lib.rs","macros.rs","parser.rs"]]\
+"winnow":["",[["bits",[],["mod.rs"]],["branch",[],["mod.rs"]],["bytes",[],["mod.rs"]],["character",[],["mod.rs"]],["combinator",[],["mod.rs"]],["multi",[],["mod.rs"]],["number",[],["mod.rs"]],["sequence",[],["mod.rs"]],["stream",[],["impls.rs","mod.rs"]],["trace",[],["mod.rs"]]],["error.rs","lib.rs","macros.rs","parser.rs"]]\
 }');
 createSourceSidebar();
