@@ -4,6 +4,7 @@ use arcdps::{
 };
 use log::info;
 
+// TODO: showcase all callbacks
 arcdps::export! {
     name: "Example Plugin",
     sig: 0x12345678, // change this to a random number
