@@ -1,4 +1,7 @@
-use crate::{Activation, Affinity, BuffRemove, StateChange};
+use crate::{
+    Activation, Affinity, BuffFormula, BuffInfo, BuffRemove, Position, SkillInfo, SkillTiming,
+    StateChange,
+};
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
@@ -141,6 +144,35 @@ impl CombatEvent {
         } else {
             EventKind::DirectDamage
         }
+    }
+
+    /// Attempts to extract [`Position`] data from the event.
+    #[inline]
+    pub fn position(&self) -> Option<Position> {
+        self.try_into().ok()
+    }
+
+    /// Attempts to extract [`BuffInfo`] from the event.
+    pub fn buff_info(&self) -> Option<BuffInfo> {
+        self.try_into().ok()
+    }
+
+    /// Attempts to extract a [`BuffFormula`] from the event.
+    #[inline]
+    pub fn buff_formula(&self) -> Option<BuffFormula> {
+        self.try_into().ok()
+    }
+
+    /// Attempts to extract [`SkillInfo`] from the event.
+    #[inline]
+    pub fn skill_info(&self) -> Option<SkillInfo> {
+        self.try_into().ok()
+    }
+
+    /// Attempts to extract [`SkillTiming`] data from the event.
+    #[inline]
+    pub fn skill_timing(&self) -> Option<SkillTiming> {
+        self.try_into().ok()
     }
 }
 

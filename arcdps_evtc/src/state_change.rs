@@ -190,14 +190,14 @@ pub enum StateChange {
 
     /// Buff information.
     ///
-    /// If `is_flanking` probably invulnerable.
-    /// If `is_shields` probably invert.
-    ///
     /// `is_off_cycle` contains the category.
     /// `pad61` contains the stacking type.
-    /// `pad62` contains the probably resistance.
-    /// `src_master_instid` contains the max stacks.
+    /// `src_master_instance_id` contains the max stacks.
     /// `overstack_value` contains the duration cap.
+    ///
+    /// If `is_flanking` probably invulnerable.
+    /// If `is_shields` probably invert.
+    /// If `pad62` probably resistance.
     ///
     /// *Not used in realtime API.*
     BuffInfo,

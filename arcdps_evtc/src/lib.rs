@@ -2,19 +2,20 @@
 //!
 //! Includes everything shared between Arc's realtime API used by plugins and Arc's log API consumed by parsers.
 
-// workaround for strum derives on deprecated custom skill enum
-#![allow(deprecated)]
-
 mod agent;
 mod buff;
 mod event;
 mod game;
+mod position;
+mod skill;
 mod state_change;
 
 pub use self::agent::*;
 pub use self::buff::*;
 pub use self::event::*;
 pub use self::game::*;
+pub use self::position::*;
+pub use self::skill::*;
 pub use self::state_change::*;
 
 use num_enum::{FromPrimitive, IntoPrimitive, TryFromPrimitive};
