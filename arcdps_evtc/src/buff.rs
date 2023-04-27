@@ -187,7 +187,7 @@ impl TryFrom<&CombatEvent> for BuffInfo {
             StateChange::BuffInfo => Ok(Self {
                 category: event.is_off_cycle,
                 stacking_type: event.pad61,
-                max_stacks: event.src_instance_id,
+                max_stacks: event.src_master_instance_id,
                 duration_cap: event.overstack_value,
                 invulnerable: event.is_flanking != 0,
                 invert: event.is_shields != 0,

@@ -1,6 +1,6 @@
 [package]
 name = "arcdps_evtc"
-version = "0.4.1"
+version = "0.4.2"
 authors = ["Zerthox"]
 edition = "2021"
 description = "Rust bindings for the ArcDPS EVTC API"
