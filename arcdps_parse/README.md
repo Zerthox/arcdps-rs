@@ -10,15 +10,29 @@ Documentation can be found at [zerthox.github.io/arcdps-bindings/arcdps_parse/](
 arcdps_parse = { git = "https://github.com/zerthox/arcdps-bindings" }
 ```
 
-A log can be parsed from any input implementing `Read`.
+Use the `parse_file` function to easily parse a log from a file path.
 ```rs
-use arcdps_parse::{Log, Parse};
-use std::fs::File;
-
-let mut file = File::open("log.evtc")?;
-let log = Log::parse(&mut file)?;
-assert_eq!(log.header.revision, 1);
+match arcdps_parse::parse_file("path/to/log.evtc") {
+    Ok(log) => println!("Log for boss id {}", log.header.boss_id),
+    Err(err) => eprintln!("Encountered error {}", err),
+}
 ```
 
-Note that ArcDPS may save zipped log files with the `.zevtc` extension.
-Reading those can be realized using for example the [zip](https://docs.rs/zip/) crate.
+A log can also be parsed from any input implementing `Read`.
+```rs
+use arcdps_parse::{Log, Parse};
+use std::io;
+
+fn parse_from_read(input: &mut impl io::Read) -> Log {
+    Log::parse(input).expect("failed to parse")
+}
+```
+
+
+Note that ArcDPS can save compressed log files with `.zevtc` as file extension.
+Enabling the `"zevtc"` or `"zip"` feature adds support for compressed logs.
+
+```toml
+[dependencies]
+arcdps_parse = { git = "https://github.com/zerthox/arcdps-bindings", features = ["zevtc"] }
+```

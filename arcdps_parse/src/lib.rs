@@ -1,21 +1,26 @@
 //! Parsing for ArcDPS EVTC logs.
 //!
 //! # Usage
-//! A [`Log`] can be parsed from any input implementing [`Read`](io::Read).
+//! Use the [`parse_file`] function to easily parse a [`Log`] from a file path.
 //! ```no_run
-//! use arcdps_parse::{Log, Parse};
-//! use std::fs::File;
-//!
-//! # fn main() -> Result<(), arcdps_parse::ParseError> {
-//! let mut file = File::open("log.evtc")?;
-//! let log = Log::parse(&mut file)?;
-//! assert_eq!(log.header.revision, 1);
-//! # Ok(())
-//! # }
+//! match arcdps_parse::parse_file("path/to/log.evtc") {
+//!     Ok(log) => println!("Log for boss id {}", log.header.boss_id),
+//!     Err(err) => eprintln!("Encountered error {}", err),
+//! }
 //! ```
 //!
-//! Note that ArcDPS may save zipped log files with the `.zevtc` extension.
-//! Reading those can be realized using for example the [zip](https://docs.rs/zip/) crate.
+//! A [`Log`] can also be parsed from any input implementing [`Read`](io::Read).
+//! ```no_run
+//! use arcdps_parse::{Log, Parse};
+//! use std::io;
+//!
+//! fn parse_from_read(input: &mut impl io::Read) -> Log {
+//!     Log::parse(input).expect("failed to parse")
+//! }
+//! ```
+//!
+//! Note that ArcDPS can save compressed log files with `.zevtc` as file extension.
+//! Enabling the `"zevtc"` or `"zip"` feature adds support for compressed logs.
 
 mod agent;
 mod error;
@@ -30,7 +35,28 @@ pub use self::log::*;
 pub use self::skill::*;
 pub use arcdps_evtc::*;
 
-use std::io;
+#[cfg(feature = "zevtc")]
+mod zip;
+
+#[cfg(feature = "zevtc")]
+pub use self::zip::*;
+
+use std::{fs::File, io, path::Path};
+
+/// Parses a [`Log`] from a given [`Path`] to a log file.
+///
+/// With the `"zevtc"` or `"zip"` feature enabled this also supports compressed log files.
+pub fn parse_file(path: impl AsRef<Path>) -> Result<Log, ParseError> {
+    let path = path.as_ref();
+    let mut file = io::BufReader::new(File::open(path)?);
+
+    #[cfg(feature = "zevtc")]
+    if let Some("zevtc" | "zip") = path.extension().and_then(|ext| ext.to_str()) {
+        return parse_zevtc(file);
+    }
+
+    Log::parse(&mut file)
+}
 
 /// Interface for parsing a value from a [`Read`](io::Read) input.
 pub trait Parse: Sized {
