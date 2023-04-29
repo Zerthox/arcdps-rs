@@ -255,9 +255,9 @@ impl TryFrom<&CombatEvent> for BuffFormula {
                     trait_self,
                     buff_src,
                     buff_self,
-                    not_npc: event.is_flanking == 0,
-                    not_player: event.is_shields == 0,
-                    is_break: event.is_off_cycle == 0,
+                    not_npc: event.is_flanking != 0,
+                    not_player: event.is_shields != 0,
+                    is_break: event.is_off_cycle != 0,
                     value: event.overstack_value,
                     value_type: event.pad61,
                 })
