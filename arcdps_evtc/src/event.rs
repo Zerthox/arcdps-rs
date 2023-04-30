@@ -1,6 +1,6 @@
 use crate::{
-    Activation, Affinity, BuffFormula, BuffInfo, BuffRemove, Position, SkillInfo, SkillTiming,
-    StateChange,
+    Activation, Affinity, BuffFormula, BuffInfo, BuffRemove, Effect, Position, SkillInfo,
+    SkillTiming, StateChange,
 };
 
 #[cfg(feature = "serde")]
@@ -149,6 +149,12 @@ impl CombatEvent {
     /// Attempts to extract [`Position`] data from the event.
     #[inline]
     pub fn position(&self) -> Option<Position> {
+        self.try_into().ok()
+    }
+
+    /// Attempts to extract [`Effect`] data from the event.
+    #[inline]
+    pub fn effect(&self) -> Option<Effect> {
         self.try_into().ok()
     }
 

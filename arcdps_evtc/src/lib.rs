@@ -4,6 +4,7 @@
 
 mod agent;
 mod buff;
+mod effect;
 mod event;
 mod game;
 mod position;
@@ -12,6 +13,7 @@ mod state_change;
 
 pub use self::agent::*;
 pub use self::buff::*;
+pub use self::effect::*;
 pub use self::event::*;
 pub use self::game::*;
 pub use self::position::*;
