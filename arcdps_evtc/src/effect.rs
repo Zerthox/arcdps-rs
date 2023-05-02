@@ -1,8 +1,30 @@
 use crate::{CombatEvent, Position, StateChange};
+use num_enum::{IntoPrimitive, TryFromPrimitive};
 use std::mem::transmute;
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
+
+#[cfg(feature = "strum")]
+use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
+
+/// Content local for [`StateChange::IdToGUID`] events.
+#[derive(
+    Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, TryFromPrimitive,
+)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
+#[cfg_attr(
+    feature = "strum",
+    derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames)
+)]
+#[repr(u32)]
+pub enum ContentLocal {
+    /// Content is an effect.
+    Effect,
+
+    /// Content is a marker.
+    Marker,
+}
 
 /// Effect information from a [`CombatEvent`] with [`StateChange::Effect`].
 #[derive(Debug, Clone)]

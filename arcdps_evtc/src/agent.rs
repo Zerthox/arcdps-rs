@@ -1,3 +1,4 @@
+use num_enum::{FromPrimitive, IntoPrimitive};
 use std::mem;
 
 #[cfg(feature = "serde")]
@@ -5,6 +6,30 @@ use serde::{Deserialize, Serialize};
 
 #[cfg(feature = "strum")]
 use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
+
+/// Whether the agent is an ally or enemy.
+///
+/// *Arc calls this "iff" for if friend/foe.*
+#[derive(
+    Debug, Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
+)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
+#[cfg_attr(
+    feature = "strum",
+    derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames)
+)]
+#[repr(u8)]
+pub enum Affinity {
+    /// Allied agent.
+    Friend,
+
+    /// Enemy agent.
+    Foe,
+
+    /// Uncertain whether ally or enemy.
+    #[default]
+    Unknown,
+}
 
 /// Possible [`Agent`] kinds.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
