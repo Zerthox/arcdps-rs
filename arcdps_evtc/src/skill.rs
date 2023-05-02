@@ -1,5 +1,5 @@
 use crate::{CombatEvent, StateChange};
-use num_enum::{FromPrimitive, IntoPrimitive, TryFromPrimitive};
+use num_enum::{FromPrimitive, IntoPrimitive};
 use std::mem::transmute;
 
 #[cfg(feature = "serde")]
@@ -67,15 +67,12 @@ impl CustomSkill {
 /// Agent weapon set.
 ///
 /// Typically used with a [`CombatEvent`] with [`StateChange::WeaponSwap`].
-#[derive(
-    Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, TryFromPrimitive,
-)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[cfg_attr(
     feature = "strum",
     derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames)
 )]
-#[repr(u8)]
 pub enum WeaponSet {
     /// First underwater weapon set.
     Water1 = 0,
