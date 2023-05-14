@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\winnow-0.4.1\src\error.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>error.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-1f7d512b176f0f72.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-124a1ca42af929b6.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-93196c7a1c3542a8.css" id="mainThemeStyle"><link rel="stylesheet" id="themeStyle" href="../../static.files/light-4743e13df3dfe8c4.css"><link rel="stylesheet" disabled href="../../static.files/dark-0e1b889528bd466b.css"><link rel="stylesheet" disabled href="../../static.files/ayu-65289d5d067c7c66.css"><script id="default-settings" ></script><script src="../../static.files/storage-d43fa987303ecbbb.js"></script><script defer src="../../static.files/source-script-ea63cb6500f71309.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-3367e395607fafc1.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../winnow/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-5ec35bf9ca753509.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\winnow-0.4.6\src\error.rs`."><title>error.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-c4dbdcde0fbd8430.css" id="mainThemeStyle"><link rel="stylesheet" id="themeStyle" href="../../static.files/light-db279b6232be9c13.css"><link rel="stylesheet" disabled href="../../static.files/dark-cf923f49f397b216.css"><link rel="stylesheet" disabled href="../../static.files/ayu-be46fdc453a55015.css"><script src="../../static.files/storage-3891ce972e3a2bf8.js"></script><script defer src="../../static.files/source-script-1b95b7cca98b26e5.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-98a684e84ae5b08b.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../winnow/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -719,6 +719,7 @@
 <a href="#719" id="719">719</a>
 <a href="#720" id="720">720</a>
 <a href="#721" id="721">721</a>
+<a href="#722" id="722">722</a>
 </pre><pre class="rust"><code><span class="doccomment">//! # Error management
 //!
 //! Errors are designed with multiple needs in mind:
@@ -779,10 +780,10 @@
     ///
     /// # Example
     ///
-    </span><span class="attr">#[cfg_attr(not(feature = <span class="string">&quot;std&quot;</span>), doc = <span class="string">&quot;```ignore&quot;</span>)]
-    #[cfg_attr(feature = <span class="string">&quot;std&quot;</span>, doc = <span class="string">&quot;```&quot;</span>)]
-    </span><span class="doccomment">/// use winnow::prelude::*;
-    /// use winnow::character::hex_uint;
+    /// ```rust
+    /// # #[cfg(feature = &quot;std&quot;)] {
+    /// use winnow::prelude::*;
+    /// use winnow::ascii::hex_uint;
     /// use winnow::error::Error;
     ///
     /// struct Hex(u64);
@@ -790,6 +791,7 @@
     /// fn parse(value: &amp;str) -&gt; Result&lt;Hex, Error&lt;String&gt;&gt; {
     ///     hex_uint.map(Hex).parse_next(value).finish().map_err(Error::into_owned)
     /// }
+    /// # }
     /// ```
     </span><span class="attr">#[deprecated(since = <span class="string">&quot;0.4.0&quot;</span>, note = <span class="string">&quot;Replaced with `Parser::parse`&quot;</span>)]
     </span><span class="kw">fn </span>finish(<span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;O, E&gt;;
@@ -897,7 +899,7 @@
     <span class="doccomment">/// The parser failed with a recoverable error (the default).
     ///
     /// For example, a parser for json values might include a
-    /// [`dec_uint`][crate::character::dec_uint] as one case in an [`alt`][crate::branch::alt]
+    /// [`dec_uint`][crate::ascii::dec_uint] as one case in an [`alt`][crate::combinator::alt]
     /// combiantor.  If it fails, the next case should be tried.
     </span>Backtrack(E),
     <span class="doccomment">/// The parser had an unrecoverable error.
@@ -906,7 +908,7 @@
     /// other branches. You can use [`cut_err()`][crate::combinator::cut_err] combinator to switch
     /// from `ErrMode::Backtrack` to `ErrMode::Cut`.
     ///
-    /// For example, one case in an [`alt`][crate::branch::alt] combinator found a unique prefix
+    /// For example, one case in an [`alt`][crate::combinator::alt] combinator found a unique prefix
     /// and you want any further errors parsing the case to be reported to the user.
     </span>Cut(E),
 }
@@ -1056,7 +1058,7 @@
 
     <span class="doccomment">/// Combines errors from two different parse branches.
     ///
-    /// For example, this would be used by [`alt`][crate::branch::alt] to report the error from
+    /// For example, this would be used by [`alt`][crate::combinator::alt] to report the error from
     /// each case.
     </span><span class="kw">fn </span>or(<span class="self">self</span>, other: <span class="self">Self</span>) -&gt; <span class="self">Self </span>{
         other
@@ -1078,7 +1080,7 @@
 
 <span class="doccomment">/// Create a new error with an external error, from [`std::str::FromStr`]
 ///
-/// This trait is required by the [`Parser::map_res`] combinator.
+/// This trait is required by the [`Parser::try_map`] combinator.
 </span><span class="kw">pub trait </span>FromExternalError&lt;I, E&gt; {
     <span class="doccomment">/// Like [`ParseError::from_error_kind`] but also include an external error.
     </span><span class="kw">fn </span>from_external_error(input: I, kind: ErrorKind, e: E) -&gt; <span class="self">Self</span>;
@@ -1095,7 +1097,7 @@
 /// This is a low-overhead error that only provides basic information.  For less overhead, see
 /// `()`.  Fore more information, see [`VerboseError`].
 ///:w
-/// **Note:** [context][Parser::context] and inner errors (like from [`Parser::map_res`]) will be
+/// **Note:** [context][Parser::context] and inner errors (like from [`Parser::try_map`]) will be
 /// dropped.
 </span><span class="attr">#[derive(Copy, Clone, Debug, Eq, PartialEq)]
 </span><span class="kw">pub struct </span>Error&lt;I&gt; {
@@ -1193,7 +1195,7 @@
 /// [`convert_error`] provides an example of how to render this for end-users.
 ///
 /// **Note:** This will only capture the last failed branch for combinators like
-/// [`alt`][crate::branch::alt].
+/// [`alt`][crate::combinator::alt].
 </span><span class="attr">#[cfg(feature = <span class="string">&quot;alloc&quot;</span>)]
 #[derive(Clone, Debug, Eq, PartialEq)]
 </span><span class="kw">pub struct </span>VerboseError&lt;I&gt; {
@@ -1441,4 +1443,4 @@
     }
 }
 </code></pre></div>
-</section></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="winnow" data-themes="" data-resource-suffix="" data-rustdoc-version="1.68.2 (9eb3afe9e 2023-03-27)" data-search-js="search-98d53477a794af0b.js" data-settings-js="settings-c3c521c753752a1a.js" data-settings-css="settings-08ddfdda51b8ee2e.css" ></div></body></html>
+</section></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="winnow" data-themes="" data-resource-suffix="" data-rustdoc-version="1.69.0 (84c898d65 2023-04-16)" data-search-js="search-8a59a8356673ec1f.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>

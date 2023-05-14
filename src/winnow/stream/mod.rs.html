@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\winnow-0.4.1\src\stream\mod.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>mod.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-1f7d512b176f0f72.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-124a1ca42af929b6.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-93196c7a1c3542a8.css" id="mainThemeStyle"><link rel="stylesheet" id="themeStyle" href="../../../static.files/light-4743e13df3dfe8c4.css"><link rel="stylesheet" disabled href="../../../static.files/dark-0e1b889528bd466b.css"><link rel="stylesheet" disabled href="../../../static.files/ayu-65289d5d067c7c66.css"><script id="default-settings" ></script><script src="../../../static.files/storage-d43fa987303ecbbb.js"></script><script defer src="../../../static.files/source-script-ea63cb6500f71309.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../static.files/main-3367e395607fafc1.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../../winnow/index.html"><img class="rust-logo" src="../../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../static.files/wheel-5ec35bf9ca753509.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\winnow-0.4.6\src\stream\mod.rs`."><title>mod.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-c4dbdcde0fbd8430.css" id="mainThemeStyle"><link rel="stylesheet" id="themeStyle" href="../../../static.files/light-db279b6232be9c13.css"><link rel="stylesheet" disabled href="../../../static.files/dark-cf923f49f397b216.css"><link rel="stylesheet" disabled href="../../../static.files/ayu-be46fdc453a55015.css"><script src="../../../static.files/storage-3891ce972e3a2bf8.js"></script><script defer src="../../../static.files/source-script-1b95b7cca98b26e5.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../static.files/main-98a684e84ae5b08b.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../../winnow/index.html"><img class="rust-logo" src="../../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -2452,6 +2452,122 @@
 <a href="#2452" id="2452">2452</a>
 <a href="#2453" id="2453">2453</a>
 <a href="#2454" id="2454">2454</a>
+<a href="#2455" id="2455">2455</a>
+<a href="#2456" id="2456">2456</a>
+<a href="#2457" id="2457">2457</a>
+<a href="#2458" id="2458">2458</a>
+<a href="#2459" id="2459">2459</a>
+<a href="#2460" id="2460">2460</a>
+<a href="#2461" id="2461">2461</a>
+<a href="#2462" id="2462">2462</a>
+<a href="#2463" id="2463">2463</a>
+<a href="#2464" id="2464">2464</a>
+<a href="#2465" id="2465">2465</a>
+<a href="#2466" id="2466">2466</a>
+<a href="#2467" id="2467">2467</a>
+<a href="#2468" id="2468">2468</a>
+<a href="#2469" id="2469">2469</a>
+<a href="#2470" id="2470">2470</a>
+<a href="#2471" id="2471">2471</a>
+<a href="#2472" id="2472">2472</a>
+<a href="#2473" id="2473">2473</a>
+<a href="#2474" id="2474">2474</a>
+<a href="#2475" id="2475">2475</a>
+<a href="#2476" id="2476">2476</a>
+<a href="#2477" id="2477">2477</a>
+<a href="#2478" id="2478">2478</a>
+<a href="#2479" id="2479">2479</a>
+<a href="#2480" id="2480">2480</a>
+<a href="#2481" id="2481">2481</a>
+<a href="#2482" id="2482">2482</a>
+<a href="#2483" id="2483">2483</a>
+<a href="#2484" id="2484">2484</a>
+<a href="#2485" id="2485">2485</a>
+<a href="#2486" id="2486">2486</a>
+<a href="#2487" id="2487">2487</a>
+<a href="#2488" id="2488">2488</a>
+<a href="#2489" id="2489">2489</a>
+<a href="#2490" id="2490">2490</a>
+<a href="#2491" id="2491">2491</a>
+<a href="#2492" id="2492">2492</a>
+<a href="#2493" id="2493">2493</a>
+<a href="#2494" id="2494">2494</a>
+<a href="#2495" id="2495">2495</a>
+<a href="#2496" id="2496">2496</a>
+<a href="#2497" id="2497">2497</a>
+<a href="#2498" id="2498">2498</a>
+<a href="#2499" id="2499">2499</a>
+<a href="#2500" id="2500">2500</a>
+<a href="#2501" id="2501">2501</a>
+<a href="#2502" id="2502">2502</a>
+<a href="#2503" id="2503">2503</a>
+<a href="#2504" id="2504">2504</a>
+<a href="#2505" id="2505">2505</a>
+<a href="#2506" id="2506">2506</a>
+<a href="#2507" id="2507">2507</a>
+<a href="#2508" id="2508">2508</a>
+<a href="#2509" id="2509">2509</a>
+<a href="#2510" id="2510">2510</a>
+<a href="#2511" id="2511">2511</a>
+<a href="#2512" id="2512">2512</a>
+<a href="#2513" id="2513">2513</a>
+<a href="#2514" id="2514">2514</a>
+<a href="#2515" id="2515">2515</a>
+<a href="#2516" id="2516">2516</a>
+<a href="#2517" id="2517">2517</a>
+<a href="#2518" id="2518">2518</a>
+<a href="#2519" id="2519">2519</a>
+<a href="#2520" id="2520">2520</a>
+<a href="#2521" id="2521">2521</a>
+<a href="#2522" id="2522">2522</a>
+<a href="#2523" id="2523">2523</a>
+<a href="#2524" id="2524">2524</a>
+<a href="#2525" id="2525">2525</a>
+<a href="#2526" id="2526">2526</a>
+<a href="#2527" id="2527">2527</a>
+<a href="#2528" id="2528">2528</a>
+<a href="#2529" id="2529">2529</a>
+<a href="#2530" id="2530">2530</a>
+<a href="#2531" id="2531">2531</a>
+<a href="#2532" id="2532">2532</a>
+<a href="#2533" id="2533">2533</a>
+<a href="#2534" id="2534">2534</a>
+<a href="#2535" id="2535">2535</a>
+<a href="#2536" id="2536">2536</a>
+<a href="#2537" id="2537">2537</a>
+<a href="#2538" id="2538">2538</a>
+<a href="#2539" id="2539">2539</a>
+<a href="#2540" id="2540">2540</a>
+<a href="#2541" id="2541">2541</a>
+<a href="#2542" id="2542">2542</a>
+<a href="#2543" id="2543">2543</a>
+<a href="#2544" id="2544">2544</a>
+<a href="#2545" id="2545">2545</a>
+<a href="#2546" id="2546">2546</a>
+<a href="#2547" id="2547">2547</a>
+<a href="#2548" id="2548">2548</a>
+<a href="#2549" id="2549">2549</a>
+<a href="#2550" id="2550">2550</a>
+<a href="#2551" id="2551">2551</a>
+<a href="#2552" id="2552">2552</a>
+<a href="#2553" id="2553">2553</a>
+<a href="#2554" id="2554">2554</a>
+<a href="#2555" id="2555">2555</a>
+<a href="#2556" id="2556">2556</a>
+<a href="#2557" id="2557">2557</a>
+<a href="#2558" id="2558">2558</a>
+<a href="#2559" id="2559">2559</a>
+<a href="#2560" id="2560">2560</a>
+<a href="#2561" id="2561">2561</a>
+<a href="#2562" id="2562">2562</a>
+<a href="#2563" id="2563">2563</a>
+<a href="#2564" id="2564">2564</a>
+<a href="#2565" id="2565">2565</a>
+<a href="#2566" id="2566">2566</a>
+<a href="#2567" id="2567">2567</a>
+<a href="#2568" id="2568">2568</a>
+<a href="#2569" id="2569">2569</a>
+<a href="#2570" id="2570">2570</a>
 </pre><pre class="rust"><code><span class="doccomment">//! Stream capability for combinators to parse
 //!
 //! Stream types include:
@@ -2467,9 +2583,6 @@
 
 <span class="kw">use </span><span class="kw">crate</span>::error::{ErrMode, ErrorKind, Needed, ParseError};
 <span class="kw">use </span><span class="kw">crate</span>::lib::std::iter::{Cloned, Enumerate};
-<span class="kw">use </span><span class="kw">crate</span>::lib::std::ops::{
-    Range, RangeFrom, RangeFull, RangeInclusive, RangeTo, RangeToInclusive,
-};
 <span class="kw">use </span><span class="kw">crate</span>::lib::std::slice::Iter;
 <span class="kw">use </span><span class="kw">crate</span>::lib::std::str::from_utf8;
 <span class="kw">use </span><span class="kw">crate</span>::lib::std::str::CharIndices;
@@ -2599,7 +2712,7 @@
 /// # use std::cell::Cell;
 /// # use winnow::prelude::*;
 /// # use winnow::stream::Stateful;
-/// # use winnow::character::alpha1;
+/// # use winnow::ascii::alpha1;
 /// # type Error = ();
 ///
 /// #[derive(Clone, Debug)]
@@ -2675,15 +2788,15 @@
 /// Here is how it works in practice:
 ///
 /// ```rust
-/// # use winnow::{IResult, error::ErrMode, error::Needed, error::{Error, ErrorKind}, bytes, character, stream::Partial};
+/// # use winnow::{IResult, error::ErrMode, error::Needed, error::{Error, ErrorKind}, token, ascii, stream::Partial};
 /// # use winnow::prelude::*;
 ///
 /// fn take_partial(i: Partial&lt;&amp;[u8]&gt;) -&gt; IResult&lt;Partial&lt;&amp;[u8]&gt;, &amp;[u8]&gt; {
-///   bytes::take(4u8).parse_next(i)
+///   token::take(4u8).parse_next(i)
 /// }
 ///
 /// fn take_complete(i: &amp;[u8]) -&gt; IResult&lt;&amp;[u8], &amp;[u8]&gt; {
-///   bytes::take(4u8).parse_next(i)
+///   token::take(4u8).parse_next(i)
 /// }
 ///
 /// // both parsers will take 4 bytes as expected
@@ -2699,11 +2812,11 @@
 ///
 /// // the alpha0 function recognizes 0 or more alphabetic characters
 /// fn alpha0_partial(i: Partial&lt;&amp;str&gt;) -&gt; IResult&lt;Partial&lt;&amp;str&gt;, &amp;str&gt; {
-///   character::alpha0(i)
+///   ascii::alpha0(i)
 /// }
 ///
 /// fn alpha0_complete(i: &amp;str) -&gt; IResult&lt;&amp;str, &amp;str&gt; {
-///   character::alpha0(i)
+///   ascii::alpha0(i)
 /// }
 ///
 /// // if there&#39;s a clear limit to the recognized characters, both parsers work the same way
@@ -3162,7 +3275,7 @@
     }
 }
 
-<span class="doccomment">/// Iterator for [bit][crate::bits] stream (`(I, usize)`)
+<span class="doccomment">/// Iterator for [bit][crate::binary::bits] stream (`(I, usize)`)
 </span><span class="kw">pub struct </span>BitOffsets&lt;I&gt; {
     i: (I, usize),
     o: usize,
@@ -4201,6 +4314,121 @@
     }
 }
 
+<span class="doccomment">/// A range bounded inclusively for counting parses performed
+</span><span class="attr">#[derive(PartialEq, Eq)]
+</span><span class="kw">pub struct </span>Range {
+    <span class="kw">pub</span>(<span class="kw">crate</span>) start_inclusive: usize,
+    <span class="kw">pub</span>(<span class="kw">crate</span>) end_inclusive: <span class="prelude-ty">Option</span>&lt;usize&gt;,
+}
+
+<span class="kw">impl </span>Range {
+    <span class="attr">#[inline(always)]
+    </span><span class="kw">fn </span>raw(start_inclusive: usize, end_inclusive: <span class="prelude-ty">Option</span>&lt;usize&gt;) -&gt; <span class="self">Self </span>{
+        <span class="self">Self </span>{
+            start_inclusive,
+            end_inclusive,
+        }
+    }
+}
+
+<span class="kw">impl </span><span class="kw">crate</span>::lib::std::ops::RangeBounds&lt;usize&gt; <span class="kw">for </span>Range {
+    <span class="kw">fn </span>start_bound(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw">crate</span>::lib::std::ops::Bound&lt;<span class="kw-2">&amp;</span>usize&gt; {
+        <span class="kw">crate</span>::lib::std::ops::Bound::Included(<span class="kw-2">&amp;</span><span class="self">self</span>.start_inclusive)
+    }
+
+    <span class="kw">fn </span>end_bound(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw">crate</span>::lib::std::ops::Bound&lt;<span class="kw-2">&amp;</span>usize&gt; {
+        <span class="kw">if let </span><span class="prelude-val">Some</span>(end_inclusive) = <span class="kw-2">&amp;</span><span class="self">self</span>.end_inclusive {
+            <span class="kw">crate</span>::lib::std::ops::Bound::Included(end_inclusive)
+        } <span class="kw">else </span>{
+            <span class="kw">crate</span>::lib::std::ops::Bound::Unbounded
+        }
+    }
+}
+
+<span class="kw">impl </span>From&lt;usize&gt; <span class="kw">for </span>Range {
+    <span class="attr">#[inline(always)]
+    </span><span class="kw">fn </span>from(fixed: usize) -&gt; <span class="self">Self </span>{
+        (fixed..=fixed).into()
+    }
+}
+
+<span class="kw">impl </span>From&lt;<span class="kw">crate</span>::lib::std::ops::Range&lt;usize&gt;&gt; <span class="kw">for </span>Range {
+    <span class="attr">#[inline(always)]
+    </span><span class="kw">fn </span>from(range: <span class="kw">crate</span>::lib::std::ops::Range&lt;usize&gt;) -&gt; <span class="self">Self </span>{
+        <span class="kw">let </span>start_inclusive = range.start;
+        <span class="kw">let </span>end_inclusive = <span class="prelude-val">Some</span>(range.end.saturating_sub(<span class="number">1</span>));
+        <span class="self">Self</span>::raw(start_inclusive, end_inclusive)
+    }
+}
+
+<span class="kw">impl </span>From&lt;<span class="kw">crate</span>::lib::std::ops::RangeFull&gt; <span class="kw">for </span>Range {
+    <span class="attr">#[inline(always)]
+    </span><span class="kw">fn </span>from(<span class="kw">_</span>: <span class="kw">crate</span>::lib::std::ops::RangeFull) -&gt; <span class="self">Self </span>{
+        <span class="kw">let </span>start_inclusive = <span class="number">0</span>;
+        <span class="kw">let </span>end_inclusive = <span class="prelude-val">None</span>;
+        <span class="self">Self</span>::raw(start_inclusive, end_inclusive)
+    }
+}
+
+<span class="kw">impl </span>From&lt;<span class="kw">crate</span>::lib::std::ops::RangeFrom&lt;usize&gt;&gt; <span class="kw">for </span>Range {
+    <span class="attr">#[inline(always)]
+    </span><span class="kw">fn </span>from(range: <span class="kw">crate</span>::lib::std::ops::RangeFrom&lt;usize&gt;) -&gt; <span class="self">Self </span>{
+        <span class="kw">let </span>start_inclusive = range.start;
+        <span class="kw">let </span>end_inclusive = <span class="prelude-val">None</span>;
+        <span class="self">Self</span>::raw(start_inclusive, end_inclusive)
+    }
+}
+
+<span class="kw">impl </span>From&lt;<span class="kw">crate</span>::lib::std::ops::RangeTo&lt;usize&gt;&gt; <span class="kw">for </span>Range {
+    <span class="attr">#[inline(always)]
+    </span><span class="kw">fn </span>from(range: <span class="kw">crate</span>::lib::std::ops::RangeTo&lt;usize&gt;) -&gt; <span class="self">Self </span>{
+        <span class="kw">let </span>start_inclusive = <span class="number">0</span>;
+        <span class="kw">let </span>end_inclusive = <span class="prelude-val">Some</span>(range.end.saturating_sub(<span class="number">1</span>));
+        <span class="self">Self</span>::raw(start_inclusive, end_inclusive)
+    }
+}
+
+<span class="kw">impl </span>From&lt;<span class="kw">crate</span>::lib::std::ops::RangeInclusive&lt;usize&gt;&gt; <span class="kw">for </span>Range {
+    <span class="attr">#[inline(always)]
+    </span><span class="kw">fn </span>from(range: <span class="kw">crate</span>::lib::std::ops::RangeInclusive&lt;usize&gt;) -&gt; <span class="self">Self </span>{
+        <span class="kw">let </span>start_inclusive = <span class="kw-2">*</span>range.start();
+        <span class="kw">let </span>end_inclusive = <span class="prelude-val">Some</span>(<span class="kw-2">*</span>range.end());
+        <span class="self">Self</span>::raw(start_inclusive, end_inclusive)
+    }
+}
+
+<span class="kw">impl </span>From&lt;<span class="kw">crate</span>::lib::std::ops::RangeToInclusive&lt;usize&gt;&gt; <span class="kw">for </span>Range {
+    <span class="attr">#[inline(always)]
+    </span><span class="kw">fn </span>from(range: <span class="kw">crate</span>::lib::std::ops::RangeToInclusive&lt;usize&gt;) -&gt; <span class="self">Self </span>{
+        <span class="kw">let </span>start_inclusive = <span class="number">0</span>;
+        <span class="kw">let </span>end_inclusive = <span class="prelude-val">Some</span>(range.end);
+        <span class="self">Self</span>::raw(start_inclusive, end_inclusive)
+    }
+}
+
+<span class="kw">impl </span><span class="kw">crate</span>::lib::std::fmt::Display <span class="kw">for </span>Range {
+    <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span><span class="kw">crate</span>::lib::std::fmt::Formatter&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; <span class="kw">crate</span>::lib::std::fmt::Result {
+        <span class="self">self</span>.start_inclusive.fmt(f)<span class="question-mark">?</span>;
+        <span class="kw">match </span><span class="self">self</span>.end_inclusive {
+            <span class="prelude-val">Some</span>(e) <span class="kw">if </span>e == <span class="self">self</span>.start_inclusive =&gt; {}
+            <span class="prelude-val">Some</span>(e) =&gt; {
+                <span class="string">&quot;..=&quot;</span>.fmt(f)<span class="question-mark">?</span>;
+                e.fmt(f)<span class="question-mark">?</span>;
+            }
+            <span class="prelude-val">None </span>=&gt; {
+                <span class="string">&quot;..&quot;</span>.fmt(f)<span class="question-mark">?</span>;
+            }
+        }
+        <span class="prelude-val">Ok</span>(())
+    }
+}
+
+<span class="kw">impl </span><span class="kw">crate</span>::lib::std::fmt::Debug <span class="kw">for </span>Range {
+    <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span><span class="kw">crate</span>::lib::std::fmt::Formatter&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; <span class="kw">crate</span>::lib::std::fmt::Result {
+        <span class="macro">write!</span>(f, <span class="string">&quot;{self}&quot;</span>)
+    }
+}
+
 <span class="doccomment">/// Abstracts something which can extend an `Extend`.
 /// Used to build modified input slices in `escaped_transform`
 </span><span class="kw">pub trait </span>Accumulate&lt;T&gt;: Sized {
@@ -4594,9 +4822,9 @@
 /// ```
 /// # use winnow::prelude::*;
 /// # use winnow::{error::ErrMode, error::ErrorKind, error::Error};
-/// # use winnow::bytes::take_while1;
+/// # use winnow::token::take_while;
 /// fn hex_digit1(input: &amp;str) -&gt; IResult&lt;&amp;str, &amp;str&gt; {
-///     take_while1((&#39;a&#39;..=&#39;f&#39;, &#39;A&#39;..=&#39;F&#39;, &#39;0&#39;..=&#39;9&#39;)).parse_next(input)
+///     take_while(1.., (&#39;a&#39;..=&#39;f&#39;, &#39;A&#39;..=&#39;F&#39;, &#39;0&#39;..=&#39;9&#39;)).parse_next(input)
 /// }
 ///
 /// assert_eq!(hex_digit1(&quot;21cZ&quot;), Ok((&quot;Z&quot;, &quot;21c&quot;)));
@@ -4650,7 +4878,7 @@
     }
 }
 
-<span class="kw">impl</span>&lt;C1: AsChar, C2: AsChar + Clone&gt; ContainsToken&lt;C1&gt; <span class="kw">for </span>Range&lt;C2&gt; {
+<span class="kw">impl</span>&lt;C1: AsChar, C2: AsChar + Clone&gt; ContainsToken&lt;C1&gt; <span class="kw">for </span><span class="kw">crate</span>::lib::std::ops::Range&lt;C2&gt; {
     <span class="attr">#[inline(always)]
     </span><span class="kw">fn </span>contains_token(<span class="kw-2">&amp;</span><span class="self">self</span>, token: C1) -&gt; bool {
         <span class="kw">let </span>start = <span class="self">self</span>.start.clone().as_char();
@@ -4659,7 +4887,9 @@
     }
 }
 
-<span class="kw">impl</span>&lt;C1: AsChar, C2: AsChar + Clone&gt; ContainsToken&lt;C1&gt; <span class="kw">for </span>RangeInclusive&lt;C2&gt; {
+<span class="kw">impl</span>&lt;C1: AsChar, C2: AsChar + Clone&gt; ContainsToken&lt;C1&gt;
+    <span class="kw">for </span><span class="kw">crate</span>::lib::std::ops::RangeInclusive&lt;C2&gt;
+{
     <span class="attr">#[inline(always)]
     </span><span class="kw">fn </span>contains_token(<span class="kw-2">&amp;</span><span class="self">self</span>, token: C1) -&gt; bool {
         <span class="kw">let </span>start = <span class="self">self</span>.start().clone().as_char();
@@ -4668,7 +4898,7 @@
     }
 }
 
-<span class="kw">impl</span>&lt;C1: AsChar, C2: AsChar + Clone&gt; ContainsToken&lt;C1&gt; <span class="kw">for </span>RangeFrom&lt;C2&gt; {
+<span class="kw">impl</span>&lt;C1: AsChar, C2: AsChar + Clone&gt; ContainsToken&lt;C1&gt; <span class="kw">for </span><span class="kw">crate</span>::lib::std::ops::RangeFrom&lt;C2&gt; {
     <span class="attr">#[inline(always)]
     </span><span class="kw">fn </span>contains_token(<span class="kw-2">&amp;</span><span class="self">self</span>, token: C1) -&gt; bool {
         <span class="kw">let </span>start = <span class="self">self</span>.start.clone().as_char();
@@ -4676,7 +4906,7 @@
     }
 }
 
-<span class="kw">impl</span>&lt;C1: AsChar, C2: AsChar + Clone&gt; ContainsToken&lt;C1&gt; <span class="kw">for </span>RangeTo&lt;C2&gt; {
+<span class="kw">impl</span>&lt;C1: AsChar, C2: AsChar + Clone&gt; ContainsToken&lt;C1&gt; <span class="kw">for </span><span class="kw">crate</span>::lib::std::ops::RangeTo&lt;C2&gt; {
     <span class="attr">#[inline(always)]
     </span><span class="kw">fn </span>contains_token(<span class="kw-2">&amp;</span><span class="self">self</span>, token: C1) -&gt; bool {
         <span class="kw">let </span>end = <span class="self">self</span>.end.clone().as_char();
@@ -4684,7 +4914,9 @@
     }
 }
 
-<span class="kw">impl</span>&lt;C1: AsChar, C2: AsChar + Clone&gt; ContainsToken&lt;C1&gt; <span class="kw">for </span>RangeToInclusive&lt;C2&gt; {
+<span class="kw">impl</span>&lt;C1: AsChar, C2: AsChar + Clone&gt; ContainsToken&lt;C1&gt;
+    <span class="kw">for </span><span class="kw">crate</span>::lib::std::ops::RangeToInclusive&lt;C2&gt;
+{
     <span class="attr">#[inline(always)]
     </span><span class="kw">fn </span>contains_token(<span class="kw-2">&amp;</span><span class="self">self</span>, token: C1) -&gt; bool {
         <span class="kw">let </span>end = <span class="self">self</span>.end.clone().as_char();
@@ -4692,7 +4924,7 @@
     }
 }
 
-<span class="kw">impl</span>&lt;C1: AsChar&gt; ContainsToken&lt;C1&gt; <span class="kw">for </span>RangeFull {
+<span class="kw">impl</span>&lt;C1: AsChar&gt; ContainsToken&lt;C1&gt; <span class="kw">for </span><span class="kw">crate</span>::lib::std::ops::RangeFull {
     <span class="attr">#[inline(always)]
     </span><span class="kw">fn </span>contains_token(<span class="kw-2">&amp;</span><span class="self">self</span>, _token: C1) -&gt; bool {
         <span class="bool-val">true
@@ -4907,4 +5139,4 @@
     <span class="prelude-val">None
 </span>}
 </code></pre></div>
-</section></main><div id="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="winnow" data-themes="" data-resource-suffix="" data-rustdoc-version="1.68.2 (9eb3afe9e 2023-03-27)" data-search-js="search-98d53477a794af0b.js" data-settings-js="settings-c3c521c753752a1a.js" data-settings-css="settings-08ddfdda51b8ee2e.css" ></div></body></html>
+</section></main><div id="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="winnow" data-themes="" data-resource-suffix="" data-rustdoc-version="1.69.0 (84c898d65 2023-04-16)" data-search-js="search-8a59a8356673ec1f.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>

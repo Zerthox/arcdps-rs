@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"enum":[["ChannelType","Type of message channel."]],"struct":[["ChannelTypeIter","An iterator over the variants of [Self]"],["ChatMessageInfo","A chat message."],["ChatMessageInfoOwned","[`ChatMessageInfo`] with owned [`String`] fields."],["RawChatMessageInfo",""]]};
+window.SIDEBAR_ITEMS = {"enum":["ChannelType"],"struct":["ChannelTypeIter","ChatMessageInfo","ChatMessageInfoOwned","RawChatMessageInfo"]};

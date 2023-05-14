@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"struct":[["ImColor32","Wraps u32 that represents a packed RGBA color. Mostly used by types in the low level custom drawing API, such as `DrawListMut`."],["ImColor32Fields","A struct that exists to allow field access to [`ImColor32`]. It essentially exists to be a `Deref`/`DerefMut` target and provide field access."]]};
+window.SIDEBAR_ITEMS = {"struct":["ImColor32","ImColor32Fields"]};

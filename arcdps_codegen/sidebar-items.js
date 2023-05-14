@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"macro":[["export","Creates plugin exports for ArcDPS."]]};
+window.SIDEBAR_ITEMS = {"macro":["export"]};

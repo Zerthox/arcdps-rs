@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":[["LibraryLoader",""]]};
+window.SIDEBAR_ITEMS = {"mod":["LibraryLoader"]};

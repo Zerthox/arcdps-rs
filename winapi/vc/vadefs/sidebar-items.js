@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"type":[["uintptr_t",""],["va_list",""]]};
+window.SIDEBAR_ITEMS = {"type":["uintptr_t","va_list"]};

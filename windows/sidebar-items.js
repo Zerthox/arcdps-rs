@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"macro":[["h","A literal HSTRING, length-prefixed wide string with a trailing null terminator."],["s","A literal UTF-8 string with a trailing null terminator."],["w","A literal UTF-16 wide string with a trailing null terminator."]],"mod":[["Globalization",""],["System",""],["Win32",""],["core",""]]};
+window.SIDEBAR_ITEMS = {"macro":["h","s","w"],"mod":["Globalization","System","Win32","core"]};

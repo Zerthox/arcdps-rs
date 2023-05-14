@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"struct":[["ArcDpsLogger","A logger logging to ArcDPS’ log window and/or file."],["FileLogger","A logger logging to ArcDPS’ log file."],["WindowLogger","A logger logging to ArcDPS’ log window."]]};
+window.SIDEBAR_ITEMS = {"struct":["ArcDpsLogger","FileLogger","WindowLogger"]};
