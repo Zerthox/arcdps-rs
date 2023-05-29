@@ -6,11 +6,9 @@ use serde::{Deserialize, Serialize};
 #[cfg(feature = "strum")]
 use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
 
-// TODO: non-exhaustive instead of conversion from primitive?
-
 /// Combat state change.
 #[derive(
-    Debug, Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
+    Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
 )]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[cfg_attr(
@@ -337,6 +335,6 @@ pub enum StateChange {
     ExtensionCombat,
 
     /// Unknown or invalid.
-    #[default]
-    Unknown,
+    #[num_enum(catch_all)]
+    Unknown(u8),
 }

@@ -10,7 +10,7 @@ use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
 
 /// Combat buff remove.
 #[derive(
-    Debug, Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
+    Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
 )]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[cfg_attr(
@@ -42,13 +42,13 @@ pub enum BuffRemove {
     Manual,
 
     /// Unknown or invalid.
-    #[default]
-    Unknown,
+    #[num_enum(catch_all)]
+    Unknown(u8),
 }
 
 /// Combat buff cycle.
 #[derive(
-    Debug, Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
+    Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, TryFromPrimitive,
 )]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[cfg_attr(
@@ -74,9 +74,6 @@ pub enum BuffCycle {
 
     /// Damage happened to target on source losing a stack.
     NotCycleDmgToTargetOnStackRemove,
-
-    #[default]
-    Unknown,
 }
 
 /// Buff info category.
@@ -103,7 +100,7 @@ pub enum BuffCategory {
 ///
 /// Used in [`StateChange::BuffFormula`](crate::StateChange::BuffFormula) events.
 #[derive(
-    Debug, Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
+    Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, TryFromPrimitive,
 )]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[cfg_attr(
@@ -154,10 +151,6 @@ pub enum Attribute {
 
     /// Incoming life leech.
     SiphonRec,
-
-    /// Unknown or invalid.
-    #[default]
-    Unknown = u16::MAX,
 }
 
 /// Buff information from a [`CombatEvent`] with [`StateChange::BuffInfo`].

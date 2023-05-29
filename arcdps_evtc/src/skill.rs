@@ -12,7 +12,7 @@ use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
 ///
 /// *Arc calls this "combat activation".*
 #[derive(
-    Debug, Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
+    Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
 )]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[cfg_attr(
@@ -40,8 +40,8 @@ pub enum Activation {
     Reset,
 
     /// Unknown or invalid.
-    #[default]
-    Unknown,
+    #[num_enum(catch_all)]
+    Unknown(u8),
 }
 
 /// ArcDPS custom skill ids.
