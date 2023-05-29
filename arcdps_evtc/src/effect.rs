@@ -51,6 +51,14 @@ pub struct Effect {
     pub duration: EffectDuration,
 }
 
+impl Effect {
+    /// Checks whether this is the end of an effect.
+    #[inline]
+    pub fn is_end(&self) -> bool {
+        self.effect_id == 0
+    }
+}
+
 impl TryFrom<&CombatEvent> for Effect {
     type Error = ();
 
