@@ -34,10 +34,10 @@ pub struct CombatEvent {
     /// Skill id of the relevant skill (can be zero).
     pub skill_id: u32,
 
-    /// Id of source agent as appears in game at time of event.
+    /// Instance id of source agent as appears in game at time of event.
     pub src_instance_id: u16,
 
-    /// Id of destination agent as appears in game at time of event.
+    /// Instance id of destination agent as appears in game at time of event.
     pub dst_instance_id: u16,
 
     /// If `src_agent` has a master (e.g. is minion), will be equal to instance id of master, zero otherwise.
@@ -101,7 +101,7 @@ pub struct CombatEvent {
     /// Shields, if relevant to the event.
     pub is_shields: u8,
 
-    /// For relevant Events this may be a variant of [`BuffCycle`](crate::BuffCycle).
+    /// For relevant events this may be a variant of [`BuffCycle`](crate::BuffCycle).
     pub is_off_cycle: u8,
 
     /// Padding.

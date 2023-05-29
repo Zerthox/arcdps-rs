@@ -207,7 +207,7 @@ pub enum StateChange {
     ///
     /// If `is_flanking` not NPC.
     /// If `is_shields` not player.
-    /// If `is_offcycle` break.
+    /// If `is_off_cycle` break.
     ///
     /// `overstack_value` is value of type determined by `pad61`.
     ///
