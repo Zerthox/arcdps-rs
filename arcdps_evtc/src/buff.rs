@@ -76,7 +76,47 @@ pub enum BuffCycle {
     NotCycleDmgToTargetOnStackRemove,
 }
 
-/// Buff info category.
+/// Buff info category **before** 13 December 2022.
+///
+/// Used in [`StateChange::BuffInfo`](crate::StateChange::BuffInfo) events.
+#[derive(
+    Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, TryFromPrimitive,
+)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
+#[repr(u8)]
+pub enum BuffCategoryOld {
+    /// Buff is a Boon.
+    Boon = 0,
+
+    /// Buff is generic category.
+    Any = 1,
+
+    /// Buff is a Condition.
+    Condition = 2,
+
+    /// Buff is granted by Food consumable.
+    Food = 4,
+
+    /// Buff is granted by gear item or upgrade.
+    Upgrade = 6,
+
+    /// Buff is granted by a Boost consumable.
+    Boost = 8,
+
+    /// Buff is granted by a Trait.
+    Trait = 11,
+
+    /// Buff is a Transform.
+    Transform = 12,
+
+    /// Buff is Enhancement granted by a Utility consumable.
+    Enhancement = 13,
+
+    /// Buff is a Stance.
+    Stance = 16,
+}
+
+/// Buff info category **after** 13 December 2022.
 ///
 /// Used in [`StateChange::BuffInfo`](crate::StateChange::BuffInfo) events.
 #[derive(
@@ -85,15 +125,35 @@ pub enum BuffCycle {
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[repr(u8)]
 pub enum BuffCategory {
+    /// Buff is a Boon.
     Boon = 0,
+
+    /// Buff is generic category.
     Any = 1,
+
+    /// Buff is a Condition.
     Condition = 2,
-    Food = 4,
-    Upgrade = 6,
-    Boost = 8,
-    Trait = 11,
-    Enhancement = 13,
-    Stance = 16,
+
+    /// Buff is granted by Food consumable.
+    Food = 5,
+
+    /// Buff is a gear item or upgrade.
+    Upgrade = 7,
+
+    /// Buff is granted by a Boost consumable.
+    Boost = 9,
+
+    /// Buff is granted by a Trait.
+    Trait = 12,
+
+    /// Buff is a Transform.
+    Transform = 13,
+
+    /// Buff is Enhancement granted by a Utility consumable.
+    Enhancement = 14,
+
+    /// Buff is a Stance.
+    Stance = 17,
 }
 
 /// Attributes for buff formulas.
@@ -111,15 +171,34 @@ pub enum BuffCategory {
 pub enum Attribute {
     None,
 
+    /// Power.
     Power,
+
+    /// Precision.
     Precision,
+
+    /// Toughness.
     Toughness,
+
+    /// Vitality.
     Vitality,
+
+    /// Ferocity.
     Ferocity,
+
+    /// Healing.
     Healing,
+
+    /// Condition Damage.
     Condition,
+
+    /// Concentration.
     Concentration,
+
+    /// Expertise.
     Expertise,
+
+    /// Armor.
     Armor,
 
     /// Agony Resistance.
