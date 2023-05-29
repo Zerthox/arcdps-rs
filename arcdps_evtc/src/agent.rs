@@ -31,7 +31,7 @@ pub enum Affinity {
     Unknown(u8),
 }
 
-/// Possible [`Agent`] kinds.
+/// Possible agent kinds.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[cfg_attr(
