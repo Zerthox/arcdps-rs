@@ -89,7 +89,7 @@
 ///
 /// *Arc calls this &quot;iff&quot; for if friend/foe.*
 </span><span class="attr">#[derive(
-    Debug, Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
+    Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
 )]
 #[cfg_attr(feature = <span class="string">&quot;serde&quot;</span>, derive(Serialize, Deserialize))]
 #[cfg_attr(
@@ -104,12 +104,12 @@
     <span class="doccomment">/// Enemy agent.
     </span>Foe,
 
-    <span class="doccomment">/// Uncertain whether ally or enemy.
-    </span><span class="attr">#[default]
-    </span>Unknown,
+    <span class="doccomment">/// Unknown or invalid.
+    </span><span class="attr">#[num_enum(catch_all)]
+    </span>Unknown(u8),
 }
 
-<span class="doccomment">/// Possible [`Agent`] kinds.
+<span class="doccomment">/// Possible agent kinds.
 </span><span class="attr">#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 #[cfg_attr(feature = <span class="string">&quot;serde&quot;</span>, derive(Serialize, Deserialize))]
 #[cfg_attr(

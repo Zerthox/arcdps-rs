@@ -338,8 +338,6 @@
 <a href="#338" id="338">338</a>
 <a href="#339" id="339">339</a>
 <a href="#340" id="340">340</a>
-<a href="#341" id="341">341</a>
-<a href="#342" id="342">342</a>
 </pre><pre class="rust"><code><span class="kw">use </span>num_enum::{FromPrimitive, IntoPrimitive};
 
 <span class="attr">#[cfg(feature = <span class="string">&quot;serde&quot;</span>)]
@@ -348,11 +346,9 @@
 <span class="attr">#[cfg(feature = <span class="string">&quot;strum&quot;</span>)]
 </span><span class="kw">use </span>strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
 
-<span class="comment">// TODO: non-exhaustive instead of conversion from primitive?
-
-</span><span class="doccomment">/// Combat state change.
+<span class="doccomment">/// Combat state change.
 </span><span class="attr">#[derive(
-    Debug, Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
+    Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
 )]
 #[cfg_attr(feature = <span class="string">&quot;serde&quot;</span>, derive(Serialize, Deserialize))]
 #[cfg_attr(
@@ -551,7 +547,7 @@
     ///
     /// If `is_flanking` not NPC.
     /// If `is_shields` not player.
-    /// If `is_offcycle` break.
+    /// If `is_off_cycle` break.
     ///
     /// `overstack_value` is value of type determined by `pad61`.
     ///
@@ -679,8 +675,8 @@
     </span>ExtensionCombat,
 
     <span class="doccomment">/// Unknown or invalid.
-    </span><span class="attr">#[default]
-    </span>Unknown,
+    </span><span class="attr">#[num_enum(catch_all)]
+    </span>Unknown(u8),
 }
 </code></pre></div>
 </section></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="arcdps_evtc" data-themes="" data-resource-suffix="" data-rustdoc-version="1.69.0 (84c898d65 2023-04-16)" data-search-js="search-8a59a8356673ec1f.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>

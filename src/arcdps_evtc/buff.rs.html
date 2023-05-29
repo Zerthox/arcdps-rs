@@ -267,6 +267,78 @@
 <a href="#267" id="267">267</a>
 <a href="#268" id="268">268</a>
 <a href="#269" id="269">269</a>
+<a href="#270" id="270">270</a>
+<a href="#271" id="271">271</a>
+<a href="#272" id="272">272</a>
+<a href="#273" id="273">273</a>
+<a href="#274" id="274">274</a>
+<a href="#275" id="275">275</a>
+<a href="#276" id="276">276</a>
+<a href="#277" id="277">277</a>
+<a href="#278" id="278">278</a>
+<a href="#279" id="279">279</a>
+<a href="#280" id="280">280</a>
+<a href="#281" id="281">281</a>
+<a href="#282" id="282">282</a>
+<a href="#283" id="283">283</a>
+<a href="#284" id="284">284</a>
+<a href="#285" id="285">285</a>
+<a href="#286" id="286">286</a>
+<a href="#287" id="287">287</a>
+<a href="#288" id="288">288</a>
+<a href="#289" id="289">289</a>
+<a href="#290" id="290">290</a>
+<a href="#291" id="291">291</a>
+<a href="#292" id="292">292</a>
+<a href="#293" id="293">293</a>
+<a href="#294" id="294">294</a>
+<a href="#295" id="295">295</a>
+<a href="#296" id="296">296</a>
+<a href="#297" id="297">297</a>
+<a href="#298" id="298">298</a>
+<a href="#299" id="299">299</a>
+<a href="#300" id="300">300</a>
+<a href="#301" id="301">301</a>
+<a href="#302" id="302">302</a>
+<a href="#303" id="303">303</a>
+<a href="#304" id="304">304</a>
+<a href="#305" id="305">305</a>
+<a href="#306" id="306">306</a>
+<a href="#307" id="307">307</a>
+<a href="#308" id="308">308</a>
+<a href="#309" id="309">309</a>
+<a href="#310" id="310">310</a>
+<a href="#311" id="311">311</a>
+<a href="#312" id="312">312</a>
+<a href="#313" id="313">313</a>
+<a href="#314" id="314">314</a>
+<a href="#315" id="315">315</a>
+<a href="#316" id="316">316</a>
+<a href="#317" id="317">317</a>
+<a href="#318" id="318">318</a>
+<a href="#319" id="319">319</a>
+<a href="#320" id="320">320</a>
+<a href="#321" id="321">321</a>
+<a href="#322" id="322">322</a>
+<a href="#323" id="323">323</a>
+<a href="#324" id="324">324</a>
+<a href="#325" id="325">325</a>
+<a href="#326" id="326">326</a>
+<a href="#327" id="327">327</a>
+<a href="#328" id="328">328</a>
+<a href="#329" id="329">329</a>
+<a href="#330" id="330">330</a>
+<a href="#331" id="331">331</a>
+<a href="#332" id="332">332</a>
+<a href="#333" id="333">333</a>
+<a href="#334" id="334">334</a>
+<a href="#335" id="335">335</a>
+<a href="#336" id="336">336</a>
+<a href="#337" id="337">337</a>
+<a href="#338" id="338">338</a>
+<a href="#339" id="339">339</a>
+<a href="#340" id="340">340</a>
+<a href="#341" id="341">341</a>
 </pre><pre class="rust"><code><span class="kw">use crate</span>::{CombatEvent, StateChange};
 <span class="kw">use </span>num_enum::{FromPrimitive, IntoPrimitive, TryFromPrimitive};
 <span class="kw">use </span>std::mem::transmute;
@@ -279,7 +351,7 @@
 
 <span class="doccomment">/// Combat buff remove.
 </span><span class="attr">#[derive(
-    Debug, Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
+    Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
 )]
 #[cfg_attr(feature = <span class="string">&quot;serde&quot;</span>, derive(Serialize, Deserialize))]
 #[cfg_attr(
@@ -311,13 +383,13 @@
     </span>Manual,
 
     <span class="doccomment">/// Unknown or invalid.
-    </span><span class="attr">#[default]
-    </span>Unknown,
+    </span><span class="attr">#[num_enum(catch_all)]
+    </span>Unknown(u8),
 }
 
 <span class="doccomment">/// Combat buff cycle.
 </span><span class="attr">#[derive(
-    Debug, Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
+    Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, TryFromPrimitive,
 )]
 #[cfg_attr(feature = <span class="string">&quot;serde&quot;</span>, derive(Serialize, Deserialize))]
 #[cfg_attr(
@@ -343,12 +415,49 @@
 
     <span class="doccomment">/// Damage happened to target on source losing a stack.
     </span>NotCycleDmgToTargetOnStackRemove,
-
-    <span class="attr">#[default]
-    </span>Unknown,
 }
 
-<span class="doccomment">/// Buff info category.
+<span class="doccomment">/// Buff info category **before** 13 December 2022.
+///
+/// Used in [`StateChange::BuffInfo`](crate::StateChange::BuffInfo) events.
+</span><span class="attr">#[derive(
+    Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, TryFromPrimitive,
+)]
+#[cfg_attr(feature = <span class="string">&quot;serde&quot;</span>, derive(Serialize, Deserialize))]
+#[repr(u8)]
+</span><span class="kw">pub enum </span>BuffCategoryOld {
+    <span class="doccomment">/// Buff is a Boon.
+    </span>Boon = <span class="number">0</span>,
+
+    <span class="doccomment">/// Buff is generic category.
+    </span>Any = <span class="number">1</span>,
+
+    <span class="doccomment">/// Buff is a Condition.
+    </span>Condition = <span class="number">2</span>,
+
+    <span class="doccomment">/// Buff is granted by Food consumable.
+    </span>Food = <span class="number">4</span>,
+
+    <span class="doccomment">/// Buff is granted by gear item or upgrade.
+    </span>Upgrade = <span class="number">6</span>,
+
+    <span class="doccomment">/// Buff is granted by a Boost consumable.
+    </span>Boost = <span class="number">8</span>,
+
+    <span class="doccomment">/// Buff is granted by a Trait.
+    </span>Trait = <span class="number">11</span>,
+
+    <span class="doccomment">/// Buff is a Transform.
+    </span>Transform = <span class="number">12</span>,
+
+    <span class="doccomment">/// Buff is Enhancement granted by a Utility consumable.
+    </span>Enhancement = <span class="number">13</span>,
+
+    <span class="doccomment">/// Buff is a Stance.
+    </span>Stance = <span class="number">16</span>,
+}
+
+<span class="doccomment">/// Buff info category **after** 13 December 2022.
 ///
 /// Used in [`StateChange::BuffInfo`](crate::StateChange::BuffInfo) events.
 </span><span class="attr">#[derive(
@@ -357,22 +466,42 @@
 #[cfg_attr(feature = <span class="string">&quot;serde&quot;</span>, derive(Serialize, Deserialize))]
 #[repr(u8)]
 </span><span class="kw">pub enum </span>BuffCategory {
-    Boon = <span class="number">0</span>,
-    Any = <span class="number">1</span>,
-    Condition = <span class="number">2</span>,
-    Food = <span class="number">4</span>,
-    Upgrade = <span class="number">6</span>,
-    Boost = <span class="number">8</span>,
-    Trait = <span class="number">11</span>,
-    Enhancement = <span class="number">13</span>,
-    Stance = <span class="number">16</span>,
+    <span class="doccomment">/// Buff is a Boon.
+    </span>Boon = <span class="number">0</span>,
+
+    <span class="doccomment">/// Buff is generic category.
+    </span>Any = <span class="number">1</span>,
+
+    <span class="doccomment">/// Buff is a Condition.
+    </span>Condition = <span class="number">2</span>,
+
+    <span class="doccomment">/// Buff is granted by Food consumable.
+    </span>Food = <span class="number">5</span>,
+
+    <span class="doccomment">/// Buff is a gear item or upgrade.
+    </span>Upgrade = <span class="number">7</span>,
+
+    <span class="doccomment">/// Buff is granted by a Boost consumable.
+    </span>Boost = <span class="number">9</span>,
+
+    <span class="doccomment">/// Buff is granted by a Trait.
+    </span>Trait = <span class="number">12</span>,
+
+    <span class="doccomment">/// Buff is a Transform.
+    </span>Transform = <span class="number">13</span>,
+
+    <span class="doccomment">/// Buff is Enhancement granted by a Utility consumable.
+    </span>Enhancement = <span class="number">14</span>,
+
+    <span class="doccomment">/// Buff is a Stance.
+    </span>Stance = <span class="number">17</span>,
 }
 
 <span class="doccomment">/// Attributes for buff formulas.
 ///
 /// Used in [`StateChange::BuffFormula`](crate::StateChange::BuffFormula) events.
 </span><span class="attr">#[derive(
-    Debug, Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
+    Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, TryFromPrimitive,
 )]
 #[cfg_attr(feature = <span class="string">&quot;serde&quot;</span>, derive(Serialize, Deserialize))]
 #[cfg_attr(
@@ -383,16 +512,35 @@
 </span><span class="kw">pub enum </span>Attribute {
     <span class="prelude-val">None</span>,
 
-    Power,
-    Precision,
-    Toughness,
-    Vitality,
-    Ferocity,
-    Healing,
-    Condition,
-    Concentration,
-    Expertise,
-    Armor,
+    <span class="doccomment">/// Power.
+    </span>Power,
+
+    <span class="doccomment">/// Precision.
+    </span>Precision,
+
+    <span class="doccomment">/// Toughness.
+    </span>Toughness,
+
+    <span class="doccomment">/// Vitality.
+    </span>Vitality,
+
+    <span class="doccomment">/// Ferocity.
+    </span>Ferocity,
+
+    <span class="doccomment">/// Healing.
+    </span>Healing,
+
+    <span class="doccomment">/// Condition Damage.
+    </span>Condition,
+
+    <span class="doccomment">/// Concentration.
+    </span>Concentration,
+
+    <span class="doccomment">/// Expertise.
+    </span>Expertise,
+
+    <span class="doccomment">/// Armor.
+    </span>Armor,
 
     <span class="doccomment">/// Agony Resistance.
     </span>Agony,
@@ -423,10 +571,6 @@
 
     <span class="doccomment">/// Incoming life leech.
     </span>SiphonRec,
-
-    <span class="doccomment">/// Unknown or invalid.
-    </span><span class="attr">#[default]
-    </span>Unknown = u16::MAX,
 }
 
 <span class="doccomment">/// Buff information from a [`CombatEvent`] with [`StateChange::BuffInfo`].

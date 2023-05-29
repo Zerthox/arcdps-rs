@@ -42,20 +42,20 @@ See also <a href="./enum.Numeric.html#variant.Nanosecond"><code>Numeric::Nanosec
 </div><section id="variant.Nanosecond9" class="variant"><a href="#variant.Nanosecond9" class="anchor">§</a><h3 class="code-header">Nanosecond9</h3></section><div class="docblock"><p>Same as <a href="#variant.Nanosecond"><code>Nanosecond</code></a> but the accuracy is fixed to 9.</p>
 </div><section id="variant.TimezoneName" class="variant"><a href="#variant.TimezoneName" class="anchor">§</a><h3 class="code-header">TimezoneName</h3></section><div class="docblock"><p>Timezone name.</p>
 <p>It does not support parsing, its use in the parser is an immediate failure.</p>
-</div><section id="variant.TimezoneOffsetColon" class="variant"><a href="#variant.TimezoneOffsetColon" class="anchor">§</a><h3 class="code-header">TimezoneOffsetColon</h3></section><div class="docblock"><p>Offset from the local time to UTC (<code>+09:00</code> or <code>-04:00</code> or <code>+00:00</code>).</p>
-<p>In the parser, the colon can be omitted and/or surrounded with any amount of whitespace.
+</div><section id="variant.TimezoneOffsetColon" class="variant"><a href="#variant.TimezoneOffsetColon" class="anchor">§</a><h3 class="code-header">TimezoneOffsetColon</h3></section><div class="docblock"><p>Offset from the local time to UTC (<code>+09:00</code> or <code>-0400</code> or <code>+00:00</code>).</p>
+<p>In the parser, the colon may be omitted,
 The offset is limited from <code>-24:00</code> to <code>+24:00</code>,
 which is the same as <a href="../offset/struct.FixedOffset.html"><code>FixedOffset</code></a>’s range.</p>
 </div><section id="variant.TimezoneOffsetDoubleColon" class="variant"><a href="#variant.TimezoneOffsetDoubleColon" class="anchor">§</a><h3 class="code-header">TimezoneOffsetDoubleColon</h3></section><div class="docblock"><p>Offset from the local time to UTC with seconds (<code>+09:00:00</code> or <code>-04:00:00</code> or <code>+00:00:00</code>).</p>
-<p>In the parser, the colon can be omitted and/or surrounded with any amount of whitespace.
+<p>In the parser, the colon may be omitted,
 The offset is limited from <code>-24:00:00</code> to <code>+24:00:00</code>,
 which is the same as <a href="../offset/struct.FixedOffset.html"><code>FixedOffset</code></a>’s range.</p>
 </div><section id="variant.TimezoneOffsetTripleColon" class="variant"><a href="#variant.TimezoneOffsetTripleColon" class="anchor">§</a><h3 class="code-header">TimezoneOffsetTripleColon</h3></section><div class="docblock"><p>Offset from the local time to UTC without minutes (<code>+09</code> or <code>-04</code> or <code>+00</code>).</p>
-<p>In the parser, the colon can be omitted and/or surrounded with any amount of whitespace.
+<p>In the parser, the colon may be omitted,
 The offset is limited from <code>-24</code> to <code>+24</code>,
 which is the same as <a href="../offset/struct.FixedOffset.html"><code>FixedOffset</code></a>’s range.</p>
-</div><section id="variant.TimezoneOffsetColonZ" class="variant"><a href="#variant.TimezoneOffsetColonZ" class="anchor">§</a><h3 class="code-header">TimezoneOffsetColonZ</h3></section><div class="docblock"><p>Offset from the local time to UTC (<code>+09:00</code> or <code>-04:00</code> or <code>Z</code>).</p>
-<p>In the parser, the colon can be omitted and/or surrounded with any amount of whitespace,
+</div><section id="variant.TimezoneOffsetColonZ" class="variant"><a href="#variant.TimezoneOffsetColonZ" class="anchor">§</a><h3 class="code-header">TimezoneOffsetColonZ</h3></section><div class="docblock"><p>Offset from the local time to UTC (<code>+09:00</code> or <code>-0400</code> or <code>Z</code>).</p>
+<p>In the parser, the colon may be omitted,
 and <code>Z</code> can be either in upper case or in lower case.
 The offset is limited from <code>-24:00</code> to <code>+24:00</code>,
 which is the same as <a href="../offset/struct.FixedOffset.html"><code>FixedOffset</code></a>’s range.</p>

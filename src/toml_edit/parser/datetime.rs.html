@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\toml_edit-0.19.8\src\parser\datetime.rs`."><title>datetime.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-c4dbdcde0fbd8430.css" id="mainThemeStyle"><link rel="stylesheet" id="themeStyle" href="../../../static.files/light-db279b6232be9c13.css"><link rel="stylesheet" disabled href="../../../static.files/dark-cf923f49f397b216.css"><link rel="stylesheet" disabled href="../../../static.files/ayu-be46fdc453a55015.css"><script src="../../../static.files/storage-3891ce972e3a2bf8.js"></script><script defer src="../../../static.files/source-script-1b95b7cca98b26e5.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../static.files/main-98a684e84ae5b08b.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../../toml_edit/index.html"><img class="rust-logo" src="../../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\toml_edit-0.19.10\src\parser\datetime.rs`."><title>datetime.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-c4dbdcde0fbd8430.css" id="mainThemeStyle"><link rel="stylesheet" id="themeStyle" href="../../../static.files/light-db279b6232be9c13.css"><link rel="stylesheet" disabled href="../../../static.files/dark-cf923f49f397b216.css"><link rel="stylesheet" disabled href="../../../static.files/ayu-be46fdc453a55015.css"><script src="../../../static.files/storage-3891ce972e3a2bf8.js"></script><script defer src="../../../static.files/source-script-1b95b7cca98b26e5.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../static.files/main-98a684e84ae5b08b.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../../toml_edit/index.html"><img class="rust-logo" src="../../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -438,12 +438,12 @@
 <span class="kw">use </span><span class="kw">crate</span>::parser::trivia::from_utf8_unchecked;
 
 <span class="kw">use </span>toml_datetime::<span class="kw-2">*</span>;
-<span class="kw">use </span>winnow::branch::alt;
-<span class="kw">use </span>winnow::bytes::one_of;
-<span class="kw">use </span>winnow::bytes::take_while_m_n;
+<span class="kw">use </span>winnow::combinator::alt;
 <span class="kw">use </span>winnow::combinator::cut_err;
 <span class="kw">use </span>winnow::combinator::opt;
-<span class="kw">use </span>winnow::sequence::preceded;
+<span class="kw">use </span>winnow::combinator::preceded;
+<span class="kw">use </span>winnow::token::one_of;
+<span class="kw">use </span>winnow::token::take_while;
 
 <span class="comment">// ;; Date and Time (as defined in RFC 3339)
 
@@ -537,7 +537,7 @@
 <span class="comment">// date-month     = 2DIGIT  ; 01-12
 </span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>date_month(input: Input&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; IResult&lt;Input&lt;<span class="lifetime">&#39;_</span>&gt;, u8, ParserError&lt;<span class="lifetime">&#39;_</span>&gt;&gt; {
     unsigned_digits::&lt;<span class="number">2</span>, <span class="number">2</span>&gt;
-        .map_res(|s: <span class="kw-2">&amp;</span>str| {
+        .try_map(|s: <span class="kw-2">&amp;</span>str| {
             <span class="kw">let </span>d = s.parse::&lt;u8&gt;().expect(<span class="string">&quot;2DIGIT should match u8&quot;</span>);
             <span class="kw">if </span>(<span class="number">1</span>..=<span class="number">12</span>).contains(<span class="kw-2">&amp;</span>d) {
                 <span class="prelude-val">Ok</span>(d)
@@ -551,7 +551,7 @@
 <span class="comment">// date-mday      = 2DIGIT  ; 01-28, 01-29, 01-30, 01-31 based on month/year
 </span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>date_mday(input: Input&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; IResult&lt;Input&lt;<span class="lifetime">&#39;_</span>&gt;, u8, ParserError&lt;<span class="lifetime">&#39;_</span>&gt;&gt; {
     unsigned_digits::&lt;<span class="number">2</span>, <span class="number">2</span>&gt;
-        .map_res(|s: <span class="kw-2">&amp;</span>str| {
+        .try_map(|s: <span class="kw-2">&amp;</span>str| {
             <span class="kw">let </span>d = s.parse::&lt;u8&gt;().expect(<span class="string">&quot;2DIGIT should match u8&quot;</span>);
             <span class="kw">if </span>(<span class="number">1</span>..=<span class="number">31</span>).contains(<span class="kw-2">&amp;</span>d) {
                 <span class="prelude-val">Ok</span>(d)
@@ -572,7 +572,7 @@
 <span class="comment">// time-hour      = 2DIGIT  ; 00-23
 </span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>time_hour(input: Input&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; IResult&lt;Input&lt;<span class="lifetime">&#39;_</span>&gt;, u8, ParserError&lt;<span class="lifetime">&#39;_</span>&gt;&gt; {
     unsigned_digits::&lt;<span class="number">2</span>, <span class="number">2</span>&gt;
-        .map_res(|s: <span class="kw-2">&amp;</span>str| {
+        .try_map(|s: <span class="kw-2">&amp;</span>str| {
             <span class="kw">let </span>d = s.parse::&lt;u8&gt;().expect(<span class="string">&quot;2DIGIT should match u8&quot;</span>);
             <span class="kw">if </span>(<span class="number">0</span>..=<span class="number">23</span>).contains(<span class="kw-2">&amp;</span>d) {
                 <span class="prelude-val">Ok</span>(d)
@@ -586,7 +586,7 @@
 <span class="comment">// time-minute    = 2DIGIT  ; 00-59
 </span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>time_minute(input: Input&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; IResult&lt;Input&lt;<span class="lifetime">&#39;_</span>&gt;, u8, ParserError&lt;<span class="lifetime">&#39;_</span>&gt;&gt; {
     unsigned_digits::&lt;<span class="number">2</span>, <span class="number">2</span>&gt;
-        .map_res(|s: <span class="kw-2">&amp;</span>str| {
+        .try_map(|s: <span class="kw-2">&amp;</span>str| {
             <span class="kw">let </span>d = s.parse::&lt;u8&gt;().expect(<span class="string">&quot;2DIGIT should match u8&quot;</span>);
             <span class="kw">if </span>(<span class="number">0</span>..=<span class="number">59</span>).contains(<span class="kw-2">&amp;</span>d) {
                 <span class="prelude-val">Ok</span>(d)
@@ -600,7 +600,7 @@
 <span class="comment">// time-second    = 2DIGIT  ; 00-58, 00-59, 00-60 based on leap second rules
 </span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>time_second(input: Input&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; IResult&lt;Input&lt;<span class="lifetime">&#39;_</span>&gt;, u8, ParserError&lt;<span class="lifetime">&#39;_</span>&gt;&gt; {
     unsigned_digits::&lt;<span class="number">2</span>, <span class="number">2</span>&gt;
-        .map_res(|s: <span class="kw-2">&amp;</span>str| {
+        .try_map(|s: <span class="kw-2">&amp;</span>str| {
             <span class="kw">let </span>d = s.parse::&lt;u8&gt;().expect(<span class="string">&quot;2DIGIT should match u8&quot;</span>);
             <span class="kw">if </span>(<span class="number">0</span>..=<span class="number">60</span>).contains(<span class="kw-2">&amp;</span>d) {
                 <span class="prelude-val">Ok</span>(d)
@@ -627,7 +627,7 @@
     ];
     <span class="kw">const </span>INF: usize = usize::MAX;
     preceded(<span class="string">b&#39;.&#39;</span>, unsigned_digits::&lt;<span class="number">1</span>, INF&gt;)
-        .map_res(|<span class="kw-2">mut </span>repr: <span class="kw-2">&amp;</span>str| -&gt; <span class="prelude-ty">Result</span>&lt;u32, CustomError&gt; {
+        .try_map(|<span class="kw-2">mut </span>repr: <span class="kw-2">&amp;</span>str| -&gt; <span class="prelude-ty">Result</span>&lt;u32, CustomError&gt; {
             <span class="kw">let </span>max_digits = SCALE.len() - <span class="number">1</span>;
             <span class="kw">if </span>max_digits &lt; repr.len() {
                 <span class="comment">// Millisecond precision is required. Further precision of fractional seconds is
@@ -650,7 +650,7 @@
 <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>unsigned_digits&lt;<span class="kw">const </span>MIN: usize, <span class="kw">const </span>MAX: usize&gt;(
     input: Input&lt;<span class="lifetime">&#39;_</span>&gt;,
 ) -&gt; IResult&lt;Input&lt;<span class="lifetime">&#39;_</span>&gt;, <span class="kw-2">&amp;</span>str, ParserError&lt;<span class="lifetime">&#39;_</span>&gt;&gt; {
-    take_while_m_n(MIN, MAX, DIGIT)
+    take_while(MIN..=MAX, DIGIT)
         .map(|b: <span class="kw-2">&amp;</span>[u8]| <span class="kw">unsafe </span>{ from_utf8_unchecked(b, <span class="string">&quot;`is_ascii_digit` filters out on-ASCII&quot;</span>) })
         .parse_next(input)
 }

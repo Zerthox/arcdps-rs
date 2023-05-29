@@ -163,7 +163,7 @@
 ///
 /// *Arc calls this &quot;combat activation&quot;.*
 </span><span class="attr">#[derive(
-    Debug, Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
+    Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
 )]
 #[cfg_attr(feature = <span class="string">&quot;serde&quot;</span>, derive(Serialize, Deserialize))]
 #[cfg_attr(
@@ -191,8 +191,8 @@
     </span>Reset,
 
     <span class="doccomment">/// Unknown or invalid.
-    </span><span class="attr">#[default]
-    </span>Unknown,
+    </span><span class="attr">#[num_enum(catch_all)]
+    </span>Unknown(u8),
 }
 
 <span class="doccomment">/// ArcDPS custom skill ids.

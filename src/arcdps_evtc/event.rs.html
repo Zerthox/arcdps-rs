@@ -334,10 +334,10 @@
     <span class="doccomment">/// Skill id of the relevant skill (can be zero).
     </span><span class="kw">pub </span>skill_id: u32,
 
-    <span class="doccomment">/// Id of source agent as appears in game at time of event.
+    <span class="doccomment">/// Instance id of source agent as appears in game at time of event.
     </span><span class="kw">pub </span>src_instance_id: u16,
 
-    <span class="doccomment">/// Id of destination agent as appears in game at time of event.
+    <span class="doccomment">/// Instance id of destination agent as appears in game at time of event.
     </span><span class="kw">pub </span>dst_instance_id: u16,
 
     <span class="doccomment">/// If `src_agent` has a master (e.g. is minion), will be equal to instance id of master, zero otherwise.
@@ -401,7 +401,7 @@
     <span class="doccomment">/// Shields, if relevant to the event.
     </span><span class="kw">pub </span>is_shields: u8,
 
-    <span class="doccomment">/// For relevant Events this may be a variant of [`BuffCycle`](crate::BuffCycle).
+    <span class="doccomment">/// For relevant events this may be a variant of [`BuffCycle`](crate::BuffCycle).
     </span><span class="kw">pub </span>is_off_cycle: u8,
 
     <span class="doccomment">/// Padding.
@@ -579,15 +579,15 @@
             dst_instance_id: event.dst_instance_id,
             src_master_instance_id: event.src_master_instance_id,
             dst_master_instance_id: event.dst_master_instance_id,
-            affinity: event.affinity <span class="kw">as </span>u8,
+            affinity: event.affinity.into(),
             buff: event.buff,
             result: event.result,
-            is_activation: event.is_activation <span class="kw">as </span>u8,
-            is_buff_remove: event.is_buff_remove <span class="kw">as </span>u8,
+            is_activation: event.is_activation.into(),
+            is_buff_remove: event.is_buff_remove.into(),
             is_ninety: event.is_ninety,
             is_fifty: event.is_fifty,
             is_moving: event.is_moving,
-            is_statechange: event.is_statechange <span class="kw">as </span>u8,
+            is_statechange: event.is_statechange.into(),
             is_flanking: event.is_flanking,
             is_shields: event.is_shields,
             is_off_cycle: event.is_off_cycle,

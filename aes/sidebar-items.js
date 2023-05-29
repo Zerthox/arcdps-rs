@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"constant":["BLOCK_SIZE"],"struct":["Aes128","Aes192","Aes256"],"trait":["BlockCipher","BlockDecrypt","BlockEncrypt","NewBlockCipher"],"type":["Block","ParBlocks"]};
+window.SIDEBAR_ITEMS = {"struct":["Aes128","Aes128Dec","Aes128Enc","Aes192","Aes192Dec","Aes192Enc","Aes256","Aes256Dec","Aes256Enc"],"type":["Block","Block8"]};
