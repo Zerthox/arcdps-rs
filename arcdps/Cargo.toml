@@ -1,6 +1,6 @@
 [package]
 name = "arcdps"
-version = "0.11.0"
+version = "0.11.1"
 authors = ["Zerthox", "Greaka"]
 edition = "2021"
 description = "Rust bindings for ArcDPS plugins"
@@ -17,7 +17,7 @@ chrono = "0.4.24"
 log = { version = "0.4.17", features = ["std"], optional = true }
 num_enum = "0.6.0"
 serde = { version = "1.0.160", features = ["derive"], optional = true }
-strum = { version = "0.24.1", features = ["derive"], optional = true }
+strum = { version = "0.25.0", features = ["derive"], optional = true }
 
 [dependencies.windows]
 version = "0.48.0"

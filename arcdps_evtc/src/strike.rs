@@ -22,56 +22,56 @@ pub enum Strike {
     /// Normal damage strike.
     ///
     /// No crit, no glance.
-    Normal,
+    Normal = 0,
 
     /// Strike was critical.
-    Crit,
+    Crit = 1,
 
     /// Strike was glancing.
-    Glance,
+    Glance = 2,
 
     /// Strike was blocked.
     ///
     /// Due to Aegis, Chrono Shield 4 etc.
-    Block,
+    Block = 3,
 
     /// Strike was evaded.
     ///
     /// Due to dodge, Mesmer Sword 2 etc.
-    Evade,
+    Evade = 4,
 
     /// Strike interrupted something.
-    Interrupt,
+    Interrupt = 5,
 
     /// Strike was absorbed.
     ///
     /// Usually due to an invulnerability like Guardian Renewed Focus.
-    Absorb,
+    Absorb = 6,
 
     /// Strike missed.
     ///
     /// Due to blind etc.
-    Blind,
+    Blind = 7,
 
     /// Skill killed the target.
     ///
     /// Not a damage strike.
-    KillingBlow,
+    KillingBlow = 8,
 
     /// Skill downed the target.
     ///
     /// Not a damage strike.
-    Downed,
+    Downed = 10,
 
     /// Skill dealt breakbar damage.
     ///
     /// Not a damage strike.
-    Breakbar,
+    Breakbar = 11,
 
     /// On-activation event.
     ///
     /// Not a damage strike.
     ///
     /// *Arc: Source hit target if damaging buff.*
-    Activation,
+    Activation = 12,
 }

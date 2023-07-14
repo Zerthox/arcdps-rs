@@ -22,22 +22,22 @@ use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
 #[repr(u8)]
 pub enum Activation {
     /// Not used, different kind of event.
-    None,
+    None = 0,
 
     /// Started skill/animation activation.
-    Start,
+    Start = 1,
 
     /// Unused as of 5th November 2019.
-    QuicknessUnused,
+    QuicknessUnused = 2,
 
     /// Stopped skill activation with reaching tooltip time.
-    CancelFire,
+    CancelFire = 3,
 
     /// Stopped skill activation without reaching tooltip time.
-    CancelCancel,
+    CancelCancel = 4,
 
     /// Animation completed fully.
-    Reset,
+    Reset = 5,
 
     /// Unknown or invalid.
     #[num_enum(catch_all)]

@@ -20,26 +20,26 @@ use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
 #[repr(u8)]
 pub enum BuffRemove {
     /// Not used, different kind of event.
-    None,
+    None = 0,
 
     /// Last or all stacks removed.
     ///
     /// Sent by server.
-    All,
+    All = 1,
 
     /// Single stack removed.
     ///
     /// Happens for each stack on cleanse.
     ///
     /// Sent by server.
-    Single,
+    Single = 2,
 
     /// Single stack removed.
     ///
     /// Automatically by Arc on out of combat or all stack.
     /// Ignore for strip/cleanse calculation.
     /// Use for in/out volume.
-    Manual,
+    Manual = 3,
 
     /// Unknown or invalid.
     #[num_enum(catch_all)]
@@ -58,22 +58,22 @@ pub enum BuffRemove {
 #[repr(u8)]
 pub enum BuffCycle {
     /// Damage happened on tick timer.
-    Cycle,
+    Cycle = 0,
 
     /// Damage happened outside tick timer (resistable).
-    NotCycle,
+    NotCycle = 1,
 
     /// Retired since May 2021.
-    NotCycleOrResist,
+    NotCycleOrResist = 2,
 
     /// Damage happened to target on hitting target.
-    NotCycleDmgToTargetOnHit,
+    NotCycleDmgToTargetOnHit = 3,
 
     /// Damage happened to source on hitting target.
-    NotCycleDmgToSourceOnHit,
+    NotCycleDmgToSourceOnHit = 4,
 
     /// Damage happened to target on source losing a stack.
-    NotCycleDmgToTargetOnStackRemove,
+    NotCycleDmgToTargetOnStackRemove = 5,
 }
 
 /// Buff info category **before** 13 December 2022.
@@ -169,67 +169,67 @@ pub enum BuffCategory {
 )]
 #[repr(u16)]
 pub enum Attribute {
-    None,
+    None = 0,
 
     /// Power.
-    Power,
+    Power = 1,
 
     /// Precision.
-    Precision,
+    Precision = 2,
 
     /// Toughness.
-    Toughness,
+    Toughness = 3,
 
     /// Vitality.
-    Vitality,
+    Vitality = 4,
 
     /// Ferocity.
-    Ferocity,
+    Ferocity = 5,
 
     /// Healing.
-    Healing,
+    Healing = 6,
 
     /// Condition Damage.
-    Condition,
+    Condition = 7,
 
     /// Concentration.
-    Concentration,
+    Concentration = 8,
 
     /// Expertise.
-    Expertise,
+    Expertise = 9,
 
     /// Armor.
-    Armor,
+    Armor = 10,
 
     /// Agony Resistance.
-    Agony,
+    Agony = 11,
 
     /// Stat increase.
-    StatInc,
+    StatInc = 12,
 
     /// Flat Increase.
-    FlatInc,
+    FlatInc = 13,
 
     /// Outgoing strike damage.
-    PhysInc,
+    PhysInc = 14,
 
     /// Outgoing condition damage.
-    CondInc,
+    CondInc = 15,
 
     /// Incoming strike damage.
-    PhysRec,
+    PhysRec = 16,
 
     /// Incoming condition damage.
-    CondRec,
+    CondRec = 17,
 
     /// Attack speed.
-    Attackspeed,
+    Attackspeed = 18,
 
     /// Outgoing life leech.
-    SiphonInc,
+    SiphonInc = 19,
 
     /// Incoming life leech.
-    SiphonRec,
+    SiphonRec = 20,
 }
 
 /// Buff information from a [`CombatEvent`] with [`StateChange::BuffInfo`].

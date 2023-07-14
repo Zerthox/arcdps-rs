@@ -20,10 +20,10 @@ use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
 #[repr(u32)]
 pub enum ContentLocal {
     /// Content is an effect.
-    Effect,
+    Effect = 0,
 
     /// Content is a marker.
-    Marker,
+    Marker = 1,
 }
 
 /// Effect information from a [`CombatEvent`] with [`StateChange::Effect`].

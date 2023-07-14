@@ -18,34 +18,34 @@ use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
 #[repr(u8)]
 pub enum StateChange {
     /// Not used, different kind of event.
-    None,
+    None = 0,
 
     /// Source agent entered combat.
     ///
     /// `dst_agent` contains the subgroup.
-    EnterCombat,
+    EnterCombat = 1,
 
     /// Source agent left combat.
-    ExitCombat,
+    ExitCombat = 2,
 
     /// Source agent is now alive.
-    ChangeUp,
+    ChangeUp = 3,
 
     /// Source agent is now dead.
-    ChangeDead,
+    ChangeDead = 4,
 
     /// Source agent is now downed.
-    ChangeDown,
+    ChangeDown = 5,
 
     /// Source agent is now in game tracking range.
     ///
     /// *Not used in realtime API.*
-    Spawn,
+    Spawn = 6,
 
     /// Source agent is no longer being tracked or out of game tracking range.
     ///
     /// *Not used in realtime API.*
-    Despawn,
+    Despawn = 7,
 
     /// Source agent health change.
     ///
@@ -53,7 +53,7 @@ pub enum StateChange {
     /// For example 99.5% will be `9950`.
     ///
     /// *Not used in realtime API.*
-    HealthUpdate,
+    HealthUpdate = 8,
 
     /// Logging has started.
     ///
@@ -61,7 +61,7 @@ pub enum StateChange {
     /// `buff_dmg` contains the local Unix timestamp.
     ///
     /// `arc_agent` is `0x637261` (ArcDPS id) if log EVTC and species id if realtime API.
-    LogStart,
+    LogStart = 9,
 
     /// Logging has ended.
     ///
@@ -69,79 +69,79 @@ pub enum StateChange {
     /// `buff_dmg` contains the local Unix timestamp.
     ///
     /// `src_agent` is `0x637261` (ArcDPS id) if log EVTC and species id if realtime API.
-    LogEnd,
+    LogEnd = 10,
 
     /// Source agent swapped weapon set.
     ///
     /// `dst_agent` contains the current set id.
     /// `0`/`1` for underwater weapon sets and `4`/`5` for land weapon sets.
     /// `2` is bundle/kit weapon set and `3` transform weapon set.
-    WeaponSwap,
+    WeaponSwap = 11,
 
     /// Source agent maximum health change.
     ///
     /// `dst_agent` contains the new maximum health.
     ///
     /// *Not used in realtime API.*
-    MaxHealthUpdate,
+    MaxHealthUpdate = 12,
 
     /// Source agent is "recording" player.
     ///
     /// *Not used in realtime API.*
-    PointOfView,
+    PointOfView = 13,
 
     /// Source agent contains the game text language.
     ///
     /// *Not used in realtime API.*
-    Language,
+    Language = 14,
 
     /// Source agent contains the game build.
     ///
     /// *Not used in realtime API.*
-    GWBuild,
+    GWBuild = 15,
 
     /// Source agent contains the sever shard id.
     ///
     /// *Not used in realtime API.*
-    ShardId,
+    ShardId = 16,
 
     /// Source agent got a reward chest.
     ///
     /// Source is always self.
     /// `dst_agent` contains the reward id.
     /// Value contains the reward type.
-    Reward,
+    Reward = 17,
 
     /// Appears once per buff per agent on logging start.
     ///
     /// *(`statechange == 18` and `buff == 18`, normal combat event otherwise)*
-    BuffInitial,
+    BuffInitial = 18,
 
     /// Source agent position change.
     ///
     /// `dst_agent` contains x/y/z as array of 3 floats.
     ///
     /// *Not used in realtime API.*
-    Position,
+    Position = 19,
 
     /// Source agent velocity change.
     ///
     /// `dst_agent` contains x/y/z as array of 3 floats.
     ///
     /// *Not used in realtime API.*
-    Velocity,
+    Velocity = 20,
 
     /// Source agent facing change.
     ///
     /// `dst_agent` contains x/y as array of 2 floats.
     ///
     /// *Not used in realtime API.*
-    Facing,
+    Facing = 21,
 
     /// Source agent team change.
     ///
     /// `dst_agent` contains the new team id.
-    TeamChange,
+    TeamChange = 22,
 
     /// Source agent is now an attack target.
     ///
@@ -149,7 +149,7 @@ pub enum StateChange {
     /// `value` contains the current targetable state.
     ///
     /// *Not used in realtime API.*
-    AttackTarget,
+    AttackTarget = 23,
 
     /// Source agent targetability change.
     ///
@@ -157,34 +157,34 @@ pub enum StateChange {
     /// `0` for no, `1` for yes. Default is yes.
     ///
     /// *Not used in realtime API.*
-    Targetable,
+    Targetable = 24,
 
     /// Source agent contains the map id.
     ///
     /// *Not used in realtime API.*
-    MapId,
+    MapId = 25,
 
     /// Used internally by ArcDPS.
     /// Should not appear anywhere.
-    ReplInfo,
+    ReplInfo = 26,
 
     /// Source agent with active buff.
     ///
     /// `dst_agent` contains the stack id marked active.
-    StackActive,
+    StackActive = 27,
 
     /// Source agent with reset buff.
     ///
     /// `value` is the duration to reset to (also marks inactive).
     /// `pad61` contains the stack id.
-    StackReset,
+    StackReset = 28,
 
     /// Source agent is in guild.
     ///
     /// `dst_agent` until `buff_dmg` is [`u128`] (16 byte) guid.
     ///
     /// Given in client form, needs minor rearrange for API form.
-    Guild,
+    Guild = 29,
 
     /// Buff information.
     ///
@@ -198,7 +198,7 @@ pub enum StateChange {
     /// If `pad62` probably resistance.
     ///
     /// *Not used in realtime API.*
-    BuffInfo,
+    BuffInfo = 30,
 
     /// Buff formula.
     ///
@@ -214,14 +214,14 @@ pub enum StateChange {
     /// Once per formula.
     ///
     /// *Not used in realtime API.*
-    BuffFormula,
+    BuffFormula = 31,
 
     /// Skill information.
     ///
     /// `time` contains `recharge`, `range0`, `range1` and `tooltiptime` as `[f32; 4]`.
     ///
     /// *Not used in realtime API.*
-    SkillInfo,
+    SkillInfo = 32,
 
     /// Skill action.
     ///
@@ -231,34 +231,34 @@ pub enum StateChange {
     /// One per timing.
     ///
     /// *Not used in realtime API.*
-    SkillTiming,
+    SkillTiming = 33,
 
     /// Source agent breakbar state change.
     ///
     /// Value is [`u16`] game enum (active, recover, immune, none).
     ///
     /// *Not used in realtime API.*
-    BreakbarState,
+    BreakbarState = 34,
 
     /// Breakbar percentage.
     ///
     /// `value` contains percentage as float.
     ///
     /// *Not used in realtime API.*
-    BreakbarPercent,
+    BreakbarPercent = 35,
 
     /// Error.
     ///
     /// `time` contains the error message as an array of up to 32 characters.
     ///
     /// *Not used in realtime API.*
-    Error,
+    Error = 36,
 
     /// Source agent has tag.
     ///
     /// `value` is the id of the tag.
     /// Tag id is volatile, depends on game build.
-    Tag,
+    Tag = 37,
 
     /// Source agent barrier change.
     ///
@@ -266,37 +266,37 @@ pub enum StateChange {
     /// For example 99.5% will be `9950`.
     ///
     /// *Not used in realtime API.*
-    BarrierUpdate,
+    BarrierUpdate = 38,
 
     /// Arc UI stats reset.
     ///
     /// `src_agent` contains the NPC id of the active log.
     ///
     /// *Not used in log EVTC.*
-    StatReset,
+    StatReset = 39,
 
     /// A custom event created by an extension (addon/plugin).
-    Extension,
+    Extension = 40,
 
     /// Delayed combat event.
-    ApiDelayed,
+    ApiDelayed = 41,
 
     /// Instance started.
     ///
     /// `src_agent` contains the time in ms at which the instance was likely started.
-    InstanceStart,
+    InstanceStart = 42,
 
     /// Tick rate.
     ///
     /// Every 500ms.
     /// `src_agent` is `25 - tickrate` (when `tickrate < 21`).
-    Tickrate,
+    Tickrate = 43,
 
     /// Last 90% before down.
     ///
     /// `src_agent` is enemy agent that went down, `dst_agent` is time in ms since last 90%.
     /// For downs contribution.
-    Last90BeforeDown,
+    Last90BeforeDown = 44,
 
     /// Effect created.
     ///
@@ -308,14 +308,14 @@ pub enum StateChange {
     /// If `effectid == 0`, end `is_shields` contains tracking id.
     ///
     /// *Not used in realtime API.*
-    Effect,
+    Effect = 45,
 
     /// Id to GUID.
     ///
     /// `src_agent` contains [`u128`] (16 byte) persistent content guid, `overstack_value` is a variant of [`ContentLocal`](crate::ContentLocal), `skill_id` is content id.
     ///
     /// *Not used in realtime API.*
-    IdToGUID,
+    IdToGUID = 46,
 
     /// Log NPC changed.
     ///
@@ -323,16 +323,21 @@ pub enum StateChange {
     /// `buff_dmg` contains the local Unix timestamp.
     ///
     /// `src_agent` is species id.
-    LogNPCUpdate,
+    LogNPCUpdate = 47,
 
     /// Used internally by ArcDPS.
     /// Should not appear anywhere.
-    IdleEvent,
+    IdleEvent = 48,
 
     /// A custom combat event created by an extension (addon/plugin).
     ///
     /// `skill_id` is treated as skill id and will be added to the EVTC skill table.
-    ExtensionCombat,
+    ExtensionCombat = 49,
+
+    /// Fractal scale.
+    ///
+    /// `src_agent` contains the scale.
+    FractalScale = 50,
 
     /// Unknown or invalid.
     #[num_enum(catch_all)]

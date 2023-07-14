@@ -77,7 +77,7 @@ pub unsafe fn e9_add_event(event: *const RawCombatEvent, sig: u32) {
     ARC_GLOBALS.e9.expect("failed to find arc export e9")(event, sig)
 }
 
-/// Signature of the `e10` export. See [`e10_add_event_skill] for details.
+/// Signature of the `e10` export. See [`e10_add_event_combat`] for details.
 pub type Export10 = unsafe extern "C" fn(event: *const RawCombatEvent, sig: u32);
 
 /// Adds a [`RawCombatEvent`] to ArcDPS' event processing.

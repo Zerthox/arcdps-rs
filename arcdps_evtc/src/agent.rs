@@ -21,12 +21,12 @@ use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
 #[repr(u8)]
 pub enum Affinity {
     /// Allied agent.
-    Friend,
+    Friend = 0,
 
     /// Enemy agent.
-    Foe,
+    Foe = 1,
 
-    /// Unknown or invalid.
+    /// Invalid.
     #[num_enum(catch_all)]
     Unknown(u8),
 }
