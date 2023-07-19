@@ -89,7 +89,7 @@ impl Effect {
             location: EffectLocation::from_event(event),
             duration,
             tracking_id,
-            orientation,
+            orientation: orientation.into(),
         }
     }
 
@@ -221,5 +221,100 @@ pub enum EffectDuration {
 
 /// Orientation of an effect.
 ///
-/// Value ranges from `-31415` (-PI) to `+31415` (+PI) or [`i16::MIN`]/[`i16::MAX`] if out of those bounds.
-pub type EffectOrientation = [i16; 3];
+/// Values range from `-31415` (-PI) to `+31415` (+PI) or [`i16::MIN`]/[`i16::MAX`] if out of those bounds.
+#[derive(Debug, Clone, PartialEq, Eq)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
+pub struct EffectOrientation {
+    pub x: i16,
+    pub y: i16,
+    pub z: i16,
+}
+
+impl EffectOrientation {
+    /// Pi constant used by ArcDPS for effect orientation.
+    pub const PI: i16 = 31415;
+
+    /// Ratio between [`i16`] and [`f32`] representation.
+    pub const RATIO: f32 = 10000.0;
+
+    /// Maximum value in [`f32`] representation.
+    ///
+    /// For [`i16`] use [`i16::MAX`].
+    pub const MAX: f32 = i16::MAX as f32 / Self::RATIO;
+
+    /// Minimum value as [`f32`].
+    ///
+    /// For [`i16`] use [`i16::MIN`].
+    pub const MIN: f32 = i16::MIN as f32 / Self::RATIO;
+
+    /// Creates a new effect orientation from radians.
+    #[inline]
+    pub const fn new(x: i16, y: i16, z: i16) -> Self {
+        Self { x, y, z }
+    }
+
+    /// Creates a new effect orientation from radians.
+    #[inline]
+    pub fn from_floats(x: f32, y: f32, z: f32) -> Self {
+        Self::new(Self::to_int(x), Self::to_int(y), Self::to_int(z))
+    }
+
+    /// Converts int to float.
+    #[inline]
+    pub fn to_float(int: i16) -> f32 {
+        int as f32 / Self::RATIO
+    }
+
+    /// Converts int to float.
+    #[inline]
+    pub fn to_int(float: f32) -> i16 {
+        (float * Self::RATIO) as i16
+    }
+
+    /// Converts the orientation to a [`Position`].
+    #[inline]
+    pub fn as_position(&self) -> Position {
+        Position::new(
+            Self::to_float(self.x),
+            Self::to_float(self.y),
+            Self::to_float(self.z),
+        )
+    }
+}
+
+impl From<[i16; 3]> for EffectOrientation {
+    #[inline]
+    fn from(value: [i16; 3]) -> Self {
+        let [x, y, z] = value;
+        Self::new(x, y, z)
+    }
+}
+
+impl From<EffectOrientation> for [i16; 3] {
+    #[inline]
+    fn from(orientation: EffectOrientation) -> Self {
+        [orientation.x, orientation.y, orientation.z]
+    }
+}
+
+impl From<EffectOrientation> for Position {
+    #[inline]
+    fn from(orientation: EffectOrientation) -> Self {
+        orientation.as_position()
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn orientation() {
+        let values = [[1.1477, 0.184, 0.7032], [0.3307, -0.4009, 1.6346]];
+        for [x, y, z] in values {
+            let orient = EffectOrientation::from_floats(x, y, z);
+            let vec = orient.as_position();
+            dbg!(&vec);
+        }
+    }
+}

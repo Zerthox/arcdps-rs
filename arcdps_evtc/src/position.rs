@@ -44,6 +44,12 @@ impl Position {
     pub fn to_mumble(&self) -> [f32; 3] {
         [self.x * CONVERT, -self.z * CONVERT, self.y * CONVERT]
     }
+
+    /// Returns the length of the position interpreted as vector.
+    #[inline]
+    pub fn len(&self) -> f32 {
+        (self.x.powi(2) + self.y.powi(2) + self.z.powi(2)).sqrt()
+    }
 }
 
 impl From<[f32; 3]> for Position {
