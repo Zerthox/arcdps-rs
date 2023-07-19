@@ -1,6 +1,6 @@
 [package]
 name = "arcdps_parse"
-version = "0.5.0"
+version = "0.6.0"
 authors = ["Zerthox"]
 edition = "2021"
 description = "Parsing for ArcDPS EVTC logs"

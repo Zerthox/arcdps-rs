@@ -298,21 +298,23 @@ pub enum StateChange {
     /// For downs contribution.
     Last90BeforeDown = 44,
 
-    /// Effect created.
+    /// Effect created or ended.
     ///
-    /// `src_agent` is owner.
-    /// `dst_agent` if located at agent.
-    /// Otherwise `value` contains `[f32; 3]` XYZ, `affinity` contains `[f32; 2]` XY orientation, `pad61` contains [`f32`] Z orientation and `skill_id` contains the effect_id.
-    /// If `is_flanking`, `duration` contains the tracking id.
+    /// `skill_id` contains the effect id.
+    /// `src_agent` is the effect owner.
+    /// `dst_agent` if effect located at agent.
+    /// Otherwise `value` contains XYZ position as `[f32; 3]`, `affinity` contains XY orientation as `[f32; 2]`, `pad61` contains Z orientation as [`f32`].
     /// `is_shields` contains duration as [`u16`].
-    /// If `effectid == 0`, end `is_shields` contains tracking id.
+    /// If `is_flanking`, duration is a tracking id.
+    /// If effect id is `0`, effect ended and `is_shields` contains tracking id.
     ///
     /// *Not used in realtime API.*
-    Effect = 45,
+    EffectOld = 45,
 
     /// Id to GUID.
     ///
-    /// `src_agent` contains [`u128`] (16 byte) persistent content guid, `overstack_value` is a variant of [`ContentLocal`](crate::ContentLocal), `skill_id` is content id.
+    /// `src_agent` contains [`u128`] (16 byte) persistent content guid.
+    /// `overstack_value` is a variant of [`ContentLocal`](crate::ContentLocal), `skill_id` is content id.
     ///
     /// *Not used in realtime API.*
     IdToGUID = 46,
@@ -338,6 +340,20 @@ pub enum StateChange {
     ///
     /// `src_agent` contains the scale.
     FractalScale = 50,
+
+    /// Effect created or ended.
+    ///
+    /// `skill_id` contains the effect id.
+    /// `src_agent` is the effect owner.
+    /// `dst_agent` if effect located at agent.
+    /// Otherwise `value` contains XYZ position as `[f32; 3]`.
+    /// `affinity` contains duration as [`u32`].
+    /// `is_buff_remove` contains trackable id as [`u32`].
+    /// `is_shields` contains orientation as `[i16; 3]`.
+    /// Orientation values range from `-31415` (-PI) to `+31415` (+PI) or [`i16::MIN`]/[`i16::MAX`] if out of those bounds.
+    ///
+    /// *Not used in realtime API.*
+    Effect = 51,
 
     /// Unknown or invalid.
     #[num_enum(catch_all)]
