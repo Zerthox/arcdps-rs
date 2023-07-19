@@ -146,6 +146,58 @@ impl CombatEvent {
         }
     }
 
+    /// Checks whether the event has a timestamp.
+    #[inline]
+    pub fn has_time(&self) -> bool {
+        matches!(
+            self.is_statechange,
+            StateChange::None
+                | StateChange::EnterCombat
+                | StateChange::ExitCombat
+                | StateChange::ChangeUp
+                | StateChange::ChangeDead
+                | StateChange::ChangeDown
+                | StateChange::Spawn
+                | StateChange::Despawn
+                | StateChange::HealthUpdate
+                | StateChange::LogStart
+                | StateChange::LogEnd
+                | StateChange::WeaponSwap
+                | StateChange::MaxHealthUpdate
+                | StateChange::Reward
+                | StateChange::BuffInitial
+                | StateChange::Position
+                | StateChange::Velocity
+                | StateChange::Facing
+                | StateChange::TeamChange
+                | StateChange::AttackTarget
+                | StateChange::Targetable
+                | StateChange::StackActive
+                | StateChange::StackReset
+                | StateChange::BreakbarState
+                | StateChange::BreakbarPercent
+                | StateChange::BarrierUpdate
+                | StateChange::StatReset
+                | StateChange::Extension
+                | StateChange::ApiDelayed
+                | StateChange::Last90BeforeDown
+                | StateChange::EffectOld
+                | StateChange::LogNPCUpdate
+                | StateChange::ExtensionCombat
+                | StateChange::Effect
+        )
+    }
+
+    /// Retrieves the event time, if present.
+    #[inline]
+    pub fn time(&self) -> Option<u64> {
+        if self.has_time() {
+            Some(self.time)
+        } else {
+            None
+        }
+    }
+
     /// Attempts to extract [`Position`] data from the event.
     #[inline]
     pub fn position(&self) -> Option<Position> {
