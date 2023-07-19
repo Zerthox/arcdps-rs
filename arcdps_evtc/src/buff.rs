@@ -251,21 +251,29 @@ pub struct BuffInfo {
     pub resistance: bool,
 }
 
+impl BuffInfo {
+    /// Extracts buff information from a [`StateChange::BuffInfo`] event.
+    #[inline]
+    pub fn from_event(event: &CombatEvent) -> Self {
+        Self {
+            category: event.is_off_cycle,
+            stacking_type: event.pad61,
+            max_stacks: event.src_master_instance_id,
+            duration_cap: event.overstack_value,
+            invulnerable: event.is_flanking != 0,
+            invert: event.is_shields != 0,
+            resistance: event.pad62 != 0,
+        }
+    }
+}
+
 impl TryFrom<&CombatEvent> for BuffInfo {
     type Error = ();
 
+    #[inline]
     fn try_from(event: &CombatEvent) -> Result<Self, Self::Error> {
         match event.is_statechange {
-            StateChange::BuffInfo => Ok(Self {
-                category: event.is_off_cycle,
-                stacking_type: event.pad61,
-                max_stacks: event.src_master_instance_id,
-                duration_cap: event.overstack_value,
-                invulnerable: event.is_flanking != 0,
-                invert: event.is_shields != 0,
-                resistance: event.pad62 != 0,
-            }),
-
+            StateChange::BuffInfo => Ok(Self::from_event(event)),
             _ => Err(()),
         }
     }
@@ -292,49 +300,55 @@ pub struct BuffFormula {
     pub value_type: u8,
 }
 
+impl BuffFormula {
+    /// Extracts buff information from a [`StateChange::BuffFormula`] event.
+    #[inline]
+    pub fn from_event(event: &CombatEvent) -> Self {
+        let [kind, attr1, attr2, param1, param2, param3, trait_src, trait_self]: [f32; 8] = unsafe {
+            transmute((
+                event.time,
+                event.src_agent,
+                event.dst_agent,
+                event.value,
+                event.buff_dmg,
+            ))
+        };
+        let [buff_src, buff_self]: [f32; 2] = unsafe {
+            transmute((
+                event.src_instance_id,
+                event.dst_instance_id,
+                event.src_master_instance_id,
+                event.dst_master_instance_id,
+            ))
+        };
+
+        Self {
+            kind,
+            attr1,
+            attr2,
+            param1,
+            param2,
+            param3,
+            trait_src,
+            trait_self,
+            buff_src,
+            buff_self,
+            not_npc: event.is_flanking != 0,
+            not_player: event.is_shields != 0,
+            is_break: event.is_off_cycle != 0,
+            value: event.overstack_value,
+            value_type: event.pad61,
+        }
+    }
+}
+
 impl TryFrom<&CombatEvent> for BuffFormula {
     type Error = ();
 
+    #[inline]
     fn try_from(event: &CombatEvent) -> Result<Self, Self::Error> {
         match event.is_statechange {
-            StateChange::BuffFormula => {
-                let [kind, attr1, attr2, param1, param2, param3, trait_src, trait_self]: [f32; 8] = unsafe {
-                    transmute((
-                        event.time,
-                        event.src_agent,
-                        event.dst_agent,
-                        event.value,
-                        event.buff_dmg,
-                    ))
-                };
-                let [buff_src, buff_self]: [f32; 2] = unsafe {
-                    transmute((
-                        event.src_instance_id,
-                        event.dst_instance_id,
-                        event.src_master_instance_id,
-                        event.dst_master_instance_id,
-                    ))
-                };
-
-                Ok(Self {
-                    kind,
-                    attr1,
-                    attr2,
-                    param1,
-                    param2,
-                    param3,
-                    trait_src,
-                    trait_self,
-                    buff_src,
-                    buff_self,
-                    not_npc: event.is_flanking != 0,
-                    not_player: event.is_shields != 0,
-                    is_break: event.is_off_cycle != 0,
-                    value: event.overstack_value,
-                    value_type: event.pad61,
-                })
-            }
-
+            StateChange::BuffFormula => Ok(Self::from_event(event)),
             _ => Err(()),
         }
     }

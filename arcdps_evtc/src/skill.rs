@@ -106,22 +106,28 @@ pub struct SkillInfo {
     pub tooltip_time: f32,
 }
 
+impl SkillInfo {
+    /// Extracts skill information from a [`StateChange::SkillInfo`] event.
+    #[inline]
+    pub fn from_event(event: &CombatEvent) -> Self {
+        let [recharge, range0, range1, tooltip_time]: [f32; 4] =
+            unsafe { transmute((event.time, event.src_agent)) };
+        Self {
+            recharge,
+            range0,
+            range1,
+            tooltip_time,
+        }
+    }
+}
+
 impl TryFrom<&CombatEvent> for SkillInfo {
     type Error = ();
 
+    #[inline]
     fn try_from(event: &CombatEvent) -> Result<Self, Self::Error> {
         match event.is_statechange {
-            StateChange::SkillInfo => {
-                let [recharge, range0, range1, tooltip_time]: [f32; 4] =
-                    unsafe { transmute((event.time, event.src_agent)) };
-                Ok(Self {
-                    recharge,
-                    range0,
-                    range1,
-                    tooltip_time,
-                })
-            }
-
+            StateChange::SkillInfo => Ok(Self::from_event(event)),
             _ => Err(()),
         }
     }
@@ -135,16 +141,24 @@ pub struct SkillTiming {
     pub millisecond: u64,
 }
 
+impl SkillTiming {
+    /// Extracts skill timing from a [`StateChange::SkillTiminig`] event.
+    #[inline]
+    pub fn from_event(event: &CombatEvent) -> Self {
+        Self {
+            action: event.src_agent,
+            millisecond: event.dst_agent,
+        }
+    }
+}
+
 impl TryFrom<&CombatEvent> for SkillTiming {
     type Error = ();
 
+    #[inline]
     fn try_from(event: &CombatEvent) -> Result<Self, Self::Error> {
         match event.is_statechange {
-            StateChange::SkillTiming => Ok(Self {
-                action: event.src_agent,
-                millisecond: event.dst_agent,
-            }),
-
+            StateChange::SkillTiming => Ok(Self::from_event(event)),
             _ => Err(()),
         }
     }

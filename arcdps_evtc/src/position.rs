@@ -47,6 +47,7 @@ impl Position {
 }
 
 impl From<[f32; 3]> for Position {
+    #[inline]
     fn from(value: [f32; 3]) -> Self {
         let [x, y, z] = value;
         Self { x, y, z }
@@ -54,6 +55,7 @@ impl From<[f32; 3]> for Position {
 }
 
 impl From<Position> for [f32; 3] {
+    #[inline]
     fn from(pos: Position) -> Self {
         [pos.x, pos.y, pos.z]
     }
@@ -62,6 +64,7 @@ impl From<Position> for [f32; 3] {
 impl TryFrom<&CombatEvent> for Position {
     type Error = ();
 
+    #[inline]
     fn try_from(event: &CombatEvent) -> Result<Self, Self::Error> {
         #[allow(clippy::transmute_int_to_float)]
         match event.is_statechange {
