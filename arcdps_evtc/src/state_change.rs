@@ -350,7 +350,7 @@ pub enum StateChange {
     /// `affinity` contains duration as [`u32`].
     /// `is_buff_remove` contains trackable id as [`u32`].
     /// `is_shields` contains orientation as `[i16; 3]`.
-    /// Orientation values range from `-31415` (-PI) to `+31415` (+PI) or [`i16::MIN`]/[`i16::MAX`] if out of those bounds.
+    /// Orientation values are original multiplied by `1000` or [`i16::MIN`]/[`i16::MAX`] if out of bounds.
     ///
     /// *Not used in realtime API.*
     Effect = 51,

@@ -221,7 +221,7 @@ pub enum EffectDuration {
 
 /// Orientation of an effect.
 ///
-/// Values range from `-31415` (-PI) to `+31415` (+PI) or [`i16::MIN`]/[`i16::MAX`] if out of those bounds.
+/// Values represent rotation along each axis multiplied by `1000` or [`i16::MIN`]/[`i16::MAX`] if out of range.
 #[derive(Debug, Clone, PartialEq, Eq)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct EffectOrientation {
@@ -231,11 +231,8 @@ pub struct EffectOrientation {
 }
 
 impl EffectOrientation {
-    /// Pi constant used by ArcDPS for effect orientation.
-    pub const PI: i16 = 31415;
-
     /// Ratio between [`i16`] and [`f32`] representation.
-    pub const RATIO: f32 = 10000.0;
+    pub const RATIO: f32 = 1000.0;
 
     /// Maximum value in [`f32`] representation.
     ///
@@ -310,11 +307,7 @@ mod tests {
 
     #[test]
     fn orientation() {
-        let values = [[1.1477, 0.184, 0.7032], [0.3307, -0.4009, 1.6346]];
-        for [x, y, z] in values {
-            let orient = EffectOrientation::from_floats(x, y, z);
-            let vec = orient.as_position();
-            dbg!(&vec);
-        }
+        let orient = EffectOrientation::from_floats(12.345, 6.789, 0.0);
+        assert_eq!(orient, EffectOrientation::new(12345, 6789, 0));
     }
 }

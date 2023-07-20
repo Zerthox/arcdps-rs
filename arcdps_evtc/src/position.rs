@@ -9,11 +9,11 @@ use serde::{Deserialize, Serialize};
 /// This can be from a [`CombatEvent`] with [`StateChange::Position`], [`StateChange::Velocity`] or [`StateChange::Facing`].
 ///
 /// Ingame coordinates are interpreted as 1 unit = 1 inch.
-/// The z-Axis represents vertical height and **points down**,
+/// The z-axis represents vertical height and **points down**,
 /// meaning lower values are a higher location ingame.
 ///
 /// Mumble coordinates are given in meters.
-/// The y-Axis represents vertical height and **points up**.
+/// The y-axis represents vertical height and **points up**.
 #[derive(Debug, Clone, PartialEq)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct Position {
