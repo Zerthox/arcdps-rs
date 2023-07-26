@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"trait":["Parser"]};
+window.SIDEBAR_ITEMS = {};
