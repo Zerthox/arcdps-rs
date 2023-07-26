@@ -12,8 +12,13 @@ use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct EffectGUID {
+    /// Id of the effect.
     pub effect_id: u32,
+
+    /// Persistent content GUID.
     pub guid: u128,
+
+    /// Content local.
     pub content_local: Option<ContentLocal>,
 }
 
@@ -26,6 +31,12 @@ impl EffectGUID {
             guid: u128::from_be_bytes(unsafe { transmute([event.src_agent, event.dst_agent]) }),
             content_local: event.overstack_value.try_into().ok(),
         }
+    }
+
+    /// Formats the contained GUID as [`String`].
+    #[inline]
+    pub fn guid_string(&self) -> String {
+        format!("{:0>32X}", self.guid)
     }
 }
 
