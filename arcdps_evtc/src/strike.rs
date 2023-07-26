@@ -75,3 +75,11 @@ pub enum Strike {
     /// *Arc: Source hit target if damaging buff.*
     Activation = 12,
 }
+
+impl Strike {
+    /// Whether the strike dealt health damage to the target.
+    #[inline]
+    pub const fn dealt_damage(&self) -> bool {
+        matches!(self, Self::Normal | Self::Crit | Self::Glance)
+    }
+}

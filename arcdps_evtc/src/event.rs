@@ -1,5 +1,5 @@
 use crate::{
-    Activation, Affinity, BuffFormula, BuffInfo, BuffRemove, Effect, EffectOld, Position,
+    Activation, Affinity, BuffInfo, BuffRemove, Effect, EffectOld, Position, RawBuffFormula,
     SkillInfo, SkillTiming, StateChange,
 };
 
@@ -149,43 +149,7 @@ impl CombatEvent {
     /// Checks whether the event has a timestamp.
     #[inline]
     pub fn has_time(&self) -> bool {
-        matches!(
-            self.is_statechange,
-            StateChange::None
-                | StateChange::EnterCombat
-                | StateChange::ExitCombat
-                | StateChange::ChangeUp
-                | StateChange::ChangeDead
-                | StateChange::ChangeDown
-                | StateChange::Spawn
-                | StateChange::Despawn
-                | StateChange::HealthUpdate
-                | StateChange::LogStart
-                | StateChange::LogEnd
-                | StateChange::WeaponSwap
-                | StateChange::MaxHealthUpdate
-                | StateChange::Reward
-                | StateChange::BuffInitial
-                | StateChange::Position
-                | StateChange::Velocity
-                | StateChange::Facing
-                | StateChange::TeamChange
-                | StateChange::AttackTarget
-                | StateChange::Targetable
-                | StateChange::StackActive
-                | StateChange::StackReset
-                | StateChange::BreakbarState
-                | StateChange::BreakbarPercent
-                | StateChange::BarrierUpdate
-                | StateChange::StatReset
-                | StateChange::Extension
-                | StateChange::ApiDelayed
-                | StateChange::Last90BeforeDown
-                | StateChange::EffectOld
-                | StateChange::LogNPCUpdate
-                | StateChange::ExtensionCombat
-                | StateChange::Effect
-        )
+        self.is_statechange.has_time()
     }
 
     /// Retrieves the event time, if present.
@@ -223,7 +187,7 @@ impl CombatEvent {
 
     /// Attempts to extract a [`BuffFormula`] from the event.
     #[inline]
-    pub fn buff_formula(&self) -> Option<BuffFormula> {
+    pub fn buff_formula(&self) -> Option<RawBuffFormula> {
         self.try_into().ok()
     }
 

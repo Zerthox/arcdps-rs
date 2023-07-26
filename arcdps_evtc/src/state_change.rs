@@ -359,3 +359,47 @@ pub enum StateChange {
     #[num_enum(catch_all)]
     Unknown(u8),
 }
+
+impl StateChange {
+    /// Checks whether the statechange has an associated timestamp.
+    #[inline]
+    pub fn has_time(&self) -> bool {
+        matches!(
+            self,
+            Self::None
+                | Self::EnterCombat
+                | Self::ExitCombat
+                | Self::ChangeUp
+                | Self::ChangeDead
+                | Self::ChangeDown
+                | Self::Spawn
+                | Self::Despawn
+                | Self::HealthUpdate
+                | Self::LogStart
+                | Self::LogEnd
+                | Self::WeaponSwap
+                | Self::MaxHealthUpdate
+                | Self::Reward
+                | Self::BuffInitial
+                | Self::Position
+                | Self::Velocity
+                | Self::Facing
+                | Self::TeamChange
+                | Self::AttackTarget
+                | Self::Targetable
+                | Self::StackActive
+                | Self::StackReset
+                | Self::BreakbarState
+                | Self::BreakbarPercent
+                | Self::BarrierUpdate
+                | Self::StatReset
+                | Self::Extension
+                | Self::ApiDelayed
+                | Self::Last90BeforeDown
+                | Self::EffectOld
+                | Self::LogNPCUpdate
+                | Self::ExtensionCombat
+                | Self::Effect
+        )
+    }
+}

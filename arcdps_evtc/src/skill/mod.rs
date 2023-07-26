@@ -1,6 +1,10 @@
-use crate::{CombatEvent, StateChange};
+mod info;
+mod timing;
+
+pub use self::info::*;
+pub use self::timing::*;
+
 use num_enum::{FromPrimitive, IntoPrimitive, TryFromPrimitive};
-use std::mem::transmute;
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
@@ -94,72 +98,4 @@ pub enum WeaponSet {
 
     /// Second land weapon set.
     Land2 = 5,
-}
-
-/// Skill information from a [`CombatEvent`] with [`StateChange::SkillInfo`].
-#[derive(Debug, Clone)]
-#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
-pub struct SkillInfo {
-    pub recharge: f32,
-    pub range0: f32,
-    pub range1: f32,
-    pub tooltip_time: f32,
-}
-
-impl SkillInfo {
-    /// Extracts skill information from a [`StateChange::SkillInfo`] event.
-    #[inline]
-    pub fn from_event(event: &CombatEvent) -> Self {
-        let [recharge, range0, range1, tooltip_time]: [f32; 4] =
-            unsafe { transmute((event.time, event.src_agent)) };
-        Self {
-            recharge,
-            range0,
-            range1,
-            tooltip_time,
-        }
-    }
-}
-
-impl TryFrom<&CombatEvent> for SkillInfo {
-    type Error = ();
-
-    #[inline]
-    fn try_from(event: &CombatEvent) -> Result<Self, Self::Error> {
-        match event.is_statechange {
-            StateChange::SkillInfo => Ok(Self::from_event(event)),
-            _ => Err(()),
-        }
-    }
-}
-
-/// Skill timing from a [`CombatEvent`] with [`StateChange::SkillTiming`].
-#[derive(Debug, Clone)]
-#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
-pub struct SkillTiming {
-    pub action: u64,
-    pub millisecond: u64,
-}
-
-impl SkillTiming {
-    /// Extracts skill timing from a [`StateChange::SkillTiminig`] event.
-    #[inline]
-    pub fn from_event(event: &CombatEvent) -> Self {
-        Self {
-            action: event.src_agent,
-            millisecond: event.dst_agent,
-        }
-    }
-}
-
-impl TryFrom<&CombatEvent> for SkillTiming {
-    type Error = ();
-
-    #[inline]
-    fn try_from(event: &CombatEvent) -> Result<Self, Self::Error> {
-        match event.is_statechange {
-            StateChange::SkillTiming => Ok(Self::from_event(event)),
-            _ => Err(()),
-        }
-    }
 }

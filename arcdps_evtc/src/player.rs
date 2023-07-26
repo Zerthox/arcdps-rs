@@ -140,6 +140,7 @@ pub enum Specialization {
 
 impl Specialization {
     /// Returns the [`Profession`] corresponding to the specialization.
+    #[inline]
     pub fn profession(&self) -> Profession {
         match self {
             Self::Unknown => Profession::Unknown,

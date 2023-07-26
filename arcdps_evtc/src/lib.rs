@@ -3,6 +3,7 @@
 //! Includes everything shared between Arc's realtime API used by plugins and Arc's log API consumed by parsers.
 
 mod agent;
+mod breakbar;
 mod buff;
 mod effect;
 mod event;
@@ -14,6 +15,7 @@ mod state_change;
 mod strike;
 
 pub use self::agent::*;
+pub use self::breakbar::*;
 pub use self::buff::*;
 pub use self::effect::*;
 pub use self::event::*;

@@ -57,6 +57,7 @@ pub enum AgentKind {
 
 impl AgentKind {
     /// Determines the kind of agent for the given profession and elite.
+    #[inline]
     pub const fn new(prof: u32, elite: u32) -> Self {
         if elite == u32::MAX {
             let (lower, upper): (u16, u16) = unsafe { mem::transmute(prof) };
@@ -72,6 +73,7 @@ impl AgentKind {
 }
 
 impl From<(u32, u32)> for AgentKind {
+    #[inline]
     fn from((prof, elite): (u32, u32)) -> Self {
         Self::new(prof, elite)
     }
