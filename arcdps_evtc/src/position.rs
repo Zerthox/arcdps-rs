@@ -39,6 +39,20 @@ impl Position {
         Self::new(x / CONVERT, z / CONVERT, -y / CONVERT)
     }
 
+    /// Extracts position information from a [`StateChange::IdToGUID`] event.
+    ///
+    /// # Safety
+    /// This operation is safe when the [`CombatEvent`] is a valid positional event.
+    #[inline]
+    pub unsafe fn from_event(event: &CombatEvent) -> Self {
+        let [x, y]: [f32; 2] = transmute(event.dst_agent);
+
+        #[allow(clippy::transmute_int_to_float)]
+        let z = transmute(event.value);
+
+        Self { x, y, z }
+    }
+
     /// Converts the position to Mumble coordinates.
     #[inline]
     pub fn to_mumble(&self) -> [f32; 3] {
@@ -72,14 +86,10 @@ impl TryFrom<&CombatEvent> for Position {
 
     #[inline]
     fn try_from(event: &CombatEvent) -> Result<Self, Self::Error> {
-        #[allow(clippy::transmute_int_to_float)]
         match event.is_statechange {
             StateChange::Position | StateChange::Velocity | StateChange::Facing => {
-                let [x, y]: [f32; 2] = unsafe { transmute(event.dst_agent) };
-                let z = unsafe { transmute(event.value) };
-                Ok(Self { x, y, z })
+                Ok(unsafe { Self::from_event(event) })
             }
-
             _ => Err(()),
         }
     }
