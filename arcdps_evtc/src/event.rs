@@ -1,6 +1,6 @@
 use crate::{
-    Activation, Affinity, BuffInfo, BuffRemove, Effect, EffectOld, Position, RawBuffFormula,
-    SkillInfo, SkillTiming, StateChange,
+    Activation, Affinity, BuffFormula, BuffInfo, BuffRemove, Effect, EffectGUID, EffectOld,
+    Position, RawBuffFormula, SkillInfo, SkillTiming, StateChange,
 };
 
 #[cfg(feature = "serde")]
@@ -180,14 +180,26 @@ impl CombatEvent {
         self.try_into().ok()
     }
 
+    /// Attempts to extract [`EffectGUID`] information from the event.
+    #[inline]
+    pub fn effect_guid(&self) -> Option<EffectGUID> {
+        self.try_into().ok()
+    }
+
     /// Attempts to extract [`BuffInfo`] from the event.
     pub fn buff_info(&self) -> Option<BuffInfo> {
         self.try_into().ok()
     }
 
+    /// Attempts to extract a [`RawBuffFormula`] from the event.
+    #[inline]
+    pub fn raw_buff_formula(&self) -> Option<RawBuffFormula> {
+        self.try_into().ok()
+    }
+
     /// Attempts to extract a [`BuffFormula`] from the event.
     #[inline]
-    pub fn buff_formula(&self) -> Option<RawBuffFormula> {
+    pub fn buff_formula(&self) -> Option<BuffFormula> {
         self.try_into().ok()
     }
 
