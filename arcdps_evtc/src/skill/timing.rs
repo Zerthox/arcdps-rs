@@ -12,7 +12,7 @@ pub struct SkillTiming {
 }
 
 impl SkillTiming {
-    /// Extracts skill timing from a [`StateChange::SkillTiminig`] event.
+    /// Extracts skill timing from a [`StateChange::SkillTiming`] event.
     #[inline]
     pub fn from_event(event: &CombatEvent) -> Self {
         Self {

@@ -37,8 +37,11 @@ pub struct Effect {
 
 impl Effect {
     /// Extracts effect information from an [`StateChange::Effect`] event.
+    ///
+    /// # Safety
+    /// This operation is safe when the [`CombatEvent`] is a valid effect event.
     #[inline]
-    pub fn from_event(event: &CombatEvent) -> Self {
+    pub unsafe fn from_event(event: &CombatEvent) -> Self {
         let effect_id = event.skill_id;
         let duration: u32 = unsafe {
             transmute([
@@ -90,7 +93,7 @@ impl TryFrom<&CombatEvent> for Effect {
     #[inline]
     fn try_from(event: &CombatEvent) -> Result<Self, Self::Error> {
         match event.is_statechange {
-            StateChange::Effect => Ok(Self::from_event(event)),
+            StateChange::Effect => Ok(unsafe { Self::from_event(event) }),
             _ => Err(()),
         }
     }
@@ -106,13 +109,15 @@ pub enum EffectLocation {
 
 impl EffectLocation {
     /// Extracts an effect location from an effect [`CombatEvent`].
+    ///
+    /// # Safety
+    /// This operation is safe when the [`CombatEvent`] is a valid effect event.
     #[inline]
-    pub fn from_event(event: &CombatEvent) -> Self {
+    pub unsafe fn from_event(event: &CombatEvent) -> Self {
         if event.dst_agent != 0 {
             Self::Agent(event.dst_agent)
         } else {
-            let pos: [f32; 3] =
-                unsafe { transmute((event.value, event.buff_dmg, event.overstack_value)) };
+            let pos: [f32; 3] = transmute((event.value, event.buff_dmg, event.overstack_value));
             Self::Position(pos.into())
         }
     }

@@ -31,8 +31,11 @@ pub struct BuffFormula {
 
 impl BuffFormula {
     /// Extracts buff information from a [`StateChange::BuffFormula`] event.
+    ///
+    /// # Safety
+    /// This operation is safe when the [`CombatEvent`] is a valid buff formula event.
     #[inline]
-    pub fn from_event(event: &CombatEvent) -> Self {
+    pub unsafe fn from_event(event: &CombatEvent) -> Self {
         RawBuffFormula::from_event(event).into()
     }
 
@@ -98,25 +101,25 @@ pub struct RawBuffFormula {
 
 impl RawBuffFormula {
     /// Extracts buff information from a [`StateChange::BuffFormula`] event.
+    ///
+    /// # Safety
+    /// This operation is safe when the [`CombatEvent`] is a valid buff formula event.
     #[inline]
-    pub fn from_event(event: &CombatEvent) -> Self {
-        let [kind, attr1, attr2, param1, param2, param3, trait_src, trait_self]: [f32; 8] = unsafe {
+    pub unsafe fn from_event(event: &CombatEvent) -> Self {
+        let [kind, attr1, attr2, param1, param2, param3, trait_src, trait_self]: [f32; 8] =
             transmute((
                 event.time,
                 event.src_agent,
                 event.dst_agent,
                 event.value,
                 event.buff_dmg,
-            ))
-        };
-        let [buff_src, buff_self]: [f32; 2] = unsafe {
-            transmute((
-                event.src_instance_id,
-                event.dst_instance_id,
-                event.src_master_instance_id,
-                event.dst_master_instance_id,
-            ))
-        };
+            ));
+        let [buff_src, buff_self]: [f32; 2] = transmute((
+            event.src_instance_id,
+            event.dst_instance_id,
+            event.src_master_instance_id,
+            event.dst_master_instance_id,
+        ));
 
         Self {
             kind,
@@ -153,7 +156,7 @@ impl TryFrom<&CombatEvent> for RawBuffFormula {
     #[inline]
     fn try_from(event: &CombatEvent) -> Result<Self, Self::Error> {
         match event.is_statechange {
-            StateChange::BuffFormula => Ok(Self::from_event(event)),
+            StateChange::BuffFormula => Ok(unsafe { Self::from_event(event) }),
             _ => Err(()),
         }
     }

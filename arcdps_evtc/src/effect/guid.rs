@@ -24,11 +24,14 @@ pub struct EffectGUID {
 
 impl EffectGUID {
     /// Extracts effect GUID information from a [`StateChange::IdToGUID`] event.
+    ///
+    /// # Safety
+    /// This operation is safe when the [`CombatEvent`] is a valid id-to-guid event.
     #[inline]
-    pub fn from_event(event: &CombatEvent) -> Self {
+    pub unsafe fn from_event(event: &CombatEvent) -> Self {
         Self {
             effect_id: event.skill_id,
-            guid: u128::from_be_bytes(unsafe { transmute([event.src_agent, event.dst_agent]) }),
+            guid: u128::from_be_bytes(transmute([event.src_agent, event.dst_agent])),
             content_local: event.overstack_value.try_into().ok(),
         }
     }
@@ -45,7 +48,7 @@ impl TryFrom<&CombatEvent> for EffectGUID {
 
     fn try_from(event: &CombatEvent) -> Result<Self, Self::Error> {
         match event.is_statechange {
-            StateChange::IdToGUID => Ok(Self::from_event(event)),
+            StateChange::IdToGUID => Ok(unsafe { Self::from_event(event) }),
             _ => Err(()),
         }
     }

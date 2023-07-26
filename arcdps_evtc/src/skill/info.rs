@@ -16,10 +16,13 @@ pub struct SkillInfo {
 
 impl SkillInfo {
     /// Extracts skill information from a [`StateChange::SkillInfo`] event.
+    ///
+    /// # Safety
+    /// This operation is safe when the [`CombatEvent`] is a valid skill info event.
     #[inline]
-    pub fn from_event(event: &CombatEvent) -> Self {
+    pub unsafe fn from_event(event: &CombatEvent) -> Self {
         let [recharge, range0, range1, tooltip_time]: [f32; 4] =
-            unsafe { transmute((event.time, event.src_agent)) };
+            transmute((event.time, event.src_agent));
         Self {
             recharge,
             range0,
@@ -35,7 +38,7 @@ impl TryFrom<&CombatEvent> for SkillInfo {
     #[inline]
     fn try_from(event: &CombatEvent) -> Result<Self, Self::Error> {
         match event.is_statechange {
-            StateChange::SkillInfo => Ok(Self::from_event(event)),
+            StateChange::SkillInfo => Ok(unsafe { Self::from_event(event) }),
             _ => Err(()),
         }
     }

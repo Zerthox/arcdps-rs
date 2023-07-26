@@ -29,23 +29,24 @@ pub struct EffectOld {
 
 impl EffectOld {
     /// Extracts effect information from a [`StateChange::EffectOld`] event.
+    ///
+    /// # Safety
+    /// This operation is safe when the [`CombatEvent`] is a valid effect event.
     #[inline]
-    pub fn from_event(event: &CombatEvent) -> Self {
+    pub unsafe fn from_event(event: &CombatEvent) -> Self {
         let effect_id = event.skill_id;
-        let [x, y]: [f32; 2] = unsafe {
-            transmute([
-                event.affinity.into(),
-                event.buff,
-                event.result,
-                event.is_activation.into(),
-                event.is_buff_remove.into(),
-                event.is_ninety,
-                event.is_fifty,
-                event.is_moving,
-            ])
-        };
-        let z: f32 = unsafe { transmute([event.pad61, event.pad62, event.pad63, event.pad64]) };
-        let duration: u16 = unsafe { transmute([event.is_shields, event.is_off_cycle]) };
+        let [x, y]: [f32; 2] = transmute([
+            event.affinity.into(),
+            event.buff,
+            event.result,
+            event.is_activation.into(),
+            event.is_buff_remove.into(),
+            event.is_ninety,
+            event.is_fifty,
+            event.is_moving,
+        ]);
+        let z: f32 = transmute([event.pad61, event.pad62, event.pad63, event.pad64]);
+        let duration: u16 = transmute([event.is_shields, event.is_off_cycle]);
 
         Self {
             effect_id,
@@ -73,7 +74,7 @@ impl TryFrom<&CombatEvent> for EffectOld {
     #[inline]
     fn try_from(event: &CombatEvent) -> Result<Self, Self::Error> {
         match event.is_statechange {
-            StateChange::EffectOld => Ok(Self::from_event(event)),
+            StateChange::EffectOld => Ok(unsafe { Self::from_event(event) }),
             _ => Err(()),
         }
     }
