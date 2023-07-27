@@ -181,6 +181,18 @@ impl EffectOrientation {
             Self::to_float(self.z),
         )
     }
+
+    /// Converts the orientation to a rotation matrix.
+    #[inline]
+    pub fn as_rotation_matrix(&self) -> [[f32; 3]; 3] {
+        self.as_position().as_rotation_matrix()
+    }
+
+    /// Rotates the [`Position`] vector.
+    #[inline]
+    pub fn rotate(&self, vector: Position) -> Position {
+        self.as_position().rotate(vector)
+    }
 }
 
 impl From<[i16; 3]> for EffectOrientation {
