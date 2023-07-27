@@ -140,21 +140,21 @@ impl EffectOrientation {
 
     /// Maximum value in [`f32`] representation.
     ///
-    /// For [`i16`] use [`i16::MAX`].
+    /// For [`i16`] representation use [`i16::MAX`].
     pub const MAX: f32 = i16::MAX as f32 / Self::RATIO;
 
-    /// Minimum value as [`f32`].
+    /// Minimum value in [`f32`] representation.
     ///
-    /// For [`i16`] use [`i16::MIN`].
+    /// For [`i16`] representation use [`i16::MIN`].
     pub const MIN: f32 = i16::MIN as f32 / Self::RATIO;
 
-    /// Creates a new effect orientation from radians.
+    /// Creates a new effect orientation from radians in [`i16`] representation.
     #[inline]
     pub const fn new(x: i16, y: i16, z: i16) -> Self {
         Self { x, y, z }
     }
 
-    /// Creates a new effect orientation from radians.
+    /// Creates a new effect orientation from radians in [`f32`] representation.
     #[inline]
     pub fn from_floats(x: f32, y: f32, z: f32) -> Self {
         Self::new(Self::to_int(x), Self::to_int(y), Self::to_int(z))
@@ -169,7 +169,7 @@ impl EffectOrientation {
     /// Converts int to float.
     #[inline]
     pub fn to_int(float: f32) -> i16 {
-        (float * Self::RATIO) as i16
+        (float * Self::RATIO).round() as i16
     }
 
     /// Converts the orientation to a [`Position`].
@@ -213,5 +213,16 @@ mod tests {
     fn orientation() {
         let orient = EffectOrientation::from_floats(12.345, 6.789, 0.0);
         assert_eq!(orient, EffectOrientation::new(12345, 6789, 0));
+    }
+
+    #[test]
+    fn orientation_round() {
+        assert_eq!(EffectOrientation::to_int(30.9999), 31000);
+    }
+
+    #[test]
+    fn orientation_saturate() {
+        let orient = EffectOrientation::from_floats(12345.0, -6789.0, 0.0);
+        assert_eq!(orient, EffectOrientation::new(i16::MAX, i16::MIN, 0));
     }
 }
