@@ -188,7 +188,7 @@ pub enum StateChange {
 
     /// Buff information.
     ///
-    /// `is_off_cycle` contains the category.
+    /// `is_offcycle` contains the category.
     /// `pad61` contains the stacking type.
     /// `src_master_instance_id` contains the max stacks.
     /// `overstack_value` contains the duration cap.
@@ -207,7 +207,7 @@ pub enum StateChange {
     ///
     /// If `is_flanking` not NPC.
     /// If `is_shields` not player.
-    /// If `is_off_cycle` break.
+    /// If `is_offcycle` break.
     ///
     /// `overstack_value` is value of type determined by `pad61`.
     ///
@@ -348,7 +348,7 @@ pub enum StateChange {
     /// `dst_agent` if effect located at agent.
     /// Otherwise `value` contains XYZ position as `[f32; 3]`.
     /// `affinity` contains duration as [`u32`].
-    /// `is_buff_remove` contains trackable id as [`u32`].
+    /// `is_buffremove` contains trackable id as [`u32`].
     /// `is_shields` contains orientation as `[i16; 3]`.
     /// Orientation values are original multiplied by `1000` or [`i16::MIN`]/[`i16::MAX`] if out of bounds.
     ///

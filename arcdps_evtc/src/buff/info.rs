@@ -1,4 +1,4 @@
-use crate::{CombatEvent, StateChange};
+use crate::{CombatEvent, Extract, StateChange};
 use num_enum::{IntoPrimitive, TryFromPrimitive};
 
 #[cfg(feature = "serde")]
@@ -37,12 +37,11 @@ pub struct BuffInfo {
     pub resistance: bool,
 }
 
-impl BuffInfo {
-    /// Extracts buff information from a [`StateChange::BuffInfo`] event.
+impl Extract for BuffInfo {
     #[inline]
-    pub fn from_event(event: &CombatEvent) -> Self {
+    unsafe fn extract(event: &CombatEvent) -> Self {
         Self {
-            category: event.is_off_cycle,
+            category: event.is_offcycle,
             stacking_type: event.pad61,
             max_stacks: event.src_master_instance_id,
             duration_cap: event.overstack_value,
@@ -59,7 +58,7 @@ impl TryFrom<&CombatEvent> for BuffInfo {
     #[inline]
     fn try_from(event: &CombatEvent) -> Result<Self, Self::Error> {
         match event.is_statechange {
-            StateChange::BuffInfo => Ok(Self::from_event(event)),
+            StateChange::BuffInfo => Ok(unsafe { Self::extract(event) }),
             _ => Err(()),
         }
     }

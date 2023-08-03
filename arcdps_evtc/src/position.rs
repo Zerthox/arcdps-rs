@@ -1,4 +1,4 @@
-use crate::{CombatEvent, StateChange};
+use crate::{CombatEvent, Extract, StateChange};
 use std::mem::transmute;
 
 #[cfg(feature = "serde")]
@@ -38,20 +38,6 @@ impl Position {
     pub fn from_mumble(coords: [f32; 3]) -> Self {
         let [x, y, z] = coords;
         Self::new(x / CONVERT, z / CONVERT, -y / CONVERT)
-    }
-
-    /// Extracts position information from a [`StateChange::IdToGUID`] event.
-    ///
-    /// # Safety
-    /// This operation is safe when the [`CombatEvent`] is a valid positional event.
-    #[inline]
-    pub unsafe fn from_event(event: &CombatEvent) -> Self {
-        let [x, y]: [f32; 2] = transmute(event.dst_agent);
-
-        #[allow(clippy::transmute_int_to_float)]
-        let z = transmute(event.value);
-
-        Self { x, y, z }
     }
 
     /// Converts the position to an [`array`].
@@ -132,6 +118,18 @@ impl From<Position> for [f32; 3] {
     }
 }
 
+impl Extract for Position {
+    #[inline]
+    unsafe fn extract(event: &CombatEvent) -> Self {
+        let [x, y]: [f32; 2] = transmute(event.dst_agent);
+
+        #[allow(clippy::transmute_int_to_float)]
+        let z = transmute(event.value);
+
+        Self::new(x, y, z)
+    }
+}
+
 impl TryFrom<&CombatEvent> for Position {
     type Error = ();
 
@@ -139,7 +137,7 @@ impl TryFrom<&CombatEvent> for Position {
     fn try_from(event: &CombatEvent) -> Result<Self, Self::Error> {
         match event.is_statechange {
             StateChange::Position | StateChange::Velocity | StateChange::Facing => {
-                Ok(unsafe { Self::from_event(event) })
+                Ok(unsafe { Self::extract(event) })
             }
             _ => Err(()),
         }

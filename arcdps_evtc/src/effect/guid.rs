@@ -1,4 +1,4 @@
-use crate::{CombatEvent, StateChange};
+use crate::{CombatEvent, Extract, StateChange};
 use num_enum::{IntoPrimitive, TryFromPrimitive};
 use std::mem::transmute;
 
@@ -23,23 +23,21 @@ pub struct EffectGUID {
 }
 
 impl EffectGUID {
-    /// Extracts effect GUID information from a [`StateChange::IdToGUID`] event.
-    ///
-    /// # Safety
-    /// This operation is safe when the [`CombatEvent`] is a valid id-to-guid event.
+    /// Formats the contained GUID as [`String`].
     #[inline]
-    pub unsafe fn from_event(event: &CombatEvent) -> Self {
+    pub fn guid_string(&self) -> String {
+        format!("{:0>32X}", self.guid)
+    }
+}
+
+impl Extract for EffectGUID {
+    #[inline]
+    unsafe fn extract(event: &CombatEvent) -> Self {
         Self {
             effect_id: event.skill_id,
             guid: u128::from_be_bytes(transmute([event.src_agent, event.dst_agent])),
             content_local: event.overstack_value.try_into().ok(),
         }
-    }
-
-    /// Formats the contained GUID as [`String`].
-    #[inline]
-    pub fn guid_string(&self) -> String {
-        format!("{:0>32X}", self.guid)
     }
 }
 
@@ -48,7 +46,7 @@ impl TryFrom<&CombatEvent> for EffectGUID {
 
     fn try_from(event: &CombatEvent) -> Result<Self, Self::Error> {
         match event.is_statechange {
-            StateChange::IdToGUID => Ok(unsafe { Self::from_event(event) }),
+            StateChange::IdToGUID => Ok(unsafe { Self::extract(event) }),
             _ => Err(()),
         }
     }

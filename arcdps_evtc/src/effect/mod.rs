@@ -4,6 +4,7 @@ mod old;
 pub use self::guid::*;
 pub use self::old::*;
 
+use crate::Extract;
 use crate::{CombatEvent, Position, StateChange};
 use std::mem::transmute;
 
@@ -36,54 +37,46 @@ pub struct Effect {
 }
 
 impl Effect {
-    /// Extracts effect information from an [`StateChange::Effect`] event.
-    ///
-    /// # Safety
-    /// This operation is safe when the [`CombatEvent`] is a valid effect event.
-    #[inline]
-    pub unsafe fn from_event(event: &CombatEvent) -> Self {
-        let effect_id = event.skill_id;
-        let duration: u32 = unsafe {
-            transmute([
-                event.affinity.into(),
-                event.buff,
-                event.result,
-                event.is_activation.into(),
-            ])
-        };
-        let tracking_id: u32 = unsafe {
-            transmute([
-                event.is_buff_remove.into(),
-                event.is_ninety,
-                event.is_fifty,
-                event.is_moving,
-            ])
-        };
-        let orientation: [i16; 3] = unsafe {
-            transmute([
-                event.is_shields,
-                event.is_off_cycle,
-                event.pad61,
-                event.pad62,
-                event.pad63,
-                event.pad64,
-            ])
-        };
-
-        Self {
-            effect_id,
-            owner: event.src_agent,
-            location: EffectLocation::from_event(event),
-            duration,
-            tracking_id,
-            orientation: orientation.into(),
-        }
-    }
-
     /// Checks whether this is the end of an effect.
     #[inline]
     pub fn is_end(&self) -> bool {
         self.effect_id == 0
+    }
+}
+
+impl Extract for Effect {
+    #[inline]
+    unsafe fn extract(event: &CombatEvent) -> Self {
+        let effect_id = event.skill_id;
+        let duration: u32 = transmute([
+            event.affinity.into(),
+            event.buff,
+            event.result,
+            event.is_activation.into(),
+        ]);
+        let tracking_id: u32 = transmute([
+            event.is_buffremove.into(),
+            event.is_ninety,
+            event.is_fifty,
+            event.is_moving,
+        ]);
+        let orientation: [i16; 3] = transmute([
+            event.is_shields,
+            event.is_offcycle,
+            event.pad61,
+            event.pad62,
+            event.pad63,
+            event.pad64,
+        ]);
+
+        Self {
+            effect_id,
+            owner: event.src_agent,
+            location: EffectLocation::extract(event),
+            duration,
+            tracking_id,
+            orientation: orientation.into(),
+        }
     }
 }
 
@@ -93,7 +86,7 @@ impl TryFrom<&CombatEvent> for Effect {
     #[inline]
     fn try_from(event: &CombatEvent) -> Result<Self, Self::Error> {
         match event.is_statechange {
-            StateChange::Effect => Ok(unsafe { Self::from_event(event) }),
+            StateChange::Effect => Ok(unsafe { Self::extract(event) }),
             _ => Err(()),
         }
     }
@@ -107,13 +100,9 @@ pub enum EffectLocation {
     Position(Position),
 }
 
-impl EffectLocation {
-    /// Extracts an effect location from an effect [`CombatEvent`].
-    ///
-    /// # Safety
-    /// This operation is safe when the [`CombatEvent`] is a valid effect event.
+impl Extract for EffectLocation {
     #[inline]
-    pub unsafe fn from_event(event: &CombatEvent) -> Self {
+    unsafe fn extract(event: &CombatEvent) -> Self {
         if event.dst_agent != 0 {
             Self::Agent(event.dst_agent)
         } else {

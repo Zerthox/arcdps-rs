@@ -22,14 +22,14 @@ impl Parse for CombatEvent {
             buff: input.read_u8()?,
             result: input.read_u8()?,
             is_activation: input.read_u8()?.into(),
-            is_buff_remove: input.read_u8()?.into(),
+            is_buffremove: input.read_u8()?.into(),
             is_ninety: input.read_u8()?,
             is_fifty: input.read_u8()?,
             is_moving: input.read_u8()?,
             is_statechange: input.read_u8()?.into(),
             is_flanking: input.read_u8()?,
             is_shields: input.read_u8()?,
-            is_off_cycle: input.read_u8()?,
+            is_offcycle: input.read_u8()?,
             pad61: input.read_u8()?,
             pad62: input.read_u8()?,
             pad63: input.read_u8()?,
@@ -57,14 +57,14 @@ impl Save for CombatEvent {
         output.write_u8(self.buff)?;
         output.write_u8(self.result)?;
         output.write_u8(self.is_activation.into())?;
-        output.write_u8(self.is_buff_remove.into())?;
+        output.write_u8(self.is_buffremove.into())?;
         output.write_u8(self.is_ninety)?;
         output.write_u8(self.is_fifty)?;
         output.write_u8(self.is_moving)?;
         output.write_u8(self.is_statechange.into())?;
         output.write_u8(self.is_flanking)?;
         output.write_u8(self.is_shields)?;
-        output.write_u8(self.is_off_cycle)?;
+        output.write_u8(self.is_offcycle)?;
         output.write_u8(self.pad61)?;
         output.write_u8(self.pad62)?;
         output.write_u8(self.pad63)?;

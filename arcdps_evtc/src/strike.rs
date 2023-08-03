@@ -1,3 +1,4 @@
+use crate::{CombatEvent, CommonEvent};
 use num_enum::{IntoPrimitive, TryFromPrimitive};
 
 #[cfg(feature = "serde")]
@@ -5,6 +6,31 @@ use serde::{Deserialize, Serialize};
 
 #[cfg(feature = "strum")]
 use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
+
+/// A direct damage (strike) event.
+#[derive(Debug, Clone)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
+pub struct StrikeEvent {
+    pub common: CommonEvent,
+    pub kind: Strike,
+    pub total_damage: i32,
+    pub shield_damage: u32,
+    pub target_downed: bool,
+}
+
+impl TryFrom<&CombatEvent> for StrikeEvent {
+    type Error = ();
+
+    fn try_from(event: &CombatEvent) -> Result<Self, Self::Error> {
+        Ok(Self {
+            common: event.into(),
+            kind: event.result.try_into().map_err(|_| ())?,
+            total_damage: event.value,
+            shield_damage: event.overstack_value,
+            target_downed: event.is_offcycle == 1,
+        })
+    }
+}
 
 /// Strike types.
 ///

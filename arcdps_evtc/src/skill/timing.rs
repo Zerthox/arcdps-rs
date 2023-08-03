@@ -1,4 +1,4 @@
-use crate::{CombatEvent, StateChange};
+use crate::{CombatEvent, Extract, StateChange};
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
@@ -11,10 +11,9 @@ pub struct SkillTiming {
     pub millisecond: u64,
 }
 
-impl SkillTiming {
-    /// Extracts skill timing from a [`StateChange::SkillTiming`] event.
+impl Extract for SkillTiming {
     #[inline]
-    pub fn from_event(event: &CombatEvent) -> Self {
+    unsafe fn extract(event: &CombatEvent) -> Self {
         Self {
             action: event.src_agent,
             millisecond: event.dst_agent,
@@ -28,7 +27,7 @@ impl TryFrom<&CombatEvent> for SkillTiming {
     #[inline]
     fn try_from(event: &CombatEvent) -> Result<Self, Self::Error> {
         match event.is_statechange {
-            StateChange::SkillTiming => Ok(Self::from_event(event)),
+            StateChange::SkillTiming => Ok(unsafe { Self::extract(event) }),
             _ => Err(()),
         }
     }

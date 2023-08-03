@@ -1,5 +1,5 @@
 use super::EffectLocation;
-use crate::{CombatEvent, Position, StateChange};
+use crate::{CombatEvent, Extract, Position, StateChange};
 use std::mem::transmute;
 
 #[cfg(feature = "serde")]
@@ -28,30 +28,34 @@ pub struct EffectOld {
 }
 
 impl EffectOld {
-    /// Extracts effect information from a [`StateChange::EffectOld`] event.
-    ///
-    /// # Safety
-    /// This operation is safe when the [`CombatEvent`] is a valid effect event.
+    /// Checks whether this is the end of an effect.
     #[inline]
-    pub unsafe fn from_event(event: &CombatEvent) -> Self {
+    pub fn is_end(&self) -> bool {
+        self.effect_id == 0
+    }
+}
+
+impl Extract for EffectOld {
+    #[inline]
+    unsafe fn extract(event: &CombatEvent) -> Self {
         let effect_id = event.skill_id;
         let [x, y]: [f32; 2] = transmute([
             event.affinity.into(),
             event.buff,
             event.result,
             event.is_activation.into(),
-            event.is_buff_remove.into(),
+            event.is_buffremove.into(),
             event.is_ninety,
             event.is_fifty,
             event.is_moving,
         ]);
         let z: f32 = transmute([event.pad61, event.pad62, event.pad63, event.pad64]);
-        let duration: u16 = transmute([event.is_shields, event.is_off_cycle]);
+        let duration: u16 = transmute([event.is_shields, event.is_offcycle]);
 
         Self {
             effect_id,
             owner: event.src_agent,
-            location: EffectLocation::from_event(event),
+            location: EffectLocation::extract(event),
             orientation: [x, y, z].into(),
             duration: if event.is_flanking != 0 || effect_id == 0 {
                 EffectDuration::TrackingId(duration)
@@ -59,12 +63,6 @@ impl EffectOld {
                 EffectDuration::Time(duration)
             },
         }
-    }
-
-    /// Checks whether this is the end of an effect.
-    #[inline]
-    pub fn is_end(&self) -> bool {
-        self.effect_id == 0
     }
 }
 
@@ -74,7 +72,7 @@ impl TryFrom<&CombatEvent> for EffectOld {
     #[inline]
     fn try_from(event: &CombatEvent) -> Result<Self, Self::Error> {
         match event.is_statechange {
-            StateChange::EffectOld => Ok(unsafe { Self::from_event(event) }),
+            StateChange::EffectOld => Ok(unsafe { Self::extract(event) }),
             _ => Err(()),
         }
     }

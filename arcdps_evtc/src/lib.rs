@@ -25,3 +25,12 @@ pub use self::position::*;
 pub use self::skill::*;
 pub use self::state_change::*;
 pub use self::strike::*;
+
+/// Extracts information from a combat event.
+pub trait Extract {
+    /// Extracts [`Self`] from the combat event.
+    ///
+    /// # Safety
+    /// This is safe when the given event is a valid event to extract [`Self`] from.
+    unsafe fn extract(event: &CombatEvent) -> Self;
+}

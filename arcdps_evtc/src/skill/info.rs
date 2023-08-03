@@ -1,4 +1,4 @@
-use crate::{CombatEvent, StateChange};
+use crate::{CombatEvent, Extract, StateChange};
 use std::mem::transmute;
 
 #[cfg(feature = "serde")]
@@ -14,13 +14,9 @@ pub struct SkillInfo {
     pub tooltip_time: f32,
 }
 
-impl SkillInfo {
-    /// Extracts skill information from a [`StateChange::SkillInfo`] event.
-    ///
-    /// # Safety
-    /// This operation is safe when the [`CombatEvent`] is a valid skill info event.
+impl Extract for SkillInfo {
     #[inline]
-    pub unsafe fn from_event(event: &CombatEvent) -> Self {
+    unsafe fn extract(event: &CombatEvent) -> Self {
         let [recharge, range0, range1, tooltip_time]: [f32; 4] =
             transmute((event.time, event.src_agent));
         Self {
@@ -38,7 +34,7 @@ impl TryFrom<&CombatEvent> for SkillInfo {
     #[inline]
     fn try_from(event: &CombatEvent) -> Result<Self, Self::Error> {
         match event.is_statechange {
-            StateChange::SkillInfo => Ok(unsafe { Self::from_event(event) }),
+            StateChange::SkillInfo => Ok(unsafe { Self::extract(event) }),
             _ => Err(()),
         }
     }

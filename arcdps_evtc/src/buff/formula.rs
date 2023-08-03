@@ -1,4 +1,4 @@
-use crate::{CombatEvent, StateChange};
+use crate::{CombatEvent, Extract, StateChange};
 use num_enum::{IntoPrimitive, TryFromPrimitive};
 use std::mem::transmute;
 
@@ -30,19 +30,17 @@ pub struct BuffFormula {
 }
 
 impl BuffFormula {
-    /// Extracts buff information from a [`StateChange::BuffFormula`] event.
-    ///
-    /// # Safety
-    /// This operation is safe when the [`CombatEvent`] is a valid buff formula event.
-    #[inline]
-    pub unsafe fn from_event(event: &CombatEvent) -> Self {
-        RawBuffFormula::from_event(event).into()
-    }
-
     /// Whether the buff formula is always active.
     #[inline]
     pub fn is_unconditional(&self) -> bool {
         self.trait_src == 0 && self.trait_self == 0 && self.buff_src == 0 && self.buff_self == 0
+    }
+}
+
+impl Extract for BuffFormula {
+    #[inline]
+    unsafe fn extract(event: &CombatEvent) -> Self {
+        RawBuffFormula::extract(event).into()
     }
 }
 
@@ -100,12 +98,19 @@ pub struct RawBuffFormula {
 }
 
 impl RawBuffFormula {
-    /// Extracts buff information from a [`StateChange::BuffFormula`] event.
-    ///
-    /// # Safety
-    /// This operation is safe when the [`CombatEvent`] is a valid buff formula event.
+    /// Whether the buff formula is always active.
     #[inline]
-    pub unsafe fn from_event(event: &CombatEvent) -> Self {
+    pub fn is_unconditional(&self) -> bool {
+        self.trait_src == 0.0
+            && self.trait_self == 0.0
+            && self.buff_src == 0.0
+            && self.buff_self == 0.0
+    }
+}
+
+impl Extract for RawBuffFormula {
+    #[inline]
+    unsafe fn extract(event: &CombatEvent) -> Self {
         let [kind, attr1, attr2, param1, param2, param3, trait_src, trait_self]: [f32; 8] =
             transmute((
                 event.time,
@@ -134,19 +139,10 @@ impl RawBuffFormula {
             buff_self,
             not_npc: event.is_flanking != 0,
             not_player: event.is_shields != 0,
-            is_break: event.is_off_cycle != 0,
+            is_break: event.is_offcycle != 0,
             value: event.overstack_value,
             value_type: event.pad61,
         }
-    }
-
-    /// Whether the buff formula is always active.
-    #[inline]
-    pub fn is_unconditional(&self) -> bool {
-        self.trait_src == 0.0
-            && self.trait_self == 0.0
-            && self.buff_src == 0.0
-            && self.buff_self == 0.0
     }
 }
 
@@ -156,7 +152,7 @@ impl TryFrom<&CombatEvent> for RawBuffFormula {
     #[inline]
     fn try_from(event: &CombatEvent) -> Result<Self, Self::Error> {
         match event.is_statechange {
-            StateChange::BuffFormula => Ok(unsafe { Self::from_event(event) }),
+            StateChange::BuffFormula => Ok(unsafe { Self::extract(event) }),
             _ => Err(()),
         }
     }
