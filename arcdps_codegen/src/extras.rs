@@ -1,4 +1,7 @@
-use crate::CallbackInfo;
+use crate::{
+    abi::{C_ABI, SYSTEM_ABI},
+    CallbackInfo,
+};
 use proc_macro2::TokenStream;
 use quote::{quote, quote_spanned};
 use syn::{spanned::Spanned, Expr, LitStr};
@@ -67,10 +70,10 @@ impl ExtrasGen {
     ) -> TokenStream {
         let has_callback =
             squad_update.is_some() || language_changed.is_some() || keybind_changed.is_some();
-        let squad_callback = squad_update.unwrap_or(quote! { None });
-        let lang_callback = language_changed.unwrap_or(quote! { None });
-        let keybind_callback = keybind_changed.unwrap_or(quote! { None });
-        let chat_callback = chat_message.unwrap_or(quote! { None });
+        let squad_callback = squad_update.unwrap_or(quote! { ::std::option::Option::None });
+        let lang_callback = language_changed.unwrap_or(quote! { ::std::option::Option::None });
+        let keybind_callback = keybind_changed.unwrap_or(quote! { ::std::option::Option::None });
+        let chat_callback = chat_message.unwrap_or(quote! { ::std::option::Option::None });
 
         let convert_addon = quote! {
             let addon = addon.as_ref().expect("unofficial extras did not provide addon info in init");
@@ -84,13 +87,13 @@ impl ExtrasGen {
         let content = if let Some(raw) = &self.raw_extras_init {
             let span = syn::Error::new_spanned(raw, "").span();
             quote_spanned! {span=>
-                let raw = (#raw) as RawExtrasSubscriberInit;
-                raw(addon, sub)
+                const RAW: ::arcdps::extras::callbacks::RawExtrasSubscriberInit = #raw;
+                RAW(addon, sub)
             }
         } else if let Some(safe) = &self.extras_init {
             let span = syn::Error::new_spanned(safe, "").span();
             quote_spanned! {span=>
-                const SAFE: ExtrasInitFunc = #safe;
+                const SAFE: ::arcdps::extras::callbacks::ExtrasInitFunc = #safe;
 
                 #convert_addon
                 #subscribe
@@ -111,7 +114,7 @@ impl ExtrasGen {
 
         quote_spanned! {content.span()=>
             #[no_mangle]
-            unsafe extern "system" fn arcdps_unofficial_extras_subscriber_init(
+            unsafe extern #SYSTEM_ABI fn arcdps_unofficial_extras_subscriber_init(
                 addon: *const ::arcdps::extras::RawExtrasAddonInfo,
                 sub: *mut ::arcdps::extras::ExtrasSubscriberInfo
             ) {
@@ -128,11 +131,11 @@ impl ExtrasGen {
             quote! { abstract_extras_squad_update },
             |safe, span| {
                 quote_spanned! {span=>
-                    unsafe extern "C" fn abstract_extras_squad_update(
+                    unsafe extern #C_ABI fn abstract_extras_squad_update(
                         users: *const ::arcdps::extras::user::RawUserInfo,
-                        count: u64
+                        count: ::std::primitive::u64
                     ) {
-                        const SAFE: ExtrasSquadUpdateCallback = #safe;
+                        const SAFE: ::arcdps::extras::callbacks::ExtrasSquadUpdateCallback = #safe;
 
                         SAFE(::arcdps::extras::user::to_user_info_iter(users, count))
                     }
@@ -149,8 +152,8 @@ impl ExtrasGen {
             quote! { abstract_extras_language_changed },
             |safe, span| {
                 quote_spanned! {span=>
-                    unsafe extern "C" fn abstract_extras_language_changed(language: ::arcdps::evtc::Language) {
-                        const SAFE: ExtrasLanguageChangedCallback = #safe;
+                    unsafe extern #C_ABI fn abstract_extras_language_changed(language: ::arcdps::evtc::Language) {
+                        const SAFE: ::arcdps::extras::callbacks::ExtrasLanguageChangedCallback = #safe;
 
                         SAFE(language)
                     }
@@ -167,8 +170,8 @@ impl ExtrasGen {
             quote! { abstract_extras_keybind_changed },
             |safe, span| {
                 quote_spanned! {span=>
-                    unsafe extern "C" fn abstract_extras_keybind_changed(changed: ::arcdps::extras::keybinds::RawKeybindChange) {
-                        const SAFE: ExtrasKeybindChangedCallback = #safe;
+                    unsafe extern #C_ABI fn abstract_extras_keybind_changed(changed: ::arcdps::extras::keybinds::RawKeybindChange) {
+                        const SAFE: ::arcdps::extras::callbacks::ExtrasKeybindChangedCallback = #safe;
 
                         SAFE(changed.into())
                     }
@@ -185,8 +188,8 @@ impl ExtrasGen {
             quote! { abstract_extras_chat_message },
             |safe, span| {
                 quote_spanned! {span=>
-                    unsafe extern "C" fn abstract_extras_chat_message(info: *const ::arcdps::extras::message::RawChatMessageInfo) {
-                        const SAFE: ExtrasChatMessageCallback = #safe;
+                    unsafe extern #C_ABI fn abstract_extras_chat_message(info: *const ::arcdps::extras::message::RawChatMessageInfo) {
+                        const SAFE: ::arcdps::extras::callbacks::ExtrasChatMessageCallback = #safe;
 
                         let info = info.as_ref()
                             .expect("unofficial extras did not provide message info in chat message callback")

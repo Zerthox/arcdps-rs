@@ -1,4 +1,7 @@
-use crate::{ArcDpsGen, CallbackInfo};
+use crate::{
+    abi::{C_ABI, SYSTEM_ABI},
+    ArcDpsGen, CallbackInfo,
+};
 use proc_macro2::{Span, TokenStream};
 use quote::{quote, quote_spanned};
 use syn::Expr;
@@ -10,12 +13,12 @@ impl ArcDpsGen {
             let span = syn::Error::new_spanned(init, "").span();
             quote_spanned! {span=>
                 {
-                    const SAFE: InitFunc = #init;
+                    const SAFE: ::arcdps::callbacks::InitFunc = #init;
                     SAFE()
                 }
             }
         } else {
-            quote! { Ok(()) }
+            quote! { ::std::result::Result::Ok(()) }
         }
     }
 
@@ -25,7 +28,7 @@ impl ArcDpsGen {
             let span = syn::Error::new_spanned(release, "").span();
             quote_spanned! {span=>
                 {
-                    const SAFE: ReleaseFunc = #release;
+                    const SAFE: ::arcdps::callbacks::ReleaseFunc = #release;
                     SAFE()
                 }
             }
@@ -39,13 +42,13 @@ impl ArcDpsGen {
         if let Some(update_url) = &self.update_url {
             let span = syn::Error::new_spanned(update_url, "").span();
             quote_spanned! {span=>
-                static mut UPDATE_URL: Vec<u16> = Vec::new();
+                static mut UPDATE_URL: ::std::vec::Vec<u16> = ::std::vec::Vec::new();
 
                 #[no_mangle]
-                pub unsafe extern "system" fn get_update_url() -> *const u16 {
-                    const SAFE: UpdateUrlFunc = #update_url;
+                pub unsafe extern #SYSTEM_ABI fn get_update_url() -> *const ::std::primitive::u16 {
+                    const SAFE: ::arcdps::callbacks::UpdateUrlFunc = #update_url;
 
-                    if let Some(url) = SAFE() {
+                    if let ::std::option::Option::Some(url) = SAFE() {
                         UPDATE_URL = ::arcdps::__macro::str_to_wide(url);
                         UPDATE_URL.as_ptr()
                     } else {
@@ -83,16 +86,19 @@ impl ArcDpsGen {
     /// Helper to generate a wnd callback wrapper.
     fn wnd_wrapper(name: TokenStream, safe: &Expr, span: Span) -> TokenStream {
         quote_spanned! {span=>
-            unsafe extern "C" fn #name(
-                _h_wnd: HWND,
-                u_msg: u32,
-                w_param: WPARAM,
-                l_param: LPARAM,
-            ) -> u32 {
-                const SAFE: WndProcCallback = #safe;
+            unsafe extern #C_ABI fn #name(
+                _h_wnd: ::arcdps::__macro::HWND,
+                u_msg: ::std::primitive::u32,
+                w_param: ::arcdps::__macro::WPARAM,
+                l_param: ::arcdps::__macro::LPARAM,
+            ) -> ::std::primitive::u32 {
+                const SAFE: ::arcdps::callbacks::WndProcCallback = #safe;
 
                 match u_msg {
-                    WM_KEYDOWN | WM_KEYUP | WM_SYSKEYDOWN | WM_SYSKEYUP => {
+                    ::arcdps::__macro::WM_KEYDOWN
+                    | ::arcdps::__macro::WM_KEYUP
+                    | ::arcdps::__macro::WM_SYSKEYDOWN
+                    | ::arcdps::__macro::WM_SYSKEYUP => {
                         let key_down = u_msg & 1 == 0;
                         let prev_key_down = (l_param.0 >> 30) & 1 == 1;
 
@@ -116,8 +122,8 @@ impl ArcDpsGen {
             quote! { abstract_options_windows },
             |safe, span| {
                 quote_spanned! {span=>
-                    unsafe extern "C" fn abstract_options_windows(window_name: *const c_char) -> bool {
-                        const SAFE:  OptionsWindowsCallback = #safe;
+                    unsafe extern #C_ABI fn abstract_options_windows(window_name: *const c_char) -> ::std::bool {
+                        const SAFE: ::arcdps::callbacks::OptionsWindowsCallback = #safe;
 
                         SAFE(::arcdps::__macro::ui(), ::arcdps::__macro::str_from_cstr(window_name))
                     }
@@ -134,8 +140,8 @@ impl ArcDpsGen {
             quote! { abstract_options_end },
             |safe, span| {
                 quote_spanned! {span=>
-                    unsafe extern "C" fn abstract_options_end() {
-                        const SAFE: OptionsCallback = #safe;
+                    unsafe extern #C_ABI fn abstract_options_end() {
+                        const SAFE: ::arcdps::callbacks::OptionsCallback = #safe;
 
                         SAFE(::arcdps::__macro::ui())
                     }
@@ -152,8 +158,8 @@ impl ArcDpsGen {
             quote! { abstract_imgui },
             |safe, span| {
                 quote_spanned! {span=>
-                    unsafe extern "C" fn abstract_imgui(loading: u32) {
-                        const SAFE: ImguiCallback = #safe;
+                    unsafe extern #C_ABI fn abstract_imgui(loading: ::std::primitive::u32) {
+                        const SAFE: ::arcdps::callbacks::ImguiCallback = #safe;
 
                         SAFE(::arcdps::__macro::ui(), loading != 0)
                     }
@@ -187,20 +193,20 @@ impl ArcDpsGen {
     /// Helper to generate a combat callback wrapper.
     fn combat_wrapper(name: TokenStream, safe: &Expr, span: Span) -> TokenStream {
         quote_spanned! {span=>
-            unsafe extern "C" fn #name(
+            unsafe extern #C_ABI fn #name(
                 event: *const ::arcdps::evtc::RawCombatEvent,
                 src: *const ::arcdps::evtc::RawAgent,
                 dst: *const ::arcdps::evtc::RawAgent,
-                skill_name: *const c_char,
-                id: u64,
-                revision: u64,
+                skill_name: *const ::arcdps::__macro::c_char,
+                id: ::std::primitive::u64,
+                revision: ::std::primitive::u64,
             ) {
-                const SAFE: CombatCallback = #safe;
+                const SAFE: ::arcdps::callbacks::CombatCallback = #safe;
 
                 SAFE(
-                    event.as_ref().cloned().map(Into::into),
-                    src.as_ref().map(Into::into),
-                    dst.as_ref().map(Into::into),
+                    event.as_ref().cloned().map(::std::convert::Into::into),
+                    src.as_ref().map(::std::convert::Into::into),
+                    dst.as_ref().map(::std::convert::Into::into),
                     ::arcdps::__macro::str_from_cstr(skill_name),
                     id,
                     revision

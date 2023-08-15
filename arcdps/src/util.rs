@@ -54,3 +54,18 @@ pub unsafe fn str_to_wide(string: impl AsRef<str>) -> Vec<u16> {
         .chain(iter::once(0))
         .collect()
 }
+
+/// Helper to define function types with optional unwind ABI.
+macro_rules! abi {
+    ( $( $vis:vis type $name:ident = unsafe extern fn( $( $args:tt )* ) $( -> $ret:ty )? ; )* ) => {
+        $(
+            #[cfg(feature = "unwind")]
+            $vis type $name = unsafe extern "C-unwind" fn( $( $args )* ) $( -> $ret )?;
+
+            #[cfg(not(feature = "unwind"))]
+            $vis type $name = unsafe extern "C" fn( $( $args )* ) $( -> $ret )?;
+        )*
+    };
+}
+
+pub(crate) use abi;
