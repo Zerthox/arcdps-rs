@@ -3,6 +3,7 @@
 use crate::{
     evtc::{Agent, CombatEvent, RawAgent, RawCombatEvent},
     imgui,
+    util::abi,
 };
 use std::os::raw::c_char;
 use windows::Win32::Foundation::{HWND, LPARAM, WPARAM};
@@ -74,19 +75,7 @@ pub type ReleaseFunc = fn();
 
 pub type UpdateUrlFunc = fn() -> Option<String>;
 
-pub type RawWndProcCallback =
-    unsafe extern "C" fn(h_wnd: HWND, u_msg: u32, w_param: WPARAM, l_param: LPARAM) -> u32;
-
 pub type WndProcCallback = fn(key: usize, key_down: bool, prev_key_down: bool) -> bool;
-
-pub type RawCombatCallback = unsafe extern "C" fn(
-    event: *const RawCombatEvent,
-    src: *const RawAgent,
-    dst: *const RawAgent,
-    skill_name: *const c_char,
-    id: u64,
-    revision: u64,
-);
 
 pub type CombatCallback = fn(
     event: Option<CombatEvent>,
@@ -97,14 +86,28 @@ pub type CombatCallback = fn(
     revision: u64,
 );
 
-pub type RawImguiCallback = unsafe extern "C" fn(not_character_select_or_loading: u32);
-
 pub type ImguiCallback = fn(ui: &imgui::Ui, not_character_select_or_loading: bool);
-
-pub type RawOptionsCallback = unsafe extern "C" fn();
 
 pub type OptionsCallback = fn(ui: &imgui::Ui);
 
-pub type RawOptionsWindowsCallback = unsafe extern "C" fn(window_name: *const c_char) -> bool;
-
 pub type OptionsWindowsCallback = fn(ui: &imgui::Ui, window_name: Option<&str>) -> bool;
+
+abi! {
+    pub type RawWndProcCallback =
+        unsafe extern fn(h_wnd: HWND, u_msg: u32, w_param: WPARAM, l_param: LPARAM) -> u32;
+
+    pub type RawCombatCallback = unsafe extern fn(
+        event: *const RawCombatEvent,
+        src: *const RawAgent,
+        dst: *const RawAgent,
+        skill_name: *const c_char,
+        id: u64,
+        revision: u64,
+    );
+
+    pub type RawImguiCallback = unsafe extern fn(not_character_select_or_loading: u32);
+
+    pub type RawOptionsCallback = unsafe extern fn();
+
+    pub type RawOptionsWindowsCallback = unsafe extern fn(window_name: *const c_char) -> bool;
+}

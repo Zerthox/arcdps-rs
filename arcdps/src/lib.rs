@@ -274,22 +274,15 @@ pub struct SupportedFields {
 /// Exports for usage in macros.
 #[doc(hidden)]
 pub mod __macro {
-    pub mod prelude {
-        pub use crate::{
-            callbacks::*,
-            globals::{FreeFn, MallocFn},
-        };
-        pub use std::os::raw::{c_char, c_void};
-        pub use windows::Win32::{
-            Foundation::{HMODULE, HWND, LPARAM, WPARAM},
-            UI::WindowsAndMessaging::{WM_KEYDOWN, WM_KEYUP, WM_SYSKEYDOWN, WM_SYSKEYUP},
-        };
-
-        #[cfg(feature = "extras")]
-        pub use crate::extras::callbacks::*;
-    }
-
-    pub use crate::util::{str_from_cstr, str_to_wide, strip_account_prefix};
+    pub use crate::{
+        globals::{FreeFn, MallocFn},
+        util::{str_from_cstr, str_to_wide, strip_account_prefix},
+    };
+    pub use std::os::raw::{c_char, c_void};
+    pub use windows::Win32::{
+        Foundation::{HMODULE, HWND, LPARAM, WPARAM},
+        UI::WindowsAndMessaging::{WM_KEYDOWN, WM_KEYUP, WM_SYSKEYDOWN, WM_SYSKEYUP},
+    };
 
     use crate::{
         exports::{has_e3_log_file, has_e8_log_window},
@@ -297,7 +290,6 @@ pub mod __macro {
         imgui,
         panic::init_panic_hook,
     };
-    use prelude::*;
 
     #[cfg(feature = "log")]
     use crate::log::ArcDpsLogger;

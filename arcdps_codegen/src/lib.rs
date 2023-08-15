@@ -1,3 +1,4 @@
+mod abi;
 mod callbacks;
 mod export;
 mod parse;
@@ -5,13 +6,13 @@ mod parse;
 #[cfg(feature = "extras")]
 mod extras;
 
-#[cfg(feature = "extras")]
-use extras::ExtrasGen;
-
 use cfg_if::cfg_if;
 use proc_macro2::{Span, TokenStream};
 use quote::{quote, quote_spanned};
 use syn::{Expr, LitStr};
+
+#[cfg(feature = "extras")]
+use extras::ExtrasGen;
 
 /// Creates plugin exports for ArcDPS.
 #[proc_macro]
@@ -34,7 +35,6 @@ pub fn export(item: proc_macro::TokenStream) -> proc_macro::TokenStream {
     let result = quote! {
         mod __arcdps_gen_export {
             use super::*;
-            use ::arcdps::__macro::prelude::*;
 
             #export
 
@@ -141,7 +141,7 @@ impl CallbackInfo {
         wrapper: impl FnOnce(&Expr, Span) -> TokenStream,
     ) -> CallbackInfo {
         Self::build_optional(raw, safe, name, wrapper)
-            .unwrap_or_else(|| CallbackInfo::new(quote! {}, quote! { None }))
+            .unwrap_or_else(|| CallbackInfo::new(quote! {}, quote! { ::std::option::Option::None }))
     }
 
     /// Helper to build an optional callback.
@@ -155,13 +155,13 @@ impl CallbackInfo {
     ) -> Option<CallbackInfo> {
         if let Some(raw) = raw {
             let span = syn::Error::new_spanned(raw, "").span();
-            let value = quote_spanned!(span=> Some((#raw) as _) );
+            let value = quote_spanned!(span=> ::std::option::Option::Some((#raw) as _) );
 
             Some(CallbackInfo::new(quote! {}, value))
         } else if let Some(safe) = safe {
             let span = syn::Error::new_spanned(safe, "").span();
             let func = wrapper(safe, span);
-            let value = quote_spanned!(span=> Some(self::#name as _) );
+            let value = quote_spanned!(span=> ::std::option::Option::Some(self::#name as _) );
 
             Some(CallbackInfo::new(func, value))
         } else {

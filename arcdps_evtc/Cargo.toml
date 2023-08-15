@@ -7,7 +7,7 @@ description = "Rust bindings for the ArcDPS EVTC API"
 repository = "https://github.com/zerthox/arcdps-bindings"
 
 [dependencies]
-num_enum = "0.6.0"
+num_enum = "0.7.0"
 serde = { version = "1.0.160", features = ["derive"], optional = true }
 strum = { version = "0.25.0", features = ["derive"], optional = true }
 
