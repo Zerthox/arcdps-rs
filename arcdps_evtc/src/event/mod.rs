@@ -1,9 +1,11 @@
 mod common;
 mod kind;
+mod old;
 mod raw;
 
 pub use self::common::*;
 pub use self::kind::*;
+pub use self::old::*;
 pub use self::raw::*;
 
 use crate::{
