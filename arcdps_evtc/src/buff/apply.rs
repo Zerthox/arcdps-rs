@@ -12,6 +12,7 @@ use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct BuffApplyEvent {
+    #[serde(flatten)]
     pub common: CommonEvent,
     pub buff: u8,
     pub duration: i32,

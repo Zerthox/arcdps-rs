@@ -11,6 +11,7 @@ use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct StrikeEvent {
+    #[serde(flatten)]
     pub common: CommonEvent,
     pub kind: Strike,
     pub total_damage: i32,

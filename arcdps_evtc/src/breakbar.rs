@@ -1,4 +1,7 @@
-use num_enum::{IntoPrimitive, TryFromPrimitive};
+use std::mem::transmute;
+
+use crate::{AgentId, CombatEvent, Extract};
+use num_enum::{FromPrimitive, IntoPrimitive};
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
@@ -6,11 +9,54 @@ use serde::{Deserialize, Serialize};
 #[cfg(feature = "strum")]
 use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
 
+/// Breakbar state changed.
+#[derive(Debug, Clone)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
+pub struct BreakbarStateEvent {
+    pub time: u64,
+    pub agent: AgentId,
+    pub state: BreakbarState,
+}
+
+impl Extract for BreakbarStateEvent {
+    #[inline]
+    unsafe fn extract(event: &CombatEvent) -> Self {
+        Self {
+            time: event.time,
+            agent: AgentId::from_src(event),
+            state: (event.value as u16).into(),
+        }
+    }
+}
+
+/// Breakbar percent changed.
+#[derive(Debug, Clone)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
+pub struct BreakbarPercentEvent {
+    pub time: u64,
+    pub agent: AgentId,
+    pub health: f32,
+}
+
+impl Extract for BreakbarPercentEvent {
+    #[inline]
+    unsafe fn extract(event: &CombatEvent) -> Self {
+        #[allow(clippy::transmute_int_to_float)]
+        let health = transmute(event.value);
+
+        Self {
+            time: event.time,
+            agent: AgentId::from_src(event),
+            health,
+        }
+    }
+}
+
 /// Breakbar (defiance bar) states.
 ///
 /// Occurs in [`StateChange::BreakbarState`](crate::StateChange::BreakbarState) events.
 #[derive(
-    Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, TryFromPrimitive,
+    Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
 )]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[cfg_attr(
@@ -30,4 +76,8 @@ pub enum BreakbarState {
 
     /// No defiance.
     None = 3,
+
+    /// Unknown state.
+    #[num_enum(catch_all)]
+    Unknown(u16),
 }

@@ -1,93 +1,197 @@
+use crate::{
+    ActivationEvent, AgentId, AgentStatusEvent, BarrierUpdateEvent, BreakbarPercentEvent,
+    BreakbarStateEvent, BuffApplyEvent, BuffDamageEvent, BuffFormula, BuffInfo, BuffRemoveEvent,
+    CombatEvent, Effect, EffectGUID, EffectOld, EnterCombatEvent, HealthUpdateEvent, Language,
+    LogEvent, MaxHealthEvent, PositionEvent, SkillInfo, SkillTiming, StrikeEvent,
+};
+
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
 
-#[cfg(feature = "strum")]
-use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
-
 /// Possible [`CombatEvent`] kinds.
-#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
-#[cfg_attr(
-    feature = "strum",
-    derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames)
-)]
 pub enum EventKind {
-    /// State change event. See variants of [`StateChange`] for details.
-    StateChange,
+    /// Agent entered combat.
+    EnterCombat(EnterCombatEvent),
+
+    /// Agent left combat.
+    ExitCombat(AgentStatusEvent),
+
+    /// Agent is now alive.
+    ChangeUp(AgentStatusEvent),
+
+    /// Agent is now dead.
+    ChangeDead(AgentStatusEvent),
+
+    /// Agent is now downed.
+    ChangeDown(AgentStatusEvent),
+
+    /// Agent is now in game tracking range.
+    Spawn(AgentStatusEvent),
+
+    /// Agent is no longer being tracked or out of game tracking range.
+    Despawn(AgentStatusEvent),
+
+    /// Agent health change.
+    HealthUpdate(HealthUpdateEvent),
+
+    /// Log started.
+    LogStart(LogEvent),
+
+    /// Log ended.
+    LogEnd(LogEvent),
+
+    /// Agent swapped weapon set.
+    WeaponSwap(AgentStatusEvent),
+
+    /// Agent maximum health change.
+    MaxHealthUpdate(MaxHealthEvent),
+
+    /// Agent is "recording" player.
+    PointOfView(AgentStatusEvent),
+
+    /// Game text language.
+    Language(Language),
+
+    /// Game build.
+    GWBuild(u64),
+
+    /// Sever shard id.
+    ShardId(u64),
+
+    /// Agent got a reward chest.
+    Reward(AgentStatusEvent),
+
+    /// Appears once per buff per agent on logging start.
+    BuffInitial(BuffApplyEvent),
+
+    /// Agent position change.
+    Position(PositionEvent),
+
+    /// Agent velocity change.
+    Velocity(PositionEvent),
+
+    /// Agent facing change.
+    Facing(PositionEvent),
+
+    /// Agent team change.
+    TeamChange(AgentStatusEvent),
+
+    /// Agent is now an attack target.
+    AttackTarget {
+        time: u64,
+        agent: AgentId,
+        parent_agent: AgentId,
+        targetable_state: i32,
+    },
+
+    /// Agent targetability change.
+    Targetable {
+        time: u64,
+        agent: AgentId,
+        targetable: bool,
+    },
+
+    /// Map id.
+    MapId(u64),
+
+    /// Agent with active buff.
+    StackActive {
+        time: u64,
+        agent: AgentId,
+        stack_id: u64,
+    },
+
+    /// Agent with reset buff.
+    StackReset {
+        time: u64,
+        agent: AgentId,
+        duration: i32,
+        stack_id: u64,
+    },
+
+    /// Agent is in guild.
+    Guild { agent: AgentId, guild: u128 },
+
+    /// Buff information.
+    BuffInfo(BuffInfo),
+
+    /// Buff formula.
+    BuffFormula(BuffFormula),
+
+    /// Skill information.
+    SkillInfo(SkillInfo),
+
+    /// Skill action.
+    SkillTiming(SkillTiming),
+
+    /// Agent breakbar state change.
+    BreakbarState(BreakbarStateEvent),
+
+    /// Breakbar percentage.
+    BreakbarPercent(BreakbarPercentEvent),
+
+    /// Error.
+    Error(String),
+
+    /// Agent has tag.
+    Tag { agent: AgentId, tag: u32 },
+
+    /// Agent barrier change.
+    BarrierUpdate(BarrierUpdateEvent),
+
+    /// Arc UI stats reset.
+    StatReset { target: u64 },
+
+    /// A custom event created by an extension (addon/plugin).
+    Extension(CombatEvent),
+
+    /// Delayed combat event.
+    ApiDelayed(CombatEvent),
+
+    /// Instance started.
+    InstanceStart(u64),
+
+    /// Tick rate.
+    Tickrate(u64),
+
+    /// Last 90% before down.
+    Last90BeforeDown(),
+
+    /// Effect created or ended.
+    EffectOld(EffectOld),
+
+    /// Id to GUID.
+    IdToGUID(EffectGUID),
+
+    /// Log NPC changed.
+    LogNPCUpdate(LogEvent),
+
+    /// A custom combat event created by an extension (addon/plugin).
+    ExtensionCombat(CombatEvent),
+
+    /// Fractal scale.
+    FractalScale(u64),
+
+    /// Effect created or ended.
+    Effect(Effect),
 
     /// Activation (cast) event.
-    ///
-    /// `is_activation` contains [`Activation`] (except [`Activation::None`]).
-    ///
-    /// For [`Activation::Normal`] and [`Activation::Quickness`]:
-    /// `value` contains the duration at which all "significant" effects associated with the cast have happened (for example damage hits).
-    /// `buff_dmg` contains the duration at which control is expected to be returned to the character (for example aftercasts).
-    ///
-    /// For [`Activation::CancelFire`] and [`Activation::CancelCancel`]:
-    /// `value` contains the time spent in animation.
-    /// `buff_dmg` contains the duration of the scaled (as if not affected) time spent.
-    ///
-    /// `dst_agent` contains x/y of target of skill effect.
-    /// `overstack_value` contains z of target of skill effect.
-    ///
-    /// All durations and times are given in milliseconds.
-    ///
-    /// For skill data see [`SkillInfo`] and [`SkillTiming`].
-    Activation,
+    Activation(ActivationEvent),
 
     /// Buff removed.
-    ///
-    /// `is_buffremove` contains [`BuffRemove`] (except [`BuffRemove::None`]).
-    /// `skill_id` contains the buff id.
-    /// `buff` will be non-zero.
-    ///
-    /// `src_agent` is agent that had buff removed.
-    /// `dst_agent` is the agent that caused the buff to be removed.
-    ///
-    /// `value` contains the remaining time on the removed buff calculated as duration.
-    /// `buff_dmg` contains the remaining time on the removed buff calculated as intensity
-    /// *Warning: this can overflow on [`BuffRemove::All`], use as sum check only!*
-    ///
-    /// For [`BuffRemove::All`] `result` contains the number of stacks removed
-    ///
-    /// For [`BuffRemove::Single`] `pad61` to `pad64` contains the buff instance id of buff removed.
-    ///
-    /// For buff data see [`BuffInfo`] and [`BuffFormula`].
-    BuffRemove,
+    BuffRemove(BuffRemoveEvent),
 
     /// Buff applied.
-    ///
-    /// `skill_id` contains the buff id.
-    /// `buff` will be non-zero.
-    ///
-    /// `value` contains the duration in milliseconds applied.
-    /// `pad61` to `pad64` contains the buff instance id of the buff applied.
-    /// `is_shields` contains the stack active status.
-    ///
-    /// If `is_offcycle == 0`, `overstack_value` contains the duration of the existing buff stack that is expected to be replaced.
-    /// If `is_offcycle != 0`, `overstack_value` contains the new duration of the existing buff stack and `value` contains the duration change (no new buff stack added).
-    ///
-    /// For buff data see [`BuffInfo`] and [`BuffFormula`].
-    BuffApply,
+    BuffApply(BuffApplyEvent),
 
     /// Buff damage.
-    ///
-    /// `skill_id` contains the buff id.
-    /// `buff` will be non-zero.
-    ///
-    /// `buff_dmg` contains the damage dealt in Arc's damage simulation.
-    /// If `is_offcycle == 0`, damage is accumulated by tick (for example Bleeding tick).
-    /// If `is_offcycle != 0`, damage is accumulated reactively (for example Confusion damage on skill use).
-    /// `result` contains `0` if expected to hit, `1` for invulnerability by buff and `2`/`3`/`4` for invulnerability by skill.
-    ///
-    /// For buff data see [`BuffInfo`] and [`BuffFormula`].
-    BuffDamage,
+    BuffDamage(BuffDamageEvent),
 
     /// Direct (strike) damage.
-    ///
-    /// `value` contains the combined shield (barrier) and health damage dealt.
-    /// `overstack_value` contains the shield (barrier) damage dealt.
-    /// `is_offcycle == 1` if target is currently downed.
-    /// `result` contains [`Strike`](crate::Strike).
-    DirectDamage,
+    Strike(StrikeEvent),
+
+    /// Unknown event.
+    Unknown(CombatEvent),
 }

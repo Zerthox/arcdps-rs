@@ -1,3 +1,9 @@
+mod agent;
+mod log;
+
+pub use self::agent::*;
+pub use self::log::*;
+
 use num_enum::{FromPrimitive, IntoPrimitive};
 
 #[cfg(feature = "serde")]
@@ -60,7 +66,7 @@ pub enum StateChange {
     /// `value` contains the server Unix timestamp as `u32`.
     /// `buff_dmg` contains the local Unix timestamp.
     ///
-    /// `arc_agent` is `0x637261` (ArcDPS id) if log EVTC and species id if realtime API.
+    /// `src_agent` is `0x637261` (ArcDPS id) if log EVTC and species id if realtime API.
     LogStart = 9,
 
     /// Logging has ended.

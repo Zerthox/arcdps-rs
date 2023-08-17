@@ -1,8 +1,28 @@
-use crate::{CombatEvent, Extract, StateChange};
+use crate::{AgentId, CombatEvent, Extract, StateChange};
 use std::mem::transmute;
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
+
+/// Positional information for an agent.
+#[derive(Debug, Clone)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
+pub struct PositionEvent {
+    pub time: u64,
+    pub agent: AgentId,
+    pub position: Position,
+}
+
+impl Extract for PositionEvent {
+    #[inline]
+    unsafe fn extract(event: &CombatEvent) -> Self {
+        Self {
+            time: event.time,
+            agent: AgentId::from_src(event),
+            position: Position::extract(event),
+        }
+    }
+}
 
 /// Positional information.
 ///

@@ -1,8 +1,10 @@
+mod category;
 mod common;
 mod kind;
 mod old;
 mod raw;
 
+pub use self::category::*;
 pub use self::common::*;
 pub use self::kind::*;
 pub use self::old::*;
@@ -132,25 +134,11 @@ pub struct CombatEvent {
     pub pad64: u8,
 }
 
-// TODO: conversion to rust-like enum?
 impl CombatEvent {
-    /// Determines the kind of event.
-    pub fn kind(&self) -> EventKind {
-        if self.is_statechange != StateChange::None {
-            EventKind::StateChange
-        } else if self.is_activation != Activation::None {
-            EventKind::Activation
-        } else if self.is_buffremove != BuffRemove::None {
-            EventKind::BuffRemove
-        } else if self.buff != 0 {
-            if self.buff_dmg == 0 {
-                EventKind::BuffApply
-            } else {
-                EventKind::BuffDamage
-            }
-        } else {
-            EventKind::DirectDamage
-        }
+    /// Determines the [`EventCategory`] of the event.
+    #[inline]
+    pub fn categorize(&self) -> EventCategory {
+        self.into()
     }
 
     /// Checks whether the event has a timestamp.
@@ -162,11 +150,7 @@ impl CombatEvent {
     /// Retrieves the event time, if present.
     #[inline]
     pub fn time(&self) -> Option<u64> {
-        if self.has_time() {
-            Some(self.time)
-        } else {
-            None
-        }
+        self.has_time().then_some(self.time)
     }
 
     /// Attempts to extract [`Position`] data from the event.
@@ -224,6 +208,7 @@ impl CombatEvent {
 }
 
 impl From<RawCombatEvent> for CombatEvent {
+    #[inline]
     fn from(raw: RawCombatEvent) -> Self {
         Self {
             time: raw.time,
