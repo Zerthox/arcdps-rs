@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\winnow-0.5.1\src\parser.rs`."><title>parser.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-f3501f0f5ae15dfb.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="winnow" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.0 (8ede3aae2 2023-07-12)" data-search-js="search-4926e5fc22a5646a.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-8c76f75bfb6bd192.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../static.files/source-script-11255107d0a65077.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-f0540c1d82cde29b.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../winnow/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\winnow-0.5.12\src\parser.rs`."><title>parser.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-f3501f0f5ae15dfb.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="winnow" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.1 (eb26296b5 2023-08-03)" data-search-js="search-4926e5fc22a5646a.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-8c76f75bfb6bd192.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../static.files/source-script-11255107d0a65077.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-f0540c1d82cde29b.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../winnow/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -957,6 +957,24 @@
 <a href="#957" id="957">957</a>
 <a href="#958" id="958">958</a>
 <a href="#959" id="959">959</a>
+<a href="#960" id="960">960</a>
+<a href="#961" id="961">961</a>
+<a href="#962" id="962">962</a>
+<a href="#963" id="963">963</a>
+<a href="#964" id="964">964</a>
+<a href="#965" id="965">965</a>
+<a href="#966" id="966">966</a>
+<a href="#967" id="967">967</a>
+<a href="#968" id="968">968</a>
+<a href="#969" id="969">969</a>
+<a href="#970" id="970">970</a>
+<a href="#971" id="971">971</a>
+<a href="#972" id="972">972</a>
+<a href="#973" id="973">973</a>
+<a href="#974" id="974">974</a>
+<a href="#975" id="975">975</a>
+<a href="#976" id="976">976</a>
+<a href="#977" id="977">977</a>
 </pre></div><pre class="rust"><code><span class="doccomment">//! Basic types to build the parsers
 
 </span><span class="kw">use </span><span class="kw">crate</span>::combinator::<span class="kw-2">*</span>;
@@ -1087,6 +1105,7 @@
     ///   }
     /// }
     /// ```
+    </span><span class="attr">#[inline(always)]
     </span><span class="kw">fn </span>by_ref(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; ByRef&lt;<span class="lifetime">&#39;_</span>, <span class="self">Self</span>&gt;
     <span class="kw">where
         </span><span class="self">Self</span>: core::marker::Sized,
@@ -1110,6 +1129,7 @@
     /// # }
     /// ```
     </span><span class="attr">#[doc(alias = <span class="string">&quot;to&quot;</span>)]
+    #[inline(always)]
     </span><span class="kw">fn </span>value&lt;O2&gt;(<span class="self">self</span>, val: O2) -&gt; Value&lt;<span class="self">Self</span>, I, O, O2, E&gt;
     <span class="kw">where
         </span><span class="self">Self</span>: core::marker::Sized,
@@ -1133,6 +1153,7 @@
     /// assert_eq!(parser.parse_peek(&quot;123abcd;&quot;), Err(ErrMode::Backtrack(InputError::new(&quot;123abcd;&quot;, ErrorKind::Slice))));
     /// # }
     /// ```
+    </span><span class="attr">#[inline(always)]
     </span><span class="kw">fn </span>void(<span class="self">self</span>) -&gt; Void&lt;<span class="self">Self</span>, I, O, E&gt;
     <span class="kw">where
         </span><span class="self">Self</span>: core::marker::Sized,
@@ -1161,6 +1182,7 @@
     /// assert_eq!(bytes, Ok((&quot;&quot;, vec![97, 98, 99, 100])));
     /// # }
     /// ```
+    </span><span class="attr">#[inline(always)]
     </span><span class="kw">fn </span>output_into&lt;O2&gt;(<span class="self">self</span>) -&gt; OutputInto&lt;<span class="self">Self</span>, I, O, O2, E&gt;
     <span class="kw">where
         </span><span class="self">Self</span>: core::marker::Sized,
@@ -1186,6 +1208,7 @@
     /// # }
     /// ```
     </span><span class="attr">#[doc(alias = <span class="string">&quot;concat&quot;</span>)]
+    #[inline(always)]
     </span><span class="kw">fn </span>recognize(<span class="self">self</span>) -&gt; Recognize&lt;<span class="self">Self</span>, I, O, E&gt;
     <span class="kw">where
         </span><span class="self">Self</span>: core::marker::Sized,
@@ -1231,6 +1254,7 @@
     /// assert_eq!(recognize_parser.parse_peek(&quot;abcd&quot;), consumed_parser.parse_peek(&quot;abcd&quot;));
     /// ```
     </span><span class="attr">#[doc(alias = <span class="string">&quot;consumed&quot;</span>)]
+    #[inline(always)]
     </span><span class="kw">fn </span>with_recognized(<span class="self">self</span>) -&gt; WithRecognized&lt;<span class="self">Self</span>, I, O, E&gt;
     <span class="kw">where
         </span><span class="self">Self</span>: core::marker::Sized,
@@ -1255,6 +1279,7 @@
     /// assert_eq!(parser.parse(Located::new(&quot;abcd,efgh&quot;)), Ok((0..4, 5..9)));
     /// assert_eq!(parser.parse_peek(Located::new(&quot;abcd;&quot;)),Err(ErrMode::Backtrack(InputError::new(Located::new(&quot;abcd;&quot;).peek_slice(4).0, ErrorKind::Verify))));
     /// ```
+    </span><span class="attr">#[inline(always)]
     </span><span class="kw">fn </span>span(<span class="self">self</span>) -&gt; Span&lt;<span class="self">Self</span>, I, O, E&gt;
     <span class="kw">where
         </span><span class="self">Self</span>: core::marker::Sized,
@@ -1303,6 +1328,7 @@
     /// assert_eq!(recognize_parser.parse_peek(Located::new(&quot;abcd&quot;)), consumed_parser.parse_peek(Located::new(&quot;abcd&quot;)));
     /// # }
     /// ```
+    </span><span class="attr">#[inline(always)]
     </span><span class="kw">fn </span>with_span(<span class="self">self</span>) -&gt; WithSpan&lt;<span class="self">Self</span>, I, O, E&gt;
     <span class="kw">where
         </span><span class="self">Self</span>: core::marker::Sized,
@@ -1329,6 +1355,7 @@
     /// assert_eq!(parser.parse_peek(&quot;abc&quot;), Err(ErrMode::Backtrack(InputError::new(&quot;abc&quot;, ErrorKind::Slice))));
     /// # }
     /// ```
+    </span><span class="attr">#[inline(always)]
     </span><span class="kw">fn </span>map&lt;G, O2&gt;(<span class="self">self</span>, map: G) -&gt; Map&lt;<span class="self">Self</span>, G, I, O, O2, E&gt;
     <span class="kw">where
         </span>G: Fn(O) -&gt; O2,
@@ -1358,6 +1385,7 @@
     /// assert_eq!(parse.parse_peek(&quot;123456&quot;), Err(ErrMode::Backtrack(InputError::new(&quot;123456&quot;, ErrorKind::Verify))));
     /// # }
     /// ```
+    </span><span class="attr">#[inline(always)]
     </span><span class="kw">fn </span>try_map&lt;G, O2, E2&gt;(<span class="self">self</span>, map: G) -&gt; TryMap&lt;<span class="self">Self</span>, G, I, O, O2, E, E2&gt;
     <span class="kw">where
         </span><span class="self">Self</span>: core::marker::Sized,
@@ -1392,6 +1420,7 @@
     </span><span class="attr">#[doc(alias = <span class="string">&quot;satisfy_map&quot;</span>)]
     #[doc(alias = <span class="string">&quot;filter_map&quot;</span>)]
     #[doc(alias = <span class="string">&quot;map_opt&quot;</span>)]
+    #[inline(always)]
     </span><span class="kw">fn </span>verify_map&lt;G, O2&gt;(<span class="self">self</span>, map: G) -&gt; VerifyMap&lt;<span class="self">Self</span>, G, I, O, O2, E&gt;
     <span class="kw">where
         </span><span class="self">Self</span>: core::marker::Sized,
@@ -1434,6 +1463,7 @@
     /// assert_eq!(length_data.parse_peek(&amp;[2, 0, 1, 2][..]), Ok((&amp;[2][..], &amp;[0, 1][..])));
     /// assert_eq!(length_data.parse_peek(&amp;[4, 0, 1, 2][..]), Err(ErrMode::Backtrack(InputError::new(&amp;[0, 1, 2][..], ErrorKind::Slice))));
     /// ```
+    </span><span class="attr">#[inline(always)]
     </span><span class="kw">fn </span>flat_map&lt;G, H, O2&gt;(<span class="self">self</span>, map: G) -&gt; FlatMap&lt;<span class="self">Self</span>, G, H, I, O, O2, E&gt;
     <span class="kw">where
         </span><span class="self">Self</span>: core::marker::Sized,
@@ -1460,6 +1490,7 @@
     /// assert_eq!(digits.parse_peek(&quot;123&quot;), Err(ErrMode::Backtrack(InputError::new(&quot;123&quot;, ErrorKind::Slice))));
     /// # }
     /// ```
+    </span><span class="attr">#[inline(always)]
     </span><span class="kw">fn </span>and_then&lt;G, O2&gt;(<span class="self">self</span>, inner: G) -&gt; AndThen&lt;<span class="self">Self</span>, G, I, O, O2, E&gt;
     <span class="kw">where
         </span><span class="self">Self</span>: core::marker::Sized,
@@ -1490,6 +1521,7 @@
     /// assert_eq!(parser.parse_peek(&quot;abc&quot;), Err(ErrMode::Backtrack(InputError::new(&quot;abc&quot;, ErrorKind::Slice))));
     /// ```
     </span><span class="attr">#[doc(alias = <span class="string">&quot;from_str&quot;</span>)]
+    #[inline(always)]
     </span><span class="kw">fn </span>parse_to&lt;O2&gt;(<span class="self">self</span>) -&gt; ParseTo&lt;<span class="self">Self</span>, I, O, O2, E&gt;
     <span class="kw">where
         </span><span class="self">Self</span>: core::marker::Sized,
@@ -1521,6 +1553,7 @@
     /// ```
     </span><span class="attr">#[doc(alias = <span class="string">&quot;satisfy&quot;</span>)]
     #[doc(alias = <span class="string">&quot;filter&quot;</span>)]
+    #[inline(always)]
     </span><span class="kw">fn </span>verify&lt;G, O2&gt;(<span class="self">self</span>, filter: G) -&gt; Verify&lt;<span class="self">Self</span>, G, I, O, O2, E&gt;
     <span class="kw">where
         </span><span class="self">Self</span>: core::marker::Sized,
@@ -1538,6 +1571,7 @@
     /// This is used mainly to add user friendly information
     /// to errors when backtracking through a parse tree.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;labelled&quot;</span>)]
+    #[inline(always)]
     </span><span class="kw">fn </span>context&lt;C&gt;(<span class="self">self</span>, context: C) -&gt; Context&lt;<span class="self">Self</span>, I, O, E, C&gt;
     <span class="kw">where
         </span><span class="self">Self</span>: core::marker::Sized,
@@ -1563,6 +1597,7 @@
     /// assert_eq!(parser.parse_peek(Partial::new(&quot;abcd&quot;)), Err(ErrMode::Backtrack(InputError::new(Partial::new(&quot;abcd&quot;), ErrorKind::Complete))));
     /// # }
     /// ```
+    </span><span class="attr">#[inline(always)]
     </span><span class="kw">fn </span>complete_err(<span class="self">self</span>) -&gt; CompleteErr&lt;<span class="self">Self</span>&gt;
     <span class="kw">where
         </span><span class="self">Self</span>: core::marker::Sized,
@@ -1571,6 +1606,7 @@
     }
 
     <span class="doccomment">/// Convert the parser&#39;s error to another type using [`std::convert::From`]
+    </span><span class="attr">#[inline(always)]
     </span><span class="kw">fn </span>err_into&lt;E2&gt;(<span class="self">self</span>) -&gt; ErrInto&lt;<span class="self">Self</span>, I, O, E, E2&gt;
     <span class="kw">where
         </span><span class="self">Self</span>: core::marker::Sized,
