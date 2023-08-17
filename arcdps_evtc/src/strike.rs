@@ -61,19 +61,19 @@ pub enum Strike {
     /// Skill downed the target.
     ///
     /// Not a damage strike.
-    Downed = 10,
+    Downed = 9,
 
     /// Skill dealt breakbar damage.
     ///
     /// Not a damage strike.
-    Breakbar = 11,
+    Breakbar = 10,
 
     /// On-activation event.
     ///
     /// Not a damage strike.
     ///
     /// *Arc: Source hit target if damaging buff.*
-    Activation = 12,
+    Activation = 11,
 }
 
 impl Strike {

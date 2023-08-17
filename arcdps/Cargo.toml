@@ -1,6 +1,6 @@
 [package]
 name = "arcdps"
-version = "0.12.0"
+version = "0.12.1"
 authors = ["Zerthox", "Greaka"]
 edition = "2021"
 description = "Rust bindings for ArcDPS plugins"
