@@ -1,6 +1,5 @@
+use crate::{event::CommonEvent, CombatEvent, Extract};
 use std::mem::transmute;
-
-use crate::{CombatEvent, CommonEvent, Extract};
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};

@@ -1,5 +1,10 @@
+mod affinity;
+mod status;
+
+pub use self::affinity::*;
+pub use self::status::*;
+
 use crate::CombatEvent;
-use num_enum::{FromPrimitive, IntoPrimitive};
 use std::mem;
 
 #[cfg(feature = "serde")]
@@ -106,28 +111,4 @@ impl From<(u32, u32)> for AgentKind {
     fn from((prof, elite): (u32, u32)) -> Self {
         Self::new(prof, elite)
     }
-}
-
-/// Whether the agent is an ally or enemy.
-///
-/// *Arc calls this "iff" for if friend/foe.*
-#[derive(
-    Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
-)]
-#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
-#[cfg_attr(
-    feature = "strum",
-    derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames)
-)]
-#[repr(u8)]
-pub enum Affinity {
-    /// Allied agent.
-    Friend = 0,
-
-    /// Enemy agent.
-    Foe = 1,
-
-    /// Invalid.
-    #[num_enum(catch_all)]
-    Unknown(u8),
 }

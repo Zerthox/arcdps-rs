@@ -1,4 +1,4 @@
-use crate::{CombatEvent, CommonEvent, Extract};
+use crate::{event::CommonEvent, CombatEvent, Extract};
 use num_enum::{FromPrimitive, IntoPrimitive};
 use std::mem::transmute;
 

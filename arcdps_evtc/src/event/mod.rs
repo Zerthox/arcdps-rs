@@ -10,10 +10,7 @@ pub use self::kind::*;
 pub use self::old::*;
 pub use self::raw::*;
 
-use crate::{
-    Activation, Affinity, BuffFormula, BuffInfo, BuffRemove, Effect, EffectGUID, EffectOld,
-    Position, RawBuffFormula, SkillInfo, SkillTiming, StateChange,
-};
+use crate::{Activation, Affinity, BuffRemove, Position, StateChange};
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
@@ -141,6 +138,12 @@ impl CombatEvent {
         self.into()
     }
 
+    /// Converts the event into its [`EventKind`] representation.
+    #[inline]
+    pub fn into_kind(self) -> EventKind {
+        self.into()
+    }
+
     /// Checks whether the event has a timestamp.
     #[inline]
     pub fn has_time(&self) -> bool {
@@ -156,53 +159,6 @@ impl CombatEvent {
     /// Attempts to extract [`Position`] data from the event.
     #[inline]
     pub fn position(&self) -> Option<Position> {
-        self.try_into().ok()
-    }
-
-    /// Attempts to extract [`Effect`] data from the event.
-    #[inline]
-    pub fn effect(&self) -> Option<Effect> {
-        self.try_into().ok()
-    }
-
-    /// Attempts to extract [`EffectOld`] data from the event.
-    #[inline]
-    pub fn effect_old(&self) -> Option<EffectOld> {
-        self.try_into().ok()
-    }
-
-    /// Attempts to extract [`EffectGUID`] information from the event.
-    #[inline]
-    pub fn effect_guid(&self) -> Option<EffectGUID> {
-        self.try_into().ok()
-    }
-
-    /// Attempts to extract [`BuffInfo`] from the event.
-    pub fn buff_info(&self) -> Option<BuffInfo> {
-        self.try_into().ok()
-    }
-
-    /// Attempts to extract a [`RawBuffFormula`] from the event.
-    #[inline]
-    pub fn raw_buff_formula(&self) -> Option<RawBuffFormula> {
-        self.try_into().ok()
-    }
-
-    /// Attempts to extract a [`BuffFormula`] from the event.
-    #[inline]
-    pub fn buff_formula(&self) -> Option<BuffFormula> {
-        self.try_into().ok()
-    }
-
-    /// Attempts to extract [`SkillInfo`] from the event.
-    #[inline]
-    pub fn skill_info(&self) -> Option<SkillInfo> {
-        self.try_into().ok()
-    }
-
-    /// Attempts to extract [`SkillTiming`] data from the event.
-    #[inline]
-    pub fn skill_timing(&self) -> Option<SkillTiming> {
         self.try_into().ok()
     }
 }

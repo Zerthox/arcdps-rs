@@ -1,4 +1,4 @@
-use crate::{CombatEvent, CommonEvent};
+use crate::{event::CommonEvent, CombatEvent};
 use num_enum::{IntoPrimitive, TryFromPrimitive};
 
 #[cfg(feature = "serde")]

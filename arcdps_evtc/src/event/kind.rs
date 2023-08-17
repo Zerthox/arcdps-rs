@@ -1,8 +1,15 @@
 use crate::{
-    ActivationEvent, AgentId, AgentStatusEvent, BarrierUpdateEvent, BreakbarPercentEvent,
-    BreakbarStateEvent, BuffApplyEvent, BuffDamageEvent, BuffFormula, BuffInfo, BuffRemoveEvent,
-    CombatEvent, Effect, EffectGUID, EffectOld, EnterCombatEvent, HealthUpdateEvent, Language,
-    LogEvent, MaxHealthEvent, PositionEvent, SkillInfo, SkillTiming, StrikeEvent,
+    agent::{
+        AgentStatusEvent, BarrierUpdateEvent, EnterCombatEvent, HealthUpdateEvent, MaxHealthEvent,
+    },
+    breakbar::{BreakbarPercentEvent, BreakbarStateEvent},
+    buff::{BuffApplyEvent, BuffDamageEvent, BuffFormula, BuffInfo, BuffRemoveEvent},
+    effect::{Effect, EffectGUID, EffectOld},
+    log::LogEvent,
+    position::PositionEvent,
+    skill::{ActivationEvent, SkillInfo, SkillTiming},
+    strike::StrikeEvent,
+    AgentId, CombatEvent, Language,
 };
 
 #[cfg(feature = "serde")]
@@ -194,4 +201,12 @@ pub enum EventKind {
 
     /// Unknown event.
     Unknown(CombatEvent),
+}
+
+impl From<CombatEvent> for EventKind {
+    #[inline]
+    fn from(event: CombatEvent) -> Self {
+        // TODO: conversions
+        Self::Unknown(event)
+    }
 }

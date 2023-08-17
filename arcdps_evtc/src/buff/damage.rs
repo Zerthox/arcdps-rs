@@ -1,6 +1,4 @@
-pub use BuffDamageResult as ConditionResult;
-
-use crate::{CombatEvent, CommonEvent, Extract};
+use crate::{event::CommonEvent, CombatEvent, Extract};
 use num_enum::{FromPrimitive, IntoPrimitive, TryFromPrimitive};
 
 #[cfg(feature = "serde")]
