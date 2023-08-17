@@ -1,4 +1,4 @@
-use crate::{CombatEvent, Extract, Position};
+use crate::{AgentId, CombatEvent, Extract, Position};
 use num_enum::{FromPrimitive, IntoPrimitive};
 use std::mem::transmute;
 
@@ -13,9 +13,7 @@ use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct ActivationEvent {
     pub time: u64,
-    pub src_agent: u64,
-    pub src_instance_id: u16,
-    pub src_master_instance_id: u16,
+    pub agent: AgentId,
     pub skill_id: u32,
     pub kind: Activation,
     pub duration: i32,
@@ -30,9 +28,7 @@ impl Extract for ActivationEvent {
         let z = f32::from_bits(event.overstack_value);
         Self {
             time: event.time,
-            src_agent: event.src_agent,
-            src_instance_id: event.src_instance_id,
-            src_master_instance_id: event.src_master_instance_id,
+            agent: AgentId::from_src(event),
             skill_id: event.skill_id,
             kind: event.is_activation,
             duration: event.value,

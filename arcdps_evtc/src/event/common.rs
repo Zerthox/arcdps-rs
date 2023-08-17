@@ -1,4 +1,4 @@
-use crate::{Affinity, CombatEvent};
+use crate::{Affinity, AgentId, CombatEvent};
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
@@ -11,22 +11,10 @@ pub struct CommonEvent {
     pub time: u64,
 
     /// Agent that caused the event.
-    pub src_agent: u64,
+    pub src: AgentId,
 
     /// Agent the event happened to.
-    pub dst_agent: u64,
-
-    /// Instance id of source agent as appears in game at time of event.
-    pub src_instance_id: u16,
-
-    /// Instance id of destination agent as appears in game at time of event.
-    pub dst_instance_id: u16,
-
-    /// If `src_agent` has a master (e.g. is minion), will be equal to instance id of master, zero otherwise.
-    pub src_master_instance_id: u16,
-
-    /// If `dst_agent` has a master (e.g. is minion), will be equal to instance id of master, zero otherwise.
-    pub dst_master_instance_id: u16,
+    pub dst: AgentId,
 
     /// Skill id of the relevant skill (can be zero).
     pub skill_id: u32,
@@ -52,15 +40,12 @@ pub struct CommonEvent {
 }
 
 impl From<&CombatEvent> for CommonEvent {
+    #[inline]
     fn from(event: &CombatEvent) -> Self {
         Self {
             time: event.time,
-            src_agent: event.src_agent,
-            dst_agent: event.dst_agent,
-            src_instance_id: event.src_instance_id,
-            dst_instance_id: event.dst_instance_id,
-            src_master_instance_id: event.src_master_instance_id,
-            dst_master_instance_id: event.dst_master_instance_id,
+            src: AgentId::from_src(event),
+            dst: AgentId::from_dst(event),
             skill_id: event.skill_id,
             affinity: event.affinity,
             is_ninety: event.is_ninety,
