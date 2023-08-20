@@ -1,4 +1,4 @@
-use crate::{CombatEvent, Extract, StateChange};
+use crate::{extract::Extract, CombatEvent, StateChange, TryExtract};
 use num_enum::{IntoPrimitive, TryFromPrimitive};
 use std::mem::transmute;
 
@@ -44,6 +44,13 @@ impl Extract for BuffFormula {
     }
 }
 
+impl TryExtract for BuffFormula {
+    #[inline]
+    fn can_extract(event: &CombatEvent) -> bool {
+        RawBuffFormula::can_extract(event)
+    }
+}
+
 impl From<RawBuffFormula> for BuffFormula {
     #[inline]
     fn from(raw: RawBuffFormula) -> Self {
@@ -64,15 +71,6 @@ impl From<RawBuffFormula> for BuffFormula {
             value: raw.value,
             value_type: raw.value_type,
         }
-    }
-}
-
-impl TryFrom<&CombatEvent> for BuffFormula {
-    type Error = ();
-
-    #[inline]
-    fn try_from(event: &CombatEvent) -> Result<Self, Self::Error> {
-        RawBuffFormula::try_from(event).map(Into::into)
     }
 }
 
@@ -146,15 +144,10 @@ impl Extract for RawBuffFormula {
     }
 }
 
-impl TryFrom<&CombatEvent> for RawBuffFormula {
-    type Error = ();
-
+impl TryExtract for RawBuffFormula {
     #[inline]
-    fn try_from(event: &CombatEvent) -> Result<Self, Self::Error> {
-        match event.is_statechange {
-            StateChange::BuffFormula => Ok(unsafe { Self::extract(event) }),
-            _ => Err(()),
-        }
+    fn can_extract(event: &CombatEvent) -> bool {
+        event.is_statechange == StateChange::BuffFormula
     }
 }
 

@@ -1,4 +1,4 @@
-use crate::{AgentId, CombatEvent, Extract, StateChange};
+use crate::{extract::Extract, AgentId, CombatEvent, StateChange, TryExtract};
 use std::mem::transmute;
 
 #[cfg(feature = "serde")]
@@ -21,6 +21,16 @@ impl Extract for PositionEvent {
             agent: AgentId::from_src(event),
             position: Position::extract(event),
         }
+    }
+}
+
+impl TryExtract for PositionEvent {
+    #[inline]
+    fn can_extract(event: &CombatEvent) -> bool {
+        matches!(
+            event.is_statechange,
+            StateChange::Position | StateChange::Velocity | StateChange::Facing
+        )
     }
 }
 
@@ -147,20 +157,6 @@ impl Extract for Position {
         let z = transmute(event.value);
 
         Self::new(x, y, z)
-    }
-}
-
-impl TryFrom<&CombatEvent> for Position {
-    type Error = ();
-
-    #[inline]
-    fn try_from(event: &CombatEvent) -> Result<Self, Self::Error> {
-        match event.is_statechange {
-            StateChange::Position | StateChange::Velocity | StateChange::Facing => {
-                Ok(unsafe { Self::extract(event) })
-            }
-            _ => Err(()),
-        }
     }
 }
 

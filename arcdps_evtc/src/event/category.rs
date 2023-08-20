@@ -85,32 +85,36 @@ pub enum EventCategory {
     /// For buff data see [`BuffInfo`] and [`BuffFormula`].
     BuffDamage,
 
-    /// Direct (strike) damage.
+    /// Direct damage strike.
     ///
     /// `value` contains the combined shield (barrier) and health damage dealt.
     /// `overstack_value` contains the shield (barrier) damage dealt.
     /// `is_offcycle == 1` if target is currently downed.
     /// `result` contains [`Strike`](crate::Strike).
-    DirectDamage,
+    Strike,
 }
 
 impl From<&CombatEvent> for EventCategory {
     #[inline]
     fn from(event: &CombatEvent) -> Self {
-        if event.is_statechange != StateChange::None {
-            EventCategory::StateChange
-        } else if event.is_activation != Activation::None {
-            EventCategory::Activation
-        } else if event.is_buffremove != BuffRemove::None {
-            EventCategory::BuffRemove
-        } else if event.buff != 0 {
-            if event.buff_dmg == 0 {
-                EventCategory::BuffApply
+        if event.is_statechange == StateChange::None
+            || (event.is_statechange == StateChange::BuffInitial && event.buff != 18)
+        {
+            if event.is_activation != Activation::None {
+                EventCategory::Activation
+            } else if event.is_buffremove != BuffRemove::None {
+                EventCategory::BuffRemove
+            } else if event.buff != 0 {
+                if event.buff_dmg == 0 {
+                    EventCategory::BuffApply
+                } else {
+                    EventCategory::BuffDamage
+                }
             } else {
-                EventCategory::BuffDamage
+                EventCategory::Strike
             }
         } else {
-            EventCategory::DirectDamage
+            EventCategory::StateChange
         }
     }
 }

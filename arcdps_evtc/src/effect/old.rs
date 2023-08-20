@@ -1,5 +1,5 @@
 use super::EffectLocation;
-use crate::{CombatEvent, Extract, Position, StateChange};
+use crate::{extract::Extract, CombatEvent, Position, StateChange, TryExtract};
 use std::mem::transmute;
 
 #[cfg(feature = "serde")]
@@ -66,15 +66,10 @@ impl Extract for EffectOld {
     }
 }
 
-impl TryFrom<&CombatEvent> for EffectOld {
-    type Error = ();
-
+impl TryExtract for EffectOld {
     #[inline]
-    fn try_from(event: &CombatEvent) -> Result<Self, Self::Error> {
-        match event.is_statechange {
-            StateChange::EffectOld => Ok(unsafe { Self::extract(event) }),
-            _ => Err(()),
-        }
+    fn can_extract(event: &CombatEvent) -> bool {
+        event.is_statechange == StateChange::Effect
     }
 }
 

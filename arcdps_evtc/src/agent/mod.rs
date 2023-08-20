@@ -18,7 +18,7 @@ use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct AgentId {
     /// Agent id as assigned by Arc.
-    pub agent: u64,
+    pub id: u64,
 
     /// Instance id of the agent as appears in game at time of event.
     pub instance_id: u16,
@@ -30,9 +30,9 @@ pub struct AgentId {
 impl AgentId {
     /// Creates new agent id information.
     #[inline]
-    pub const fn new(agent: u64, instance_id: u16, master_instance_id: u16) -> Self {
+    pub const fn new(id: u64, instance_id: u16, master_instance_id: u16) -> Self {
         Self {
-            agent,
+            id,
             instance_id,
             master_instance_id,
         }
@@ -40,8 +40,8 @@ impl AgentId {
 
     /// Creates new agent id information without a master.
     #[inline]
-    pub const fn without_master(agent: u64, instance_id: u16) -> Self {
-        Self::new(agent, instance_id, 0)
+    pub const fn without_master(id: u64, instance_id: u16) -> Self {
+        Self::new(id, instance_id, 0)
     }
 
     /// Creates new agent id information from the [`CombatEvent`] source agent.

@@ -1,4 +1,4 @@
-use crate::{event::CommonEvent, CombatEvent, Extract};
+use crate::{event::CommonEvent, extract::Extract, CombatEvent, EventCategory, TryExtract};
 use std::mem::transmute;
 
 #[cfg(feature = "serde")]
@@ -17,7 +17,7 @@ pub struct BuffApplyEvent {
     pub duration: i32,
     pub kind: BuffApplyKind,
     pub stack_active: u8,
-    pub instance_id: u32,
+    pub stack_id: u32,
 }
 
 impl Extract for BuffApplyEvent {
@@ -29,8 +29,15 @@ impl Extract for BuffApplyEvent {
             duration: event.value,
             kind: BuffApplyKind::extract(event),
             stack_active: event.is_shields,
-            instance_id: transmute([event.pad61, event.pad62, event.pad63, event.pad64]),
+            stack_id: transmute([event.pad61, event.pad62, event.pad63, event.pad64]),
         }
+    }
+}
+
+impl TryExtract for BuffApplyEvent {
+    #[inline]
+    fn can_extract(event: &CombatEvent) -> bool {
+        event.categorize() == EventCategory::BuffApply
     }
 }
 

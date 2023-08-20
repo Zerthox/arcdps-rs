@@ -1,4 +1,4 @@
-use crate::{event::CommonEvent, CombatEvent, Extract};
+use crate::{event::CommonEvent, extract::Extract, CombatEvent, EventCategory, TryExtract};
 use num_enum::{FromPrimitive, IntoPrimitive};
 use std::mem::transmute;
 
@@ -47,6 +47,13 @@ impl Extract for BuffRemoveEvent {
                 None
             },
         }
+    }
+}
+
+impl TryExtract for BuffRemoveEvent {
+    #[inline]
+    fn can_extract(event: &CombatEvent) -> bool {
+        event.categorize() == EventCategory::BuffRemove
     }
 }
 

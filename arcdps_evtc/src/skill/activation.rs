@@ -1,4 +1,4 @@
-use crate::{AgentId, CombatEvent, Extract, Position};
+use crate::{extract::Extract, AgentId, CombatEvent, EventCategory, Position, TryExtract};
 use num_enum::{FromPrimitive, IntoPrimitive};
 use std::mem::transmute;
 
@@ -35,6 +35,13 @@ impl Extract for ActivationEvent {
             full_duration: event.buff_dmg,
             target: Position::new(x, y, z),
         }
+    }
+}
+
+impl TryExtract for ActivationEvent {
+    #[inline]
+    fn can_extract(event: &CombatEvent) -> bool {
+        event.categorize() == EventCategory::Activation
     }
 }
 

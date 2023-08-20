@@ -19,21 +19,21 @@ pub struct CommonEvent {
     /// Skill id of the relevant skill (can be zero).
     pub skill_id: u32,
 
-    /// Current affinity of `src_agent` and `dst_agent`.
+    /// Current affinity of `src` and `dst`.
     ///
     /// *Arc calls this "iff" for if friend/foe.*
     pub affinity: Affinity,
 
-    /// Whether `src_agent` is above 90% Health.
+    /// Whether `src` is above 90% Health.
     pub is_ninety: u8,
 
-    /// Whether `dst_agent` is below 50% Health.
+    /// Whether `dst` is below 50% Health.
     pub is_fifty: u8,
 
-    /// Whether `src_agent` is moving at time of event.
+    /// Whether `src` is moving at time of event.
     pub is_moving: u8,
 
-    /// Whether `src_agent` is flanking at time of event.
+    /// Whether `src` is flanking at time of event.
     ///
     /// The value lies in a range of `1` to `135` degrees where `135` is rear.
     pub is_flanking: u8,

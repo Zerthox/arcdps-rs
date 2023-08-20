@@ -1,4 +1,4 @@
-use crate::{CombatEvent, Extract, StateChange};
+use crate::{extract::Extract, CombatEvent, StateChange, TryExtract};
 use num_enum::{IntoPrimitive, TryFromPrimitive};
 use std::mem::transmute;
 
@@ -41,14 +41,10 @@ impl Extract for EffectGUID {
     }
 }
 
-impl TryFrom<&CombatEvent> for EffectGUID {
-    type Error = ();
-
-    fn try_from(event: &CombatEvent) -> Result<Self, Self::Error> {
-        match event.is_statechange {
-            StateChange::IdToGUID => Ok(unsafe { Self::extract(event) }),
-            _ => Err(()),
-        }
+impl TryExtract for EffectGUID {
+    #[inline]
+    fn can_extract(event: &CombatEvent) -> bool {
+        event.is_statechange == StateChange::IdToGUID
     }
 }
 

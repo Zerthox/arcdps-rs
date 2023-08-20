@@ -1,4 +1,4 @@
-use crate::{CombatEvent, Extract};
+use crate::{extract::Extract, CombatEvent, StateChange, TryExtract};
 use std::mem::transmute;
 
 #[cfg(feature = "serde")]
@@ -30,5 +30,15 @@ impl Extract for LogEvent {
             local_time: transmute(event.buff_dmg),
             id: event.src_agent,
         }
+    }
+}
+
+impl TryExtract for LogEvent {
+    #[inline]
+    fn can_extract(event: &CombatEvent) -> bool {
+        matches!(
+            event.is_statechange,
+            StateChange::LogStart | StateChange::LogEnd | StateChange::LogNPCUpdate
+        )
     }
 }

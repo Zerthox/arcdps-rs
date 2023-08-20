@@ -1,4 +1,4 @@
-use crate::{CombatEvent, Extract, StateChange};
+use crate::{extract::Extract, CombatEvent, StateChange, TryExtract};
 use std::mem::transmute;
 
 #[cfg(feature = "serde")]
@@ -28,14 +28,9 @@ impl Extract for SkillInfo {
     }
 }
 
-impl TryFrom<&CombatEvent> for SkillInfo {
-    type Error = ();
-
+impl TryExtract for SkillInfo {
     #[inline]
-    fn try_from(event: &CombatEvent) -> Result<Self, Self::Error> {
-        match event.is_statechange {
-            StateChange::SkillInfo => Ok(unsafe { Self::extract(event) }),
-            _ => Err(()),
-        }
+    fn can_extract(event: &CombatEvent) -> bool {
+        event.is_statechange == StateChange::SkillInfo
     }
 }

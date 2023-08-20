@@ -1,7 +1,6 @@
-use std::mem::transmute;
-
-use crate::{AgentId, CombatEvent, Extract};
+use crate::{extract::Extract, AgentId, CombatEvent, StateChange, TryExtract};
 use num_enum::{FromPrimitive, IntoPrimitive};
+use std::mem::transmute;
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
@@ -29,6 +28,13 @@ impl Extract for BreakbarStateEvent {
     }
 }
 
+impl TryExtract for BreakbarStateEvent {
+    #[inline]
+    fn can_extract(event: &CombatEvent) -> bool {
+        event.is_statechange == StateChange::BreakbarState
+    }
+}
+
 /// Breakbar percent changed.
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
@@ -49,6 +55,13 @@ impl Extract for BreakbarPercentEvent {
             agent: AgentId::from_src(event),
             health,
         }
+    }
+}
+
+impl TryExtract for BreakbarPercentEvent {
+    #[inline]
+    fn can_extract(event: &CombatEvent) -> bool {
+        event.is_statechange == StateChange::BreakbarPercent
     }
 }
 

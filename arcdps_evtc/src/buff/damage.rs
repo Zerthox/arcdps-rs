@@ -1,4 +1,4 @@
-use crate::{event::CommonEvent, CombatEvent, Extract};
+use crate::{event::CommonEvent, extract::Extract, CombatEvent, EventCategory, TryExtract};
 use num_enum::{FromPrimitive, IntoPrimitive, TryFromPrimitive};
 
 #[cfg(feature = "serde")]
@@ -31,6 +31,13 @@ impl Extract for BuffDamageEvent {
             on_tick: event.is_offcycle == 0,
             result: event.result.into(),
         }
+    }
+}
+
+impl TryExtract for BuffDamageEvent {
+    #[inline]
+    fn can_extract(event: &CombatEvent) -> bool {
+        event.categorize() == EventCategory::BuffDamage
     }
 }
 

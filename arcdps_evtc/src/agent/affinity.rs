@@ -25,7 +25,10 @@ pub enum Affinity {
     /// Enemy agent.
     Foe = 1,
 
+    /// Unknown affinity between agents.
+    Unknown,
+
     /// Invalid.
     #[num_enum(catch_all)]
-    Unknown(u8),
+    Invalid(u8),
 }

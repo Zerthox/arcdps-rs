@@ -1,4 +1,4 @@
-use crate::{CombatEvent, Extract, StateChange};
+use crate::{extract::Extract, CombatEvent, StateChange, TryExtract};
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
@@ -21,14 +21,9 @@ impl Extract for SkillTiming {
     }
 }
 
-impl TryFrom<&CombatEvent> for SkillTiming {
-    type Error = ();
-
+impl TryExtract for SkillTiming {
     #[inline]
-    fn try_from(event: &CombatEvent) -> Result<Self, Self::Error> {
-        match event.is_statechange {
-            StateChange::SkillTiming => Ok(unsafe { Self::extract(event) }),
-            _ => Err(()),
-        }
+    fn can_extract(event: &CombatEvent) -> bool {
+        event.is_statechange == StateChange::SkillTiming
     }
 }

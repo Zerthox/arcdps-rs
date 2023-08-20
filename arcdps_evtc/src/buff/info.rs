@@ -1,4 +1,4 @@
-use crate::{CombatEvent, Extract, StateChange};
+use crate::{extract::Extract, CombatEvent, StateChange, TryExtract};
 use num_enum::{IntoPrimitive, TryFromPrimitive};
 
 #[cfg(feature = "serde")]
@@ -52,15 +52,10 @@ impl Extract for BuffInfo {
     }
 }
 
-impl TryFrom<&CombatEvent> for BuffInfo {
-    type Error = ();
-
+impl TryExtract for BuffInfo {
     #[inline]
-    fn try_from(event: &CombatEvent) -> Result<Self, Self::Error> {
-        match event.is_statechange {
-            StateChange::BuffInfo => Ok(unsafe { Self::extract(event) }),
-            _ => Err(()),
-        }
+    fn can_extract(event: &CombatEvent) -> bool {
+        event.is_statechange == StateChange::BuffInfo
     }
 }
 

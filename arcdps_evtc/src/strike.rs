@@ -1,5 +1,5 @@
-use crate::{event::CommonEvent, CombatEvent};
-use num_enum::{IntoPrimitive, TryFromPrimitive};
+use crate::{event::CommonEvent, extract::Extract, CombatEvent, EventCategory, TryExtract};
+use num_enum::{FromPrimitive, IntoPrimitive};
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
@@ -19,17 +19,23 @@ pub struct StrikeEvent {
     pub target_downed: bool,
 }
 
-impl TryFrom<&CombatEvent> for StrikeEvent {
-    type Error = ();
-
-    fn try_from(event: &CombatEvent) -> Result<Self, Self::Error> {
-        Ok(Self {
+impl Extract for StrikeEvent {
+    #[inline]
+    unsafe fn extract(event: &CombatEvent) -> Self {
+        Self {
             common: event.into(),
-            kind: event.result.try_into().map_err(|_| ())?,
+            kind: event.result.into(),
             total_damage: event.value,
             shield_damage: event.overstack_value,
             target_downed: event.is_offcycle == 1,
-        })
+        }
+    }
+}
+
+impl TryExtract for StrikeEvent {
+    #[inline]
+    fn can_extract(event: &CombatEvent) -> bool {
+        event.categorize() == EventCategory::Strike
     }
 }
 
@@ -37,7 +43,7 @@ impl TryFrom<&CombatEvent> for StrikeEvent {
 ///
 /// *Arc calls this "combat result".*
 #[derive(
-    Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, TryFromPrimitive,
+    Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
 )]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[cfg_attr(
@@ -101,6 +107,10 @@ pub enum Strike {
     ///
     /// *Arc: Source hit target if damaging buff.*
     Activation = 11,
+
+    /// Unknown.
+    #[num_enum(catch_all)]
+    Unknown(u8),
 }
 
 impl Strike {

@@ -7,18 +7,22 @@ pub mod breakbar;
 pub mod buff;
 pub mod effect;
 pub mod event;
+pub mod extract;
 pub mod language;
 pub mod log;
 pub mod player;
 pub mod position;
+pub mod reward;
 pub mod skill;
 pub mod state_change;
 pub mod strike;
+pub mod weapon;
 
 pub use crate::{
     agent::{Affinity, AgentId, AgentKind},
     buff::{Attribute, BuffCategory, BuffCycle, BuffRemove},
     event::{CombatEvent, EventCategory, EventKind, RawCombatEvent},
+    extract::TryExtract,
     language::Language,
     player::{Profession, Specialization},
     position::Position,
@@ -26,12 +30,3 @@ pub use crate::{
     state_change::StateChange,
     strike::Strike,
 };
-
-/// Extracts information from a combat event.
-pub trait Extract {
-    /// Extracts [`Self`] from the combat event.
-    ///
-    /// # Safety
-    /// This is safe when the given event is a valid event to extract [`Self`] from.
-    unsafe fn extract(event: &CombatEvent) -> Self;
-}

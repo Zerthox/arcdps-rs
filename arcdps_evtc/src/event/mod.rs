@@ -10,7 +10,14 @@ pub use self::kind::*;
 pub use self::old::*;
 pub use self::raw::*;
 
-use crate::{Activation, Affinity, BuffRemove, Position, StateChange};
+use crate::extract::Extract;
+use crate::TryExtract;
+use crate::{
+    buff::{BuffApplyEvent, BuffDamageEvent, BuffRemove, BuffRemoveEvent},
+    skill::{Activation, ActivationEvent},
+    strike::StrikeEvent,
+    Affinity, StateChange,
+};
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
@@ -156,10 +163,52 @@ impl CombatEvent {
         self.has_time().then_some(self.time)
     }
 
-    /// Attempts to extract [`Position`] data from the event.
+    /// Forcefully extracts a type implementing [`Extract`] from the event.
     #[inline]
-    pub fn position(&self) -> Option<Position> {
-        self.try_into().ok()
+    pub unsafe fn extract<T>(&self) -> T
+    where
+        T: Extract,
+    {
+        T::extract(self)
+    }
+
+    /// Attempts to extract a type implementing [`TryExtract`] from the event.
+    #[inline]
+    pub fn try_extract<T>(&self) -> Option<T>
+    where
+        T: TryExtract,
+    {
+        T::try_extract(self)
+    }
+
+    /// Attempts to extract an [`ActivationEvent`] from the event.
+    #[inline]
+    pub fn activation(&self) -> Option<ActivationEvent> {
+        self.try_extract()
+    }
+
+    /// Attempts to extract a [`BuffRemoveEvent`] from the event.
+    #[inline]
+    pub fn buff_remove(&self) -> Option<BuffRemoveEvent> {
+        self.try_extract()
+    }
+
+    /// Attempts to extract a [`BuffApplyEvent`] from the event.
+    #[inline]
+    pub fn buff_apply(&self) -> Option<BuffApplyEvent> {
+        self.try_extract()
+    }
+
+    /// Attempts to extract a [`BuffDamageEvent`] from the event.
+    #[inline]
+    pub fn buff_damage(&self) -> Option<BuffDamageEvent> {
+        self.try_extract()
+    }
+
+    /// Attempts to extract a [`StrikeEvent`] from the event.
+    #[inline]
+    pub fn strike(&self) -> Option<StrikeEvent> {
+        self.try_extract()
     }
 }
 

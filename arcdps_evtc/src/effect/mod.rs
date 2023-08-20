@@ -4,8 +4,7 @@ mod old;
 pub use self::guid::*;
 pub use self::old::*;
 
-use crate::Extract;
-use crate::{CombatEvent, Position, StateChange};
+use crate::{extract::Extract, CombatEvent, Position, StateChange, TryExtract};
 use std::mem::transmute;
 
 #[cfg(feature = "serde")]
@@ -80,15 +79,10 @@ impl Extract for Effect {
     }
 }
 
-impl TryFrom<&CombatEvent> for Effect {
-    type Error = ();
-
+impl TryExtract for Effect {
     #[inline]
-    fn try_from(event: &CombatEvent) -> Result<Self, Self::Error> {
-        match event.is_statechange {
-            StateChange::Effect => Ok(unsafe { Self::extract(event) }),
-            _ => Err(()),
-        }
+    fn can_extract(event: &CombatEvent) -> bool {
+        event.is_statechange == StateChange::Effect
     }
 }
 
