@@ -1,8 +1,26 @@
-use crate::{util::Endian, CombatEvent, Parse, Save};
+use crate::{util::Endian, CombatEvent, Parse, RawCombatEvent, Save};
 use byteorder::{ReadBytesExt, WriteBytesExt};
 use std::io;
 
 impl Parse for CombatEvent {
+    type Error = io::Error;
+
+    #[inline]
+    fn parse(input: &mut impl io::Read) -> Result<Self, Self::Error> {
+        RawCombatEvent::parse(input).map(Into::into)
+    }
+}
+
+impl Save for CombatEvent {
+    type Error = io::Error;
+
+    #[inline]
+    fn save(&self, output: &mut impl io::Write) -> Result<(), Self::Error> {
+        RawCombatEvent::from(self.clone()).save(output)
+    }
+}
+
+impl Parse for RawCombatEvent {
     type Error = io::Error;
 
     fn parse(input: &mut impl io::Read) -> Result<Self, Self::Error> {
@@ -18,15 +36,15 @@ impl Parse for CombatEvent {
             dst_instance_id: input.read_u16::<Endian>()?,
             src_master_instance_id: input.read_u16::<Endian>()?,
             dst_master_instance_id: input.read_u16::<Endian>()?,
-            affinity: input.read_u8()?.into(),
+            affinity: input.read_u8()?,
             buff: input.read_u8()?,
             result: input.read_u8()?,
-            is_activation: input.read_u8()?.into(),
-            is_buffremove: input.read_u8()?.into(),
+            is_activation: input.read_u8()?,
+            is_buffremove: input.read_u8()?,
             is_ninety: input.read_u8()?,
             is_fifty: input.read_u8()?,
             is_moving: input.read_u8()?,
-            is_statechange: input.read_u8()?.into(),
+            is_statechange: input.read_u8()?,
             is_flanking: input.read_u8()?,
             is_shields: input.read_u8()?,
             is_offcycle: input.read_u8()?,
@@ -38,7 +56,7 @@ impl Parse for CombatEvent {
     }
 }
 
-impl Save for CombatEvent {
+impl Save for RawCombatEvent {
     type Error = io::Error;
 
     fn save(&self, output: &mut impl io::Write) -> Result<(), Self::Error> {
@@ -53,15 +71,15 @@ impl Save for CombatEvent {
         output.write_u16::<Endian>(self.dst_instance_id)?;
         output.write_u16::<Endian>(self.src_master_instance_id)?;
         output.write_u16::<Endian>(self.dst_master_instance_id)?;
-        output.write_u8(self.affinity.into())?;
+        output.write_u8(self.affinity)?;
         output.write_u8(self.buff)?;
         output.write_u8(self.result)?;
-        output.write_u8(self.is_activation.into())?;
-        output.write_u8(self.is_buffremove.into())?;
+        output.write_u8(self.is_activation)?;
+        output.write_u8(self.is_buffremove)?;
         output.write_u8(self.is_ninety)?;
         output.write_u8(self.is_fifty)?;
         output.write_u8(self.is_moving)?;
-        output.write_u8(self.is_statechange.into())?;
+        output.write_u8(self.is_statechange)?;
         output.write_u8(self.is_flanking)?;
         output.write_u8(self.is_shields)?;
         output.write_u8(self.is_offcycle)?;

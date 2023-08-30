@@ -60,6 +60,7 @@ impl Agent {
     pub const NAME_SIZE: usize = 64;
 
     /// Determines the kind of agent.
+    #[inline]
     pub const fn kind(&self) -> AgentKind {
         AgentKind::new(self.profession, self.is_elite)
     }
