@@ -22,18 +22,22 @@
 //! Note that ArcDPS can save compressed log files with `.zevtc` as file extension.
 //! Enabling the `"zevtc"` or `"zip"` feature adds support for compressed logs.
 
-mod agent;
+/// Extensions for log EVTC API.
+#[path = "."]
+mod ext {
+    pub mod agent;
+    pub mod event;
+    pub mod skill;
+}
 mod error;
-mod event;
 mod log;
-mod skill;
 mod util;
 
-pub use self::agent::*;
 pub use self::error::*;
 pub use self::log::*;
-pub use self::skill::*;
 pub use arcdps_evtc::*;
+pub use ext::agent::*;
+pub use ext::skill::*;
 
 #[cfg(feature = "zevtc")]
 mod zip;

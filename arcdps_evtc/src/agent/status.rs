@@ -3,7 +3,9 @@ use crate::{extract::Extract, AgentId, CombatEvent, StateChange, TryExtract};
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
 
-/// Simple event regarding a specific agent.
+/// Simple event regarding an agent.
+///
+/// The meaning depends on the context.
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct AgentStatusEvent {
@@ -72,7 +74,7 @@ impl TryExtract for EnterCombatEvent {
     }
 }
 
-/// Agent health.
+/// Agent max health change.
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct MaxHealthEvent {

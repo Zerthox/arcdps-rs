@@ -7,13 +7,13 @@ use serde::{Deserialize, Serialize};
 #[cfg(feature = "strum")]
 use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
 
-/// A buff damage event.
+/// Buff damage event.
 ///
 /// For example from a Condition.
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct BuffDamageEvent {
-    #[serde(flatten)]
+    #[cfg_attr(feature = "serde", serde(flatten))]
     pub common: CommonEvent,
     pub buff: u8,
     pub damage: i32,

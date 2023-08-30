@@ -8,7 +8,9 @@ use serde::{Deserialize, Serialize};
 #[cfg(feature = "strum")]
 use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
 
-/// A direct damage event.
+/// Activation (skill cast) event.
+///
+/// Only animated skill casts are captured by ArcDPS.
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct ActivationEvent {

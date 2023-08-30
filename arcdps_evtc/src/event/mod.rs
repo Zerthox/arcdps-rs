@@ -1,3 +1,5 @@
+//! Event bindings & utilities.
+
 mod category;
 mod combat_event;
 mod common;

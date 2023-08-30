@@ -4,7 +4,7 @@ use std::mem::transmute;
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
 
-/// Simple event regarding a specific agent.
+/// Agent is in guild.
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct GuildEvent {
@@ -15,6 +15,8 @@ pub struct GuildEvent {
     pub agent: AgentId,
 
     /// Guild id in client form.
+    ///
+    /// Needs minor rearrange for GW2 API form.
     pub guild: u128,
 }
 

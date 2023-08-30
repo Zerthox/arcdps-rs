@@ -21,7 +21,7 @@ pub enum EventCategory {
     ///
     /// `is_activation` contains [`Activation`] (except [`Activation::None`]).
     ///
-    /// For [`Activation::Normal`] and [`Activation::Quickness`]:
+    /// For [`Activation::Start`] and [`Activation::QuicknessUnused`]:
     /// `value` contains the duration at which all "significant" effects associated with the cast have happened (for example damage hits).
     /// `buff_dmg` contains the duration at which control is expected to be returned to the character (for example aftercasts).
     ///
@@ -34,7 +34,7 @@ pub enum EventCategory {
     ///
     /// All durations and times are given in milliseconds.
     ///
-    /// For skill data see [`SkillInfo`] and [`SkillTiming`].
+    /// For skill data see [`SkillInfo`](crate::skill::SkillInfo) and [`SkillTiming`](crate::skill::SkillTiming).
     Activation,
 
     /// Buff removed.
@@ -54,7 +54,7 @@ pub enum EventCategory {
     ///
     /// For [`BuffRemove::Single`] `pad61` to `pad64` contains the buff instance id of buff removed.
     ///
-    /// For buff data see [`BuffInfo`] and [`BuffFormula`].
+    /// For buff data see [`BuffInfo`](crate::buff::BuffInfo) and [`BuffFormula`](crate::buff::BuffFormula).
     BuffRemove,
 
     /// Buff applied.
@@ -69,7 +69,7 @@ pub enum EventCategory {
     /// If `is_offcycle == 0`, `overstack_value` contains the duration of the existing buff stack that is expected to be replaced.
     /// If `is_offcycle != 0`, `overstack_value` contains the new duration of the existing buff stack and `value` contains the duration change (no new buff stack added).
     ///
-    /// For buff data see [`BuffInfo`] and [`BuffFormula`].
+    /// For buff data see [`BuffInfo`](crate::buff::BuffInfo) and [`BuffFormula`](crate::buff::BuffFormula).
     BuffApply,
 
     /// Buff damage.
@@ -82,7 +82,7 @@ pub enum EventCategory {
     /// If `is_offcycle != 0`, damage is accumulated reactively (for example Confusion damage on skill use).
     /// `result` contains `0` if expected to hit, `1` for invulnerability by buff and `2`/`3`/`4` for invulnerability by skill.
     ///
-    /// For buff data see [`BuffInfo`] and [`BuffFormula`].
+    /// For buff data see [`BuffInfo`](crate::buff::BuffInfo) and [`BuffFormula`](crate::buff::BuffFormula).
     BuffDamage,
 
     /// Direct damage strike.

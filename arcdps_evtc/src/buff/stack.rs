@@ -4,7 +4,7 @@ use std::mem::transmute;
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
 
-/// Active buff stack changed.
+/// Active buff stack change.
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct StackActiveEvent {

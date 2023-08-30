@@ -8,7 +8,7 @@ use serde::{Deserialize, Serialize};
 #[cfg(feature = "strum")]
 use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
 
-/// Breakbar state changed.
+/// Breakbar state change.
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct BreakbarStateEvent {
@@ -35,7 +35,7 @@ impl TryExtract for BreakbarStateEvent {
     }
 }
 
-/// Breakbar percent changed.
+/// Breakbar percent change.
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct BreakbarPercentEvent {
