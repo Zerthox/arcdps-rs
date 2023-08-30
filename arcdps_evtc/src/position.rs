@@ -1,5 +1,8 @@
 use crate::{extract::Extract, AgentId, CombatEvent, StateChange, TryExtract};
-use std::mem::transmute;
+use std::{
+    mem::transmute,
+    ops::{Add, AddAssign, Div, DivAssign, Mul, MulAssign, Sub, SubAssign},
+};
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
@@ -53,10 +56,10 @@ pub struct Position {
     pub z: f32,
 }
 
-/// Conversion from inch to meter.
-const CONVERT: f32 = 0.0254;
-
 impl Position {
+    /// Conversion from inch to meter.
+    pub const INCH_TO_METER: f32 = 0.0254;
+
     /// Creates new positional information.
     #[inline]
     pub const fn new(x: f32, y: f32, z: f32) -> Self {
@@ -67,7 +70,11 @@ impl Position {
     #[inline]
     pub fn from_mumble(coords: [f32; 3]) -> Self {
         let [x, y, z] = coords;
-        Self::new(x / CONVERT, z / CONVERT, -y / CONVERT)
+        Self::new(
+            x / Self::INCH_TO_METER,
+            z / Self::INCH_TO_METER,
+            -y / Self::INCH_TO_METER,
+        )
     }
 
     /// Converts the position to an [`array`].
@@ -76,10 +83,20 @@ impl Position {
         [self.x, self.y, self.z]
     }
 
+    /// Converts the position to a [`tuple`].
+    #[inline]
+    pub fn to_tuple(self) -> (f32, f32, f32) {
+        (self.x, self.y, self.z)
+    }
+
     /// Converts the position to Mumble coordinates.
     #[inline]
     pub fn to_mumble(&self) -> [f32; 3] {
-        [self.x * CONVERT, -self.z * CONVERT, self.y * CONVERT]
+        [
+            self.x * Self::INCH_TO_METER,
+            -self.z * Self::INCH_TO_METER,
+            self.y * Self::INCH_TO_METER,
+        ]
     }
 
     /// Returns the length of the position interpreted as vector.
@@ -131,6 +148,22 @@ impl Position {
     pub fn rotate(&self, vector: Self) -> Self {
         vector.mat_mul(self.as_rotation_matrix())
     }
+
+    /// Performs a component-wise operation with another [`Position`].
+    #[inline]
+    fn component_wise_op(&self, other: &Position, op: impl Fn(f32, f32) -> f32) -> Self {
+        Self::new(
+            op(self.x, other.x),
+            op(self.y, other.y),
+            op(self.z, other.z),
+        )
+    }
+
+    /// Performs a scalar operation with a [`Position`] and a [`f32`].
+    #[inline]
+    fn scalar_op(&self, scalar: f32, op: impl Fn(f32, f32) -> f32) -> Self {
+        Self::new(op(self.x, scalar), op(self.y, scalar), op(self.z, scalar))
+    }
 }
 
 impl From<[f32; 3]> for Position {
@@ -145,6 +178,103 @@ impl From<Position> for [f32; 3] {
     #[inline]
     fn from(pos: Position) -> Self {
         pos.to_array()
+    }
+}
+
+impl From<(f32, f32, f32)> for Position {
+    #[inline]
+    fn from(value: (f32, f32, f32)) -> Self {
+        let (x, y, z) = value;
+        Self { x, y, z }
+    }
+}
+
+impl From<Position> for (f32, f32, f32) {
+    #[inline]
+    fn from(pos: Position) -> Self {
+        pos.to_tuple()
+    }
+}
+
+impl Add for &Position {
+    type Output = Position;
+
+    #[inline]
+    fn add(self, rhs: &Position) -> Self::Output {
+        self.component_wise_op(rhs, Add::add)
+    }
+}
+
+impl AddAssign for Position {
+    #[inline]
+    fn add_assign(&mut self, rhs: Self) {
+        *self = &*self + &rhs
+    }
+}
+
+impl Sub for &Position {
+    type Output = Position;
+
+    #[inline]
+    fn sub(self, rhs: &Position) -> Self::Output {
+        self.component_wise_op(rhs, Sub::sub)
+    }
+}
+
+impl SubAssign for Position {
+    #[inline]
+    fn sub_assign(&mut self, rhs: Self) {
+        *self = &*self - &rhs
+    }
+}
+
+impl Mul<f32> for &Position {
+    type Output = Position;
+
+    #[inline]
+    fn mul(self, rhs: f32) -> Self::Output {
+        self.scalar_op(rhs, Mul::mul)
+    }
+}
+
+impl MulAssign<f32> for Position {
+    #[inline]
+    fn mul_assign(&mut self, rhs: f32) {
+        *self = &*self * rhs;
+    }
+}
+
+impl Mul<&Position> for f32 {
+    type Output = Position;
+
+    #[inline]
+    fn mul(self, rhs: &Position) -> Self::Output {
+        rhs.scalar_op(self, Mul::mul)
+    }
+}
+
+impl Div<f32> for &Position {
+    type Output = Position;
+
+    #[inline]
+    fn div(self, rhs: f32) -> Self::Output {
+        self.scalar_op(rhs, Div::div)
+    }
+}
+
+impl DivAssign<f32> for Position {
+    #[inline]
+    fn div_assign(&mut self, rhs: f32) {
+        *self = &*self / rhs;
+    }
+}
+
+impl Div<&Position> for f32 {
+    type Output = Position;
+
+    #[inline]
+    fn div(self, rhs: &Position) -> Self::Output {
+        rhs.scalar_op(self, Div::div)
     }
 }
 
