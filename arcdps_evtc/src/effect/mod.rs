@@ -1,3 +1,7 @@
+//! Effect bindings & utilities.
+//!
+//! Effects are visual effects rendered by the game client.
+
 mod guid;
 mod old;
 
@@ -21,6 +25,9 @@ pub struct Effect {
 
     /// Owner of the effect.
     pub owner: u64,
+
+    /// Whether the effect is on a moving platform.
+    pub moving_platform: u8,
 
     /// Location of the effect.
     pub location: EffectLocation,
@@ -71,6 +78,7 @@ impl Extract for Effect {
         Self {
             effect_id,
             owner: event.src_agent,
+            moving_platform: event.is_flanking,
             location: EffectLocation::extract(event),
             duration,
             tracking_id,

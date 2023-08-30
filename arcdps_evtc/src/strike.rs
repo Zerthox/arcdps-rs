@@ -1,3 +1,5 @@
+//! Bindings & utilities for any form of strikes (hits).
+
 use crate::{event::CommonEvent, extract::Extract, CombatEvent, EventCategory, TryExtract};
 use num_enum::{FromPrimitive, IntoPrimitive};
 

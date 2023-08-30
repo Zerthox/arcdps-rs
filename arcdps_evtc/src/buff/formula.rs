@@ -1,12 +1,8 @@
 use crate::{extract::Extract, CombatEvent, StateChange, TryExtract};
-use num_enum::{IntoPrimitive, TryFromPrimitive};
 use std::mem::transmute;
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
-
-#[cfg(feature = "strum")]
-use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
 
 /// Buff formula from a [`CombatEvent`] with [`StateChange::BuffFormula`].
 #[derive(Debug, Clone)]
@@ -149,80 +145,4 @@ impl TryExtract for RawBuffFormula {
     fn can_extract(event: &CombatEvent) -> bool {
         event.is_statechange == StateChange::BuffFormula
     }
-}
-
-/// Attributes for buff formulas.
-///
-/// Used in [`StateChange::BuffFormula`](crate::StateChange::BuffFormula) events.
-#[derive(
-    Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, TryFromPrimitive,
-)]
-#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
-#[cfg_attr(
-    feature = "strum",
-    derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames)
-)]
-#[repr(u16)]
-pub enum Attribute {
-    None = 0,
-
-    /// Power.
-    Power = 1,
-
-    /// Precision.
-    Precision = 2,
-
-    /// Toughness.
-    Toughness = 3,
-
-    /// Vitality.
-    Vitality = 4,
-
-    /// Ferocity.
-    Ferocity = 5,
-
-    /// Healing.
-    Healing = 6,
-
-    /// Condition Damage.
-    Condition = 7,
-
-    /// Concentration.
-    Concentration = 8,
-
-    /// Expertise.
-    Expertise = 9,
-
-    /// Armor.
-    Armor = 10,
-
-    /// Agony Resistance.
-    Agony = 11,
-
-    /// Stat increase.
-    StatInc = 12,
-
-    /// Flat Increase.
-    FlatInc = 13,
-
-    /// Outgoing strike damage.
-    PhysInc = 14,
-
-    /// Outgoing condition damage.
-    CondInc = 15,
-
-    /// Incoming strike damage.
-    PhysRec = 16,
-
-    /// Incoming condition damage.
-    CondRec = 17,
-
-    /// Attack speed.
-    Attackspeed = 18,
-
-    /// Outgoing life leech.
-    SiphonInc = 19,
-
-    /// Incoming life leech.
-    SiphonRec = 20,
 }

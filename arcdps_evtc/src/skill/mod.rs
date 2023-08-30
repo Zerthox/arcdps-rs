@@ -1,3 +1,5 @@
+//! Skill bindings & utilities.
+
 mod activation;
 mod info;
 mod timing;

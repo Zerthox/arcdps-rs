@@ -1,3 +1,5 @@
+//! Bindings & utilities for agent weapon sets.
+
 use crate::{extract::Extract, AgentId, CombatEvent, StateChange, TryExtract};
 use num_enum::{FromPrimitive, IntoPrimitive};
 

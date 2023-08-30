@@ -1,4 +1,5 @@
 use crate::{extract::Extract, AgentId, CombatEvent, StateChange, TryExtract};
+use std::mem::transmute;
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
@@ -6,31 +7,31 @@ use serde::{Deserialize, Serialize};
 /// Simple event regarding a specific agent.
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
-pub struct RewardEvent {
+pub struct GuildEvent {
     /// Time of registering the event.
     pub time: u64,
 
     /// Agent that the event happened to.
     pub agent: AgentId,
 
-    /// Reward id.
-    pub reward: u64,
+    /// Guild id in client form.
+    pub guild: u128,
 }
 
-impl Extract for RewardEvent {
+impl Extract for GuildEvent {
     #[inline]
     unsafe fn extract(event: &CombatEvent) -> Self {
         Self {
             time: event.time,
             agent: AgentId::from_src(event),
-            reward: event.dst_agent,
+            guild: transmute((event.dst_agent, event.value, event.buff_dmg)),
         }
     }
 }
 
-impl TryExtract for RewardEvent {
+impl TryExtract for GuildEvent {
     #[inline]
     fn can_extract(event: &CombatEvent) -> bool {
-        event.is_statechange == StateChange::Reward
+        event.is_statechange == StateChange::Guild
     }
 }

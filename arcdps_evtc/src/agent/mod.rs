@@ -1,11 +1,17 @@
+//! Agents bindings & utilities.
+//!
+//! Agents are the base used for nearly all entity types.
+
 mod affinity;
+mod breakbar;
 mod status;
 
 pub use self::affinity::*;
+pub use self::breakbar::*;
 pub use self::status::*;
 
 use crate::CombatEvent;
-use std::mem;
+use std::mem::transmute;
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
@@ -94,7 +100,7 @@ impl AgentKind {
     #[inline]
     pub const fn new(prof: u32, elite: u32) -> Self {
         if elite == u32::MAX {
-            let (lower, upper): (u16, u16) = unsafe { mem::transmute(prof) };
+            let (lower, upper): (u16, u16) = unsafe { transmute(prof) };
             if upper == u16::MAX {
                 AgentKind::Gadget(lower)
             } else {

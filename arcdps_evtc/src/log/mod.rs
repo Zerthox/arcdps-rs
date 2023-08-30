@@ -1,3 +1,7 @@
+mod error;
+
+pub use self::error::*;
+
 use crate::{extract::Extract, CombatEvent, StateChange, TryExtract};
 use std::mem::transmute;
 

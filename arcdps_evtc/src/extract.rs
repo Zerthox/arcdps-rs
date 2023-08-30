@@ -1,3 +1,5 @@
+//! Interfaces for extracting information from events.
+
 use crate::CombatEvent;
 
 /// Forcefully extracts information from a combat event.

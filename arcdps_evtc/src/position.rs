@@ -1,3 +1,5 @@
+//! Bindings & utilities for the game's 3d space.
+
 use crate::{extract::Extract, AgentId, CombatEvent, StateChange, TryExtract};
 use std::{
     mem::transmute,
