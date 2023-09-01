@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"macro":["h","s","w"],"mod":["Globalization","System","Win32","core"]};
+window.SIDEBAR_ITEMS = {"mod":["System","Win32","core"]};

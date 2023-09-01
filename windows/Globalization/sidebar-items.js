@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"struct":["ApplicationLanguages","Calendar","CalendarIdentifiers","ClockIdentifiers","CurrencyAmount","CurrencyIdentifiers","DayOfWeek","GeographicRegion","JapanesePhoneme","JapanesePhoneticAnalyzer","Language","LanguageLayoutDirection","NumeralSystemIdentifiers"]};

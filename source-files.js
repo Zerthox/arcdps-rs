@@ -2,7 +2,7 @@ var sourcesIndex = JSON.parse('{\
 "adler":["",[],["algo.rs","lib.rs"]],\
 "aes":["",[["ni",[],["aes128.rs","aes192.rs","aes256.rs","utils.rs"]],["soft",[],["fixslice64.rs"]]],["autodetect.rs","lib.rs","ni.rs","soft.rs"]],\
 "arcdps":["",[["evtc",[],["agent.rs","mod.rs"]],["exports",[],["has.rs","mod.rs","raw.rs"]],["extras",[],["callbacks.rs","exports.rs","globals.rs","keybinds.rs","message.rs","mod.rs","user.rs"]]],["callbacks.rs","globals.rs","lib.rs","log.rs","panic.rs","util.rs"]],\
-"arcdps_codegen":["",[],["callbacks.rs","export.rs","extras.rs","lib.rs","parse.rs"]],\
+"arcdps_codegen":["",[],["abi.rs","callbacks.rs","export.rs","extras.rs","lib.rs","parse.rs"]],\
 "arcdps_evtc":["",[["buff",[],["condition.rs","formula.rs","info.rs","mod.rs"]],["effect",[],["guid.rs","mod.rs","old.rs"]],["skill",[],["info.rs","mod.rs","timing.rs"]]],["agent.rs","breakbar.rs","event.rs","language.rs","lib.rs","player.rs","position.rs","state_change.rs","strike.rs"]],\
 "arcdps_example_plugin":["",[],["lib.rs"]],\
 "arcdps_imgui":["",[["fonts",[],["atlas.rs","font.rs","glyph.rs","glyph_ranges.rs","mod.rs"]],["input",[],["keyboard.rs","mod.rs","mouse.rs"]],["render",[],["draw_data.rs","mod.rs","renderer.rs"]],["widget",[],["color_editors.rs","combo_box.rs","drag.rs","image.rs","list_box.rs","menu.rs","misc.rs","mod.rs","progress_bar.rs","selectable.rs","slider.rs","tab.rs","text.rs","tree.rs"]],["window",[],["child_window.rs","content_region.rs","mod.rs","scroll.rs"]]],["clipboard.rs","color.rs","columns.rs","context.rs","drag_drop.rs","draw_list.rs","input_widget.rs","internal.rs","io.rs","layout.rs","lib.rs","list_clipper.rs","plothistogram.rs","plotlines.rs","popups.rs","stacks.rs","string.rs","style.rs","tables.rs","tokens.rs","utils.rs"]],\
@@ -16,7 +16,7 @@ var sourcesIndex = JSON.parse('{\
 "bzip2_sys":["",[],["lib.rs"]],\
 "cfg_if":["",[],["lib.rs"]],\
 "chlorine":["",[],["lib.rs"]],\
-"chrono":["",[["datetime",[],["mod.rs","serde.rs"]],["format",[],["mod.rs","parse.rs","parsed.rs","scan.rs","strftime.rs"]],["naive",[["datetime",[],["mod.rs","serde.rs"]],["time",[],["mod.rs","serde.rs"]]],["date.rs","internals.rs","isoweek.rs","mod.rs"]],["offset",[["local",[],["mod.rs","windows.rs"]]],["fixed.rs","mod.rs","utc.rs"]]],["date.rs","lib.rs","month.rs","round.rs","traits.rs","weekday.rs"]],\
+"chrono":["",[["datetime",[],["mod.rs","serde.rs"]],["format",[],["formatting.rs","locales.rs","mod.rs","parse.rs","parsed.rs","scan.rs","strftime.rs"]],["naive",[["datetime",[],["mod.rs","serde.rs"]],["time",[],["mod.rs","serde.rs"]]],["date.rs","internals.rs","isoweek.rs","mod.rs"]],["offset",[["local",[],["mod.rs","win_bindings.rs","windows.rs"]]],["fixed.rs","mod.rs","utc.rs"]]],["date.rs","lib.rs","month.rs","round.rs","traits.rs","weekday.rs"]],\
 "cipher":["",[],["block.rs","errors.rs","lib.rs","stream.rs","stream_core.rs","stream_wrapper.rs"]],\
 "constant_time_eq":["",[],["lib.rs"]],\
 "cpufeatures":["",[],["lib.rs","x86.rs"]],\
@@ -38,7 +38,7 @@ var sourcesIndex = JSON.parse('{\
 "log":["",[],["__private_api.rs","lib.rs","macros.rs"]],\
 "miniz_oxide":["",[["deflate",[],["buffer.rs","core.rs","mod.rs","stream.rs"]],["inflate",[],["core.rs","mod.rs","output_buffer.rs","stream.rs"]]],["lib.rs","shared.rs"]],\
 "num_enum":["",[],["lib.rs"]],\
-"num_enum_derive":["",[],["lib.rs"]],\
+"num_enum_derive":["",[],["enum_attributes.rs","lib.rs","parsing.rs","utils.rs","variant_attributes.rs"]],\
 "num_traits":["",[["ops",[],["bytes.rs","checked.rs","euclid.rs","inv.rs","mod.rs","mul_add.rs","overflowing.rs","saturating.rs","wrapping.rs"]]],["bounds.rs","cast.rs","float.rs","identities.rs","int.rs","lib.rs","macros.rs","pow.rs","sign.rs"]],\
 "once_cell":["",[],["imp_std.rs","lib.rs","race.rs"]],\
 "parking_lot":["",[],["condvar.rs","deadlock.rs","elision.rs","fair_mutex.rs","lib.rs","mutex.rs","once.rs","raw_fair_mutex.rs","raw_mutex.rs","raw_rwlock.rs","remutex.rs","rwlock.rs","util.rs"]],\
@@ -52,8 +52,8 @@ var sourcesIndex = JSON.parse('{\
 "rand_core":["",[],["block.rs","error.rs","impls.rs","le.rs","lib.rs"]],\
 "rustversion":["",[],["attr.rs","bound.rs","constfn.rs","date.rs","error.rs","expand.rs","expr.rs","iter.rs","lib.rs","release.rs","time.rs","token.rs","version.rs"]],\
 "scopeguard":["",[],["lib.rs"]],\
-"serde":["",[["de",[],["format.rs","ignored_any.rs","impls.rs","mod.rs","seed.rs","size_hint.rs","utf8.rs","value.rs"]],["private",[],["de.rs","doc.rs","mod.rs","ser.rs"]],["ser",[],["fmt.rs","impls.rs","impossible.rs","mod.rs"]]],["integer128.rs","lib.rs","macros.rs"]],\
-"serde_derive":["",[["internals",[],["ast.rs","attr.rs","case.rs","check.rs","ctxt.rs","mod.rs","receiver.rs","respan.rs","symbol.rs"]]],["bound.rs","de.rs","dummy.rs","fragment.rs","lib.rs","lib_from_source.rs","pretend.rs","ser.rs","this.rs"]],\
+"serde":["",[["de",[],["format.rs","ignored_any.rs","impls.rs","mod.rs","seed.rs","size_hint.rs","value.rs"]],["private",[],["de.rs","doc.rs","mod.rs","ser.rs"]],["ser",[],["fmt.rs","impls.rs","impossible.rs","mod.rs"]]],["integer128.rs","lib.rs","macros.rs"]],\
+"serde_derive":["",[["internals",[],["ast.rs","attr.rs","case.rs","check.rs","ctxt.rs","mod.rs","receiver.rs","respan.rs","symbol.rs"]]],["bound.rs","de.rs","dummy.rs","fragment.rs","lib.rs","pretend.rs","ser.rs","this.rs"]],\
 "sha1":["",[["compress",[],["soft.rs","x86.rs"]]],["compress.rs","lib.rs"]],\
 "sha2":["",[["sha256",[],["soft.rs","x86.rs"]],["sha512",[],["soft.rs","x86.rs"]]],["consts.rs","core_api.rs","lib.rs","sha256.rs","sha512.rs"]],\
 "smallvec":["",[],["lib.rs"]],\
