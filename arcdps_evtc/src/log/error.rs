@@ -8,6 +8,7 @@ use serde::{Deserialize, Serialize};
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct ErrorEvent {
+    /// Error message.
     pub message: String,
 }
 
@@ -23,7 +24,9 @@ impl Extract for ErrorEvent {
         ));
 
         Self {
-            message: String::from_utf8_lossy(&chars).into_owned(),
+            message: String::from_utf8_lossy(&chars)
+                .trim_end_matches('\0')
+                .into(),
         }
     }
 }

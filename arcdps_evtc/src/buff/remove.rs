@@ -14,12 +14,28 @@ use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
 pub struct BuffRemoveEvent {
     #[cfg_attr(feature = "serde", serde(flatten))]
     pub common: CommonEvent,
+
+    /// Kind of buff remove.
     pub kind: BuffRemove,
+
+    /// Buff.
     pub buff: u8,
+
+    /// Removed duration.
     pub removed_duration: i32,
+
+    /// Removed intensity.
     pub removed_intensity: i32,
+
+    /// Number of stacks removed.
+    ///
+    /// Only present in [`BuffRemove::All`] events.
     pub stacks_removed: Option<u8>,
-    pub instance_id: Option<u32>,
+
+    /// Stack (instance) id of removed buff.
+    ///
+    /// Only present in [`BuffRemove::Single`] events.
+    pub stack_id: Option<u32>,
 }
 
 impl Extract for BuffRemoveEvent {
@@ -36,7 +52,7 @@ impl Extract for BuffRemoveEvent {
             } else {
                 None
             },
-            instance_id: if event.is_buffremove == BuffRemove::Single {
+            stack_id: if event.is_buffremove == BuffRemove::Single {
                 Some(transmute([
                     event.pad61,
                     event.pad62,

@@ -14,12 +14,25 @@ use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct ActivationEvent {
+    /// Time of registering the activation.
     pub time: u64,
+
+    /// Agent casting the skill.
     pub agent: AgentId,
+
+    /// Id of casted skill.
     pub skill_id: u32,
+
+    /// Kind of activation state change.
     pub kind: Activation,
+
+    /// Activation duration.
     pub duration: i32,
+
+    /// Full activation duration.
     pub full_duration: i32,
+
+    /// Target location, if applicable.
     pub target: Position,
 }
 

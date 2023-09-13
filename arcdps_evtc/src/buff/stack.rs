@@ -8,8 +8,13 @@ use serde::{Deserialize, Serialize};
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct StackActiveEvent {
+    /// Time of registering the active buff stack change.
     pub time: u64,
+
+    /// Agent that had their active buff stack changed.
     pub agent: AgentId,
+
+    /// Stack id of new active stack.
     pub stack_id: u64,
 }
 

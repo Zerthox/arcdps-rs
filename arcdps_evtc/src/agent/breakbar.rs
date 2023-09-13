@@ -12,8 +12,13 @@ use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct BreakbarStateEvent {
+    /// Time of registering the breakbar state change.
     pub time: u64,
+
+    /// Agent changing breakbar state.
     pub agent: AgentId,
+
+    /// New breakbar state.
     pub state: BreakbarState,
 }
 
@@ -39,8 +44,13 @@ impl TryExtract for BreakbarStateEvent {
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct BreakbarPercentEvent {
+    /// Time of registering the breakbar health change.
     pub time: u64,
+
+    /// Agent that had their breakbar health changed.
     pub agent: AgentId,
+
+    /// New breakbar health in percent.
     pub health: f32,
 }
 

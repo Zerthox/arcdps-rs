@@ -10,10 +10,12 @@ pub struct TagEvent {
     /// Time of registering the event.
     pub time: u64,
 
-    /// Agent that the event happened to.
+    /// Agent that has the tag.
     pub agent: AgentId,
 
     /// Tag id.
+    ///
+    /// Id is volatile, depends on game build.
     pub tag: i32,
 }
 

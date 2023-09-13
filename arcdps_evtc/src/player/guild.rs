@@ -11,7 +11,7 @@ pub struct GuildEvent {
     /// Time of registering the event.
     pub time: u64,
 
-    /// Agent that the event happened to.
+    /// Agent that is in guild.
     pub agent: AgentId,
 
     /// Guild id in client form.

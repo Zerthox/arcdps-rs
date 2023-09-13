@@ -9,10 +9,10 @@ use serde::{Deserialize, Serialize};
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct AgentStatusEvent {
-    /// Time of registering the event.
+    /// Time of registering the status change.
     pub time: u64,
 
-    /// Agent that the event happened to.
+    /// Agent that the status change happened to.
     pub agent: AgentId,
 }
 
@@ -46,7 +46,7 @@ impl TryExtract for AgentStatusEvent {
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct EnterCombatEvent {
-    /// Time of registering the event.
+    /// Time of registering the combat enter.
     pub time: u64,
 
     /// Agent that entered combat.
@@ -78,10 +78,10 @@ impl TryExtract for EnterCombatEvent {
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct MaxHealthEvent {
-    /// Time of registering the event.
+    /// Time of registering the max health change.
     pub time: u64,
 
-    /// Agent that had max health changed.
+    /// Agent that had their max health changed.
     pub agent: AgentId,
 
     /// New agent max health.
@@ -110,10 +110,10 @@ impl TryExtract for MaxHealthEvent {
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct HealthUpdateEvent {
-    /// Time of registering the event.
+    /// Time of registering the health percent change.
     pub time: u64,
 
-    /// Agent whose health changed.
+    /// Agent that had their health percent changed.
     pub agent: AgentId,
 
     /// Current health percent with `1.0` being max.
@@ -147,10 +147,10 @@ impl TryExtract for HealthUpdateEvent {
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct BarrierUpdateEvent {
-    /// Time of registering the event.
+    /// Time of registering the barrier change.
     pub time: u64,
 
-    /// Agent whose barrier changed.
+    /// Agent that had their current barrier changed.
     pub agent: AgentId,
 
     /// Current barrier percent with `1.0` being max.
@@ -184,10 +184,10 @@ impl TryExtract for BarrierUpdateEvent {
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct TeamChangeEvent {
-    /// Time of registering the event.
+    /// Time of registering the team change.
     pub time: u64,
 
-    /// Agent whose team changed.
+    /// Agent that had their team changed.
     pub agent: AgentId,
 
     /// New team id.
@@ -216,10 +216,10 @@ impl TryExtract for TeamChangeEvent {
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct DownContributionEvent {
-    /// Time of registering the event.
+    /// Time of registering the downed state.
     pub time: u64,
 
-    /// Agent who downed.
+    /// Agent that entered downed state.
     pub agent: AgentId,
 
     /// Time since last 90% HP in milliseconds.
@@ -248,10 +248,10 @@ impl TryExtract for DownContributionEvent {
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct AttackTargetEvent {
-    /// Time of registering the event.
+    /// Time of registering the attack target.
     pub time: u64,
 
-    /// Agent who is an attack target.
+    /// Agent that is an attack target.
     pub agent: AgentId,
 
     /// Parent gadget agent.
@@ -284,13 +284,13 @@ impl TryExtract for AttackTargetEvent {
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct TargetableEvent {
-    /// Time of registering the event.
+    /// Time of registering the tergetability change.
     pub time: u64,
 
-    /// Agent whose targetability changed.
+    /// Agent that had their targetability changed.
     pub agent: AgentId,
 
-    /// Current targetable state.
+    /// New targetable state.
     pub targetable: i32,
 }
 

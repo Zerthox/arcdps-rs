@@ -15,9 +15,16 @@ use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
 pub struct BuffDamageEvent {
     #[cfg_attr(feature = "serde", serde(flatten))]
     pub common: CommonEvent,
+
     pub buff: u8,
+
+    /// Buff damage amount.
     pub damage: i32,
+
+    /// Whether damage happened on tick (cycle) or reactively (off-cycle).
     pub on_tick: bool,
+
+    /// Result of buff damage.
     pub result: BuffDamageResult,
 }
 

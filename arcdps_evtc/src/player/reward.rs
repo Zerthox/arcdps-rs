@@ -3,14 +3,14 @@ use crate::{extract::Extract, AgentId, CombatEvent, StateChange, TryExtract};
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
 
-/// Agent got a reward chest.
+/// Reward chest received.
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct RewardEvent {
-    /// Time of registering the event.
+    /// Time of registering the reward.
     pub time: u64,
 
-    /// Agent that the event happened to.
+    /// Agent that is self.
     pub agent: AgentId,
 
     /// Reward id.

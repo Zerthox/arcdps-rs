@@ -18,6 +18,9 @@ use serde::{Deserialize, Serialize};
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct Effect {
+    /// Time of registering the effect.
+    pub time: u64,
+
     /// Id of the effect.
     ///
     /// Use to map to a GUID using [`StateChange::IdToGUID`] events.
@@ -76,6 +79,7 @@ impl Extract for Effect {
         ]);
 
         Self {
+            time: event.time,
             effect_id,
             owner: event.src_agent,
             moving_platform: event.is_flanking,

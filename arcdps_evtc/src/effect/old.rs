@@ -9,6 +9,9 @@ use serde::{Deserialize, Serialize};
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct EffectOld {
+    /// Time of registering the effect.
+    pub time: u64,
+
     /// Id of the effect.
     ///
     /// Use to map to a GUID using [`StateChange::IdToGUID`] events.
@@ -53,6 +56,7 @@ impl Extract for EffectOld {
         let duration: u16 = transmute([event.is_shields, event.is_offcycle]);
 
         Self {
+            time: event.time,
             effect_id,
             owner: event.src_agent,
             location: EffectLocation::extract(event),

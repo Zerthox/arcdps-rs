@@ -13,7 +13,13 @@ use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct WeaponSwapEvent {
+    /// Time of registering the weapon swap.
+    pub time: u64,
+
+    /// Agent that swapped weapon sets.
     pub agent: AgentId,
+
+    /// New weapon set.
     pub weapon_set: WeaponSet,
 }
 
@@ -21,6 +27,7 @@ impl Extract for WeaponSwapEvent {
     #[inline]
     unsafe fn extract(event: &CombatEvent) -> Self {
         Self {
+            time: event.time,
             agent: AgentId::from_src(event),
             weapon_set: event.dst_agent.into(),
         }

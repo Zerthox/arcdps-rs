@@ -65,7 +65,10 @@ pub enum EventKind {
     PointOfView(AgentStatusEvent),
 
     /// Game text language.
-    Language(Result<Language, u64>),
+    Language {
+        time: u64,
+        language: Result<Language, u64>,
+    },
 
     /// Game build.
     GWBuild { time: u64, build: u64 },
@@ -151,7 +154,7 @@ pub enum EventKind {
     /// Tick rate.
     Tickrate { time: u64, rate: u64 },
 
-    /// Last 90% before down.
+    /// Last 90% before down for downs contribution..
     Last90BeforeDown(DownContributionEvent),
 
     /// Effect created or ended.
@@ -214,9 +217,11 @@ impl From<CombatEvent> for EventKind {
                     StateChange::WeaponSwap => Self::WeaponSwap(event.extract()),
                     StateChange::MaxHealthUpdate => Self::MaxHealthUpdate(event.extract()),
                     StateChange::PointOfView => Self::PointOfView(event.extract()),
-                    StateChange::Language => Self::Language(
-                        Language::try_from(event.src_agent as i32).map_err(|_| event.src_agent),
-                    ),
+                    StateChange::Language => Self::Language {
+                        time: event.time,
+                        language: Language::try_from(event.src_agent as i32)
+                            .map_err(|_| event.src_agent),
+                    },
                     StateChange::GWBuild => Self::GWBuild {
                         time: event.time,
                         build: event.src_agent,
