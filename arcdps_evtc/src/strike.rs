@@ -13,11 +13,20 @@ use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct StrikeEvent {
+    /// Common combat event information.
     #[cfg_attr(feature = "serde", serde(flatten))]
     pub common: CommonEvent,
+
+    /// Kind of strike.
     pub kind: Strike,
+
+    /// Total damage inflicted.
     pub total_damage: i32,
+
+    /// Damage inflicted to shields (barrier).
     pub shield_damage: u32,
+
+    /// Whether target is currently downed.
     pub target_downed: bool,
 }
 

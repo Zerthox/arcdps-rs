@@ -11,6 +11,7 @@ use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct BuffApplyEvent {
+    /// Common combat event information.
     #[cfg_attr(feature = "serde", serde(flatten))]
     pub common: CommonEvent,
 
@@ -18,6 +19,7 @@ pub struct BuffApplyEvent {
     pub kind: BuffApplyKind,
 
     /// Buff.
+    // TODO: meaning?
     pub buff: u8,
 
     /// Whether stack is active.

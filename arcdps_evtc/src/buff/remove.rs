@@ -12,6 +12,7 @@ use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct BuffRemoveEvent {
+    /// Common combat event information.
     #[cfg_attr(feature = "serde", serde(flatten))]
     pub common: CommonEvent,
 
@@ -19,12 +20,15 @@ pub struct BuffRemoveEvent {
     pub kind: BuffRemove,
 
     /// Buff.
+    // TODO: meaning?
     pub buff: u8,
 
-    /// Removed duration.
+    /// Removed buff(s) as duration.
     pub removed_duration: i32,
 
-    /// Removed intensity.
+    /// Removed buff(s) as intensity.
+    ///
+    /// **Warning:** may overflow on [`BuffRemove::All`].
     pub removed_intensity: i32,
 
     /// Number of stacks removed.

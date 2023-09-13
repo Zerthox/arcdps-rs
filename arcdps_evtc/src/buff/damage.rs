@@ -13,9 +13,12 @@ use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct BuffDamageEvent {
+    /// Common combat event information.
     #[cfg_attr(feature = "serde", serde(flatten))]
     pub common: CommonEvent,
 
+    /// Buff.
+    // TODO: meaning?
     pub buff: u8,
 
     /// Buff damage amount.
