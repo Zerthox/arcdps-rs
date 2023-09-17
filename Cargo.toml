@@ -6,3 +6,4 @@ members = [
     "arcdps_parse",
     "example_plugin",
 ]
+resolver = "2"
