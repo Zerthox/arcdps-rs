@@ -69,6 +69,7 @@
 <a href="#69" id="69">69</a>
 <a href="#70" id="70">70</a>
 <a href="#71" id="71">71</a>
+<a href="#72" id="72">72</a>
 </pre></div><pre class="rust"><code><span class="doccomment">//! Miscellaneous utilities.
 
 </span><span class="kw">use </span>std::{
@@ -99,6 +100,7 @@
 ///
 /// The pointer needs to be non-null. Panics if the string is invalid UTF-8.
 </span><span class="attr">#[inline]
+#[allow(dead_code)]
 </span><span class="kw">pub unsafe fn </span>str_from_cstr_len&lt;<span class="lifetime">&#39;a</span>&gt;(ptr: <span class="kw-2">*const </span>c_char, len: u64) -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>str {
     <span class="kw">let </span>slice = slice::from_raw_parts(ptr <span class="kw">as </span><span class="kw-2">*const </span>u8, len <span class="kw">as </span>usize);
     str::from_utf8(slice).expect(<span class="string">&quot;cstr with invalid utf8&quot;</span>)

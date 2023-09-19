@@ -339,7 +339,7 @@
             <span class="macro">quote! </span>{ abstract_options_windows },
             |safe, span| {
                 <span class="macro">quote_spanned! </span>{span=&gt;
-                    <span class="kw">unsafe extern </span>#C_ABI <span class="kw">fn </span>abstract_options_windows(window_name: <span class="kw-2">*const </span>c_char) -&gt; ::std::bool {
+                    <span class="kw">unsafe extern </span>#C_ABI <span class="kw">fn </span>abstract_options_windows(window_name: <span class="kw-2">*const </span>::arcdps::__macro::c_char) -&gt; bool {
                         <span class="kw">const </span>SAFE: ::arcdps::callbacks::OptionsWindowsCallback = #safe;
 
                         SAFE(::arcdps::__macro::ui(), ::arcdps::__macro::str_from_cstr(window_name))

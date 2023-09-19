@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["cfgmgr32","errhandlingapi","fileapi","gl","handleapi","libloaderapi","minwinbase","processthreadsapi","profileapi","reason","sysinfoapi","timezoneapi","winbase","winnt","winreg"]};
+window.SIDEBAR_ITEMS = {"mod":["cfgmgr32","errhandlingapi","fileapi","gl","handleapi","libloaderapi","minwinbase","processthreadsapi","reason","winbase","winnt","winreg"]};
