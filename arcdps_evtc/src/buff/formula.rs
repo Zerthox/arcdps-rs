@@ -213,27 +213,24 @@ pub enum Attribute {
     /// Stat increase.
     StatInc = 12,
 
-    /// Flat Increase.
-    FlatInc = 13,
-
     /// Outgoing strike damage.
-    PhysInc = 14,
+    PhysInc = 13,
 
     /// Outgoing condition damage.
-    CondInc = 15,
+    CondInc = 14,
 
     /// Incoming strike damage.
-    PhysRec = 16,
+    PhysRec = 15,
 
     /// Incoming condition damage.
-    CondRec = 17,
+    CondRec = 16,
 
     /// Attack speed.
-    Attackspeed = 18,
+    AttackSpeed = 17,
 
     /// Outgoing life leech.
-    SiphonInc = 19,
+    SiphonInc = 18,
 
     /// Incoming life leech.
-    SiphonRec = 20,
+    SiphonRec = 19,
 }
