@@ -2,7 +2,7 @@ use crate::{
     util::{read_string_buffer, write_string_buffer, Endian},
     Agent, Parse, ParseError, Save, Skill,
 };
-use arcdps_evtc::CombatEvent;
+use arcdps_evtc::Event;
 use byteorder::{ReadBytesExt, WriteBytesExt};
 use std::io;
 
@@ -22,10 +22,10 @@ pub struct Log {
     /// Information about skills used in the log.
     pub skills: Vec<Skill>,
 
-    /// Every [`CombatEvent`] occurring in the log.
+    /// Every [`Event`] occurring in the log.
     ///
     /// Some events may also hold meta information, for example [`StateChange::BuffFormula`](crate::StateChange::BuffFormula).
-    pub events: Vec<CombatEvent>,
+    pub events: Vec<Event>,
 }
 
 impl Log {
@@ -80,7 +80,7 @@ impl Parse for Log {
         let skills = Skill::parse_multi(input, skill_count as usize)?;
 
         let mut events = Vec::new();
-        while let Ok(event) = CombatEvent::parse(input) {
+        while let Ok(event) = Event::parse(input) {
             events.push(event);
         }
 

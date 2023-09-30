@@ -1,26 +1,8 @@
-use crate::{util::Endian, CombatEvent, Parse, RawCombatEvent, Save};
+use crate::{util::Endian, Event, Parse, Save};
 use byteorder::{ReadBytesExt, WriteBytesExt};
 use std::io;
 
-impl Parse for CombatEvent {
-    type Error = io::Error;
-
-    #[inline]
-    fn parse(input: &mut impl io::Read) -> Result<Self, Self::Error> {
-        RawCombatEvent::parse(input).map(Into::into)
-    }
-}
-
-impl Save for CombatEvent {
-    type Error = io::Error;
-
-    #[inline]
-    fn save(&self, output: &mut impl io::Write) -> Result<(), Self::Error> {
-        RawCombatEvent::from(self.clone()).save(output)
-    }
-}
-
-impl Parse for RawCombatEvent {
+impl Parse for Event {
     type Error = io::Error;
 
     fn parse(input: &mut impl io::Read) -> Result<Self, Self::Error> {
@@ -56,7 +38,7 @@ impl Parse for RawCombatEvent {
     }
 }
 
-impl Save for RawCombatEvent {
+impl Save for Event {
     type Error = io::Error;
 
     fn save(&self, output: &mut impl io::Write) -> Result<(), Self::Error> {
