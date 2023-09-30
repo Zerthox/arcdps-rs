@@ -16,6 +16,9 @@ mod state_change;
 pub mod strike;
 pub mod weapon;
 
+#[cfg(feature = "serde")]
+mod serde_hex;
+
 pub use crate::{
     agent::{Affinity, AgentId, AgentKind},
     buff::{Attribute, BuffCategory, BuffCycle, BuffRemove},

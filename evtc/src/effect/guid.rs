@@ -18,6 +18,7 @@ pub struct EffectGUID {
     pub effect_id: u32,
 
     /// Persistent content GUID.
+    #[cfg_attr(feature = "serde", serde(with = "crate::serde_hex"))]
     pub guid: u128,
 
     /// Content local.
