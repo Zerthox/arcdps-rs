@@ -194,9 +194,9 @@ impl ArcDpsGen {
     fn combat_wrapper(name: TokenStream, safe: &Expr, span: Span) -> TokenStream {
         quote_spanned! {span=>
             unsafe extern #C_ABI fn #name(
-                event: *const ::arcdps::evtc::RawCombatEvent,
-                src: *const ::arcdps::evtc::RawAgent,
-                dst: *const ::arcdps::evtc::RawAgent,
+                event: *const ::arcdps::evtc::Event,
+                src: *const ::arcdps::evtc::Agent,
+                dst: *const ::arcdps::evtc::Agent,
                 skill_name: *const ::arcdps::__macro::c_char,
                 id: ::std::primitive::u64,
                 revision: ::std::primitive::u64,
@@ -204,9 +204,9 @@ impl ArcDpsGen {
                 const SAFE: ::arcdps::callbacks::CombatCallback = #safe;
 
                 SAFE(
-                    event.as_ref().cloned().map(::std::convert::Into::into),
-                    src.as_ref().map(::std::convert::Into::into),
-                    dst.as_ref().map(::std::convert::Into::into),
+                    event.as_ref(),
+                    src.as_ref(),
+                    dst.as_ref(),
                     ::arcdps::__macro::str_from_cstr(skill_name),
                     id,
                     revision

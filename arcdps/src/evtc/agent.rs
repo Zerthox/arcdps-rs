@@ -17,10 +17,10 @@ use serde::{Deserialize, Serialize};
 /// let owned = agent.to_owned();
 /// let owned: AgentOwned = agent.into();
 /// ```
-#[derive(Debug, Clone)]
-pub struct Agent<'a> {
+#[derive(Debug)]
+pub struct Agent {
     /// Name of the agent.
-    pub name: Option<&'a str>,
+    name: *const c_char,
 
     /// Unique id.
     pub id: usize,
@@ -38,28 +38,29 @@ pub struct Agent<'a> {
     pub team: u16,
 }
 
-impl Agent<'_> {
+impl Agent {
+    /// Returns the agent's name.
+    #[inline]
+    pub fn name(&self) -> Option<&str> {
+        unsafe { str_from_cstr(self.name) }
+    }
+
+    /// Returns the raw pointer to the agent's name.
+    #[inline]
+    pub fn name_ptr(&self) -> *const c_char {
+        self.name
+    }
+
     /// Converts the [`Agent`] to the owned version [`AgentOwned`].
+    #[inline]
     pub fn to_owned(self) -> AgentOwned {
         self.into()
     }
 
     /// Determines the kind of agent.
+    #[inline]
     pub const fn kind(&self) -> AgentKind {
         AgentKind::new(self.prof, self.elite)
-    }
-}
-
-impl<'a> From<&'a RawAgent> for Agent<'a> {
-    fn from(agent: &RawAgent) -> Self {
-        Self {
-            name: unsafe { str_from_cstr(agent.name) },
-            id: agent.id,
-            prof: agent.prof,
-            elite: agent.elite,
-            is_self: agent.is_self,
-            team: agent.team,
-        }
     }
 }
 
@@ -86,10 +87,11 @@ pub struct AgentOwned {
     pub team: u16,
 }
 
-impl From<Agent<'_>> for AgentOwned {
-    fn from(agent: Agent<'_>) -> Self {
+impl From<Agent> for AgentOwned {
+    #[inline]
+    fn from(agent: Agent) -> Self {
         Self {
-            name: agent.name.map(|string| string.to_string()),
+            name: agent.name().map(|string| string.to_string()),
             id: agent.id,
             prof: agent.prof,
             elite: agent.elite,
@@ -97,15 +99,4 @@ impl From<Agent<'_>> for AgentOwned {
             team: agent.team,
         }
     }
-}
-
-#[derive(Debug, Clone)]
-#[repr(C)]
-pub struct RawAgent {
-    pub name: *const c_char,
-    pub id: usize,
-    pub prof: u32,
-    pub elite: u32,
-    pub is_self: u32,
-    pub team: u16,
 }

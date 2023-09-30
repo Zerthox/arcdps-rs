@@ -132,7 +132,7 @@ impl ExtrasGen {
             |safe, span| {
                 quote_spanned! {span=>
                     unsafe extern #C_ABI fn abstract_extras_squad_update(
-                        users: *const ::arcdps::extras::user::RawUserInfo,
+                        users: *const ::arcdps::extras::user::UserInfo,
                         count: ::std::primitive::u64
                     ) {
                         const SAFE: ::arcdps::extras::callbacks::ExtrasSquadUpdateCallback = #safe;

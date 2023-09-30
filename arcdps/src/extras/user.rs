@@ -2,7 +2,7 @@
 
 use crate::util::{str_from_cstr, strip_account_prefix};
 use num_enum::{IntoPrimitive, TryFromPrimitive};
-use std::{iter::Map, os::raw::c_char, slice};
+use std::{os::raw::c_char, slice};
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
@@ -54,10 +54,11 @@ pub enum UserRole {
 /// let owned = user.to_owned();
 /// let owned: UserInfoOwned = user.into();
 /// ```
-#[derive(Debug, Clone)]
-pub struct UserInfo<'a> {
-    /// Account name, without leading ':'.
-    pub account_name: Option<&'a str>,
+#[derive(Debug)]
+#[repr(C)]
+pub struct UserInfo {
+    /// Account name with leading `':'`.
+    account_name: *const c_char,
 
     /// Unix timestamp when the user joined the squad.
     ///
@@ -80,24 +81,31 @@ pub struct UserInfo<'a> {
     /// If everyone in the squad had an event sent with `ready_status == true` then that means that the ready check finished successfully.
     /// After which there will be events sent for each user where their `ready_status == false`.
     pub ready_status: bool,
+
+    /// Unused space.
+    pub _unused1: u8,
+
+    /// Unused space.
+    pub _unused2: u32,
 }
 
-impl UserInfo<'_> {
+impl UserInfo {
+    /// Returns the user account name without leading `':'`.
+    #[inline]
+    pub fn account_name(&self) -> Option<&str> {
+        unsafe { str_from_cstr(self.account_name).map(strip_account_prefix) }
+    }
+
+    /// Returns the raw pointer to the user account name.
+    #[inline]
+    pub fn account_name_ptr(&self) -> *const c_char {
+        self.account_name
+    }
+
     /// Converts the [`UserInfo`] to the owned version [`UserInfoOwned`].
+    #[inline]
     pub fn to_owned(self) -> UserInfoOwned {
         self.into()
-    }
-}
-
-impl<'a> From<&'a RawUserInfo> for UserInfo<'a> {
-    fn from(raw: &RawUserInfo) -> Self {
-        Self {
-            account_name: unsafe { str_from_cstr(raw.account_name).map(strip_account_prefix) },
-            join_time: raw.join_time,
-            role: raw.role,
-            subgroup: raw.subgroup,
-            ready_status: raw.ready_status,
-        }
     }
 }
 
@@ -131,10 +139,11 @@ pub struct UserInfoOwned {
     pub ready_status: bool,
 }
 
-impl From<UserInfo<'_>> for UserInfoOwned {
-    fn from(user: UserInfo<'_>) -> Self {
+impl From<UserInfo> for UserInfoOwned {
+    #[inline]
+    fn from(user: UserInfo) -> Self {
         Self {
-            account_name: user.account_name.map(|x| x.to_string()),
+            account_name: user.account_name().map(|x| x.to_string()),
             join_time: user.join_time,
             role: user.role,
             subgroup: user.subgroup,
@@ -143,26 +152,11 @@ impl From<UserInfo<'_>> for UserInfoOwned {
     }
 }
 
-#[derive(Debug, Clone)]
-#[repr(C)]
-pub struct RawUserInfo {
-    pub account_name: *const c_char,
-    pub join_time: u64,
-    pub role: UserRole,
-    pub subgroup: u8,
-    pub ready_status: bool,
-    pub _unused1: u8,
-    pub _unused2: u32,
-}
-
 /// Iterator over changed users.
-pub type UserInfoIter<'a> = Map<slice::Iter<'a, RawUserInfo>, UserConvert>;
-
-pub type UserConvert = for<'r> fn(&'r RawUserInfo) -> UserInfo<'r>;
+pub type UserInfoIter<'a> = slice::Iter<'a, UserInfo>;
 
 /// Helper to convert a [`RawUserInfo`] pointer and a length to an iterator over [`UserInfo`].
-pub unsafe fn to_user_info_iter<'a>(ptr: *const RawUserInfo, len: u64) -> UserInfoIter<'a> {
-    slice::from_raw_parts(ptr, len as usize)
-        .iter()
-        .map(|raw| raw.into())
+#[inline]
+pub unsafe fn to_user_info_iter<'a>(ptr: *const UserInfo, len: u64) -> UserInfoIter<'a> {
+    slice::from_raw_parts(ptr, len as usize).iter()
 }

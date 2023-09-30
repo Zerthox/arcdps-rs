@@ -25,7 +25,7 @@ arcdps = { git = "https://github.com/zerthox/arcdps-bindings" }
 
 ```rs
 use std::error::Error;
-use arcdps::{Agent, CombatEvent, StateChange};
+use arcdps::{Agent, Event, StateChange};
 
 arcdps::export! {
     name: "Example Plugin",
@@ -40,15 +40,15 @@ fn init() -> Result<(), Box<dyn Error>> {
 }
 
 fn custom_combat_name(
-    event: Option<CombatEvent>,
-    src: Option<Agent>,
-    dst: Option<Agent>,
+    event: Option<&Event>,
+    src: Option<&Agent>,
+    dst: Option<&Agent>,
     skill_name: Option<&str>,
     id: u64,
     revision: u64,
 ) {
     if let Some(event) = event {
-        if let StateChange::EnterCombat = event.is_statechange {
+        if let StateChange::EnterCombat = event.get_statechange() {
             // source agent has entered combat
         }
     }

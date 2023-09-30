@@ -1,7 +1,7 @@
 //! Callback types.
 
 use crate::{
-    evtc::{Agent, CombatEvent, RawAgent, RawCombatEvent},
+    evtc::{Agent, Event},
     imgui,
     util::abi,
 };
@@ -78,9 +78,9 @@ pub type UpdateUrlFunc = fn() -> Option<String>;
 pub type WndProcCallback = fn(key: usize, key_down: bool, prev_key_down: bool) -> bool;
 
 pub type CombatCallback = fn(
-    event: Option<CombatEvent>,
-    src: Option<Agent>,
-    dst: Option<Agent>,
+    event: Option<&Event>,
+    src: Option<&Agent>,
+    dst: Option<&Agent>,
     skill_name: Option<&'static str>,
     id: u64,
     revision: u64,
@@ -97,9 +97,9 @@ abi! {
         unsafe extern fn(h_wnd: HWND, u_msg: u32, w_param: WPARAM, l_param: LPARAM) -> u32;
 
     pub type RawCombatCallback = unsafe extern fn(
-        event: *const RawCombatEvent,
-        src: *const RawAgent,
-        dst: *const RawAgent,
+        event: *const Event,
+        src: *const Agent,
+        dst: *const Agent,
         skill_name: *const c_char,
         id: u64,
         revision: u64,

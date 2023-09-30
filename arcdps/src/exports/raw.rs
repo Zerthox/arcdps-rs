@@ -1,6 +1,6 @@
 //! Raw ArcDPS exports.
 
-use crate::{evtc::RawCombatEvent, globals::ARC_GLOBALS, imgui::sys::ImVec4};
+use crate::{evtc::Event, globals::ARC_GLOBALS, imgui::sys::ImVec4};
 use std::{ffi::c_void, os::raw::c_char};
 use windows::Win32::Foundation::HMODULE;
 
@@ -66,28 +66,28 @@ pub unsafe fn e8_log_window(string: *const c_char) {
 }
 
 /// Signature of the `e9` export. See [`e9_add_event`] for details.
-pub type Export9 = unsafe extern "C" fn(event: *const RawCombatEvent, sig: u32);
+pub type Export9 = unsafe extern "C" fn(event: *const Event, sig: u32);
 
-/// Adds a [`RawCombatEvent`] to ArcDPS' event processing.
+/// Adds an [`Event`] to ArcDPS' event processing.
 ///
 /// `is_statechange` will be set to [`StateChange::Extension`](crate::evtc::StateChange::Extension), pad61-64 will be set to `sig`.
 /// Event will end up processed like ArcDPS events and logged to EVTC.
 #[inline]
-pub unsafe fn e9_add_event(event: *const RawCombatEvent, sig: u32) {
+pub unsafe fn e9_add_event(event: *const Event, sig: u32) {
     ARC_GLOBALS.e9.expect("failed to find arc export e9")(event, sig)
 }
 
 /// Signature of the `e10` export. See [`e10_add_event_combat`] for details.
-pub type Export10 = unsafe extern "C" fn(event: *const RawCombatEvent, sig: u32);
+pub type Export10 = unsafe extern "C" fn(event: *const Event, sig: u32);
 
-/// Adds a [`RawCombatEvent`] to ArcDPS' event processing.
+/// Adds an [`Event`] to ArcDPS' event processing.
 ///
 /// `is_statechange` will be set to [`StateChange::ExtensionCombat`](crate::evtc::StateChange::ExtensionCombat), pad61-64 will be set to `sig`.
 /// Event will end up processed like ArcDPS events and logged to EVTC.
 ///
 /// Contrary to [`e9_add_event`], the `skill_id` is treated as skill id and will be added to the EVTC skill table.
 #[inline]
-pub unsafe fn e10_add_event_combat(event: *const RawCombatEvent, sig: u32) {
+pub unsafe fn e10_add_event_combat(event: *const Event, sig: u32) {
     ARC_GLOBALS.e10.expect("failed to find arc export e10")(event, sig)
 }
 

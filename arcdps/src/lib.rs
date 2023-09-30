@@ -7,7 +7,7 @@
 //! ```no_run
 //! # mod test {
 //! use std::error::Error;
-//! use arcdps::{Agent, CombatEvent, StateChange};
+//! use arcdps::{Agent, Event, StateChange};
 //!
 //! arcdps::export! {
 //!     name: "Example Plugin",
@@ -22,15 +22,15 @@
 //! }
 //!
 //! fn custom_combat_name(
-//!     event: Option<CombatEvent>,
-//!     src: Option<Agent>,
-//!     dst: Option<Agent>,
+//!     event: Option<&Event>,
+//!     src: Option<&Agent>,
+//!     dst: Option<&Agent>,
 //!     skill_name: Option<&str>,
 //!     id: u64,
 //!     revision: u64,
 //! ) {
 //!     if let Some(event) = event {
-//!         if let StateChange::EnterCombat = event.is_statechange {
+//!         if let StateChange::EnterCombat = event.get_statechange() {
 //!             // source agent has entered combat
 //!         }
 //!     }
@@ -81,7 +81,7 @@ pub use arcdps_codegen::export;
 pub use arcdps_imgui as imgui;
 pub use evtc::{
     Activation, Affinity, Agent, AgentOwned, Attribute, BuffCategory, BuffCycle, BuffRemove,
-    CombatEvent, CustomSkill, Language, Profession, Specialization, StateChange, Strike,
+    CustomSkill, Event, Language, Profession, Specialization, StateChange, Strike,
 };
 pub use globals::{d3d11_device, d3d_version, dxgi_swap_chain};
 pub use util::strip_account_prefix;
@@ -161,6 +161,8 @@ pub struct SupportedFields {
     ///
     /// No `event` and `src.elite != 0` indicates a target change.
     /// `src.id` will contain the new target.
+    ///
+    /// *Note that Arc's realtime combat API comes with an intentional delay and filtering.*
     pub combat: Option<CombatCallback>,
 
     /// Callback for standalone UI creation.
