@@ -1,5 +1,7 @@
-use crate::{extract::Extract, AgentId, Event, StateChange, TryExtract};
-use std::mem::transmute;
+use crate::{
+    extract::{transmute_field, Extract},
+    AgentId, Event, StateChange, TryExtract,
+};
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
@@ -53,7 +55,7 @@ impl Extract for StackResetEvent {
             time: event.time,
             agent: AgentId::from_src(event),
             duration: event.value,
-            stack_id: transmute([event.pad61, event.pad62, event.pad63, event.pad64]),
+            stack_id: transmute_field!(event.pad61 as u32),
         }
     }
 }

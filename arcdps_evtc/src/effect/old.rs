@@ -1,6 +1,8 @@
 use super::EffectLocation;
-use crate::{extract::Extract, Event, Position, StateChange, TryExtract};
-use std::mem::transmute;
+use crate::{
+    extract::{transmute_field, Extract},
+    Event, Position, StateChange, TryExtract,
+};
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
@@ -42,18 +44,9 @@ impl Extract for EffectOld {
     #[inline]
     unsafe fn extract(event: &Event) -> Self {
         let effect_id = event.skill_id;
-        let [x, y]: [f32; 2] = transmute([
-            event.affinity.into(),
-            event.buff,
-            event.result,
-            event.is_activation.into(),
-            event.is_buffremove.into(),
-            event.is_ninety,
-            event.is_fifty,
-            event.is_moving,
-        ]);
-        let z: f32 = transmute([event.pad61, event.pad62, event.pad63, event.pad64]);
-        let duration: u16 = transmute([event.is_shields, event.is_offcycle]);
+        let [x, y] = transmute_field!(event.affinity as [f32; 2]);
+        let z = transmute_field!(event.pad61 as f32);
+        let duration = transmute_field!(event.is_shields as u16);
 
         Self {
             time: event.time,

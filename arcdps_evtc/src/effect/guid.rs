@@ -1,6 +1,8 @@
-use crate::{extract::Extract, Event, StateChange, TryExtract};
+use crate::{
+    extract::{transmute_field, Extract},
+    Event, StateChange, TryExtract,
+};
 use num_enum::{IntoPrimitive, TryFromPrimitive};
-use std::mem::transmute;
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
@@ -33,9 +35,10 @@ impl EffectGUID {
 impl Extract for EffectGUID {
     #[inline]
     unsafe fn extract(event: &Event) -> Self {
+        // TODO: why big endian here?
         Self {
             effect_id: event.skill_id,
-            guid: u128::from_be_bytes(transmute([event.src_agent, event.dst_agent])),
+            guid: u128::from_be(transmute_field!(event.src_agent as u128)),
             content_local: event.overstack_value.try_into().ok(),
         }
     }
@@ -64,4 +67,28 @@ pub enum ContentLocal {
 
     /// Content is a marker.
     Marker = 1,
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use std::mem;
+
+    #[test]
+    fn guid_extraction() {
+        let event = Event {
+            is_statechange: StateChange::IdToGUID.into(),
+            src_agent: 4820869827943421467,
+            dst_agent: 11091919494850445953,
+            skill_id: 446,
+            overstack_value: 0,
+            ..unsafe { mem::zeroed() }
+        };
+        assert_eq!(event.src_agent, 0x42E72B9102F7561B);
+        assert_eq!(event.dst_agent, 0x99EE6A0357CA8281);
+
+        let effect = EffectGUID::try_extract(&event).expect("failed to extract");
+        assert_eq!(effect.guid, 0x1B56F702912BE7428182CA57036AEE99);
+        assert_eq!(effect.guid_string(), "1B56F702912BE7428182CA57036AEE99");
+    }
 }

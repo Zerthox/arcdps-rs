@@ -1,5 +1,7 @@
-use crate::{extract::Extract, AgentId, Event, StateChange, TryExtract};
-use std::mem::transmute;
+use crate::{
+    extract::{transmute_field, Extract},
+    AgentId, Event, StateChange, TryExtract,
+};
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
@@ -26,7 +28,7 @@ impl Extract for GuildEvent {
         Self {
             time: event.time,
             agent: AgentId::from_src(event),
-            guild: transmute((event.dst_agent, event.value, event.buff_dmg)),
+            guild: transmute_field!(event.dst_agent as u128),
         }
     }
 }

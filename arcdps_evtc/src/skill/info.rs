@@ -1,5 +1,7 @@
-use crate::{extract::Extract, Event, StateChange, TryExtract};
-use std::mem::transmute;
+use crate::{
+    extract::{transmute_field, Extract},
+    Event, StateChange, TryExtract,
+};
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
@@ -17,8 +19,7 @@ pub struct SkillInfo {
 impl Extract for SkillInfo {
     #[inline]
     unsafe fn extract(event: &Event) -> Self {
-        let [recharge, range0, range1, tooltip_time]: [f32; 4] =
-            transmute((event.time, event.src_agent));
+        let [recharge, range0, range1, tooltip_time] = transmute_field!(event.time as [f32; 4]);
         Self {
             recharge,
             range0,

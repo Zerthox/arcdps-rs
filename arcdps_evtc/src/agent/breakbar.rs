@@ -1,6 +1,5 @@
 use crate::{extract::Extract, AgentId, Event, StateChange, TryExtract};
 use num_enum::{FromPrimitive, IntoPrimitive};
-use std::mem::transmute;
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
@@ -57,8 +56,7 @@ pub struct BreakbarPercentEvent {
 impl Extract for BreakbarPercentEvent {
     #[inline]
     unsafe fn extract(event: &Event) -> Self {
-        #[allow(clippy::transmute_int_to_float)]
-        let health = transmute(event.value);
+        let health = f32::from_ne_bytes(event.value.to_ne_bytes());
 
         Self {
             time: event.time,

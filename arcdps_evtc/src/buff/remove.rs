@@ -1,6 +1,9 @@
-use crate::{event::CommonEvent, extract::Extract, Event, EventCategory, TryExtract};
+use crate::{
+    event::CommonEvent,
+    extract::{transmute_field, Extract},
+    Event, EventCategory, TryExtract,
+};
 use num_enum::{FromPrimitive, IntoPrimitive};
-use std::mem::transmute;
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
@@ -58,12 +61,7 @@ impl Extract for BuffRemoveEvent {
                 None
             },
             stack_id: if kind == BuffRemove::Single {
-                Some(transmute([
-                    event.pad61,
-                    event.pad62,
-                    event.pad63,
-                    event.pad64,
-                ]))
+                Some(transmute_field!(event.pad61 as u32))
             } else {
                 None
             },

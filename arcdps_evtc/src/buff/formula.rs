@@ -1,5 +1,7 @@
-use crate::{extract::Extract, Event, StateChange, TryExtract};
-use std::mem::transmute;
+use crate::{
+    extract::{transmute_field, Extract},
+    Event, StateChange, TryExtract,
+};
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
@@ -105,20 +107,9 @@ impl RawBuffFormula {
 impl Extract for RawBuffFormula {
     #[inline]
     unsafe fn extract(event: &Event) -> Self {
-        let [kind, attr1, attr2, param1, param2, param3, trait_src, trait_self]: [f32; 8] =
-            transmute((
-                event.time,
-                event.src_agent,
-                event.dst_agent,
-                event.value,
-                event.buff_dmg,
-            ));
-        let [buff_src, buff_self]: [f32; 2] = transmute((
-            event.src_instance_id,
-            event.dst_instance_id,
-            event.src_master_instance_id,
-            event.dst_master_instance_id,
-        ));
+        let [kind, attr1, attr2, param1, param2, param3, trait_src, trait_self] =
+            transmute_field!(event.time as [f32; 8]);
+        let [buff_src, buff_self] = transmute_field!(event.src_instance_id as [f32; 2]);
 
         Self {
             kind,

@@ -1,5 +1,7 @@
-use crate::{extract::Extract, Event, StateChange, TryExtract};
-use std::mem::transmute;
+use crate::{
+    extract::{transmute_field, Extract},
+    Event, StateChange, TryExtract,
+};
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
@@ -12,19 +14,17 @@ pub struct ErrorEvent {
     pub message: String,
 }
 
+impl ErrorEvent {
+    pub const MAX_LEN: usize = 32;
+}
+
 impl Extract for ErrorEvent {
     #[inline]
     unsafe fn extract(event: &Event) -> Self {
-        let chars: [u8; 32] = transmute((
-            event.time,
-            event.src_agent,
-            event.dst_agent,
-            event.value,
-            event.buff_dmg,
-        ));
+        let bytes = transmute_field!(event.time as [u8; ErrorEvent::MAX_LEN]);
 
         Self {
-            message: String::from_utf8_lossy(&chars)
+            message: String::from_utf8_lossy(&bytes)
                 .trim_end_matches('\0')
                 .into(),
         }

@@ -284,10 +284,7 @@ impl Extract for Position {
     #[inline]
     unsafe fn extract(event: &Event) -> Self {
         let [x, y]: [f32; 2] = transmute(event.dst_agent);
-
-        #[allow(clippy::transmute_int_to_float)]
-        let z = transmute(event.value);
-
+        let z = f32::from_ne_bytes(event.value.to_ne_bytes());
         Self::new(x, y, z)
     }
 }

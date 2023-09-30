@@ -1,5 +1,8 @@
-use crate::{event::CommonEvent, extract::Extract, Event, EventCategory, TryExtract};
-use std::mem::transmute;
+use crate::{
+    event::CommonEvent,
+    extract::{transmute_field, Extract},
+    Event, EventCategory, TryExtract,
+};
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
@@ -37,7 +40,7 @@ impl Extract for BuffApplyEvent {
             buff: event.buff,
             kind: BuffApplyKind::extract(event),
             stack_active: event.is_shields,
-            stack_id: transmute([event.pad61, event.pad62, event.pad63, event.pad64]),
+            stack_id: transmute_field!(event.pad61 as u32),
         }
     }
 }

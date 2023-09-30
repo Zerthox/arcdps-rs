@@ -8,8 +8,8 @@ mod old;
 pub use self::guid::*;
 pub use self::old::*;
 
+use crate::extract::transmute_field;
 use crate::{extract::Extract, Event, Position, StateChange, TryExtract};
-use std::mem::transmute;
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
@@ -57,26 +57,9 @@ impl Extract for Effect {
     #[inline]
     unsafe fn extract(event: &Event) -> Self {
         let effect_id = event.skill_id;
-        let duration: u32 = transmute([
-            event.affinity.into(),
-            event.buff,
-            event.result,
-            event.is_activation.into(),
-        ]);
-        let tracking_id: u32 = transmute([
-            event.is_buffremove.into(),
-            event.is_ninety,
-            event.is_fifty,
-            event.is_moving,
-        ]);
-        let orientation: [i16; 3] = transmute([
-            event.is_shields,
-            event.is_offcycle,
-            event.pad61,
-            event.pad62,
-            event.pad63,
-            event.pad64,
-        ]);
+        let duration = transmute_field!(event.affinity as u32);
+        let tracking_id = transmute_field!(event.is_buffremove as u32);
+        let orientation = transmute_field!(event.is_shields as [i16; 3]);
 
         Self {
             time: event.time,
@@ -112,7 +95,7 @@ impl Extract for EffectLocation {
         if event.dst_agent != 0 {
             Self::Agent(event.dst_agent)
         } else {
-            let pos: [f32; 3] = transmute((event.value, event.buff_dmg, event.overstack_value));
+            let pos = transmute_field!(event.value as [f32; 3]);
             Self::Position(pos.into())
         }
     }
