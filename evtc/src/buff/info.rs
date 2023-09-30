@@ -11,6 +11,9 @@ use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct BuffInfo {
+    /// Buff skill id.
+    pub skill_id: u32,
+
     /// The category of buff.
     ///
     /// See [`BuffCategory`] and [`BuffCategoryOld`].
@@ -41,6 +44,7 @@ impl Extract for BuffInfo {
     #[inline]
     unsafe fn extract(event: &Event) -> Self {
         Self {
+            skill_id: event.skill_id,
             category: event.is_offcycle,
             stacking_type: event.pad61,
             max_stacks: event.src_master_instance_id,

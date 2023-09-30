@@ -10,6 +10,7 @@ use serde::{Deserialize, Serialize};
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct SkillInfo {
+    pub skill_id: u32,
     pub recharge: f32,
     pub range0: f32,
     pub range1: f32,
@@ -21,6 +22,7 @@ impl Extract for SkillInfo {
     unsafe fn extract(event: &Event) -> Self {
         let [recharge, range0, range1, tooltip_time] = transmute_field!(event.time as [f32; 4]);
         Self {
+            skill_id: event.skill_id,
             recharge,
             range0,
             range1,

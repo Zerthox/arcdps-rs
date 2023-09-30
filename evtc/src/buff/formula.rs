@@ -10,6 +10,7 @@ use serde::{Deserialize, Serialize};
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct BuffFormula {
+    pub skill_id: u32,
     pub formula: u32,
     pub attr1: u32,
     pub attr2: u32,
@@ -53,6 +54,7 @@ impl From<RawBuffFormula> for BuffFormula {
     #[inline]
     fn from(raw: RawBuffFormula) -> Self {
         Self {
+            skill_id: raw.skill_id,
             formula: raw.formula as _,
             attr1: raw.attr1 as _,
             attr2: raw.attr2 as _,
@@ -63,9 +65,9 @@ impl From<RawBuffFormula> for BuffFormula {
             trait_self: raw.trait_self as _,
             buff_src: raw.buff_src as _,
             buff_self: raw.buff_self as _,
-            not_npc: raw.not_npc,
-            not_player: raw.not_player,
-            is_break: raw.is_break,
+            not_npc: raw.not_npc != 0,
+            not_player: raw.not_player != 0,
+            is_break: raw.is_break != 0,
             value: raw.value,
             value_type: raw.value_type,
         }
@@ -76,6 +78,7 @@ impl From<RawBuffFormula> for BuffFormula {
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct RawBuffFormula {
+    pub skill_id: u32,
     pub formula: f32,
     pub attr1: f32,
     pub attr2: f32,
@@ -86,9 +89,9 @@ pub struct RawBuffFormula {
     pub trait_self: f32,
     pub buff_src: f32,
     pub buff_self: f32,
-    pub not_npc: bool,
-    pub not_player: bool,
-    pub is_break: bool,
+    pub not_npc: u8,
+    pub not_player: u8,
+    pub is_break: u8,
     pub value: u32,
     pub value_type: u8,
 }
@@ -112,6 +115,7 @@ impl Extract for RawBuffFormula {
         let [buff_src, buff_self] = transmute_field!(event.src_instance_id as [f32; 2]);
 
         Self {
+            skill_id: event.skill_id,
             formula: kind,
             attr1,
             attr2,
@@ -122,9 +126,9 @@ impl Extract for RawBuffFormula {
             trait_self,
             buff_src,
             buff_self,
-            not_npc: event.is_flanking != 0,
-            not_player: event.is_shields != 0,
-            is_break: event.is_offcycle != 0,
+            not_npc: event.is_flanking,
+            not_player: event.is_shields,
+            is_break: event.is_offcycle,
             value: event.overstack_value,
             value_type: event.pad61,
         }
