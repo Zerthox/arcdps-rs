@@ -122,7 +122,7 @@ impl ArcDpsGen {
             quote! { abstract_options_windows },
             |safe, span| {
                 quote_spanned! {span=>
-                    unsafe extern #C_ABI fn abstract_options_windows(window_name: *const c_char) -> ::std::bool {
+                    unsafe extern #C_ABI fn abstract_options_windows(window_name: *const ::arcdps::__macro::c_char) -> ::std::primitive::bool {
                         const SAFE: ::arcdps::callbacks::OptionsWindowsCallback = #safe;
 
                         SAFE(::arcdps::__macro::ui(), ::arcdps::__macro::str_from_cstr(window_name))
