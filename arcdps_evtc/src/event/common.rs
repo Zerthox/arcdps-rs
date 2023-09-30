@@ -4,6 +4,7 @@ use crate::{Affinity, AgentId, Event};
 use serde::{Deserialize, Serialize};
 
 /// Information common to combat events.
+// TODO: replace with fields?
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct CommonEvent {

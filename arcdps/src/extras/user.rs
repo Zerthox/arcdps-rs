@@ -155,7 +155,7 @@ impl From<UserInfo> for UserInfoOwned {
 /// Iterator over changed users.
 pub type UserInfoIter<'a> = slice::Iter<'a, UserInfo>;
 
-/// Helper to convert a [`RawUserInfo`] pointer and a length to an iterator over [`UserInfo`].
+/// Helper to generate an iterator over [`UserInfo`] structs.
 #[inline]
 pub unsafe fn to_user_info_iter<'a>(ptr: *const UserInfo, len: u64) -> UserInfoIter<'a> {
     slice::from_raw_parts(ptr, len as usize).iter()

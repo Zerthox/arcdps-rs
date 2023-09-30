@@ -25,7 +25,7 @@ pub struct BuffDamageEvent {
     pub damage: i32,
 
     /// Whether damage happened on tick (cycle) or reactively (off-cycle).
-    pub on_tick: bool,
+    pub cycle: BuffCycle,
 
     /// Result of buff damage.
     pub result: BuffDamageResult,
@@ -38,7 +38,7 @@ impl Extract for BuffDamageEvent {
             common: event.into(),
             buff: event.buff,
             damage: event.buff_dmg,
-            on_tick: event.is_offcycle == 0,
+            cycle: event.is_offcycle.into(),
             result: event.result.into(),
         }
     }

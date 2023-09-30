@@ -12,10 +12,10 @@ use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct KeybindChange {
-    /// Game control which got changed.
+    /// Game control which changed.
     pub control: Control,
 
-    /// Index of the key in settings.
+    /// Index in settings.
     pub index: i32,
 
     /// New key.
@@ -32,6 +32,7 @@ pub struct KeybindChange {
 }
 
 impl From<RawKeybindChange> for KeybindChange {
+    #[inline]
     fn from(raw: RawKeybindChange) -> Self {
         let modifier = raw.key.modifier;
         Self {
@@ -62,6 +63,7 @@ pub enum Key {
 }
 
 impl From<RawKey> for Key {
+    #[inline]
     fn from(raw: RawKey) -> Self {
         match raw.device_type {
             DeviceType::Unset => Self::Unknown(raw.code),
@@ -91,6 +93,7 @@ pub struct Keybind {
 }
 
 impl From<RawKeybind> for Keybind {
+    #[inline]
     fn from(raw: RawKeybind) -> Self {
         Self {
             primary: raw.primary.into(),
@@ -99,29 +102,45 @@ impl From<RawKeybind> for Keybind {
     }
 }
 
+/// Raw keybind change.
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[repr(C)]
 pub struct RawKeybindChange {
+    /// Game control which changed.
     pub control: Control,
+
+    /// Index in settings.
     pub index: i32,
+
+    /// New key.
     pub key: RawKey,
 }
 
+/// Raw key information.
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[repr(C)]
 pub struct RawKey {
+    /// Device.
     pub device_type: DeviceType,
+
+    /// Key code.
     pub code: i32,
+
+    /// Key modifiers.
     pub modifier: i32,
 }
 
+/// Raw keybind.
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[repr(C)]
 pub struct RawKeybind {
+    /// Primary keybind.
     pub primary: RawKey,
+
+    /// Secondary keybind.
     pub secondary: RawKey,
 }
 
@@ -339,7 +358,7 @@ pub enum Control {
 /// Some of them are not usable like [`F13`](Self::F32) to [`F35`](Self::F35) or [`Print`](Self::Print).
 ///
 /// Names are based upon US keyboard layout.
-/// Site to translate it to other languages: <http://kbdlayout.info>
+/// Site to translate it to other languages: http://kbdlayout.info
 #[derive(
     Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, TryFromPrimitive,
 )]
@@ -523,6 +542,7 @@ pub enum MouseCode {
     Mouse20 = 19,
 }
 
+/// Device type.
 #[derive(
     Debug,
     Default,
@@ -549,6 +569,7 @@ pub enum DeviceType {
     Keyboard = 2,
 }
 
+/// Key modifiers.
 #[derive(
     Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, TryFromPrimitive,
 )]

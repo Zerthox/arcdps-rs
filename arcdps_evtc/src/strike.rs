@@ -1,4 +1,4 @@
-//! Bindings & utilities for any form of strikes (hits).
+//! Bindings & utilities for any form of strikes (direct damage).
 
 use crate::{event::CommonEvent, extract::Extract, Event, EventCategory, TryExtract};
 use num_enum::{FromPrimitive, IntoPrimitive};
@@ -9,7 +9,7 @@ use serde::{Deserialize, Serialize};
 #[cfg(feature = "strum")]
 use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
 
-/// Direct damage (strike) event.
+/// Strike (direct damage) event.
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct StrikeEvent {

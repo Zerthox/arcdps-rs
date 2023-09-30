@@ -139,6 +139,7 @@ impl From<ChatMessageInfo<'_>> for ChatMessageInfoOwned {
     }
 }
 
+/// Raw chat message information.
 #[derive(Debug, Clone)]
 #[repr(C)]
 pub struct RawChatMessageInfo {

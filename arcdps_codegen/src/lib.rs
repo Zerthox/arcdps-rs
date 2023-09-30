@@ -1,3 +1,5 @@
+//! Code generation for ArcDPS plugins.
+
 mod abi;
 mod callbacks;
 mod export;

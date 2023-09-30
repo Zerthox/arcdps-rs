@@ -1,3 +1,5 @@
+//! Example plugin showcasing ArcDPS and Unofficial Extras callbacks.
+
 #![allow(unused_variables)]
 
 use arcdps::{
