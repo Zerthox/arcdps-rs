@@ -19,7 +19,7 @@ pub struct BuffApplyEvent {
     pub common: CommonEvent,
 
     /// Kind of buff application/extension.
-    pub kind: BuffApplyKind,
+    pub apply: BuffApplyKind,
 
     /// Buff.
     // TODO: meaning?
@@ -38,7 +38,7 @@ impl Extract for BuffApplyEvent {
         Self {
             common: event.into(),
             buff: event.buff,
-            kind: BuffApplyKind::extract(event),
+            apply: BuffApplyKind::extract(event),
             stack_active: event.is_shields,
             stack_id: transmute_field!(event.pad61 as u32),
         }
@@ -55,6 +55,7 @@ impl TryExtract for BuffApplyEvent {
 /// Buff apply behavior.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
+#[cfg_attr(feature = "serde", serde(tag = "kind"))]
 #[cfg_attr(
     feature = "strum",
     derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames)

@@ -1,0 +1,12 @@
+[package]
+name = "evtc_dump"
+version = "0.1.0"
+authors = ["Zerthox"]
+edition = "2021"
+description = "Dump ArcDPS EVTC log information"
+repository = "https://github.com/zerthox/arcdps-bindings"
+
+[dependencies]
+clap = { version = "4.4.6", features = ["derive"] }
+evtc_parse = { path = "../evtc_parse", features = ["serde", "zevtc"] }
+serde_json = "1.0.107"

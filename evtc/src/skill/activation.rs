@@ -24,7 +24,7 @@ pub struct ActivationEvent {
     pub skill_id: u32,
 
     /// Kind of activation state change.
-    pub kind: Activation,
+    pub activation: Activation,
 
     /// Activation duration.
     pub duration: i32,
@@ -45,7 +45,7 @@ impl Extract for ActivationEvent {
             time: event.time,
             agent: AgentId::from_src(event),
             skill_id: event.skill_id,
-            kind: event.get_activation(),
+            activation: event.get_activation(),
             duration: event.value,
             full_duration: event.buff_dmg,
             target: Position::new(x, y, z),

@@ -10,7 +10,7 @@ use serde::{Deserialize, Serialize};
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct BuffFormula {
-    pub kind: u32,
+    pub formula: u32,
     pub attr1: u32,
     pub attr2: u32,
     pub param1: f32,
@@ -53,7 +53,7 @@ impl From<RawBuffFormula> for BuffFormula {
     #[inline]
     fn from(raw: RawBuffFormula) -> Self {
         Self {
-            kind: raw.kind as _,
+            formula: raw.formula as _,
             attr1: raw.attr1 as _,
             attr2: raw.attr2 as _,
             param1: raw.param1,
@@ -76,7 +76,7 @@ impl From<RawBuffFormula> for BuffFormula {
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct RawBuffFormula {
-    pub kind: f32,
+    pub formula: f32,
     pub attr1: f32,
     pub attr2: f32,
     pub param1: f32,
@@ -112,7 +112,7 @@ impl Extract for RawBuffFormula {
         let [buff_src, buff_self] = transmute_field!(event.src_instance_id as [f32; 2]);
 
         Self {
-            kind,
+            formula: kind,
             attr1,
             attr2,
             param1,

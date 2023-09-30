@@ -20,7 +20,7 @@ pub struct BuffRemoveEvent {
     pub common: CommonEvent,
 
     /// Kind of buff remove.
-    pub kind: BuffRemove,
+    pub remove: BuffRemove,
 
     /// Buff.
     // TODO: meaning?
@@ -51,7 +51,7 @@ impl Extract for BuffRemoveEvent {
         let kind = event.get_buffremove();
         Self {
             common: event.into(),
-            kind,
+            remove: kind,
             buff: event.buff,
             removed_duration: event.value,
             removed_intensity: event.buff_dmg,

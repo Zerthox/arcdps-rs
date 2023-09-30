@@ -24,6 +24,7 @@ use serde::{Deserialize, Serialize};
 /// Possible [`Event`] kinds.
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
+#[cfg_attr(feature = "serde", serde(tag = "kind"))]
 pub enum EventKind {
     /// Agent entered combat.
     EnterCombat(EnterCombatEvent),
@@ -146,7 +147,7 @@ pub enum EventKind {
     Extension(Event),
 
     /// Delayed combat event.
-    ApiDelayed(Box<EventKind>),
+    ApiDelayed { event: Box<EventKind> },
 
     /// Instance started.
     InstanceStart { time: u64, start: u64 },
@@ -261,7 +262,9 @@ impl From<Event> for EventKind {
                     StateChange::Extension => Self::Extension(event),
                     StateChange::ApiDelayed => {
                         event.is_statechange = StateChange::None.into();
-                        Self::ApiDelayed(event.into_kind().into())
+                        Self::ApiDelayed {
+                            event: event.into_kind().into(),
+                        }
                     }
                     StateChange::InstanceStart => Self::InstanceStart {
                         time: event.time,
@@ -284,9 +287,9 @@ impl From<Event> for EventKind {
                     StateChange::Unknown(_) => Self::Unknown(event),
                 },
                 EventCategory::Activation => Self::Activation(event.extract()),
-                EventCategory::BuffRemove => Self::Activation(event.extract()),
-                EventCategory::BuffApply => Self::Activation(event.extract()),
-                EventCategory::BuffDamage => Self::Activation(event.extract()),
+                EventCategory::BuffRemove => Self::BuffRemove(event.extract()),
+                EventCategory::BuffApply => Self::BuffApply(event.extract()),
+                EventCategory::BuffDamage => Self::BuffDamage(event.extract()),
                 EventCategory::Strike => Self::Strike(event.extract()),
             }
         }

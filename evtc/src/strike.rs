@@ -18,7 +18,7 @@ pub struct StrikeEvent {
     pub common: CommonEvent,
 
     /// Kind of strike.
-    pub kind: Strike,
+    pub strike: Strike,
 
     /// Total damage inflicted.
     pub total_damage: i32,
@@ -35,7 +35,7 @@ impl Extract for StrikeEvent {
     unsafe fn extract(event: &Event) -> Self {
         Self {
             common: event.into(),
-            kind: event.result.into(),
+            strike: event.result.into(),
             total_damage: event.value,
             shield_damage: event.overstack_value,
             target_downed: event.is_offcycle == 1,

@@ -196,7 +196,7 @@ impl Event {
         self.affinity.into()
     }
 
-    /// Returns the event ìs_activation` as [`Activation`].
+    /// Returns the event `is_activation` as [`Activation`].
     ///
     /// This will return [`Activation::Unknown`] if the event has no valid data in `is_activation`.
     #[inline]

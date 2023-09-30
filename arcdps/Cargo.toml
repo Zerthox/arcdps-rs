@@ -11,9 +11,9 @@ license = "MIT"
 
 [dependencies]
 arcdps_codegen = { path = "../arcdps_codegen" }
-arcdps_evtc = { path = "../arcdps_evtc" }
 arcdps-imgui = { version = "0.8.0", features = ["tables-api"] }
 chrono = { version = "0.4.24", optional = true }
+evtc = { path = "../evtc" }
 log = { version = "0.4.17", features = ["std"], optional = true }
 num_enum = "0.7.0"
 serde = { version = "1.0.160", features = ["derive"], optional = true }
@@ -34,5 +34,5 @@ features = [
 default = ["unwind"]
 unwind = ["arcdps_codegen/unwind"]
 extras = ["arcdps_codegen/extras", "chrono"]
-serde = ["dep:serde", "arcdps_evtc/serde", "chrono/serde"]
-strum = ["dep:strum", "arcdps_evtc/strum"]
+serde = ["dep:serde", "evtc/serde", "chrono/serde"]
+strum = ["dep:strum", "evtc/strum"]

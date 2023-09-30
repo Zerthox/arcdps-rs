@@ -3,7 +3,7 @@
 //! # Usage
 //! Use the [`parse_file`] function to easily parse a [`Log`] from a file path.
 //! ```no_run
-//! match arcdps_parse::parse_file("path/to/log.evtc") {
+//! match evtc_parse::parse_file("path/to/log.evtc") {
 //!     Ok(log) => println!("Log for boss id {}", log.header.boss_id),
 //!     Err(err) => eprintln!("Encountered error {}", err),
 //! }
@@ -11,7 +11,7 @@
 //!
 //! A [`Log`] can also be parsed from any input implementing [`Read`](io::Read).
 //! ```no_run
-//! use arcdps_parse::{Log, Parse};
+//! use evtc_parse::{Log, Parse};
 //! use std::io;
 //!
 //! fn parse_from_read(input: &mut impl io::Read) -> Log {
@@ -35,7 +35,7 @@ mod util;
 
 pub use self::error::*;
 pub use self::log::*;
-pub use arcdps_evtc::*;
+pub use evtc::*;
 pub use ext::agent::*;
 pub use ext::skill::*;
 

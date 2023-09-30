@@ -1,5 +1,5 @@
 use crate::util::str_from_cstr;
-use arcdps_evtc::AgentKind;
+use evtc::AgentKind;
 use std::os::raw::c_char;
 
 #[cfg(feature = "serde")]

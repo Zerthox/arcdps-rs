@@ -1,5 +1,5 @@
 [package]
-name = "arcdps_evtc"
+name = "evtc"
 version = "0.7.0"
 authors = ["Zerthox"]
 edition = "2021"
@@ -14,3 +14,7 @@ strum = { version = "0.25.0", features = ["derive"], optional = true }
 
 [dev-dependencies]
 approx = "0.5.1"
+
+[features]
+serde = ["dep:serde"]
+strum = ["dep:strum"]

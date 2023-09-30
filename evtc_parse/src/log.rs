@@ -2,8 +2,8 @@ use crate::{
     util::{read_string_buffer, write_string_buffer, Endian},
     Agent, Parse, ParseError, Save, Skill,
 };
-use arcdps_evtc::Event;
 use byteorder::{ReadBytesExt, WriteBytesExt};
+use evtc::Event;
 use std::io;
 
 #[cfg(feature = "serde")]

@@ -6,5 +6,5 @@ mod ext {
     pub mod agent;
 }
 
-pub use arcdps_evtc::*;
+pub use evtc::*;
 pub use ext::agent::*;
