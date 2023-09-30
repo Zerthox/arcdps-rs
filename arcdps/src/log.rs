@@ -31,6 +31,7 @@ pub struct ArcDpsLogger {
 
 impl ArcDpsLogger {
     /// Creates a new ArcDPS logger.
+    #[inline]
     pub const fn new(name: &'static str) -> Self {
         Self { name }
     }
@@ -76,6 +77,7 @@ pub struct WindowLogger {
 
 impl WindowLogger {
     /// Creates a new window logger.
+    #[inline]
     pub const fn new(name: &'static str) -> Self {
         Self { name }
     }
@@ -102,6 +104,7 @@ pub struct FileLogger {
 
 impl FileLogger {
     /// Creates a new file logger.
+    #[inline]
     pub const fn new(name: &'static str) -> Self {
         Self { name }
     }
