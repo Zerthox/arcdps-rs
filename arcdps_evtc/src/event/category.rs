@@ -1,4 +1,4 @@
-use crate::{Activation, BuffRemove, CombatEvent, StateChange};
+use crate::{Activation, BuffRemove, Event, StateChange};
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
@@ -6,7 +6,7 @@ use serde::{Deserialize, Serialize};
 #[cfg(feature = "strum")]
 use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
 
-/// Possible [`CombatEvent`] categories.
+/// Possible [`Event`] categories.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[cfg_attr(
@@ -14,7 +14,9 @@ use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
     derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames)
 )]
 pub enum EventCategory {
-    /// State change event. See variants of [`StateChange`] for details.
+    /// State change event.
+    ///
+    /// See variants of [`StateChange`] for details.
     StateChange,
 
     /// Activation (cast) event.
@@ -94,15 +96,16 @@ pub enum EventCategory {
     Strike,
 }
 
-impl From<&CombatEvent> for EventCategory {
+impl From<&Event> for EventCategory {
     #[inline]
-    fn from(event: &CombatEvent) -> Self {
-        if event.is_statechange == StateChange::None
-            || (event.is_statechange == StateChange::BuffInitial && event.buff != 18)
+    fn from(event: &Event) -> Self {
+        let statechange = event.get_statechange();
+        if statechange == StateChange::None
+            || (statechange == StateChange::BuffInitial && event.buff != 18)
         {
-            if event.is_activation != Activation::None {
+            if event.get_activation() != Activation::None {
                 EventCategory::Activation
-            } else if event.is_buffremove != BuffRemove::None {
+            } else if event.get_buffremove() != BuffRemove::None {
                 EventCategory::BuffRemove
             } else if event.buff != 0 {
                 if event.buff_dmg == 0 {

@@ -1,5 +1,5 @@
-use crate::{event::CommonEvent, extract::Extract, CombatEvent, EventCategory, TryExtract};
-use num_enum::{FromPrimitive, IntoPrimitive, TryFromPrimitive};
+use crate::{event::CommonEvent, extract::Extract, Event, EventCategory, TryExtract};
+use num_enum::{FromPrimitive, IntoPrimitive};
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
@@ -33,7 +33,7 @@ pub struct BuffDamageEvent {
 
 impl Extract for BuffDamageEvent {
     #[inline]
-    unsafe fn extract(event: &CombatEvent) -> Self {
+    unsafe fn extract(event: &Event) -> Self {
         Self {
             common: event.into(),
             buff: event.buff,
@@ -46,7 +46,7 @@ impl Extract for BuffDamageEvent {
 
 impl TryExtract for BuffDamageEvent {
     #[inline]
-    fn can_extract(event: &CombatEvent) -> bool {
+    fn can_extract(event: &Event) -> bool {
         event.categorize() == EventCategory::BuffDamage
     }
 }
@@ -77,14 +77,14 @@ pub enum BuffDamageResult {
     /// Target invulnerable by player skill.
     InvulnBySkill3 = 4,
 
-    /// Unknown.
+    /// Unknown or invalid.
     #[num_enum(catch_all)]
     Unknown(u8),
 }
 
 /// Combat buff cycle.
 #[derive(
-    Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, TryFromPrimitive,
+    Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
 )]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[cfg_attr(
@@ -110,4 +110,8 @@ pub enum BuffCycle {
 
     /// Damage happened to target on source losing a stack.
     NotCycleDmgToTargetOnStackRemove = 5,
+
+    /// Unknown or invalid.
+    #[num_enum(catch_all)]
+    Unknown(u8),
 }

@@ -1,4 +1,4 @@
-use crate::{event::CommonEvent, extract::Extract, CombatEvent, EventCategory, TryExtract};
+use crate::{event::CommonEvent, extract::Extract, Event, EventCategory, TryExtract};
 use num_enum::{FromPrimitive, IntoPrimitive};
 use std::mem::transmute;
 
@@ -44,19 +44,20 @@ pub struct BuffRemoveEvent {
 
 impl Extract for BuffRemoveEvent {
     #[inline]
-    unsafe fn extract(event: &CombatEvent) -> Self {
+    unsafe fn extract(event: &Event) -> Self {
+        let kind = event.get_buffremove();
         Self {
             common: event.into(),
-            kind: event.is_buffremove,
+            kind,
             buff: event.buff,
             removed_duration: event.value,
             removed_intensity: event.buff_dmg,
-            stacks_removed: if event.is_buffremove == BuffRemove::All {
+            stacks_removed: if kind == BuffRemove::All {
                 Some(event.result)
             } else {
                 None
             },
-            stack_id: if event.is_buffremove == BuffRemove::Single {
+            stack_id: if kind == BuffRemove::Single {
                 Some(transmute([
                     event.pad61,
                     event.pad62,
@@ -72,7 +73,7 @@ impl Extract for BuffRemoveEvent {
 
 impl TryExtract for BuffRemoveEvent {
     #[inline]
-    fn can_extract(event: &CombatEvent) -> bool {
+    fn can_extract(event: &Event) -> bool {
         event.categorize() == EventCategory::BuffRemove
     }
 }

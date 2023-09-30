@@ -19,7 +19,7 @@ pub mod weapon;
 pub use crate::{
     agent::{Affinity, AgentId, AgentKind},
     buff::{Attribute, BuffCategory, BuffCycle, BuffRemove},
-    event::{CombatEvent, EventCategory, EventKind, RawCombatEvent},
+    event::{Event, EventCategory, EventKind},
     extract::TryExtract,
     game::Language,
     player::{Profession, Specialization},

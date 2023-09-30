@@ -1,10 +1,10 @@
-use crate::{extract::Extract, CombatEvent, StateChange, TryExtract};
+use crate::{extract::Extract, Event, StateChange, TryExtract};
 use std::mem::transmute;
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
 
-/// Buff formula from a [`CombatEvent`] with [`StateChange::BuffFormula`].
+/// Buff formula from an [`Event`] with [`StateChange::BuffFormula`].
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct BuffFormula {
@@ -35,14 +35,14 @@ impl BuffFormula {
 
 impl Extract for BuffFormula {
     #[inline]
-    unsafe fn extract(event: &CombatEvent) -> Self {
+    unsafe fn extract(event: &Event) -> Self {
         RawBuffFormula::extract(event).into()
     }
 }
 
 impl TryExtract for BuffFormula {
     #[inline]
-    fn can_extract(event: &CombatEvent) -> bool {
+    fn can_extract(event: &Event) -> bool {
         RawBuffFormula::can_extract(event)
     }
 }
@@ -70,7 +70,7 @@ impl From<RawBuffFormula> for BuffFormula {
     }
 }
 
-/// Buff formula from a [`CombatEvent`] with [`StateChange::BuffFormula`].
+/// Buff formula from an [`Event`] with [`StateChange::BuffFormula`].
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct RawBuffFormula {
@@ -104,7 +104,7 @@ impl RawBuffFormula {
 
 impl Extract for RawBuffFormula {
     #[inline]
-    unsafe fn extract(event: &CombatEvent) -> Self {
+    unsafe fn extract(event: &Event) -> Self {
         let [kind, attr1, attr2, param1, param2, param3, trait_src, trait_self]: [f32; 8] =
             transmute((
                 event.time,
@@ -142,7 +142,7 @@ impl Extract for RawBuffFormula {
 
 impl TryExtract for RawBuffFormula {
     #[inline]
-    fn can_extract(event: &CombatEvent) -> bool {
-        event.is_statechange == StateChange::BuffFormula
+    fn can_extract(event: &Event) -> bool {
+        event.get_statechange() == StateChange::BuffFormula
     }
 }

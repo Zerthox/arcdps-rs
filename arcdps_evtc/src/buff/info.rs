@@ -1,4 +1,4 @@
-use crate::{extract::Extract, CombatEvent, StateChange, TryExtract};
+use crate::{extract::Extract, Event, StateChange, TryExtract};
 use num_enum::{IntoPrimitive, TryFromPrimitive};
 
 #[cfg(feature = "serde")]
@@ -7,7 +7,7 @@ use serde::{Deserialize, Serialize};
 #[cfg(feature = "strum")]
 use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
 
-/// Buff information from a [`CombatEvent`] with [`StateChange::BuffInfo`].
+/// Buff information from an [`Event`] with [`StateChange::BuffInfo`].
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct BuffInfo {
@@ -39,7 +39,7 @@ pub struct BuffInfo {
 
 impl Extract for BuffInfo {
     #[inline]
-    unsafe fn extract(event: &CombatEvent) -> Self {
+    unsafe fn extract(event: &Event) -> Self {
         Self {
             category: event.is_offcycle,
             stacking_type: event.pad61,
@@ -54,8 +54,8 @@ impl Extract for BuffInfo {
 
 impl TryExtract for BuffInfo {
     #[inline]
-    fn can_extract(event: &CombatEvent) -> bool {
-        event.is_statechange == StateChange::BuffInfo
+    fn can_extract(event: &Event) -> bool {
+        event.get_statechange() == StateChange::BuffInfo
     }
 }
 

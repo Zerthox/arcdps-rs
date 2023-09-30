@@ -1,4 +1,4 @@
-use crate::{Affinity, AgentId, CombatEvent};
+use crate::{Affinity, AgentId, Event};
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
@@ -39,15 +39,15 @@ pub struct CommonEvent {
     pub is_flanking: u8,
 }
 
-impl From<&CombatEvent> for CommonEvent {
+impl From<&Event> for CommonEvent {
     #[inline]
-    fn from(event: &CombatEvent) -> Self {
+    fn from(event: &Event) -> Self {
         Self {
             time: event.time,
             src: AgentId::from_src(event),
             dst: AgentId::from_dst(event),
             skill_id: event.skill_id,
-            affinity: event.affinity,
+            affinity: event.get_affinity(),
             is_ninety: event.is_ninety,
             is_fifty: event.is_fifty,
             is_moving: event.is_moving,

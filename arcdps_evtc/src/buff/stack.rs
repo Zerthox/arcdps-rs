@@ -1,4 +1,4 @@
-use crate::{extract::Extract, AgentId, CombatEvent, StateChange, TryExtract};
+use crate::{extract::Extract, AgentId, Event, StateChange, TryExtract};
 use std::mem::transmute;
 
 #[cfg(feature = "serde")]
@@ -20,7 +20,7 @@ pub struct StackActiveEvent {
 
 impl Extract for StackActiveEvent {
     #[inline]
-    unsafe fn extract(event: &CombatEvent) -> Self {
+    unsafe fn extract(event: &Event) -> Self {
         Self {
             time: event.time,
             agent: AgentId::from_src(event),
@@ -31,8 +31,8 @@ impl Extract for StackActiveEvent {
 
 impl TryExtract for StackActiveEvent {
     #[inline]
-    fn can_extract(event: &CombatEvent) -> bool {
-        event.is_statechange == StateChange::StackActive
+    fn can_extract(event: &Event) -> bool {
+        event.get_statechange() == StateChange::StackActive
     }
 }
 
@@ -48,7 +48,7 @@ pub struct StackResetEvent {
 
 impl Extract for StackResetEvent {
     #[inline]
-    unsafe fn extract(event: &CombatEvent) -> Self {
+    unsafe fn extract(event: &Event) -> Self {
         Self {
             time: event.time,
             agent: AgentId::from_src(event),
@@ -60,7 +60,7 @@ impl Extract for StackResetEvent {
 
 impl TryExtract for StackResetEvent {
     #[inline]
-    fn can_extract(event: &CombatEvent) -> bool {
-        event.is_statechange == StateChange::StackReset
+    fn can_extract(event: &Event) -> bool {
+        event.get_statechange() == StateChange::StackReset
     }
 }

@@ -8,13 +8,13 @@ mod old;
 pub use self::guid::*;
 pub use self::old::*;
 
-use crate::{extract::Extract, CombatEvent, Position, StateChange, TryExtract};
+use crate::{extract::Extract, Event, Position, StateChange, TryExtract};
 use std::mem::transmute;
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
 
-/// Effect information from a [`CombatEvent`] with [`StateChange::Effect`].
+/// Effect information from an [`Event`] with [`StateChange::Effect`].
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct Effect {
@@ -55,7 +55,7 @@ impl Effect {
 
 impl Extract for Effect {
     #[inline]
-    unsafe fn extract(event: &CombatEvent) -> Self {
+    unsafe fn extract(event: &Event) -> Self {
         let effect_id = event.skill_id;
         let duration: u32 = transmute([
             event.affinity.into(),
@@ -93,8 +93,8 @@ impl Extract for Effect {
 
 impl TryExtract for Effect {
     #[inline]
-    fn can_extract(event: &CombatEvent) -> bool {
-        event.is_statechange == StateChange::Effect
+    fn can_extract(event: &Event) -> bool {
+        event.get_statechange() == StateChange::Effect
     }
 }
 
@@ -108,7 +108,7 @@ pub enum EffectLocation {
 
 impl Extract for EffectLocation {
     #[inline]
-    unsafe fn extract(event: &CombatEvent) -> Self {
+    unsafe fn extract(event: &Event) -> Self {
         if event.dst_agent != 0 {
             Self::Agent(event.dst_agent)
         } else {

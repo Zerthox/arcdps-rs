@@ -1,6 +1,6 @@
 //! Bindings & utilities for any form of strikes (hits).
 
-use crate::{event::CommonEvent, extract::Extract, CombatEvent, EventCategory, TryExtract};
+use crate::{event::CommonEvent, extract::Extract, Event, EventCategory, TryExtract};
 use num_enum::{FromPrimitive, IntoPrimitive};
 
 #[cfg(feature = "serde")]
@@ -32,7 +32,7 @@ pub struct StrikeEvent {
 
 impl Extract for StrikeEvent {
     #[inline]
-    unsafe fn extract(event: &CombatEvent) -> Self {
+    unsafe fn extract(event: &Event) -> Self {
         Self {
             common: event.into(),
             kind: event.result.into(),
@@ -45,7 +45,7 @@ impl Extract for StrikeEvent {
 
 impl TryExtract for StrikeEvent {
     #[inline]
-    fn can_extract(event: &CombatEvent) -> bool {
+    fn can_extract(event: &Event) -> bool {
         event.categorize() == EventCategory::Strike
     }
 }

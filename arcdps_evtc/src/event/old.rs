@@ -1,11 +1,11 @@
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
 
-/// A combat event for old EVTC revision (`header[12] == 0`).
+/// An event for old EVTC revision (`header[12] == 0`).
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[repr(C)]
-pub struct CombatEventOld {
+pub struct EventOld {
     pub time: u64,
     pub src_agent: u64,
     pub dst_agent: u64,

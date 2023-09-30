@@ -15,13 +15,13 @@ use crate::{
     skill::{ActivationEvent, SkillInfo, SkillTiming},
     strike::StrikeEvent,
     weapon::WeaponSwapEvent,
-    CombatEvent, EventCategory, Language, StateChange,
+    Event, EventCategory, Language, StateChange,
 };
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
 
-/// Possible [`CombatEvent`] kinds.
+/// Possible [`Event`] kinds.
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub enum EventKind {
@@ -143,7 +143,7 @@ pub enum EventKind {
     StatReset { time: u64, target: u64 },
 
     /// A custom event created by an extension (addon/plugin).
-    Extension(CombatEvent),
+    Extension(Event),
 
     /// Delayed combat event.
     ApiDelayed(Box<EventKind>),
@@ -167,7 +167,7 @@ pub enum EventKind {
     LogNPCUpdate(LogEvent),
 
     /// A custom combat event created by an extension (addon/plugin).
-    ExtensionCombat(CombatEvent),
+    ExtensionCombat(Event),
 
     /// Fractal scale.
     FractalScale { time: u64, scale: u64 },
@@ -191,15 +191,15 @@ pub enum EventKind {
     Strike(StrikeEvent),
 
     /// Unknown event.
-    Unknown(CombatEvent),
+    Unknown(Event),
 }
 
-impl From<CombatEvent> for EventKind {
+impl From<Event> for EventKind {
     #[inline]
-    fn from(mut event: CombatEvent) -> Self {
+    fn from(mut event: Event) -> Self {
         unsafe {
             match event.categorize() {
-                EventCategory::StateChange => match event.is_statechange {
+                EventCategory::StateChange => match event.get_statechange() {
                     StateChange::None => unreachable!("statechange none in statechange category"),
                     StateChange::IdleEvent | StateChange::ReplInfo => {
                         unreachable!("illegal internal statechange")
@@ -260,7 +260,7 @@ impl From<CombatEvent> for EventKind {
                     },
                     StateChange::Extension => Self::Extension(event),
                     StateChange::ApiDelayed => {
-                        event.is_statechange = StateChange::None;
+                        event.is_statechange = StateChange::None.into();
                         Self::ApiDelayed(event.into_kind().into())
                     }
                     StateChange::InstanceStart => Self::InstanceStart {

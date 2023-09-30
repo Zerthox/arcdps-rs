@@ -1,4 +1,4 @@
-use crate::{extract::Extract, AgentId, CombatEvent, StateChange, TryExtract};
+use crate::{extract::Extract, AgentId, Event, StateChange, TryExtract};
 use std::mem::transmute;
 
 #[cfg(feature = "serde")]
@@ -22,7 +22,7 @@ pub struct GuildEvent {
 
 impl Extract for GuildEvent {
     #[inline]
-    unsafe fn extract(event: &CombatEvent) -> Self {
+    unsafe fn extract(event: &Event) -> Self {
         Self {
             time: event.time,
             agent: AgentId::from_src(event),
@@ -33,7 +33,7 @@ impl Extract for GuildEvent {
 
 impl TryExtract for GuildEvent {
     #[inline]
-    fn can_extract(event: &CombatEvent) -> bool {
-        event.is_statechange == StateChange::Guild
+    fn can_extract(event: &Event) -> bool {
+        event.get_statechange() == StateChange::Guild
     }
 }

@@ -1,4 +1,4 @@
-use crate::{extract::Extract, AgentId, CombatEvent, StateChange, TryExtract};
+use crate::{extract::Extract, AgentId, Event, StateChange, TryExtract};
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
@@ -18,7 +18,7 @@ pub struct AgentStatusEvent {
 
 impl Extract for AgentStatusEvent {
     #[inline]
-    unsafe fn extract(event: &CombatEvent) -> Self {
+    unsafe fn extract(event: &Event) -> Self {
         Self {
             time: event.time,
             agent: AgentId::from_src(event),
@@ -28,9 +28,9 @@ impl Extract for AgentStatusEvent {
 
 impl TryExtract for AgentStatusEvent {
     #[inline]
-    fn can_extract(event: &CombatEvent) -> bool {
+    fn can_extract(event: &Event) -> bool {
         matches!(
-            event.is_statechange,
+            event.get_statechange(),
             StateChange::ExitCombat
                 | StateChange::ChangeUp
                 | StateChange::ChangeDead
@@ -58,7 +58,7 @@ pub struct EnterCombatEvent {
 
 impl Extract for EnterCombatEvent {
     #[inline]
-    unsafe fn extract(event: &CombatEvent) -> Self {
+    unsafe fn extract(event: &Event) -> Self {
         Self {
             time: event.time,
             agent: AgentId::from_src(event),
@@ -69,8 +69,8 @@ impl Extract for EnterCombatEvent {
 
 impl TryExtract for EnterCombatEvent {
     #[inline]
-    fn can_extract(event: &CombatEvent) -> bool {
-        event.is_statechange == StateChange::EnterCombat
+    fn can_extract(event: &Event) -> bool {
+        event.get_statechange() == StateChange::EnterCombat
     }
 }
 
@@ -90,7 +90,7 @@ pub struct MaxHealthEvent {
 
 impl Extract for MaxHealthEvent {
     #[inline]
-    unsafe fn extract(event: &CombatEvent) -> Self {
+    unsafe fn extract(event: &Event) -> Self {
         Self {
             time: event.time,
             agent: AgentId::from_src(event),
@@ -101,8 +101,8 @@ impl Extract for MaxHealthEvent {
 
 impl TryExtract for MaxHealthEvent {
     #[inline]
-    fn can_extract(event: &CombatEvent) -> bool {
-        event.is_statechange == StateChange::MaxHealthUpdate
+    fn can_extract(event: &Event) -> bool {
+        event.get_statechange() == StateChange::MaxHealthUpdate
     }
 }
 
@@ -127,7 +127,7 @@ impl HealthUpdateEvent {
 
 impl Extract for HealthUpdateEvent {
     #[inline]
-    unsafe fn extract(event: &CombatEvent) -> Self {
+    unsafe fn extract(event: &Event) -> Self {
         Self {
             time: event.time,
             agent: AgentId::from_src(event),
@@ -138,8 +138,8 @@ impl Extract for HealthUpdateEvent {
 
 impl TryExtract for HealthUpdateEvent {
     #[inline]
-    fn can_extract(event: &CombatEvent) -> bool {
-        event.is_statechange == StateChange::HealthUpdate
+    fn can_extract(event: &Event) -> bool {
+        event.get_statechange() == StateChange::HealthUpdate
     }
 }
 
@@ -164,7 +164,7 @@ impl BarrierUpdateEvent {
 
 impl Extract for BarrierUpdateEvent {
     #[inline]
-    unsafe fn extract(event: &CombatEvent) -> Self {
+    unsafe fn extract(event: &Event) -> Self {
         Self {
             time: event.time,
             agent: AgentId::from_src(event),
@@ -175,8 +175,8 @@ impl Extract for BarrierUpdateEvent {
 
 impl TryExtract for BarrierUpdateEvent {
     #[inline]
-    fn can_extract(event: &CombatEvent) -> bool {
-        event.is_statechange == StateChange::BarrierUpdate
+    fn can_extract(event: &Event) -> bool {
+        event.get_statechange() == StateChange::BarrierUpdate
     }
 }
 
@@ -196,7 +196,7 @@ pub struct TeamChangeEvent {
 
 impl Extract for TeamChangeEvent {
     #[inline]
-    unsafe fn extract(event: &CombatEvent) -> Self {
+    unsafe fn extract(event: &Event) -> Self {
         Self {
             time: event.time,
             agent: AgentId::from_src(event),
@@ -207,8 +207,8 @@ impl Extract for TeamChangeEvent {
 
 impl TryExtract for TeamChangeEvent {
     #[inline]
-    fn can_extract(event: &CombatEvent) -> bool {
-        event.is_statechange == StateChange::TeamChange
+    fn can_extract(event: &Event) -> bool {
+        event.get_statechange() == StateChange::TeamChange
     }
 }
 
@@ -228,7 +228,7 @@ pub struct DownContributionEvent {
 
 impl Extract for DownContributionEvent {
     #[inline]
-    unsafe fn extract(event: &CombatEvent) -> Self {
+    unsafe fn extract(event: &Event) -> Self {
         Self {
             time: event.time,
             agent: AgentId::from_src(event),
@@ -239,8 +239,8 @@ impl Extract for DownContributionEvent {
 
 impl TryExtract for DownContributionEvent {
     #[inline]
-    fn can_extract(event: &CombatEvent) -> bool {
-        event.is_statechange == StateChange::Last90BeforeDown
+    fn can_extract(event: &Event) -> bool {
+        event.get_statechange() == StateChange::Last90BeforeDown
     }
 }
 
@@ -263,7 +263,7 @@ pub struct AttackTargetEvent {
 
 impl Extract for AttackTargetEvent {
     #[inline]
-    unsafe fn extract(event: &CombatEvent) -> Self {
+    unsafe fn extract(event: &Event) -> Self {
         Self {
             time: event.time,
             agent: AgentId::from_src(event),
@@ -275,8 +275,8 @@ impl Extract for AttackTargetEvent {
 
 impl TryExtract for AttackTargetEvent {
     #[inline]
-    fn can_extract(event: &CombatEvent) -> bool {
-        event.is_statechange == StateChange::AttackTarget
+    fn can_extract(event: &Event) -> bool {
+        event.get_statechange() == StateChange::AttackTarget
     }
 }
 
@@ -296,7 +296,7 @@ pub struct TargetableEvent {
 
 impl Extract for TargetableEvent {
     #[inline]
-    unsafe fn extract(event: &CombatEvent) -> Self {
+    unsafe fn extract(event: &Event) -> Self {
         Self {
             time: event.time,
             agent: AgentId::from_src(event),
@@ -307,7 +307,7 @@ impl Extract for TargetableEvent {
 
 impl TryExtract for TargetableEvent {
     #[inline]
-    fn can_extract(event: &CombatEvent) -> bool {
-        event.is_statechange == StateChange::Targetable
+    fn can_extract(event: &Event) -> bool {
+        event.get_statechange() == StateChange::Targetable
     }
 }

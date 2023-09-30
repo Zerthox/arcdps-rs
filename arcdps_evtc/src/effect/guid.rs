@@ -1,4 +1,4 @@
-use crate::{extract::Extract, CombatEvent, StateChange, TryExtract};
+use crate::{extract::Extract, Event, StateChange, TryExtract};
 use num_enum::{IntoPrimitive, TryFromPrimitive};
 use std::mem::transmute;
 
@@ -8,7 +8,7 @@ use serde::{Deserialize, Serialize};
 #[cfg(feature = "strum")]
 use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
 
-/// Effect information from a [`CombatEvent`] with [`StateChange::IdToGUID`].
+/// Effect information from an [`Event`] with [`StateChange::IdToGUID`].
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct EffectGUID {
@@ -32,7 +32,7 @@ impl EffectGUID {
 
 impl Extract for EffectGUID {
     #[inline]
-    unsafe fn extract(event: &CombatEvent) -> Self {
+    unsafe fn extract(event: &Event) -> Self {
         Self {
             effect_id: event.skill_id,
             guid: u128::from_be_bytes(transmute([event.src_agent, event.dst_agent])),
@@ -43,8 +43,8 @@ impl Extract for EffectGUID {
 
 impl TryExtract for EffectGUID {
     #[inline]
-    fn can_extract(event: &CombatEvent) -> bool {
-        event.is_statechange == StateChange::IdToGUID
+    fn can_extract(event: &Event) -> bool {
+        event.get_statechange() == StateChange::IdToGUID
     }
 }
 

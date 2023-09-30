@@ -1,4 +1,4 @@
-//! General game-related bindings & utilities for.
+//! General game-related bindings & utilities.
 
 mod language;
 

@@ -2,7 +2,7 @@ mod error;
 
 pub use self::error::*;
 
-use crate::{extract::Extract, CombatEvent, StateChange, TryExtract};
+use crate::{extract::Extract, Event, StateChange, TryExtract};
 use std::mem::transmute;
 
 #[cfg(feature = "serde")]
@@ -27,7 +27,7 @@ pub struct LogEvent {
 
 impl Extract for LogEvent {
     #[inline]
-    unsafe fn extract(event: &CombatEvent) -> Self {
+    unsafe fn extract(event: &Event) -> Self {
         Self {
             time: event.time,
             server_time: transmute(event.value),
@@ -39,9 +39,9 @@ impl Extract for LogEvent {
 
 impl TryExtract for LogEvent {
     #[inline]
-    fn can_extract(event: &CombatEvent) -> bool {
+    fn can_extract(event: &Event) -> bool {
         matches!(
-            event.is_statechange,
+            event.get_statechange(),
             StateChange::LogStart | StateChange::LogEnd | StateChange::LogNPCUpdate
         )
     }

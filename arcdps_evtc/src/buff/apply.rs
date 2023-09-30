@@ -1,4 +1,4 @@
-use crate::{event::CommonEvent, extract::Extract, CombatEvent, EventCategory, TryExtract};
+use crate::{event::CommonEvent, extract::Extract, Event, EventCategory, TryExtract};
 use std::mem::transmute;
 
 #[cfg(feature = "serde")]
@@ -31,7 +31,7 @@ pub struct BuffApplyEvent {
 
 impl Extract for BuffApplyEvent {
     #[inline]
-    unsafe fn extract(event: &CombatEvent) -> Self {
+    unsafe fn extract(event: &Event) -> Self {
         Self {
             common: event.into(),
             buff: event.buff,
@@ -44,7 +44,7 @@ impl Extract for BuffApplyEvent {
 
 impl TryExtract for BuffApplyEvent {
     #[inline]
-    fn can_extract(event: &CombatEvent) -> bool {
+    fn can_extract(event: &Event) -> bool {
         event.categorize() == EventCategory::BuffApply
     }
 }
@@ -79,7 +79,7 @@ pub enum BuffApplyKind {
 
 impl Extract for BuffApplyKind {
     #[inline]
-    unsafe fn extract(event: &CombatEvent) -> Self {
+    unsafe fn extract(event: &Event) -> Self {
         if event.is_offcycle == 0 {
             Self::Apply {
                 duration: event.value,

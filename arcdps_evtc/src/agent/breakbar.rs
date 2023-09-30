@@ -1,4 +1,4 @@
-use crate::{extract::Extract, AgentId, CombatEvent, StateChange, TryExtract};
+use crate::{extract::Extract, AgentId, Event, StateChange, TryExtract};
 use num_enum::{FromPrimitive, IntoPrimitive};
 use std::mem::transmute;
 
@@ -24,7 +24,7 @@ pub struct BreakbarStateEvent {
 
 impl Extract for BreakbarStateEvent {
     #[inline]
-    unsafe fn extract(event: &CombatEvent) -> Self {
+    unsafe fn extract(event: &Event) -> Self {
         Self {
             time: event.time,
             agent: AgentId::from_src(event),
@@ -35,8 +35,8 @@ impl Extract for BreakbarStateEvent {
 
 impl TryExtract for BreakbarStateEvent {
     #[inline]
-    fn can_extract(event: &CombatEvent) -> bool {
-        event.is_statechange == StateChange::BreakbarState
+    fn can_extract(event: &Event) -> bool {
+        event.get_statechange() == StateChange::BreakbarState
     }
 }
 
@@ -56,7 +56,7 @@ pub struct BreakbarPercentEvent {
 
 impl Extract for BreakbarPercentEvent {
     #[inline]
-    unsafe fn extract(event: &CombatEvent) -> Self {
+    unsafe fn extract(event: &Event) -> Self {
         #[allow(clippy::transmute_int_to_float)]
         let health = transmute(event.value);
 
@@ -70,8 +70,8 @@ impl Extract for BreakbarPercentEvent {
 
 impl TryExtract for BreakbarPercentEvent {
     #[inline]
-    fn can_extract(event: &CombatEvent) -> bool {
-        event.is_statechange == StateChange::BreakbarPercent
+    fn can_extract(event: &Event) -> bool {
+        event.get_statechange() == StateChange::BreakbarPercent
     }
 }
 

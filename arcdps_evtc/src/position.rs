@@ -1,6 +1,6 @@
 //! Bindings & utilities for the game's 3d space.
 
-use crate::{extract::Extract, AgentId, CombatEvent, StateChange, TryExtract};
+use crate::{extract::Extract, AgentId, Event, StateChange, TryExtract};
 use std::{
     mem::transmute,
     ops::{Add, AddAssign, Div, DivAssign, Mul, MulAssign, Sub, SubAssign},
@@ -20,7 +20,7 @@ pub struct PositionEvent {
 
 impl Extract for PositionEvent {
     #[inline]
-    unsafe fn extract(event: &CombatEvent) -> Self {
+    unsafe fn extract(event: &Event) -> Self {
         Self {
             time: event.time,
             agent: AgentId::from_src(event),
@@ -31,9 +31,9 @@ impl Extract for PositionEvent {
 
 impl TryExtract for PositionEvent {
     #[inline]
-    fn can_extract(event: &CombatEvent) -> bool {
+    fn can_extract(event: &Event) -> bool {
         matches!(
-            event.is_statechange,
+            event.get_statechange(),
             StateChange::Position | StateChange::Velocity | StateChange::Facing
         )
     }
@@ -41,7 +41,7 @@ impl TryExtract for PositionEvent {
 
 /// Positional information.
 ///
-/// This can be from a [`CombatEvent`] with [`StateChange::Position`], [`StateChange::Velocity`] or [`StateChange::Facing`].
+/// This can be from an [`Event`] with [`StateChange::Position`], [`StateChange::Velocity`] or [`StateChange::Facing`].
 /// It can also occur in [`StateChange::Effect`] and [`StateChange::EffectOld`] events as effect location or orientation.
 ///
 /// Ingame coordinates are interpreted as 1 unit = 1 inch.
@@ -282,7 +282,7 @@ impl Div<&Position> for f32 {
 
 impl Extract for Position {
     #[inline]
-    unsafe fn extract(event: &CombatEvent) -> Self {
+    unsafe fn extract(event: &Event) -> Self {
         let [x, y]: [f32; 2] = transmute(event.dst_agent);
 
         #[allow(clippy::transmute_int_to_float)]

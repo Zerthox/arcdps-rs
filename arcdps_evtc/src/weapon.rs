@@ -1,6 +1,6 @@
 //! Bindings & utilities for agent weapon sets.
 
-use crate::{extract::Extract, AgentId, CombatEvent, StateChange, TryExtract};
+use crate::{extract::Extract, AgentId, Event, StateChange, TryExtract};
 use num_enum::{FromPrimitive, IntoPrimitive};
 
 #[cfg(feature = "serde")]
@@ -25,7 +25,7 @@ pub struct WeaponSwapEvent {
 
 impl Extract for WeaponSwapEvent {
     #[inline]
-    unsafe fn extract(event: &CombatEvent) -> Self {
+    unsafe fn extract(event: &Event) -> Self {
         Self {
             time: event.time,
             agent: AgentId::from_src(event),
@@ -36,14 +36,14 @@ impl Extract for WeaponSwapEvent {
 
 impl TryExtract for WeaponSwapEvent {
     #[inline]
-    fn can_extract(event: &CombatEvent) -> bool {
-        event.is_statechange == StateChange::WeaponSwap
+    fn can_extract(event: &Event) -> bool {
+        event.get_statechange() == StateChange::WeaponSwap
     }
 }
 
 /// Agent weapon set.
 ///
-/// Typically used with a [`CombatEvent`] with [`StateChange::WeaponSwap`].
+/// Typically used with an [`Event`] with [`StateChange::WeaponSwap`].
 #[derive(
     Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
 )]

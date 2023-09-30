@@ -1,4 +1,4 @@
-use crate::{extract::Extract, AgentId, CombatEvent, EventCategory, Position, TryExtract};
+use crate::{extract::Extract, AgentId, Event, EventCategory, Position, TryExtract};
 use num_enum::{FromPrimitive, IntoPrimitive};
 use std::mem::transmute;
 
@@ -38,14 +38,14 @@ pub struct ActivationEvent {
 
 impl Extract for ActivationEvent {
     #[inline]
-    unsafe fn extract(event: &CombatEvent) -> Self {
+    unsafe fn extract(event: &Event) -> Self {
         let [x, y]: [f32; 2] = transmute(event.dst_agent);
         let z = f32::from_bits(event.overstack_value);
         Self {
             time: event.time,
             agent: AgentId::from_src(event),
             skill_id: event.skill_id,
-            kind: event.is_activation,
+            kind: event.get_activation(),
             duration: event.value,
             full_duration: event.buff_dmg,
             target: Position::new(x, y, z),
@@ -55,7 +55,7 @@ impl Extract for ActivationEvent {
 
 impl TryExtract for ActivationEvent {
     #[inline]
-    fn can_extract(event: &CombatEvent) -> bool {
+    fn can_extract(event: &Event) -> bool {
         event.categorize() == EventCategory::Activation
     }
 }

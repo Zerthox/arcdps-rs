@@ -1,4 +1,4 @@
-use crate::{extract::Extract, CombatEvent, StateChange, TryExtract};
+use crate::{extract::Extract, Event, StateChange, TryExtract};
 use std::mem::transmute;
 
 #[cfg(feature = "serde")]
@@ -14,7 +14,7 @@ pub struct ErrorEvent {
 
 impl Extract for ErrorEvent {
     #[inline]
-    unsafe fn extract(event: &CombatEvent) -> Self {
+    unsafe fn extract(event: &Event) -> Self {
         let chars: [u8; 32] = transmute((
             event.time,
             event.src_agent,
@@ -33,7 +33,7 @@ impl Extract for ErrorEvent {
 
 impl TryExtract for ErrorEvent {
     #[inline]
-    fn can_extract(event: &CombatEvent) -> bool {
-        event.is_statechange == StateChange::Error
+    fn can_extract(event: &Event) -> bool {
+        event.get_statechange() == StateChange::Error
     }
 }
