@@ -30,14 +30,18 @@ mod ext {
     pub mod skill;
 }
 mod error;
+mod header;
 mod log;
+mod log_transformed;
 mod util;
 
 pub use self::error::*;
+pub use self::ext::agent::*;
+pub use self::ext::skill::*;
+pub use self::header::*;
 pub use self::log::*;
+pub use self::log_transformed::*;
 pub use evtc::*;
-pub use ext::agent::*;
-pub use ext::skill::*;
 
 #[cfg(feature = "zevtc")]
 mod zip;
@@ -71,7 +75,10 @@ pub trait Parse: Sized {
     fn parse(input: &mut impl io::Read) -> Result<Self, Self::Error>;
 
     /// Parses multiple values of this type from the input into a [`Vec`].
-    fn parse_multi(input: &mut impl io::Read, count: usize) -> Result<Vec<Self>, Self::Error> {
+    fn parse_multi<T>(input: &mut impl io::Read, count: usize) -> Result<T, Self::Error>
+    where
+        T: FromIterator<Self>,
+    {
         (0..count).map(|_| Self::parse(input)).collect()
     }
 }
