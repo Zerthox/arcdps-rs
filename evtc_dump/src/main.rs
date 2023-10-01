@@ -1,10 +1,12 @@
-use clap::Parser;
+use clap::{Parser, ValueEnum};
 use evtc_parse::parse_file;
+use serde::Serialize;
 use std::{
     fs::File,
     io::BufWriter,
     path::{Path, PathBuf},
 };
+use strum::Display;
 
 #[derive(Debug, Clone, Parser)]
 struct Args {
@@ -15,6 +17,28 @@ struct Args {
     ///
     /// Defaults to input path with JSON file extension.
     pub output: Option<PathBuf>,
+
+    /// Data to dump.
+    #[clap(value_enum, long, short, default_value_t)]
+    pub data: Data,
+}
+
+/// Data to dump.
+#[derive(Debug, Display, Default, Clone, ValueEnum)]
+#[strum(serialize_all = "lowercase")]
+enum Data {
+    /// All log data.
+    #[default]
+    All,
+
+    /// Log agents.
+    Agents,
+
+    /// Skill & buff information.
+    Skills,
+
+    /// Log events.
+    Events,
 }
 
 impl Args {
@@ -24,20 +48,27 @@ impl Args {
             .cloned()
             .unwrap_or_else(|| Path::new(&self.input).with_extension("json"))
     }
+
+    fn save(&self, data: &impl Serialize) {
+        let path = self.output_path();
+        let file = File::create(&path).expect("failed to create output file");
+        let writer = BufWriter::new(file);
+        serde_json::to_writer_pretty(writer, &data).expect("failed to write events");
+        println!("dumped {} data to \"{}\"", self.data, path.display());
+    }
 }
 
 fn main() {
     let args = Args::parse();
 
-    let log = parse_file(&args.input).expect("failed to parse EVTC log");
+    let log = parse_file(&args.input)
+        .expect("failed to parse EVTC log")
+        .into_transformed();
 
-    let events = log
-        .events
-        .into_iter()
-        .map(|event| event.into_kind())
-        .collect::<Vec<_>>();
-
-    let file = File::create(args.output_path()).expect("failed to create output file");
-    let writer = BufWriter::new(file);
-    serde_json::to_writer_pretty(writer, &events).expect("failed to write events");
+    match args.data {
+        Data::All => args.save(&log),
+        Data::Agents => args.save(&log.agents),
+        Data::Skills => args.save(&log.skills),
+        Data::Events => args.save(&log.events),
+    }
 }
