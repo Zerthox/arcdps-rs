@@ -22,8 +22,8 @@ use serde::{Deserialize, Serialize};
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct Agent {
-    /// Address (id) of the agent.
-    pub address: u64,
+    /// Id of the agent.
+    pub id: u64,
 
     /// Name information for the agent.
     ///
@@ -86,7 +86,7 @@ impl Parse for Agent {
     type Error = ParseError;
 
     fn parse(input: &mut impl io::Read) -> Result<Self, Self::Error> {
-        let address = input.read_u64::<Endian>()?;
+        let id = input.read_u64::<Endian>()?;
         let profession = input.read_u32::<Endian>()?;
         let is_elite = input.read_u32::<Endian>()?;
         let toughness = input.read_u16::<Endian>()?;
@@ -103,7 +103,7 @@ impl Parse for Agent {
 
         Ok(Self {
             name,
-            address,
+            id,
             profession,
             is_elite,
             hitbox_width,
@@ -120,7 +120,7 @@ impl Save for Agent {
     type Error = io::Error;
 
     fn save(&self, output: &mut impl io::Write) -> Result<(), Self::Error> {
-        output.write_u64::<Endian>(self.address)?;
+        output.write_u64::<Endian>(self.id)?;
         output.write_u32::<Endian>(self.profession)?;
         output.write_u32::<Endian>(self.is_elite)?;
         output.write_u16::<Endian>(self.toughness)?;
@@ -151,7 +151,7 @@ mod tests {
         assert_eq!(name, parsed, "incorrect agent name");
 
         let agent = Agent {
-            address: 0,
+            id: 0,
             name,
             profession: 0,
             is_elite: 0,

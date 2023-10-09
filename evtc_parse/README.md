@@ -28,7 +28,6 @@ fn parse_from_read(input: &mut impl io::Read) -> Log {
 }
 ```
 
-
 Note that ArcDPS can save compressed log files with `.zevtc` as file extension.
 Enabling the `"zevtc"` or `"zip"` feature adds support for compressed logs.
 

@@ -27,20 +27,18 @@ pub struct Log {
 
 impl Log {
     #[inline]
-    pub fn agent(&self, address: u64) -> Option<&Agent> {
-        self.agents.iter().find(|agent| agent.address == address)
+    pub fn agent(&self, id: u64) -> Option<&Agent> {
+        self.agents.iter().find(|agent| agent.id == id)
     }
 
     #[inline]
-    pub fn agent_mut(&mut self, address: u64) -> Option<&mut Agent> {
-        self.agents
-            .iter_mut()
-            .find(|agent| agent.address == address)
+    pub fn agent_mut(&mut self, id: u64) -> Option<&mut Agent> {
+        self.agents.iter_mut().find(|agent| agent.id == id)
     }
 
     #[inline]
-    pub fn agent_name(&self, address: u64) -> Option<&[String]> {
-        self.agent(address).map(|agent| agent.name.as_slice())
+    pub fn agent_name(&self, id: u64) -> Option<&[String]> {
+        self.agent(id).map(|agent| agent.name.as_slice())
     }
 
     #[inline]
