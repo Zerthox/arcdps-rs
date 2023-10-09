@@ -1,4 +1,8 @@
-use crate::{event::CommonEvent, extract::Extract, Event, EventCategory, TryExtract};
+use crate::{
+    event::{impl_common, CommonEvent},
+    extract::Extract,
+    Event, EventCategory, TryExtract,
+};
 use num_enum::{FromPrimitive, IntoPrimitive};
 
 #[cfg(feature = "serde")]
@@ -30,6 +34,8 @@ pub struct BuffDamageEvent {
     /// Result of buff damage.
     pub result: BuffDamageResult,
 }
+
+impl_common!(BuffDamageEvent);
 
 impl Extract for BuffDamageEvent {
     #[inline]

@@ -4,7 +4,6 @@ use crate::{Affinity, AgentId, Event};
 use serde::{Deserialize, Serialize};
 
 /// Information common to combat events.
-// TODO: replace with fields?
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct CommonEvent {
@@ -56,3 +55,47 @@ impl From<&Event> for CommonEvent {
         }
     }
 }
+
+/// Helper macro to implement traits for events with a [`CommonEvent`] field.
+macro_rules! impl_common {
+    ($ty:ty) => {
+        impl ::core::convert::AsRef<$crate::event::CommonEvent> for $ty {
+            #[inline]
+            fn as_ref(&self) -> &$crate::event::CommonEvent {
+                &self.common
+            }
+        }
+
+        impl ::core::convert::AsMut<$crate::event::CommonEvent> for $ty {
+            #[inline]
+            fn as_mut(&mut self) -> &mut $crate::event::CommonEvent {
+                &mut self.common
+            }
+        }
+
+        impl ::core::convert::From<$ty> for $crate::event::CommonEvent {
+            #[inline]
+            fn from(value: $ty) -> Self {
+                value.common
+            }
+        }
+
+        impl ::core::ops::Deref for $ty {
+            type Target = $crate::event::CommonEvent;
+
+            #[inline]
+            fn deref(&self) -> &Self::Target {
+                &self.common
+            }
+        }
+
+        impl ::core::ops::DerefMut for $ty {
+            #[inline]
+            fn deref_mut(&mut self) -> &mut Self::Target {
+                &mut self.common
+            }
+        }
+    };
+}
+
+pub(crate) use impl_common;

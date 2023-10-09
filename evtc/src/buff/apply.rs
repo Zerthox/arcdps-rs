@@ -1,5 +1,5 @@
 use crate::{
-    event::CommonEvent,
+    event::{impl_common, CommonEvent},
     extract::{transmute_field, Extract},
     Event, EventCategory, TryExtract,
 };
@@ -31,6 +31,8 @@ pub struct BuffApplyEvent {
     /// Buff stack (instance) id.
     pub stack_id: u32,
 }
+
+impl_common!(BuffApplyEvent);
 
 impl Extract for BuffApplyEvent {
     #[inline]

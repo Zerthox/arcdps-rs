@@ -1,5 +1,5 @@
 use crate::{
-    event::CommonEvent,
+    event::{impl_common, CommonEvent},
     extract::{transmute_field, Extract},
     Event, EventCategory, TryExtract,
 };
@@ -44,6 +44,8 @@ pub struct BuffRemoveEvent {
     /// Only present in [`BuffRemove::Single`] events.
     pub stack_id: Option<u32>,
 }
+
+impl_common!(BuffRemoveEvent);
 
 impl Extract for BuffRemoveEvent {
     #[inline]

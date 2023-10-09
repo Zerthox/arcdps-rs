@@ -263,31 +263,31 @@ impl Event {
 
     /// Attempts to extract an [`ActivationEvent`] from the event.
     #[inline]
-    pub fn to_activation(&self) -> Option<ActivationEvent> {
+    pub fn try_to_activation(&self) -> Option<ActivationEvent> {
         self.try_extract()
     }
 
     /// Attempts to extract a [`BuffRemoveEvent`] from the event.
     #[inline]
-    pub fn to_buff_remove(&self) -> Option<BuffRemoveEvent> {
+    pub fn try_to_buff_remove(&self) -> Option<BuffRemoveEvent> {
         self.try_extract()
     }
 
     /// Attempts to extract a [`BuffApplyEvent`] from the event.
     #[inline]
-    pub fn to_buff_apply(&self) -> Option<BuffApplyEvent> {
+    pub fn try_to_buff_apply(&self) -> Option<BuffApplyEvent> {
         self.try_extract()
     }
 
     /// Attempts to extract a [`BuffDamageEvent`] from the event.
     #[inline]
-    pub fn to_buff_damage(&self) -> Option<BuffDamageEvent> {
+    pub fn try_to_buff_damage(&self) -> Option<BuffDamageEvent> {
         self.try_extract()
     }
 
     /// Attempts to extract a [`StrikeEvent`] from the event.
     #[inline]
-    pub fn to_strike(&self) -> Option<StrikeEvent> {
+    pub fn try_to_strike(&self) -> Option<StrikeEvent> {
         self.try_extract()
     }
 }

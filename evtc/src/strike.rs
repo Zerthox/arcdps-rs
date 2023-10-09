@@ -1,6 +1,10 @@
 //! Bindings & utilities for any form of strikes (direct damage).
 
-use crate::{event::CommonEvent, extract::Extract, Event, EventCategory, TryExtract};
+use crate::{
+    event::{impl_common, CommonEvent},
+    extract::Extract,
+    Event, EventCategory, TryExtract,
+};
 use num_enum::{FromPrimitive, IntoPrimitive};
 
 #[cfg(feature = "serde")]
@@ -29,6 +33,8 @@ pub struct StrikeEvent {
     /// Whether target is currently downed.
     pub target_downed: bool,
 }
+
+impl_common!(StrikeEvent);
 
 impl Extract for StrikeEvent {
     #[inline]
