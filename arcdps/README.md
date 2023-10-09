@@ -4,7 +4,7 @@ Rust bindings for [ArcDPS](https://www.deltaconnected.com/arcdps/) plugins.
 ArcDPS is an addon for [Guild Wars 2](https://guildwars2.com).
 
 Documentation can be found at [zerthox.github.io/arcdps-bindings/arcdps/](https://zerthox.github.io/arcdps-bindings/arcdps/).
-There is also an [example_plugin](../example_plugin) in this repository.
+There is also an [example plugin](../arcdps_example_plugin) in this repository.
 
 This project is originally a fork of [greaka/arcdps_bindings](https://github.com/greaka/arcdps_bindings).
 

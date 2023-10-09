@@ -2,9 +2,9 @@
 members = [
     "arcdps",
     "arcdps_codegen",
+    "arcdps_example_plugin",
     "evtc",
     "evtc_dump",
     "evtc_parse",
-    "example_plugin",
 ]
 resolver = "2"
