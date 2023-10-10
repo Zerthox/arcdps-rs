@@ -1,6 +1,6 @@
 use crate::{
     event::{impl_common, CommonEvent},
-    extract::{transmute_field, Extract},
+    extract::Extract,
     Event, EventCategory, TryExtract,
 };
 
@@ -42,7 +42,7 @@ impl Extract for BuffApplyEvent {
             buff: event.buff,
             apply: BuffApplyKind::extract(event),
             stack_active: event.is_shields,
-            stack_id: transmute_field!(event.pad61 as u32),
+            stack_id: event.get_pad_id(),
         }
     }
 }

@@ -228,6 +228,12 @@ impl Event {
         self.is_offcycle.into()
     }
 
+    /// Returns the padding as [`u32`] id/signature.
+    #[inline]
+    pub fn get_pad_id(&self) -> u32 {
+        u32::from_le_bytes([self.pad61, self.pad62, self.pad63, self.pad64])
+    }
+
     /// Checks whether the event has a timestamp.
     #[inline]
     pub fn has_time(&self) -> bool {

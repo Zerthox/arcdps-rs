@@ -1,6 +1,6 @@
 use crate::{
     event::{impl_common, CommonEvent},
-    extract::{transmute_field, Extract},
+    extract::Extract,
     Event, EventCategory, TryExtract,
 };
 use num_enum::{FromPrimitive, IntoPrimitive};
@@ -63,7 +63,7 @@ impl Extract for BuffRemoveEvent {
                 None
             },
             stack_id: if kind == BuffRemove::Single {
-                Some(transmute_field!(event.pad61 as u32))
+                Some(event.get_pad_id())
             } else {
                 None
             },

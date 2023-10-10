@@ -144,7 +144,7 @@ pub enum EventKind {
     StatReset { time: u64, target: u64 },
 
     /// A custom event created by an extension (addon/plugin).
-    Extension(Event),
+    Extension { sig: u32, event: Event },
 
     /// Delayed combat event.
     ApiDelayed { event: Box<EventKind> },
@@ -168,7 +168,7 @@ pub enum EventKind {
     LogNPCUpdate(LogEvent),
 
     /// A custom combat event created by an extension (addon/plugin).
-    ExtensionCombat(Event),
+    ExtensionCombat { sig: u32, event: Event },
 
     /// Fractal scale.
     FractalScale { time: u64, scale: u64 },
@@ -259,7 +259,10 @@ impl From<Event> for EventKind {
                         time: event.time,
                         target: event.src_agent,
                     },
-                    StateChange::Extension => Self::Extension(event),
+                    StateChange::Extension => Self::Extension {
+                        sig: event.get_pad_id(),
+                        event,
+                    },
                     StateChange::ApiDelayed => {
                         event.is_statechange = StateChange::None.into();
                         Self::ApiDelayed {
@@ -278,7 +281,10 @@ impl From<Event> for EventKind {
                     StateChange::EffectOld => Self::EffectOld(event.extract()),
                     StateChange::IdToGUID => Self::IdToGUID(event.extract()),
                     StateChange::LogNPCUpdate => Self::LogNPCUpdate(event.extract()),
-                    StateChange::ExtensionCombat => Self::ExtensionCombat(event),
+                    StateChange::ExtensionCombat => Self::ExtensionCombat {
+                        sig: event.get_pad_id(),
+                        event,
+                    },
                     StateChange::FractalScale => Self::FractalScale {
                         time: event.time,
                         scale: event.src_agent,
