@@ -309,8 +309,8 @@ pub fn log_to_window(message: impl Into<String>) -> Result<(), NulError> {
 /// `is_statechange` will be set to [`StateChange::Extension`](crate::StateChange::Extension), padding will be set to contain `sig`.
 /// Event will end up processed like ArcDPS events and logged to EVTC.
 #[inline]
-pub fn add_event(event: Event, sig: u32) {
-    unsafe { raw::e9_add_event(&event, sig) }
+pub fn add_event(event: &Event, sig: u32) {
+    unsafe { raw::e9_add_event(event, sig) }
 }
 
 /// Adds an [`Event`] to ArcDPS' event processing.
@@ -320,8 +320,8 @@ pub fn add_event(event: Event, sig: u32) {
 ///
 /// Contrary to [`add_event`], the `skill_id` is treated as skill id and will be added to the EVTC skill table.
 #[inline]
-pub fn add_event_combat(event: Event, sig: u32) {
-    unsafe { raw::e10_add_event_combat(&event, sig) }
+pub fn add_event_combat(event: &Event, sig: u32) {
+    unsafe { raw::e10_add_event_combat(event, sig) }
 }
 
 /// Requests to load an extension (plugin/addon).
