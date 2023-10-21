@@ -38,7 +38,7 @@ impl HexVisitor {
         Self::parse(string).map_err(|err| E::custom(format!("{}: \"{}\"", err, string)))
     }
 
-    fn try_<T, E>(value: T) -> Result<u128, E>
+    fn try_convert<T, E>(value: T) -> Result<u128, E>
     where
         T: Into<u128>,
     {
@@ -59,7 +59,7 @@ impl Visitor<'_> for HexVisitor {
     where
         E: Error,
     {
-        Self::try_(v)
+        Self::try_convert(v)
     }
 
     #[inline]
@@ -67,7 +67,7 @@ impl Visitor<'_> for HexVisitor {
     where
         E: Error,
     {
-        Self::try_(v)
+        Self::try_convert(v)
     }
 
     #[inline]
@@ -75,7 +75,7 @@ impl Visitor<'_> for HexVisitor {
     where
         E: Error,
     {
-        Self::try_(v)
+        Self::try_convert(v)
     }
 
     #[inline]
@@ -83,7 +83,15 @@ impl Visitor<'_> for HexVisitor {
     where
         E: Error,
     {
-        Self::try_(v)
+        Self::try_convert(v)
+    }
+
+    #[inline]
+    fn visit_u128<E>(self, v: u128) -> Result<Self::Value, E>
+    where
+        E: Error,
+    {
+        Self::try_convert(v)
     }
 
     #[inline]
