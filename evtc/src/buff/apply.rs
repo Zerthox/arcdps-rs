@@ -50,7 +50,7 @@ impl Extract for BuffApplyEvent {
 impl TryExtract for BuffApplyEvent {
     #[inline]
     fn can_extract(event: &Event) -> bool {
-        event.categorize() == EventCategory::BuffApply
+        event.categorize() == EventCategory::BuffApply || event.is_buffinitial()
     }
 }
 
@@ -75,25 +75,40 @@ pub enum BuffApplyKind {
 
     /// Existing stack extended.
     Extend {
-        /// Previous stack duration.
-        previous_duration: u32,
+        /// New stack duration.
+        new_duration: u32,
 
         /// Duration change.
         duration_change: i32,
+    },
+
+    /// Initially present buff.
+    // TODO: move to own event?
+    Initial {
+        /// Current remaining duration.
+        duration: i32,
+
+        /// Original full duration.
+        original_duration: i32,
     },
 }
 
 impl Extract for BuffApplyKind {
     #[inline]
     unsafe fn extract(event: &Event) -> Self {
-        if event.is_offcycle == 0 {
+        if event.is_buffinitial() {
+            Self::Initial {
+                duration: event.value,
+                original_duration: event.buff_dmg,
+            }
+        } else if event.is_offcycle == 0 {
             Self::Apply {
                 duration: event.value,
                 removed_duration: event.overstack_value,
             }
         } else {
             Self::Extend {
-                previous_duration: event.overstack_value,
+                new_duration: event.overstack_value,
                 duration_change: event.value,
             }
         }

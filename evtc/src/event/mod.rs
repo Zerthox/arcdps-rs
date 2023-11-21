@@ -296,4 +296,10 @@ impl Event {
     pub fn try_to_strike(&self) -> Option<StrikeEvent> {
         self.try_extract()
     }
+
+    /// Checks whether the event is an initial buff event.
+    #[inline]
+    pub fn is_buffinitial(&self) -> bool {
+        self.get_statechange() == StateChange::BuffInitial && self.buff == 18
+    }
 }
