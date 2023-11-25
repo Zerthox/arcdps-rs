@@ -10,6 +10,7 @@ mod attribute;
 mod damage;
 mod formula;
 mod info;
+mod initial;
 mod remove;
 mod stack;
 
@@ -18,5 +19,6 @@ pub use self::attribute::*;
 pub use self::damage::*;
 pub use self::formula::*;
 pub use self::info::*;
+pub use self::initial::*;
 pub use self::remove::*;
 pub use self::stack::*;

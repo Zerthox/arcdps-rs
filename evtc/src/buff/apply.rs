@@ -21,12 +21,8 @@ pub struct BuffApplyEvent {
     /// Kind of buff application/extension.
     pub apply: BuffApplyKind,
 
-    /// Buff.
-    // TODO: meaning?
-    pub buff: u8,
-
     /// Whether stack is active.
-    pub stack_active: u8,
+    pub stack_active: bool,
 
     /// Buff stack (instance) id.
     pub stack_id: u32,
@@ -39,9 +35,8 @@ impl Extract for BuffApplyEvent {
     unsafe fn extract(event: &Event) -> Self {
         Self {
             common: event.into(),
-            buff: event.buff,
             apply: BuffApplyKind::extract(event),
-            stack_active: event.is_shields,
+            stack_active: event.is_shields != 0,
             stack_id: event.get_pad_id(),
         }
     }
@@ -50,7 +45,7 @@ impl Extract for BuffApplyEvent {
 impl TryExtract for BuffApplyEvent {
     #[inline]
     fn can_extract(event: &Event) -> bool {
-        event.categorize() == EventCategory::BuffApply || event.is_buffinitial()
+        event.categorize() == EventCategory::BuffApply
     }
 }
 
@@ -81,27 +76,12 @@ pub enum BuffApplyKind {
         /// Duration change.
         duration_change: i32,
     },
-
-    /// Initially present buff.
-    // TODO: move to own event?
-    Initial {
-        /// Current remaining duration.
-        duration: i32,
-
-        /// Original full duration.
-        original_duration: i32,
-    },
 }
 
 impl Extract for BuffApplyKind {
     #[inline]
     unsafe fn extract(event: &Event) -> Self {
-        if event.is_buffinitial() {
-            Self::Initial {
-                duration: event.value,
-                original_duration: event.buff_dmg,
-            }
-        } else if event.is_offcycle == 0 {
+        if event.is_offcycle == 0 {
             Self::Apply {
                 duration: event.value,
                 removed_duration: event.overstack_value,
