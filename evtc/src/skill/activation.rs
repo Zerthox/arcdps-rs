@@ -29,8 +29,8 @@ pub struct ActivationEvent {
     /// Activation duration.
     pub duration: i32,
 
-    /// Full activation duration.
-    pub full_duration: i32,
+    /// Scaled activation duration.
+    pub scaled_duration: i32,
 
     /// Target location, if applicable.
     pub target: Position,
@@ -47,7 +47,7 @@ impl Extract for ActivationEvent {
             skill_id: event.skill_id,
             activation: event.get_activation(),
             duration: event.value,
-            full_duration: event.buff_dmg,
+            scaled_duration: event.buff_dmg,
             target: Position::new(x, y, z),
         }
     }
