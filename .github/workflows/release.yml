@@ -42,6 +42,7 @@ jobs:
             name: ${{ matrix.name }}
             path: target/release/${{ matrix.file }}
       - uses: shogo82148/actions-upload-release-asset@v1
+        continue-on-error: true
         with:
           upload_url: ${{ github.event.release.upload_url }}
           asset_name: ${{ matrix.name }}
