@@ -6,20 +6,7 @@ on:
     types: [released]
 
 jobs:
-  docs:
-    name: Docs
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: dtolnay/rust-toolchain@stable
-      - run: cargo doc --workspace --all-features
-      - uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./target/doc
-          publish_branch: gh-pages
   release:
-    name: Release
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
