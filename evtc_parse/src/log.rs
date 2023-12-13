@@ -31,31 +31,37 @@ impl Log {
         self.agents.iter().find(|agent| agent.id == id)
     }
 
+    /// Returns a mutable reference to the [`Agent`] with the given id.
     #[inline]
     pub fn agent_mut(&mut self, id: u64) -> Option<&mut Agent> {
         self.agents.iter_mut().find(|agent| agent.id == id)
     }
 
+    /// Returns the name(s) of the [`Agent`] with the given id.
     #[inline]
     pub fn agent_name(&self, id: u64) -> Option<&[String]> {
         self.agent(id).map(|agent| agent.name.as_slice())
     }
 
+    /// Returns the [`Skill`] with the given id.
     #[inline]
     pub fn skill(&self, id: u32) -> Option<&Skill> {
         self.skills.iter().find(|skill| skill.id == id)
     }
 
+    /// Returns a mutable reference to the [`Skill`] with the given id.
     #[inline]
     pub fn skill_mut(&mut self, id: u32) -> Option<&mut Skill> {
         self.skills.iter_mut().find(|skill| skill.id == id)
     }
 
+    /// Returns the name of the [`Skill`] with the given id.
     #[inline]
     pub fn skill_name(&self, id: u32) -> Option<&str> {
         self.skill(id).map(|skill| skill.name.as_str())
     }
 
+    /// Converts the log into its [`LogTransformed`] equivalent.
     #[inline]
     pub fn into_transformed(self) -> LogTransformed {
         self.into()
