@@ -17,8 +17,8 @@ pub use crate::{
         MaxHealthEvent, TargetableEvent, TeamChangeEvent,
     },
     buff::{
-        BuffApplyEvent, BuffDamageEvent, BuffFormula, BuffInfo, BuffRemoveEvent, StackActiveEvent,
-        StackResetEvent,
+        BuffApplyEvent, BuffDamageEvent, BuffFormula, BuffInfo, BuffInitialEvent, BuffRemoveEvent,
+        StackActiveEvent, StackResetEvent,
     },
     effect::{Effect, EffectGUID, EffectOld},
     log::{ErrorEvent, LogEvent},
