@@ -1,0 +1,48 @@
+name: Release
+
+on:
+  workflow_dispatch:
+  release:
+    types: [released]
+
+jobs:
+  docs:
+    name: Docs
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: dtolnay/rust-toolchain@stable
+      - run: cargo doc --workspace --all-features
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./target/doc
+          publish_branch: gh-pages
+  release:
+    name: Release
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-latest
+            file: evtc_dump
+            name: evtc_dump_linux
+          - os: windows-latest
+            file: evtc_dump.exe
+            name: evtc_dump_win.exe
+          - os: macos-latest
+            file: evtc_dump
+            name: evtc_dump_mac
+    steps:
+      - uses: actions/checkout@v3
+      - uses: dtolnay/rust-toolchain@stable
+      - run: cargo build --release --package evtc_dump
+      - uses: actions/upload-artifact@v3
+        with:
+            name: ${{ matrix.name }}
+            path: target/release/${{ matrix.file }}
+      - uses: shogo82148/actions-upload-release-asset@v1
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_name: ${{ matrix.name }}
+          asset_path: target/release/${{ matrix.file }}
