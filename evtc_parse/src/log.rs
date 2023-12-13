@@ -1,7 +1,7 @@
 use crate::{util::Endian, Agent, Header, LogTransformed, Parse, ParseError, Save, Skill};
 use byteorder::{ReadBytesExt, WriteBytesExt};
 use evtc::Event;
-use std::io;
+use std::{fs::File, io, path::Path};
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
@@ -26,6 +26,22 @@ pub struct Log {
 }
 
 impl Log {
+    /// Parses a [`Log`] from a given [`Path`] to a log file.
+    ///
+    /// With the `"zevtc"` or `"zip"` feature enabled this also supports compressed log files.
+    pub fn parse_file(path: impl AsRef<Path>) -> Result<Log, ParseError> {
+        let path = path.as_ref();
+        let mut file = io::BufReader::new(File::open(path)?);
+
+        #[cfg(feature = "zevtc")]
+        if let Some("zevtc" | "zip") = path.extension().and_then(|ext| ext.to_str()) {
+            return Self::parse_zevtc(file);
+        }
+
+        Log::parse(&mut file)
+    }
+
+    /// Returns the [`Agent`] with the given id.
     #[inline]
     pub fn agent(&self, id: u64) -> Option<&Agent> {
         self.agents.iter().find(|agent| agent.id == id)

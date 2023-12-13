@@ -49,21 +49,13 @@ mod zip;
 #[cfg(feature = "zevtc")]
 pub use self::zip::*;
 
-use std::{fs::File, io, path::Path};
+use std::{io, path::Path};
 
 /// Parses a [`Log`] from a given [`Path`] to a log file.
 ///
 /// With the `"zevtc"` or `"zip"` feature enabled this also supports compressed log files.
 pub fn parse_file(path: impl AsRef<Path>) -> Result<Log, ParseError> {
-    let path = path.as_ref();
-    let mut file = io::BufReader::new(File::open(path)?);
-
-    #[cfg(feature = "zevtc")]
-    if let Some("zevtc" | "zip") = path.extension().and_then(|ext| ext.to_str()) {
-        return parse_zevtc(file);
-    }
-
-    Log::parse(&mut file)
+    Log::parse_file(path)
 }
 
 /// Interface for parsing a value from a [`Read`](io::Read) input.
