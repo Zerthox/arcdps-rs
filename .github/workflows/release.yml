@@ -12,25 +12,25 @@ jobs:
       matrix:
         include:
           - os: ubuntu-latest
-            file: evtc_dump
-            name: evtc_dump_linux
+            asset: evtc_dump_linux
+            artifact: evtc_dump_linux
           - os: windows-latest
-            file: evtc_dump.exe
-            name: evtc_dump_win.exe
+            asset: evtc_dump_win.exe
+            artifact: evtc_dump_windows
           - os: macos-latest
-            file: evtc_dump
-            name: evtc_dump_mac
+            asset: evtc_dump_mac
+            artifact: evtc_dump_macos
     steps:
       - uses: actions/checkout@v3
       - uses: dtolnay/rust-toolchain@stable
       - run: cargo build --release --package evtc_dump
       - uses: actions/upload-artifact@v3
         with:
-            name: ${{ matrix.name }}
-            path: target/release/${{ matrix.file }}
+          path: target/release/evtc_dump?(.exe)
+          name: ${{ matrix.artifact }}
       - uses: shogo82148/actions-upload-release-asset@v1
         continue-on-error: true
         with:
           upload_url: ${{ github.event.release.upload_url }}
-          asset_name: ${{ matrix.name }}
-          asset_path: target/release/${{ matrix.file }}
+          asset_path: target/release/evtc_dump?(.exe)
+          asset_name: ${{ matrix.asset }}
