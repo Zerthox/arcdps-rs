@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["EventCategory","EventKind"],"struct":["CommonEvent","ErrorEvent","Event","EventCategoryIter","EventOld","LogEvent"]};

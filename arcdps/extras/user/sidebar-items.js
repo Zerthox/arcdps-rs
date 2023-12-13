@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"enum":["UserRole"],"fn":["to_user_info_iter"],"struct":["RawUserInfo","UserInfo","UserInfoOwned","UserRoleIter"],"type":["UserConvert","UserInfoIter"]};
+window.SIDEBAR_ITEMS = {"enum":["UserRole"],"fn":["to_user_info_iter"],"struct":["UserInfo","UserInfoOwned","UserRoleIter"],"type":["UserInfoIter"]};

@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\winnow-0.5.15\src\error.rs`."><title>error.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-9bb858ba049f1f21.css" id="mainThemeStyle"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="winnow" data-themes="" data-resource-suffix="" data-rustdoc-version="1.72.1 (d5c2e9c34 2023-09-13)" data-channel="1.72.1" data-search-js="search-f6292fe389d70017.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-8c76f75bfb6bd192.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ><script src="../../static.files/storage-59fd9b8ccb335783.js"></script><script defer src="../../static.files/source-script-106908c7a7964ba4.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-0795b7d26be81095.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../winnow/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\winnow-0.5.28\src\error.rs`."><title>error.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-fa3bb1812debf86c.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="winnow" data-themes="" data-resource-suffix="" data-rustdoc-version="1.74.1 (a28077b28 2023-12-04)" data-channel="1.74.1" data-search-js="search-8be46b629f5f14a8.js" data-settings-js="settings-74424d7eec62a23e.js" ><script src="../../static.files/storage-fec3eaa3851e447d.js"></script><script defer src="../../static.files/src-script-3280b574d94e47b4.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-c5bd66d33317d69f.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-5d8b3c7633ad77ba.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../winnow/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -1380,18 +1380,44 @@
 <a href="#1380" id="1380">1380</a>
 <a href="#1381" id="1381">1381</a>
 <a href="#1382" id="1382">1382</a>
+<a href="#1383" id="1383">1383</a>
+<a href="#1384" id="1384">1384</a>
+<a href="#1385" id="1385">1385</a>
+<a href="#1386" id="1386">1386</a>
+<a href="#1387" id="1387">1387</a>
+<a href="#1388" id="1388">1388</a>
+<a href="#1389" id="1389">1389</a>
+<a href="#1390" id="1390">1390</a>
+<a href="#1391" id="1391">1391</a>
+<a href="#1392" id="1392">1392</a>
+<a href="#1393" id="1393">1393</a>
+<a href="#1394" id="1394">1394</a>
+<a href="#1395" id="1395">1395</a>
+<a href="#1396" id="1396">1396</a>
+<a href="#1397" id="1397">1397</a>
+<a href="#1398" id="1398">1398</a>
+<a href="#1399" id="1399">1399</a>
+<a href="#1400" id="1400">1400</a>
+<a href="#1401" id="1401">1401</a>
+<a href="#1402" id="1402">1402</a>
+<a href="#1403" id="1403">1403</a>
+<a href="#1404" id="1404">1404</a>
+<a href="#1405" id="1405">1405</a>
+<a href="#1406" id="1406">1406</a>
+<a href="#1407" id="1407">1407</a>
+<a href="#1408" id="1408">1408</a>
 </pre></div><pre class="rust"><code><span class="doccomment">//! # Error management
 //!
 //! Errors are designed with multiple needs in mind:
 //! - Accumulate more [context][Parser::context] as the error goes up the parser chain
 //! - Distinguish between [recoverable errors,
 //!   unrecoverable errors, and more data is needed][ErrMode]
-//! - Have a very low overhead, as errors are often discarded by the calling parser (examples: `many0`, `alt`)
+//! - Have a very low overhead, as errors are often discarded by the calling parser (examples: `repeat`, `alt`)
 //! - Can be modified according to the user&#39;s needs, because some languages need a lot more information
 //! - Help thread-through the [stream][crate::stream]
 //!
 //! To abstract these needs away from the user, generally `winnow` parsers use the [`PResult`]
-//! alias, rather than [`Result`][std::result::Result].  [`Parser::parse`] is a top-level operation
+//! alias, rather than [`Result`].  [`Parser::parse`] is a top-level operation
 //! that can help convert to a `Result` for integrating with your application&#39;s error reporting.
 //!
 //! Error types include:
@@ -1412,26 +1438,29 @@
 <span class="attr">#[allow(unused_imports)] </span><span class="comment">// Here for intra-doc links
 </span><span class="kw">use </span><span class="kw">crate</span>::Parser;
 
-<span class="doccomment">/// Holds the result of [`Parser`]
+<span class="doccomment">/// For use with [`Parser::parse_peek`] which allows the input stream to be threaded through a
+/// parser.
 ///
 /// - `Ok((I, O))` is the remaining [input][crate::stream] and the parsed value
 /// - [`Err(ErrMode&lt;E&gt;)`][ErrMode] is the error along with how to respond to it
 ///
 /// By default, the error type (`E`) is [`InputError`]
 ///
-/// [`Parser::parse`] is a top-level operation that can help convert to a `Result` for integrating
-/// with your application&#39;s error reporting.
+/// When integrating into the result of the application, see
+/// - [`Parser::parse`]
+/// - [`ErrMode::into_inner`]
 </span><span class="kw">pub type </span>IResult&lt;I, O, E = InputError&lt;I&gt;&gt; = PResult&lt;(I, O), E&gt;;
 
-<span class="doccomment">/// Holds the result of [`Parser`]
+<span class="doccomment">/// For use with [`Parser::parse_next`]
 ///
 /// - `Ok(O)` is the parsed value
 /// - [`Err(ErrMode&lt;E&gt;)`][ErrMode] is the error along with how to respond to it
 ///
-/// By default, the error type (`E`) is [`ErrorKind`].
+/// By default, the error type (`E`) is [`ContextError`].
 ///
-/// [`Parser::parse`] is a top-level operation that can help convert to a `Result` for integrating
-/// with your application&#39;s error reporting.
+/// When integrating into the result of the application, see
+/// - [`Parser::parse`]
+/// - [`ErrMode::into_inner`]
 </span><span class="kw">pub type </span>PResult&lt;O, E = ContextError&gt; = <span class="prelude-ty">Result</span>&lt;O, ErrMode&lt;E&gt;&gt;;
 
 <span class="doccomment">/// Contains information on needed data if a parser returned `Incomplete`
@@ -1479,7 +1508,7 @@
     ///
     /// More data needs to be buffered before retrying the parse.
     ///
-    /// This must only be set when the [`Stream`][crate::stream::Stream] is [partial][`crate::stream::StreamIsPartial`], like with
+    /// This must only be set when the [`Stream`] is [partial][`crate::stream::StreamIsPartial`], like with
     /// [`Partial`][crate::Partial]
     ///
     /// Convert this into an `Backtrack` with [`Parser::complete_err`]
@@ -1488,7 +1517,7 @@
     ///
     /// For example, a parser for json values might include a
     /// [`dec_uint`][crate::ascii::dec_uint] as one case in an [`alt`][crate::combinator::alt]
-    /// combiantor.  If it fails, the next case should be tried.
+    /// combinator. If it fails, the next case should be tried.
     </span>Backtrack(E),
     <span class="doccomment">/// The parser had an unrecoverable error.
     ///
@@ -2259,7 +2288,7 @@
 <span class="attr">#[cfg(feature = <span class="string">&quot;std&quot;</span>)]
 </span><span class="kw">impl</span>&lt;I, C&gt; TreeError&lt;I, C&gt;
 <span class="kw">where
-    </span>I: Clone + std::fmt::Display,
+    </span>I: Clone + <span class="kw">crate</span>::lib::std::fmt::Display,
     C: fmt::Display,
 {
     <span class="kw">fn </span>write(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter&lt;<span class="lifetime">&#39;_</span>&gt;, indent: usize) -&gt; fmt::Result {
@@ -2561,6 +2590,9 @@
     }
 
     <span class="doccomment">/// The location in [`ParseError::input`] where parsing failed
+    ///
+    /// **Note:** This is an offset, not an index, and may point to the end of input
+    /// (`input.len()`) on eof errors.
     </span><span class="attr">#[inline]
     </span><span class="kw">pub fn </span>offset(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; usize {
         <span class="self">self</span>.offset
@@ -2601,21 +2633,21 @@
 
             <span class="macro">writeln!</span>(f, <span class="string">&quot;parse error at line {}, column {}&quot;</span>, line_num, col_num)<span class="question-mark">?</span>;
             <span class="comment">//   |
-            </span><span class="kw">for _ in </span><span class="number">0</span>..=gutter {
+            </span><span class="kw">for _ in </span><span class="number">0</span>..gutter {
                 <span class="macro">write!</span>(f, <span class="string">&quot; &quot;</span>)<span class="question-mark">?</span>;
             }
-            <span class="macro">writeln!</span>(f, <span class="string">&quot;|&quot;</span>)<span class="question-mark">?</span>;
+            <span class="macro">writeln!</span>(f, <span class="string">&quot; |&quot;</span>)<span class="question-mark">?</span>;
 
             <span class="comment">// 1 | 00:32:00.a999999
             </span><span class="macro">write!</span>(f, <span class="string">&quot;{} | &quot;</span>, line_num)<span class="question-mark">?</span>;
             <span class="macro">writeln!</span>(f, <span class="string">&quot;{}&quot;</span>, String::from_utf8_lossy(content))<span class="question-mark">?</span>;
 
             <span class="comment">//   |          ^
-            </span><span class="kw">for _ in </span><span class="number">0</span>..=gutter {
+            </span><span class="kw">for _ in </span><span class="number">0</span>..gutter {
                 <span class="macro">write!</span>(f, <span class="string">&quot; &quot;</span>)<span class="question-mark">?</span>;
             }
-            <span class="macro">write!</span>(f, <span class="string">&quot;|&quot;</span>)<span class="question-mark">?</span>;
-            <span class="kw">for _ in </span><span class="number">0</span>..=col_idx {
+            <span class="macro">write!</span>(f, <span class="string">&quot; | &quot;</span>)<span class="question-mark">?</span>;
+            <span class="kw">for _ in </span><span class="number">0</span>..col_idx {
                 <span class="macro">write!</span>(f, <span class="string">&quot; &quot;</span>)<span class="question-mark">?</span>;
             }
             <span class="comment">// The span will be empty at eof, so we need to make sure we always print at least
@@ -2628,7 +2660,7 @@
         } <span class="kw">else </span>{
             <span class="kw">let </span>content = input;
             <span class="macro">writeln!</span>(f, <span class="string">&quot;{}&quot;</span>, String::from_utf8_lossy(content))<span class="question-mark">?</span>;
-            <span class="kw">for _ in </span><span class="number">0</span>..=span_start {
+            <span class="kw">for _ in </span><span class="number">0</span>..span_start {
                 <span class="macro">write!</span>(f, <span class="string">&quot; &quot;</span>)<span class="question-mark">?</span>;
             }
             <span class="comment">// The span will be empty at eof, so we need to make sure we always print at least
@@ -2666,15 +2698,35 @@
         <span class="prelude-val">None </span>=&gt; <span class="number">0</span>,
     };
     <span class="kw">let </span>line = input[<span class="number">0</span>..line_start].iter().filter(|b| <span class="kw-2">**</span>b == <span class="string">b&#39;\n&#39;</span>).count();
-    <span class="kw">let </span>line = line;
 
     <span class="comment">// HACK: This treats byte offset and column offsets the same
-    </span><span class="kw">let </span>column = std::str::from_utf8(<span class="kw-2">&amp;</span>input[line_start..=index])
+    </span><span class="kw">let </span>column = <span class="kw">crate</span>::lib::std::str::from_utf8(<span class="kw-2">&amp;</span>input[line_start..=index])
         .map(|s| s.chars().count() - <span class="number">1</span>)
         .unwrap_or_else(|<span class="kw">_</span>| index - line_start);
     <span class="kw">let </span>column = column + column_offset;
 
     (line, column)
+}
+
+<span class="attr">#[cfg(test)]
+#[cfg(feature = <span class="string">&quot;std&quot;</span>)]
+</span><span class="kw">mod </span>test_parse_error {
+    <span class="kw">use super</span>::<span class="kw-2">*</span>;
+
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>single_line() {
+        <span class="kw">let </span><span class="kw-2">mut </span>input = <span class="string">&quot;0xZ123&quot;</span>;
+        <span class="kw">let </span>start = input.checkpoint();
+        <span class="kw">let _ </span>= input.next_token().unwrap();
+        <span class="kw">let _ </span>= input.next_token().unwrap();
+        <span class="kw">let </span>inner = InputError::new(input, ErrorKind::Slice);
+        <span class="kw">let </span>error = ParseError::new(input, start, inner);
+        <span class="kw">let </span>expected = <span class="string">&quot;\
+0xZ123
+  ^
+slice error starting at: Z123&quot;</span>;
+        <span class="macro">assert_eq!</span>(error.to_string(), expected);
+    }
 }
 
 <span class="attr">#[cfg(test)]

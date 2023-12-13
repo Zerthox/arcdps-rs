@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\proc-macro-crate-1.3.1\src\lib.rs`."><title>lib.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-9bb858ba049f1f21.css" id="mainThemeStyle"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="proc_macro_crate" data-themes="" data-resource-suffix="" data-rustdoc-version="1.72.1 (d5c2e9c34 2023-09-13)" data-channel="1.72.1" data-search-js="search-f6292fe389d70017.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-8c76f75bfb6bd192.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ><script src="../../static.files/storage-59fd9b8ccb335783.js"></script><script defer src="../../static.files/source-script-106908c7a7964ba4.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-0795b7d26be81095.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../proc_macro_crate/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\proc-macro-crate-2.0.1\src\lib.rs`."><title>lib.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-fa3bb1812debf86c.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="proc_macro_crate" data-themes="" data-resource-suffix="" data-rustdoc-version="1.74.1 (a28077b28 2023-12-04)" data-channel="1.74.1" data-search-js="search-8be46b629f5f14a8.js" data-settings-js="settings-74424d7eec62a23e.js" ><script src="../../static.files/storage-fec3eaa3851e447d.js"></script><script defer src="../../static.files/src-script-3280b574d94e47b4.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-c5bd66d33317d69f.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-5d8b3c7633ad77ba.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../proc_macro_crate/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -436,6 +436,123 @@
 <a href="#436" id="436">436</a>
 <a href="#437" id="437">437</a>
 <a href="#438" id="438">438</a>
+<a href="#439" id="439">439</a>
+<a href="#440" id="440">440</a>
+<a href="#441" id="441">441</a>
+<a href="#442" id="442">442</a>
+<a href="#443" id="443">443</a>
+<a href="#444" id="444">444</a>
+<a href="#445" id="445">445</a>
+<a href="#446" id="446">446</a>
+<a href="#447" id="447">447</a>
+<a href="#448" id="448">448</a>
+<a href="#449" id="449">449</a>
+<a href="#450" id="450">450</a>
+<a href="#451" id="451">451</a>
+<a href="#452" id="452">452</a>
+<a href="#453" id="453">453</a>
+<a href="#454" id="454">454</a>
+<a href="#455" id="455">455</a>
+<a href="#456" id="456">456</a>
+<a href="#457" id="457">457</a>
+<a href="#458" id="458">458</a>
+<a href="#459" id="459">459</a>
+<a href="#460" id="460">460</a>
+<a href="#461" id="461">461</a>
+<a href="#462" id="462">462</a>
+<a href="#463" id="463">463</a>
+<a href="#464" id="464">464</a>
+<a href="#465" id="465">465</a>
+<a href="#466" id="466">466</a>
+<a href="#467" id="467">467</a>
+<a href="#468" id="468">468</a>
+<a href="#469" id="469">469</a>
+<a href="#470" id="470">470</a>
+<a href="#471" id="471">471</a>
+<a href="#472" id="472">472</a>
+<a href="#473" id="473">473</a>
+<a href="#474" id="474">474</a>
+<a href="#475" id="475">475</a>
+<a href="#476" id="476">476</a>
+<a href="#477" id="477">477</a>
+<a href="#478" id="478">478</a>
+<a href="#479" id="479">479</a>
+<a href="#480" id="480">480</a>
+<a href="#481" id="481">481</a>
+<a href="#482" id="482">482</a>
+<a href="#483" id="483">483</a>
+<a href="#484" id="484">484</a>
+<a href="#485" id="485">485</a>
+<a href="#486" id="486">486</a>
+<a href="#487" id="487">487</a>
+<a href="#488" id="488">488</a>
+<a href="#489" id="489">489</a>
+<a href="#490" id="490">490</a>
+<a href="#491" id="491">491</a>
+<a href="#492" id="492">492</a>
+<a href="#493" id="493">493</a>
+<a href="#494" id="494">494</a>
+<a href="#495" id="495">495</a>
+<a href="#496" id="496">496</a>
+<a href="#497" id="497">497</a>
+<a href="#498" id="498">498</a>
+<a href="#499" id="499">499</a>
+<a href="#500" id="500">500</a>
+<a href="#501" id="501">501</a>
+<a href="#502" id="502">502</a>
+<a href="#503" id="503">503</a>
+<a href="#504" id="504">504</a>
+<a href="#505" id="505">505</a>
+<a href="#506" id="506">506</a>
+<a href="#507" id="507">507</a>
+<a href="#508" id="508">508</a>
+<a href="#509" id="509">509</a>
+<a href="#510" id="510">510</a>
+<a href="#511" id="511">511</a>
+<a href="#512" id="512">512</a>
+<a href="#513" id="513">513</a>
+<a href="#514" id="514">514</a>
+<a href="#515" id="515">515</a>
+<a href="#516" id="516">516</a>
+<a href="#517" id="517">517</a>
+<a href="#518" id="518">518</a>
+<a href="#519" id="519">519</a>
+<a href="#520" id="520">520</a>
+<a href="#521" id="521">521</a>
+<a href="#522" id="522">522</a>
+<a href="#523" id="523">523</a>
+<a href="#524" id="524">524</a>
+<a href="#525" id="525">525</a>
+<a href="#526" id="526">526</a>
+<a href="#527" id="527">527</a>
+<a href="#528" id="528">528</a>
+<a href="#529" id="529">529</a>
+<a href="#530" id="530">530</a>
+<a href="#531" id="531">531</a>
+<a href="#532" id="532">532</a>
+<a href="#533" id="533">533</a>
+<a href="#534" id="534">534</a>
+<a href="#535" id="535">535</a>
+<a href="#536" id="536">536</a>
+<a href="#537" id="537">537</a>
+<a href="#538" id="538">538</a>
+<a href="#539" id="539">539</a>
+<a href="#540" id="540">540</a>
+<a href="#541" id="541">541</a>
+<a href="#542" id="542">542</a>
+<a href="#543" id="543">543</a>
+<a href="#544" id="544">544</a>
+<a href="#545" id="545">545</a>
+<a href="#546" id="546">546</a>
+<a href="#547" id="547">547</a>
+<a href="#548" id="548">548</a>
+<a href="#549" id="549">549</a>
+<a href="#550" id="550">550</a>
+<a href="#551" id="551">551</a>
+<a href="#552" id="552">552</a>
+<a href="#553" id="553">553</a>
+<a href="#554" id="554">554</a>
+<a href="#555" id="555">555</a>
 </pre></div><pre class="rust"><code><span class="doccomment">/*!
 
 [![](https://docs.rs/proc-macro-crate/badge.svg)](https://docs.rs/proc-macro-crate/) [![](https://img.shields.io/crates/v/proc-macro-crate.svg)](https://crates.io/crates/proc-macro-crate) [![](https://img.shields.io/crates/d/proc-macro-crate.png)](https://crates.io/crates/proc-macro-crate) [![Build Status](https://travis-ci.org/bkchr/proc-macro-crate.png?branch=master)](https://travis-ci.org/bkchr/proc-macro-crate)
@@ -527,18 +644,19 @@ at your option.
     collections::btree_map::{<span class="self">self</span>, BTreeMap},
     env, fmt, fs, io,
     path::{Path, PathBuf},
+    process::Command,
     sync::Mutex,
     time::SystemTime,
 };
 
-<span class="kw">use </span>once_cell::sync::Lazy;
 <span class="kw">use </span>toml_edit::{Document, Item, Table, TomlError};
 
 <span class="doccomment">/// Error type used by this crate.
-</span><span class="attr">#[derive(Debug)]
 </span><span class="kw">pub enum </span>Error {
     NotFound(PathBuf),
     CargoManifestDirNotSet,
+    CargoEnvVariableNotSet,
+    FailedGettingWorkspaceManifestPath,
     CouldNotRead { path: PathBuf, source: io::Error },
     InvalidToml { source: TomlError },
     CrateNotFound { crate_name: String, path: PathBuf },
@@ -554,17 +672,19 @@ at your option.
     }
 }
 
+<span class="kw">impl </span>fmt::Debug <span class="kw">for </span>Error {
+    <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; fmt::Result {
+        fmt::Display::fmt(<span class="self">self</span>, f)
+    }
+}
+
 <span class="kw">impl </span>fmt::Display <span class="kw">for </span>Error {
     <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter) -&gt; fmt::Result {
         <span class="kw">match </span><span class="self">self </span>{
-            Error::NotFound(path) =&gt; <span class="macro">write!</span>(
-                f,
-                <span class="string">&quot;Could not find `Cargo.toml` in manifest dir: `{}`.&quot;</span>,
-                path.display()
-            ),
-            Error::CargoManifestDirNotSet =&gt; {
-                f.write_str(<span class="string">&quot;`CARGO_MANIFEST_DIR` env variable not set.&quot;</span>)
-            }
+            Error::NotFound(path) =&gt;
+                <span class="macro">write!</span>(f, <span class="string">&quot;Could not find `Cargo.toml` in manifest dir: `{}`.&quot;</span>, path.display()),
+            Error::CargoManifestDirNotSet =&gt;
+                f.write_str(<span class="string">&quot;`CARGO_MANIFEST_DIR` env variable not set.&quot;</span>),
             Error::CouldNotRead { path, .. } =&gt; <span class="macro">write!</span>(f, <span class="string">&quot;Could not read `{}`.&quot;</span>, path.display()),
             Error::InvalidToml { .. } =&gt; f.write_str(<span class="string">&quot;Invalid toml file.&quot;</span>),
             Error::CrateNotFound { crate_name, path } =&gt; <span class="macro">write!</span>(
@@ -573,6 +693,9 @@ at your option.
                 crate_name,
                 path.display(),
             ),
+            Error::CargoEnvVariableNotSet =&gt; f.write_str(<span class="string">&quot;`CARGO` env variable not set.&quot;</span>),
+            Error::FailedGettingWorkspaceManifestPath =&gt;
+                f.write_str(<span class="string">&quot;Failed to get the path of the workspace manifest path.&quot;</span>),
         }
     }
 }
@@ -593,6 +716,8 @@ at your option.
 
 <span class="kw">struct </span>CacheEntry {
     manifest_ts: SystemTime,
+    workspace_manifest_ts: SystemTime,
+    workspace_manifest_path: PathBuf,
     crate_names: CrateNames,
 }
 
@@ -616,28 +741,44 @@ at your option.
 </span><span class="kw">pub fn </span>crate_name(orig_name: <span class="kw-2">&amp;</span>str) -&gt; <span class="prelude-ty">Result</span>&lt;FoundCrate, Error&gt; {
     <span class="kw">let </span>manifest_dir = env::var(<span class="string">&quot;CARGO_MANIFEST_DIR&quot;</span>).map_err(|<span class="kw">_</span>| Error::CargoManifestDirNotSet)<span class="question-mark">?</span>;
     <span class="kw">let </span>manifest_path = Path::new(<span class="kw-2">&amp;</span>manifest_dir).join(<span class="string">&quot;Cargo.toml&quot;</span>);
+
     <span class="kw">let </span>manifest_ts = cargo_toml_timestamp(<span class="kw-2">&amp;</span>manifest_path)<span class="question-mark">?</span>;
 
-    <span class="comment">// This `Lazy&lt;Mutex&lt;_&gt;&gt;` can just be a `Mutex&lt;_&gt;` starting in Rust 1.63:
-    // https://doc.rust-lang.org/beta/std/sync/struct.Mutex.html#method.new
-    </span><span class="kw">static </span>CACHE: Lazy&lt;Mutex&lt;Cache&gt;&gt; = Lazy::new(Mutex::default);
+    <span class="kw">static </span>CACHE: Mutex&lt;Cache&gt; = Mutex::new(BTreeMap::new());
     <span class="kw">let </span><span class="kw-2">mut </span>cache = CACHE.lock().unwrap();
 
     <span class="kw">let </span>crate_names = <span class="kw">match </span>cache.entry(manifest_dir) {
         btree_map::Entry::Occupied(entry) =&gt; {
             <span class="kw">let </span>cache_entry = entry.into_mut();
+            <span class="kw">let </span>workspace_manifest_path = cache_entry.workspace_manifest_path.as_path();
+            <span class="kw">let </span>workspace_manifest_ts = cargo_toml_timestamp(<span class="kw-2">&amp;</span>workspace_manifest_path)<span class="question-mark">?</span>;
 
             <span class="comment">// Timestamp changed, rebuild this cache entry.
-            </span><span class="kw">if </span>manifest_ts != cache_entry.manifest_ts {
-                <span class="kw-2">*</span>cache_entry = read_cargo_toml(<span class="kw-2">&amp;</span>manifest_path, manifest_ts)<span class="question-mark">?</span>;
+            </span><span class="kw">if </span>manifest_ts != cache_entry.manifest_ts ||
+                workspace_manifest_ts != cache_entry.workspace_manifest_ts
+            {
+                <span class="kw-2">*</span>cache_entry = read_cargo_toml(
+                    <span class="kw-2">&amp;</span>manifest_path,
+                    <span class="kw-2">&amp;</span>workspace_manifest_path,
+                    manifest_ts,
+                    workspace_manifest_ts,
+                )<span class="question-mark">?</span>;
             }
 
             <span class="kw-2">&amp;</span>cache_entry.crate_names
-        }
+        },
         btree_map::Entry::Vacant(entry) =&gt; {
-            <span class="kw">let </span>cache_entry = entry.insert(read_cargo_toml(<span class="kw-2">&amp;</span>manifest_path, manifest_ts)<span class="question-mark">?</span>);
+            <span class="kw">let </span>workspace_manifest_path = workspace_manifest_path(<span class="kw-2">&amp;</span>manifest_path)<span class="question-mark">?</span>;
+            <span class="kw">let </span>workspace_manifest_ts = cargo_toml_timestamp(<span class="kw-2">&amp;</span>workspace_manifest_path)<span class="question-mark">?</span>;
+
+            <span class="kw">let </span>cache_entry = entry.insert(read_cargo_toml(
+                <span class="kw-2">&amp;</span>manifest_path,
+                <span class="kw-2">&amp;</span>workspace_manifest_path,
+                manifest_ts,
+                workspace_manifest_ts,
+            )<span class="question-mark">?</span>);
             <span class="kw-2">&amp;</span>cache_entry.crate_names
-        }
+        },
     };
 
     <span class="prelude-val">Ok</span>(crate_names
@@ -649,29 +790,78 @@ at your option.
         </span>.clone())
 }
 
-<span class="kw">fn </span>cargo_toml_timestamp(manifest_path: <span class="kw-2">&amp;</span>Path) -&gt; <span class="prelude-ty">Result</span>&lt;SystemTime, Error&gt; {
-    fs::metadata(manifest_path)
-        .and_then(|meta| meta.modified())
-        .map_err(|source| {
-            <span class="kw">if </span>source.kind() == io::ErrorKind::NotFound {
-                Error::NotFound(manifest_path.to_owned())
-            } <span class="kw">else </span>{
-                Error::CouldNotRead {
-                    path: manifest_path.to_owned(),
-                    source,
-                }
-            }
-        })
+<span class="kw">fn </span>workspace_manifest_path(cargo_toml_manifest: <span class="kw-2">&amp;</span>Path) -&gt; <span class="prelude-ty">Result</span>&lt;PathBuf, Error&gt; {
+    <span class="kw">let </span>stdout = Command::new(env::var(<span class="string">&quot;CARGO&quot;</span>).map_err(|<span class="kw">_</span>| Error::CargoEnvVariableNotSet)<span class="question-mark">?</span>)
+        .arg(<span class="string">&quot;locate-project&quot;</span>)
+        .args(<span class="kw-2">&amp;</span>[<span class="string">&quot;--workspace&quot;</span>, <span class="string">&quot;--message-format=plain&quot;</span>])
+        .arg(<span class="macro">format!</span>(<span class="string">&quot;--manifest-path={}&quot;</span>, cargo_toml_manifest.display()))
+        .output()
+        .map_err(|<span class="kw">_</span>| Error::FailedGettingWorkspaceManifestPath)<span class="question-mark">?
+        </span>.stdout;
+
+    String::from_utf8(stdout)
+        .map_err(|<span class="kw">_</span>| Error::FailedGettingWorkspaceManifestPath)
+        .map(|s| s.trim().into())
 }
 
-<span class="kw">fn </span>read_cargo_toml(manifest_path: <span class="kw-2">&amp;</span>Path, manifest_ts: SystemTime) -&gt; <span class="prelude-ty">Result</span>&lt;CacheEntry, Error&gt; {
+<span class="kw">fn </span>cargo_toml_timestamp(manifest_path: <span class="kw-2">&amp;</span>Path) -&gt; <span class="prelude-ty">Result</span>&lt;SystemTime, Error&gt; {
+    fs::metadata(manifest_path).and_then(|meta| meta.modified()).map_err(|source| {
+        <span class="kw">if </span>source.kind() == io::ErrorKind::NotFound {
+            Error::NotFound(manifest_path.to_owned())
+        } <span class="kw">else </span>{
+            Error::CouldNotRead { path: manifest_path.to_owned(), source }
+        }
+    })
+}
+
+<span class="kw">fn </span>read_cargo_toml(
+    manifest_path: <span class="kw-2">&amp;</span>Path,
+    workspace_manifest_path: <span class="kw-2">&amp;</span>Path,
+    manifest_ts: SystemTime,
+    workspace_manifest_ts: SystemTime,
+) -&gt; <span class="prelude-ty">Result</span>&lt;CacheEntry, Error&gt; {
     <span class="kw">let </span>manifest = open_cargo_toml(manifest_path)<span class="question-mark">?</span>;
-    <span class="kw">let </span>crate_names = extract_crate_names(<span class="kw-2">&amp;</span>manifest)<span class="question-mark">?</span>;
+
+    <span class="kw">let </span>workspace_dependencies = <span class="kw">if </span>manifest_path != workspace_manifest_path {
+        <span class="kw">let </span>workspace_manifest = open_cargo_toml(workspace_manifest_path)<span class="question-mark">?</span>;
+        extract_workspace_dependencies(workspace_manifest)<span class="question-mark">?
+    </span>} <span class="kw">else </span>{
+        Default::default()
+    };
+
+    <span class="kw">let </span>crate_names = extract_crate_names(<span class="kw-2">&amp;</span>manifest, workspace_dependencies)<span class="question-mark">?</span>;
 
     <span class="prelude-val">Ok</span>(CacheEntry {
         manifest_ts,
+        workspace_manifest_ts,
         crate_names,
+        workspace_manifest_path: workspace_manifest_path.to_path_buf(),
     })
+}
+
+<span class="doccomment">/// Extract all `[workspace.dependencies]`.
+///
+/// Returns a hash map that maps from dep name to the package name. Dep name
+/// and package name can be the same if there doesn&#39;t exist any rename.
+</span><span class="kw">fn </span>extract_workspace_dependencies(
+    workspace_toml: Document,
+) -&gt; <span class="prelude-ty">Result</span>&lt;BTreeMap&lt;String, String&gt;, Error&gt; {
+    <span class="prelude-val">Ok</span>(workspace_dep_tables(<span class="kw-2">&amp;</span>workspace_toml)
+        .into_iter()
+        .flatten()
+        .map(<span class="kw">move </span>|(dep_name, dep_value)| {
+            <span class="kw">let </span>pkg_name = dep_value.get(<span class="string">&quot;package&quot;</span>).and_then(|i| i.as_str()).unwrap_or(dep_name);
+
+            (dep_name.to_owned(), pkg_name.to_owned())
+        })
+        .collect())
+}
+
+<span class="doccomment">/// Return an iterator over all `[workspace.dependencies]`
+</span><span class="kw">fn </span>workspace_dep_tables(cargo_toml: <span class="kw-2">&amp;</span>Document) -&gt; <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>Table&gt; {
+    cargo_toml
+        .get(<span class="string">&quot;workspace&quot;</span>)
+        .and_then(|w| w.as_table()<span class="question-mark">?</span>.get(<span class="string">&quot;dependencies&quot;</span>)<span class="question-mark">?</span>.as_table())
 }
 
 <span class="doccomment">/// Make sure that the given crate name is a valid rust identifier.
@@ -681,18 +871,17 @@ at your option.
 
 <span class="doccomment">/// Open the given `Cargo.toml` and parse it into a hashmap.
 </span><span class="kw">fn </span>open_cargo_toml(path: <span class="kw-2">&amp;</span>Path) -&gt; <span class="prelude-ty">Result</span>&lt;Document, Error&gt; {
-    <span class="kw">let </span>content = fs::read_to_string(path).map_err(|e| Error::CouldNotRead {
-        source: e,
-        path: path.into(),
-    })<span class="question-mark">?</span>;
-    content
-        .parse::&lt;Document&gt;()
-        .map_err(|e| Error::InvalidToml { source: e })
+    <span class="kw">let </span>content = fs::read_to_string(path)
+        .map_err(|e| Error::CouldNotRead { source: e, path: path.into() })<span class="question-mark">?</span>;
+    content.parse::&lt;Document&gt;().map_err(|e| Error::InvalidToml { source: e })
 }
 
 <span class="doccomment">/// Extract all crate names from the given `Cargo.toml` by checking the `dependencies` and
 /// `dev-dependencies`.
-</span><span class="kw">fn </span>extract_crate_names(cargo_toml: <span class="kw-2">&amp;</span>Document) -&gt; <span class="prelude-ty">Result</span>&lt;CrateNames, Error&gt; {
+</span><span class="kw">fn </span>extract_crate_names(
+    cargo_toml: <span class="kw-2">&amp;</span>Document,
+    workspace_dependencies: BTreeMap&lt;String, String&gt;,
+) -&gt; <span class="prelude-ty">Result</span>&lt;CrateNames, Error&gt; {
     <span class="kw">let </span>package_name = extract_package_name(cargo_toml);
     <span class="kw">let </span>root_pkg = package_name.as_ref().map(|name| {
         <span class="kw">let </span>cr = <span class="kw">match </span>env::var_os(<span class="string">&quot;CARGO_TARGET_TMPDIR&quot;</span>) {
@@ -707,14 +896,20 @@ at your option.
 
     <span class="kw">let </span>dep_tables = dep_tables(cargo_toml).chain(target_dep_tables(cargo_toml));
     <span class="kw">let </span>dep_pkgs = dep_tables.flatten().filter_map(<span class="kw">move </span>|(dep_name, dep_value)| {
-        <span class="kw">let </span>pkg_name = dep_value
-            .get(<span class="string">&quot;package&quot;</span>)
-            .and_then(|i| i.as_str())
-            .unwrap_or(dep_name);
+        <span class="kw">let </span>pkg_name = dep_value.get(<span class="string">&quot;package&quot;</span>).and_then(|i| i.as_str()).unwrap_or(dep_name);
 
-        <span class="kw">if </span>package_name.as_ref().map_or(<span class="bool-val">false</span>, |n| <span class="kw-2">*</span>n == pkg_name) {
-            <span class="kw">return </span><span class="prelude-val">None</span>;
-        }
+        <span class="comment">// We already handle this via `root_pkg` above.
+        </span><span class="kw">if </span>package_name.as_ref().map_or(<span class="bool-val">false</span>, |n| <span class="kw-2">*</span>n == pkg_name) {
+            <span class="kw">return </span><span class="prelude-val">None
+        </span>}
+
+        <span class="comment">// Check if this is a workspace dependency.
+        </span><span class="kw">let </span>workspace = dep_value.get(<span class="string">&quot;workspace&quot;</span>).and_then(|w| w.as_bool()).unwrap_or_default();
+
+        <span class="kw">let </span>pkg_name = workspace
+            .then(|| workspace_dependencies.get(pkg_name).map(|p| p.as_ref()))
+            .flatten()
+            .unwrap_or(pkg_name);
 
         <span class="kw">let </span>cr = FoundCrate::Name(sanitize_crate_name(dep_name));
 
@@ -729,16 +924,9 @@ at your option.
 }
 
 <span class="kw">fn </span>target_dep_tables(cargo_toml: <span class="kw-2">&amp;</span>Document) -&gt; <span class="kw">impl </span>Iterator&lt;Item = <span class="kw-2">&amp;</span>Table&gt; {
-    cargo_toml
-        .get(<span class="string">&quot;target&quot;</span>)
-        .into_iter()
-        .filter_map(Item::as_table)
-        .flat_map(|t| {
-            t.iter()
-                .map(|(<span class="kw">_</span>, value)| value)
-                .filter_map(Item::as_table)
-                .flat_map(dep_tables)
-        })
+    cargo_toml.get(<span class="string">&quot;target&quot;</span>).into_iter().filter_map(Item::as_table).flat_map(|t| {
+        t.iter().map(|(<span class="kw">_</span>, value)| value).filter_map(Item::as_table).flat_map(dep_tables)
+    })
 }
 
 <span class="kw">fn </span>dep_tables(table: <span class="kw-2">&amp;</span>Table) -&gt; <span class="kw">impl </span>Iterator&lt;Item = <span class="kw-2">&amp;</span>Table&gt; {
@@ -757,16 +945,25 @@ at your option.
         (
             <span class="macro-nonterminal">$name</span>:ident,
             <span class="macro-nonterminal">$cargo_toml</span>:expr,
+            <span class="macro-nonterminal">$workspace_toml</span>:expr,
             $( <span class="macro-nonterminal">$result</span>:tt )*
         ) =&gt; {
             <span class="attr">#[test]
             </span><span class="kw">fn </span><span class="macro-nonterminal">$name</span>() {
-                <span class="kw">let </span>cargo_toml = <span class="macro-nonterminal">$cargo_toml</span>.parse::&lt;Document&gt;().expect(<span class="string">&quot;Parses `Cargo.toml`&quot;</span>);
+                <span class="kw">let </span>cargo_toml = <span class="macro-nonterminal">$cargo_toml</span>.parse::&lt;Document&gt;()
+                    .expect(<span class="string">&quot;Parses `Cargo.toml`&quot;</span>);
+                <span class="kw">let </span>workspace_cargo_toml = <span class="macro-nonterminal">$workspace_toml</span>.parse::&lt;Document&gt;()
+                    .expect(<span class="string">&quot;Parses workspace `Cargo.toml`&quot;</span>);
 
-               <span class="kw">match </span>extract_crate_names(<span class="kw-2">&amp;</span>cargo_toml).map(|<span class="kw-2">mut </span>map| map.remove(<span class="string">&quot;my_crate&quot;</span>)) {
-                    $( <span class="macro-nonterminal">$result </span>)* =&gt; (),
-                    o =&gt; <span class="macro">panic!</span>(<span class="string">&quot;Invalid result: {:?}&quot;</span>, o),
-                }
+                <span class="kw">let </span>workspace_deps = extract_workspace_dependencies(workspace_cargo_toml)
+                    .expect(<span class="string">&quot;Extracts workspace dependencies&quot;</span>);
+
+                <span class="kw">match </span>extract_crate_names(<span class="kw-2">&amp;</span>cargo_toml, workspace_deps)
+                    .map(|<span class="kw-2">mut </span>map| map.remove(<span class="string">&quot;my_crate&quot;</span>))
+                {
+                   $( <span class="macro-nonterminal">$result </span>)* =&gt; (),
+                   o =&gt; <span class="macro">panic!</span>(<span class="string">&quot;Invalid result: {:?}&quot;</span>, o),
+               }
             }
         };
     }
@@ -777,6 +974,7 @@ at your option.
             [dependencies]
             my_crate = &quot;0.1&quot;
         &quot;#</span>,
+        <span class="string">&quot;&quot;</span>,
         <span class="prelude-val">Ok</span>(<span class="prelude-val">Some</span>(FoundCrate::Name(name))) <span class="kw">if </span>name == <span class="string">&quot;my_crate&quot;
     </span>}
 
@@ -786,6 +984,7 @@ at your option.
             [dev-dependencies]
             my_crate = &quot;0.1&quot;
         &quot;#</span>,
+        <span class="string">&quot;&quot;</span>,
         <span class="prelude-val">Ok</span>(<span class="prelude-val">Some</span>(FoundCrate::Name(name))) <span class="kw">if </span>name == <span class="string">&quot;my_crate&quot;
     </span>}
 
@@ -795,6 +994,7 @@ at your option.
             [dependencies]
             cool = { package = &quot;my_crate&quot;, version = &quot;0.1&quot; }
         &quot;#</span>,
+        <span class="string">&quot;&quot;</span>,
         <span class="prelude-val">Ok</span>(<span class="prelude-val">Some</span>(FoundCrate::Name(name))) <span class="kw">if </span>name == <span class="string">&quot;cool&quot;
     </span>}
 
@@ -805,6 +1005,7 @@ at your option.
             package = &quot;my_crate&quot;
             version = &quot;0.1&quot;
         &quot;#</span>,
+        <span class="string">&quot;&quot;</span>,
         <span class="prelude-val">Ok</span>(<span class="prelude-val">Some</span>(FoundCrate::Name(name))) <span class="kw">if </span>name == <span class="string">&quot;cool&quot;
     </span>}
 
@@ -813,6 +1014,7 @@ at your option.
         <span class="string">r#&quot;
             [dependencies]
         &quot;#</span>,
+        <span class="string">&quot;&quot;</span>,
         <span class="prelude-val">Ok</span>(<span class="prelude-val">None</span>)
     }
 
@@ -822,6 +1024,7 @@ at your option.
             [dependencies]
             serde = &quot;1.0&quot;
         &quot;#</span>,
+        <span class="string">&quot;&quot;</span>,
         <span class="prelude-val">Ok</span>(<span class="prelude-val">None</span>)
     }
 
@@ -831,6 +1034,7 @@ at your option.
             [target.&#39;cfg(target_os=&quot;android&quot;)&#39;.dependencies]
             my_crate = &quot;0.1&quot;
         &quot;#</span>,
+        <span class="string">&quot;&quot;</span>,
         <span class="prelude-val">Ok</span>(<span class="prelude-val">Some</span>(FoundCrate::Name(name))) <span class="kw">if </span>name == <span class="string">&quot;my_crate&quot;
     </span>}
 
@@ -840,6 +1044,7 @@ at your option.
             [target.x86_64-pc-windows-gnu.dependencies]
             my_crate = &quot;0.1&quot;
         &quot;#</span>,
+        <span class="string">&quot;&quot;</span>,
         <span class="prelude-val">Ok</span>(<span class="prelude-val">Some</span>(FoundCrate::Name(name))) <span class="kw">if </span>name == <span class="string">&quot;my_crate&quot;
     </span>}
 
@@ -849,6 +1054,7 @@ at your option.
             [package]
             name = &quot;my_crate&quot;
         &quot;#</span>,
+        <span class="string">&quot;&quot;</span>,
         <span class="prelude-val">Ok</span>(<span class="prelude-val">Some</span>(FoundCrate::Itself))
     }
 
@@ -861,6 +1067,7 @@ at your option.
             [dev-dependencies]
             my_crate = &quot;0.1&quot;
         &quot;#</span>,
+        <span class="string">&quot;&quot;</span>,
         <span class="prelude-val">Ok</span>(<span class="prelude-val">Some</span>(FoundCrate::Itself))
     }
 
@@ -871,7 +1078,34 @@ at your option.
             my_crate = { version = &quot;0.5&quot; }
             my-crate-old = { package = &quot;my_crate&quot;, version = &quot;0.1&quot; }
         &quot;#</span>,
+        <span class="string">&quot;&quot;</span>,
         <span class="prelude-val">Ok</span>(<span class="prelude-val">Some</span>(FoundCrate::Name(name))) <span class="kw">if </span>name == <span class="string">&quot;my_crate_old&quot;
+    </span>}
+
+    <span class="macro">create_test! </span>{
+        workspace_deps,
+        <span class="string">r#&quot;
+            [dependencies]
+            my_crate_cool = { workspace = true }
+        &quot;#</span>,
+        <span class="string">r#&quot;
+            [workspace.dependencies]
+            my_crate_cool = { package = &quot;my_crate&quot; }
+        &quot;#</span>,
+        <span class="prelude-val">Ok</span>(<span class="prelude-val">Some</span>(FoundCrate::Name(name))) <span class="kw">if </span>name == <span class="string">&quot;my_crate_cool&quot;
+    </span>}
+
+    <span class="macro">create_test! </span>{
+        workspace_deps_twice_renamed,
+        <span class="string">r#&quot;
+            [dependencies]
+            my_crate_cool_renamed = { package = &quot;my-crate-cool&quot;, workspace = true }
+        &quot;#</span>,
+        <span class="string">r#&quot;
+            [workspace.dependencies]
+            my-crate-cool = { package = &quot;my_crate&quot; }
+        &quot;#</span>,
+        <span class="prelude-val">Ok</span>(<span class="prelude-val">Some</span>(FoundCrate::Name(name))) <span class="kw">if </span>name == <span class="string">&quot;my_crate_cool_renamed&quot;
     </span>}
 }
 </code></pre></div></section></main></body></html>

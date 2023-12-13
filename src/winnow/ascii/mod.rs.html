@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\winnow-0.5.15\src\ascii\mod.rs`."><title>mod.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-9bb858ba049f1f21.css" id="mainThemeStyle"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="winnow" data-themes="" data-resource-suffix="" data-rustdoc-version="1.72.1 (d5c2e9c34 2023-09-13)" data-channel="1.72.1" data-search-js="search-f6292fe389d70017.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-8c76f75bfb6bd192.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ><script src="../../../static.files/storage-59fd9b8ccb335783.js"></script><script defer src="../../../static.files/source-script-106908c7a7964ba4.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../static.files/main-0795b7d26be81095.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../../winnow/index.html"><img class="rust-logo" src="../../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\winnow-0.5.28\src\ascii\mod.rs`."><title>mod.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-fa3bb1812debf86c.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="winnow" data-themes="" data-resource-suffix="" data-rustdoc-version="1.74.1 (a28077b28 2023-12-04)" data-channel="1.74.1" data-search-js="search-8be46b629f5f14a8.js" data-settings-js="settings-74424d7eec62a23e.js" ><script src="../../../static.files/storage-fec3eaa3851e447d.js"></script><script defer src="../../../static.files/src-script-3280b574d94e47b4.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-c5bd66d33317d69f.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-5d8b3c7633ad77ba.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../../winnow/index.html"><img class="rust-logo" src="../../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -1673,6 +1673,41 @@
 <a href="#1673" id="1673">1673</a>
 <a href="#1674" id="1674">1674</a>
 <a href="#1675" id="1675">1675</a>
+<a href="#1676" id="1676">1676</a>
+<a href="#1677" id="1677">1677</a>
+<a href="#1678" id="1678">1678</a>
+<a href="#1679" id="1679">1679</a>
+<a href="#1680" id="1680">1680</a>
+<a href="#1681" id="1681">1681</a>
+<a href="#1682" id="1682">1682</a>
+<a href="#1683" id="1683">1683</a>
+<a href="#1684" id="1684">1684</a>
+<a href="#1685" id="1685">1685</a>
+<a href="#1686" id="1686">1686</a>
+<a href="#1687" id="1687">1687</a>
+<a href="#1688" id="1688">1688</a>
+<a href="#1689" id="1689">1689</a>
+<a href="#1690" id="1690">1690</a>
+<a href="#1691" id="1691">1691</a>
+<a href="#1692" id="1692">1692</a>
+<a href="#1693" id="1693">1693</a>
+<a href="#1694" id="1694">1694</a>
+<a href="#1695" id="1695">1695</a>
+<a href="#1696" id="1696">1696</a>
+<a href="#1697" id="1697">1697</a>
+<a href="#1698" id="1698">1698</a>
+<a href="#1699" id="1699">1699</a>
+<a href="#1700" id="1700">1700</a>
+<a href="#1701" id="1701">1701</a>
+<a href="#1702" id="1702">1702</a>
+<a href="#1703" id="1703">1703</a>
+<a href="#1704" id="1704">1704</a>
+<a href="#1705" id="1705">1705</a>
+<a href="#1706" id="1706">1706</a>
+<a href="#1707" id="1707">1707</a>
+<a href="#1708" id="1708">1708</a>
+<a href="#1709" id="1709">1709</a>
+<a href="#1710" id="1710">1710</a>
 </pre></div><pre class="rust"><code><span class="doccomment">//! Character specific parsers and combinators
 //!
 //! Functions recognizing specific characters
@@ -1690,11 +1725,40 @@
 <span class="kw">use </span><span class="kw">crate</span>::stream::{AsBStr, AsChar, ParseSlice, Stream, StreamIsPartial};
 <span class="kw">use </span><span class="kw">crate</span>::stream::{Compare, CompareResult};
 <span class="kw">use </span><span class="kw">crate</span>::token::one_of;
-<span class="kw">use </span><span class="kw">crate</span>::token::take_till0;
+<span class="kw">use </span><span class="kw">crate</span>::token::take_till;
 <span class="kw">use </span><span class="kw">crate</span>::token::take_while;
 <span class="kw">use </span><span class="kw">crate</span>::trace::trace;
 <span class="kw">use </span><span class="kw">crate</span>::PResult;
 <span class="kw">use </span><span class="kw">crate</span>::Parser;
+
+<span class="doccomment">/// Mark a value as case-insensitive for ASCII characters
+///
+/// # Example
+/// ```rust
+/// # use winnow::prelude::*;
+/// # use winnow::{error::ErrMode, error::{InputError, ErrorKind}};
+/// # use winnow::ascii::Caseless;
+///
+/// fn parser&lt;&#39;s&gt;(s: &amp;mut &amp;&#39;s str) -&gt; PResult&lt;&amp;&#39;s str, InputError&lt;&amp;&#39;s str&gt;&gt; {
+///   Caseless(&quot;hello&quot;).parse_next(s)
+/// }
+///
+/// assert_eq!(parser.parse_peek(&quot;Hello, World!&quot;), Ok((&quot;, World!&quot;, &quot;Hello&quot;)));
+/// assert_eq!(parser.parse_peek(&quot;hello, World!&quot;), Ok((&quot;, World!&quot;, &quot;hello&quot;)));
+/// assert_eq!(parser.parse_peek(&quot;HeLlo, World!&quot;), Ok((&quot;, World!&quot;, &quot;HeLlo&quot;)));
+/// assert_eq!(parser.parse_peek(&quot;Some&quot;), Err(ErrMode::Backtrack(InputError::new(&quot;Some&quot;, ErrorKind::Tag))));
+/// assert_eq!(parser.parse_peek(&quot;&quot;), Err(ErrMode::Backtrack(InputError::new(&quot;&quot;, ErrorKind::Tag))));
+/// ```
+</span><span class="attr">#[derive(Copy, Clone, Debug)]
+</span><span class="kw">pub struct </span>Caseless&lt;T&gt;(<span class="kw">pub </span>T);
+
+<span class="kw">impl </span>Caseless&lt;<span class="kw-2">&amp;</span>str&gt; {
+    <span class="doccomment">/// Get the byte-representation of this case-insensitive value
+    </span><span class="attr">#[inline(always)]
+    </span><span class="kw">pub fn </span>as_bytes(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Caseless&lt;<span class="kw-2">&amp;</span>[u8]&gt; {
+        Caseless(<span class="self">self</span>.<span class="number">0</span>.as_bytes())
+    }
+}
 
 <span class="doccomment">/// Recognizes the string `&quot;\r\n&quot;`.
 ///
@@ -1798,7 +1862,7 @@
     I: Compare&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str&gt;,
     &lt;I <span class="kw">as </span>Stream&gt;::Token: AsChar + Clone,
 {
-    <span class="kw">let </span>res = take_till0((<span class="string">&#39;\r&#39;</span>, <span class="string">&#39;\n&#39;</span>)).parse_next(input)<span class="question-mark">?</span>;
+    <span class="kw">let </span>res = take_till(<span class="number">0</span>.., (<span class="string">&#39;\r&#39;</span>, <span class="string">&#39;\n&#39;</span>)).parse_next(input)<span class="question-mark">?</span>;
     <span class="kw">if </span>input.compare(<span class="string">&quot;\r&quot;</span>) == CompareResult::Ok {
         <span class="kw">let </span>comp = input.compare(<span class="string">&quot;\r\n&quot;</span>);
         <span class="kw">match </span>comp {
@@ -2098,7 +2162,7 @@
 ///
 /// ## Parsing an integer
 ///
-/// You can use `digit1` in combination with [`Parser::try_map`][crate::Parser::try_map] to parse an integer:
+/// You can use `digit1` in combination with [`Parser::try_map`] to parse an integer:
 ///
 /// ```
 /// # use winnow::prelude::*;
@@ -2640,7 +2704,8 @@
     }
 }
 
-<span class="kw">impl </span>Uint <span class="kw">for </span>i8 {
+<span class="doccomment">/// Deprecated since v0.5.17
+</span><span class="kw">impl </span>Uint <span class="kw">for </span>i8 {
     <span class="kw">fn </span>checked_mul(<span class="self">self</span>, by: u8, <span class="kw">_</span>: sealed::SealedMarker) -&gt; <span class="prelude-ty">Option</span>&lt;<span class="self">Self</span>&gt; {
         <span class="self">self</span>.checked_mul(by <span class="kw">as </span><span class="self">Self</span>)
     }
@@ -2649,7 +2714,8 @@
     }
 }
 
-<span class="kw">impl </span>Uint <span class="kw">for </span>i16 {
+<span class="doccomment">/// Deprecated since v0.5.17
+</span><span class="kw">impl </span>Uint <span class="kw">for </span>i16 {
     <span class="kw">fn </span>checked_mul(<span class="self">self</span>, by: u8, <span class="kw">_</span>: sealed::SealedMarker) -&gt; <span class="prelude-ty">Option</span>&lt;<span class="self">Self</span>&gt; {
         <span class="self">self</span>.checked_mul(by <span class="kw">as </span><span class="self">Self</span>)
     }
@@ -2658,7 +2724,8 @@
     }
 }
 
-<span class="kw">impl </span>Uint <span class="kw">for </span>i32 {
+<span class="doccomment">/// Deprecated since v0.5.17
+</span><span class="kw">impl </span>Uint <span class="kw">for </span>i32 {
     <span class="kw">fn </span>checked_mul(<span class="self">self</span>, by: u8, <span class="kw">_</span>: sealed::SealedMarker) -&gt; <span class="prelude-ty">Option</span>&lt;<span class="self">Self</span>&gt; {
         <span class="self">self</span>.checked_mul(by <span class="kw">as </span><span class="self">Self</span>)
     }
@@ -2667,7 +2734,8 @@
     }
 }
 
-<span class="kw">impl </span>Uint <span class="kw">for </span>i64 {
+<span class="doccomment">/// Deprecated since v0.5.17
+</span><span class="kw">impl </span>Uint <span class="kw">for </span>i64 {
     <span class="kw">fn </span>checked_mul(<span class="self">self</span>, by: u8, <span class="kw">_</span>: sealed::SealedMarker) -&gt; <span class="prelude-ty">Option</span>&lt;<span class="self">Self</span>&gt; {
         <span class="self">self</span>.checked_mul(by <span class="kw">as </span><span class="self">Self</span>)
     }
@@ -2676,7 +2744,8 @@
     }
 }
 
-<span class="kw">impl </span>Uint <span class="kw">for </span>i128 {
+<span class="doccomment">/// Deprecated since v0.5.17
+</span><span class="kw">impl </span>Uint <span class="kw">for </span>i128 {
     <span class="kw">fn </span>checked_mul(<span class="self">self</span>, by: u8, <span class="kw">_</span>: sealed::SealedMarker) -&gt; <span class="prelude-ty">Option</span>&lt;<span class="self">Self</span>&gt; {
         <span class="self">self</span>.checked_mul(by <span class="kw">as </span><span class="self">Self</span>)
     }
@@ -2993,6 +3062,7 @@
 }
 
 <span class="attr">#[allow(clippy::trait_duplication_in_bounds)] </span><span class="comment">// HACK: clippy 1.64.0 bug
+</span><span class="attr">#[allow(deprecated)]
 </span><span class="kw">fn </span>recognize_float_or_exceptions&lt;I, E: ParserError&lt;I&gt;&gt;(
     input: <span class="kw-2">&amp;mut </span>I,
 ) -&gt; PResult&lt;&lt;I <span class="kw">as </span>Stream&gt;::Slice, E&gt;

@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["System","Win32","core"]};
+window.SIDEBAR_ITEMS = {};

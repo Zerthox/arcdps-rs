@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["ContentLocal","EffectDuration","EffectLocation"],"struct":["ContentLocalIter","Effect","EffectGUID","EffectOld","EffectOrientation"]};
