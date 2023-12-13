@@ -17,7 +17,7 @@ pub struct LogTransformed {
     /// Information about skills used in the log.
     pub skills: Vec<Skill>,
 
-    /// Every [`Event`] occurring in the log transformed as [`EventKind`].
+    /// Every [`Event`](crate::Event) occurring in the log transformed as [`EventKind`].
     pub events: Vec<EventKind>,
 }
 

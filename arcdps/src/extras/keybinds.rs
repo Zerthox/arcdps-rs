@@ -358,7 +358,7 @@ pub enum Control {
 /// Some of them are not usable like [`F13`](Self::F32) to [`F35`](Self::F35) or [`Print`](Self::Print).
 ///
 /// Names are based upon US keyboard layout.
-/// Site to translate it to other languages: http://kbdlayout.info
+/// Site to translate it to other languages: <http://kbdlayout.info>
 #[derive(
     Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, TryFromPrimitive,
 )]

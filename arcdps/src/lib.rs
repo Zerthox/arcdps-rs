@@ -148,14 +148,14 @@ pub struct SupportedFields {
     /// First event id will be `2`.
     ///
     /// At least one participant will be a party/squad member or minion of, or a buff applied by squad in the case of buff remove.
-    /// Not all statechanges are present in the realtime API, see [`StateChange`](crate::StateChange) for details.
+    /// Not all statechanges are present in the realtime API, see [`StateChange`] for details.
     ///
     /// No `event` and `src.elite == 0` indicates a tracking change.
     /// Player was added when `src.prof != 0`, otherwise removed.
     /// When added `dst.name` contains the account name,
     /// `dst.id` the instance id,
-    /// `dst.prof` the [`Profession`](crate::Profession),
-    /// `dst.elite` the elite [`Specialization`](crate::Specialization),
+    /// `dst.prof` the [`Profession`],
+    /// `dst.elite` the elite [`Specialization`],
     /// `dst.is_self` whether the added player is self (local player),
     /// `src.team` the team and `dst.team` the subgroup.
     ///
