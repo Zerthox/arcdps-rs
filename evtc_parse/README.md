@@ -2,12 +2,12 @@
 
 Parsing for ArcDPS EVTC logs.
 
-Documentation can be found at [zerthox.github.io/arcdps-bindings/evtc_parse/](https://zerthox.github.io/arcdps-bindings/evtc_parse/).
+Documentation can be found at [zerthox.github.io/arcdps-rs/evtc_parse/](https://zerthox.github.io/arcdps-rs/evtc_parse/).
 
 ## Usage
 ```toml
 [dependencies]
-evtc_parse = { git = "https://github.com/zerthox/arcdps-bindings" }
+evtc_parse = { git = "https://github.com/zerthox/arcdps-rs" }
 ```
 
 Use the `parse_file` function to easily parse a log from a file path.
@@ -33,5 +33,5 @@ Enabling the `"zevtc"` or `"zip"` feature adds support for compressed logs.
 
 ```toml
 [dependencies]
-evtc_parse = { git = "https://github.com/zerthox/arcdps-bindings", features = ["zevtc"] }
+evtc_parse = { git = "https://github.com/zerthox/arcdps-rs", features = ["zevtc"] }
 ```

@@ -4,7 +4,7 @@ version = "0.7.0"
 authors = ["Zerthox"]
 edition = "2021"
 description = "Rust bindings for the ArcDPS EVTC API"
-repository = "https://github.com/zerthox/arcdps-bindings"
+repository = "https://github.com/zerthox/arcdps-rs"
 
 [dependencies]
 memoffset = "0.9.0"

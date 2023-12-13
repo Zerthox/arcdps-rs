@@ -4,7 +4,7 @@ version = "0.10.3"
 authors = ["Zerthox", "Greaka"]
 edition = "2021"
 description = "Helper macro to generate code for ArcDPS plugins"
-repository = "https://github.com/zerthox/arcdps-bindings"
+repository = "https://github.com/zerthox/arcdps-rs"
 
 [lib]
 proc-macro = true

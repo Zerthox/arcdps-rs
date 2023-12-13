@@ -3,7 +3,7 @@
 Rust bindings for [ArcDPS](https://www.deltaconnected.com/arcdps/) plugins.
 ArcDPS is an addon for [Guild Wars 2](https://guildwars2.com).
 
-Documentation can be found at [zerthox.github.io/arcdps-bindings/arcdps/](https://zerthox.github.io/arcdps-bindings/arcdps/).
+Documentation can be found at [zerthox.github.io/arcdps-rs/arcdps/](https://zerthox.github.io/arcdps-rs/arcdps/).
 There is also an [example plugin](../arcdps_example_plugin) in this repository.
 
 This project is originally a fork of [greaka/arcdps_bindings](https://github.com/greaka/arcdps_bindings).
@@ -20,7 +20,7 @@ This project is originally a fork of [greaka/arcdps_bindings](https://github.com
 ## Usage
 ```toml
 [dependencies]
-arcdps = { git = "https://github.com/zerthox/arcdps-bindings" }
+arcdps = { git = "https://github.com/zerthox/arcdps-rs" }
 ```
 
 ```rs
@@ -60,7 +60,7 @@ fn custom_combat_name(
 
 ```toml
 [dependencies.arcdps]
-git = "https://github.com/zerthox/arcdps-bindings"
+git = "https://github.com/zerthox/arcdps-rs"
 features = ["extras"]
 ```
 

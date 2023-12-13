@@ -4,7 +4,7 @@ version = "0.1.0"
 authors = ["Zerthox"]
 edition = "2021"
 description = "Dump ArcDPS EVTC log information"
-repository = "https://github.com/zerthox/arcdps-bindings"
+repository = "https://github.com/zerthox/arcdps-rs"
 
 [dependencies]
 clap = { version = "4.4.6", features = ["derive"] }

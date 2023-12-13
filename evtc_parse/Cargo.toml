@@ -4,7 +4,7 @@ version = "0.7.0"
 authors = ["Zerthox"]
 edition = "2021"
 description = "Parsing for ArcDPS EVTC logs"
-repository = "https://github.com/zerthox/arcdps-bindings"
+repository = "https://github.com/zerthox/arcdps-rs"
 
 [dependencies]
 evtc = { path = "../evtc" }

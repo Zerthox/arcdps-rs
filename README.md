@@ -13,5 +13,5 @@ This project is split into multiple crates covering different parts of ArcDPS.
 | [evtc_parse](./evtc_parse) | Parsing for ArcDPS EVTC logs.
 
 If you are interested in writing an ArcDPS plugin in Rust, take a look at the [arcdps](./arcdps) crate in this repository.
-Its documentation can be found at [zerthox.github.io/arcdps-bindings/arcdps/](https://zerthox.github.io/arcdps-bindings/arcdps/).
+Its documentation can be found at [zerthox.github.io/arcdps-rs/arcdps/](https://zerthox.github.io/arcdps-rs/arcdps/).
 Parts of this project are originally a fork of [greaka/arcdps_bindings](https://github.com/greaka/arcdps_bindings).

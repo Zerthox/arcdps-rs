@@ -4,7 +4,7 @@ version = "0.1.0"
 authors = ["Zerthox"]
 edition = "2021"
 description = "Example ArcDPS plugin"
-repository = "https://github.com/zerthox/arcdps-bindings"
+repository = "https://github.com/zerthox/arcdps-rs"
 
 [dependencies]
 arcdps = { path = "../arcdps", features = ["extras", "log"] }
