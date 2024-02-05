@@ -8,7 +8,7 @@ use num_enum::{IntoPrimitive, TryFromPrimitive};
 use serde::{Deserialize, Serialize};
 
 #[cfg(feature = "strum")]
-use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
+use strum::{Display, EnumCount, EnumIter, IntoStaticStr, VariantNames};
 
 /// Effect information from an [`Event`] with [`StateChange::IdToGUID`].
 #[derive(Debug, Clone)]
@@ -59,7 +59,7 @@ impl TryExtract for EffectGUID {
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[cfg_attr(
     feature = "strum",
-    derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames)
+    derive(Display, EnumCount, EnumIter, IntoStaticStr, VariantNames)
 )]
 #[repr(u32)]
 pub enum ContentLocal {

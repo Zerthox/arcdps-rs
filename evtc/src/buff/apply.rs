@@ -8,7 +8,7 @@ use crate::{
 use serde::{Deserialize, Serialize};
 
 #[cfg(feature = "strum")]
-use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
+use strum::{Display, EnumCount, EnumIter, IntoStaticStr, VariantNames};
 
 /// Buff apply event.
 #[derive(Debug, Clone)]
@@ -55,7 +55,7 @@ impl TryExtract for BuffApplyEvent {
 #[cfg_attr(feature = "serde", serde(tag = "kind"))]
 #[cfg_attr(
     feature = "strum",
-    derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames)
+    derive(Display, EnumCount, EnumIter, IntoStaticStr, VariantNames)
 )]
 #[repr(u8)]
 pub enum BuffApplyKind {

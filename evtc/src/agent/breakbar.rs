@@ -5,7 +5,7 @@ use num_enum::{FromPrimitive, IntoPrimitive};
 use serde::{Deserialize, Serialize};
 
 #[cfg(feature = "strum")]
-use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
+use strum::{Display, EnumCount, EnumIter, IntoStaticStr, VariantNames};
 
 /// Breakbar state change.
 #[derive(Debug, Clone)]
@@ -82,7 +82,7 @@ impl TryExtract for BreakbarPercentEvent {
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[cfg_attr(
     feature = "strum",
-    derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames)
+    derive(Display, EnumCount, EnumIter, IntoStaticStr, VariantNames)
 )]
 #[repr(u16)]
 pub enum BreakbarState {

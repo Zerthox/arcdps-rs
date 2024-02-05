@@ -6,7 +6,7 @@ use num_enum::{IntoPrimitive, TryFromPrimitive};
 use serde::{Deserialize, Serialize};
 
 #[cfg(feature = "strum")]
-use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
+use strum::{Display, EnumCount, EnumIter, IntoStaticStr, VariantNames};
 
 /// Keybind change event.
 #[derive(Debug, Clone)]
@@ -151,7 +151,7 @@ pub struct RawKeybind {
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[cfg_attr(
     feature = "strum",
-    derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames)
+    derive(Display, EnumCount, EnumIter, IntoStaticStr, VariantNames)
 )]
 #[repr(i32)]
 #[allow(non_camel_case_types)]
@@ -365,7 +365,7 @@ pub enum Control {
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[cfg_attr(
     feature = "strum",
-    derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames)
+    derive(Display, EnumCount, EnumIter, IntoStaticStr, VariantNames)
 )]
 #[repr(i32)]
 pub enum KeyCode {
@@ -516,7 +516,7 @@ pub enum KeyCode {
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[cfg_attr(
     feature = "strum",
-    derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames)
+    derive(Display, EnumCount, EnumIter, IntoStaticStr, VariantNames)
 )]
 #[repr(i32)]
 pub enum MouseCode {
@@ -559,7 +559,7 @@ pub enum MouseCode {
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[cfg_attr(
     feature = "strum",
-    derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames)
+    derive(Display, EnumCount, EnumIter, IntoStaticStr, VariantNames)
 )]
 #[repr(i32)]
 pub enum DeviceType {
@@ -576,7 +576,7 @@ pub enum DeviceType {
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[cfg_attr(
     feature = "strum",
-    derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames)
+    derive(Display, EnumCount, EnumIter, IntoStaticStr, VariantNames)
 )]
 #[repr(i32)]
 pub enum Modifier {

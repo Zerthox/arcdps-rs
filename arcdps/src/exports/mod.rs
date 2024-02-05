@@ -27,7 +27,7 @@ use windows::Win32::Foundation::HMODULE;
 use serde::{Deserialize, Serialize};
 
 #[cfg(feature = "strum")]
-use strum::{Display, EnumCount, EnumIter, EnumVariantNames, IntoStaticStr};
+use strum::{Display, EnumCount, EnumIter, IntoStaticStr, VariantNames};
 
 /// Retrieves the ArcDPS version as string.
 #[inline]
@@ -344,7 +344,7 @@ pub fn add_extension(handle: HMODULE) -> AddExtensionResult {
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[cfg_attr(
     feature = "strum",
-    derive(Display, EnumCount, EnumIter, IntoStaticStr, EnumVariantNames)
+    derive(Display, EnumCount, EnumIter, IntoStaticStr, VariantNames)
 )]
 #[repr(u32)]
 pub enum AddExtensionResult {
