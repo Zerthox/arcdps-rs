@@ -7,30 +7,32 @@ on:
 
 jobs:
   release:
+    name: Build (${{ matrix.name }})
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         include:
-          - os: ubuntu-latest
-            asset: evtc_dump_linux
-            artifact: evtc_dump_linux
-          - os: windows-latest
-            asset: evtc_dump_win.exe
-            artifact: evtc_dump_windows
-          - os: macos-latest
-            asset: evtc_dump_mac
-            artifact: evtc_dump_macos
+          - name: linux
+            os: ubuntu-latest
+          - name: win
+            os: windows-latest
+          - name: macos
+            os: macos-latest
     steps:
       - uses: actions/checkout@v3
       - uses: dtolnay/rust-toolchain@stable
       - run: cargo build --release --package evtc_dump
       - uses: actions/upload-artifact@v3
         with:
-          path: target/release/evtc_dump?(.exe)
-          name: ${{ matrix.artifact }}
-      - uses: shogo82148/actions-upload-release-asset@v1
+          name: evtc_dump_${{ matrix.name }}
+          path: |
+              target/release/evtc_dump
+              target/release/evtc_dump.exe
+      - uses: vimtor/action-zip@v1.1
+        with:
+          files: target/release/evtc_dump target/release/evtc_dump.exe
+          dest: evtc_dump_${{ matrix.name }}.zip
+      - uses: softprops/action-gh-release@v1
         continue-on-error: true
         with:
-          upload_url: ${{ github.event.release.upload_url }}
-          asset_path: target/release/evtc_dump?(.exe)
-          asset_name: ${{ matrix.asset }}
+          files: evtc_dump_${{ matrix.name }}.zip
