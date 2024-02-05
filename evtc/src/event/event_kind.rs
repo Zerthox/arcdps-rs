@@ -12,6 +12,7 @@ use crate::{
     log::{ErrorEvent, LogEvent},
     player::{GuildEvent, RewardEvent, TagEvent},
     position::PositionEvent,
+    ruleset::Ruleset,
     skill::{ActivationEvent, SkillInfo, SkillTiming},
     strike::StrikeEvent,
     weapon::WeaponSwapEvent,
@@ -176,6 +177,9 @@ pub enum EventKind {
     /// Effect created or ended.
     Effect(Effect),
 
+    /// Combat ruleset.
+    Ruleset(Ruleset),
+
     /// Activation (cast) event.
     Activation(ActivationEvent),
 
@@ -290,6 +294,9 @@ impl From<Event> for EventKind {
                         scale: event.src_agent,
                     },
                     StateChange::Effect => Self::Effect(event.extract()),
+                    StateChange::Ruleset => {
+                        Self::Ruleset(Ruleset::from_bits_retain(event.src_agent))
+                    }
                     StateChange::Unknown(_) => Self::Unknown(event),
                 },
                 EventCategory::Activation => Self::Activation(event.extract()),

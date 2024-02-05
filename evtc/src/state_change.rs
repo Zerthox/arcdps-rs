@@ -355,6 +355,11 @@ pub enum StateChange {
     /// *Not used in realtime API.*
     Effect = 51,
 
+    /// Combat ruleset.
+    ///
+    /// `src_agent` has bit 0 set if PvE rules buff, bit 1 if WvW rules and bit 2 if PvP rules.
+    Ruleset = 52,
+
     /// Unknown or invalid.
     #[num_enum(catch_all)]
     Unknown(u8),
