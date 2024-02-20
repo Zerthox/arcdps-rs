@@ -287,14 +287,14 @@ pub mod __macro {
     };
 
     use crate::{
-        exports::{has_e3_log_file, has_e8_log_window},
+        exports::has_e3_log_file,
         globals::{init_dxgi, init_imgui, ARC_GLOBALS, IG_UI},
         imgui,
         panic::init_panic_hook,
     };
 
     #[cfg(feature = "log")]
-    use crate::log::ArcDpsLogger;
+    use crate::{exports::has_e8_log_window, log::ArcDpsLogger};
 
     /// Internally used function to initialize with information received from Arc.
     #[inline]
