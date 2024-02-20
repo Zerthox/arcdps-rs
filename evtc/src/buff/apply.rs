@@ -21,8 +21,8 @@ pub struct BuffApplyEvent {
     /// Kind of buff application/extension.
     pub apply: BuffApplyKind,
 
-    /// Whether stack is active.
-    pub stack_active: bool,
+    /// Stack active status.
+    pub stack_active: u8,
 
     /// Buff stack (instance) id.
     pub stack_id: u32,
@@ -36,7 +36,7 @@ impl Extract for BuffApplyEvent {
         Self {
             common: event.into(),
             apply: BuffApplyKind::extract(event),
-            stack_active: event.is_shields != 0,
+            stack_active: event.is_shields,
             stack_id: event.get_pad_id(),
         }
     }

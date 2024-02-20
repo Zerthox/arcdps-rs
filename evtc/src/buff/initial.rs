@@ -22,7 +22,7 @@ pub struct BuffInitialEvent {
     pub original_duration: i32,
 
     /// Whether stack is active.
-    pub stack_active: bool,
+    pub stack_active: u8,
 
     /// Buff stack (instance) id.
     pub stack_id: u32,
@@ -37,7 +37,7 @@ impl Extract for BuffInitialEvent {
             common: event.into(),
             duration: event.value,
             original_duration: event.buff_dmg,
-            stack_active: event.is_shields != 0,
+            stack_active: event.is_shields,
             stack_id: event.get_pad_id(),
         }
     }
