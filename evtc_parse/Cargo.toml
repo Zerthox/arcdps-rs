@@ -14,6 +14,7 @@ thiserror = "1.0.38"
 zip = { version = "0.6.4", optional = true }
 
 [features]
+default = ["zevtc"]
 serde = ["dep:serde", "evtc/serde"]
 zevtc = ["dep:zip"]
 zip = ["zevtc"]
