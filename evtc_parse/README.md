@@ -27,11 +27,3 @@ fn parse_from_read(input: &mut impl io::Read) -> Log {
     Log::parse(input).expect("failed to parse")
 }
 ```
-
-Note that ArcDPS can save compressed log files with `.zevtc` as file extension.
-Enabling the `"zevtc"` or `"zip"` feature adds support for compressed logs.
-
-```toml
-[dependencies]
-evtc_parse = { git = "https://github.com/zerthox/arcdps-rs", features = ["zevtc"] }
-```
