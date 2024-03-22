@@ -90,12 +90,12 @@ impl ArcDpsGen {
                 let result: ::std::result::Result<(), ::std::string::String> = #init;
                 if let ::std::result::Result::Err(err) = result {
                     unsafe {
-                        ERROR_STRING = err + "\0";
-                        EXPORT_ERROR.size = ERROR_STRING.as_ptr() as _;
-                        &EXPORT_ERROR
+                        self::ERROR_STRING = err + "\0";
+                        self::EXPORT_ERROR.size = self::ERROR_STRING.as_ptr() as _;
+                        &self::EXPORT_ERROR
                     }
                 } else {
-                    &EXPORT
+                    &self::EXPORT
                 }
             }
 
@@ -116,13 +116,13 @@ impl ArcDpsGen {
                 d3d_version: ::std::primitive::u32,
             ) -> fn() -> *const ::arcdps::callbacks::ArcDpsExport {
                 ::arcdps::__macro::init(arc_version, arc_dll, imgui_ctx, malloc, free, id3d, d3d_version, #name);
-                load
+                self::load
             }
 
             /// ArcDPS looks for this exported function and calls the address it returns on client exit.
             #[no_mangle]
             pub extern #SYSTEM_ABI fn get_release_addr() -> *mut ::arcdps::__macro::c_void {
-                unload as _
+                self::unload as _
             }
 
             #update_url
