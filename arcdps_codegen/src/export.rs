@@ -1,4 +1,7 @@
-use crate::{abi::SYSTEM_ABI, ArcDpsGen};
+use crate::{
+    abi::{C_ABI, SYSTEM_ABI},
+    ArcDpsGen,
+};
 use proc_macro2::{Span, TokenStream};
 use quote::quote;
 use std::env;
@@ -86,7 +89,7 @@ impl ArcDpsGen {
             };
             static mut ERROR_STRING: ::std::string::String = ::std::string::String::new();
 
-            fn load() -> *const ::arcdps::callbacks::ArcDpsExport {
+            extern #C_ABI fn load() -> *const ::arcdps::callbacks::ArcDpsExport {
                 let result: ::std::result::Result<(), ::std::string::String> = #init;
                 if let ::std::result::Result::Err(err) = result {
                     unsafe {
@@ -99,7 +102,7 @@ impl ArcDpsGen {
                 }
             }
 
-            fn unload() {
+            extern #C_ABI fn unload() {
                 #release
             }
 
@@ -114,9 +117,9 @@ impl ArcDpsGen {
                 malloc: ::std::option::Option<::arcdps::__macro::MallocFn>,
                 free: ::std::option::Option<::arcdps::__macro::FreeFn>,
                 d3d_version: ::std::primitive::u32,
-            ) -> fn() -> *const ::arcdps::callbacks::ArcDpsExport {
+            ) -> *mut ::arcdps::__macro::c_void {
                 ::arcdps::__macro::init(arc_version, arc_dll, imgui_ctx, malloc, free, id3d, d3d_version, #name);
-                self::load
+                self::load as _
             }
 
             /// ArcDPS looks for this exported function and calls the address it returns on client exit.
