@@ -24,17 +24,23 @@ pub trait TryExtract: Sized + Extract {
 }
 
 /// Helper to transmute [`Event`] fields.
+///
+/// # Usage
+/// ```ignore
+/// let value = transmute_field!(event.src_agent as [f32; 3]);
+/// ```
 macro_rules! transmute_field {
-    ($event: ident . $field: ident as $ty: tt) => {{
+    ( $event: ident . $field: ident as $ty: tt ) => {{
         const _: () = {
-            let end = ::memoffset::offset_of!(Event, $field) + ::std::mem::size_of::<$ty>();
+            let end = ::memoffset::offset_of!($crate::Event, $field) + ::std::mem::size_of::<$ty>();
             assert!(
-                end <= ::std::mem::size_of::<Event>(),
+                end <= ::std::mem::size_of::<$crate::Event>(),
                 "transmute field outside of event",
             );
         };
 
-        let field_ptr = ::std::ptr::addr_of!($event.$field);
+        let event: &$crate::Event = ::std::borrow::Borrow::borrow($event);
+        let field_ptr = ::std::ptr::addr_of!(event.$field);
         (*field_ptr.cast::<$ty>()).clone()
     }};
 }
