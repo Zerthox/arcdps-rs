@@ -8,9 +8,11 @@ use crate::{
         BuffApplyEvent, BuffDamageEvent, BuffFormula, BuffInfo, BuffInitialEvent, BuffRemoveEvent,
         StackActiveEvent, StackResetEvent,
     },
-    effect::{Effect, EffectGUID, EffectOld},
+    effect::{Effect, EffectOld},
+    guid::ContentGUID,
     log::{ErrorEvent, LogEvent},
-    player::{GuildEvent, RewardEvent, TagEvent},
+    marker::{AgentMarkerEvent, SquadMarkerEvent},
+    player::{GuildEvent, RewardEvent},
     position::PositionEvent,
     ruleset::Ruleset,
     skill::{ActivationEvent, SkillInfo, SkillTiming},
@@ -135,8 +137,8 @@ pub enum EventKind {
     /// Error.
     Error(ErrorEvent),
 
-    /// Agent has tag.
-    Tag(TagEvent),
+    /// Agent has marker.
+    AgentMarker(AgentMarkerEvent),
 
     /// Agent barrier change.
     BarrierUpdate(BarrierUpdateEvent),
@@ -156,14 +158,16 @@ pub enum EventKind {
     /// Tick rate.
     Tickrate { time: u64, rate: u64 },
 
-    /// Last 90% before down for downs contribution..
+    /// Last 90% before down for downs contribution.
     Last90BeforeDown(DownContributionEvent),
 
     /// Effect created or ended.
     EffectOld(EffectOld),
 
     /// Id to GUID.
-    IdToGUID(EffectGUID),
+    ///
+    /// This maps a volatile content id to a stable GUID.
+    IdToGUID(ContentGUID),
 
     /// Log NPC changed.
     LogNPCUpdate(LogEvent),
@@ -194,6 +198,9 @@ pub enum EventKind {
 
     /// Direct (strike) damage.
     Strike(StrikeEvent),
+
+    /// Squad marker placed or removed.
+    SquadMarker(SquadMarkerEvent),
 
     /// Unknown event.
     Unknown(Event),
@@ -257,7 +264,7 @@ impl From<Event> for EventKind {
                     StateChange::BreakbarState => Self::BreakbarState(event.extract()),
                     StateChange::BreakbarPercent => Self::BreakbarPercent(event.extract()),
                     StateChange::Error => Self::Error(event.extract()),
-                    StateChange::Tag => Self::Tag(event.extract()),
+                    StateChange::Marker => Self::AgentMarker(event.extract()),
                     StateChange::BarrierUpdate => Self::BarrierUpdate(event.extract()),
                     StateChange::StatReset => Self::StatReset {
                         time: event.time,
@@ -297,6 +304,7 @@ impl From<Event> for EventKind {
                     StateChange::Ruleset => {
                         Self::Ruleset(Ruleset::from_bits_retain(event.src_agent))
                     }
+                    StateChange::SquadMarker => Self::SquadMarker(event.extract()),
                     StateChange::Unknown(_) => Self::Unknown(event),
                 },
                 EventCategory::Activation => Self::Activation(event.extract()),

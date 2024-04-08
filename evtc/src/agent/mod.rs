@@ -1,4 +1,4 @@
-//! Agents bindings & utilities.
+//! Agent bindings & utilities.
 //!
 //! Agents are the base used for nearly all entity types.
 

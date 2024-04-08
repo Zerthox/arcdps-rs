@@ -10,6 +10,7 @@ pub use self::common::*;
 pub use self::event_kind::*;
 pub use self::old::*;
 
+#[allow(deprecated)]
 pub use crate::{
     agent::{
         AgentStatusEvent, AttackTargetEvent, BarrierUpdateEvent, BreakbarPercentEvent,
@@ -22,6 +23,7 @@ pub use crate::{
     },
     effect::{Effect, EffectGUID, EffectOld},
     log::{ErrorEvent, LogEvent},
+    marker::{AgentMarkerEvent, SquadMarkerEvent},
     player::{GuildEvent, RewardEvent, TagEvent},
     position::PositionEvent,
     skill::{ActivationEvent, SkillInfo, SkillTiming},

@@ -1,39 +1,54 @@
-#![allow(deprecated)]
-
 use crate::{extract::Extract, AgentId, Event, StateChange, TryExtract};
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
 
-/// Agent has a tag.
+/// Agent has a marker.
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
-#[deprecated(since = "0.9.0", note = "replaced by agent marker event")]
-pub struct TagEvent {
+pub struct AgentMarkerEvent {
     /// Time of registering the event.
     pub time: u64,
 
-    /// Agent that has the tag.
+    /// Agent that has the marker.
     pub agent: AgentId,
 
-    /// Tag id.
+    /// Marker id.
     ///
     /// Id is volatile, depends on game build.
-    pub tag: i32,
+    pub marker: i32,
+
+    /// Non-zero if commander.
+    pub commander: u8,
 }
 
-impl Extract for TagEvent {
+impl AgentMarkerEvent {
+    /// Whether the marker was removed.
+    #[inline]
+    pub fn is_remove(&self) -> bool {
+        self.marker == 0
+    }
+
+    /// Whether the marker is a commander tag.
+    #[inline]
+    pub fn is_commander(&self) -> bool {
+        self.commander != 0
+    }
+}
+
+impl Extract for AgentMarkerEvent {
     #[inline]
     unsafe fn extract(event: &Event) -> Self {
         Self {
             time: event.time,
             agent: AgentId::from_src(event),
-            tag: event.value,
+            marker: event.value,
+            commander: event.buff,
         }
     }
 }
 
-impl TryExtract for TagEvent {
+impl TryExtract for AgentMarkerEvent {
     #[inline]
     fn can_extract(event: &Event) -> bool {
         event.get_statechange() == StateChange::Marker

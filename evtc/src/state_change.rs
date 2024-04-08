@@ -254,11 +254,14 @@ pub enum StateChange {
     /// *Not used in realtime API.*
     Error = 36,
 
-    /// Source agent has tag.
+    /// Source agent has marker.
     ///
-    /// `value` is the id of the tag.
-    /// Tag id is volatile, depends on game build.
-    Tag = 37,
+    /// `src_agent` is agent.
+    /// `value` is the id of the marker (volatile, depends on game build).
+    /// `buff` will be non-zero if commander.
+    ///
+    /// A marker id of `0` indicates a remove.
+    Marker = 37,
 
     /// Source agent barrier change.
     ///
@@ -359,6 +362,12 @@ pub enum StateChange {
     ///
     /// `src_agent` has bit 0 set if PvE rules buff, bit 1 if WvW rules and bit 2 if PvP rules.
     Ruleset = 52,
+
+    /// Squad marker placed or removed.
+    ///
+    /// `src_agent` contains the XYZ location as `[f32; 3]` or [`f32::INFINITY`] if removed.
+    /// `skill_id` contains the index of the squad marker.
+    SquadMarker = 53,
 
     /// Unknown or invalid.
     #[num_enum(catch_all)]
