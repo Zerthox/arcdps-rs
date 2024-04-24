@@ -317,7 +317,7 @@ pub enum StateChange {
     /// Id to GUID.
     ///
     /// `src_agent` contains [`u128`] (16 byte) persistent content guid.
-    /// `overstack_value` is a variant of [`ContentLocal`](crate::effect::ContentLocal), `skill_id` is content id.
+    /// `overstack_value` is a variant of [`ContentLocal`](crate::guid::ContentLocal), `skill_id` is content id.
     ///
     /// *Not used in realtime API.*
     IdToGUID = 46,
