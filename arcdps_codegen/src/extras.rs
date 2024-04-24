@@ -75,50 +75,54 @@ impl ExtrasGen {
         let keybind_callback = keybind_changed.unwrap_or(quote! { ::std::option::Option::None });
         let chat_callback = chat_message.unwrap_or(quote! { ::std::option::Option::None });
 
-        let convert_addon = quote! {
-            let addon = addon.as_ref().expect("unofficial extras did not provide addon info in init");
-        };
         let subscribe = quote! {
+            let addon = addon.as_ref().expect("unofficial extras did not provide addon info in init");
             sub.as_mut()
                 .expect("unofficial extras did not provide subscriber info in init")
                 .subscribe(addon, #name, #squad_callback, #lang_callback, #keybind_callback, #chat_callback);
         };
 
-        let content = if let Some(raw) = &self.raw_extras_init {
+        let (globals, contents) = if let Some(raw) = &self.raw_extras_init {
             let span = syn::Error::new_spanned(raw, "").span();
-            quote_spanned! {span=>
-                const RAW: ::arcdps::extras::callbacks::RawExtrasSubscriberInit = #raw;
-                RAW(addon, sub)
-            }
+            (
+                quote_spanned! {span=>
+                    const _EXTRAS_INIT: ::arcdps::extras::callbacks::RawExtrasSubscriberInit = #raw;
+
+                },
+                quote_spanned! {span=>
+                    self::__EXTRAS_INIT(addon, sub)
+                },
+            )
         } else if let Some(safe) = &self.extras_init {
             let span = syn::Error::new_spanned(safe, "").span();
-            quote_spanned! {span=>
-                const SAFE: ::arcdps::extras::callbacks::ExtrasInitFunc = #safe;
+            (
+                quote_spanned! {span=>
+                    const __EXTRAS_INIT: ::arcdps::extras::callbacks::ExtrasInitFunc = #safe;
+                },
+                quote_spanned! {span=>
+                    #subscribe
 
-                #convert_addon
-                #subscribe
-
-                let user = ::arcdps::__macro::str_from_cstr(addon.self_account_name as _)
-                    .map(::arcdps::__macro::strip_account_prefix);
-                SAFE(addon.clone().into(), user);
-            }
+                    let user = ::arcdps::__macro::str_from_cstr(addon.self_account_name as _)
+                        .map(::arcdps::__macro::strip_account_prefix);
+                    self::__EXTRAS_INIT(addon.clone().into(), user);
+                },
+            )
         } else if has_callback {
-            quote! {
-                #convert_addon
-                #subscribe
-            }
+            (quote! {}, subscribe)
         } else {
             // we dont need the export
             return quote! {};
         };
 
-        quote_spanned! {content.span()=>
+        quote_spanned! {contents.span()=>
+            #globals
+
             #[no_mangle]
             unsafe extern #SYSTEM_ABI fn arcdps_unofficial_extras_subscriber_init(
                 addon: *const ::arcdps::extras::RawExtrasAddonInfo,
                 sub: *mut ::arcdps::extras::ExtrasSubscriberInfo
             ) {
-                #content
+                #contents
             }
         }
     }
@@ -128,16 +132,16 @@ impl ExtrasGen {
         CallbackInfo::build_optional(
             self.raw_extras_squad_update.as_ref(),
             self.extras_squad_update.as_ref(),
-            quote! { abstract_extras_squad_update },
-            |safe, span| {
+            "__extras_squad_update",
+            |name, safe, span| {
                 quote_spanned! {span=>
-                    unsafe extern #C_ABI fn abstract_extras_squad_update(
+                    const __EXTRAS_SQUAD_UPDATE: ::arcdps::extras::callbacks::ExtrasSquadUpdateCallback = #safe;
+
+                    unsafe extern #C_ABI fn #name(
                         users: *const ::arcdps::extras::user::UserInfo,
                         count: ::std::primitive::u64
                     ) {
-                        const SAFE: ::arcdps::extras::callbacks::ExtrasSquadUpdateCallback = #safe;
-
-                        SAFE(::arcdps::extras::user::to_user_info_iter(users, count))
+                        self::__EXTRAS_SQUAD_UPDATE(::arcdps::extras::user::to_user_info_iter(users, count))
                     }
                 }
             },
@@ -149,13 +153,13 @@ impl ExtrasGen {
         CallbackInfo::build_optional(
             self.raw_extras_language_changed.as_ref(),
             self.extras_language_changed.as_ref(),
-            quote! { abstract_extras_language_changed },
-            |safe, span| {
+            "__extras_language_changed",
+            |name, safe, span| {
                 quote_spanned! {span=>
-                    unsafe extern #C_ABI fn abstract_extras_language_changed(language: ::arcdps::evtc::Language) {
-                        const SAFE: ::arcdps::extras::callbacks::ExtrasLanguageChangedCallback = #safe;
+                    const __EXTRAS_LANGUAGE_CHANGED: ::arcdps::extras::callbacks::ExtrasLanguageChangedCallback = #safe;
 
-                        SAFE(language)
+                    unsafe extern #C_ABI fn #name(language: ::arcdps::evtc::Language) {
+                        self::__EXTRAS_LANGUAGE_CHANGED(language)
                     }
                 }
             },
@@ -167,13 +171,13 @@ impl ExtrasGen {
         CallbackInfo::build_optional(
             self.raw_extras_keybind_changed.as_ref(),
             self.extras_keybind_changed.as_ref(),
-            quote! { abstract_extras_keybind_changed },
-            |safe, span| {
+            "__extras_keybind_changed",
+            |name, safe, span| {
                 quote_spanned! {span=>
-                    unsafe extern #C_ABI fn abstract_extras_keybind_changed(changed: ::arcdps::extras::keybinds::RawKeybindChange) {
-                        const SAFE: ::arcdps::extras::callbacks::ExtrasKeybindChangedCallback = #safe;
+                    const __EXTRAS_KEYBIND_CHANGED: ::arcdps::extras::callbacks::ExtrasKeybindChangedCallback = #safe;
 
-                        SAFE(changed.into())
+                    unsafe extern #C_ABI fn #name(changed: ::arcdps::extras::keybinds::RawKeybindChange) {
+                        self::__EXTRAS_KEYBIND_CHANGED(changed.into())
                     }
                 }
             },
@@ -185,16 +189,16 @@ impl ExtrasGen {
         CallbackInfo::build_optional(
             self.raw_extras_chat_message.as_ref(),
             self.extras_chat_message.as_ref(),
-            quote! { abstract_extras_chat_message },
-            |safe, span| {
+            "__extras_chat_message",
+            |name, safe, span| {
                 quote_spanned! {span=>
-                    unsafe extern #C_ABI fn abstract_extras_chat_message(info: *const ::arcdps::extras::message::RawChatMessageInfo) {
-                        const SAFE: ::arcdps::extras::callbacks::ExtrasChatMessageCallback = #safe;
+                    const __EXTRAS_CHAT_MESSAGE: ::arcdps::extras::callbacks::ExtrasChatMessageCallback = #safe;
 
+                    unsafe extern #C_ABI fn #name(info: *const ::arcdps::extras::message::RawChatMessageInfo) {
                         let info = info.as_ref()
                             .expect("unofficial extras did not provide message info in chat message callback")
                             .into();
-                        SAFE(&info)
+                        self::__EXTRAS_CHAT_MESSAGE(&info)
                     }
                 }
             },

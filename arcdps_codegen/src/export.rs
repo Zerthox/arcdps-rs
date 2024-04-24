@@ -40,8 +40,8 @@ impl ArcDpsGen {
         let build = self.gen_build();
         let sig = &self.sig;
 
-        let init = self.build_init();
-        let release = self.build_release();
+        let (init_func, init) = self.build_init().into_tuple();
+        let (release_func, release) = self.build_release().into_tuple();
         let update_url = self.build_update_url();
 
         let (combat_func, combat_value) = self.build_combat().into_tuple();
@@ -54,10 +54,11 @@ impl ArcDpsGen {
         let (wnd_nofilter_func, wnd_nofilter_value) = self.build_wnd_nofilter().into_tuple();
 
         // TODO: instantiate unused supported fields for intellisense & type checking?
+        // TODO: const in own module without access to other mods
 
         quote! {
             /// ArcDPS export struct with plugin information.
-            static EXPORT: ::arcdps::callbacks::ArcDpsExport = ::arcdps::callbacks::ArcDpsExport {
+            static __EXPORT: ::arcdps::callbacks::ArcDpsExport = ::arcdps::callbacks::ArcDpsExport {
                 size: ::std::mem::size_of::<::arcdps::callbacks::ArcDpsExport>(),
                 sig: #sig,
                 imgui_version: 18000,
@@ -72,37 +73,41 @@ impl ArcDpsGen {
                 wnd_nofilter: #wnd_nofilter_value,
             };
 
-            /// ArcDPS export struct with error information.
-            static mut EXPORT_ERROR: ::arcdps::callbacks::ArcDpsExport = ::arcdps::callbacks::ArcDpsExport {
-                size: 0,
-                sig: 0,
-                imgui_version: 18000,
-                out_build: #build.as_ptr() as _,
-                out_name: #name_c.as_ptr() as _,
-                combat: ::std::option::Option::None,
-                combat_local: ::std::option::Option::None,
-                imgui: ::std::option::Option::None,
-                options_end: ::std::option::Option::None,
-                options_windows: ::std::option::Option::None,
-                wnd_filter: ::std::option::Option::None,
-                wnd_nofilter: ::std::option::Option::None,
-            };
-            static mut ERROR_STRING: ::std::string::String = ::std::string::String::new();
+            #init_func
 
-            extern #C_ABI fn load() -> *const ::arcdps::callbacks::ArcDpsExport {
+            extern #C_ABI fn __load() -> *const ::arcdps::callbacks::ArcDpsExport {
+                /// ArcDPS export struct with error information.
+                static mut EXPORT_ERROR: ::arcdps::callbacks::ArcDpsExport = ::arcdps::callbacks::ArcDpsExport {
+                    size: 0,
+                    sig: 0,
+                    imgui_version: 18000,
+                    out_build: #build.as_ptr() as _,
+                    out_name: #name_c.as_ptr() as _,
+                    combat: ::std::option::Option::None,
+                    combat_local: ::std::option::Option::None,
+                    imgui: ::std::option::Option::None,
+                    options_end: ::std::option::Option::None,
+                    options_windows: ::std::option::Option::None,
+                    wnd_filter: ::std::option::Option::None,
+                    wnd_nofilter: ::std::option::Option::None,
+                };
+                static mut ERROR_STRING: ::std::string::String = ::std::string::String::new();
+
                 let result: ::std::result::Result<(), ::std::string::String> = #init;
                 if let ::std::result::Result::Err(err) = result {
                     unsafe {
-                        self::ERROR_STRING = err + "\0";
-                        self::EXPORT_ERROR.size = self::ERROR_STRING.as_ptr() as _;
-                        &self::EXPORT_ERROR
+                        ERROR_STRING = err + "\0";
+                        EXPORT_ERROR.size = ERROR_STRING.as_ptr() as _;
+                        &EXPORT_ERROR
                     }
                 } else {
-                    &self::EXPORT
+                    &self::__EXPORT
                 }
             }
 
-            extern #C_ABI fn unload() {
+            #release_func
+
+            extern #C_ABI fn __unload() {
                 #release
             }
 
@@ -119,13 +124,13 @@ impl ArcDpsGen {
                 d3d_version: ::std::primitive::u32,
             ) -> *mut ::arcdps::__macro::c_void {
                 ::arcdps::__macro::init(arc_version, arc_dll, imgui_ctx, malloc, free, id3d, d3d_version, #name);
-                self::load as _
+                self::__load as _
             }
 
             /// ArcDPS looks for this exported function and calls the address it returns on client exit.
             #[no_mangle]
             pub extern #SYSTEM_ABI fn get_release_addr() -> *mut ::arcdps::__macro::c_void {
-                self::unload as _
+                self::__unload as _
             }
 
             #update_url

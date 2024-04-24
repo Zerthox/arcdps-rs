@@ -11,7 +11,7 @@ mod extras;
 use cfg_if::cfg_if;
 use proc_macro2::{Span, TokenStream};
 use quote::{quote, quote_spanned};
-use syn::{Expr, LitStr};
+use syn::{Expr, Ident, LitStr};
 
 #[cfg(feature = "extras")]
 use extras::ExtrasGen;
@@ -35,7 +35,7 @@ pub fn export(item: proc_macro::TokenStream) -> proc_macro::TokenStream {
     };
 
     let result = quote! {
-        mod __arcdps_gen_export {
+        mod __arcdps_addon_export {
             use super::*;
 
             #export
@@ -130,6 +130,11 @@ impl CallbackInfo {
         Self { function, value }
     }
 
+    /// Creates a new callback info with no contents.
+    pub fn empty() -> Self {
+        Self::new(TokenStream::new(), TokenStream::new())
+    }
+
     /// Helper to build a callback.
     ///
     /// `raw` is the value of the raw callback if passed to the macro.
@@ -139,8 +144,8 @@ impl CallbackInfo {
     pub fn build(
         raw: Option<&Expr>,
         safe: Option<&Expr>,
-        name: TokenStream,
-        wrapper: impl FnOnce(&Expr, Span) -> TokenStream,
+        name: &str,
+        wrapper: impl FnOnce(&Ident, &Expr, Span) -> TokenStream,
     ) -> CallbackInfo {
         Self::build_optional(raw, safe, name, wrapper)
             .unwrap_or_else(|| CallbackInfo::new(quote! {}, quote! { ::std::option::Option::None }))
@@ -152,8 +157,8 @@ impl CallbackInfo {
     pub fn build_optional(
         raw: Option<&Expr>,
         safe: Option<&Expr>,
-        name: TokenStream,
-        wrapper: impl FnOnce(&Expr, Span) -> TokenStream,
+        name: &str,
+        wrapper: impl FnOnce(&Ident, &Expr, Span) -> TokenStream,
     ) -> Option<CallbackInfo> {
         if let Some(raw) = raw {
             let span = syn::Error::new_spanned(raw, "").span();
@@ -161,8 +166,9 @@ impl CallbackInfo {
 
             Some(CallbackInfo::new(quote! {}, value))
         } else if let Some(safe) = safe {
+            let name = Ident::new(name, Span::call_site());
             let span = syn::Error::new_spanned(safe, "").span();
-            let func = wrapper(safe, span);
+            let func = wrapper(&name, safe, span);
             let value = quote_spanned!(span=> ::std::option::Option::Some(self::#name as _) );
 
             Some(CallbackInfo::new(func, value))
