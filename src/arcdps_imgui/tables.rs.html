@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\arcdps-imgui-0.8.0\src\tables.rs`."><title>tables.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-fa3bb1812debf86c.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="arcdps_imgui" data-themes="" data-resource-suffix="" data-rustdoc-version="1.74.1 (a28077b28 2023-12-04)" data-channel="1.74.1" data-search-js="search-8be46b629f5f14a8.js" data-settings-js="settings-74424d7eec62a23e.js" ><script src="../../static.files/storage-fec3eaa3851e447d.js"></script><script defer src="../../static.files/src-script-3280b574d94e47b4.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-c5bd66d33317d69f.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-5d8b3c7633ad77ba.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../arcdps_imgui/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\arcdps-imgui-0.8.0\src\tables.rs`."><title>tables.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-5bc39a1768837dd0.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="arcdps_imgui" data-themes="" data-resource-suffix="" data-rustdoc-version="1.77.2 (25ef9e3d8 2024-04-09)" data-channel="1.77.2" data-search-js="search-dd67cee4cfa65049.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../static.files/storage-4c98445ec4002617.js"></script><script defer src="../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-48f368f3872407c8.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-04d5337699b92874.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title">
+            <h2>Files</h2></div></nav><div class="sidebar-resizer"></div>
+    <main><nav class="sub"><form class="search-form"><span></span><div id="sidebar-button" tabindex="-1"><a href="../../arcdps_imgui/all.html" title="show sidebar"></a></div><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" tabindex="-1"><a href="../../help.html" title="help">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -884,7 +886,7 @@
     ///    - Table defaults to [SizingFixedFit] -&gt; all Columns defaults to [TableColumnFlags::WidthFixed]
     ///    - Columns sizing policy allowed: [Fixed]/Auto mostly.
     ///    - [Fixed] Columns can be enlarged as needed. Table will show an horizontal scrollbar if needed.
-    ///    - When using auto-resizing (non-resizable) fixed columns, querying the content width to use item right-alignment e.g. SetNextItemWidth(-FLT_MIN) doesn&#39;t make sense, would create a feedback loop.
+    ///    - When using auto-resizing (non-resizable) fixed columns, querying the content width to use item right-alignment e.g. SetNextItemWidth(-FLT_MIN) doesn't make sense, would create a feedback loop.
     ///    - Using [Stretch] columns OFTEN DOES NOT MAKE SENSE if [ScrollX] is on, UNLESS you have specified a value for `inner_width` in BeginTable().
     ///      If you specify a value for `inner_width` then effectively the scrolling space is known and [Stretch] or mixed [Fixed]/[Stretch] columns become meaningful again.
     /// - Read on documentation at the top of imgui_tables.cpp for more details.
@@ -951,7 +953,7 @@
         /// contents widths.
         </span><span class="kw">const </span>SIZING_STRETCH_PROP = sys::ImGuiTableFlags_SizingStretchProp;
         <span class="doccomment">/// Columns default to [WidthStretch] with default weights all equal, unless overridden by
-        /// a column&#39;s `TableHeader`.
+        /// a column's `TableHeader`.
         </span><span class="kw">const </span>SIZING_STRETCH_SAME = sys::ImGuiTableFlags_SizingStretchSame;
 
         <span class="comment">// Sizing Extra Options
@@ -989,11 +991,11 @@
 
         <span class="comment">// Scrolling
 
-        </span><span class="doccomment">/// Enable horizontal scrolling. Require &#39;outer_size&#39; parameter of [begin_table] to specify the
+        </span><span class="doccomment">/// Enable horizontal scrolling. Require 'outer_size' parameter of [begin_table] to specify the
         /// container size. Changes default sizing policy. Because this create a child window,
         /// [ScrollY] is currently generally recommended when using [ScrollX].
         </span><span class="kw">const </span>SCROLL_X = sys::ImGuiTableFlags_ScrollX;
-        <span class="doccomment">/// Enable vertical scrolling. Require &#39;outer_size&#39; parameter of [begin_table] to specify the
+        <span class="doccomment">/// Enable vertical scrolling. Require 'outer_size' parameter of [begin_table] to specify the
         /// container size.
         </span><span class="kw">const </span>SCROLL_Y = sys::ImGuiTableFlags_ScrollY;
 
@@ -1065,7 +1067,7 @@
 
         <span class="comment">// Output status flags, read-only via [table_get_column_flags]
 
-        </span><span class="doccomment">/// Status: is enabled == not hidden by user/api (referred to as &quot;Hide&quot; in
+        </span><span class="doccomment">/// Status: is enabled == not hidden by user/api (referred to as "Hide" in
         /// [DefaultHide] and [NoHide]) flags.
         </span><span class="kw">const </span>IS_ENABLED = sys::ImGuiTableColumnFlags_IsEnabled;
         <span class="doccomment">/// Status: is visible == is enabled AND not clipped by scrolling.
@@ -1107,7 +1109,7 @@
     Descending,
 }
 
-<span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>&gt; Ui&lt;<span class="lifetime">&#39;ui</span>&gt; {
+<span class="kw">impl</span>&lt;<span class="lifetime">'ui</span>&gt; Ui&lt;<span class="lifetime">'ui</span>&gt; {
     <span class="doccomment">/// Begins a table with no flags and with standard sizing contraints.
     ///
     /// This does no work on styling the headers (the top row) -- see either
@@ -1116,12 +1118,12 @@
     ///
     /// Nb: we take `column` as a usize, but it will be converted with `as i32` to an i32.
     /// If this makes a difference to you, you are probably trying to make too many columns.
-    </span><span class="attr">#[must_use = <span class="string">&quot;if return is dropped immediately, table is ended immediately.&quot;</span>]
+    </span><span class="attr">#[must_use = <span class="string">"if return is dropped immediately, table is ended immediately."</span>]
     </span><span class="kw">pub fn </span>begin_table(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         str_id: <span class="kw">impl </span>AsRef&lt;str&gt;,
         column_count: usize,
-    ) -&gt; <span class="prelude-ty">Option</span>&lt;TableToken&lt;<span class="lifetime">&#39;ui</span>&gt;&gt; {
+    ) -&gt; <span class="prelude-ty">Option</span>&lt;TableToken&lt;<span class="lifetime">'ui</span>&gt;&gt; {
         <span class="self">self</span>.begin_table_with_flags(str_id, column_count, TableFlags::empty())
     }
 
@@ -1133,13 +1135,13 @@
     ///
     /// Nb: we take `column` as a usize, but it will be converted with `as i32` to an i32.
     /// If this makes a difference to you, you are probably trying to make too many columns.
-    </span><span class="attr">#[must_use = <span class="string">&quot;if return is dropped immediately, table is ended immediately.&quot;</span>]
+    </span><span class="attr">#[must_use = <span class="string">"if return is dropped immediately, table is ended immediately."</span>]
     </span><span class="kw">pub fn </span>begin_table_with_flags(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         str_id: <span class="kw">impl </span>AsRef&lt;str&gt;,
         column_count: usize,
         flags: TableFlags,
-    ) -&gt; <span class="prelude-ty">Option</span>&lt;TableToken&lt;<span class="lifetime">&#39;ui</span>&gt;&gt; {
+    ) -&gt; <span class="prelude-ty">Option</span>&lt;TableToken&lt;<span class="lifetime">'ui</span>&gt;&gt; {
         <span class="self">self</span>.begin_table_with_sizing(str_id, column_count, flags, [<span class="number">0.0</span>, <span class="number">0.0</span>], <span class="number">0.0</span>)
     }
 
@@ -1152,7 +1154,7 @@
     ///
     /// Nb: we take `column` as a usize, but it will be converted with `as i32` to an i32.
     /// If this makes a difference to you, you are probably trying to make too many columns.
-    </span><span class="attr">#[must_use = <span class="string">&quot;if return is dropped immediately, table is ended immediately.&quot;</span>]
+    </span><span class="attr">#[must_use = <span class="string">"if return is dropped immediately, table is ended immediately."</span>]
     </span><span class="kw">pub fn </span>begin_table_with_sizing(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         str_id: <span class="kw">impl </span>AsRef&lt;str&gt;,
@@ -1160,7 +1162,7 @@
         flags: TableFlags,
         outer_size: [f32; <span class="number">2</span>],
         inner_width: f32,
-    ) -&gt; <span class="prelude-ty">Option</span>&lt;TableToken&lt;<span class="lifetime">&#39;ui</span>&gt;&gt; {
+    ) -&gt; <span class="prelude-ty">Option</span>&lt;TableToken&lt;<span class="lifetime">'ui</span>&gt;&gt; {
         <span class="kw">let </span>should_render = <span class="kw">unsafe </span>{
             sys::igBeginTable(
                 <span class="self">self</span>.scratch_txt(str_id),
@@ -1183,13 +1185,13 @@
     ///
     /// Takes an array of table header information, the length of which determines
     /// how many columns will be created.
-    </span><span class="attr">#[cfg(feature = <span class="string">&quot;min-const-generics&quot;</span>)]
-    #[must_use = <span class="string">&quot;if return is dropped immediately, table is ended immediately.&quot;</span>]
-    </span><span class="kw">pub fn </span>begin_table_header&lt;<span class="lifetime">&#39;a</span>, Name: AsRef&lt;str&gt;, <span class="kw">const </span>N: usize&gt;(
+    </span><span class="attr">#[cfg(feature = <span class="string">"min-const-generics"</span>)]
+    #[must_use = <span class="string">"if return is dropped immediately, table is ended immediately."</span>]
+    </span><span class="kw">pub fn </span>begin_table_header&lt;<span class="lifetime">'a</span>, Name: AsRef&lt;str&gt;, <span class="kw">const </span>N: usize&gt;(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         str_id: <span class="kw">impl </span>AsRef&lt;str&gt;,
-        column_data: [TableColumnSetup&lt;<span class="lifetime">&#39;a</span>, Name&gt;; N],
-    ) -&gt; <span class="prelude-ty">Option</span>&lt;TableToken&lt;<span class="lifetime">&#39;ui</span>&gt;&gt; {
+        column_data: [TableColumnSetup&lt;<span class="lifetime">'a</span>, Name&gt;; N],
+    ) -&gt; <span class="prelude-ty">Option</span>&lt;TableToken&lt;<span class="lifetime">'ui</span>&gt;&gt; {
         <span class="self">self</span>.begin_table_header_with_flags(str_id, column_data, TableFlags::empty())
     }
 
@@ -1197,14 +1199,14 @@
     ///
     /// Takes an array of table header information, the length of which determines
     /// how many columns will be created.
-    </span><span class="attr">#[cfg(feature = <span class="string">&quot;min-const-generics&quot;</span>)]
-    #[must_use = <span class="string">&quot;if return is dropped immediately, table is ended immediately.&quot;</span>]
-    </span><span class="kw">pub fn </span>begin_table_header_with_flags&lt;<span class="lifetime">&#39;a</span>, Name: AsRef&lt;str&gt;, <span class="kw">const </span>N: usize&gt;(
+    </span><span class="attr">#[cfg(feature = <span class="string">"min-const-generics"</span>)]
+    #[must_use = <span class="string">"if return is dropped immediately, table is ended immediately."</span>]
+    </span><span class="kw">pub fn </span>begin_table_header_with_flags&lt;<span class="lifetime">'a</span>, Name: AsRef&lt;str&gt;, <span class="kw">const </span>N: usize&gt;(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         str_id: <span class="kw">impl </span>AsRef&lt;str&gt;,
-        column_data: [TableColumnSetup&lt;<span class="lifetime">&#39;a</span>, Name&gt;; N],
+        column_data: [TableColumnSetup&lt;<span class="lifetime">'a</span>, Name&gt;; N],
         flags: TableFlags,
-    ) -&gt; <span class="prelude-ty">Option</span>&lt;TableToken&lt;<span class="lifetime">&#39;ui</span>&gt;&gt; {
+    ) -&gt; <span class="prelude-ty">Option</span>&lt;TableToken&lt;<span class="lifetime">'ui</span>&gt;&gt; {
         <span class="self">self</span>.begin_table_header_with_sizing(str_id, column_data, flags, [<span class="number">0.0</span>, <span class="number">0.0</span>], <span class="number">0.0</span>)
     }
 
@@ -1212,16 +1214,16 @@
     /// and gives users the most flexibility.
     /// Takes an array of table header information, the length of which determines
     /// how many columns will be created.
-    </span><span class="attr">#[cfg(feature = <span class="string">&quot;min-const-generics&quot;</span>)]
-    #[must_use = <span class="string">&quot;if return is dropped immediately, table is ended immediately.&quot;</span>]
-    </span><span class="kw">pub fn </span>begin_table_header_with_sizing&lt;<span class="lifetime">&#39;a</span>, Name: AsRef&lt;str&gt;, <span class="kw">const </span>N: usize&gt;(
+    </span><span class="attr">#[cfg(feature = <span class="string">"min-const-generics"</span>)]
+    #[must_use = <span class="string">"if return is dropped immediately, table is ended immediately."</span>]
+    </span><span class="kw">pub fn </span>begin_table_header_with_sizing&lt;<span class="lifetime">'a</span>, Name: AsRef&lt;str&gt;, <span class="kw">const </span>N: usize&gt;(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         str_id: <span class="kw">impl </span>AsRef&lt;str&gt;,
-        column_data: [TableColumnSetup&lt;<span class="lifetime">&#39;a</span>, Name&gt;; N],
+        column_data: [TableColumnSetup&lt;<span class="lifetime">'a</span>, Name&gt;; N],
         flags: TableFlags,
         outer_size: [f32; <span class="number">2</span>],
         inner_width: f32,
-    ) -&gt; <span class="prelude-ty">Option</span>&lt;TableToken&lt;<span class="lifetime">&#39;ui</span>&gt;&gt; {
+    ) -&gt; <span class="prelude-ty">Option</span>&lt;TableToken&lt;<span class="lifetime">'ui</span>&gt;&gt; {
         <span class="self">self</span>.begin_table_with_sizing(str_id, N, flags, outer_size, inner_width)
             .map(|data| {
                 <span class="kw">for </span>value <span class="kw">in </span>column_data {
@@ -1252,7 +1254,7 @@
     <span class="doccomment">/// Moves a  table to the next row (ie, down), with the given flags,
     /// and with the next row having a standard computed height.
     ///
-    /// Setting a flag here will make the next row a &quot;header&quot; now, which may
+    /// Setting a flag here will make the next row a "header" now, which may
     /// require setup of column data.
     ///
     /// See [table_next_row](Self::table_next_row) for information on how moving rows work. To set the row
@@ -1280,24 +1282,24 @@
     /// ```no_run
     /// # let mut ctx = arcdps_imgui::Context::create();
     /// # { let ui = ctx.frame();
-    /// if let Some(_t) = ui.begin_table(&quot;Basic-Table&quot;, 2) {
-    ///     // we have to call next_row because we didn&#39;t make headers..
+    /// if let Some(_t) = ui.begin_table("Basic-Table", 2) {
+    ///     // we have to call next_row because we didn't make headers..
     ///     ui.table_next_row();
     ///
     ///     // you always have to call this to start...
     ///     // take advantage of this in loops!
     ///     ui.table_next_column();
-    ///     ui.text(&quot;x: 0, y: 0&quot;);
+    ///     ui.text("x: 0, y: 0");
     ///
     ///     ui.table_next_column();
-    ///     ui.text(&quot;x: 1, y: 0&quot;);
+    ///     ui.text("x: 1, y: 0");
     ///     
     ///     // notice that we go down a row here too.
     ///     ui.table_next_column();
-    ///     ui.text(&quot;x: 0, y: 1&quot;);
+    ///     ui.text("x: 0, y: 1");
     ///
     ///     ui.table_next_column();
-    ///     ui.text(&quot;x: 1, y: 1&quot;);
+    ///     ui.text("x: 1, y: 1");
     /// }
     /// # };
     /// ```
@@ -1315,23 +1317,23 @@
     /// ```no_run
     /// # let mut ctx = arcdps_imgui::Context::create();
     /// # { let ui = ctx.frame();
-    /// if let Some(_t) = ui.begin_table(&quot;Basic-Table&quot;, 2) {
-    ///     // we have to call next_row because we didn&#39;t make headers..
+    /// if let Some(_t) = ui.begin_table("Basic-Table", 2) {
+    ///     // we have to call next_row because we didn't make headers..
     ///     ui.table_next_row();
     ///
     ///     for i in 0..2 {
     ///         ui.table_set_column_index(i);
-    ///         ui.text(format!(&quot;x: {}&quot;, i));
+    ///         ui.text(format!("x: {}", i));
     ///     }
     ///     
     ///     // oops I just remembered, i need to add something on idx 0!
     ///     ui.table_set_column_index(0);
-    ///     // if i uncomment this line, we&#39;ll write on top of our previous &quot;x: 0&quot;
+    ///     // if i uncomment this line, we'll write on top of our previous "x: 0"
     ///     // line:
-    ///     // ui.text(&quot;hello from the future on top of the past&quot;);
+    ///     // ui.text("hello from the future on top of the past");
     ///     // so we do a .newline();
     ///     ui.new_line();
-    ///     ui.text(&quot;hello from the future&quot;);
+    ///     ui.text("hello from the future");
     ///
     ///     // imgui will understand this and row spacing will be adjusted automatically.
     /// }
@@ -1352,8 +1354,8 @@
             <span class="kw">let </span>size = <span class="self">self</span>.table_column_count() <span class="kw">as </span>usize;
             <span class="kw">if </span>column_index &gt;= size {
                 <span class="macro">panic!</span>(
-                    <span class="string">&quot;column_index &gt;= self.table_get_column_count().\
-                Requested {}, but only have {} columns.&quot;</span>,
+                    <span class="string">"column_index &gt;= self.table_get_column_count().\
+                Requested {}, but only have {} columns."</span>,
                     column_index, size
                 );
             }
@@ -1369,10 +1371,10 @@
     /// ```no_run
     /// # let mut ctx = arcdps_imgui::Context::create();
     /// # { let ui = ctx.frame();
-    /// if let Some(_t) = ui.begin_table(&quot;My Table&quot;, 2) {
-    ///     ui.table_setup_column(&quot;One&quot;);
-    ///     ui.table_setup_column(&quot;Two&quot;);
-    ///     ui.table_setup_column(&quot;Three&quot;);
+    /// if let Some(_t) = ui.begin_table("My Table", 2) {
+    ///     ui.table_setup_column("One");
+    ///     ui.table_setup_column("Two");
+    ///     ui.table_setup_column("Three");
     ///     ui.table_headers_row();
     ///
     ///     // call next_column/set_column_index and proceed like normal.
@@ -1400,7 +1402,7 @@
     /// row and automatically submit a table header for each column.
     /// Headers are required to perform: reordering, sorting, and opening the context menu (though,
     /// the context menu can also be made available in columns body using [TableFlags::CONTEXT_MENU_IN_BODY].
-    </span><span class="kw">pub fn </span>table_setup_column_with&lt;N: AsRef&lt;str&gt;&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, data: TableColumnSetup&lt;<span class="lifetime">&#39;_</span>, N&gt;) {
+    </span><span class="kw">pub fn </span>table_setup_column_with&lt;N: AsRef&lt;str&gt;&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, data: TableColumnSetup&lt;<span class="lifetime">'_</span>, N&gt;) {
         <span class="kw">unsafe </span>{
             sys::igTableSetupColumn(
                 <span class="self">self</span>.scratch_txt(data.name),
@@ -1420,12 +1422,12 @@
     /// # let mut ctx = arcdps_imgui::Context::create();
     /// # { let ui = ctx.frame();
     /// const COLUMN_COUNT: usize = 3;
-    /// if let Some(_t) = ui.begin_table(&quot;scroll-freeze-example&quot;, COLUMN_COUNT) {
+    /// if let Some(_t) = ui.begin_table("scroll-freeze-example", COLUMN_COUNT) {
     ///     // locks the header row. Notice how we need to call it BEFORE `table_headers_row`.
     ///     ui.table_setup_scroll_freeze(1, COLUMN_COUNT);
-    ///     ui.table_setup_column(&quot;One&quot;);
-    ///     ui.table_setup_column(&quot;Two&quot;);
-    ///     ui.table_setup_column(&quot;Three&quot;);
+    ///     ui.table_setup_column("One");
+    ///     ui.table_setup_column("Two");
+    ///     ui.table_setup_column("Three");
     ///     ui.table_headers_row();
     /// }
     /// # };
@@ -1517,17 +1519,17 @@
     </span><span class="kw">pub fn </span>table_column_flags(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; TableColumnFlags {
         <span class="kw">unsafe </span>{
             TableColumnFlags::from_bits(sys::igTableGetColumnFlags(-<span class="number">1</span>) <span class="kw">as </span>u32)
-                .expect(<span class="string">&quot;bad column flags&quot;</span>)
+                .expect(<span class="string">"bad column flags"</span>)
         }
     }
 
-    <span class="doccomment">/// Gets the flags on the given column in the current table. To get the current column&#39;s
+    <span class="doccomment">/// Gets the flags on the given column in the current table. To get the current column's
     /// flags without having to call [table_column_index](Self::table_column_index), use
     /// [table_column_flags](Self::table_column_flags).
     </span><span class="kw">pub fn </span>table_column_flags_with_column(<span class="kw-2">&amp;</span><span class="self">self</span>, column_n: usize) -&gt; TableColumnFlags {
         <span class="kw">unsafe </span>{
             TableColumnFlags::from_bits(sys::igTableGetColumnFlags(column_n <span class="kw">as </span>i32) <span class="kw">as </span>u32)
-                .expect(<span class="string">&quot;bad column flags&quot;</span>)
+                .expect(<span class="string">"bad column flags"</span>)
         }
     }
 
@@ -1564,7 +1566,7 @@
     <span class="doccomment">/// Gets the sorting data for a table. This will be `None` when not sorting.
     ///
     /// See the examples folder for how to use the sorting API.
-    </span><span class="kw">pub fn </span>table_sort_specs_mut(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;TableSortSpecsMut&lt;<span class="lifetime">&#39;_</span>&gt;&gt; {
+    </span><span class="kw">pub fn </span>table_sort_specs_mut(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;TableSortSpecsMut&lt;<span class="lifetime">'_</span>&gt;&gt; {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>value = sys::igTableGetSortSpecs();
             <span class="kw">if </span>value.is_null() {
@@ -1579,7 +1581,7 @@
 <span class="doccomment">/// A struct containing all the data needed to setup a table column header
 /// via [begin_table_header](Ui::begin_table_header) or [table_setup_column](Ui::table_setup_column).
 </span><span class="attr">#[derive(Debug, Default)]
-</span><span class="kw">pub struct </span>TableColumnSetup&lt;<span class="lifetime">&#39;a</span>, Name&gt; {
+</span><span class="kw">pub struct </span>TableColumnSetup&lt;<span class="lifetime">'a</span>, Name&gt; {
     <span class="doccomment">/// The name of column to be displayed to users.
     </span><span class="kw">pub </span>name: Name,
     <span class="doccomment">/// The flags this column will have.
@@ -1587,10 +1589,10 @@
     <span class="doccomment">/// The width or weight of the given column.
     </span><span class="kw">pub </span>init_width_or_weight: f32,
     <span class="doccomment">/// A user_id, primarily used in sorting operations.
-    </span><span class="kw">pub </span>user_id: Id&lt;<span class="lifetime">&#39;a</span>&gt;,
+    </span><span class="kw">pub </span>user_id: Id&lt;<span class="lifetime">'a</span>&gt;,
 }
 
-<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>, Name: AsRef&lt;str&gt;&gt; TableColumnSetup&lt;<span class="lifetime">&#39;a</span>, Name&gt; {
+<span class="kw">impl</span>&lt;<span class="lifetime">'a</span>, Name: AsRef&lt;str&gt;&gt; TableColumnSetup&lt;<span class="lifetime">'a</span>, Name&gt; {
     <span class="kw">pub fn </span>new(name: Name) -&gt; <span class="self">Self </span>{
         <span class="self">Self </span>{
             name,
@@ -1615,11 +1617,11 @@
 /// [should_sort]: Self::should_sort
 /// [specs]: Self::specs
 /// [set_sorted]: Self::set_sorted
-</span><span class="kw">pub struct </span>TableSortSpecsMut&lt;<span class="lifetime">&#39;ui</span>&gt;(<span class="kw-2">*mut </span>sys::ImGuiTableSortSpecs, PhantomData&lt;Ui&lt;<span class="lifetime">&#39;ui</span>&gt;&gt;);
+</span><span class="kw">pub struct </span>TableSortSpecsMut&lt;<span class="lifetime">'ui</span>&gt;(<span class="kw-2">*mut </span>sys::ImGuiTableSortSpecs, PhantomData&lt;Ui&lt;<span class="lifetime">'ui</span>&gt;&gt;);
 
-<span class="kw">impl </span>TableSortSpecsMut&lt;<span class="lifetime">&#39;_</span>&gt; {
+<span class="kw">impl </span>TableSortSpecsMut&lt;<span class="lifetime">'_</span>&gt; {
     <span class="doccomment">/// Gets the specs for a given sort. In most scenarios, this will be a slice of 1 entry.
-    </span><span class="kw">pub fn </span>specs(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Specs&lt;<span class="lifetime">&#39;_</span>&gt; {
+    </span><span class="kw">pub fn </span>specs(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Specs&lt;<span class="lifetime">'_</span>&gt; {
         <span class="kw">let </span>value =
             <span class="kw">unsafe </span>{ std::slice::from_raw_parts((<span class="kw-2">*</span><span class="self">self</span>.<span class="number">0</span>).Specs, (<span class="kw-2">*</span><span class="self">self</span>.<span class="number">0</span>).SpecsCount <span class="kw">as </span>usize) };
 
@@ -1649,7 +1651,7 @@
     /// [should_sort]: Self::should_sort
     /// [specs]: Self::specs
     /// [set_sorted]: Self::set_sorted
-    </span><span class="kw">pub fn </span>conditional_sort(<span class="kw-2">mut </span><span class="self">self</span>, <span class="kw-2">mut </span>f: <span class="kw">impl </span>FnMut(Specs&lt;<span class="lifetime">&#39;_</span>&gt;)) {
+    </span><span class="kw">pub fn </span>conditional_sort(<span class="kw-2">mut </span><span class="self">self</span>, <span class="kw-2">mut </span>f: <span class="kw">impl </span>FnMut(Specs&lt;<span class="lifetime">'_</span>&gt;)) {
         <span class="kw">let </span>is_dirty = <span class="self">self</span>.should_sort();
 
         <span class="kw">if </span>is_dirty {
@@ -1666,16 +1668,16 @@
 /// but is generally == 1.
 ///
 /// Consume this struct as an iterator.
-</span><span class="kw">pub struct </span>Specs&lt;<span class="lifetime">&#39;a</span>&gt;(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>[sys::ImGuiTableColumnSortSpecs]);
+</span><span class="kw">pub struct </span>Specs&lt;<span class="lifetime">'a</span>&gt;(<span class="kw-2">&amp;</span><span class="lifetime">'a </span>[sys::ImGuiTableColumnSortSpecs]);
 
-<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; Specs&lt;<span class="lifetime">&#39;a</span>&gt; {
-    <span class="kw">pub fn </span>iter(<span class="self">self</span>) -&gt; <span class="kw">impl </span>Iterator&lt;Item = TableColumnSortSpecs&lt;<span class="lifetime">&#39;a</span>&gt;&gt; {
+<span class="kw">impl</span>&lt;<span class="lifetime">'a</span>&gt; Specs&lt;<span class="lifetime">'a</span>&gt; {
+    <span class="kw">pub fn </span>iter(<span class="self">self</span>) -&gt; <span class="kw">impl </span>Iterator&lt;Item = TableColumnSortSpecs&lt;<span class="lifetime">'a</span>&gt;&gt; {
         <span class="self">self</span>.<span class="number">0</span>.iter().map(|v| TableColumnSortSpecs(v))
     }
 }
 
-<span class="kw">pub struct </span>TableColumnSortSpecs&lt;<span class="lifetime">&#39;a</span>&gt;(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>sys::ImGuiTableColumnSortSpecs);
-<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; TableColumnSortSpecs&lt;<span class="lifetime">&#39;a</span>&gt; {
+<span class="kw">pub struct </span>TableColumnSortSpecs&lt;<span class="lifetime">'a</span>&gt;(<span class="kw-2">&amp;</span><span class="lifetime">'a </span>sys::ImGuiTableColumnSortSpecs);
+<span class="kw">impl</span>&lt;<span class="lifetime">'a</span>&gt; TableColumnSortSpecs&lt;<span class="lifetime">'a</span>&gt; {
     <span class="doccomment">/// User id of the column (if specified by a TableSetupColumn() call)
     </span><span class="kw">pub fn </span>column_user_id(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; sys::ImGuiID {
         <span class="self">self</span>.<span class="number">0</span>.ColumnUserID
@@ -1689,7 +1691,7 @@
     <span class="doccomment">/// Index within parent [Specs] slice where this was found -- always stored in order starting
     /// from 0, tables sorted on a single criteria will always have a 0 here.
     ///
-    /// Generally, you don&#39;t need to access this, as it&#39;s the same as calling `specs.iter().enumerate()`.
+    /// Generally, you don't need to access this, as it's the same as calling `specs.iter().enumerate()`.
     </span><span class="kw">pub fn </span>sort_order(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; usize {
         <span class="self">self</span>.<span class="number">0</span>.SortOrder <span class="kw">as </span>usize
     }
@@ -1709,7 +1711,7 @@
 <span class="macro">create_token!</span>(
     <span class="doccomment">/// Tracks a table which can be rendered onto, ending with `.end()`
     /// or by dropping.
-    </span><span class="kw">pub struct </span>TableToken&lt;<span class="lifetime">&#39;ui</span>&gt;;
+    </span><span class="kw">pub struct </span>TableToken&lt;<span class="lifetime">'ui</span>&gt;;
 
     <span class="doccomment">/// Ends the table.
     </span>drop { sys::igEndTable() }

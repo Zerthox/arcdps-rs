@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\arcdps-imgui-0.8.0\src\color.rs`."><title>color.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-fa3bb1812debf86c.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="arcdps_imgui" data-themes="" data-resource-suffix="" data-rustdoc-version="1.74.1 (a28077b28 2023-12-04)" data-channel="1.74.1" data-search-js="search-8be46b629f5f14a8.js" data-settings-js="settings-74424d7eec62a23e.js" ><script src="../../static.files/storage-fec3eaa3851e447d.js"></script><script defer src="../../static.files/src-script-3280b574d94e47b4.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-c5bd66d33317d69f.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-5d8b3c7633ad77ba.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../arcdps_imgui/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\arcdps-imgui-0.8.0\src\color.rs`."><title>color.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-5bc39a1768837dd0.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="arcdps_imgui" data-themes="" data-resource-suffix="" data-rustdoc-version="1.77.2 (25ef9e3d8 2024-04-09)" data-channel="1.77.2" data-search-js="search-dd67cee4cfa65049.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../static.files/storage-4c98445ec4002617.js"></script><script defer src="../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-48f368f3872407c8.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-04d5337699b92874.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title">
+            <h2>Files</h2></div></nav><div class="sidebar-resizer"></div>
+    <main><nav class="sub"><form class="search-form"><span></span><div id="sidebar-button" tabindex="-1"><a href="../../arcdps_imgui/all.html" title="show sidebar"></a></div><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" tabindex="-1"><a href="../../help.html" title="help">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -371,14 +373,14 @@
 </pre></div><pre class="rust"><code><span class="doccomment">/// Wraps u32 that represents a packed RGBA color. Mostly used by types in the
 /// low level custom drawing API, such as [`DrawListMut`](crate::DrawListMut).
 ///
-/// The bits of a color are in &quot;`0xAABBGGRR`&quot; format (e.g. RGBA as little endian
-/// bytes). For clarity: we don&#39;t support an equivalent to the
+/// The bits of a color are in "`0xAABBGGRR`" format (e.g. RGBA as little endian
+/// bytes). For clarity: we don't support an equivalent to the
 /// `IMGUI_USE_BGRA_PACKED_COLOR` define.
 ///
 /// This used to be named `ImColor32`, but was renamed to avoid confusion with
 /// the type with that name in the C++ API (which uses 32 bits per channel).
 ///
-/// While it doesn&#39;t provide methods to access the fields, they can be accessed
+/// While it doesn't provide methods to access the fields, they can be accessed
 /// via the `Deref`/`DerefMut` impls it provides targeting
 /// [`imgui::color::ImColor32Fields`](crate::color::ImColor32Fields), which has
 /// no other meaningful uses.
@@ -483,7 +485,7 @@
         <span class="self">Self</span>(u)
     }
 
-    <span class="doccomment">/// Return the bits of the color as a u32. These are in &quot;`0xAABBGGRR`&quot; format, that
+    <span class="doccomment">/// Return the bits of the color as a u32. These are in "`0xAABBGGRR`" format, that
     /// is, little-endian RGBA with 8 bits per channel.
     </span><span class="attr">#[inline]
     </span><span class="kw">pub const fn </span>to_bits(<span class="self">self</span>) -&gt; u32 {
@@ -509,12 +511,12 @@
 }
 
 <span class="kw">impl </span>std::fmt::Debug <span class="kw">for </span>ImColor32 {
-    <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>std::fmt::Formatter&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; std::fmt::Result {
-        f.debug_struct(<span class="string">&quot;ImColor32&quot;</span>)
-            .field(<span class="string">&quot;r&quot;</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.r)
-            .field(<span class="string">&quot;g&quot;</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.g)
-            .field(<span class="string">&quot;b&quot;</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.b)
-            .field(<span class="string">&quot;a&quot;</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.a)
+    <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>std::fmt::Formatter&lt;<span class="lifetime">'_</span>&gt;) -&gt; std::fmt::Result {
+        f.debug_struct(<span class="string">"ImColor32"</span>)
+            .field(<span class="string">"r"</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.r)
+            .field(<span class="string">"g"</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.g)
+            .field(<span class="string">"b"</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.b)
+            .field(<span class="string">"a"</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.a)
             .finish()
     }
 }
@@ -523,7 +525,7 @@
 /// exists to be a `Deref`/`DerefMut` target and provide field access.
 ///
 /// Note that while this is repr(C), be aware that on big-endian machines
-/// (`cfg(target_endian = &quot;big&quot;)`) the order of the fields is reversed, as this
+/// (`cfg(target_endian = "big")`) the order of the fields is reversed, as this
 /// is a view into a packed u32.
 ///
 /// Generally should not be used, except as the target of the `Deref` impl of
@@ -533,26 +535,26 @@
 </span><span class="comment">// Should this be #[non_exhaustive] to discourage direct use?
 </span><span class="attr">#[rustfmt::skip]
 </span><span class="kw">pub struct </span>ImColor32Fields {
-    <span class="attr">#[cfg(target_endian = <span class="string">&quot;little&quot;</span>)] </span><span class="kw">pub </span>r: u8,
-    <span class="attr">#[cfg(target_endian = <span class="string">&quot;little&quot;</span>)] </span><span class="kw">pub </span>g: u8,
-    <span class="attr">#[cfg(target_endian = <span class="string">&quot;little&quot;</span>)] </span><span class="kw">pub </span>b: u8,
-    <span class="attr">#[cfg(target_endian = <span class="string">&quot;little&quot;</span>)] </span><span class="kw">pub </span>a: u8,
+    <span class="attr">#[cfg(target_endian = <span class="string">"little"</span>)] </span><span class="kw">pub </span>r: u8,
+    <span class="attr">#[cfg(target_endian = <span class="string">"little"</span>)] </span><span class="kw">pub </span>g: u8,
+    <span class="attr">#[cfg(target_endian = <span class="string">"little"</span>)] </span><span class="kw">pub </span>b: u8,
+    <span class="attr">#[cfg(target_endian = <span class="string">"little"</span>)] </span><span class="kw">pub </span>a: u8,
     <span class="comment">// TODO(someday): i guess we should have BE tests, but for now I verified
     // this locally.
-    </span><span class="attr">#[cfg(target_endian = <span class="string">&quot;big&quot;</span>)] </span><span class="kw">pub </span>a: u8,
-    <span class="attr">#[cfg(target_endian = <span class="string">&quot;big&quot;</span>)] </span><span class="kw">pub </span>b: u8,
-    <span class="attr">#[cfg(target_endian = <span class="string">&quot;big&quot;</span>)] </span><span class="kw">pub </span>g: u8,
-    <span class="attr">#[cfg(target_endian = <span class="string">&quot;big&quot;</span>)] </span><span class="kw">pub </span>r: u8,
+    </span><span class="attr">#[cfg(target_endian = <span class="string">"big"</span>)] </span><span class="kw">pub </span>a: u8,
+    <span class="attr">#[cfg(target_endian = <span class="string">"big"</span>)] </span><span class="kw">pub </span>b: u8,
+    <span class="attr">#[cfg(target_endian = <span class="string">"big"</span>)] </span><span class="kw">pub </span>g: u8,
+    <span class="attr">#[cfg(target_endian = <span class="string">"big"</span>)] </span><span class="kw">pub </span>r: u8,
 }
 
 <span class="comment">// We assume that big and little are the only endiannesses, and that exactly one
-// is set. That is, PDP endian is not in use, and the we aren&#39;t using a
+// is set. That is, PDP endian is not in use, and the we aren't using a
 // completely broken custom target json or something.
 </span><span class="attr">#[cfg(any(
-    all(target_endian = <span class="string">&quot;little&quot;</span>, target_endian = <span class="string">&quot;big&quot;</span>),
-    all(not(target_endian = <span class="string">&quot;little&quot;</span>), not(target_endian = <span class="string">&quot;big&quot;</span>)),
+    all(target_endian = <span class="string">"little"</span>, target_endian = <span class="string">"big"</span>),
+    all(not(target_endian = <span class="string">"little"</span>), not(target_endian = <span class="string">"big"</span>)),
 ))]
-</span><span class="macro">compile_error!</span>(<span class="string">&quot;`cfg(target_endian = \&quot;little\&quot;)` must be `cfg(not(target_endian = \&quot;big\&quot;)`&quot;</span>);
+</span><span class="macro">compile_error!</span>(<span class="string">"`cfg(target_endian = \"little\")` must be `cfg(not(target_endian = \"big\")`"</span>);
 
 <span class="comment">// static assert sizes match
 </span><span class="kw">const _</span>: [(); core::mem::size_of::&lt;ImColor32&gt;()] = [(); core::mem::size_of::&lt;ImColor32Fields&gt;()];
@@ -663,14 +665,14 @@
 </span><span class="attr">#[inline]
 </span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>f32_to_u8_sat(f: f32) -&gt; u8 {
     <span class="kw">let </span>f = saturate(f) * <span class="number">255.0 </span>+ <span class="number">0.5</span>;
-    <span class="comment">// Safety: `saturate`&#39;s result is between 0.0 and 1.0 (never NaN even for
+    <span class="comment">// Safety: `saturate`'s result is between 0.0 and 1.0 (never NaN even for
     // NaN input), and so for all inputs, `saturate(f) * 255.0 + 0.5` is inside
     // `0.5 ..= 255.5`.
     //
     // This is verified for all f32 in `test_f32_to_u8_sat_exhaustive`.
     //
-    // Also note that LLVM doesn&#39;t bother trying to figure this out so the
-    // unchecked does actually help. (That said, this likely doesn&#39;t matter
+    // Also note that LLVM doesn't bother trying to figure this out so the
+    // unchecked does actually help. (That said, this likely doesn't matter
     // for imgui-rs, but I had this code in another project and it felt
     // silly to needlessly pessimize it).
     </span><span class="kw">unsafe </span>{ f.to_int_unchecked() }
@@ -712,19 +714,19 @@
         <span class="kw">let </span>v = saturate(f);
         <span class="macro">assert!</span>(
             (<span class="number">0.0</span>..=<span class="number">1.0</span>).contains(<span class="kw-2">&amp;</span>v) &amp;&amp; (v.to_bits() != (-<span class="number">0.0f32</span>).to_bits()),
-            <span class="string">&quot;sat({} [e.g. {:#x}]) =&gt; {} [e.g {:#x}]&quot;</span>,
+            <span class="string">"sat({} [e.g. {:#x}]) =&gt; {} [e.g {:#x}]"</span>,
             f,
             f.to_bits(),
             v,
             v.to_bits(),
         );
         <span class="kw">let </span>sat = v * <span class="number">255.0 </span>+ <span class="number">0.5</span>;
-        <span class="comment">// Note: This checks what&#39;s required by is the safety predicate for
+        <span class="comment">// Note: This checks what's required by is the safety predicate for
         // `f32::to_int_unchecked`:
         // https://doc.rust-lang.org/std/primitive.f32.html#method.to_int_unchecked
         </span><span class="macro">assert!</span>(
             sat.trunc() &gt;= <span class="number">0.0 </span>&amp;&amp; sat.trunc() &lt;= (u8::MAX <span class="kw">as </span>f32) &amp;&amp; sat.is_finite(),
-            <span class="string">&quot;f32_to_u8_sat({} [e.g. {:#x}]) would be UB!&quot;</span>,
+            <span class="string">"f32_to_u8_sat({} [e.g. {:#x}]) would be UB!"</span>,
             f,
             f.to_bits(),
         );

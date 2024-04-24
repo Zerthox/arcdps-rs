@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\arcdps-imgui-sys-0.8.0\src\bindings.rs`."><title>bindings.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-fa3bb1812debf86c.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="arcdps_imgui_sys" data-themes="" data-resource-suffix="" data-rustdoc-version="1.74.1 (a28077b28 2023-12-04)" data-channel="1.74.1" data-search-js="search-8be46b629f5f14a8.js" data-settings-js="settings-74424d7eec62a23e.js" ><script src="../../static.files/storage-fec3eaa3851e447d.js"></script><script defer src="../../static.files/src-script-3280b574d94e47b4.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-c5bd66d33317d69f.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-5d8b3c7633ad77ba.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../arcdps_imgui_sys/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\arcdps-imgui-sys-0.8.0\src\bindings.rs`."><title>bindings.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-5bc39a1768837dd0.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="arcdps_imgui_sys" data-themes="" data-resource-suffix="" data-rustdoc-version="1.77.2 (25ef9e3d8 2024-04-09)" data-channel="1.77.2" data-search-js="search-dd67cee4cfa65049.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../static.files/storage-4c98445ec4002617.js"></script><script defer src="../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-48f368f3872407c8.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-04d5337699b92874.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title">
+            <h2>Files</h2></div></nav><div class="sidebar-resizer"></div>
+    <main><nav class="sub"><form class="search-form"><span></span><div id="sidebar-button" tabindex="-1"><a href="../../arcdps_imgui_sys/all.html" title="show sidebar"></a></div><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" tabindex="-1"><a href="../../help.html" title="help">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -4386,7 +4388,7 @@
         <span class="macro">debug_assert!</span>(index / <span class="number">8 </span>&lt; <span class="self">self</span>.storage.as_ref().len());
         <span class="kw">let </span>byte_index = index / <span class="number">8</span>;
         <span class="kw">let </span>byte = <span class="self">self</span>.storage.as_ref()[byte_index];
-        <span class="kw">let </span>bit_index = <span class="kw">if </span><span class="macro">cfg!</span>(target_endian = <span class="string">&quot;big&quot;</span>) {
+        <span class="kw">let </span>bit_index = <span class="kw">if </span><span class="macro">cfg!</span>(target_endian = <span class="string">"big"</span>) {
             <span class="number">7 </span>- (index % <span class="number">8</span>)
         } <span class="kw">else </span>{
             index % <span class="number">8
@@ -4399,7 +4401,7 @@
         <span class="macro">debug_assert!</span>(index / <span class="number">8 </span>&lt; <span class="self">self</span>.storage.as_ref().len());
         <span class="kw">let </span>byte_index = index / <span class="number">8</span>;
         <span class="kw">let </span>byte = <span class="kw-2">&amp;mut </span><span class="self">self</span>.storage.as_mut()[byte_index];
-        <span class="kw">let </span>bit_index = <span class="kw">if </span><span class="macro">cfg!</span>(target_endian = <span class="string">&quot;big&quot;</span>) {
+        <span class="kw">let </span>bit_index = <span class="kw">if </span><span class="macro">cfg!</span>(target_endian = <span class="string">"big"</span>) {
             <span class="number">7 </span>- (index % <span class="number">8</span>)
         } <span class="kw">else </span>{
             index % <span class="number">8
@@ -4419,7 +4421,7 @@
         <span class="kw">let </span><span class="kw-2">mut </span>val = <span class="number">0</span>;
         <span class="kw">for </span>i <span class="kw">in </span><span class="number">0</span>..(bit_width <span class="kw">as </span>usize) {
             <span class="kw">if </span><span class="self">self</span>.get_bit(i + bit_offset) {
-                <span class="kw">let </span>index = <span class="kw">if </span><span class="macro">cfg!</span>(target_endian = <span class="string">&quot;big&quot;</span>) {
+                <span class="kw">let </span>index = <span class="kw">if </span><span class="macro">cfg!</span>(target_endian = <span class="string">"big"</span>) {
                     bit_width <span class="kw">as </span>usize - <span class="number">1 </span>- i
                 } <span class="kw">else </span>{
                     i
@@ -4437,7 +4439,7 @@
         <span class="kw">for </span>i <span class="kw">in </span><span class="number">0</span>..(bit_width <span class="kw">as </span>usize) {
             <span class="kw">let </span>mask = <span class="number">1 </span>&lt;&lt; i;
             <span class="kw">let </span>val_bit_is_set = val &amp; mask == mask;
-            <span class="kw">let </span>index = <span class="kw">if </span><span class="macro">cfg!</span>(target_endian = <span class="string">&quot;big&quot;</span>) {
+            <span class="kw">let </span>index = <span class="kw">if </span><span class="macro">cfg!</span>(target_endian = <span class="string">"big"</span>) {
                 bit_width <span class="kw">as </span>usize - <span class="number">1 </span>- i
             } <span class="kw">else </span>{
                 i
@@ -4492,17 +4494,17 @@
 <span class="kw">pub type </span>ImTextureID = <span class="kw-2">*mut </span>cty::c_void;
 <span class="kw">pub type </span>ImGuiID = cty::c_uint;
 <span class="kw">pub type </span>ImGuiInputTextCallback = ::core::option::Option&lt;
-    <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn</span>(data: <span class="kw-2">*mut </span>ImGuiInputTextCallbackData) -&gt; cty::c_int,
+    <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn</span>(data: <span class="kw-2">*mut </span>ImGuiInputTextCallbackData) -&gt; cty::c_int,
 &gt;;
 <span class="kw">pub type </span>ImGuiSizeCallback =
-    ::core::option::Option&lt;<span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn</span>(data: <span class="kw-2">*mut </span>ImGuiSizeCallbackData)&gt;;
+    ::core::option::Option&lt;<span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn</span>(data: <span class="kw-2">*mut </span>ImGuiSizeCallbackData)&gt;;
 <span class="kw">pub type </span>ImWchar16 = cty::c_ushort;
 <span class="kw">pub type </span>ImWchar = ImWchar16;
 <span class="kw">pub type </span>ImU8 = cty::c_uchar;
 <span class="kw">pub type </span>ImS16 = cty::c_short;
 <span class="kw">pub type </span>ImU32 = cty::c_uint;
 <span class="kw">pub type </span>ImDrawCallback = ::core::option::Option&lt;
-    <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn</span>(parent_list: <span class="kw-2">*const </span>ImDrawList, cmd: <span class="kw-2">*const </span>ImDrawCmd),
+    <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn</span>(parent_list: <span class="kw-2">*const </span>ImDrawList, cmd: <span class="kw-2">*const </span>ImDrawCmd),
 &gt;;
 <span class="kw">pub type </span>ImDrawIdx = cty::c_ushort;
 <span class="attr">#[repr(C)]
@@ -5343,14 +5345,14 @@
     <span class="kw">pub </span>BackendRendererUserData: <span class="kw-2">*mut </span>cty::c_void,
     <span class="kw">pub </span>BackendLanguageUserData: <span class="kw-2">*mut </span>cty::c_void,
     <span class="kw">pub </span>GetClipboardTextFn: ::core::option::Option&lt;
-        <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn</span>(user_data: <span class="kw-2">*mut </span>cty::c_void) -&gt; <span class="kw-2">*const </span>cty::c_char,
+        <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn</span>(user_data: <span class="kw-2">*mut </span>cty::c_void) -&gt; <span class="kw-2">*const </span>cty::c_char,
     &gt;,
     <span class="kw">pub </span>SetClipboardTextFn: ::core::option::Option&lt;
-        <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn</span>(user_data: <span class="kw-2">*mut </span>cty::c_void, text: <span class="kw-2">*const </span>cty::c_char),
+        <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn</span>(user_data: <span class="kw-2">*mut </span>cty::c_void, text: <span class="kw-2">*const </span>cty::c_char),
     &gt;,
     <span class="kw">pub </span>ClipboardUserData: <span class="kw-2">*mut </span>cty::c_void,
     <span class="kw">pub </span>ImeSetInputScreenPosFn:
-        ::core::option::Option&lt;<span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn</span>(x: cty::c_int, y: cty::c_int)&gt;,
+        ::core::option::Option&lt;<span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn</span>(x: cty::c_int, y: cty::c_int)&gt;,
     <span class="kw">pub </span>ImeWindowHandle: <span class="kw-2">*mut </span>cty::c_void,
     <span class="kw">pub </span>MousePos: ImVec2,
     <span class="kw">pub </span>MouseDown: [bool; <span class="number">5usize</span>],
@@ -5592,8 +5594,8 @@
     }
 }
 <span class="kw">impl </span>::core::fmt::Debug <span class="kw">for </span>ImGuiStoragePair__bindgen_ty_1 {
-    <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>::core::fmt::Formatter&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; ::core::fmt::Result {
-        <span class="macro">write!</span>(f, <span class="string">&quot;ImGuiStoragePair__bindgen_ty_1 {{ union }}&quot;</span>)
+    <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>::core::fmt::Formatter&lt;<span class="lifetime">'_</span>&gt;) -&gt; ::core::fmt::Result {
+        <span class="macro">write!</span>(f, <span class="string">"ImGuiStoragePair__bindgen_ty_1 {{ union }}"</span>)
     }
 }
 <span class="kw">impl </span>Default <span class="kw">for </span>ImGuiStoragePair {
@@ -5606,10 +5608,10 @@
     }
 }
 <span class="kw">impl </span>::core::fmt::Debug <span class="kw">for </span>ImGuiStoragePair {
-    <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>::core::fmt::Formatter&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; ::core::fmt::Result {
+    <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>::core::fmt::Formatter&lt;<span class="lifetime">'_</span>&gt;) -&gt; ::core::fmt::Result {
         <span class="macro">write!</span>(
             f,
-            <span class="string">&quot;ImGuiStoragePair {{ key: {:?}, __bindgen_anon_1: {:?} }}&quot;</span>,
+            <span class="string">"ImGuiStoragePair {{ key: {:?}, __bindgen_anon_1: {:?} }}"</span>,
             <span class="self">self</span>.key, <span class="self">self</span>.__bindgen_anon_1
         )
     }
@@ -5971,94 +5973,94 @@
         }
     }
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImVec2_ImVec2_Nil() -&gt; <span class="kw-2">*mut </span>ImVec2;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImVec2_destroy(self_: <span class="kw-2">*mut </span>ImVec2);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImVec2_ImVec2_Float(_x: f32, _y: f32) -&gt; <span class="kw-2">*mut </span>ImVec2;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImVec4_ImVec4_Nil() -&gt; <span class="kw-2">*mut </span>ImVec4;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImVec4_destroy(self_: <span class="kw-2">*mut </span>ImVec4);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImVec4_ImVec4_Float(_x: f32, _y: f32, _z: f32, _w: f32) -&gt; <span class="kw-2">*mut </span>ImVec4;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igCreateContext(shared_font_atlas: <span class="kw-2">*mut </span>ImFontAtlas) -&gt; <span class="kw-2">*mut </span>ImGuiContext;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igDestroyContext(ctx: <span class="kw-2">*mut </span>ImGuiContext);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetCurrentContext() -&gt; <span class="kw-2">*mut </span>ImGuiContext;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSetCurrentContext(ctx: <span class="kw-2">*mut </span>ImGuiContext);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetIO() -&gt; <span class="kw-2">*mut </span>ImGuiIO;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetStyle() -&gt; <span class="kw-2">*mut </span>ImGuiStyle;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igNewFrame();
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igEndFrame();
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igRender();
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetDrawData() -&gt; <span class="kw-2">*mut </span>ImDrawData;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igShowDemoWindow(p_open: <span class="kw-2">*mut </span>bool);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igShowMetricsWindow(p_open: <span class="kw-2">*mut </span>bool);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igShowAboutWindow(p_open: <span class="kw-2">*mut </span>bool);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igShowStyleEditor(ref_: <span class="kw-2">*mut </span>ImGuiStyle);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igShowStyleSelector(label: <span class="kw-2">*const </span>cty::c_char) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igShowFontSelector(label: <span class="kw-2">*const </span>cty::c_char);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igShowUserGuide();
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetVersion() -&gt; <span class="kw-2">*const </span>cty::c_char;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igStyleColorsDark(dst: <span class="kw-2">*mut </span>ImGuiStyle);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igStyleColorsLight(dst: <span class="kw-2">*mut </span>ImGuiStyle);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igStyleColorsClassic(dst: <span class="kw-2">*mut </span>ImGuiStyle);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igBegin(name: <span class="kw-2">*const </span>cty::c_char, p_open: <span class="kw-2">*mut </span>bool, flags: ImGuiWindowFlags) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igEnd();
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igBeginChild_Str(
         str_id: <span class="kw-2">*const </span>cty::c_char,
         size: ImVec2,
@@ -6066,7 +6068,7 @@
         flags: ImGuiWindowFlags,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igBeginChild_ID(
         id: ImGuiID,
         size: ImVec2,
@@ -6074,43 +6076,43 @@
         flags: ImGuiWindowFlags,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igEndChild();
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igIsWindowAppearing() -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igIsWindowCollapsed() -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igIsWindowFocused(flags: ImGuiFocusedFlags) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igIsWindowHovered(flags: ImGuiHoveredFlags) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetWindowDrawList() -&gt; <span class="kw-2">*mut </span>ImDrawList;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetWindowPos(pOut: <span class="kw-2">*mut </span>ImVec2);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetWindowSize(pOut: <span class="kw-2">*mut </span>ImVec2);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetWindowWidth() -&gt; f32;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetWindowHeight() -&gt; f32;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSetNextWindowPos(pos: ImVec2, cond: ImGuiCond, pivot: ImVec2);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSetNextWindowSize(size: ImVec2, cond: ImGuiCond);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSetNextWindowSizeConstraints(
         size_min: ImVec2,
         size_max: ImVec2,
@@ -6118,299 +6120,299 @@
         custom_callback_data: <span class="kw-2">*mut </span>cty::c_void,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSetNextWindowContentSize(size: ImVec2);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSetNextWindowCollapsed(collapsed: bool, cond: ImGuiCond);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSetNextWindowFocus();
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSetNextWindowBgAlpha(alpha: f32);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSetWindowPos_Vec2(pos: ImVec2, cond: ImGuiCond);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSetWindowSize_Vec2(size: ImVec2, cond: ImGuiCond);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSetWindowCollapsed_Bool(collapsed: bool, cond: ImGuiCond);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSetWindowFocus_Nil();
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSetWindowFontScale(scale: f32);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSetWindowPos_Str(name: <span class="kw-2">*const </span>cty::c_char, pos: ImVec2, cond: ImGuiCond);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSetWindowSize_Str(name: <span class="kw-2">*const </span>cty::c_char, size: ImVec2, cond: ImGuiCond);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSetWindowCollapsed_Str(name: <span class="kw-2">*const </span>cty::c_char, collapsed: bool, cond: ImGuiCond);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSetWindowFocus_Str(name: <span class="kw-2">*const </span>cty::c_char);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetContentRegionAvail(pOut: <span class="kw-2">*mut </span>ImVec2);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetContentRegionMax(pOut: <span class="kw-2">*mut </span>ImVec2);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetWindowContentRegionMin(pOut: <span class="kw-2">*mut </span>ImVec2);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetWindowContentRegionMax(pOut: <span class="kw-2">*mut </span>ImVec2);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetWindowContentRegionWidth() -&gt; f32;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetScrollX() -&gt; f32;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetScrollY() -&gt; f32;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSetScrollX(scroll_x: f32);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSetScrollY(scroll_y: f32);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetScrollMaxX() -&gt; f32;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetScrollMaxY() -&gt; f32;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSetScrollHereX(center_x_ratio: f32);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSetScrollHereY(center_y_ratio: f32);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSetScrollFromPosX(local_x: f32, center_x_ratio: f32);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSetScrollFromPosY(local_y: f32, center_y_ratio: f32);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igPushFont(font: <span class="kw-2">*mut </span>ImFont);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igPopFont();
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igPushStyleColor_U32(idx: ImGuiCol, col: ImU32);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igPushStyleColor_Vec4(idx: ImGuiCol, col: ImVec4);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igPopStyleColor(count: cty::c_int);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igPushStyleVar_Float(idx: ImGuiStyleVar, val: f32);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igPushStyleVar_Vec2(idx: ImGuiStyleVar, val: ImVec2);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igPopStyleVar(count: cty::c_int);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igPushAllowKeyboardFocus(allow_keyboard_focus: bool);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igPopAllowKeyboardFocus();
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igPushButtonRepeat(repeat: bool);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igPopButtonRepeat();
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igPushItemWidth(item_width: f32);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igPopItemWidth();
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSetNextItemWidth(item_width: f32);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igCalcItemWidth() -&gt; f32;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igPushTextWrapPos(wrap_local_pos_x: f32);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igPopTextWrapPos();
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetFont() -&gt; <span class="kw-2">*mut </span>ImFont;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetFontSize() -&gt; f32;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetFontTexUvWhitePixel(pOut: <span class="kw-2">*mut </span>ImVec2);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetColorU32_Col(idx: ImGuiCol, alpha_mul: f32) -&gt; ImU32;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetColorU32_Vec4(col: ImVec4) -&gt; ImU32;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetColorU32_U32(col: ImU32) -&gt; ImU32;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetStyleColorVec4(idx: ImGuiCol) -&gt; <span class="kw-2">*const </span>ImVec4;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSeparator();
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSameLine(offset_from_start_x: f32, spacing: f32);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igNewLine();
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSpacing();
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igDummy(size: ImVec2);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igIndent(indent_w: f32);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igUnindent(indent_w: f32);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igBeginGroup();
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igEndGroup();
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetCursorPos(pOut: <span class="kw-2">*mut </span>ImVec2);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetCursorPosX() -&gt; f32;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetCursorPosY() -&gt; f32;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSetCursorPos(local_pos: ImVec2);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSetCursorPosX(local_x: f32);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSetCursorPosY(local_y: f32);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetCursorStartPos(pOut: <span class="kw-2">*mut </span>ImVec2);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetCursorScreenPos(pOut: <span class="kw-2">*mut </span>ImVec2);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSetCursorScreenPos(pos: ImVec2);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igAlignTextToFramePadding();
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetTextLineHeight() -&gt; f32;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetTextLineHeightWithSpacing() -&gt; f32;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetFrameHeight() -&gt; f32;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetFrameHeightWithSpacing() -&gt; f32;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igPushID_Str(str_id: <span class="kw-2">*const </span>cty::c_char);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igPushID_StrStr(str_id_begin: <span class="kw-2">*const </span>cty::c_char, str_id_end: <span class="kw-2">*const </span>cty::c_char);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igPushID_Ptr(ptr_id: <span class="kw-2">*const </span>cty::c_void);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igPushID_Int(int_id: cty::c_int);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igPopID();
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetID_Str(str_id: <span class="kw-2">*const </span>cty::c_char) -&gt; ImGuiID;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetID_StrStr(
         str_id_begin: <span class="kw-2">*const </span>cty::c_char,
         str_id_end: <span class="kw-2">*const </span>cty::c_char,
     ) -&gt; ImGuiID;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetID_Ptr(ptr_id: <span class="kw-2">*const </span>cty::c_void) -&gt; ImGuiID;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igTextUnformatted(text: <span class="kw-2">*const </span>cty::c_char, text_end: <span class="kw-2">*const </span>cty::c_char);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igText(fmt: <span class="kw-2">*const </span>cty::c_char, ...);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igTextColored(col: ImVec4, fmt: <span class="kw-2">*const </span>cty::c_char, ...);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igTextDisabled(fmt: <span class="kw-2">*const </span>cty::c_char, ...);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igTextWrapped(fmt: <span class="kw-2">*const </span>cty::c_char, ...);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igLabelText(label: <span class="kw-2">*const </span>cty::c_char, fmt: <span class="kw-2">*const </span>cty::c_char, ...);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igBulletText(fmt: <span class="kw-2">*const </span>cty::c_char, ...);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igButton(label: <span class="kw-2">*const </span>cty::c_char, size: ImVec2) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSmallButton(label: <span class="kw-2">*const </span>cty::c_char) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igInvisibleButton(
         str_id: <span class="kw-2">*const </span>cty::c_char,
         size: ImVec2,
         flags: ImGuiButtonFlags,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igArrowButton(str_id: <span class="kw-2">*const </span>cty::c_char, dir: ImGuiDir) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igImage(
         user_texture_id: ImTextureID,
         size: ImVec2,
@@ -6420,7 +6422,7 @@
         border_col: ImVec4,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igImageButton(
         user_texture_id: ImTextureID,
         size: ImVec2,
@@ -6431,50 +6433,50 @@
         tint_col: ImVec4,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igCheckbox(label: <span class="kw-2">*const </span>cty::c_char, v: <span class="kw-2">*mut </span>bool) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igCheckboxFlags_IntPtr(
         label: <span class="kw-2">*const </span>cty::c_char,
         flags: <span class="kw-2">*mut </span>cty::c_int,
         flags_value: cty::c_int,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igCheckboxFlags_UintPtr(
         label: <span class="kw-2">*const </span>cty::c_char,
         flags: <span class="kw-2">*mut </span>cty::c_uint,
         flags_value: cty::c_uint,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igRadioButton_Bool(label: <span class="kw-2">*const </span>cty::c_char, active: bool) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igRadioButton_IntPtr(
         label: <span class="kw-2">*const </span>cty::c_char,
         v: <span class="kw-2">*mut </span>cty::c_int,
         v_button: cty::c_int,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igProgressBar(fraction: f32, size_arg: ImVec2, overlay: <span class="kw-2">*const </span>cty::c_char);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igBullet();
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igBeginCombo(
         label: <span class="kw-2">*const </span>cty::c_char,
         preview_value: <span class="kw-2">*const </span>cty::c_char,
         flags: ImGuiComboFlags,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igEndCombo();
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igCombo_Str_arr(
         label: <span class="kw-2">*const </span>cty::c_char,
         current_item: <span class="kw-2">*mut </span>cty::c_int,
@@ -6483,7 +6485,7 @@
         popup_max_height_in_items: cty::c_int,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igCombo_Str(
         label: <span class="kw-2">*const </span>cty::c_char,
         current_item: <span class="kw-2">*mut </span>cty::c_int,
@@ -6491,12 +6493,12 @@
         popup_max_height_in_items: cty::c_int,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igCombo_FnBoolPtr(
         label: <span class="kw-2">*const </span>cty::c_char,
         current_item: <span class="kw-2">*mut </span>cty::c_int,
         items_getter: ::core::option::Option&lt;
-            <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn</span>(
+            <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn</span>(
                 data: <span class="kw-2">*mut </span>cty::c_void,
                 idx: cty::c_int,
                 out_text: <span class="kw-2">*mut *const </span>cty::c_char,
@@ -6507,7 +6509,7 @@
         popup_max_height_in_items: cty::c_int,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igDragFloat(
         label: <span class="kw-2">*const </span>cty::c_char,
         v: <span class="kw-2">*mut </span>f32,
@@ -6518,7 +6520,7 @@
         flags: ImGuiSliderFlags,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igDragFloat2(
         label: <span class="kw-2">*const </span>cty::c_char,
         v: <span class="kw-2">*mut </span>f32,
@@ -6529,7 +6531,7 @@
         flags: ImGuiSliderFlags,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igDragFloat3(
         label: <span class="kw-2">*const </span>cty::c_char,
         v: <span class="kw-2">*mut </span>f32,
@@ -6540,7 +6542,7 @@
         flags: ImGuiSliderFlags,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igDragFloat4(
         label: <span class="kw-2">*const </span>cty::c_char,
         v: <span class="kw-2">*mut </span>f32,
@@ -6551,7 +6553,7 @@
         flags: ImGuiSliderFlags,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igDragFloatRange2(
         label: <span class="kw-2">*const </span>cty::c_char,
         v_current_min: <span class="kw-2">*mut </span>f32,
@@ -6564,7 +6566,7 @@
         flags: ImGuiSliderFlags,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igDragInt(
         label: <span class="kw-2">*const </span>cty::c_char,
         v: <span class="kw-2">*mut </span>cty::c_int,
@@ -6575,7 +6577,7 @@
         flags: ImGuiSliderFlags,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igDragInt2(
         label: <span class="kw-2">*const </span>cty::c_char,
         v: <span class="kw-2">*mut </span>cty::c_int,
@@ -6586,7 +6588,7 @@
         flags: ImGuiSliderFlags,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igDragInt3(
         label: <span class="kw-2">*const </span>cty::c_char,
         v: <span class="kw-2">*mut </span>cty::c_int,
@@ -6597,7 +6599,7 @@
         flags: ImGuiSliderFlags,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igDragInt4(
         label: <span class="kw-2">*const </span>cty::c_char,
         v: <span class="kw-2">*mut </span>cty::c_int,
@@ -6608,7 +6610,7 @@
         flags: ImGuiSliderFlags,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igDragIntRange2(
         label: <span class="kw-2">*const </span>cty::c_char,
         v_current_min: <span class="kw-2">*mut </span>cty::c_int,
@@ -6621,7 +6623,7 @@
         flags: ImGuiSliderFlags,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igDragScalar(
         label: <span class="kw-2">*const </span>cty::c_char,
         data_type: ImGuiDataType,
@@ -6633,7 +6635,7 @@
         flags: ImGuiSliderFlags,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igDragScalarN(
         label: <span class="kw-2">*const </span>cty::c_char,
         data_type: ImGuiDataType,
@@ -6646,7 +6648,7 @@
         flags: ImGuiSliderFlags,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSliderFloat(
         label: <span class="kw-2">*const </span>cty::c_char,
         v: <span class="kw-2">*mut </span>f32,
@@ -6656,7 +6658,7 @@
         flags: ImGuiSliderFlags,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSliderFloat2(
         label: <span class="kw-2">*const </span>cty::c_char,
         v: <span class="kw-2">*mut </span>f32,
@@ -6666,7 +6668,7 @@
         flags: ImGuiSliderFlags,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSliderFloat3(
         label: <span class="kw-2">*const </span>cty::c_char,
         v: <span class="kw-2">*mut </span>f32,
@@ -6676,7 +6678,7 @@
         flags: ImGuiSliderFlags,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSliderFloat4(
         label: <span class="kw-2">*const </span>cty::c_char,
         v: <span class="kw-2">*mut </span>f32,
@@ -6686,7 +6688,7 @@
         flags: ImGuiSliderFlags,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSliderAngle(
         label: <span class="kw-2">*const </span>cty::c_char,
         v_rad: <span class="kw-2">*mut </span>f32,
@@ -6696,7 +6698,7 @@
         flags: ImGuiSliderFlags,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSliderInt(
         label: <span class="kw-2">*const </span>cty::c_char,
         v: <span class="kw-2">*mut </span>cty::c_int,
@@ -6706,7 +6708,7 @@
         flags: ImGuiSliderFlags,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSliderInt2(
         label: <span class="kw-2">*const </span>cty::c_char,
         v: <span class="kw-2">*mut </span>cty::c_int,
@@ -6716,7 +6718,7 @@
         flags: ImGuiSliderFlags,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSliderInt3(
         label: <span class="kw-2">*const </span>cty::c_char,
         v: <span class="kw-2">*mut </span>cty::c_int,
@@ -6726,7 +6728,7 @@
         flags: ImGuiSliderFlags,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSliderInt4(
         label: <span class="kw-2">*const </span>cty::c_char,
         v: <span class="kw-2">*mut </span>cty::c_int,
@@ -6736,7 +6738,7 @@
         flags: ImGuiSliderFlags,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSliderScalar(
         label: <span class="kw-2">*const </span>cty::c_char,
         data_type: ImGuiDataType,
@@ -6747,7 +6749,7 @@
         flags: ImGuiSliderFlags,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSliderScalarN(
         label: <span class="kw-2">*const </span>cty::c_char,
         data_type: ImGuiDataType,
@@ -6759,7 +6761,7 @@
         flags: ImGuiSliderFlags,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igVSliderFloat(
         label: <span class="kw-2">*const </span>cty::c_char,
         size: ImVec2,
@@ -6770,7 +6772,7 @@
         flags: ImGuiSliderFlags,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igVSliderInt(
         label: <span class="kw-2">*const </span>cty::c_char,
         size: ImVec2,
@@ -6781,7 +6783,7 @@
         flags: ImGuiSliderFlags,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igVSliderScalar(
         label: <span class="kw-2">*const </span>cty::c_char,
         size: ImVec2,
@@ -6793,7 +6795,7 @@
         flags: ImGuiSliderFlags,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igInputText(
         label: <span class="kw-2">*const </span>cty::c_char,
         buf: <span class="kw-2">*mut </span>cty::c_char,
@@ -6803,7 +6805,7 @@
         user_data: <span class="kw-2">*mut </span>cty::c_void,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igInputTextMultiline(
         label: <span class="kw-2">*const </span>cty::c_char,
         buf: <span class="kw-2">*mut </span>cty::c_char,
@@ -6814,7 +6816,7 @@
         user_data: <span class="kw-2">*mut </span>cty::c_void,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igInputTextWithHint(
         label: <span class="kw-2">*const </span>cty::c_char,
         hint: <span class="kw-2">*const </span>cty::c_char,
@@ -6825,7 +6827,7 @@
         user_data: <span class="kw-2">*mut </span>cty::c_void,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igInputFloat(
         label: <span class="kw-2">*const </span>cty::c_char,
         v: <span class="kw-2">*mut </span>f32,
@@ -6835,7 +6837,7 @@
         flags: ImGuiInputTextFlags,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igInputFloat2(
         label: <span class="kw-2">*const </span>cty::c_char,
         v: <span class="kw-2">*mut </span>f32,
@@ -6843,7 +6845,7 @@
         flags: ImGuiInputTextFlags,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igInputFloat3(
         label: <span class="kw-2">*const </span>cty::c_char,
         v: <span class="kw-2">*mut </span>f32,
@@ -6851,7 +6853,7 @@
         flags: ImGuiInputTextFlags,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igInputFloat4(
         label: <span class="kw-2">*const </span>cty::c_char,
         v: <span class="kw-2">*mut </span>f32,
@@ -6859,7 +6861,7 @@
         flags: ImGuiInputTextFlags,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igInputInt(
         label: <span class="kw-2">*const </span>cty::c_char,
         v: <span class="kw-2">*mut </span>cty::c_int,
@@ -6868,28 +6870,28 @@
         flags: ImGuiInputTextFlags,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igInputInt2(
         label: <span class="kw-2">*const </span>cty::c_char,
         v: <span class="kw-2">*mut </span>cty::c_int,
         flags: ImGuiInputTextFlags,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igInputInt3(
         label: <span class="kw-2">*const </span>cty::c_char,
         v: <span class="kw-2">*mut </span>cty::c_int,
         flags: ImGuiInputTextFlags,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igInputInt4(
         label: <span class="kw-2">*const </span>cty::c_char,
         v: <span class="kw-2">*mut </span>cty::c_int,
         flags: ImGuiInputTextFlags,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igInputDouble(
         label: <span class="kw-2">*const </span>cty::c_char,
         v: <span class="kw-2">*mut </span>f64,
@@ -6899,7 +6901,7 @@
         flags: ImGuiInputTextFlags,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igInputScalar(
         label: <span class="kw-2">*const </span>cty::c_char,
         data_type: ImGuiDataType,
@@ -6910,7 +6912,7 @@
         flags: ImGuiInputTextFlags,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igInputScalarN(
         label: <span class="kw-2">*const </span>cty::c_char,
         data_type: ImGuiDataType,
@@ -6922,28 +6924,28 @@
         flags: ImGuiInputTextFlags,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igColorEdit3(
         label: <span class="kw-2">*const </span>cty::c_char,
         col: <span class="kw-2">*mut </span>f32,
         flags: ImGuiColorEditFlags,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igColorEdit4(
         label: <span class="kw-2">*const </span>cty::c_char,
         col: <span class="kw-2">*mut </span>f32,
         flags: ImGuiColorEditFlags,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igColorPicker3(
         label: <span class="kw-2">*const </span>cty::c_char,
         col: <span class="kw-2">*mut </span>f32,
         flags: ImGuiColorEditFlags,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igColorPicker4(
         label: <span class="kw-2">*const </span>cty::c_char,
         col: <span class="kw-2">*mut </span>f32,
@@ -6951,7 +6953,7 @@
         ref_col: <span class="kw-2">*const </span>f32,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igColorButton(
         desc_id: <span class="kw-2">*const </span>cty::c_char,
         col: ImVec4,
@@ -6959,22 +6961,22 @@
         size: ImVec2,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSetColorEditOptions(flags: ImGuiColorEditFlags);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igTreeNode_Str(label: <span class="kw-2">*const </span>cty::c_char) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igTreeNode_StrStr(str_id: <span class="kw-2">*const </span>cty::c_char, fmt: <span class="kw-2">*const </span>cty::c_char, ...) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igTreeNode_Ptr(ptr_id: <span class="kw-2">*const </span>cty::c_void, fmt: <span class="kw-2">*const </span>cty::c_char, ...) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igTreeNodeEx_Str(label: <span class="kw-2">*const </span>cty::c_char, flags: ImGuiTreeNodeFlags) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igTreeNodeEx_StrStr(
         str_id: <span class="kw-2">*const </span>cty::c_char,
         flags: ImGuiTreeNodeFlags,
@@ -6982,7 +6984,7 @@
         ...
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igTreeNodeEx_Ptr(
         ptr_id: <span class="kw-2">*const </span>cty::c_void,
         flags: ImGuiTreeNodeFlags,
@@ -6990,35 +6992,35 @@
         ...
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igTreePush_Str(str_id: <span class="kw-2">*const </span>cty::c_char);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igTreePush_Ptr(ptr_id: <span class="kw-2">*const </span>cty::c_void);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igTreePop();
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetTreeNodeToLabelSpacing() -&gt; f32;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igCollapsingHeader_TreeNodeFlags(
         label: <span class="kw-2">*const </span>cty::c_char,
         flags: ImGuiTreeNodeFlags,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igCollapsingHeader_BoolPtr(
         label: <span class="kw-2">*const </span>cty::c_char,
         p_visible: <span class="kw-2">*mut </span>bool,
         flags: ImGuiTreeNodeFlags,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSetNextItemOpen(is_open: bool, cond: ImGuiCond);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSelectable_Bool(
         label: <span class="kw-2">*const </span>cty::c_char,
         selected: bool,
@@ -7026,7 +7028,7 @@
         size: ImVec2,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSelectable_BoolPtr(
         label: <span class="kw-2">*const </span>cty::c_char,
         p_selected: <span class="kw-2">*mut </span>bool,
@@ -7034,7 +7036,7 @@
         size: ImVec2,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igListBox_Str_arr(
         label: <span class="kw-2">*const </span>cty::c_char,
         current_item: <span class="kw-2">*mut </span>cty::c_int,
@@ -7043,12 +7045,12 @@
         height_in_items: cty::c_int,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igListBox_FnBoolPtr(
         label: <span class="kw-2">*const </span>cty::c_char,
         current_item: <span class="kw-2">*mut </span>cty::c_int,
         items_getter: ::core::option::Option&lt;
-            <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn</span>(
+            <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn</span>(
                 data: <span class="kw-2">*mut </span>cty::c_void,
                 idx: cty::c_int,
                 out_text: <span class="kw-2">*mut *const </span>cty::c_char,
@@ -7059,20 +7061,20 @@
         height_in_items: cty::c_int,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igListBoxHeader_Vec2(label: <span class="kw-2">*const </span>cty::c_char, size: ImVec2) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igListBoxHeader_Int(
         label: <span class="kw-2">*const </span>cty::c_char,
         items_count: cty::c_int,
         height_in_items: cty::c_int,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igListBoxFooter();
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igPlotLines_FloatPtr(
         label: <span class="kw-2">*const </span>cty::c_char,
         values: <span class="kw-2">*const </span>f32,
@@ -7085,11 +7087,11 @@
         stride: cty::c_int,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igPlotLines_FnFloatPtr(
         label: <span class="kw-2">*const </span>cty::c_char,
         values_getter: ::core::option::Option&lt;
-            <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn</span>(data: <span class="kw-2">*mut </span>cty::c_void, idx: cty::c_int) -&gt; f32,
+            <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn</span>(data: <span class="kw-2">*mut </span>cty::c_void, idx: cty::c_int) -&gt; f32,
         &gt;,
         data: <span class="kw-2">*mut </span>cty::c_void,
         values_count: cty::c_int,
@@ -7100,7 +7102,7 @@
         graph_size: ImVec2,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igPlotHistogram_FloatPtr(
         label: <span class="kw-2">*const </span>cty::c_char,
         values: <span class="kw-2">*const </span>f32,
@@ -7113,11 +7115,11 @@
         stride: cty::c_int,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igPlotHistogram_FnFloatPtr(
         label: <span class="kw-2">*const </span>cty::c_char,
         values_getter: ::core::option::Option&lt;
-            <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn</span>(data: <span class="kw-2">*mut </span>cty::c_void, idx: cty::c_int) -&gt; f32,
+            <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn</span>(data: <span class="kw-2">*mut </span>cty::c_void, idx: cty::c_int) -&gt; f32,
         &gt;,
         data: <span class="kw-2">*mut </span>cty::c_void,
         values_count: cty::c_int,
@@ -7128,37 +7130,37 @@
         graph_size: ImVec2,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igValue_Bool(prefix: <span class="kw-2">*const </span>cty::c_char, b: bool);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igValue_Int(prefix: <span class="kw-2">*const </span>cty::c_char, v: cty::c_int);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igValue_Uint(prefix: <span class="kw-2">*const </span>cty::c_char, v: cty::c_uint);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igValue_Float(prefix: <span class="kw-2">*const </span>cty::c_char, v: f32, float_format: <span class="kw-2">*const </span>cty::c_char);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igBeginMenuBar() -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igEndMenuBar();
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igBeginMainMenuBar() -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igEndMainMenuBar();
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igBeginMenu(label: <span class="kw-2">*const </span>cty::c_char, enabled: bool) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igEndMenu();
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igMenuItem_Bool(
         label: <span class="kw-2">*const </span>cty::c_char,
         shortcut: <span class="kw-2">*const </span>cty::c_char,
@@ -7166,7 +7168,7 @@
         enabled: bool,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igMenuItem_BoolPtr(
         label: <span class="kw-2">*const </span>cty::c_char,
         shortcut: <span class="kw-2">*const </span>cty::c_char,
@@ -7174,59 +7176,59 @@
         enabled: bool,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igBeginTooltip();
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igEndTooltip();
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSetTooltip(fmt: <span class="kw-2">*const </span>cty::c_char, ...);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igBeginPopup(str_id: <span class="kw-2">*const </span>cty::c_char, flags: ImGuiWindowFlags) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igBeginPopupModal(
         name: <span class="kw-2">*const </span>cty::c_char,
         p_open: <span class="kw-2">*mut </span>bool,
         flags: ImGuiWindowFlags,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igEndPopup();
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igOpenPopup(str_id: <span class="kw-2">*const </span>cty::c_char, popup_flags: ImGuiPopupFlags);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igOpenPopupOnItemClick(str_id: <span class="kw-2">*const </span>cty::c_char, popup_flags: ImGuiPopupFlags);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igCloseCurrentPopup();
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igBeginPopupContextItem(
         str_id: <span class="kw-2">*const </span>cty::c_char,
         popup_flags: ImGuiPopupFlags,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igBeginPopupContextWindow(
         str_id: <span class="kw-2">*const </span>cty::c_char,
         popup_flags: ImGuiPopupFlags,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igBeginPopupContextVoid(
         str_id: <span class="kw-2">*const </span>cty::c_char,
         popup_flags: ImGuiPopupFlags,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igIsPopupOpen(str_id: <span class="kw-2">*const </span>cty::c_char, flags: ImGuiPopupFlags) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igBeginTable(
         str_id: <span class="kw-2">*const </span>cty::c_char,
         column: cty::c_int,
@@ -7235,19 +7237,19 @@
         inner_width: f32,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igEndTable();
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igTableNextRow(row_flags: ImGuiTableRowFlags, min_row_height: f32);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igTableNextColumn() -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igTableSetColumnIndex(column_n: cty::c_int) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igTableSetupColumn(
         label: <span class="kw-2">*const </span>cty::c_char,
         flags: ImGuiTableColumnFlags,
@@ -7255,101 +7257,101 @@
         user_id: ImU32,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igTableSetupScrollFreeze(cols: cty::c_int, rows: cty::c_int);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igTableHeadersRow();
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igTableHeader(label: <span class="kw-2">*const </span>cty::c_char);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igTableGetSortSpecs() -&gt; <span class="kw-2">*mut </span>ImGuiTableSortSpecs;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igTableGetColumnCount() -&gt; cty::c_int;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igTableGetColumnIndex() -&gt; cty::c_int;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igTableGetRowIndex() -&gt; cty::c_int;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igTableGetColumnName(column_n: cty::c_int) -&gt; <span class="kw-2">*const </span>cty::c_char;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igTableGetColumnFlags(column_n: cty::c_int) -&gt; ImGuiTableColumnFlags;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igTableSetBgColor(target: ImGuiTableBgTarget, color: ImU32, column_n: cty::c_int);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igColumns(count: cty::c_int, id: <span class="kw-2">*const </span>cty::c_char, border: bool);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igNextColumn();
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetColumnIndex() -&gt; cty::c_int;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetColumnWidth(column_index: cty::c_int) -&gt; f32;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSetColumnWidth(column_index: cty::c_int, width: f32);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetColumnOffset(column_index: cty::c_int) -&gt; f32;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSetColumnOffset(column_index: cty::c_int, offset_x: f32);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetColumnsCount() -&gt; cty::c_int;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igBeginTabBar(str_id: <span class="kw-2">*const </span>cty::c_char, flags: ImGuiTabBarFlags) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igEndTabBar();
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igBeginTabItem(
         label: <span class="kw-2">*const </span>cty::c_char,
         p_open: <span class="kw-2">*mut </span>bool,
         flags: ImGuiTabItemFlags,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igEndTabItem();
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igTabItemButton(label: <span class="kw-2">*const </span>cty::c_char, flags: ImGuiTabItemFlags) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSetTabItemClosed(tab_or_docked_window_label: <span class="kw-2">*const </span>cty::c_char);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igLogToTTY(auto_open_depth: cty::c_int);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igLogToFile(auto_open_depth: cty::c_int, filename: <span class="kw-2">*const </span>cty::c_char);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igLogToClipboard(auto_open_depth: cty::c_int);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igLogFinish();
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igLogButtons();
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igBeginDragDropSource(flags: ImGuiDragDropFlags) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSetDragDropPayload(
         type_: <span class="kw-2">*const </span>cty::c_char,
         data: <span class="kw-2">*const </span>cty::c_void,
@@ -7357,122 +7359,122 @@
         cond: ImGuiCond,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igEndDragDropSource();
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igBeginDragDropTarget() -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igAcceptDragDropPayload(
         type_: <span class="kw-2">*const </span>cty::c_char,
         flags: ImGuiDragDropFlags,
     ) -&gt; <span class="kw-2">*const </span>ImGuiPayload;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igEndDragDropTarget();
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetDragDropPayload() -&gt; <span class="kw-2">*const </span>ImGuiPayload;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igPushClipRect(
         clip_rect_min: ImVec2,
         clip_rect_max: ImVec2,
         intersect_with_current_clip_rect: bool,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igPopClipRect();
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSetItemDefaultFocus();
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSetKeyboardFocusHere(offset: cty::c_int);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igIsItemHovered(flags: ImGuiHoveredFlags) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igIsItemActive() -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igIsItemFocused() -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igIsItemClicked(mouse_button: ImGuiMouseButton) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igIsItemVisible() -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igIsItemEdited() -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igIsItemActivated() -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igIsItemDeactivated() -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igIsItemDeactivatedAfterEdit() -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igIsItemToggledOpen() -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igIsAnyItemHovered() -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igIsAnyItemActive() -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igIsAnyItemFocused() -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetItemRectMin(pOut: <span class="kw-2">*mut </span>ImVec2);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetItemRectMax(pOut: <span class="kw-2">*mut </span>ImVec2);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetItemRectSize(pOut: <span class="kw-2">*mut </span>ImVec2);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSetItemAllowOverlap();
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igIsRectVisible_Nil(size: ImVec2) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igIsRectVisible_Vec2(rect_min: ImVec2, rect_max: ImVec2) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetTime() -&gt; f64;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetFrameCount() -&gt; cty::c_int;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetBackgroundDrawList() -&gt; <span class="kw-2">*mut </span>ImDrawList;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetForegroundDrawList() -&gt; <span class="kw-2">*mut </span>ImDrawList;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetDrawListSharedData() -&gt; <span class="kw-2">*mut </span>ImDrawListSharedData;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetStyleColorName(idx: ImGuiCol) -&gt; <span class="kw-2">*const </span>cty::c_char;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSetStateStorage(storage: <span class="kw-2">*mut </span>ImGuiStorage);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetStateStorage() -&gt; <span class="kw-2">*mut </span>ImGuiStorage;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igCalcListClipping(
         items_count: cty::c_int,
         items_height: f32,
@@ -7480,13 +7482,13 @@
         out_items_display_end: <span class="kw-2">*mut </span>cty::c_int,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igBeginChildFrame(id: ImGuiID, size: ImVec2, flags: ImGuiWindowFlags) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igEndChildFrame();
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igCalcTextSize(
         pOut: <span class="kw-2">*mut </span>ImVec2,
         text: <span class="kw-2">*const </span>cty::c_char,
@@ -7495,13 +7497,13 @@
         wrap_width: f32,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igColorConvertU32ToFloat4(pOut: <span class="kw-2">*mut </span>ImVec4, in_: ImU32);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igColorConvertFloat4ToU32(in_: ImVec4) -&gt; ImU32;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igColorConvertRGBtoHSV(
         r: f32,
         g: f32,
@@ -7511,7 +7513,7 @@
         out_v: <span class="kw-2">*mut </span>f32,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igColorConvertHSVtoRGB(
         h: f32,
         s: f32,
@@ -7521,89 +7523,89 @@
         out_b: <span class="kw-2">*mut </span>f32,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetKeyIndex(imgui_key: ImGuiKey) -&gt; cty::c_int;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igIsKeyDown(user_key_index: cty::c_int) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igIsKeyPressed(user_key_index: cty::c_int, repeat: bool) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igIsKeyReleased(user_key_index: cty::c_int) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetKeyPressedAmount(key_index: cty::c_int, repeat_delay: f32, rate: f32)
         -&gt; cty::c_int;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igCaptureKeyboardFromApp(want_capture_keyboard_value: bool);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igIsMouseDown(button: ImGuiMouseButton) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igIsMouseClicked(button: ImGuiMouseButton, repeat: bool) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igIsMouseReleased(button: ImGuiMouseButton) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igIsMouseDoubleClicked(button: ImGuiMouseButton) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igIsMouseHoveringRect(r_min: ImVec2, r_max: ImVec2, clip: bool) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igIsMousePosValid(mouse_pos: <span class="kw-2">*const </span>ImVec2) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igIsAnyMouseDown() -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetMousePos(pOut: <span class="kw-2">*mut </span>ImVec2);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetMousePosOnOpeningCurrentPopup(pOut: <span class="kw-2">*mut </span>ImVec2);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igIsMouseDragging(button: ImGuiMouseButton, lock_threshold: f32) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetMouseDragDelta(pOut: <span class="kw-2">*mut </span>ImVec2, button: ImGuiMouseButton, lock_threshold: f32);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igResetMouseDragDelta(button: ImGuiMouseButton);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetMouseCursor() -&gt; ImGuiMouseCursor;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSetMouseCursor(cursor_type: ImGuiMouseCursor);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igCaptureMouseFromApp(want_capture_mouse_value: bool);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igGetClipboardText() -&gt; <span class="kw-2">*const </span>cty::c_char;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSetClipboardText(text: <span class="kw-2">*const </span>cty::c_char);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igLoadIniSettingsFromDisk(ini_filename: <span class="kw-2">*const </span>cty::c_char);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igLoadIniSettingsFromMemory(ini_data: <span class="kw-2">*const </span>cty::c_char, ini_size: usize);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSaveIniSettingsToDisk(ini_filename: <span class="kw-2">*const </span>cty::c_char);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSaveIniSettingsToMemory(out_ini_size: <span class="kw-2">*mut </span>usize) -&gt; <span class="kw-2">*const </span>cty::c_char;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igDebugCheckVersionAndDataLayout(
         version_str: <span class="kw-2">*const </span>cty::c_char,
         sz_io: usize,
@@ -7614,64 +7616,64 @@
         sz_drawidx: usize,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igSetAllocatorFunctions(
         alloc_func: ::core::option::Option&lt;
-            <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn</span>(sz: usize, user_data: <span class="kw-2">*mut </span>cty::c_void) -&gt; <span class="kw-2">*mut </span>cty::c_void,
+            <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn</span>(sz: usize, user_data: <span class="kw-2">*mut </span>cty::c_void) -&gt; <span class="kw-2">*mut </span>cty::c_void,
         &gt;,
         free_func: ::core::option::Option&lt;
-            <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn</span>(ptr: <span class="kw-2">*mut </span>cty::c_void, user_data: <span class="kw-2">*mut </span>cty::c_void),
+            <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn</span>(ptr: <span class="kw-2">*mut </span>cty::c_void, user_data: <span class="kw-2">*mut </span>cty::c_void),
         &gt;,
         user_data: <span class="kw-2">*mut </span>cty::c_void,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igMemAlloc(size: usize) -&gt; <span class="kw-2">*mut </span>cty::c_void;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igMemFree(ptr: <span class="kw-2">*mut </span>cty::c_void);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiStyle_ImGuiStyle() -&gt; <span class="kw-2">*mut </span>ImGuiStyle;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiStyle_destroy(self_: <span class="kw-2">*mut </span>ImGuiStyle);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiStyle_ScaleAllSizes(self_: <span class="kw-2">*mut </span>ImGuiStyle, scale_factor: f32);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiIO_AddInputCharacter(self_: <span class="kw-2">*mut </span>ImGuiIO, c: cty::c_uint);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiIO_AddInputCharacterUTF16(self_: <span class="kw-2">*mut </span>ImGuiIO, c: ImWchar16);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiIO_AddInputCharactersUTF8(self_: <span class="kw-2">*mut </span>ImGuiIO, str_: <span class="kw-2">*const </span>cty::c_char);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiIO_ClearInputCharacters(self_: <span class="kw-2">*mut </span>ImGuiIO);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiIO_ImGuiIO() -&gt; <span class="kw-2">*mut </span>ImGuiIO;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiIO_destroy(self_: <span class="kw-2">*mut </span>ImGuiIO);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiInputTextCallbackData_ImGuiInputTextCallbackData() -&gt; <span class="kw-2">*mut </span>ImGuiInputTextCallbackData;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiInputTextCallbackData_destroy(self_: <span class="kw-2">*mut </span>ImGuiInputTextCallbackData);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiInputTextCallbackData_DeleteChars(
         self_: <span class="kw-2">*mut </span>ImGuiInputTextCallbackData,
         pos: cty::c_int,
         bytes_count: cty::c_int,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiInputTextCallbackData_InsertChars(
         self_: <span class="kw-2">*mut </span>ImGuiInputTextCallbackData,
         pos: cty::c_int,
@@ -7679,250 +7681,250 @@
         text_end: <span class="kw-2">*const </span>cty::c_char,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiInputTextCallbackData_SelectAll(self_: <span class="kw-2">*mut </span>ImGuiInputTextCallbackData);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiInputTextCallbackData_ClearSelection(self_: <span class="kw-2">*mut </span>ImGuiInputTextCallbackData);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiInputTextCallbackData_HasSelection(self_: <span class="kw-2">*mut </span>ImGuiInputTextCallbackData) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiPayload_ImGuiPayload() -&gt; <span class="kw-2">*mut </span>ImGuiPayload;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiPayload_destroy(self_: <span class="kw-2">*mut </span>ImGuiPayload);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiPayload_Clear(self_: <span class="kw-2">*mut </span>ImGuiPayload);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiPayload_IsDataType(self_: <span class="kw-2">*mut </span>ImGuiPayload, type_: <span class="kw-2">*const </span>cty::c_char) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiPayload_IsPreview(self_: <span class="kw-2">*mut </span>ImGuiPayload) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiPayload_IsDelivery(self_: <span class="kw-2">*mut </span>ImGuiPayload) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiTableColumnSortSpecs_ImGuiTableColumnSortSpecs() -&gt; <span class="kw-2">*mut </span>ImGuiTableColumnSortSpecs;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiTableColumnSortSpecs_destroy(self_: <span class="kw-2">*mut </span>ImGuiTableColumnSortSpecs);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiTableSortSpecs_ImGuiTableSortSpecs() -&gt; <span class="kw-2">*mut </span>ImGuiTableSortSpecs;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiTableSortSpecs_destroy(self_: <span class="kw-2">*mut </span>ImGuiTableSortSpecs);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiOnceUponAFrame_ImGuiOnceUponAFrame() -&gt; <span class="kw-2">*mut </span>ImGuiOnceUponAFrame;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiOnceUponAFrame_destroy(self_: <span class="kw-2">*mut </span>ImGuiOnceUponAFrame);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiTextFilter_ImGuiTextFilter(
         default_filter: <span class="kw-2">*const </span>cty::c_char,
     ) -&gt; <span class="kw-2">*mut </span>ImGuiTextFilter;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiTextFilter_destroy(self_: <span class="kw-2">*mut </span>ImGuiTextFilter);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiTextFilter_Draw(
         self_: <span class="kw-2">*mut </span>ImGuiTextFilter,
         label: <span class="kw-2">*const </span>cty::c_char,
         width: f32,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiTextFilter_PassFilter(
         self_: <span class="kw-2">*mut </span>ImGuiTextFilter,
         text: <span class="kw-2">*const </span>cty::c_char,
         text_end: <span class="kw-2">*const </span>cty::c_char,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiTextFilter_Build(self_: <span class="kw-2">*mut </span>ImGuiTextFilter);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiTextFilter_Clear(self_: <span class="kw-2">*mut </span>ImGuiTextFilter);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiTextFilter_IsActive(self_: <span class="kw-2">*mut </span>ImGuiTextFilter) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiTextRange_ImGuiTextRange_Nil() -&gt; <span class="kw-2">*mut </span>ImGuiTextRange;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiTextRange_destroy(self_: <span class="kw-2">*mut </span>ImGuiTextRange);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiTextRange_ImGuiTextRange_Str(
         _b: <span class="kw-2">*const </span>cty::c_char,
         _e: <span class="kw-2">*const </span>cty::c_char,
     ) -&gt; <span class="kw-2">*mut </span>ImGuiTextRange;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiTextRange_empty(self_: <span class="kw-2">*mut </span>ImGuiTextRange) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiTextRange_split(
         self_: <span class="kw-2">*mut </span>ImGuiTextRange,
         separator: cty::c_char,
         out: <span class="kw-2">*mut </span>ImVector_ImGuiTextRange,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiTextBuffer_ImGuiTextBuffer() -&gt; <span class="kw-2">*mut </span>ImGuiTextBuffer;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiTextBuffer_destroy(self_: <span class="kw-2">*mut </span>ImGuiTextBuffer);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiTextBuffer_begin(self_: <span class="kw-2">*mut </span>ImGuiTextBuffer) -&gt; <span class="kw-2">*const </span>cty::c_char;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiTextBuffer_end(self_: <span class="kw-2">*mut </span>ImGuiTextBuffer) -&gt; <span class="kw-2">*const </span>cty::c_char;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiTextBuffer_size(self_: <span class="kw-2">*mut </span>ImGuiTextBuffer) -&gt; cty::c_int;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiTextBuffer_empty(self_: <span class="kw-2">*mut </span>ImGuiTextBuffer) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiTextBuffer_clear(self_: <span class="kw-2">*mut </span>ImGuiTextBuffer);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiTextBuffer_reserve(self_: <span class="kw-2">*mut </span>ImGuiTextBuffer, capacity: cty::c_int);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiTextBuffer_c_str(self_: <span class="kw-2">*mut </span>ImGuiTextBuffer) -&gt; <span class="kw-2">*const </span>cty::c_char;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiTextBuffer_append(
         self_: <span class="kw-2">*mut </span>ImGuiTextBuffer,
         str_: <span class="kw-2">*const </span>cty::c_char,
         str_end: <span class="kw-2">*const </span>cty::c_char,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiStoragePair_ImGuiStoragePair_Int(
         _key: ImGuiID,
         _val_i: cty::c_int,
     ) -&gt; <span class="kw-2">*mut </span>ImGuiStoragePair;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiStoragePair_destroy(self_: <span class="kw-2">*mut </span>ImGuiStoragePair);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiStoragePair_ImGuiStoragePair_Float(
         _key: ImGuiID,
         _val_f: f32,
     ) -&gt; <span class="kw-2">*mut </span>ImGuiStoragePair;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiStoragePair_ImGuiStoragePair_Ptr(
         _key: ImGuiID,
         _val_p: <span class="kw-2">*mut </span>cty::c_void,
     ) -&gt; <span class="kw-2">*mut </span>ImGuiStoragePair;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiStorage_Clear(self_: <span class="kw-2">*mut </span>ImGuiStorage);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiStorage_GetInt(
         self_: <span class="kw-2">*mut </span>ImGuiStorage,
         key: ImGuiID,
         default_val: cty::c_int,
     ) -&gt; cty::c_int;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiStorage_SetInt(self_: <span class="kw-2">*mut </span>ImGuiStorage, key: ImGuiID, val: cty::c_int);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiStorage_GetBool(self_: <span class="kw-2">*mut </span>ImGuiStorage, key: ImGuiID, default_val: bool) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiStorage_SetBool(self_: <span class="kw-2">*mut </span>ImGuiStorage, key: ImGuiID, val: bool);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiStorage_GetFloat(self_: <span class="kw-2">*mut </span>ImGuiStorage, key: ImGuiID, default_val: f32) -&gt; f32;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiStorage_SetFloat(self_: <span class="kw-2">*mut </span>ImGuiStorage, key: ImGuiID, val: f32);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiStorage_GetVoidPtr(self_: <span class="kw-2">*mut </span>ImGuiStorage, key: ImGuiID) -&gt; <span class="kw-2">*mut </span>cty::c_void;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiStorage_SetVoidPtr(self_: <span class="kw-2">*mut </span>ImGuiStorage, key: ImGuiID, val: <span class="kw-2">*mut </span>cty::c_void);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiStorage_GetIntRef(
         self_: <span class="kw-2">*mut </span>ImGuiStorage,
         key: ImGuiID,
         default_val: cty::c_int,
     ) -&gt; <span class="kw-2">*mut </span>cty::c_int;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiStorage_GetBoolRef(
         self_: <span class="kw-2">*mut </span>ImGuiStorage,
         key: ImGuiID,
         default_val: bool,
     ) -&gt; <span class="kw-2">*mut </span>bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiStorage_GetFloatRef(
         self_: <span class="kw-2">*mut </span>ImGuiStorage,
         key: ImGuiID,
         default_val: f32,
     ) -&gt; <span class="kw-2">*mut </span>f32;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiStorage_GetVoidPtrRef(
         self_: <span class="kw-2">*mut </span>ImGuiStorage,
         key: ImGuiID,
         default_val: <span class="kw-2">*mut </span>cty::c_void,
     ) -&gt; <span class="kw-2">*mut *mut </span>cty::c_void;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiStorage_SetAllInt(self_: <span class="kw-2">*mut </span>ImGuiStorage, val: cty::c_int);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiStorage_BuildSortByKey(self_: <span class="kw-2">*mut </span>ImGuiStorage);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiListClipper_ImGuiListClipper() -&gt; <span class="kw-2">*mut </span>ImGuiListClipper;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiListClipper_destroy(self_: <span class="kw-2">*mut </span>ImGuiListClipper);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiListClipper_Begin(
         self_: <span class="kw-2">*mut </span>ImGuiListClipper,
         items_count: cty::c_int,
         items_height: f32,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiListClipper_End(self_: <span class="kw-2">*mut </span>ImGuiListClipper);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiListClipper_Step(self_: <span class="kw-2">*mut </span>ImGuiListClipper) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImColor_ImColor_Nil() -&gt; <span class="kw-2">*mut </span>ImColor;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImColor_destroy(self_: <span class="kw-2">*mut </span>ImColor);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImColor_ImColor_Int(
         r: cty::c_int,
         g: cty::c_int,
@@ -7930,63 +7932,63 @@
         a: cty::c_int,
     ) -&gt; <span class="kw-2">*mut </span>ImColor;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImColor_ImColor_U32(rgba: ImU32) -&gt; <span class="kw-2">*mut </span>ImColor;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImColor_ImColor_Float(r: f32, g: f32, b: f32, a: f32) -&gt; <span class="kw-2">*mut </span>ImColor;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImColor_ImColor_Vec4(col: ImVec4) -&gt; <span class="kw-2">*mut </span>ImColor;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImColor_SetHSV(self_: <span class="kw-2">*mut </span>ImColor, h: f32, s: f32, v: f32, a: f32);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImColor_HSV(pOut: <span class="kw-2">*mut </span>ImColor, h: f32, s: f32, v: f32, a: f32);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawCmd_ImDrawCmd() -&gt; <span class="kw-2">*mut </span>ImDrawCmd;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawCmd_destroy(self_: <span class="kw-2">*mut </span>ImDrawCmd);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawListSplitter_ImDrawListSplitter() -&gt; <span class="kw-2">*mut </span>ImDrawListSplitter;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawListSplitter_destroy(self_: <span class="kw-2">*mut </span>ImDrawListSplitter);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawListSplitter_Clear(self_: <span class="kw-2">*mut </span>ImDrawListSplitter);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawListSplitter_ClearFreeMemory(self_: <span class="kw-2">*mut </span>ImDrawListSplitter);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawListSplitter_Split(
         self_: <span class="kw-2">*mut </span>ImDrawListSplitter,
         draw_list: <span class="kw-2">*mut </span>ImDrawList,
         count: cty::c_int,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawListSplitter_Merge(self_: <span class="kw-2">*mut </span>ImDrawListSplitter, draw_list: <span class="kw-2">*mut </span>ImDrawList);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawListSplitter_SetCurrentChannel(
         self_: <span class="kw-2">*mut </span>ImDrawListSplitter,
         draw_list: <span class="kw-2">*mut </span>ImDrawList,
         channel_idx: cty::c_int,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList_ImDrawList(shared_data: <span class="kw-2">*const </span>ImDrawListSharedData) -&gt; <span class="kw-2">*mut </span>ImDrawList;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList_destroy(self_: <span class="kw-2">*mut </span>ImDrawList);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList_PushClipRect(
         self_: <span class="kw-2">*mut </span>ImDrawList,
         clip_rect_min: ImVec2,
@@ -7994,25 +7996,25 @@
         intersect_with_current_clip_rect: bool,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList_PushClipRectFullScreen(self_: <span class="kw-2">*mut </span>ImDrawList);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList_PopClipRect(self_: <span class="kw-2">*mut </span>ImDrawList);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList_PushTextureID(self_: <span class="kw-2">*mut </span>ImDrawList, texture_id: ImTextureID);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList_PopTextureID(self_: <span class="kw-2">*mut </span>ImDrawList);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList_GetClipRectMin(pOut: <span class="kw-2">*mut </span>ImVec2, self_: <span class="kw-2">*mut </span>ImDrawList);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList_GetClipRectMax(pOut: <span class="kw-2">*mut </span>ImVec2, self_: <span class="kw-2">*mut </span>ImDrawList);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList_AddLine(
         self_: <span class="kw-2">*mut </span>ImDrawList,
         p1: ImVec2,
@@ -8021,7 +8023,7 @@
         thickness: f32,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList_AddRect(
         self_: <span class="kw-2">*mut </span>ImDrawList,
         p_min: ImVec2,
@@ -8032,7 +8034,7 @@
         thickness: f32,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList_AddRectFilled(
         self_: <span class="kw-2">*mut </span>ImDrawList,
         p_min: ImVec2,
@@ -8042,7 +8044,7 @@
         rounding_corners: ImDrawCornerFlags,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList_AddRectFilledMultiColor(
         self_: <span class="kw-2">*mut </span>ImDrawList,
         p_min: ImVec2,
@@ -8053,7 +8055,7 @@
         col_bot_left: ImU32,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList_AddQuad(
         self_: <span class="kw-2">*mut </span>ImDrawList,
         p1: ImVec2,
@@ -8064,7 +8066,7 @@
         thickness: f32,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList_AddQuadFilled(
         self_: <span class="kw-2">*mut </span>ImDrawList,
         p1: ImVec2,
@@ -8074,7 +8076,7 @@
         col: ImU32,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList_AddTriangle(
         self_: <span class="kw-2">*mut </span>ImDrawList,
         p1: ImVec2,
@@ -8084,7 +8086,7 @@
         thickness: f32,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList_AddTriangleFilled(
         self_: <span class="kw-2">*mut </span>ImDrawList,
         p1: ImVec2,
@@ -8093,7 +8095,7 @@
         col: ImU32,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList_AddCircle(
         self_: <span class="kw-2">*mut </span>ImDrawList,
         center: ImVec2,
@@ -8103,7 +8105,7 @@
         thickness: f32,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList_AddCircleFilled(
         self_: <span class="kw-2">*mut </span>ImDrawList,
         center: ImVec2,
@@ -8112,7 +8114,7 @@
         num_segments: cty::c_int,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList_AddNgon(
         self_: <span class="kw-2">*mut </span>ImDrawList,
         center: ImVec2,
@@ -8122,7 +8124,7 @@
         thickness: f32,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList_AddNgonFilled(
         self_: <span class="kw-2">*mut </span>ImDrawList,
         center: ImVec2,
@@ -8131,7 +8133,7 @@
         num_segments: cty::c_int,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList_AddText_Vec2(
         self_: <span class="kw-2">*mut </span>ImDrawList,
         pos: ImVec2,
@@ -8140,7 +8142,7 @@
         text_end: <span class="kw-2">*const </span>cty::c_char,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList_AddText_FontPtr(
         self_: <span class="kw-2">*mut </span>ImDrawList,
         font: <span class="kw-2">*const </span>ImFont,
@@ -8153,7 +8155,7 @@
         cpu_fine_clip_rect: <span class="kw-2">*const </span>ImVec4,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList_AddPolyline(
         self_: <span class="kw-2">*mut </span>ImDrawList,
         points: <span class="kw-2">*const </span>ImVec2,
@@ -8163,7 +8165,7 @@
         thickness: f32,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList_AddConvexPolyFilled(
         self_: <span class="kw-2">*mut </span>ImDrawList,
         points: <span class="kw-2">*const </span>ImVec2,
@@ -8171,7 +8173,7 @@
         col: ImU32,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList_AddBezierCubic(
         self_: <span class="kw-2">*mut </span>ImDrawList,
         p1: ImVec2,
@@ -8183,7 +8185,7 @@
         num_segments: cty::c_int,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList_AddBezierQuadratic(
         self_: <span class="kw-2">*mut </span>ImDrawList,
         p1: ImVec2,
@@ -8194,7 +8196,7 @@
         num_segments: cty::c_int,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList_AddImage(
         self_: <span class="kw-2">*mut </span>ImDrawList,
         user_texture_id: ImTextureID,
@@ -8205,7 +8207,7 @@
         col: ImU32,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList_AddImageQuad(
         self_: <span class="kw-2">*mut </span>ImDrawList,
         user_texture_id: ImTextureID,
@@ -8220,7 +8222,7 @@
         col: ImU32,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList_AddImageRounded(
         self_: <span class="kw-2">*mut </span>ImDrawList,
         user_texture_id: ImTextureID,
@@ -8233,22 +8235,22 @@
         rounding_corners: ImDrawCornerFlags,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList_PathClear(self_: <span class="kw-2">*mut </span>ImDrawList);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList_PathLineTo(self_: <span class="kw-2">*mut </span>ImDrawList, pos: ImVec2);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList_PathLineToMergeDuplicate(self_: <span class="kw-2">*mut </span>ImDrawList, pos: ImVec2);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList_PathFillConvex(self_: <span class="kw-2">*mut </span>ImDrawList, col: ImU32);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList_PathStroke(self_: <span class="kw-2">*mut </span>ImDrawList, col: ImU32, closed: bool, thickness: f32);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList_PathArcTo(
         self_: <span class="kw-2">*mut </span>ImDrawList,
         center: ImVec2,
@@ -8258,7 +8260,7 @@
         num_segments: cty::c_int,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList_PathArcToFast(
         self_: <span class="kw-2">*mut </span>ImDrawList,
         center: ImVec2,
@@ -8267,7 +8269,7 @@
         a_max_of_12: cty::c_int,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList_PathBezierCubicCurveTo(
         self_: <span class="kw-2">*mut </span>ImDrawList,
         p2: ImVec2,
@@ -8276,7 +8278,7 @@
         num_segments: cty::c_int,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList_PathBezierQuadraticCurveTo(
         self_: <span class="kw-2">*mut </span>ImDrawList,
         p2: ImVec2,
@@ -8284,7 +8286,7 @@
         num_segments: cty::c_int,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList_PathRect(
         self_: <span class="kw-2">*mut </span>ImDrawList,
         rect_min: ImVec2,
@@ -8293,46 +8295,46 @@
         rounding_corners: ImDrawCornerFlags,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList_AddCallback(
         self_: <span class="kw-2">*mut </span>ImDrawList,
         callback: ImDrawCallback,
         callback_data: <span class="kw-2">*mut </span>cty::c_void,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList_AddDrawCmd(self_: <span class="kw-2">*mut </span>ImDrawList);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList_CloneOutput(self_: <span class="kw-2">*mut </span>ImDrawList) -&gt; <span class="kw-2">*mut </span>ImDrawList;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList_ChannelsSplit(self_: <span class="kw-2">*mut </span>ImDrawList, count: cty::c_int);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList_ChannelsMerge(self_: <span class="kw-2">*mut </span>ImDrawList);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList_ChannelsSetCurrent(self_: <span class="kw-2">*mut </span>ImDrawList, n: cty::c_int);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList_PrimReserve(
         self_: <span class="kw-2">*mut </span>ImDrawList,
         idx_count: cty::c_int,
         vtx_count: cty::c_int,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList_PrimUnreserve(
         self_: <span class="kw-2">*mut </span>ImDrawList,
         idx_count: cty::c_int,
         vtx_count: cty::c_int,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList_PrimRect(self_: <span class="kw-2">*mut </span>ImDrawList, a: ImVec2, b: ImVec2, col: ImU32);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList_PrimRectUV(
         self_: <span class="kw-2">*mut </span>ImDrawList,
         a: ImVec2,
@@ -8342,7 +8344,7 @@
         col: ImU32,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList_PrimQuadUV(
         self_: <span class="kw-2">*mut </span>ImDrawList,
         a: ImVec2,
@@ -8356,119 +8358,119 @@
         col: ImU32,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList_PrimWriteVtx(self_: <span class="kw-2">*mut </span>ImDrawList, pos: ImVec2, uv: ImVec2, col: ImU32);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList_PrimWriteIdx(self_: <span class="kw-2">*mut </span>ImDrawList, idx: ImDrawIdx);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList_PrimVtx(self_: <span class="kw-2">*mut </span>ImDrawList, pos: ImVec2, uv: ImVec2, col: ImU32);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList__ResetForNewFrame(self_: <span class="kw-2">*mut </span>ImDrawList);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList__ClearFreeMemory(self_: <span class="kw-2">*mut </span>ImDrawList);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList__PopUnusedDrawCmd(self_: <span class="kw-2">*mut </span>ImDrawList);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList__OnChangedClipRect(self_: <span class="kw-2">*mut </span>ImDrawList);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList__OnChangedTextureID(self_: <span class="kw-2">*mut </span>ImDrawList);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawList__OnChangedVtxOffset(self_: <span class="kw-2">*mut </span>ImDrawList);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawData_ImDrawData() -&gt; <span class="kw-2">*mut </span>ImDrawData;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawData_destroy(self_: <span class="kw-2">*mut </span>ImDrawData);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawData_Clear(self_: <span class="kw-2">*mut </span>ImDrawData);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawData_DeIndexAllBuffers(self_: <span class="kw-2">*mut </span>ImDrawData);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImDrawData_ScaleClipRects(self_: <span class="kw-2">*mut </span>ImDrawData, fb_scale: ImVec2);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFontConfig_ImFontConfig() -&gt; <span class="kw-2">*mut </span>ImFontConfig;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFontConfig_destroy(self_: <span class="kw-2">*mut </span>ImFontConfig);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFontGlyphRangesBuilder_ImFontGlyphRangesBuilder() -&gt; <span class="kw-2">*mut </span>ImFontGlyphRangesBuilder;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFontGlyphRangesBuilder_destroy(self_: <span class="kw-2">*mut </span>ImFontGlyphRangesBuilder);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFontGlyphRangesBuilder_Clear(self_: <span class="kw-2">*mut </span>ImFontGlyphRangesBuilder);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFontGlyphRangesBuilder_GetBit(self_: <span class="kw-2">*mut </span>ImFontGlyphRangesBuilder, n: usize) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFontGlyphRangesBuilder_SetBit(self_: <span class="kw-2">*mut </span>ImFontGlyphRangesBuilder, n: usize);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFontGlyphRangesBuilder_AddChar(self_: <span class="kw-2">*mut </span>ImFontGlyphRangesBuilder, c: ImWchar);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFontGlyphRangesBuilder_AddText(
         self_: <span class="kw-2">*mut </span>ImFontGlyphRangesBuilder,
         text: <span class="kw-2">*const </span>cty::c_char,
         text_end: <span class="kw-2">*const </span>cty::c_char,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFontGlyphRangesBuilder_AddRanges(
         self_: <span class="kw-2">*mut </span>ImFontGlyphRangesBuilder,
         ranges: <span class="kw-2">*const </span>ImWchar,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFontGlyphRangesBuilder_BuildRanges(
         self_: <span class="kw-2">*mut </span>ImFontGlyphRangesBuilder,
         out_ranges: <span class="kw-2">*mut </span>ImVector_ImWchar,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFontAtlasCustomRect_ImFontAtlasCustomRect() -&gt; <span class="kw-2">*mut </span>ImFontAtlasCustomRect;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFontAtlasCustomRect_destroy(self_: <span class="kw-2">*mut </span>ImFontAtlasCustomRect);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFontAtlasCustomRect_IsPacked(self_: <span class="kw-2">*mut </span>ImFontAtlasCustomRect) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFontAtlas_ImFontAtlas() -&gt; <span class="kw-2">*mut </span>ImFontAtlas;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFontAtlas_destroy(self_: <span class="kw-2">*mut </span>ImFontAtlas);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFontAtlas_AddFont(
         self_: <span class="kw-2">*mut </span>ImFontAtlas,
         font_cfg: <span class="kw-2">*const </span>ImFontConfig,
     ) -&gt; <span class="kw-2">*mut </span>ImFont;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFontAtlas_AddFontDefault(
         self_: <span class="kw-2">*mut </span>ImFontAtlas,
         font_cfg: <span class="kw-2">*const </span>ImFontConfig,
     ) -&gt; <span class="kw-2">*mut </span>ImFont;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFontAtlas_AddFontFromFileTTF(
         self_: <span class="kw-2">*mut </span>ImFontAtlas,
         filename: <span class="kw-2">*const </span>cty::c_char,
@@ -8477,7 +8479,7 @@
         glyph_ranges: <span class="kw-2">*const </span>ImWchar,
     ) -&gt; <span class="kw-2">*mut </span>ImFont;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFontAtlas_AddFontFromMemoryTTF(
         self_: <span class="kw-2">*mut </span>ImFontAtlas,
         font_data: <span class="kw-2">*mut </span>cty::c_void,
@@ -8487,7 +8489,7 @@
         glyph_ranges: <span class="kw-2">*const </span>ImWchar,
     ) -&gt; <span class="kw-2">*mut </span>ImFont;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFontAtlas_AddFontFromMemoryCompressedTTF(
         self_: <span class="kw-2">*mut </span>ImFontAtlas,
         compressed_font_data: <span class="kw-2">*const </span>cty::c_void,
@@ -8497,7 +8499,7 @@
         glyph_ranges: <span class="kw-2">*const </span>ImWchar,
     ) -&gt; <span class="kw-2">*mut </span>ImFont;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFontAtlas_AddFontFromMemoryCompressedBase85TTF(
         self_: <span class="kw-2">*mut </span>ImFontAtlas,
         compressed_font_data_base85: <span class="kw-2">*const </span>cty::c_char,
@@ -8506,22 +8508,22 @@
         glyph_ranges: <span class="kw-2">*const </span>ImWchar,
     ) -&gt; <span class="kw-2">*mut </span>ImFont;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFontAtlas_ClearInputData(self_: <span class="kw-2">*mut </span>ImFontAtlas);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFontAtlas_ClearTexData(self_: <span class="kw-2">*mut </span>ImFontAtlas);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFontAtlas_ClearFonts(self_: <span class="kw-2">*mut </span>ImFontAtlas);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFontAtlas_Clear(self_: <span class="kw-2">*mut </span>ImFontAtlas);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFontAtlas_Build(self_: <span class="kw-2">*mut </span>ImFontAtlas) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFontAtlas_GetTexDataAsAlpha8(
         self_: <span class="kw-2">*mut </span>ImFontAtlas,
         out_pixels: <span class="kw-2">*mut *mut </span>cty::c_uchar,
@@ -8530,7 +8532,7 @@
         out_bytes_per_pixel: <span class="kw-2">*mut </span>cty::c_int,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFontAtlas_GetTexDataAsRGBA32(
         self_: <span class="kw-2">*mut </span>ImFontAtlas,
         out_pixels: <span class="kw-2">*mut *mut </span>cty::c_uchar,
@@ -8539,46 +8541,46 @@
         out_bytes_per_pixel: <span class="kw-2">*mut </span>cty::c_int,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFontAtlas_IsBuilt(self_: <span class="kw-2">*mut </span>ImFontAtlas) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFontAtlas_SetTexID(self_: <span class="kw-2">*mut </span>ImFontAtlas, id: ImTextureID);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFontAtlas_GetGlyphRangesDefault(self_: <span class="kw-2">*mut </span>ImFontAtlas) -&gt; <span class="kw-2">*const </span>ImWchar;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFontAtlas_GetGlyphRangesKorean(self_: <span class="kw-2">*mut </span>ImFontAtlas) -&gt; <span class="kw-2">*const </span>ImWchar;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFontAtlas_GetGlyphRangesJapanese(self_: <span class="kw-2">*mut </span>ImFontAtlas) -&gt; <span class="kw-2">*const </span>ImWchar;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFontAtlas_GetGlyphRangesChineseFull(self_: <span class="kw-2">*mut </span>ImFontAtlas) -&gt; <span class="kw-2">*const </span>ImWchar;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFontAtlas_GetGlyphRangesChineseSimplifiedCommon(
         self_: <span class="kw-2">*mut </span>ImFontAtlas,
     ) -&gt; <span class="kw-2">*const </span>ImWchar;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFontAtlas_GetGlyphRangesCyrillic(self_: <span class="kw-2">*mut </span>ImFontAtlas) -&gt; <span class="kw-2">*const </span>ImWchar;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFontAtlas_GetGlyphRangesThai(self_: <span class="kw-2">*mut </span>ImFontAtlas) -&gt; <span class="kw-2">*const </span>ImWchar;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFontAtlas_GetGlyphRangesVietnamese(self_: <span class="kw-2">*mut </span>ImFontAtlas) -&gt; <span class="kw-2">*const </span>ImWchar;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFontAtlas_AddCustomRectRegular(
         self_: <span class="kw-2">*mut </span>ImFontAtlas,
         width: cty::c_int,
         height: cty::c_int,
     ) -&gt; cty::c_int;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFontAtlas_AddCustomRectFontGlyph(
         self_: <span class="kw-2">*mut </span>ImFontAtlas,
         font: <span class="kw-2">*mut </span>ImFont,
@@ -8589,13 +8591,13 @@
         offset: ImVec2,
     ) -&gt; cty::c_int;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFontAtlas_GetCustomRectByIndex(
         self_: <span class="kw-2">*mut </span>ImFontAtlas,
         index: cty::c_int,
     ) -&gt; <span class="kw-2">*mut </span>ImFontAtlasCustomRect;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFontAtlas_CalcCustomRectUV(
         self_: <span class="kw-2">*mut </span>ImFontAtlas,
         rect: <span class="kw-2">*const </span>ImFontAtlasCustomRect,
@@ -8603,7 +8605,7 @@
         out_uv_max: <span class="kw-2">*mut </span>ImVec2,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFontAtlas_GetMouseCursorTexData(
         self_: <span class="kw-2">*mut </span>ImFontAtlas,
         cursor: ImGuiMouseCursor,
@@ -8613,28 +8615,28 @@
         out_uv_fill: <span class="kw-2">*mut </span>ImVec2,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFont_ImFont() -&gt; <span class="kw-2">*mut </span>ImFont;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFont_destroy(self_: <span class="kw-2">*mut </span>ImFont);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFont_FindGlyph(self_: <span class="kw-2">*mut </span>ImFont, c: ImWchar) -&gt; <span class="kw-2">*const </span>ImFontGlyph;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFont_FindGlyphNoFallback(self_: <span class="kw-2">*mut </span>ImFont, c: ImWchar) -&gt; <span class="kw-2">*const </span>ImFontGlyph;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFont_GetCharAdvance(self_: <span class="kw-2">*mut </span>ImFont, c: ImWchar) -&gt; f32;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFont_IsLoaded(self_: <span class="kw-2">*mut </span>ImFont) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFont_GetDebugName(self_: <span class="kw-2">*mut </span>ImFont) -&gt; <span class="kw-2">*const </span>cty::c_char;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFont_CalcTextSizeA(
         pOut: <span class="kw-2">*mut </span>ImVec2,
         self_: <span class="kw-2">*mut </span>ImFont,
@@ -8646,7 +8648,7 @@
         remaining: <span class="kw-2">*mut *const </span>cty::c_char,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFont_CalcWordWrapPositionA(
         self_: <span class="kw-2">*mut </span>ImFont,
         scale: f32,
@@ -8655,7 +8657,7 @@
         wrap_width: f32,
     ) -&gt; <span class="kw-2">*const </span>cty::c_char;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFont_RenderChar(
         self_: <span class="kw-2">*mut </span>ImFont,
         draw_list: <span class="kw-2">*mut </span>ImDrawList,
@@ -8665,7 +8667,7 @@
         c: ImWchar,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFont_RenderText(
         self_: <span class="kw-2">*mut </span>ImFont,
         draw_list: <span class="kw-2">*mut </span>ImDrawList,
@@ -8679,16 +8681,16 @@
         cpu_fine_clip: bool,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFont_BuildLookupTable(self_: <span class="kw-2">*mut </span>ImFont);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFont_ClearOutputData(self_: <span class="kw-2">*mut </span>ImFont);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFont_GrowIndex(self_: <span class="kw-2">*mut </span>ImFont, new_size: cty::c_int);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFont_AddGlyph(
         self_: <span class="kw-2">*mut </span>ImFont,
         src_cfg: <span class="kw-2">*const </span>ImFontConfig,
@@ -8704,26 +8706,26 @@
         advance_x: f32,
     );
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFont_AddRemapChar(self_: <span class="kw-2">*mut </span>ImFont, dst: ImWchar, src: ImWchar, overwrite_dst: bool);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFont_SetGlyphVisible(self_: <span class="kw-2">*mut </span>ImFont, c: ImWchar, visible: bool);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFont_SetFallbackChar(self_: <span class="kw-2">*mut </span>ImFont, c: ImWchar);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImFont_IsGlyphRangeUnused(
         self_: <span class="kw-2">*mut </span>ImFont,
         c_begin: cty::c_uint,
         c_last: cty::c_uint,
     ) -&gt; bool;
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>igLogText(fmt: <span class="kw-2">*const </span>cty::c_char, ...);
 }
-<span class="kw">extern </span><span class="string">&quot;C&quot; </span>{
+<span class="kw">extern </span><span class="string">"C" </span>{
     <span class="kw">pub fn </span>ImGuiTextBuffer_appendf(buffer: <span class="kw-2">*mut </span>ImGuiTextBuffer, fmt: <span class="kw-2">*const </span>cty::c_char, ...);
 }
 </code></pre></div></section></main></body></html>

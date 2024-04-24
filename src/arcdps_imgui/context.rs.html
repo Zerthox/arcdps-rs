@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\arcdps-imgui-0.8.0\src\context.rs`."><title>context.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-fa3bb1812debf86c.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="arcdps_imgui" data-themes="" data-resource-suffix="" data-rustdoc-version="1.74.1 (a28077b28 2023-12-04)" data-channel="1.74.1" data-search-js="search-8be46b629f5f14a8.js" data-settings-js="settings-74424d7eec62a23e.js" ><script src="../../static.files/storage-fec3eaa3851e447d.js"></script><script defer src="../../static.files/src-script-3280b574d94e47b4.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-c5bd66d33317d69f.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-5d8b3c7633ad77ba.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../arcdps_imgui/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\arcdps-imgui-0.8.0\src\context.rs`."><title>context.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-5bc39a1768837dd0.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="arcdps_imgui" data-themes="" data-resource-suffix="" data-rustdoc-version="1.77.2 (25ef9e3d8 2024-04-09)" data-channel="1.77.2" data-search-js="search-dd67cee4cfa65049.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../static.files/storage-4c98445ec4002617.js"></script><script defer src="../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-48f368f3872407c8.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-04d5337699b92874.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title">
+            <h2>Files</h2></div></nav><div class="sidebar-resizer"></div>
+    <main><nav class="sub"><form class="search-form"><span></span><div id="sidebar-button" tabindex="-1"><a href="../../arcdps_imgui/all.html" title="show sidebar"></a></div><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" tabindex="-1"><a href="../../help.html" title="help">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -575,7 +577,7 @@
 /// be removed in a future Dear ImGui version.
 ///
 /// If you need more than one context, you can use suspended contexts. As long as only one context
-/// is active at a time, it&#39;s possible to have multiple independent contexts.
+/// is active at a time, it's possible to have multiple independent contexts.
 ///
 /// # Examples
 ///
@@ -611,8 +613,8 @@
     platform_name: <span class="prelude-ty">Option</span>&lt;CString&gt;,
     renderer_name: <span class="prelude-ty">Option</span>&lt;CString&gt;,
     <span class="comment">// we need to box this because we hand imgui a pointer to it,
-    // and we don&#39;t want to deal with finding `clipboard_ctx`.
-    // we also put it in an unsafecell since we&#39;re going to give
+    // and we don't want to deal with finding `clipboard_ctx`.
+    // we also put it in an unsafecell since we're going to give
     // imgui a mutable pointer to it.
     </span>clipboard_ctx: Box&lt;UnsafeCell&lt;ClipboardContext&gt;&gt;,
 }
@@ -637,7 +639,7 @@
     /// # Panics
     ///
     /// Panics if an active context already exists
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;CreateContext&quot;</span>)]
+    </span><span class="attr">#[doc(alias = <span class="string">"CreateContext"</span>)]
     </span><span class="kw">pub fn </span>create() -&gt; <span class="self">Self </span>{
         <span class="self">Self</span>::create_internal(<span class="prelude-val">None</span>)
     }
@@ -646,7 +648,7 @@
     /// # Panics
     ///
     /// Panics if an active context already exists
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;CreateContext&quot;</span>)]
+    </span><span class="attr">#[doc(alias = <span class="string">"CreateContext"</span>)]
     </span><span class="kw">pub fn </span>create_with_shared_font_atlas(shared_font_atlas: Rc&lt;RefCell&lt;SharedFontAtlas&gt;&gt;) -&gt; <span class="self">Self </span>{
         <span class="self">Self</span>::create_internal(<span class="prelude-val">Some</span>(shared_font_atlas))
     }
@@ -664,12 +666,12 @@
         }
     }
     <span class="doccomment">/// Suspends this context so another context can be the active context.
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;CreateContext&quot;</span>)]
+    </span><span class="attr">#[doc(alias = <span class="string">"CreateContext"</span>)]
     </span><span class="kw">pub fn </span>suspend(<span class="self">self</span>) -&gt; SuspendedContext {
         <span class="kw">let </span>_guard = CTX_MUTEX.lock();
         <span class="macro">assert!</span>(
             <span class="self">self</span>.is_current_context(),
-            <span class="string">&quot;context to be suspended is not the active context&quot;
+            <span class="string">"context to be suspended is not the active context"
         </span>);
         clear_current_context();
         SuspendedContext(<span class="self">self</span>)
@@ -684,7 +686,7 @@
             <span class="prelude-val">Some</span>(PathBuf::from(s.to_str().ok()<span class="question-mark">?</span>))
         }
     }
-    <span class="doccomment">/// Sets the path to the ini file (default is &quot;imgui.ini&quot;)
+    <span class="doccomment">/// Sets the path to the ini file (default is "imgui.ini")
     ///
     /// Pass None to disable automatic .Ini saving.
     </span><span class="kw">pub fn </span>set_ini_filename&lt;T: Into&lt;<span class="prelude-ty">Option</span>&lt;PathBuf&gt;&gt;&gt;(<span class="kw-2">&amp;mut </span><span class="self">self</span>, ini_filename: T) {
@@ -708,7 +710,7 @@
             <span class="prelude-val">Some</span>(PathBuf::from(cstr.to_str().ok()<span class="question-mark">?</span>))
         }
     }
-    <span class="doccomment">/// Sets the log filename (default is &quot;imgui_log.txt&quot;).
+    <span class="doccomment">/// Sets the log filename (default is "imgui_log.txt").
     </span><span class="kw">pub fn </span>set_log_filename&lt;T: Into&lt;<span class="prelude-ty">Option</span>&lt;PathBuf&gt;&gt;&gt;(<span class="kw-2">&amp;mut </span><span class="self">self</span>, log_filename: T) {
         <span class="kw">let </span>log_filename = log_filename
             .into()
@@ -763,12 +765,12 @@
         <span class="self">self</span>.renderer_name = renderer_name;
     }
     <span class="doccomment">/// Loads settings from a string slice containing settings in .Ini file format
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;LoadIniSettingsFromMemory&quot;</span>)]
+    </span><span class="attr">#[doc(alias = <span class="string">"LoadIniSettingsFromMemory"</span>)]
     </span><span class="kw">pub fn </span>load_ini_settings(<span class="kw-2">&amp;mut </span><span class="self">self</span>, data: <span class="kw-2">&amp;</span>str) {
         <span class="kw">unsafe </span>{ sys::igLoadIniSettingsFromMemory(data.as_ptr() <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>, data.len()) }
     }
     <span class="doccomment">/// Saves settings to a mutable string buffer in .Ini file format
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;SaveInitSettingsToMemory&quot;</span>)]
+    </span><span class="attr">#[doc(alias = <span class="string">"SaveInitSettingsToMemory"</span>)]
     </span><span class="kw">pub fn </span>save_ini_settings(<span class="kw-2">&amp;mut </span><span class="self">self</span>, buf: <span class="kw-2">&amp;mut </span>String) {
         <span class="kw">let </span>data = <span class="kw">unsafe </span>{ CStr::from_ptr(sys::igSaveIniSettingsToMemory(ptr::null_mut())) };
         buf.push_str(<span class="kw-2">&amp;</span>data.to_string_lossy());
@@ -787,7 +789,7 @@
         <span class="kw">let </span>_guard = CTX_MUTEX.lock();
         <span class="macro">assert!</span>(
             no_current_context(),
-            <span class="string">&quot;A new active context cannot be created, because another one already exists&quot;
+            <span class="string">"A new active context cannot be created, because another one already exists"
         </span>);
 
         <span class="kw">let </span>shared_font_atlas_ptr = <span class="kw">match </span><span class="kw-2">&amp;</span>shared_font_atlas {
@@ -798,7 +800,7 @@
             <span class="prelude-val">None </span>=&gt; ptr::null_mut(),
         };
         <span class="comment">// Dear ImGui implicitly sets the current context during igCreateContext if the current
-        // context doesn&#39;t exist
+        // context doesn't exist
         </span><span class="kw">let </span>raw = <span class="kw">unsafe </span>{ sys::igCreateContext(shared_font_atlas_ptr) };
 
         Context {
@@ -818,7 +820,7 @@
 }
 
 <span class="kw">impl </span>Drop <span class="kw">for </span>Context {
-    <span class="attr">#[doc(alias = <span class="string">&quot;DestroyContext&quot;</span>)]
+    <span class="attr">#[doc(alias = <span class="string">"DestroyContext"</span>)]
     </span><span class="kw">fn </span>drop(<span class="kw-2">&amp;mut </span><span class="self">self</span>) {
         <span class="kw">let </span>_guard = CTX_MUTEX.lock();
         <span class="comment">// If this context is the active context, Dear ImGui automatically deactivates it during
@@ -853,7 +855,7 @@
 
 <span class="kw">impl </span>SuspendedContext {
     <span class="doccomment">/// Creates a new suspended imgui-rs context.
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;CreateContext&quot;</span>)]
+    </span><span class="attr">#[doc(alias = <span class="string">"CreateContext"</span>)]
     </span><span class="kw">pub fn </span>create() -&gt; <span class="self">Self </span>{
         <span class="self">Self</span>::create_internal(<span class="prelude-val">None</span>)
     }
@@ -867,7 +869,7 @@
     /// containing the activated context.
     /// If there is already an active context, nothing happens and `Err` is returned, containing
     /// the original suspended context.
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;SetCurrentContext&quot;</span>)]
+    </span><span class="attr">#[doc(alias = <span class="string">"SetCurrentContext"</span>)]
     </span><span class="kw">pub fn </span>activate(<span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;Context, SuspendedContext&gt; {
         <span class="kw">let </span>_guard = CTX_MUTEX.lock();
         <span class="kw">if </span>no_current_context() {
@@ -996,10 +998,10 @@
 <span class="attr">#[test]
 </span><span class="kw">fn </span>test_ini_load_save() {
     <span class="kw">let </span>(_guard, <span class="kw-2">mut </span>ctx) = <span class="kw">crate</span>::test::test_ctx();
-    <span class="kw">let </span>data = <span class="string">&quot;[Window][Debug##Default]
+    <span class="kw">let </span>data = <span class="string">"[Window][Debug##Default]
 Pos=60,60
 Size=400,400
-Collapsed=0&quot;</span>;
+Collapsed=0"</span>;
     ctx.load_ini_settings(data);
     <span class="kw">let </span><span class="kw-2">mut </span>buf = String::new();
     ctx.save_ini_settings(<span class="kw-2">&amp;mut </span>buf);
@@ -1010,28 +1012,28 @@ Collapsed=0&quot;</span>;
 </span><span class="kw">fn </span>test_default_ini_filename() {
     <span class="kw">let </span>_guard = <span class="kw">crate</span>::test::TEST_MUTEX.lock();
     <span class="kw">let </span>ctx = Context::create();
-    <span class="macro">assert_eq!</span>(ctx.ini_filename(), <span class="prelude-val">Some</span>(PathBuf::from(<span class="string">&quot;imgui.ini&quot;</span>)));
+    <span class="macro">assert_eq!</span>(ctx.ini_filename(), <span class="prelude-val">Some</span>(PathBuf::from(<span class="string">"imgui.ini"</span>)));
 }
 
 <span class="attr">#[test]
 </span><span class="kw">fn </span>test_set_ini_filename() {
     <span class="kw">let </span>(_guard, <span class="kw-2">mut </span>ctx) = <span class="kw">crate</span>::test::test_ctx();
-    ctx.set_ini_filename(<span class="prelude-val">Some</span>(PathBuf::from(<span class="string">&quot;test.ini&quot;</span>)));
-    <span class="macro">assert_eq!</span>(ctx.ini_filename(), <span class="prelude-val">Some</span>(PathBuf::from(<span class="string">&quot;test.ini&quot;</span>)));
+    ctx.set_ini_filename(<span class="prelude-val">Some</span>(PathBuf::from(<span class="string">"test.ini"</span>)));
+    <span class="macro">assert_eq!</span>(ctx.ini_filename(), <span class="prelude-val">Some</span>(PathBuf::from(<span class="string">"test.ini"</span>)));
 }
 
 <span class="attr">#[test]
 </span><span class="kw">fn </span>test_default_log_filename() {
     <span class="kw">let </span>_guard = <span class="kw">crate</span>::test::TEST_MUTEX.lock();
     <span class="kw">let </span>ctx = Context::create();
-    <span class="macro">assert_eq!</span>(ctx.log_filename(), <span class="prelude-val">Some</span>(PathBuf::from(<span class="string">&quot;imgui_log.txt&quot;</span>)));
+    <span class="macro">assert_eq!</span>(ctx.log_filename(), <span class="prelude-val">Some</span>(PathBuf::from(<span class="string">"imgui_log.txt"</span>)));
 }
 
 <span class="attr">#[test]
 </span><span class="kw">fn </span>test_set_log_filename() {
     <span class="kw">let </span>(_guard, <span class="kw-2">mut </span>ctx) = <span class="kw">crate</span>::test::test_ctx();
-    ctx.set_log_filename(<span class="prelude-val">Some</span>(PathBuf::from(<span class="string">&quot;test.log&quot;</span>)));
-    <span class="macro">assert_eq!</span>(ctx.log_filename(), <span class="prelude-val">Some</span>(PathBuf::from(<span class="string">&quot;test.log&quot;</span>)));
+    ctx.set_log_filename(<span class="prelude-val">Some</span>(PathBuf::from(<span class="string">"test.log"</span>)));
+    <span class="macro">assert_eq!</span>(ctx.log_filename(), <span class="prelude-val">Some</span>(PathBuf::from(<span class="string">"test.log"</span>)));
 }
 
 <span class="kw">impl </span>Context {
@@ -1050,7 +1052,7 @@ Collapsed=0&quot;</span>;
         }
     }
     <span class="doccomment">/// Returns an immutable reference to the user interface style
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;GetStyle&quot;</span>)]
+    </span><span class="attr">#[doc(alias = <span class="string">"GetStyle"</span>)]
     </span><span class="kw">pub fn </span>style(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>Style {
         <span class="kw">unsafe </span>{
             <span class="comment">// safe because Style is a transparent wrapper around sys::ImGuiStyle
@@ -1058,7 +1060,7 @@ Collapsed=0&quot;</span>;
         }
     }
     <span class="doccomment">/// Returns a mutable reference to the user interface style
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;GetStyle&quot;</span>)]
+    </span><span class="attr">#[doc(alias = <span class="string">"GetStyle"</span>)]
     </span><span class="kw">pub fn </span>style_mut(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;mut </span>Style {
         <span class="kw">unsafe </span>{
             <span class="comment">// safe because Style is a transparent wrapper around sys::ImGuiStyle
@@ -1070,7 +1072,7 @@ Collapsed=0&quot;</span>;
     /// # Panics
     ///
     /// Panics if the context uses a shared font atlas that is already borrowed
-    </span><span class="kw">pub fn </span>fonts(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; FontAtlasRefMut&lt;<span class="lifetime">&#39;_</span>&gt; {
+    </span><span class="kw">pub fn </span>fonts(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; FontAtlasRefMut&lt;<span class="lifetime">'_</span>&gt; {
         <span class="kw">match </span><span class="self">self</span>.shared_font_atlas {
             <span class="prelude-val">Some</span>(<span class="kw-2">ref </span>font_atlas) =&gt; FontAtlasRefMut::Shared(font_atlas.borrow_mut()),
             <span class="prelude-val">None </span>=&gt; <span class="kw">unsafe </span>{
@@ -1085,8 +1087,8 @@ Collapsed=0&quot;</span>;
     /// # Panics
     ///
     /// Panics if the context uses a shared font atlas that is already borrowed
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;NewFame&quot;</span>)]
-    </span><span class="kw">pub fn </span>frame(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; Ui&lt;<span class="lifetime">&#39;_</span>&gt; {
+    </span><span class="attr">#[doc(alias = <span class="string">"NewFame"</span>)]
+    </span><span class="kw">pub fn </span>frame(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; Ui&lt;<span class="lifetime">'_</span>&gt; {
         <span class="comment">// Clear default font if it no longer exists. This could be an error in the future
         </span><span class="kw">let </span>default_font = <span class="self">self</span>.io().font_default;
         <span class="kw">if </span>!default_font.is_null() &amp;&amp; <span class="self">self</span>.fonts().get_font(FontId(default_font)).is_none() {

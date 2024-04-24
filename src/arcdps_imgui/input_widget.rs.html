@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\arcdps-imgui-0.8.0\src\input_widget.rs`."><title>input_widget.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-fa3bb1812debf86c.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="arcdps_imgui" data-themes="" data-resource-suffix="" data-rustdoc-version="1.74.1 (a28077b28 2023-12-04)" data-channel="1.74.1" data-search-js="search-8be46b629f5f14a8.js" data-settings-js="settings-74424d7eec62a23e.js" ><script src="../../static.files/storage-fec3eaa3851e447d.js"></script><script defer src="../../static.files/src-script-3280b574d94e47b4.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-c5bd66d33317d69f.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-5d8b3c7633ad77ba.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../arcdps_imgui/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\arcdps-imgui-0.8.0\src\input_widget.rs`."><title>input_widget.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-5bc39a1768837dd0.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="arcdps_imgui" data-themes="" data-resource-suffix="" data-rustdoc-version="1.77.2 (25ef9e3d8 2024-04-09)" data-channel="1.77.2" data-search-js="search-dd67cee4cfa65049.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../static.files/storage-4c98445ec4002617.js"></script><script defer src="../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-48f368f3872407c8.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-04d5337699b92874.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title">
+            <h2>Files</h2></div></nav><div class="sidebar-resizer"></div>
+    <main><nav class="sub"><form class="search-form"><span></span><div id="sidebar-button" tabindex="-1"><a href="../../arcdps_imgui/all.html" title="show sidebar"></a></div><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" tabindex="-1"><a href="../../help.html" title="help">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -1061,7 +1063,7 @@
         </span><span class="kw">const </span>CHARS_NO_BLANK = sys::ImGuiInputTextFlags_CharsNoBlank;
         <span class="doccomment">/// Select entire text when first taking mouse focus
         </span><span class="kw">const </span>AUTO_SELECT_ALL = sys::ImGuiInputTextFlags_AutoSelectAll;
-        <span class="doccomment">/// Return &#39;true&#39; when Enter is pressed (as opposed to when the value was modified)
+        <span class="doccomment">/// Return 'true' when Enter is pressed (as opposed to when the value was modified)
         </span><span class="kw">const </span>ENTER_RETURNS_TRUE = sys::ImGuiInputTextFlags_EnterReturnsTrue;
         <span class="doccomment">/// Call user function on pressing TAB (for completion handling)
         </span><span class="kw">const </span>CALLBACK_COMPLETION = sys::ImGuiInputTextFlags_CallbackCompletion;
@@ -1073,18 +1075,18 @@
         </span><span class="kw">const </span>CALLBACK_ALWAYS = sys::ImGuiInputTextFlags_CallbackAlways;
         <span class="doccomment">/// Call user function to filter character.
         </span><span class="kw">const </span>CALLBACK_CHAR_FILTER = sys::ImGuiInputTextFlags_CallbackCharFilter;
-        <span class="doccomment">/// Pressing TAB input a &#39;\t&#39; character into the text field
+        <span class="doccomment">/// Pressing TAB input a '\t' character into the text field
         </span><span class="kw">const </span>ALLOW_TAB_INPUT = sys::ImGuiInputTextFlags_AllowTabInput;
         <span class="doccomment">/// In multi-line mode, unfocus with Enter, add new line with Ctrl+Enter (default is
         /// opposite: unfocus with Ctrl+Enter, add line with Enter).
         </span><span class="kw">const </span>CTRL_ENTER_FOR_NEW_LINE = sys::ImGuiInputTextFlags_CtrlEnterForNewLine;
         <span class="doccomment">/// Disable following the cursor horizontally
         </span><span class="kw">const </span>NO_HORIZONTAL_SCROLL = sys::ImGuiInputTextFlags_NoHorizontalScroll;
-        <span class="doccomment">/// Always overwrite (aka &quot;insert mode&quot;).
+        <span class="doccomment">/// Always overwrite (aka "insert mode").
         </span><span class="kw">const </span>ALWAYS_OVERWRITE = sys::ImGuiInputTextFlags_AlwaysInsertMode;
         <span class="doccomment">/// Read-only mode
         </span><span class="kw">const </span>READ_ONLY = sys::ImGuiInputTextFlags_ReadOnly;
-        <span class="doccomment">/// Password mode, display all characters as &#39;*&#39;
+        <span class="doccomment">/// Password mode, display all characters as '*'
         </span><span class="kw">const </span>PASSWORD = sys::ImGuiInputTextFlags_Password;
         <span class="doccomment">/// Disable undo/redo.
         </span><span class="kw">const </span>NO_UNDO_REDO = sys::ImGuiInputTextFlags_NoUndoRedo;
@@ -1201,16 +1203,16 @@
 }
 
 <span class="attr">#[must_use]
-</span><span class="kw">pub struct </span>InputText&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, L, H = <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str, T = PassthroughCallback&gt; {
+</span><span class="kw">pub struct </span>InputText&lt;<span class="lifetime">'ui</span>, <span class="lifetime">'p</span>, L, H = <span class="kw-2">&amp;</span><span class="lifetime">'static </span>str, T = PassthroughCallback&gt; {
     label: L,
     hint: <span class="prelude-ty">Option</span>&lt;H&gt;,
-    buf: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p </span><span class="kw-2">mut </span>String,
+    buf: <span class="kw-2">&amp;</span><span class="lifetime">'p </span><span class="kw-2">mut </span>String,
     callback_handler: T,
     flags: InputTextFlags,
-    ui: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span>Ui&lt;<span class="lifetime">&#39;ui</span>&gt;,
+    ui: <span class="kw-2">&amp;</span><span class="lifetime">'ui </span>Ui&lt;<span class="lifetime">'ui</span>&gt;,
 }
 
-<span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, L: AsRef&lt;str&gt;&gt; InputText&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, L&gt; {
+<span class="kw">impl</span>&lt;<span class="lifetime">'ui</span>, <span class="lifetime">'p</span>, L: AsRef&lt;str&gt;&gt; InputText&lt;<span class="lifetime">'ui</span>, <span class="lifetime">'p</span>, L&gt; {
     <span class="doccomment">/// Creates a new input text widget to edit the given string.
     ///
     /// # String Editing
@@ -1218,14 +1220,14 @@
     /// Please note, ImGui requires this string to be null-terminated. We accomplish this
     /// by appending and then removing a null terminator (`\0`) from the String you pass in.
     /// This has several consequences:
-    /// 1. The string&#39;s backing buffer may be resized and relocated even without edits as result
+    /// 1. The string's backing buffer may be resized and relocated even without edits as result
     /// of this pushed char.
     /// 2. **The string will appear truncated if the string contains `\0` inside it.** This will not
-    /// cause memory *unsafety*, but it will limit your usage. If that&#39;s the case, please pre-process
+    /// cause memory *unsafety*, but it will limit your usage. If that's the case, please pre-process
     /// your string.
     /// 3. Truncations by ImGui appear to be done primarily by insertions of `\0` to the truncation point.
-    /// We will handle this for you and edit the string &quot;properly&quot; too, but this might show up in callbacks.
-    </span><span class="kw">pub fn </span>new(ui: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span>Ui&lt;<span class="lifetime">&#39;ui</span>&gt;, label: L, buf: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p </span><span class="kw-2">mut </span>String) -&gt; <span class="self">Self </span>{
+    /// We will handle this for you and edit the string "properly" too, but this might show up in callbacks.
+    </span><span class="kw">pub fn </span>new(ui: <span class="kw-2">&amp;</span><span class="lifetime">'ui </span>Ui&lt;<span class="lifetime">'ui</span>&gt;, label: L, buf: <span class="kw-2">&amp;</span><span class="lifetime">'p </span><span class="kw-2">mut </span>String) -&gt; <span class="self">Self </span>{
         InputText {
             label,
             hint: <span class="prelude-val">None</span>,
@@ -1238,7 +1240,7 @@
     }
 }
 
-<span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, T, L, H&gt; InputText&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, L, H, T&gt;
+<span class="kw">impl</span>&lt;<span class="lifetime">'ui</span>, <span class="lifetime">'p</span>, T, L, H&gt; InputText&lt;<span class="lifetime">'ui</span>, <span class="lifetime">'p</span>, L, H, T&gt;
 <span class="kw">where
     </span>L: AsRef&lt;str&gt;,
     H: AsRef&lt;str&gt;,
@@ -1246,7 +1248,7 @@
 {
     <span class="doccomment">/// Sets the hint displayed in the input text background.
     </span><span class="attr">#[inline]
-    </span><span class="kw">pub fn </span>hint&lt;H2: AsRef&lt;str&gt;&gt;(<span class="self">self</span>, hint: H2) -&gt; InputText&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, L, H2, T&gt; {
+    </span><span class="kw">pub fn </span>hint&lt;H2: AsRef&lt;str&gt;&gt;(<span class="self">self</span>, hint: H2) -&gt; InputText&lt;<span class="lifetime">'ui</span>, <span class="lifetime">'p</span>, L, H2, T&gt; {
         InputText {
             label: <span class="self">self</span>.label,
             hint: <span class="prelude-val">Some</span>(hint),
@@ -1262,13 +1264,13 @@
     <span class="comment">// I am commenting this ability out for now -- because we need to push `\0` for imgui,
     // we may resize the buffer no matter what, and we must do that.
     // The solution for this will be, I suspect, to build a second api channel that takes
-    // an `&amp;mut CStr`, which is ugly! I suspect few to none will want no-resizing, so I&#39;m deferring
+    // an `&amp;mut CStr`, which is ugly! I suspect few to none will want no-resizing, so I'm deferring
     // fixing the problem. -- sanbox-irl 09/15/2021, see #523 for more
     //
     // /// By default (as of 0.8.0), imgui-rs will automatically handle string resizes
     // /// for [InputText] and [InputTextMultiline].
     // ///
-    // /// If, for some reason, you don&#39;t want this, you can run this function to prevent this.
+    // /// If, for some reason, you don't want this, you can run this function to prevent this.
     // /// In that case, edits which would cause a resize will not occur.
     // /// #[inline]
     // pub unsafe fn do_not_resize(mut self) -&gt; Self {
@@ -1281,7 +1283,7 @@
         <span class="kw-2">mut </span><span class="self">self</span>,
         callbacks: InputTextCallback,
         callback: T2,
-    ) -&gt; InputText&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, L, H, T2&gt; {
+    ) -&gt; InputText&lt;<span class="lifetime">'ui</span>, <span class="lifetime">'p</span>, L, H, T2&gt; {
         <span class="kw">if </span>callbacks.contains(InputTextCallback::COMPLETION) {
             <span class="self">self</span>.flags.insert(InputTextFlags::CALLBACK_COMPLETION);
         }
@@ -1314,16 +1316,16 @@
     /// Please note, ImGui requires this string to be null-terminated. We accomplish this
     /// by appending and then removing a null terminator (`\0`) from the String you pass in.
     /// This has several consequences:
-    /// 1. The string&#39;s backing buffer may be resized and relocated even without edits as result
+    /// 1. The string's backing buffer may be resized and relocated even without edits as result
     /// of this pushed char.
     /// 2. **The string will appear truncated if the string contains `\0` inside it.** This will not
-    /// cause memory *unsafety*, but it will limit your usage. If that&#39;s the case, please pre-process
+    /// cause memory *unsafety*, but it will limit your usage. If that's the case, please pre-process
     /// your string.
     /// 3. Truncations by ImGui appear to be done primarily by insertions of `\0` to the truncation point.
-    /// We will handle this for you and edit the string &quot;properly&quot; too, but this might show up in callbacks.
+    /// We will handle this for you and edit the string "properly" too, but this might show up in callbacks.
     </span><span class="kw">pub fn </span>build(<span class="self">self</span>) -&gt; bool {
         <span class="comment">// needs to be null-terminated! this is a hack!
-        </span><span class="self">self</span>.buf.push(<span class="string">&#39;\0&#39;</span>);
+        </span><span class="self">self</span>.buf.push(<span class="string">'\0'</span>);
 
         <span class="kw">let </span>(ptr, capacity) = (<span class="self">self</span>.buf.as_mut_ptr(), <span class="self">self</span>.buf.capacity());
 
@@ -1363,13 +1365,13 @@
 
         <span class="comment">// SAFETY: this slice is simply a view into the underlying buffer
         // of a String. We MAY be holding onto a view of uninitialized memory,
-        // however, since we&#39;re holding this as a u8 slice, I think it should be
+        // however, since we're holding this as a u8 slice, I think it should be
         // alright...
         // additionally, we can go over the bytes directly, rather than char indices,
         // because NUL will never appear in any UTF8 outside the NUL character (ie, within
         // a char).
         </span><span class="kw">let </span>buf = <span class="kw">unsafe </span>{ std::slice::from_raw_parts(<span class="self">self</span>.buf.as_ptr(), cap) };
-        <span class="kw">if let </span><span class="prelude-val">Some</span>(len) = buf.iter().position(|x| <span class="kw-2">*</span>x == <span class="string">b&#39;\0&#39;</span>) {
+        <span class="kw">if let </span><span class="prelude-val">Some</span>(len) = buf.iter().position(|x| <span class="kw-2">*</span>x == <span class="string">b'\0'</span>) {
             <span class="comment">// `len` is the position of the first `\0` byte in the String
             </span><span class="kw">unsafe </span>{
                 <span class="self">self</span>.buf.as_mut_vec().set_len(len);
@@ -1384,16 +1386,16 @@
 }
 
 <span class="attr">#[must_use]
-</span><span class="kw">pub struct </span>InputTextMultiline&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, L, T = PassthroughCallback&gt; {
+</span><span class="kw">pub struct </span>InputTextMultiline&lt;<span class="lifetime">'ui</span>, <span class="lifetime">'p</span>, L, T = PassthroughCallback&gt; {
     label: L,
-    buf: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p </span><span class="kw-2">mut </span>String,
+    buf: <span class="kw-2">&amp;</span><span class="lifetime">'p </span><span class="kw-2">mut </span>String,
     flags: InputTextFlags,
     size: [f32; <span class="number">2</span>],
     callback_handler: T,
-    ui: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span>Ui&lt;<span class="lifetime">&#39;ui</span>&gt;,
+    ui: <span class="kw-2">&amp;</span><span class="lifetime">'ui </span>Ui&lt;<span class="lifetime">'ui</span>&gt;,
 }
 
-<span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, L: AsRef&lt;str&gt;&gt; InputTextMultiline&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, L, PassthroughCallback&gt; {
+<span class="kw">impl</span>&lt;<span class="lifetime">'ui</span>, <span class="lifetime">'p</span>, L: AsRef&lt;str&gt;&gt; InputTextMultiline&lt;<span class="lifetime">'ui</span>, <span class="lifetime">'p</span>, L, PassthroughCallback&gt; {
     <span class="doccomment">/// Creates a new input text widget to edit the given string.
     ///
     /// # String Editing
@@ -1401,14 +1403,14 @@
     /// Please note, ImGui requires this string to be null-terminated. We accomplish this
     /// by appending and then removing a null terminator (`\0`) from the String you pass in.
     /// This has several consequences:
-    /// 1. The string&#39;s backing buffer may be resized and relocated even without edits as result
+    /// 1. The string's backing buffer may be resized and relocated even without edits as result
     /// of this pushed char.
     /// 2. **The string will appear truncated if the string contains `\0` inside it.** This will not
-    /// cause memory *unsafety*, but it will limit your usage. If that&#39;s the case, please pre-process
+    /// cause memory *unsafety*, but it will limit your usage. If that's the case, please pre-process
     /// your string.
     /// 3. Truncations by ImGui appear to be done primarily by insertions of `\0` to the truncation point.
-    /// We will handle this for you and edit the string &quot;properly&quot; too, but this might show up in callbacks.
-    </span><span class="kw">pub fn </span>new(ui: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span>Ui&lt;<span class="lifetime">&#39;ui</span>&gt;, label: L, buf: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p </span><span class="kw-2">mut </span>String, size: [f32; <span class="number">2</span>]) -&gt; <span class="self">Self </span>{
+    /// We will handle this for you and edit the string "properly" too, but this might show up in callbacks.
+    </span><span class="kw">pub fn </span>new(ui: <span class="kw-2">&amp;</span><span class="lifetime">'ui </span>Ui&lt;<span class="lifetime">'ui</span>&gt;, label: L, buf: <span class="kw-2">&amp;</span><span class="lifetime">'p </span><span class="kw-2">mut </span>String, size: [f32; <span class="number">2</span>]) -&gt; <span class="self">Self </span>{
         InputTextMultiline {
             label,
             buf,
@@ -1420,18 +1422,18 @@
     }
 }
 
-<span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, T: InputTextCallbackHandler, L: AsRef&lt;str&gt;&gt; InputTextMultiline&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, L, T&gt; {
+<span class="kw">impl</span>&lt;<span class="lifetime">'ui</span>, <span class="lifetime">'p</span>, T: InputTextCallbackHandler, L: AsRef&lt;str&gt;&gt; InputTextMultiline&lt;<span class="lifetime">'ui</span>, <span class="lifetime">'p</span>, L, T&gt; {
     <span class="macro">impl_text_flags!</span>(InputText);
 
     <span class="comment">// I am commenting this ability out for now -- because we need to push `\0` for imgui,
     // we may resize the buffer no matter what, and we must do that.
     // The solution for this will be, I suspect, to build a second api channel that takes
-    // an `&amp;mut CStr`, which is ugly! I suspect few to none will want no-resizing, so I&#39;m deferring
+    // an `&amp;mut CStr`, which is ugly! I suspect few to none will want no-resizing, so I'm deferring
     // fixing the problem. -- sanbox-irl 09/15/2021, see #523 for more
     // /// By default (as of 0.8.0), imgui-rs will automatically handle string resizes
     // /// for [InputText] and [InputTextMultiline].
     // ///
-    // /// If, for some reason, you don&#39;t want this, you can run this function to prevent this.
+    // /// If, for some reason, you don't want this, you can run this function to prevent this.
     // /// In that case, edits which would cause a resize will not occur.
     // #[inline]
     // pub fn do_not_resize(mut self) -&gt; Self {
@@ -1444,7 +1446,7 @@
         <span class="kw-2">mut </span><span class="self">self</span>,
         callbacks: InputTextMultilineCallback,
         callback_handler: T2,
-    ) -&gt; InputTextMultiline&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, L, T2&gt; {
+    ) -&gt; InputTextMultiline&lt;<span class="lifetime">'ui</span>, <span class="lifetime">'p</span>, L, T2&gt; {
         <span class="kw">if </span>callbacks.contains(InputTextMultilineCallback::COMPLETION) {
             <span class="self">self</span>.flags.insert(InputTextFlags::CALLBACK_COMPLETION);
         }
@@ -1475,16 +1477,16 @@
     /// Please note, ImGui requires this string to be null-terminated. We accomplish this
     /// by appending and then removing a null terminator (`\0`) from the String you pass in.
     /// This has several consequences:
-    /// 1. The string&#39;s backing buffer may be resized and relocated even without edits as result
+    /// 1. The string's backing buffer may be resized and relocated even without edits as result
     /// of this pushed char.
     /// 2. **The string will appear truncated if the string contains `\0` inside it.** This will not
-    /// cause memory *unsafety*, but it will limit your usage. If that&#39;s the case, please pre-process
+    /// cause memory *unsafety*, but it will limit your usage. If that's the case, please pre-process
     /// your string.
     /// 3. Truncations by ImGui appear to be done primarily by insertions of `\0` to the truncation point.
-    /// We will handle this for you and edit the string &quot;properly&quot; too, but this might show up in callbacks.
+    /// We will handle this for you and edit the string "properly" too, but this might show up in callbacks.
     </span><span class="kw">pub fn </span>build(<span class="self">self</span>) -&gt; bool {
         <span class="comment">// needs to be null-terminated! this is a hack!
-        </span><span class="self">self</span>.buf.push(<span class="string">&#39;\0&#39;</span>);
+        </span><span class="self">self</span>.buf.push(<span class="string">'\0'</span>);
         <span class="kw">let </span>(ptr, capacity) = (<span class="self">self</span>.buf.as_mut_ptr(), <span class="self">self</span>.buf.capacity());
 
         <span class="kw">let </span><span class="kw-2">mut </span>data = UserData {
@@ -1509,13 +1511,13 @@
 
         <span class="comment">// SAFETY: this slice is simply a view into the underlying buffer
         // of a String. We MAY be holding onto a view of uninitialized memory,
-        // however, since we&#39;re holding this as a u8 slice, I think it should be
+        // however, since we're holding this as a u8 slice, I think it should be
         // alright...
         // additionally, we can go over the bytes directly, rather than char indices,
         // because NUL will never appear in any UTF8 outside the NUL character (ie, within
         // a char).
         </span><span class="kw">let </span>buf = <span class="kw">unsafe </span>{ std::slice::from_raw_parts(<span class="self">self</span>.buf.as_ptr(), cap) };
-        <span class="kw">if let </span><span class="prelude-val">Some</span>(len) = buf.iter().position(|x| <span class="kw-2">*</span>x == <span class="string">b&#39;\0&#39;</span>) {
+        <span class="kw">if let </span><span class="prelude-val">Some</span>(len) = buf.iter().position(|x| <span class="kw-2">*</span>x == <span class="string">b'\0'</span>) {
             <span class="comment">// `len` is the position of the first `\0` byte in the String
             </span><span class="kw">unsafe </span>{
                 <span class="self">self</span>.buf.as_mut_vec().set_len(len);
@@ -1530,17 +1532,17 @@
 }
 
 <span class="attr">#[must_use]
-</span><span class="kw">pub struct </span>InputInt&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, L&gt; {
+</span><span class="kw">pub struct </span>InputInt&lt;<span class="lifetime">'ui</span>, <span class="lifetime">'p</span>, L&gt; {
     label: L,
-    value: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p </span><span class="kw-2">mut </span>i32,
+    value: <span class="kw-2">&amp;</span><span class="lifetime">'p </span><span class="kw-2">mut </span>i32,
     step: i32,
     step_fast: i32,
     flags: InputTextFlags,
-    ui: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span>Ui&lt;<span class="lifetime">&#39;ui</span>&gt;,
+    ui: <span class="kw-2">&amp;</span><span class="lifetime">'ui </span>Ui&lt;<span class="lifetime">'ui</span>&gt;,
 }
 
-<span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, L: AsRef&lt;str&gt;&gt; InputInt&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, L&gt; {
-    <span class="kw">pub fn </span>new(ui: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span>Ui&lt;<span class="lifetime">&#39;ui</span>&gt;, label: L, value: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p </span><span class="kw-2">mut </span>i32) -&gt; <span class="self">Self </span>{
+<span class="kw">impl</span>&lt;<span class="lifetime">'ui</span>, <span class="lifetime">'p</span>, L: AsRef&lt;str&gt;&gt; InputInt&lt;<span class="lifetime">'ui</span>, <span class="lifetime">'p</span>, L&gt; {
+    <span class="kw">pub fn </span>new(ui: <span class="kw-2">&amp;</span><span class="lifetime">'ui </span>Ui&lt;<span class="lifetime">'ui</span>&gt;, label: L, value: <span class="kw-2">&amp;</span><span class="lifetime">'p </span><span class="kw-2">mut </span>i32) -&gt; <span class="self">Self </span>{
         InputInt {
             label,
             value,
@@ -1568,17 +1570,17 @@
 }
 
 <span class="attr">#[must_use]
-</span><span class="kw">pub struct </span>InputFloat&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, L&gt; {
+</span><span class="kw">pub struct </span>InputFloat&lt;<span class="lifetime">'ui</span>, <span class="lifetime">'p</span>, L&gt; {
     label: L,
-    value: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p </span><span class="kw-2">mut </span>f32,
+    value: <span class="kw-2">&amp;</span><span class="lifetime">'p </span><span class="kw-2">mut </span>f32,
     step: f32,
     step_fast: f32,
     flags: InputTextFlags,
-    ui: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span>Ui&lt;<span class="lifetime">&#39;ui</span>&gt;,
+    ui: <span class="kw-2">&amp;</span><span class="lifetime">'ui </span>Ui&lt;<span class="lifetime">'ui</span>&gt;,
 }
 
-<span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, L: AsRef&lt;str&gt;&gt; InputFloat&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, L&gt; {
-    <span class="kw">pub fn </span>new(ui: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span>Ui&lt;<span class="lifetime">&#39;ui</span>&gt;, label: L, value: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p </span><span class="kw-2">mut </span>f32) -&gt; <span class="self">Self </span>{
+<span class="kw">impl</span>&lt;<span class="lifetime">'ui</span>, <span class="lifetime">'p</span>, L: AsRef&lt;str&gt;&gt; InputFloat&lt;<span class="lifetime">'ui</span>, <span class="lifetime">'p</span>, L&gt; {
+    <span class="kw">pub fn </span>new(ui: <span class="kw-2">&amp;</span><span class="lifetime">'ui </span>Ui&lt;<span class="lifetime">'ui</span>&gt;, label: L, value: <span class="kw-2">&amp;</span><span class="lifetime">'p </span><span class="kw-2">mut </span>f32) -&gt; <span class="self">Self </span>{
         InputFloat {
             label,
             value,
@@ -1596,7 +1598,7 @@
                 <span class="self">self</span>.value <span class="kw">as </span><span class="kw-2">*mut </span>f32,
                 <span class="self">self</span>.step,
                 <span class="self">self</span>.step_fast,
-                <span class="string">b&quot;%.3f\0&quot;</span>.as_ptr() <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>,
+                <span class="string">b"%.3f\0"</span>.as_ptr() <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>,
                 <span class="self">self</span>.flags.bits() <span class="kw">as </span>i32,
             )
         }
@@ -1609,15 +1611,15 @@
 <span class="macro">macro_rules! </span>impl_input_floatn {
     (<span class="macro-nonterminal">$InputFloatN</span>:ident, <span class="macro-nonterminal">$N</span>:expr, <span class="macro-nonterminal">$igInputFloatN</span>:ident) =&gt; {
         <span class="attr">#[must_use]
-        </span><span class="kw">pub struct </span><span class="macro-nonterminal">$InputFloatN</span>&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, L&gt; {
+        </span><span class="kw">pub struct </span><span class="macro-nonterminal">$InputFloatN</span>&lt;<span class="lifetime">'ui</span>, <span class="lifetime">'p</span>, L&gt; {
             label: L,
-            value: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p </span><span class="kw-2">mut </span>[f32; <span class="macro-nonterminal">$N</span>],
+            value: <span class="kw-2">&amp;</span><span class="lifetime">'p </span><span class="kw-2">mut </span>[f32; <span class="macro-nonterminal">$N</span>],
             flags: InputTextFlags,
-            ui: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span>Ui&lt;<span class="lifetime">&#39;ui</span>&gt;,
+            ui: <span class="kw-2">&amp;</span><span class="lifetime">'ui </span>Ui&lt;<span class="lifetime">'ui</span>&gt;,
         }
 
-        <span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, L: AsRef&lt;str&gt;&gt; <span class="macro-nonterminal">$InputFloatN</span>&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, L&gt; {
-            <span class="kw">pub fn </span>new(ui: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span>Ui&lt;<span class="lifetime">&#39;ui</span>&gt;, label: L, value: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p </span><span class="kw-2">mut </span>[f32; <span class="macro-nonterminal">$N</span>]) -&gt; <span class="self">Self </span>{
+        <span class="kw">impl</span>&lt;<span class="lifetime">'ui</span>, <span class="lifetime">'p</span>, L: AsRef&lt;str&gt;&gt; <span class="macro-nonterminal">$InputFloatN</span>&lt;<span class="lifetime">'ui</span>, <span class="lifetime">'p</span>, L&gt; {
+            <span class="kw">pub fn </span>new(ui: <span class="kw-2">&amp;</span><span class="lifetime">'ui </span>Ui&lt;<span class="lifetime">'ui</span>&gt;, label: L, value: <span class="kw-2">&amp;</span><span class="lifetime">'p </span><span class="kw-2">mut </span>[f32; <span class="macro-nonterminal">$N</span>]) -&gt; <span class="self">Self </span>{
                 <span class="macro-nonterminal">$InputFloatN </span>{
                     label,
                     value,
@@ -1631,7 +1633,7 @@
                     sys::<span class="macro-nonterminal">$igInputFloatN</span>(
                         <span class="self">self</span>.ui.scratch_txt(<span class="self">self</span>.label),
                         <span class="self">self</span>.value.as_mut_ptr(),
-                        <span class="string">b&quot;%.3f\0&quot;</span>.as_ptr() <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>,
+                        <span class="string">b"%.3f\0"</span>.as_ptr() <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>,
                         <span class="self">self</span>.flags.bits() <span class="kw">as </span>i32,
                     )
                 }
@@ -1649,15 +1651,15 @@
 <span class="macro">macro_rules! </span>impl_input_intn {
     (<span class="macro-nonterminal">$InputIntN</span>:ident, <span class="macro-nonterminal">$N</span>:expr, <span class="macro-nonterminal">$igInputIntN</span>:ident) =&gt; {
         <span class="attr">#[must_use]
-        </span><span class="kw">pub struct </span><span class="macro-nonterminal">$InputIntN</span>&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, L&gt; {
+        </span><span class="kw">pub struct </span><span class="macro-nonterminal">$InputIntN</span>&lt;<span class="lifetime">'ui</span>, <span class="lifetime">'p</span>, L&gt; {
             label: L,
-            value: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p </span><span class="kw-2">mut </span>[i32; <span class="macro-nonterminal">$N</span>],
+            value: <span class="kw-2">&amp;</span><span class="lifetime">'p </span><span class="kw-2">mut </span>[i32; <span class="macro-nonterminal">$N</span>],
             flags: InputTextFlags,
-            ui: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span>Ui&lt;<span class="lifetime">&#39;ui</span>&gt;,
+            ui: <span class="kw-2">&amp;</span><span class="lifetime">'ui </span>Ui&lt;<span class="lifetime">'ui</span>&gt;,
         }
 
-        <span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, L: AsRef&lt;str&gt;&gt; <span class="macro-nonterminal">$InputIntN</span>&lt;<span class="lifetime">&#39;ui</span>, <span class="lifetime">&#39;p</span>, L&gt; {
-            <span class="kw">pub fn </span>new(ui: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ui </span>Ui&lt;<span class="lifetime">&#39;ui</span>&gt;, label: L, value: <span class="kw-2">&amp;</span><span class="lifetime">&#39;p </span><span class="kw-2">mut </span>[i32; <span class="macro-nonterminal">$N</span>]) -&gt; <span class="self">Self </span>{
+        <span class="kw">impl</span>&lt;<span class="lifetime">'ui</span>, <span class="lifetime">'p</span>, L: AsRef&lt;str&gt;&gt; <span class="macro-nonterminal">$InputIntN</span>&lt;<span class="lifetime">'ui</span>, <span class="lifetime">'p</span>, L&gt; {
+            <span class="kw">pub fn </span>new(ui: <span class="kw-2">&amp;</span><span class="lifetime">'ui </span>Ui&lt;<span class="lifetime">'ui</span>&gt;, label: L, value: <span class="kw-2">&amp;</span><span class="lifetime">'p </span><span class="kw-2">mut </span>[i32; <span class="macro-nonterminal">$N</span>]) -&gt; <span class="self">Self </span>{
                 <span class="macro-nonterminal">$InputIntN </span>{
                     label,
                     value,
@@ -1788,14 +1790,14 @@
         <span class="self">Self</span>(data)
     }
 
-    <span class="doccomment">/// Get a reference to the text callback buffer&#39;s str.
+    <span class="doccomment">/// Get a reference to the text callback buffer's str.
     </span><span class="kw">pub fn </span>str(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>str {
         <span class="kw">unsafe </span>{
             std::str::from_utf8(std::slice::from_raw_parts(
                 (<span class="kw-2">*</span>(<span class="self">self</span>.<span class="number">0</span>)).Buf <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>,
                 (<span class="kw-2">*</span>(<span class="self">self</span>.<span class="number">0</span>)).BufTextLen <span class="kw">as </span>usize,
             ))
-            .expect(<span class="string">&quot;internal imgui error -- it boofed a utf8&quot;</span>)
+            .expect(<span class="string">"internal imgui error -- it boofed a utf8"</span>)
         }
     }
 
@@ -1823,7 +1825,7 @@
             (<span class="kw-2">*</span>(<span class="self">self</span>.<span class="number">0</span>)).Buf <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_ as </span><span class="kw-2">*mut </span><span class="kw">_</span>,
             (<span class="kw-2">*</span>(<span class="self">self</span>.<span class="number">0</span>)).BufTextLen <span class="kw">as </span>usize,
         ))
-        .expect(<span class="string">&quot;internal imgui error -- it boofed a utf8&quot;</span>);
+        .expect(<span class="string">"internal imgui error -- it boofed a utf8"</span>);
 
         str.as_bytes_mut()
     }
@@ -1831,7 +1833,7 @@
     <span class="doccomment">/// Sets the dirty flag on the text to imgui, indicating that
     /// it should reapply this string to its internal state.
     ///
-    /// **NB:** You only need to use this method if you&#39;re using `[str_as_bytes_mut]`.
+    /// **NB:** You only need to use this method if you're using `[str_as_bytes_mut]`.
     /// If you use the helper methods [remove_chars] and [insert_chars],
     /// this will be set for you. However, this is no downside to setting
     /// the dirty flag spuriously except the minor CPU time imgui will spend.
@@ -1909,7 +1911,7 @@
     ///
     /// It is up to the caller to confirm that the `pos` is a valid byte
     /// position, or use [insert_chars](Self::insert_chars) which will panic
-    /// if it isn&#39;t.
+    /// if it isn't.
     </span><span class="kw">pub unsafe fn </span>insert_chars_unsafe(<span class="kw-2">&amp;mut </span><span class="self">self</span>, pos: usize, s: <span class="kw-2">&amp;</span>str) {
         <span class="kw">let </span>start = s.as_ptr();
         <span class="kw">let </span>end = start.add(s.len());
@@ -1959,24 +1961,24 @@
         sys::ImGuiInputTextCallbackData_DeleteChars(<span class="self">self</span>.<span class="number">0</span>, pos <span class="kw">as </span>i32, byte_count <span class="kw">as </span>i32);
     }
 
-    <span class="doccomment">/// Get a reference to the text callback buffer&#39;s cursor pos.
+    <span class="doccomment">/// Get a reference to the text callback buffer's cursor pos.
     </span><span class="kw">pub fn </span>cursor_pos(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; usize {
         <span class="kw">unsafe </span>{ (<span class="kw-2">*</span><span class="self">self</span>.<span class="number">0</span>).CursorPos <span class="kw">as </span>usize }
     }
 
-    <span class="doccomment">/// Set the text callback buffer&#39;s cursor pos.
+    <span class="doccomment">/// Set the text callback buffer's cursor pos.
     </span><span class="kw">pub fn </span>set_cursor_pos(<span class="kw-2">&amp;mut </span><span class="self">self</span>, cursor_pos: usize) {
         <span class="kw">unsafe </span>{
             (<span class="kw-2">*</span><span class="self">self</span>.<span class="number">0</span>).CursorPos = cursor_pos <span class="kw">as </span>i32;
         }
     }
 
-    <span class="doccomment">/// Get a mutable reference to the text callback buffer&#39;s selection start.
+    <span class="doccomment">/// Get a mutable reference to the text callback buffer's selection start.
     </span><span class="kw">pub fn </span>selection_start_mut(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;mut </span>i32 {
         <span class="kw">unsafe </span>{ <span class="kw-2">&amp;mut </span>(<span class="kw-2">*</span><span class="self">self</span>.<span class="number">0</span>).SelectionStart }
     }
 
-    <span class="doccomment">/// Get a mutable reference to the text callback buffer&#39;s selection end..
+    <span class="doccomment">/// Get a mutable reference to the text callback buffer's selection end..
     </span><span class="kw">pub fn </span>selection_end_mut(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;mut </span>i32 {
         <span class="kw">unsafe </span>{ <span class="kw-2">&amp;mut </span>(<span class="kw-2">*</span><span class="self">self</span>.<span class="number">0</span>).SelectionEnd }
     }
@@ -1989,12 +1991,12 @@
 }
 
 <span class="doccomment">/// This is our default callback.
-</span><span class="kw">extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>callback&lt;T: InputTextCallbackHandler&gt;(
+</span><span class="kw">extern </span><span class="string">"C" </span><span class="kw">fn </span>callback&lt;T: InputTextCallbackHandler&gt;(
     data: <span class="kw-2">*mut </span>sys::ImGuiInputTextCallbackData,
 ) -&gt; c_int {
-    <span class="kw">struct </span>CallbackData&lt;<span class="lifetime">&#39;a</span>, T&gt; {
+    <span class="kw">struct </span>CallbackData&lt;<span class="lifetime">'a</span>, T&gt; {
         event_flag: InputTextFlags,
-        user_data: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><span class="kw-2">mut </span>UserData&lt;T&gt;,
+        user_data: <span class="kw-2">&amp;</span><span class="lifetime">'a </span><span class="kw-2">mut </span>UserData&lt;T&gt;,
     }
 
     <span class="kw">let </span>callback_data = <span class="kw">unsafe </span>{
@@ -2045,7 +2047,7 @@
             <span class="kw">let </span>chr = <span class="kw">unsafe </span>{ (<span class="kw-2">*</span>data).EventChar };
             <span class="kw">let </span>new_data = <span class="kw">match </span>callback_data.user_data.cback_handler.char_filter(chr) {
                 <span class="prelude-val">Some</span>(value) =&gt; value,
-                <span class="comment">// 0 means &quot;do not use this char&quot; in imgui docs
+                <span class="comment">// 0 means "do not use this char" in imgui docs
                 </span><span class="prelude-val">None </span>=&gt; <span class="number">0</span>,
             };
             <span class="comment">// set the new char...
@@ -2059,7 +2061,7 @@
                 <span class="kw">match </span>key {
                     sys::ImGuiKey_UpArrow =&gt; HistoryDirection::Up,
                     sys::ImGuiKey_DownArrow =&gt; HistoryDirection::Down,
-                    <span class="kw">_ </span>=&gt; <span class="macro">panic!</span>(<span class="string">&quot;Unexpected key&quot;</span>),
+                    <span class="kw">_ </span>=&gt; <span class="macro">panic!</span>(<span class="string">"Unexpected key"</span>),
                 }
             };
             <span class="kw">let </span>text_info = <span class="kw">unsafe </span>{ TextCallbackData::new(<span class="kw-2">&amp;mut *</span>data) };

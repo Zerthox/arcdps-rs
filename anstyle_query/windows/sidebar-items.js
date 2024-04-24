@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"fn":["enable_ansi_colors","enable_virtual_terminal_processing"]};

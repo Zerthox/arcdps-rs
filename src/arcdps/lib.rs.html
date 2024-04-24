@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `arcdps\src\lib.rs`."><title>lib.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-fa3bb1812debf86c.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="arcdps" data-themes="" data-resource-suffix="" data-rustdoc-version="1.74.1 (a28077b28 2023-12-04)" data-channel="1.74.1" data-search-js="search-8be46b629f5f14a8.js" data-settings-js="settings-74424d7eec62a23e.js" ><script src="../../static.files/storage-fec3eaa3851e447d.js"></script><script defer src="../../static.files/src-script-3280b574d94e47b4.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-c5bd66d33317d69f.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-5d8b3c7633ad77ba.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../arcdps/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `arcdps\src\lib.rs`."><title>lib.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-5bc39a1768837dd0.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="arcdps" data-themes="" data-resource-suffix="" data-rustdoc-version="1.77.2 (25ef9e3d8 2024-04-09)" data-channel="1.77.2" data-search-js="search-dd67cee4cfa65049.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../static.files/storage-4c98445ec4002617.js"></script><script defer src="../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-48f368f3872407c8.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-04d5337699b92874.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title">
+            <h2>Files</h2></div></nav><div class="sidebar-resizer"></div>
+    <main><nav class="sub"><form class="search-form"><span></span><div id="sidebar-button" tabindex="-1"><a href="../../arcdps/all.html" title="show sidebar"></a></div><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" tabindex="-1"><a href="../../help.html" title="help">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -349,7 +351,7 @@
 //! use arcdps::{Agent, Event, StateChange};
 //!
 //! arcdps::export! {
-//!     name: &quot;Example Plugin&quot;,
+//!     name: "Example Plugin",
 //!     sig: 0x12345678, // change this to a random number
 //!     init,
 //!     combat: custom_combat_name,
@@ -385,7 +387,7 @@
 //! use arcdps::extras::{UserInfoIter, UserRole};
 //!
 //! arcdps::export! {
-//!     name: &quot;Example Plugin&quot;,
+//!     name: "Example Plugin",
 //!     sig: 123,
 //!     extras_squad_update,
 //! }
@@ -406,10 +408,10 @@
 <span class="kw">pub mod </span>evtc;
 <span class="kw">pub mod </span>exports;
 
-<span class="attr">#[cfg(feature = <span class="string">&quot;extras&quot;</span>)]
+<span class="attr">#[cfg(feature = <span class="string">"extras"</span>)]
 </span><span class="kw">pub mod </span>extras;
 
-<span class="attr">#[cfg(feature = <span class="string">&quot;log&quot;</span>)]
+<span class="attr">#[cfg(feature = <span class="string">"log"</span>)]
 </span><span class="kw">pub mod </span>log;
 
 <span class="kw">mod </span>globals;
@@ -427,7 +429,7 @@
 
 <span class="kw">use </span>callbacks::<span class="kw-2">*</span>;
 
-<span class="attr">#[cfg(feature = <span class="string">&quot;extras&quot;</span>)]
+<span class="attr">#[cfg(feature = <span class="string">"extras"</span>)]
 </span><span class="kw">use </span>extras::callbacks::<span class="kw-2">*</span>;
 
 <span class="doccomment">/// Reference on what fields are currently supported by the [`export!`] macro.
@@ -435,7 +437,7 @@
 /// This struct is not used anywhere.
 </span><span class="kw">pub struct </span>SupportedFields {
     <span class="doccomment">/// Name of the plugin.
-    </span><span class="kw">pub </span>name: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str,
+    </span><span class="kw">pub </span>name: <span class="kw-2">&amp;</span><span class="lifetime">'static </span>str,
 
     <span class="doccomment">/// Unique signature of the plugin.
     ///
@@ -501,7 +503,7 @@
     /// No `event` and `src.elite != 0` indicates a target change.
     /// `src.id` will contain the new target.
     ///
-    /// *Note that Arc&#39;s realtime combat API comes with an intentional delay and filtering.*
+    /// *Note that Arc's realtime combat API comes with an intentional delay and filtering.*
     </span><span class="kw">pub </span>combat: <span class="prelude-ty">Option</span>&lt;CombatCallback&gt;,
 
     <span class="doccomment">/// Callback for standalone UI creation.
@@ -534,32 +536,32 @@
 
     <span class="doccomment">/// Raw extras init callback.
     ///
-    /// *Requires the `&quot;extras&quot;` feature.*
-    </span><span class="attr">#[cfg(feature = <span class="string">&quot;extras&quot;</span>)]
+    /// *Requires the `"extras"` feature.*
+    </span><span class="attr">#[cfg(feature = <span class="string">"extras"</span>)]
     </span><span class="kw">pub </span>raw_extras_init: <span class="prelude-ty">Option</span>&lt;RawExtrasSubscriberInit&gt;,
 
     <span class="doccomment">/// Raw extras squad update callback.
     ///
-    /// *Requires the `&quot;extras&quot;` feature.*
-    </span><span class="attr">#[cfg(feature = <span class="string">&quot;extras&quot;</span>)]
+    /// *Requires the `"extras"` feature.*
+    </span><span class="attr">#[cfg(feature = <span class="string">"extras"</span>)]
     </span><span class="kw">pub </span>raw_extras_squad_update: <span class="prelude-ty">Option</span>&lt;RawExtrasSquadUpdateCallback&gt;,
 
     <span class="doccomment">/// Raw extras language changed callback.
     ///
-    /// *Requires the `&quot;extras&quot;` feature.*
-    </span><span class="attr">#[cfg(feature = <span class="string">&quot;extras&quot;</span>)]
+    /// *Requires the `"extras"` feature.*
+    </span><span class="attr">#[cfg(feature = <span class="string">"extras"</span>)]
     </span><span class="kw">pub </span>raw_extras_language_changed: <span class="prelude-ty">Option</span>&lt;RawExtrasLanguageChangedCallback&gt;,
 
     <span class="doccomment">/// Raw extras keybind changed callback.
     ///
-    /// *Requires the `&quot;extras&quot;` feature.*
-    </span><span class="attr">#[cfg(feature = <span class="string">&quot;extras&quot;</span>)]
+    /// *Requires the `"extras"` feature.*
+    </span><span class="attr">#[cfg(feature = <span class="string">"extras"</span>)]
     </span><span class="kw">pub </span>raw_extras_keybind_changed: <span class="prelude-ty">Option</span>&lt;RawExtrasKeybindChangedCallback&gt;,
 
     <span class="doccomment">/// Raw extras chat message callback.
     ///
-    /// *Requires the `&quot;extras&quot;` feature.*
-    </span><span class="attr">#[cfg(feature = <span class="string">&quot;extras&quot;</span>)]
+    /// *Requires the `"extras"` feature.*
+    </span><span class="attr">#[cfg(feature = <span class="string">"extras"</span>)]
     </span><span class="kw">pub </span>raw_extras_chat_message: <span class="prelude-ty">Option</span>&lt;RawExtrasChatMessageCallback&gt;,
 
     <span class="doccomment">/// Initialization callback for [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases).
@@ -567,8 +569,8 @@
     /// Can be called before or after ArcDPS [`init`](Self::init).
     /// Receives information about the Unofficial Extras addon and the current player account name as parameters.
     ///
-    /// *Requires the `&quot;extras&quot;` feature.*
-    </span><span class="attr">#[cfg(feature = <span class="string">&quot;extras&quot;</span>)]
+    /// *Requires the `"extras"` feature.*
+    </span><span class="attr">#[cfg(feature = <span class="string">"extras"</span>)]
     </span><span class="kw">pub </span>extras_init: <span class="prelude-ty">Option</span>&lt;ExtrasInitFunc&gt;,
 
     <span class="doccomment">/// Squad update callback for [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases).
@@ -577,8 +579,8 @@
     /// Only the users that changed are sent.
     /// If a user was removed from the squad, their `role` will be set to [`UserRole::None`](crate::extras::UserRole::None).
     ///
-    /// *Requires the `&quot;extras&quot;` feature.*
-    </span><span class="attr">#[cfg(feature = <span class="string">&quot;extras&quot;</span>)]
+    /// *Requires the `"extras"` feature.*
+    </span><span class="attr">#[cfg(feature = <span class="string">"extras"</span>)]
     </span><span class="kw">pub </span>extras_squad_update: <span class="prelude-ty">Option</span>&lt;ExtrasSquadUpdateCallback&gt;,
 
     <span class="doccomment">/// Language changed callback for [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases).
@@ -587,8 +589,8 @@
     ///
     /// Will be called directly after initialization, with the current language, to get the startup language.
     ///
-    /// *Requires the `&quot;extras&quot;` feature.*
-    </span><span class="attr">#[cfg(feature = <span class="string">&quot;extras&quot;</span>)]
+    /// *Requires the `"extras"` feature.*
+    </span><span class="attr">#[cfg(feature = <span class="string">"extras"</span>)]
     </span><span class="kw">pub </span>extras_language_changed: <span class="prelude-ty">Option</span>&lt;ExtrasLanguageChangedCallback&gt;,
 
     <span class="doccomment">/// Keybind changed callback for [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases).
@@ -599,16 +601,16 @@
     /// After initialization this is called for every current keybind that exists.
     /// If you want to get a single keybind, at any time you want, call the exported function.
     ///
-    /// *Requires the `&quot;extras&quot;` feature.*
-    </span><span class="attr">#[cfg(feature = <span class="string">&quot;extras&quot;</span>)]
+    /// *Requires the `"extras"` feature.*
+    </span><span class="attr">#[cfg(feature = <span class="string">"extras"</span>)]
     </span><span class="kw">pub </span>extras_keybind_changed: <span class="prelude-ty">Option</span>&lt;ExtrasKeybindChangedCallback&gt;,
 
     <span class="doccomment">/// Chat message callback for [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases).
     ///
     /// Called whenever a chat message is sent in your party/squad
     ///
-    /// *Requires the `&quot;extras&quot;` feature.*
-    </span><span class="attr">#[cfg(feature = <span class="string">&quot;extras&quot;</span>)]
+    /// *Requires the `"extras"` feature.*
+    </span><span class="attr">#[cfg(feature = <span class="string">"extras"</span>)]
     </span><span class="kw">pub </span>extras_chat_message: <span class="prelude-ty">Option</span>&lt;ExtrasChatMessageCallback&gt;,
 }
 
@@ -626,14 +628,14 @@
     };
 
     <span class="kw">use crate</span>::{
-        exports::{has_e3_log_file, has_e8_log_window},
+        exports::has_e3_log_file,
         globals::{init_dxgi, init_imgui, ARC_GLOBALS, IG_UI},
         imgui,
         panic::init_panic_hook,
     };
 
-    <span class="attr">#[cfg(feature = <span class="string">&quot;log&quot;</span>)]
-    </span><span class="kw">use </span><span class="kw">crate</span>::log::ArcDpsLogger;
+    <span class="attr">#[cfg(feature = <span class="string">"log"</span>)]
+    </span><span class="kw">use crate</span>::{exports::has_e8_log_window, log::ArcDpsLogger};
 
     <span class="doccomment">/// Internally used function to initialize with information received from Arc.
     </span><span class="attr">#[inline]
@@ -646,7 +648,7 @@
         free: <span class="prelude-ty">Option</span>&lt;FreeFn&gt;,
         id3d: <span class="kw-2">*const </span>c_void,
         d3d_version: u32,
-        name: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str,
+        name: <span class="kw-2">&amp;</span><span class="lifetime">'static </span>str,
     ) {
         <span class="comment">// arc exports have to be retrieved before panic hook &amp; logging
         </span>ARC_GLOBALS.init(arc_handle, str_from_cstr(arc_version));
@@ -656,7 +658,7 @@
             init_panic_hook(name);
 
             <span class="comment">// only set logger if log file &amp; window exports were found
-            </span><span class="attr">#[cfg(feature = <span class="string">&quot;log&quot;</span>)]
+            </span><span class="attr">#[cfg(feature = <span class="string">"log"</span>)]
             </span><span class="kw">if </span>has_e8_log_window() {
                 <span class="kw">let </span>result = log::set_boxed_logger(Box::new(ArcDpsLogger::new(name)));
                 <span class="kw">if </span>result.is_ok() {
@@ -672,8 +674,8 @@
 
     <span class="doccomment">/// Internally used function to retrieve the [`imgui::Ui`].
     </span><span class="attr">#[inline]
-    </span><span class="kw">pub unsafe fn </span>ui() -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>imgui::Ui&lt;<span class="lifetime">&#39;static</span>&gt; {
-        IG_UI.as_ref().expect(<span class="string">&quot;imgui ui not initialized&quot;</span>)
+    </span><span class="kw">pub unsafe fn </span>ui() -&gt; <span class="kw-2">&amp;</span><span class="lifetime">'static </span>imgui::Ui&lt;<span class="lifetime">'static</span>&gt; {
+        IG_UI.as_ref().expect(<span class="string">"imgui ui not initialized"</span>)
     }
 }
 </code></pre></div></section></main></body></html>

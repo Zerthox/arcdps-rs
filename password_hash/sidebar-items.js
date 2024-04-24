@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"enum":["Encoding"],"mod":["errors"],"struct":["Ident","Output","ParamsString","PasswordHash","Salt","SaltString","Value"],"trait":["McfHasher","PasswordHasher","PasswordVerifier"],"type":["Decimal"]};

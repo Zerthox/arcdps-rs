@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\arcdps-imgui-0.8.0\src\string.rs`."><title>string.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-fa3bb1812debf86c.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="arcdps_imgui" data-themes="" data-resource-suffix="" data-rustdoc-version="1.74.1 (a28077b28 2023-12-04)" data-channel="1.74.1" data-search-js="search-8be46b629f5f14a8.js" data-settings-js="settings-74424d7eec62a23e.js" ><script src="../../static.files/storage-fec3eaa3851e447d.js"></script><script defer src="../../static.files/src-script-3280b574d94e47b4.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-c5bd66d33317d69f.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-5d8b3c7633ad77ba.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../arcdps_imgui/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\arcdps-imgui-0.8.0\src\string.rs`."><title>string.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-5bc39a1768837dd0.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="arcdps_imgui" data-themes="" data-resource-suffix="" data-rustdoc-version="1.77.2 (25ef9e3d8 2024-04-09)" data-channel="1.77.2" data-search-js="search-dd67cee4cfa65049.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../static.files/storage-4c98445ec4002617.js"></script><script defer src="../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-48f368f3872407c8.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-04d5337699b92874.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title">
+            <h2>Files</h2></div></nav><div class="sidebar-resizer"></div>
+    <main><nav class="sub"><form class="search-form"><span></span><div id="sidebar-button" tabindex="-1"><a href="../../arcdps_imgui/all.html" title="show sidebar"></a></div><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" tabindex="-1"><a href="../../help.html" title="help">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -599,19 +601,19 @@
         }
     }
 
-    <span class="doccomment">/// Attempts to clear the buffer if it&#39;s over the maximum length allowed.
+    <span class="doccomment">/// Attempts to clear the buffer if it's over the maximum length allowed.
     </span><span class="kw">pub fn </span>refresh_buffer(<span class="kw-2">&amp;mut </span><span class="self">self</span>) {
         <span class="kw">if </span><span class="self">self</span>.buffer.len() &gt; <span class="self">self</span>.max_len {
             <span class="self">self</span>.buffer.clear();
         }
     }
 
-    <span class="doccomment">/// Pushes a new scratch sheet text, which means it&#39;s not handling any clearing at all.
+    <span class="doccomment">/// Pushes a new scratch sheet text, which means it's not handling any clearing at all.
     </span><span class="kw">pub fn </span>push(<span class="kw-2">&amp;mut </span><span class="self">self</span>, txt: <span class="kw">impl </span>AsRef&lt;str&gt;) -&gt; <span class="kw-2">*const </span>sys::cty::c_char {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>len = <span class="self">self</span>.buffer.len();
             <span class="self">self</span>.buffer.extend(txt.as_ref().as_bytes());
-            <span class="self">self</span>.buffer.push(<span class="string">b&#39;\0&#39;</span>);
+            <span class="self">self</span>.buffer.push(<span class="string">b'\0'</span>);
 
             <span class="self">self</span>.buffer.as_ptr().add(len) <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_
         </span>}
@@ -619,12 +621,12 @@
 }
 
 <span class="attr">#[macro_export]
-#[deprecated = <span class="string">&quot;all functions take AsRef&lt;str&gt; now -- use inline strings or `format` instead&quot;</span>]
+#[deprecated = <span class="string">"all functions take AsRef&lt;str&gt; now -- use inline strings or `format` instead"</span>]
 </span><span class="macro">macro_rules! </span>im_str {
     (<span class="macro-nonterminal">$e</span>:literal $(,)<span class="question-mark">?</span>) =&gt; {{
-        <span class="kw">const </span>__INPUT: <span class="kw-2">&amp;</span>str = <span class="macro">concat!</span>(<span class="macro-nonterminal">$e</span>, <span class="string">&quot;\0&quot;</span>);
+        <span class="kw">const </span>__INPUT: <span class="kw-2">&amp;</span>str = <span class="macro">concat!</span>(<span class="macro-nonterminal">$e</span>, <span class="string">"\0"</span>);
         {
-            <span class="comment">// Trigger a compile error if there&#39;s an interior NUL character.
+            <span class="comment">// Trigger a compile error if there's an interior NUL character.
             </span><span class="kw">const </span>_CHECK_NUL: [(); <span class="number">0</span>] = [(); {
                 <span class="kw">let </span>bytes = __INPUT.as_bytes();
                 <span class="kw">let </span><span class="kw-2">mut </span>i = <span class="number">0</span>;
@@ -637,8 +639,8 @@
                 }
                 found_nul
             }];
-            <span class="kw">const </span>RESULT: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span><span class="macro-nonterminal">$crate::ImStr </span>= <span class="kw">unsafe </span>{
-                <span class="macro-nonterminal">$crate::__core::mem::transmute</span>::&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>[u8], <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span><span class="macro-nonterminal">$crate::ImStr</span>&gt;(__INPUT.as_bytes())
+            <span class="kw">const </span>RESULT: <span class="kw-2">&amp;</span><span class="lifetime">'static </span><span class="macro-nonterminal">$crate::ImStr </span>= <span class="kw">unsafe </span>{
+                <span class="macro-nonterminal">$crate::__core::mem::transmute</span>::&lt;<span class="kw-2">&amp;</span><span class="lifetime">'static </span>[u8], <span class="kw-2">&amp;</span><span class="lifetime">'static </span><span class="macro-nonterminal">$crate::ImStr</span>&gt;(__INPUT.as_bytes())
             };
             RESULT
         }
@@ -666,7 +668,7 @@
     </span><span class="attr">#[inline]
     </span><span class="kw">pub fn </span>with_capacity(capacity: usize) -&gt; ImString {
         <span class="kw">let </span><span class="kw-2">mut </span>v = Vec::with_capacity(capacity + <span class="number">1</span>);
-        v.push(<span class="string">b&#39;\0&#39;</span>);
+        v.push(<span class="string">b'\0'</span>);
         ImString(v)
     }
 
@@ -678,7 +680,7 @@
     /// It is up to the caller to guarantee the vector contains valid UTF-8 and no null terminator.
     </span><span class="attr">#[inline]
     </span><span class="kw">pub unsafe fn </span>from_utf8_unchecked(<span class="kw-2">mut </span>v: Vec&lt;u8&gt;) -&gt; ImString {
-        v.push(<span class="string">b&#39;\0&#39;</span>);
+        v.push(<span class="string">b'\0'</span>);
         ImString(v)
     }
 
@@ -697,7 +699,7 @@
     </span><span class="attr">#[inline]
     </span><span class="kw">pub fn </span>clear(<span class="kw-2">&amp;mut </span><span class="self">self</span>) {
         <span class="self">self</span>.<span class="number">0</span>.clear();
-        <span class="self">self</span>.<span class="number">0</span>.push(<span class="string">b&#39;\0&#39;</span>);
+        <span class="self">self</span>.<span class="number">0</span>.push(<span class="string">b'\0'</span>);
     }
 
     <span class="doccomment">/// Appends the given character to the end of this `ImString`
@@ -712,7 +714,7 @@
     </span><span class="kw">pub fn </span>push_str(<span class="kw-2">&amp;mut </span><span class="self">self</span>, string: <span class="kw-2">&amp;</span>str) {
         <span class="self">self</span>.<span class="number">0</span>.pop();
         <span class="self">self</span>.<span class="number">0</span>.extend(string.bytes());
-        <span class="self">self</span>.<span class="number">0</span>.push(<span class="string">b&#39;\0&#39;</span>);
+        <span class="self">self</span>.<span class="number">0</span>.push(<span class="string">b'\0'</span>);
         <span class="kw">unsafe </span>{
             <span class="self">self</span>.refresh_len();
         }
@@ -776,10 +778,10 @@
     }
 }
 
-<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; Default <span class="kw">for </span>ImString {
+<span class="kw">impl</span>&lt;<span class="lifetime">'a</span>&gt; Default <span class="kw">for </span>ImString {
     <span class="attr">#[inline]
     </span><span class="kw">fn </span>default() -&gt; ImString {
-        ImString(<span class="macro">vec!</span>[<span class="string">b&#39;\0&#39;</span>])
+        ImString(<span class="macro">vec!</span>[<span class="string">b'\0'</span>])
     }
 }
 
@@ -790,23 +792,23 @@
     }
 }
 
-<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; From&lt;ImString&gt; <span class="kw">for </span>Cow&lt;<span class="lifetime">&#39;a</span>, ImStr&gt; {
+<span class="kw">impl</span>&lt;<span class="lifetime">'a</span>&gt; From&lt;ImString&gt; <span class="kw">for </span>Cow&lt;<span class="lifetime">'a</span>, ImStr&gt; {
     <span class="attr">#[inline]
-    </span><span class="kw">fn </span>from(s: ImString) -&gt; Cow&lt;<span class="lifetime">&#39;a</span>, ImStr&gt; {
+    </span><span class="kw">fn </span>from(s: ImString) -&gt; Cow&lt;<span class="lifetime">'a</span>, ImStr&gt; {
         Cow::Owned(s)
     }
 }
 
-<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; From&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>ImString&gt; <span class="kw">for </span>Cow&lt;<span class="lifetime">&#39;a</span>, ImStr&gt; {
+<span class="kw">impl</span>&lt;<span class="lifetime">'a</span>&gt; From&lt;<span class="kw-2">&amp;</span><span class="lifetime">'a </span>ImString&gt; <span class="kw">for </span>Cow&lt;<span class="lifetime">'a</span>, ImStr&gt; {
     <span class="attr">#[inline]
-    </span><span class="kw">fn </span>from(s: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>ImString) -&gt; Cow&lt;<span class="lifetime">&#39;a</span>, ImStr&gt; {
+    </span><span class="kw">fn </span>from(s: <span class="kw-2">&amp;</span><span class="lifetime">'a </span>ImString) -&gt; Cow&lt;<span class="lifetime">'a</span>, ImStr&gt; {
         Cow::Borrowed(s)
     }
 }
 
-<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>, T: <span class="question-mark">?</span>Sized + AsRef&lt;ImStr&gt;&gt; From&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>T&gt; <span class="kw">for </span>ImString {
+<span class="kw">impl</span>&lt;<span class="lifetime">'a</span>, T: <span class="question-mark">?</span>Sized + AsRef&lt;ImStr&gt;&gt; From&lt;<span class="kw-2">&amp;</span><span class="lifetime">'a </span>T&gt; <span class="kw">for </span>ImString {
     <span class="attr">#[inline]
-    </span><span class="kw">fn </span>from(s: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>T) -&gt; ImString {
+    </span><span class="kw">fn </span>from(s: <span class="kw-2">&amp;</span><span class="lifetime">'a </span>T) -&gt; ImString {
         s.as_ref().to_owned()
     }
 }
@@ -849,14 +851,14 @@
 
 <span class="kw">impl </span>fmt::Debug <span class="kw">for </span>ImString {
     <span class="attr">#[inline]
-    </span><span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; fmt::Result {
+    </span><span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter&lt;<span class="lifetime">'_</span>&gt;) -&gt; fmt::Result {
         fmt::Debug::fmt(<span class="self">self</span>.to_str(), f)
     }
 }
 
 <span class="kw">impl </span>fmt::Display <span class="kw">for </span>ImString {
     <span class="attr">#[inline]
-    </span><span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; fmt::Result {
+    </span><span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter&lt;<span class="lifetime">'_</span>&gt;) -&gt; fmt::Result {
         fmt::Display::fmt(<span class="self">self</span>.to_str(), f)
     }
 }
@@ -893,9 +895,9 @@
 #[repr(transparent)]
 </span><span class="kw">pub struct </span>ImStr([u8]);
 
-<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; Default <span class="kw">for </span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>ImStr {
+<span class="kw">impl</span>&lt;<span class="lifetime">'a</span>&gt; Default <span class="kw">for </span><span class="kw-2">&amp;</span><span class="lifetime">'a </span>ImStr {
     <span class="attr">#[inline]
-    </span><span class="kw">fn </span>default() -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>ImStr {
+    </span><span class="kw">fn </span>default() -&gt; <span class="kw-2">&amp;</span><span class="lifetime">'a </span>ImStr {
         <span class="kw">static </span>SLICE: <span class="kw-2">&amp;</span>[u8] = <span class="kw-2">&amp;</span>[<span class="number">0</span>];
         <span class="kw">unsafe </span>{ ImStr::from_utf8_with_nul_unchecked(SLICE) }
     }
@@ -903,14 +905,14 @@
 
 <span class="kw">impl </span>fmt::Debug <span class="kw">for </span>ImStr {
     <span class="attr">#[inline]
-    </span><span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; fmt::Result {
+    </span><span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter&lt;<span class="lifetime">'_</span>&gt;) -&gt; fmt::Result {
         fmt::Debug::fmt(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>, f)
     }
 }
 
 <span class="kw">impl </span>fmt::Display <span class="kw">for </span>ImStr {
     <span class="attr">#[inline]
-    </span><span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; fmt::Result {
+    </span><span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter&lt;<span class="lifetime">'_</span>&gt;) -&gt; fmt::Result {
         fmt::Display::fmt(<span class="self">self</span>.to_str(), f)
     }
 }
@@ -921,9 +923,9 @@
     /// # Safety
     ///
     /// It is up to the caller to guarantee the pointer is not null and it points to a
-    /// null-terminated UTF-8 string valid for the duration of the arbitrary lifetime &#39;a.
+    /// null-terminated UTF-8 string valid for the duration of the arbitrary lifetime 'a.
     </span><span class="attr">#[inline]
-    </span><span class="kw">pub unsafe fn </span>from_ptr_unchecked&lt;<span class="lifetime">&#39;a</span>&gt;(ptr: <span class="kw-2">*const </span>c_char) -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>ImStr {
+    </span><span class="kw">pub unsafe fn </span>from_ptr_unchecked&lt;<span class="lifetime">'a</span>&gt;(ptr: <span class="kw-2">*const </span>c_char) -&gt; <span class="kw-2">&amp;</span><span class="lifetime">'a </span>ImStr {
         ImStr::from_cstr_unchecked(CStr::from_ptr(ptr))
     }
 
@@ -968,7 +970,7 @@
         <span class="self">self</span>.<span class="number">0</span>.len() == <span class="number">1
     </span>}
 
-    <span class="comment">// TODO: if this is too slow, avoid the UTF8 validation except if we&#39;d
+    <span class="comment">// TODO: if this is too slow, avoid the UTF8 validation except if we'd
     // already be doing O(n) stuff.
     </span><span class="attr">#[inline]
     </span><span class="kw">fn </span>sanity_check(<span class="kw-2">&amp;</span><span class="self">self</span>) {
@@ -977,7 +979,7 @@
                 &amp;&amp; !<span class="self">self</span>.<span class="number">0</span>.is_empty()
                 &amp;&amp; !<span class="self">self</span>.<span class="number">0</span>[..(<span class="self">self</span>.<span class="number">0</span>.len() - <span class="number">1</span>)].contains(<span class="kw-2">&amp;</span><span class="number">0u8</span>)
                 &amp;&amp; <span class="self">self</span>.<span class="number">0</span>[<span class="self">self</span>.<span class="number">0</span>.len() - <span class="number">1</span>] == <span class="number">0</span>,
-            <span class="string">&quot;bad ImStr: {:?}&quot;</span>,
+            <span class="string">"bad ImStr: {:?}"</span>,
             <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0
         </span>);
     }
@@ -986,7 +988,7 @@
 <span class="kw">impl </span>AsRef&lt;CStr&gt; <span class="kw">for </span>ImStr {
     <span class="attr">#[inline]
     </span><span class="kw">fn </span>as_ref(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>CStr {
-        <span class="comment">// Safety: our safety requirements are a superset of CStr&#39;s, so this is fine
+        <span class="comment">// Safety: our safety requirements are a superset of CStr's, so this is fine
         </span><span class="kw">unsafe </span>{ CStr::from_bytes_with_nul_unchecked(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>) }
     }
 }
@@ -1005,9 +1007,9 @@
     }
 }
 
-<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; From&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>ImStr&gt; <span class="kw">for </span>Cow&lt;<span class="lifetime">&#39;a</span>, ImStr&gt; {
+<span class="kw">impl</span>&lt;<span class="lifetime">'a</span>&gt; From&lt;<span class="kw-2">&amp;</span><span class="lifetime">'a </span>ImStr&gt; <span class="kw">for </span>Cow&lt;<span class="lifetime">'a</span>, ImStr&gt; {
     <span class="attr">#[inline]
-    </span><span class="kw">fn </span>from(s: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>ImStr) -&gt; Cow&lt;<span class="lifetime">&#39;a</span>, ImStr&gt; {
+    </span><span class="kw">fn </span>from(s: <span class="kw-2">&amp;</span><span class="lifetime">'a </span>ImStr) -&gt; Cow&lt;<span class="lifetime">'a</span>, ImStr&gt; {
         Cow::Borrowed(s)
     }
 }
@@ -1023,67 +1025,67 @@
 
 <span class="attr">#[test]
 </span><span class="kw">fn </span>test_imstring_constructors() {
-    <span class="kw">let </span>s = ImString::new(<span class="string">&quot;test&quot;</span>);
-    <span class="macro">assert_eq!</span>(s.<span class="number">0</span>, <span class="string">b&quot;test\0&quot;</span>);
+    <span class="kw">let </span>s = ImString::new(<span class="string">"test"</span>);
+    <span class="macro">assert_eq!</span>(s.<span class="number">0</span>, <span class="string">b"test\0"</span>);
 
     <span class="kw">let </span>s = ImString::with_capacity(<span class="number">100</span>);
-    <span class="macro">assert_eq!</span>(s.<span class="number">0</span>, <span class="string">b&quot;\0&quot;</span>);
+    <span class="macro">assert_eq!</span>(s.<span class="number">0</span>, <span class="string">b"\0"</span>);
 
-    <span class="kw">let </span>s = <span class="kw">unsafe </span>{ ImString::from_utf8_unchecked(<span class="macro">vec!</span>[<span class="string">b&#39;t&#39;</span>, <span class="string">b&#39;e&#39;</span>, <span class="string">b&#39;s&#39;</span>, <span class="string">b&#39;t&#39;</span>]) };
-    <span class="macro">assert_eq!</span>(s.<span class="number">0</span>, <span class="string">b&quot;test\0&quot;</span>);
+    <span class="kw">let </span>s = <span class="kw">unsafe </span>{ ImString::from_utf8_unchecked(<span class="macro">vec!</span>[<span class="string">b't'</span>, <span class="string">b'e'</span>, <span class="string">b's'</span>, <span class="string">b't'</span>]) };
+    <span class="macro">assert_eq!</span>(s.<span class="number">0</span>, <span class="string">b"test\0"</span>);
 
-    <span class="kw">let </span>s = <span class="kw">unsafe </span>{ ImString::from_utf8_with_nul_unchecked(<span class="macro">vec!</span>[<span class="string">b&#39;t&#39;</span>, <span class="string">b&#39;e&#39;</span>, <span class="string">b&#39;s&#39;</span>, <span class="string">b&#39;t&#39;</span>, <span class="string">b&#39;\0&#39;</span>]) };
-    <span class="macro">assert_eq!</span>(s.<span class="number">0</span>, <span class="string">b&quot;test\0&quot;</span>);
+    <span class="kw">let </span>s = <span class="kw">unsafe </span>{ ImString::from_utf8_with_nul_unchecked(<span class="macro">vec!</span>[<span class="string">b't'</span>, <span class="string">b'e'</span>, <span class="string">b's'</span>, <span class="string">b't'</span>, <span class="string">b'\0'</span>]) };
+    <span class="macro">assert_eq!</span>(s.<span class="number">0</span>, <span class="string">b"test\0"</span>);
 }
 
 <span class="attr">#[test]
 </span><span class="kw">fn </span>test_imstring_operations() {
-    <span class="kw">let </span><span class="kw-2">mut </span>s = ImString::new(<span class="string">&quot;test&quot;</span>);
+    <span class="kw">let </span><span class="kw-2">mut </span>s = ImString::new(<span class="string">"test"</span>);
     s.clear();
-    <span class="macro">assert_eq!</span>(s.<span class="number">0</span>, <span class="string">b&quot;\0&quot;</span>);
-    s.push(<span class="string">&#39;z&#39;</span>);
-    <span class="macro">assert_eq!</span>(s.<span class="number">0</span>, <span class="string">b&quot;z\0&quot;</span>);
-    s.push(<span class="string">&#39;ä&#39;</span>);
-    <span class="macro">assert_eq!</span>(s.<span class="number">0</span>, <span class="string">b&quot;z\xc3\xa4\0&quot;</span>);
+    <span class="macro">assert_eq!</span>(s.<span class="number">0</span>, <span class="string">b"\0"</span>);
+    s.push(<span class="string">'z'</span>);
+    <span class="macro">assert_eq!</span>(s.<span class="number">0</span>, <span class="string">b"z\0"</span>);
+    s.push(<span class="string">'ä'</span>);
+    <span class="macro">assert_eq!</span>(s.<span class="number">0</span>, <span class="string">b"z\xc3\xa4\0"</span>);
     s.clear();
-    s.push_str(<span class="string">&quot;imgui-rs&quot;</span>);
-    <span class="macro">assert_eq!</span>(s.<span class="number">0</span>, <span class="string">b&quot;imgui-rs\0&quot;</span>);
-    s.push_str(<span class="string">&quot;öä&quot;</span>);
-    <span class="macro">assert_eq!</span>(s.<span class="number">0</span>, <span class="string">b&quot;imgui-rs\xc3\xb6\xc3\xa4\0&quot;</span>);
+    s.push_str(<span class="string">"imgui-rs"</span>);
+    <span class="macro">assert_eq!</span>(s.<span class="number">0</span>, <span class="string">b"imgui-rs\0"</span>);
+    s.push_str(<span class="string">"öä"</span>);
+    <span class="macro">assert_eq!</span>(s.<span class="number">0</span>, <span class="string">b"imgui-rs\xc3\xb6\xc3\xa4\0"</span>);
 }
 
 <span class="attr">#[test]
 </span><span class="kw">fn </span>test_imstring_fmt_write() {
     <span class="kw">use </span>std::fmt::Write;
     <span class="kw">let </span><span class="kw-2">mut </span>s = ImString::default();
-    <span class="kw">let _ </span>= <span class="macro">write!</span>(s, <span class="string">&quot;format {:02x}&quot;</span>, <span class="number">0x42</span>);
-    <span class="macro">assert_eq!</span>(s.<span class="number">0</span>, <span class="string">b&quot;format 42\0&quot;</span>);
+    <span class="kw">let _ </span>= <span class="macro">write!</span>(s, <span class="string">"format {:02x}"</span>, <span class="number">0x42</span>);
+    <span class="macro">assert_eq!</span>(s.<span class="number">0</span>, <span class="string">b"format 42\0"</span>);
 }
 
 <span class="attr">#[test]
 </span><span class="kw">fn </span>test_imstring_refresh_len() {
-    <span class="kw">let </span><span class="kw-2">mut </span>s = ImString::new(<span class="string">&quot;testing&quot;</span>);
+    <span class="kw">let </span><span class="kw-2">mut </span>s = ImString::new(<span class="string">"testing"</span>);
     <span class="kw">unsafe </span>{
         <span class="kw">let </span><span class="kw-2">mut </span>ptr = s.as_mut_ptr() <span class="kw">as </span><span class="kw-2">*mut </span>u8;
         ptr = ptr.wrapping_add(<span class="number">2</span>);
-        <span class="kw-2">*</span>ptr = <span class="string">b&#39;z&#39;</span>;
+        <span class="kw-2">*</span>ptr = <span class="string">b'z'</span>;
         ptr = ptr.wrapping_add(<span class="number">1</span>);
-        <span class="kw-2">*</span>ptr = <span class="string">b&#39;\0&#39;</span>;
+        <span class="kw-2">*</span>ptr = <span class="string">b'\0'</span>;
     }
-    <span class="macro">assert_eq!</span>(s.<span class="number">0</span>, <span class="string">b&quot;tez\0ing\0&quot;</span>);
+    <span class="macro">assert_eq!</span>(s.<span class="number">0</span>, <span class="string">b"tez\0ing\0"</span>);
     <span class="kw">unsafe </span>{ s.refresh_len() };
-    <span class="macro">assert_eq!</span>(s.<span class="number">0</span>, <span class="string">b&quot;tez\0&quot;</span>);
+    <span class="macro">assert_eq!</span>(s.<span class="number">0</span>, <span class="string">b"tez\0"</span>);
 }
 
 <span class="attr">#[test]
 </span><span class="kw">fn </span>test_imstring_interior_nul() {
-    <span class="kw">let </span>s = ImString::new(<span class="string">&quot;test\0ohno&quot;</span>);
-    <span class="macro">assert_eq!</span>(s.<span class="number">0</span>, <span class="string">b&quot;test\0&quot;</span>);
-    <span class="macro">assert_eq!</span>(s.to_str(), <span class="string">&quot;test&quot;</span>);
+    <span class="kw">let </span>s = ImString::new(<span class="string">"test\0ohno"</span>);
+    <span class="macro">assert_eq!</span>(s.<span class="number">0</span>, <span class="string">b"test\0"</span>);
+    <span class="macro">assert_eq!</span>(s.to_str(), <span class="string">"test"</span>);
     <span class="macro">assert!</span>(!s.is_empty());
 
-    <span class="kw">let </span>s = ImString::new(<span class="string">&quot;\0ohno&quot;</span>);
-    <span class="macro">assert_eq!</span>(s.to_str(), <span class="string">&quot;&quot;</span>);
+    <span class="kw">let </span>s = ImString::new(<span class="string">"\0ohno"</span>);
+    <span class="macro">assert_eq!</span>(s.to_str(), <span class="string">""</span>);
     <span class="macro">assert!</span>(s.is_empty());
 }
 </code></pre></div></section></main></body></html>

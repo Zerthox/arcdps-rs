@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\arcdps-imgui-0.8.0\src\utils.rs`."><title>utils.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-fa3bb1812debf86c.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="arcdps_imgui" data-themes="" data-resource-suffix="" data-rustdoc-version="1.74.1 (a28077b28 2023-12-04)" data-channel="1.74.1" data-search-js="search-8be46b629f5f14a8.js" data-settings-js="settings-74424d7eec62a23e.js" ><script src="../../static.files/storage-fec3eaa3851e447d.js"></script><script defer src="../../static.files/src-script-3280b574d94e47b4.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-c5bd66d33317d69f.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-5d8b3c7633ad77ba.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../arcdps_imgui/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `C:\Users\runneradmin\.cargo\registry\src\index.crates.io-6f17d22bba15001f\arcdps-imgui-0.8.0\src\utils.rs`."><title>utils.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-5bc39a1768837dd0.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="arcdps_imgui" data-themes="" data-resource-suffix="" data-rustdoc-version="1.77.2 (25ef9e3d8 2024-04-09)" data-channel="1.77.2" data-search-js="search-dd67cee4cfa65049.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../static.files/storage-4c98445ec4002617.js"></script><script defer src="../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-48f368f3872407c8.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-04d5337699b92874.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title">
+            <h2>Files</h2></div></nav><div class="sidebar-resizer"></div>
+    <main><nav class="sub"><form class="search-form"><span></span><div id="sidebar-button" tabindex="-1"><a href="../../arcdps_imgui/all.html" title="show sidebar"></a></div><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" tabindex="-1"><a href="../../help.html" title="help">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -199,23 +201,23 @@
 }
 
 <span class="doccomment">/// # Item/widget utilities
-</span><span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>&gt; Ui&lt;<span class="lifetime">&#39;ui</span>&gt; {
+</span><span class="kw">impl</span>&lt;<span class="lifetime">'ui</span>&gt; Ui&lt;<span class="lifetime">'ui</span>&gt; {
     <span class="doccomment">/// Returns `true` if the last item is hovered
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;IsItemHovered&quot;</span>)]
+    </span><span class="attr">#[doc(alias = <span class="string">"IsItemHovered"</span>)]
     </span><span class="kw">pub fn </span>is_item_hovered(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
         <span class="kw">unsafe </span>{ sys::igIsItemHovered(<span class="number">0</span>) }
     }
     <span class="doccomment">/// Returns `true` if the last item is hovered based on the given flags
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;IsItemHovered&quot;</span>)]
+    </span><span class="attr">#[doc(alias = <span class="string">"IsItemHovered"</span>)]
     </span><span class="kw">pub fn </span>is_item_hovered_with_flags(<span class="kw-2">&amp;</span><span class="self">self</span>, flags: ItemHoveredFlags) -&gt; bool {
         <span class="kw">unsafe </span>{ sys::igIsItemHovered(flags.bits() <span class="kw">as </span>i32) }
     }
     <span class="doccomment">/// Returns `true` if the last item is active
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;IsItemActive&quot;</span>)]
+    </span><span class="attr">#[doc(alias = <span class="string">"IsItemActive"</span>)]
     </span><span class="kw">pub fn </span>is_item_active(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
         <span class="kw">unsafe </span>{ sys::igIsItemActive() }
     }
-    <span class="attr">#[doc(alias = <span class="string">&quot;IsItemFocused&quot;</span>)]
+    <span class="attr">#[doc(alias = <span class="string">"IsItemFocused"</span>)]
     </span><span class="doccomment">/// Returns `true` if the last item is focused for keyboard/gamepad navigation
     </span><span class="kw">pub fn </span>is_item_focused(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
         <span class="kw">unsafe </span>{ sys::igIsItemFocused() }
@@ -224,78 +226,78 @@
     ///
     /// This is the same as [is_item_clicked_with_button](Self::is_item_clicked_with_button)
     /// with `button` set to `MouseButton::Left`.
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;IsItemClicked&quot;</span>)]
+    </span><span class="attr">#[doc(alias = <span class="string">"IsItemClicked"</span>)]
     </span><span class="kw">pub fn </span>is_item_clicked(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
         <span class="self">self</span>.is_item_clicked_with_button(MouseButton::Left)
     }
 
     <span class="doccomment">/// Returns `true` if the last item is being clicked
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;IsItemClicked&quot;</span>)]
+    </span><span class="attr">#[doc(alias = <span class="string">"IsItemClicked"</span>)]
     </span><span class="kw">pub fn </span>is_item_clicked_with_button(<span class="kw-2">&amp;</span><span class="self">self</span>, button: MouseButton) -&gt; bool {
         <span class="kw">unsafe </span>{ sys::igIsItemClicked(button <span class="kw">as </span>i32) }
     }
     <span class="doccomment">/// Returns `true` if the last item is visible
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;IsItemVisible&quot;</span>)]
+    </span><span class="attr">#[doc(alias = <span class="string">"IsItemVisible"</span>)]
     </span><span class="kw">pub fn </span>is_item_visible(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
         <span class="kw">unsafe </span>{ sys::igIsItemVisible() }
     }
     <span class="doccomment">/// Returns `true` if the last item modified its underlying value this frame or was pressed
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;IsItemEdited&quot;</span>)]
+    </span><span class="attr">#[doc(alias = <span class="string">"IsItemEdited"</span>)]
     </span><span class="kw">pub fn </span>is_item_edited(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
         <span class="kw">unsafe </span>{ sys::igIsItemEdited() }
     }
     <span class="doccomment">/// Returns `true` if the last item was just made active
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;IsItemActivated&quot;</span>)]
+    </span><span class="attr">#[doc(alias = <span class="string">"IsItemActivated"</span>)]
     </span><span class="kw">pub fn </span>is_item_activated(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
         <span class="kw">unsafe </span>{ sys::igIsItemActivated() }
     }
     <span class="doccomment">/// Returns `true` if the last item was just made inactive
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;IsItemDeactivated&quot;</span>)]
+    </span><span class="attr">#[doc(alias = <span class="string">"IsItemDeactivated"</span>)]
     </span><span class="kw">pub fn </span>is_item_deactivated(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
         <span class="kw">unsafe </span>{ sys::igIsItemDeactivated() }
     }
     <span class="doccomment">/// Returns `true` if the last item was just made inactive and made a value change when it was
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;IsItemDeactivatedAfterEdit&quot;</span>)]
+    </span><span class="attr">#[doc(alias = <span class="string">"IsItemDeactivatedAfterEdit"</span>)]
     </span><span class="doccomment">/// active
     </span><span class="kw">pub fn </span>is_item_deactivated_after_edit(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
         <span class="kw">unsafe </span>{ sys::igIsItemDeactivatedAfterEdit() }
     }
     <span class="doccomment">/// Returns `true` if the last item open state was toggled
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;IsItemToggledOpen&quot;</span>)]
+    </span><span class="attr">#[doc(alias = <span class="string">"IsItemToggledOpen"</span>)]
     </span><span class="kw">pub fn </span>is_item_toggled_open(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
         <span class="kw">unsafe </span>{ sys::igIsItemToggledOpen() }
     }
     <span class="doccomment">/// Returns `true` if any item is hovered
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;IsAnyItemHovered&quot;</span>)]
+    </span><span class="attr">#[doc(alias = <span class="string">"IsAnyItemHovered"</span>)]
     </span><span class="kw">pub fn </span>is_any_item_hovered(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
         <span class="kw">unsafe </span>{ sys::igIsAnyItemHovered() }
     }
     <span class="doccomment">/// Returns `true` if any item is active
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;IsAnyItemActive&quot;</span>)]
+    </span><span class="attr">#[doc(alias = <span class="string">"IsAnyItemActive"</span>)]
     </span><span class="kw">pub fn </span>is_any_item_active(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
         <span class="kw">unsafe </span>{ sys::igIsAnyItemActive() }
     }
     <span class="doccomment">/// Returns `true` if any item is focused
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;IsAnyItemFocused&quot;</span>)]
+    </span><span class="attr">#[doc(alias = <span class="string">"IsAnyItemFocused"</span>)]
     </span><span class="kw">pub fn </span>is_any_item_focused(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
         <span class="kw">unsafe </span>{ sys::igIsAnyItemFocused() }
     }
     <span class="doccomment">/// Returns the upper-left bounding rectangle of the last item (in screen coordinates)
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;GetItemRectMin&quot;</span>)]
+    </span><span class="attr">#[doc(alias = <span class="string">"GetItemRectMin"</span>)]
     </span><span class="kw">pub fn </span>item_rect_min(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; [f32; <span class="number">2</span>] {
         <span class="kw">let </span><span class="kw-2">mut </span>out = sys::ImVec2::zero();
         <span class="kw">unsafe </span>{ sys::igGetItemRectMin(<span class="kw-2">&amp;mut </span>out) }
         out.into()
     }
     <span class="doccomment">/// Returns the lower-right bounding rectangle of the last item (in screen coordinates)
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;GetItemRectMax&quot;</span>)]
+    </span><span class="attr">#[doc(alias = <span class="string">"GetItemRectMax"</span>)]
     </span><span class="kw">pub fn </span>item_rect_max(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; [f32; <span class="number">2</span>] {
         <span class="kw">let </span><span class="kw-2">mut </span>out = sys::ImVec2::zero();
         <span class="kw">unsafe </span>{ sys::igGetItemRectMax(<span class="kw-2">&amp;mut </span>out) }
         out.into()
     }
     <span class="doccomment">/// Returns the size of the last item
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;GetItemRectSize&quot;</span>)]
+    </span><span class="attr">#[doc(alias = <span class="string">"GetItemRectSize"</span>)]
     </span><span class="kw">pub fn </span>item_rect_size(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; [f32; <span class="number">2</span>] {
         <span class="kw">let </span><span class="kw-2">mut </span>out = sys::ImVec2::zero();
         <span class="kw">unsafe </span>{ sys::igGetItemRectSize(<span class="kw-2">&amp;mut </span>out) }
@@ -304,48 +306,48 @@
     <span class="doccomment">/// Allows the last item to be overlapped by a subsequent item.
     ///
     /// Both may be activated during the same frame before the later one takes priority.
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;SetItemAllowOverlap&quot;</span>)]
+    </span><span class="attr">#[doc(alias = <span class="string">"SetItemAllowOverlap"</span>)]
     </span><span class="kw">pub fn </span>set_item_allow_overlap(<span class="kw-2">&amp;</span><span class="self">self</span>) {
         <span class="kw">unsafe </span>{ sys::igSetItemAllowOverlap() };
     }
     <span class="doccomment">/// Makes the last item the default focused item of the window
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;SetItemDefaultFocus&quot;</span>)]
+    </span><span class="attr">#[doc(alias = <span class="string">"SetItemDefaultFocus"</span>)]
     </span><span class="kw">pub fn </span>set_item_default_focus(<span class="kw-2">&amp;</span><span class="self">self</span>) {
         <span class="kw">unsafe </span>{ sys::igSetItemDefaultFocus() };
     }
 }
 
 <span class="doccomment">/// # Miscellaneous utilities
-</span><span class="kw">impl</span>&lt;<span class="lifetime">&#39;ui</span>&gt; Ui&lt;<span class="lifetime">&#39;ui</span>&gt; {
+</span><span class="kw">impl</span>&lt;<span class="lifetime">'ui</span>&gt; Ui&lt;<span class="lifetime">'ui</span>&gt; {
     <span class="doccomment">/// Returns `true` if the rectangle (of given size, starting from cursor position) is visible
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;IsRectVisibleNil&quot;</span>)]
+    </span><span class="attr">#[doc(alias = <span class="string">"IsRectVisibleNil"</span>)]
     </span><span class="kw">pub fn </span>is_cursor_rect_visible(<span class="kw-2">&amp;</span><span class="self">self</span>, size: [f32; <span class="number">2</span>]) -&gt; bool {
         <span class="kw">unsafe </span>{ sys::igIsRectVisible_Nil(size.into()) }
     }
     <span class="doccomment">/// Returns `true` if the rectangle (in screen coordinates) is visible
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;IsRectVisibleNilVec2&quot;</span>)]
+    </span><span class="attr">#[doc(alias = <span class="string">"IsRectVisibleNilVec2"</span>)]
     </span><span class="kw">pub fn </span>is_rect_visible(<span class="kw-2">&amp;</span><span class="self">self</span>, rect_min: [f32; <span class="number">2</span>], rect_max: [f32; <span class="number">2</span>]) -&gt; bool {
         <span class="kw">unsafe </span>{ sys::igIsRectVisible_Vec2(rect_min.into(), rect_max.into()) }
     }
     <span class="doccomment">/// Returns the global imgui-rs time.
     ///
     /// Incremented by Io::delta_time every frame.
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;GetTime&quot;</span>)]
+    </span><span class="attr">#[doc(alias = <span class="string">"GetTime"</span>)]
     </span><span class="kw">pub fn </span>time(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; f64 {
         <span class="kw">unsafe </span>{ sys::igGetTime() }
     }
     <span class="doccomment">/// Returns the global imgui-rs frame count.
     ///
     /// Incremented by 1 every frame.
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;GetFrameCount&quot;</span>)]
+    </span><span class="attr">#[doc(alias = <span class="string">"GetFrameCount"</span>)]
     </span><span class="kw">pub fn </span>frame_count(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; i32 {
         <span class="kw">unsafe </span>{ sys::igGetFrameCount() }
     }
     <span class="doccomment">/// Returns a single style color from the user interface style.
     ///
-    /// Use this function if you need to access the colors, but don&#39;t want to clone the entire
+    /// Use this function if you need to access the colors, but don't want to clone the entire
     /// style object.
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;GetStyle&quot;</span>)]
+    </span><span class="attr">#[doc(alias = <span class="string">"GetStyle"</span>)]
     </span><span class="kw">pub fn </span>style_color(<span class="kw-2">&amp;</span><span class="self">self</span>, style_color: StyleColor) -&gt; [f32; <span class="number">4</span>] {
         <span class="self">self</span>.ctx.style()[style_color]
     }
