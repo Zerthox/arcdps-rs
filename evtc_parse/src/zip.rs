@@ -20,9 +20,7 @@ impl From<ZipError> for ParseError {
     fn from(err: ZipError) -> Self {
         match err {
             ZipError::Io(io) => Self::IoError(io),
-            ZipError::InvalidArchive(_)
-            | ZipError::UnsupportedArchive(_)
-            | ZipError::FileNotFound => Self::NotEvtc,
+            _ => Self::NotEvtc,
         }
     }
 }
