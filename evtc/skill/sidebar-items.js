@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"enum":["Activation","CustomSkill"],"struct":["ActivationEvent","ActivationIter","SkillInfo","SkillTiming"]};
+window.SIDEBAR_ITEMS = {"enum":["Activation","AnimationStop","CustomSkill"],"struct":["ActivationEvent","ActivationIter","AnimationStopIter","SkillInfo","SkillTiming"]};

@@ -1,6 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `evtc\src\event\event_kind.rs`."><title>event_kind.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-5bc39a1768837dd0.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="evtc" data-themes="" data-resource-suffix="" data-rustdoc-version="1.77.2 (25ef9e3d8 2024-04-09)" data-channel="1.77.2" data-search-js="search-dd67cee4cfa65049.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../../static.files/storage-4c98445ec4002617.js"></script><script defer src="../../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-48f368f3872407c8.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-04d5337699b92874.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title">
-            <h2>Files</h2></div></nav><div class="sidebar-resizer"></div>
-    <main><nav class="sub"><form class="search-form"><span></span><div id="sidebar-button" tabindex="-1"><a href="../../../evtc/all.html" title="show sidebar"></a></div><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" tabindex="-1"><a href="../../../help.html" title="help">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `evtc\src\event\event_kind.rs`."><title>event_kind.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-081576b923113409.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="evtc" data-themes="" data-resource-suffix="" data-rustdoc-version="1.79.0 (129f3b996 2024-06-10)" data-channel="1.79.0" data-search-js="search-bf21c90c8c1d92b1.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../../static.files/storage-e32f0c247825364d.js"></script><script defer src="../../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-20a3ad099b048cf2.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-09095024cf37855e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer"></div><main><nav class="sub"><form class="search-form"><span></span><div id="sidebar-button" tabindex="-1"><a href="../../../evtc/all.html" title="show sidebar"></a></div><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Type ‘S’ or ‘/’ to search, ‘?’ for more options…" type="search"><div id="help-button" tabindex="-1"><a href="../../../help.html" title="help">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings">Settings</a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -318,11 +316,19 @@
 <a href="#316" id="316">316</a>
 <a href="#317" id="317">317</a>
 <a href="#318" id="318">318</a>
+<a href="#319" id="319">319</a>
+<a href="#320" id="320">320</a>
+<a href="#321" id="321">321</a>
+<a href="#322" id="322">322</a>
+<a href="#323" id="323">323</a>
+<a href="#324" id="324">324</a>
+<a href="#325" id="325">325</a>
+<a href="#326" id="326">326</a>
 </pre></div><pre class="rust"><code><span class="kw">use crate</span>::{
     agent::{
         AgentStatusEvent, AttackTargetEvent, BarrierUpdateEvent, BreakbarPercentEvent,
-        BreakbarStateEvent, DownContributionEvent, EnterCombatEvent, HealthUpdateEvent,
-        MaxHealthEvent, TargetableEvent, TeamChangeEvent,
+        BreakbarStateEvent, DownContributionEvent, EnterCombatEvent, GliderEvent,
+        HealthUpdateEvent, MaxHealthEvent, TargetableEvent, TeamChangeEvent,
     },
     buff::{
         BuffApplyEvent, BuffDamageEvent, BuffFormula, BuffInfo, BuffInitialEvent, BuffRemoveEvent,
@@ -330,7 +336,7 @@
     },
     effect::{Effect, EffectOld},
     guid::ContentGUID,
-    log::{ErrorEvent, LogEvent},
+    log::{ArcBuildEvent, ErrorEvent, LogEvent},
     marker::{AgentMarkerEvent, SquadMarkerEvent},
     player::{GuildEvent, RewardEvent},
     position::PositionEvent,
@@ -374,10 +380,10 @@
     </span>HealthUpdate(HealthUpdateEvent),
 
     <span class="doccomment">/// Log started.
-    </span>LogStart(LogEvent),
+    </span>SquadCombatStart(LogEvent),
 
     <span class="doccomment">/// Log ended.
-    </span>LogEnd(LogEvent),
+    </span>SquadCombatEnd(LogEvent),
 
     <span class="doccomment">/// Agent swapped weapon set.
     </span>WeaponSwap(WeaponSwapEvent),
@@ -455,7 +461,7 @@
     </span>BreakbarPercent(BreakbarPercentEvent),
 
     <span class="doccomment">/// Error.
-    </span>Error(ErrorEvent),
+    </span>Integrity(ErrorEvent),
 
     <span class="doccomment">/// Agent has marker.
     </span>AgentMarker(AgentMarkerEvent),
@@ -476,7 +482,7 @@
     </span>InstanceStart { time: u64, start: u64 },
 
     <span class="doccomment">/// Tick rate.
-    </span>Tickrate { time: u64, rate: u64 },
+    </span>RateHealth { time: u64, rate: u64 },
 
     <span class="doccomment">/// Last 90% before down for downs contribution.
     </span>Last90BeforeDown(DownContributionEvent),
@@ -484,7 +490,7 @@
     <span class="doccomment">/// Effect created or ended.
     </span>EffectOld(EffectOld),
 
-    <span class="doccomment">/// Id to GUID.
+    <span class="doccomment">/// Content id to GUID.
     ///
     /// This maps a volatile content id to a stable GUID.
     </span>IdToGUID(ContentGUID),
@@ -522,6 +528,12 @@
     <span class="doccomment">/// Squad marker placed or removed.
     </span>SquadMarker(SquadMarkerEvent),
 
+    <span class="doccomment">/// ArcDPS build information.
+    </span>ArcBuild(ArcBuildEvent),
+
+    <span class="doccomment">/// Agent gliding state changed.
+    </span>Glider(GliderEvent),
+
     <span class="doccomment">/// Unknown event.
     </span>Unknown(Event),
 }
@@ -544,8 +556,8 @@
                     StateChange::Spawn =&gt; <span class="self">Self</span>::Spawn(event.extract()),
                     StateChange::Despawn =&gt; <span class="self">Self</span>::Despawn(event.extract()),
                     StateChange::HealthUpdate =&gt; <span class="self">Self</span>::HealthUpdate(event.extract()),
-                    StateChange::LogStart =&gt; <span class="self">Self</span>::LogStart(event.extract()),
-                    StateChange::LogEnd =&gt; <span class="self">Self</span>::LogEnd(event.extract()),
+                    StateChange::SquadCombatStart =&gt; <span class="self">Self</span>::SquadCombatStart(event.extract()),
+                    StateChange::SquadCombatEnd =&gt; <span class="self">Self</span>::SquadCombatEnd(event.extract()),
                     StateChange::WeaponSwap =&gt; <span class="self">Self</span>::WeaponSwap(event.extract()),
                     StateChange::MaxHealthUpdate =&gt; <span class="self">Self</span>::MaxHealthUpdate(event.extract()),
                     StateChange::PointOfView =&gt; <span class="self">Self</span>::PointOfView(event.extract()),
@@ -583,7 +595,7 @@
                     StateChange::SkillTiming =&gt; <span class="self">Self</span>::SkillTiming(event.extract()),
                     StateChange::BreakbarState =&gt; <span class="self">Self</span>::BreakbarState(event.extract()),
                     StateChange::BreakbarPercent =&gt; <span class="self">Self</span>::BreakbarPercent(event.extract()),
-                    StateChange::Error =&gt; <span class="self">Self</span>::Error(event.extract()),
+                    StateChange::Integrity =&gt; <span class="self">Self</span>::Integrity(event.extract()),
                     StateChange::Marker =&gt; <span class="self">Self</span>::AgentMarker(event.extract()),
                     StateChange::BarrierUpdate =&gt; <span class="self">Self</span>::BarrierUpdate(event.extract()),
                     StateChange::StatReset =&gt; <span class="self">Self</span>::StatReset {
@@ -604,7 +616,7 @@
                         time: event.time,
                         start: event.src_agent,
                     },
-                    StateChange::Tickrate =&gt; <span class="self">Self</span>::Tickrate {
+                    StateChange::RateHealth =&gt; <span class="self">Self</span>::RateHealth {
                         time: event.time,
                         rate: event.src_agent,
                     },
@@ -625,6 +637,8 @@
                         <span class="self">Self</span>::Ruleset(Ruleset::from_bits_retain(event.src_agent))
                     }
                     StateChange::SquadMarker =&gt; <span class="self">Self</span>::SquadMarker(event.extract()),
+                    StateChange::ArcBuild =&gt; <span class="self">Self</span>::ArcBuild(event.extract()),
+                    StateChange::Glider =&gt; <span class="self">Self</span>::Glider(event.extract()),
                     StateChange::Unknown(<span class="kw">_</span>) =&gt; <span class="self">Self</span>::Unknown(event),
                 },
                 EventCategory::Activation =&gt; <span class="self">Self</span>::Activation(event.extract()),
