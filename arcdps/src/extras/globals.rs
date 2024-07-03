@@ -38,6 +38,7 @@ impl ExtrasGlobals {
 
     /// Initializes the Unofficial Extras globals.
     pub unsafe fn init(&mut self, handle: HMODULE, version: Option<&'static str>) {
+        #![allow(clippy::missing_transmute_annotations)]
         *self = Self {
             handle,
             version,

@@ -114,7 +114,7 @@ pub type ExportFreeExtension = unsafe extern "C" fn(sig: u32) -> HMODULE;
 ///
 /// ArcDPS will call `get_release_addr` and its returned function.
 /// Upon returning from [`free_extension`] there will be no more pending callbacks.
-/// However, the caller must ensure to callbacks are executing before freeing.
+/// However, the caller must ensure no callbacks are executing before freeing.
 /// Returns `0` if extension was not found or [`HMODULE`] handle of the module otherwise.
 ///
 /// This uses version 2 (`freeextension2`) of the extension API.

@@ -86,6 +86,7 @@ impl ArcGlobals {
 
     /// Initializes the ArcDPS globals.
     pub unsafe fn init(&mut self, handle: HMODULE, version: Option<&'static str>) {
+        #![allow(clippy::missing_transmute_annotations)]
         *self = Self {
             handle,
             version,
@@ -105,6 +106,7 @@ impl ArcGlobals {
 }
 
 pub type MallocFn = unsafe extern "C" fn(size: usize, user_data: *mut c_void) -> *mut c_void;
+
 pub type FreeFn = unsafe extern "C" fn(ptr: *mut c_void, user_data: *mut c_void);
 
 /// ImGui context.
