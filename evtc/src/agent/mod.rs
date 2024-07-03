@@ -4,12 +4,17 @@
 
 mod affinity;
 mod agent_kind;
+mod attack_target;
 mod breakbar;
+mod combat;
+mod glider;
+mod health;
 mod id;
 mod status;
+mod targetable;
+mod team;
 
-pub use self::affinity::*;
-pub use self::agent_kind::*;
-pub use self::breakbar::*;
-pub use self::id::*;
-pub use self::status::*;
+pub use self::{
+    affinity::*, agent_kind::*, attack_target::*, breakbar::*, combat::*, glider::*, health::*,
+    id::*, status::*, targetable::*, team::*,
+};

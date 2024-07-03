@@ -1,8 +1,8 @@
 use crate::{
     agent::{
         AgentStatusEvent, AttackTargetEvent, BarrierUpdateEvent, BreakbarPercentEvent,
-        BreakbarStateEvent, DownContributionEvent, EnterCombatEvent, HealthUpdateEvent,
-        MaxHealthEvent, TargetableEvent, TeamChangeEvent,
+        BreakbarStateEvent, DownContributionEvent, EnterCombatEvent, GliderEvent,
+        HealthUpdateEvent, MaxHealthEvent, TargetableEvent, TeamChangeEvent,
     },
     buff::{
         BuffApplyEvent, BuffDamageEvent, BuffFormula, BuffInfo, BuffInitialEvent, BuffRemoveEvent,
@@ -10,7 +10,7 @@ use crate::{
     },
     effect::{Effect, EffectOld},
     guid::ContentGUID,
-    log::{ErrorEvent, LogEvent},
+    log::{ArcBuildEvent, ErrorEvent, LogEvent},
     marker::{AgentMarkerEvent, SquadMarkerEvent},
     player::{GuildEvent, RewardEvent},
     position::PositionEvent,
@@ -54,10 +54,10 @@ pub enum EventKind {
     HealthUpdate(HealthUpdateEvent),
 
     /// Log started.
-    LogStart(LogEvent),
+    SquadCombatStart(LogEvent),
 
     /// Log ended.
-    LogEnd(LogEvent),
+    SquadCombatEnd(LogEvent),
 
     /// Agent swapped weapon set.
     WeaponSwap(WeaponSwapEvent),
@@ -135,7 +135,7 @@ pub enum EventKind {
     BreakbarPercent(BreakbarPercentEvent),
 
     /// Error.
-    Error(ErrorEvent),
+    Integrity(ErrorEvent),
 
     /// Agent has marker.
     AgentMarker(AgentMarkerEvent),
@@ -156,7 +156,7 @@ pub enum EventKind {
     InstanceStart { time: u64, start: u64 },
 
     /// Tick rate.
-    Tickrate { time: u64, rate: u64 },
+    RateHealth { time: u64, rate: u64 },
 
     /// Last 90% before down for downs contribution.
     Last90BeforeDown(DownContributionEvent),
@@ -164,7 +164,7 @@ pub enum EventKind {
     /// Effect created or ended.
     EffectOld(EffectOld),
 
-    /// Id to GUID.
+    /// Content id to GUID.
     ///
     /// This maps a volatile content id to a stable GUID.
     IdToGUID(ContentGUID),
@@ -202,6 +202,12 @@ pub enum EventKind {
     /// Squad marker placed or removed.
     SquadMarker(SquadMarkerEvent),
 
+    /// ArcDPS build information.
+    ArcBuild(ArcBuildEvent),
+
+    /// Agent gliding state changed.
+    Glider(GliderEvent),
+
     /// Unknown event.
     Unknown(Event),
 }
@@ -224,8 +230,8 @@ impl From<Event> for EventKind {
                     StateChange::Spawn => Self::Spawn(event.extract()),
                     StateChange::Despawn => Self::Despawn(event.extract()),
                     StateChange::HealthUpdate => Self::HealthUpdate(event.extract()),
-                    StateChange::LogStart => Self::LogStart(event.extract()),
-                    StateChange::LogEnd => Self::LogEnd(event.extract()),
+                    StateChange::SquadCombatStart => Self::SquadCombatStart(event.extract()),
+                    StateChange::SquadCombatEnd => Self::SquadCombatEnd(event.extract()),
                     StateChange::WeaponSwap => Self::WeaponSwap(event.extract()),
                     StateChange::MaxHealthUpdate => Self::MaxHealthUpdate(event.extract()),
                     StateChange::PointOfView => Self::PointOfView(event.extract()),
@@ -263,7 +269,7 @@ impl From<Event> for EventKind {
                     StateChange::SkillTiming => Self::SkillTiming(event.extract()),
                     StateChange::BreakbarState => Self::BreakbarState(event.extract()),
                     StateChange::BreakbarPercent => Self::BreakbarPercent(event.extract()),
-                    StateChange::Error => Self::Error(event.extract()),
+                    StateChange::Integrity => Self::Integrity(event.extract()),
                     StateChange::Marker => Self::AgentMarker(event.extract()),
                     StateChange::BarrierUpdate => Self::BarrierUpdate(event.extract()),
                     StateChange::StatReset => Self::StatReset {
@@ -284,7 +290,7 @@ impl From<Event> for EventKind {
                         time: event.time,
                         start: event.src_agent,
                     },
-                    StateChange::Tickrate => Self::Tickrate {
+                    StateChange::RateHealth => Self::RateHealth {
                         time: event.time,
                         rate: event.src_agent,
                     },
@@ -305,6 +311,8 @@ impl From<Event> for EventKind {
                         Self::Ruleset(Ruleset::from_bits_retain(event.src_agent))
                     }
                     StateChange::SquadMarker => Self::SquadMarker(event.extract()),
+                    StateChange::ArcBuild => Self::ArcBuild(event.extract()),
+                    StateChange::Glider => Self::Glider(event.extract()),
                     StateChange::Unknown(_) => Self::Unknown(event),
                 },
                 EventCategory::Activation => Self::Activation(event.extract()),

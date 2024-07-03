@@ -18,6 +18,9 @@ pub struct StackActiveEvent {
 
     /// Stack id of new active stack.
     pub stack_id: u64,
+
+    /// Current buff duration.
+    pub duration: i32,
 }
 
 impl Extract for StackActiveEvent {
@@ -27,6 +30,7 @@ impl Extract for StackActiveEvent {
             time: event.time,
             agent: AgentId::from_src(event),
             stack_id: event.dst_agent,
+            duration: event.value,
         }
     }
 }
@@ -42,9 +46,16 @@ impl TryExtract for StackActiveEvent {
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct StackResetEvent {
+    /// Time of registering the stack reset.
     pub time: u64,
+
+    /// Agent that the stack reset happened to.
     pub agent: AgentId,
+
+    /// New duration to reset to.
     pub duration: i32,
+
+    /// Stack id.
     pub stack_id: u32,
 }
 

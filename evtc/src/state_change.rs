@@ -20,190 +20,322 @@ pub enum StateChange {
     /// Not used, different kind of event.
     None = 0,
 
-    /// Source agent entered combat.
+    /// Agent entered combat.
     ///
+    /// `src_agent` entered combat.
     /// `dst_agent` contains the subgroup.
+    /// `value` contains the Profession id.
+    /// `buff_dmg` contains the Elite Specialization id.
+    ///
+    /// EVTC: yes, limited to agent table outside instances.
+    ///
+    /// Realtime: yes, limited to squad.
     EnterCombat = 1,
 
-    /// Source agent left combat.
+    /// Agent left combat.
+    ///
+    /// `src_agent` left combat.
+    ///
+    /// EVTC: yes, limited to agent table outside instances.
+    ///
+    /// Realtime: yes, limited to squad.
     ExitCombat = 2,
 
-    /// Source agent is now alive.
+    /// Agent is now alive.
+    ///
+    /// `src_agent` is alive.
+    ///
+    /// EVTC: yes, limited to agent table outside instances.
+    ///
+    /// Realtime: yes, limited to squad.
     ChangeUp = 3,
 
-    /// Source agent is now dead.
+    /// Agent is now dead.
+    ///
+    /// `src_agent` is dead.
+    ///
+    /// EVTC: yes, limited to agent table outside instances.
+    ///
+    /// Realtime: yes, limited to squad.
     ChangeDead = 4,
 
-    /// Source agent is now downed.
+    /// Agent is now downed.
+    ///
+    /// `src_agent` is down.
+    ///
+    /// EVTC: yes, limited to agent table outside instances.
+    ///
+    /// Realtime: yes, limited to squad.
     ChangeDown = 5,
 
-    /// Source agent is now in game tracking range.
+    /// Agent is now in game tracking range.
     ///
-    /// *Not used in realtime API.*
+    /// `src_agent` is now tracked.
+    ///
+    /// EVTC: yes, limited to agent table outside instances.
+    ///
+    /// Realtime: no
     Spawn = 6,
 
     /// Source agent is no longer being tracked or out of game tracking range.
     ///
-    /// *Not used in realtime API.*
+    /// `src_agent` is no longer tracked.
+    ///
+    /// EVTC: yes, limited to agent table outside instances.
+    ///
+    /// Realtime: no
     Despawn = 7,
 
-    /// Source agent health change.
+    /// Agent health change.
     ///
+    /// `src_agent` health changed.
     /// `dst_agent` contains percentage as `percent * 10000`.
     /// For example 99.5% will be `9950`.
     ///
-    /// *Not used in realtime API.*
+    /// EVTC: yes, limited to agent table outside instances.
+    ///
+    /// Realtime: no
     HealthUpdate = 8,
 
-    /// Logging has started.
+    /// Squad combat start, first player entered combat. Logging has started.
     ///
     /// `value` contains the server Unix timestamp as `u32`.
     /// `buff_dmg` contains the local Unix timestamp.
     ///
     /// `src_agent` is `0x637261` (ArcDPS id) if log EVTC and species id if realtime API.
-    LogStart = 9,
+    ///
+    /// EVTC: yes
+    ///
+    /// Realtime: yes
+    SquadCombatStart = 9,
 
-    /// Logging has ended.
+    /// Squad combat end, last player has left combat. Logging has ended.
     ///
     /// `value` contains the server Unix timestamp as `u32`.
     /// `buff_dmg` contains the local Unix timestamp.
     ///
     /// `src_agent` is `0x637261` (ArcDPS id) if log EVTC and species id if realtime API.
-    LogEnd = 10,
-
-    /// Source agent swapped weapon set.
     ///
-    /// `dst_agent` contains the current set id.
+    /// EVTC: yes
+    ///
+    /// Realtime: yes
+    SquadCombatEnd = 10,
+
+    /// Agent swapped weapon set.
+    ///
+    /// `src_agent` swapped weapons.
+    /// `dst_agent` contains the new weapon set id.
+    /// `value` contains the previous weapon set id.
+    ///
     /// `0`/`1` for underwater weapon sets and `4`/`5` for land weapon sets.
     /// `2` is bundle/kit weapon set and `3` transform weapon set.
+    ///
+    /// EVTC: yes
+    ///
+    /// Realtime: yes
     WeaponSwap = 11,
 
-    /// Source agent maximum health change.
+    /// Agent maximum health change.
     ///
+    /// `src_agent` changed max health.
     /// `dst_agent` contains the new maximum health.
     ///
-    /// *Not used in realtime API.*
+    /// EVTC: yes, limited to non-players.
+    ///
+    /// Realtime: no
     MaxHealthUpdate = 12,
 
-    /// Source agent is "recording" player.
+    /// Player recording the log.
     ///
-    /// *Not used in realtime API.*
+    /// `src_agent` is point of view
+    ///
+    /// EVTC: yes
+    ///
+    /// Realtime: no
     PointOfView = 13,
 
-    /// Source agent contains the game text language.
+    /// Game text language.
     ///
-    /// *Not used in realtime API.*
+    /// `src_agent` contains the text language id.
+    ///
+    /// EVTC: yes
+    ///
+    /// Realtime: no
     Language = 14,
 
-    /// Source agent contains the game build.
+    /// Game build.
     ///
-    /// *Not used in realtime API.*
+    /// `src_agent` contains the game build.
+    ///
+    /// EVTC: yes
+    ///
+    /// Realtime: no
     GWBuild = 15,
 
-    /// Source agent contains the sever shard id.
+    /// Sever shard id.
     ///
-    /// *Not used in realtime API.*
+    /// `src_agent` contains the shard id.
+    ///
+    /// EVTC: yes
+    ///
+    /// Realtime: no
     ShardId = 16,
 
     /// Source agent got a reward chest.
     ///
-    /// Source is always self.
+    /// `src_agent` is always self.
     /// `dst_agent` contains the reward id.
-    /// Value contains the reward type.
+    /// `value` contains the reward type.
+    ///
+    /// EVTC: yes
+    ///
+    /// Realtime: yes
     Reward = 17,
 
+    /// Initially present buffs.
+    ///
+    /// Identical to buff application event.
     /// Appears once per buff per agent on logging start.
     ///
-    /// *(`statechange == 18` and `buff == 18`, normal combat event otherwise)*
+    /// EVTC: yes, limited to squad outside instances.
+    ///
+    /// Realtime: yes, limited to squad.
     BuffInitial = 18,
 
-    /// Source agent position change.
+    /// Agent position change.
     ///
-    /// `dst_agent` contains x/y/z as array of 3 floats.
+    /// `src_agent` changed position.
+    /// `dst_agent` contains XYZ coordinates as `[f32; 3]`.
     ///
-    /// *Not used in realtime API.*
+    /// EVTC: yes, limited to agent table outside instances.
+    ///
+    /// Realtime: no
     Position = 19,
 
-    /// Source agent velocity change.
+    /// Agent velocity change.
     ///
-    /// `dst_agent` contains x/y/z as array of 3 floats.
+    /// `src_agent` changed position.
+    /// `dst_agent` contains XYZ velocity as `[f32; 3]`.
     ///
-    /// *Not used in realtime API.*
+    /// EVTC: yes, limited to agent table outside instances.
+    ///
+    /// Realtime: no
     Velocity = 20,
 
-    /// Source agent facing change.
+    /// Agent facing change.
     ///
-    /// `dst_agent` contains x/y as array of 2 floats.
+    /// `src_agent` changed position.
+    /// `dst_agent` contains XY direction as `[f32; 2]`.
     ///
-    /// *Not used in realtime API.*
+    /// EVTC: yes, limited to agent table outside instances.
+    ///
+    /// Realtime: no
     Facing = 21,
 
-    /// Source agent team change.
+    /// Agent team change.
     ///
+    /// `src_agent` changed team.
     /// `dst_agent` contains the new team id.
+    /// `value` contains the previous team id.
+    ///
+    /// EVTC: yes, limited to agent table outside instances.
+    ///
+    /// Realtime: yes, limited to squad.
     TeamChange = 22,
 
-    /// Source agent is now an attack target.
+    /// Agent is an attack target of parent gadget.
     ///
-    /// `dst_agent` is the parent agent (gadget type).
+    /// `src_agent` is the attack target.
+    /// `dst_agent` is the parent gadget.
     /// `value` contains the current targetable state.
     ///
-    /// *Not used in realtime API.*
+    /// EVTC: yes, limited to agent table outside instances.
+    ///
+    /// Realtime: no
     AttackTarget = 23,
 
-    /// Source agent targetability change.
+    /// Agent changed targetable state.
     ///
+    /// `src_agent` changed targetable state.
     /// `dst_agent` contains the new targetable state.
     /// `0` for no, `1` for yes. Default is yes.
     ///
-    /// *Not used in realtime API.*
+    /// EVTC: yes, limited to agent table outside instances.
+    ///
+    /// Realtime: no
     Targetable = 24,
 
-    /// Source agent contains the map id.
+    /// Map id.
     ///
-    /// *Not used in realtime API.*
+    /// `src_agent` contains the map id.
+    ///
+    /// EVTC: yes
+    ///
+    /// Realtime: no
     MapId = 25,
 
     /// Used internally by ArcDPS.
     /// Should not appear anywhere.
     ReplInfo = 26,
 
-    /// Source agent with active buff.
+    /// Buff stack is now active.
     ///
-    /// `dst_agent` contains the stack id marked active.
+    /// `src_agent` has the buff.
+    /// `dst_agent` contains the buff stack id marked active.
+    /// `value` contains the current buff duration.
+    ///
+    /// EVTC: yes, limited to squad outside instances.
+    ///
+    /// Realtime: yes, limited to squad.
     StackActive = 27,
 
-    /// Source agent with reset buff.
+    /// Buff stack duration changed.
     ///
-    /// `value` is the duration to reset to (also marks inactive).
-    /// `pad61` contains the stack id.
+    /// `src_agent` has the buff.
+    /// `value` contains the new duration to reset to (also marks inactive).
+    /// `pad61-64` contains the stack id.
+    ///
+    /// EVTC: yes, limited to squad outside instances.
+    ///
+    /// Realtime: yes, limited to squad.
     StackReset = 28,
 
-    /// Source agent is in guild.
+    /// Agent is in guild.
     ///
-    /// `dst_agent` until `buff_dmg` is [`u128`] (16 byte) guid.
+    /// `src_agent` is in guild.
+    /// `dst_agent` contains the guild guid as [u8; 16].
     ///
     /// Given in client form, needs minor rearrange for API form.
+    ///
+    /// EVTC: yes, limited to squad outside instances.
+    ///
+    /// Realtime: yes, limited to squad.
     Guild = 29,
 
     /// Buff information.
     ///
+    /// `skill_id` is skilldef id of buff.
     /// `is_offcycle` contains the category.
     /// `pad61` contains the stacking type.
     /// `src_master_instance_id` contains the max stacks.
     /// `overstack_value` contains the duration cap.
     ///
-    /// If `is_flanking` probably invulnerable.
-    /// If `is_shields` probably invert.
-    /// If `pad62` probably resistance.
+    /// If `is_flanking` probably invulnerability-like.
+    /// If `is_shields` probably invert-like.
+    /// If `pad62` probably resistance-like.
     ///
-    /// *Not used in realtime API.*
+    /// One event per buff.
+    ///
+    /// EVTC: yes
+    ///
+    /// Realtime: no
     BuffInfo = 30,
 
     /// Buff formula.
     ///
-    /// `time` contains `type`, `attr1`, `attr2`, `param1`, `param2`, `param3`, `trait_src` and `trait_self` as `[f32; 8]`.
-    /// `src_instance_id` contains `buff_src` and `buff_self` as `[f32; 2]`.
+    /// `skill_id` is skilldef id of buff.
+    /// `time` contains `type`, `attr1`, `attr2`, `param1`, `param2`, `param3`, `trait_condition_src` and `trait_condition_self`, `content_reference` as `[f32; 9]`.
+    /// `src_instance_id` contains `buff_condition_src` and `buff_condition_self` as `[f32; 2]`.
     ///
     /// If `is_flanking` not NPC.
     /// If `is_shields` not player.
@@ -211,123 +343,171 @@ pub enum StateChange {
     ///
     /// `overstack_value` is value of type determined by `pad61`.
     ///
-    /// Once per formula.
+    /// One event per buff formula.
     ///
-    /// *Not used in realtime API.*
+    /// EVTC: yes
+    ///
+    /// Realtime: no
     BuffFormula = 31,
 
     /// Skill information.
     ///
+    /// `skill_id` is skilldef id of ability.
     /// `time` contains `recharge`, `range0`, `range1` and `tooltiptime` as `[f32; 4]`.
     ///
-    /// *Not used in realtime API.*
+    /// One event per ability.
+    ///
+    /// EVTC: yes
+    ///
+    /// Realtime: no
     SkillInfo = 32,
 
     /// Skill action.
     ///
-    /// `src_agent` contains the action.
-    /// `dst_agent` contains at which millisecond.
+    /// `skill_id` is skilldef id of ability.
+    /// `src_agent` contains the action type.
+    /// `dst_agent` contains the time since activation in milliseconds.
     ///
-    /// One per timing.
+    /// One event per ability timing.
     ///
-    /// *Not used in realtime API.*
+    /// EVTC: yes
+    ///
+    /// Realtime: no
     SkillTiming = 33,
 
-    /// Source agent breakbar state change.
+    /// Agent breakbar state change.
     ///
-    /// Value is [`u16`] game enum (active, recover, immune, none).
+    /// `src_agent` changed breakbar state.
+    /// `value` contains the new breakbar state as [`u16`] (game enum: active, recover, immune, none).
     ///
-    /// *Not used in realtime API.*
+    /// EVTC: yes, limited to agent table outside instances.
+    ///
+    /// Realtime: no
     BreakbarState = 34,
 
     /// Breakbar percentage.
     ///
-    /// `value` contains percentage as float.
+    /// `src_agent` has breakbar percentage.
+    /// `value` contains percentage as [`f32`].
     ///
-    /// *Not used in realtime API.*
+    /// EVTC: yes, limited to agent table outside instances.
+    ///
+    /// Realtime: no
     BreakbarPercent = 35,
 
-    /// Error.
+    /// Message with log integrity information.
     ///
-    /// `time` contains the error message as an array of up to 32 characters.
+    /// `time` contains the message as a null-terminated C string.
     ///
-    /// *Not used in realtime API.*
-    Error = 36,
+    /// EVTC: yes
+    ///
+    /// Realtime: no
+    Integrity = 36,
 
-    /// Source agent has marker.
+    /// Agent has a marker.
     ///
-    /// `src_agent` is agent.
-    /// `value` is the id of the marker (volatile, depends on game build).
-    /// `buff` will be non-zero if commander.
+    /// `src_agent` has the marker.
+    /// `value` contains the markerdef id (volatile, depends on game build).
+    /// If `buff`, marker is a commander tag.
     ///
     /// A marker id of `0` indicates a remove.
+    ///
+    /// EVTC: yes, limited to agent table outside instances.
+    ///
+    /// Realtime: no
     Marker = 37,
 
-    /// Source agent barrier change.
+    /// Agent barrier change.
     ///
+    /// `src_agent` has barrier percentage.
     /// `dst_agent` contains percentage as `percent * 10000`.
     /// For example 99.5% will be `9950`.
     ///
-    /// *Not used in realtime API.*
+    /// EVTC: yes, limited to agent table outside instances.
+    ///
+    /// Realtime: no
     BarrierUpdate = 38,
 
     /// Arc UI stats reset.
     ///
-    /// `src_agent` contains the NPC id of the active log.
+    /// `src_agent` contains the species id of the agent triggering the reset, for example boss species id.
     ///
-    /// *Not used in log EVTC.*
+    /// EVTC: yes
+    ///
+    /// Realtime: yes
     StatReset = 39,
 
     /// A custom event created by an extension (addon/plugin).
     Extension = 40,
 
     /// Delayed combat event.
+    ///
+    /// Event deemed "unsafe" for realtime that was held back until after squad left combat.
+    ///
+    /// EVTC: no
+    ///
+    /// Realtime: yes
     ApiDelayed = 41,
 
-    /// Instance started.
+    /// Map instance start timestamp.
     ///
-    /// `src_agent` contains the time in ms at which the instance was likely started.
+    /// `src_agent` contains the time in milliseconds since the instance was started.
+    ///
+    /// EVTC: yes
+    ///
+    /// Realtime: yes
     InstanceStart = 42,
 
-    /// Tick rate.
+    /// Tick rate health.
     ///
+    /// `src_agent` is `25 - tickrate` when `tickrate < 21`.
     /// Every 500ms.
-    /// `src_agent` is `25 - tickrate` (when `tickrate < 21`).
-    Tickrate = 43,
-
-    /// Last 90% before down.
     ///
-    /// `src_agent` is enemy agent that went down, `dst_agent` is time in ms since last 90%.
-    /// For downs contribution.
+    /// EVTC: yes
+    ///
+    /// Realtime: no
+    RateHealth = 43,
+
+    /// Retired since 230716.
+    ///
+    /// Previously: *Last 90% before down.*
+    ///
+    /// *`src_agent` is enemy agent that went down, `dst_agent` is time in ms since last 90%.
+    /// For downs contribution.*
     Last90BeforeDown = 44,
 
-    /// Effect created or ended.
+    /// Retired since 230716.
     ///
-    /// `skill_id` contains the effect id.
-    /// `src_agent` is the effect owner.
-    /// `dst_agent` if effect located at agent.
-    /// Otherwise `value` contains XYZ position as `[f32; 3]`, `affinity` contains XY orientation as `[f32; 2]`, `pad61` contains Z orientation as [`f32`].
-    /// `is_shields` contains duration as [`u16`].
-    /// If `is_flanking`, duration is a tracking id.
-    /// If effect id is `0`, effect ended and `is_shields` contains tracking id.
+    /// Previously: *Effect created or ended.*
     ///
-    /// *Not used in realtime API.*
+    /// *`skill_id` contains the effect id.*
+    /// *`src_agent` is the effect owner.*
+    /// *`dst_agent` if effect located at agent.*
+    /// *Otherwise `value` contains XYZ position as `[f32; 3]`, `affinity` contains XY orientation as `[f32; 2]`, `pad61` contains Z orientation as [`f32`].*
+    /// *`is_shields` contains duration as [`u16`].*
+    /// *If `is_flanking`, duration is a tracking id.*
+    /// *If effect id is `0`, effect ended and `is_shields` contains tracking id.*
     EffectOld = 45,
 
-    /// Id to GUID.
+    /// Content id to GUID.
     ///
-    /// `src_agent` contains [`u128`] (16 byte) persistent content guid.
-    /// `overstack_value` is a variant of [`ContentLocal`](crate::guid::ContentLocal), `skill_id` is content id.
+    /// `skill_id` is the content id.
+    /// `src_agent` contains the persistent content guid as `[u8; 16]`.
+    /// `overstack_value` contains a variant of [`ContentLocal`](crate::guid::ContentLocal).
     ///
     /// *Not used in realtime API.*
     IdToGUID = 46,
 
-    /// Log NPC changed.
+    /// Log boss agent changed.
     ///
+    /// `src_agent` contains the species id of the agent.
+    /// `dst_agent` is the boss agent.
     /// `value` contains the server Unix timestamp as `u32`.
     /// `buff_dmg` contains the local Unix timestamp.
     ///
-    /// `src_agent` is species id.
+    /// EVTC: yes
+    ///
+    /// Realtime: yes
     LogNPCUpdate = 47,
 
     /// Used internally by ArcDPS.
@@ -342,32 +522,65 @@ pub enum StateChange {
     /// Fractal scale.
     ///
     /// `src_agent` contains the scale.
+    ///
+    /// EVTC: yes
+    ///
+    /// Realtime: no
     FractalScale = 50,
 
-    /// Effect created or ended.
+    /// Visual effect created or ended.
     ///
     /// `skill_id` contains the effect id.
-    /// `src_agent` is the effect owner.
+    /// `src_agent` is the effect owner (if any).
     /// `dst_agent` if effect located at agent.
-    /// Otherwise `value` contains XYZ position as `[f32; 3]`.
+    /// Otherwise `value` contains XYZ location as `[f32; 3]`.
     /// `affinity` contains duration as [`u32`].
     /// `is_buffremove` contains trackable id as [`u32`].
     /// `is_shields` contains orientation as `[i16; 3]`.
-    /// Orientation values are original multiplied by `1000` or [`i16::MIN`]/[`i16::MAX`] if out of bounds.
+    /// Orientation values are `original * 1000` or [`i16::MIN`]/[`i16::MAX`] if out of bounds.
     ///
-    /// *Not used in realtime API.*
+    /// EVTC: yes, limited to agent table outside instances
+    ///
+    /// Realtime: no
     Effect = 51,
 
     /// Combat ruleset.
     ///
-    /// `src_agent` has bit 0 set if PvE rules buff, bit 1 if WvW rules and bit 2 if PvP rules.
+    /// `src_agent` has bit 0 set if PvE rules, bit 1 if WvW rules and bit 2 if PvP rules.
+    ///
+    /// EVTC: yes
+    ///
+    /// Realtime: no
     Ruleset = 52,
 
-    /// Squad marker placed or removed.
+    /// Squad ground marker placed or removed.
     ///
-    /// `src_agent` contains the XYZ location as `[f32; 3]` or [`f32::INFINITY`] if removed.
-    /// `skill_id` contains the index of the squad marker.
+    /// `src_agent` contains XYZ location as `[f32; 3]` or [`f32::INFINITY`] if removed.
+    /// `skill_id` contains the index of the squad marker, for example `0` for Arrow marker.
+    ///
+    /// EVTC: yes
+    ///
+    /// Realtime: no
     SquadMarker = 53,
+
+    /// ArcDPS build information.
+    ///
+    /// `src_agent` contains ArcDPS build as null-terminated C string.
+    ///
+    /// EVTC: yes
+    ///
+    /// Realtime: no
+    ArcBuild = 54,
+
+    /// Agent gliding state change.
+    ///
+    /// `src_agent` changed gliding state.
+    /// `value` contains `1` if deployed and `0` if stowed.
+    ///
+    /// EVTC: yes, limited to agent table outside instances.
+    ///
+    /// Realtime: no
+    Glider = 55,
 
     /// Unknown or invalid.
     #[num_enum(catch_all)]
@@ -389,8 +602,8 @@ impl StateChange {
                 | Self::Spawn
                 | Self::Despawn
                 | Self::HealthUpdate
-                | Self::LogStart
-                | Self::LogEnd
+                | Self::SquadCombatStart
+                | Self::SquadCombatEnd
                 | Self::WeaponSwap
                 | Self::MaxHealthUpdate
                 | Self::Reward
@@ -414,6 +627,8 @@ impl StateChange {
                 | Self::LogNPCUpdate
                 | Self::ExtensionCombat
                 | Self::Effect
+                | Self::SquadMarker
+                | Self::Glider
         )
     }
 }

@@ -1,6 +1,7 @@
+mod arc_build;
 mod error;
 
-pub use self::error::*;
+pub use self::{arc_build::*, error::*};
 
 use crate::{extract::Extract, Event, StateChange, TryExtract};
 use std::mem::transmute;
@@ -30,8 +31,8 @@ impl Extract for LogEvent {
     unsafe fn extract(event: &Event) -> Self {
         Self {
             time: event.time,
-            server_time: transmute(event.value),
-            local_time: transmute(event.buff_dmg),
+            server_time: transmute::<i32, u32>(event.value),
+            local_time: transmute::<i32, u32>(event.buff_dmg),
             id: event.src_agent,
         }
     }
@@ -42,7 +43,7 @@ impl TryExtract for LogEvent {
     fn can_extract(event: &Event) -> bool {
         matches!(
             event.get_statechange(),
-            StateChange::LogStart | StateChange::LogEnd | StateChange::LogNPCUpdate
+            StateChange::SquadCombatStart | StateChange::SquadCombatEnd | StateChange::LogNPCUpdate
         )
     }
 }

@@ -2,6 +2,7 @@
 
 use crate::{extract::Extract, AgentId, Event, StateChange, TryExtract};
 use num_enum::{FromPrimitive, IntoPrimitive};
+use std::mem;
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
@@ -21,6 +22,9 @@ pub struct WeaponSwapEvent {
 
     /// New weapon set.
     pub weapon_set: WeaponSet,
+
+    /// Previous weapon set.
+    pub prev_weapon_set: WeaponSet,
 }
 
 impl Extract for WeaponSwapEvent {
@@ -30,6 +34,7 @@ impl Extract for WeaponSwapEvent {
             time: event.time,
             agent: AgentId::from_src(event),
             weapon_set: event.dst_agent.into(),
+            prev_weapon_set: u64::from(unsafe { mem::transmute::<i32, u32>(event.value) }).into(),
         }
     }
 }

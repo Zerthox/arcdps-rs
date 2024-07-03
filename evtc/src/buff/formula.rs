@@ -21,11 +21,12 @@ pub struct BuffFormula {
     pub trait_self: u32,
     pub buff_src: u32,
     pub buff_self: u32,
+    pub content_reference: f32, // TODO: appropriate type?
     pub not_npc: bool,
     pub not_player: bool,
     pub is_break: bool,
-    pub value: u32,
     pub value_type: u8,
+    pub value: u32,
 }
 
 impl BuffFormula {
@@ -65,11 +66,12 @@ impl From<RawBuffFormula> for BuffFormula {
             trait_self: raw.trait_self as _,
             buff_src: raw.buff_src as _,
             buff_self: raw.buff_self as _,
+            content_reference: raw.content_reference,
             not_npc: raw.not_npc != 0,
             not_player: raw.not_player != 0,
             is_break: raw.is_break != 0,
-            value: raw.value,
             value_type: raw.value_type,
+            value: raw.value,
         }
     }
 }
@@ -89,11 +91,12 @@ pub struct RawBuffFormula {
     pub trait_self: f32,
     pub buff_src: f32,
     pub buff_self: f32,
+    pub content_reference: f32,
     pub not_npc: u8,
     pub not_player: u8,
     pub is_break: u8,
-    pub value: u32,
     pub value_type: u8,
+    pub value: u32,
 }
 
 impl RawBuffFormula {
@@ -110,8 +113,8 @@ impl RawBuffFormula {
 impl Extract for RawBuffFormula {
     #[inline]
     unsafe fn extract(event: &Event) -> Self {
-        let [kind, attr1, attr2, param1, param2, param3, trait_src, trait_self] =
-            transmute_field!(event.time as [f32; 8]);
+        let [kind, attr1, attr2, param1, param2, param3, trait_src, trait_self, content_reference] =
+            transmute_field!(event.time as [f32; 9]);
         let [buff_src, buff_self] = transmute_field!(event.src_instance_id as [f32; 2]);
 
         Self {
@@ -126,11 +129,12 @@ impl Extract for RawBuffFormula {
             trait_self,
             buff_src,
             buff_self,
+            content_reference,
             not_npc: event.is_flanking,
             not_player: event.is_shields,
             is_break: event.is_offcycle,
-            value: event.overstack_value,
             value_type: event.pad61,
+            value: event.overstack_value,
         }
     }
 }

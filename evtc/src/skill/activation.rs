@@ -95,3 +95,38 @@ pub enum Activation {
     #[num_enum(catch_all)]
     Unknown(u8),
 }
+
+/// Skill animation stop (UNOFFICIAL).
+///
+/// Present in `result` for activation cancels.
+#[derive(
+    Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
+)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
+#[cfg_attr(
+    feature = "strum",
+    derive(Display, EnumCount, EnumIter, IntoStaticStr, VariantNames)
+)]
+#[repr(u8)]
+pub enum AnimationStop {
+    None = 0,
+    Instant = 1,
+    SecondUse = 2,
+    Transition = 3,
+    Partial = 4,
+    Ended = 5,
+    Cancel = 6,
+    StowedChange = 7,
+    Interrupt = 8,
+    Death = 9,
+    Downed = 10,
+    CrowdControl = 11,
+    MoveBehind = 12,
+    MoveSkill = 13,
+    MoveDodge = 14,
+    MoveStop = 15,
+
+    /// Unknown or invalid.
+    #[num_enum(catch_all)]
+    Unknown(u8),
+}

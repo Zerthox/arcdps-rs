@@ -118,12 +118,15 @@ pub enum Strike {
     /// Not a damage strike.
     Breakbar = 10,
 
-    /// On-activation event.
+    /// On-skill-activation event.
     ///
     /// Not a damage strike.
-    ///
-    /// *Arc: Source hit target if damaging buff.*
     Activation = 11,
+
+    /// Skill crowd controlled the target.
+    ///
+    /// Not a damage strike.
+    CrowdControl = 12,
 
     /// Unknown.
     #[num_enum(catch_all)]

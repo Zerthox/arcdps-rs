@@ -5,24 +5,21 @@ mod common;
 mod event_kind;
 mod old;
 
-pub use self::category::*;
-pub use self::common::*;
-pub use self::event_kind::*;
-pub use self::old::*;
+pub use self::{category::*, common::*, event_kind::*, old::*};
 
 #[allow(deprecated)]
 pub use crate::{
     agent::{
         AgentStatusEvent, AttackTargetEvent, BarrierUpdateEvent, BreakbarPercentEvent,
-        BreakbarStateEvent, DownContributionEvent, EnterCombatEvent, HealthUpdateEvent,
-        MaxHealthEvent, TargetableEvent, TeamChangeEvent,
+        BreakbarStateEvent, DownContributionEvent, EnterCombatEvent, GliderEvent,
+        HealthUpdateEvent, MaxHealthEvent, TargetableEvent, TeamChangeEvent,
     },
     buff::{
         BuffApplyEvent, BuffDamageEvent, BuffFormula, BuffInfo, BuffInitialEvent, BuffRemoveEvent,
         StackActiveEvent, StackResetEvent,
     },
     effect::{Effect, EffectGUID, EffectOld},
-    log::{ErrorEvent, LogEvent},
+    log::{ArcBuildEvent, ErrorEvent, LogEvent},
     marker::{AgentMarkerEvent, SquadMarkerEvent},
     player::{GuildEvent, RewardEvent, TagEvent},
     position::PositionEvent,
