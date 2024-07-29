@@ -1,7 +1,7 @@
 # evtc_dump
 
 Dump ArcDPS EVTC log information in a JSON format.
-Prebuilt executables can be downloaded from [releases](../../releases).
+Prebuilt executables can be downloaded from [releases](../../../releases).
 
 ```sh
 # dump all information
