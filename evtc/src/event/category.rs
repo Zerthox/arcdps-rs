@@ -108,7 +108,7 @@ impl From<&Event> for EventCategory {
             } else if event.get_buffremove() != BuffRemove::None {
                 EventCategory::BuffRemove
             } else if event.buff != 0 {
-                if event.buff_dmg == 0 {
+                if event.buff_dmg == 0 && event.value != 0 {
                     EventCategory::BuffApply
                 } else {
                     EventCategory::BuffDamage
