@@ -20,7 +20,7 @@ impl ExtrasVersion {
     pub const API: u32 = 2;
 
     /// Range of supported [`ExtrasSubscriberInfo`] versions.
-    pub const SUB_INFO_RANGE: RangeInclusive<u32> = 1..=2;
+    pub const SUB_INFO_RANGE: RangeInclusive<u32> = 1..=3;
 
     /// Minimum supported [`ExtrasSubscriberInfo`] version.
     pub const MIN_SUB_INFO: u32 = *Self::SUB_INFO_RANGE.start();
