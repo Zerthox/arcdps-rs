@@ -14,6 +14,9 @@ mod status;
 mod targetable;
 mod team;
 
+#[cfg(feature = "realtime")]
+pub mod realtime;
+
 pub use self::{
     affinity::*, agent_kind::*, attack_target::*, breakbar::*, combat::*, glider::*, health::*,
     id::*, status::*, targetable::*, team::*,
