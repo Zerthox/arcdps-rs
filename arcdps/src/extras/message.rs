@@ -10,19 +10,19 @@ use serde::{Deserialize, Serialize};
 #[cfg(feature = "strum")]
 use strum::{Display, EnumCount, EnumIter, IntoStaticStr, VariantNames};
 
-/// A chat message.
+/// A squad/party chat message.
 ///
 /// Strings are available for the duration of the call.
-/// If you need it for longer than that, consider converting it to [`ChatMessageInfoOwned`].
+/// If you need it for longer than that, consider converting it to [`SquadMessageOwned`].
 ///
 /// ```no_run
-/// # use arcdps::extras::{ChatMessageInfo, ChatMessageInfoOwned};
-/// # let message: ChatMessageInfo = todo!();
+/// # use arcdps::extras::{SquadMessage, SquadMessageOwned};
+/// # let message: SquadMessage = todo!();
 /// let owned = message.to_owned();
-/// let owned: ChatMessageInfoOwned = message.into();
+/// let owned: SquadMessageOwned = message.into();
 /// ```
 #[derive(Debug, Clone)]
-pub struct ChatMessageInfo<'a> {
+pub struct SquadMessage<'a> {
     /// A unique identifier for the channel this chat message was sent over.
     ///
     /// Can be used to for example differentiate between squad messages sent to different squads.
@@ -55,15 +55,16 @@ pub struct ChatMessageInfo<'a> {
     pub text: &'a str,
 }
 
-impl ChatMessageInfo<'_> {
-    /// Converts the [`ChatMessageInfo`] to the owned version [`ChatMessageInfoOwned`].
-    pub fn to_owned(self) -> ChatMessageInfoOwned {
+impl SquadMessage<'_> {
+    /// Converts the message to its owned counterpart.
+    #[inline]
+    pub fn to_owned(self) -> SquadMessageOwned {
         self.into()
     }
 }
 
-impl<'a> From<&'a RawChatMessageInfo> for ChatMessageInfo<'a> {
-    fn from(raw: &RawChatMessageInfo) -> Self {
+impl<'a> From<&'a RawSquadMessage> for SquadMessage<'a> {
+    fn from(raw: &RawSquadMessage) -> Self {
         let timestamp = unsafe { str_from_cstr_len(raw.timestamp, raw.timestamp_length) };
         let timestamp =
             DateTime::parse_from_rfc3339(timestamp).expect("failed to parse message timestamp");
@@ -88,10 +89,10 @@ impl<'a> From<&'a RawChatMessageInfo> for ChatMessageInfo<'a> {
     }
 }
 
-/// [`ChatMessageInfo`] with owned [`String`] fields.
+/// [`SquadMessage`] with owned [`String`] fields.
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
-pub struct ChatMessageInfoOwned {
+pub struct SquadMessageOwned {
     /// A unique identifier for the channel this chat message was sent over.
     ///
     /// Can be used to, for example, differentiate between squad messages sent to different squads.
@@ -124,17 +125,18 @@ pub struct ChatMessageInfoOwned {
     pub text: String,
 }
 
-impl From<ChatMessageInfo<'_>> for ChatMessageInfoOwned {
-    fn from(chat: ChatMessageInfo<'_>) -> Self {
+impl From<SquadMessage<'_>> for SquadMessageOwned {
+    #[inline]
+    fn from(msg: SquadMessage<'_>) -> Self {
         Self {
-            channel_id: chat.channel_id,
-            channel_type: chat.channel_type,
-            subgroup: chat.subgroup,
-            is_broadcast: chat.is_broadcast,
-            timestamp: chat.timestamp,
-            account_name: chat.account_name.to_string(),
-            character_name: chat.character_name.to_string(),
-            text: chat.text.to_string(),
+            channel_id: msg.channel_id,
+            channel_type: msg.channel_type,
+            subgroup: msg.subgroup,
+            is_broadcast: msg.is_broadcast,
+            timestamp: msg.timestamp,
+            account_name: msg.account_name.to_string(),
+            character_name: msg.character_name.to_string(),
+            text: msg.text.to_string(),
         }
     }
 }
@@ -142,7 +144,7 @@ impl From<ChatMessageInfo<'_>> for ChatMessageInfoOwned {
 /// Raw chat message information.
 #[derive(Debug, Clone)]
 #[repr(C)]
-pub struct RawChatMessageInfo {
+pub struct RawSquadMessage {
     /// A unique identifier for the channel this chat message was sent over.
     ///
     /// Can be used to, for example, differentiate between squad messages sent to different squads.
@@ -204,4 +206,138 @@ pub enum ChannelType {
     Squad = 1,
     Reserved = 2,
     Invalid = 3,
+}
+
+/// An NPC chat message.
+///
+/// Strings are available for the duration of the call.
+/// If you need it for longer than that, consider converting it to [`NpcMessageOwned`].
+///
+/// ```no_run
+/// # use arcdps::extras::{NpcMessage, NpcMessageOwned};
+/// # let message: NpcMessage = todo!();
+/// let owned = message.to_owned();
+/// let owned: NpcMessageOwned = message.into();
+/// ```
+#[derive(Debug, Clone)]
+pub struct NpcMessage<'a> {
+    /// Character name of the NPC that sent the message.
+    pub character_name: &'a str,
+
+    /// Content of the message.
+    pub text: &'a str,
+}
+
+impl NpcMessage<'_> {
+    /// Converts the message to its owned counterpart.
+    #[inline]
+    pub fn to_owned(self) -> NpcMessageOwned {
+        self.into()
+    }
+}
+
+impl<'a> From<&'a RawNpcMessage> for NpcMessage<'a> {
+    #[inline]
+    fn from(raw: &RawNpcMessage) -> Self {
+        let character_name =
+            unsafe { str_from_cstr_len(raw.character_name, raw.character_name_length) };
+        let text = unsafe { str_from_cstr_len(raw.text, raw.text_length) };
+
+        Self {
+            character_name,
+            text,
+        }
+    }
+}
+
+/// [`NpcMessage`] with owned [`String`] fields.
+#[derive(Debug, Clone)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
+pub struct NpcMessageOwned {
+    /// Character name of the NPC that sent the message.
+    pub character_name: String,
+
+    /// Content of the message.
+    pub text: String,
+}
+
+impl From<NpcMessage<'_>> for NpcMessageOwned {
+    #[inline]
+    fn from(msg: NpcMessage<'_>) -> Self {
+        Self {
+            character_name: msg.character_name.to_string(),
+            text: msg.text.to_string(),
+        }
+    }
+}
+
+/// Raw NPC chat message information.
+#[derive(Debug, Clone)]
+#[repr(C)]
+pub struct RawNpcMessage {
+    /// Null terminated character name of the NPC that sent the message.
+    ///
+    /// The string is only valid for the duration of the call.
+    pub character_name: *const c_char,
+    pub character_name_length: u64,
+
+    /// Null terminated string containing the content of the message that was sent.
+    ///
+    /// The string is only valid for the duration of the call.
+    pub text: *const c_char,
+    pub text_length: u64,
+}
+
+/// A chat message.
+#[derive(Clone, Copy)]
+#[repr(C)]
+pub union RawMessage {
+    squad: *const RawSquadMessage,
+    npc: *const RawNpcMessage,
+}
+
+/// A chat message.
+#[derive(Debug, Clone)]
+pub enum Message<'a> {
+    Squad(SquadMessage<'a>),
+    Npc(NpcMessage<'a>),
+}
+
+impl Message<'_> {
+    /// Creates a new message from [`RawMessageType`] and [`RawMessage`].
+    #[inline]
+    pub unsafe fn new(message_type: RawMessageType, message: RawMessage) -> Self {
+        match message_type {
+            RawMessageType::Squad => Self::Squad(
+                message
+                    .squad
+                    .as_ref()
+                    .expect("invalid unofficial extras squad message info")
+                    .into(),
+            ),
+            RawMessageType::Npc => Self::Npc(
+                message
+                    .npc
+                    .as_ref()
+                    .expect("invalid unofficial extras npc message info")
+                    .into(),
+            ),
+        }
+    }
+}
+
+/// Type of message.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
+#[cfg_attr(
+    feature = "strum",
+    derive(Display, EnumCount, EnumIter, IntoStaticStr, VariantNames)
+)]
+#[repr(C)]
+pub enum RawMessageType {
+    /// Party or squad chat message.
+    Squad = 0,
+
+    /// NPC message (selectable in ingame-chat as "NPC").
+    Npc = 1,
 }

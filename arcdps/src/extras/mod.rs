@@ -9,37 +9,27 @@ pub mod message;
 pub mod user;
 
 mod globals;
+mod version;
 
-pub use keybinds::{Control, Key, KeyCode, Keybind, KeybindChange, MouseCode};
-pub use message::{ChannelType, ChatMessageInfo, ChatMessageInfoOwned};
-pub use user::{UserInfo, UserInfoIter, UserInfoOwned, UserRole};
-
-use crate::util::str_from_cstr;
+use crate::{util::str_from_cstr, RawExtrasSquadChatMessageCallback};
 use callbacks::{
     RawExtrasChatMessageCallback, RawExtrasKeybindChangedCallback,
     RawExtrasLanguageChangedCallback, RawExtrasSquadUpdateCallback,
 };
-use globals::EXTRAS_GLOBALS;
-use std::{ops::RangeInclusive, os::raw::c_char};
+pub use keybinds::{Control, Key, KeyCode, Keybind, KeybindChange, MouseCode};
+pub use message::{
+    ChannelType, Message, NpcMessage, NpcMessageOwned, SquadMessage, SquadMessageOwned,
+};
+pub use user::{UserInfo, UserInfoIter, UserInfoOwned, UserRole};
+
+use globals::ExtrasGlobals;
+use std::os::raw::c_char;
 use windows::Win32::Foundation::HMODULE;
+
+pub use version::ExtrasVersion;
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
-
-/// Supported Unofficial Extras API version.
-const API_VERSION: u32 = 2;
-
-/// Supported [`ExtrasSubscriberInfo`] version range.
-const SUB_INFO_RANGE: RangeInclusive<u32> = 1..=2;
-
-/// Version with message callback addition.
-const MESSAGE_CALLBACK: u32 = 2;
-
-/// Helper to check compatibility.
-#[inline]
-fn check_compat(api_version: u32, sub_info_version: u32) -> bool {
-    api_version == API_VERSION && SUB_INFO_RANGE.contains(&sub_info_version)
-}
 
 /// Information about the [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases) addon.
 #[derive(Debug, Clone)]
@@ -48,16 +38,12 @@ pub struct ExtrasAddonInfo {
     /// Version of the API.
     ///
     /// Gets incremented whenever a function signature or behavior changes in a breaking way.
-    ///
-    /// Current version is `2`.
     pub api_version: u32,
 
     /// Highest known version of the [`ExtrasSubscriberInfo`] struct.
     ///
     /// Also determines the size of the subscriber info buffer in the init call.
     /// The buffer is only guaranteed to have enough space for known [`ExtrasSubscriberInfo`] versions.
-    ///
-    /// Current version is `2`.
     pub max_info_version: u32,
 
     /// String version of the Unofficial Extras addon.
@@ -67,14 +53,10 @@ pub struct ExtrasAddonInfo {
 }
 
 impl ExtrasAddonInfo {
-    /// Checks compatibility with the Unofficial Extras addon.
-    pub fn is_compatible(&self) -> bool {
-        check_compat(self.api_version, self.max_info_version)
-    }
-
-    /// Whether the Unofficial Extras addon supports the chat message callback.
-    pub fn supports_chat_message_callback(&self) -> bool {
-        self.max_info_version >= MESSAGE_CALLBACK
+    /// Returns the corresponding [`ExtrasVersion`].
+    #[inline]
+    pub fn version(&self) -> ExtrasVersion {
+        ExtrasVersion::new(self.api_version, self.max_info_version)
     }
 }
 
@@ -94,16 +76,12 @@ pub struct RawExtrasAddonInfo {
     /// Version of the API.
     ///
     /// Gets incremented whenever a function signature or behavior changes in a breaking way.
-    ///
-    /// Current version is `2`.
     pub api_version: u32,
 
     /// Highest known version of the [`ExtrasSubscriberInfo`] struct.
     ///
     /// Also determines the size of the subscriber info buffer in the init call.
     /// The buffer is only guaranteed to have enough space for known [`ExtrasSubscriberInfo`] versions.
-    ///
-    /// Current version is `2`.
     pub max_info_version: u32,
 
     /// String version of the Unofficial Extras addon.
@@ -124,14 +102,10 @@ pub struct RawExtrasAddonInfo {
 }
 
 impl RawExtrasAddonInfo {
-    /// Checks compatibility with the Unofficial Extras addon.
-    pub fn is_compatible(&self) -> bool {
-        check_compat(self.api_version, self.max_info_version)
-    }
-
-    /// Whether the Unofficial Extras addon supports the message callback.
-    pub fn supports_chat_message_callback(&self) -> bool {
-        self.max_info_version >= MESSAGE_CALLBACK
+    /// Returns the corresponding [`ExtrasVersion`].
+    #[inline]
+    pub fn version(&self) -> ExtrasVersion {
+        ExtrasVersion::new(self.api_version, self.max_info_version)
     }
 }
 
@@ -139,7 +113,7 @@ impl RawExtrasAddonInfo {
 #[derive(Debug)]
 #[repr(C)]
 pub struct ExtrasSubscriberInfoHeader {
-    /// The version of the following info struct
+    /// The version of the following info struct.
     /// This has to be set to the version you want to use.
     pub info_version: u32,
 
@@ -182,6 +156,9 @@ pub struct ExtrasSubscriberInfo {
     pub keybind_changed_callback: Option<RawExtrasKeybindChangedCallback>,
 
     /// Called whenever a chat message is sent in your party/squad.
+    pub squad_chat_message_callback: Option<RawExtrasSquadChatMessageCallback>,
+
+    /// Called on different chat messages.
     pub chat_message_callback: Option<RawExtrasChatMessageCallback>,
 }
 
@@ -190,34 +167,42 @@ impl ExtrasSubscriberInfo {
     ///
     /// Unsupported callbacks will be skipped.
     ///
+    /// # Safety
+    /// Info needs to point to a valid to interpret as subscriber infos with minimum version of [`MIN_SUB_INFO_VERSION`].
+    /// It is passed as pointer to prevent UB by creating a reference to the wrong type.
+    ///
     /// Name needs to be null-terminated.
+    #[allow(clippy::too_many_arguments)]
     pub unsafe fn subscribe(
-        &mut self,
+        sub: *mut Self,
         extras_addon: &RawExtrasAddonInfo,
         name: &'static str,
         squad_update: Option<RawExtrasSquadUpdateCallback>,
         language_changed: Option<RawExtrasLanguageChangedCallback>,
         keybind_changed: Option<RawExtrasKeybindChangedCallback>,
+        squad_chat_message: Option<RawExtrasSquadChatMessageCallback>,
         chat_message: Option<RawExtrasChatMessageCallback>,
     ) {
-        if extras_addon.is_compatible() {
+        let version = extras_addon.version();
+        if let Some(sub_info_version) = version.get_version_to_use() {
             // initialize globals
-            EXTRAS_GLOBALS.init(
+            ExtrasGlobals::init(
                 extras_addon.extras_handle,
                 str_from_cstr(extras_addon.string_version),
             );
 
-            // we simply use the max version
-            self.header.info_version = extras_addon.max_info_version;
+            (*sub).header.info_version = sub_info_version;
+            (*sub).subscriber_name = name.as_ptr() as *const c_char;
+            (*sub).squad_update_callback = squad_update;
+            (*sub).language_changed_callback = language_changed;
+            (*sub).keybind_changed_callback = keybind_changed;
 
-            self.subscriber_name = name.as_ptr() as *const c_char;
-            self.squad_update_callback = squad_update;
-            self.language_changed_callback = language_changed;
-            self.keybind_changed_callback = keybind_changed;
-
-            // only attempt to write message callback if supported
-            if extras_addon.supports_chat_message_callback() {
-                self.chat_message_callback = chat_message;
+            // only attempt to write additional callbacks if supported
+            if version.supports_squad_chat_message() {
+                (*sub).squad_chat_message_callback = squad_chat_message;
+            }
+            if version.supports_chat_message2() {
+                (*sub).chat_message_callback = chat_message;
             }
         }
     }

@@ -4,11 +4,11 @@ use crate::{
     extras::exports::raw::{ExportGetKey, ExportGetKeybind},
     util::exported_proc,
 };
-use std::mem::transmute;
+use std::{mem::transmute, sync::OnceLock};
 use windows::Win32::Foundation::HMODULE;
 
 /// Global instance of Unofficial Extras handle & exported functions.
-pub static mut EXTRAS_GLOBALS: ExtrasGlobals = ExtrasGlobals::empty();
+pub static EXTRAS_GLOBALS: OnceLock<ExtrasGlobals> = OnceLock::new();
 
 /// Unofficial Extras handle & exported functions.
 pub struct ExtrasGlobals {
@@ -26,24 +26,35 @@ pub struct ExtrasGlobals {
 }
 
 impl ExtrasGlobals {
-    /// Creates an empty version of Unofficial Extras globals.
-    const fn empty() -> Self {
-        Self {
-            handle: HMODULE(0),
-            version: None,
-            get_key: None,
-            get_keybind: None,
-        }
-    }
-
-    /// Initializes the Unofficial Extras globals.
-    pub unsafe fn init(&mut self, handle: HMODULE, version: Option<&'static str>) {
+    /// Creates new Unofficial Extras globals.
+    pub unsafe fn new(handle: HMODULE, version: Option<&'static str>) -> Self {
         #![allow(clippy::missing_transmute_annotations)]
-        *self = Self {
+        Self {
             handle,
             version,
             get_key: transmute(exported_proc(handle, "get_key\0")),
             get_keybind: transmute(exported_proc(handle, "get_key_bind\0")),
-        };
+        }
+    }
+
+    /// Initializes the Unofficial Extras globals.
+    pub unsafe fn init(handle: HMODULE, version: Option<&'static str>) -> &'static Self {
+        EXTRAS_GLOBALS.get_or_init(|| Self::new(handle, version))
+    }
+
+    /// Returns the Unofficial Extras globals.
+    #[inline]
+    pub fn get() -> &'static Self {
+        Self::try_get().expect("unofficial extras globals not initialized")
+    }
+
+    /// Tries to retrieve the Unofficial Extras globals.
+    #[inline]
+    pub fn try_get() -> Option<&'static Self> {
+        EXTRAS_GLOBALS.get()
     }
 }
+
+unsafe impl Send for ExtrasGlobals {}
+
+unsafe impl Sync for ExtrasGlobals {}

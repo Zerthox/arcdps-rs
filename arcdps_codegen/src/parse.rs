@@ -121,6 +121,7 @@ impl Parse for ArcDpsGen {
                                 extras_squad_update,
                                 extras_language_changed,
                                 extras_keybind_changed,
+                                extras_squad_chat_message,
                                 extras_chat_message
                             }
                         )

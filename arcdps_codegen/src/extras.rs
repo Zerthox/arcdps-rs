@@ -20,6 +20,9 @@ pub(crate) struct ExtrasGen {
     pub raw_extras_keybind_changed: Option<Expr>,
     pub extras_keybind_changed: Option<Expr>,
 
+    pub raw_extras_squad_chat_message: Option<Expr>,
+    pub extras_squad_chat_message: Option<Expr>,
+
     pub raw_extras_chat_message: Option<Expr>,
     pub extras_chat_message: Option<Expr>,
 }
@@ -36,17 +39,18 @@ fn unwrap(option: Option<CallbackInfo>) -> (TokenStream, Option<TokenStream>) {
 impl ExtrasGen {
     /// Generates Unofficial Extras exports.
     pub fn build(&self, name: LitStr) -> TokenStream {
-        let (squad_update_func, squad_update_value) = unwrap(self.build_extras_squad_update());
-        let (language_changed_func, language_changed_value) =
-            unwrap(self.build_extras_language_changed());
-        let (keybind_changed_func, keybind_changed_value) =
-            unwrap(self.build_extras_keybind_changed());
-        let (chat_message_func, chat_message_value) = unwrap(self.build_extras_chat_message());
-        let init_func = self.build_extras_init(
+        let (squad_update_func, squad_update_value) = unwrap(self.build_squad_update());
+        let (language_changed_func, language_changed_value) = unwrap(self.build_language_changed());
+        let (keybind_changed_func, keybind_changed_value) = unwrap(self.build_keybind_changed());
+        let (squad_chat_message_func, squad_chat_message_value) =
+            unwrap(self.build_squad_chat_message());
+        let (chat_message_func, chat_message_value) = unwrap(self.build_chat_message());
+        let init_func = self.build_init(
             name,
             squad_update_value,
             language_changed_value,
             keybind_changed_value,
+            squad_chat_message_value,
             chat_message_value,
         );
 
@@ -55,17 +59,19 @@ impl ExtrasGen {
             #squad_update_func
             #language_changed_func
             #keybind_changed_func
+            #squad_chat_message_func
             #chat_message_func
         }
     }
 
     /// Generates the extras init function.
-    fn build_extras_init(
+    fn build_init(
         &self,
         name: LitStr,
         squad_update: Option<TokenStream>,
         language_changed: Option<TokenStream>,
         keybind_changed: Option<TokenStream>,
+        squad_chat_message: Option<TokenStream>,
         chat_message: Option<TokenStream>,
     ) -> TokenStream {
         let has_callback =
@@ -74,12 +80,15 @@ impl ExtrasGen {
         let lang_callback = language_changed.unwrap_or(quote! { ::std::option::Option::None });
         let keybind_callback = keybind_changed.unwrap_or(quote! { ::std::option::Option::None });
         let chat_callback = chat_message.unwrap_or(quote! { ::std::option::Option::None });
+        let squad_chat_callback =
+            squad_chat_message.unwrap_or(quote! { ::std::option::Option::None });
 
         let subscribe = quote! {
             let addon = addon.as_ref().expect("unofficial extras did not provide addon info in init");
-            sub.as_mut()
-                .expect("unofficial extras did not provide subscriber info in init")
-                .subscribe(addon, #name, #squad_callback, #lang_callback, #keybind_callback, #chat_callback);
+            if sub.is_null() {
+                panic!("unofficial extras did not provide subscriber info in init");
+            }
+            ::arcdps::extras::ExtrasSubscriberInfo::subscribe(sub, addon, #name, #squad_callback, #lang_callback, #keybind_callback, #squad_chat_callback, #chat_callback);
         };
 
         let (globals, contents) = if let Some(raw) = &self.raw_extras_init {
@@ -128,7 +137,7 @@ impl ExtrasGen {
     }
 
     /// Generates the extras squad update callback.
-    fn build_extras_squad_update(&self) -> Option<CallbackInfo> {
+    fn build_squad_update(&self) -> Option<CallbackInfo> {
         CallbackInfo::build_optional(
             self.raw_extras_squad_update.as_ref(),
             self.extras_squad_update.as_ref(),
@@ -149,7 +158,7 @@ impl ExtrasGen {
     }
 
     /// Generates the extras language changed callback.
-    fn build_extras_language_changed(&self) -> Option<CallbackInfo> {
+    fn build_language_changed(&self) -> Option<CallbackInfo> {
         CallbackInfo::build_optional(
             self.raw_extras_language_changed.as_ref(),
             self.extras_language_changed.as_ref(),
@@ -167,7 +176,7 @@ impl ExtrasGen {
     }
 
     /// Generates the extras keybind changed callback.
-    fn build_extras_keybind_changed(&self) -> Option<CallbackInfo> {
+    fn build_keybind_changed(&self) -> Option<CallbackInfo> {
         CallbackInfo::build_optional(
             self.raw_extras_keybind_changed.as_ref(),
             self.extras_keybind_changed.as_ref(),
@@ -184,8 +193,29 @@ impl ExtrasGen {
         )
     }
 
+    /// Generates the extras squad chat message callback.
+    fn build_squad_chat_message(&self) -> Option<CallbackInfo> {
+        CallbackInfo::build_optional(
+            self.raw_extras_squad_chat_message.as_ref(),
+            self.extras_squad_chat_message.as_ref(),
+            "__extras_squad_chat_message",
+            |name, safe, span| {
+                quote_spanned! {span=>
+                    const __EXTRAS_SQUAD_CHAT_MESSAGE: ::arcdps::extras::callbacks::ExtrasSquadChatMessageCallback = #safe;
+
+                    unsafe extern #C_ABI fn #name(message: *const ::arcdps::extras::message::RawSquadMessage) {
+                        let message = message.as_ref()
+                            .expect("unofficial extras did not provide message info in chat message callback")
+                            .into();
+                        self::__EXTRAS_SQUAD_CHAT_MESSAGE(message)
+                    }
+                }
+            },
+        )
+    }
+
     /// Generates the extras chat message callback.
-    fn build_extras_chat_message(&self) -> Option<CallbackInfo> {
+    fn build_chat_message(&self) -> Option<CallbackInfo> {
         CallbackInfo::build_optional(
             self.raw_extras_chat_message.as_ref(),
             self.extras_chat_message.as_ref(),
@@ -194,11 +224,9 @@ impl ExtrasGen {
                 quote_spanned! {span=>
                     const __EXTRAS_CHAT_MESSAGE: ::arcdps::extras::callbacks::ExtrasChatMessageCallback = #safe;
 
-                    unsafe extern #C_ABI fn #name(info: *const ::arcdps::extras::message::RawChatMessageInfo) {
-                        let info = info.as_ref()
-                            .expect("unofficial extras did not provide message info in chat message callback")
-                            .into();
-                        self::__EXTRAS_CHAT_MESSAGE(&info)
+                    unsafe extern #C_ABI fn #name(message_type: ::arcdps::extras::message::RawMessageType, message: ::arcdps::extras::message::RawMessage) {
+                        let message = ::arcdps::extras::message::Message::new(message_type, message);
+                        self::__EXTRAS_CHAT_MESSAGE(message)
                     }
                 }
             },

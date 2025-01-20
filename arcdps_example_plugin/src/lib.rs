@@ -4,11 +4,11 @@
 
 use arcdps::{
     extras::{
-        user::UserInfoIter, ChatMessageInfo, Control, ExtrasAddonInfo, KeybindChange, UserRole,
+        message::Message, user::UserInfoIter, Control, ExtrasAddonInfo, KeybindChange,
+        SquadMessage, UserRole,
     },
     imgui, Agent, Event, Language, StateChange,
 };
-use log::info;
 
 arcdps::export! {
     name: "Example Plugin",
@@ -27,22 +27,23 @@ arcdps::export! {
     extras_squad_update,
     extras_language_changed,
     extras_keybind_changed,
+    extras_squad_chat_message,
     extras_chat_message,
 }
 
 /// Plugin load.
 fn init() -> Result<(), String> {
-    info!("plugin has been started");
+    log::info!("plugin has been started");
     // for info level target "window" is the same as not specifying target
-    info!(target: "window", "only window logging");
-    info!(target: "file", "only file logging");
-    info!(target: "both", "logging to file and window");
+    log:: info!(target: "window", "only window logging");
+    log:: info!(target: "file", "only file logging");
+    log:: info!(target: "both", "logging to file and window");
     Ok(())
 }
 
 /// Plugin unload.
 fn release() {
-    info!("plugin has stopped")
+    log::info!("plugin has stopped")
 }
 
 /// Plugin update URL.
@@ -81,7 +82,7 @@ fn wnd_nofilter(key: usize, key_down: bool, prev_key_down: bool) -> bool {
 /// Key event filtered by Arc's modifiers.
 fn wnd_filter(key: usize, key_down: bool, prev_key_down: bool) -> bool {
     if key_down && !prev_key_down {
-        info!("{} pressed with arc modifiers", key);
+        log::info!("{} pressed with arc modifiers", key);
     }
     true
 }
@@ -98,7 +99,7 @@ fn combat(
 ) {
     if let (Some(event), Some(src)) = (event, src) {
         if let StateChange::EnterCombat = event.get_statechange() {
-            info!(
+            log::info!(
                 "{} ({}) has entered combat",
                 src.name().unwrap_or("unknown agent"),
                 src.id
@@ -120,18 +121,24 @@ fn combat_local(
 
 /// Unofficial extras load.
 fn extras_init(extras_info: ExtrasAddonInfo, account_name: Option<&str>) {
-    info!(
+    log::info!(
         "extras version {} on account {}",
         extras_info.string_version.unwrap_or("unknown"),
         account_name.unwrap_or("unknown")
     );
+    if !extras_info.version().supports_squad_chat_message() {
+        log::warn!("Chat message not supported")
+    }
+    if !extras_info.version().supports_chat_message2() {
+        log::warn!("Chat message 2 not supported")
+    }
 }
 
 /// Unofficial extras squad update.
 fn extras_squad_update(users: UserInfoIter) {
     for user in users {
         if let UserRole::SquadLeader | UserRole::Lieutenant = user.role {
-            info!(
+            log::info!(
                 "{} can place markers",
                 user.account_name().unwrap_or("unknown user")
             );
@@ -141,7 +148,7 @@ fn extras_squad_update(users: UserInfoIter) {
 
 /// Unofficial extras client language change.
 fn extras_language_changed(language: Language) {
-    info!("language changed to {:?}", language)
+    log::info!("language changed to {:?}", language)
 }
 
 /// Unofficial extras client keybind change.
@@ -153,18 +160,39 @@ fn extras_keybind_changed(changed: KeybindChange) {
     | Control::Movement_TurnLeft
     | Control::Movement_TurnRight = changed.control
     {
-        info!("movement key changed");
+        log::info!("movement key changed");
+    }
+}
+
+/// Unofficial extras squad chat message.
+fn extras_squad_chat_message(message: SquadMessage) {
+    if message.is_broadcast {
+        log::info!("broadcast from {}", message.account_name);
+    } else {
+        log::info!(
+            "message from {} in {:?}",
+            message.account_name,
+            message.channel_type
+        )
     }
 }
 
 /// Unofficial extras chat message.
-fn extras_chat_message(chat_message: &ChatMessageInfo) {
-    if chat_message.is_broadcast {
-        info!("broadcast from {}", chat_message.account_name);
-    } else {
-        info!(
-            "message from {} in {:?}",
-            chat_message.account_name, chat_message.channel_type
-        )
+fn extras_chat_message(message: Message) {
+    match message {
+        Message::Squad(message) => {
+            if message.is_broadcast {
+                log::info!("broadcast from {}", message.account_name);
+            } else {
+                log::info!(
+                    "message from {} in {:?}",
+                    message.account_name,
+                    message.channel_type
+                )
+            }
+        }
+        Message::Npc(message) => {
+            log::info!("message from NPC {}", message.character_name)
+        }
     }
 }
