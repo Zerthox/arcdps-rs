@@ -203,10 +203,9 @@ impl ExtrasGen {
                 quote_spanned! {span=>
                     const __EXTRAS_SQUAD_CHAT_MESSAGE: ::arcdps::extras::callbacks::ExtrasSquadChatMessageCallback = #safe;
 
-                    unsafe extern #C_ABI fn #name(message: *const ::arcdps::extras::message::RawSquadMessage) {
+                    unsafe extern #C_ABI fn #name(message: *const ::arcdps::extras::message::SquadMessage) {
                         let message = message.as_ref()
-                            .expect("unofficial extras did not provide message info in chat message callback")
-                            .into();
+                            .expect("unofficial extras did not provide message info in chat message callback");
                         self::__EXTRAS_SQUAD_CHAT_MESSAGE(message)
                     }
                 }
@@ -224,7 +223,7 @@ impl ExtrasGen {
                 quote_spanned! {span=>
                     const __EXTRAS_CHAT_MESSAGE: ::arcdps::extras::callbacks::ExtrasChatMessageCallback = #safe;
 
-                    unsafe extern #C_ABI fn #name(message_type: ::arcdps::extras::message::RawMessageType, message: ::arcdps::extras::message::RawMessage) {
+                    unsafe extern #C_ABI fn #name(message_type: ::arcdps::extras::message::MessageType, message: ::arcdps::extras::message::RawMessage) {
                         let message = ::arcdps::extras::message::Message::new(message_type, message);
                         self::__EXTRAS_CHAT_MESSAGE(message)
                     }

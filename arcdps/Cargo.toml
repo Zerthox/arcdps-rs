@@ -12,6 +12,7 @@ license = "MIT"
 [dependencies]
 arcdps_codegen = { path = "../arcdps_codegen" }
 arcdps-imgui = { version = "0.8.0", features = ["tables-api"] }
+bitflags = "2.8.0"
 chrono = { version = "0.4.24", optional = true }
 evtc = { path = "../evtc", features = ["realtime"]}
 log = { version = "0.4.17", features = ["std"], optional = true }

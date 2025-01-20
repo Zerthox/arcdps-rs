@@ -13,8 +13,8 @@ use serde::{Deserialize, Serialize};
 /// If you need it for longer than its lifetime, consider converting it to [`AgentOwned`].
 ///
 /// ```no_run
-/// # use arcdps::{Agent, AgentOwned};
-/// # let agent: arcdps::Agent = todo!();
+/// # use evtc::agent::realtime::{Agent, AgentOwned};
+/// # let agent: &Agent = todo!();
 /// let owned = agent.to_owned();
 /// let owned: AgentOwned = agent.into();
 /// ```
@@ -58,7 +58,7 @@ impl Agent {
 
     /// Converts the [`Agent`] to the owned version [`AgentOwned`].
     #[inline]
-    pub fn to_owned(self) -> AgentOwned {
+    pub fn to_owned(&self) -> AgentOwned {
         self.into()
     }
 
@@ -95,6 +95,13 @@ pub struct AgentOwned {
 impl From<Agent> for AgentOwned {
     #[inline]
     fn from(agent: Agent) -> Self {
+        (&agent).into()
+    }
+}
+
+impl From<&Agent> for AgentOwned {
+    #[inline]
+    fn from(agent: &Agent) -> Self {
         Self {
             name: agent.name().map(|string| string.to_owned()),
             id: agent.id,

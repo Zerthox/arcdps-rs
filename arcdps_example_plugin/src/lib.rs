@@ -165,13 +165,13 @@ fn extras_keybind_changed(changed: KeybindChange) {
 }
 
 /// Unofficial extras squad chat message.
-fn extras_squad_chat_message(message: SquadMessage) {
-    if message.is_broadcast {
-        log::info!("broadcast from {}", message.account_name);
+fn extras_squad_chat_message(message: &SquadMessage) {
+    if message.is_broadcast() {
+        log::info!("broadcast from {}", message.account_name());
     } else {
         log::info!(
             "message from {} in {:?}",
-            message.account_name,
+            message.account_name(),
             message.channel_type
         )
     }
@@ -181,18 +181,18 @@ fn extras_squad_chat_message(message: SquadMessage) {
 fn extras_chat_message(message: Message) {
     match message {
         Message::Squad(message) => {
-            if message.is_broadcast {
-                log::info!("broadcast from {}", message.account_name);
+            if message.is_broadcast() {
+                log::info!("broadcast from {}", message.account_name());
             } else {
                 log::info!(
                     "message from {} in {:?}",
-                    message.account_name,
+                    message.account_name(),
                     message.channel_type
                 )
             }
         }
         Message::Npc(message) => {
-            log::info!("message from NPC {}", message.character_name)
+            log::info!("message from NPC {}", message.character_name())
         }
     }
 }

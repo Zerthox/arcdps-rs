@@ -2,7 +2,7 @@
 
 use super::{
     keybinds::{KeybindChange, RawKeybindChange},
-    message::{Message, RawMessage, RawMessageType, RawSquadMessage, SquadMessage},
+    message::{Message, MessageType, RawMessage, SquadMessage},
     user::{UserInfo, UserInfoIter},
     ExtrasAddonInfo, ExtrasSubscriberInfo, RawExtrasAddonInfo,
 };
@@ -16,7 +16,7 @@ pub type ExtrasLanguageChangedCallback = fn(language: Language);
 
 pub type ExtrasKeybindChangedCallback = fn(changed: KeybindChange);
 
-pub type ExtrasSquadChatMessageCallback = fn(message: SquadMessage);
+pub type ExtrasSquadChatMessageCallback = fn(message: &SquadMessage);
 
 pub type ExtrasChatMessageCallback = fn(message: Message);
 
@@ -34,8 +34,8 @@ abi! {
     pub type RawExtrasKeybindChangedCallback = unsafe extern fn(changed: RawKeybindChange);
 
     pub type RawExtrasSquadChatMessageCallback =
-        unsafe extern fn(message: *const RawSquadMessage);
+        unsafe extern fn(message: *const SquadMessage);
 
     pub type RawExtrasChatMessageCallback =
-        unsafe extern fn(message_type: RawMessageType, message: RawMessage);
+        unsafe extern fn(message_type: MessageType, message: RawMessage);
 }
