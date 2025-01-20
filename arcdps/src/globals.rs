@@ -9,16 +9,27 @@ use crate::{
         },
     },
     imgui,
-    util::exported_proc,
+    util::{exported_proc, Share},
 };
-use std::{ffi::c_void, mem::transmute, ptr};
-use windows::Win32::{
-    Foundation::HMODULE,
-    Graphics::{Direct3D11::ID3D11Device, Dxgi::IDXGISwapChain},
+use std::{
+    ffi::c_void,
+    mem::transmute,
+    ptr::{self, NonNull},
+    sync::{
+        atomic::{AtomicU32, Ordering},
+        OnceLock,
+    },
+};
+use windows::{
+    core::Interface,
+    Win32::{
+        Foundation::HMODULE,
+        Graphics::{Direct3D11::ID3D11Device, Dxgi::IDXGISwapChain},
+    },
 };
 
 /// Global instance of ArcDPS handle & exported functions.
-pub static mut ARC_GLOBALS: ArcGlobals = ArcGlobals::empty();
+pub static ARC_GLOBALS: OnceLock<ArcGlobals> = OnceLock::new();
 
 /// ArcDPS handle & exported functions.
 // TODO: should we move other globals from codegen here? or move this to codegen?
@@ -65,29 +76,10 @@ pub struct ArcGlobals {
 }
 
 impl ArcGlobals {
-    /// Creates an empty version of ArcDPS globals.
-    const fn empty() -> Self {
-        Self {
-            handle: HMODULE(0),
-            version: None,
-            e0: None,
-            e3: None,
-            e5: None,
-            e6: None,
-            e7: None,
-            e8: None,
-            e9: None,
-            e10: None,
-            add_extension: None,
-            free_extension: None,
-            list_extension: None,
-        }
-    }
-
-    /// Initializes the ArcDPS globals.
-    pub unsafe fn init(&mut self, handle: HMODULE, version: Option<&'static str>) {
+    /// Creates new ArcDPS globals.
+    pub unsafe fn new(handle: HMODULE, version: Option<&'static str>) -> Self {
         #![allow(clippy::missing_transmute_annotations)]
-        *self = Self {
+        Self {
             handle,
             version,
             e0: transmute(exported_proc(handle, "e0\0")),
@@ -101,19 +93,37 @@ impl ArcGlobals {
             add_extension: transmute(exported_proc(handle, "addextension2\0")),
             free_extension: transmute(exported_proc(handle, "freeextension2\0")),
             list_extension: transmute(exported_proc(handle, "listextension\0")),
-        };
+        }
+    }
+
+    /// Initializes the ArcDPS globals.
+    pub unsafe fn init(handle: HMODULE, version: Option<&'static str>) -> &'static Self {
+        ARC_GLOBALS.get_or_init(|| Self::new(handle, version))
+    }
+
+    /// Returns the ArcDPS globals.
+    #[inline]
+    pub fn get() -> &'static Self {
+        Self::try_get().expect("arcdps globals not initialized")
+    }
+
+    /// Tries to retrieve the ArcDPS globals.
+    #[inline]
+    pub fn try_get() -> Option<&'static Self> {
+        ARC_GLOBALS.get()
     }
 }
+
+unsafe impl Send for ArcGlobals {}
+
+unsafe impl Sync for ArcGlobals {}
 
 pub type MallocFn = unsafe extern "C" fn(size: usize, user_data: *mut c_void) -> *mut c_void;
 
 pub type FreeFn = unsafe extern "C" fn(ptr: *mut c_void, user_data: *mut c_void);
 
 /// ImGui context.
-pub static mut IG_CONTEXT: Option<imgui::Context> = None;
-
-/// [`imgui::Ui`] kept in memory between renders.
-pub static mut IG_UI: Option<imgui::Ui<'static>> = None;
+pub static IG_CONTEXT: OnceLock<Share<imgui::Context>> = OnceLock::new();
 
 /// Helper to initialize ImGui.
 pub unsafe fn init_imgui(
@@ -123,50 +133,50 @@ pub unsafe fn init_imgui(
 ) {
     imgui::sys::igSetCurrentContext(ctx);
     imgui::sys::igSetAllocatorFunctions(malloc, free, ptr::null_mut());
-    IG_CONTEXT = Some(imgui::Context::current());
-    IG_UI = Some(imgui::Ui::from_ctx(IG_CONTEXT.as_ref().unwrap_unchecked()));
+    IG_CONTEXT.get_or_init(|| Share(imgui::Context::current()));
 }
 
 /// Current DirectX version.
-pub static mut D3D_VERSION: u32 = 0;
+pub static D3D_VERSION: AtomicU32 = AtomicU32::new(0);
 
 /// Returns the current DirectX version.
 ///
 /// `11` for DirectX 11 and `9` for legacy DirectX 9 mode.
 #[inline]
 pub fn d3d_version() -> u32 {
-    unsafe { D3D_VERSION }
+    D3D_VERSION.load(Ordering::Relaxed)
 }
 
 /// DirectX 11 swap chain.
-pub static mut DXGI_SWAP_CHAIN: Option<IDXGISwapChain> = None;
+pub static DXGI_SWAP_CHAIN: OnceLock<Share<NonNull<c_void>>> = OnceLock::new();
 
 /// Returns the DirectX swap chain, if available.
 #[inline]
-pub fn dxgi_swap_chain() -> Option<&'static IDXGISwapChain> {
-    unsafe { DXGI_SWAP_CHAIN.as_ref() }
+pub fn dxgi_swap_chain() -> Option<IDXGISwapChain> {
+    DXGI_SWAP_CHAIN.get().map(|share| {
+        unsafe { IDXGISwapChain::from_raw_borrowed(&share.0.as_ptr()) }
+            .expect("invalid swap chain")
+            .clone()
+    })
 }
-
-/// Available DirectX 11 device.
-pub static mut D3D11_DEVICE: Option<ID3D11Device> = None;
 
 /// Returns the DirectX 11 device, if available.
 #[inline]
-pub fn d3d11_device() -> Option<&'static ID3D11Device> {
-    unsafe { D3D11_DEVICE.as_ref() }
+pub fn d3d11_device() -> Option<ID3D11Device> {
+    let swap_chain = dxgi_swap_chain()?;
+    unsafe { swap_chain.GetDevice() }.ok()
 }
 
 /// Helper to initialize DirectX information.
 pub unsafe fn init_dxgi(id3d: *const c_void, d3d_version: u32, name: &'static str) {
-    D3D_VERSION = d3d_version;
-    if !id3d.is_null() && d3d_version == 11 {
-        // referencing here prevents a crash due to drop
-        let swap_chain: &IDXGISwapChain = transmute(&id3d);
-        DXGI_SWAP_CHAIN = Some(swap_chain.clone());
+    D3D_VERSION.store(d3d_version, Ordering::Relaxed);
+    if d3d_version == 11 {
+        if let Some(id3d) = NonNull::new(id3d.cast_mut()) {
+            let ptr = id3d.as_ptr();
+            let swap_chain =
+                unsafe { IDXGISwapChain::from_raw_borrowed(&ptr) }.expect("invalid swap chain");
 
-        match swap_chain.GetDevice() {
-            Ok(device) => D3D11_DEVICE = Some(device),
-            Err(err) => {
+            if let Err(err) = swap_chain.GetDevice::<ID3D11Device>() {
                 let msg = &format!("{name} error: failed to get d3d11 device: {err}");
                 if has_e3_log_file() {
                     let _ = log_to_file(msg);
@@ -175,6 +185,8 @@ pub unsafe fn init_dxgi(id3d: *const c_void, d3d_version: u32, name: &'static st
                     let _ = log_to_window(msg);
                 }
             }
+
+            DXGI_SWAP_CHAIN.get_or_init(|| Share(id3d));
         }
     }
 }

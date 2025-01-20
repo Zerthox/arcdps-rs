@@ -50,11 +50,12 @@ impl ArcDpsGen {
 
                 #[no_mangle]
                 pub unsafe extern #SYSTEM_ABI fn get_update_url() -> *const ::std::primitive::u16 {
-                    static mut URL: ::std::vec::Vec<u16> = ::std::vec::Vec::new();
+                    static mut URL: ::std::vec::Vec<::std::primitive::u16> = ::std::vec::Vec::new();
 
                     if let ::std::option::Option::Some(url) = self::__UPDATE_URL() {
-                        URL = ::arcdps::__macro::str_to_wide(url);
-                        URL.as_ptr()
+                        let buf = ::std::ptr::addr_of_mut!(URL);
+                        *buf = ::arcdps::__macro::str_to_wide(url);
+                        (*buf).as_ptr()
                     } else {
                         ::std::ptr::null()
                     }
@@ -128,7 +129,8 @@ impl ArcDpsGen {
                     const __OPTIONS_WINDOWS: ::arcdps::callbacks::OptionsWindowsCallback = #safe;
 
                     unsafe extern #C_ABI fn #name(window_name: *const ::arcdps::__macro::c_char) -> ::std::primitive::bool {
-                        self::__OPTIONS_WINDOWS(::arcdps::__macro::ui(), ::arcdps::__macro::str_from_cstr(window_name))
+                        let ui = ::arcdps::__macro::ui();
+                        self::__OPTIONS_WINDOWS(&ui, ::arcdps::__macro::str_from_cstr(window_name))
                     }
                 }
             },
@@ -146,7 +148,8 @@ impl ArcDpsGen {
                     const __OPTIONS_END: ::arcdps::callbacks::OptionsCallback = #safe;
 
                     unsafe extern #C_ABI fn #name() {
-                        self::__OPTIONS_END(::arcdps::__macro::ui())
+                        let ui = ::arcdps::__macro::ui();
+                        self::__OPTIONS_END(&ui)
                     }
                 }
             },
@@ -164,7 +167,8 @@ impl ArcDpsGen {
                     const __IMGUI: ::arcdps::callbacks::ImguiCallback = #safe;
 
                     unsafe extern #C_ABI fn #name(loading: ::std::primitive::u32) {
-                        self::__IMGUI(::arcdps::__macro::ui(), loading != 0)
+                        let ui = ::arcdps::__macro::ui();
+                        self::__IMGUI(&ui, loading != 0)
                     }
                 }
             },

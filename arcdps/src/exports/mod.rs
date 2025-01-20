@@ -9,7 +9,7 @@ pub use self::has::*;
 
 use crate::{
     evtc::{Event, Profession},
-    globals::ARC_GLOBALS,
+    globals::ArcGlobals,
     imgui::sys::ImVec4,
 };
 use num_enum::{IntoPrimitive, TryFromPrimitive};
@@ -32,7 +32,7 @@ use strum::{Display, EnumCount, EnumIter, IntoStaticStr, VariantNames};
 /// Retrieves the ArcDPS version as string.
 #[inline]
 pub fn version() -> Option<&'static str> {
-    unsafe { ARC_GLOBALS.version }
+    ArcGlobals::get().version
 }
 
 /// Retrieves the config path from ArcDPS.
@@ -385,8 +385,6 @@ pub enum AddExtensionResult {
 /// This uses version 2 (`freeextension2`) of the extension API.
 #[inline]
 pub fn free_extension(sig: u32) -> Option<HMODULE> {
-    match unsafe { raw::free_extension(sig) } {
-        HMODULE(0) => None,
-        handle => Some(handle),
-    }
+    let handle = unsafe { raw::free_extension(sig) };
+    (!handle.is_invalid()).then_some(handle)
 }

@@ -14,6 +14,14 @@ use windows::{
     },
 };
 
+#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[repr(transparent)]
+pub struct Share<T>(pub T);
+
+unsafe impl<T> Sync for Share<T> {}
+
+unsafe impl<T> Send for Share<T> {}
+
 /// Helper to convert a string pointer to a [`prim@str`].
 #[inline]
 pub unsafe fn str_from_cstr<'a>(ptr: *const c_char) -> Option<&'a str> {
