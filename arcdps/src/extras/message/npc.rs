@@ -16,6 +16,7 @@ use serde::{Deserialize, Serialize};
 /// let owned: NpcMessageOwned = message.into();
 /// ```
 #[derive(Debug, Clone)]
+#[repr(C)]
 pub struct NpcMessage {
     /// Null terminated character name of the NPC that sent the message.
     ///

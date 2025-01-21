@@ -19,6 +19,7 @@ use serde::{Deserialize, Serialize};
 /// let owned: AgentOwned = agent.into();
 /// ```
 #[derive(Debug)]
+#[repr(C)]
 pub struct Agent {
     /// Name of the agent.
     name: *const c_char,
