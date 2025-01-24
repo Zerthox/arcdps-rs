@@ -29,6 +29,11 @@ pub struct NpcMessage {
     /// The string is only valid for the duration of the call.
     text: *const c_char,
     text_length: u64,
+
+    /// Time since epoch in nanoseconds.
+    ///
+    /// This can be used to sort messages, when they are out of order.
+    pub timestamp: u64,
 }
 
 impl NpcMessage {
