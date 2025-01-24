@@ -18,7 +18,7 @@ pub use crate::{
         BuffApplyEvent, BuffDamageEvent, BuffFormula, BuffInfo, BuffInitialEvent, BuffRemoveEvent,
         StackActiveEvent, StackResetEvent,
     },
-    effect::{Effect, EffectGUID, EffectOld},
+    effect::{Effect, EffectOld},
     log::{ArcBuildEvent, ErrorEvent, LogEvent},
     marker::{AgentMarkerEvent, SquadMarkerEvent},
     player::{GuildEvent, RewardEvent, TagEvent},

@@ -2,10 +2,8 @@
 //!
 //! Effects are visual effects rendered by the game client.
 
-mod guid;
 mod old;
 
-pub use self::guid::*;
 pub use self::old::*;
 
 use crate::extract::transmute_field;

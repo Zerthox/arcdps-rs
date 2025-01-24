@@ -2,6 +2,7 @@ use crate::{
     extract::{transmute_field, Extract},
     AgentId, Event, StateChange, TryExtract,
 };
+use windows::core::GUID;
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
@@ -16,10 +17,9 @@ pub struct GuildEvent {
     /// Agent that is in guild.
     pub agent: AgentId,
 
-    /// Guild id in client form.
-    ///
-    /// Needs minor rearrange for GW2 API form.
-    pub guild: u128,
+    /// Guild id in GW2 API form.
+    #[cfg_attr(feature = "serde", serde(with = "crate::serde_guid"))]
+    pub guild: GUID,
 }
 
 impl Extract for GuildEvent {
@@ -28,7 +28,7 @@ impl Extract for GuildEvent {
         Self {
             time: event.time,
             agent: AgentId::from_src(event),
-            guild: transmute_field!(event.dst_agent as u128),
+            guild: transmute_field!(event.dst_agent as GUID),
         }
     }
 }
