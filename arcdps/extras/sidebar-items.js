@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["callbacks","exports","keybinds","message","user"],"struct":["ExtrasAddonInfo","ExtrasSubscriberInfo","ExtrasSubscriberInfoHeader","RawExtrasAddonInfo"]};
+window.SIDEBAR_ITEMS = {"mod":["callbacks","exports","keybinds","message","user"],"struct":["ExtrasAddonInfo","ExtrasSubscriberInfo","ExtrasSubscriberInfoHeader","ExtrasVersion","RawExtrasAddonInfo"]};

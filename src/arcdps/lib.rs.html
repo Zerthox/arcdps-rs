@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `arcdps\src\lib.rs`."><title>lib.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-492a78a4a87dcc01.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="arcdps" data-themes="" data-resource-suffix="" data-rustdoc-version="1.82.0 (f6e511eec 2024-10-15)" data-channel="1.82.0" data-search-js="search-a99f1315e7cc5121.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../static.files/storage-118b08c4c78b968e.js"></script><script defer src="../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-921df33f47b8780c.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-3b12f09e550e0385.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer"></div><main><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `arcdps\src\lib.rs`."><title>lib.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-42caa33d.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="arcdps" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.1 (e71f9a9a9 2025-01-27)" data-channel="1.84.1" data-search-js="search-92e6798f.js" data-settings-js="settings-0f613d39.js" ><script src="../../static.files/storage-59e33391.js"></script><script defer src="../../static.files/src-script-56102188.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer"></div><main><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><h1><div class="sub-heading">arcdps/</div>lib.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers">
+<a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -337,7 +338,17 @@
 <a href="#337" id="337">337</a>
 <a href="#338" id="338">338</a>
 <a href="#339" id="339">339</a>
-</pre></div><pre class="rust"><code><span class="doccomment">//! Bindings for [ArcDPS](https://www.deltaconnected.com/arcdps/) plugins.
+<a href="#340" id="340">340</a>
+<a href="#341" id="341">341</a>
+<a href="#342" id="342">342</a>
+<a href="#343" id="343">343</a>
+<a href="#344" id="344">344</a>
+<a href="#345" id="345">345</a>
+<a href="#346" id="346">346</a>
+<a href="#347" id="347">347</a>
+<a href="#348" id="348">348</a>
+<a href="#349" id="349">349</a>
+<a href="#350" id="350">350</a></pre></div><pre class="rust"><code><span class="doccomment">//! Bindings for [ArcDPS](https://www.deltaconnected.com/arcdps/) plugins.
 //!
 //! # Usage
 //! Plugins export information for ArcDPS via the [`export!`] macro.
@@ -603,9 +614,17 @@
     </span><span class="attr">#[cfg(feature = <span class="string">"extras"</span>)]
     </span><span class="kw">pub </span>extras_keybind_changed: <span class="prelude-ty">Option</span>&lt;ExtrasKeybindChangedCallback&gt;,
 
+    <span class="doccomment">/// Squad chat message callback for [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases).
+    ///
+    /// Called whenever a chat message is sent in your party/squad.
+    ///
+    /// *Requires the `"extras"` feature.*
+    </span><span class="attr">#[cfg(feature = <span class="string">"extras"</span>)]
+    </span><span class="kw">pub </span>extras_squad_chat_message: <span class="prelude-ty">Option</span>&lt;ExtrasSquadChatMessageCallback&gt;,
+
     <span class="doccomment">/// Chat message callback for [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases).
     ///
-    /// Called whenever a chat message is sent in your party/squad
+    /// Called on different chat messages.
     ///
     /// *Requires the `"extras"` feature.*
     </span><span class="attr">#[cfg(feature = <span class="string">"extras"</span>)]
@@ -627,10 +646,11 @@
 
     <span class="kw">use crate</span>::{
         exports::has_e3_log_file,
-        globals::{init_dxgi, init_imgui, ARC_GLOBALS, IG_UI},
+        globals::{init_dxgi, init_imgui, ArcGlobals, IG_CONTEXT},
         imgui,
         panic::init_panic_hook,
     };
+    <span class="kw">use </span>std::mem::ManuallyDrop;
 
     <span class="attr">#[cfg(feature = <span class="string">"log"</span>)]
     </span><span class="kw">use crate</span>::{exports::has_e8_log_window, log::ArcDpsLogger};
@@ -649,7 +669,7 @@
         name: <span class="kw-2">&amp;</span><span class="lifetime">'static </span>str,
     ) {
         <span class="comment">// arc exports have to be retrieved before panic hook &amp; logging
-        </span>ARC_GLOBALS.init(arc_handle, str_from_cstr(arc_version));
+        </span>ArcGlobals::init(arc_handle, str_from_cstr(arc_version));
 
         <span class="comment">// only set panic hook if log file export was found
         </span><span class="kw">if </span>has_e3_log_file() {
@@ -672,8 +692,10 @@
 
     <span class="doccomment">/// Internally used function to retrieve the [`imgui::Ui`].
     </span><span class="attr">#[inline]
-    </span><span class="kw">pub unsafe fn </span>ui() -&gt; <span class="kw-2">&amp;</span><span class="lifetime">'static </span>imgui::Ui&lt;<span class="lifetime">'static</span>&gt; {
-        IG_UI.as_ref().expect(<span class="string">"imgui ui not initialized"</span>)
+    </span><span class="kw">pub unsafe fn </span>ui() -&gt; ManuallyDrop&lt;imgui::Ui&lt;<span class="lifetime">'static</span>&gt;&gt; {
+        ManuallyDrop::new(imgui::Ui::from_ctx(
+            <span class="kw-2">&amp;</span>IG_CONTEXT.get().expect(<span class="string">"imgui not initialized"</span>).<span class="number">0</span>,
+        ))
     }
 }
 </code></pre></div></section></main></body></html>
