@@ -1,8 +1,8 @@
 use crate::{
     extract::{transmute_field, Extract},
+    guid::GUID,
     AgentId, Event, StateChange, TryExtract,
 };
-use windows::core::GUID;
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};

@@ -1,3 +1,5 @@
+//! Bindings & utilities for GUIDs appearing in events.
+
 use crate::{
     extract::{transmute_field, Extract},
     Event, StateChange, TryExtract,
@@ -11,7 +13,7 @@ use serde::{Deserialize, Serialize};
 #[cfg(feature = "strum")]
 use strum::{Display, EnumCount, EnumIter, IntoStaticStr, VariantNames};
 
-pub use windows::core::GUID;
+pub use windows_core::GUID;
 
 /// Content GUID information.
 ///

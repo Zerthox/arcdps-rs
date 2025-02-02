@@ -8,7 +8,3 @@ members = [
     "evtc_parse",
 ]
 resolver = "2"
-
-
-[workspace.dependencies]
-windows = { version = "0.59.0" }

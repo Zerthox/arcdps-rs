@@ -19,7 +19,7 @@ log = { version = "0.4.17", features = ["std"], optional = true }
 num_enum = "0.7.0"
 serde = { version = "1.0.160", features = ["derive"], optional = true }
 strum = { version = "0.26.1", features = ["derive"], optional = true }
-windows = { workspace = true, features = [
+windows = { version = "0.59.0", features = [
     "System",
     "Win32_Foundation",
     "Win32_UI_WindowsAndMessaging",
