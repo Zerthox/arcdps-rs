@@ -19,20 +19,20 @@ jobs:
           - name: macos
             os: macos-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
       - run: cargo build --release --package evtc_dump
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: evtc_dump_${{ matrix.name }}
           path: |
               target/release/evtc_dump
               target/release/evtc_dump.exe
-      - uses: vimtor/action-zip@v1.1
+      - uses: vimtor/action-zip@v1.2
         with:
           files: target/release/evtc_dump target/release/evtc_dump.exe
           dest: evtc_dump_${{ matrix.name }}.zip
-      - uses: softprops/action-gh-release@v1
+      - uses: softprops/action-gh-release@v2
         continue-on-error: true
         with:
           files: evtc_dump_${{ matrix.name }}.zip
