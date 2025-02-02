@@ -264,9 +264,17 @@ pub struct SupportedFields {
     #[cfg(feature = "extras")]
     pub extras_keybind_changed: Option<ExtrasKeybindChangedCallback>,
 
+    /// Squad chat message callback for [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases).
+    ///
+    /// Called whenever a chat message is sent in your party/squad.
+    ///
+    /// *Requires the `"extras"` feature.*
+    #[cfg(feature = "extras")]
+    pub extras_squad_chat_message: Option<ExtrasSquadChatMessageCallback>,
+
     /// Chat message callback for [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases).
     ///
-    /// Called whenever a chat message is sent in your party/squad
+    /// Called on different chat messages.
     ///
     /// *Requires the `"extras"` feature.*
     #[cfg(feature = "extras")]
