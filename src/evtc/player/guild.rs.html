@@ -41,9 +41,9 @@
 <a href="#40" id="40">40</a>
 <a href="#41" id="41">41</a></pre></div><pre class="rust"><code><span class="kw">use crate</span>::{
     extract::{transmute_field, Extract},
+    guid::GUID,
     AgentId, Event, StateChange, TryExtract,
 };
-<span class="kw">use </span>windows::core::GUID;
 
 <span class="attr">#[cfg(feature = <span class="string">"serde"</span>)]
 </span><span class="kw">use </span>serde::{Deserialize, Serialize};
