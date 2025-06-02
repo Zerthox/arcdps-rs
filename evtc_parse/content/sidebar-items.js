@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["ContentLocal","ContentType"],"mod":["serde_guid"],"struct":["ContentInfo","ContentLocalIter","GUID"],"trait":["GuidExt"]};

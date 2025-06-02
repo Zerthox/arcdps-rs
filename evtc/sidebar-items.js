@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"enum":["Language","StateChange"],"mod":["agent","buff","effect","event","extract","guid","marker","player","position","skill","strike","weapon"],"struct":["LanguageIter","Ruleset","StateChangeIter"]};
+window.SIDEBAR_ITEMS = {"enum":["Language","StateChange"],"mod":["agent","buff","content","effect","event","extract","marker","missile","player","position","skill","strike","weapon"],"struct":["LanguageIter","Ruleset","StateChangeIter"]};
