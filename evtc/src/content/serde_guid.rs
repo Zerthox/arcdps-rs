@@ -1,4 +1,4 @@
-use crate::guid::{GuidExt, GUID};
+use crate::content::{GuidExt, GUID};
 use serde::{
     de::{Error, Visitor},
     Deserializer, Serializer,

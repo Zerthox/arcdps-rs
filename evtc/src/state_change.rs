@@ -487,7 +487,7 @@ pub enum StateChange {
     /// *`is_shields` contains duration as [`u16`].*
     /// *If `is_flanking`, duration is a tracking id.*
     /// *If effect id is `0`, effect ended and `is_shields` contains tracking id.*
-    EffectOld = 45,
+    Effect45 = 45,
 
     /// Content id to GUID.
     ///
@@ -542,7 +542,7 @@ pub enum StateChange {
     /// EVTC: yes, limited to agent table outside instances
     ///
     /// Realtime: no
-    Effect = 51,
+    Effect51 = 51,
 
     /// Combat ruleset.
     ///
@@ -581,6 +581,106 @@ pub enum StateChange {
     ///
     /// Realtime: no
     Glider = 55,
+
+    /// Disable stopped early.
+    ///
+    /// `src_agent` stopped the disable.
+    /// `value` contains duration remaining.
+    ///
+    /// EVTC: yes, limited to agent table outside instances
+    ///
+    /// Realtime: no
+    Stunbreak = 56,
+
+    /// Missile created.
+    ///
+    /// `src_agent` contains the source agent.
+    /// `value` contains the location x/y/z as `[i16; 3]` divided by 10.
+    /// `overstack_value` contains the skin id (player only).
+    /// `skill_id` contains the associated skill id.
+    /// `pad61` contains the trackable missile id as [`u32`].
+    ///
+    /// EVTC: yes, limited to agent table outside instances
+    ///
+    /// Realtime: no
+    MissileCreate = 57,
+
+    /// Missile launched or relaunched.
+    ///
+    /// `src_agent` contains the source agent.
+    /// `dst_agent` contains the target agent, if set and in range.
+    /// `value` contains the target x/y/z and current x/y/z as `[i16; 6]` divided by 10.
+    /// `skill_id` contains the associated skill id.
+    /// `affinity` contains the launch motion as [`u8`]. Unknown values, directly from client.
+    /// `result` contains the motion radius/range as [`i16`].
+    /// `is_buffremove` contains the launch flags as [`u32`]. Unknown values, directly from client.
+    /// `is_shields` contains the missile speed as [`i16`].
+    /// `pad61` contains the trackable missile id as [`u32`].
+    ///
+    /// EVTC: yes, limited to agent table outside instances
+    ///
+    /// Realtime: no
+    MissileLaunch = 58,
+
+    /// Missile removed or destroyed.
+    ///
+    /// `src_agent` contains the related agent.
+    /// `value` contains the total friendly fire damage.
+    /// `skill_id` contains the associated skill id.
+    /// `is_src_flanking` if at least one enemy was hit along the way.
+    /// `pad61` contains the trackable missile id as [`u32`].
+    ///
+    /// EVTC: yes, limited to agent table outside instances
+    ///
+    /// Realtime: no
+    MissileRemove = 59,
+
+    /// Ground effect created.
+    ///
+    /// `src_agent` contains the owner agent.
+    /// `dst_agent` contains the origin x/y/z divided by 10 and orient x/y/z multiplied by 1000 as `[i16; 6]`.
+    /// `skill_id` contains the volatile effect content id, map to stable GUID via [`StateChange::IdToGUID`] event.
+    /// `affinity` contains the effect duration as [`u32`]. If the duration is zero, it may be a fixed length duration (see [`StateChange::IdToGUID`] event).
+    /// `is_buffremove` contains the flags.
+    /// `is_flanking` if effect is located on a non-static platform.
+    /// `is_shields` contains the scale (if zero, assume 1) multiplied by 1000 as `i16`.
+    /// `pad61` contains the trackable effect id as [`u32`].
+    ///
+    /// EVTC: yes, limited to agent table outside instances
+    ///
+    /// Realtime: no
+    EffectGroundCreate = 60,
+
+    /// Ground effect removed.
+    ///
+    /// `pad61` contains the trackable effect id as [`u32`].
+    ///
+    /// EVTC: yes
+    ///
+    /// Realtime: no
+    EffectGroundRemove = 61,
+
+    /// Effect atttached to agent created.
+    ///
+    /// `src_agent` contains the related agent.
+    /// `skill_id` contains the volatile effect content id, map to stable GUID via [`StateChange::IdToGUID`] event.
+    /// `affinity` contains effect duration as [`u32`]. If the duration is zero, it may be a fixed length duration (see [`StateChange::IdToGUID`] event).
+    /// `pad61` contains the trackable effect id as [`u32`].
+    ///
+    /// EVTC: yes, limited to agent table outside instances
+    ///
+    /// Realtime: no
+    EffectAgentCreate = 62,
+
+    /// Effect attached to agent removed.
+    ///
+    /// `src_agent` contains the related agent.
+    /// `pad61` contains the trackable effect id as [`u32`].
+    ///
+    /// EVTC: yes, limited to agent table outside instances
+    ///
+    /// Realtime: no
+    EffectAgentRemove = 63,
 
     /// Unknown or invalid.
     #[num_enum(catch_all)]
@@ -623,12 +723,20 @@ impl StateChange {
                 | Self::Extension
                 | Self::ApiDelayed
                 | Self::Last90BeforeDown
-                | Self::EffectOld
+                | Self::Effect45
                 | Self::LogNPCUpdate
                 | Self::ExtensionCombat
-                | Self::Effect
+                | Self::Effect51
                 | Self::SquadMarker
                 | Self::Glider
+                | Self::Stunbreak
+                | Self::MissileCreate
+                | Self::MissileLaunch
+                | Self::MissileRemove
+                | Self::EffectGroundCreate
+                | Self::EffectGroundRemove
+                | Self::EffectAgentCreate
+                | Self::EffectAgentRemove
         )
     }
 }

@@ -1,11 +1,14 @@
 use crate::{
+    content::GUID,
     extract::{transmute_field, Extract},
-    guid::GUID,
     AgentId, Event, StateChange, TryExtract,
 };
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
+
+#[cfg(feature = "serde")]
+use crate::content::serde_guid;
 
 /// Agent is in guild.
 #[derive(Debug, Clone)]
@@ -18,7 +21,7 @@ pub struct GuildEvent {
     pub agent: AgentId,
 
     /// Guild id in GW2 API form.
-    #[cfg_attr(feature = "serde", serde(with = "crate::serde_guid"))]
+    #[cfg_attr(feature = "serde", serde(with = "serde_guid"))]
     pub guild: GUID,
 }
 

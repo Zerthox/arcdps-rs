@@ -2,16 +2,19 @@ use crate::{
     agent::{
         AgentStatusEvent, AttackTargetEvent, BarrierUpdateEvent, BreakbarPercentEvent,
         BreakbarStateEvent, DownContributionEvent, EnterCombatEvent, GliderEvent,
-        HealthUpdateEvent, MaxHealthEvent, TargetableEvent, TeamChangeEvent,
+        HealthUpdateEvent, MaxHealthEvent, StunbreakEvent, TargetableEvent, TeamChangeEvent,
     },
     buff::{
         BuffApplyEvent, BuffDamageEvent, BuffFormula, BuffInfo, BuffInitialEvent, BuffRemoveEvent,
         StackActiveEvent, StackResetEvent,
     },
-    effect::{Effect, EffectOld},
-    guid::ContentGUID,
+    content::ContentInfo,
+    effect::{
+        AgentEffect, AgentEffectRemove, Effect45, Effect51, GroundEffect, GroundEffectRemove,
+    },
     log::{ArcBuildEvent, ErrorEvent, LogEvent},
     marker::{AgentMarkerEvent, SquadMarkerEvent},
+    missile::{MissileCreate, MissileLaunch, MissileRemove},
     player::{GuildEvent, RewardEvent},
     position::PositionEvent,
     ruleset::Ruleset,
@@ -162,12 +165,12 @@ pub enum EventKind {
     Last90BeforeDown(DownContributionEvent),
 
     /// Effect created or ended.
-    EffectOld(EffectOld),
+    Effect45(Effect45),
 
     /// Content id to GUID.
     ///
     /// This maps a volatile content id to a stable GUID.
-    IdToGUID(ContentGUID),
+    IdToGUID(ContentInfo),
 
     /// Log NPC changed.
     LogNPCUpdate(LogEvent),
@@ -179,7 +182,7 @@ pub enum EventKind {
     FractalScale { time: u64, scale: u64 },
 
     /// Effect created or ended.
-    Effect(Effect),
+    Effect51(Effect51),
 
     /// Combat ruleset.
     Ruleset(Ruleset),
@@ -207,6 +210,30 @@ pub enum EventKind {
 
     /// Agent gliding state changed.
     Glider(GliderEvent),
+
+    /// Effect
+    Stunbreak(StunbreakEvent),
+
+    /// Missile created.
+    MissileCreate(MissileCreate),
+
+    /// Missile launched or relaunched.
+    MissileLaunch(MissileLaunch),
+
+    /// Missile removed or destroyed.
+    MissileRemove(MissileRemove),
+
+    /// Ground effect created.
+    EffectGroundCreate(GroundEffect),
+
+    /// Ground effect removed.
+    EffectGroundRemove(GroundEffectRemove),
+
+    /// Effect around Agent created.
+    EffectAgentCreate(AgentEffect),
+
+    /// Effect around Agent removed.
+    EffectAgentRemove(AgentEffectRemove),
 
     /// Unknown event.
     Unknown(Event),
@@ -295,7 +322,7 @@ impl From<Event> for EventKind {
                         rate: event.src_agent,
                     },
                     StateChange::Last90BeforeDown => Self::Last90BeforeDown(event.extract()),
-                    StateChange::EffectOld => Self::EffectOld(event.extract()),
+                    StateChange::Effect45 => Self::Effect45(event.extract()),
                     StateChange::IdToGUID => Self::IdToGUID(event.extract()),
                     StateChange::LogNPCUpdate => Self::LogNPCUpdate(event.extract()),
                     StateChange::ExtensionCombat => Self::ExtensionCombat {
@@ -306,13 +333,21 @@ impl From<Event> for EventKind {
                         time: event.time,
                         scale: event.src_agent,
                     },
-                    StateChange::Effect => Self::Effect(event.extract()),
+                    StateChange::Effect51 => Self::Effect51(event.extract()),
                     StateChange::Ruleset => {
                         Self::Ruleset(Ruleset::from_bits_retain(event.src_agent))
                     }
                     StateChange::SquadMarker => Self::SquadMarker(event.extract()),
                     StateChange::ArcBuild => Self::ArcBuild(event.extract()),
                     StateChange::Glider => Self::Glider(event.extract()),
+                    StateChange::Stunbreak => Self::Stunbreak(event.extract()),
+                    StateChange::MissileCreate => Self::MissileCreate(event.extract()),
+                    StateChange::MissileLaunch => Self::MissileLaunch(event.extract()),
+                    StateChange::MissileRemove => Self::MissileRemove(event.extract()),
+                    StateChange::EffectGroundCreate => Self::EffectGroundCreate(event.extract()),
+                    StateChange::EffectGroundRemove => Self::EffectGroundRemove(event.extract()),
+                    StateChange::EffectAgentCreate => Self::EffectAgentCreate(event.extract()),
+                    StateChange::EffectAgentRemove => Self::EffectAgentRemove(event.extract()),
                     StateChange::Unknown(_) => Self::Unknown(event),
                 },
                 EventCategory::Activation => Self::Activation(event.extract()),

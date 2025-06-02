@@ -1,16 +1,17 @@
-use super::EffectLocation;
 use crate::{
     extract::{transmute_field, Extract},
-    Event, Position, StateChange, TryExtract,
+    AgentId, Event, Position, StateChange, TryExtract,
 };
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
 
-/// Effect information from an [`Event`] with [`StateChange::EffectOld`].
+pub use super::effect51::EffectLocation;
+
+/// Effect information from an [`Event`] with [`StateChange::Effect45`].
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
-pub struct EffectOld {
+pub struct Effect45 {
     /// Time of registering the effect.
     pub time: u64,
 
@@ -20,7 +21,7 @@ pub struct EffectOld {
     pub effect_id: u32,
 
     /// Owner of the effect.
-    pub owner: u64,
+    pub owner: AgentId,
 
     /// Location of the effect.
     pub location: EffectLocation,
@@ -32,7 +33,7 @@ pub struct EffectOld {
     pub duration: EffectDuration,
 }
 
-impl EffectOld {
+impl Effect45 {
     /// Checks whether this is the end of an effect.
     #[inline]
     pub fn is_end(&self) -> bool {
@@ -40,7 +41,7 @@ impl EffectOld {
     }
 }
 
-impl Extract for EffectOld {
+impl Extract for Effect45 {
     #[inline]
     unsafe fn extract(event: &Event) -> Self {
         let effect_id = event.skill_id;
@@ -51,7 +52,7 @@ impl Extract for EffectOld {
         Self {
             time: event.time,
             effect_id,
-            owner: event.src_agent,
+            owner: AgentId::from_src(event),
             location: EffectLocation::extract(event),
             orientation: [x, y, z].into(),
             duration: if event.is_flanking != 0 || effect_id == 0 {
@@ -63,10 +64,10 @@ impl Extract for EffectOld {
     }
 }
 
-impl TryExtract for EffectOld {
+impl TryExtract for Effect45 {
     #[inline]
     fn can_extract(event: &Event) -> bool {
-        event.get_statechange() == StateChange::Effect
+        event.get_statechange() == StateChange::Effect51
     }
 }
 

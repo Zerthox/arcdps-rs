@@ -42,7 +42,7 @@ impl TryExtract for PositionEvent {
 /// Positional information.
 ///
 /// This can be from an [`Event`] with [`StateChange::Position`], [`StateChange::Velocity`] or [`StateChange::Facing`].
-/// It can also occur in [`StateChange::Effect`] and [`StateChange::EffectOld`] events as effect location or orientation.
+/// It can also occur in effect or missile events as locations or orientations.
 ///
 /// Ingame coordinates are interpreted as 1 unit = 1 inch.
 /// The z-axis represents vertical height and **points down**,
@@ -77,6 +77,15 @@ impl Position {
             z / Self::INCH_TO_METER,
             -y / Self::INCH_TO_METER,
         )
+    }
+
+    /// Creates a position from [`i16`] values with a scaling factor.
+    #[inline]
+    pub fn from_scaled_i16s(x: i16, y: i16, z: i16, factor: f32) -> Self {
+        let x = x as f32 * factor;
+        let y = y as f32 * factor;
+        let z = z as f32 * factor;
+        Self::new(x, y, z)
     }
 
     /// Converts the position to an [`array`].

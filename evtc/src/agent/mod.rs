@@ -11,6 +11,7 @@ mod glider;
 mod health;
 mod id;
 mod status;
+mod stunbreak;
 mod targetable;
 mod team;
 
@@ -19,5 +20,5 @@ pub mod realtime;
 
 pub use self::{
     affinity::*, agent_kind::*, attack_target::*, breakbar::*, combat::*, glider::*, health::*,
-    id::*, status::*, targetable::*, team::*,
+    id::*, status::*, stunbreak::*, targetable::*, team::*,
 };
