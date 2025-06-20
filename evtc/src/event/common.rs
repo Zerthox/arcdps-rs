@@ -11,10 +11,10 @@ pub struct CommonEvent {
     pub time: u64,
 
     /// Agent that caused the event.
-    pub src: AgentId,
+    pub source: AgentId,
 
     /// Agent the event happened to.
-    pub dst: AgentId,
+    pub target: AgentId,
 
     /// Skill id of the relevant skill (can be zero).
     pub skill_id: u32,
@@ -44,8 +44,8 @@ impl From<&Event> for CommonEvent {
     fn from(event: &Event) -> Self {
         Self {
             time: event.time,
-            src: AgentId::from_src(event),
-            dst: AgentId::from_dst(event),
+            source: AgentId::from_src(event),
+            target: AgentId::from_dst(event),
             skill_id: event.skill_id,
             affinity: event.get_affinity(),
             is_ninety: event.is_ninety,

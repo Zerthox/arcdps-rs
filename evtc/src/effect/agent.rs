@@ -12,8 +12,11 @@ pub struct AgentEffect {
     /// Time of registering the effect.
     pub time: u64,
 
-    /// Agent related to the effect.
-    pub agent: AgentId,
+    /// Source of the effect.
+    pub source: AgentId,
+
+    /// Target of the effect (if applicable).
+    pub target: AgentId,
 
     /// Id of the effect.
     ///
@@ -35,7 +38,8 @@ impl Extract for AgentEffect {
 
         Self {
             time: event.time,
-            agent: AgentId::from_src(event),
+            source: AgentId::from_src(event),
+            target: AgentId::from_dst(event),
             effect_id,
             duration,
             tracking_id: event.get_pad_id(),

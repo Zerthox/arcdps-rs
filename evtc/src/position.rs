@@ -13,8 +13,13 @@ use serde::{Deserialize, Serialize};
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct PositionEvent {
+    /// Time of registering the position.
     pub time: u64,
+
+    /// Agent who changed position.
     pub agent: AgentId,
+
+    /// The position.
     pub position: Position,
 }
 

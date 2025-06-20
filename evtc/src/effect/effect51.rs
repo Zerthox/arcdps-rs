@@ -12,8 +12,8 @@ pub struct Effect51 {
     /// Time of registering the effect.
     pub time: u64,
 
-    /// Owner of the effect.
-    pub owner: AgentId,
+    /// Source of the effect.
+    pub source: AgentId,
 
     /// Id of the effect.
     ///
@@ -55,7 +55,7 @@ impl Extract for Effect51 {
         Self {
             time: event.time,
             effect_id,
-            owner: AgentId::from_src(event),
+            source: AgentId::from_src(event),
             moving_platform: event.is_flanking,
             location: EffectLocation::extract(event),
             duration,

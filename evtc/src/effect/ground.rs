@@ -12,8 +12,8 @@ pub struct GroundEffect {
     /// Time of registering the effect.
     pub time: u64,
 
-    /// Owner of the effect.
-    pub owner: AgentId,
+    /// Source of the effect.
+    pub source: AgentId,
 
     /// Id of the effect.
     ///
@@ -55,7 +55,7 @@ impl Extract for GroundEffect {
 
         Self {
             time: event.time,
-            owner: AgentId::from_src(event),
+            source: AgentId::from_src(event),
             effect_id,
             location: Position::from_scaled_i16s(pos_x, pos_y, pos_z, 10.0),
             orientation: Position::from_scaled_i16s(orient_x, orient_y, orient_z, 1.0 / 1000.0),

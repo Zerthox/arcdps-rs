@@ -20,8 +20,8 @@ pub struct Effect45 {
     /// Use to map to a GUID using [`StateChange::IdToGUID`] events.
     pub effect_id: u32,
 
-    /// Owner of the effect.
-    pub owner: AgentId,
+    /// Source of the effect.
+    pub source: AgentId,
 
     /// Location of the effect.
     pub location: EffectLocation,
@@ -52,7 +52,7 @@ impl Extract for Effect45 {
         Self {
             time: event.time,
             effect_id,
-            owner: AgentId::from_src(event),
+            source: AgentId::from_src(event),
             location: EffectLocation::extract(event),
             orientation: [x, y, z].into(),
             duration: if event.is_flanking != 0 || effect_id == 0 {
