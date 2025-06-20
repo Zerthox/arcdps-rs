@@ -8,14 +8,14 @@ Documentation can be found at [zerthox.github.io/arcdps-rs/evtc/](https://zertho
 ```rs
 use evtc::Event;
 
-fn total_damage_dealt(agent: u64, target: u64, events: &[Event]) -> i32 {
+fn total_damage_dealt(source: u64, target: u64, events: &[Event]) -> i32 {
     events
         .iter()
         .filter_map(|event| event.try_to_strike())
         .filter(|strike_event| {
             strike_event.strike.dealt_damage()
-                && strike_event.src.id == agent
-                && strike_event.dst.id == target
+                && strike_event.source.id == source
+                && strike_event.target.id == target
         })
         .map(|strike_event| strike_event.total_damage - strike_event.shield_damage as i32)
         .sum()
