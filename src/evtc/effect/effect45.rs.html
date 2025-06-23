@@ -20,8 +20,8 @@
 <a href=#20 id=20 data-nosnippet>20</a>    /// Use to map to a GUID using [`StateChange::IdToGUID`] events.
 <a href=#21 id=21 data-nosnippet>21</a>    </span><span class="kw">pub </span>effect_id: u32,
 <a href=#22 id=22 data-nosnippet>22</a>
-<a href=#23 id=23 data-nosnippet>23</a>    <span class="doccomment">/// Owner of the effect.
-<a href=#24 id=24 data-nosnippet>24</a>    </span><span class="kw">pub </span>owner: AgentId,
+<a href=#23 id=23 data-nosnippet>23</a>    <span class="doccomment">/// Source of the effect.
+<a href=#24 id=24 data-nosnippet>24</a>    </span><span class="kw">pub </span>source: AgentId,
 <a href=#25 id=25 data-nosnippet>25</a>
 <a href=#26 id=26 data-nosnippet>26</a>    <span class="doccomment">/// Location of the effect.
 <a href=#27 id=27 data-nosnippet>27</a>    </span><span class="kw">pub </span>location: EffectLocation,
@@ -52,7 +52,7 @@
 <a href=#52 id=52 data-nosnippet>52</a>        <span class="self">Self </span>{
 <a href=#53 id=53 data-nosnippet>53</a>            time: event.time,
 <a href=#54 id=54 data-nosnippet>54</a>            effect_id,
-<a href=#55 id=55 data-nosnippet>55</a>            owner: AgentId::from_src(event),
+<a href=#55 id=55 data-nosnippet>55</a>            source: AgentId::from_src(event),
 <a href=#56 id=56 data-nosnippet>56</a>            location: EffectLocation::extract(event),
 <a href=#57 id=57 data-nosnippet>57</a>            orientation: [x, y, z].into(),
 <a href=#58 id=58 data-nosnippet>58</a>            duration: <span class="kw">if </span>event.is_flanking != <span class="number">0 </span>|| effect_id == <span class="number">0 </span>{
