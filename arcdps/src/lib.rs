@@ -288,7 +288,7 @@ pub mod __macro {
         globals::{FreeFn, MallocFn},
         util::{str_from_cstr, str_to_wide, strip_account_prefix},
     };
-    pub use std::os::raw::{c_char, c_void};
+    pub use std::ffi::{c_char, c_void};
     pub use windows::Win32::{
         Foundation::{HMODULE, HWND, LPARAM, WPARAM},
         UI::WindowsAndMessaging::{WM_KEYDOWN, WM_KEYUP, WM_SYSKEYDOWN, WM_SYSKEYUP},

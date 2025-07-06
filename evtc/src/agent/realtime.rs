@@ -1,7 +1,7 @@
 //! Realtime API [`Agent`] types.
 
 use super::AgentKind;
-use std::{ffi::CStr, os::raw::c_char};
+use std::ffi::{c_char, CStr};
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};

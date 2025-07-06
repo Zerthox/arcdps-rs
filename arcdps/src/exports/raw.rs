@@ -1,7 +1,7 @@
 //! Raw ArcDPS exports.
 
 use crate::{evtc::Event, globals::ArcGlobals, imgui::sys::ImVec4};
-use std::{ffi::c_void, os::raw::c_char};
+use std::ffi::{c_char, c_void};
 use windows::Win32::Foundation::HMODULE;
 
 /// Returns the handle to the ArcDPS dll.

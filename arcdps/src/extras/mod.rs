@@ -23,7 +23,7 @@ pub use message::{
 pub use user::{UserInfo, UserInfoIter, UserInfoOwned, UserRole};
 
 use globals::ExtrasGlobals;
-use std::os::raw::c_char;
+use std::ffi::c_char;
 use windows::Win32::Foundation::HMODULE;
 
 pub use version::ExtrasVersion;

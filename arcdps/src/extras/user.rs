@@ -2,7 +2,7 @@
 
 use crate::util::{str_from_cstr, strip_account_prefix};
 use num_enum::{IntoPrimitive, TryFromPrimitive};
-use std::{os::raw::c_char, slice};
+use std::{ffi::c_char, slice};
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
@@ -104,7 +104,7 @@ impl UserInfo {
 
     /// Converts the [`UserInfo`] to the owned version [`UserInfoOwned`].
     #[inline]
-    pub fn to_owned(self) -> UserInfoOwned {
+    pub fn to_owned(&self) -> UserInfoOwned {
         self.into()
     }
 }
@@ -142,6 +142,13 @@ pub struct UserInfoOwned {
 impl From<UserInfo> for UserInfoOwned {
     #[inline]
     fn from(user: UserInfo) -> Self {
+        (&user).into()
+    }
+}
+
+impl From<&UserInfo> for UserInfoOwned {
+    #[inline]
+    fn from(user: &UserInfo) -> Self {
         Self {
             account_name: user.account_name().map(|x| x.to_string()),
             join_time: user.join_time,

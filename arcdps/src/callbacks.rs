@@ -5,7 +5,7 @@ use crate::{
     imgui,
     util::abi,
 };
-use std::os::raw::c_char;
+use std::ffi::c_char;
 use windows::Win32::Foundation::{HWND, LPARAM, WPARAM};
 
 /// Exported struct for ArcDPS plugins.
