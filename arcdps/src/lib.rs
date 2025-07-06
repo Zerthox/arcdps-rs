@@ -104,6 +104,8 @@ pub struct SupportedFields {
     pub sig: u32,
 
     /// Callback for plugin load.
+    ///
+    /// May return an error with an optional error message to signal an error in loading.
     pub init: Option<InitFunc>,
 
     /// Callback for plugin unload.

@@ -1,6 +1,6 @@
 [package]
 name = "arcdps_codegen"
-version = "0.11.0"
+version = "0.12.0"
 authors = ["Zerthox", "Greaka"]
 edition = "2021"
 description = "Helper macro to generate code for ArcDPS plugins"

@@ -91,15 +91,17 @@ impl ArcDpsGen {
                     wnd_filter: ::std::option::Option::None,
                     wnd_nofilter: ::std::option::Option::None,
                 };
-                static mut ERROR_STRING: ::std::string::String = ::std::string::String::new();
+                static mut ERROR_MSG: ::std::string::String = ::std::string::String::new();
 
-                let result: ::std::result::Result<(), ::std::string::String> = #init;
+                let result: ::std::result::Result<(), ::std::option::Option<::std::string::String>> = #init;
                 if let ::std::result::Result::Err(err) = result {
-                    unsafe {
-                        ERROR_STRING = err + "\0";
-                        EXPORT_ERROR.size = ERROR_STRING.as_ptr() as _;
-                        &EXPORT_ERROR
+                    if let Some(msg) = err {
+                        unsafe {
+                            ERROR_MSG = msg + "\0";
+                            EXPORT_ERROR.size = ERROR_MSG.as_ptr() as _;
+                        }
                     }
+                    unsafe { &EXPORT_ERROR }
                 } else {
                     &self::__EXPORT
                 }

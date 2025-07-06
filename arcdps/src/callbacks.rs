@@ -69,7 +69,7 @@ pub struct ArcDpsExport {
 
 unsafe impl Sync for ArcDpsExport {}
 
-pub type InitFunc = fn() -> Result<(), String>;
+pub type InitFunc = fn() -> Result<(), Option<String>>;
 
 pub type ReleaseFunc = fn();
 

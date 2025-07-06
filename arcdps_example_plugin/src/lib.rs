@@ -32,7 +32,7 @@ arcdps::export! {
 }
 
 /// Plugin load.
-fn init() -> Result<(), String> {
+fn init() -> Result<(), Option<String>> {
     log::info!("plugin has been started");
     // for info level target "window" is the same as not specifying target
     log:: info!(target: "window", "only window logging");
