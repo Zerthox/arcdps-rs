@@ -133,7 +133,7 @@ pub unsafe fn init_imgui(
 ) {
     imgui::sys::igSetCurrentContext(ctx);
     imgui::sys::igSetAllocatorFunctions(malloc, free, ptr::null_mut());
-    IG_CONTEXT.get_or_init(|| Share(imgui::Context::current()));
+    IG_CONTEXT.get_or_init(|| Share::new(imgui::Context::current()));
 }
 
 /// Current DirectX version.
@@ -154,7 +154,7 @@ pub static DXGI_SWAP_CHAIN: OnceLock<Share<NonNull<c_void>>> = OnceLock::new();
 #[inline]
 pub fn dxgi_swap_chain() -> Option<IDXGISwapChain> {
     DXGI_SWAP_CHAIN.get().map(|share| {
-        unsafe { IDXGISwapChain::from_raw_borrowed(&share.0.as_ptr()) }
+        unsafe { IDXGISwapChain::from_raw_borrowed(&share.get().as_ptr()) }
             .expect("invalid swap chain")
             .clone()
     })
@@ -186,7 +186,7 @@ pub unsafe fn init_dxgi(id3d: *const c_void, d3d_version: u32, name: &'static st
                 }
             }
 
-            DXGI_SWAP_CHAIN.get_or_init(|| Share(id3d));
+            DXGI_SWAP_CHAIN.get_or_init(|| Share::new(id3d));
         }
     }
 }

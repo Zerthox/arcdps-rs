@@ -14,9 +14,24 @@ use windows::{
     },
 };
 
+/// Helper to store raw types as globals.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 #[repr(transparent)]
-pub struct Share<T>(pub T);
+pub struct Share<T>(T);
+
+impl<T> Share<T> {
+    /// Creates a new share value.
+    pub unsafe fn new(value: T) -> Self {
+        Self(value)
+    }
+
+    /// Returns a reference to the inner value-.
+    ///
+    /// The inner value must be safe to be accessed from this thread at this time.
+    pub unsafe fn get(&self) -> &T {
+        &self.0
+    }
+}
 
 unsafe impl<T> Sync for Share<T> {}
 
