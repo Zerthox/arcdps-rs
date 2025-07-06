@@ -16,7 +16,7 @@
 //!     combat: custom_combat_name,
 //! }
 //!
-//! fn init() -> Result<(), String> {
+//! fn init() -> Result<(), Option<String>> {
 //!     // may return an error to indicate load failure
 //!     Ok(())
 //! }
@@ -105,7 +105,7 @@ pub struct SupportedFields {
 
     /// Callback for plugin load.
     ///
-    /// May return an error with an optional error message to signal an error in loading.
+    /// May return an error with an optional error message to signal load failure.
     pub init: Option<InitFunc>,
 
     /// Callback for plugin unload.
