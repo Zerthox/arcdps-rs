@@ -82,7 +82,7 @@ fn wnd_nofilter(key: usize, key_down: bool, prev_key_down: bool) -> bool {
 /// Key event filtered by Arc's modifiers.
 fn wnd_filter(key: usize, key_down: bool, prev_key_down: bool) -> bool {
     if key_down && !prev_key_down {
-        log::info!("{} pressed with arc modifiers", key);
+        log::info!("{key} pressed with arc modifiers");
     }
     true
 }
@@ -148,7 +148,7 @@ fn extras_squad_update(users: UserInfoIter) {
 
 /// Unofficial extras client language change.
 fn extras_language_changed(language: Language) {
-    log::info!("language changed to {:?}", language)
+    log::info!("language changed to {language:?}")
 }
 
 /// Unofficial extras client keybind change.

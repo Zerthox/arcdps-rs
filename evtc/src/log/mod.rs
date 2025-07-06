@@ -4,7 +4,6 @@ mod error;
 pub use self::{arc_build::*, error::*};
 
 use crate::{extract::Extract, Event, StateChange, TryExtract};
-use std::mem::transmute;
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
@@ -31,8 +30,8 @@ impl Extract for LogEvent {
     unsafe fn extract(event: &Event) -> Self {
         Self {
             time: event.time,
-            server_time: transmute::<i32, u32>(event.value),
-            local_time: transmute::<i32, u32>(event.buff_dmg),
+            server_time: event.value.cast_unsigned(),
+            local_time: event.buff_dmg.cast_unsigned(),
             id: event.src_agent,
         }
     }

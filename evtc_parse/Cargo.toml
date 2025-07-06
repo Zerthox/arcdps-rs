@@ -5,6 +5,7 @@ authors = ["Zerthox"]
 edition = "2021"
 description = "Parsing for ArcDPS EVTC logs"
 repository = "https://github.com/zerthox/arcdps-rs"
+rust-version = "1.87.0"
 
 [dependencies]
 evtc = { path = "../evtc" }

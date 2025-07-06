@@ -5,6 +5,7 @@ authors = ["Zerthox"]
 edition = "2021"
 description = "Dump ArcDPS EVTC log information"
 repository = "https://github.com/zerthox/arcdps-rs"
+rust-version = "1.87.0"
 
 [dependencies]
 clap = { version = "4.4.6", features = ["derive"] }

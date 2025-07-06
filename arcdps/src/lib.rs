@@ -344,7 +344,7 @@ pub mod __macro {
     #[inline]
     pub unsafe fn ui() -> ManuallyDrop<imgui::Ui<'static>> {
         ManuallyDrop::new(imgui::Ui::from_ctx(
-            &IG_CONTEXT.get().expect("imgui not initialized").get(),
+            IG_CONTEXT.get().expect("imgui not initialized").get(),
         ))
     }
 }

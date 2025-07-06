@@ -1,7 +1,6 @@
 use crate::{
     extract::Extract, AgentId, Event, Profession, Specialization, StateChange, TryExtract,
 };
-use std::mem;
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
@@ -33,8 +32,8 @@ impl Extract for EnterCombatEvent {
             time: event.time,
             agent: AgentId::from_src(event),
             subgroup: event.dst_agent,
-            profession: unsafe { mem::transmute::<i32, u32>(event.value) }.into(),
-            elite: unsafe { mem::transmute::<i32, u32>(event.buff_dmg) }.into(),
+            profession: event.value.cast_unsigned().into(),
+            elite: event.buff_dmg.cast_unsigned().into(),
         }
     }
 }
