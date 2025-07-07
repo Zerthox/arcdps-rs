@@ -30,8 +30,9 @@ windows = { version = "0.61.1", features = [
 ] }
 
 [features]
-default = ["unwind"]
-unwind = ["arcdps_codegen/unwind"]
+default = ["panic", "unwind"]
 extras = ["arcdps_codegen/extras", "chrono"]
+panic = []
 serde = ["dep:serde", "evtc/serde", "chrono/serde"]
 strum = ["dep:strum", "evtc/strum"]
+unwind = ["arcdps_codegen/unwind"]

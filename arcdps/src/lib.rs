@@ -74,8 +74,10 @@ pub mod extras;
 pub mod log;
 
 mod globals;
-mod panic;
 mod util;
+
+#[cfg(feature = "panic")]
+mod panic;
 
 pub use arcdps_codegen::export;
 pub use arcdps_imgui as imgui;
@@ -298,11 +300,9 @@ pub mod __macro {
 
     use crate::{
         exports::has_e3_log_file,
-        globals::{init_dxgi, init_imgui, ArcGlobals, IG_CONTEXT},
+        globals::{init_dxgi, init_imgui, ArcGlobals, IG_UI},
         imgui,
-        panic::init_panic_hook,
     };
-    use std::mem::ManuallyDrop;
 
     #[cfg(feature = "log")]
     use crate::{exports::has_e8_log_window, log::ArcDpsLogger};
@@ -325,7 +325,8 @@ pub mod __macro {
 
         // only set panic hook if log file export was found
         if has_e3_log_file() {
-            init_panic_hook(name);
+            #[cfg(feature = "panic")]
+            crate::panic::init_panic_hook(name);
 
             // only set logger if log file & window exports were found
             #[cfg(feature = "log")]
@@ -344,9 +345,7 @@ pub mod __macro {
 
     /// Internally used function to retrieve the [`imgui::Ui`].
     #[inline]
-    pub unsafe fn ui() -> ManuallyDrop<imgui::Ui<'static>> {
-        ManuallyDrop::new(imgui::Ui::from_ctx(
-            IG_CONTEXT.get().expect("imgui not initialized").get(),
-        ))
+    pub unsafe fn ui() -> &'static imgui::Ui<'static> {
+        IG_UI.get().expect("imgui not initialized").get()
     }
 }
