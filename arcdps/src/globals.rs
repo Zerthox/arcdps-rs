@@ -125,6 +125,9 @@ pub type FreeFn = unsafe extern "C" fn(ptr: *mut c_void, user_data: *mut c_void)
 /// ImGui context.
 pub static IG_CONTEXT: OnceLock<Share<imgui::Context>> = OnceLock::new();
 
+/// ImGui UI.
+pub static IG_UI: OnceLock<Share<imgui::Ui<'static>>> = OnceLock::new();
+
 /// Helper to initialize ImGui.
 pub unsafe fn init_imgui(
     ctx: *mut imgui::sys::ImGuiContext,
@@ -133,7 +136,8 @@ pub unsafe fn init_imgui(
 ) {
     imgui::sys::igSetCurrentContext(ctx);
     imgui::sys::igSetAllocatorFunctions(malloc, free, ptr::null_mut());
-    IG_CONTEXT.get_or_init(|| Share::new(imgui::Context::current()));
+    let ctx = IG_CONTEXT.get_or_init(|| Share::new(imgui::Context::current()));
+    IG_UI.get_or_init(|| Share::new(imgui::Ui::from_ctx(ctx.get())));
 }
 
 /// Current DirectX version.
