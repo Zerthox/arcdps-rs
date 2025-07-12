@@ -92,3 +92,17 @@ fn extras_squad_update(users: UserInfoIter) {
 | serde | Enable [serde](https://serde.rs/) support |
 | strum | Enable [strum](https://docs.rs/strum/latest/strum/) support |
 | unwind | Use [unwind ABIs](https://doc.rust-lang.org/reference/items/functions.html#unwinding) to allow Arc to create crash logs on panic *(enabled by default)* |
+
+## Initializing manually
+
+When not using the `export!` macro, accessing Arc information/exports, ImGui, and DirectX will **panic** unless they have been initialized manually.
+
+```rs
+use arcdps::{init_arc, init_dxgi, init_imgui};
+
+unsafe {
+    init_arc(arc_handle, arc_version);
+    init_imgui(imgui_ctx, malloc, free);
+    init_dxgi(id3d, d3d_version);
+}
+```

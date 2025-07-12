@@ -129,8 +129,7 @@ impl ArcDpsGen {
                     const __OPTIONS_WINDOWS: ::arcdps::callbacks::OptionsWindowsCallback = #safe;
 
                     unsafe extern #C_ABI fn #name(window_name: *const ::arcdps::__macro::c_char) -> ::std::primitive::bool {
-                        let ui = ::arcdps::__macro::ui();
-                        self::__OPTIONS_WINDOWS(ui, ::arcdps::__macro::str_from_cstr(window_name))
+                        ::arcdps::__macro::with_ui(|ui| self::__OPTIONS_WINDOWS(ui, ::arcdps::__macro::str_from_cstr(window_name)))
                     }
                 }
             },
@@ -148,8 +147,7 @@ impl ArcDpsGen {
                     const __OPTIONS_END: ::arcdps::callbacks::OptionsCallback = #safe;
 
                     unsafe extern #C_ABI fn #name() {
-                        let ui = ::arcdps::__macro::ui();
-                        self::__OPTIONS_END(ui)
+                        ::arcdps::__macro::with_ui(|ui| self::__OPTIONS_END(ui))
                     }
                 }
             },
@@ -167,8 +165,7 @@ impl ArcDpsGen {
                     const __IMGUI: ::arcdps::callbacks::ImguiCallback = #safe;
 
                     unsafe extern #C_ABI fn #name(loading: ::std::primitive::u32) {
-                        let ui = ::arcdps::__macro::ui();
-                        self::__IMGUI(ui, loading != 0)
+                        ::arcdps::__macro::with_ui(|ui| self::__IMGUI(ui, loading != 0))
                     }
                 }
             },

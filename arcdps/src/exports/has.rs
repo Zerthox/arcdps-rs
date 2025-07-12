@@ -1,4 +1,4 @@
-use crate::globals::ArcGlobals;
+use crate::globals::arc::ArcGlobals;
 
 /// Checks whether export `e0` was found.
 #[inline]

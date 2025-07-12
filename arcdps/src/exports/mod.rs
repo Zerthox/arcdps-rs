@@ -9,7 +9,7 @@ pub use self::has::*;
 
 use crate::{
     evtc::{Event, Profession},
-    globals::ArcGlobals,
+    globals::arc::ArcGlobals,
     imgui::sys::ImVec4,
 };
 use num_enum::{IntoPrimitive, TryFromPrimitive};

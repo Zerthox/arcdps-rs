@@ -60,6 +60,20 @@
 //! }
 //! # }
 //! ```
+//!
+//! # Initializing manually
+//!
+//! When not using the `export!` macro, accessing Arc information/exports, ImGui, and DirectX will **panic** unless they have been initialized manually.
+//!
+//! ```ignore
+//! use arcdps::{init_arc, init_dxgi, init_imgui};
+//!
+//! unsafe {
+//!     init_arc(arc_handle, arc_version);
+//!     init_imgui(imgui_ctx, malloc, free);
+//!     init_dxgi(id3d, d3d_version);
+//! }
+//! ```
 
 #![allow(clippy::missing_safety_doc)]
 
@@ -81,13 +95,18 @@ mod panic;
 
 #[cfg(feature = "codegen")]
 pub use arcdps_codegen::export;
+
+pub use crate::globals::{
+    arc::init_arc,
+    dxgi::{d3d11_device, d3d_version, dxgi_swap_chain, init_dxgi},
+    imgui::init_imgui,
+};
+pub use crate::util::strip_account_prefix;
 pub use arcdps_imgui as imgui;
 pub use evtc::{
     Activation, Affinity, Agent, AgentOwned, Attribute, BuffCategory, BuffCycle, BuffRemove,
     CustomSkill, Event, Language, Profession, Specialization, StateChange, Strike,
 };
-pub use globals::{d3d11_device, d3d_version, dxgi_swap_chain};
-pub use util::strip_account_prefix;
 
 use callbacks::*;
 
@@ -290,7 +309,7 @@ pub struct SupportedFields {
 #[doc(hidden)]
 pub mod __macro {
     pub use crate::{
-        globals::{FreeFn, MallocFn},
+        globals::imgui::{with_ui, FreeFn, MallocFn},
         util::{str_from_cstr, str_to_wide, strip_account_prefix},
     };
     pub use std::ffi::{c_char, c_void};
@@ -301,8 +320,8 @@ pub mod __macro {
 
     use crate::{
         exports::has_e3_log_file,
-        globals::{init_dxgi, init_imgui, ArcGlobals, IG_UI},
-        imgui,
+        globals::{dxgi::init_dxgi, imgui::init_imgui},
+        imgui, init_arc,
     };
 
     #[cfg(feature = "log")]
@@ -317,12 +336,12 @@ pub mod __macro {
         imgui_ctx: *mut imgui::sys::ImGuiContext,
         malloc: Option<MallocFn>,
         free: Option<FreeFn>,
-        id3d: *const c_void,
+        id3d: *mut c_void,
         d3d_version: u32,
         name: &'static str,
     ) {
         // arc exports have to be retrieved before panic hook & logging
-        ArcGlobals::init(arc_handle, str_from_cstr(arc_version));
+        init_arc(arc_handle, arc_version);
 
         // only set panic hook if log file export was found
         if has_e3_log_file() {
@@ -341,12 +360,6 @@ pub mod __macro {
 
         // initialize imgui & dxgi
         init_imgui(imgui_ctx, malloc, free);
-        init_dxgi(id3d, d3d_version, name);
-    }
-
-    /// Internally used function to retrieve the [`imgui::Ui`].
-    #[inline]
-    pub unsafe fn ui() -> &'static imgui::Ui<'static> {
-        IG_UI.get().expect("imgui not initialized").get()
+        init_dxgi(id3d, d3d_version);
     }
 }

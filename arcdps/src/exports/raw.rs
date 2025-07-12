@@ -1,6 +1,6 @@
 //! Raw ArcDPS exports.
 
-use crate::{evtc::Event, globals::ArcGlobals, imgui::sys::ImVec4};
+use crate::{evtc::Event, globals::arc::ArcGlobals, imgui::sys::ImVec4};
 use std::ffi::{c_char, c_void};
 use windows::Win32::Foundation::HMODULE;
 
