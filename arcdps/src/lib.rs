@@ -63,7 +63,8 @@
 //!
 //! # Initializing manually
 //!
-//! When not using the `export!` macro, accessing Arc information/exports, ImGui, and DirectX will **panic** unless they have been initialized manually.
+//! When not using the `export!` macro, Arc, ImGui, and DirectX information has to be initialized manually.
+//! Accessing Arc information/exports or ImGui without initializing them will **panic**.
 //!
 //! ```ignore
 //! use arcdps::{init_arc, init_dxgi, init_imgui};

@@ -15,7 +15,7 @@ pub unsafe fn init_arc(arc_handle: HMODULE, version: *const c_char) {
 }
 
 /// Global instance of ArcDPS handle & exported functions.
-pub static ARC_GLOBALS: OnceLock<ArcGlobals> = OnceLock::new();
+static ARC_GLOBALS: OnceLock<ArcGlobals> = OnceLock::new();
 
 /// ArcDPS handle & exported functions.
 // TODO: should we move other globals from codegen here? or move this to codegen?
