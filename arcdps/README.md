@@ -8,7 +8,6 @@ There is also an [example plugin](../arcdps_example_plugin) in this repository.
 
 This project is originally a fork of [greaka/arcdps_bindings](https://github.com/greaka/arcdps_bindings).
 
-## Features
 - Rust abstractions for ArcDPS callbacks, types and exports
 - ImGui interfacing via [imgui-rs](https://github.com/imgui-rs/imgui-rs)
 - Versioning via `Cargo.toml`
@@ -81,3 +80,15 @@ fn extras_squad_update(users: UserInfoIter) {
     }
 }
 ```
+
+## Features
+
+| Feature | Description |
+|---|---|
+| codegen | Enable `export!` codegen macro *(enabled by default)* |
+| extras | Enable [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases) bindings |
+| log | Enable [log](https://github.com/rust-lang/log) support |
+| panic | Enable panic hook to log panics to arcdps.log *(enabled by default)* |
+| serde | Enable [serde](https://serde.rs/) support |
+| strum | Enable [strum](https://docs.rs/strum/latest/strum/) support |
+| unwind | Use [unwind ABIs](https://doc.rust-lang.org/reference/items/functions.html#unwinding) to allow Arc to create crash logs on panic *(enabled by default)* |

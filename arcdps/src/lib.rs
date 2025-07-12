@@ -79,6 +79,7 @@ mod util;
 #[cfg(feature = "panic")]
 mod panic;
 
+#[cfg(feature = "codegen")]
 pub use arcdps_codegen::export;
 pub use arcdps_imgui as imgui;
 pub use evtc::{
