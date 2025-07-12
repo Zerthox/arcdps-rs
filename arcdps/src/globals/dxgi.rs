@@ -30,7 +30,7 @@ static DXGI_SWAP_CHAIN: OnceLock<Share<InterfaceRef<'static, IDXGISwapChain>>> =
 pub fn dxgi_swap_chain() -> Option<IDXGISwapChain> {
     DXGI_SWAP_CHAIN
         .get()
-        .map(|swap_chain| unsafe { swap_chain.get() }.clone().to_owned())
+        .map(|swap_chain| (*unsafe { swap_chain.get() }).to_owned())
 }
 
 /// Returns the DirectX 11 device, if available.
