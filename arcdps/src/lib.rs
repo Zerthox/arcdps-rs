@@ -63,7 +63,7 @@
 //!
 //! # Initializing manually
 //!
-//! When not using the `export!` macro, Arc, ImGui, and DirectX information has to be initialized manually.
+//! When not using the [`export!`] macro, Arc, ImGui, and DirectX information has to be initialized manually.
 //! Accessing Arc information/exports or ImGui without initializing them will **panic**.
 //!
 //! ```ignore
@@ -100,7 +100,7 @@ pub use arcdps_codegen::export;
 pub use crate::globals::{
     arc::init_arc,
     dxgi::{d3d11_device, d3d_version, dxgi_swap_chain, init_dxgi},
-    imgui::init_imgui,
+    imgui::{imgui_context, init_imgui, with_ui},
 };
 pub use crate::util::strip_account_prefix;
 pub use arcdps_imgui as imgui;
