@@ -63,7 +63,7 @@
 <a href=#63 id=63 data-nosnippet>63</a>//!
 <a href=#64 id=64 data-nosnippet>64</a>//! # Initializing manually
 <a href=#65 id=65 data-nosnippet>65</a>//!
-<a href=#66 id=66 data-nosnippet>66</a>//! When not using the `export!` macro, Arc, ImGui, and DirectX information has to be initialized manually.
+<a href=#66 id=66 data-nosnippet>66</a>//! When not using the [`export!`] macro, Arc, ImGui, and DirectX information has to be initialized manually.
 <a href=#67 id=67 data-nosnippet>67</a>//! Accessing Arc information/exports or ImGui without initializing them will **panic**.
 <a href=#68 id=68 data-nosnippet>68</a>//!
 <a href=#69 id=69 data-nosnippet>69</a>//! ```ignore
@@ -100,7 +100,7 @@
 <a href=#100 id=100 data-nosnippet>100</a><span class="kw">pub use </span><span class="kw">crate</span>::globals::{
 <a href=#101 id=101 data-nosnippet>101</a>    arc::init_arc,
 <a href=#102 id=102 data-nosnippet>102</a>    dxgi::{d3d11_device, d3d_version, dxgi_swap_chain, init_dxgi},
-<a href=#103 id=103 data-nosnippet>103</a>    imgui::init_imgui,
+<a href=#103 id=103 data-nosnippet>103</a>    imgui::{imgui_context, init_imgui, with_ui},
 <a href=#104 id=104 data-nosnippet>104</a>};
 <a href=#105 id=105 data-nosnippet>105</a><span class="kw">pub use </span><span class="kw">crate</span>::util::strip_account_prefix;
 <a href=#106 id=106 data-nosnippet>106</a><span class="kw">pub use </span>arcdps_imgui <span class="kw">as </span>imgui;
