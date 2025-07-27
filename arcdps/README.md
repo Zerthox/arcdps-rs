@@ -89,6 +89,8 @@ fn extras_squad_update(users: UserInfoIter) {
 | extras | Enable [Unofficial Extras](https://github.com/Krappa322/arcdps_unofficial_extras_releases) bindings |
 | log | Enable [log](https://github.com/rust-lang/log) support |
 | panic | Enable panic hook to log panics to arcdps.log *(enabled by default)* |
+| panic_trace | Enable capturing backtrace in panic hook *(enabled by default)* |
+| panic_msgbox| Enable showing message box in panic hook *(enabled by default)* |
 | serde | Enable [serde](https://serde.rs/) support |
 | strum | Enable [strum](https://docs.rs/strum/latest/strum/) support |
 | unwind | Use [unwind ABIs](https://doc.rust-lang.org/reference/items/functions.html#unwinding) to allow Arc to create crash logs on panic *(enabled by default)* |

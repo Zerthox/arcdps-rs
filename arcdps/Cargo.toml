@@ -1,6 +1,6 @@
 [package]
 name = "arcdps"
-version = "0.19.0"
+version = "0.19.1"
 authors = ["Zerthox", "Greaka"]
 edition = "2021"
 description = "Rust bindings for ArcDPS plugins"
@@ -30,11 +30,13 @@ windows = { version = "0.61.1", features = [
 ] }
 
 [features]
-default = ["codegen", "panic", "unwind"]
+default = ["codegen", "panic", "panic_trace", "panic_msgbox", "unwind"]
 codegen = ["dep:arcdps_codegen"]
 extras = ["arcdps_codegen/extras", "dep:chrono"]
 log = ["dep:log"]
 panic = []
+panic_trace = ["panic"]
+panic_msgbox = ["panic"]
 serde = ["dep:serde", "evtc/serde", "chrono/serde"]
 strum = ["dep:strum", "evtc/strum"]
 unwind = ["arcdps_codegen/unwind"]

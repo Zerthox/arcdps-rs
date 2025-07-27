@@ -88,11 +88,11 @@ pub mod extras;
 #[cfg(feature = "log")]
 pub mod log;
 
-mod globals;
-mod util;
-
 #[cfg(feature = "panic")]
 mod panic;
+
+mod globals;
+mod util;
 
 #[cfg(feature = "codegen")]
 pub use arcdps_codegen::export;
@@ -108,6 +108,9 @@ pub use evtc::{
     Activation, Affinity, Agent, AgentOwned, Attribute, BuffCategory, BuffCycle, BuffRemove,
     CustomSkill, Event, Language, Profession, Specialization, StateChange, Strike,
 };
+
+#[cfg(feature = "panic")]
+pub use crate::panic::init_panic_hook;
 
 use callbacks::*;
 
@@ -325,6 +328,9 @@ pub mod __macro {
         imgui, init_arc,
     };
 
+    #[cfg(feature = "panic")]
+    use crate::panic::init_panic_hook;
+
     #[cfg(feature = "log")]
     use crate::{exports::has_e8_log_window, log::ArcDpsLogger};
 
@@ -347,7 +353,7 @@ pub mod __macro {
         // only set panic hook if log file export was found
         if has_e3_log_file() {
             #[cfg(feature = "panic")]
-            crate::panic::init_panic_hook(name);
+            init_panic_hook(name);
 
             // only set logger if log file & window exports were found
             #[cfg(feature = "log")]
