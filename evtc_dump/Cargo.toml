@@ -1,6 +1,6 @@
 [package]
 name = "evtc_dump"
-version = "0.1.3"
+version = "0.1.4"
 authors = ["Zerthox"]
 edition = "2021"
 description = "Dump ArcDPS EVTC log information"
