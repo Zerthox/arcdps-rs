@@ -32,6 +32,21 @@ use serde::{Deserialize, Serialize};
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "serde", serde(tag = "kind"))]
 pub enum EventKind {
+    /// Activation (cast) event.
+    Activation(ActivationEvent),
+
+    /// Buff removed.
+    BuffRemove(BuffRemoveEvent),
+
+    /// Buff applied.
+    BuffApply(BuffApplyEvent),
+
+    /// Buff damage.
+    BuffDamage(BuffDamageEvent),
+
+    /// Direct (strike) damage.
+    Strike(StrikeEvent),
+
     /// Agent entered combat.
     EnterCombat(EnterCombatEvent),
 
@@ -187,21 +202,6 @@ pub enum EventKind {
     /// Combat ruleset.
     Ruleset(Ruleset),
 
-    /// Activation (cast) event.
-    Activation(ActivationEvent),
-
-    /// Buff removed.
-    BuffRemove(BuffRemoveEvent),
-
-    /// Buff applied.
-    BuffApply(BuffApplyEvent),
-
-    /// Buff damage.
-    BuffDamage(BuffDamageEvent),
-
-    /// Direct (strike) damage.
-    Strike(StrikeEvent),
-
     /// Squad marker placed or removed.
     SquadMarker(SquadMarkerEvent),
 
@@ -236,10 +236,10 @@ pub enum EventKind {
     EffectAgentRemove(AgentEffectRemove),
 
     /// Player IID (unique agent id) change.
-    IIDChange { new: u64, prev: u64 },
+    IIDChange { time: u64, id: u64, previous: u64 },
 
     /// Map change.
-    MapChange { new: u64, prev: u64 },
+    MapChange { time: u64, map: u64, previous: u64 },
 
     /// Unknown event.
     Unknown(Event),
@@ -250,6 +250,12 @@ impl From<Event> for EventKind {
     fn from(mut event: Event) -> Self {
         unsafe {
             match event.categorize() {
+                EventCategory::Activation => Self::Activation(event.extract()),
+                EventCategory::BuffRemove => Self::BuffRemove(event.extract()),
+                EventCategory::BuffApply => Self::BuffApply(event.extract()),
+                EventCategory::BuffDamage => Self::BuffDamage(event.extract()),
+                EventCategory::Strike => Self::Strike(event.extract()),
+
                 EventCategory::StateChange => match event.get_statechange() {
                     StateChange::None => unreachable!("statechange none in statechange category"),
                     StateChange::IdleEvent | StateChange::ReplInfo => {
@@ -355,20 +361,17 @@ impl From<Event> for EventKind {
                     StateChange::EffectAgentCreate => Self::EffectAgentCreate(event.extract()),
                     StateChange::EffectAgentRemove => Self::EffectAgentRemove(event.extract()),
                     StateChange::IIDChange => Self::IIDChange {
-                        new: event.dst_agent,
-                        prev: event.src_agent,
+                        time: event.time,
+                        id: event.dst_agent,
+                        previous: event.src_agent,
                     },
                     StateChange::MapChange => Self::MapChange {
-                        new: event.src_agent,
-                        prev: event.dst_agent,
+                        time: event.time,
+                        map: event.src_agent,
+                        previous: event.dst_agent,
                     },
                     StateChange::Unknown(_) => Self::Unknown(event),
                 },
-                EventCategory::Activation => Self::Activation(event.extract()),
-                EventCategory::BuffRemove => Self::BuffRemove(event.extract()),
-                EventCategory::BuffApply => Self::BuffApply(event.extract()),
-                EventCategory::BuffDamage => Self::BuffDamage(event.extract()),
-                EventCategory::Strike => Self::Strike(event.extract()),
             }
         }
     }
