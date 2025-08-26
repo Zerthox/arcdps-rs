@@ -55,7 +55,7 @@ impl Extract for BuffInfo {
             invulnerable: event.is_flanking != 0,
             invert: event.is_shields != 0,
             resistance: event.pad62 != 0,
-            combat_sim_use: event.pad64 != 0,
+            combat_sim_use: event.pad63 != 0,
         }
     }
 }
