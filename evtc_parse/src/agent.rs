@@ -22,7 +22,7 @@ use serde::{Deserialize, Serialize};
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct Agent {
-    /// Id of the agent.
+    /// Unique id.
     pub id: u64,
 
     /// Name information for the agent.

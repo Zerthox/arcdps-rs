@@ -303,7 +303,7 @@ pub enum StateChange {
     /// Agent is in guild.
     ///
     /// `src_agent` is in guild.
-    /// `dst_agent` contains the guild guid as [u8; 16].
+    /// `dst_agent` contains the guild GUID as [u8; 16].
     ///
     /// Given in client form, needs minor rearrange for API form.
     ///
@@ -492,7 +492,7 @@ pub enum StateChange {
     /// Content id to GUID.
     ///
     /// `skill_id` is the content id.
-    /// `src_agent` contains the persistent content guid as `[u8; 16]`.
+    /// `src_agent` contains the persistent content GUID as `[u8; 16]`.
     /// `overstack_value` contains a variant of [`ContentLocal`](crate::guid::ContentLocal).
     ///
     /// *Not used in realtime API.*
@@ -681,6 +681,29 @@ pub enum StateChange {
     ///
     /// Realtime: no
     EffectAgentRemove = 63,
+
+    /// Player IID (unique agent id) changed.
+    ///
+    /// Happens after spawn when player historical data is loaded.
+    /// Does not happen if player has no historical data.
+    ///
+    /// `src_agent` contains the old IID.
+    /// `dst_agent` contains the new IID
+    ///
+    /// EVTC: yes
+    ///
+    /// Realtime: no
+    IIDChange = 64,
+
+    /// Map changed.
+    ///
+    /// `src_agent` contains the new map id.
+    /// `dst_agent` contains the old map id.
+    ///
+    /// EVTC: yes
+    ///
+    /// Realtime: yes
+    MapChange = 65,
 
     /// Unknown or invalid.
     #[num_enum(catch_all)]

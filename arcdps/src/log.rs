@@ -139,7 +139,7 @@ mod tests {
 
     #[test]
     fn enabled() {
-        fn meta(target: &str, level: Level) -> Metadata {
+        fn meta(target: &str, level: Level) -> Metadata<'_> {
             Metadata::builder().target(target).level(level).build()
         }
 

@@ -56,7 +56,7 @@ impl ContentInfo {
     /// Whether the content is a marker.
     #[inline]
     pub fn is_marker(&self) -> bool {
-        matches!(self.content_type, ContentType::Marker)
+        matches!(self.content_type, ContentType::Marker { .. })
     }
 
     /// Whether the content is a skill.
@@ -104,7 +104,10 @@ pub enum ContentType {
     },
 
     /// Marker.
-    Marker,
+    Marker {
+        /// Is in commander tag defs.
+        is_commander_tag: bool,
+    },
 
     /// Skill.
     ///
@@ -126,7 +129,9 @@ impl Extract for ContentType {
                 effect_type: event.src_instance_id,
                 default_duration: transmute_field!(event.buff_dmg as f32),
             },
-            Ok(ContentLocal::Marker) => Self::Marker,
+            Ok(ContentLocal::Marker) => Self::Marker {
+                is_commander_tag: event.src_instance_id != 0,
+            },
             Ok(ContentLocal::Skill) => Self::Skill,
             Ok(ContentLocal::Species) => Self::Species,
             Err(err) => Self::Unknown(err.number),

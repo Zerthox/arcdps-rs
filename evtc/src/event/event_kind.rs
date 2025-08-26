@@ -229,11 +229,17 @@ pub enum EventKind {
     /// Ground effect removed.
     EffectGroundRemove(GroundEffectRemove),
 
-    /// Effect around Agent created.
+    /// Effect around agent created.
     EffectAgentCreate(AgentEffect),
 
-    /// Effect around Agent removed.
+    /// Effect around agent removed.
     EffectAgentRemove(AgentEffectRemove),
+
+    /// Player IID (unique agent id) change.
+    IIDChange { new: u64, prev: u64 },
+
+    /// Map change.
+    MapChange { new: u64, prev: u64 },
 
     /// Unknown event.
     Unknown(Event),
@@ -348,6 +354,14 @@ impl From<Event> for EventKind {
                     StateChange::EffectGroundRemove => Self::EffectGroundRemove(event.extract()),
                     StateChange::EffectAgentCreate => Self::EffectAgentCreate(event.extract()),
                     StateChange::EffectAgentRemove => Self::EffectAgentRemove(event.extract()),
+                    StateChange::IIDChange => Self::IIDChange {
+                        new: event.dst_agent,
+                        prev: event.src_agent,
+                    },
+                    StateChange::MapChange => Self::MapChange {
+                        new: event.src_agent,
+                        prev: event.dst_agent,
+                    },
                     StateChange::Unknown(_) => Self::Unknown(event),
                 },
                 EventCategory::Activation => Self::Activation(event.extract()),
