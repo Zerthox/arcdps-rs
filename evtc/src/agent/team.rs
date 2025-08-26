@@ -15,6 +15,9 @@ pub struct TeamChangeEvent {
 
     /// New team id.
     pub team: u64,
+
+    /// Previous team id.
+    pub previous_team: i32,
 }
 
 impl Extract for TeamChangeEvent {
@@ -24,6 +27,7 @@ impl Extract for TeamChangeEvent {
             time: event.time,
             agent: AgentId::from_src(event),
             team: event.dst_agent,
+            previous_team: event.value,
         }
     }
 }
