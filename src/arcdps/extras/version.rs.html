@@ -8,10 +8,10 @@
 <a href=#8 id=8 data-nosnippet>8</a>    /// Gets incremented whenever a function signature or behavior changes in a breaking way.
 <a href=#9 id=9 data-nosnippet>9</a>    </span><span class="kw">pub </span>api_version: u32,
 <a href=#10 id=10 data-nosnippet>10</a>
-<a href=#11 id=11 data-nosnippet>11</a>    <span class="doccomment">/// Highest known version of the [`ExtrasSubscriberInfo`] struct.
+<a href=#11 id=11 data-nosnippet>11</a>    <span class="doccomment">/// Highest known version of the [`ExtrasSubscriberInfo`](super::ExtrasSubscriberInfo) struct.
 <a href=#12 id=12 data-nosnippet>12</a>    ///
 <a href=#13 id=13 data-nosnippet>13</a>    /// Also determines the size of the subscriber info buffer in the init call.
-<a href=#14 id=14 data-nosnippet>14</a>    /// The buffer is only guaranteed to have enough space for known [`ExtrasSubscriberInfo`] versions.
+<a href=#14 id=14 data-nosnippet>14</a>    /// The buffer is only guaranteed to have enough space for known [`ExtrasSubscriberInfo`](super::ExtrasSubscriberInfo) versions.
 <a href=#15 id=15 data-nosnippet>15</a>    </span><span class="kw">pub </span>max_info_version: u32,
 <a href=#16 id=16 data-nosnippet>16</a>}
 <a href=#17 id=17 data-nosnippet>17</a>
@@ -19,19 +19,19 @@
 <a href=#19 id=19 data-nosnippet>19</a>    <span class="doccomment">/// Supported Unofficial Extras API version.
 <a href=#20 id=20 data-nosnippet>20</a>    </span><span class="kw">pub const </span>API: u32 = <span class="number">2</span>;
 <a href=#21 id=21 data-nosnippet>21</a>
-<a href=#22 id=22 data-nosnippet>22</a>    <span class="doccomment">/// Range of supported [`ExtrasSubscriberInfo`] versions.
+<a href=#22 id=22 data-nosnippet>22</a>    <span class="doccomment">/// Range of supported [`ExtrasSubscriberInfo`](super::ExtrasSubscriberInfo)  versions.
 <a href=#23 id=23 data-nosnippet>23</a>    </span><span class="kw">pub const </span>SUB_INFO_RANGE: RangeInclusive&lt;u32&gt; = <span class="number">1</span>..=<span class="number">3</span>;
 <a href=#24 id=24 data-nosnippet>24</a>
-<a href=#25 id=25 data-nosnippet>25</a>    <span class="doccomment">/// Minimum supported [`ExtrasSubscriberInfo`] version.
+<a href=#25 id=25 data-nosnippet>25</a>    <span class="doccomment">/// Minimum supported [`ExtrasSubscriberInfo`](super::ExtrasSubscriberInfo) version.
 <a href=#26 id=26 data-nosnippet>26</a>    </span><span class="kw">pub const </span>MIN_SUB_INFO: u32 = <span class="kw-2">*</span><span class="self">Self</span>::SUB_INFO_RANGE.start();
 <a href=#27 id=27 data-nosnippet>27</a>
-<a href=#28 id=28 data-nosnippet>28</a>    <span class="doccomment">/// Maximum supported [`ExtrasSubscriberInfo`] version.
+<a href=#28 id=28 data-nosnippet>28</a>    <span class="doccomment">/// Maximum supported [`ExtrasSubscriberInfo`](super::ExtrasSubscriberInfo) version.
 <a href=#29 id=29 data-nosnippet>29</a>    </span><span class="kw">pub const </span>MAX_SUB_INFO: u32 = <span class="kw-2">*</span><span class="self">Self</span>::SUB_INFO_RANGE.end();
 <a href=#30 id=30 data-nosnippet>30</a>
-<a href=#31 id=31 data-nosnippet>31</a>    <span class="doccomment">/// Minimum [`ExtrasSubscriberInfo`] version for message callback.
+<a href=#31 id=31 data-nosnippet>31</a>    <span class="doccomment">/// Minimum [`ExtrasSubscriberInfo`](super::ExtrasSubscriberInfo) version for message callback.
 <a href=#32 id=32 data-nosnippet>32</a>    </span><span class="kw">pub const </span>MESSAGE_CALLBACK: u32 = <span class="number">2</span>;
 <a href=#33 id=33 data-nosnippet>33</a>
-<a href=#34 id=34 data-nosnippet>34</a>    <span class="doccomment">/// Minimum [`ExtrasSubscriberInfo`] version for message callback 2.
+<a href=#34 id=34 data-nosnippet>34</a>    <span class="doccomment">/// Minimum [`ExtrasSubscriberInfo`](super::ExtrasSubscriberInfo) version for message callback 2.
 <a href=#35 id=35 data-nosnippet>35</a>    </span><span class="kw">pub const </span>MESSAGE_CALLBACK2: u32 = <span class="number">3</span>;
 <a href=#36 id=36 data-nosnippet>36</a>
 <a href=#37 id=37 data-nosnippet>37</a>    <span class="doccomment">/// Creates new version information.
@@ -49,7 +49,7 @@
 <a href=#49 id=49 data-nosnippet>49</a>        <span class="self">self</span>.api_version == <span class="self">Self</span>::API &amp;&amp; <span class="self">self</span>.max_info_version &gt;= <span class="self">Self</span>::MIN_SUB_INFO
 <a href=#50 id=50 data-nosnippet>50</a>    }
 <a href=#51 id=51 data-nosnippet>51</a>
-<a href=#52 id=52 data-nosnippet>52</a>    <span class="doccomment">/// Checks for compatibility and returns the highest supported [`ExtrasSubscriberInfo`] version supported by Unofficial Extras &amp; the bindings.
+<a href=#52 id=52 data-nosnippet>52</a>    <span class="doccomment">/// Checks for compatibility and returns the highest supported [`ExtrasSubscriberInfo`](super::ExtrasSubscriberInfo) version supported by Unofficial Extras &amp; the bindings.
 <a href=#53 id=53 data-nosnippet>53</a>    </span><span class="attr">#[inline]
 <a href=#54 id=54 data-nosnippet>54</a>    </span><span class="kw">pub fn </span>get_version_to_use(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;u32&gt; {
 <a href=#55 id=55 data-nosnippet>55</a>        <span class="self">self</span>.is_compatible()

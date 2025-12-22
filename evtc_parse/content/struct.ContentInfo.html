@@ -4,7 +4,7 @@
     pub content_type: <a class="enum" href="enum.ContentType.html" title="enum evtc_parse::content::ContentType">ContentType</a>,
 }</code></pre><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Content information.</p>
 <p>The contained GUID is interpreted as a Windows <a href="struct.GUID.html" title="struct evtc_parse::content::GUID"><code>GUID</code></a>.
-See https://learn.microsoft.com/en-us/windows/win32/api/guiddef/ns-guiddef-guid for more information.</p>
+See <a href="https://learn.microsoft.com/en-us/windows/win32/api/guiddef/ns-guiddef-guid">https://learn.microsoft.com/en-us/windows/win32/api/guiddef/ns-guiddef-guid</a> for more information.</p>
 <p>Some GW2 community projects misinterpret the memory layout of the GUID as bytes rather than a Windows <a href="struct.GUID.html" title="struct evtc_parse::content::GUID"><code>GUID</code></a>.
 When comparing or interfacing with such projects, you can use <a href="trait.GuidExt.html#tymethod.misinterpret" title="method evtc_parse::content::GuidExt::misinterpret"><code>GuidExt::misinterpret</code></a> on the <a href="struct.GUID.html" title="struct evtc_parse::content::GUID"><code>GUID</code></a>.</p>
 </div></details><h2 id="fields" class="fields section-header">Fields<a href="#fields" class="anchor">§</a></h2><span id="structfield.content_id" class="structfield section-header"><a href="#structfield.content_id" class="anchor field">§</a><code>content_id: <a class="primitive" href="https://doc.rust-lang.org/1.92.0/std/primitive.u32.html">u32</a></code></span><div class="docblock"><p>Id of the content (volatile, depends on game build).</p>
