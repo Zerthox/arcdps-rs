@@ -8,3 +8,9 @@ members = [
     "evtc_parse",
 ]
 resolver = "2"
+
+[workspace.dependencies]
+bitflags = "2.11.1"
+num_enum = "0.7.0"
+serde = "1.0.188"
+strum = "0.28.0"
