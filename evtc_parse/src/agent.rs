@@ -43,16 +43,16 @@ pub struct Agent {
     pub hitbox_height: u16,
 
     /// Normalized Toughness attribute of the agent.
-    pub toughness: u16,
+    pub toughness: i16,
 
     /// Normalized Concentration attribute of the agent.
-    pub concentration: u16,
+    pub concentration: i16,
 
     /// Normalized Healing attribute of the agent.
-    pub healing: u16,
+    pub healing: i16,
 
     /// Normalized Condition Damage attribute of the agent.
-    pub condition: u16,
+    pub condition: i16,
 }
 
 impl Agent {
@@ -89,11 +89,11 @@ impl Parse for Agent {
         let id = input.read_u64::<Endian>()?;
         let profession = input.read_u32::<Endian>()?;
         let is_elite = input.read_u32::<Endian>()?;
-        let toughness = input.read_u16::<Endian>()?;
-        let concentration = input.read_u16::<Endian>()?;
-        let healing = input.read_u16::<Endian>()?;
+        let toughness = input.read_i16::<Endian>()?;
+        let concentration = input.read_i16::<Endian>()?;
+        let healing = input.read_i16::<Endian>()?;
         let hitbox_width = input.read_u16::<Endian>()?;
-        let condition = input.read_u16::<Endian>()?;
+        let condition = input.read_i16::<Endian>()?;
         let hitbox_height = input.read_u16::<Endian>()?;
 
         let name = Self::parse_name(input)?;
@@ -123,11 +123,11 @@ impl Save for Agent {
         output.write_u64::<Endian>(self.id)?;
         output.write_u32::<Endian>(self.profession)?;
         output.write_u32::<Endian>(self.is_elite)?;
-        output.write_u16::<Endian>(self.toughness)?;
-        output.write_u16::<Endian>(self.concentration)?;
-        output.write_u16::<Endian>(self.healing)?;
+        output.write_i16::<Endian>(self.toughness)?;
+        output.write_i16::<Endian>(self.concentration)?;
+        output.write_i16::<Endian>(self.healing)?;
         output.write_u16::<Endian>(self.hitbox_width)?;
-        output.write_u16::<Endian>(self.condition)?;
+        output.write_i16::<Endian>(self.condition)?;
         output.write_u16::<Endian>(self.hitbox_height)?;
 
         self.save_name(output)?;
