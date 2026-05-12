@@ -105,8 +105,8 @@ pub use crate::globals::{
 pub use crate::util::strip_account_prefix;
 pub use arcdps_imgui as imgui;
 pub use evtc::{
-    Activation, Affinity, Agent, AgentOwned, Attribute, BuffCategory, BuffCycle, BuffRemove,
-    CustomSkill, Event, Language, Profession, Specialization, StateChange, Strike,
+    Affinity, Agent, AgentOwned, Attribute, BuffCategory, CombatResult, CustomSkill, Event,
+    Language, Profession, Specialization, StateChange,
 };
 
 #[cfg(feature = "panic")]

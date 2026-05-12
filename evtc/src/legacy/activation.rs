@@ -1,6 +1,7 @@
 use crate::{
-    AgentId, Event, EventCategory, Position, TryExtract,
+    AgentId, Event, Position, TryExtract,
     extract::{Extract, transmute_field},
+    legacy::LegacyEventCategory,
 };
 use num_enum::{FromPrimitive, IntoPrimitive};
 
@@ -47,7 +48,7 @@ impl Extract for ActivationEvent {
             time: event.time,
             agent: AgentId::from_src(event),
             skill_id: event.skill_id,
-            activation: event.get_activation(),
+            activation: Activation::from_event(event),
             duration: event.value,
             scaled_duration: event.buff_dmg,
             target: Position::new(x, y, z),
@@ -58,7 +59,7 @@ impl Extract for ActivationEvent {
 impl TryExtract for ActivationEvent {
     #[inline]
     fn can_extract(event: &Event) -> bool {
-        event.categorize() == EventCategory::Activation
+        LegacyEventCategory::from_event(event) == Some(LegacyEventCategory::Activation)
     }
 }
 
@@ -98,37 +99,9 @@ pub enum Activation {
     Unknown(u8),
 }
 
-/// Skill animation stop (UNOFFICIAL).
-///
-/// Present in `result` for activation cancels.
-#[derive(
-    Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
-)]
-#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
-#[cfg_attr(
-    feature = "strum",
-    derive(Display, EnumCount, EnumIter, IntoStaticStr, VariantNames)
-)]
-#[repr(u8)]
-pub enum AnimationStop {
-    None = 0,
-    Instant = 1,
-    SecondUse = 2,
-    Transition = 3,
-    Partial = 4,
-    Ended = 5,
-    Cancel = 6,
-    StowedChange = 7,
-    Interrupt = 8,
-    Death = 9,
-    Downed = 10,
-    CrowdControl = 11,
-    MoveBehind = 12,
-    MoveSkill = 13,
-    MoveDodge = 14,
-    MoveStop = 15,
-
-    /// Unknown or invalid.
-    #[num_enum(catch_all)]
-    Unknown(u8),
+impl Activation {
+    #[inline]
+    pub fn from_event(event: &Event) -> Self {
+        event.is_activation.into()
+    }
 }

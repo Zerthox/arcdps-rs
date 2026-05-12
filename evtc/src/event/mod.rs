@@ -1,13 +1,11 @@
 //! Event bindings & utilities.
 
-mod category;
 mod common;
 mod event_kind;
-mod old;
+mod state_change;
 
-pub use self::{category::*, common::*, event_kind::*, old::*};
+pub use self::{common::*, event_kind::*, state_change::*};
 
-#[allow(deprecated)]
 pub use crate::{
     agent::{
         AgentStatusEvent, AttackTargetEvent, BarrierUpdateEvent, BreakbarPercentEvent,
@@ -15,29 +13,23 @@ pub use crate::{
         HealthUpdateEvent, MaxHealthEvent, StunbreakEvent, TargetableEvent, TeamChangeEvent,
     },
     buff::{
-        BuffApplyEvent, BuffDamageEvent, BuffFormula, BuffInfo, BuffInitialEvent, BuffRemoveEvent,
-        StackActiveEvent, StackResetEvent,
+        BuffApply, BuffChange, BuffFormula, BuffInfo, BuffInitialEvent, BuffRemoveAll,
+        BuffRemoveSingle, StackActiveEvent, StackResetEvent,
     },
+    combat::CombatEvent,
     effect::{
         AgentEffect, AgentEffectRemove, Effect45, Effect51, GroundEffect, GroundEffectRemove,
     },
     log::{ArcBuildEvent, ErrorEvent, LogEvent},
     marker::{AgentMarkerEvent, SquadMarkerEvent},
     missile::{MissileCreate, MissileLaunch, MissileRemove},
-    player::{GuildEvent, RewardEvent, TagEvent},
+    player::{GuildEvent, RewardEvent},
     position::PositionEvent,
-    skill::{ActivationEvent, SkillInfo, SkillTiming},
-    strike::StrikeEvent,
+    skill::{SkillInfo, SkillTiming},
     weapon::WeaponSwapEvent,
 };
 
-use crate::{
-    Affinity, StateChange, TryExtract,
-    buff::{BuffCycle, BuffRemove},
-    extract::Extract,
-    skill::Activation,
-    strike::Strike,
-};
+use crate::{Affinity, TryExtract, extract::Extract, legacy::LegacyEventKind};
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
@@ -172,16 +164,22 @@ pub struct Event {
 }
 
 impl Event {
-    /// Determines the [`EventCategory`] of the event.
-    #[inline]
-    pub fn categorize(&self) -> EventCategory {
-        self.into()
-    }
-
     /// Converts the event into its [`EventKind`] representation.
     #[inline]
     pub fn into_kind(self) -> EventKind {
         self.into()
+    }
+
+    /// Converts the event into its [`LegacyEventKind`] representation.
+    #[inline]
+    pub fn into_legacy(self) -> LegacyEventKind {
+        self.into()
+    }
+
+    /// Checks whether the event is a legacy event.
+    #[inline]
+    pub fn is_legacy(&self) -> bool {
+        LegacyEventKind::is_legacy(self)
     }
 
     /// Returns the event `is_statechange` as [`StateChange`].
@@ -196,38 +194,6 @@ impl Event {
     #[inline]
     pub fn get_affinity(&self) -> Affinity {
         self.affinity.into()
-    }
-
-    /// Returns the event `is_activation` as [`Activation`].
-    ///
-    /// This will return [`Activation::Unknown`] if the event has no valid data in `is_activation`.
-    #[inline]
-    pub fn get_activation(&self) -> Activation {
-        self.is_activation.into()
-    }
-
-    /// Returns the event `is_buffremove` as [`BuffRemove`].
-    ///
-    /// This will return [`BuffRemove::Unknown`] if the event has no valid data in `is_buffremove`.
-    #[inline]
-    pub fn get_buffremove(&self) -> BuffRemove {
-        self.is_buffremove.into()
-    }
-
-    /// Returns the event `result` as [`Strike`].
-    ///
-    /// This will return [`Strike::Unknown`] if the event has no valid data in `result`.
-    #[inline]
-    pub fn get_strike(&self) -> Strike {
-        self.result.into()
-    }
-
-    /// Returns the event `is_offcycle` as [`BuffCycle`].
-    ///
-    /// This will return [`BuffCycle::Unknown`] if the event has no valid data in `is_offcycle`.
-    #[inline]
-    pub fn get_buffcycle(&self) -> BuffCycle {
-        self.is_offcycle.into()
     }
 
     /// Returns the padding as [`u32`] id/signature.
@@ -269,39 +235,21 @@ impl Event {
         T::try_extract(self)
     }
 
-    /// Attempts to extract an [`ActivationEvent`] from the event.
-    #[inline]
-    pub fn try_to_activation(&self) -> Option<ActivationEvent> {
-        self.try_extract()
-    }
-
-    /// Attempts to extract a [`BuffRemoveEvent`] from the event.
-    #[inline]
-    pub fn try_to_buff_remove(&self) -> Option<BuffRemoveEvent> {
-        self.try_extract()
-    }
-
-    /// Attempts to extract a [`BuffApplyEvent`] from the event.
-    #[inline]
-    pub fn try_to_buff_apply(&self) -> Option<BuffApplyEvent> {
-        self.try_extract()
-    }
-
-    /// Attempts to extract a [`BuffDamageEvent`] from the event.
-    #[inline]
-    pub fn try_to_buff_damage(&self) -> Option<BuffDamageEvent> {
-        self.try_extract()
-    }
-
-    /// Attempts to extract a [`StrikeEvent`] from the event.
-    #[inline]
-    pub fn try_to_strike(&self) -> Option<StrikeEvent> {
-        self.try_extract()
-    }
-
     /// Checks whether the event is an initial buff event.
     #[inline]
     pub fn is_buffinitial(&self) -> bool {
         self.get_statechange() == StateChange::BuffInitial && self.buff == 18
+    }
+
+    /// Checks whether the source is moving, if applicable for this event type.
+    #[inline]
+    pub fn is_source_moving(&self) -> bool {
+        (self.is_moving & 1) != 0
+    }
+
+    /// Checks whether the target is moving, if applicable for this event type.
+    #[inline]
+    pub fn is_target_moving(&self) -> bool {
+        (self.is_moving & 2) != 0
     }
 }

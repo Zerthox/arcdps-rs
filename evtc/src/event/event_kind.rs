@@ -1,14 +1,16 @@
 use crate::{
-    Event, EventCategory, Language, StateChange,
+    Event, Language, StateChange,
     agent::{
         AgentStatusEvent, AttackTargetEvent, BarrierUpdateEvent, BreakbarPercentEvent,
         BreakbarStateEvent, DownContributionEvent, EnterCombatEvent, GliderEvent,
         HealthUpdateEvent, MaxHealthEvent, StunbreakEvent, TargetableEvent, TeamChangeEvent,
     },
+    animation::{AnimationStart, AnimationStop},
     buff::{
-        BuffApplyEvent, BuffDamageEvent, BuffFormula, BuffInfo, BuffInitialEvent, BuffRemoveEvent,
-        StackActiveEvent, StackResetEvent,
+        BuffApply, BuffChange, BuffFormula, BuffInfo, BuffInitialEvent, BuffRemoveAll,
+        BuffRemoveSingle, StackActiveEvent, StackResetEvent,
     },
+    combat::CombatEvent,
     content::ContentInfo,
     effect::{
         AgentEffect, AgentEffectRemove, Effect45, Effect51, GroundEffect, GroundEffectRemove,
@@ -19,8 +21,7 @@ use crate::{
     player::{GuildEvent, RewardEvent},
     position::PositionEvent,
     ruleset::Ruleset,
-    skill::{ActivationEvent, SkillInfo, SkillTiming},
-    strike::StrikeEvent,
+    skill::{SkillInfo, SkillTiming},
     weapon::WeaponSwapEvent,
 };
 
@@ -32,20 +33,8 @@ use serde::{Deserialize, Serialize};
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "serde", serde(tag = "kind"))]
 pub enum EventKind {
-    /// Activation (cast) event.
-    Activation(ActivationEvent),
-
-    /// Buff removed.
-    BuffRemove(BuffRemoveEvent),
-
-    /// Buff applied.
-    BuffApply(BuffApplyEvent),
-
-    /// Buff damage.
-    BuffDamage(BuffDamageEvent),
-
-    /// Direct (strike) damage.
-    Strike(StrikeEvent),
+    /// Combat event.
+    Combat(CombatEvent),
 
     /// Agent entered combat.
     EnterCombat(EnterCombatEvent),
@@ -93,10 +82,16 @@ pub enum EventKind {
     },
 
     /// Game build.
-    GWBuild { time: u64, build: u64 },
+    GWBuild {
+        time: u64,
+        build: u64,
+    },
 
     /// Sever shard id.
-    ShardId { time: u64, shard: u64 },
+    ShardId {
+        time: u64,
+        shard: u64,
+    },
 
     /// Agent got a reward chest.
     Reward(RewardEvent),
@@ -123,7 +118,10 @@ pub enum EventKind {
     Targetable(TargetableEvent),
 
     /// Map id.
-    MapId { time: u64, map: u64 },
+    MapId {
+        time: u64,
+        map: u64,
+    },
 
     /// Agent with active buff.
     StackActive(StackActiveEvent),
@@ -162,19 +160,33 @@ pub enum EventKind {
     BarrierUpdate(BarrierUpdateEvent),
 
     /// Arc UI stats reset.
-    StatReset { time: u64, target: u64 },
+    StatReset {
+        time: u64,
+        target: u64,
+    },
 
     /// A custom event created by an extension (addon/plugin).
-    Extension { sig: u32, event: Event },
+    Extension {
+        sig: u32,
+        event: Event,
+    },
 
     /// Delayed combat event.
-    ApiDelayed { event: Box<EventKind> },
+    ApiDelayed {
+        event: Box<EventKind>,
+    },
 
     /// Instance started.
-    InstanceStart { time: u64, start: u64 },
+    InstanceStart {
+        time: u64,
+        start: u64,
+    },
 
     /// Tick rate.
-    RateHealth { time: u64, rate: u64 },
+    RateHealth {
+        time: u64,
+        rate: u64,
+    },
 
     /// Last 90% before down for downs contribution.
     Last90BeforeDown(DownContributionEvent),
@@ -191,10 +203,16 @@ pub enum EventKind {
     LogNPCUpdate(LogEvent),
 
     /// A custom combat event created by an extension (addon/plugin).
-    ExtensionCombat { sig: u32, event: Event },
+    ExtensionCombat {
+        sig: u32,
+        event: Event,
+    },
 
     /// Fractal scale.
-    FractalScale { time: u64, scale: u64 },
+    FractalScale {
+        time: u64,
+        scale: u64,
+    },
 
     /// Effect created or ended.
     Effect51(Effect51),
@@ -236,10 +254,38 @@ pub enum EventKind {
     EffectAgentRemove(AgentEffectRemove),
 
     /// Player IID (unique agent id) change.
-    IIDChange { time: u64, id: u64, previous: u64 },
+    IIDChange {
+        time: u64,
+        id: u64,
+        previous: u64,
+    },
 
     /// Map change.
-    MapChange { time: u64, map: u64, previous: u64 },
+    MapChange {
+        time: u64,
+        map: u64,
+        previous: u64,
+    },
+
+    /// Animation started.
+    AnimationStart(AnimationStart),
+
+    /// Animation stopped.
+    AnimationStop(AnimationStop),
+
+    BuffApply(BuffApply),
+
+    BuffChange(BuffChange),
+
+    BuffRemoveSingle(BuffRemoveSingle),
+
+    BuffRemoveAll(BuffRemoveAll),
+
+    Transformation,
+
+    WvwTeams,
+
+    WvwObjectiveStatus,
 
     /// Unknown event.
     Unknown(Event),
@@ -249,129 +295,128 @@ impl From<Event> for EventKind {
     #[inline]
     fn from(mut event: Event) -> Self {
         unsafe {
-            match event.categorize() {
-                EventCategory::Activation => Self::Activation(event.extract()),
-                EventCategory::BuffRemove => Self::BuffRemove(event.extract()),
-                EventCategory::BuffApply => Self::BuffApply(event.extract()),
-                EventCategory::BuffDamage => Self::BuffDamage(event.extract()),
-                EventCategory::Strike => Self::Strike(event.extract()),
-
-                EventCategory::StateChange => match event.get_statechange() {
-                    StateChange::None => unreachable!("statechange none in statechange category"),
-                    StateChange::IdleEvent | StateChange::ReplInfo => {
-                        unreachable!("illegal internal statechange")
-                    }
-                    StateChange::EnterCombat => Self::EnterCombat(event.extract()),
-                    StateChange::ExitCombat => Self::ExitCombat(event.extract()),
-                    StateChange::ChangeUp => Self::ChangeUp(event.extract()),
-                    StateChange::ChangeDead => Self::ChangeDead(event.extract()),
-                    StateChange::ChangeDown => Self::ChangeDown(event.extract()),
-                    StateChange::Spawn => Self::Spawn(event.extract()),
-                    StateChange::Despawn => Self::Despawn(event.extract()),
-                    StateChange::HealthUpdate => Self::HealthUpdate(event.extract()),
-                    StateChange::SquadCombatStart => Self::SquadCombatStart(event.extract()),
-                    StateChange::SquadCombatEnd => Self::SquadCombatEnd(event.extract()),
-                    StateChange::WeaponSwap => Self::WeaponSwap(event.extract()),
-                    StateChange::MaxHealthUpdate => Self::MaxHealthUpdate(event.extract()),
-                    StateChange::PointOfView => Self::PointOfView(event.extract()),
-                    StateChange::Language => Self::Language {
-                        time: event.time,
-                        language: Language::try_from(event.src_agent as i32)
-                            .map_err(|_| event.src_agent),
-                    },
-                    StateChange::GWBuild => Self::GWBuild {
-                        time: event.time,
-                        build: event.src_agent,
-                    },
-                    StateChange::ShardId => Self::ShardId {
-                        time: event.time,
-                        shard: event.src_agent,
-                    },
-                    StateChange::Reward => Self::Reward(event.extract()),
-                    StateChange::BuffInitial => Self::BuffInitial(event.extract()),
-                    StateChange::Position => Self::Position(event.extract()),
-                    StateChange::Velocity => Self::Velocity(event.extract()),
-                    StateChange::Facing => Self::Facing(event.extract()),
-                    StateChange::TeamChange => Self::TeamChange(event.extract()),
-                    StateChange::AttackTarget => Self::AttackTarget(event.extract()),
-                    StateChange::Targetable => Self::Targetable(event.extract()),
-                    StateChange::MapId => Self::MapId {
-                        time: event.time,
-                        map: event.src_agent,
-                    },
-                    StateChange::StackActive => Self::StackActive(event.extract()),
-                    StateChange::StackReset => Self::StackReset(event.extract()),
-                    StateChange::Guild => Self::Guild(event.extract()),
-                    StateChange::BuffInfo => Self::BuffInfo(event.extract()),
-                    StateChange::BuffFormula => Self::BuffFormula(event.extract()),
-                    StateChange::SkillInfo => Self::SkillInfo(event.extract()),
-                    StateChange::SkillTiming => Self::SkillTiming(event.extract()),
-                    StateChange::BreakbarState => Self::BreakbarState(event.extract()),
-                    StateChange::BreakbarPercent => Self::BreakbarPercent(event.extract()),
-                    StateChange::Integrity => Self::Integrity(event.extract()),
-                    StateChange::Marker => Self::AgentMarker(event.extract()),
-                    StateChange::BarrierUpdate => Self::BarrierUpdate(event.extract()),
-                    StateChange::StatReset => Self::StatReset {
-                        time: event.time,
-                        target: event.src_agent,
-                    },
-                    StateChange::Extension => Self::Extension {
-                        sig: event.get_pad_id(),
-                        event,
-                    },
-                    StateChange::ApiDelayed => {
-                        event.is_statechange = StateChange::None.into();
-                        Self::ApiDelayed {
-                            event: event.into_kind().into(),
-                        }
-                    }
-                    StateChange::InstanceStart => Self::InstanceStart {
-                        time: event.time,
-                        start: event.src_agent,
-                    },
-                    StateChange::RateHealth => Self::RateHealth {
-                        time: event.time,
-                        rate: event.src_agent,
-                    },
-                    StateChange::Last90BeforeDown => Self::Last90BeforeDown(event.extract()),
-                    StateChange::Effect45 => Self::Effect45(event.extract()),
-                    StateChange::IdToGUID => Self::IdToGUID(event.extract()),
-                    StateChange::LogNPCUpdate => Self::LogNPCUpdate(event.extract()),
-                    StateChange::ExtensionCombat => Self::ExtensionCombat {
-                        sig: event.get_pad_id(),
-                        event,
-                    },
-                    StateChange::FractalScale => Self::FractalScale {
-                        time: event.time,
-                        scale: event.src_agent,
-                    },
-                    StateChange::Effect51 => Self::Effect51(event.extract()),
-                    StateChange::Ruleset => {
-                        Self::Ruleset(Ruleset::from_bits_retain(event.src_agent))
-                    }
-                    StateChange::SquadMarker => Self::SquadMarker(event.extract()),
-                    StateChange::ArcBuild => Self::ArcBuild(event.extract()),
-                    StateChange::Glider => Self::Glider(event.extract()),
-                    StateChange::Stunbreak => Self::Stunbreak(event.extract()),
-                    StateChange::MissileCreate => Self::MissileCreate(event.extract()),
-                    StateChange::MissileLaunch => Self::MissileLaunch(event.extract()),
-                    StateChange::MissileRemove => Self::MissileRemove(event.extract()),
-                    StateChange::EffectGroundCreate => Self::EffectGroundCreate(event.extract()),
-                    StateChange::EffectGroundRemove => Self::EffectGroundRemove(event.extract()),
-                    StateChange::EffectAgentCreate => Self::EffectAgentCreate(event.extract()),
-                    StateChange::EffectAgentRemove => Self::EffectAgentRemove(event.extract()),
-                    StateChange::IIDChange => Self::IIDChange {
-                        time: event.time,
-                        id: event.dst_agent,
-                        previous: event.src_agent,
-                    },
-                    StateChange::MapChange => Self::MapChange {
-                        time: event.time,
-                        map: event.src_agent,
-                        previous: event.dst_agent,
-                    },
-                    StateChange::Unknown(_) => Self::Unknown(event),
+            match event.get_statechange() {
+                StateChange::Combat => Self::Combat(event.extract()),
+                StateChange::EnterCombat => Self::EnterCombat(event.extract()),
+                StateChange::ExitCombat => Self::ExitCombat(event.extract()),
+                StateChange::ChangeUp => Self::ChangeUp(event.extract()),
+                StateChange::ChangeDead => Self::ChangeDead(event.extract()),
+                StateChange::ChangeDown => Self::ChangeDown(event.extract()),
+                StateChange::Spawn => Self::Spawn(event.extract()),
+                StateChange::Despawn => Self::Despawn(event.extract()),
+                StateChange::HealthUpdate => Self::HealthUpdate(event.extract()),
+                StateChange::SquadCombatStart => Self::SquadCombatStart(event.extract()),
+                StateChange::SquadCombatEnd => Self::SquadCombatEnd(event.extract()),
+                StateChange::WeaponSwap => Self::WeaponSwap(event.extract()),
+                StateChange::MaxHealthUpdate => Self::MaxHealthUpdate(event.extract()),
+                StateChange::PointOfView => Self::PointOfView(event.extract()),
+                StateChange::Language => Self::Language {
+                    time: event.time,
+                    language: Language::try_from(event.src_agent as i32)
+                        .map_err(|_| event.src_agent),
                 },
+                StateChange::GWBuild => Self::GWBuild {
+                    time: event.time,
+                    build: event.src_agent,
+                },
+                StateChange::ShardId => Self::ShardId {
+                    time: event.time,
+                    shard: event.src_agent,
+                },
+                StateChange::Reward => Self::Reward(event.extract()),
+                StateChange::BuffInitial => Self::BuffInitial(event.extract()),
+                StateChange::Position => Self::Position(event.extract()),
+                StateChange::Velocity => Self::Velocity(event.extract()),
+                StateChange::Facing => Self::Facing(event.extract()),
+                StateChange::TeamChange => Self::TeamChange(event.extract()),
+                StateChange::AttackTarget => Self::AttackTarget(event.extract()),
+                StateChange::Targetable => Self::Targetable(event.extract()),
+                StateChange::MapId => Self::MapId {
+                    time: event.time,
+                    map: event.src_agent,
+                },
+                StateChange::StackActive => Self::StackActive(event.extract()),
+                StateChange::StackReset => Self::StackReset(event.extract()),
+                StateChange::Guild => Self::Guild(event.extract()),
+                StateChange::BuffInfo => Self::BuffInfo(event.extract()),
+                StateChange::BuffFormula => Self::BuffFormula(event.extract()),
+                StateChange::SkillInfo => Self::SkillInfo(event.extract()),
+                StateChange::SkillTiming => Self::SkillTiming(event.extract()),
+                StateChange::BreakbarState => Self::BreakbarState(event.extract()),
+                StateChange::BreakbarPercent => Self::BreakbarPercent(event.extract()),
+                StateChange::Integrity => Self::Integrity(event.extract()),
+                StateChange::Marker => Self::AgentMarker(event.extract()),
+                StateChange::BarrierUpdate => Self::BarrierUpdate(event.extract()),
+                StateChange::StatReset => Self::StatReset {
+                    time: event.time,
+                    target: event.src_agent,
+                },
+                StateChange::Extension => Self::Extension {
+                    sig: event.get_pad_id(),
+                    event,
+                },
+                StateChange::ApiDelayed => {
+                    event.is_statechange = StateChange::Combat.into();
+                    Self::ApiDelayed {
+                        event: event.into_kind().into(),
+                    }
+                }
+                StateChange::InstanceStart => Self::InstanceStart {
+                    time: event.time,
+                    start: event.src_agent,
+                },
+                StateChange::RateHealth => Self::RateHealth {
+                    time: event.time,
+                    rate: event.src_agent,
+                },
+                StateChange::Last90BeforeDown => Self::Last90BeforeDown(event.extract()),
+                StateChange::Effect45 => Self::Effect45(event.extract()),
+                StateChange::IdToGUID => Self::IdToGUID(event.extract()),
+                StateChange::LogNPCUpdate => Self::LogNPCUpdate(event.extract()),
+                StateChange::ExtensionCombat => Self::ExtensionCombat {
+                    sig: event.get_pad_id(),
+                    event,
+                },
+                StateChange::FractalScale => Self::FractalScale {
+                    time: event.time,
+                    scale: event.src_agent,
+                },
+                StateChange::Effect51 => Self::Effect51(event.extract()),
+                StateChange::Ruleset => Self::Ruleset(Ruleset::from_bits_retain(event.src_agent)),
+                StateChange::SquadMarker => Self::SquadMarker(event.extract()),
+                StateChange::ArcBuild => Self::ArcBuild(event.extract()),
+                StateChange::Glider => Self::Glider(event.extract()),
+                StateChange::Stunbreak => Self::Stunbreak(event.extract()),
+                StateChange::MissileCreate => Self::MissileCreate(event.extract()),
+                StateChange::MissileLaunch => Self::MissileLaunch(event.extract()),
+                StateChange::MissileRemove => Self::MissileRemove(event.extract()),
+                StateChange::EffectGroundCreate => Self::EffectGroundCreate(event.extract()),
+                StateChange::EffectGroundRemove => Self::EffectGroundRemove(event.extract()),
+                StateChange::EffectAgentCreate => Self::EffectAgentCreate(event.extract()),
+                StateChange::EffectAgentRemove => Self::EffectAgentRemove(event.extract()),
+                StateChange::IIDChange => Self::IIDChange {
+                    time: event.time,
+                    id: event.dst_agent,
+                    previous: event.src_agent,
+                },
+                StateChange::MapChange => Self::MapChange {
+                    time: event.time,
+                    map: event.src_agent,
+                    previous: event.dst_agent,
+                },
+                StateChange::AnimationStart => Self::AnimationStart(event.extract()),
+                StateChange::AnimationStop => Self::AnimationStop(event.extract()),
+                StateChange::BuffApply => Self::BuffApply(event.extract()),
+                StateChange::BuffChange => Self::BuffChange(event.extract()),
+                StateChange::BuffRemoveSingle => Self::BuffRemoveSingle(event.extract()),
+                StateChange::BuffRemoveAll => Self::BuffRemoveAll(event.extract()),
+                StateChange::Transformation => Self::Transformation,
+                StateChange::WvwTeams => Self::WvwTeams,
+                StateChange::WvwObjectiveStatus => Self::WvwObjectiveStatus,
+                StateChange::IdleEvent | StateChange::ReplInfo | StateChange::EarlyExit => {
+                    unreachable!("illegal internal statechange")
+                }
+                StateChange::Unknown(_) => Self::Unknown(event),
             }
         }
     }

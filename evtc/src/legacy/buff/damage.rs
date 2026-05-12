@@ -1,7 +1,8 @@
 use crate::{
-    Event, EventCategory, TryExtract,
+    Event, TryExtract,
     event::{CommonEvent, impl_common},
     extract::Extract,
+    legacy::LegacyEventCategory,
 };
 use num_enum::{FromPrimitive, IntoPrimitive};
 
@@ -53,7 +54,7 @@ impl Extract for BuffDamageEvent {
 impl TryExtract for BuffDamageEvent {
     #[inline]
     fn can_extract(event: &Event) -> bool {
-        event.categorize() == EventCategory::BuffDamage
+        LegacyEventCategory::from_event(event) == Some(LegacyEventCategory::BuffDamage)
     }
 }
 

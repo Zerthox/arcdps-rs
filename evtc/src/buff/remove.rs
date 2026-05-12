@@ -1,151 +1,78 @@
 use crate::{
-    Event, EventCategory, TryExtract,
+    Event, StateChange, TryExtract,
     event::{CommonEvent, impl_common},
     extract::Extract,
 };
-use num_enum::{FromPrimitive, IntoPrimitive};
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
 
-#[cfg(feature = "strum")]
-use strum::{Display, EnumCount, EnumIter, IntoStaticStr, VariantNames};
-
-/// Buff remove event.
+/// Buff remove single.
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
-pub struct BuffRemoveEvent {
+pub struct BuffRemoveSingle {
     /// Common combat event information.
     #[cfg_attr(feature = "serde", serde(flatten))]
     pub common: CommonEvent,
 
-    /// Kind of buff remove.
-    pub remove: BuffRemoveKind,
+    /// Buff duration.
+    pub duration: i32,
 
-    /// Removed buff(s) as duration.
-    pub removed_duration: i32,
-
-    /// Removed buff(s) as intensity.
-    ///
-    /// **Warning:** may overflow on [`BuffRemove::All`].
-    pub removed_intensity: i32,
+    /// Buff stack (instance) id.
+    pub stack_id: u32,
 }
 
-impl_common!(BuffRemoveEvent);
+impl_common!(BuffRemoveSingle);
 
-impl Extract for BuffRemoveEvent {
+impl Extract for BuffRemoveSingle {
     #[inline]
     unsafe fn extract(event: &Event) -> Self {
         Self {
             common: event.into(),
-            remove: unsafe { event.extract() },
-            removed_duration: event.value,
-            removed_intensity: event.buff_dmg,
+            duration: event.value,
+            stack_id: event.get_pad_id(),
         }
     }
 }
 
-impl TryExtract for BuffRemoveEvent {
+impl TryExtract for BuffRemoveSingle {
     #[inline]
     fn can_extract(event: &Event) -> bool {
-        event.categorize() == EventCategory::BuffRemove
+        event.get_statechange() == StateChange::BuffRemoveSingle
     }
 }
 
-/// Combat buff remove.
-#[derive(
-    Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
-)]
+/// Buff remvoe all.
+#[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
-#[cfg_attr(
-    feature = "strum",
-    derive(Display, EnumCount, EnumIter, IntoStaticStr, VariantNames)
-)]
-#[repr(u8)]
-pub enum BuffRemove {
-    /// Not used, different kind of event.
-    None = 0,
+pub struct BuffRemoveAll {
+    /// Common combat event information.
+    #[cfg_attr(feature = "serde", serde(flatten))]
+    pub common: CommonEvent,
 
-    /// Last or all stacks removed.
-    ///
-    /// Sent by server.
-    All = 1,
+    /// Removed duration as duration.
+    pub duration: i32,
 
-    /// Single stack removed.
-    ///
-    /// Happens for each stack on cleanse.
-    ///
-    /// Sent by server.
-    Single = 2,
-
-    /// Single stack removed.
-    ///
-    /// Automatically by Arc on out of combat or all stack.
-    /// Ignore for strip/cleanse calculation.
-    /// Use for in/out volume.
-    Manual = 3,
-
-    /// Unknown or invalid.
-    #[num_enum(catch_all)]
-    Unknown(u8),
+    /// Removed duration as intensity.
+    pub duration_intensity: i32,
 }
 
-/// Kind of buff remove.
-#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
-#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
-#[cfg_attr(feature = "serde", serde(tag = "kind"))]
-#[cfg_attr(
-    feature = "strum",
-    derive(Display, EnumCount, EnumIter, IntoStaticStr, VariantNames)
-)]
-pub enum BuffRemoveKind {
-    /// Last or all stacks removed.
-    ///
-    /// Sent by server.
-    All {
-        /// Number of stacks removed.
-        stacks_removed: u8,
-    },
+impl_common!(BuffRemoveAll);
 
-    /// Single stack removed.
-    ///
-    /// Happens for each stack on cleanse.
-    ///
-    /// Sent by server.
-    Single {
-        /// Stack (instance) id of removed buff.
-        stack_id: u32,
-    },
-
-    /// Single stack removed.
-    ///
-    /// Automatically by Arc on out of combat or all stack.
-    /// Ignore for strip/cleanse calculation.
-    /// Use for in/out volume.
-    Manual {
-        /// Stack (instance) id of removed buff.
-        stack_id: u32,
-    },
-
-    /// Unknown or invalid.
-    Unknown(u8),
-}
-
-impl Extract for BuffRemoveKind {
+impl Extract for BuffRemoveAll {
     #[inline]
     unsafe fn extract(event: &Event) -> Self {
-        match event.get_buffremove() {
-            BuffRemove::None => unreachable!("extract buffremove on non-buffremove event"),
-            BuffRemove::All => Self::All {
-                stacks_removed: event.result,
-            },
-            BuffRemove::Single => Self::Single {
-                stack_id: event.get_pad_id(),
-            },
-            BuffRemove::Manual => Self::Manual {
-                stack_id: event.get_pad_id(),
-            },
-            BuffRemove::Unknown(value) => Self::Unknown(value),
+        Self {
+            common: event.into(),
+            duration: event.value,
+            duration_intensity: event.buff_dmg,
         }
+    }
+}
+
+impl TryExtract for BuffRemoveAll {
+    #[inline]
+    fn can_extract(event: &Event) -> bool {
+        event.get_statechange() == StateChange::BuffRemoveAll
     }
 }

@@ -19,21 +19,24 @@ pub struct CommonEvent {
     /// Skill id of the relevant skill (can be zero).
     pub skill_id: u32,
 
-    /// Current affinity of `src` and `dst`.
+    /// Current affinity of source and target..
     ///
     /// *Arc calls this "iff" for if friend/foe.*
     pub affinity: Affinity,
 
-    /// Whether `src` is above 90% Health.
-    pub is_ninety: u8,
+    /// Whether source is above 90% Health.
+    pub is_ninety: bool,
 
-    /// Whether `dst` is below 50% Health.
-    pub is_fifty: u8,
+    /// Whether target is below 50% Health.
+    pub is_fifty: bool,
 
-    /// Whether `src` is moving at time of event.
-    pub is_moving: u8,
+    /// Whether source is moving at time of event.
+    pub is_source_moving: bool,
 
-    /// Whether `src` is flanking at time of event.
+    /// Whether target is moving at time of event.
+    pub is_target_moving: bool,
+
+    /// Whether source is flanking target at time of event.
     ///
     /// The value lies in a range of `1` to `135` degrees where `135` is rear.
     pub is_flanking: u8,
@@ -48,9 +51,10 @@ impl From<&Event> for CommonEvent {
             target: AgentId::from_dst(event),
             skill_id: event.skill_id,
             affinity: event.get_affinity(),
-            is_ninety: event.is_ninety,
-            is_fifty: event.is_fifty,
-            is_moving: event.is_moving,
+            is_ninety: event.is_ninety != 0,
+            is_fifty: event.is_fifty != 0,
+            is_source_moving: (event.is_moving & 1) != 0,
+            is_target_moving: (event.is_moving & 2) != 0,
             is_flanking: event.is_flanking,
         }
     }

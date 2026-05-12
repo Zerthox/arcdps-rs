@@ -17,8 +17,24 @@ use strum::{Display, EnumCount, EnumIter, IntoStaticStr, VariantNames};
 )]
 #[repr(u8)]
 pub enum StateChange {
-    /// Not used, different kind of event.
-    None = 0,
+    /// Combat event.
+    ///
+    /// `src_agent` contains the source agent.
+    /// `dst_agent` contains the target agent.
+    /// `value` contains the combined shield & health strike damage.
+    /// `buff_dmg` contains the combined shield & health buff damage.
+    /// `overstack_value` contains the shield damage.
+    /// `skill_id` contains associated skill id.
+    /// `affinity` contains agent affinity.
+    /// `buff` if skill is a buff.
+    /// `result` contains the result as [`CombatResult`](crate::combat::CombatResult).
+    /// `is_ninety` if source is above 90% health.
+    /// `is_fifty` if target is below 50% health.
+    /// `is_moving` has bit 0 set if source is moving, bit 1 if target is moving.
+    /// `is_flanking` if source is flanking target.
+    /// `is_shields` if damage was partially or wholly absorbed by barrier.
+    /// `is_offcycle` if target was downed at time of event.
+    Combat = 0,
 
     /// Agent entered combat.
     ///
@@ -192,10 +208,10 @@ pub enum StateChange {
     /// Realtime: yes
     Reward = 17,
 
-    /// Initially present buffs.
+    /// Buff application for buffs already present at the time of event.
     ///
-    /// Identical to buff application event.
-    /// Appears once per buff per agent on logging start.
+    /// Identical to regular buff application events, except:
+    /// `buff_dmg` contains the original (full) duration of the stack in milliseconds.
     ///
     /// EVTC: yes, limited to squad outside instances.
     ///
@@ -428,7 +444,7 @@ pub enum StateChange {
     /// Realtime: no
     BarrierUpdate = 38,
 
-    /// Arc UI stats reset.
+    /// ArcDPS UI stats reset.
     ///
     /// `src_agent` contains the species id of the agent triggering the reset, for example boss species id.
     ///
@@ -587,7 +603,7 @@ pub enum StateChange {
     /// `src_agent` stopped the disable.
     /// `value` contains duration remaining.
     ///
-    /// EVTC: yes, limited to agent table outside instances
+    /// EVTC: yes, limited to agent table outside instances.
     ///
     /// Realtime: no
     Stunbreak = 56,
@@ -600,7 +616,7 @@ pub enum StateChange {
     /// `skill_id` contains the associated skill id.
     /// `pad61` contains the trackable missile id as [`u32`].
     ///
-    /// EVTC: yes, limited to agent table outside instances
+    /// EVTC: yes, limited to agent table outside instances.
     ///
     /// Realtime: no
     MissileCreate = 57,
@@ -617,7 +633,7 @@ pub enum StateChange {
     /// `is_shields` contains the missile speed as [`i16`].
     /// `pad61` contains the trackable missile id as [`u32`].
     ///
-    /// EVTC: yes, limited to agent table outside instances
+    /// EVTC: yes, limited to agent table outside instances.
     ///
     /// Realtime: no
     MissileLaunch = 58,
@@ -630,7 +646,7 @@ pub enum StateChange {
     /// `is_src_flanking` if at least one enemy was hit along the way.
     /// `pad61` contains the trackable missile id as [`u32`].
     ///
-    /// EVTC: yes, limited to agent table outside instances
+    /// EVTC: yes, limited to agent table outside instances.
     ///
     /// Realtime: no
     MissileRemove = 59,
@@ -646,7 +662,7 @@ pub enum StateChange {
     /// `is_shields` contains the scale (if zero, assume 1) multiplied by 1000 as `i16`.
     /// `pad61` contains the trackable effect id as [`u32`].
     ///
-    /// EVTC: yes, limited to agent table outside instances
+    /// EVTC: yes, limited to agent table outside instances.
     ///
     /// Realtime: no
     EffectGroundCreate = 60,
@@ -667,7 +683,7 @@ pub enum StateChange {
     /// `affinity` contains effect duration as [`u32`]. If the duration is zero, it may be a fixed length duration (see [`StateChange::IdToGUID`] event).
     /// `pad61` contains the trackable effect id as [`u32`].
     ///
-    /// EVTC: yes, limited to agent table outside instances
+    /// EVTC: yes, limited to agent table outside instances.
     ///
     /// Realtime: no
     EffectAgentCreate = 62,
@@ -677,7 +693,7 @@ pub enum StateChange {
     /// `src_agent` contains the related agent.
     /// `pad61` contains the trackable effect id as [`u32`].
     ///
-    /// EVTC: yes, limited to agent table outside instances
+    /// EVTC: yes, limited to agent table outside instances.
     ///
     /// Realtime: no
     EffectAgentRemove = 63,
@@ -704,6 +720,138 @@ pub enum StateChange {
     ///
     /// Realtime: yes
     MapChange = 65,
+
+    /// Used internally by ArcDPS.
+    /// Should not appear anywhere.
+    EarlyExit = 66,
+
+    /// Animation start.
+    ///
+    /// `src_agent` started an animation.
+    /// `dst_agent` contains the target agent if applicable.
+    /// `value` contains the duration until minimum of last significant trigger point and tooltip time in milliseconds.
+    /// `buff_dmg` contains the duration until control is returned to agent in milliseconds.
+    /// `overstack_value` contains the reference id (emote id if skill id is emote).
+    /// `skill_id` contains the skill id.
+    ///
+    /// EVTC: yes
+    ///
+    /// Realtime: yes
+    AnimationStart = 67,
+
+    /// Animation stop.
+    ///
+    /// `src_agent` stopped their current animation.
+    /// `value` contains the duration spent in the animation scaled for speed in milliseconds.
+    /// `buff_dmg` contains the duration spent in the animation without speed scaling in milliseconds.
+    /// `is_activation` contains the progress check as [`Animation`](crate::animation::Animation).
+    ///
+    /// EVTC: yes
+    ///
+    /// Realtime: yes
+    AnimationStop = 68,
+
+    /// Buff stack application.
+    ///
+    /// `src_agent` contains the agent applying the stack.
+    /// `dst_agent` contains the agent the stack was applied to.
+    /// `value` contains duration applied in milliseconds.
+    /// `skill_id` contains buff skill id.
+    /// `affinity` contains agent affinity.
+    /// `is_ninety` if source is above 90% health.
+    /// `is_fifty` if target is below 50% health.
+    /// `is_moving` has bit 0 set if source is moving, and bit 1 if target is moving.
+    /// `is_flanking` if source is flanking target.
+    /// `is_shields` if buff is active when applied.
+    /// `pad61` contains trackable buff stack (instance) id as [`u32`].
+    ///
+    /// EVTC: yes
+    ///
+    /// Realtime: yes, limited to visible (must have previous squad to squad application).
+    BuffApply = 69,
+
+    /// Buff stack duration change, active only.
+    ///
+    /// `dst_agent` relates to agent
+    /// `value` containts the duration difference.
+    /// `overstack_value` contains the new duration in milliseconds.
+    /// `skill_id` contains the buff skill id.
+    /// `pad61` contains trackable buff stack (instance) id as [`u32`].
+    ///
+    /// EVTC: yes
+    ///
+    /// Realtime: yes, limited to visible (must have previous squad to squad application).
+    BuffChange = 70,
+
+    /// Buff stack removed.
+    ///
+    /// `src_agent` contains the agent with buff removed.
+    /// `dst_agent` contains the agent removing the buff.
+    /// `value` contains the duration removed in milliseconds.
+    /// `skill_id` contains the buff skill id.
+    /// `affinity` contains agent affinity.
+    /// `is_buffremove` contains the remove kind as [`BuffRemove`](crate::buff::BuffRemove).
+    /// `is_ninety` if source is above 90% health.
+    /// `is_fifty` if target is below 50% health.
+    /// `is_moving` has bit 0 set if source is moving, and bit 1 if target is moving.
+    /// `is_flanking` if source is flanking target.
+    /// `pad61` contains trackable buff stack (instance) id as [`u32`].
+    ///
+    /// EVTC: yes
+    ///
+    /// Realtime: yes, limited to visible (must have previous squad to squad application).
+    BuffRemoveSingle = 71,
+
+    /// All stacks of a buff removed.
+    ///
+    /// `src_agent` contains the agent with buffs removed.
+    /// `dst_agent` contains the agent removing the buffs.
+    /// `value` contains the removed duration calculated as duration in milliseconds.
+    /// `buff_dmg` contains the removed duration calculated as intensity in milliseconds.
+    /// `skill_id` contains the buff skill id.
+    /// `affinity` contains agent affinity.
+    /// `is_buffremove` contains the remove kind as [`BuffRemove`](crate::buff::BuffRemove).
+    /// `is_ninety` if source is above 90% health.
+    /// `is_fifty` if target is below 50% health.
+    /// `is_moving` has bit 0 set if source is moving, and bit 1 if target is moving.
+    /// `is_flanking` if source is flanking target.
+    ///
+    /// EVTC: yes
+    ///
+    /// Realtime: yes, limited to visible (must have previous squad to squad application).
+    BuffRemoveAll = 72,
+
+    /// Changed transformation.
+    ///
+    /// `src_agent` contains the affected agent.
+    /// `skill_id` contains the transformation id (0 if no transformation).
+    ///
+    /// EVTC: limited to agent table outside instances.
+    ///
+    /// Realtime: no
+    Transformation = 73,
+
+    /// WvW team association.
+    ///
+    /// `src_agent` contains redshard id, blueshard id, greenshard id, redteam id, blueteam id, greenteam id as `[u32; 6]`.
+    ///
+    /// EVTC: yes
+    ///
+    /// Realtime: yes
+    WvwTeams = 74,
+
+    /// WvW objective status update.
+    ///
+    /// `value` contains the map id.
+    /// `buff_dmg` contains the team id.
+    /// `skill_id` contains the objective id.
+    /// `buff` contains the objective type.
+    /// `pad61` contains the upgrade progress count as [`u32`].
+    ///
+    /// EVTC: yes
+    ///
+    /// Realtime: yes
+    WvwObjectiveStatus = 75,
 
     /// Unknown or invalid.
     #[num_enum(catch_all)]

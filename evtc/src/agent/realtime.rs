@@ -24,7 +24,7 @@ pub struct Agent {
     /// Name of the agent.
     name: *const c_char,
 
-    /// Unique id.
+    /// Unique agent id as assigned by ArcDPS.
     pub id: usize,
 
     /// Profession of the agent.

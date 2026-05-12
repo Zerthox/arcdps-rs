@@ -7,7 +7,7 @@ use serde::{Deserialize, Serialize};
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct AgentId {
-    /// Agent id as assigned by Arc.
+    /// Unique agent id as assigned by ArcDPS.
     pub id: u64,
 
     /// Instance id of the agent as appears in game at time of event.

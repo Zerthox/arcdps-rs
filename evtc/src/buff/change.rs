@@ -7,41 +7,41 @@ use crate::{
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
 
-/// Buff apply.
+/// Buff change.
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
-pub struct BuffApply {
+pub struct BuffChange {
     /// Common combat event information.
     #[cfg_attr(feature = "serde", serde(flatten))]
     pub common: CommonEvent,
 
-    /// Duration applied in milliseconds.
-    pub duration: i32,
+    /// Duration difference in milliseconds.
+    pub duration_change: i32,
 
-    /// Whether stack is active.
-    pub stack_active: bool,
+    /// New duration in milliseconds.
+    pub new_duration: u32,
 
     /// Buff stack (instance) id.
     pub stack_id: u32,
 }
 
-impl_common!(BuffApply);
+impl_common!(BuffChange);
 
-impl Extract for BuffApply {
+impl Extract for BuffChange {
     #[inline]
     unsafe fn extract(event: &Event) -> Self {
         Self {
             common: event.into(),
-            duration: event.value,
-            stack_active: event.is_shields != 0,
+            duration_change: event.value,
+            new_duration: event.overstack_value,
             stack_id: event.get_pad_id(),
         }
     }
 }
 
-impl TryExtract for BuffApply {
+impl TryExtract for BuffChange {
     #[inline]
     fn can_extract(event: &Event) -> bool {
-        event.get_statechange() == StateChange::BuffApply
+        event.get_statechange() == StateChange::BuffChange
     }
 }
