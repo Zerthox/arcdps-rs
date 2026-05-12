@@ -1,13 +1,14 @@
-use crate::{Agent, EventKind, Header, Log, Parse, ParseError, Skill};
+use crate::{Agent, Event, EventKind, Header, Log, Parse, ParseError, Skill};
 use std::io;
 
+use evtc::legacy::LegacyEventKind;
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
 
 /// A transformed EVTC log.
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
-pub struct LogTransformed {
+pub struct LogTransformed<T = EventKind> {
     /// The log header with meta information.
     pub header: Header,
 
@@ -17,9 +18,12 @@ pub struct LogTransformed {
     /// Information about skills used in the log.
     pub skills: Vec<Skill>,
 
-    /// Every [`Event`](crate::Event) occurring in the log transformed as [`EventKind`].
-    pub events: Vec<EventKind>,
+    /// Every [`Event`](crate::Event) occurring in the log transformed.
+    pub events: Vec<T>,
 }
+
+/// A transformed EVTC log with legacy events.
+pub type LogTransformedLegacy = LogTransformed<LegacyEventKind>;
 
 impl LogTransformed {
     /// Returns the [`Agent`] with the given id.
@@ -59,23 +63,25 @@ impl LogTransformed {
     }
 }
 
-impl From<Log> for LogTransformed {
+impl<T> From<Log> for LogTransformed<T>
+where
+    T: From<Event>,
+{
     #[inline]
     fn from(log: Log) -> Self {
         Self {
             header: log.header,
             agents: log.agents,
             skills: log.skills,
-            events: log
-                .events
-                .into_iter()
-                .map(|event| event.into_kind())
-                .collect(),
+            events: log.events.into_iter().map(|event| event.into()).collect(),
         }
     }
 }
 
-impl Parse for LogTransformed {
+impl<T> Parse for LogTransformed<T>
+where
+    T: From<Event>,
+{
     type Error = ParseError;
 
     fn parse(input: &mut impl io::Read) -> Result<Self, Self::Error> {

@@ -1,4 +1,7 @@
-use crate::{Agent, Header, LogTransformed, Parse, ParseError, Save, Skill, util::Endian};
+use crate::{
+    Agent, Header, LogTransformed, LogTransformedLegacy, Parse, ParseError, Save, Skill,
+    util::Endian,
+};
 use byteorder::{ReadBytesExt, WriteBytesExt};
 use evtc::Event;
 use std::{fs::File, io, path::Path};
@@ -80,6 +83,12 @@ impl Log {
     /// Converts the log into its [`LogTransformed`] equivalent.
     #[inline]
     pub fn into_transformed(self) -> LogTransformed {
+        self.into()
+    }
+
+    /// Converts the log into its [`LogTransformed`] equivalent with legacy events.
+    #[inline]
+    pub fn into_transformed_legacy(self) -> LogTransformedLegacy {
         self.into()
     }
 }
