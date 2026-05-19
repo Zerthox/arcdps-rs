@@ -29,7 +29,7 @@ pub use crate::{
     weapon::WeaponSwapEvent,
 };
 
-use crate::{Affinity, TryExtract, extract::Extract, legacy::LegacyEventKind};
+use crate::{Affinity, CombatResult, TryExtract, extract::Extract, legacy::LegacyEventKind};
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
@@ -82,11 +82,7 @@ pub struct Event {
     /// Buff, if relevant to the event.
     pub buff: u8,
 
-    /// Combat result.
-    ///
-    /// For strike (direct damage) events this contains the kind of strike.
-    ///
-    /// Use [`Event::get_strike`] to obtain the value as [`Strike`].
+    /// Combat result for combat events.
     pub result: u8,
 
     /// Whether event is a kind of activation event.
@@ -239,6 +235,12 @@ impl Event {
     #[inline]
     pub fn is_buffinitial(&self) -> bool {
         self.get_statechange() == StateChange::BuffInitial && self.buff == 18
+    }
+
+    /// Returns the result as [`CombatResult`].
+    #[inline]
+    pub fn get_combat_result(&self) -> CombatResult {
+        self.result.into()
     }
 
     /// Checks whether the source is moving, if applicable for this event type.

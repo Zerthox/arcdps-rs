@@ -59,7 +59,7 @@ impl Extract for CombatEvent {
     unsafe fn extract(event: &Event) -> Self {
         Self {
             common: event.into(),
-            result: event.result.into(),
+            result: event.get_combat_result(),
             is_buff: event.buff != 0,
             total_strike_damage: event.value,
             total_buff_damage: event.buff_dmg,
