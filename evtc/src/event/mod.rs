@@ -12,6 +12,7 @@ pub use crate::{
         BreakbarStateEvent, DownContributionEvent, EnterCombatEvent, GliderEvent,
         HealthUpdateEvent, MaxHealthEvent, StunbreakEvent, TargetableEvent, TeamChangeEvent,
     },
+    animation::{AnimationStart, AnimationStop},
     buff::{
         BuffApply, BuffChange, BuffFormula, BuffInfo, BuffInitialEvent, BuffRemoveAll,
         BuffRemoveSingle, StackActiveEvent, StackResetEvent,
@@ -27,9 +28,13 @@ pub use crate::{
     position::PositionEvent,
     skill::{SkillInfo, SkillTiming},
     weapon::WeaponSwapEvent,
+    wvw::{WvwObjectiveStatus, WvwTeams},
 };
 
-use crate::{Affinity, CombatResult, TryExtract, extract::Extract, legacy::LegacyEventKind};
+use crate::{
+    Affinity, CombatResult, TryExtract, animation::AnimationProgress, buff::BuffRemove,
+    extract::Extract, legacy::LegacyEventKind,
+};
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
@@ -87,28 +92,12 @@ pub struct Event {
 
     /// Whether event is a kind of activation event.
     ///
-    /// Use [`Event::get_activation`] to obtain the value as [`Activation`].
-    ///
-    /// For [`Activation::CancelFire`] and [`Activation::CancelCancel`] `value` will be the ms duration of the time spent in animation.
-    /// `buff_dmg` will be the ms duration of the scaled (as if not affected) time spent.
-    ///
-    /// For Normal or Quickness, `value` will be the ms duration at which all significant effects have happened.
-    /// `buff_dmg` will be the ms duration at which control is expected to be returned to character.
-    ///
-    /// `dst_agent` will be x/y of target of skill effect.
-    /// `overstack_value` will be z of target of skill effect.
+    /// Use [`Event::get_animation_progress`] to obtain the value as [`AnimationProgress`].
     pub is_activation: u8,
 
     /// Whether event is a kind of buff remove event.
     ///
-    /// Use [`Event::get_buffremove`] to obtain the value as [`BuffRemove`].
-    ///
-    /// `src_agent` is agent that had buff removed, `dst_agent` is the agent that removed it.
-    /// `value` will be the remaining time removed calculated as duration.
-    /// `buff_dmg` will be the remaining time removed calculated as intensity.
-    ///
-    /// For [`BuffRemove::All`] `result` will be the number of stacks removed.
-    /// For [`BuffRemove::Single`] pad61-64 (uint32) will be buff instance id of buff removed.
+    /// Use [`Event::get_buff_remove`] to obtain the value as [`BuffRemove`].
     pub is_buffremove: u8,
 
     /// Whether `src_agent` is above 90% Health.
@@ -178,38 +167,6 @@ impl Event {
         LegacyEventKind::is_legacy(self)
     }
 
-    /// Returns the event `is_statechange` as [`StateChange`].
-    #[inline]
-    pub fn get_statechange(&self) -> StateChange {
-        self.is_statechange.into()
-    }
-
-    /// Returns the event `affinity` as [`Affinity`].
-    ///
-    /// This will return [`Affinity::Unknown`] if the event has no valid data in `affinity`.
-    #[inline]
-    pub fn get_affinity(&self) -> Affinity {
-        self.affinity.into()
-    }
-
-    /// Returns the padding as [`u32`] id/signature.
-    #[inline]
-    pub fn get_pad_id(&self) -> u32 {
-        u32::from_le_bytes([self.pad61, self.pad62, self.pad63, self.pad64])
-    }
-
-    /// Checks whether the event has a timestamp.
-    #[inline]
-    pub fn has_time(&self) -> bool {
-        self.get_statechange().has_time()
-    }
-
-    /// Retrieves the event time, if present.
-    #[inline]
-    pub fn time(&self) -> Option<u64> {
-        self.has_time().then_some(self.time)
-    }
-
     /// Forcefully extracts a type implementing [`Extract`] from the event.
     ///
     /// # Safety
@@ -231,16 +188,60 @@ impl Event {
         T::try_extract(self)
     }
 
+    /// Returns the event `is_statechange` as [`StateChange`].
+    #[inline]
+    pub fn get_statechange(&self) -> StateChange {
+        self.is_statechange.into()
+    }
+
+    /// Returns the event `affinity` as [`Affinity`].
+    ///
+    /// This will return [`Affinity::Unknown`] if the event has no valid data in `affinity`.
+    #[inline]
+    pub fn get_affinity(&self) -> Affinity {
+        self.affinity.into()
+    }
+
+    /// Returns `result` as [`CombatResult`].
+    #[inline]
+    pub fn get_combat_result(&self) -> CombatResult {
+        self.result.into()
+    }
+
+    /// Returns `is_activation` as [`AnimationProgress`].
+    #[inline]
+    pub fn get_animation_progress(&self) -> AnimationProgress {
+        self.is_activation.into()
+    }
+
+    /// Returns `is_activation` as [`AnimationProgress`].
+    #[inline]
+    pub fn get_buff_remove(&self) -> BuffRemove {
+        self.is_activation.into()
+    }
+
+    /// Returns the padding as [`u32`] id/signature.
+    #[inline]
+    pub fn get_pad_id(&self) -> u32 {
+        u32::from_le_bytes([self.pad61, self.pad62, self.pad63, self.pad64])
+    }
+
+    /// Checks whether the event has a timestamp.
+    #[inline]
+    pub fn has_time(&self) -> bool {
+        self.get_statechange().has_time()
+    }
+
+    /// Retrieves the event time, if present.
+    #[inline]
+    pub fn time(&self) -> Option<u64> {
+        self.has_time().then_some(self.time)
+    }
+
     /// Checks whether the event is an initial buff event.
     #[inline]
     pub fn is_buffinitial(&self) -> bool {
         self.get_statechange() == StateChange::BuffInitial && self.buff == 18
-    }
-
-    /// Returns the result as [`CombatResult`].
-    #[inline]
-    pub fn get_combat_result(&self) -> CombatResult {
-        self.result.into()
     }
 
     /// Checks whether the source is moving, if applicable for this event type.

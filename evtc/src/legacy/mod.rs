@@ -5,7 +5,7 @@ mod buff;
 
 pub use self::{activation::*, buff::*};
 
-use crate::{Event, EventKind, StateChange};
+use crate::{Event, EventKind, StateChange, buff::BuffRemove};
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
@@ -71,7 +71,7 @@ impl LegacyEventCategory {
         {
             if Activation::from_event(event) != Activation::None {
                 Some(Self::Activation)
-            } else if BuffRemove::from_event(event) != BuffRemove::None {
+            } else if event.get_buff_remove() != BuffRemove::None {
                 Some(Self::BuffRemove)
             } else if event.buff != 0 {
                 Some(if event.buff_dmg == 0 && event.value != 0 {

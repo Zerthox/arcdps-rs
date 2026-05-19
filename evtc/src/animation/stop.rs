@@ -35,7 +35,7 @@ impl Extract for AnimationStop {
             agent: AgentId::from_src(event),
             duration_scaled: event.value,
             duration_unscaled: event.buff_dmg,
-            progress: AnimationProgress::from(event.is_activation),
+            progress: event.get_animation_progress(),
         }
     }
 }

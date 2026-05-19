@@ -1,10 +1,10 @@
 use crate::{
     Event, TryExtract,
+    buff::BuffRemove,
     event::{CommonEvent, impl_common},
     extract::Extract,
     legacy::LegacyEventCategory,
 };
-use num_enum::{FromPrimitive, IntoPrimitive};
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
@@ -53,51 +53,6 @@ impl TryExtract for BuffRemoveEvent {
     }
 }
 
-/// Combat buff remove.
-#[derive(
-    Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, IntoPrimitive, FromPrimitive,
-)]
-#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
-#[cfg_attr(
-    feature = "strum",
-    derive(Display, EnumCount, EnumIter, IntoStaticStr, VariantNames)
-)]
-#[repr(u8)]
-pub enum BuffRemove {
-    /// Not used, different kind of event.
-    None = 0,
-
-    /// Last or all stacks removed.
-    ///
-    /// Sent by server.
-    All = 1,
-
-    /// Single stack removed.
-    ///
-    /// Happens for each stack on cleanse.
-    ///
-    /// Sent by server.
-    Single = 2,
-
-    /// Single stack removed.
-    ///
-    /// Automatically by Arc on out of combat or all stack.
-    /// Ignore for strip/cleanse calculation.
-    /// Use for in/out volume.
-    Manual = 3,
-
-    /// Unknown or invalid.
-    #[num_enum(catch_all)]
-    Unknown(u8),
-}
-
-impl BuffRemove {
-    #[inline]
-    pub fn from_event(event: &Event) -> Self {
-        event.is_buffremove.into()
-    }
-}
-
 /// Kind of buff remove.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
@@ -142,7 +97,7 @@ pub enum BuffRemoveKind {
 impl Extract for BuffRemoveKind {
     #[inline]
     unsafe fn extract(event: &Event) -> Self {
-        match BuffRemove::from_event(event) {
+        match event.get_buff_remove() {
             BuffRemove::None => unreachable!("extract buffremove on non-buffremove event"),
             BuffRemove::All => Self::All {
                 stacks_removed: event.result,
