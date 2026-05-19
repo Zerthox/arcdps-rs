@@ -31,6 +31,7 @@ pub enum Specialization {
     Chaos = 45,
     Mirage = 59,
     Virtuoso = 66,
+    Troubadour = 73,
 
     // necromancer
     DeathMagic = 2,
@@ -41,6 +42,7 @@ pub enum Specialization {
     Spite = 53,
     Scourge = 60,
     Harbinger = 64,
+    Ritualist = 76,
 
     // revenant
     Invocation = 3,
@@ -51,6 +53,7 @@ pub enum Specialization {
     Herald = 52,
     Renegade = 63,
     Vindicator = 69,
+    Conduit = 79,
 
     // warrior
     Strength = 4,
@@ -61,6 +64,7 @@ pub enum Specialization {
     Discipline = 51,
     Spellbreaker = 61,
     Bladesworn = 68,
+    Paragon = 74,
 
     // ranger
     Druid = 5,
@@ -71,6 +75,7 @@ pub enum Specialization {
     WildernessSurvival = 33,
     Soulbeast = 55,
     Untamed = 72,
+    Galeshot = 78,
 
     // engineer
     Explosives = 6,
@@ -81,6 +86,7 @@ pub enum Specialization {
     Inventions = 47,
     Holosmith = 57,
     Mechanist = 70,
+    Amalgam = 75,
 
     // thief
     Daredevil = 7,
@@ -91,6 +97,7 @@ pub enum Specialization {
     Acrobatics = 54,
     Deadeye = 58,
     Specter = 71,
+    Antiquary = 77,
 
     // guardian
     Valor = 13,
@@ -101,6 +108,7 @@ pub enum Specialization {
     Honor = 49,
     Firebrand = 62,
     Willbender = 65,
+    Luminary = 81,
 
     // elementalist
     Water = 17,
@@ -111,6 +119,7 @@ pub enum Specialization {
     Tempest = 48,
     Weaver = 56,
     Catalyst = 67,
+    Evoker = 80,
 }
 
 impl Specialization {
@@ -127,7 +136,8 @@ impl Specialization {
             | Self::Chronomancer
             | Self::Chaos
             | Self::Mirage
-            | Self::Virtuoso => Profession::Mesmer,
+            | Self::Virtuoso
+            | Self::Troubadour => Profession::Mesmer,
 
             Self::DeathMagic
             | Self::BloodMagic
@@ -136,7 +146,8 @@ impl Specialization {
             | Self::SoulReaping
             | Self::Spite
             | Self::Scourge
-            | Self::Harbinger => Profession::Necromancer,
+            | Self::Harbinger
+            | Self::Ritualist => Profession::Necromancer,
 
             Self::Invocation
             | Self::Retribution
@@ -145,7 +156,8 @@ impl Specialization {
             | Self::Salvation
             | Self::Herald
             | Self::Renegade
-            | Self::Vindicator => Profession::Revenant,
+            | Self::Vindicator
+            | Self::Conduit => Profession::Revenant,
 
             Self::Strength
             | Self::Tactics
@@ -154,7 +166,8 @@ impl Specialization {
             | Self::Arms
             | Self::Discipline
             | Self::Spellbreaker
-            | Self::Bladesworn => Profession::Warrior,
+            | Self::Bladesworn
+            | Self::Paragon => Profession::Warrior,
 
             Self::Druid
             | Self::Marksmanship
@@ -163,7 +176,8 @@ impl Specialization {
             | Self::Beastmastery
             | Self::WildernessSurvival
             | Self::Soulbeast
-            | Self::Untamed => Profession::Ranger,
+            | Self::Untamed
+            | Self::Galeshot => Profession::Ranger,
 
             Self::Explosives
             | Self::Tools
@@ -172,7 +186,8 @@ impl Specialization {
             | Self::Scrapper
             | Self::Inventions
             | Self::Holosmith
-            | Self::Mechanist => Profession::Engineer,
+            | Self::Mechanist
+            | Self::Amalgam => Profession::Engineer,
 
             Self::Daredevil
             | Self::ShadowArts
@@ -181,7 +196,8 @@ impl Specialization {
             | Self::Trickery
             | Self::Acrobatics
             | Self::Deadeye
-            | Self::Specter => Profession::Thief,
+            | Self::Specter
+            | Self::Antiquary => Profession::Thief,
 
             Self::Valor
             | Self::Radiance
@@ -190,7 +206,8 @@ impl Specialization {
             | Self::Virtues
             | Self::Honor
             | Self::Firebrand
-            | Self::Willbender => Profession::Guardian,
+            | Self::Willbender
+            | Self::Luminary => Profession::Guardian,
 
             Self::Water
             | Self::Earth
@@ -199,7 +216,8 @@ impl Specialization {
             | Self::Air
             | Self::Tempest
             | Self::Weaver
-            | Self::Catalyst => Profession::Elementalist,
+            | Self::Catalyst
+            | Self::Evoker => Profession::Elementalist,
         }
     }
 }
