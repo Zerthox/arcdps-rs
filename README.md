@@ -8,6 +8,7 @@ This project is split into multiple crates covering different parts of ArcDPS.
 | Crate | Purpose |
 |---|---|
 | [arcdps](./arcdps) | Bindings for ArcDPS plugins.
+| [arcdps_unofficial_extras](./arcdps_unofficial_extras) | Bindings for ArcDPS Unofficial Extras.
 | [evtc](./evtc) | Bindings for the ArcDPS EVTC API.
 | [evtc_dump](./evtc_dump) | CLI tool to dump ArcDPS EVTC log contents as JSON.
 | [evtc_parse](./evtc_parse) | Parsing for ArcDPS EVTC logs.

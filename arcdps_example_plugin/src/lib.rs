@@ -3,10 +3,10 @@
 #![allow(unused_variables)]
 
 use arcdps::{
-    Agent, Event, Language, StateChange,
+    Agent, Event, StateChange,
     extras::{
-        Control, ExtrasAddonInfo, KeybindChange, SquadMessage, UserRole, message::Message,
-        user::UserInfoIter,
+        Control, ExtrasAddonInfo, KeybindChange, Language, SquadMessage, UserRole,
+        message::Message, user::UserInfoIter,
     },
     imgui,
 };

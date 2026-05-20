@@ -2,7 +2,7 @@
 //!
 //! Calling an export before Unofficial Extras calls `extras_init` will cause a panic.
 
-use crate::extras::{Control, Key, Keybind, globals::ExtrasGlobals};
+use super::{Control, Key, Keybind, globals::ExtrasGlobals};
 
 /// Retrieves the Unofficial Extras version as string.
 #[inline]

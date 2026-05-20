@@ -1,12 +1,13 @@
 //! Unofficial extras callback types.
 
-use super::{
+use crate::{
     ExtrasAddonInfo, ExtrasSubscriberInfo, RawExtrasAddonInfo,
     keybinds::{KeybindChange, RawKeybindChange},
+    language::Language,
     message::{Message, MessageType, RawMessage, SquadMessage},
     user::{UserInfo, UserInfoIter},
+    util::abi,
 };
-use crate::{evtc::Language, util::abi};
 
 pub type ExtrasInitFunc = fn(extras_info: ExtrasAddonInfo, account_name: Option<&str>);
 

@@ -1,0 +1,21 @@
+[package]
+name = "arcdps_unofficial_extras"
+version = "0.1.0"
+authors = ["Zerthox"]
+edition = "2024"
+description = "Rust bindings for ArcDPS Unofficial Extras"
+repository = "https://github.com/zerthox/arcdps-rs"
+rust-version = "1.87.0"
+
+[dependencies]
+bitflags = { workspace = true }
+chrono = "0.4.24"
+num_enum = { workspace = true }
+serde = { workspace = true, features = ["derive"], optional = true }
+strum = { workspace = true, features = ["derive"], optional = true }
+windows = { workspace = true, features = ["Win32_Foundation"] }
+
+[features]
+serde = ["dep:serde", "chrono/serde"]
+strum = ["dep:strum"]
+unwind = []

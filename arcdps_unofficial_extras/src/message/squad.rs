@@ -1,4 +1,4 @@
-use crate::{strip_account_prefix, util::str_from_cstr_len};
+use crate::util::{str_from_cstr_len, strip_account_prefix};
 use bitflags::bitflags;
 use chrono::{DateTime, FixedOffset};
 use std::ffi::c_char;

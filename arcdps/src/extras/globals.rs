@@ -1,9 +1,7 @@
 //! Global instance with Unofficial Extras information.
 
-use crate::{
-    extras::exports::raw::{ExportGetKey, ExportGetKeybind},
-    util::exported_proc,
-};
+use super::exports::raw::{ExportGetKey, ExportGetKeybind};
+use crate::util::exported_proc;
 use std::{mem::transmute, sync::OnceLock};
 use windows::Win32::Foundation::HMODULE;
 

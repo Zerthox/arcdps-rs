@@ -3,14 +3,16 @@ members = [
     "arcdps",
     "arcdps_codegen",
     "arcdps_example_plugin",
+    "arcdps_unofficial_extras",
     "evtc",
     "evtc_dump",
     "evtc_parse",
 ]
-resolver = "2"
+resolver = "3"
 
 [workspace.dependencies]
 bitflags = "2.11.1"
 num_enum = "0.7.0"
 serde = "1.0.188"
 strum = "0.28.0"
+windows = "0.62.1"

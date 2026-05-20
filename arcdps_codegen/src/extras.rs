@@ -89,7 +89,7 @@ impl ExtrasGen {
                 panic!("unofficial extras did not provide subscriber info in init");
             }
             unsafe {
-                ::arcdps::extras::ExtrasSubscriberInfo::subscribe(
+                ::arcdps::extras::subscribe(
                     sub,
                     addon,
                     #name,
@@ -177,7 +177,7 @@ impl ExtrasGen {
                 quote_spanned! {span=>
                     const __EXTRAS_LANGUAGE_CHANGED: ::arcdps::extras::callbacks::ExtrasLanguageChangedCallback = #safe;
 
-                    unsafe extern #C_ABI fn #name(language: ::arcdps::evtc::Language) {
+                    unsafe extern #C_ABI fn #name(language: ::arcdps::extras::Language) {
                         self::__EXTRAS_LANGUAGE_CHANGED(language)
                     }
                 }
