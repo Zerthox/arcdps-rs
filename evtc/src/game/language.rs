@@ -15,7 +15,7 @@ use strum::{Display, EnumCount, EnumIter, IntoStaticStr, VariantNames};
     feature = "strum",
     derive(Display, EnumCount, EnumIter, IntoStaticStr, VariantNames)
 )]
-#[repr(i32)]
+#[repr(u8)]
 pub enum Language {
     English = 0,
     French = 2,

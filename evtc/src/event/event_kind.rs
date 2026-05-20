@@ -312,8 +312,10 @@ impl From<Event> for EventKind {
                 StateChange::PointOfView => Self::PointOfView(event.extract()),
                 StateChange::Language => Self::Language {
                     time: event.time,
-                    language: Language::try_from(event.src_agent as i32)
-                        .map_err(|_| event.src_agent),
+                    language: u8::try_from(event.src_agent)
+                        .ok()
+                        .and_then(|value| Language::try_from(value).ok())
+                        .ok_or(event.src_agent),
                 },
                 StateChange::GWBuild => Self::GWBuild {
                     time: event.time,
