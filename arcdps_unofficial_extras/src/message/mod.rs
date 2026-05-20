@@ -28,6 +28,9 @@ pub enum Message<'a> {
 
 impl Message<'_> {
     /// Creates a new message from a [`MessageType`] and [`RawMessage`].
+    ///
+    /// # Safety
+    /// The given message must be valid to be interpreted as a message of the given type.
     #[inline]
     pub unsafe fn new(message_type: MessageType, message: RawMessage) -> Self {
         match message_type {

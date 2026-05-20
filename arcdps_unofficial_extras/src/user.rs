@@ -163,6 +163,9 @@ impl From<&UserInfo> for UserInfoOwned {
 pub type UserInfoIter<'a> = slice::Iter<'a, UserInfo>;
 
 /// Helper to generate an iterator over [`UserInfo`] structs.
+///
+/// # Safety
+/// The given pointer must be non-null and valid to be interpreted as a [`UserInfo`] slice of the given length.
 #[inline]
 pub unsafe fn to_user_info_iter<'a>(ptr: *const UserInfo, len: u64) -> UserInfoIter<'a> {
     unsafe { slice::from_raw_parts(ptr, len as usize) }.iter()
