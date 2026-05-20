@@ -8,10 +8,10 @@ This project is split into multiple crates covering different parts of ArcDPS.
 | Crate | Purpose |
 |---|---|
 | [arcdps](./arcdps) | Bindings for ArcDPS plugins.
-| [arcdps_unofficial_extras](./arcdps_unofficial_extras) | Bindings for ArcDPS Unofficial Extras.
 | [evtc](./evtc) | Bindings for the ArcDPS EVTC API.
 | [evtc_dump](./evtc_dump) | CLI tool to dump ArcDPS EVTC log contents as JSON.
 | [evtc_parse](./evtc_parse) | Parsing for ArcDPS EVTC logs.
+| [unofficial_extras](./unofficial_extras) | Bindings for ArcDPS Unofficial Extras.
 
 If you are interested in writing an ArcDPS plugin in Rust, take a look at the [arcdps](./arcdps) crate in this repository.
 Its documentation can be found at [zerthox.github.io/arcdps-rs/arcdps/](https://zerthox.github.io/arcdps-rs/arcdps/).

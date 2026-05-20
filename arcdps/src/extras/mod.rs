@@ -7,14 +7,14 @@ mod globals;
 pub mod exports;
 
 use crate::{extras::globals::ExtrasGlobals, util::str_from_cstr};
-use arcdps_unofficial_extras::callbacks::{
+use std::ffi::c_char;
+use unofficial_extras::callbacks::{
     RawExtrasChatMessageCallback, RawExtrasKeybindChangedCallback,
     RawExtrasLanguageChangedCallback, RawExtrasSquadChatMessageCallback,
     RawExtrasSquadUpdateCallback,
 };
-use std::ffi::c_char;
 
-pub use arcdps_unofficial_extras::*;
+pub use unofficial_extras::*;
 
 /// Subscribes to unofficial extras callbacks after checking for compatibility.
 ///

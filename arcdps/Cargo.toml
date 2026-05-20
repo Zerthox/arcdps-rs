@@ -13,13 +13,13 @@ license = "MIT"
 [dependencies]
 arcdps_codegen = { path = "../arcdps_codegen", optional = true }
 arcdps-imgui = { version = "0.8.0", features = ["tables-api"] }
-arcdps_unofficial_extras = { path = "../arcdps_unofficial_extras", optional = true }
 bitflags = { workspace = true }
 evtc = { path = "../evtc", features = ["realtime"] }
 log = { version = "0.4.17", features = ["std"], optional = true }
 num_enum = { workspace = true }
 serde = { workspace = true, features = ["derive"], optional = true }
 strum = { workspace = true, features = ["derive"], optional = true }
+unofficial_extras = { path = "../unofficial_extras", optional = true }
 windows = { workspace = true, features = [
     "System",
     "Win32_Foundation",
@@ -32,12 +32,12 @@ windows = { workspace = true, features = [
 [features]
 default = ["codegen", "panic", "panic_trace", "panic_msgbox", "unwind"]
 codegen = ["dep:arcdps_codegen"]
-extras = ["dep:arcdps_unofficial_extras", "arcdps_codegen/extras"]
+extras = ["dep:unofficial_extras", "arcdps_codegen/extras"]
 log = ["dep:log"]
 panic = []
 panic_trace = ["panic"]
 panic_msgbox = ["panic"]
-serde = ["dep:serde", "evtc/serde", "arcdps_unofficial_extras/serde"]
-strum = ["dep:strum", "evtc/strum", "arcdps_unofficial_extras/strum"]
+serde = ["dep:serde", "evtc/serde", "unofficial_extras/serde"]
+strum = ["dep:strum", "evtc/strum", "unofficial_extras/strum"]
 unofficial_extras = ["extras"]
 unwind = ["arcdps_codegen/unwind"]

@@ -49,7 +49,7 @@ pub enum UserRole {
 /// If you need it for longer than that, consider converting it to [`UserInfoOwned`].
 ///
 /// ```no_run
-/// # use arcdps_unofficial_extras::{UserInfo, UserInfoOwned};
+/// # use unofficial_extras::{UserInfo, UserInfoOwned};
 /// # let user: UserInfo = todo!();
 /// let owned = user.to_owned();
 /// let owned: UserInfoOwned = user.into();

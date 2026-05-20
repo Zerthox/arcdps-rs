@@ -3,10 +3,10 @@ members = [
     "arcdps",
     "arcdps_codegen",
     "arcdps_example_plugin",
-    "arcdps_unofficial_extras",
     "evtc",
     "evtc_dump",
     "evtc_parse",
+    "unofficial_extras",
 ]
 resolver = "3"
 
