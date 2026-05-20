@@ -10,7 +10,7 @@ use serde::{Deserialize, Serialize};
 /// If you need it for longer than that, consider converting it to [`NpcMessageOwned`].
 ///
 /// ```no_run
-/// # use arcdps::extras::{NpcMessage, NpcMessageOwned};
+/// # use arcdps_unofficial_extras::{NpcMessage, NpcMessageOwned};
 /// # let message: &NpcMessage = todo!();
 /// let owned = message.to_owned();
 /// let owned: NpcMessageOwned = message.into();

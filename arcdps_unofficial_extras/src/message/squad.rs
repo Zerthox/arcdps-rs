@@ -15,7 +15,7 @@ use strum::{Display, EnumCount, EnumIter, IntoStaticStr, VariantNames};
 /// If you need it for longer than that, consider converting it to [`SquadMessageOwned`].
 ///
 /// ```no_run
-/// # use arcdps::extras::{SquadMessage, SquadMessageOwned};
+/// # use arcdps_unofficial_extras::{SquadMessage, SquadMessageOwned};
 /// # let message: &SquadMessage = todo!();
 /// let owned = message.to_owned();
 /// let owned: SquadMessageOwned = message.into();
