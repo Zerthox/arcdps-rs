@@ -22,11 +22,11 @@ pub unsafe fn init_imgui(
     malloc: Option<MallocFn>,
     free: Option<FreeFn>,
 ) {
-    unsafe {
+    IG_CONTEXT.get_or_init(|| unsafe {
         imgui::sys::igSetCurrentContext(ctx);
         imgui::sys::igSetAllocatorFunctions(malloc, free, ptr::null_mut());
-        IG_CONTEXT.get_or_init(|| Share::new(Context::current()));
-    }
+        Share::new(Context::current())
+    });
 }
 
 /// Retrieves the [`imgui::Context`].
