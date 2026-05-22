@@ -6,7 +6,7 @@ use crate::{
     util::{exported_proc, str_from_cstr},
 };
 use std::{ffi::c_char, mem::transmute, sync::OnceLock};
-use windows::Win32::Foundation::HMODULE;
+use windows::Win32::{Foundation::HMODULE, System::LibraryLoader::GetProcAddress};
 
 /// Initializes ArcDPS information.
 #[inline]
@@ -69,17 +69,17 @@ impl ArcGlobals {
             Self {
                 handle,
                 version,
-                e0: transmute(exported_proc(handle, "e0\0")),
-                e3: transmute(exported_proc(handle, "e3\0")),
-                e5: transmute(exported_proc(handle, "e5\0")),
-                e6: transmute(exported_proc(handle, "e6\0")),
-                e7: transmute(exported_proc(handle, "e7\0")),
-                e8: transmute(exported_proc(handle, "e8\0")),
-                e9: transmute(exported_proc(handle, "e9\0")),
-                e10: transmute(exported_proc(handle, "e10\0")),
-                add_extension: transmute(exported_proc(handle, "addextension2\0")),
-                free_extension: transmute(exported_proc(handle, "freeextension2\0")),
-                list_extension: transmute(exported_proc(handle, "listextension\0")),
+                e0: transmute(GetProcAddress(handle, s!("e0"))),
+                e3: transmute(GetProcAddress(handle, s!("e3"))),
+                e5: transmute(GetProcAddress(handle, s!("e5"))),
+                e6: transmute(GetProcAddress(handle, s!("e6"))),
+                e7: transmute(GetProcAddress(handle, s!("e7"))),
+                e8: transmute(GetProcAddress(handle, s!("e8"))),
+                e9: transmute(GetProcAddress(handle, s!("e9"))),
+                e10: transmute(GetProcAddress(handle, s!("e10"))),
+                add_extension: transmute(GetProcAddress(handle, s!("addextension2"))),
+                free_extension: transmute(GetProcAddress(handle, s!("freeextension2"))),
+                list_extension: transmute(GetProcAddress(handle, s!("listextension"))),
             }
         }
     }

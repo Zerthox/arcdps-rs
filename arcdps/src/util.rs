@@ -6,13 +6,6 @@ use std::{
     os::windows::prelude::OsStrExt,
     slice,
 };
-use windows::{
-    Win32::{
-        Foundation::{FARPROC, HMODULE},
-        System::LibraryLoader::GetProcAddress,
-    },
-    core::PCSTR,
-};
 
 /// Helper to store raw types as globals.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
@@ -61,13 +54,6 @@ pub unsafe fn str_from_cstr_len<'a>(ptr: *const c_char, len: u64) -> &'a str {
 #[inline]
 pub fn strip_account_prefix(account_name: &str) -> &str {
     account_name.strip_prefix(':').unwrap_or(account_name)
-}
-
-/// Helper to retrieve an exported function.
-/// Name needs to be null-terminated.
-#[inline]
-pub unsafe fn exported_proc(handle: HMODULE, name: &'static str) -> FARPROC {
-    unsafe { GetProcAddress(handle, PCSTR(name.as_ptr())) }
 }
 
 /// Helper to convert a string to a Windows wide char string.

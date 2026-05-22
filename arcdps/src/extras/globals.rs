@@ -1,9 +1,11 @@
 //! Global instance with Unofficial Extras information.
 
 use super::exports::raw::{ExportGetKey, ExportGetKeybind};
-use crate::util::exported_proc;
 use std::{mem::transmute, sync::OnceLock};
-use windows::Win32::Foundation::HMODULE;
+use windows::{
+    Win32::{Foundation::HMODULE, System::LibraryLoader::GetProcAddress},
+    core::s,
+};
 
 /// Global instance of Unofficial Extras handle & exported functions.
 pub static EXTRAS_GLOBALS: OnceLock<ExtrasGlobals> = OnceLock::new();
@@ -31,8 +33,8 @@ impl ExtrasGlobals {
             Self {
                 handle,
                 version,
-                get_key: transmute(exported_proc(handle, "get_key\0")),
-                get_keybind: transmute(exported_proc(handle, "get_key_bind\0")),
+                get_key: transmute(GetProcAddress(handle, s!("get_key"))),
+                get_keybind: transmute(GetProcAddress(handle, s!("get_key_bind"))),
             }
         }
     }
