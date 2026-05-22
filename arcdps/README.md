@@ -101,11 +101,17 @@ When not using the `export!` macro, Arc, ImGui, and DirectX information has to b
 Accessing Arc information/exports or ImGui without initializing them will **panic**.
 
 ```rs
-use arcdps::{init_arc, init_dxgi, init_imgui};
-
 unsafe {
-    init_arc(arc_handle, arc_version);
-    init_imgui(imgui_ctx, malloc, free);
-    init_dxgi(id3d, d3d_version);
+    arcdps::init_arc(arc_handle, arc_version);
+    arcdps::init_imgui(imgui_ctx, malloc, free);
+    arcdps::init_dxgi(id3d, d3d_version);
+}
+```
+
+The bindings can also attempt to initialize Arc by searching modules in the current process.
+
+```rs
+if let Err(err) = unsafe { arcdps::search_and_init_arc() } {
+    log::error!("Failed to find ArcDPS: {err}");
 }
 ```

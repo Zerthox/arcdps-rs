@@ -3,15 +3,66 @@ use crate::{
         Export0, Export3, Export5, Export6, Export7, Export8, Export9, Export10,
         ExportAddExtension, ExportFreeExtension, ExportListExtension,
     },
-    util::{exported_proc, str_from_cstr},
+    util::str_from_cstr,
 };
-use std::{ffi::c_char, mem::transmute, sync::OnceLock};
-use windows::Win32::{Foundation::HMODULE, System::LibraryLoader::GetProcAddress};
+use std::{
+    ffi::c_char,
+    io,
+    mem::{self, transmute},
+    ptr,
+    sync::OnceLock,
+};
+use windows::{
+    Win32::{
+        Foundation::HMODULE,
+        System::{
+            LibraryLoader::GetProcAddress, ProcessStatus::EnumProcessModules,
+            Threading::GetCurrentProcess,
+        },
+    },
+    core::{PCSTR, s},
+};
 
-/// Initializes ArcDPS information.
+/// Manually initializes ArcDPS information.
 #[inline]
 pub unsafe fn init_arc(arc_handle: HMODULE, version: *const c_char) {
     unsafe { ArcGlobals::init(arc_handle, str_from_cstr(version)) };
+}
+
+/// Attempts to initialize ArcDPS information by searching the current process for the ArcDPS module.
+///
+/// When initializing via this method, the ArcDPS version will always be [`None`].
+///
+/// This does **not** initialize ImGui information.
+#[inline]
+pub unsafe fn search_and_init_arc() -> Result<(), io::Error> {
+    let arc_handle = search_arc_handle()?;
+    unsafe { ArcGlobals::init(arc_handle, None) };
+    Ok(())
+}
+
+/// Searches the current process for the ArcDPS module.
+pub fn search_arc_handle() -> Result<HMODULE, io::Error> {
+    const EXPORT: PCSTR = s!("arcdps_identifier_export"); // TODO: is this guaranteed to stay?
+    const MAX_MODULES: usize = 1024;
+
+    let mut modules = const { [HMODULE(ptr::null_mut()); MAX_MODULES] };
+    let mut needed = 0;
+    unsafe {
+        EnumProcessModules(
+            GetCurrentProcess(),
+            modules.as_mut_ptr(),
+            mem::size_of_val(&modules) as _,
+            &mut needed,
+        )
+    }?;
+
+    let len = needed as usize / mem::size_of::<HMODULE>();
+    modules
+        .into_iter()
+        .take(len)
+        .find(|module| unsafe { GetProcAddress(*module, EXPORT) }.is_some())
+        .ok_or_else(|| io::Error::new(io::ErrorKind::NotFound, "module not found"))
 }
 
 /// Global instance of ArcDPS handle & exported functions.

@@ -67,12 +67,17 @@
 //! Accessing Arc information/exports or ImGui without initializing them will **panic**.
 //!
 //! ```ignore
-//! use arcdps::{init_arc, init_dxgi, init_imgui};
-//!
 //! unsafe {
-//!     init_arc(arc_handle, arc_version);
-//!     init_imgui(imgui_ctx, malloc, free);
-//!     init_dxgi(id3d, d3d_version);
+//!     arcdps::init_arc(arc_handle, arc_version);
+//!     arcdps::init_imgui(imgui_ctx, malloc, free);
+//!     arcdps::init_dxgi(id3d, d3d_version);
+//! }
+//! ```
+//! The bindings can also attempt to initialize Arc by searching modules in the current process.
+//!
+//! ```ignore
+//! if let Err(err) = unsafe { arcdps::search_and_init_arc() } {
+//!     log::error!("Failed to find ArcDPS: {err}");
 //! }
 //! ```
 
@@ -98,7 +103,7 @@ mod util;
 pub use arcdps_codegen::export;
 
 pub use crate::globals::{
-    arc::init_arc,
+    arc::{init_arc, search_and_init_arc, search_arc_handle},
     dxgi::{d3d_version, d3d11_device, dxgi_swap_chain, init_dxgi},
     imgui::{imgui_context, init_imgui, with_ui},
 };
