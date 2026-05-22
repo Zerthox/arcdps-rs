@@ -80,7 +80,7 @@ impl ArcDpsGen {
                 static mut EXPORT_ERROR: ::arcdps::callbacks::ArcDpsExport = ::arcdps::callbacks::ArcDpsExport {
                     size: 0,
                     sig: 0,
-                    imgui_version: 18000,
+                    imgui_version: ::arcdps::__macro::IMGUI_VERSION,
                     out_build: #build.as_ptr() as _,
                     out_name: #name_c.as_ptr() as _,
                     combat: ::std::option::Option::None,
@@ -123,9 +123,9 @@ impl ArcDpsGen {
                 arc_dll: ::arcdps::__macro::HMODULE,
                 malloc: ::std::option::Option<::arcdps::__macro::MallocFn>,
                 free: ::std::option::Option<::arcdps::__macro::FreeFn>,
-                d3d_version: ::std::primitive::u32,
+                imgui_version: ::std::primitive::u32,
             ) -> *mut ::arcdps::__macro::c_void {
-                ::arcdps::__macro::init(arc_version, arc_dll, imgui_ctx, malloc, free, id3d, d3d_version, #name);
+                ::arcdps::__macro::init(arc_version, arc_dll, imgui_ctx, malloc, free, imgui_version, id3d, #name);
                 self::__load as _
             }
 

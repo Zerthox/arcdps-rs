@@ -104,7 +104,7 @@ Accessing Arc information/exports or ImGui without initializing them will **pani
 unsafe {
     arcdps::init_arc(arc_handle, arc_version);
     arcdps::init_imgui(imgui_ctx, malloc, free);
-    arcdps::init_dxgi(id3d, d3d_version);
+    arcdps::init_dxgi(id3d);
 }
 ```
 

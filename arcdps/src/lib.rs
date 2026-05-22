@@ -70,7 +70,7 @@
 //! unsafe {
 //!     arcdps::init_arc(arc_handle, arc_version);
 //!     arcdps::init_imgui(imgui_ctx, malloc, free);
-//!     arcdps::init_dxgi(id3d, d3d_version);
+//!     arcdps::init_dxgi(id3d);
 //! }
 //! ```
 //! The bindings can also attempt to initialize Arc by searching modules in the current process.
@@ -104,7 +104,7 @@ pub use arcdps_codegen::export;
 
 pub use crate::globals::{
     arc::{init_arc, search_and_init_arc, search_arc_handle},
-    dxgi::{d3d_version, d3d11_device, dxgi_swap_chain, init_dxgi},
+    dxgi::{d3d11_device, dxgi_swap_chain, init_dxgi},
     imgui::{imgui_context, init_imgui, with_ui},
 };
 pub use crate::util::strip_account_prefix;
@@ -318,7 +318,7 @@ pub struct SupportedFields {
 #[doc(hidden)]
 pub mod __macro {
     pub use crate::{
-        globals::imgui::{FreeFn, MallocFn, with_ui},
+        globals::imgui::{FreeFn, IMGUI_VERSION, MallocFn, with_ui},
         util::{str_from_cstr, str_to_wide, strip_account_prefix},
     };
     pub use std::ffi::{c_char, c_void};
@@ -348,8 +348,8 @@ pub mod __macro {
         imgui_ctx: *mut imgui::sys::ImGuiContext,
         malloc: Option<MallocFn>,
         free: Option<FreeFn>,
+        imgui_version: u32,
         id3d: *mut c_void,
-        d3d_version: u32,
         name: &'static str,
     ) {
         // arc exports have to be retrieved before panic hook & logging
@@ -370,8 +370,12 @@ pub mod __macro {
             }
         }
 
-        // initialize imgui & dxgi
-        unsafe { init_imgui(imgui_ctx, malloc, free) };
-        unsafe { init_dxgi(id3d, d3d_version) };
+        // only initialize imgui if versions match
+        if imgui_version == IMGUI_VERSION {
+            unsafe { init_imgui(imgui_ctx, malloc, free) };
+        }
+
+        // initialize dxgi always
+        unsafe { init_dxgi(id3d) };
     }
 }

@@ -4,6 +4,8 @@ use crate::{
 };
 use std::{ffi::c_void, ptr, sync::OnceLock};
 
+pub const IMGUI_VERSION: u32 = 1_80_00;
+
 pub type MallocFn = unsafe extern "C" fn(size: usize, user_data: *mut c_void) -> *mut c_void;
 
 pub type FreeFn = unsafe extern "C" fn(ptr: *mut c_void, user_data: *mut c_void);
