@@ -214,10 +214,10 @@ impl Event {
         self.is_activation.into()
     }
 
-    /// Returns `is_activation` as [`AnimationProgress`].
+    /// Returns `is_buffremove` as [`BuffRemove`].
     #[inline]
     pub fn get_buff_remove(&self) -> BuffRemove {
-        self.is_activation.into()
+        self.is_buffremove.into()
     }
 
     /// Returns the padding as [`u32`] id/signature.
