@@ -20,7 +20,7 @@ pub struct BuffRemoveSingle {
     pub common: CommonEvent,
 
     /// Buff remove kind.
-    pub kind: BuffRemove,
+    pub remove: BuffRemove,
 
     /// Buff duration.
     pub duration: i32,
@@ -36,7 +36,7 @@ impl Extract for BuffRemoveSingle {
     unsafe fn extract(event: &Event) -> Self {
         Self {
             common: event.into(),
-            kind: event.get_buff_remove(),
+            remove: event.get_buff_remove(),
             duration: event.value,
             stack_id: event.get_pad_id(),
         }
