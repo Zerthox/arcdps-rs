@@ -95,6 +95,8 @@ impl CustomSkill {
     pub const GADGET_INTERACT: u32 = 23302;
 
     /// Emote.
+    ///
+    /// Emote id in animation start.
     pub const EMOTE: u32 = 23303;
 
     /// Generic float in water.
@@ -108,4 +110,9 @@ impl CustomSkill {
 
     /// Generic fear.
     pub const GENERIC_FEAR: u32 = 23307;
+
+    /// Bundle item pickup.
+    ///
+    /// Item id in animation start.
+    pub const PICKUP: u32 = 23308;
 }

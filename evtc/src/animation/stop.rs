@@ -1,3 +1,4 @@
+use super::AnimationKind;
 use crate::{AgentId, Event, StateChange, TryExtract, extract::Extract};
 use num_enum::{FromPrimitive, IntoPrimitive};
 
@@ -17,6 +18,9 @@ pub struct AnimationStop {
     /// Agent stopping the animation.
     pub agent: AgentId,
 
+    /// Id of skill.
+    pub skill_id: u32,
+
     /// Duration scaled with speed.
     pub duration_scaled: i32,
 
@@ -27,12 +31,20 @@ pub struct AnimationStop {
     pub progress: AnimationProgress,
 }
 
+impl AnimationStop {
+    #[inline]
+    pub const fn kind(&self) -> AnimationKind {
+        AnimationKind::new(self.skill_id)
+    }
+}
+
 impl Extract for AnimationStop {
     #[inline]
     unsafe fn extract(event: &Event) -> Self {
         Self {
             time: event.time,
             agent: AgentId::from_src(event),
+            skill_id: event.skill_id,
             duration_scaled: event.value,
             duration_unscaled: event.buff_dmg,
             progress: event.get_animation_progress(),

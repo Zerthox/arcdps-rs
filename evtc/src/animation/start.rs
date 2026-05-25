@@ -1,3 +1,4 @@
+use super::AnimationKind;
 use crate::{AgentId, Event, StateChange, TryExtract, extract::Extract};
 use num_enum::{FromPrimitive, IntoPrimitive};
 
@@ -21,9 +22,12 @@ pub struct AnimationStart {
     pub target: AgentId,
 
     /// Id of skill.
-    pub id: u32,
+    pub skill_id: u32,
 
-    /// Reference id (emote id if emote).
+    /// Reference id.
+    ///
+    /// Emote id for emote.
+    /// Item id for bundle pickup.
     pub reference_id: u32,
 
     /// Duration until minimum of last significant trigger.
@@ -33,6 +37,14 @@ pub struct AnimationStart {
     pub duration_control: i32,
 }
 
+impl AnimationStart {
+    /// Returns the [`AnimationKind`].
+    #[inline]
+    pub const fn kind(&self) -> AnimationKind {
+        AnimationKind::new(self.skill_id)
+    }
+}
+
 impl Extract for AnimationStart {
     #[inline]
     unsafe fn extract(event: &Event) -> Self {
@@ -40,7 +52,7 @@ impl Extract for AnimationStart {
             time: event.time,
             agent: AgentId::from_src(event),
             target: AgentId::from_dst(event),
-            id: event.skill_id,
+            skill_id: event.skill_id,
             reference_id: event.overstack_value,
             duration_execute: event.value,
             duration_control: event.buff_dmg,
@@ -74,6 +86,7 @@ pub enum AnimationStartTrigger {
     MotionSkill = 5,
     GadgetInteract = 6,
     Emote = 7,
+    Pickup = 8,
 
     /// Unknown or invalid.
     #[num_enum(catch_all)]
