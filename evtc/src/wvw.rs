@@ -6,7 +6,7 @@ use crate::{
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
 
-/// WvW teams.
+/// WvW teams information.
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct WvwTeams {
@@ -49,7 +49,7 @@ impl TryExtract for WvwTeams {
     }
 }
 
-/// WvW objective status
+/// WvW objective status.
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct WvwObjectiveStatus {

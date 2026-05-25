@@ -22,7 +22,9 @@ use crate::{
     position::PositionEvent,
     ruleset::Ruleset,
     skill::{SkillInfo, SkillTiming},
+    transformation::TransformationEvent,
     weapon::WeaponSwapEvent,
+    wvw::{WvwObjectiveStatus, WvwTeams},
 };
 
 #[cfg(feature = "serde")]
@@ -82,16 +84,10 @@ pub enum EventKind {
     },
 
     /// Game build.
-    GWBuild {
-        time: u64,
-        build: u64,
-    },
+    GWBuild { time: u64, build: u64 },
 
     /// Sever shard id.
-    ShardId {
-        time: u64,
-        shard: u64,
-    },
+    ShardId { time: u64, shard: u64 },
 
     /// Agent got a reward chest.
     Reward(RewardEvent),
@@ -118,10 +114,7 @@ pub enum EventKind {
     Targetable(TargetableEvent),
 
     /// Map id.
-    MapId {
-        time: u64,
-        map: u64,
-    },
+    MapId { time: u64, map: u64 },
 
     /// Agent with active buff.
     StackActive(StackActiveEvent),
@@ -160,33 +153,19 @@ pub enum EventKind {
     BarrierUpdate(BarrierUpdateEvent),
 
     /// Arc UI stats reset.
-    StatReset {
-        time: u64,
-        target: u64,
-    },
+    StatReset { time: u64, target: u64 },
 
     /// A custom event created by an extension (addon/plugin).
-    Extension {
-        sig: u32,
-        event: Event,
-    },
+    Extension { sig: u32, event: Event },
 
     /// Delayed combat event.
-    ApiDelayed {
-        event: Box<EventKind>,
-    },
+    ApiDelayed { event: Box<EventKind> },
 
     /// Instance started.
-    InstanceStart {
-        time: u64,
-        start: u64,
-    },
+    InstanceStart { time: u64, start: u64 },
 
     /// Tick rate.
-    RateHealth {
-        time: u64,
-        rate: u64,
-    },
+    RateHealth { time: u64, rate: u64 },
 
     /// Last 90% before down for downs contribution.
     Last90BeforeDown(DownContributionEvent),
@@ -203,16 +182,10 @@ pub enum EventKind {
     LogNPCUpdate(LogEvent),
 
     /// A custom combat event created by an extension (addon/plugin).
-    ExtensionCombat {
-        sig: u32,
-        event: Event,
-    },
+    ExtensionCombat { sig: u32, event: Event },
 
     /// Fractal scale.
-    FractalScale {
-        time: u64,
-        scale: u64,
-    },
+    FractalScale { time: u64, scale: u64 },
 
     /// Effect created or ended.
     Effect51(Effect51),
@@ -254,18 +227,10 @@ pub enum EventKind {
     EffectAgentRemove(AgentEffectRemove),
 
     /// Player IID (unique agent id) change.
-    IIDChange {
-        time: u64,
-        id: u64,
-        previous: u64,
-    },
+    IIDChange { time: u64, id: u64, previous: u64 },
 
     /// Map change.
-    MapChange {
-        time: u64,
-        map: u64,
-        previous: u64,
-    },
+    MapChange { time: u64, map: u64, previous: u64 },
 
     /// Animation started.
     AnimationStart(AnimationStart),
@@ -273,19 +238,26 @@ pub enum EventKind {
     /// Animation stopped.
     AnimationStop(AnimationStop),
 
+    /// Buff applied.
     BuffApply(BuffApply),
 
+    /// Buff changed.
     BuffChange(BuffChange),
 
+    /// Buff stack removed.
     BuffRemoveSingle(BuffRemoveSingle),
 
+    /// All stacks of buff removed.
     BuffRemoveAll(BuffRemoveAll),
 
-    Transformation,
+    /// Transformation change.
+    Transformation(TransformationEvent),
 
-    WvwTeams,
+    /// WvW teams information.
+    WvwTeams(WvwTeams),
 
-    WvwObjectiveStatus,
+    /// WvW objective status.
+    WvwObjectiveStatus(WvwObjectiveStatus),
 
     /// Unknown event.
     Unknown(Event),
@@ -412,9 +384,9 @@ impl From<Event> for EventKind {
                 StateChange::BuffChange => Self::BuffChange(event.extract()),
                 StateChange::BuffRemoveSingle => Self::BuffRemoveSingle(event.extract()),
                 StateChange::BuffRemoveAll => Self::BuffRemoveAll(event.extract()),
-                StateChange::Transformation => Self::Transformation,
-                StateChange::WvwTeams => Self::WvwTeams,
-                StateChange::WvwObjectiveStatus => Self::WvwObjectiveStatus,
+                StateChange::Transformation => Self::Transformation(event.extract()),
+                StateChange::WvwTeams => Self::WvwTeams(event.extract()),
+                StateChange::WvwObjectiveStatus => Self::WvwObjectiveStatus(event.extract()),
                 StateChange::IdleEvent | StateChange::ReplInfo | StateChange::EarlyExit => {
                     unreachable!("illegal internal statechange")
                 }

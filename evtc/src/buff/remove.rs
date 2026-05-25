@@ -50,7 +50,7 @@ impl TryExtract for BuffRemoveSingle {
     }
 }
 
-/// Buff remvoe all.
+/// Buff remove all.
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct BuffRemoveAll {

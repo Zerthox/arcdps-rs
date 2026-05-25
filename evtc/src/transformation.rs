@@ -3,7 +3,7 @@ use crate::{AgentId, Event, StateChange, TryExtract, extract::Extract};
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
 
-/// Buff apply.
+/// Transformation change.
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct TransformationEvent {
