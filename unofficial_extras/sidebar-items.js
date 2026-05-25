@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["strip_account_prefix"],"mod":["callbacks","keybinds","language","message","user"],"struct":["ExtrasAddonInfo","ExtrasSubscriberInfo","ExtrasSubscriberInfoHeader","ExtrasVersion","RawExtrasAddonInfo"]};
