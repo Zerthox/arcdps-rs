@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"enum":["EventCategory","EventKind"],"struct":["ArcBuildEvent","CommonEvent","ErrorEvent","Event","EventCategoryIter","EventOld","LogEvent"]};
+window.SIDEBAR_ITEMS = {"enum":["EventKind","StateChange"],"struct":["ArcBuildEvent","CommonEvent","ErrorEvent","Event","LogEvent","StateChangeIter"]};

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["Activation","BuffApplyKind","BuffCycle","BuffDamageResult","BuffRemoveKind","LegacyEventCategory","LegacyEventKind"],"struct":["ActivationEvent","ActivationIter","BuffApplyEvent","BuffApplyKindIter","BuffCycleIter","BuffDamageEvent","BuffDamageResultIter","BuffRemoveEvent","BuffRemoveKindIter"]};
