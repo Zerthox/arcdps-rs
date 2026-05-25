@@ -117,6 +117,12 @@ pub enum ContentType {
     /// Species (only characters, not gadgets).
     Species,
 
+    /// Emote.
+    Emote,
+
+    /// Transformation.
+    Transformation,
+
     /// Unknown content type.
     Unknown(u32),
 }
@@ -134,6 +140,8 @@ impl Extract for ContentType {
             },
             Ok(ContentLocal::Skill) => Self::Skill,
             Ok(ContentLocal::Species) => Self::Species,
+            Ok(ContentLocal::Emote) => Self::Emote,
+            Ok(ContentLocal::Transformation) => Self::Transformation,
             Err(err) => Self::Unknown(err.number),
         }
     }
@@ -173,4 +181,10 @@ pub enum ContentLocal {
 
     /// Content is a species (only characters, not gadgets).
     Species = 3,
+
+    /// Emote.
+    Emote = 4,
+
+    /// Transformation.
+    Transformation = 5,
 }
