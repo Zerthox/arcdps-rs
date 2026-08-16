@@ -12,7 +12,10 @@ license = "MIT"
 
 [dependencies]
 arcdps_codegen = { path = "../arcdps_codegen", optional = true }
-arcdps-imgui = { version = "0.8.0", features = ["tables-api"] }
+# Fork of imgui-rs `main` vendoring Dear ImGui 1.92.7 with arcdps's stock imconfig.
+# arcdps has linked 1.92.7 since its 20260507 build and ignores the UI callbacks of any
+# addon reporting a different IMGUI_VERSION_NUM; arcdps-imgui 0.8 is Dear ImGui 1.80.
+imgui = { git = "https://github.com/arnalon/imgui-rs", branch = "arcdps-1.92.7", features = ["tables-api"] }
 bitflags = { workspace = true }
 evtc = { path = "../evtc", features = ["realtime"] }
 log = { version = "0.4.17", features = ["std"], optional = true }

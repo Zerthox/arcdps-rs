@@ -109,7 +109,7 @@ pub use crate::globals::{
     imgui::{imgui_context, init_imgui, with_ui},
 };
 pub use crate::util::strip_account_prefix;
-pub use arcdps_imgui as imgui;
+pub use imgui;
 pub use evtc::{
     Affinity, Agent, AgentOwned, Attribute, BuffCategory, CombatResult, CustomSkill, Event,
     Language, Profession, Specialization, StateChange,

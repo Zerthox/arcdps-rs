@@ -2,21 +2,23 @@ use crate::{
     imgui::{self, Context, Ui},
     util::Share,
 };
-use std::{ffi::c_void, ptr, sync::OnceLock};
+use std::{ffi::c_void, mem::ManuallyDrop, ptr, sync::OnceLock};
 
-pub const IMGUI_VERSION: u32 = 1_80_00;
+/// Dear ImGui version the bindings were compiled against.
+///
+/// arcdps compares this against its own `IMGUI_VERSION_NUM` and drops the UI callbacks of any
+/// plugin that disagrees, so it has to come from the headers rather than be hardcoded.
+pub const IMGUI_VERSION: u32 = imgui::sys::IMGUI_VERSION_NUM;
 
 pub type MallocFn = unsafe extern "C" fn(size: usize, user_data: *mut c_void) -> *mut c_void;
 
 pub type FreeFn = unsafe extern "C" fn(ptr: *mut c_void, user_data: *mut c_void);
 
 /// ImGui context.
-pub static IG_CONTEXT: OnceLock<Share<Context>> = OnceLock::new();
-
-thread_local! {
-    /// ImGui UI.
-    pub static IG_UI: Ui<'static> = Ui::from_ctx(unsafe { imgui_context() });
-}
+///
+/// Owned by arcdps, hence [`ManuallyDrop`]: dropping an [`imgui::Context`] destroys the
+/// underlying context.
+pub static IG_CONTEXT: OnceLock<Share<ManuallyDrop<Context>>> = OnceLock::new();
 
 /// Initializes ImGui information.
 pub unsafe fn init_imgui(
@@ -27,7 +29,7 @@ pub unsafe fn init_imgui(
     IG_CONTEXT.get_or_init(|| unsafe {
         imgui::sys::igSetCurrentContext(ctx);
         imgui::sys::igSetAllocatorFunctions(malloc, free, ptr::null_mut());
-        Share::new(Context::current())
+        Share::new(Context::current_borrowed())
     });
 }
 
@@ -44,6 +46,6 @@ pub unsafe fn imgui_context() -> &'static Context {
 
 /// Retrieves the [`imgui::Ui`] for rendering.
 #[inline]
-pub unsafe fn with_ui<R>(body: impl FnOnce(&Ui<'static>) -> R) -> R {
-    IG_UI.with(body)
+pub unsafe fn with_ui<R>(body: impl FnOnce(&Ui) -> R) -> R {
+    body(unsafe { imgui_context() }.borrowed_frame())
 }
